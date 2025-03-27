@@ -117,6 +117,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -139,12 +143,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1169,6 +1175,15 @@ class Instance {
   /// Looker Instance Admin settings.
   AdminSettings? adminSettings;
 
+  /// Storage class of the instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CLASS_TYPE_UNSPECIFIED" : Unspecified storage class.
+  /// - "R1" : Filestore.
+  /// - "P1" : PD SSD.
+  core.String? classType;
+
   /// Network name in the consumer project.
   ///
   /// Format: `projects/{project}/global/networks/{network}`. Note that the
@@ -1263,6 +1278,9 @@ class Instance {
   /// - "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL" : Nonprod Subscription
   /// Enterprise.
   /// - "LOOKER_CORE_NONPROD_EMBED_ANNUAL" : Nonprod Subscription Embed.
+  /// - "LOOKER_CORE_TRIAL_STANDARD" : Trial Standard.
+  /// - "LOOKER_CORE_TRIAL_ENTERPRISE" : Trial Enterprise.
+  /// - "LOOKER_CORE_TRIAL_EMBED" : Trial Embed.
   core.String? platformEdition;
 
   /// Whether private IP is enabled on the Looker instance.
@@ -1328,6 +1346,7 @@ class Instance {
 
   Instance({
     this.adminSettings,
+    this.classType,
     this.consumerNetwork,
     this.createTime,
     this.customDomain,
@@ -1365,6 +1384,7 @@ class Instance {
               ? AdminSettings.fromJson(
                   json_['adminSettings'] as core.Map<core.String, core.dynamic>)
               : null,
+          classType: json_['classType'] as core.String?,
           consumerNetwork: json_['consumerNetwork'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           customDomain: json_.containsKey('customDomain')
@@ -1428,6 +1448,7 @@ class Instance {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adminSettings != null) 'adminSettings': adminSettings!,
+        if (classType != null) 'classType': classType!,
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
         if (createTime != null) 'createTime': createTime!,
         if (customDomain != null) 'customDomain': customDomain!,
@@ -1933,8 +1954,14 @@ class ServiceAttachment {
   /// Fully qualified domain name that will be used in the private DNS record
   /// created for the service attachment.
   ///
-  /// Required.
+  /// Optional.
   core.String? localFqdn;
+
+  /// List of fully qualified domain names that will be used in the private DNS
+  /// record created for the service attachment.
+  ///
+  /// Optional.
+  core.List<core.String>? localFqdns;
 
   /// URI of the service attachment to connect to.
   ///
@@ -1947,6 +1974,7 @@ class ServiceAttachment {
   ServiceAttachment({
     this.connectionStatus,
     this.localFqdn,
+    this.localFqdns,
     this.targetServiceAttachmentUri,
   });
 
@@ -1954,6 +1982,9 @@ class ServiceAttachment {
       : this(
           connectionStatus: json_['connectionStatus'] as core.String?,
           localFqdn: json_['localFqdn'] as core.String?,
+          localFqdns: (json_['localFqdns'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           targetServiceAttachmentUri:
               json_['targetServiceAttachmentUri'] as core.String?,
         );
@@ -1961,6 +1992,7 @@ class ServiceAttachment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectionStatus != null) 'connectionStatus': connectionStatus!,
         if (localFqdn != null) 'localFqdn': localFqdn!,
+        if (localFqdns != null) 'localFqdns': localFqdns!,
         if (targetServiceAttachmentUri != null)
           'targetServiceAttachmentUri': targetServiceAttachmentUri!,
       };

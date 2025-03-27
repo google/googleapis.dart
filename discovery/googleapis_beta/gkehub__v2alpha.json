@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250302",
+    "revision": "20250720",
     "rootUrl": "https://gkehub.googleapis.com/",
     "servicePath": "",
     "title": "GKE Hub API",
@@ -147,6 +147,12 @@
                                 "name"
                             ],
                             "parameters": {
+                                "extraLocationTypes": {
+                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "filter": {
                                     "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
@@ -622,7 +628,8 @@
                         "IN_PROGRESS",
                         "SOAKING",
                         "FORCED_SOAKING",
-                        "COMPLETE"
+                        "COMPLETE",
+                        "FORCED_COMPLETE"
                     ],
                     "enumDescriptions": [
                         "Required by https://linter.aip.dev/126/unspecified.",
@@ -631,7 +638,8 @@
                         "The upgrade is in progress. At the scope level, this means the upgrade is in progress for at least one cluster in the scope.",
                         "The upgrade has finished and is soaking until the soaking time is up. At the scope level, this means at least one cluster is in soaking while the rest are either soaking or complete.",
                         "A cluster will be forced to enter soaking if an upgrade doesn't finish within a certain limit, despite it's actual status.",
-                        "The upgrade has passed all post conditions (soaking). At the scope level, this means all eligible clusters are in COMPLETE status."
+                        "The upgrade has passed all post conditions (soaking). At the scope level, this means all eligible clusters are in COMPLETE status.",
+                        "The upgrade was forced into soaking and the soaking time has passed. This is the equivalent of COMPLETE status for upgrades that were forced into soaking."
                     ],
                     "type": "string"
                 },
@@ -1117,7 +1125,7 @@
                     "type": "string"
                 },
                 "deploymentNamespace": {
-                    "description": "Required. The namespace of the deployment resource to be overridden..",
+                    "description": "Required. The namespace of the deployment resource to be overridden.",
                     "type": "string"
                 }
             },
@@ -1764,6 +1772,10 @@
                     "$ref": "PolicyControllerSpec",
                     "description": "Policycontroller-specific FeatureSpec."
                 },
+                "rbacrolebindingactuation": {
+                    "$ref": "RBACRoleBindingActuationSpec",
+                    "description": "Rbacrolebindingactuation-specific FeatureSpec."
+                },
                 "servicemesh": {
                     "$ref": "ServiceMeshSpec",
                     "description": "ServiceMesh Feature Spec."
@@ -1802,6 +1814,10 @@
                 "policycontroller": {
                     "$ref": "PolicyControllerState",
                     "description": "Policy Controller state"
+                },
+                "rbacrolebindingactuation": {
+                    "$ref": "RBACRoleBindingActuationState",
+                    "description": "RBAC Role Binding Actuation state"
                 },
                 "servicemesh": {
                     "$ref": "ServiceMeshState",
@@ -2890,6 +2906,58 @@
             },
             "type": "object"
         },
+        "RBACRoleBindingActuationRBACRoleBindingState": {
+            "description": "RBACRoleBindingState is the status of an RBACRoleBinding which exists on a membership.",
+            "id": "RBACRoleBindingActuationRBACRoleBindingState",
+            "properties": {
+                "description": {
+                    "description": "The reason for the failure.",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The state of the RBACRoleBinding.",
+                    "enum": [
+                        "ROLE_BINDING_STATE_UNSPECIFIED",
+                        "OK",
+                        "CUSTOM_ROLE_MISSING_FROM_CLUSTER"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified state.",
+                        "RBACRoleBinding is created properly on the cluster.",
+                        "The RBACRoleBinding was created on the cluster but the specified custom role does not exist on the cluster, hence the RBACRoleBinding has no effect."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "The time the RBACRoleBinding status was last updated.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RBACRoleBindingActuationSpec": {
+            "description": "**RBAC RoleBinding Actuation**: The membership-specific input for RBACRoleBindingActuation feature.",
+            "id": "RBACRoleBindingActuationSpec",
+            "properties": {},
+            "type": "object"
+        },
+        "RBACRoleBindingActuationState": {
+            "description": "**RBAC RoleBinding Actuation**: A membership-specific Feature state for the RBACRoleBindingActuation fleet feature.",
+            "id": "RBACRoleBindingActuationState",
+            "properties": {
+                "rbacrolebindingStates": {
+                    "additionalProperties": {
+                        "$ref": "RBACRoleBindingActuationRBACRoleBindingState"
+                    },
+                    "description": "Output only. The state of RBACRoleBindings using custom roles that exist on the cluster, keyed by RBACRoleBinding resource name with format: projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}.",
+                    "readOnly": true,
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "ServiceMeshAnalysisMessage": {
             "description": "AnalysisMessage is a single message produced by an analyzer, and it used to communicate to the end user about the state of their Service Mesh configuration.",
             "id": "ServiceMeshAnalysisMessage",
@@ -2990,6 +3058,11 @@
                         "QUOTA_EXCEEDED_HTTP_FILTERS",
                         "QUOTA_EXCEEDED_TCP_FILTERS",
                         "QUOTA_EXCEEDED_NETWORK_ENDPOINT_GROUPS",
+                        "LEGACY_MC_SECRETS",
+                        "WORKLOAD_IDENTITY_REQUIRED",
+                        "NON_STANDARD_BINARY_USAGE",
+                        "UNSUPPORTED_GATEWAY_CLASS",
+                        "MANAGED_CNI_NOT_ENABLED",
                         "MODERNIZATION_SCHEDULED",
                         "MODERNIZATION_IN_PROGRESS",
                         "MODERNIZATION_COMPLETED",
@@ -3029,6 +3102,11 @@
                         "HTTPFilter quota exceeded error code.",
                         "TCPFilter quota exceeded error code.",
                         "NetworkEndpointGroup quota exceeded error code.",
+                        "Legacy istio secrets found for multicluster error code",
+                        "Workload identity required error code",
+                        "Non-standard binary usage error code",
+                        "Unsupported gateway class error code",
+                        "Managed CNI not enabled error code",
                         "Modernization is scheduled for a cluster.",
                         "Modernization is in progress for a cluster.",
                         "Modernization is completed for a cluster.",
@@ -3102,7 +3180,8 @@
                         "ACTIVE",
                         "STALLED",
                         "NEEDS_ATTENTION",
-                        "DEGRADED"
+                        "DEGRADED",
+                        "DEPROVISIONING"
                     ],
                     "enumDescriptions": [
                         "Unspecified",
@@ -3112,7 +3191,8 @@
                         "ACTIVE means that the component is ready for use.",
                         "STALLED means that provisioning could not be done.",
                         "NEEDS_ATTENTION means that the component is ready, but some user intervention is required. (For example that the user should migrate workloads to a new control plane revision.)",
-                        "DEGRADED means that the component is ready, but operating in a degraded state."
+                        "DEGRADED means that the component is ready, but operating in a degraded state.",
+                        "DEPROVISIONING means that deprovisioning is in progress."
                     ],
                     "type": "string"
                 }
@@ -3140,7 +3220,8 @@
                         "ACTIVE",
                         "STALLED",
                         "NEEDS_ATTENTION",
-                        "DEGRADED"
+                        "DEGRADED",
+                        "DEPROVISIONING"
                     ],
                     "enumDescriptions": [
                         "Unspecified",
@@ -3150,7 +3231,8 @@
                         "ACTIVE means that the component is ready for use.",
                         "STALLED means that provisioning could not be done.",
                         "NEEDS_ATTENTION means that the component is ready, but some user intervention is required. (For example that the user should migrate workloads to a new control plane revision.)",
-                        "DEGRADED means that the component is ready, but operating in a degraded state."
+                        "DEGRADED means that the component is ready, but operating in a degraded state.",
+                        "DEPROVISIONING means that deprovisioning is in progress."
                     ],
                     "type": "string"
                 }
@@ -3212,12 +3294,14 @@
                     "enum": [
                         "MANAGEMENT_UNSPECIFIED",
                         "MANAGEMENT_AUTOMATIC",
-                        "MANAGEMENT_MANUAL"
+                        "MANAGEMENT_MANUAL",
+                        "MANAGEMENT_NOT_INSTALLED"
                     ],
                     "enumDescriptions": [
                         "Unspecified",
                         "Google should manage my Service Mesh for the cluster.",
-                        "User will manually configure their service mesh components."
+                        "User will manually configure their service mesh components.",
+                        "Google should remove any managed Service Mesh components from this cluster and deprovision any resources."
                     ],
                     "type": "string"
                 }

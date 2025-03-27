@@ -16,7 +16,7 @@
 ///
 /// Reads and writes Google Slides presentations.
 ///
-/// For more information, see <https://developers.google.com/slides/>
+/// For more information, see <https://developers.google.com/workspace/slides/>
 ///
 /// Create an instance of [SlidesApi] to access these resources:
 ///
@@ -268,8 +268,9 @@ class PresentationsPagesResource {
   /// Generates a thumbnail of the latest version of the specified page in the
   /// presentation and returns a URL to the thumbnail image.
   ///
-  /// This request counts as an \[expensive read request\](/slides/limits) for
-  /// quota purposes.
+  /// This request counts as an
+  /// [expensive read request](https://developers.google.com/workspace/slides/limits)
+  /// for quota purposes.
   ///
   /// Request parameters:
   ///
@@ -5022,7 +5023,7 @@ class Shadow {
 /// specific classification.
 ///
 /// For more information, see
-/// [Size and position page elements](https://developers.google.com/slides/api/guides/transform).
+/// [Size and position page elements](https://developers.google.com/workspace/slides/api/guides/transform).
 class Shape {
   /// Placeholders are page elements that inherit from corresponding
   /// placeholders on layouts and masters.
@@ -5792,22 +5793,34 @@ class SubstringMatchCriteria {
   /// - `False`: the search is case insensitive.
   core.bool? matchCase;
 
+  /// True if the find value should be treated as a regular expression.
+  ///
+  /// Any backslashes in the pattern should be escaped. - `True`: the search
+  /// text is treated as a regular expressions. - `False`: the search text is
+  /// treated as a substring for matching.
+  ///
+  /// Optional.
+  core.bool? searchByRegex;
+
   /// The text to search for in the shape or table.
   core.String? text;
 
   SubstringMatchCriteria({
     this.matchCase,
+    this.searchByRegex,
     this.text,
   });
 
   SubstringMatchCriteria.fromJson(core.Map json_)
       : this(
           matchCase: json_['matchCase'] as core.bool?,
+          searchByRegex: json_['searchByRegex'] as core.bool?,
           text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (matchCase != null) 'matchCase': matchCase!,
+        if (searchByRegex != null) 'searchByRegex': searchByRegex!,
         if (text != null) 'text': text!,
       };
 }

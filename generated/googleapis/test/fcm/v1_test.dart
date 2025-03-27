@@ -56,6 +56,7 @@ api.AndroidConfig buildAndroidConfig() {
     o.notification = buildAndroidNotification();
     o.priority = 'foo';
     o.restrictedPackageName = 'foo';
+    o.restrictedSatelliteOk = true;
     o.ttl = 'foo';
   }
   buildCounterAndroidConfig--;
@@ -82,6 +83,7 @@ void checkAndroidConfig(api.AndroidConfig o) {
       o.restrictedPackageName!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.restrictedSatelliteOk!, unittest.isTrue);
     unittest.expect(
       o.ttl!,
       unittest.equals('foo'),

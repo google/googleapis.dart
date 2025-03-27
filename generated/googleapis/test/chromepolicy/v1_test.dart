@@ -1831,6 +1831,7 @@ api.Proto2DescriptorProto buildProto2DescriptorProto() {
     o.name = 'foo';
     o.nestedType = buildUnnamed33();
     o.oneofDecl = buildUnnamed34();
+    o.visibility = 'foo';
   }
   buildCounterProto2DescriptorProto--;
   return o;
@@ -1847,6 +1848,10 @@ void checkProto2DescriptorProto(api.Proto2DescriptorProto o) {
     );
     checkUnnamed33(o.nestedType!);
     checkUnnamed34(o.oneofDecl!);
+    unittest.expect(
+      o.visibility!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterProto2DescriptorProto--;
 }
@@ -1869,6 +1874,7 @@ api.Proto2EnumDescriptorProto buildProto2EnumDescriptorProto() {
   if (buildCounterProto2EnumDescriptorProto < 3) {
     o.name = 'foo';
     o.value = buildUnnamed35();
+    o.visibility = 'foo';
   }
   buildCounterProto2EnumDescriptorProto--;
   return o;
@@ -1882,6 +1888,10 @@ void checkProto2EnumDescriptorProto(api.Proto2EnumDescriptorProto o) {
       unittest.equals('foo'),
     );
     checkUnnamed35(o.value!);
+    unittest.expect(
+      o.visibility!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterProto2EnumDescriptorProto--;
 }
@@ -1994,6 +2004,23 @@ void checkUnnamed37(core.List<api.Proto2DescriptorProto> o) {
   checkProto2DescriptorProto(o[1]);
 }
 
+core.List<core.String> buildUnnamed38() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed38(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterProto2FileDescriptorProto = 0;
 api.Proto2FileDescriptorProto buildProto2FileDescriptorProto() {
   final o = api.Proto2FileDescriptorProto();
@@ -2003,6 +2030,7 @@ api.Proto2FileDescriptorProto buildProto2FileDescriptorProto() {
     o.enumType = buildUnnamed36();
     o.messageType = buildUnnamed37();
     o.name = 'foo';
+    o.optionDependency = buildUnnamed38();
     o.package = 'foo';
     o.syntax = 'foo';
   }
@@ -2023,6 +2051,7 @@ void checkProto2FileDescriptorProto(api.Proto2FileDescriptorProto o) {
       o.name!,
       unittest.equals('foo'),
     );
+    checkUnnamed38(o.optionDependency!);
     unittest.expect(
       o.package!,
       unittest.equals('foo'),

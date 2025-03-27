@@ -752,8 +752,10 @@ api.GoogleMapsAddressvalidationV1Verdict
     o.geocodeGranularity = 'foo';
     o.hasInferredComponents = true;
     o.hasReplacedComponents = true;
+    o.hasSpellCorrectedComponents = true;
     o.hasUnconfirmedComponents = true;
     o.inputGranularity = 'foo';
+    o.possibleNextAction = 'foo';
     o.validationGranularity = 'foo';
   }
   buildCounterGoogleMapsAddressvalidationV1Verdict--;
@@ -771,9 +773,14 @@ void checkGoogleMapsAddressvalidationV1Verdict(
     );
     unittest.expect(o.hasInferredComponents!, unittest.isTrue);
     unittest.expect(o.hasReplacedComponents!, unittest.isTrue);
+    unittest.expect(o.hasSpellCorrectedComponents!, unittest.isTrue);
     unittest.expect(o.hasUnconfirmedComponents!, unittest.isTrue);
     unittest.expect(
       o.inputGranularity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.possibleNextAction!,
       unittest.equals('foo'),
     );
     unittest.expect(

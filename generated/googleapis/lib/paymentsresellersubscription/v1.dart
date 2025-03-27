@@ -41,8 +41,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class PaymentsResellerSubscriptionApi {
-  /// Associate you with your personal info on Google
-  static const openidScope = 'openid';
+  /// See and/or control the devices that you selected
+  static const sdmServiceScope = 'https://www.googleapis.com/auth/sdm.service';
 
   final commons.ApiRequester _requester;
 
@@ -75,10 +75,10 @@ class PartnersProductsResource {
 
   PartnersProductsResource(commons.ApiRequester client) : _requester = client;
 
-  /// To retrieve the products that can be resold by the partner.
+  /// Currently, it doesn't support **YouTube** products.
   ///
-  /// It should be autenticated with a service account. - This API doesn't apply
-  /// to YouTube products currently.
+  /// Retrieves the products that can be resold by the partner. It should be
+  /// autenticated with a service account.
   ///
   /// Request parameters:
   ///
@@ -150,10 +150,11 @@ class PartnersPromotionsResource {
 
   PartnersPromotionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// To find eligible promotions for the current user.
+  /// Currently, it is only enabeld for **YouTube**.
   ///
-  /// The API requires user authorization via OAuth. The bare minimum oauth
-  /// scope `openid` is sufficient, which will skip the consent screen.
+  /// Finds eligible promotions for the current user. The API requires user
+  /// authorization via OAuth. The bare minimum oauth scope `openid` is
+  /// sufficient, which will skip the consent screen.
   ///
   /// [request] - The metadata request object.
   ///
@@ -200,11 +201,10 @@ class PartnersPromotionsResource {
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves the promotions, such as free trial, that can be used by the
-  /// partner.
+  /// Currently, it doesn't support **YouTube** promotions.
   ///
-  /// - This API doesn't apply to YouTube promotions currently. It should be
-  /// autenticated with a service account.
+  /// Retrieves the promotions, such as free trial, that can be used by the
+  /// partner. It should be autenticated with a service account.
   ///
   /// Request parameters:
   ///
@@ -278,8 +278,8 @@ class PartnersSubscriptionsResource {
   PartnersSubscriptionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Used by partners to cancel a subscription service either immediately or by
-  /// the end of the current billing cycle for their customers.
+  /// Cancels a subscription service either immediately or by the end of the
+  /// current billing cycle for their customers.
   ///
   /// It should be called directly by the partner using service accounts.
   ///
@@ -380,8 +380,7 @@ class PartnersSubscriptionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Used by partners to entitle a previously provisioned subscription to the
-  /// current end user.
+  /// Entitles a previously provisioned subscription to the current end user.
   ///
   /// The end user identity is inferred from the authorized credential of the
   /// request. This API must be authorized by the end user using OAuth.
@@ -432,9 +431,9 @@ class PartnersSubscriptionsResource {
 
   /// \[Opt-in only\] Most partners should be on auto-extend by default.
   ///
-  /// Used by partners to extend a subscription service for their customers on
-  /// an ongoing basis for the subscription to remain active and renewable. It
-  /// should be called directly by the partner using service accounts.
+  /// Extends a subscription service for their customers on an ongoing basis for
+  /// the subscription to remain active and renewable. It should be called
+  /// directly by the partner using service accounts.
   ///
   /// [request] - The metadata request object.
   ///
@@ -480,7 +479,7 @@ class PartnersSubscriptionsResource {
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Used by partners to get a subscription by id.
+  /// Gets a subscription by id.
   ///
   /// It should be called directly by the partner using service accounts.
   ///
@@ -575,12 +574,111 @@ class PartnersSubscriptionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Revokes the pending cancellation of a subscription, which is currently in
-  /// `STATE_CANCEL_AT_END_OF_CYCLE` state.
+  /// Resumes a suspended subscription.
   ///
-  /// If the subscription is already cancelled, the request will fail. - **This
-  /// API doesn't apply to YouTube subscriptions.** It should be called directly
-  /// by the partner using service accounts.
+  /// The new billing cycle will start at the time of the request. It should be
+  /// called directly by the partner using service accounts.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the subscription resource to be resumed. It
+  /// will have the format of
+  /// "partners/{partner_id}/subscriptions/{subscription_id}"
+  /// Value must have pattern `^partners/\[^/\]+/subscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse>
+      resume(
+    GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':resume';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Suspends a subscription.
+  ///
+  /// Contract terms may dictate if a prorated refund will be issued upon
+  /// suspension. It should be called directly by the partner using service
+  /// accounts.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the subscription resource to be suspended.
+  /// It will have the format of
+  /// "partners/{partner_id}/subscriptions/{subscription_id}"
+  /// Value must have pattern `^partners/\[^/\]+/subscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse>
+      suspend(
+    GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':suspend';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Currently, it is used by **Google One, Play Pass** partners.
+  ///
+  /// Revokes the pending cancellation of a subscription, which is currently in
+  /// `STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is already
+  /// cancelled, the request will fail. It should be called directly by the
+  /// partner using service accounts.
   ///
   /// [request] - The metadata request object.
   ///
@@ -637,11 +735,11 @@ class PartnersUserSessionsResource {
   /// This API replaces user authorized OAuth consent based APIs (Create,
   /// Entitle).
   ///
-  /// Generates a short-lived token for a user session based on the user intent.
-  /// You can use the session token to redirect the user to Google to finish the
-  /// signup flow. You can re-generate new session token repeatedly for the same
-  /// request if necessary, regardless of the previous tokens being expired or
-  /// not.
+  /// Issues a timed session token for the given user intent. You can use the
+  /// session token to redirect the user to Google to finish the signup flow.
+  /// You can re-generate new session token repeatedly for the same request if
+  /// necessary, regardless of the previous tokens being expired or not. By
+  /// default, the session token is valid for 1 hour.
   ///
   /// [request] - The metadata request object.
   ///
@@ -878,6 +976,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Duration {
 class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent {
   /// The name of the subscription resource that is entitled to the current end
   /// user.
+  ///
+  /// It is in the format of
+  /// "partners/{partner_id}/subscriptions/{subscriptionId}".
   ///
   /// Required.
   core.String? name;
@@ -1227,7 +1328,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails {
       };
 }
 
-/// \[Preview only\] Request to generate a user session.
+/// Request to generate a user session.
 class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest {
   /// The user intent to generate the user session.
   GoogleCloudPaymentsResellerSubscriptionV1IntentPayload? intentPayload;
@@ -1250,8 +1351,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest {
       };
 }
 
-/// \[Preview only\] Response that contains the details for generated user
-/// session.
+/// Response that contains the details for generated user session.
 class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse {
   /// The generated user session.
   ///
@@ -1926,6 +2026,33 @@ class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetai
           'discountRatioMicros': discountRatioMicros!,
         if (recurrenceCount != null) 'recurrenceCount': recurrenceCount!,
         if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// Request to resume a suspended subscription.
+typedef GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest
+    = $Empty;
+
+/// Response that contains the resumed subscription.
+class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse {
+  /// The resumed subscription resource.
+  GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
+
+  GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse({
+    this.subscription,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse.fromJson(
+      core.Map json_)
+      : this(
+          subscription: json_.containsKey('subscription')
+              ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
+                  json_['subscription'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subscription != null) 'subscription': subscription!,
       };
 }
 
@@ -2636,10 +2763,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetai
   /// Possible string values are:
   /// - "BILLING_CYCLE_SPEC_UNSPECIFIED" : Billing cycle spec is not specified.
   /// - "BILLING_CYCLE_SPEC_ALIGN_WITH_PREVIOUS_SUBSCRIPTION" : The billing
-  /// cycle of the new subscription aligns with the previous subscription it
-  /// upgrades or downgrades from.
+  /// cycle of the new subscription starts immediately but aligns with the
+  /// previous subscription it upgrades or downgrades from. First cycle of the
+  /// new subscription will be prorated.
   /// - "BILLING_CYCLE_SPEC_START_IMMEDIATELY" : The billing cycle of the new
   /// subscription starts immediately.
+  /// - "BILLING_CYCLE_SPEC_DEFERRED_TO_NEXT_RECURRENCE" : The billing cycle
+  /// starts at the end of the previous subscription's billing cycle and aligns
+  /// with the previous subscription's billing cycle.
   core.String? billingCycleSpec;
 
   /// The previous subscription id to be replaced.
@@ -2666,6 +2797,33 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetai
         if (billingCycleSpec != null) 'billingCycleSpec': billingCycleSpec!,
         if (previousSubscriptionId != null)
           'previousSubscriptionId': previousSubscriptionId!,
+      };
+}
+
+/// Request to suspend a subscription.
+typedef GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest
+    = $Empty;
+
+/// Response that contains the suspended subscription.
+class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse {
+  /// The suspended subscription resource.
+  GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
+
+  GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse({
+    this.subscription,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse.fromJson(
+      core.Map json_)
+      : this(
+          subscription: json_.containsKey('subscription')
+              ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
+                  json_['subscription'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subscription != null) 'subscription': subscription!,
       };
 }
 
@@ -2707,7 +2865,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse {
 /// regardless of the previous tokens being expired or not. You don't need to
 /// worry about multiple sessions resulting in duplicate fulfillments as
 /// guaranteed by the same subscription id. Please refer to the \[Google Managed
-/// Signup\](/payments/reseller/subscription/reference/index/User.Signup.Integration/Google.Managed.Signup.\(In.Preview\))
+/// Signup\](/payments/reseller/subscription/reference/index/User.Signup.Integration/Google.Managed.Signup)
 /// documentation for additional integration details.
 class GoogleCloudPaymentsResellerSubscriptionV1UserSession {
   /// The time at which the user session expires.

@@ -1078,6 +1078,7 @@ api.Node buildNode() {
     o.state = 'foo';
     o.symptoms = buildUnnamed21();
     o.tags = buildUnnamed22();
+    o.upcomingMaintenance = buildUpcomingMaintenance();
   }
   buildCounterNode--;
   return o;
@@ -1147,6 +1148,7 @@ void checkNode(api.Node o) {
     );
     checkUnnamed21(o.symptoms!);
     checkUnnamed22(o.tags!);
+    checkUpcomingMaintenance(o.upcomingMaintenance!);
   }
   buildCounterNode--;
 }
@@ -1815,6 +1817,67 @@ void checkTpu(api.Tpu o) {
   buildCounterTpu--;
 }
 
+core.int buildCounterUpcomingMaintenance = 0;
+api.UpcomingMaintenance buildUpcomingMaintenance() {
+  final o = api.UpcomingMaintenance();
+  buildCounterUpcomingMaintenance++;
+  if (buildCounterUpcomingMaintenance < 3) {
+    o.canReschedule = true;
+    o.latestWindowStartTime = 'foo';
+    o.maintenanceStatus = 'foo';
+    o.type = 'foo';
+    o.windowEndTime = 'foo';
+    o.windowStartTime = 'foo';
+  }
+  buildCounterUpcomingMaintenance--;
+  return o;
+}
+
+void checkUpcomingMaintenance(api.UpcomingMaintenance o) {
+  buildCounterUpcomingMaintenance++;
+  if (buildCounterUpcomingMaintenance < 3) {
+    unittest.expect(o.canReschedule!, unittest.isTrue);
+    unittest.expect(
+      o.latestWindowStartTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maintenanceStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.windowEndTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.windowStartTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUpcomingMaintenance--;
+}
+
+core.List<core.String> buildUnnamed29() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed29(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-AcceleratorConfig', () {
     unittest.test('to-json--from-json', () async {
@@ -2315,6 +2378,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-UpcomingMaintenance', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpcomingMaintenance();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpcomingMaintenance.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUpcomingMaintenance(od);
+    });
+  });
+
   unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--generateServiceIdentity', () async {
       final mock = HttpServerMock();
@@ -2433,6 +2506,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.TPUApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed29();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2470,6 +2544,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -2493,6 +2571,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

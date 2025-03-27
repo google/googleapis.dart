@@ -12,12 +12,12 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Places Insights API - v1
+/// Places Aggregate API - v1
 ///
-/// Places Insights API.
+/// Places Aggregate API.
 ///
 /// For more information, see
-/// <https://g3doc.corp.google.com/geo/platform/area_insights/README.md?cl=head>
+/// <https://developers.google.com/maps/documentation/places-aggregate/overview>
 ///
 /// Create an instance of [AreaInsightsApi] to access these resources:
 ///
@@ -37,7 +37,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Places Insights API.
+/// Places Aggregate API.
 class AreaInsightsApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -60,9 +60,9 @@ class V1Resource {
 
   V1Resource(commons.ApiRequester client) : _requester = client;
 
-  /// Compute Insights RPC This method lets you retrieve insights about areas
-  /// using a variaty of filter such as: area, place type, operating status,
-  /// price level and ratings.
+  /// This method lets you retrieve insights about areas using a variety of
+  /// filter such as: area, place type, operating status, price level and
+  /// ratings.
   ///
   /// Currently "count" and "places" insights are supported. With "count"
   /// insights you can answer questions such as "How many restaurant are located
@@ -452,7 +452,14 @@ class RatingFilter {
 /// A region is a geographic boundary such as: cities, postal codes, counties,
 /// states, etc.
 class Region {
-  /// The unique identifier of a specific geographic region.
+  /// The
+  /// [place ID](https://developers.google.com/maps/documentation/places/web-service/place-id)
+  /// of the geographic region.
+  ///
+  /// Not all region types are supported; see documentation for details.
+  /// **Format:** Must be in the format `places/PLACE_ID`, where `PLACE_ID` is
+  /// the unique identifier of a place. For example:
+  /// `places/ChIJPV4oX_65j4ARVW8IJ6IJUYs`.
   core.String? place;
 
   Region({

@@ -176,6 +176,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -198,12 +202,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1037,8 +1043,8 @@ class CloudFunction {
 
   /// Docker Registry to use for this deployment.
   ///
-  /// Deprecated: Container Registry option will no longer be available after
-  /// March 2025:
+  /// Deprecated: as of March 2025, `CONTAINER_REGISTRY` option is no longer
+  /// available in response to Container Registry's deprecation:
   /// https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr
   /// Please use Artifact Registry instead, which is the default choice. If
   /// unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository`
@@ -1162,6 +1168,12 @@ class CloudFunction {
   /// reference\](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
   core.String? runtime;
 
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Secret environment variables configuration.
   core.List<SecretEnvVar>? secretEnvironmentVariables;
 
@@ -1270,6 +1282,8 @@ class CloudFunction {
     this.network,
     this.onDeployUpdatePolicy,
     this.runtime,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.secretEnvironmentVariables,
     this.secretVolumes,
     this.serviceAccountEmail,
@@ -1342,6 +1356,8 @@ class CloudFunction {
                   as core.Map<core.String, core.dynamic>)
               : null,
           runtime: json_['runtime'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           secretEnvironmentVariables:
               (json_['secretEnvironmentVariables'] as core.List?)
                   ?.map((value) => SecretEnvVar.fromJson(
@@ -1397,6 +1413,8 @@ class CloudFunction {
         if (onDeployUpdatePolicy != null)
           'onDeployUpdatePolicy': onDeployUpdatePolicy!,
         if (runtime != null) 'runtime': runtime!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (secretEnvironmentVariables != null)
           'secretEnvironmentVariables': secretEnvironmentVariables!,
         if (secretVolumes != null) 'secretVolumes': secretVolumes!,

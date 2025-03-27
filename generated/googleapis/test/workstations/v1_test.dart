@@ -438,6 +438,25 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
+core.int buildCounterGatewayConfig = 0;
+api.GatewayConfig buildGatewayConfig() {
+  final o = api.GatewayConfig();
+  buildCounterGatewayConfig++;
+  if (buildCounterGatewayConfig < 3) {
+    o.http2Enabled = true;
+  }
+  buildCounterGatewayConfig--;
+  return o;
+}
+
+void checkGatewayConfig(api.GatewayConfig o) {
+  buildCounterGatewayConfig++;
+  if (buildCounterGatewayConfig < 3) {
+    unittest.expect(o.http2Enabled!, unittest.isTrue);
+  }
+  buildCounterGatewayConfig--;
+}
+
 core.int buildCounterGceConfidentialInstanceConfig = 0;
 api.GceConfidentialInstanceConfig buildGceConfidentialInstanceConfig() {
   final o = api.GceConfidentialInstanceConfig();
@@ -2023,6 +2042,7 @@ api.WorkstationCluster buildWorkstationCluster() {
     o.displayName = 'foo';
     o.domainConfig = buildDomainConfig();
     o.etag = 'foo';
+    o.gatewayConfig = buildGatewayConfig();
     o.labels = buildUnnamed40();
     o.name = 'foo';
     o.network = 'foo';
@@ -2064,6 +2084,7 @@ void checkWorkstationCluster(api.WorkstationCluster o) {
       o.etag!,
       unittest.equals('foo'),
     );
+    checkGatewayConfig(o.gatewayConfig!);
     checkUnnamed40(o.labels!);
     unittest.expect(
       o.name!,
@@ -2297,6 +2318,23 @@ void checkWorkstationConfig(api.WorkstationConfig o) {
   buildCounterWorkstationConfig--;
 }
 
+core.List<core.String> buildUnnamed50() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed50(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-Accelerator', () {
     unittest.test('to-json--from-json', () async {
@@ -2405,6 +2443,16 @@ void main() {
       final od =
           api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkExpr(od);
+    });
+  });
+
+  unittest.group('obj-schema-GatewayConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGatewayConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GatewayConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGatewayConfig(od);
     });
   });
 
@@ -2805,6 +2853,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudWorkstationsApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed50();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2842,6 +2891,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -2865,6 +2918,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
@@ -3310,6 +3364,7 @@ void main() {
       final res =
           api.CloudWorkstationsApi(mock).projects.locations.workstationClusters;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -3346,6 +3401,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -3366,6 +3425,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);
@@ -3730,6 +3790,7 @@ void main() {
           .workstationClusters
           .workstationConfigs;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -3766,6 +3827,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -3785,6 +3850,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);
@@ -4410,6 +4476,7 @@ void main() {
           .workstationConfigs
           .workstations;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -4446,6 +4513,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -4465,6 +4536,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);

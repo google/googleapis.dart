@@ -562,6 +562,7 @@ api.DriveOptions buildDriveOptions() {
     o.clientSideEncryptedOption = 'foo';
     o.includeSharedDrives = true;
     o.includeTeamDrives = true;
+    o.sharedDrivesOption = 'foo';
     o.versionDate = 'foo';
   }
   buildCounterDriveOptions--;
@@ -577,6 +578,10 @@ void checkDriveOptions(api.DriveOptions o) {
     );
     unittest.expect(o.includeSharedDrives!, unittest.isTrue);
     unittest.expect(o.includeTeamDrives!, unittest.isTrue);
+    unittest.expect(
+      o.sharedDrivesOption!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.versionDate!,
       unittest.equals('foo'),

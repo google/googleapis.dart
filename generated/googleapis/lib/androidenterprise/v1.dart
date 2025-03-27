@@ -640,7 +640,7 @@ class EnterprisesResource {
   /// Generates an enterprise upgrade URL to upgrade an existing managed Google
   /// Play Accounts enterprise to a managed Google domain.
   ///
-  /// **Note:** This feature is not generally available.
+  /// See the guide to upgrading an enterprise for more details.
   ///
   /// Request parameters:
   ///
@@ -804,7 +804,11 @@ class EnterprisesResource {
   /// calls after the first will generate a new, unique set of credentials, and
   /// invalidate the previously generated credentials. Once the service account
   /// is bound to the enterprise, it can be managed using the serviceAccountKeys
-  /// resource.
+  /// resource. *Note:* After you create a key, you might need to wait for 60
+  /// seconds or more before you perform another operation with the key. If you
+  /// try to perform an operation with the key immediately after you create the
+  /// key, and you receive an error, you can retry the request with exponential
+  /// backoff .
   ///
   /// Request parameters:
   ///
@@ -4877,6 +4881,11 @@ class EnrollmentToken {
   /// - "userDevice" : The enrollment token is for a user device.
   core.String? enrollmentTokenType;
 
+  /// Provides options related to Google authentication during the enrollment.
+  ///
+  /// Optional.
+  EnrollmentTokenGoogleAuthenticationOptions? googleAuthenticationOptions;
+
   /// The token value that's passed to the device and authorizes the device to
   /// enroll.
   ///
@@ -4886,6 +4895,7 @@ class EnrollmentToken {
   EnrollmentToken({
     this.duration,
     this.enrollmentTokenType,
+    this.googleAuthenticationOptions,
     this.token,
   });
 
@@ -4893,6 +4903,12 @@ class EnrollmentToken {
       : this(
           duration: json_['duration'] as core.String?,
           enrollmentTokenType: json_['enrollmentTokenType'] as core.String?,
+          googleAuthenticationOptions:
+              json_.containsKey('googleAuthenticationOptions')
+                  ? EnrollmentTokenGoogleAuthenticationOptions.fromJson(
+                      json_['googleAuthenticationOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           token: json_['token'] as core.String?,
         );
 
@@ -4900,7 +4916,52 @@ class EnrollmentToken {
         if (duration != null) 'duration': duration!,
         if (enrollmentTokenType != null)
           'enrollmentTokenType': enrollmentTokenType!,
+        if (googleAuthenticationOptions != null)
+          'googleAuthenticationOptions': googleAuthenticationOptions!,
         if (token != null) 'token': token!,
+      };
+}
+
+/// Options for Google authentication during the enrollment.
+class EnrollmentTokenGoogleAuthenticationOptions {
+  /// Specifies whether user should authenticate with Google during enrollment.
+  ///
+  /// This setting, if specified,`GoogleAuthenticationSettings` specified for
+  /// the enterprise resource is ignored for devices enrolled with this token.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "authenticationRequirementUnspecified" : The value is unused.
+  /// - "optional" : Google authentication is optional for the user. This means
+  /// the user can choose to skip Google authentication during enrollment.
+  /// - "required" : Google authentication is required for the user. This means
+  /// the user must authenticate with a Google account to proceed.
+  core.String? authenticationRequirement;
+
+  /// Specifies the managed Google account that the user must use during
+  /// enrollment.`AuthenticationRequirement` must be set to`REQUIRED` if this
+  /// field is set.
+  ///
+  /// Optional.
+  core.String? requiredAccountEmail;
+
+  EnrollmentTokenGoogleAuthenticationOptions({
+    this.authenticationRequirement,
+    this.requiredAccountEmail,
+  });
+
+  EnrollmentTokenGoogleAuthenticationOptions.fromJson(core.Map json_)
+      : this(
+          authenticationRequirement:
+              json_['authenticationRequirement'] as core.String?,
+          requiredAccountEmail: json_['requiredAccountEmail'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authenticationRequirement != null)
+          'authenticationRequirement': authenticationRequirement!,
+        if (requiredAccountEmail != null)
+          'requiredAccountEmail': requiredAccountEmail!,
       };
 }
 
@@ -5039,8 +5100,6 @@ class EnterpriseAuthenticationAppLinkConfig {
 }
 
 /// An event generated when an enterprise is upgraded.
-///
-/// **Note:** This feature is not generally available.
 class EnterpriseUpgradeEvent {
   /// The upgrade state.
   /// Possible string values are:
@@ -5169,8 +5228,6 @@ class EntitlementsListResponse {
 
 /// Response message for generating a URL to upgrade an existing managed Google
 /// Play Accounts enterprise to a managed Google domain.
-///
-/// **Note:** This feature is not generally available.
 typedef GenerateEnterpriseUpgradeUrlResponse
     = $GenerateEnterpriseUpgradeUrlResponse;
 
@@ -5973,8 +6030,6 @@ class Notification {
   core.String? enterpriseId;
 
   /// Notifications about enterprise upgrade.
-  ///
-  /// **Note:** This feature is not generally available.
   EnterpriseUpgradeEvent? enterpriseUpgradeEvent;
 
   /// Notifications about an app installation failure.
@@ -6002,7 +6057,6 @@ class Notification {
   /// - "newDevice" : Notification about a new device.
   /// - "deviceReportUpdate" : Notification about an updated device report.
   /// - "enterpriseUpgrade" : Notification about an enterprise upgrade.
-  /// **Note:** This feature is not generally available.
   core.String? notificationType;
 
   /// Notifications about changes to a product's approval status.

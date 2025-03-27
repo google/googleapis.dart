@@ -9944,6 +9944,87 @@ class AdaptiveProtection {
       };
 }
 
+/// Details about resources affected by this finding.
+class AffectedResources {
+  /// The count of resources affected by the finding.
+  core.String? count;
+
+  AffectedResources({
+    this.count,
+  });
+
+  AffectedResources.fromJson(core.Map json_)
+      : this(
+          count: json_['count'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+      };
+}
+
+/// Contains information about the AI model associated with the finding.
+class AiModel {
+  /// The platform on which the model is deployed.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_PLATFORM_UNSPECIFIED" : Unspecified deployment platform.
+  /// - "VERTEX_AI" : Vertex AI.
+  /// - "GKE" : Google Kubernetes Engine.
+  core.String? deploymentPlatform;
+
+  /// The user defined display name of model.
+  ///
+  /// Ex. baseline-classification-model
+  core.String? displayName;
+
+  /// The domain of the model, for example, “image-classification”.
+  core.String? domain;
+
+  /// The name of the model library, for example, “transformers”.
+  core.String? library;
+
+  /// The region in which the model is used, for example, “us-central1”.
+  core.String? location;
+
+  /// The name of the AI model, for example, "gemini:1.0.0".
+  core.String? name;
+
+  /// The publisher of the model, for example, “google” or “nvidia”.
+  core.String? publisher;
+
+  AiModel({
+    this.deploymentPlatform,
+    this.displayName,
+    this.domain,
+    this.library,
+    this.location,
+    this.name,
+    this.publisher,
+  });
+
+  AiModel.fromJson(core.Map json_)
+      : this(
+          deploymentPlatform: json_['deploymentPlatform'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          domain: json_['domain'] as core.String?,
+          library: json_['library'] as core.String?,
+          location: json_['location'] as core.String?,
+          name: json_['name'] as core.String?,
+          publisher: json_['publisher'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deploymentPlatform != null)
+          'deploymentPlatform': deploymentPlatform!,
+        if (displayName != null) 'displayName': displayName!,
+        if (domain != null) 'domain': domain!,
+        if (library != null) 'library': library!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (publisher != null) 'publisher': publisher!,
+      };
+}
+
 /// Allowed IP rule.
 class Allowed {
   /// Optional list of allowed IP rules.
@@ -11132,6 +11213,32 @@ class BulkMuteFindingsRequest {
       };
 }
 
+/// Contains details about a chokepoint, which is a resource or resource group
+/// where high-risk attack paths converge, based on
+/// [attack path simulations](https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_path_simulations).
+class Chokepoint {
+  /// List of resource names of findings associated with this chokepoint.
+  ///
+  /// For example, organizations/123/sources/456/findings/789. This list will
+  /// have at most 100 findings.
+  core.List<core.String>? relatedFindings;
+
+  Chokepoint({
+    this.relatedFindings,
+  });
+
+  Chokepoint.fromJson(core.Map json_)
+      : this(
+          relatedFindings: (json_['relatedFindings'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (relatedFindings != null) 'relatedFindings': relatedFindings!,
+      };
+}
+
 /// Fields related to Google Cloud Armor findings.
 class CloudArmor {
   /// Information about potential Layer 7 DDoS attacks identified by
@@ -11200,6 +11307,47 @@ class CloudArmor {
         if (requests != null) 'requests': requests!,
         if (securityPolicy != null) 'securityPolicy': securityPolicy!,
         if (threatVector != null) 'threatVector': threatVector!,
+      };
+}
+
+/// CloudControl associated with the finding.
+class CloudControl {
+  /// Name of the CloudControl associated with the finding.
+  core.String? cloudControlName;
+
+  /// Policy type of the CloudControl
+  core.String? policyType;
+
+  /// Type of cloud control.
+  /// Possible string values are:
+  /// - "CLOUD_CONTROL_TYPE_UNSPECIFIED" : Unspecified.
+  /// - "BUILT_IN" : Built in Cloud Control.
+  /// - "CUSTOM" : Custom Cloud Control.
+  core.String? type;
+
+  /// Version of the Cloud Control
+  core.int? version;
+
+  CloudControl({
+    this.cloudControlName,
+    this.policyType,
+    this.type,
+    this.version,
+  });
+
+  CloudControl.fromJson(core.Map json_)
+      : this(
+          cloudControlName: json_['cloudControlName'] as core.String?,
+          policyType: json_['policyType'] as core.String?,
+          type: json_['type'] as core.String?,
+          version: json_['version'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudControlName != null) 'cloudControlName': cloudControlName!,
+        if (policyType != null) 'policyType': policyType!,
+        if (type != null) 'type': type!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -11356,6 +11504,50 @@ class Compliance {
       };
 }
 
+/// Compliance Details associated with the finding.
+class ComplianceDetails {
+  /// CloudControl associated with the finding
+  CloudControl? cloudControl;
+
+  /// Cloud Control Deployments associated with the finding.
+  ///
+  /// For example,
+  /// organizations/123/locations/global/cloudControlDeployments/deploymentIdentifier
+  core.List<core.String>? cloudControlDeploymentNames;
+
+  /// Details of Frameworks associated with the finding
+  core.List<Framework>? frameworks;
+
+  ComplianceDetails({
+    this.cloudControl,
+    this.cloudControlDeploymentNames,
+    this.frameworks,
+  });
+
+  ComplianceDetails.fromJson(core.Map json_)
+      : this(
+          cloudControl: json_.containsKey('cloudControl')
+              ? CloudControl.fromJson(
+                  json_['cloudControl'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudControlDeploymentNames:
+              (json_['cloudControlDeploymentNames'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          frameworks: (json_['frameworks'] as core.List?)
+              ?.map((value) => Framework.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudControl != null) 'cloudControl': cloudControl!,
+        if (cloudControlDeploymentNames != null)
+          'cloudControlDeploymentNames': cloudControlDeploymentNames!,
+        if (frameworks != null) 'frameworks': frameworks!,
+      };
+}
+
 /// Contains information about the IP connection associated with the finding.
 class Connection {
   /// Destination IP address.
@@ -11504,6 +11696,33 @@ class Container {
       };
 }
 
+/// Compliance control associated with the finding.
+class Control {
+  /// Name of the Control
+  core.String? controlName;
+
+  /// Display name of the control.
+  ///
+  /// For example, AU-02.
+  core.String? displayName;
+
+  Control({
+    this.controlName,
+    this.displayName,
+  });
+
+  Control.fromJson(core.Map json_)
+      : this(
+          controlName: json_['controlName'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (controlName != null) 'controlName': controlName!,
+        if (displayName != null) 'displayName': displayName!,
+      };
+}
+
 /// Request message to create single resource value config
 class CreateResourceValueConfigRequest {
   /// Resource name of the new ResourceValueConfig's parent.
@@ -11549,7 +11768,7 @@ class CustomModuleValidationError {
   /// The end position of the error in the uploaded text version of the module.
   ///
   /// This field may be omitted if no specific position applies, or if one could
-  /// not be computed..
+  /// not be computed.
   Position? end;
 
   /// The path, in RFC 8901 JSON Pointer format, to the field that failed
@@ -11597,6 +11816,7 @@ class CustomModuleValidationError {
 /// A list of zero or more errors encountered while validating the uploaded
 /// configuration of an Event Threat Detection Custom Module.
 class CustomModuleValidationErrors {
+  /// The list of errors.
   core.List<CustomModuleValidationError>? errors;
 
   CustomModuleValidationErrors({
@@ -11875,6 +12095,38 @@ class Cvssv3 {
       };
 }
 
+/// CWE stands for Common Weakness Enumeration.
+///
+/// Information about this weakness, as described by
+/// [CWE](https://cwe.mitre.org/).
+class Cwe {
+  /// The CWE identifier, e.g. CWE-94
+  core.String? id;
+
+  /// Any reference to the details on the CWE, for example,
+  /// https://cwe.mitre.org/data/definitions/94.html
+  core.List<Reference>? references;
+
+  Cwe({
+    this.id,
+    this.references,
+  });
+
+  Cwe.fromJson(core.Map json_)
+      : this(
+          id: json_['id'] as core.String?,
+          references: (json_['references'] as core.List?)
+              ?.map((value) => Reference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (references != null) 'references': references!,
+      };
+}
+
 /// Details about a data access attempt made by a principal not authorized under
 /// applicable data security policy.
 class DataAccessEvent {
@@ -12109,6 +12361,39 @@ class Database {
       };
 }
 
+/// Vertex AI dataset associated with the finding.
+class Dataset {
+  /// The user defined display name of dataset, e.g. plants-dataset
+  core.String? displayName;
+
+  /// Resource name of the dataset, e.g.
+  /// projects/{project}/locations/{location}/datasets/2094040236064505856
+  core.String? name;
+
+  /// Data source, such as BigQuery source URI, e.g.
+  /// bq://scc-nexus-test.AIPPtest.gsod
+  core.String? source;
+
+  Dataset({
+    this.displayName,
+    this.name,
+    this.source,
+  });
+
+  Dataset.fromJson(core.Map json_)
+      : this(
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          source: json_['source'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (source != null) 'source': source!,
+      };
+}
+
 /// Denied IP rule.
 class Denied {
   /// Optional list of denied IP rules.
@@ -12252,7 +12537,7 @@ class EffectiveEventThreatDetectionCustomModule {
   /// The cloud provider of the custom module.
   /// Possible string values are:
   /// - "CLOUD_PROVIDER_UNSPECIFIED" : Unspecified cloud provider.
-  /// - "GOOGLE_CLOUD_PLATFORM" : Google Cloud Platform.
+  /// - "GOOGLE_CLOUD_PLATFORM" : Google Cloud.
   /// - "AMAZON_WEB_SERVICES" : Amazon Web Services.
   /// - "MICROSOFT_AZURE" : Microsoft Azure.
   core.String? cloudProvider;
@@ -12604,6 +12889,9 @@ class File {
   /// If hashed_size == size, any hashes reported represent the entire file.
   core.String? hashedSize;
 
+  /// Operation(s) performed on a file.
+  core.List<FileOperation>? operations;
+
   /// True when the hash covers only a prefix of the file.
   core.bool? partiallyHashed;
 
@@ -12624,6 +12912,7 @@ class File {
     this.contents,
     this.diskPath,
     this.hashedSize,
+    this.operations,
     this.partiallyHashed,
     this.path,
     this.sha256,
@@ -12638,6 +12927,10 @@ class File {
                   json_['diskPath'] as core.Map<core.String, core.dynamic>)
               : null,
           hashedSize: json_['hashedSize'] as core.String?,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => FileOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           partiallyHashed: json_['partiallyHashed'] as core.bool?,
           path: json_['path'] as core.String?,
           sha256: json_['sha256'] as core.String?,
@@ -12648,10 +12941,37 @@ class File {
         if (contents != null) 'contents': contents!,
         if (diskPath != null) 'diskPath': diskPath!,
         if (hashedSize != null) 'hashedSize': hashedSize!,
+        if (operations != null) 'operations': operations!,
         if (partiallyHashed != null) 'partiallyHashed': partiallyHashed!,
         if (path != null) 'path': path!,
         if (sha256 != null) 'sha256': sha256!,
         if (size != null) 'size': size!,
+      };
+}
+
+/// Operation(s) performed on a file.
+class FileOperation {
+  /// The type of the operation
+  /// Possible string values are:
+  /// - "OPERATION_TYPE_UNSPECIFIED" : The operation is unspecified.
+  /// - "OPEN" : Represents an open operation.
+  /// - "READ" : Represents a read operation.
+  /// - "RENAME" : Represents a rename operation.
+  /// - "WRITE" : Represents a write operation.
+  /// - "EXECUTE" : Represents an execute operation.
+  core.String? type;
+
+  FileOperation({
+    this.type,
+  });
+
+  FileOperation.fromJson(core.Map json_)
+      : this(
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -12666,6 +12986,12 @@ class Finding {
   /// Access details associated with the finding, such as more information on
   /// the caller, which method was accessed, and from where.
   Access? access;
+
+  /// AffectedResources associated with the finding.
+  AffectedResources? affectedResources;
+
+  /// The AI model associated with the finding.
+  AiModel? aiModel;
 
   /// Represents an application associated with the finding.
   Application? application;
@@ -12692,6 +13018,13 @@ class Finding {
   /// "XSS_FLASH_INJECTION"
   core.String? category;
 
+  /// Contains details about a chokepoint, which is a resource or resource group
+  /// where high-risk attack paths converge, based on
+  /// [attack path simulations](https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_path_simulations).
+  ///
+  /// This field cannot be updated. Its value is ignored in all update requests.
+  Chokepoint? chokepoint;
+
   /// Fields related to Cloud Armor findings.
   CloudArmor? cloudArmor;
 
@@ -12701,6 +13034,9 @@ class Finding {
   /// Cloud Data Loss Prevention (Cloud DLP) inspection results that are
   /// associated with the finding.
   CloudDlpInspection? cloudDlpInspection;
+
+  /// Details about the compliance implications of the finding.
+  ComplianceDetails? complianceDetails;
 
   /// Contains compliance information for security standards associated to the
   /// finding.
@@ -12796,6 +13132,8 @@ class Finding {
   /// combination.
   /// - "SENSITIVE_DATA_RISK" : Describes a potential security risk to data
   /// assets that contain sensitive data.
+  /// - "CHOKEPOINT" : Describes a resource or resource group where high risk
+  /// attack paths converge, based on attack path simulations (APS).
   core.String? findingClass;
 
   /// Contains details about groups of which this finding is a member.
@@ -13002,6 +13340,9 @@ class Finding {
   /// cannot be updated. Its value is ignored in all update requests.
   ToxicCombination? toxicCombination;
 
+  /// VertexAi associated with the finding.
+  VertexAi? vertexAi;
+
   /// Represents vulnerability-specific fields like CVE and CVSS scores.
   ///
   /// CVE stands for Common Vulnerabilities and Exposures
@@ -13010,14 +13351,18 @@ class Finding {
 
   Finding({
     this.access,
+    this.affectedResources,
+    this.aiModel,
     this.application,
     this.attackExposure,
     this.backupDisasterRecovery,
     this.canonicalName,
     this.category,
+    this.chokepoint,
     this.cloudArmor,
     this.cloudDlpDataProfile,
     this.cloudDlpInspection,
+    this.complianceDetails,
     this.compliances,
     this.connections,
     this.contacts,
@@ -13065,6 +13410,7 @@ class Finding {
     this.sourceProperties,
     this.state,
     this.toxicCombination,
+    this.vertexAi,
     this.vulnerability,
   });
 
@@ -13073,6 +13419,14 @@ class Finding {
           access: json_.containsKey('access')
               ? Access.fromJson(
                   json_['access'] as core.Map<core.String, core.dynamic>)
+              : null,
+          affectedResources: json_.containsKey('affectedResources')
+              ? AffectedResources.fromJson(json_['affectedResources']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          aiModel: json_.containsKey('aiModel')
+              ? AiModel.fromJson(
+                  json_['aiModel'] as core.Map<core.String, core.dynamic>)
               : null,
           application: json_.containsKey('application')
               ? Application.fromJson(
@@ -13088,6 +13442,10 @@ class Finding {
               : null,
           canonicalName: json_['canonicalName'] as core.String?,
           category: json_['category'] as core.String?,
+          chokepoint: json_.containsKey('chokepoint')
+              ? Chokepoint.fromJson(
+                  json_['chokepoint'] as core.Map<core.String, core.dynamic>)
+              : null,
           cloudArmor: json_.containsKey('cloudArmor')
               ? CloudArmor.fromJson(
                   json_['cloudArmor'] as core.Map<core.String, core.dynamic>)
@@ -13098,6 +13456,10 @@ class Finding {
               : null,
           cloudDlpInspection: json_.containsKey('cloudDlpInspection')
               ? CloudDlpInspection.fromJson(json_['cloudDlpInspection']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          complianceDetails: json_.containsKey('complianceDetails')
+              ? ComplianceDetails.fromJson(json_['complianceDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
           compliances: (json_['compliances'] as core.List?)
@@ -13249,6 +13611,10 @@ class Finding {
               ? ToxicCombination.fromJson(json_['toxicCombination']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          vertexAi: json_.containsKey('vertexAi')
+              ? VertexAi.fromJson(
+                  json_['vertexAi'] as core.Map<core.String, core.dynamic>)
+              : null,
           vulnerability: json_.containsKey('vulnerability')
               ? Vulnerability.fromJson(
                   json_['vulnerability'] as core.Map<core.String, core.dynamic>)
@@ -13257,17 +13623,21 @@ class Finding {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
+        if (affectedResources != null) 'affectedResources': affectedResources!,
+        if (aiModel != null) 'aiModel': aiModel!,
         if (application != null) 'application': application!,
         if (attackExposure != null) 'attackExposure': attackExposure!,
         if (backupDisasterRecovery != null)
           'backupDisasterRecovery': backupDisasterRecovery!,
         if (canonicalName != null) 'canonicalName': canonicalName!,
         if (category != null) 'category': category!,
+        if (chokepoint != null) 'chokepoint': chokepoint!,
         if (cloudArmor != null) 'cloudArmor': cloudArmor!,
         if (cloudDlpDataProfile != null)
           'cloudDlpDataProfile': cloudDlpDataProfile!,
         if (cloudDlpInspection != null)
           'cloudDlpInspection': cloudDlpInspection!,
+        if (complianceDetails != null) 'complianceDetails': complianceDetails!,
         if (compliances != null) 'compliances': compliances!,
         if (connections != null) 'connections': connections!,
         if (contacts != null) 'contacts': contacts!,
@@ -13316,6 +13686,7 @@ class Finding {
         if (sourceProperties != null) 'sourceProperties': sourceProperties!,
         if (state != null) 'state': state!,
         if (toxicCombination != null) 'toxicCombination': toxicCombination!,
+        if (vertexAi != null) 'vertexAi': vertexAi!,
         if (vulnerability != null) 'vulnerability': vulnerability!,
       };
 }
@@ -13348,6 +13719,67 @@ class Folder {
         if (resourceFolder != null) 'resourceFolder': resourceFolder!,
         if (resourceFolderDisplayName != null)
           'resourceFolderDisplayName': resourceFolderDisplayName!,
+      };
+}
+
+/// Compliance framework associated with the finding.
+class Framework {
+  /// Category of the framework associated with the finding.
+  ///
+  /// E.g. Security Benchmark, or Assured Workloads
+  core.List<core.String>? category;
+
+  /// The controls associated with the framework.
+  core.List<Control>? controls;
+
+  /// Display name of the framework.
+  ///
+  /// For a standard framework, this will look like e.g. PCI DSS 3.2.1, whereas
+  /// for a custom framework it can be a user defined string like MyFramework
+  core.String? displayName;
+
+  /// Name of the framework associated with the finding
+  core.String? name;
+
+  /// Type of the framework associated with the finding, to specify whether the
+  /// framework is built-in (pre-defined and immutable) or a custom framework
+  /// defined by the customer (equivalent to security posture)
+  /// Possible string values are:
+  /// - "FRAMEWORK_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "FRAMEWORK_TYPE_BUILT_IN" : The framework is a built-in framework if it
+  /// is created and managed by GCP.
+  /// - "FRAMEWORK_TYPE_CUSTOM" : The framework is a custom framework if it is
+  /// created and managed by the user.
+  core.String? type;
+
+  Framework({
+    this.category,
+    this.controls,
+    this.displayName,
+    this.name,
+    this.type,
+  });
+
+  Framework.fromJson(core.Map json_)
+      : this(
+          category: (json_['category'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          controls: (json_['controls'] as core.List?)
+              ?.map((value) => Control.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (category != null) 'category': category!,
+        if (controls != null) 'controls': controls!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -13667,7 +14099,7 @@ class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule {
   /// The cloud provider of the custom module.
   /// Possible string values are:
   /// - "CLOUD_PROVIDER_UNSPECIFIED" : Unspecified cloud provider.
-  /// - "GOOGLE_CLOUD_PLATFORM" : Google Cloud Platform.
+  /// - "GOOGLE_CLOUD_PLATFORM" : Google Cloud.
   /// - "AMAZON_WEB_SERVICES" : Amazon Web Services.
   /// - "MICROSOFT_AZURE" : Microsoft Azure.
   core.String? cloudProvider;
@@ -14019,7 +14451,7 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
   /// Cloud provider this configuration applies to
   /// Possible string values are:
   /// - "CLOUD_PROVIDER_UNSPECIFIED" : The cloud provider is unspecified.
-  /// - "GOOGLE_CLOUD_PLATFORM" : The cloud provider is Google Cloud Platform.
+  /// - "GOOGLE_CLOUD_PLATFORM" : The cloud provider is Google Cloud.
   /// - "AMAZON_WEB_SERVICES" : The cloud provider is Amazon Web Services.
   /// - "MICROSOFT_AZURE" : The cloud provider is Microsoft Azure.
   core.String? cloudProvider;
@@ -14649,6 +15081,7 @@ class GroupMembership {
   /// Possible string values are:
   /// - "GROUP_TYPE_UNSPECIFIED" : Default value.
   /// - "GROUP_TYPE_TOXIC_COMBINATION" : Group represents a toxic combination.
+  /// - "GROUP_TYPE_CHOKEPOINT" : Group represents a chokepoint.
   core.String? groupType;
 
   GroupMembership({
@@ -16441,6 +16874,32 @@ class PathNodeAssociatedFinding {
       };
 }
 
+/// Vertex AI training pipeline associated with the finding.
+class Pipeline {
+  /// The user defined display name of pipeline, e.g. plants-classification
+  core.String? displayName;
+
+  /// Resource name of the pipeline, e.g.
+  /// projects/{project}/locations/{location}/trainingPipelines/5253428229225578496
+  core.String? name;
+
+  Pipeline({
+    this.displayName,
+    this.name,
+  });
+
+  Pipeline.fromJson(core.Map json_)
+      : this(
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// A Kubernetes Pod.
 class Pod {
   /// Pod containers associated with this finding, if any.
@@ -16667,7 +17126,10 @@ class PortRange {
 
 /// A position in the uploaded text version of a module.
 class Position {
+  /// The column number.
   core.int? columnNumber;
+
+  /// The line number.
   core.int? lineNumber;
 
   Position({
@@ -16724,6 +17186,11 @@ class Process {
   /// about the script file provided to the interpreter.
   File? script;
 
+  /// The ID of the user that executed the process.
+  ///
+  /// E.g. If this is the root user this will always be 0.
+  core.String? userId;
+
   Process({
     this.args,
     this.argumentsTruncated,
@@ -16735,6 +17202,7 @@ class Process {
     this.parentPid,
     this.pid,
     this.script,
+    this.userId,
   });
 
   Process.fromJson(core.Map json_)
@@ -16763,6 +17231,7 @@ class Process {
               ? File.fromJson(
                   json_['script'] as core.Map<core.String, core.dynamic>)
               : null,
+          userId: json_['userId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16778,6 +17247,7 @@ class Process {
         if (parentPid != null) 'parentPid': parentPid!,
         if (pid != null) 'pid': pid!,
         if (script != null) 'script': script!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -16902,7 +17372,7 @@ class Resource {
   /// Indicates which cloud provider the finding is from.
   /// Possible string values are:
   /// - "CLOUD_PROVIDER_UNSPECIFIED" : The cloud provider is unspecified.
-  /// - "GOOGLE_CLOUD_PLATFORM" : The cloud provider is Google Cloud Platform.
+  /// - "GOOGLE_CLOUD_PLATFORM" : The cloud provider is Google Cloud.
   /// - "AMAZON_WEB_SERVICES" : The cloud provider is Amazon Web Services.
   /// - "MICROSOFT_AZURE" : The cloud provider is Microsoft Azure.
   core.String? cloudProvider;
@@ -17757,7 +18227,7 @@ class Simulation {
   /// Indicates which cloud provider was used in this simulation.
   /// Possible string values are:
   /// - "CLOUD_PROVIDER_UNSPECIFIED" : The cloud provider is unspecified.
-  /// - "GOOGLE_CLOUD_PLATFORM" : The cloud provider is Google Cloud Platform.
+  /// - "GOOGLE_CLOUD_PLATFORM" : The cloud provider is Google Cloud.
   /// - "AMAZON_WEB_SERVICES" : The cloud provider is Amazon Web Services.
   /// - "MICROSOFT_AZURE" : The cloud provider is Microsoft Azure.
   core.String? cloudProvider;
@@ -18204,11 +18674,46 @@ class ValuedResource {
       };
 }
 
+/// Vertex AI-related information associated with the finding.
+class VertexAi {
+  /// Datasets associated with the finding.
+  core.List<Dataset>? datasets;
+
+  /// Pipelines associated with the finding.
+  core.List<Pipeline>? pipelines;
+
+  VertexAi({
+    this.datasets,
+    this.pipelines,
+  });
+
+  VertexAi.fromJson(core.Map json_)
+      : this(
+          datasets: (json_['datasets'] as core.List?)
+              ?.map((value) => Dataset.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          pipelines: (json_['pipelines'] as core.List?)
+              ?.map((value) => Pipeline.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasets != null) 'datasets': datasets!,
+        if (pipelines != null) 'pipelines': pipelines!,
+      };
+}
+
 /// Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
 class Vulnerability {
   /// CVE stands for Common Vulnerabilities and Exposures
   /// (https://cve.mitre.org/about/)
   Cve? cve;
+
+  /// Represents one or more Common Weakness Enumeration (CWE) information on
+  /// this vulnerability.
+  core.List<Cwe>? cwes;
 
   /// The fixed package is relevant to the finding.
   Package? fixedPackage;
@@ -18216,13 +18721,25 @@ class Vulnerability {
   /// The offending package is relevant to the finding.
   Package? offendingPackage;
 
+  /// Provider provided risk_score based on multiple factors.
+  ///
+  /// The higher the risk score, the more risky the vulnerability is.
+  core.String? providerRiskScore;
+
+  /// Represents whether the vulnerability is reachable (detected via static
+  /// analysis)
+  core.bool? reachable;
+
   /// The security bulletin is relevant to this finding.
   SecurityBulletin? securityBulletin;
 
   Vulnerability({
     this.cve,
+    this.cwes,
     this.fixedPackage,
     this.offendingPackage,
+    this.providerRiskScore,
+    this.reachable,
     this.securityBulletin,
   });
 
@@ -18232,6 +18749,10 @@ class Vulnerability {
               ? Cve.fromJson(
                   json_['cve'] as core.Map<core.String, core.dynamic>)
               : null,
+          cwes: (json_['cwes'] as core.List?)
+              ?.map((value) =>
+                  Cwe.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           fixedPackage: json_.containsKey('fixedPackage')
               ? Package.fromJson(
                   json_['fixedPackage'] as core.Map<core.String, core.dynamic>)
@@ -18240,6 +18761,8 @@ class Vulnerability {
               ? Package.fromJson(json_['offendingPackage']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          providerRiskScore: json_['providerRiskScore'] as core.String?,
+          reachable: json_['reachable'] as core.bool?,
           securityBulletin: json_.containsKey('securityBulletin')
               ? SecurityBulletin.fromJson(json_['securityBulletin']
                   as core.Map<core.String, core.dynamic>)
@@ -18248,8 +18771,11 @@ class Vulnerability {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cve != null) 'cve': cve!,
+        if (cwes != null) 'cwes': cwes!,
         if (fixedPackage != null) 'fixedPackage': fixedPackage!,
         if (offendingPackage != null) 'offendingPackage': offendingPackage!,
+        if (providerRiskScore != null) 'providerRiskScore': providerRiskScore!,
+        if (reachable != null) 'reachable': reachable!,
         if (securityBulletin != null) 'securityBulletin': securityBulletin!,
       };
 }

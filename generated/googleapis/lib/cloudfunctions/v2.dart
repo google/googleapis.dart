@@ -86,6 +86,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -108,12 +112,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1249,8 +1255,9 @@ class BuildConfig {
   /// Docker Registry to use for this deployment.
   ///
   /// This configuration is only applicable to 1st Gen functions, 2nd Gen
-  /// functions can only use Artifact Registry. Deprecated: Container Registry
-  /// option will no longer be available after March 2025:
+  /// functions can only use Artifact Registry. Deprecated: as of March 2025,
+  /// `CONTAINER_REGISTRY` option is no longer available in response to
+  /// Container Registry's deprecation:
   /// https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr
   /// Please use Artifact Registry instead, which is the default choice. If
   /// unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository`
@@ -2795,7 +2802,31 @@ class SetIamPolicyRequest {
 }
 
 /// Request for the `SetupFunctionUpgradeConfig` method.
-typedef SetupFunctionUpgradeConfigRequest = $Empty;
+class SetupFunctionUpgradeConfigRequest {
+  /// The trigger's service account.
+  ///
+  /// The service account must have permission to invoke Cloud Run services, the
+  /// permission is `run.routes.invoke`. If empty, defaults to the Compute
+  /// Engine default service account:
+  /// `{project_number}-compute@developer.gserviceaccount.com`.
+  ///
+  /// Optional.
+  core.String? triggerServiceAccount;
+
+  SetupFunctionUpgradeConfigRequest({
+    this.triggerServiceAccount,
+  });
+
+  SetupFunctionUpgradeConfigRequest.fromJson(core.Map json_)
+      : this(
+          triggerServiceAccount: json_['triggerServiceAccount'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (triggerServiceAccount != null)
+          'triggerServiceAccount': triggerServiceAccount!,
+      };
+}
 
 /// The location of the function source code.
 class Source {

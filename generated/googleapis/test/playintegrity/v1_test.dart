@@ -200,6 +200,47 @@ void checkDecodeIntegrityTokenResponse(api.DecodeIntegrityTokenResponse o) {
   buildCounterDecodeIntegrityTokenResponse--;
 }
 
+core.int buildCounterDecodePcIntegrityTokenRequest = 0;
+api.DecodePcIntegrityTokenRequest buildDecodePcIntegrityTokenRequest() {
+  final o = api.DecodePcIntegrityTokenRequest();
+  buildCounterDecodePcIntegrityTokenRequest++;
+  if (buildCounterDecodePcIntegrityTokenRequest < 3) {
+    o.integrityToken = 'foo';
+  }
+  buildCounterDecodePcIntegrityTokenRequest--;
+  return o;
+}
+
+void checkDecodePcIntegrityTokenRequest(api.DecodePcIntegrityTokenRequest o) {
+  buildCounterDecodePcIntegrityTokenRequest++;
+  if (buildCounterDecodePcIntegrityTokenRequest < 3) {
+    unittest.expect(
+      o.integrityToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDecodePcIntegrityTokenRequest--;
+}
+
+core.int buildCounterDecodePcIntegrityTokenResponse = 0;
+api.DecodePcIntegrityTokenResponse buildDecodePcIntegrityTokenResponse() {
+  final o = api.DecodePcIntegrityTokenResponse();
+  buildCounterDecodePcIntegrityTokenResponse++;
+  if (buildCounterDecodePcIntegrityTokenResponse < 3) {
+    o.tokenPayloadExternal = buildPcTokenPayloadExternal();
+  }
+  buildCounterDecodePcIntegrityTokenResponse--;
+  return o;
+}
+
+void checkDecodePcIntegrityTokenResponse(api.DecodePcIntegrityTokenResponse o) {
+  buildCounterDecodePcIntegrityTokenResponse++;
+  if (buildCounterDecodePcIntegrityTokenResponse < 3) {
+    checkPcTokenPayloadExternal(o.tokenPayloadExternal!);
+  }
+  buildCounterDecodePcIntegrityTokenResponse--;
+}
+
 core.int buildCounterDeviceAttributes = 0;
 api.DeviceAttributes buildDeviceAttributes() {
   final o = api.DeviceAttributes();
@@ -326,6 +367,95 @@ void checkEnvironmentDetails(api.EnvironmentDetails o) {
     );
   }
   buildCounterEnvironmentDetails--;
+}
+
+core.List<core.String> buildUnnamed4() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed4(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterPcDeviceIntegrity = 0;
+api.PcDeviceIntegrity buildPcDeviceIntegrity() {
+  final o = api.PcDeviceIntegrity();
+  buildCounterPcDeviceIntegrity++;
+  if (buildCounterPcDeviceIntegrity < 3) {
+    o.deviceRecognitionVerdict = buildUnnamed4();
+  }
+  buildCounterPcDeviceIntegrity--;
+  return o;
+}
+
+void checkPcDeviceIntegrity(api.PcDeviceIntegrity o) {
+  buildCounterPcDeviceIntegrity++;
+  if (buildCounterPcDeviceIntegrity < 3) {
+    checkUnnamed4(o.deviceRecognitionVerdict!);
+  }
+  buildCounterPcDeviceIntegrity--;
+}
+
+core.int buildCounterPcRequestDetails = 0;
+api.PcRequestDetails buildPcRequestDetails() {
+  final o = api.PcRequestDetails();
+  buildCounterPcRequestDetails++;
+  if (buildCounterPcRequestDetails < 3) {
+    o.requestHash = 'foo';
+    o.requestPackageName = 'foo';
+    o.requestTime = 'foo';
+  }
+  buildCounterPcRequestDetails--;
+  return o;
+}
+
+void checkPcRequestDetails(api.PcRequestDetails o) {
+  buildCounterPcRequestDetails++;
+  if (buildCounterPcRequestDetails < 3) {
+    unittest.expect(
+      o.requestHash!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestPackageName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPcRequestDetails--;
+}
+
+core.int buildCounterPcTokenPayloadExternal = 0;
+api.PcTokenPayloadExternal buildPcTokenPayloadExternal() {
+  final o = api.PcTokenPayloadExternal();
+  buildCounterPcTokenPayloadExternal++;
+  if (buildCounterPcTokenPayloadExternal < 3) {
+    o.deviceIntegrity = buildPcDeviceIntegrity();
+    o.requestDetails = buildPcRequestDetails();
+  }
+  buildCounterPcTokenPayloadExternal--;
+  return o;
+}
+
+void checkPcTokenPayloadExternal(api.PcTokenPayloadExternal o) {
+  buildCounterPcTokenPayloadExternal++;
+  if (buildCounterPcTokenPayloadExternal < 3) {
+    checkPcDeviceIntegrity(o.deviceIntegrity!);
+    checkPcRequestDetails(o.requestDetails!);
+  }
+  buildCounterPcTokenPayloadExternal--;
 }
 
 core.int buildCounterRecentDeviceActivity = 0;
@@ -590,6 +720,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DecodePcIntegrityTokenRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDecodePcIntegrityTokenRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DecodePcIntegrityTokenRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDecodePcIntegrityTokenRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-DecodePcIntegrityTokenResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDecodePcIntegrityTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DecodePcIntegrityTokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDecodePcIntegrityTokenResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-DeviceAttributes', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDeviceAttributes();
@@ -627,6 +777,36 @@ void main() {
       final od = api.EnvironmentDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEnvironmentDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-PcDeviceIntegrity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPcDeviceIntegrity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PcDeviceIntegrity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPcDeviceIntegrity(od);
+    });
+  });
+
+  unittest.group('obj-schema-PcRequestDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPcRequestDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PcRequestDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPcRequestDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-PcTokenPayloadExternal', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPcTokenPayloadExternal();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PcTokenPayloadExternal.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPcTokenPayloadExternal(od);
     });
   });
 
@@ -829,6 +1009,66 @@ void main() {
           $fields: arg_$fields);
       checkDecodeIntegrityTokenResponse(
           response as api.DecodeIntegrityTokenResponse);
+    });
+
+    unittest.test('method--decodePcIntegrityToken', () async {
+      final mock = HttpServerMock();
+      final res = api.PlayIntegrityApi(mock).v1;
+      final arg_request = buildDecodePcIntegrityTokenRequest();
+      final arg_packageName = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.DecodePcIntegrityTokenRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDecodePcIntegrityTokenRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildDecodePcIntegrityTokenResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.decodePcIntegrityToken(
+          arg_request, arg_packageName,
+          $fields: arg_$fields);
+      checkDecodePcIntegrityTokenResponse(
+          response as api.DecodePcIntegrityTokenResponse);
     });
   });
 }

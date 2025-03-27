@@ -98,7 +98,7 @@ class OrganizationsLocationsDataExchangesResource {
   /// Request parameters:
   ///
   /// [organization] - Required. The organization resource path of the projects
-  /// containing DataExchanges. e.g. `organizations/myorg/locations/US`.
+  /// containing DataExchanges. e.g. `organizations/myorg/locations/us`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response
@@ -178,13 +178,12 @@ class ProjectsLocationsDataExchangesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource path of the data exchange. e.g.
-  /// `projects/myproject/locations/US`.
+  /// `projects/myproject/locations/us`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [dataExchangeId] - Required. The ID of the data exchange. Must contain
-  /// only Unicode letters, numbers (0-9), underscores (_). Should not use
-  /// characters that require URL-escaping, or characters outside of ASCII,
-  /// spaces. Max length: 100 bytes.
+  /// only Unicode letters, numbers (0-9), underscores (_). Max length: 100
+  /// bytes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -226,7 +225,7 @@ class ProjectsLocationsDataExchangesResource {
   ///
   /// [name] - Required. The full name of the data exchange resource that you
   /// want to delete. For example,
-  /// `projects/myproject/locations/US/dataExchanges/123`.
+  /// `projects/myproject/locations/us/dataExchanges/123`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+$`.
   ///
@@ -263,7 +262,7 @@ class ProjectsLocationsDataExchangesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the data exchange. e.g.
-  /// `projects/myproject/locations/US/dataExchanges/123`.
+  /// `projects/myproject/locations/us/dataExchanges/123`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+$`.
   ///
@@ -345,7 +344,7 @@ class ProjectsLocationsDataExchangesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource path of the data exchanges. e.g.
-  /// `projects/myproject/locations/US`.
+  /// `projects/myproject/locations/us`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response
@@ -393,8 +392,8 @@ class ProjectsLocationsDataExchangesResource {
   ///
   /// [resource] - Required. Resource name of the requested target. This
   /// resource may be either a Listing or a DataExchange. e.g.
-  /// projects/123/locations/US/dataExchanges/456 OR e.g.
-  /// projects/123/locations/US/dataExchanges/456/listings/789
+  /// projects/123/locations/us/dataExchanges/456 OR e.g.
+  /// projects/123/locations/us/dataExchanges/456/listings/789
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+$`.
   ///
@@ -450,7 +449,7 @@ class ProjectsLocationsDataExchangesResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource name of the data exchange. e.g.
-  /// `projects/myproject/locations/US/dataExchanges/123`.
+  /// `projects/myproject/locations/us/dataExchanges/123`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+$`.
   ///
@@ -539,14 +538,15 @@ class ProjectsLocationsDataExchangesResource {
   /// Creates a Subscription to a Data Clean Room.
   ///
   /// This is a long-running operation as it will create one or more linked
-  /// datasets.
+  /// datasets. Throws a Bad Request error if the Data Exchange does not contain
+  /// any listings.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the Data Exchange. e.g.
-  /// `projects/publisherproject/locations/US/dataExchanges/123`
+  /// `projects/publisherproject/locations/us/dataExchanges/123`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+$`.
   ///
@@ -641,14 +641,12 @@ class ProjectsLocationsDataExchangesListingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource path of the listing. e.g.
-  /// `projects/myproject/locations/US/dataExchanges/123`.
+  /// `projects/myproject/locations/us/dataExchanges/123`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+$`.
   ///
   /// [listingId] - Required. The ID of the listing to create. Must contain only
-  /// Unicode letters, numbers (0-9), underscores (_). Should not use characters
-  /// that require URL-escaping, or characters outside of ASCII, spaces. Max
-  /// length: 100 bytes.
+  /// Unicode letters, numbers (0-9), underscores (_). Max length: 100 bytes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -688,7 +686,7 @@ class ProjectsLocationsDataExchangesListingsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the listing to delete. e.g.
-  /// `projects/myproject/locations/US/dataExchanges/123/listings/456`.
+  /// `projects/myproject/locations/us/dataExchanges/123/listings/456`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+/listings/\[^/\]+$`.
   ///
@@ -731,7 +729,7 @@ class ProjectsLocationsDataExchangesListingsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the listing. e.g.
-  /// `projects/myproject/locations/US/dataExchanges/123/listings/456`.
+  /// `projects/myproject/locations/us/dataExchanges/123/listings/456`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+/listings/\[^/\]+$`.
   ///
@@ -812,7 +810,7 @@ class ProjectsLocationsDataExchangesListingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource path of the listing. e.g.
-  /// `projects/myproject/locations/US/dataExchanges/123`.
+  /// `projects/myproject/locations/us/dataExchanges/123`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+$`.
   ///
@@ -861,8 +859,8 @@ class ProjectsLocationsDataExchangesListingsResource {
   ///
   /// [resource] - Required. Resource name of the requested target. This
   /// resource may be either a Listing or a DataExchange. e.g.
-  /// projects/123/locations/US/dataExchanges/456 OR e.g.
-  /// projects/123/locations/US/dataExchanges/456/listings/789
+  /// projects/123/locations/us/dataExchanges/456 OR e.g.
+  /// projects/123/locations/us/dataExchanges/456/listings/789
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+/listings/\[^/\]+$`.
   ///
@@ -918,7 +916,7 @@ class ProjectsLocationsDataExchangesListingsResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource name of the listing. e.g.
-  /// `projects/myproject/locations/US/dataExchanges/123/listings/456`
+  /// `projects/myproject/locations/us/dataExchanges/123/listings/456`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+/listings/\[^/\]+$`.
   ///
@@ -1014,7 +1012,7 @@ class ProjectsLocationsDataExchangesListingsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the listing that you want to subscribe
-  /// to. e.g. `projects/myproject/locations/US/dataExchanges/123/listings/456`.
+  /// to. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+/listings/\[^/\]+$`.
   ///
@@ -1108,7 +1106,7 @@ class ProjectsLocationsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the subscription to delete. e.g.
-  /// projects/123/locations/US/subscriptions/456
+  /// projects/123/locations/us/subscriptions/456
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
@@ -1145,7 +1143,7 @@ class ProjectsLocationsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the subscription. e.g.
-  /// projects/123/locations/US/subscriptions/456
+  /// projects/123/locations/us/subscriptions/456
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
@@ -1227,7 +1225,7 @@ class ProjectsLocationsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource path of the subscription. e.g.
-  /// projects/myproject/locations/US
+  /// projects/myproject/locations/us
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - An expression for filtering the results of the request.
@@ -1290,7 +1288,7 @@ class ProjectsLocationsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the Subscription to refresh. e.g.
-  /// `projects/subscriberproject/locations/US/subscriptions/123`
+  /// `projects/subscriberproject/locations/us/subscriptions/123`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
@@ -1332,7 +1330,7 @@ class ProjectsLocationsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the subscription to revoke. e.g.
-  /// projects/123/locations/US/subscriptions/456
+  /// projects/123/locations/us/subscriptions/456
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
@@ -1413,10 +1411,6 @@ class ProjectsLocationsSubscriptionsResource {
   }
 }
 
-/// Information about an associated
-/// [Analytics Hub subscription](https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
-typedef AnalyticsHubSubscriptionInfo = $AnalyticsHubSubscriptionInfo;
-
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -1478,7 +1472,91 @@ typedef AuditLogConfig = $AuditLogConfig;
 typedef AvroConfig = $AvroConfig;
 
 /// Configuration for a BigQuery subscription.
-typedef BigQueryConfig = $BigQueryConfig;
+class BigQueryConfig {
+  /// When true and use_topic_schema is true, any fields that are a part of the
+  /// topic schema that are not part of the BigQuery table schema are dropped
+  /// when writing to BigQuery.
+  ///
+  /// Otherwise, the schemas must be kept in sync and any messages with extra
+  /// fields are not written and remain in the subscription's backlog.
+  ///
+  /// Optional.
+  core.bool? dropUnknownFields;
+
+  /// The service account to use to write to BigQuery.
+  ///
+  /// The subscription creator or updater that specifies this field must have
+  /// `iam.serviceAccounts.actAs` permission on the service account. If not
+  /// specified, the Pub/Sub
+  /// [service agent](https://cloud.google.com/iam/docs/service-agents),
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+  ///
+  /// Optional.
+  core.String? serviceAccountEmail;
+
+  /// The name of the table to which to write data, of the form
+  /// {projectId}.{datasetId}.{tableId}
+  ///
+  /// Optional.
+  core.String? table;
+
+  /// When true, use the BigQuery table's schema as the columns to write to in
+  /// BigQuery.
+  ///
+  /// `use_table_schema` and `use_topic_schema` cannot be enabled at the same
+  /// time.
+  ///
+  /// Optional.
+  core.bool? useTableSchema;
+
+  /// When true, use the topic's schema as the columns to write to in BigQuery,
+  /// if it exists.
+  ///
+  /// `use_topic_schema` and `use_table_schema` cannot be enabled at the same
+  /// time.
+  ///
+  /// Optional.
+  core.bool? useTopicSchema;
+
+  /// When true, write the subscription name, message_id, publish_time,
+  /// attributes, and ordering_key to additional columns in the table.
+  ///
+  /// The subscription name, message_id, and publish_time fields are put in
+  /// their own columns while all other message properties (other than data) are
+  /// written to a JSON object in the attributes column.
+  ///
+  /// Optional.
+  core.bool? writeMetadata;
+
+  BigQueryConfig({
+    this.dropUnknownFields,
+    this.serviceAccountEmail,
+    this.table,
+    this.useTableSchema,
+    this.useTopicSchema,
+    this.writeMetadata,
+  });
+
+  BigQueryConfig.fromJson(core.Map json_)
+      : this(
+          dropUnknownFields: json_['dropUnknownFields'] as core.bool?,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+          table: json_['table'] as core.String?,
+          useTableSchema: json_['useTableSchema'] as core.bool?,
+          useTopicSchema: json_['useTopicSchema'] as core.bool?,
+          writeMetadata: json_['writeMetadata'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dropUnknownFields != null) 'dropUnknownFields': dropUnknownFields!,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail!,
+        if (table != null) 'table': table!,
+        if (useTableSchema != null) 'useTableSchema': useTableSchema!,
+        if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
+        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
+      };
+}
 
 /// A reference to a shared dataset.
 ///
@@ -1691,11 +1769,14 @@ class CloudStorageConfig {
   /// Optional.
   core.String? maxBytes;
 
-  /// The maximum duration that can elapse before a new Cloud Storage file is
-  /// created.
+  /// File batching settings.
   ///
-  /// Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the
-  /// subscription's acknowledgment deadline.
+  /// If no max_duration setting is specified, a max_duration of 5 minutes will
+  /// be set by default. max_duration is required regardless of whether other
+  /// file batching settings are specified. The maximum duration that can elapse
+  /// before a new Cloud Storage file is created. Min 1 minute, max 10 minutes,
+  /// default 5 minutes. May not exceed the subscription's acknowledgement
+  /// deadline.
   ///
   /// Optional.
   core.String? maxDuration;
@@ -1719,24 +1800,6 @@ class CloudStorageConfig {
   /// Optional.
   core.String? serviceAccountEmail;
 
-  /// An output-only field that indicates whether or not the subscription can
-  /// receive messages.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "ACTIVE" : The subscription can actively send messages to Cloud Storage.
-  /// - "PERMISSION_DENIED" : Cannot write to the Cloud Storage bucket because
-  /// of permission denied errors.
-  /// - "NOT_FOUND" : Cannot write to the Cloud Storage bucket because it does
-  /// not exist.
-  /// - "IN_TRANSIT_LOCATION_RESTRICTION" : Cannot write to the destination
-  /// because enforce_in_transit is set to true and the destination locations
-  /// are not in the allowed regions.
-  /// - "SCHEMA_MISMATCH" : Cannot write to the Cloud Storage bucket due to an
-  /// incompatibility between the topic schema and subscription settings.
-  core.String? state;
-
   /// If set, message data will be written to Cloud Storage in text format.
   ///
   /// Optional.
@@ -1752,7 +1815,6 @@ class CloudStorageConfig {
     this.maxDuration,
     this.maxMessages,
     this.serviceAccountEmail,
-    this.state,
     this.textConfig,
   });
 
@@ -1771,7 +1833,6 @@ class CloudStorageConfig {
           maxDuration: json_['maxDuration'] as core.String?,
           maxMessages: json_['maxMessages'] as core.String?,
           serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-          state: json_['state'] as core.String?,
           textConfig: json_.containsKey('textConfig')
               ? TextConfig.fromJson(
                   json_['textConfig'] as core.Map<core.String, core.dynamic>)
@@ -1790,7 +1851,6 @@ class CloudStorageConfig {
         if (maxMessages != null) 'maxMessages': maxMessages!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
-        if (state != null) 'state': state!,
         if (textConfig != null) 'textConfig': textConfig!,
       };
 }
@@ -1871,7 +1931,7 @@ class DataExchange {
 
   /// The resource name of the data exchange.
   ///
-  /// e.g. `projects/myproject/locations/US/dataExchanges/123`.
+  /// e.g. `projects/myproject/locations/us/dataExchanges/123`.
   ///
   /// Output only.
   core.String? name;
@@ -2019,7 +2079,49 @@ class DcrExchangeConfig {
 /// The same message might be dead lettered multiple times. If validation on any
 /// of the fields fails at subscription creation/updation, the create/update
 /// subscription request will fail.
-typedef DeadLetterPolicy = $DeadLetterPolicy;
+class DeadLetterPolicy {
+  /// The name of the topic to which dead letter messages should be published.
+  ///
+  /// Format is `projects/{project}/topics/{topic}`.The Pub/Sub service account
+  /// associated with the enclosing subscription's parent project (i.e.,
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+  /// permission to Publish() to this topic. The operation will fail if the
+  /// topic does not exist. Users should ensure that there is a subscription
+  /// attached to this topic since messages published to a topic with no
+  /// subscriptions are lost.
+  ///
+  /// Optional.
+  core.String? deadLetterTopic;
+
+  /// The maximum number of delivery attempts for any message.
+  ///
+  /// The value must be between 5 and 100. The number of delivery attempts is
+  /// defined as 1 + (the sum of number of NACKs and number of times the
+  /// acknowledgement deadline has been exceeded for the message). A NACK is any
+  /// call to ModifyAckDeadline with a 0 deadline. Note that client libraries
+  /// may automatically extend ack_deadlines. This field will be honored on a
+  /// best effort basis. If this parameter is 0, a default value of 5 is used.
+  ///
+  /// Optional.
+  core.int? maxDeliveryAttempts;
+
+  DeadLetterPolicy({
+    this.deadLetterTopic,
+    this.maxDeliveryAttempts,
+  });
+
+  DeadLetterPolicy.fromJson(core.Map json_)
+      : this(
+          deadLetterTopic: json_['deadLetterTopic'] as core.String?,
+          maxDeliveryAttempts: json_['maxDeliveryAttempts'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic!,
+        if (maxDeliveryAttempts != null)
+          'maxDeliveryAttempts': maxDeliveryAttempts!,
+      };
+}
 
 /// Default Analytics Hub data exchange, used for secured data sharing.
 typedef DefaultExchangeConfig = $Empty;
@@ -2322,11 +2424,12 @@ class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMark
       };
 }
 
-/// A subscription resource.
+/// Defines the destination Pub/Sub subscription.
 ///
-/// If none of `push_config`, `bigquery_config`, or `cloud_storage_config` is
-/// set, then the subscriber will pull and ack messages using API methods. At
-/// most one of these fields may be set.
+/// If none of `push_config`, `bigquery_config`, `cloud_storage_config`,
+/// `pubsub_export_config`, or `pubsublite_export_config` is set, then the
+/// subscriber will pull and ack messages using API methods. At most one of
+/// these fields may be set.
 class GooglePubsubV1Subscription {
   /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
   /// the subscriber to acknowledge receipt before resending the message.
@@ -2347,13 +2450,6 @@ class GooglePubsubV1Subscription {
   ///
   /// Optional.
   core.int? ackDeadlineSeconds;
-
-  /// Information about the associated Analytics Hub subscription.
-  ///
-  /// Only set if the subscritpion is created by Analytics Hub.
-  ///
-  /// Output only.
-  AnalyticsHubSubscriptionInfo? analyticsHubSubscriptionInfo;
 
   /// If delivery to BigQuery is used with this subscription, this field is used
   /// to configure it.
@@ -2391,7 +2487,7 @@ class GooglePubsubV1Subscription {
   /// If true, Pub/Sub provides the following guarantees for the delivery of a
   /// message with a given value of `message_id` on this subscription: * The
   /// message sent to a subscriber is guaranteed not to be resent before the
-  /// message's acknowledgment deadline expires.
+  /// message's acknowledgement deadline expires.
   ///
   /// * An acknowledged message will not be resent to a subscriber. Note that
   /// subscribers may still receive multiple copies of a message when
@@ -2488,39 +2584,14 @@ class GooglePubsubV1Subscription {
   ///
   /// If not set, the default retry policy is applied. This generally implies
   /// that messages will be retried as soon as possible for healthy subscribers.
-  /// RetryPolicy will be triggered on NACKs or acknowledgment deadline exceeded
-  /// events for a given message.
+  /// RetryPolicy will be triggered on NACKs or acknowledgement deadline
+  /// exceeded events for a given message.
   ///
   /// Optional.
   RetryPolicy? retryPolicy;
 
-  /// An output-only field indicating whether or not the subscription can
-  /// receive messages.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "ACTIVE" : The subscription can actively receive messages
-  /// - "RESOURCE_ERROR" : The subscription cannot receive messages because of
-  /// an error with the resource to which it pushes messages. See the more
-  /// detailed error state in the corresponding configuration.
-  core.String? state;
-
-  /// Indicates the minimum duration for which a message is retained after it is
-  /// published to the subscription's topic.
-  ///
-  /// If this field is set, messages published to the subscription's topic in
-  /// the last `topic_message_retention_duration` are always available to
-  /// subscribers. See the `message_retention_duration` field in `Topic`. This
-  /// field is set only in responses from the server; it is ignored if it is set
-  /// in any requests.
-  ///
-  /// Output only.
-  core.String? topicMessageRetentionDuration;
-
   GooglePubsubV1Subscription({
     this.ackDeadlineSeconds,
-    this.analyticsHubSubscriptionInfo,
     this.bigqueryConfig,
     this.cloudStorageConfig,
     this.deadLetterPolicy,
@@ -2536,19 +2607,11 @@ class GooglePubsubV1Subscription {
     this.pushConfig,
     this.retainAckedMessages,
     this.retryPolicy,
-    this.state,
-    this.topicMessageRetentionDuration,
   });
 
   GooglePubsubV1Subscription.fromJson(core.Map json_)
       : this(
           ackDeadlineSeconds: json_['ackDeadlineSeconds'] as core.int?,
-          analyticsHubSubscriptionInfo:
-              json_.containsKey('analyticsHubSubscriptionInfo')
-                  ? AnalyticsHubSubscriptionInfo.fromJson(
-                      json_['analyticsHubSubscriptionInfo']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
           bigqueryConfig: json_.containsKey('bigqueryConfig')
               ? BigQueryConfig.fromJson(json_['bigqueryConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2593,16 +2656,11 @@ class GooglePubsubV1Subscription {
               ? RetryPolicy.fromJson(
                   json_['retryPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
-          state: json_['state'] as core.String?,
-          topicMessageRetentionDuration:
-              json_['topicMessageRetentionDuration'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ackDeadlineSeconds != null)
           'ackDeadlineSeconds': ackDeadlineSeconds!,
-        if (analyticsHubSubscriptionInfo != null)
-          'analyticsHubSubscriptionInfo': analyticsHubSubscriptionInfo!,
         if (bigqueryConfig != null) 'bigqueryConfig': bigqueryConfig!,
         if (cloudStorageConfig != null)
           'cloudStorageConfig': cloudStorageConfig!,
@@ -2623,15 +2681,50 @@ class GooglePubsubV1Subscription {
         if (retainAckedMessages != null)
           'retainAckedMessages': retainAckedMessages!,
         if (retryPolicy != null) 'retryPolicy': retryPolicy!,
-        if (state != null) 'state': state!,
-        if (topicMessageRetentionDuration != null)
-          'topicMessageRetentionDuration': topicMessageRetentionDuration!,
       };
 }
 
 /// User-defined JavaScript function that can transform or filter a Pub/Sub
 /// message.
-typedef JavaScriptUDF = $JavaScriptUDF;
+class JavaScriptUDF {
+  /// JavaScript code that contains a function `function_name` with the below
+  /// signature: ``` / * * * Transforms a Pub/Sub message.
+  ///
+  /// * @return {(Object)>|null)} - To * filter a message, return `null`. To
+  /// transform a message return a map * with the following keys: * - (required)
+  /// 'data' : {string} * - (optional) 'attributes' : {Object} * Returning empty
+  /// `attributes` will remove all attributes from the * message. * * @param
+  /// {(Object)>} Pub/Sub * message. Keys: * - (required) 'data' : {string} * -
+  /// (required) 'attributes' : {Object} * * @param {Object} metadata - Pub/Sub
+  /// message metadata. * Keys: * - (required) 'message_id' : {string} * -
+  /// (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format * -
+  /// (optional) 'ordering_key': {string} * / function (message, metadata) { }
+  /// ```
+  ///
+  /// Required.
+  core.String? code;
+
+  /// Name of the JavasScript function that should applied to Pub/Sub messages.
+  ///
+  /// Required.
+  core.String? functionName;
+
+  JavaScriptUDF({
+    this.code,
+    this.functionName,
+  });
+
+  JavaScriptUDF.fromJson(core.Map json_)
+      : this(
+          code: json_['code'] as core.String?,
+          functionName: json_['functionName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (functionName != null) 'functionName': functionName!,
+      };
+}
 
 /// Reference to a linked resource tracked by this Subscription.
 class LinkedResource {
@@ -2823,12 +2916,19 @@ class ListSubscriptionsResponse {
 /// It contains a reference to the data source along with descriptive
 /// information that will help subscribers find and subscribe the data.
 class Listing {
+  /// If true, the listing is only available to get the resource metadata.
+  ///
+  /// Listing is non subscribable.
+  ///
+  /// Optional.
+  core.bool? allowOnlyMetadataSharing;
+
   /// Shared dataset i.e. BigQuery dataset source.
   BigQueryDatasetSource? bigqueryDataset;
 
   /// Categories of the listing.
   ///
-  /// Up to two categories are allowed.
+  /// Up to five categories are allowed.
   ///
   /// Optional.
   core.List<core.String>? categories;
@@ -2905,7 +3005,7 @@ class Listing {
 
   /// The resource name of the listing.
   ///
-  /// e.g. `projects/myproject/locations/US/dataExchanges/123/listings/456`
+  /// e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456`
   ///
   /// Output only.
   core.String? name;
@@ -2959,6 +3059,7 @@ class Listing {
   core.String? state;
 
   Listing({
+    this.allowOnlyMetadataSharing,
     this.bigqueryDataset,
     this.categories,
     this.commercialInfo,
@@ -2981,6 +3082,8 @@ class Listing {
 
   Listing.fromJson(core.Map json_)
       : this(
+          allowOnlyMetadataSharing:
+              json_['allowOnlyMetadataSharing'] as core.bool?,
           bigqueryDataset: json_.containsKey('bigqueryDataset')
               ? BigQueryDatasetSource.fromJson(json_['bigqueryDataset']
                   as core.Map<core.String, core.dynamic>)
@@ -3024,6 +3127,8 @@ class Listing {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowOnlyMetadataSharing != null)
+          'allowOnlyMetadataSharing': allowOnlyMetadataSharing!,
         if (bigqueryDataset != null) 'bigqueryDataset': bigqueryDataset!,
         if (categories != null) 'categories': categories!,
         if (commercialInfo != null) 'commercialInfo': commercialInfo!,
@@ -3049,12 +3154,19 @@ class Listing {
 
 /// All supported message transforms types.
 class MessageTransform {
-  /// If set to true, the transform is enabled.
+  /// If true, the transform is disabled and will not be applied to messages.
   ///
-  /// If false, the transform is disabled and will not be applied to messages.
-  /// Defaults to `true`.
+  /// Defaults to `false`.
   ///
   /// Optional.
+  core.bool? disabled;
+
+  /// This field is deprecated, use the `disabled` field to disable transforms.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enabled;
 
   /// JavaScript User Defined Function.
@@ -3066,12 +3178,14 @@ class MessageTransform {
   JavaScriptUDF? javascriptUdf;
 
   MessageTransform({
+    this.disabled,
     this.enabled,
     this.javascriptUdf,
   });
 
   MessageTransform.fromJson(core.Map json_)
       : this(
+          disabled: json_['disabled'] as core.bool?,
           enabled: json_['enabled'] as core.bool?,
           javascriptUdf: json_.containsKey('javascriptUdf')
               ? JavaScriptUDF.fromJson(
@@ -3080,6 +3194,7 @@ class MessageTransform {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (disabled != null) 'disabled': disabled!,
         if (enabled != null) 'enabled': enabled!,
         if (javascriptUdf != null) 'javascriptUdf': javascriptUdf!,
       };
@@ -3287,8 +3402,9 @@ class Policy {
 class PubSubTopicSource {
   /// Region hint on where the data might be published.
   ///
-  /// Data affinity regions are modifiable. See go/regions for full listing of
-  /// possible Cloud regions.
+  /// Data affinity regions are modifiable. See
+  /// https://cloud.google.com/about/locations for full listing of possible
+  /// Cloud regions.
   ///
   /// Optional.
   core.List<core.String>? dataAffinityRegions;
@@ -3538,7 +3654,7 @@ class RestrictedExportPolicy {
 ///
 /// Retry delay will be exponential based on provided minimum and maximum
 /// backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy
-/// will be triggered on NACKs or acknowledgment deadline exceeded events for a
+/// will be triggered on NACKs or acknowledgement deadline exceeded events for a
 /// given message. Retry Policy is implemented on a best effort basis. At times,
 /// the delay between consecutive deliveries may not match the configuration.
 /// That is, delay can be more or less than configured backoff.
@@ -3690,7 +3806,7 @@ typedef Status = $Status00;
 class SubscribeDataExchangeRequest {
   /// The parent resource path of the Subscription.
   ///
-  /// e.g. `projects/subscriberproject/locations/US`
+  /// e.g. `projects/subscriberproject/locations/us`
   ///
   /// Required.
   core.String? destination;
@@ -3817,10 +3933,15 @@ class Subscription {
 
   /// Resource name of the source Data Exchange.
   ///
-  /// e.g. projects/123/locations/US/dataExchanges/456
+  /// e.g. projects/123/locations/us/dataExchanges/456
   ///
   /// Output only.
   core.String? dataExchange;
+
+  /// BigQuery destination dataset to create for the subscriber.
+  ///
+  /// Optional.
+  DestinationDataset? destinationDataset;
 
   /// Timestamp when the subscription was last modified.
   ///
@@ -3828,7 +3949,7 @@ class Subscription {
   core.String? lastModifyTime;
 
   /// Map of listing resource names to associated linked resource, e.g.
-  /// projects/123/locations/US/dataExchanges/456/listings/789 -\>
+  /// projects/123/locations/us/dataExchanges/456/listings/789 -\>
   /// projects/123/datasets/my_dataset For listing-level subscriptions, this is
   /// a map of size 1.
   ///
@@ -3846,7 +3967,7 @@ class Subscription {
 
   /// Resource name of the source Listing.
   ///
-  /// e.g. projects/123/locations/US/dataExchanges/456/listings/789
+  /// e.g. projects/123/locations/us/dataExchanges/456/listings/789
   ///
   /// Output only.
   core.String? listing;
@@ -3861,7 +3982,7 @@ class Subscription {
 
   /// The resource name of the subscription.
   ///
-  /// e.g. `projects/myproject/locations/US/subscriptions/123`.
+  /// e.g. `projects/myproject/locations/us/subscriptions/123`.
   ///
   /// Output only.
   core.String? name;
@@ -3907,6 +4028,7 @@ class Subscription {
     this.commercialInfo,
     this.creationTime,
     this.dataExchange,
+    this.destinationDataset,
     this.lastModifyTime,
     this.linkedDatasetMap,
     this.linkedResources,
@@ -3929,6 +4051,10 @@ class Subscription {
               : null,
           creationTime: json_['creationTime'] as core.String?,
           dataExchange: json_['dataExchange'] as core.String?,
+          destinationDataset: json_.containsKey('destinationDataset')
+              ? DestinationDataset.fromJson(json_['destinationDataset']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           lastModifyTime: json_['lastModifyTime'] as core.String?,
           linkedDatasetMap: (json_['linkedDatasetMap']
                   as core.Map<core.String, core.dynamic>?)
@@ -3959,6 +4085,8 @@ class Subscription {
         if (commercialInfo != null) 'commercialInfo': commercialInfo!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (dataExchange != null) 'dataExchange': dataExchange!,
+        if (destinationDataset != null)
+          'destinationDataset': destinationDataset!,
         if (lastModifyTime != null) 'lastModifyTime': lastModifyTime!,
         if (linkedDatasetMap != null) 'linkedDatasetMap': linkedDatasetMap!,
         if (linkedResources != null) 'linkedResources': linkedResources!,

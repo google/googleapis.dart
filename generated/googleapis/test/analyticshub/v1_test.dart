@@ -26,33 +26,6 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.int buildCounterAnalyticsHubSubscriptionInfo = 0;
-api.AnalyticsHubSubscriptionInfo buildAnalyticsHubSubscriptionInfo() {
-  final o = api.AnalyticsHubSubscriptionInfo();
-  buildCounterAnalyticsHubSubscriptionInfo++;
-  if (buildCounterAnalyticsHubSubscriptionInfo < 3) {
-    o.listing = 'foo';
-    o.subscription = 'foo';
-  }
-  buildCounterAnalyticsHubSubscriptionInfo--;
-  return o;
-}
-
-void checkAnalyticsHubSubscriptionInfo(api.AnalyticsHubSubscriptionInfo o) {
-  buildCounterAnalyticsHubSubscriptionInfo++;
-  if (buildCounterAnalyticsHubSubscriptionInfo < 3) {
-    unittest.expect(
-      o.listing!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.subscription!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterAnalyticsHubSubscriptionInfo--;
-}
-
 core.List<api.AuditLogConfig> buildUnnamed0() => [
       buildAuditLogConfig(),
       buildAuditLogConfig(),
@@ -157,7 +130,6 @@ api.BigQueryConfig buildBigQueryConfig() {
   if (buildCounterBigQueryConfig < 3) {
     o.dropUnknownFields = true;
     o.serviceAccountEmail = 'foo';
-    o.state = 'foo';
     o.table = 'foo';
     o.useTableSchema = true;
     o.useTopicSchema = true;
@@ -173,10 +145,6 @@ void checkBigQueryConfig(api.BigQueryConfig o) {
     unittest.expect(o.dropUnknownFields!, unittest.isTrue);
     unittest.expect(
       o.serviceAccountEmail!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.state!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -284,7 +252,6 @@ api.CloudStorageConfig buildCloudStorageConfig() {
     o.maxDuration = 'foo';
     o.maxMessages = 'foo';
     o.serviceAccountEmail = 'foo';
-    o.state = 'foo';
     o.textConfig = buildTextConfig();
   }
   buildCounterCloudStorageConfig--;
@@ -325,10 +292,6 @@ void checkCloudStorageConfig(api.CloudStorageConfig o) {
     );
     unittest.expect(
       o.serviceAccountEmail!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.state!,
       unittest.equals('foo'),
     );
     checkTextConfig(o.textConfig!);
@@ -850,7 +813,6 @@ api.GooglePubsubV1Subscription buildGooglePubsubV1Subscription() {
   buildCounterGooglePubsubV1Subscription++;
   if (buildCounterGooglePubsubV1Subscription < 3) {
     o.ackDeadlineSeconds = 42;
-    o.analyticsHubSubscriptionInfo = buildAnalyticsHubSubscriptionInfo();
     o.bigqueryConfig = buildBigQueryConfig();
     o.cloudStorageConfig = buildCloudStorageConfig();
     o.deadLetterPolicy = buildDeadLetterPolicy();
@@ -866,8 +828,6 @@ api.GooglePubsubV1Subscription buildGooglePubsubV1Subscription() {
     o.pushConfig = buildPushConfig();
     o.retainAckedMessages = true;
     o.retryPolicy = buildRetryPolicy();
-    o.state = 'foo';
-    o.topicMessageRetentionDuration = 'foo';
   }
   buildCounterGooglePubsubV1Subscription--;
   return o;
@@ -880,7 +840,6 @@ void checkGooglePubsubV1Subscription(api.GooglePubsubV1Subscription o) {
       o.ackDeadlineSeconds!,
       unittest.equals(42),
     );
-    checkAnalyticsHubSubscriptionInfo(o.analyticsHubSubscriptionInfo!);
     checkBigQueryConfig(o.bigqueryConfig!);
     checkCloudStorageConfig(o.cloudStorageConfig!);
     checkDeadLetterPolicy(o.deadLetterPolicy!);
@@ -905,14 +864,6 @@ void checkGooglePubsubV1Subscription(api.GooglePubsubV1Subscription o) {
     checkPushConfig(o.pushConfig!);
     unittest.expect(o.retainAckedMessages!, unittest.isTrue);
     checkRetryPolicy(o.retryPolicy!);
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.topicMessageRetentionDuration!,
-      unittest.equals('foo'),
-    );
   }
   buildCounterGooglePubsubV1Subscription--;
 }
@@ -1175,6 +1126,7 @@ api.Listing buildListing() {
   final o = api.Listing();
   buildCounterListing++;
   if (buildCounterListing < 3) {
+    o.allowOnlyMetadataSharing = true;
     o.bigqueryDataset = buildBigQueryDatasetSource();
     o.categories = buildUnnamed12();
     o.commercialInfo =
@@ -1202,6 +1154,7 @@ api.Listing buildListing() {
 void checkListing(api.Listing o) {
   buildCounterListing++;
   if (buildCounterListing < 3) {
+    unittest.expect(o.allowOnlyMetadataSharing!, unittest.isTrue);
     checkBigQueryDatasetSource(o.bigqueryDataset!);
     checkUnnamed12(o.categories!);
     checkGoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo(
@@ -1260,6 +1213,7 @@ api.MessageTransform buildMessageTransform() {
   final o = api.MessageTransform();
   buildCounterMessageTransform++;
   if (buildCounterMessageTransform < 3) {
+    o.disabled = true;
     o.enabled = true;
     o.javascriptUdf = buildJavaScriptUDF();
   }
@@ -1270,6 +1224,7 @@ api.MessageTransform buildMessageTransform() {
 void checkMessageTransform(api.MessageTransform o) {
   buildCounterMessageTransform++;
   if (buildCounterMessageTransform < 3) {
+    unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(o.enabled!, unittest.isTrue);
     checkJavaScriptUDF(o.javascriptUdf!);
   }
@@ -2009,6 +1964,7 @@ api.Subscription buildSubscription() {
         buildGoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo();
     o.creationTime = 'foo';
     o.dataExchange = 'foo';
+    o.destinationDataset = buildDestinationDataset();
     o.lastModifyTime = 'foo';
     o.linkedDatasetMap = buildUnnamed21();
     o.linkedResources = buildUnnamed22();
@@ -2038,6 +1994,7 @@ void checkSubscription(api.Subscription o) {
       o.dataExchange!,
       unittest.equals('foo'),
     );
+    checkDestinationDataset(o.destinationDataset!);
     unittest.expect(
       o.lastModifyTime!,
       unittest.equals('foo'),
@@ -2165,16 +2122,6 @@ void checkTextConfig(api.TextConfig o) {
 }
 
 void main() {
-  unittest.group('obj-schema-AnalyticsHubSubscriptionInfo', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAnalyticsHubSubscriptionInfo();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AnalyticsHubSubscriptionInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAnalyticsHubSubscriptionInfo(od);
-    });
-  });
-
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAuditConfig();

@@ -2067,17 +2067,25 @@ class ImportFile {
 }
 
 class InstancesBulkInsertOperationMetadata {
+  /// The machine type of the VMs that were created used internally only by KCP
+  /// flex bulk insert.
+  ///
+  /// Output only.
+  core.String? machineType;
+
   /// Status information per location (location name is key).
   ///
   /// Example key: zones/us-central1-a
   core.Map<core.String, BulkInsertOperationStatus>? perLocationStatus;
 
   InstancesBulkInsertOperationMetadata({
+    this.machineType,
     this.perLocationStatus,
   });
 
   InstancesBulkInsertOperationMetadata.fromJson(core.Map json_)
       : this(
+          machineType: json_['machineType'] as core.String?,
           perLocationStatus: (json_['perLocationStatus']
                   as core.Map<core.String, core.dynamic>?)
               ?.map(
@@ -2090,6 +2098,7 @@ class InstancesBulkInsertOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (machineType != null) 'machineType': machineType!,
         if (perLocationStatus != null) 'perLocationStatus': perLocationStatus!,
       };
 }
@@ -2650,6 +2659,10 @@ class Operation {
   /// Output only.
   core.String? selfLinkWithId;
 
+  /// This field is used internally by the Autoscaler team and should not be
+  /// promoted to "alpha/beta/v1".
+  SetAutoscalerLinkOperationMetadata? setAutoscalerLinkOperationMetadata;
+
   /// If the operation is for projects.setCommonInstanceMetadata, this field
   /// will contain information on all underlying zonal actions and their state.
   ///
@@ -2731,6 +2744,7 @@ class Operation {
     this.region,
     this.selfLink,
     this.selfLinkWithId,
+    this.setAutoscalerLinkOperationMetadata,
     this.setCommonInstanceMetadataOperationMetadata,
     this.startTime,
     this.status,
@@ -2770,6 +2784,12 @@ class Operation {
           region: json_['region'] as core.String?,
           selfLink: json_['selfLink'] as core.String?,
           selfLinkWithId: json_['selfLinkWithId'] as core.String?,
+          setAutoscalerLinkOperationMetadata:
+              json_.containsKey('setAutoscalerLinkOperationMetadata')
+                  ? SetAutoscalerLinkOperationMetadata.fromJson(
+                      json_['setAutoscalerLinkOperationMetadata']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           setCommonInstanceMetadataOperationMetadata:
               json_.containsKey('setCommonInstanceMetadataOperationMetadata')
                   ? SetCommonInstanceMetadataOperationMetadata.fromJson(
@@ -2811,6 +2831,9 @@ class Operation {
         if (region != null) 'region': region!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (selfLinkWithId != null) 'selfLinkWithId': selfLinkWithId!,
+        if (setAutoscalerLinkOperationMetadata != null)
+          'setAutoscalerLinkOperationMetadata':
+              setAutoscalerLinkOperationMetadata!,
         if (setCommonInstanceMetadataOperationMetadata != null)
           'setCommonInstanceMetadataOperationMetadata':
               setCommonInstanceMetadataOperationMetadata!,
@@ -3765,6 +3788,26 @@ class ResourcesListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null) 'resources': resources!,
+      };
+}
+
+class SetAutoscalerLinkOperationMetadata {
+  /// List of zonal IGM IDs part of the RMIG.
+  core.List<core.String>? zonalIgmIds;
+
+  SetAutoscalerLinkOperationMetadata({
+    this.zonalIgmIds,
+  });
+
+  SetAutoscalerLinkOperationMetadata.fromJson(core.Map json_)
+      : this(
+          zonalIgmIds: (json_['zonalIgmIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (zonalIgmIds != null) 'zonalIgmIds': zonalIgmIds!,
       };
 }
 

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250227",
+    "revision": "20250723",
     "rootUrl": "https://alloydb.googleapis.com/",
     "servicePath": "",
     "title": "AlloyDB API",
@@ -147,6 +147,12 @@
                                 "name"
                             ],
                             "parameters": {
+                                "extraLocationTypes": {
+                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "filter": {
                                     "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
@@ -1695,6 +1701,12 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "createCompletionTime": {
+                    "description": "Output only. Timestamp when the resource finished being created.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "createTime": {
                     "description": "Output only. Create time stamp",
                     "format": "google-datetime",
@@ -1841,7 +1853,7 @@
                     "type": "string"
                 },
                 "updateTime": {
-                    "description": "Output only. Update time stamp",
+                    "description": "Output only. Update time stamp Users should not infer any meaning from this field. Its value is generally unrelated to the timing of the backup creation operation.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -2123,7 +2135,7 @@
                     "enumDescriptions": [
                         "The state of the cluster is unknown.",
                         "The cluster is active and running.",
-                        "The cluster is stopped. All instances in the cluster are stopped. Customers can start a stopped cluster at any point and all their instances will come back to life with same names and IP resources. In this state, customer pays for storage. Associated backups could also be present in a stopped cluster.",
+                        "This is unused. Even when all instances in the cluster are stopped, the cluster remains in READY state.",
                         "The cluster is empty and has no associated resources. All instances, associated storage and backups have been deleted.",
                         "The cluster is being created.",
                         "The cluster is being deleted.",
@@ -2314,7 +2326,7 @@
             "id": "ContinuousBackupInfo",
             "properties": {
                 "earliestRestorableTime": {
-                    "description": "Output only. The earliest restorable time that can be restored to. Output only field.",
+                    "description": "Output only. The earliest restorable time that can be restored to. If continuous backups and recovery was recently enabled, the earliest restorable time is the creation time of the earliest eligible backup within this cluster's continuous backup recovery window. After a cluster has had continuous backups enabled for the duration of its recovery window, the earliest restorable time becomes \"now minus the recovery window\". For example, assuming a point in time recovery is attempted at 04/16/2025 3:23:00PM with a 14d recovery window, the earliest restorable time would be 04/02/2025 3:23:00PM. This field is only visible if the CLUSTER_VIEW_CONTINUOUS_BACKUP cluster view is provided.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -2331,7 +2343,7 @@
                     "readOnly": true
                 },
                 "schedule": {
-                    "description": "Output only. Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.",
+                    "description": "Output only. Days of the week on which a continuous backup is taken.",
                     "items": {
                         "enum": [
                             "DAY_OF_WEEK_UNSPECIFIED",
@@ -2426,6 +2438,25 @@
                 "table": {
                     "description": "Required. The database table to import CSV file into.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DenyMaintenancePeriod": {
+            "description": "DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this deny period. The start_date must be less than the end_date.",
+            "id": "DenyMaintenancePeriod",
+            "properties": {
+                "endDate": {
+                    "$ref": "GoogleTypeDate",
+                    "description": "Deny period end date. This can be: * A full date, with non-zero year, month and day values OR * A month and day value, with a zero year for recurring"
+                },
+                "startDate": {
+                    "$ref": "GoogleTypeDate",
+                    "description": "Deny period start date. This can be: * A full date, with non-zero year, month and day values OR * A month and day value, with a zero year for recurring"
+                },
+                "time": {
+                    "$ref": "GoogleTypeTimeOfDay",
+                    "description": "Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time OR * All zeros for 00:00:00 UTC"
                 }
             },
             "type": "object"
@@ -2589,6 +2620,28 @@
             },
             "type": "object"
         },
+        "GoogleTypeDate": {
+            "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
+            "id": "GoogleTypeDate",
+            "properties": {
+                "day": {
+                    "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "month": {
+                    "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "year": {
+                    "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "GoogleTypeTimeOfDay": {
             "description": "Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.",
             "id": "GoogleTypeTimeOfDay",
@@ -2686,6 +2739,20 @@
             "description": "An Instance is a computing unit that an end customer can connect to. It's the main unit of computing resources in AlloyDB.",
             "id": "Instance",
             "properties": {
+                "activationPolicy": {
+                    "description": "Optional. Specifies whether an instance needs to spin up. Once the instance is active, the activation policy can be updated to the `NEVER` to stop the instance. Likewise, the activation policy can be updated to `ALWAYS` to start the instance. There are restrictions around when an instance can/cannot be activated (for example, a read pool instance should be stopped before stopping primary etc.). Please refer to the API documentation for more details.",
+                    "enum": [
+                        "ACTIVATION_POLICY_UNSPECIFIED",
+                        "ALWAYS",
+                        "NEVER"
+                    ],
+                    "enumDescriptions": [
+                        "The policy is not specified.",
+                        "The instance is running.",
+                        "The instance is not running."
+                    ],
+                    "type": "string"
+                },
                 "annotations": {
                     "additionalProperties": {
                         "type": "string"
@@ -2880,6 +2947,10 @@
             "description": "Metadata related to instance-level network configuration.",
             "id": "InstanceNetworkConfig",
             "properties": {
+                "allocatedIpRangeOverride": {
+                    "description": "Optional. Name of the allocated IP range for the private IP AlloyDB instance, for example: \"google-managed-services-default\". If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster. The range name must comply with [RFC 1035](http://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.",
+                    "type": "string"
+                },
                 "authorizedExternalNetworks": {
                     "description": "Optional. A list of external network authorized to access this instance.",
                     "items": {
@@ -2894,12 +2965,17 @@
                 "enablePublicIp": {
                     "description": "Optional. Enabling public ip for the instance.",
                     "type": "boolean"
+                },
+                "network": {
+                    "description": "Output only. The resource link for the VPC network in which instance resources are created and from which they are accessible via Private IP. This will be the same value as the parent cluster's network. It is specified in the form: // `projects/{project_number}/global/networks/{network_id}`.",
+                    "readOnly": true,
+                    "type": "string"
                 }
             },
             "type": "object"
         },
         "InstanceUpgradeDetails": {
-            "description": "Details regarding the upgrade of instaces associated with a cluster.",
+            "description": "Details regarding the upgrade of instances associated with a cluster.",
             "id": "InstanceUpgradeDetails",
             "properties": {
                 "instanceType": {
@@ -3110,6 +3186,10 @@
                     "description": "The number of CPU's in the VM instance.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "machineType": {
+                    "description": "Machine type of the VM instance. E.g. \"n2-highmem-4\", \"n2-highmem-8\", \"c4a-highmem-4-lssd\". cpu_count must match the number of vCPUs in the machine type.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3131,6 +3211,13 @@
             "description": "MaintenanceUpdatePolicy defines the policy for system updates.",
             "id": "MaintenanceUpdatePolicy",
             "properties": {
+                "denyMaintenancePeriods": {
+                    "description": "Periods to deny maintenance. Currently limited to 1.",
+                    "items": {
+                        "$ref": "DenyMaintenancePeriod"
+                    },
+                    "type": "array"
+                },
                 "maintenanceWindows": {
                     "description": "Preferred windows to perform maintenance. Currently limited to 1.",
                     "items": {
@@ -3417,7 +3504,7 @@
                     "type": "string"
                 },
                 "consumerNetworkStatus": {
-                    "description": "Output only. The status of the service connection policy.",
+                    "description": "Output only. The status of the service connection policy. Possible values: \"STATE_UNSPECIFIED\" - Default state, when Connection Map is created initially. \"VALID\" - Set when policy and map configuration is valid, and their matching can lead to allowing creation of PSC Connections subject to other constraints like connections limit. \"CONNECTION_POLICY_MISSING\" - No Service Connection Policy found for this network and Service Class \"POLICY_LIMIT_REACHED\" - Service Connection Policy limit reached for this network and Service Class \"CONSUMER_INSTANCE_PROJECT_NOT_ALLOWLISTED\" - The consumer instance project is not in AllowedGoogleProducersResourceHierarchyLevels of the matching ServiceConnectionPolicy.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -3431,7 +3518,7 @@
                     "type": "string"
                 },
                 "status": {
-                    "description": "Output only. The status of the PSC service automation connection.",
+                    "description": "Output only. The status of the PSC service automation connection. Possible values: \"STATE_UNSPECIFIED\" - An invalid state as the default case. \"ACTIVE\" - The connection has been created successfully. \"FAILED\" - The connection is not functional since some resources on the connection fail to be created. \"CREATING\" - The connection is being created. \"DELETING\" - The connection is being deleted. \"CREATE_REPAIRING\" - The connection is being repaired to complete creation. \"DELETE_REPAIRING\" - The connection is being repaired to complete deletion.",
                     "readOnly": true,
                     "type": "string"
                 }
@@ -3605,7 +3692,7 @@
             "type": "object"
         },
         "RestoreClusterRequest": {
-            "description": "Message for restoring a Cluster from a backup or another cluster at a given point in time.",
+            "description": "Message for restoring a Cluster from a backup or another cluster at a given point in time. NEXT_ID: 11",
             "id": "RestoreClusterRequest",
             "properties": {
                 "backupSource": {
@@ -3803,6 +3890,33 @@
             },
             "type": "object"
         },
+        "StageSchedule": {
+            "description": "Timing information for the stage execution.",
+            "id": "StageSchedule",
+            "properties": {
+                "actualEndTime": {
+                    "description": "Actual end time of the stage. Set only if the stage has completed.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "actualStartTime": {
+                    "description": "Actual start time of the stage. Set only if the stage has started.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "estimatedEndTime": {
+                    "description": "When the stage is expected to end. Set only if the stage has not completed yet.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "estimatedStartTime": {
+                    "description": "When the stage is expected to start. Set only if the stage has not started yet.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "StageStatus": {
             "description": "Status of an upgrade stage.",
             "id": "StageStatus",
@@ -3810,6 +3924,11 @@
                 "readPoolInstancesUpgrade": {
                     "$ref": "ReadPoolInstancesUpgradeStageStatus",
                     "description": "Read pool instances upgrade metadata."
+                },
+                "schedule": {
+                    "$ref": "StageSchedule",
+                    "description": "Output only. Timing information for the stage execution.",
+                    "readOnly": true
                 },
                 "stage": {
                     "description": "Upgrade stage.",
@@ -3974,6 +4093,17 @@
             },
             "type": "object"
         },
+        "StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration": {
+            "description": "BackupDRConfiguration to capture the backup and disaster recovery details of database resource.",
+            "id": "StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration",
+            "properties": {
+                "backupdrManaged": {
+                    "description": "Indicates if the resource is managed by BackupDR.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "StorageDatabasecenterPartnerapiV1mainBackupRun": {
             "description": "A backup run.",
             "id": "StorageDatabasecenterPartnerapiV1mainBackupRun",
@@ -4024,6 +4154,50 @@
             },
             "type": "object"
         },
+        "StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData": {
+            "description": "Config based signal data. This is used to send signals to Condor which are based on the DB level configurations. These will be used to send signals for self managed databases.",
+            "id": "StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData",
+            "properties": {
+                "fullResourceName": {
+                    "description": "Required. Full Resource name of the source resource.",
+                    "type": "string"
+                },
+                "lastRefreshTime": {
+                    "description": "Required. Last time signal was refreshed",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "resourceId": {
+                    "$ref": "StorageDatabasecenterPartnerapiV1mainDatabaseResourceId",
+                    "description": "Database resource id."
+                },
+                "signalBoolValue": {
+                    "description": "Signal data for boolean signals.",
+                    "type": "boolean"
+                },
+                "signalType": {
+                    "description": "Required. Signal type of the signal",
+                    "enum": [
+                        "SIGNAL_TYPE_UNSPECIFIED",
+                        "SIGNAL_TYPE_OUTDATED_MINOR_VERSION",
+                        "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED",
+                        "SIGNAL_TYPE_NO_ROOT_PASSWORD",
+                        "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS",
+                        "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified signal type.",
+                        "Outdated Minor Version",
+                        "Represents database auditing is disabled.",
+                        "Represents if a database has a password configured for the root account or not.",
+                        "Represents if a resource is exposed to public access.",
+                        "Represents if a resources requires all incoming connections to use SSL or not."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "StorageDatabasecenterPartnerapiV1mainCustomMetadataData": {
             "description": "Any custom metadata associated with the resource. e.g. A spanner instance can have multiple databases with its own unique metadata. Information for these individual databases can be captured in custom metadata data",
             "id": "StorageDatabasecenterPartnerapiV1mainCustomMetadataData",
@@ -4039,9 +4213,13 @@
             "type": "object"
         },
         "StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed": {
-            "description": "DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into Condor platform.",
+            "description": "DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into Condor platform. Next ID: 9",
             "id": "StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed",
             "properties": {
+                "configBasedSignalData": {
+                    "$ref": "StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData",
+                    "description": "Config based signal data is used to ingest signals that are generated based on the configuration of the database resource."
+                },
                 "feedTimestamp": {
                     "description": "Required. Timestamp when feed is generated.",
                     "format": "google-datetime",
@@ -4054,14 +4232,16 @@
                         "RESOURCE_METADATA",
                         "OBSERVABILITY_DATA",
                         "SECURITY_FINDING_DATA",
-                        "RECOMMENDATION_SIGNAL_DATA"
+                        "RECOMMENDATION_SIGNAL_DATA",
+                        "CONFIG_BASED_SIGNAL_DATA"
                     ],
                     "enumDescriptions": [
                         "",
                         "Database resource metadata feed from control plane",
                         "Database resource monitoring data",
                         "Database resource security health signal data",
-                        "Database resource recommendation signal data"
+                        "Database resource recommendation signal data",
+                        "Database config based signal data"
                     ],
                     "type": "string"
                 },
@@ -4115,6 +4295,10 @@
                 },
                 "externalUri": {
                     "description": "The external-uri of the signal, using which more information about this signal can be obtained. In GCP, this will take user to SCC page to get more details about signals.",
+                    "type": "string"
+                },
+                "location": {
+                    "description": "This is used to identify the location of the resource. Example: \"us-central1\"",
                     "type": "string"
                 },
                 "name": {
@@ -4283,7 +4467,20 @@
                         "SIGNAL_TYPE_EXPENSIVE_COMMANDS",
                         "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED",
                         "SIGNAL_TYPE_NO_DELETION_PROTECTION",
-                        "SIGNAL_TYPE_INEFFICIENT_QUERY"
+                        "SIGNAL_TYPE_INEFFICIENT_QUERY",
+                        "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD",
+                        "SIGNAL_TYPE_MEMORY_LIMIT",
+                        "SIGNAL_TYPE_MAX_SERVER_MEMORY",
+                        "SIGNAL_TYPE_LARGE_ROWS",
+                        "SIGNAL_TYPE_HIGH_WRITE_PRESSURE",
+                        "SIGNAL_TYPE_HIGH_READ_PRESSURE",
+                        "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED",
+                        "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED",
+                        "SIGNAL_TYPE_OUTDATED_MINOR_VERSION",
+                        "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED",
+                        "SIGNAL_TYPE_MANY_IDLE_CONNECTIONS",
+                        "SIGNAL_TYPE_REPLICATION_LAG",
+                        "SIGNAL_TYPE_OUTDATED_VERSION"
                     ],
                     "enumDeprecated": [
                         false,
@@ -4291,6 +4488,19 @@
                         false,
                         true,
                         true,
+                        true,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
                         false,
                         false,
                         false,
@@ -4463,7 +4673,20 @@
                         "Detects that expensive commands are being run on a database instance impacting overall performance.",
                         "Indicates that the instance does not have a maintenance policy configured.",
                         "Deletion Protection Disabled for the resource",
-                        "Indicates that the instance has inefficient queries detected."
+                        "Indicates that the instance has inefficient queries detected.",
+                        "Indicates that the instance has read intensive workload.",
+                        "Indicates that the instance is nearing memory limit.",
+                        "Indicates that the instance's max server memory is configured higher than the recommended value.",
+                        "Indicates that the database has large rows beyond the recommended limit.",
+                        "Heavy write pressure on the database rows.",
+                        "Heavy read pressure on the database rows.",
+                        "Encryption org policy not satisfied.",
+                        "Location org policy not satisfied.",
+                        "Outdated DB minor version.",
+                        "Schema not optimized.",
+                        "High number of idle connections.",
+                        "Replication delay.",
+                        "Outdated version."
                     ],
                     "type": "string"
                 },
@@ -4516,7 +4739,7 @@
                     "type": "string"
                 },
                 "resourceType": {
-                    "description": "Required. The type of resource this ID is identifying. Ex redis.googleapis.com/Instance, redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance, spanner.googleapis.com/Database, firestore.googleapis.com/Database, sqladmin.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel",
+                    "description": "Required. The type of resource this ID is identifying. Ex go/keep-sorted start alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance compute.googleapis.com/Instance firestore.googleapis.com/Database, redis.googleapis.com/Instance, redis.googleapis.com/Cluster, oracledatabase.googleapis.com/CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/Instance, spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please refer go/condor-common-datamodel",
                     "type": "string"
                 },
                 "uniqueId": {
@@ -4527,7 +4750,7 @@
             "type": "object"
         },
         "StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata": {
-            "description": "Common model for database resource instance metadata. Next ID: 25",
+            "description": "Common model for database resource instance metadata. Next ID: 26",
             "id": "StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata",
             "properties": {
                 "availabilityConfiguration": {
@@ -4541,6 +4764,10 @@
                 "backupRun": {
                     "$ref": "StorageDatabasecenterPartnerapiV1mainBackupRun",
                     "description": "Latest backup run information for this instance"
+                },
+                "backupdrConfiguration": {
+                    "$ref": "StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration",
+                    "description": "Optional. BackupDR Configuration for the resource."
                 },
                 "creationTime": {
                     "description": "The creation time of the resource, i.e. the time when resource is created and recorded in partner service.",
@@ -4614,6 +4841,7 @@
                 },
                 "gcbdrConfiguration": {
                     "$ref": "StorageDatabasecenterPartnerapiV1mainGCBDRConfiguration",
+                    "deprecated": true,
                     "description": "GCBDR configuration for the resource."
                 },
                 "id": {
@@ -4872,7 +5100,20 @@
                         "SIGNAL_TYPE_EXPENSIVE_COMMANDS",
                         "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED",
                         "SIGNAL_TYPE_NO_DELETION_PROTECTION",
-                        "SIGNAL_TYPE_INEFFICIENT_QUERY"
+                        "SIGNAL_TYPE_INEFFICIENT_QUERY",
+                        "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD",
+                        "SIGNAL_TYPE_MEMORY_LIMIT",
+                        "SIGNAL_TYPE_MAX_SERVER_MEMORY",
+                        "SIGNAL_TYPE_LARGE_ROWS",
+                        "SIGNAL_TYPE_HIGH_WRITE_PRESSURE",
+                        "SIGNAL_TYPE_HIGH_READ_PRESSURE",
+                        "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED",
+                        "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED",
+                        "SIGNAL_TYPE_OUTDATED_MINOR_VERSION",
+                        "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED",
+                        "SIGNAL_TYPE_MANY_IDLE_CONNECTIONS",
+                        "SIGNAL_TYPE_REPLICATION_LAG",
+                        "SIGNAL_TYPE_OUTDATED_VERSION"
                     ],
                     "enumDeprecated": [
                         false,
@@ -4880,6 +5121,19 @@
                         false,
                         true,
                         true,
+                        true,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
                         false,
                         false,
                         false,
@@ -5052,7 +5306,20 @@
                         "Detects that expensive commands are being run on a database instance impacting overall performance.",
                         "Indicates that the instance does not have a maintenance policy configured.",
                         "Deletion Protection Disabled for the resource",
-                        "Indicates that the instance has inefficient queries detected."
+                        "Indicates that the instance has inefficient queries detected.",
+                        "Indicates that the instance has read intensive workload.",
+                        "Indicates that the instance is nearing memory limit.",
+                        "Indicates that the instance's max server memory is configured higher than the recommended value.",
+                        "Indicates that the database has large rows beyond the recommended limit.",
+                        "Heavy write pressure on the database rows.",
+                        "Heavy read pressure on the database rows.",
+                        "Encryption org policy not satisfied.",
+                        "Location org policy not satisfied.",
+                        "Outdated DB minor version.",
+                        "Schema not optimized.",
+                        "High number of idle connections.",
+                        "Replication delay.",
+                        "Outdated version."
                     ],
                     "type": "string"
                 }
@@ -5301,6 +5568,7 @@
                     "type": "string"
                 },
                 "timeBasedRetention": {
+                    "deprecated": true,
                     "format": "google-duration",
                     "type": "string"
                 },
@@ -5361,7 +5629,10 @@
                         "ENGINE_MEMORYSTORE_FOR_REDIS_CLUSTER",
                         "ENGINE_OTHER",
                         "ENGINE_FIRESTORE_WITH_NATIVE_MODE",
-                        "ENGINE_FIRESTORE_WITH_DATASTORE_MODE"
+                        "ENGINE_FIRESTORE_WITH_DATASTORE_MODE",
+                        "ENGINE_FIRESTORE_WITH_MONGODB_COMPATIBILITY_MODE",
+                        "ENGINE_EXADATA_ORACLE",
+                        "ENGINE_ADB_SERVERLESS_ORACLE"
                     ],
                     "enumDeprecated": [
                         false,
@@ -5373,6 +5644,9 @@
                         true,
                         false,
                         true,
+                        false,
+                        false,
+                        false,
                         false,
                         false,
                         false,
@@ -5397,8 +5671,15 @@
                         "Memorystore with Redis cluster dialect.",
                         "Other refers to rest of other database engine. This is to be when engine is known, but it is not present in this enum.",
                         "Firestore with native mode.",
-                        "Firestore with datastore mode."
+                        "Firestore with datastore mode.",
+                        "Firestore with MongoDB compatibility mode.",
+                        "Oracle Exadata engine.",
+                        "Oracle Autonomous DB Serverless engine."
                     ],
+                    "type": "string"
+                },
+                "minorVersion": {
+                    "description": "Minor version of the underlying database engine. Example values: For MySQL, it could be \"8.0.32\", \"5.7.32\" etc.. For Postgres, it could be \"14.3\", \"15.3\" etc..",
                     "type": "string"
                 },
                 "type": {
@@ -5414,8 +5695,10 @@
                         "ON_PREM",
                         "PRODUCT_TYPE_MEMORYSTORE",
                         "PRODUCT_TYPE_BIGTABLE",
-                        "PRODUCT_TYPE_OTHER",
-                        "PRODUCT_TYPE_FIRESTORE"
+                        "PRODUCT_TYPE_FIRESTORE",
+                        "PRODUCT_TYPE_COMPUTE_ENGINE",
+                        "PRODUCT_TYPE_ORACLE_ON_GCP",
+                        "PRODUCT_TYPE_OTHER"
                     ],
                     "enumDeprecated": [
                         false,
@@ -5426,6 +5709,8 @@
                         false,
                         false,
                         true,
+                        false,
+                        false,
                         false,
                         false,
                         false,
@@ -5442,8 +5727,10 @@
                         "On premises database product.",
                         "Memorystore product area in GCP",
                         "Bigtable product area in GCP",
-                        "Other refers to rest of other product type. This is to be when product type is known, but it is not present in this enum.",
-                        "Firestore product area in GCP."
+                        "Firestore product area in GCP.",
+                        "Compute Engine self managed databases",
+                        "Oracle product area in GCP",
+                        "Other refers to rest of other product type. This is to be when product type is known, but it is not present in this enum."
                     ],
                     "type": "string"
                 },

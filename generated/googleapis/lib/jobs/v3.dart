@@ -3540,19 +3540,20 @@ class NumericBucketingResult {
       };
 }
 
-/// Represents a postal address.
+/// Represents a postal address (for example, for postal delivery or payments
+/// addresses).
 ///
-/// For example for postal delivery or payments addresses. Given a postal
-/// address, a postal service can deliver items to a premise, P.O. Box or
-/// similar. It is not intended to model geographical locations (roads, towns,
-/// mountains). In typical usage an address would be created by user input or
-/// from importing existing data, depending on the type of process. Advice on
-/// address input / editing: - Use an internationalization-ready address widget
-/// such as https://github.com/google/libaddressinput) - Users should not be
-/// presented with UI elements for input or editing of fields outside countries
-/// where that field is used. For more guidance on how to use this schema, see:
-/// https://support.google.com/business/answer/6397478
-typedef PostalAddress = $PostalAddress;
+/// Given a postal address, a postal service can deliver items to a premise,
+/// P.O. box or similar. It is not intended to model geographical locations
+/// (roads, towns, mountains). In typical usage, an address would be created by
+/// user input or from importing existing data, depending on the type of
+/// process. Advice on address input or editing: - Use an
+/// internationalization-ready address widget such as
+/// https://github.com/google/libaddressinput. - Users should not be presented
+/// with UI elements for input or editing of fields outside countries where that
+/// field is used. For more guidance on how to use this schema, see:
+/// https://support.google.com/business/answer/6397478.
+typedef PostalAddress = $PostalAddress00;
 
 /// Input only.
 ///

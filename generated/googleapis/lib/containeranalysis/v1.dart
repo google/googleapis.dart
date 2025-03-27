@@ -15,8 +15,7 @@
 /// Container Analysis API - v1
 ///
 /// This API is a prerequisite for leveraging Artifact Analysis scanning
-/// capabilities in both Artifact Registry and with Advanced Vulnerability
-/// Insights (runtime scanning) in GKE. In addition, the Container Analysis API
+/// capabilities in Artifact Registry. In addition, the Container Analysis API
 /// is an implementation of the Grafeas API, which enables storing, querying,
 /// and retrieval of critical metadata about all of your software artifacts.
 ///
@@ -51,8 +50,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// This API is a prerequisite for leveraging Artifact Analysis scanning
-/// capabilities in both Artifact Registry and with Advanced Vulnerability
-/// Insights (runtime scanning) in GKE.
+/// capabilities in Artifact Registry.
 ///
 /// In addition, the Container Analysis API is an implementation of the Grafeas
 /// API, which enables storing, querying, and retrieval of critical metadata
@@ -336,6 +334,10 @@ class ProjectsLocationsNotesResource {
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
+  /// [returnPartialSuccess] - If set, the request will return all reachable
+  /// Notes and report all unreachable regions in the `unreachable` field in the
+  /// response. Only applicable for requests in the global region.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -351,12 +353,15 @@ class ProjectsLocationsNotesResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -849,6 +854,11 @@ class ProjectsLocationsOccurrencesResource {
   ///
   /// [filter] - The filter expression.
   ///
+  /// [returnPartialSuccess] - If set, the request will return all reachable
+  /// occurrence summaries and report all unreachable regions in the
+  /// `unreachable` field in the response. Only applicable for requests in the
+  /// global region.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -862,10 +872,13 @@ class ProjectsLocationsOccurrencesResource {
   async.Future<VulnerabilityOccurrencesSummary> getVulnerabilitySummary(
     core.String parent, {
     core.String? filter,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -898,6 +911,10 @@ class ProjectsLocationsOccurrencesResource {
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
+  /// [returnPartialSuccess] - If set, the request will return all reachable
+  /// Occurrences and report all unreachable regions in the `unreachable` field
+  /// in the response. Only applicable for requests in the global region.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -913,12 +930,15 @@ class ProjectsLocationsOccurrencesResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1364,6 +1384,10 @@ class ProjectsNotesResource {
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
+  /// [returnPartialSuccess] - If set, the request will return all reachable
+  /// Notes and report all unreachable regions in the `unreachable` field in the
+  /// response. Only applicable for requests in the global region.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1379,12 +1403,15 @@ class ProjectsNotesResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1869,6 +1896,11 @@ class ProjectsOccurrencesResource {
   ///
   /// [filter] - The filter expression.
   ///
+  /// [returnPartialSuccess] - If set, the request will return all reachable
+  /// occurrence summaries and report all unreachable regions in the
+  /// `unreachable` field in the response. Only applicable for requests in the
+  /// global region.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1882,10 +1914,13 @@ class ProjectsOccurrencesResource {
   async.Future<VulnerabilityOccurrencesSummary> getVulnerabilitySummary(
     core.String parent, {
     core.String? filter,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1918,6 +1953,10 @@ class ProjectsOccurrencesResource {
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
+  /// [returnPartialSuccess] - If set, the request will return all reachable
+  /// Occurrences and report all unreachable regions in the `unreachable` field
+  /// in the response. Only applicable for requests in the global region.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1933,12 +1972,15 @@ class ProjectsOccurrencesResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2357,6 +2399,9 @@ class AttestationOccurrence {
         if (signatures != null) 'signatures': signatures!,
       };
 }
+
+/// BaseImage describes a base image of a container image.
+typedef BaseImage = $BaseImage;
 
 /// Request to create notes in batch.
 class BatchCreateNotesRequest {
@@ -2831,7 +2876,7 @@ class BuildProvenance {
       };
 }
 
-typedef BuilderConfig = $Shared00;
+typedef BuilderConfig = $Shared01;
 
 /// Common Vulnerability Scoring System.
 ///
@@ -3466,6 +3511,7 @@ class DiscoveryNote {
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
   /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
+  /// - "SECRET" : This represents a secret.
   core.String? analysisKind;
 
   DiscoveryNote({
@@ -3524,6 +3570,9 @@ class DiscoveryOccurrence {
   /// The CPE of the resource being scanned.
   core.String? cpe;
 
+  /// Files that make up the resource described by the occurrence.
+  core.List<File>? files;
+
   /// The last time this resource was scanned.
   core.String? lastScanTime;
 
@@ -3538,6 +3587,7 @@ class DiscoveryOccurrence {
     this.archiveTime,
     this.continuousAnalysis,
     this.cpe,
+    this.files,
     this.lastScanTime,
     this.sbomStatus,
   });
@@ -3560,6 +3610,10 @@ class DiscoveryOccurrence {
           archiveTime: json_['archiveTime'] as core.String?,
           continuousAnalysis: json_['continuousAnalysis'] as core.String?,
           cpe: json_['cpe'] as core.String?,
+          files: (json_['files'] as core.List?)
+              ?.map((value) =>
+                  File.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           lastScanTime: json_['lastScanTime'] as core.String?,
           sbomStatus: json_.containsKey('sbomStatus')
               ? SBOMStatus.fromJson(
@@ -3577,6 +3631,7 @@ class DiscoveryOccurrence {
         if (continuousAnalysis != null)
           'continuousAnalysis': continuousAnalysis!,
         if (cpe != null) 'cpe': cpe!,
+        if (files != null) 'files': files!,
         if (lastScanTime != null) 'lastScanTime': lastScanTime!,
         if (sbomStatus != null) 'sbomStatus': sbomStatus!,
       };
@@ -3762,6 +3817,7 @@ class ExportSBOMResponse {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+typedef File = $File;
 
 /// Container message for hashes of byte content of files, used in source
 /// messages to verify integrity of source input to the build.
@@ -3916,23 +3972,33 @@ class GrafeasV1FileLocation {
   /// the path to war file combined with the path to jar file.
   core.String? filePath;
 
+  /// Each package found in a file should have its own layer metadata (that is,
+  /// information from the origin layer of the package).
+  LayerDetails? layerDetails;
+
   GrafeasV1FileLocation({
     this.filePath,
+    this.layerDetails,
   });
 
   GrafeasV1FileLocation.fromJson(core.Map json_)
       : this(
           filePath: json_['filePath'] as core.String?,
+          layerDetails: json_.containsKey('layerDetails')
+              ? LayerDetails.fromJson(
+                  json_['layerDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filePath != null) 'filePath': filePath!,
+        if (layerDetails != null) 'layerDetails': layerDetails!,
       };
 }
 
 /// Identifies the entity that executed the recipe, which is trusted to have
 /// correctly performed the operation and populated this provenance.
-typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared00;
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared01;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -4335,6 +4401,57 @@ class KnowledgeBase {
 /// Layer holds metadata specific to a layer of a Docker image.
 typedef Layer = $Layer;
 
+/// Details about the layer a package was found in.
+class LayerDetails {
+  /// The base images the layer is found within.
+  core.List<BaseImage>? baseImages;
+
+  /// The layer chain ID (sha256 hash) of the layer in the container image.
+  ///
+  /// https://github.com/opencontainers/image-spec/blob/main/config.md#layer-chainid
+  core.String? chainId;
+
+  /// The layer build command that was used to build the layer.
+  ///
+  /// This may not be found in all layers depending on how the container image
+  /// is built.
+  core.String? command;
+
+  /// The diff ID (typically a sha256 hash) of the layer in the container image.
+  core.String? diffId;
+
+  /// The index of the layer in the container image.
+  core.int? index;
+
+  LayerDetails({
+    this.baseImages,
+    this.chainId,
+    this.command,
+    this.diffId,
+    this.index,
+  });
+
+  LayerDetails.fromJson(core.Map json_)
+      : this(
+          baseImages: (json_['baseImages'] as core.List?)
+              ?.map((value) => BaseImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          chainId: json_['chainId'] as core.String?,
+          command: json_['command'] as core.String?,
+          diffId: json_['diffId'] as core.String?,
+          index: json_['index'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseImages != null) 'baseImages': baseImages!,
+        if (chainId != null) 'chainId': chainId!,
+        if (command != null) 'command': command!,
+        if (diffId != null) 'diffId': diffId!,
+        if (index != null) 'index': index!,
+      };
+}
+
 /// License information.
 typedef License = $License;
 
@@ -4377,9 +4494,16 @@ class ListNotesResponse {
   /// The notes requested.
   core.List<Note>? notes;
 
+  /// Unordered list.
+  ///
+  /// Unreachable regions. Populated for requests from the global region when
+  /// `return_partial_success` is set. Format: projects//locations/
+  core.List<core.String>? unreachable;
+
   ListNotesResponse({
     this.nextPageToken,
     this.notes,
+    this.unreachable,
   });
 
   ListNotesResponse.fromJson(core.Map json_)
@@ -4389,11 +4513,15 @@ class ListNotesResponse {
               ?.map((value) =>
                   Note.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (notes != null) 'notes': notes!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -4408,9 +4536,16 @@ class ListOccurrencesResponse {
   /// The occurrences requested.
   core.List<Occurrence>? occurrences;
 
+  /// Unordered list.
+  ///
+  /// Unreachable regions. Populated for requests from the global region when
+  /// `return_partial_success` is set. Format: projects//locations/
+  core.List<core.String>? unreachable;
+
   ListOccurrencesResponse({
     this.nextPageToken,
     this.occurrences,
+    this.unreachable,
   });
 
   ListOccurrencesResponse.fromJson(core.Map json_)
@@ -4420,11 +4555,15 @@ class ListOccurrencesResponse {
               ?.map((value) => Occurrence.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (occurrences != null) 'occurrences': occurrences!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -4586,6 +4725,7 @@ class Note {
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
   /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
+  /// - "SECRET" : This represents a secret.
   core.String? kind;
 
   /// A detailed description of this note.
@@ -4608,6 +4748,9 @@ class Note {
 
   /// A note describing an SBOM reference.
   SBOMReferenceNote? sbomReference;
+
+  /// A note describing a secret.
+  SecretNote? secret;
 
   /// A one sentence description of this note.
   core.String? shortDescription;
@@ -4645,6 +4788,7 @@ class Note {
     this.relatedNoteNames,
     this.relatedUrl,
     this.sbomReference,
+    this.secret,
     this.shortDescription,
     this.updateTime,
     this.upgrade,
@@ -4702,6 +4846,10 @@ class Note {
               ? SBOMReferenceNote.fromJson(
                   json_['sbomReference'] as core.Map<core.String, core.dynamic>)
               : null,
+          secret: json_.containsKey('secret')
+              ? SecretNote.fromJson(
+                  json_['secret'] as core.Map<core.String, core.dynamic>)
+              : null,
           shortDescription: json_['shortDescription'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           upgrade: json_.containsKey('upgrade')
@@ -4736,6 +4884,7 @@ class Note {
         if (relatedNoteNames != null) 'relatedNoteNames': relatedNoteNames!,
         if (relatedUrl != null) 'relatedUrl': relatedUrl!,
         if (sbomReference != null) 'sbomReference': sbomReference!,
+        if (secret != null) 'secret': secret!,
         if (shortDescription != null) 'shortDescription': shortDescription!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upgrade != null) 'upgrade': upgrade!,
@@ -4798,6 +4947,7 @@ class Occurrence {
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
   /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
+  /// - "SECRET" : This represents a secret.
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -4831,6 +4981,9 @@ class Occurrence {
   /// Describes a specific SBOM reference occurrences.
   SBOMReferenceOccurrence? sbomReference;
 
+  /// Describes a secret.
+  SecretOccurrence? secret;
+
   /// The time this occurrence was last updated.
   ///
   /// Output only.
@@ -4859,6 +5012,7 @@ class Occurrence {
     this.remediation,
     this.resourceUri,
     this.sbomReference,
+    this.secret,
     this.updateTime,
     this.upgrade,
     this.vulnerability,
@@ -4912,6 +5066,10 @@ class Occurrence {
               ? SBOMReferenceOccurrence.fromJson(
                   json_['sbomReference'] as core.Map<core.String, core.dynamic>)
               : null,
+          secret: json_.containsKey('secret')
+              ? SecretOccurrence.fromJson(
+                  json_['secret'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_['updateTime'] as core.String?,
           upgrade: json_.containsKey('upgrade')
               ? UpgradeOccurrence.fromJson(
@@ -4940,6 +5098,7 @@ class Occurrence {
         if (remediation != null) 'remediation': remediation!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
         if (sbomReference != null) 'sbomReference': sbomReference!,
+        if (secret != null) 'secret': secret!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upgrade != null) 'upgrade': upgrade!,
         if (vulnerability != null) 'vulnerability': vulnerability!,
@@ -5720,6 +5879,82 @@ class SbomReferenceIntotoPayload {
 /// A predicate which describes the SBOM being referenced.
 typedef SbomReferenceIntotoPredicate = $SbomReferenceIntotoPredicate;
 
+/// The location of the secret.
+class SecretLocation {
+  /// The secret is found from a file.
+  GrafeasV1FileLocation? fileLocation;
+
+  SecretLocation({
+    this.fileLocation,
+  });
+
+  SecretLocation.fromJson(core.Map json_)
+      : this(
+          fileLocation: json_.containsKey('fileLocation')
+              ? GrafeasV1FileLocation.fromJson(
+                  json_['fileLocation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileLocation != null) 'fileLocation': fileLocation!,
+      };
+}
+
+/// The note representing a secret.
+typedef SecretNote = $Empty;
+
+/// The occurrence provides details of a secret.
+class SecretOccurrence {
+  /// Type of secret.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SECRET_KIND_UNSPECIFIED" : Unspecified
+  /// - "SECRET_KIND_UNKNOWN" : The secret kind is unknown.
+  /// - "SECRET_KIND_GCP_SERVICE_ACCOUNT_KEY" : A GCP service account key per:
+  /// https://cloud.google.com/iam/docs/creating-managing-service-account-keys
+  core.String? kind;
+
+  /// Locations where the secret is detected.
+  ///
+  /// Optional.
+  core.List<SecretLocation>? locations;
+
+  /// Status of the secret.
+  ///
+  /// Optional.
+  core.List<SecretStatus>? statuses;
+
+  SecretOccurrence({
+    this.kind,
+    this.locations,
+    this.statuses,
+  });
+
+  SecretOccurrence.fromJson(core.Map json_)
+      : this(
+          kind: json_['kind'] as core.String?,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => SecretLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          statuses: (json_['statuses'] as core.List?)
+              ?.map((value) => SecretStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (locations != null) 'locations': locations!,
+        if (statuses != null) 'statuses': statuses!,
+      };
+}
+
+/// The status of the secret with a timestamp.
+typedef SecretStatus = $SecretStatus;
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -5766,7 +6001,7 @@ class SetIamPolicyRequest {
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
-typedef SlsaBuilder = $Shared00;
+typedef SlsaBuilder = $Shared01;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -6657,8 +6892,15 @@ class VulnerabilityOccurrencesSummary {
   /// A listing by resource of the number of fixable and total vulnerabilities.
   core.List<FixableTotalByDigest>? counts;
 
+  /// Unordered list.
+  ///
+  /// Unreachable regions. Populated for requests from the global region when
+  /// `return_partial_success` is set. Format: projects//locations/
+  core.List<core.String>? unreachable;
+
   VulnerabilityOccurrencesSummary({
     this.counts,
+    this.unreachable,
   });
 
   VulnerabilityOccurrencesSummary.fromJson(core.Map json_)
@@ -6667,10 +6909,14 @@ class VulnerabilityOccurrencesSummary {
               ?.map((value) => FixableTotalByDigest.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (counts != null) 'counts': counts!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 

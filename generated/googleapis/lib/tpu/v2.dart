@@ -169,6 +169,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -191,12 +195,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1996,6 +2002,11 @@ class Node {
   /// Tags are used to identify valid sources or targets for network firewalls.
   core.List<core.String>? tags;
 
+  /// Upcoming maintenance on this TPU node.
+  ///
+  /// Output only.
+  UpcomingMaintenance? upcomingMaintenance;
+
   Node({
     this.acceleratorConfig,
     this.acceleratorType,
@@ -2022,6 +2033,7 @@ class Node {
     this.state,
     this.symptoms,
     this.tags,
+    this.upcomingMaintenance,
   });
 
   Node.fromJson(core.Map json_)
@@ -2092,6 +2104,10 @@ class Node {
           tags: (json_['tags'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          upcomingMaintenance: json_.containsKey('upcomingMaintenance')
+              ? UpcomingMaintenance.fromJson(json_['upcomingMaintenance']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2121,6 +2137,8 @@ class Node {
         if (state != null) 'state': state!,
         if (symptoms != null) 'symptoms': symptoms!,
         if (tags != null) 'tags': tags!,
+        if (upcomingMaintenance != null)
+          'upcomingMaintenance': upcomingMaintenance!,
       };
 }
 
@@ -2753,5 +2771,71 @@ class Tpu {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nodeSpec != null) 'nodeSpec': nodeSpec!,
+      };
+}
+
+/// Upcoming Maintenance notification information.
+class UpcomingMaintenance {
+  /// Indicates if the maintenance can be customer triggered.
+  core.bool? canReschedule;
+
+  /// The latest time for the planned maintenance window to start.
+  ///
+  /// This timestamp value is in RFC3339 text format.
+  core.String? latestWindowStartTime;
+
+  /// The status of the maintenance.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unknown maintenance status. Do not use this value.
+  /// - "PENDING" : There is pending maintenance.
+  /// - "ONGOING" : There is ongoing maintenance on this VM.
+  core.String? maintenanceStatus;
+
+  /// Defines the type of maintenance.
+  /// Possible string values are:
+  /// - "UNKNOWN_TYPE" : No type specified. Do not use this value.
+  /// - "SCHEDULED" : Scheduled maintenance (e.g. maintenance after uptime
+  /// guarantee is complete).
+  /// - "UNSCHEDULED" : Unscheduled maintenance (e.g. emergency maintenance
+  /// during uptime guarantee).
+  core.String? type;
+
+  /// The time by which the maintenance disruption will be completed.
+  ///
+  /// This timestamp value is in RFC3339 text format.
+  core.String? windowEndTime;
+
+  /// The current start time of the maintenance window.
+  ///
+  /// This timestamp value is in RFC3339 text format.
+  core.String? windowStartTime;
+
+  UpcomingMaintenance({
+    this.canReschedule,
+    this.latestWindowStartTime,
+    this.maintenanceStatus,
+    this.type,
+    this.windowEndTime,
+    this.windowStartTime,
+  });
+
+  UpcomingMaintenance.fromJson(core.Map json_)
+      : this(
+          canReschedule: json_['canReschedule'] as core.bool?,
+          latestWindowStartTime: json_['latestWindowStartTime'] as core.String?,
+          maintenanceStatus: json_['maintenanceStatus'] as core.String?,
+          type: json_['type'] as core.String?,
+          windowEndTime: json_['windowEndTime'] as core.String?,
+          windowStartTime: json_['windowStartTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (canReschedule != null) 'canReschedule': canReschedule!,
+        if (latestWindowStartTime != null)
+          'latestWindowStartTime': latestWindowStartTime!,
+        if (maintenanceStatus != null) 'maintenanceStatus': maintenanceStatus!,
+        if (type != null) 'type': type!,
+        if (windowEndTime != null) 'windowEndTime': windowEndTime!,
+        if (windowStartTime != null) 'windowStartTime': windowStartTime!,
       };
 }

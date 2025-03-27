@@ -1962,6 +1962,7 @@ void main() {
       final arg_request = buildGoogleCloudDatacatalogLineageV1Process();
       final arg_name = 'foo';
       final arg_allowMissing = true;
+      final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2005,6 +2006,10 @@ void main() {
           unittest.equals('$arg_allowMissing'),
         );
         unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
           queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
@@ -2022,6 +2027,7 @@ void main() {
       }), true);
       final response = await res.patch(arg_request, arg_name,
           allowMissing: arg_allowMissing,
+          requestId: arg_requestId,
           updateMask: arg_updateMask,
           $fields: arg_$fields);
       checkGoogleCloudDatacatalogLineageV1Process(

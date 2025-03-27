@@ -88,6 +88,72 @@ void checkComputeFlightEmissionsResponse(api.ComputeFlightEmissionsResponse o) {
   buildCounterComputeFlightEmissionsResponse--;
 }
 
+core.List<api.Market> buildUnnamed2() => [
+      buildMarket(),
+      buildMarket(),
+    ];
+
+void checkUnnamed2(core.List<api.Market> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMarket(o[0]);
+  checkMarket(o[1]);
+}
+
+core.int buildCounterComputeTypicalFlightEmissionsRequest = 0;
+api.ComputeTypicalFlightEmissionsRequest
+    buildComputeTypicalFlightEmissionsRequest() {
+  final o = api.ComputeTypicalFlightEmissionsRequest();
+  buildCounterComputeTypicalFlightEmissionsRequest++;
+  if (buildCounterComputeTypicalFlightEmissionsRequest < 3) {
+    o.markets = buildUnnamed2();
+  }
+  buildCounterComputeTypicalFlightEmissionsRequest--;
+  return o;
+}
+
+void checkComputeTypicalFlightEmissionsRequest(
+    api.ComputeTypicalFlightEmissionsRequest o) {
+  buildCounterComputeTypicalFlightEmissionsRequest++;
+  if (buildCounterComputeTypicalFlightEmissionsRequest < 3) {
+    checkUnnamed2(o.markets!);
+  }
+  buildCounterComputeTypicalFlightEmissionsRequest--;
+}
+
+core.List<api.TypicalFlightEmissions> buildUnnamed3() => [
+      buildTypicalFlightEmissions(),
+      buildTypicalFlightEmissions(),
+    ];
+
+void checkUnnamed3(core.List<api.TypicalFlightEmissions> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTypicalFlightEmissions(o[0]);
+  checkTypicalFlightEmissions(o[1]);
+}
+
+core.int buildCounterComputeTypicalFlightEmissionsResponse = 0;
+api.ComputeTypicalFlightEmissionsResponse
+    buildComputeTypicalFlightEmissionsResponse() {
+  final o = api.ComputeTypicalFlightEmissionsResponse();
+  buildCounterComputeTypicalFlightEmissionsResponse++;
+  if (buildCounterComputeTypicalFlightEmissionsResponse < 3) {
+    o.modelVersion = buildModelVersion();
+    o.typicalFlightEmissions = buildUnnamed3();
+  }
+  buildCounterComputeTypicalFlightEmissionsResponse--;
+  return o;
+}
+
+void checkComputeTypicalFlightEmissionsResponse(
+    api.ComputeTypicalFlightEmissionsResponse o) {
+  buildCounterComputeTypicalFlightEmissionsResponse++;
+  if (buildCounterComputeTypicalFlightEmissionsResponse < 3) {
+    checkModelVersion(o.modelVersion!);
+    checkUnnamed3(o.typicalFlightEmissions!);
+  }
+  buildCounterComputeTypicalFlightEmissionsResponse--;
+}
+
 core.int buildCounterDate = 0;
 api.Date buildDate() {
   final o = api.Date();
@@ -118,6 +184,37 @@ void checkDate(api.Date o) {
     );
   }
   buildCounterDate--;
+}
+
+core.int buildCounterEasaLabelMetadata = 0;
+api.EasaLabelMetadata buildEasaLabelMetadata() {
+  final o = api.EasaLabelMetadata();
+  buildCounterEasaLabelMetadata++;
+  if (buildCounterEasaLabelMetadata < 3) {
+    o.labelExpiryDate = buildDate();
+    o.labelIssueDate = buildDate();
+    o.labelVersion = 'foo';
+    o.safDiscountPercentage = 42.0;
+  }
+  buildCounterEasaLabelMetadata--;
+  return o;
+}
+
+void checkEasaLabelMetadata(api.EasaLabelMetadata o) {
+  buildCounterEasaLabelMetadata++;
+  if (buildCounterEasaLabelMetadata < 3) {
+    checkDate(o.labelExpiryDate!);
+    checkDate(o.labelIssueDate!);
+    unittest.expect(
+      o.labelVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.safDiscountPercentage!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterEasaLabelMetadata--;
 }
 
 core.int buildCounterEmissionsGramsPerPax = 0;
@@ -201,8 +298,11 @@ api.FlightWithEmissions buildFlightWithEmissions() {
   final o = api.FlightWithEmissions();
   buildCounterFlightWithEmissions++;
   if (buildCounterFlightWithEmissions < 3) {
+    o.contrailsImpactBucket = 'foo';
+    o.easaLabelMetadata = buildEasaLabelMetadata();
     o.emissionsGramsPerPax = buildEmissionsGramsPerPax();
     o.flight = buildFlight();
+    o.source = 'foo';
   }
   buildCounterFlightWithEmissions--;
   return o;
@@ -211,10 +311,46 @@ api.FlightWithEmissions buildFlightWithEmissions() {
 void checkFlightWithEmissions(api.FlightWithEmissions o) {
   buildCounterFlightWithEmissions++;
   if (buildCounterFlightWithEmissions < 3) {
+    unittest.expect(
+      o.contrailsImpactBucket!,
+      unittest.equals('foo'),
+    );
+    checkEasaLabelMetadata(o.easaLabelMetadata!);
     checkEmissionsGramsPerPax(o.emissionsGramsPerPax!);
     checkFlight(o.flight!);
+    unittest.expect(
+      o.source!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterFlightWithEmissions--;
+}
+
+core.int buildCounterMarket = 0;
+api.Market buildMarket() {
+  final o = api.Market();
+  buildCounterMarket++;
+  if (buildCounterMarket < 3) {
+    o.destination = 'foo';
+    o.origin = 'foo';
+  }
+  buildCounterMarket--;
+  return o;
+}
+
+void checkMarket(api.Market o) {
+  buildCounterMarket++;
+  if (buildCounterMarket < 3) {
+    unittest.expect(
+      o.destination!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.origin!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMarket--;
 }
 
 core.int buildCounterModelVersion = 0;
@@ -254,6 +390,27 @@ void checkModelVersion(api.ModelVersion o) {
   buildCounterModelVersion--;
 }
 
+core.int buildCounterTypicalFlightEmissions = 0;
+api.TypicalFlightEmissions buildTypicalFlightEmissions() {
+  final o = api.TypicalFlightEmissions();
+  buildCounterTypicalFlightEmissions++;
+  if (buildCounterTypicalFlightEmissions < 3) {
+    o.emissionsGramsPerPax = buildEmissionsGramsPerPax();
+    o.market = buildMarket();
+  }
+  buildCounterTypicalFlightEmissions--;
+  return o;
+}
+
+void checkTypicalFlightEmissions(api.TypicalFlightEmissions o) {
+  buildCounterTypicalFlightEmissions++;
+  if (buildCounterTypicalFlightEmissions < 3) {
+    checkEmissionsGramsPerPax(o.emissionsGramsPerPax!);
+    checkMarket(o.market!);
+  }
+  buildCounterTypicalFlightEmissions--;
+}
+
 void main() {
   unittest.group('obj-schema-ComputeFlightEmissionsRequest', () {
     unittest.test('to-json--from-json', () async {
@@ -275,6 +432,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ComputeTypicalFlightEmissionsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildComputeTypicalFlightEmissionsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ComputeTypicalFlightEmissionsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkComputeTypicalFlightEmissionsRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ComputeTypicalFlightEmissionsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildComputeTypicalFlightEmissionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ComputeTypicalFlightEmissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkComputeTypicalFlightEmissionsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-Date', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDate();
@@ -282,6 +459,16 @@ void main() {
       final od =
           api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDate(od);
+    });
+  });
+
+  unittest.group('obj-schema-EasaLabelMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEasaLabelMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EasaLabelMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEasaLabelMetadata(od);
     });
   });
 
@@ -315,6 +502,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Market', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMarket();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Market.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkMarket(od);
+    });
+  });
+
   unittest.group('obj-schema-ModelVersion', () {
     unittest.test('to-json--from-json', () async {
       final o = buildModelVersion();
@@ -322,6 +519,16 @@ void main() {
       final od = api.ModelVersion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkModelVersion(od);
+    });
+  });
+
+  unittest.group('obj-schema-TypicalFlightEmissions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTypicalFlightEmissions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TypicalFlightEmissions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTypicalFlightEmissions(od);
     });
   });
 
@@ -381,6 +588,64 @@ void main() {
           await res.computeFlightEmissions(arg_request, $fields: arg_$fields);
       checkComputeFlightEmissionsResponse(
           response as api.ComputeFlightEmissionsResponse);
+    });
+
+    unittest.test('method--computeTypicalFlightEmissions', () async {
+      final mock = HttpServerMock();
+      final res = api.TravelImpactModelApi(mock).flights;
+      final arg_request = buildComputeTypicalFlightEmissionsRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ComputeTypicalFlightEmissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkComputeTypicalFlightEmissionsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 40),
+          unittest.equals('v1/flights:computeTypicalFlightEmissions'),
+        );
+        pathOffset += 40;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildComputeTypicalFlightEmissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.computeTypicalFlightEmissions(arg_request,
+          $fields: arg_$fields);
+      checkComputeTypicalFlightEmissionsResponse(
+          response as api.ComputeTypicalFlightEmissionsResponse);
     });
   });
 }

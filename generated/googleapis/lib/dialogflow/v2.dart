@@ -81,6 +81,7 @@
 ///     - [ProjectsLocationsKnowledgeBasesResource]
 ///       - [ProjectsLocationsKnowledgeBasesDocumentsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsSipTrunksResource]
 ///     - [ProjectsLocationsStatelessSuggestionResource]
 ///     - [ProjectsLocationsSuggestionsResource]
 ///   - [ProjectsOperationsResource]
@@ -6639,6 +6640,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsKnowledgeBasesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsSipTrunksResource get sipTrunks =>
+      ProjectsLocationsSipTrunksResource(_requester);
   ProjectsLocationsStatelessSuggestionResource get statelessSuggestion =>
       ProjectsLocationsStatelessSuggestionResource(_requester);
   ProjectsLocationsSuggestionsResource get suggestions =>
@@ -6800,6 +6803,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -6822,12 +6829,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudLocationListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -13258,6 +13267,226 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsSipTrunksResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSipTrunksResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a SipTrunk for a specified location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location to create a SIP trunk for. Format:
+  /// `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SipTrunk].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SipTrunk> create(
+    GoogleCloudDialogflowV2SipTrunk request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sipTrunks';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2SipTrunk.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a specified SipTrunk.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SIP trunk to delete. Format:
+  /// `projects//locations//sipTrunks/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sipTrunks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified SipTrunk.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SIP trunk to delete. Format:
+  /// `projects//locations//sipTrunks/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sipTrunks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SipTrunk].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SipTrunk> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2SipTrunk.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of SipTrunks in the specified location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location to list SIP trunks from. Format:
+  /// `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListSipTrunksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListSipTrunksResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sipTrunks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2ListSipTrunksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified SipTrunk.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The unique identifier of the SIP trunk. Format:
+  /// `projects//locations//sipTrunks/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sipTrunks/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The mask to control which fields get updated. If
+  /// the mask is not present, all fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SipTrunk].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SipTrunk> patch(
+    GoogleCloudDialogflowV2SipTrunk request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2SipTrunk.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsStatelessSuggestionResource {
   final commons.ApiRequester _requester;
 
@@ -15102,6 +15331,101 @@ class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest {
 /// The request message for Conversations.CompleteConversation.
 typedef GoogleCloudDialogflowV2CompleteConversationRequest = $Empty;
 
+/// Represents a connection for SIP Trunk.
+class GoogleCloudDialogflowV2Connection {
+  /// The unique identifier of the SIP Trunk connection.
+  ///
+  /// Output only.
+  core.String? connectionId;
+
+  /// The error details for the connection.
+  ///
+  /// Only populated when authentication errors occur.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2ConnectionErrorDetails? errorDetails;
+
+  /// State of the connection.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : SIP Trunk connection state is Not specified.
+  /// - "CONNECTED" : SIP Trunk connection is connected.
+  /// - "DISCONNECTED" : SIP Trunk connection is disconnected.
+  /// - "AUTHENTICATION_FAILED" : SIP Trunk connection has authentication error.
+  /// - "KEEPALIVE" : SIP Trunk connection is keepalive.
+  core.String? state;
+
+  /// When the connection status changed.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDialogflowV2Connection({
+    this.connectionId,
+    this.errorDetails,
+    this.state,
+    this.updateTime,
+  });
+
+  GoogleCloudDialogflowV2Connection.fromJson(core.Map json_)
+      : this(
+          connectionId: json_['connectionId'] as core.String?,
+          errorDetails: json_.containsKey('errorDetails')
+              ? GoogleCloudDialogflowV2ConnectionErrorDetails.fromJson(
+                  json_['errorDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionId != null) 'connectionId': connectionId!,
+        if (errorDetails != null) 'errorDetails': errorDetails!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The error details of Sip Trunk connection authentication.
+class GoogleCloudDialogflowV2ConnectionErrorDetails {
+  /// The status of the certificate authentication.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CERTIFICATE_STATE_UNSPECIFIED" : Certificate state is not specified.
+  /// - "CERTIFICATE_VALID" : Certificate is valid.
+  /// - "CERTIFICATE_INVALID" : Catch all for any error not specified.
+  /// - "CERTIFICATE_EXPIRED" : Certificate leaf node has expired.
+  /// - "CERTIFICATE_HOSTNAME_NOT_FOUND" : There is no hostname defined to
+  /// authenticate in SipTrunkingServer.
+  /// - "CERTIFICATE_UNAUTHENTICATED" : No path found from the leaf certificate
+  /// to any root.
+  /// - "CERTIFICATE_TRUST_STORE_NOT_FOUND" : Trust store does not exist.
+  /// - "CERTIFICATE_HOSTNAME_INVALID_FORMAT" : Hostname has invalid format.
+  /// - "CERTIFICATE_QUOTA_EXCEEDED" : Certificate has exhausted its quota.
+  core.String? certificateState;
+
+  /// The error message provided from SIP trunking auth service
+  core.String? errorMessage;
+
+  GoogleCloudDialogflowV2ConnectionErrorDetails({
+    this.certificateState,
+    this.errorMessage,
+  });
+
+  GoogleCloudDialogflowV2ConnectionErrorDetails.fromJson(core.Map json_)
+      : this(
+          certificateState: json_['certificateState'] as core.String?,
+          errorMessage: json_['errorMessage'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateState != null) 'certificateState': certificateState!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+      };
+}
+
 /// Dialogflow contexts are similar to natural language context.
 ///
 /// If a person says to you "they are orange", you need context in order to
@@ -16013,8 +16337,8 @@ class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo {
 
   /// SDP of the call.
   ///
-  /// It's initially the SDP answer to the endpoint, but maybe later updated for
-  /// the purpose of making the link active, etc.
+  /// It's initially the SDP answer to the incoming call, but maybe later
+  /// updated for the purpose of making the link active, etc.
   ///
   /// Optional.
   core.String? sdp;
@@ -16150,6 +16474,48 @@ class GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (conversationModelEvaluation != null)
           'conversationModelEvaluation': conversationModelEvaluation!,
+      };
+}
+
+/// Pronunciation customization for a phrase.
+class GoogleCloudDialogflowV2CustomPronunciationParams {
+  /// The phonetic encoding of the phrase.
+  /// Possible string values are:
+  /// - "PHONETIC_ENCODING_UNSPECIFIED" : Not specified.
+  /// - "PHONETIC_ENCODING_IPA" : IPA, such as apple -\> ˈæpəl.
+  /// https://en.wikipedia.org/wiki/International_Phonetic_Alphabet
+  /// - "PHONETIC_ENCODING_X_SAMPA" : X-SAMPA, such as apple -\> "{p@l".
+  /// https://en.wikipedia.org/wiki/X-SAMPA
+  core.String? phoneticEncoding;
+
+  /// The phrase to which the customization is applied.
+  ///
+  /// The phrase can be multiple words, such as proper nouns, but shouldn't span
+  /// the length of the sentence.
+  core.String? phrase;
+
+  /// The pronunciation of the phrase.
+  ///
+  /// This must be in the phonetic encoding specified above.
+  core.String? pronunciation;
+
+  GoogleCloudDialogflowV2CustomPronunciationParams({
+    this.phoneticEncoding,
+    this.phrase,
+    this.pronunciation,
+  });
+
+  GoogleCloudDialogflowV2CustomPronunciationParams.fromJson(core.Map json_)
+      : this(
+          phoneticEncoding: json_['phoneticEncoding'] as core.String?,
+          phrase: json_['phrase'] as core.String?,
+          pronunciation: json_['pronunciation'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (phoneticEncoding != null) 'phoneticEncoding': phoneticEncoding!,
+        if (phrase != null) 'phrase': phrase!,
+        if (pronunciation != null) 'pronunciation': pronunciation!,
       };
 }
 
@@ -17593,6 +17959,17 @@ class GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest {
   /// Format: `projects//locations//generators/`
   core.String? generatorName;
 
+  /// Name of the CX SecuritySettings which is used to redact generated
+  /// response.
+  ///
+  /// If this field is empty, try to fetch v2 security_settings, which is a
+  /// project level setting. If this field is empty and no v2 security_settings
+  /// set up in this project, no redaction will be done. Format:
+  /// `projects//locations//securitySettings/`.
+  ///
+  /// Optional.
+  core.String? securitySettings;
+
   /// A list of trigger events.
   ///
   /// Generator will be triggered only if it's trigger event is included here.
@@ -17605,6 +17982,7 @@ class GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest {
     this.conversationContext,
     this.generator,
     this.generatorName,
+    this.securitySettings,
     this.triggerEvents,
   });
 
@@ -17630,6 +18008,7 @@ class GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest {
                   json_['generator'] as core.Map<core.String, core.dynamic>)
               : null,
           generatorName: json_['generatorName'] as core.String?,
+          securitySettings: json_['securitySettings'] as core.String?,
           triggerEvents: (json_['triggerEvents'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -17641,6 +18020,7 @@ class GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest {
           'conversationContext': conversationContext!,
         if (generator != null) 'generator': generator!,
         if (generatorName != null) 'generatorName': generatorName!,
+        if (securitySettings != null) 'securitySettings': securitySettings!,
         if (triggerEvents != null) 'triggerEvents': triggerEvents!,
       };
 }
@@ -18014,6 +18394,13 @@ class GoogleCloudDialogflowV2Generator {
   /// Input of prebuilt Summarization feature.
   GoogleCloudDialogflowV2SummarizationContext? summarizationContext;
 
+  /// Resource names of the tools that the generator can choose from.
+  ///
+  /// Format: `projects//locations//tools/`.
+  ///
+  /// Optional.
+  core.List<core.String>? tools;
+
   /// The trigger event of the generator.
   ///
   /// It defines when the generator is triggered in a conversation.
@@ -18043,6 +18430,7 @@ class GoogleCloudDialogflowV2Generator {
     this.name,
     this.publishedModel,
     this.summarizationContext,
+    this.tools,
     this.triggerEvent,
     this.updateTime,
   });
@@ -18068,6 +18456,9 @@ class GoogleCloudDialogflowV2Generator {
                   json_['summarizationContext']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          tools: (json_['tools'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           triggerEvent: json_['triggerEvent'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -18082,6 +18473,7 @@ class GoogleCloudDialogflowV2Generator {
         if (publishedModel != null) 'publishedModel': publishedModel!,
         if (summarizationContext != null)
           'summarizationContext': summarizationContext!,
+        if (tools != null) 'tools': tools!,
         if (triggerEvent != null) 'triggerEvent': triggerEvent!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -18099,9 +18491,16 @@ class GoogleCloudDialogflowV2GeneratorSuggestion {
   /// Optional.
   GoogleCloudDialogflowV2SummarySuggestion? summarySuggestion;
 
+  /// List of request and response for tool calls executed.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo>?
+      toolCallInfo;
+
   GoogleCloudDialogflowV2GeneratorSuggestion({
     this.freeFormSuggestion,
     this.summarySuggestion,
+    this.toolCallInfo,
   });
 
   GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(core.Map json_)
@@ -18116,12 +18515,55 @@ class GoogleCloudDialogflowV2GeneratorSuggestion {
                   json_['summarySuggestion']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          toolCallInfo: (json_['toolCallInfo'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (freeFormSuggestion != null)
           'freeFormSuggestion': freeFormSuggestion!,
         if (summarySuggestion != null) 'summarySuggestion': summarySuggestion!,
+        if (toolCallInfo != null) 'toolCallInfo': toolCallInfo!,
+      };
+}
+
+/// Request and response for a tool call.
+class GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo {
+  /// Request for a tool call.
+  ///
+  /// Required.
+  GoogleCloudDialogflowV2ToolCall? toolCall;
+
+  /// Response for a tool call.
+  ///
+  /// Required.
+  GoogleCloudDialogflowV2ToolCallResult? toolCallResult;
+
+  GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo({
+    this.toolCall,
+    this.toolCallResult,
+  });
+
+  GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo.fromJson(
+      core.Map json_)
+      : this(
+          toolCall: json_.containsKey('toolCall')
+              ? GoogleCloudDialogflowV2ToolCall.fromJson(
+                  json_['toolCall'] as core.Map<core.String, core.dynamic>)
+              : null,
+          toolCallResult: json_.containsKey('toolCallResult')
+              ? GoogleCloudDialogflowV2ToolCallResult.fromJson(
+                  json_['toolCallResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (toolCall != null) 'toolCall': toolCall!,
+        if (toolCallResult != null) 'toolCallResult': toolCallResult!,
       };
 }
 
@@ -18196,8 +18638,9 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
   /// Version of current baseline model.
   ///
-  /// It will be ignored if model is set. Valid versions are: Article Suggestion
-  /// baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+  /// It will be ignored if model is set. Valid versions are: - Article
+  /// Suggestion baseline model: - 0.9 - 1.0 (default) - Summarization baseline
+  /// model: - 1.0
   core.String? baselineModelVersion;
 
   /// Conversation model resource name.
@@ -19346,7 +19789,8 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// Dialogflow does not do translations. See
   /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
   /// for a list of the currently supported language codes. Note that queries in
-  /// the same session do not necessarily need to specify the same language.
+  /// the same session do not necessarily need to specify the same language. If
+  /// not set, the language is inferred from the ConversationProfile.stt_config.
   ///
   /// Required.
   core.String? languageCode;
@@ -22112,6 +22556,35 @@ class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
       };
 }
 
+/// The response message for SipTrunks.ListSipTrunks.
+class GoogleCloudDialogflowV2ListSipTrunksResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// The list of SIP trunks.
+  core.List<GoogleCloudDialogflowV2SipTrunk>? sipTrunks;
+
+  GoogleCloudDialogflowV2ListSipTrunksResponse({
+    this.nextPageToken,
+    this.sipTrunks,
+  });
+
+  GoogleCloudDialogflowV2ListSipTrunksResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sipTrunks: (json_['sipTrunks'] as core.List?)
+              ?.map((value) => GoogleCloudDialogflowV2SipTrunk.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sipTrunks != null) 'sipTrunks': sipTrunks!,
+      };
+}
+
 /// The response message for Versions.ListVersions.
 class GoogleCloudDialogflowV2ListVersionsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -23672,7 +24145,7 @@ class GoogleCloudDialogflowV2SearchKnowledgeResponse {
 /// See:
 /// https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values
 /// for how to interpret the result.
-typedef GoogleCloudDialogflowV2Sentiment = $Shared13;
+typedef GoogleCloudDialogflowV2Sentiment = $Shared12;
 
 /// Configures the types of sentiment analysis to perform.
 class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
@@ -23841,6 +24314,59 @@ class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest {
         if (participantRole != null) 'participantRole': participantRole!,
         if (suggestionFeatureConfig != null)
           'suggestionFeatureConfig': suggestionFeatureConfig!,
+      };
+}
+
+/// SipTrunk is the resource that represents a SIP trunk to connect to Google
+/// Telephony platform SIP trunking service.
+class GoogleCloudDialogflowV2SipTrunk {
+  /// Connections of the SIP trunk.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2Connection>? connections;
+
+  /// Human readable alias for this trunk.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// The expected hostnames in the peer certificate from partner that is used
+  /// for TLS authentication.
+  ///
+  /// Required.
+  core.List<core.String>? expectedHostname;
+
+  /// Identifier.
+  ///
+  /// The unique identifier of the SIP trunk. Format:
+  /// `projects//locations//sipTrunks/`.
+  core.String? name;
+
+  GoogleCloudDialogflowV2SipTrunk({
+    this.connections,
+    this.displayName,
+    this.expectedHostname,
+    this.name,
+  });
+
+  GoogleCloudDialogflowV2SipTrunk.fromJson(core.Map json_)
+      : this(
+          connections: (json_['connections'] as core.List?)
+              ?.map((value) => GoogleCloudDialogflowV2Connection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          displayName: json_['displayName'] as core.String?,
+          expectedHostname: (json_['expectedHostname'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connections != null) 'connections': connections!,
+        if (displayName != null) 'displayName': displayName!,
+        if (expectedHostname != null) 'expectedHostname': expectedHostname!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -24075,7 +24601,9 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
   /// Dialogflow does not do translations. See
   /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
   /// for a list of the currently supported language codes. Note that queries in
-  /// the same session do not necessarily need to specify the same language.
+  /// the same session do not necessarily need to specify the same language. If
+  /// not specified, the default language configured at ConversationProfile is
+  /// used.
   core.String? languageCode;
 
   /// Which Speech model to select.
@@ -25050,6 +25578,11 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
   /// Optional.
   core.double? pitch;
 
+  /// The custom pronunciations for the synthesized audio.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowV2CustomPronunciationParams>? pronunciations;
+
   /// Speaking rate/speed, in the range \[0.25, 4.0\].
   ///
   /// 1.0 is the normal native speed supported by the specific voice. 2.0 is
@@ -25080,6 +25613,7 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
   GoogleCloudDialogflowV2SynthesizeSpeechConfig({
     this.effectsProfileId,
     this.pitch,
+    this.pronunciations,
     this.speakingRate,
     this.voice,
     this.volumeGainDb,
@@ -25091,6 +25625,11 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
               ?.map((value) => value as core.String)
               .toList(),
           pitch: (json_['pitch'] as core.num?)?.toDouble(),
+          pronunciations: (json_['pronunciations'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDialogflowV2CustomPronunciationParams.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           speakingRate: (json_['speakingRate'] as core.num?)?.toDouble(),
           voice: json_.containsKey('voice')
               ? GoogleCloudDialogflowV2VoiceSelectionParams.fromJson(
@@ -25102,6 +25641,7 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (effectsProfileId != null) 'effectsProfileId': effectsProfileId!,
         if (pitch != null) 'pitch': pitch!,
+        if (pronunciations != null) 'pronunciations': pronunciations!,
         if (speakingRate != null) 'speakingRate': speakingRate!,
         if (voice != null) 'voice': voice!,
         if (volumeGainDb != null) 'volumeGainDb': volumeGainDb!,
@@ -25229,6 +25769,130 @@ class GoogleCloudDialogflowV2TextToSpeechSettings {
           'synthesizeSpeechConfigs': synthesizeSpeechConfigs!,
       };
 }
+
+/// Represents a call of a specific tool's action with the specified inputs.
+class GoogleCloudDialogflowV2ToolCall {
+  /// The name of the tool's action associated with this call.
+  ///
+  /// Optional.
+  core.String? action;
+
+  /// Create time of the tool call.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The action's input parameters.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? inputParameters;
+
+  /// The tool associated with this call.
+  ///
+  /// Format: `projects//locations//tools/`.
+  ///
+  /// Optional.
+  core.String? tool;
+
+  GoogleCloudDialogflowV2ToolCall({
+    this.action,
+    this.createTime,
+    this.inputParameters,
+    this.tool,
+  });
+
+  GoogleCloudDialogflowV2ToolCall.fromJson(core.Map json_)
+      : this(
+          action: json_['action'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          inputParameters: json_.containsKey('inputParameters')
+              ? json_['inputParameters'] as core.Map<core.String, core.dynamic>
+              : null,
+          tool: json_['tool'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (createTime != null) 'createTime': createTime!,
+        if (inputParameters != null) 'inputParameters': inputParameters!,
+        if (tool != null) 'tool': tool!,
+      };
+}
+
+/// The result of calling a tool's action.
+class GoogleCloudDialogflowV2ToolCallResult {
+  /// The name of the tool's action associated with this call.
+  ///
+  /// Optional.
+  core.String? action;
+
+  /// Only populated if the response content is utf-8 encoded.
+  core.String? content;
+
+  /// Create time of the tool call result.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The tool call's error.
+  GoogleCloudDialogflowV2ToolCallResultError? error;
+
+  /// Only populated if the response content is not utf-8 encoded.
+  ///
+  /// (by definition byte fields are base64 encoded).
+  core.String? rawContent;
+  core.List<core.int> get rawContentAsBytes =>
+      convert.base64.decode(rawContent!);
+
+  set rawContentAsBytes(core.List<core.int> bytes_) {
+    rawContent =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The tool associated with this call.
+  ///
+  /// Format: `projects//locations//tools/`.
+  ///
+  /// Optional.
+  core.String? tool;
+
+  GoogleCloudDialogflowV2ToolCallResult({
+    this.action,
+    this.content,
+    this.createTime,
+    this.error,
+    this.rawContent,
+    this.tool,
+  });
+
+  GoogleCloudDialogflowV2ToolCallResult.fromJson(core.Map json_)
+      : this(
+          action: json_['action'] as core.String?,
+          content: json_['content'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          error: json_.containsKey('error')
+              ? GoogleCloudDialogflowV2ToolCallResultError.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rawContent: json_['rawContent'] as core.String?,
+          tool: json_['tool'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (content != null) 'content': content!,
+        if (createTime != null) 'createTime': createTime!,
+        if (error != null) 'error': error!,
+        if (rawContent != null) 'rawContent': rawContent!,
+        if (tool != null) 'tool': tool!,
+      };
+}
+
+/// An error produced by the tool call.
+typedef GoogleCloudDialogflowV2ToolCallResultError = $ToolCallResultError;
 
 /// The request message for Agents.TrainAgent.
 typedef GoogleCloudDialogflowV2TrainAgentRequest = $Empty;

@@ -1293,7 +1293,7 @@ class Aspect {
   /// Content of the configuration.
   ///
   /// The underlying schema should be defined by Aspect owners as protobuf
-  /// message under `apiserving/configaspects/proto`.
+  /// message under `google/api/configaspects/proto`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1742,6 +1742,165 @@ class BackendRule {
         if (pathTranslation != null) 'pathTranslation': pathTranslation!,
         if (protocol != null) 'protocol': protocol!,
         if (selector != null) 'selector': selector!,
+      };
+}
+
+/// `BatchingConfigProto` defines the batching configuration for an API method.
+class BatchingConfigProto {
+  /// The request and response fields used in batching.
+  BatchingDescriptorProto? batchDescriptor;
+
+  /// The thresholds which trigger a batched request to be sent.
+  BatchingSettingsProto? thresholds;
+
+  BatchingConfigProto({
+    this.batchDescriptor,
+    this.thresholds,
+  });
+
+  BatchingConfigProto.fromJson(core.Map json_)
+      : this(
+          batchDescriptor: json_.containsKey('batchDescriptor')
+              ? BatchingDescriptorProto.fromJson(json_['batchDescriptor']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          thresholds: json_.containsKey('thresholds')
+              ? BatchingSettingsProto.fromJson(
+                  json_['thresholds'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (batchDescriptor != null) 'batchDescriptor': batchDescriptor!,
+        if (thresholds != null) 'thresholds': thresholds!,
+      };
+}
+
+/// `BatchingDescriptorProto` specifies the fields of the request message to be
+/// used for batching, and, optionally, the fields of the response message to be
+/// used for demultiplexing.
+class BatchingDescriptorProto {
+  /// The repeated field in the request message to be aggregated by batching.
+  core.String? batchedField;
+
+  /// A list of the fields in the request message.
+  ///
+  /// Two requests will be batched together only if the values of every field
+  /// specified in `request_discriminator_fields` is equal between the two
+  /// requests.
+  core.List<core.String>? discriminatorFields;
+
+  /// When present, indicates the field in the response message to be used to
+  /// demultiplex the response into multiple response messages, in
+  /// correspondence with the multiple request messages originally batched
+  /// together.
+  ///
+  /// Optional.
+  core.String? subresponseField;
+
+  BatchingDescriptorProto({
+    this.batchedField,
+    this.discriminatorFields,
+    this.subresponseField,
+  });
+
+  BatchingDescriptorProto.fromJson(core.Map json_)
+      : this(
+          batchedField: json_['batchedField'] as core.String?,
+          discriminatorFields: (json_['discriminatorFields'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          subresponseField: json_['subresponseField'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (batchedField != null) 'batchedField': batchedField!,
+        if (discriminatorFields != null)
+          'discriminatorFields': discriminatorFields!,
+        if (subresponseField != null) 'subresponseField': subresponseField!,
+      };
+}
+
+/// `BatchingSettingsProto` specifies a set of batching thresholds, each of
+/// which acts as a trigger to send a batch of messages as a request.
+///
+/// At least one threshold must be positive nonzero.
+class BatchingSettingsProto {
+  /// The duration after which a batch should be sent, starting from the
+  /// addition of the first message to that batch.
+  core.String? delayThreshold;
+
+  /// The maximum number of elements collected in a batch that could be accepted
+  /// by server.
+  core.int? elementCountLimit;
+
+  /// The number of elements of a field collected into a batch which, if
+  /// exceeded, causes the batch to be sent.
+  core.int? elementCountThreshold;
+
+  /// The maximum size of data allowed by flow control.
+  core.int? flowControlByteLimit;
+
+  /// The maximum number of elements allowed by flow control.
+  core.int? flowControlElementLimit;
+
+  /// The behavior to take when the flow control limit is exceeded.
+  /// Possible string values are:
+  /// - "UNSET_BEHAVIOR" : Default behavior, system-defined.
+  /// - "THROW_EXCEPTION" : Stop operation, raise error.
+  /// - "BLOCK" : Pause operation until limit clears.
+  /// - "IGNORE" : Continue operation, disregard limit.
+  core.String? flowControlLimitExceededBehavior;
+
+  /// The maximum size of the request that could be accepted by server.
+  core.int? requestByteLimit;
+
+  /// The aggregated size of the batched field which, if exceeded, causes the
+  /// batch to be sent.
+  ///
+  /// This size is computed by aggregating the sizes of the request field to be
+  /// batched, not of the entire request message.
+  core.String? requestByteThreshold;
+
+  BatchingSettingsProto({
+    this.delayThreshold,
+    this.elementCountLimit,
+    this.elementCountThreshold,
+    this.flowControlByteLimit,
+    this.flowControlElementLimit,
+    this.flowControlLimitExceededBehavior,
+    this.requestByteLimit,
+    this.requestByteThreshold,
+  });
+
+  BatchingSettingsProto.fromJson(core.Map json_)
+      : this(
+          delayThreshold: json_['delayThreshold'] as core.String?,
+          elementCountLimit: json_['elementCountLimit'] as core.int?,
+          elementCountThreshold: json_['elementCountThreshold'] as core.int?,
+          flowControlByteLimit: json_['flowControlByteLimit'] as core.int?,
+          flowControlElementLimit:
+              json_['flowControlElementLimit'] as core.int?,
+          flowControlLimitExceededBehavior:
+              json_['flowControlLimitExceededBehavior'] as core.String?,
+          requestByteLimit: json_['requestByteLimit'] as core.int?,
+          requestByteThreshold: json_['requestByteThreshold'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (delayThreshold != null) 'delayThreshold': delayThreshold!,
+        if (elementCountLimit != null) 'elementCountLimit': elementCountLimit!,
+        if (elementCountThreshold != null)
+          'elementCountThreshold': elementCountThreshold!,
+        if (flowControlByteLimit != null)
+          'flowControlByteLimit': flowControlByteLimit!,
+        if (flowControlElementLimit != null)
+          'flowControlElementLimit': flowControlElementLimit!,
+        if (flowControlLimitExceededBehavior != null)
+          'flowControlLimitExceededBehavior': flowControlLimitExceededBehavior!,
+        if (requestByteLimit != null) 'requestByteLimit': requestByteLimit!,
+        if (requestByteThreshold != null)
+          'requestByteThreshold': requestByteThreshold!,
       };
 }
 
@@ -3605,8 +3764,8 @@ class JavaSettings {
   /// **only** by APIs who have already set the
   /// language_settings.java.package_name" field in gapic.yaml. API teams should
   /// use the protobuf java_package option where possible. Example of a YAML
-  /// configuration:: publishing: java_settings: library_package:
-  /// com.google.cloud.pubsub.v1
+  /// configuration:: publishing: library_settings: java_settings:
+  /// library_package: com.google.cloud.pubsub.v1
   core.String? libraryPackage;
 
   /// Configure the Java class name to use instead of the service's for its
@@ -4102,6 +4261,14 @@ class MethodSettings {
   /// request_id
   core.List<core.String>? autoPopulatedFields;
 
+  /// Batching configuration for an API method in client libraries.
+  ///
+  /// Example of a YAML configuration: publishing: method_settings: - selector:
+  /// google.example.v1.ExampleService.BatchCreateExample batching:
+  /// element_count_threshold: 1000 request_byte_threshold: 100000000
+  /// delay_threshold_millis: 10
+  BatchingConfigProto? batching;
+
   /// Describes settings to use for long-running operations when generating API
   /// methods for RPCs.
   ///
@@ -4123,6 +4290,7 @@ class MethodSettings {
 
   MethodSettings({
     this.autoPopulatedFields,
+    this.batching,
     this.longRunning,
     this.selector,
   });
@@ -4132,6 +4300,10 @@ class MethodSettings {
           autoPopulatedFields: (json_['autoPopulatedFields'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          batching: json_.containsKey('batching')
+              ? BatchingConfigProto.fromJson(
+                  json_['batching'] as core.Map<core.String, core.dynamic>)
+              : null,
           longRunning: json_.containsKey('longRunning')
               ? LongRunning.fromJson(
                   json_['longRunning'] as core.Map<core.String, core.dynamic>)
@@ -4142,6 +4314,7 @@ class MethodSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoPopulatedFields != null)
           'autoPopulatedFields': autoPopulatedFields!,
+        if (batching != null) 'batching': batching!,
         if (longRunning != null) 'longRunning': longRunning!,
         if (selector != null) 'selector': selector!,
       };
@@ -5275,6 +5448,9 @@ class Rollout {
   /// percentage.
   TrafficPercentStrategy? trafficPercentStrategy;
 
+  /// The TPC universe which the rollout will be rolled out to.
+  core.String? universe;
+
   Rollout({
     this.createTime,
     this.createdBy,
@@ -5283,6 +5459,7 @@ class Rollout {
     this.serviceName,
     this.status,
     this.trafficPercentStrategy,
+    this.universe,
   });
 
   Rollout.fromJson(core.Map json_)
@@ -5300,6 +5477,7 @@ class Rollout {
               ? TrafficPercentStrategy.fromJson(json_['trafficPercentStrategy']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          universe: json_['universe'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5312,6 +5490,7 @@ class Rollout {
         if (status != null) 'status': status!,
         if (trafficPercentStrategy != null)
           'trafficPercentStrategy': trafficPercentStrategy!,
+        if (universe != null) 'universe': universe!,
       };
 }
 

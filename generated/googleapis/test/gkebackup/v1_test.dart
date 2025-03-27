@@ -144,11 +144,15 @@ api.Backup buildBackup() {
     o.resourceCount = 42;
     o.retainDays = 42;
     o.retainExpireTime = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.selectedApplications = buildNamespacedNames();
+    o.selectedNamespaceLabels = buildResourceLabels();
     o.selectedNamespaces = buildNamespaces();
     o.sizeBytes = 'foo';
     o.state = 'foo';
     o.stateReason = 'foo';
+    o.troubleshootingInfo = buildTroubleshootingInfo();
     o.uid = 'foo';
     o.updateTime = 'foo';
     o.volumeCount = 42;
@@ -216,7 +220,10 @@ void checkBackup(api.Backup o) {
       o.retainExpireTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkNamespacedNames(o.selectedApplications!);
+    checkResourceLabels(o.selectedNamespaceLabels!);
     checkNamespaces(o.selectedNamespaces!);
     unittest.expect(
       o.sizeBytes!,
@@ -230,6 +237,7 @@ void checkBackup(api.Backup o) {
       o.stateReason!,
       unittest.equals('foo'),
     );
+    checkTroubleshootingInfo(o.troubleshootingInfo!);
     unittest.expect(
       o.uid!,
       unittest.equals('foo'),
@@ -244,37 +252,6 @@ void checkBackup(api.Backup o) {
     );
   }
   buildCounterBackup--;
-}
-
-core.int buildCounterBackupConfig = 0;
-api.BackupConfig buildBackupConfig() {
-  final o = api.BackupConfig();
-  buildCounterBackupConfig++;
-  if (buildCounterBackupConfig < 3) {
-    o.allNamespaces = true;
-    o.encryptionKey = buildEncryptionKey();
-    o.includeSecrets = true;
-    o.includeVolumeData = true;
-    o.permissiveMode = true;
-    o.selectedApplications = buildNamespacedNames();
-    o.selectedNamespaces = buildNamespaces();
-  }
-  buildCounterBackupConfig--;
-  return o;
-}
-
-void checkBackupConfig(api.BackupConfig o) {
-  buildCounterBackupConfig++;
-  if (buildCounterBackupConfig < 3) {
-    unittest.expect(o.allNamespaces!, unittest.isTrue);
-    checkEncryptionKey(o.encryptionKey!);
-    unittest.expect(o.includeSecrets!, unittest.isTrue);
-    unittest.expect(o.includeVolumeData!, unittest.isTrue);
-    unittest.expect(o.permissiveMode!, unittest.isTrue);
-    checkNamespacedNames(o.selectedApplications!);
-    checkNamespaces(o.selectedNamespaces!);
-  }
-  buildCounterBackupConfig--;
 }
 
 core.Map<core.String, core.String> buildUnnamed3() => {
@@ -294,11 +271,150 @@ void checkUnnamed3(core.Map<core.String, core.String> o) {
   );
 }
 
+core.int buildCounterBackupChannel = 0;
+api.BackupChannel buildBackupChannel() {
+  final o = api.BackupChannel();
+  buildCounterBackupChannel++;
+  if (buildCounterBackupChannel < 3) {
+    o.createTime = 'foo';
+    o.description = 'foo';
+    o.destinationProject = 'foo';
+    o.destinationProjectId = 'foo';
+    o.etag = 'foo';
+    o.labels = buildUnnamed3();
+    o.name = 'foo';
+    o.uid = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterBackupChannel--;
+  return o;
+}
+
+void checkBackupChannel(api.BackupChannel o) {
+  buildCounterBackupChannel++;
+  if (buildCounterBackupChannel < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.destinationProject!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.destinationProjectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3(o.labels!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBackupChannel--;
+}
+
+core.int buildCounterBackupConfig = 0;
+api.BackupConfig buildBackupConfig() {
+  final o = api.BackupConfig();
+  buildCounterBackupConfig++;
+  if (buildCounterBackupConfig < 3) {
+    o.allNamespaces = true;
+    o.encryptionKey = buildEncryptionKey();
+    o.includeSecrets = true;
+    o.includeVolumeData = true;
+    o.permissiveMode = true;
+    o.selectedApplications = buildNamespacedNames();
+    o.selectedNamespaceLabels = buildResourceLabels();
+    o.selectedNamespaces = buildNamespaces();
+  }
+  buildCounterBackupConfig--;
+  return o;
+}
+
+void checkBackupConfig(api.BackupConfig o) {
+  buildCounterBackupConfig++;
+  if (buildCounterBackupConfig < 3) {
+    unittest.expect(o.allNamespaces!, unittest.isTrue);
+    checkEncryptionKey(o.encryptionKey!);
+    unittest.expect(o.includeSecrets!, unittest.isTrue);
+    unittest.expect(o.includeVolumeData!, unittest.isTrue);
+    unittest.expect(o.permissiveMode!, unittest.isTrue);
+    checkNamespacedNames(o.selectedApplications!);
+    checkResourceLabels(o.selectedNamespaceLabels!);
+    checkNamespaces(o.selectedNamespaces!);
+  }
+  buildCounterBackupConfig--;
+}
+
+core.int buildCounterBackupConfigDetails = 0;
+api.BackupConfigDetails buildBackupConfigDetails() {
+  final o = api.BackupConfigDetails();
+  buildCounterBackupConfigDetails++;
+  if (buildCounterBackupConfigDetails < 3) {
+    o.allNamespaces = true;
+    o.encryptionKey = buildEncryptionKey();
+    o.includeSecrets = true;
+    o.includeVolumeData = true;
+    o.selectedApplications = buildNamespacedNames();
+    o.selectedNamespaces = buildNamespaces();
+  }
+  buildCounterBackupConfigDetails--;
+  return o;
+}
+
+void checkBackupConfigDetails(api.BackupConfigDetails o) {
+  buildCounterBackupConfigDetails++;
+  if (buildCounterBackupConfigDetails < 3) {
+    unittest.expect(o.allNamespaces!, unittest.isTrue);
+    checkEncryptionKey(o.encryptionKey!);
+    unittest.expect(o.includeSecrets!, unittest.isTrue);
+    unittest.expect(o.includeVolumeData!, unittest.isTrue);
+    checkNamespacedNames(o.selectedApplications!);
+    checkNamespaces(o.selectedNamespaces!);
+  }
+  buildCounterBackupConfigDetails--;
+}
+
+core.Map<core.String, core.String> buildUnnamed4() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed4(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterBackupPlan = 0;
 api.BackupPlan buildBackupPlan() {
   final o = api.BackupPlan();
   buildCounterBackupPlan++;
   if (buildCounterBackupPlan < 3) {
+    o.backupChannel = 'foo';
     o.backupConfig = buildBackupConfig();
     o.backupSchedule = buildSchedule();
     o.cluster = 'foo';
@@ -306,7 +422,7 @@ api.BackupPlan buildBackupPlan() {
     o.deactivated = true;
     o.description = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed3();
+    o.labels = buildUnnamed4();
     o.lastSuccessfulBackupTime = 'foo';
     o.name = 'foo';
     o.protectedPodCount = 42;
@@ -325,6 +441,10 @@ api.BackupPlan buildBackupPlan() {
 void checkBackupPlan(api.BackupPlan o) {
   buildCounterBackupPlan++;
   if (buildCounterBackupPlan < 3) {
+    unittest.expect(
+      o.backupChannel!,
+      unittest.equals('foo'),
+    );
     checkBackupConfig(o.backupConfig!);
     checkSchedule(o.backupSchedule!);
     unittest.expect(
@@ -344,7 +464,7 @@ void checkBackupPlan(api.BackupPlan o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed3(o.labels!);
+    checkUnnamed4(o.labels!);
     unittest.expect(
       o.lastSuccessfulBackupTime!,
       unittest.equals('foo'),
@@ -386,12 +506,117 @@ void checkBackupPlan(api.BackupPlan o) {
   buildCounterBackupPlan--;
 }
 
-core.List<core.String> buildUnnamed4() => [
+core.int buildCounterBackupPlanBinding = 0;
+api.BackupPlanBinding buildBackupPlanBinding() {
+  final o = api.BackupPlanBinding();
+  buildCounterBackupPlanBinding++;
+  if (buildCounterBackupPlanBinding < 3) {
+    o.backupPlan = 'foo';
+    o.backupPlanDetails = buildBackupPlanDetails();
+    o.cluster = 'foo';
+    o.createTime = 'foo';
+    o.etag = 'foo';
+    o.name = 'foo';
+    o.uid = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterBackupPlanBinding--;
+  return o;
+}
+
+void checkBackupPlanBinding(api.BackupPlanBinding o) {
+  buildCounterBackupPlanBinding++;
+  if (buildCounterBackupPlanBinding < 3) {
+    unittest.expect(
+      o.backupPlan!,
+      unittest.equals('foo'),
+    );
+    checkBackupPlanDetails(o.backupPlanDetails!);
+    unittest.expect(
+      o.cluster!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBackupPlanBinding--;
+}
+
+core.int buildCounterBackupPlanDetails = 0;
+api.BackupPlanDetails buildBackupPlanDetails() {
+  final o = api.BackupPlanDetails();
+  buildCounterBackupPlanDetails++;
+  if (buildCounterBackupPlanDetails < 3) {
+    o.backupConfigDetails = buildBackupConfigDetails();
+    o.lastSuccessfulBackup = 'foo';
+    o.lastSuccessfulBackupTime = 'foo';
+    o.nextScheduledBackupTime = 'foo';
+    o.protectedPodCount = 42;
+    o.retentionPolicyDetails = buildRetentionPolicyDetails();
+    o.rpoRiskLevel = 42;
+    o.state = 'foo';
+  }
+  buildCounterBackupPlanDetails--;
+  return o;
+}
+
+void checkBackupPlanDetails(api.BackupPlanDetails o) {
+  buildCounterBackupPlanDetails++;
+  if (buildCounterBackupPlanDetails < 3) {
+    checkBackupConfigDetails(o.backupConfigDetails!);
+    unittest.expect(
+      o.lastSuccessfulBackup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastSuccessfulBackupTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextScheduledBackupTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.protectedPodCount!,
+      unittest.equals(42),
+    );
+    checkRetentionPolicyDetails(o.retentionPolicyDetails!);
+    unittest.expect(
+      o.rpoRiskLevel!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBackupPlanDetails--;
+}
+
+core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -409,7 +634,7 @@ api.Binding buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed4();
+    o.members = buildUnnamed5();
     o.role = 'foo';
   }
   buildCounterBinding--;
@@ -420,7 +645,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition!);
-    checkUnnamed4(o.members!);
+    checkUnnamed5(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -429,12 +654,12 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5() => {
+core.Map<core.String, core.String> buildUnnamed6() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed5(core.Map<core.String, core.String> o) {
+void checkUnnamed6(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -452,7 +677,7 @@ api.ClusterMetadata buildClusterMetadata() {
   buildCounterClusterMetadata++;
   if (buildCounterClusterMetadata < 3) {
     o.anthosVersion = 'foo';
-    o.backupCrdVersions = buildUnnamed5();
+    o.backupCrdVersions = buildUnnamed6();
     o.cluster = 'foo';
     o.gkeVersion = 'foo';
     o.k8sVersion = 'foo';
@@ -468,7 +693,7 @@ void checkClusterMetadata(api.ClusterMetadata o) {
       o.anthosVersion!,
       unittest.equals('foo'),
     );
-    checkUnnamed5(o.backupCrdVersions!);
+    checkUnnamed6(o.backupCrdVersions!);
     unittest.expect(
       o.cluster!,
       unittest.equals('foo'),
@@ -485,17 +710,6 @@ void checkClusterMetadata(api.ClusterMetadata o) {
   buildCounterClusterMetadata--;
 }
 
-core.List<api.GroupKind> buildUnnamed6() => [
-      buildGroupKind(),
-      buildGroupKind(),
-    ];
-
-void checkUnnamed6(core.List<api.GroupKind> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGroupKind(o[0]);
-  checkGroupKind(o[1]);
-}
-
 core.List<api.GroupKind> buildUnnamed7() => [
       buildGroupKind(),
       buildGroupKind(),
@@ -507,15 +721,26 @@ void checkUnnamed7(core.List<api.GroupKind> o) {
   checkGroupKind(o[1]);
 }
 
+core.List<api.GroupKind> buildUnnamed8() => [
+      buildGroupKind(),
+      buildGroupKind(),
+    ];
+
+void checkUnnamed8(core.List<api.GroupKind> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGroupKind(o[0]);
+  checkGroupKind(o[1]);
+}
+
 core.int buildCounterClusterResourceRestoreScope = 0;
 api.ClusterResourceRestoreScope buildClusterResourceRestoreScope() {
   final o = api.ClusterResourceRestoreScope();
   buildCounterClusterResourceRestoreScope++;
   if (buildCounterClusterResourceRestoreScope < 3) {
     o.allGroupKinds = true;
-    o.excludedGroupKinds = buildUnnamed6();
+    o.excludedGroupKinds = buildUnnamed7();
     o.noGroupKinds = true;
-    o.selectedGroupKinds = buildUnnamed7();
+    o.selectedGroupKinds = buildUnnamed8();
   }
   buildCounterClusterResourceRestoreScope--;
   return o;
@@ -525,9 +750,9 @@ void checkClusterResourceRestoreScope(api.ClusterResourceRestoreScope o) {
   buildCounterClusterResourceRestoreScope++;
   if (buildCounterClusterResourceRestoreScope < 3) {
     unittest.expect(o.allGroupKinds!, unittest.isTrue);
-    checkUnnamed6(o.excludedGroupKinds!);
+    checkUnnamed7(o.excludedGroupKinds!);
     unittest.expect(o.noGroupKinds!, unittest.isTrue);
-    checkUnnamed7(o.selectedGroupKinds!);
+    checkUnnamed8(o.selectedGroupKinds!);
   }
   buildCounterClusterResourceRestoreScope--;
 }
@@ -564,12 +789,12 @@ void checkDate(api.Date o) {
   buildCounterDate--;
 }
 
-core.List<core.String> buildUnnamed8() => [
+core.List<core.String> buildUnnamed9() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8(core.List<core.String> o) {
+void checkUnnamed9(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -586,7 +811,7 @@ api.DayOfWeekList buildDayOfWeekList() {
   final o = api.DayOfWeekList();
   buildCounterDayOfWeekList++;
   if (buildCounterDayOfWeekList < 3) {
-    o.daysOfWeek = buildUnnamed8();
+    o.daysOfWeek = buildUnnamed9();
   }
   buildCounterDayOfWeekList--;
   return o;
@@ -595,7 +820,7 @@ api.DayOfWeekList buildDayOfWeekList() {
 void checkDayOfWeekList(api.DayOfWeekList o) {
   buildCounterDayOfWeekList++;
   if (buildCounterDayOfWeekList < 3) {
-    checkUnnamed8(o.daysOfWeek!);
+    checkUnnamed9(o.daysOfWeek!);
   }
   buildCounterDayOfWeekList--;
 }
@@ -704,17 +929,6 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-core.List<api.ResourceSelector> buildUnnamed9() => [
-      buildResourceSelector(),
-      buildResourceSelector(),
-    ];
-
-void checkUnnamed9(core.List<api.ResourceSelector> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkResourceSelector(o[0]);
-  checkResourceSelector(o[1]);
-}
-
 core.List<api.ResourceSelector> buildUnnamed10() => [
       buildResourceSelector(),
       buildResourceSelector(),
@@ -726,13 +940,24 @@ void checkUnnamed10(core.List<api.ResourceSelector> o) {
   checkResourceSelector(o[1]);
 }
 
+core.List<api.ResourceSelector> buildUnnamed11() => [
+      buildResourceSelector(),
+      buildResourceSelector(),
+    ];
+
+void checkUnnamed11(core.List<api.ResourceSelector> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkResourceSelector(o[0]);
+  checkResourceSelector(o[1]);
+}
+
 core.int buildCounterFilter = 0;
 api.Filter buildFilter() {
   final o = api.Filter();
   buildCounterFilter++;
   if (buildCounterFilter < 3) {
-    o.exclusionFilters = buildUnnamed9();
-    o.inclusionFilters = buildUnnamed10();
+    o.exclusionFilters = buildUnnamed10();
+    o.inclusionFilters = buildUnnamed11();
   }
   buildCounterFilter--;
   return o;
@@ -741,8 +966,8 @@ api.Filter buildFilter() {
 void checkFilter(api.Filter o) {
   buildCounterFilter++;
   if (buildCounterFilter < 3) {
-    checkUnnamed9(o.exclusionFilters!);
-    checkUnnamed10(o.inclusionFilters!);
+    checkUnnamed10(o.exclusionFilters!);
+    checkUnnamed11(o.inclusionFilters!);
   }
   buildCounterFilter--;
 }
@@ -787,12 +1012,12 @@ void checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed11() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed12() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed11(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed12(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -805,7 +1030,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed11();
+    o.operations = buildUnnamed12();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -819,12 +1044,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed11(o.operations!);
+    checkUnnamed12(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed12() => {
+core.Map<core.String, core.Object?> buildUnnamed13() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -837,7 +1062,7 @@ core.Map<core.String, core.Object?> buildUnnamed12() => {
       },
     };
 
-void checkUnnamed12(core.Map<core.String, core.Object?> o) {
+void checkUnnamed13(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -869,7 +1094,7 @@ void checkUnnamed12(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed13() => {
+core.Map<core.String, core.Object?> buildUnnamed14() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -882,7 +1107,7 @@ core.Map<core.String, core.Object?> buildUnnamed13() => {
       },
     };
 
-void checkUnnamed13(core.Map<core.String, core.Object?> o) {
+void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -921,9 +1146,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed12();
+    o.metadata = buildUnnamed13();
     o.name = 'foo';
-    o.response = buildUnnamed13();
+    o.response = buildUnnamed14();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -934,17 +1159,17 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed12(o.metadata!);
+    checkUnnamed13(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.response!);
+    checkUnnamed14(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed14() => {
+core.Map<core.String, core.Object?> buildUnnamed15() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -957,7 +1182,7 @@ core.Map<core.String, core.Object?> buildUnnamed14() => {
       },
     };
 
-void checkUnnamed14(core.Map<core.String, core.Object?> o) {
+void checkUnnamed15(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -989,15 +1214,15 @@ void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed15() => [
-      buildUnnamed14(),
-      buildUnnamed14(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed16() => [
+      buildUnnamed15(),
+      buildUnnamed15(),
     ];
 
-void checkUnnamed15(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed16(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed14(o[0]);
-  checkUnnamed14(o[1]);
+  checkUnnamed15(o[0]);
+  checkUnnamed15(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -1006,7 +1231,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed15();
+    o.details = buildUnnamed16();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -1020,7 +1245,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed15(o.details!);
+    checkUnnamed16(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1077,23 +1302,158 @@ void checkGroupKindDependency(api.GroupKindDependency o) {
   buildCounterGroupKindDependency--;
 }
 
-core.List<api.BackupPlan> buildUnnamed16() => [
+core.int buildCounterLabel = 0;
+api.Label buildLabel() {
+  final o = api.Label();
+  buildCounterLabel++;
+  if (buildCounterLabel < 3) {
+    o.key = 'foo';
+    o.value = 'foo';
+  }
+  buildCounterLabel--;
+  return o;
+}
+
+void checkLabel(api.Label o) {
+  buildCounterLabel++;
+  if (buildCounterLabel < 3) {
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLabel--;
+}
+
+core.List<api.BackupChannel> buildUnnamed17() => [
+      buildBackupChannel(),
+      buildBackupChannel(),
+    ];
+
+void checkUnnamed17(core.List<api.BackupChannel> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkBackupChannel(o[0]);
+  checkBackupChannel(o[1]);
+}
+
+core.List<core.String> buildUnnamed18() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed18(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterListBackupChannelsResponse = 0;
+api.ListBackupChannelsResponse buildListBackupChannelsResponse() {
+  final o = api.ListBackupChannelsResponse();
+  buildCounterListBackupChannelsResponse++;
+  if (buildCounterListBackupChannelsResponse < 3) {
+    o.backupChannels = buildUnnamed17();
+    o.nextPageToken = 'foo';
+    o.unreachable = buildUnnamed18();
+  }
+  buildCounterListBackupChannelsResponse--;
+  return o;
+}
+
+void checkListBackupChannelsResponse(api.ListBackupChannelsResponse o) {
+  buildCounterListBackupChannelsResponse++;
+  if (buildCounterListBackupChannelsResponse < 3) {
+    checkUnnamed17(o.backupChannels!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed18(o.unreachable!);
+  }
+  buildCounterListBackupChannelsResponse--;
+}
+
+core.List<api.BackupPlanBinding> buildUnnamed19() => [
+      buildBackupPlanBinding(),
+      buildBackupPlanBinding(),
+    ];
+
+void checkUnnamed19(core.List<api.BackupPlanBinding> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkBackupPlanBinding(o[0]);
+  checkBackupPlanBinding(o[1]);
+}
+
+core.List<core.String> buildUnnamed20() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed20(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterListBackupPlanBindingsResponse = 0;
+api.ListBackupPlanBindingsResponse buildListBackupPlanBindingsResponse() {
+  final o = api.ListBackupPlanBindingsResponse();
+  buildCounterListBackupPlanBindingsResponse++;
+  if (buildCounterListBackupPlanBindingsResponse < 3) {
+    o.backupPlanBindings = buildUnnamed19();
+    o.nextPageToken = 'foo';
+    o.unreachable = buildUnnamed20();
+  }
+  buildCounterListBackupPlanBindingsResponse--;
+  return o;
+}
+
+void checkListBackupPlanBindingsResponse(api.ListBackupPlanBindingsResponse o) {
+  buildCounterListBackupPlanBindingsResponse++;
+  if (buildCounterListBackupPlanBindingsResponse < 3) {
+    checkUnnamed19(o.backupPlanBindings!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed20(o.unreachable!);
+  }
+  buildCounterListBackupPlanBindingsResponse--;
+}
+
+core.List<api.BackupPlan> buildUnnamed21() => [
       buildBackupPlan(),
       buildBackupPlan(),
     ];
 
-void checkUnnamed16(core.List<api.BackupPlan> o) {
+void checkUnnamed21(core.List<api.BackupPlan> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBackupPlan(o[0]);
   checkBackupPlan(o[1]);
 }
 
-core.List<core.String> buildUnnamed17() => [
+core.List<core.String> buildUnnamed22() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed17(core.List<core.String> o) {
+void checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1110,9 +1470,9 @@ api.ListBackupPlansResponse buildListBackupPlansResponse() {
   final o = api.ListBackupPlansResponse();
   buildCounterListBackupPlansResponse++;
   if (buildCounterListBackupPlansResponse < 3) {
-    o.backupPlans = buildUnnamed16();
+    o.backupPlans = buildUnnamed21();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed17();
+    o.unreachable = buildUnnamed22();
   }
   buildCounterListBackupPlansResponse--;
   return o;
@@ -1121,25 +1481,42 @@ api.ListBackupPlansResponse buildListBackupPlansResponse() {
 void checkListBackupPlansResponse(api.ListBackupPlansResponse o) {
   buildCounterListBackupPlansResponse++;
   if (buildCounterListBackupPlansResponse < 3) {
-    checkUnnamed16(o.backupPlans!);
+    checkUnnamed21(o.backupPlans!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.unreachable!);
+    checkUnnamed22(o.unreachable!);
   }
   buildCounterListBackupPlansResponse--;
 }
 
-core.List<api.Backup> buildUnnamed18() => [
+core.List<api.Backup> buildUnnamed23() => [
       buildBackup(),
       buildBackup(),
     ];
 
-void checkUnnamed18(core.List<api.Backup> o) {
+void checkUnnamed23(core.List<api.Backup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBackup(o[0]);
   checkBackup(o[1]);
+}
+
+core.List<core.String> buildUnnamed24() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed24(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterListBackupsResponse = 0;
@@ -1147,8 +1524,9 @@ api.ListBackupsResponse buildListBackupsResponse() {
   final o = api.ListBackupsResponse();
   buildCounterListBackupsResponse++;
   if (buildCounterListBackupsResponse < 3) {
-    o.backups = buildUnnamed18();
+    o.backups = buildUnnamed23();
     o.nextPageToken = 'foo';
+    o.unreachable = buildUnnamed24();
   }
   buildCounterListBackupsResponse--;
   return o;
@@ -1157,21 +1535,22 @@ api.ListBackupsResponse buildListBackupsResponse() {
 void checkListBackupsResponse(api.ListBackupsResponse o) {
   buildCounterListBackupsResponse++;
   if (buildCounterListBackupsResponse < 3) {
-    checkUnnamed18(o.backups!);
+    checkUnnamed23(o.backups!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
+    checkUnnamed24(o.unreachable!);
   }
   buildCounterListBackupsResponse--;
 }
 
-core.List<api.Location> buildUnnamed19() => [
+core.List<api.Location> buildUnnamed25() => [
       buildLocation(),
       buildLocation(),
     ];
 
-void checkUnnamed19(core.List<api.Location> o) {
+void checkUnnamed25(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -1182,7 +1561,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   final o = api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed19();
+    o.locations = buildUnnamed25();
     o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
@@ -1192,7 +1571,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
 void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed19(o.locations!);
+    checkUnnamed25(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1201,23 +1580,132 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.RestorePlan> buildUnnamed20() => [
+core.List<api.RestoreChannel> buildUnnamed26() => [
+      buildRestoreChannel(),
+      buildRestoreChannel(),
+    ];
+
+void checkUnnamed26(core.List<api.RestoreChannel> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRestoreChannel(o[0]);
+  checkRestoreChannel(o[1]);
+}
+
+core.List<core.String> buildUnnamed27() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed27(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterListRestoreChannelsResponse = 0;
+api.ListRestoreChannelsResponse buildListRestoreChannelsResponse() {
+  final o = api.ListRestoreChannelsResponse();
+  buildCounterListRestoreChannelsResponse++;
+  if (buildCounterListRestoreChannelsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.restoreChannels = buildUnnamed26();
+    o.unreachable = buildUnnamed27();
+  }
+  buildCounterListRestoreChannelsResponse--;
+  return o;
+}
+
+void checkListRestoreChannelsResponse(api.ListRestoreChannelsResponse o) {
+  buildCounterListRestoreChannelsResponse++;
+  if (buildCounterListRestoreChannelsResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed26(o.restoreChannels!);
+    checkUnnamed27(o.unreachable!);
+  }
+  buildCounterListRestoreChannelsResponse--;
+}
+
+core.List<api.RestorePlanBinding> buildUnnamed28() => [
+      buildRestorePlanBinding(),
+      buildRestorePlanBinding(),
+    ];
+
+void checkUnnamed28(core.List<api.RestorePlanBinding> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRestorePlanBinding(o[0]);
+  checkRestorePlanBinding(o[1]);
+}
+
+core.List<core.String> buildUnnamed29() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed29(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterListRestorePlanBindingsResponse = 0;
+api.ListRestorePlanBindingsResponse buildListRestorePlanBindingsResponse() {
+  final o = api.ListRestorePlanBindingsResponse();
+  buildCounterListRestorePlanBindingsResponse++;
+  if (buildCounterListRestorePlanBindingsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.restorePlanBindings = buildUnnamed28();
+    o.unreachable = buildUnnamed29();
+  }
+  buildCounterListRestorePlanBindingsResponse--;
+  return o;
+}
+
+void checkListRestorePlanBindingsResponse(
+    api.ListRestorePlanBindingsResponse o) {
+  buildCounterListRestorePlanBindingsResponse++;
+  if (buildCounterListRestorePlanBindingsResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed28(o.restorePlanBindings!);
+    checkUnnamed29(o.unreachable!);
+  }
+  buildCounterListRestorePlanBindingsResponse--;
+}
+
+core.List<api.RestorePlan> buildUnnamed30() => [
       buildRestorePlan(),
       buildRestorePlan(),
     ];
 
-void checkUnnamed20(core.List<api.RestorePlan> o) {
+void checkUnnamed30(core.List<api.RestorePlan> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestorePlan(o[0]);
   checkRestorePlan(o[1]);
 }
 
-core.List<core.String> buildUnnamed21() => [
+core.List<core.String> buildUnnamed31() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed21(core.List<core.String> o) {
+void checkUnnamed31(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1235,8 +1723,8 @@ api.ListRestorePlansResponse buildListRestorePlansResponse() {
   buildCounterListRestorePlansResponse++;
   if (buildCounterListRestorePlansResponse < 3) {
     o.nextPageToken = 'foo';
-    o.restorePlans = buildUnnamed20();
-    o.unreachable = buildUnnamed21();
+    o.restorePlans = buildUnnamed30();
+    o.unreachable = buildUnnamed31();
   }
   buildCounterListRestorePlansResponse--;
   return o;
@@ -1249,29 +1737,29 @@ void checkListRestorePlansResponse(api.ListRestorePlansResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed20(o.restorePlans!);
-    checkUnnamed21(o.unreachable!);
+    checkUnnamed30(o.restorePlans!);
+    checkUnnamed31(o.unreachable!);
   }
   buildCounterListRestorePlansResponse--;
 }
 
-core.List<api.Restore> buildUnnamed22() => [
+core.List<api.Restore> buildUnnamed32() => [
       buildRestore(),
       buildRestore(),
     ];
 
-void checkUnnamed22(core.List<api.Restore> o) {
+void checkUnnamed32(core.List<api.Restore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestore(o[0]);
   checkRestore(o[1]);
 }
 
-core.List<core.String> buildUnnamed23() => [
+core.List<core.String> buildUnnamed33() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed33(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1289,8 +1777,8 @@ api.ListRestoresResponse buildListRestoresResponse() {
   buildCounterListRestoresResponse++;
   if (buildCounterListRestoresResponse < 3) {
     o.nextPageToken = 'foo';
-    o.restores = buildUnnamed22();
-    o.unreachable = buildUnnamed23();
+    o.restores = buildUnnamed32();
+    o.unreachable = buildUnnamed33();
   }
   buildCounterListRestoresResponse--;
   return o;
@@ -1303,18 +1791,18 @@ void checkListRestoresResponse(api.ListRestoresResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed22(o.restores!);
-    checkUnnamed23(o.unreachable!);
+    checkUnnamed32(o.restores!);
+    checkUnnamed33(o.unreachable!);
   }
   buildCounterListRestoresResponse--;
 }
 
-core.List<api.VolumeBackup> buildUnnamed24() => [
+core.List<api.VolumeBackup> buildUnnamed34() => [
       buildVolumeBackup(),
       buildVolumeBackup(),
     ];
 
-void checkUnnamed24(core.List<api.VolumeBackup> o) {
+void checkUnnamed34(core.List<api.VolumeBackup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeBackup(o[0]);
   checkVolumeBackup(o[1]);
@@ -1326,7 +1814,7 @@ api.ListVolumeBackupsResponse buildListVolumeBackupsResponse() {
   buildCounterListVolumeBackupsResponse++;
   if (buildCounterListVolumeBackupsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.volumeBackups = buildUnnamed24();
+    o.volumeBackups = buildUnnamed34();
   }
   buildCounterListVolumeBackupsResponse--;
   return o;
@@ -1339,17 +1827,17 @@ void checkListVolumeBackupsResponse(api.ListVolumeBackupsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed24(o.volumeBackups!);
+    checkUnnamed34(o.volumeBackups!);
   }
   buildCounterListVolumeBackupsResponse--;
 }
 
-core.List<api.VolumeRestore> buildUnnamed25() => [
+core.List<api.VolumeRestore> buildUnnamed35() => [
       buildVolumeRestore(),
       buildVolumeRestore(),
     ];
 
-void checkUnnamed25(core.List<api.VolumeRestore> o) {
+void checkUnnamed35(core.List<api.VolumeRestore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeRestore(o[0]);
   checkVolumeRestore(o[1]);
@@ -1361,7 +1849,7 @@ api.ListVolumeRestoresResponse buildListVolumeRestoresResponse() {
   buildCounterListVolumeRestoresResponse++;
   if (buildCounterListVolumeRestoresResponse < 3) {
     o.nextPageToken = 'foo';
-    o.volumeRestores = buildUnnamed25();
+    o.volumeRestores = buildUnnamed35();
   }
   buildCounterListVolumeRestoresResponse--;
   return o;
@@ -1374,17 +1862,17 @@ void checkListVolumeRestoresResponse(api.ListVolumeRestoresResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.volumeRestores!);
+    checkUnnamed35(o.volumeRestores!);
   }
   buildCounterListVolumeRestoresResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed26() => {
+core.Map<core.String, core.String> buildUnnamed36() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed26(core.Map<core.String, core.String> o) {
+void checkUnnamed36(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1396,7 +1884,7 @@ void checkUnnamed26(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed27() => {
+core.Map<core.String, core.Object?> buildUnnamed37() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1409,7 +1897,7 @@ core.Map<core.String, core.Object?> buildUnnamed27() => {
       },
     };
 
-void checkUnnamed27(core.Map<core.String, core.Object?> o) {
+void checkUnnamed37(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1447,9 +1935,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed26();
+    o.labels = buildUnnamed36();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed27();
+    o.metadata = buildUnnamed37();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -1463,12 +1951,12 @@ void checkLocation(api.Location o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.labels!);
+    checkUnnamed36(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.metadata!);
+    checkUnnamed37(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1504,12 +1992,12 @@ void checkNamespacedName(api.NamespacedName o) {
   buildCounterNamespacedName--;
 }
 
-core.List<api.NamespacedName> buildUnnamed28() => [
+core.List<api.NamespacedName> buildUnnamed38() => [
       buildNamespacedName(),
       buildNamespacedName(),
     ];
 
-void checkUnnamed28(core.List<api.NamespacedName> o) {
+void checkUnnamed38(core.List<api.NamespacedName> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamespacedName(o[0]);
   checkNamespacedName(o[1]);
@@ -1520,7 +2008,7 @@ api.NamespacedNames buildNamespacedNames() {
   final o = api.NamespacedNames();
   buildCounterNamespacedNames++;
   if (buildCounterNamespacedNames < 3) {
-    o.namespacedNames = buildUnnamed28();
+    o.namespacedNames = buildUnnamed38();
   }
   buildCounterNamespacedNames--;
   return o;
@@ -1529,17 +2017,17 @@ api.NamespacedNames buildNamespacedNames() {
 void checkNamespacedNames(api.NamespacedNames o) {
   buildCounterNamespacedNames++;
   if (buildCounterNamespacedNames < 3) {
-    checkUnnamed28(o.namespacedNames!);
+    checkUnnamed38(o.namespacedNames!);
   }
   buildCounterNamespacedNames--;
 }
 
-core.List<core.String> buildUnnamed29() => [
+core.List<core.String> buildUnnamed39() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed29(core.List<core.String> o) {
+void checkUnnamed39(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1556,7 +2044,7 @@ api.Namespaces buildNamespaces() {
   final o = api.Namespaces();
   buildCounterNamespaces++;
   if (buildCounterNamespaces < 3) {
-    o.namespaces = buildUnnamed29();
+    o.namespaces = buildUnnamed39();
   }
   buildCounterNamespaces--;
   return o;
@@ -1565,28 +2053,28 @@ api.Namespaces buildNamespaces() {
 void checkNamespaces(api.Namespaces o) {
   buildCounterNamespaces++;
   if (buildCounterNamespaces < 3) {
-    checkUnnamed29(o.namespaces!);
+    checkUnnamed39(o.namespaces!);
   }
   buildCounterNamespaces--;
 }
 
-core.List<api.AuditConfig> buildUnnamed30() => [
+core.List<api.AuditConfig> buildUnnamed40() => [
       buildAuditConfig(),
       buildAuditConfig(),
     ];
 
-void checkUnnamed30(core.List<api.AuditConfig> o) {
+void checkUnnamed40(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed31() => [
+core.List<api.Binding> buildUnnamed41() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed31(core.List<api.Binding> o) {
+void checkUnnamed41(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -1597,8 +2085,8 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed30();
-    o.bindings = buildUnnamed31();
+    o.auditConfigs = buildUnnamed40();
+    o.bindings = buildUnnamed41();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -1609,8 +2097,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed30(o.auditConfigs!);
-    checkUnnamed31(o.bindings!);
+    checkUnnamed40(o.auditConfigs!);
+    checkUnnamed41(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1623,23 +2111,23 @@ void checkPolicy(api.Policy o) {
   buildCounterPolicy--;
 }
 
-core.List<api.GroupKind> buildUnnamed32() => [
+core.List<api.GroupKind> buildUnnamed42() => [
       buildGroupKind(),
       buildGroupKind(),
     ];
 
-void checkUnnamed32(core.List<api.GroupKind> o) {
+void checkUnnamed42(core.List<api.GroupKind> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupKind(o[0]);
   checkGroupKind(o[1]);
 }
 
-core.List<core.String> buildUnnamed33() => [
+core.List<core.String> buildUnnamed43() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed33(core.List<core.String> o) {
+void checkUnnamed43(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1656,9 +2144,9 @@ api.ResourceFilter buildResourceFilter() {
   final o = api.ResourceFilter();
   buildCounterResourceFilter++;
   if (buildCounterResourceFilter < 3) {
-    o.groupKinds = buildUnnamed32();
+    o.groupKinds = buildUnnamed42();
     o.jsonPath = 'foo';
-    o.namespaces = buildUnnamed33();
+    o.namespaces = buildUnnamed43();
   }
   buildCounterResourceFilter--;
   return o;
@@ -1667,22 +2155,52 @@ api.ResourceFilter buildResourceFilter() {
 void checkResourceFilter(api.ResourceFilter o) {
   buildCounterResourceFilter++;
   if (buildCounterResourceFilter < 3) {
-    checkUnnamed32(o.groupKinds!);
+    checkUnnamed42(o.groupKinds!);
     unittest.expect(
       o.jsonPath!,
       unittest.equals('foo'),
     );
-    checkUnnamed33(o.namespaces!);
+    checkUnnamed43(o.namespaces!);
   }
   buildCounterResourceFilter--;
 }
 
-core.Map<core.String, core.String> buildUnnamed34() => {
+core.List<api.Label> buildUnnamed44() => [
+      buildLabel(),
+      buildLabel(),
+    ];
+
+void checkUnnamed44(core.List<api.Label> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLabel(o[0]);
+  checkLabel(o[1]);
+}
+
+core.int buildCounterResourceLabels = 0;
+api.ResourceLabels buildResourceLabels() {
+  final o = api.ResourceLabels();
+  buildCounterResourceLabels++;
+  if (buildCounterResourceLabels < 3) {
+    o.resourceLabels = buildUnnamed44();
+  }
+  buildCounterResourceLabels--;
+  return o;
+}
+
+void checkResourceLabels(api.ResourceLabels o) {
+  buildCounterResourceLabels++;
+  if (buildCounterResourceLabels < 3) {
+    checkUnnamed44(o.resourceLabels!);
+  }
+  buildCounterResourceLabels--;
+}
+
+core.Map<core.String, core.String> buildUnnamed45() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed34(core.Map<core.String, core.String> o) {
+void checkUnnamed45(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1700,7 +2218,7 @@ api.ResourceSelector buildResourceSelector() {
   buildCounterResourceSelector++;
   if (buildCounterResourceSelector < 3) {
     o.groupKind = buildGroupKind();
-    o.labels = buildUnnamed34();
+    o.labels = buildUnnamed45();
     o.name = 'foo';
     o.namespace = 'foo';
   }
@@ -1712,7 +2230,7 @@ void checkResourceSelector(api.ResourceSelector o) {
   buildCounterResourceSelector++;
   if (buildCounterResourceSelector < 3) {
     checkGroupKind(o.groupKind!);
-    checkUnnamed34(o.labels!);
+    checkUnnamed45(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1725,12 +2243,12 @@ void checkResourceSelector(api.ResourceSelector o) {
   buildCounterResourceSelector--;
 }
 
-core.Map<core.String, core.String> buildUnnamed35() => {
+core.Map<core.String, core.String> buildUnnamed46() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed35(core.Map<core.String, core.String> o) {
+void checkUnnamed46(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1742,12 +2260,12 @@ void checkUnnamed35(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.VolumeDataRestorePolicyOverride> buildUnnamed36() => [
+core.List<api.VolumeDataRestorePolicyOverride> buildUnnamed47() => [
       buildVolumeDataRestorePolicyOverride(),
       buildVolumeDataRestorePolicyOverride(),
     ];
 
-void checkUnnamed36(core.List<api.VolumeDataRestorePolicyOverride> o) {
+void checkUnnamed47(core.List<api.VolumeDataRestorePolicyOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeDataRestorePolicyOverride(o[0]);
   checkVolumeDataRestorePolicyOverride(o[1]);
@@ -1765,7 +2283,7 @@ api.Restore buildRestore() {
     o.description = 'foo';
     o.etag = 'foo';
     o.filter = buildFilter();
-    o.labels = buildUnnamed35();
+    o.labels = buildUnnamed46();
     o.name = 'foo';
     o.resourcesExcludedCount = 42;
     o.resourcesFailedCount = 42;
@@ -1773,9 +2291,10 @@ api.Restore buildRestore() {
     o.restoreConfig = buildRestoreConfig();
     o.state = 'foo';
     o.stateReason = 'foo';
+    o.troubleshootingInfo = buildTroubleshootingInfo();
     o.uid = 'foo';
     o.updateTime = 'foo';
-    o.volumeDataRestorePolicyOverrides = buildUnnamed36();
+    o.volumeDataRestorePolicyOverrides = buildUnnamed47();
     o.volumesRestoredCount = 42;
   }
   buildCounterRestore--;
@@ -1810,7 +2329,7 @@ void checkRestore(api.Restore o) {
       unittest.equals('foo'),
     );
     checkFilter(o.filter!);
-    checkUnnamed35(o.labels!);
+    checkUnnamed46(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1836,6 +2355,7 @@ void checkRestore(api.Restore o) {
       o.stateReason!,
       unittest.equals('foo'),
     );
+    checkTroubleshootingInfo(o.troubleshootingInfo!);
     unittest.expect(
       o.uid!,
       unittest.equals('foo'),
@@ -1844,7 +2364,7 @@ void checkRestore(api.Restore o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed36(o.volumeDataRestorePolicyOverrides!);
+    checkUnnamed47(o.volumeDataRestorePolicyOverrides!);
     unittest.expect(
       o.volumesRestoredCount!,
       unittest.equals(42),
@@ -1853,34 +2373,110 @@ void checkRestore(api.Restore o) {
   buildCounterRestore--;
 }
 
-core.List<api.SubstitutionRule> buildUnnamed37() => [
+core.Map<core.String, core.String> buildUnnamed48() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed48(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterRestoreChannel = 0;
+api.RestoreChannel buildRestoreChannel() {
+  final o = api.RestoreChannel();
+  buildCounterRestoreChannel++;
+  if (buildCounterRestoreChannel < 3) {
+    o.createTime = 'foo';
+    o.description = 'foo';
+    o.destinationProject = 'foo';
+    o.destinationProjectId = 'foo';
+    o.etag = 'foo';
+    o.labels = buildUnnamed48();
+    o.name = 'foo';
+    o.uid = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterRestoreChannel--;
+  return o;
+}
+
+void checkRestoreChannel(api.RestoreChannel o) {
+  buildCounterRestoreChannel++;
+  if (buildCounterRestoreChannel < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.destinationProject!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.destinationProjectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed48(o.labels!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRestoreChannel--;
+}
+
+core.List<api.SubstitutionRule> buildUnnamed49() => [
       buildSubstitutionRule(),
       buildSubstitutionRule(),
     ];
 
-void checkUnnamed37(core.List<api.SubstitutionRule> o) {
+void checkUnnamed49(core.List<api.SubstitutionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubstitutionRule(o[0]);
   checkSubstitutionRule(o[1]);
 }
 
-core.List<api.TransformationRule> buildUnnamed38() => [
+core.List<api.TransformationRule> buildUnnamed50() => [
       buildTransformationRule(),
       buildTransformationRule(),
     ];
 
-void checkUnnamed38(core.List<api.TransformationRule> o) {
+void checkUnnamed50(core.List<api.TransformationRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransformationRule(o[0]);
   checkTransformationRule(o[1]);
 }
 
-core.List<api.VolumeDataRestorePolicyBinding> buildUnnamed39() => [
+core.List<api.VolumeDataRestorePolicyBinding> buildUnnamed51() => [
       buildVolumeDataRestorePolicyBinding(),
       buildVolumeDataRestorePolicyBinding(),
     ];
 
-void checkUnnamed39(core.List<api.VolumeDataRestorePolicyBinding> o) {
+void checkUnnamed51(core.List<api.VolumeDataRestorePolicyBinding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeDataRestorePolicyBinding(o[0]);
   checkVolumeDataRestorePolicyBinding(o[1]);
@@ -1900,10 +2496,10 @@ api.RestoreConfig buildRestoreConfig() {
     o.restoreOrder = buildRestoreOrder();
     o.selectedApplications = buildNamespacedNames();
     o.selectedNamespaces = buildNamespaces();
-    o.substitutionRules = buildUnnamed37();
-    o.transformationRules = buildUnnamed38();
+    o.substitutionRules = buildUnnamed49();
+    o.transformationRules = buildUnnamed50();
     o.volumeDataRestorePolicy = 'foo';
-    o.volumeDataRestorePolicyBindings = buildUnnamed39();
+    o.volumeDataRestorePolicyBindings = buildUnnamed51();
   }
   buildCounterRestoreConfig--;
   return o;
@@ -1927,23 +2523,23 @@ void checkRestoreConfig(api.RestoreConfig o) {
     checkRestoreOrder(o.restoreOrder!);
     checkNamespacedNames(o.selectedApplications!);
     checkNamespaces(o.selectedNamespaces!);
-    checkUnnamed37(o.substitutionRules!);
-    checkUnnamed38(o.transformationRules!);
+    checkUnnamed49(o.substitutionRules!);
+    checkUnnamed50(o.transformationRules!);
     unittest.expect(
       o.volumeDataRestorePolicy!,
       unittest.equals('foo'),
     );
-    checkUnnamed39(o.volumeDataRestorePolicyBindings!);
+    checkUnnamed51(o.volumeDataRestorePolicyBindings!);
   }
   buildCounterRestoreConfig--;
 }
 
-core.List<api.GroupKindDependency> buildUnnamed40() => [
+core.List<api.GroupKindDependency> buildUnnamed52() => [
       buildGroupKindDependency(),
       buildGroupKindDependency(),
     ];
 
-void checkUnnamed40(core.List<api.GroupKindDependency> o) {
+void checkUnnamed52(core.List<api.GroupKindDependency> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupKindDependency(o[0]);
   checkGroupKindDependency(o[1]);
@@ -1954,7 +2550,7 @@ api.RestoreOrder buildRestoreOrder() {
   final o = api.RestoreOrder();
   buildCounterRestoreOrder++;
   if (buildCounterRestoreOrder < 3) {
-    o.groupKindDependencies = buildUnnamed40();
+    o.groupKindDependencies = buildUnnamed52();
   }
   buildCounterRestoreOrder--;
   return o;
@@ -1963,17 +2559,17 @@ api.RestoreOrder buildRestoreOrder() {
 void checkRestoreOrder(api.RestoreOrder o) {
   buildCounterRestoreOrder++;
   if (buildCounterRestoreOrder < 3) {
-    checkUnnamed40(o.groupKindDependencies!);
+    checkUnnamed52(o.groupKindDependencies!);
   }
   buildCounterRestoreOrder--;
 }
 
-core.Map<core.String, core.String> buildUnnamed41() => {
+core.Map<core.String, core.String> buildUnnamed53() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed41(core.Map<core.String, core.String> o) {
+void checkUnnamed53(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1995,8 +2591,9 @@ api.RestorePlan buildRestorePlan() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed41();
+    o.labels = buildUnnamed53();
     o.name = 'foo';
+    o.restoreChannel = 'foo';
     o.restoreConfig = buildRestoreConfig();
     o.state = 'foo';
     o.stateReason = 'foo';
@@ -2030,9 +2627,13 @@ void checkRestorePlan(api.RestorePlan o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed41(o.labels!);
+    checkUnnamed53(o.labels!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.restoreChannel!,
       unittest.equals('foo'),
     );
     checkRestoreConfig(o.restoreConfig!);
@@ -2054,6 +2655,58 @@ void checkRestorePlan(api.RestorePlan o) {
     );
   }
   buildCounterRestorePlan--;
+}
+
+core.int buildCounterRestorePlanBinding = 0;
+api.RestorePlanBinding buildRestorePlanBinding() {
+  final o = api.RestorePlanBinding();
+  buildCounterRestorePlanBinding++;
+  if (buildCounterRestorePlanBinding < 3) {
+    o.backupPlan = 'foo';
+    o.createTime = 'foo';
+    o.etag = 'foo';
+    o.name = 'foo';
+    o.restorePlan = 'foo';
+    o.uid = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterRestorePlanBinding--;
+  return o;
+}
+
+void checkRestorePlanBinding(api.RestorePlanBinding o) {
+  buildCounterRestorePlanBinding++;
+  if (buildCounterRestorePlanBinding < 3) {
+    unittest.expect(
+      o.backupPlan!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.restorePlan!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRestorePlanBinding--;
 }
 
 core.int buildCounterRetentionPolicy = 0;
@@ -2085,12 +2738,39 @@ void checkRetentionPolicy(api.RetentionPolicy o) {
   buildCounterRetentionPolicy--;
 }
 
-core.List<api.ExclusionWindow> buildUnnamed42() => [
+core.int buildCounterRetentionPolicyDetails = 0;
+api.RetentionPolicyDetails buildRetentionPolicyDetails() {
+  final o = api.RetentionPolicyDetails();
+  buildCounterRetentionPolicyDetails++;
+  if (buildCounterRetentionPolicyDetails < 3) {
+    o.backupDeleteLockDays = 42;
+    o.backupRetainDays = 42;
+  }
+  buildCounterRetentionPolicyDetails--;
+  return o;
+}
+
+void checkRetentionPolicyDetails(api.RetentionPolicyDetails o) {
+  buildCounterRetentionPolicyDetails++;
+  if (buildCounterRetentionPolicyDetails < 3) {
+    unittest.expect(
+      o.backupDeleteLockDays!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.backupRetainDays!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterRetentionPolicyDetails--;
+}
+
+core.List<api.ExclusionWindow> buildUnnamed54() => [
       buildExclusionWindow(),
       buildExclusionWindow(),
     ];
 
-void checkUnnamed42(core.List<api.ExclusionWindow> o) {
+void checkUnnamed54(core.List<api.ExclusionWindow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExclusionWindow(o[0]);
   checkExclusionWindow(o[1]);
@@ -2101,7 +2781,7 @@ api.RpoConfig buildRpoConfig() {
   final o = api.RpoConfig();
   buildCounterRpoConfig++;
   if (buildCounterRpoConfig < 3) {
-    o.exclusionWindows = buildUnnamed42();
+    o.exclusionWindows = buildUnnamed54();
     o.targetRpoMinutes = 42;
   }
   buildCounterRpoConfig--;
@@ -2111,7 +2791,7 @@ api.RpoConfig buildRpoConfig() {
 void checkRpoConfig(api.RpoConfig o) {
   buildCounterRpoConfig++;
   if (buildCounterRpoConfig < 3) {
-    checkUnnamed42(o.exclusionWindows!);
+    checkUnnamed54(o.exclusionWindows!);
     unittest.expect(
       o.targetRpoMinutes!,
       unittest.equals(42),
@@ -2175,23 +2855,23 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.List<api.GroupKind> buildUnnamed43() => [
+core.List<api.GroupKind> buildUnnamed55() => [
       buildGroupKind(),
       buildGroupKind(),
     ];
 
-void checkUnnamed43(core.List<api.GroupKind> o) {
+void checkUnnamed55(core.List<api.GroupKind> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupKind(o[0]);
   checkGroupKind(o[1]);
 }
 
-core.List<core.String> buildUnnamed44() => [
+core.List<core.String> buildUnnamed56() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed44(core.List<core.String> o) {
+void checkUnnamed56(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2210,9 +2890,9 @@ api.SubstitutionRule buildSubstitutionRule() {
   if (buildCounterSubstitutionRule < 3) {
     o.newValue = 'foo';
     o.originalValuePattern = 'foo';
-    o.targetGroupKinds = buildUnnamed43();
+    o.targetGroupKinds = buildUnnamed55();
     o.targetJsonPath = 'foo';
-    o.targetNamespaces = buildUnnamed44();
+    o.targetNamespaces = buildUnnamed56();
   }
   buildCounterSubstitutionRule--;
   return o;
@@ -2229,22 +2909,22 @@ void checkSubstitutionRule(api.SubstitutionRule o) {
       o.originalValuePattern!,
       unittest.equals('foo'),
     );
-    checkUnnamed43(o.targetGroupKinds!);
+    checkUnnamed55(o.targetGroupKinds!);
     unittest.expect(
       o.targetJsonPath!,
       unittest.equals('foo'),
     );
-    checkUnnamed44(o.targetNamespaces!);
+    checkUnnamed56(o.targetNamespaces!);
   }
   buildCounterSubstitutionRule--;
 }
 
-core.List<core.String> buildUnnamed45() => [
+core.List<core.String> buildUnnamed57() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed45(core.List<core.String> o) {
+void checkUnnamed57(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2261,7 +2941,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed45();
+    o.permissions = buildUnnamed57();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -2270,17 +2950,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed45(o.permissions!);
+    checkUnnamed57(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed46() => [
+core.List<core.String> buildUnnamed58() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed46(core.List<core.String> o) {
+void checkUnnamed58(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2297,7 +2977,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed46();
+    o.permissions = buildUnnamed58();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -2306,7 +2986,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed46(o.permissions!);
+    checkUnnamed58(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -2348,12 +3028,12 @@ void checkTimeOfDay(api.TimeOfDay o) {
   buildCounterTimeOfDay--;
 }
 
-core.List<api.TransformationRuleAction> buildUnnamed47() => [
+core.List<api.TransformationRuleAction> buildUnnamed59() => [
       buildTransformationRuleAction(),
       buildTransformationRuleAction(),
     ];
 
-void checkUnnamed47(core.List<api.TransformationRuleAction> o) {
+void checkUnnamed59(core.List<api.TransformationRuleAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransformationRuleAction(o[0]);
   checkTransformationRuleAction(o[1]);
@@ -2365,7 +3045,7 @@ api.TransformationRule buildTransformationRule() {
   buildCounterTransformationRule++;
   if (buildCounterTransformationRule < 3) {
     o.description = 'foo';
-    o.fieldActions = buildUnnamed47();
+    o.fieldActions = buildUnnamed59();
     o.resourceFilter = buildResourceFilter();
   }
   buildCounterTransformationRule--;
@@ -2379,7 +3059,7 @@ void checkTransformationRule(api.TransformationRule o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed47(o.fieldActions!);
+    checkUnnamed59(o.fieldActions!);
     checkResourceFilter(o.resourceFilter!);
   }
   buildCounterTransformationRule--;
@@ -2422,6 +3102,33 @@ void checkTransformationRuleAction(api.TransformationRuleAction o) {
   buildCounterTransformationRuleAction--;
 }
 
+core.int buildCounterTroubleshootingInfo = 0;
+api.TroubleshootingInfo buildTroubleshootingInfo() {
+  final o = api.TroubleshootingInfo();
+  buildCounterTroubleshootingInfo++;
+  if (buildCounterTroubleshootingInfo < 3) {
+    o.stateReasonCode = 'foo';
+    o.stateReasonUri = 'foo';
+  }
+  buildCounterTroubleshootingInfo--;
+  return o;
+}
+
+void checkTroubleshootingInfo(api.TroubleshootingInfo o) {
+  buildCounterTroubleshootingInfo++;
+  if (buildCounterTroubleshootingInfo < 3) {
+    unittest.expect(
+      o.stateReasonCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.stateReasonUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTroubleshootingInfo--;
+}
+
 core.int buildCounterVolumeBackup = 0;
 api.VolumeBackup buildVolumeBackup() {
   final o = api.VolumeBackup();
@@ -2433,6 +3140,8 @@ api.VolumeBackup buildVolumeBackup() {
     o.etag = 'foo';
     o.format = 'foo';
     o.name = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.sourcePvc = buildNamespacedName();
     o.state = 'foo';
     o.stateMessage = 'foo';
@@ -2472,6 +3181,8 @@ void checkVolumeBackup(api.VolumeBackup o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkNamespacedName(o.sourcePvc!);
     unittest.expect(
       o.state!,
@@ -2627,6 +3338,23 @@ void checkVolumeRestore(api.VolumeRestore o) {
   buildCounterVolumeRestore--;
 }
 
+core.List<core.String> buildUnnamed60() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed60(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
@@ -2658,6 +3386,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-BackupChannel', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBackupChannel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BackupChannel.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBackupChannel(od);
+    });
+  });
+
   unittest.group('obj-schema-BackupConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBackupConfig();
@@ -2668,6 +3406,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-BackupConfigDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBackupConfigDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BackupConfigDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBackupConfigDetails(od);
+    });
+  });
+
   unittest.group('obj-schema-BackupPlan', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBackupPlan();
@@ -2675,6 +3423,26 @@ void main() {
       final od =
           api.BackupPlan.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBackupPlan(od);
+    });
+  });
+
+  unittest.group('obj-schema-BackupPlanBinding', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBackupPlanBinding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BackupPlanBinding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBackupPlanBinding(od);
+    });
+  });
+
+  unittest.group('obj-schema-BackupPlanDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBackupPlanDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BackupPlanDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBackupPlanDetails(od);
     });
   });
 
@@ -2848,6 +3616,36 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Label', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLabel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Label.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLabel(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListBackupChannelsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListBackupChannelsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListBackupChannelsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListBackupChannelsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListBackupPlanBindingsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListBackupPlanBindingsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListBackupPlanBindingsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListBackupPlanBindingsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListBackupPlansResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListBackupPlansResponse();
@@ -2875,6 +3673,26 @@ void main() {
       final od = api.ListLocationsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListLocationsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListRestoreChannelsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListRestoreChannelsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListRestoreChannelsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListRestoreChannelsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListRestorePlanBindingsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListRestorePlanBindingsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListRestorePlanBindingsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListRestorePlanBindingsResponse(od);
     });
   });
 
@@ -2978,6 +3796,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ResourceLabels', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildResourceLabels();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ResourceLabels.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkResourceLabels(od);
+    });
+  });
+
   unittest.group('obj-schema-ResourceSelector', () {
     unittest.test('to-json--from-json', () async {
       final o = buildResourceSelector();
@@ -2995,6 +3823,16 @@ void main() {
       final od =
           api.Restore.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRestore(od);
+    });
+  });
+
+  unittest.group('obj-schema-RestoreChannel', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRestoreChannel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RestoreChannel.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRestoreChannel(od);
     });
   });
 
@@ -3028,6 +3866,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RestorePlanBinding', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRestorePlanBinding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RestorePlanBinding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRestorePlanBinding(od);
+    });
+  });
+
   unittest.group('obj-schema-RetentionPolicy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRetentionPolicy();
@@ -3035,6 +3883,16 @@ void main() {
       final od = api.RetentionPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRetentionPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-RetentionPolicyDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRetentionPolicyDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RetentionPolicyDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRetentionPolicyDetails(od);
     });
   });
 
@@ -3125,6 +3983,16 @@ void main() {
       final od = api.TransformationRuleAction.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTransformationRuleAction(od);
+    });
+  });
+
+  unittest.group('obj-schema-TroubleshootingInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTroubleshootingInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TroubleshootingInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTroubleshootingInfo(od);
     });
   });
 
@@ -3225,7 +4093,267 @@ void main() {
       final mock = HttpServerMock();
       final res = api.BackupForGKEApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed60();
       final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListLocationsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsBackupChannelsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock).projects.locations.backupChannels;
+      final arg_request = buildBackupChannel();
+      final arg_parent = 'foo';
+      final arg_backupChannelId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.BackupChannel.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBackupChannel(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['backupChannelId']!.first,
+          unittest.equals(arg_backupChannelId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          backupChannelId: arg_backupChannelId, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock).projects.locations.backupChannels;
+      final arg_name = 'foo';
+      final arg_etag = 'foo';
+      final arg_force = true;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['etag']!.first,
+          unittest.equals(arg_etag),
+        );
+        unittest.expect(
+          queryMap['force']!.first,
+          unittest.equals('$arg_force'),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name,
+          etag: arg_etag, force: arg_force, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock).projects.locations.backupChannels;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildBackupChannel());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkBackupChannel(response as api.BackupChannel);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock).projects.locations.backupChannels;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -3266,6 +4394,10 @@ void main() {
           unittest.equals(arg_filter),
         );
         unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -3281,15 +4413,222 @@ void main() {
         final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        final resp = convert.json.encode(buildListLocationsResponse());
+        final resp = convert.json.encode(buildListBackupChannelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.list(arg_name,
+      final response = await res.list(arg_parent,
           filter: arg_filter,
+          orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);
-      checkListLocationsResponse(response as api.ListLocationsResponse);
+      checkListBackupChannelsResponse(
+          response as api.ListBackupChannelsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock).projects.locations.backupChannels;
+      final arg_request = buildBackupChannel();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.BackupChannel.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBackupChannel(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+  });
+
+  unittest.group(
+      'resource-ProjectsLocationsBackupChannelsBackupPlanBindingsResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock)
+          .projects
+          .locations
+          .backupChannels
+          .backupPlanBindings;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildBackupPlanBinding());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkBackupPlanBinding(response as api.BackupPlanBinding);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock)
+          .projects
+          .locations
+          .backupChannels
+          .backupPlanBindings;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListBackupPlanBindingsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListBackupPlanBindingsResponse(
+          response as api.ListBackupPlanBindingsResponse);
     });
   });
 
@@ -4096,6 +5435,7 @@ void main() {
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_returnPartialSuccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -4146,6 +5486,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['returnPartialSuccess']!.first,
+          unittest.equals('$arg_returnPartialSuccess'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -4161,6 +5505,7 @@ void main() {
           orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          returnPartialSuccess: arg_returnPartialSuccess,
           $fields: arg_$fields);
       checkListBackupsResponse(response as api.ListBackupsResponse);
     });
@@ -4918,6 +6263,468 @@ void main() {
           $fields: arg_$fields);
       checkGoogleLongrunningListOperationsResponse(
           response as api.GoogleLongrunningListOperationsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsRestoreChannelsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock).projects.locations.restoreChannels;
+      final arg_request = buildRestoreChannel();
+      final arg_parent = 'foo';
+      final arg_restoreChannelId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RestoreChannel.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRestoreChannel(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['restoreChannelId']!.first,
+          unittest.equals(arg_restoreChannelId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          restoreChannelId: arg_restoreChannelId, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock).projects.locations.restoreChannels;
+      final arg_name = 'foo';
+      final arg_etag = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['etag']!.first,
+          unittest.equals(arg_etag),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock).projects.locations.restoreChannels;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildRestoreChannel());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkRestoreChannel(response as api.RestoreChannel);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock).projects.locations.restoreChannels;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListRestoreChannelsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListRestoreChannelsResponse(
+          response as api.ListRestoreChannelsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock).projects.locations.restoreChannels;
+      final arg_request = buildRestoreChannel();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RestoreChannel.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRestoreChannel(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+  });
+
+  unittest.group(
+      'resource-ProjectsLocationsRestoreChannelsRestorePlanBindingsResource',
+      () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock)
+          .projects
+          .locations
+          .restoreChannels
+          .restorePlanBindings;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildRestorePlanBinding());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkRestorePlanBinding(response as api.RestorePlanBinding);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.BackupForGKEApi(mock)
+          .projects
+          .locations
+          .restoreChannels
+          .restorePlanBindings;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildListRestorePlanBindingsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListRestorePlanBindingsResponse(
+          response as api.ListRestorePlanBindingsResponse);
     });
   });
 

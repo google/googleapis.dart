@@ -4983,6 +4983,12 @@ class BuildTrigger {
   /// Human-readable description of this trigger.
   core.String? description;
 
+  /// The configuration of a trigger that creates a build whenever an event from
+  /// the DeveloperConnect API is received.
+  ///
+  /// Optional.
+  DeveloperConnectEventConfig? developerConnectEventConfig;
+
   /// If true, the trigger will never automatically execute a build.
   core.bool? disabled;
 
@@ -5121,6 +5127,7 @@ class BuildTrigger {
     this.build,
     this.createTime,
     this.description,
+    this.developerConnectEventConfig,
     this.disabled,
     this.eventType,
     this.filename,
@@ -5163,6 +5170,12 @@ class BuildTrigger {
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
+          developerConnectEventConfig:
+              json_.containsKey('developerConnectEventConfig')
+                  ? DeveloperConnectEventConfig.fromJson(
+                      json_['developerConnectEventConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           disabled: json_['disabled'] as core.bool?,
           eventType: json_['eventType'] as core.String?,
           filename: json_['filename'] as core.String?,
@@ -5233,6 +5246,8 @@ class BuildTrigger {
         if (build != null) 'build': build!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (developerConnectEventConfig != null)
+          'developerConnectEventConfig': developerConnectEventConfig!,
         if (disabled != null) 'disabled': disabled!,
         if (eventType != null) 'eventType': eventType!,
         if (filename != null) 'filename': filename!,
@@ -5555,6 +5570,65 @@ class DeveloperConnectConfig {
         if (dir != null) 'dir': dir!,
         if (gitRepositoryLink != null) 'gitRepositoryLink': gitRepositoryLink!,
         if (revision != null) 'revision': revision!,
+      };
+}
+
+/// The configuration of a trigger that creates a build whenever an event from
+/// the DeveloperConnect API is received.
+class DeveloperConnectEventConfig {
+  /// The Developer Connect Git repository link, formatted as `projects / *
+  /// /locations / * /connections / * /gitRepositoryLink / * `.
+  ///
+  /// Required.
+  core.String? gitRepositoryLink;
+
+  /// The type of DeveloperConnect GitRepositoryLink.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "GIT_REPOSITORY_LINK_TYPE_UNSPECIFIED" : If unspecified,
+  /// GitRepositoryLinkType defaults to GITHUB.
+  /// - "GITHUB" : The SCM repo is GITHUB.
+  /// - "GITHUB_ENTERPRISE" : The SCM repo is GITHUB_ENTERPRISE.
+  /// - "GITLAB" : The SCM repo is GITLAB.
+  /// - "GITLAB_ENTERPRISE" : The SCM repo is GITLAB_ENTERPRISE.
+  /// - "BITBUCKET_DATA_CENTER" : The SCM repo is BITBUCKET_DATA_CENTER.
+  /// - "BITBUCKET_CLOUD" : The SCM repo is BITBUCKET_CLOUD.
+  core.String? gitRepositoryLinkType;
+
+  /// Filter to match changes in pull requests.
+  PullRequestFilter? pullRequest;
+
+  /// Filter to match changes in refs like branches and tags.
+  PushFilter? push;
+
+  DeveloperConnectEventConfig({
+    this.gitRepositoryLink,
+    this.gitRepositoryLinkType,
+    this.pullRequest,
+    this.push,
+  });
+
+  DeveloperConnectEventConfig.fromJson(core.Map json_)
+      : this(
+          gitRepositoryLink: json_['gitRepositoryLink'] as core.String?,
+          gitRepositoryLinkType: json_['gitRepositoryLinkType'] as core.String?,
+          pullRequest: json_.containsKey('pullRequest')
+              ? PullRequestFilter.fromJson(
+                  json_['pullRequest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          push: json_.containsKey('push')
+              ? PushFilter.fromJson(
+                  json_['push'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gitRepositoryLink != null) 'gitRepositoryLink': gitRepositoryLink!,
+        if (gitRepositoryLinkType != null)
+          'gitRepositoryLinkType': gitRepositoryLinkType!,
+        if (pullRequest != null) 'pullRequest': pullRequest!,
+        if (push != null) 'push': push!,
       };
 }
 
@@ -6518,8 +6592,7 @@ class GitSourceDependency {
 
 /// A repository for a git source.
 class GitSourceRepository {
-  /// The Developer Connect Git repository link or the url that matches a
-  /// repository link in the current project, formatted as `projects / *
+  /// The Developer Connect Git repository link formatted as `projects / *
   /// /locations / * /connections / * /gitRepositoryLink / * `
   core.String? developerConnect;
 
@@ -7001,6 +7074,8 @@ class MavenArtifact {
   /// This can be either an absolute path, e.g.
   /// /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from
   /// /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+  ///
+  /// Optional.
   core.String? path;
 
   /// Artifact Registry repository, in the form
@@ -7302,8 +7377,9 @@ class PrivateServiceConnect {
   ///
   /// Enable this if you want full control of traffic in the private pool.
   /// Configure Cloud NAT for the subnet of network attachment if you need to
-  /// access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8,
-  /// 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+  /// access public Internet. If false, Only route RFC 1918 (10.0.0.0/8,
+  /// 172.16.0.0/12, and 192.168.0.0/16) and RFC 6598 (100.64.0.0/10) through
+  /// PSC interface.
   ///
   /// Immutable.
   core.bool? routeAllTraffic;
@@ -8601,7 +8677,7 @@ class WorkerConfig {
   ///
   /// See
   /// [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema).
-  /// Specify a value of up to 2000. If `0` is specified, Cloud Build will use a
+  /// Specify a value of up to 4000. If `0` is specified, Cloud Build will use a
   /// standard disk size.
   core.String? diskSizeGb;
 
@@ -8681,7 +8757,7 @@ class WorkerPool {
   /// Output only.
   core.String? name;
 
-  /// Legacy Private Pool configuration.
+  /// Private Pool configuration.
   PrivatePoolV1Config? privatePoolV1Config;
 
   /// `WorkerPool` state.

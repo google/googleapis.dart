@@ -177,6 +177,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -199,12 +203,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3137,6 +3143,9 @@ class ProjectsLocationsPrivateConnectionsResource {
   ///
   /// [skipValidation] - Optional. If set to true, will skip validations.
   ///
+  /// [validateOnly] - Optional. For PSC Interface only - get the tenant project
+  /// before creating the resource.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3153,6 +3162,7 @@ class ProjectsLocationsPrivateConnectionsResource {
     core.String? privateConnectionId,
     core.String? requestId,
     core.bool? skipValidation,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert_1.json.encode(request);
@@ -3161,6 +3171,7 @@ class ProjectsLocationsPrivateConnectionsResource {
         'privateConnectionId': [privateConnectionId],
       if (requestId != null) 'requestId': [requestId],
       if (skipValidation != null) 'skipValidation': ['${skipValidation}'],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3522,6 +3533,7 @@ class AlloyDbSettings {
   /// - "POSTGRES_14" : The database version is Postgres 14.
   /// - "POSTGRES_15" : The database version is Postgres 15.
   /// - "POSTGRES_16" : The database version is Postgres 16.
+  /// - "POSTGRES_17" : The database version is Postgres 17.
   core.String? databaseVersion;
 
   /// The encryption config can be specified to encrypt the data disks and other
@@ -3545,6 +3557,8 @@ class AlloyDbSettings {
   ///
   /// An object containing a list of 'key', 'value' pairs.
   core.Map<core.String, core.String>? labels;
+
+  /// Settings for the cluster's primary instance
   PrimaryInstanceSettings? primaryInstanceSettings;
 
   /// The resource link for the VPC network in which cluster resources are
@@ -4941,6 +4955,19 @@ class ConversionWorkspace {
   /// Required.
   DatabaseEngineInfo? destination;
 
+  /// The provider for the destination database.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATABASE_PROVIDER_UNSPECIFIED" : Use this value for on-premise source
+  /// database instances and ORACLE.
+  /// - "CLOUDSQL" : Cloud SQL is the source instance provider.
+  /// - "RDS" : Amazon RDS is the source instance provider.
+  /// - "AURORA" : Amazon Aurora is the source instance provider.
+  /// - "ALLOYDB" : AlloyDB for PostgreSQL is the source instance provider.
+  /// - "AZURE_DATABASE" : Microsoft Azure Database for MySQL/PostgreSQL.
+  core.String? destinationProvider;
+
   /// The display name for the workspace.
   ///
   /// Optional.
@@ -4981,6 +5008,19 @@ class ConversionWorkspace {
   /// Required.
   DatabaseEngineInfo? source;
 
+  /// The provider for the source database.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATABASE_PROVIDER_UNSPECIFIED" : Use this value for on-premise source
+  /// database instances and ORACLE.
+  /// - "CLOUDSQL" : Cloud SQL is the source instance provider.
+  /// - "RDS" : Amazon RDS is the source instance provider.
+  /// - "AURORA" : Amazon Aurora is the source instance provider.
+  /// - "ALLOYDB" : AlloyDB for PostgreSQL is the source instance provider.
+  /// - "AZURE_DATABASE" : Microsoft Azure Database for MySQL/PostgreSQL.
+  core.String? sourceProvider;
+
   /// The timestamp when the workspace resource was last updated.
   ///
   /// Output only.
@@ -4989,6 +5029,7 @@ class ConversionWorkspace {
   ConversionWorkspace({
     this.createTime,
     this.destination,
+    this.destinationProvider,
     this.displayName,
     this.globalSettings,
     this.hasUncommittedChanges,
@@ -4996,6 +5037,7 @@ class ConversionWorkspace {
     this.latestCommitTime,
     this.name,
     this.source,
+    this.sourceProvider,
     this.updateTime,
   });
 
@@ -5006,6 +5048,7 @@ class ConversionWorkspace {
               ? DatabaseEngineInfo.fromJson(
                   json_['destination'] as core.Map<core.String, core.dynamic>)
               : null,
+          destinationProvider: json_['destinationProvider'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           globalSettings:
               (json_['globalSettings'] as core.Map<core.String, core.dynamic>?)
@@ -5023,12 +5066,15 @@ class ConversionWorkspace {
               ? DatabaseEngineInfo.fromJson(
                   json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
+          sourceProvider: json_['sourceProvider'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (destination != null) 'destination': destination!,
+        if (destinationProvider != null)
+          'destinationProvider': destinationProvider!,
         if (displayName != null) 'displayName': displayName!,
         if (globalSettings != null) 'globalSettings': globalSettings!,
         if (hasUncommittedChanges != null)
@@ -5037,6 +5083,7 @@ class ConversionWorkspace {
         if (latestCommitTime != null) 'latestCommitTime': latestCommitTime!,
         if (name != null) 'name': name!,
         if (source != null) 'source': source!,
+        if (sourceProvider != null) 'sourceProvider': sourceProvider!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -6706,7 +6753,34 @@ class LookupMigrationJobObjectRequest {
 }
 
 /// MachineConfig describes the configuration of a machine.
-typedef MachineConfig = $MachineConfig;
+class MachineConfig {
+  /// The number of CPU's in the VM instance.
+  core.int? cpuCount;
+
+  /// Machine type of the VM instance.
+  ///
+  /// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd". cpu_count must
+  /// match the number of vCPUs in the machine type.
+  ///
+  /// Optional.
+  core.String? machineType;
+
+  MachineConfig({
+    this.cpuCount,
+    this.machineType,
+  });
+
+  MachineConfig.fromJson(core.Map json_)
+      : this(
+          cpuCount: json_['cpuCount'] as core.int?,
+          machineType: json_['machineType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpuCount != null) 'cpuCount': cpuCount!,
+        if (machineType != null) 'machineType': machineType!,
+      };
+}
 
 /// Definition of a transformation that is to be applied to a group of entities
 /// in the source schema.
@@ -7220,6 +7294,10 @@ class MigrationJob {
   SqlServerHomogeneousMigrationJobConfig?
       sqlserverHomogeneousMigrationJobConfig;
 
+  /// Configuration for heterogeneous **SQL Server to Cloud SQL for PostgreSQL**
+  /// migrations.
+  SqlServerToPostgresConfig? sqlserverToPostgresConfig;
+
   /// The current migration job state.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The state of the migration job is unknown.
@@ -7290,6 +7368,7 @@ class MigrationJob {
     this.source,
     this.sourceDatabase,
     this.sqlserverHomogeneousMigrationJobConfig,
+    this.sqlserverToPostgresConfig,
     this.state,
     this.staticIpConnectivity,
     this.type,
@@ -7362,6 +7441,12 @@ class MigrationJob {
                       json_['sqlserverHomogeneousMigrationJobConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          sqlserverToPostgresConfig:
+              json_.containsKey('sqlserverToPostgresConfig')
+                  ? SqlServerToPostgresConfig.fromJson(
+                      json_['sqlserverToPostgresConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           state: json_['state'] as core.String?,
           staticIpConnectivity: json_.containsKey('staticIpConnectivity')
               ? StaticIpConnectivity.fromJson(json_['staticIpConnectivity']
@@ -7407,6 +7492,8 @@ class MigrationJob {
         if (sqlserverHomogeneousMigrationJobConfig != null)
           'sqlserverHomogeneousMigrationJobConfig':
               sqlserverHomogeneousMigrationJobConfig!,
+        if (sqlserverToPostgresConfig != null)
+          'sqlserverToPostgresConfig': sqlserverToPostgresConfig!,
         if (state != null) 'state': state!,
         if (staticIpConnectivity != null)
           'staticIpConnectivity': staticIpConnectivity!,
@@ -8665,6 +8752,9 @@ class PrivateConnection {
   /// The name of the resource.
   core.String? name;
 
+  /// PSC Interface configuration.
+  PscInterfaceConfig? pscInterfaceConfig;
+
   /// Reserved for future use.
   ///
   /// Output only.
@@ -8705,6 +8795,7 @@ class PrivateConnection {
     this.error,
     this.labels,
     this.name,
+    this.pscInterfaceConfig,
     this.satisfiesPzi,
     this.satisfiesPzs,
     this.state,
@@ -8728,6 +8819,10 @@ class PrivateConnection {
             ),
           ),
           name: json_['name'] as core.String?,
+          pscInterfaceConfig: json_.containsKey('pscInterfaceConfig')
+              ? PscInterfaceConfig.fromJson(json_['pscInterfaceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           state: json_['state'] as core.String?,
@@ -8744,6 +8839,8 @@ class PrivateConnection {
         if (error != null) 'error': error!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (pscInterfaceConfig != null)
+          'pscInterfaceConfig': pscInterfaceConfig!,
         if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
@@ -8817,6 +8914,31 @@ class PromoteMigrationJobRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (objectsFilter != null) 'objectsFilter': objectsFilter!,
+      };
+}
+
+/// The PSC Interface configuration is used to create PSC Interface between
+/// DMS's internal VPC and the consumer's PSC.
+class PscInterfaceConfig {
+  /// Fully qualified name of the Network Attachment that DMS will connect to.
+  ///
+  /// Format:
+  /// `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}`
+  ///
+  /// Required.
+  core.String? networkAttachment;
+
+  PscInterfaceConfig({
+    this.networkAttachment,
+  });
+
+  PscInterfaceConfig.fromJson(core.Map json_)
+      : this(
+          networkAttachment: json_['networkAttachment'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkAttachment != null) 'networkAttachment': networkAttachment!,
       };
 }
 
@@ -9566,6 +9688,22 @@ class SourceObjectIdentifier {
   /// Optional.
   core.String? database;
 
+  /// The schema name.
+  ///
+  /// This will be required only if the object uses a schema name as part of its
+  /// unique identifier.
+  ///
+  /// Optional.
+  core.String? schema;
+
+  /// The table name.
+  ///
+  /// This will be required only if the object is a level below database or
+  /// schema.
+  ///
+  /// Optional.
+  core.String? table;
+
   /// The type of the migration job object.
   ///
   /// Required.
@@ -9573,21 +9711,29 @@ class SourceObjectIdentifier {
   /// - "MIGRATION_JOB_OBJECT_TYPE_UNSPECIFIED" : The type of the migration job
   /// object is unknown.
   /// - "DATABASE" : The migration job object is a database.
+  /// - "SCHEMA" : The migration job object is a schema.
+  /// - "TABLE" : The migration job object is a table.
   core.String? type;
 
   SourceObjectIdentifier({
     this.database,
+    this.schema,
+    this.table,
     this.type,
   });
 
   SourceObjectIdentifier.fromJson(core.Map json_)
       : this(
           database: json_['database'] as core.String?,
+          schema: json_['schema'] as core.String?,
+          table: json_['table'] as core.String?,
           type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (database != null) 'database': database!,
+        if (schema != null) 'schema': schema!,
+        if (table != null) 'table': table!,
         if (type != null) 'type': type!,
       };
 }
@@ -9834,6 +9980,11 @@ class SqlServerConnectionProfile {
   /// SQL instance ID of the source.
   core.String? cloudSqlId;
 
+  /// The name of the specific database within the host.
+  ///
+  /// Required.
+  core.String? database;
+
   /// Forward SSH tunnel connectivity.
   ForwardSshTunnelConnectivity? forwardSshConnectivity;
 
@@ -9884,6 +10035,7 @@ class SqlServerConnectionProfile {
   SqlServerConnectionProfile({
     this.backups,
     this.cloudSqlId,
+    this.database,
     this.forwardSshConnectivity,
     this.host,
     this.password,
@@ -9903,6 +10055,7 @@ class SqlServerConnectionProfile {
                   json_['backups'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudSqlId: json_['cloudSqlId'] as core.String?,
+          database: json_['database'] as core.String?,
           forwardSshConnectivity: json_.containsKey('forwardSshConnectivity')
               ? ForwardSshTunnelConnectivity.fromJson(
                   json_['forwardSshConnectivity']
@@ -9936,6 +10089,7 @@ class SqlServerConnectionProfile {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backups != null) 'backups': backups!,
         if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
+        if (database != null) 'database': database!,
         if (forwardSshConnectivity != null)
           'forwardSshConnectivity': forwardSshConnectivity!,
         if (host != null) 'host': host!,
@@ -10095,6 +10249,97 @@ class SqlServerHomogeneousMigrationJobConfig {
       };
 }
 
+/// Configuration for SQL Server as a source in a migration.
+class SqlServerSourceConfig {
+  /// The log sequence number (LSN) to start CDC data migration from.
+  ///
+  /// Optional.
+  core.String? cdcStartPosition;
+
+  /// Maximum number of connections Database Migration Service will open to the
+  /// source for CDC phase.
+  ///
+  /// Optional.
+  core.int? maxConcurrentCdcConnections;
+
+  /// Maximum number of connections Database Migration Service will open to the
+  /// source for full dump phase.
+  ///
+  /// Optional.
+  core.int? maxConcurrentFullDumpConnections;
+
+  /// Whether to skip full dump or not.
+  ///
+  /// Optional.
+  core.bool? skipFullDump;
+
+  SqlServerSourceConfig({
+    this.cdcStartPosition,
+    this.maxConcurrentCdcConnections,
+    this.maxConcurrentFullDumpConnections,
+    this.skipFullDump,
+  });
+
+  SqlServerSourceConfig.fromJson(core.Map json_)
+      : this(
+          cdcStartPosition: json_['cdcStartPosition'] as core.String?,
+          maxConcurrentCdcConnections:
+              json_['maxConcurrentCdcConnections'] as core.int?,
+          maxConcurrentFullDumpConnections:
+              json_['maxConcurrentFullDumpConnections'] as core.int?,
+          skipFullDump: json_['skipFullDump'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cdcStartPosition != null) 'cdcStartPosition': cdcStartPosition!,
+        if (maxConcurrentCdcConnections != null)
+          'maxConcurrentCdcConnections': maxConcurrentCdcConnections!,
+        if (maxConcurrentFullDumpConnections != null)
+          'maxConcurrentFullDumpConnections': maxConcurrentFullDumpConnections!,
+        if (skipFullDump != null) 'skipFullDump': skipFullDump!,
+      };
+}
+
+/// Configuration for heterogeneous **SQL Server to Cloud SQL for PostgreSQL**
+/// migrations.
+class SqlServerToPostgresConfig {
+  /// Configuration for Postgres destination.
+  ///
+  /// Optional.
+  PostgresDestinationConfig? postgresDestinationConfig;
+
+  /// Configuration for SQL Server source.
+  ///
+  /// Optional.
+  SqlServerSourceConfig? sqlserverSourceConfig;
+
+  SqlServerToPostgresConfig({
+    this.postgresDestinationConfig,
+    this.sqlserverSourceConfig,
+  });
+
+  SqlServerToPostgresConfig.fromJson(core.Map json_)
+      : this(
+          postgresDestinationConfig:
+              json_.containsKey('postgresDestinationConfig')
+                  ? PostgresDestinationConfig.fromJson(
+                      json_['postgresDestinationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          sqlserverSourceConfig: json_.containsKey('sqlserverSourceConfig')
+              ? SqlServerSourceConfig.fromJson(json_['sqlserverSourceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (postgresDestinationConfig != null)
+          'postgresDestinationConfig': postgresDestinationConfig!,
+        if (sqlserverSourceConfig != null)
+          'sqlserverSourceConfig': sqlserverSourceConfig!,
+      };
+}
+
 /// Response message for 'GenerateSshScript' request.
 class SshScript {
   /// The ssh configuration script.
@@ -10139,6 +10384,15 @@ class SslConfig {
   /// 'client_certificate' field is mandatory.
   core.String? clientKey;
 
+  /// SSL flags used for establishing SSL connection to the source database.
+  ///
+  /// Only source specific flags are supported. An object containing a list of
+  /// "key": "value" pairs. Example: { "server_certificate_hostname":
+  /// "server.com"}.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? sslFlags;
+
   /// The ssl config type according to 'client_key', 'client_certificate' and
   /// 'ca_certificate'.
   ///
@@ -10157,6 +10411,7 @@ class SslConfig {
     this.caCertificate,
     this.clientCertificate,
     this.clientKey,
+    this.sslFlags,
     this.type,
   });
 
@@ -10165,6 +10420,13 @@ class SslConfig {
           caCertificate: json_['caCertificate'] as core.String?,
           clientCertificate: json_['clientCertificate'] as core.String?,
           clientKey: json_['clientKey'] as core.String?,
+          sslFlags:
+              (json_['sslFlags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           type: json_['type'] as core.String?,
         );
 
@@ -10172,6 +10434,7 @@ class SslConfig {
         if (caCertificate != null) 'caCertificate': caCertificate!,
         if (clientCertificate != null) 'clientCertificate': clientCertificate!,
         if (clientKey != null) 'clientKey': clientKey!,
+        if (sslFlags != null) 'sslFlags': sslFlags!,
         if (type != null) 'type': type!,
       };
 }

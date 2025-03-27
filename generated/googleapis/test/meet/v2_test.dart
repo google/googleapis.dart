@@ -70,6 +70,29 @@ void checkAnonymousUser(api.AnonymousUser o) {
   buildCounterAnonymousUser--;
 }
 
+core.int buildCounterArtifactConfig = 0;
+api.ArtifactConfig buildArtifactConfig() {
+  final o = api.ArtifactConfig();
+  buildCounterArtifactConfig++;
+  if (buildCounterArtifactConfig < 3) {
+    o.recordingConfig = buildRecordingConfig();
+    o.smartNotesConfig = buildSmartNotesConfig();
+    o.transcriptionConfig = buildTranscriptionConfig();
+  }
+  buildCounterArtifactConfig--;
+  return o;
+}
+
+void checkArtifactConfig(api.ArtifactConfig o) {
+  buildCounterArtifactConfig++;
+  if (buildCounterArtifactConfig < 3) {
+    checkRecordingConfig(o.recordingConfig!);
+    checkSmartNotesConfig(o.smartNotesConfig!);
+    checkTranscriptionConfig(o.transcriptionConfig!);
+  }
+  buildCounterArtifactConfig--;
+}
+
 core.int buildCounterConferenceRecord = 0;
 api.ConferenceRecord buildConferenceRecord() {
   final o = api.ConferenceRecord();
@@ -412,6 +435,43 @@ void checkListTranscriptsResponse(api.ListTranscriptsResponse o) {
   buildCounterListTranscriptsResponse--;
 }
 
+core.int buildCounterModerationRestrictions = 0;
+api.ModerationRestrictions buildModerationRestrictions() {
+  final o = api.ModerationRestrictions();
+  buildCounterModerationRestrictions++;
+  if (buildCounterModerationRestrictions < 3) {
+    o.chatRestriction = 'foo';
+    o.defaultJoinAsViewerType = 'foo';
+    o.presentRestriction = 'foo';
+    o.reactionRestriction = 'foo';
+  }
+  buildCounterModerationRestrictions--;
+  return o;
+}
+
+void checkModerationRestrictions(api.ModerationRestrictions o) {
+  buildCounterModerationRestrictions++;
+  if (buildCounterModerationRestrictions < 3) {
+    unittest.expect(
+      o.chatRestriction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.defaultJoinAsViewerType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.presentRestriction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reactionRestriction!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterModerationRestrictions--;
+}
+
 core.int buildCounterParticipant = 0;
 api.Participant buildParticipant() {
   final o = api.Participant();
@@ -543,6 +603,28 @@ void checkRecording(api.Recording o) {
   buildCounterRecording--;
 }
 
+core.int buildCounterRecordingConfig = 0;
+api.RecordingConfig buildRecordingConfig() {
+  final o = api.RecordingConfig();
+  buildCounterRecordingConfig++;
+  if (buildCounterRecordingConfig < 3) {
+    o.autoRecordingGeneration = 'foo';
+  }
+  buildCounterRecordingConfig--;
+  return o;
+}
+
+void checkRecordingConfig(api.RecordingConfig o) {
+  buildCounterRecordingConfig++;
+  if (buildCounterRecordingConfig < 3) {
+    unittest.expect(
+      o.autoRecordingGeneration!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRecordingConfig--;
+}
+
 core.int buildCounterSignedinUser = 0;
 api.SignedinUser buildSignedinUser() {
   final o = api.SignedinUser();
@@ -568,6 +650,28 @@ void checkSignedinUser(api.SignedinUser o) {
     );
   }
   buildCounterSignedinUser--;
+}
+
+core.int buildCounterSmartNotesConfig = 0;
+api.SmartNotesConfig buildSmartNotesConfig() {
+  final o = api.SmartNotesConfig();
+  buildCounterSmartNotesConfig++;
+  if (buildCounterSmartNotesConfig < 3) {
+    o.autoSmartNotesGeneration = 'foo';
+  }
+  buildCounterSmartNotesConfig--;
+  return o;
+}
+
+void checkSmartNotesConfig(api.SmartNotesConfig o) {
+  buildCounterSmartNotesConfig++;
+  if (buildCounterSmartNotesConfig < 3) {
+    unittest.expect(
+      o.autoSmartNotesGeneration!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSmartNotesConfig--;
 }
 
 core.int buildCounterSpace = 0;
@@ -612,7 +716,11 @@ api.SpaceConfig buildSpaceConfig() {
   buildCounterSpaceConfig++;
   if (buildCounterSpaceConfig < 3) {
     o.accessType = 'foo';
+    o.artifactConfig = buildArtifactConfig();
+    o.attendanceReportGenerationType = 'foo';
     o.entryPointAccess = 'foo';
+    o.moderation = 'foo';
+    o.moderationRestrictions = buildModerationRestrictions();
   }
   buildCounterSpaceConfig--;
   return o;
@@ -625,10 +733,20 @@ void checkSpaceConfig(api.SpaceConfig o) {
       o.accessType!,
       unittest.equals('foo'),
     );
+    checkArtifactConfig(o.artifactConfig!);
+    unittest.expect(
+      o.attendanceReportGenerationType!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.entryPointAccess!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.moderation!,
+      unittest.equals('foo'),
+    );
+    checkModerationRestrictions(o.moderationRestrictions!);
   }
   buildCounterSpaceConfig--;
 }
@@ -719,6 +837,28 @@ void checkTranscriptEntry(api.TranscriptEntry o) {
   buildCounterTranscriptEntry--;
 }
 
+core.int buildCounterTranscriptionConfig = 0;
+api.TranscriptionConfig buildTranscriptionConfig() {
+  final o = api.TranscriptionConfig();
+  buildCounterTranscriptionConfig++;
+  if (buildCounterTranscriptionConfig < 3) {
+    o.autoTranscriptionGeneration = 'foo';
+  }
+  buildCounterTranscriptionConfig--;
+  return o;
+}
+
+void checkTranscriptionConfig(api.TranscriptionConfig o) {
+  buildCounterTranscriptionConfig++;
+  if (buildCounterTranscriptionConfig < 3) {
+    unittest.expect(
+      o.autoTranscriptionGeneration!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTranscriptionConfig--;
+}
+
 void main() {
   unittest.group('obj-schema-ActiveConference', () {
     unittest.test('to-json--from-json', () async {
@@ -737,6 +877,16 @@ void main() {
       final od = api.AnonymousUser.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAnonymousUser(od);
+    });
+  });
+
+  unittest.group('obj-schema-ArtifactConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildArtifactConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ArtifactConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkArtifactConfig(od);
     });
   });
 
@@ -850,6 +1000,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ModerationRestrictions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildModerationRestrictions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ModerationRestrictions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkModerationRestrictions(od);
+    });
+  });
+
   unittest.group('obj-schema-Participant', () {
     unittest.test('to-json--from-json', () async {
       final o = buildParticipant();
@@ -890,6 +1050,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RecordingConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRecordingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RecordingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRecordingConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-SignedinUser', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSignedinUser();
@@ -897,6 +1067,16 @@ void main() {
       final od = api.SignedinUser.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSignedinUser(od);
+    });
+  });
+
+  unittest.group('obj-schema-SmartNotesConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSmartNotesConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SmartNotesConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSmartNotesConfig(od);
     });
   });
 
@@ -937,6 +1117,16 @@ void main() {
       final od = api.TranscriptEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTranscriptEntry(od);
+    });
+  });
+
+  unittest.group('obj-schema-TranscriptionConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTranscriptionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TranscriptionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTranscriptionConfig(od);
     });
   });
 

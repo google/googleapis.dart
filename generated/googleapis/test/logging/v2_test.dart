@@ -26,6 +26,125 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAppHub = 0;
+api.AppHub buildAppHub() {
+  final o = api.AppHub();
+  buildCounterAppHub++;
+  if (buildCounterAppHub < 3) {
+    o.application = buildAppHubApplication();
+    o.service = buildAppHubService();
+    o.workload = buildAppHubWorkload();
+  }
+  buildCounterAppHub--;
+  return o;
+}
+
+void checkAppHub(api.AppHub o) {
+  buildCounterAppHub++;
+  if (buildCounterAppHub < 3) {
+    checkAppHubApplication(o.application!);
+    checkAppHubService(o.service!);
+    checkAppHubWorkload(o.workload!);
+  }
+  buildCounterAppHub--;
+}
+
+core.int buildCounterAppHubApplication = 0;
+api.AppHubApplication buildAppHubApplication() {
+  final o = api.AppHubApplication();
+  buildCounterAppHubApplication++;
+  if (buildCounterAppHubApplication < 3) {
+    o.container = 'foo';
+    o.id = 'foo';
+    o.location = 'foo';
+  }
+  buildCounterAppHubApplication--;
+  return o;
+}
+
+void checkAppHubApplication(api.AppHubApplication o) {
+  buildCounterAppHubApplication++;
+  if (buildCounterAppHubApplication < 3) {
+    unittest.expect(
+      o.container!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAppHubApplication--;
+}
+
+core.int buildCounterAppHubService = 0;
+api.AppHubService buildAppHubService() {
+  final o = api.AppHubService();
+  buildCounterAppHubService++;
+  if (buildCounterAppHubService < 3) {
+    o.criticalityType = 'foo';
+    o.environmentType = 'foo';
+    o.id = 'foo';
+  }
+  buildCounterAppHubService--;
+  return o;
+}
+
+void checkAppHubService(api.AppHubService o) {
+  buildCounterAppHubService++;
+  if (buildCounterAppHubService < 3) {
+    unittest.expect(
+      o.criticalityType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.environmentType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAppHubService--;
+}
+
+core.int buildCounterAppHubWorkload = 0;
+api.AppHubWorkload buildAppHubWorkload() {
+  final o = api.AppHubWorkload();
+  buildCounterAppHubWorkload++;
+  if (buildCounterAppHubWorkload < 3) {
+    o.criticalityType = 'foo';
+    o.environmentType = 'foo';
+    o.id = 'foo';
+  }
+  buildCounterAppHubWorkload--;
+  return o;
+}
+
+void checkAppHubWorkload(api.AppHubWorkload o) {
+  buildCounterAppHubWorkload++;
+  if (buildCounterAppHubWorkload < 3) {
+    unittest.expect(
+      o.criticalityType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.environmentType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAppHubWorkload--;
+}
+
 core.int buildCounterBigQueryDataset = 0;
 api.BigQueryDataset buildBigQueryDataset() {
   final o = api.BigQueryDataset();
@@ -1555,6 +1674,8 @@ api.LogEntry buildLogEntry() {
   final o = api.LogEntry();
   buildCounterLogEntry++;
   if (buildCounterLogEntry < 3) {
+    o.apphub = buildAppHub();
+    o.apphubDestination = buildAppHub();
     o.errorGroups = buildUnnamed25();
     o.httpRequest = buildHttpRequest();
     o.insertId = 'foo';
@@ -1582,6 +1703,8 @@ api.LogEntry buildLogEntry() {
 void checkLogEntry(api.LogEntry o) {
   buildCounterLogEntry++;
   if (buildCounterLogEntry < 3) {
+    checkAppHub(o.apphub!);
+    checkAppHub(o.apphubDestination!);
     checkUnnamed25(o.errorGroups!);
     checkHttpRequest(o.httpRequest!);
     unittest.expect(
@@ -3180,7 +3303,132 @@ void checkUnnamed57(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed58() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed58(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed59() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed59(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed60() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed60(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed61() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed61(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed62() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed62(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
+  unittest.group('obj-schema-AppHub', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAppHub();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.AppHub.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkAppHub(od);
+    });
+  });
+
+  unittest.group('obj-schema-AppHubApplication', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAppHubApplication();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppHubApplication.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAppHubApplication(od);
+    });
+  });
+
+  unittest.group('obj-schema-AppHubService', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAppHubService();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppHubService.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAppHubService(od);
+    });
+  });
+
+  unittest.group('obj-schema-AppHubWorkload', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAppHubWorkload();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppHubWorkload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAppHubWorkload(od);
+    });
+  });
+
   unittest.group('obj-schema-BigQueryDataset', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBigQueryDataset();
@@ -4297,6 +4545,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.LoggingApi(mock).billingAccounts.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed49();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4334,6 +4583,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -4357,6 +4610,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
@@ -5386,7 +5640,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_resourceNames = buildUnnamed49();
+      final arg_resourceNames = buildUnnamed50();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -6070,7 +6324,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_resourceNames = buildUnnamed50();
+      final arg_resourceNames = buildUnnamed51();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -7513,6 +7767,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.LoggingApi(mock).folders.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed52();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7550,6 +7805,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -7573,6 +7832,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
@@ -8775,7 +9035,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_resourceNames = buildUnnamed51();
+      final arg_resourceNames = buildUnnamed53();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -9756,7 +10016,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_resourceNames = buildUnnamed52();
+      final arg_resourceNames = buildUnnamed54();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -10278,6 +10538,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.LoggingApi(mock).locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed55();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10315,6 +10576,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -10338,6 +10603,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
@@ -11775,7 +12041,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_resourceNames = buildUnnamed53();
+      final arg_resourceNames = buildUnnamed56();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -12490,6 +12756,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.LoggingApi(mock).organizations.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed57();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -12527,6 +12794,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -12550,6 +12821,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
@@ -13753,7 +14025,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_resourceNames = buildUnnamed54();
+      final arg_resourceNames = buildUnnamed58();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -14734,7 +15006,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_resourceNames = buildUnnamed55();
+      final arg_resourceNames = buildUnnamed59();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -15655,6 +15927,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.LoggingApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed60();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -15692,6 +15965,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -15715,6 +15992,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
@@ -16917,7 +17195,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_resourceNames = buildUnnamed56();
+      final arg_resourceNames = buildUnnamed61();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -17898,7 +18176,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_resourceNames = buildUnnamed57();
+      final arg_resourceNames = buildUnnamed62();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250227",
+    "revision": "20250429",
     "rootUrl": "https://migrationcenter.googleapis.com/",
     "servicePath": "",
     "title": "Migration Center API",
@@ -172,6 +172,12 @@
                                 "name"
                             ],
                             "parameters": {
+                                "extraLocationTypes": {
+                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "filter": {
                                     "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
@@ -443,6 +449,11 @@
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
+                                        },
+                                        "showHidden": {
+                                            "description": "Optional. When this value is set to 'true,' the response will include all assets, including those that are hidden.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         },
                                         "view": {
                                             "description": "View of the assets. Defaults to BASIC.",
@@ -2434,6 +2445,10 @@
                 "filter": {
                     "description": "Optional. The aggregation will be performed on assets that match the provided filter.",
                     "type": "string"
+                },
+                "showHidden": {
+                    "description": "Optional. When this value is set to 'true,' the response will include all assets, including those that are hidden.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2640,6 +2655,20 @@
                     "$ref": "DatabaseDetails",
                     "description": "Output only. Asset information specific for logical databases.",
                     "readOnly": true
+                },
+                "hidden": {
+                    "description": "Optional. Indicates if the asset is hidden.",
+                    "type": "boolean"
+                },
+                "hideReason": {
+                    "description": "Optional. An optional reason for marking this asset as hidden.",
+                    "type": "string"
+                },
+                "hideTime": {
+                    "description": "Output only. The timestamp when the asset was marked as hidden.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
                 },
                 "insightList": {
                     "$ref": "InsightList",
@@ -2863,6 +2892,13 @@
                     "description": "Optional. When this value is set to `true` the request is a no-op for non-existing assets. See https://google.aip.dev/135#delete-if-existing for additional details. Default value is `false`.",
                     "type": "boolean"
                 },
+                "cascadingRules": {
+                    "description": "Optional. Optional cascading rules for deleting related assets.",
+                    "items": {
+                        "$ref": "CascadingRule"
+                    },
+                    "type": "array"
+                },
                 "names": {
                     "description": "Required. The IDs of the assets to delete. A maximum of 1000 assets can be deleted in a batch. Format: projects/{project}/locations/{location}/assets/{name}.",
                     "items": {
@@ -2937,6 +2973,23 @@
             "description": "The request message for Operations.CancelOperation.",
             "id": "CancelOperationRequest",
             "properties": {},
+            "type": "object"
+        },
+        "CascadeLogicalDBsRule": {
+            "description": "Cascading rule for related logical DBs.",
+            "id": "CascadeLogicalDBsRule",
+            "properties": {},
+            "type": "object"
+        },
+        "CascadingRule": {
+            "description": "Specifies cascading rules for traversing relations.",
+            "id": "CascadingRule",
+            "properties": {
+                "cascadeLogicalDbs": {
+                    "$ref": "CascadeLogicalDBsRule",
+                    "description": "Cascading rule for related logical DBs."
+                }
+            },
             "type": "object"
         },
         "ComputeEngineMigrationTarget": {

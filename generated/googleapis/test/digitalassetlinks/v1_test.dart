@@ -90,6 +90,7 @@ api.BulkCheckRequest buildBulkCheckRequest() {
     o.defaultRelation = 'foo';
     o.defaultSource = buildAsset();
     o.defaultTarget = buildAsset();
+    o.returnRelationExtensions = true;
     o.statements = buildUnnamed0();
   }
   buildCounterBulkCheckRequest--;
@@ -105,6 +106,7 @@ void checkBulkCheckRequest(api.BulkCheckRequest o) {
     );
     checkAsset(o.defaultSource!);
     checkAsset(o.defaultTarget!);
+    unittest.expect(o.returnRelationExtensions!, unittest.isTrue);
     checkUnnamed0(o.statements!);
   }
   buildCounterBulkCheckRequest--;
@@ -184,6 +186,62 @@ void checkUnnamed2(core.List<core.String> o) {
   );
 }
 
+core.Map<core.String, core.Object?> buildUnnamed3() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed3(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.Map<core.String, core.Object?>> buildUnnamed4() => [
+      buildUnnamed3(),
+      buildUnnamed3(),
+    ];
+
+void checkUnnamed4(core.List<core.Map<core.String, core.Object?>> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUnnamed3(o[0]);
+  checkUnnamed3(o[1]);
+}
+
 core.int buildCounterCheckResponse = 0;
 api.CheckResponse buildCheckResponse() {
   final o = api.CheckResponse();
@@ -193,6 +251,7 @@ api.CheckResponse buildCheckResponse() {
     o.errorCode = buildUnnamed2();
     o.linked = true;
     o.maxAge = 'foo';
+    o.relationExtensions = buildUnnamed4();
   }
   buildCounterCheckResponse--;
   return o;
@@ -211,16 +270,17 @@ void checkCheckResponse(api.CheckResponse o) {
       o.maxAge!,
       unittest.equals('foo'),
     );
+    checkUnnamed4(o.relationExtensions!);
   }
   buildCounterCheckResponse--;
 }
 
-core.List<core.String> buildUnnamed3() => [
+core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -232,12 +292,12 @@ void checkUnnamed3(core.List<core.String> o) {
   );
 }
 
-core.List<api.Statement> buildUnnamed4() => [
+core.List<api.Statement> buildUnnamed6() => [
       buildStatement(),
       buildStatement(),
     ];
 
-void checkUnnamed4(core.List<api.Statement> o) {
+void checkUnnamed6(core.List<api.Statement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatement(o[0]);
   checkStatement(o[1]);
@@ -249,9 +309,9 @@ api.ListResponse buildListResponse() {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
     o.debugString = 'foo';
-    o.errorCode = buildUnnamed3();
+    o.errorCode = buildUnnamed5();
     o.maxAge = 'foo';
-    o.statements = buildUnnamed4();
+    o.statements = buildUnnamed6();
   }
   buildCounterListResponse--;
   return o;
@@ -264,14 +324,59 @@ void checkListResponse(api.ListResponse o) {
       o.debugString!,
       unittest.equals('foo'),
     );
-    checkUnnamed3(o.errorCode!);
+    checkUnnamed5(o.errorCode!);
     unittest.expect(
       o.maxAge!,
       unittest.equals('foo'),
     );
-    checkUnnamed4(o.statements!);
+    checkUnnamed6(o.statements!);
   }
   buildCounterListResponse--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed7() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed7(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted3 = (o['x']!) as core.Map;
+  unittest.expect(casted3, unittest.hasLength(3));
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
+  var casted4 = (o['y']!) as core.Map;
+  unittest.expect(casted4, unittest.hasLength(3));
+  unittest.expect(
+    casted4['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted4['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted4['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterStatement = 0;
@@ -280,6 +385,7 @@ api.Statement buildStatement() {
   buildCounterStatement++;
   if (buildCounterStatement < 3) {
     o.relation = 'foo';
+    o.relationExtensions = buildUnnamed7();
     o.source = buildAsset();
     o.target = buildAsset();
   }
@@ -294,6 +400,7 @@ void checkStatement(api.Statement o) {
       o.relation!,
       unittest.equals('foo'),
     );
+    checkUnnamed7(o.relationExtensions!);
     checkAsset(o.source!);
     checkAsset(o.target!);
   }
@@ -509,6 +616,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DigitalassetlinksApi(mock).assetlinks;
       final arg_relation = 'foo';
+      final arg_returnRelationExtensions = true;
       final arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
       final arg_source_androidApp_packageName = 'foo';
       final arg_source_web_site = 'foo';
@@ -552,6 +660,10 @@ void main() {
           unittest.equals(arg_relation),
         );
         unittest.expect(
+          queryMap['returnRelationExtensions']!.first,
+          unittest.equals('$arg_returnRelationExtensions'),
+        );
+        unittest.expect(
           queryMap['source.androidApp.certificate.sha256Fingerprint']!.first,
           unittest.equals(arg_source_androidApp_certificate_sha256Fingerprint),
         );
@@ -588,6 +700,7 @@ void main() {
       }), true);
       final response = await res.check(
           relation: arg_relation,
+          returnRelationExtensions: arg_returnRelationExtensions,
           source_androidApp_certificate_sha256Fingerprint:
               arg_source_androidApp_certificate_sha256Fingerprint,
           source_androidApp_packageName: arg_source_androidApp_packageName,
@@ -606,6 +719,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DigitalassetlinksApi(mock).statements;
       final arg_relation = 'foo';
+      final arg_returnRelationExtensions = true;
       final arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
       final arg_source_androidApp_packageName = 'foo';
       final arg_source_web_site = 'foo';
@@ -646,6 +760,10 @@ void main() {
           unittest.equals(arg_relation),
         );
         unittest.expect(
+          queryMap['returnRelationExtensions']!.first,
+          unittest.equals('$arg_returnRelationExtensions'),
+        );
+        unittest.expect(
           queryMap['source.androidApp.certificate.sha256Fingerprint']!.first,
           unittest.equals(arg_source_androidApp_certificate_sha256Fingerprint),
         );
@@ -670,6 +788,7 @@ void main() {
       }), true);
       final response = await res.list(
           relation: arg_relation,
+          returnRelationExtensions: arg_returnRelationExtensions,
           source_androidApp_certificate_sha256Fingerprint:
               arg_source_androidApp_certificate_sha256Fingerprint,
           source_androidApp_packageName: arg_source_androidApp_packageName,

@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250220",
+    "revision": "20250729",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "servicePath": "",
     "title": "Display & Video 360 API",
@@ -264,7 +264,7 @@
                             "type": "string"
                         },
                         "orderBy": {
-                            "description": "Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` * `updateTime` The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. For example, `displayName desc`.",
+                            "description": "Field by which to sort the list. Acceptable values are: * `advertiserId` (default) * `displayName` * `entityStatus` * `updateTime` The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. For example, `displayName desc`.",
                             "location": "query",
                             "type": "string"
                         },
@@ -575,6 +575,62 @@
                                 "https://www.googleapis.com/auth/display-video-mediaplanning"
                             ]
                         },
+                        "listAssignedTargetingOptions": {
+                            "description": "Lists assigned targeting options of a campaign across targeting types.",
+                            "flatPath": "v2/advertisers/{advertisersId}/campaigns/{campaignsId}:listAssignedTargetingOptions",
+                            "httpMethod": "GET",
+                            "id": "displayvideo.advertisers.campaigns.listAssignedTargetingOptions",
+                            "parameterOrder": [
+                                "advertiserId",
+                                "campaignId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "description": "Required. The ID of the advertiser the campaign belongs to.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "campaignId": {
+                                    "description": "Required. The ID of the campaign to list assigned targeting options for.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "filter": {
+                                    "description": "Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` * `inheritance` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_LANGUAGE` or `TARGETING_TYPE_GENDER`: `targetingType=\"TARGETING_TYPE_LANGUAGE\" OR targetingType=\"TARGETING_TYPE_GENDER\"` * `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `inheritance=\"NOT_INHERITED\" OR inheritance=\"INHERITED_FROM_PARTNER\"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "orderBy": {
+                                    "description": "Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `targetingType desc`.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to `BulkListCampaignAssignedTargetingOptions` method. If not specified, the first page of results will be returned.",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/advertisers/{+advertiserId}/campaigns/{+campaignId}:listAssignedTargetingOptions",
+                            "response": {
+                                "$ref": "BulkListCampaignAssignedTargetingOptionsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
                         "patch": {
                             "description": "Updates an existing campaign. Returns the updated campaign if successful.",
                             "flatPath": "v2/advertisers/{advertisersId}/campaigns/{campaignsId}",
@@ -619,6 +675,335 @@
                                 "https://www.googleapis.com/auth/display-video",
                                 "https://www.googleapis.com/auth/display-video-mediaplanning"
                             ]
+                        }
+                    },
+                    "resources": {
+                        "targetingTypes": {
+                            "resources": {
+                                "assignedTargetingOptions": {
+                                    "methods": {
+                                        "get": {
+                                            "description": "Gets a single targeting option assigned to a campaign.",
+                                            "flatPath": "v2/advertisers/{advertisersId}/campaigns/{campaignsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+                                            "httpMethod": "GET",
+                                            "id": "displayvideo.advertisers.campaigns.targetingTypes.assignedTargetingOptions.get",
+                                            "parameterOrder": [
+                                                "advertiserId",
+                                                "campaignId",
+                                                "targetingType",
+                                                "assignedTargetingOptionId"
+                                            ],
+                                            "parameters": {
+                                                "advertiserId": {
+                                                    "description": "Required. The ID of the advertiser the campaign belongs to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "assignedTargetingOptionId": {
+                                                    "description": "Required. An identifier unique to the targeting type in this campaign that identifies the assigned targeting option being requested.",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "campaignId": {
+                                                    "description": "Required. The ID of the campaign the assigned targeting option belongs to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "targetingType": {
+                                                    "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_VIEWABILITY`",
+                                                    "enum": [
+                                                        "TARGETING_TYPE_UNSPECIFIED",
+                                                        "TARGETING_TYPE_CHANNEL",
+                                                        "TARGETING_TYPE_APP_CATEGORY",
+                                                        "TARGETING_TYPE_APP",
+                                                        "TARGETING_TYPE_URL",
+                                                        "TARGETING_TYPE_DAY_AND_TIME",
+                                                        "TARGETING_TYPE_AGE_RANGE",
+                                                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                                        "TARGETING_TYPE_GENDER",
+                                                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                                        "TARGETING_TYPE_PARENTAL_STATUS",
+                                                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                                        "TARGETING_TYPE_DEVICE_TYPE",
+                                                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                                                        "TARGETING_TYPE_BROWSER",
+                                                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                                        "TARGETING_TYPE_ENVIRONMENT",
+                                                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                                                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                                                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                                        "TARGETING_TYPE_KEYWORD",
+                                                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                                        "TARGETING_TYPE_VIEWABILITY",
+                                                        "TARGETING_TYPE_CATEGORY",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                                                        "TARGETING_TYPE_LANGUAGE",
+                                                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                                        "TARGETING_TYPE_GEO_REGION",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                                        "TARGETING_TYPE_EXCHANGE",
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_POI",
+                                                        "TARGETING_TYPE_BUSINESS_CHAIN",
+                                                        "TARGETING_TYPE_CONTENT_DURATION",
+                                                        "TARGETING_TYPE_CONTENT_STREAM_TYPE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
+                                                        "TARGETING_TYPE_OMID",
+                                                        "TARGETING_TYPE_AUDIO_CONTENT_TYPE",
+                                                        "TARGETING_TYPE_CONTENT_GENRE",
+                                                        "TARGETING_TYPE_YOUTUBE_VIDEO",
+                                                        "TARGETING_TYPE_YOUTUBE_CHANNEL",
+                                                        "TARGETING_TYPE_SESSION_POSITION"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "Default value when type is not specified or is unknown in this version.",
+                                                        "Target a channel (a custom group of related websites or apps).",
+                                                        "Target an app category (for example, education or puzzle games).",
+                                                        "Target a specific app (for example, Angry Birds).",
+                                                        "Target a specific url (for example, quora.com).",
+                                                        "Target ads during a chosen time period on a specific day.",
+                                                        "Target ads to a specific age range (for example, 18-24).",
+                                                        "Target ads to the specified regions on a regional location list.",
+                                                        "Target ads to the specified points of interest on a proximity location list.",
+                                                        "Target ads to a specific gender (for example, female or male).",
+                                                        "Target a specific video player size for video ads.",
+                                                        "Target user rewarded content for video ads.",
+                                                        "Target ads to a specific parental status (for example, parent or not a parent).",
+                                                        "Target video or audio ads in a specific content instream position (for example, pre-roll, mid-roll, or post-roll).",
+                                                        "Target ads in a specific content outstream position.",
+                                                        "Target ads to a specific device type (for example, tablet or connected TV).",
+                                                        "Target ads to an audience or groups of audiences. Singleton field, at most one can exist on a single Lineitem at a time.",
+                                                        "Target ads to specific web browsers (for example, Chrome).",
+                                                        "Target ads to a specific household income range (for example, top 10%).",
+                                                        "Target ads in a specific on screen position.",
+                                                        "Filter web sites through third party verification (for example, IAS or DoubleVerify).",
+                                                        "Filter web sites by specific digital content label ratings (for example, DL-MA: suitable only for mature audiences).",
+                                                        "Filter website content by sensitive categories (for example, adult).",
+                                                        "Target ads to a specific environment (for example, web or app).",
+                                                        "Target ads to a specific network carrier or internet service provider (ISP) (for example, Comcast or Orange).",
+                                                        "Target ads to a specific operating system (for example, macOS).",
+                                                        "Target ads to a specific device make or model (for example, Roku or Samsung).",
+                                                        "Target ads to a specific keyword (for example, dog or retriever).",
+                                                        "Target ads to a specific negative keyword list.",
+                                                        "Target ads to a specific viewability (for example, 80% viewable).",
+                                                        "Target ads to a specific content category (for example, arts & entertainment).",
+                                                        "Purchase impressions from specific deals and auction packages.",
+                                                        "Target ads to a specific language (for example, English or Japanese).",
+                                                        "Target ads to ads.txt authorized sellers. If no targeting option of this type is assigned, the resource uses the \"Authorized Direct Sellers and Resellers\" option by default.",
+                                                        "Target ads to a specific regional location (for example, a city or state).",
+                                                        "Purchase impressions from a group of deals and auction packages.",
+                                                        "Purchase impressions from specific exchanges.",
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads around a specific point of interest, such as a notable building, a street address, or latitude/longitude coordinates.",
+                                                        "Target ads around locations of a business chain within a specific geo region.",
+                                                        "Target ads to a specific video content duration.",
+                                                        "Target ads to a specific video content stream type.",
+                                                        "Target ads to a specific native content position.",
+                                                        "Target ads in an Open Measurement enabled inventory.",
+                                                        "Target ads to a specific audio content type.",
+                                                        "Target ads to a specific content genre.",
+                                                        "Target ads to a specific YouTube video. Targeting of this type cannot be created or updated using the API. Although this targeting is inherited by child resources, **inherited targeting of this type will not be retrieveable**.",
+                                                        "Target ads to a specific YouTube channel. Targeting of this type cannot be created or updated using the API. Although this targeting is inherited by child resources, **inherited targeting of this type will not be retrieveable**.",
+                                                        "Target ads to a serve it in a certain position of a session. Only supported for Ad Group resources under YouTube Programmatic Reservation line items. Targeting of this type cannot be created or updated using the API."
+                                                    ],
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v2/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+                                            "response": {
+                                                "$ref": "AssignedTargetingOption"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/display-video"
+                                            ]
+                                        },
+                                        "list": {
+                                            "description": "Lists the targeting options assigned to a campaign for a specified targeting type.",
+                                            "flatPath": "v2/advertisers/{advertisersId}/campaigns/{campaignsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+                                            "httpMethod": "GET",
+                                            "id": "displayvideo.advertisers.campaigns.targetingTypes.assignedTargetingOptions.list",
+                                            "parameterOrder": [
+                                                "advertiserId",
+                                                "campaignId",
+                                                "targetingType"
+                                            ],
+                                            "parameters": {
+                                                "advertiserId": {
+                                                    "description": "Required. The ID of the advertiser the campaign belongs to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "campaignId": {
+                                                    "description": "Required. The ID of the campaign to list assigned targeting options for.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "filter": {
+                                                    "description": "Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` * `inheritance` Examples: * `AssignedTargetingOption` resources with ID 1 or 2 `assignedTargetingOptionId=\"1\" OR assignedTargetingOptionId=\"2\"` * `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER` `inheritance=\"NOT_INHERITED\" OR inheritance=\"INHERITED_FROM_PARTNER\"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "orderBy": {
+                                                    "description": "Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `assignedTargetingOptionId desc`.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "pageSize": {
+                                                    "description": "Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "description": "A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCampaignAssignedTargetingOptions` method. If not specified, the first page of results will be returned.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "targetingType": {
+                                                    "description": "Required. Identifies the type of assigned targeting options to list. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_VIEWABILITY`",
+                                                    "enum": [
+                                                        "TARGETING_TYPE_UNSPECIFIED",
+                                                        "TARGETING_TYPE_CHANNEL",
+                                                        "TARGETING_TYPE_APP_CATEGORY",
+                                                        "TARGETING_TYPE_APP",
+                                                        "TARGETING_TYPE_URL",
+                                                        "TARGETING_TYPE_DAY_AND_TIME",
+                                                        "TARGETING_TYPE_AGE_RANGE",
+                                                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                                        "TARGETING_TYPE_GENDER",
+                                                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                                        "TARGETING_TYPE_PARENTAL_STATUS",
+                                                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                                        "TARGETING_TYPE_DEVICE_TYPE",
+                                                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                                                        "TARGETING_TYPE_BROWSER",
+                                                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                                        "TARGETING_TYPE_ENVIRONMENT",
+                                                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                                                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                                                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                                        "TARGETING_TYPE_KEYWORD",
+                                                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                                        "TARGETING_TYPE_VIEWABILITY",
+                                                        "TARGETING_TYPE_CATEGORY",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                                                        "TARGETING_TYPE_LANGUAGE",
+                                                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                                        "TARGETING_TYPE_GEO_REGION",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                                        "TARGETING_TYPE_EXCHANGE",
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_POI",
+                                                        "TARGETING_TYPE_BUSINESS_CHAIN",
+                                                        "TARGETING_TYPE_CONTENT_DURATION",
+                                                        "TARGETING_TYPE_CONTENT_STREAM_TYPE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
+                                                        "TARGETING_TYPE_OMID",
+                                                        "TARGETING_TYPE_AUDIO_CONTENT_TYPE",
+                                                        "TARGETING_TYPE_CONTENT_GENRE",
+                                                        "TARGETING_TYPE_YOUTUBE_VIDEO",
+                                                        "TARGETING_TYPE_YOUTUBE_CHANNEL",
+                                                        "TARGETING_TYPE_SESSION_POSITION"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "Default value when type is not specified or is unknown in this version.",
+                                                        "Target a channel (a custom group of related websites or apps).",
+                                                        "Target an app category (for example, education or puzzle games).",
+                                                        "Target a specific app (for example, Angry Birds).",
+                                                        "Target a specific url (for example, quora.com).",
+                                                        "Target ads during a chosen time period on a specific day.",
+                                                        "Target ads to a specific age range (for example, 18-24).",
+                                                        "Target ads to the specified regions on a regional location list.",
+                                                        "Target ads to the specified points of interest on a proximity location list.",
+                                                        "Target ads to a specific gender (for example, female or male).",
+                                                        "Target a specific video player size for video ads.",
+                                                        "Target user rewarded content for video ads.",
+                                                        "Target ads to a specific parental status (for example, parent or not a parent).",
+                                                        "Target video or audio ads in a specific content instream position (for example, pre-roll, mid-roll, or post-roll).",
+                                                        "Target ads in a specific content outstream position.",
+                                                        "Target ads to a specific device type (for example, tablet or connected TV).",
+                                                        "Target ads to an audience or groups of audiences. Singleton field, at most one can exist on a single Lineitem at a time.",
+                                                        "Target ads to specific web browsers (for example, Chrome).",
+                                                        "Target ads to a specific household income range (for example, top 10%).",
+                                                        "Target ads in a specific on screen position.",
+                                                        "Filter web sites through third party verification (for example, IAS or DoubleVerify).",
+                                                        "Filter web sites by specific digital content label ratings (for example, DL-MA: suitable only for mature audiences).",
+                                                        "Filter website content by sensitive categories (for example, adult).",
+                                                        "Target ads to a specific environment (for example, web or app).",
+                                                        "Target ads to a specific network carrier or internet service provider (ISP) (for example, Comcast or Orange).",
+                                                        "Target ads to a specific operating system (for example, macOS).",
+                                                        "Target ads to a specific device make or model (for example, Roku or Samsung).",
+                                                        "Target ads to a specific keyword (for example, dog or retriever).",
+                                                        "Target ads to a specific negative keyword list.",
+                                                        "Target ads to a specific viewability (for example, 80% viewable).",
+                                                        "Target ads to a specific content category (for example, arts & entertainment).",
+                                                        "Purchase impressions from specific deals and auction packages.",
+                                                        "Target ads to a specific language (for example, English or Japanese).",
+                                                        "Target ads to ads.txt authorized sellers. If no targeting option of this type is assigned, the resource uses the \"Authorized Direct Sellers and Resellers\" option by default.",
+                                                        "Target ads to a specific regional location (for example, a city or state).",
+                                                        "Purchase impressions from a group of deals and auction packages.",
+                                                        "Purchase impressions from specific exchanges.",
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads around a specific point of interest, such as a notable building, a street address, or latitude/longitude coordinates.",
+                                                        "Target ads around locations of a business chain within a specific geo region.",
+                                                        "Target ads to a specific video content duration.",
+                                                        "Target ads to a specific video content stream type.",
+                                                        "Target ads to a specific native content position.",
+                                                        "Target ads in an Open Measurement enabled inventory.",
+                                                        "Target ads to a specific audio content type.",
+                                                        "Target ads to a specific content genre.",
+                                                        "Target ads to a specific YouTube video. Targeting of this type cannot be created or updated using the API. Although this targeting is inherited by child resources, **inherited targeting of this type will not be retrieveable**.",
+                                                        "Target ads to a specific YouTube channel. Targeting of this type cannot be created or updated using the API. Although this targeting is inherited by child resources, **inherited targeting of this type will not be retrieveable**.",
+                                                        "Target ads to a serve it in a certain position of a session. Only supported for Ad Group resources under YouTube Programmatic Reservation line items. Targeting of this type cannot be created or updated using the API."
+                                                    ],
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v2/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+                                            "response": {
+                                                "$ref": "ListCampaignAssignedTargetingOptionsResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/display-video"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -1379,6 +1764,62 @@
                                 "https://www.googleapis.com/auth/display-video"
                             ]
                         },
+                        "listAssignedTargetingOptions": {
+                            "description": "Lists assigned targeting options of an insertion order across targeting types.",
+                            "flatPath": "v2/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}:listAssignedTargetingOptions",
+                            "httpMethod": "GET",
+                            "id": "displayvideo.advertisers.insertionOrders.listAssignedTargetingOptions",
+                            "parameterOrder": [
+                                "advertiserId",
+                                "insertionOrderId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "description": "Required. The ID of the advertiser the insertion order belongs to.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "filter": {
+                                    "description": "Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` * `inheritance` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` or `TARGETING_TYPE_CHANNEL`: `targetingType=\"TARGETING_TYPE_PROXIMITY_LOCATION_LIST\" OR targetingType=\"TARGETING_TYPE_CHANNEL\"` * `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `inheritance=\"NOT_INHERITED\" OR inheritance=\"INHERITED_FROM_PARTNER\"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "insertionOrderId": {
+                                    "description": "Required. The ID of the insertion order to list assigned targeting options for.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "orderBy": {
+                                    "description": "Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `targetingType desc`.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to `BulkListInsertionOrderAssignedTargetingOptions` method. If not specified, the first page of results will be returned.",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}:listAssignedTargetingOptions",
+                            "response": {
+                                "$ref": "BulkListInsertionOrderAssignedTargetingOptionsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
                         "patch": {
                             "description": "Updates an existing insertion order. Returns the updated insertion order if successful.",
                             "flatPath": "v2/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}",
@@ -1422,6 +1863,636 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/display-video"
                             ]
+                        }
+                    },
+                    "resources": {
+                        "targetingTypes": {
+                            "resources": {
+                                "assignedTargetingOptions": {
+                                    "methods": {
+                                        "create": {
+                                            "description": "Assigns a targeting option to an insertion order. Returns the assigned targeting option if successful. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIEWABILITY`",
+                                            "flatPath": "v2/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+                                            "httpMethod": "POST",
+                                            "id": "displayvideo.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.create",
+                                            "parameterOrder": [
+                                                "advertiserId",
+                                                "insertionOrderId",
+                                                "targetingType"
+                                            ],
+                                            "parameters": {
+                                                "advertiserId": {
+                                                    "description": "Required. The ID of the advertiser the insertion order belongs to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "insertionOrderId": {
+                                                    "description": "Required. The ID of the insertion order the assigned targeting option will belong to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "targetingType": {
+                                                    "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIEWABILITY`",
+                                                    "enum": [
+                                                        "TARGETING_TYPE_UNSPECIFIED",
+                                                        "TARGETING_TYPE_CHANNEL",
+                                                        "TARGETING_TYPE_APP_CATEGORY",
+                                                        "TARGETING_TYPE_APP",
+                                                        "TARGETING_TYPE_URL",
+                                                        "TARGETING_TYPE_DAY_AND_TIME",
+                                                        "TARGETING_TYPE_AGE_RANGE",
+                                                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                                        "TARGETING_TYPE_GENDER",
+                                                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                                        "TARGETING_TYPE_PARENTAL_STATUS",
+                                                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                                        "TARGETING_TYPE_DEVICE_TYPE",
+                                                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                                                        "TARGETING_TYPE_BROWSER",
+                                                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                                        "TARGETING_TYPE_ENVIRONMENT",
+                                                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                                                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                                                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                                        "TARGETING_TYPE_KEYWORD",
+                                                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                                        "TARGETING_TYPE_VIEWABILITY",
+                                                        "TARGETING_TYPE_CATEGORY",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                                                        "TARGETING_TYPE_LANGUAGE",
+                                                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                                        "TARGETING_TYPE_GEO_REGION",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                                        "TARGETING_TYPE_EXCHANGE",
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_POI",
+                                                        "TARGETING_TYPE_BUSINESS_CHAIN",
+                                                        "TARGETING_TYPE_CONTENT_DURATION",
+                                                        "TARGETING_TYPE_CONTENT_STREAM_TYPE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
+                                                        "TARGETING_TYPE_OMID",
+                                                        "TARGETING_TYPE_AUDIO_CONTENT_TYPE",
+                                                        "TARGETING_TYPE_CONTENT_GENRE",
+                                                        "TARGETING_TYPE_YOUTUBE_VIDEO",
+                                                        "TARGETING_TYPE_YOUTUBE_CHANNEL",
+                                                        "TARGETING_TYPE_SESSION_POSITION"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "Default value when type is not specified or is unknown in this version.",
+                                                        "Target a channel (a custom group of related websites or apps).",
+                                                        "Target an app category (for example, education or puzzle games).",
+                                                        "Target a specific app (for example, Angry Birds).",
+                                                        "Target a specific url (for example, quora.com).",
+                                                        "Target ads during a chosen time period on a specific day.",
+                                                        "Target ads to a specific age range (for example, 18-24).",
+                                                        "Target ads to the specified regions on a regional location list.",
+                                                        "Target ads to the specified points of interest on a proximity location list.",
+                                                        "Target ads to a specific gender (for example, female or male).",
+                                                        "Target a specific video player size for video ads.",
+                                                        "Target user rewarded content for video ads.",
+                                                        "Target ads to a specific parental status (for example, parent or not a parent).",
+                                                        "Target video or audio ads in a specific content instream position (for example, pre-roll, mid-roll, or post-roll).",
+                                                        "Target ads in a specific content outstream position.",
+                                                        "Target ads to a specific device type (for example, tablet or connected TV).",
+                                                        "Target ads to an audience or groups of audiences. Singleton field, at most one can exist on a single Lineitem at a time.",
+                                                        "Target ads to specific web browsers (for example, Chrome).",
+                                                        "Target ads to a specific household income range (for example, top 10%).",
+                                                        "Target ads in a specific on screen position.",
+                                                        "Filter web sites through third party verification (for example, IAS or DoubleVerify).",
+                                                        "Filter web sites by specific digital content label ratings (for example, DL-MA: suitable only for mature audiences).",
+                                                        "Filter website content by sensitive categories (for example, adult).",
+                                                        "Target ads to a specific environment (for example, web or app).",
+                                                        "Target ads to a specific network carrier or internet service provider (ISP) (for example, Comcast or Orange).",
+                                                        "Target ads to a specific operating system (for example, macOS).",
+                                                        "Target ads to a specific device make or model (for example, Roku or Samsung).",
+                                                        "Target ads to a specific keyword (for example, dog or retriever).",
+                                                        "Target ads to a specific negative keyword list.",
+                                                        "Target ads to a specific viewability (for example, 80% viewable).",
+                                                        "Target ads to a specific content category (for example, arts & entertainment).",
+                                                        "Purchase impressions from specific deals and auction packages.",
+                                                        "Target ads to a specific language (for example, English or Japanese).",
+                                                        "Target ads to ads.txt authorized sellers. If no targeting option of this type is assigned, the resource uses the \"Authorized Direct Sellers and Resellers\" option by default.",
+                                                        "Target ads to a specific regional location (for example, a city or state).",
+                                                        "Purchase impressions from a group of deals and auction packages.",
+                                                        "Purchase impressions from specific exchanges.",
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads around a specific point of interest, such as a notable building, a street address, or latitude/longitude coordinates.",
+                                                        "Target ads around locations of a business chain within a specific geo region.",
+                                                        "Target ads to a specific video content duration.",
+                                                        "Target ads to a specific video content stream type.",
+                                                        "Target ads to a specific native content position.",
+                                                        "Target ads in an Open Measurement enabled inventory.",
+                                                        "Target ads to a specific audio content type.",
+                                                        "Target ads to a specific content genre.",
+                                                        "Target ads to a specific YouTube video. Targeting of this type cannot be created or updated using the API. Although this targeting is inherited by child resources, **inherited targeting of this type will not be retrieveable**.",
+                                                        "Target ads to a specific YouTube channel. Targeting of this type cannot be created or updated using the API. Although this targeting is inherited by child resources, **inherited targeting of this type will not be retrieveable**.",
+                                                        "Target ads to a serve it in a certain position of a session. Only supported for Ad Group resources under YouTube Programmatic Reservation line items. Targeting of this type cannot be created or updated using the API."
+                                                    ],
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+                                            "request": {
+                                                "$ref": "AssignedTargetingOption"
+                                            },
+                                            "response": {
+                                                "$ref": "AssignedTargetingOption"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/display-video"
+                                            ]
+                                        },
+                                        "delete": {
+                                            "description": "Deletes an assigned targeting option from an insertion order. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIEWABILITY`",
+                                            "flatPath": "v2/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+                                            "httpMethod": "DELETE",
+                                            "id": "displayvideo.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.delete",
+                                            "parameterOrder": [
+                                                "advertiserId",
+                                                "insertionOrderId",
+                                                "targetingType",
+                                                "assignedTargetingOptionId"
+                                            ],
+                                            "parameters": {
+                                                "advertiserId": {
+                                                    "description": "Required. The ID of the advertiser the insertion order belongs to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "assignedTargetingOptionId": {
+                                                    "description": "Required. The ID of the assigned targeting option to delete.",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "insertionOrderId": {
+                                                    "description": "Required. The ID of the insertion order the assigned targeting option belongs to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "targetingType": {
+                                                    "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIEWABILITY`",
+                                                    "enum": [
+                                                        "TARGETING_TYPE_UNSPECIFIED",
+                                                        "TARGETING_TYPE_CHANNEL",
+                                                        "TARGETING_TYPE_APP_CATEGORY",
+                                                        "TARGETING_TYPE_APP",
+                                                        "TARGETING_TYPE_URL",
+                                                        "TARGETING_TYPE_DAY_AND_TIME",
+                                                        "TARGETING_TYPE_AGE_RANGE",
+                                                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                                        "TARGETING_TYPE_GENDER",
+                                                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                                        "TARGETING_TYPE_PARENTAL_STATUS",
+                                                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                                        "TARGETING_TYPE_DEVICE_TYPE",
+                                                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                                                        "TARGETING_TYPE_BROWSER",
+                                                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                                        "TARGETING_TYPE_ENVIRONMENT",
+                                                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                                                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                                                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                                        "TARGETING_TYPE_KEYWORD",
+                                                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                                        "TARGETING_TYPE_VIEWABILITY",
+                                                        "TARGETING_TYPE_CATEGORY",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                                                        "TARGETING_TYPE_LANGUAGE",
+                                                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                                        "TARGETING_TYPE_GEO_REGION",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                                        "TARGETING_TYPE_EXCHANGE",
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_POI",
+                                                        "TARGETING_TYPE_BUSINESS_CHAIN",
+                                                        "TARGETING_TYPE_CONTENT_DURATION",
+                                                        "TARGETING_TYPE_CONTENT_STREAM_TYPE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
+                                                        "TARGETING_TYPE_OMID",
+                                                        "TARGETING_TYPE_AUDIO_CONTENT_TYPE",
+                                                        "TARGETING_TYPE_CONTENT_GENRE",
+                                                        "TARGETING_TYPE_YOUTUBE_VIDEO",
+                                                        "TARGETING_TYPE_YOUTUBE_CHANNEL",
+                                                        "TARGETING_TYPE_SESSION_POSITION"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "Default value when type is not specified or is unknown in this version.",
+                                                        "Target a channel (a custom group of related websites or apps).",
+                                                        "Target an app category (for example, education or puzzle games).",
+                                                        "Target a specific app (for example, Angry Birds).",
+                                                        "Target a specific url (for example, quora.com).",
+                                                        "Target ads during a chosen time period on a specific day.",
+                                                        "Target ads to a specific age range (for example, 18-24).",
+                                                        "Target ads to the specified regions on a regional location list.",
+                                                        "Target ads to the specified points of interest on a proximity location list.",
+                                                        "Target ads to a specific gender (for example, female or male).",
+                                                        "Target a specific video player size for video ads.",
+                                                        "Target user rewarded content for video ads.",
+                                                        "Target ads to a specific parental status (for example, parent or not a parent).",
+                                                        "Target video or audio ads in a specific content instream position (for example, pre-roll, mid-roll, or post-roll).",
+                                                        "Target ads in a specific content outstream position.",
+                                                        "Target ads to a specific device type (for example, tablet or connected TV).",
+                                                        "Target ads to an audience or groups of audiences. Singleton field, at most one can exist on a single Lineitem at a time.",
+                                                        "Target ads to specific web browsers (for example, Chrome).",
+                                                        "Target ads to a specific household income range (for example, top 10%).",
+                                                        "Target ads in a specific on screen position.",
+                                                        "Filter web sites through third party verification (for example, IAS or DoubleVerify).",
+                                                        "Filter web sites by specific digital content label ratings (for example, DL-MA: suitable only for mature audiences).",
+                                                        "Filter website content by sensitive categories (for example, adult).",
+                                                        "Target ads to a specific environment (for example, web or app).",
+                                                        "Target ads to a specific network carrier or internet service provider (ISP) (for example, Comcast or Orange).",
+                                                        "Target ads to a specific operating system (for example, macOS).",
+                                                        "Target ads to a specific device make or model (for example, Roku or Samsung).",
+                                                        "Target ads to a specific keyword (for example, dog or retriever).",
+                                                        "Target ads to a specific negative keyword list.",
+                                                        "Target ads to a specific viewability (for example, 80% viewable).",
+                                                        "Target ads to a specific content category (for example, arts & entertainment).",
+                                                        "Purchase impressions from specific deals and auction packages.",
+                                                        "Target ads to a specific language (for example, English or Japanese).",
+                                                        "Target ads to ads.txt authorized sellers. If no targeting option of this type is assigned, the resource uses the \"Authorized Direct Sellers and Resellers\" option by default.",
+                                                        "Target ads to a specific regional location (for example, a city or state).",
+                                                        "Purchase impressions from a group of deals and auction packages.",
+                                                        "Purchase impressions from specific exchanges.",
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads around a specific point of interest, such as a notable building, a street address, or latitude/longitude coordinates.",
+                                                        "Target ads around locations of a business chain within a specific geo region.",
+                                                        "Target ads to a specific video content duration.",
+                                                        "Target ads to a specific video content stream type.",
+                                                        "Target ads to a specific native content position.",
+                                                        "Target ads in an Open Measurement enabled inventory.",
+                                                        "Target ads to a specific audio content type.",
+                                                        "Target ads to a specific content genre.",
+                                                        "Target ads to a specific YouTube video. Targeting of this type cannot be created or updated using the API. Although this targeting is inherited by child resources, **inherited targeting of this type will not be retrieveable**.",
+                                                        "Target ads to a specific YouTube channel. Targeting of this type cannot be created or updated using the API. Although this targeting is inherited by child resources, **inherited targeting of this type will not be retrieveable**.",
+                                                        "Target ads to a serve it in a certain position of a session. Only supported for Ad Group resources under YouTube Programmatic Reservation line items. Targeting of this type cannot be created or updated using the API."
+                                                    ],
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+                                            "response": {
+                                                "$ref": "Empty"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/display-video"
+                                            ]
+                                        },
+                                        "get": {
+                                            "description": "Gets a single targeting option assigned to an insertion order.",
+                                            "flatPath": "v2/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+                                            "httpMethod": "GET",
+                                            "id": "displayvideo.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.get",
+                                            "parameterOrder": [
+                                                "advertiserId",
+                                                "insertionOrderId",
+                                                "targetingType",
+                                                "assignedTargetingOptionId"
+                                            ],
+                                            "parameters": {
+                                                "advertiserId": {
+                                                    "description": "Required. The ID of the advertiser the insertion order belongs to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "assignedTargetingOptionId": {
+                                                    "description": "Required. An identifier unique to the targeting type in this insertion order that identifies the assigned targeting option being requested.",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "insertionOrderId": {
+                                                    "description": "Required. The ID of the insertion order the assigned targeting option belongs to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "targetingType": {
+                                                    "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`",
+                                                    "enum": [
+                                                        "TARGETING_TYPE_UNSPECIFIED",
+                                                        "TARGETING_TYPE_CHANNEL",
+                                                        "TARGETING_TYPE_APP_CATEGORY",
+                                                        "TARGETING_TYPE_APP",
+                                                        "TARGETING_TYPE_URL",
+                                                        "TARGETING_TYPE_DAY_AND_TIME",
+                                                        "TARGETING_TYPE_AGE_RANGE",
+                                                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                                        "TARGETING_TYPE_GENDER",
+                                                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                                        "TARGETING_TYPE_PARENTAL_STATUS",
+                                                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                                        "TARGETING_TYPE_DEVICE_TYPE",
+                                                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                                                        "TARGETING_TYPE_BROWSER",
+                                                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                                        "TARGETING_TYPE_ENVIRONMENT",
+                                                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                                                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                                                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                                        "TARGETING_TYPE_KEYWORD",
+                                                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                                        "TARGETING_TYPE_VIEWABILITY",
+                                                        "TARGETING_TYPE_CATEGORY",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                                                        "TARGETING_TYPE_LANGUAGE",
+                                                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                                        "TARGETING_TYPE_GEO_REGION",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                                        "TARGETING_TYPE_EXCHANGE",
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_POI",
+                                                        "TARGETING_TYPE_BUSINESS_CHAIN",
+                                                        "TARGETING_TYPE_CONTENT_DURATION",
+                                                        "TARGETING_TYPE_CONTENT_STREAM_TYPE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
+                                                        "TARGETING_TYPE_OMID",
+                                                        "TARGETING_TYPE_AUDIO_CONTENT_TYPE",
+                                                        "TARGETING_TYPE_CONTENT_GENRE",
+                                                        "TARGETING_TYPE_YOUTUBE_VIDEO",
+                                                        "TARGETING_TYPE_YOUTUBE_CHANNEL",
+                                                        "TARGETING_TYPE_SESSION_POSITION"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "Default value when type is not specified or is unknown in this version.",
+                                                        "Target a channel (a custom group of related websites or apps).",
+                                                        "Target an app category (for example, education or puzzle games).",
+                                                        "Target a specific app (for example, Angry Birds).",
+                                                        "Target a specific url (for example, quora.com).",
+                                                        "Target ads during a chosen time period on a specific day.",
+                                                        "Target ads to a specific age range (for example, 18-24).",
+                                                        "Target ads to the specified regions on a regional location list.",
+                                                        "Target ads to the specified points of interest on a proximity location list.",
+                                                        "Target ads to a specific gender (for example, female or male).",
+                                                        "Target a specific video player size for video ads.",
+                                                        "Target user rewarded content for video ads.",
+                                                        "Target ads to a specific parental status (for example, parent or not a parent).",
+                                                        "Target video or audio ads in a specific content instream position (for example, pre-roll, mid-roll, or post-roll).",
+                                                        "Target ads in a specific content outstream position.",
+                                                        "Target ads to a specific device type (for example, tablet or connected TV).",
+                                                        "Target ads to an audience or groups of audiences. Singleton field, at most one can exist on a single Lineitem at a time.",
+                                                        "Target ads to specific web browsers (for example, Chrome).",
+                                                        "Target ads to a specific household income range (for example, top 10%).",
+                                                        "Target ads in a specific on screen position.",
+                                                        "Filter web sites through third party verification (for example, IAS or DoubleVerify).",
+                                                        "Filter web sites by specific digital content label ratings (for example, DL-MA: suitable only for mature audiences).",
+                                                        "Filter website content by sensitive categories (for example, adult).",
+                                                        "Target ads to a specific environment (for example, web or app).",
+                                                        "Target ads to a specific network carrier or internet service provider (ISP) (for example, Comcast or Orange).",
+                                                        "Target ads to a specific operating system (for example, macOS).",
+                                                        "Target ads to a specific device make or model (for example, Roku or Samsung).",
+                                                        "Target ads to a specific keyword (for example, dog or retriever).",
+                                                        "Target ads to a specific negative keyword list.",
+                                                        "Target ads to a specific viewability (for example, 80% viewable).",
+                                                        "Target ads to a specific content category (for example, arts & entertainment).",
+                                                        "Purchase impressions from specific deals and auction packages.",
+                                                        "Target ads to a specific language (for example, English or Japanese).",
+                                                        "Target ads to ads.txt authorized sellers. If no targeting option of this type is assigned, the resource uses the \"Authorized Direct Sellers and Resellers\" option by default.",
+                                                        "Target ads to a specific regional location (for example, a city or state).",
+                                                        "Purchase impressions from a group of deals and auction packages.",
+                                                        "Purchase impressions from specific exchanges.",
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads around a specific point of interest, such as a notable building, a street address, or latitude/longitude coordinates.",
+                                                        "Target ads around locations of a business chain within a specific geo region.",
+                                                        "Target ads to a specific video content duration.",
+                                                        "Target ads to a specific video content stream type.",
+                                                        "Target ads to a specific native content position.",
+                                                        "Target ads in an Open Measurement enabled inventory.",
+                                                        "Target ads to a specific audio content type.",
+                                                        "Target ads to a specific content genre.",
+                                                        "Target ads to a specific YouTube video. Targeting of this type cannot be created or updated using the API. Although this targeting is inherited by child resources, **inherited targeting of this type will not be retrieveable**.",
+                                                        "Target ads to a specific YouTube channel. Targeting of this type cannot be created or updated using the API. Although this targeting is inherited by child resources, **inherited targeting of this type will not be retrieveable**.",
+                                                        "Target ads to a serve it in a certain position of a session. Only supported for Ad Group resources under YouTube Programmatic Reservation line items. Targeting of this type cannot be created or updated using the API."
+                                                    ],
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+                                            "response": {
+                                                "$ref": "AssignedTargetingOption"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/display-video"
+                                            ]
+                                        },
+                                        "list": {
+                                            "description": "Lists the targeting options assigned to an insertion order.",
+                                            "flatPath": "v2/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+                                            "httpMethod": "GET",
+                                            "id": "displayvideo.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.list",
+                                            "parameterOrder": [
+                                                "advertiserId",
+                                                "insertionOrderId",
+                                                "targetingType"
+                                            ],
+                                            "parameters": {
+                                                "advertiserId": {
+                                                    "description": "Required. The ID of the advertiser the insertion order belongs to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "filter": {
+                                                    "description": "Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` * `inheritance` Examples: * `AssignedTargetingOption` resources with ID 1 or 2: `assignedTargetingOptionId=\"1\" OR assignedTargetingOptionId=\"2\"` * `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `inheritance=\"NOT_INHERITED\" OR inheritance=\"INHERITED_FROM_PARTNER\"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "insertionOrderId": {
+                                                    "description": "Required. The ID of the insertion order to list assigned targeting options for.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "orderBy": {
+                                                    "description": "Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `assignedTargetingOptionId desc`.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "pageSize": {
+                                                    "description": "Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "description": "A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListInsertionOrderAssignedTargetingOptions` method. If not specified, the first page of results will be returned.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "targetingType": {
+                                                    "description": "Required. Identifies the type of assigned targeting options to list. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`",
+                                                    "enum": [
+                                                        "TARGETING_TYPE_UNSPECIFIED",
+                                                        "TARGETING_TYPE_CHANNEL",
+                                                        "TARGETING_TYPE_APP_CATEGORY",
+                                                        "TARGETING_TYPE_APP",
+                                                        "TARGETING_TYPE_URL",
+                                                        "TARGETING_TYPE_DAY_AND_TIME",
+                                                        "TARGETING_TYPE_AGE_RANGE",
+                                                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                                        "TARGETING_TYPE_GENDER",
+                                                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                                        "TARGETING_TYPE_PARENTAL_STATUS",
+                                                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                                        "TARGETING_TYPE_DEVICE_TYPE",
+                                                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                                                        "TARGETING_TYPE_BROWSER",
+                                                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                                        "TARGETING_TYPE_ENVIRONMENT",
+                                                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                                                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                                                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                                        "TARGETING_TYPE_KEYWORD",
+                                                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                                        "TARGETING_TYPE_VIEWABILITY",
+                                                        "TARGETING_TYPE_CATEGORY",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                                                        "TARGETING_TYPE_LANGUAGE",
+                                                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                                        "TARGETING_TYPE_GEO_REGION",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                                        "TARGETING_TYPE_EXCHANGE",
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_POI",
+                                                        "TARGETING_TYPE_BUSINESS_CHAIN",
+                                                        "TARGETING_TYPE_CONTENT_DURATION",
+                                                        "TARGETING_TYPE_CONTENT_STREAM_TYPE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
+                                                        "TARGETING_TYPE_OMID",
+                                                        "TARGETING_TYPE_AUDIO_CONTENT_TYPE",
+                                                        "TARGETING_TYPE_CONTENT_GENRE",
+                                                        "TARGETING_TYPE_YOUTUBE_VIDEO",
+                                                        "TARGETING_TYPE_YOUTUBE_CHANNEL",
+                                                        "TARGETING_TYPE_SESSION_POSITION"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "Default value when type is not specified or is unknown in this version.",
+                                                        "Target a channel (a custom group of related websites or apps).",
+                                                        "Target an app category (for example, education or puzzle games).",
+                                                        "Target a specific app (for example, Angry Birds).",
+                                                        "Target a specific url (for example, quora.com).",
+                                                        "Target ads during a chosen time period on a specific day.",
+                                                        "Target ads to a specific age range (for example, 18-24).",
+                                                        "Target ads to the specified regions on a regional location list.",
+                                                        "Target ads to the specified points of interest on a proximity location list.",
+                                                        "Target ads to a specific gender (for example, female or male).",
+                                                        "Target a specific video player size for video ads.",
+                                                        "Target user rewarded content for video ads.",
+                                                        "Target ads to a specific parental status (for example, parent or not a parent).",
+                                                        "Target video or audio ads in a specific content instream position (for example, pre-roll, mid-roll, or post-roll).",
+                                                        "Target ads in a specific content outstream position.",
+                                                        "Target ads to a specific device type (for example, tablet or connected TV).",
+                                                        "Target ads to an audience or groups of audiences. Singleton field, at most one can exist on a single Lineitem at a time.",
+                                                        "Target ads to specific web browsers (for example, Chrome).",
+                                                        "Target ads to a specific household income range (for example, top 10%).",
+                                                        "Target ads in a specific on screen position.",
+                                                        "Filter web sites through third party verification (for example, IAS or DoubleVerify).",
+                                                        "Filter web sites by specific digital content label ratings (for example, DL-MA: suitable only for mature audiences).",
+                                                        "Filter website content by sensitive categories (for example, adult).",
+                                                        "Target ads to a specific environment (for example, web or app).",
+                                                        "Target ads to a specific network carrier or internet service provider (ISP) (for example, Comcast or Orange).",
+                                                        "Target ads to a specific operating system (for example, macOS).",
+                                                        "Target ads to a specific device make or model (for example, Roku or Samsung).",
+                                                        "Target ads to a specific keyword (for example, dog or retriever).",
+                                                        "Target ads to a specific negative keyword list.",
+                                                        "Target ads to a specific viewability (for example, 80% viewable).",
+                                                        "Target ads to a specific content category (for example, arts & entertainment).",
+                                                        "Purchase impressions from specific deals and auction packages.",
+                                                        "Target ads to a specific language (for example, English or Japanese).",
+                                                        "Target ads to ads.txt authorized sellers. If no targeting option of this type is assigned, the resource uses the \"Authorized Direct Sellers and Resellers\" option by default.",
+                                                        "Target ads to a specific regional location (for example, a city or state).",
+                                                        "Purchase impressions from a group of deals and auction packages.",
+                                                        "Purchase impressions from specific exchanges.",
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads around a specific point of interest, such as a notable building, a street address, or latitude/longitude coordinates.",
+                                                        "Target ads around locations of a business chain within a specific geo region.",
+                                                        "Target ads to a specific video content duration.",
+                                                        "Target ads to a specific video content stream type.",
+                                                        "Target ads to a specific native content position.",
+                                                        "Target ads in an Open Measurement enabled inventory.",
+                                                        "Target ads to a specific audio content type.",
+                                                        "Target ads to a specific content genre.",
+                                                        "Target ads to a specific YouTube video. Targeting of this type cannot be created or updated using the API. Although this targeting is inherited by child resources, **inherited targeting of this type will not be retrieveable**.",
+                                                        "Target ads to a specific YouTube channel. Targeting of this type cannot be created or updated using the API. Although this targeting is inherited by child resources, **inherited targeting of this type will not be retrieveable**.",
+                                                        "Target ads to a serve it in a certain position of a session. Only supported for Ad Group resources under YouTube Programmatic Reservation line items. Targeting of this type cannot be created or updated using the API."
+                                                    ],
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+                                            "response": {
+                                                "$ref": "ListInsertionOrderAssignedTargetingOptionsResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/display-video"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -2233,7 +3304,7 @@
                                                     "type": "string"
                                                 },
                                                 "targetingType": {
-                                                    "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)",
+                                                    "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)",
                                                     "enum": [
                                                         "TARGETING_TYPE_UNSPECIFIED",
                                                         "TARGETING_TYPE_CHANNEL",
@@ -2399,7 +3470,7 @@
                                                     "type": "string"
                                                 },
                                                 "targetingType": {
-                                                    "description": "Required. Identifies the type of assigned targeting options to list. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)",
+                                                    "description": "Required. Identifies the type of assigned targeting options to list. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)",
                                                     "enum": [
                                                         "TARGETING_TYPE_UNSPECIFIED",
                                                         "TARGETING_TYPE_CHANNEL",
@@ -3511,7 +4582,7 @@
                                             "type": "string"
                                         },
                                         "targetingType": {
-                                            "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`",
+                                            "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`",
                                             "enum": [
                                                 "TARGETING_TYPE_UNSPECIFIED",
                                                 "TARGETING_TYPE_CHANNEL",
@@ -3658,7 +4729,7 @@
                                             "type": "string"
                                         },
                                         "targetingType": {
-                                            "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`",
+                                            "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`",
                                             "enum": [
                                                 "TARGETING_TYPE_UNSPECIFIED",
                                                 "TARGETING_TYPE_CHANNEL",
@@ -3802,7 +4873,7 @@
                                             "type": "string"
                                         },
                                         "targetingType": {
-                                            "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`",
+                                            "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`",
                                             "enum": [
                                                 "TARGETING_TYPE_UNSPECIFIED",
                                                 "TARGETING_TYPE_CHANNEL",
@@ -3959,7 +5030,7 @@
                                             "type": "string"
                                         },
                                         "targetingType": {
-                                            "description": "Required. Identifies the type of assigned targeting options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`",
+                                            "description": "Required. Identifies the type of assigned targeting options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`",
                                             "enum": [
                                                 "TARGETING_TYPE_UNSPECIFIED",
                                                 "TARGETING_TYPE_CHANNEL",
@@ -4836,7 +5907,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful. *Warning*: Starting **April 1, 2025**, requests updating custom bidding algorithms that are assigned to line items will return an error. [Read more about this announced change](/display-video/api/deprecations#features.custom_bidding_floodlight).",
+                    "description": "Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful. Requests updating a custom bidding algorithm assigned to a line item will return an error.",
                     "flatPath": "v2/customBiddingAlgorithms/{customBiddingAlgorithmsId}",
                     "httpMethod": "PATCH",
                     "id": "displayvideo.customBiddingAlgorithms.patch",
@@ -4913,7 +5984,7 @@
                 "scripts": {
                     "methods": {
                         "create": {
-                            "description": "Creates a new custom bidding script. Returns the newly created script if successful. *Warning*: Starting **April 1, 2025**, requests updating custom bidding algorithms that are assigned to line items will return an error. [Read more about this announced change](/display-video/api/deprecations#features.custom_bidding_floodlight).",
+                            "description": "Creates a new custom bidding script. Returns the newly created script if successful. Requests creating a custom bidding script under an algorithm assigned to a line item will return an error.",
                             "flatPath": "v2/customBiddingAlgorithms/{customBiddingAlgorithmsId}/scripts",
                             "httpMethod": "POST",
                             "id": "displayvideo.customBiddingAlgorithms.scripts.create",
@@ -7354,7 +8425,7 @@
         "sdfdownloadtasks": {
             "methods": {
                 "create": {
-                    "description": "Creates an SDF Download Task. Returns an Operation. An SDF Download Task is a long-running, asynchronous operation. The metadata type of this operation is SdfDownloadTaskMetadata. If the request is successful, the response type of the operation is SdfDownloadTask. The response will not include the download files, which must be retrieved with media.download. The state of operation can be retrieved with sdfdownloadtask.operations.get. Any errors can be found in the error.message. Note that error.details is expected to be empty.",
+                    "description": "Creates an SDF Download Task. Returns an Operation. An SDF Download Task is a long-running, asynchronous operation. The metadata type of this operation is SdfDownloadTaskMetadata. If the request is successful, the response type of the operation is SdfDownloadTask. The response will not include the download files, which must be retrieved with media.download. The state of operation can be retrieved with `sdfdownloadtasks.operations.get`. Any errors can be found in the error.message. Note that error.details is expected to be empty.",
                     "flatPath": "v2/sdfdownloadtasks",
                     "httpMethod": "POST",
                     "id": "displayvideo.sdfdownloadtasks.create",
@@ -8166,11 +9237,11 @@
             "type": "object"
         },
         "Adloox": {
-            "description": "Details of Adloox brand safety settings.",
+            "description": "Details of Scope3 (previously known as Adloox) brand safety settings.",
             "id": "Adloox",
             "properties": {
                 "excludedAdlooxCategories": {
-                    "description": "Adloox categories to exclude.",
+                    "description": "Scope3 categories to exclude.",
                     "items": {
                         "enum": [
                             "ADLOOX_UNSPECIFIED",
@@ -8184,7 +9255,7 @@
                             "FRAUD"
                         ],
                         "enumDescriptions": [
-                            "Default value when a Adloox category is not specified or is unknown in this version.",
+                            "Default value when a Scope3 category is not specified or is unknown in this version.",
                             "Adult content (hard).",
                             "Adult content (soft).",
                             "Illegal content.",
@@ -9377,14 +10448,14 @@
             "id": "BulkEditAdvertiserAssignedTargetingOptionsRequest",
             "properties": {
                 "createRequests": {
-                    "description": "The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`",
+                    "description": "The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`",
                     "items": {
                         "$ref": "CreateAssignedTargetingOptionsRequest"
                     },
                     "type": "array"
                 },
                 "deleteRequests": {
-                    "description": "The assigned targeting options to delete in batch, specified as a list of `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`",
+                    "description": "The assigned targeting options to delete in batch, specified as a list of `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`",
                     "items": {
                         "$ref": "DeleteAssignedTargetingOptionsRequest"
                     },
@@ -9741,6 +10812,40 @@
                 },
                 "nextPageToken": {
                     "description": "A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more line_item_assigned_targeting_options to return.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BulkListCampaignAssignedTargetingOptionsResponse": {
+            "id": "BulkListCampaignAssignedTargetingOptionsResponse",
+            "properties": {
+                "assignedTargetingOptions": {
+                    "description": "The list of assigned targeting options. This list will be absent if empty.",
+                    "items": {
+                        "$ref": "AssignedTargetingOption"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token identifying the next page of results. This value should be specified as the pageToken in a subsequent BulkListCampaignAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BulkListInsertionOrderAssignedTargetingOptionsResponse": {
+            "id": "BulkListInsertionOrderAssignedTargetingOptionsResponse",
+            "properties": {
+                "assignedTargetingOptions": {
+                    "description": "The list of assigned targeting options. This list will be absent if empty.",
+                    "items": {
+                        "$ref": "AssignedTargetingOption"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token identifying the next page of results. This value should be specified as the pageToken in a subsequent BulkListInsertionOrderAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return.",
                     "type": "string"
                 }
             },
@@ -10738,7 +11843,7 @@
             "id": "ConversionCountingConfig",
             "properties": {
                 "floodlightActivityConfigs": {
-                    "description": "The Floodlight activity configs used to track conversions. The number of conversions counted is the sum of all of the conversions counted by all of the Floodlight activity IDs specified in this field. *Warning*: Starting **April 1, 2025**, this field will no longer be writable while a custom bidding algorithm is assigned to the line item. If you set this field and assign a custom bidding algorithm in the same request, the floodlight activities must match the ones used by the custom bidding algorithm. [Read more about this announced change](/display-video/api/deprecations#features.custom_bidding_floodlight).",
+                    "description": "The Floodlight activity configs used to track conversions. The number of conversions counted is the sum of all of the conversions counted by all of the Floodlight activity IDs specified in this field. This field can't be updated if a custom bidding algorithm is assigned to the line item. If you set this field and assign a custom bidding algorithm in the same request, the floodlight activities must match the ones used by the custom bidding algorithm.",
                     "items": {
                         "$ref": "TrackingFloodlightActivityConfig"
                     },
@@ -10952,10 +12057,12 @@
                         "SDF_VERSION_6",
                         "SDF_VERSION_7",
                         "SDF_VERSION_7_1",
-                        "SDF_VERSION_8"
+                        "SDF_VERSION_8",
+                        "SDF_VERSION_8_1"
                     ],
                     "enumDeprecated": [
                         false,
+                        true,
                         true,
                         true,
                         true,
@@ -10986,7 +12093,8 @@
                         "SDF version 6",
                         "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
                         "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
-                        "SDF version 8. Read the [v8 migration guide](/display-video/api/structured-data-file/v8-migration-guide) before migrating to this version."
+                        "SDF version 8. Read the [v8 migration guide](/display-video/api/structured-data-file/v8-migration-guide) before migrating to this version.",
+                        "SDF version 8.1."
                     ],
                     "type": "string"
                 }
@@ -12694,6 +13802,8 @@
                         "EXCHANGE_TOPON_GBID",
                         "EXCHANGE_NETFLIX",
                         "EXCHANGE_CORE",
+                        "EXCHANGE_COMMERCE_GRID",
+                        "EXCHANGE_SPOTIFY",
                         "EXCHANGE_TUBI"
                     ],
                     "enumDescriptions": [
@@ -12781,6 +13891,8 @@
                         "TopOn.",
                         "Netflix.",
                         "Core.",
+                        "Commerce Grid.",
+                        "Spotify.",
                         "Tubi."
                     ],
                     "type": "string"
@@ -12893,6 +14005,8 @@
                         "EXCHANGE_TOPON_GBID",
                         "EXCHANGE_NETFLIX",
                         "EXCHANGE_CORE",
+                        "EXCHANGE_COMMERCE_GRID",
+                        "EXCHANGE_SPOTIFY",
                         "EXCHANGE_TUBI"
                     ],
                     "enumDescriptions": [
@@ -12980,6 +14094,8 @@
                         "TopOn.",
                         "Netflix.",
                         "Core.",
+                        "Commerce Grid.",
+                        "Spotify.",
                         "Tubi."
                     ],
                     "type": "string"
@@ -13093,6 +14209,8 @@
                         "EXCHANGE_TOPON_GBID",
                         "EXCHANGE_NETFLIX",
                         "EXCHANGE_CORE",
+                        "EXCHANGE_COMMERCE_GRID",
+                        "EXCHANGE_SPOTIFY",
                         "EXCHANGE_TUBI"
                     ],
                     "enumDescriptions": [
@@ -13180,6 +14298,8 @@
                         "TopOn.",
                         "Netflix.",
                         "Core.",
+                        "Commerce Grid.",
+                        "Spotify.",
                         "Tubi."
                     ],
                     "type": "string"
@@ -13294,6 +14414,8 @@
                         "EXCHANGE_TOPON_GBID",
                         "EXCHANGE_NETFLIX",
                         "EXCHANGE_CORE",
+                        "EXCHANGE_COMMERCE_GRID",
+                        "EXCHANGE_SPOTIFY",
                         "EXCHANGE_TUBI"
                     ],
                     "enumDescriptions": [
@@ -13381,6 +14503,8 @@
                         "TopOn.",
                         "Netflix.",
                         "Core.",
+                        "Commerce Grid.",
+                        "Spotify.",
                         "Tubi."
                     ],
                     "readOnly": true,
@@ -13566,7 +14690,7 @@
                     "type": "integer"
                 },
                 "timeUnit": {
-                    "description": "The time unit in which the frequency cap will be applied. Required when unlimited is `false`. *Warning*: On **February 28, 2025**, frequency cap time periods greater than 30 days will no longer be accepted. This field will no longer accept the value `TIME_UNIT_LIFETIME`. [Read more about this announced change](/display-video/api/deprecations#features.lifetime_frequency_cap).",
+                    "description": "The time unit in which the frequency cap will be applied. Required when unlimited is `false`.",
                     "enum": [
                         "TIME_UNIT_UNSPECIFIED",
                         "TIME_UNIT_LIFETIME",
@@ -13575,6 +14699,15 @@
                         "TIME_UNIT_DAYS",
                         "TIME_UNIT_HOURS",
                         "TIME_UNIT_MINUTES"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        true,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false
                     ],
                     "enumDescriptions": [
                         "Time unit value is not specified or is unknown in this version.",
@@ -13588,7 +14721,7 @@
                     "type": "string"
                 },
                 "timeUnitCount": {
-                    "description": "The number of time_unit the frequency cap will last. Required when unlimited is `false`. The following restrictions apply based on the value of time_unit: * `TIME_UNIT_LIFETIME` - this field is output only and will default to 1 * `TIME_UNIT_MONTHS` - must be between 1 and 2 * `TIME_UNIT_WEEKS` - must be between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 * `TIME_UNIT_MINUTES` - must be between 1 and 59 *Warning*: On **February 28, 2025**, frequency cap time periods greater than 30 days will no longer be accepted. This field will no longer accept the value 2 if the value of time_unit is `TIME_UNIT_MONTHS`. [Read more about this announced change](/display-video/api/deprecations#features.lifetime_frequency_cap).",
+                    "description": "The number of time_unit the frequency cap will last. Required when unlimited is `false`. The following restrictions apply based on the value of time_unit: * `TIME_UNIT_MONTHS` - must be 1 * `TIME_UNIT_WEEKS` - must be between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 * `TIME_UNIT_MINUTES` - must be between 1 and 59",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -14129,6 +15262,8 @@
                         "EXCHANGE_TOPON_GBID",
                         "EXCHANGE_NETFLIX",
                         "EXCHANGE_CORE",
+                        "EXCHANGE_COMMERCE_GRID",
+                        "EXCHANGE_SPOTIFY",
                         "EXCHANGE_TUBI"
                     ],
                     "enumDescriptions": [
@@ -14216,6 +15351,8 @@
                         "TopOn.",
                         "Netflix.",
                         "Core.",
+                        "Commerce Grid.",
+                        "Spotify.",
                         "Tubi."
                     ],
                     "type": "string"
@@ -14547,7 +15684,7 @@
                 },
                 "frequencyCap": {
                     "$ref": "FrequencyCap",
-                    "description": "Required. The frequency capping setting of the insertion order. *Warning*: On **February 28, 2025**, frequency cap time periods greater than 30 days will no longer be accepted. [Read more about this announced change](/display-video/api/deprecations#features.lifetime_frequency_cap)"
+                    "description": "Required. The frequency capping setting of the insertion order."
                 },
                 "insertionOrderId": {
                     "description": "Output only. The unique ID of the insertion order. Assigned by the system.",
@@ -15046,6 +16183,8 @@
                         "EXCHANGE_TOPON_GBID",
                         "EXCHANGE_NETFLIX",
                         "EXCHANGE_CORE",
+                        "EXCHANGE_COMMERCE_GRID",
+                        "EXCHANGE_SPOTIFY",
                         "EXCHANGE_TUBI"
                     ],
                     "enumDescriptions": [
@@ -15133,6 +16272,8 @@
                         "TopOn.",
                         "Netflix.",
                         "Core.",
+                        "Commerce Grid.",
+                        "Spotify.",
                         "Tubi."
                     ],
                     "type": "string"
@@ -15620,7 +16761,7 @@
                 },
                 "conversionCounting": {
                     "$ref": "ConversionCountingConfig",
-                    "description": "The conversion tracking setting of the line item. *Warning*: Starting **April 1, 2025**, the floodlight_activity_configs field will no longer be writable while a custom bidding algorithm is assigned to the line item. If you set this field and assign a custom bidding algorithm in the same request, the floodlight activities must match the ones used by the custom bidding algorithm. [Read more about this announced change](/display-video/api/deprecations#features.custom_bidding_floodlight)."
+                    "description": "The conversion tracking setting of the line item."
                 },
                 "creativeIds": {
                     "description": "The IDs of the creatives associated with the line item.",
@@ -15664,7 +16805,7 @@
                 },
                 "frequencyCap": {
                     "$ref": "FrequencyCap",
-                    "description": "Required. The impression frequency cap settings of the line item. The max_impressions field in this settings object must be used if assigning a limited cap. *Warning*: On **February 28, 2025**, frequency cap time periods greater than 30 days will no longer be accepted. [Read more about this announced change](/display-video/api/deprecations#features.lifetime_frequency_cap)"
+                    "description": "Required. The impression frequency cap settings of the line item. The max_impressions field in this settings object must be used if assigning a limited cap."
                 },
                 "insertionOrderId": {
                     "description": "Required. Immutable. The unique ID of the insertion order that the line item belongs to.",
@@ -15987,6 +17128,24 @@
             },
             "type": "object"
         },
+        "ListCampaignAssignedTargetingOptionsResponse": {
+            "description": "Response message for ListCampaignAssignedTargetingOptions.",
+            "id": "ListCampaignAssignedTargetingOptionsResponse",
+            "properties": {
+                "assignedTargetingOptions": {
+                    "description": "The list of assigned targeting options. This list will be absent if empty.",
+                    "items": {
+                        "$ref": "AssignedTargetingOption"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListCampaignAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ListCampaignsResponse": {
             "id": "ListCampaignsResponse",
             "properties": {
@@ -16152,6 +17311,23 @@
                 },
                 "nextPageToken": {
                     "description": "A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListGuaranteedOrders` method to retrieve the next page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListInsertionOrderAssignedTargetingOptionsResponse": {
+            "id": "ListInsertionOrderAssignedTargetingOptionsResponse",
+            "properties": {
+                "assignedTargetingOptions": {
+                    "description": "The list of assigned targeting options. This list will be absent if empty.",
+                    "items": {
+                        "$ref": "AssignedTargetingOption"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListInsertionOrderAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return.",
                     "type": "string"
                 }
             },
@@ -16662,7 +17838,7 @@
             "id": "MaximizeSpendBidStrategy",
             "properties": {
                 "customBiddingAlgorithmId": {
-                    "description": "The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. *Warning*: Starting **April 1, 2025**, assigning a custom bidding algorithm that uses floodlight activities not identified in floodlightActivityConfigs will return an error. [Read more about this announced change](/display-video/api/deprecations#features.custom_bidding_floodlight).",
+                    "description": "The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom bidding algorithm that uses floodlight activities not identified in floodlightActivityConfigs will return an error.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -17400,7 +18576,6 @@
                         "PARTNER_COST_TYPE_THIRD_PARTY_AD_SERVER",
                         "PARTNER_COST_TYPE_TRUST_METRICS",
                         "PARTNER_COST_TYPE_VIZU",
-                        "PARTNER_COST_TYPE_ADLINGO_FEE",
                         "PARTNER_COST_TYPE_CUSTOM_FEE_1",
                         "PARTNER_COST_TYPE_CUSTOM_FEE_2",
                         "PARTNER_COST_TYPE_CUSTOM_FEE_3",
@@ -17410,8 +18585,8 @@
                     ],
                     "enumDescriptions": [
                         "Type value is not specified or is unknown in this version.",
-                        "The cost is charged for using Adloox. Billed by the partner.",
-                        "The cost is charged for using Adloox Pre-Bid. Billed through DV360.",
+                        "The cost is charged for using Scope3 (previously known as Adloox). Billed by the partner.",
+                        "The cost is charged for using Scope3 (previously known as Adloox) Pre-Bid. Billed through DV360.",
                         "The cost is charged for using AdSafe. Billed by the partner.",
                         "The cost is charged for using AdExpose. Billed by the partner.",
                         "The cost is charged for using Aggregate Knowledge. Billed by the partner.",
@@ -17433,7 +18608,6 @@
                         "The cost is charged for using a third-party ad server. Billed by the partner.",
                         "The cost is charged for using TrustMetrics. Billed by the partner.",
                         "The cost is charged for using Vizu. Billed by the partner.",
-                        "The cost is charged for using AdLingo. Billed through DV360.",
                         "The cost is charged as custom fee 1. Billed by the partner.",
                         "The cost is charged as custom fee 2. Billed by the partner.",
                         "The cost is charged as custom fee 3. Billed by the partner.",
@@ -17610,7 +18784,7 @@
             "id": "PerformanceGoalBidStrategy",
             "properties": {
                 "customBiddingAlgorithmId": {
-                    "description": "The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. *Warning*: Starting **April 1, 2025**, assigning a custom bidding algorithm that uses floodlight activities not identified in floodlightActivityConfigs will return an error. [Read more about this announced change](/display-video/api/deprecations#features.custom_bidding_floodlight).",
+                    "description": "The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom bidding algorithm that uses floodlight activities not identified in floodlightActivityConfigs will return an error.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -18169,10 +19343,12 @@
                         "SDF_VERSION_6",
                         "SDF_VERSION_7",
                         "SDF_VERSION_7_1",
-                        "SDF_VERSION_8"
+                        "SDF_VERSION_8",
+                        "SDF_VERSION_8_1"
                     ],
                     "enumDeprecated": [
                         false,
+                        true,
                         true,
                         true,
                         true,
@@ -18203,7 +19379,8 @@
                         "SDF version 6",
                         "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
                         "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
-                        "SDF version 8. Read the [v8 migration guide](/display-video/api/structured-data-file/v8-migration-guide) before migrating to this version."
+                        "SDF version 8. Read the [v8 migration guide](/display-video/api/structured-data-file/v8-migration-guide) before migrating to this version.",
+                        "SDF version 8.1."
                     ],
                     "type": "string"
                 }
@@ -18211,7 +19388,7 @@
             "type": "object"
         },
         "SdfDownloadTask": {
-            "description": "Type for the response returned by [SdfDownloadTaskService.CreateSdfDownloadTask].",
+            "description": "Type for the response returned by SdfDownloadTaskService.CreateSdfDownloadTask.",
             "id": "SdfDownloadTask",
             "properties": {
                 "resourceName": {
@@ -18222,7 +19399,7 @@
             "type": "object"
         },
         "SdfDownloadTaskMetadata": {
-            "description": "Type for the metadata returned by [SdfDownloadTaskService.CreateSdfDownloadTask].",
+            "description": "Type for the metadata returned by SdfDownloadTaskService.CreateSdfDownloadTask.",
             "id": "SdfDownloadTaskMetadata",
             "properties": {
                 "createTime": {
@@ -18252,10 +19429,12 @@
                         "SDF_VERSION_6",
                         "SDF_VERSION_7",
                         "SDF_VERSION_7_1",
-                        "SDF_VERSION_8"
+                        "SDF_VERSION_8",
+                        "SDF_VERSION_8_1"
                     ],
                     "enumDeprecated": [
                         false,
+                        true,
                         true,
                         true,
                         true,
@@ -18286,7 +19465,8 @@
                         "SDF version 6",
                         "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
                         "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
-                        "SDF version 8. Read the [v8 migration guide](/display-video/api/structured-data-file/v8-migration-guide) before migrating to this version."
+                        "SDF version 8. Read the [v8 migration guide](/display-video/api/structured-data-file/v8-migration-guide) before migrating to this version.",
+                        "SDF version 8.1."
                     ],
                     "type": "string"
                 }
@@ -18559,6 +19739,15 @@
                         "TIME_UNIT_DAYS",
                         "TIME_UNIT_HOURS",
                         "TIME_UNIT_MINUTES"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        true,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false
                     ],
                     "enumDescriptions": [
                         "Time unit value is not specified or is unknown in this version.",
@@ -18961,7 +20150,8 @@
                         "THIRD_PARTY_VENDOR_ZEFR",
                         "THIRD_PARTY_VENDOR_NIELSEN",
                         "THIRD_PARTY_VENDOR_KANTAR",
-                        "THIRD_PARTY_VENDOR_DYNATA"
+                        "THIRD_PARTY_VENDOR_DYNATA",
+                        "THIRD_PARTY_VENDOR_TRANSUNION"
                     ],
                     "enumDescriptions": [
                         "Unknown third-party vendor.",
@@ -18974,7 +20164,8 @@
                         "ZEFR.",
                         "Nielsen.",
                         "Kantar.",
-                        "Dynata."
+                        "Dynata.",
+                        "Transunion."
                     ],
                     "type": "string"
                 }
@@ -18987,7 +20178,7 @@
             "properties": {
                 "adloox": {
                     "$ref": "Adloox",
-                    "description": "Third party brand verifier -- Adloox."
+                    "description": "Third party brand verifier -- Scope3 (previously known as Adloox)."
                 },
                 "doubleVerify": {
                     "$ref": "DoubleVerify",
@@ -19231,6 +20422,25 @@
                     ],
                     "readOnly": true,
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "VideoAdInventoryControl": {
+            "description": "The video ad inventory control used in certain YouTube line item types.",
+            "id": "VideoAdInventoryControl",
+            "properties": {
+                "allowInFeed": {
+                    "description": "Optional. Whether ads can serve as in-feed format.",
+                    "type": "boolean"
+                },
+                "allowInStream": {
+                    "description": "Optional. Whether ads can serve as in-stream format.",
+                    "type": "boolean"
+                },
+                "allowShorts": {
+                    "description": "Optional. Whether ads can serve as shorts format.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -19838,7 +21048,7 @@
                     "description": "Required. The bidding strategy of the YouTube and Partners line item."
                 },
                 "contentCategory": {
-                    "description": "The kind of content on which the YouTube and Partners ads will be shown.",
+                    "description": "Output only. The kind of content on which the YouTube and Partners ads will be shown. *Warning*: This field will be removed in the near future. Use effective_content_category instead.",
                     "enum": [
                         "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED",
                         "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD",
@@ -19851,10 +21061,11 @@
                         "A category including all content across YouTube and video partners that meets standards for monetization.",
                         "A category consisting of a reduced range of content that meets heightened requirements, especially regarding inappropriate language and sexual suggestiveness."
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "effectiveContentCategory": {
-                    "description": "Output only. The content category which takes effect when serving the line item. When content category is set in both line item and advertiser, the stricter one will take effect when serving the line item.",
+                    "description": "Output only. The content category which takes effect when serving the line item. When content category is set in both line item and advertiser, the stricter one will take effect when serving the line item. New line items will only inherit the advertiser level setting.",
                     "enum": [
                         "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED",
                         "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD",
@@ -19899,13 +21110,17 @@
                     "$ref": "YoutubeAndPartnersThirdPartyMeasurementSettings",
                     "description": "Optional. The third-party measurement settings of the line item."
                 },
+                "videoAdInventoryControl": {
+                    "$ref": "VideoAdInventoryControl",
+                    "description": "Optional. The settings to control which inventory is allowed for this line item."
+                },
                 "videoAdSequenceSettings": {
                     "$ref": "VideoAdSequenceSettings",
                     "description": "Optional. The settings related to VideoAdSequence."
                 },
                 "viewFrequencyCap": {
                     "$ref": "FrequencyCap",
-                    "description": "The view frequency cap settings of the line item. The max_views field in this settings object must be used if assigning a limited cap. *Warning*: On **February 28, 2025**, frequency cap time periods greater than 30 days will no longer be accepted. [Read more about this announced change](/display-video/api/deprecations#features.lifetime_frequency_cap)"
+                    "description": "The view frequency cap settings of the line item. The max_views field in this settings object must be used if assigning a limited cap."
                 }
             },
             "type": "object"

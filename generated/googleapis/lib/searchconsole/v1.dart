@@ -1127,6 +1127,55 @@ class Item {
       };
 }
 
+/// An object that may be returned with your query results, providing context
+/// about the state of the data.
+///
+/// When you request recent data (using `all` or `hourly_all` for `dataState`),
+/// some of the rows returned may represent data that is incomplete, which means
+/// that the data is still being collected and processed. This metadata object
+/// helps you identify exactly when this starts and ends. All dates and times
+/// provided in this object are in the `America/Los_Angeles` time zone. The
+/// specific field returned within this object depends on how you've grouped
+/// your data in the request. See details in inner fields.
+class Metadata {
+  /// The first date for which the data is still being collected and processed,
+  /// presented in `YYYY-MM-DD` format (ISO-8601 extended local date format).
+  ///
+  /// This field is populated only when the request's `dataState` is "`all`",
+  /// data is grouped by "`DATE`", and the requested date range contains
+  /// incomplete data points. All values after the `first_incomplete_date` may
+  /// still change noticeably.
+  core.String? firstIncompleteDate;
+
+  /// The first hour for which the data is still being collected and processed,
+  /// presented in `YYYY-MM-DDThh:mm:ss[+|-]hh:mm` format (ISO-8601 extended
+  /// offset date-time format).
+  ///
+  /// This field is populated only when the request's `dataState` is
+  /// "`hourly_all`", data is grouped by "`HOUR`" and the requested date range
+  /// contains incomplete data points. All values after the
+  /// `first_incomplete_hour` may still change noticeably.
+  core.String? firstIncompleteHour;
+
+  Metadata({
+    this.firstIncompleteDate,
+    this.firstIncompleteHour,
+  });
+
+  Metadata.fromJson(core.Map json_)
+      : this(
+          firstIncompleteDate: json_['firstIncompleteDate'] as core.String?,
+          firstIncompleteHour: json_['firstIncompleteHour'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firstIncompleteDate != null)
+          'firstIncompleteDate': firstIncompleteDate!,
+        if (firstIncompleteHour != null)
+          'firstIncompleteHour': firstIncompleteHour!,
+      };
+}
+
 /// Mobile-friendly issue.
 class MobileFriendlyIssue {
   /// Rule violated.
@@ -1464,6 +1513,8 @@ class SearchAnalyticsQueryRequest {
   /// - "DATA_STATE_UNSPECIFIED" : Default value, should not be used.
   /// - "FINAL" : Include full final data only, without partial.
   /// - "ALL" : Include all data, full and partial.
+  /// - "HOURLY_ALL" : Include hourly data, full and partial. Required when
+  /// grouping by HOUR.
   core.String? dataState;
 
   /// Zero or more filters to apply to the dimension grouping values; for
@@ -1586,6 +1637,12 @@ class SearchAnalyticsQueryRequest {
 /// Metrics in each row are aggregated for all data grouped by that key either
 /// by page or property, as specified by the aggregation type parameter.
 class SearchAnalyticsQueryResponse {
+  /// An object that may be returned with your query results, providing context
+  /// about the state of the data.
+  ///
+  /// See details in Metadata object documentation.
+  Metadata? metadata;
+
   /// How the results were aggregated.
   /// Possible string values are:
   /// - "AUTO"
@@ -1598,12 +1655,17 @@ class SearchAnalyticsQueryResponse {
   core.List<ApiDataRow>? rows;
 
   SearchAnalyticsQueryResponse({
+    this.metadata,
     this.responseAggregationType,
     this.rows,
   });
 
   SearchAnalyticsQueryResponse.fromJson(core.Map json_)
       : this(
+          metadata: json_.containsKey('metadata')
+              ? Metadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
           responseAggregationType:
               json_['responseAggregationType'] as core.String?,
           rows: (json_['rows'] as core.List?)
@@ -1613,6 +1675,7 @@ class SearchAnalyticsQueryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (metadata != null) 'metadata': metadata!,
         if (responseAggregationType != null)
           'responseAggregationType': responseAggregationType!,
         if (rows != null) 'rows': rows!,

@@ -1656,7 +1656,7 @@ class ScopedRoutesConfigDump {
 /// field is used only for security fixes and can be generally ignored.
 typedef SemanticVersion = $SemanticVersion;
 
-/// \[#next-free-field: 7\]
+/// \[#next-free-field: 8\]
 class SocketAddress {
   /// The address for this socket.
   ///
@@ -1682,6 +1682,16 @@ class SocketAddress {
   /// This is only valid if :ref:`resolver_name ` is specified below and the
   /// named resolver is capable of named port resolution.
   core.String? namedPort;
+
+  /// Filepath that specifies the Linux network namespace this socket will be
+  /// created in (see ``man 7 network_namespaces``).
+  ///
+  /// If this field is set, Envoy will create the socket in the specified
+  /// network namespace. .. note:: Setting this parameter requires Envoy to run
+  /// with the ``CAP_NET_ADMIN`` capability. .. note:: Currently only used for
+  /// Listener sockets. .. attention:: Network namespaces are only configurable
+  /// on Linux. Otherwise, this field has no effect.
+  core.String? networkNamespaceFilepath;
   core.int? portValue;
 
   ///
@@ -1703,6 +1713,7 @@ class SocketAddress {
     this.address,
     this.ipv4Compat,
     this.namedPort,
+    this.networkNamespaceFilepath,
     this.portValue,
     this.protocol,
     this.resolverName,
@@ -1713,6 +1724,8 @@ class SocketAddress {
           address: json_['address'] as core.String?,
           ipv4Compat: json_['ipv4Compat'] as core.bool?,
           namedPort: json_['namedPort'] as core.String?,
+          networkNamespaceFilepath:
+              json_['networkNamespaceFilepath'] as core.String?,
           portValue: json_['portValue'] as core.int?,
           protocol: json_['protocol'] as core.String?,
           resolverName: json_['resolverName'] as core.String?,
@@ -1722,6 +1735,8 @@ class SocketAddress {
         if (address != null) 'address': address!,
         if (ipv4Compat != null) 'ipv4Compat': ipv4Compat!,
         if (namedPort != null) 'namedPort': namedPort!,
+        if (networkNamespaceFilepath != null)
+          'networkNamespaceFilepath': networkNamespaceFilepath!,
         if (portValue != null) 'portValue': portValue!,
         if (protocol != null) 'protocol': protocol!,
         if (resolverName != null) 'resolverName': resolverName!,
@@ -1771,8 +1786,8 @@ typedef StaticRouteConfig = $StaticRouteConfig;
 class StringMatcher {
   /// The input string must have the substring specified here.
   ///
-  /// Note: empty contains match is not allowed, please use regex instead.
-  /// Examples: * ``abc`` matches the value ``xyz.abc.def``
+  /// .. note:: Empty contains match is not allowed, please use ``safe_regex``
+  /// instead. Examples: * ``abc`` matches the value ``xyz.abc.def``
   core.String? contains;
 
   /// Use an extension as the matcher type.
@@ -1785,18 +1800,18 @@ class StringMatcher {
   /// Examples: * ``abc`` only matches the value ``abc``.
   core.String? exact;
 
-  /// If true, indicates the exact/prefix/suffix/contains matching should be
+  /// If ``true``, indicates the exact/prefix/suffix/contains matching should be
   /// case insensitive.
   ///
-  /// This has no effect for the safe_regex match. For example, the matcher
-  /// ``data`` will match both input string ``Data`` and ``data`` if set to
-  /// true.
+  /// This has no effect for the ``safe_regex`` match. For example, the matcher
+  /// ``data`` will match both input string ``Data`` and ``data`` if this option
+  /// is set to ``true``.
   core.bool? ignoreCase;
 
   /// The input string must have the prefix specified here.
   ///
-  /// Note: empty prefix is not allowed, please use regex instead. Examples: *
-  /// ``abc`` matches the value ``abc.xyz``
+  /// .. note:: Empty prefix match is not allowed, please use ``safe_regex``
+  /// instead. Examples: * ``abc`` matches the value ``abc.xyz``
   core.String? prefix;
 
   /// The input string must match the regular expression specified here.
@@ -1804,8 +1819,8 @@ class StringMatcher {
 
   /// The input string must have the suffix specified here.
   ///
-  /// Note: empty prefix is not allowed, please use regex instead. Examples: *
-  /// ``abc`` matches the value ``xyz.abc``
+  /// .. note:: Empty suffix match is not allowed, please use ``safe_regex``
+  /// instead. Examples: * ``abc`` matches the value ``xyz.abc``
   core.String? suffix;
 
   StringMatcher({

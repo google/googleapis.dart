@@ -3314,6 +3314,7 @@ api.VulnerabilityReport buildVulnerabilityReport() {
   final o = api.VulnerabilityReport();
   buildCounterVulnerabilityReport++;
   if (buildCounterVulnerabilityReport < 3) {
+    o.highestUpgradableCveSeverity = 'foo';
     o.name = 'foo';
     o.updateTime = 'foo';
     o.vulnerabilities = buildUnnamed40();
@@ -3325,6 +3326,10 @@ api.VulnerabilityReport buildVulnerabilityReport() {
 void checkVulnerabilityReport(api.VulnerabilityReport o) {
   buildCounterVulnerabilityReport++;
   if (buildCounterVulnerabilityReport < 3) {
+    unittest.expect(
+      o.highestUpgradableCveSeverity!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

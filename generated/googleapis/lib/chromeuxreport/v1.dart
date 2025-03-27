@@ -569,6 +569,12 @@ class Percentiles {
 /// This request includes all necessary context to load a particular user
 /// experience history record.
 class QueryHistoryRequest {
+  /// The number of collection periods to return.
+  ///
+  /// If not specified, the default is 25. If present, must be in the range \[1,
+  /// 40\].
+  core.int? collectionPeriodCount;
+
   /// The form factor is a query dimension that specifies the device class that
   /// the record's data should belong to.
   ///
@@ -604,6 +610,7 @@ class QueryHistoryRequest {
   core.String? url;
 
   QueryHistoryRequest({
+    this.collectionPeriodCount,
     this.formFactor,
     this.metrics,
     this.origin,
@@ -612,6 +619,7 @@ class QueryHistoryRequest {
 
   QueryHistoryRequest.fromJson(core.Map json_)
       : this(
+          collectionPeriodCount: json_['collectionPeriodCount'] as core.int?,
           formFactor: json_['formFactor'] as core.String?,
           metrics: (json_['metrics'] as core.List?)
               ?.map((value) => value as core.String)
@@ -621,6 +629,8 @@ class QueryHistoryRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (collectionPeriodCount != null)
+          'collectionPeriodCount': collectionPeriodCount!,
         if (formFactor != null) 'formFactor': formFactor!,
         if (metrics != null) 'metrics': metrics!,
         if (origin != null) 'origin': origin!,

@@ -269,6 +269,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -291,12 +295,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3408,7 +3414,8 @@ class Attachment {
 class BatchDeleteVersionsRequest {
   /// The names of the versions to delete.
   ///
-  /// A maximum of 10000 versions can be deleted in a batch.
+  /// The maximum number of versions deleted per batch is determined by the
+  /// service and is dependent on the available resources in the region.
   ///
   /// Required.
   core.List<core.String>? names;
@@ -3740,7 +3747,7 @@ class DockerImage {
   core.String? mediaType;
 
   /// registry_location, project_id, repository_name and image id forms a unique
-  /// image name:`projects//locations//repository//dockerImages/`.
+  /// image name:`projects//locations//repositories//dockerImages/`.
   ///
   /// For example,
   /// "projects/test-project/locations/us-west4/repositories/test-repo/dockerImages/
@@ -5563,12 +5570,12 @@ class Repository {
   /// Configuration specific for a Remote Repository.
   RemoteRepositoryConfig? remoteRepositoryConfig;
 
-  /// If set, the repository satisfies physical zone isolation.
+  /// Whether or not this repository satisfies PZI.
   ///
   /// Output only.
   core.bool? satisfiesPzi;
 
-  /// If set, the repository satisfies physical zone separation.
+  /// Whether or not this repository satisfies PZS.
   ///
   /// Output only.
   core.bool? satisfiesPzs;
@@ -5895,9 +5902,9 @@ class UploadGenericArtifactRequest {
   ///
   /// If the version does not exist, a new version will be created. The
   /// version_id must start and end with a letter or number, can only contain
-  /// lowercase letters, numbers, hyphens and periods, i.e. \[a-z0-9-.\] and
-  /// cannot exceed a total of 128 characters. Creating a version called
-  /// `latest` is not allowed.
+  /// lowercase letters, numbers, the following characters \[-.+~:\],
+  /// i.e.\[a-z0-9-.+~:\] and cannot exceed a total of 128 characters. Creating
+  /// a version called `latest` is not allowed.
   core.String? versionId;
 
   UploadGenericArtifactRequest({

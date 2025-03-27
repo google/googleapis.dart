@@ -721,6 +721,7 @@ api.CommonFeatureSpec buildCommonFeatureSpec() {
     o.dataplanev2 = buildDataplaneV2FeatureSpec();
     o.fleetobservability = buildFleetObservabilityFeatureSpec();
     o.multiclusteringress = buildMultiClusterIngressFeatureSpec();
+    o.rbacrolebindingactuation = buildRBACRoleBindingActuationFeatureSpec();
   }
   buildCounterCommonFeatureSpec--;
   return o;
@@ -734,6 +735,7 @@ void checkCommonFeatureSpec(api.CommonFeatureSpec o) {
     checkDataplaneV2FeatureSpec(o.dataplanev2!);
     checkFleetObservabilityFeatureSpec(o.fleetobservability!);
     checkMultiClusterIngressFeatureSpec(o.multiclusteringress!);
+    checkRBACRoleBindingActuationFeatureSpec(o.rbacrolebindingactuation!);
   }
   buildCounterCommonFeatureSpec--;
 }
@@ -746,6 +748,7 @@ api.CommonFeatureState buildCommonFeatureState() {
     o.appdevexperience = buildAppDevExperienceFeatureState();
     o.clusterupgrade = buildClusterUpgradeFleetState();
     o.fleetobservability = buildFleetObservabilityFeatureState();
+    o.rbacrolebindingactuation = buildRBACRoleBindingActuationFeatureState();
     o.state = buildFeatureState();
   }
   buildCounterCommonFeatureState--;
@@ -758,6 +761,7 @@ void checkCommonFeatureState(api.CommonFeatureState o) {
     checkAppDevExperienceFeatureState(o.appdevexperience!);
     checkClusterUpgradeFleetState(o.clusterupgrade!);
     checkFleetObservabilityFeatureState(o.fleetobservability!);
+    checkRBACRoleBindingActuationFeatureState(o.rbacrolebindingactuation!);
     checkFeatureState(o.state!);
   }
   buildCounterCommonFeatureState--;
@@ -4017,6 +4021,7 @@ api.Membership buildMembership() {
     o.externalId = 'foo';
     o.labels = buildUnnamed55();
     o.lastConnectionTime = 'foo';
+    o.membershipType = 'foo';
     o.monitoringConfig = buildMonitoringConfig();
     o.name = 'foo';
     o.state = buildMembershipState();
@@ -4055,6 +4060,10 @@ void checkMembership(api.Membership o) {
     checkUnnamed55(o.labels!);
     unittest.expect(
       o.lastConnectionTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.membershipType!,
       unittest.equals('foo'),
     );
     checkMonitoringConfig(o.monitoringConfig!);
@@ -5273,6 +5282,61 @@ void checkRBACRoleBinding(api.RBACRoleBinding o) {
   buildCounterRBACRoleBinding--;
 }
 
+core.List<core.String> buildUnnamed72() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed72(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterRBACRoleBindingActuationFeatureSpec = 0;
+api.RBACRoleBindingActuationFeatureSpec
+    buildRBACRoleBindingActuationFeatureSpec() {
+  final o = api.RBACRoleBindingActuationFeatureSpec();
+  buildCounterRBACRoleBindingActuationFeatureSpec++;
+  if (buildCounterRBACRoleBindingActuationFeatureSpec < 3) {
+    o.allowedCustomRoles = buildUnnamed72();
+  }
+  buildCounterRBACRoleBindingActuationFeatureSpec--;
+  return o;
+}
+
+void checkRBACRoleBindingActuationFeatureSpec(
+    api.RBACRoleBindingActuationFeatureSpec o) {
+  buildCounterRBACRoleBindingActuationFeatureSpec++;
+  if (buildCounterRBACRoleBindingActuationFeatureSpec < 3) {
+    checkUnnamed72(o.allowedCustomRoles!);
+  }
+  buildCounterRBACRoleBindingActuationFeatureSpec--;
+}
+
+core.int buildCounterRBACRoleBindingActuationFeatureState = 0;
+api.RBACRoleBindingActuationFeatureState
+    buildRBACRoleBindingActuationFeatureState() {
+  final o = api.RBACRoleBindingActuationFeatureState();
+  buildCounterRBACRoleBindingActuationFeatureState++;
+  if (buildCounterRBACRoleBindingActuationFeatureState < 3) {}
+  buildCounterRBACRoleBindingActuationFeatureState--;
+  return o;
+}
+
+void checkRBACRoleBindingActuationFeatureState(
+    api.RBACRoleBindingActuationFeatureState o) {
+  buildCounterRBACRoleBindingActuationFeatureState++;
+  if (buildCounterRBACRoleBindingActuationFeatureState < 3) {}
+  buildCounterRBACRoleBindingActuationFeatureState--;
+}
+
 core.int buildCounterRBACRoleBindingLifecycleState = 0;
 api.RBACRoleBindingLifecycleState buildRBACRoleBindingLifecycleState() {
   final o = api.RBACRoleBindingLifecycleState();
@@ -5353,6 +5417,7 @@ api.Role buildRole() {
   final o = api.Role();
   buildCounterRole++;
   if (buildCounterRole < 3) {
+    o.customRole = 'foo';
     o.predefinedRole = 'foo';
   }
   buildCounterRole--;
@@ -5363,28 +5428,15 @@ void checkRole(api.Role o) {
   buildCounterRole++;
   if (buildCounterRole < 3) {
     unittest.expect(
+      o.customRole!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.predefinedRole!,
       unittest.equals('foo'),
     );
   }
   buildCounterRole--;
-}
-
-core.Map<core.String, core.String> buildUnnamed72() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed72(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
 }
 
 core.Map<core.String, core.String> buildUnnamed73() => {
@@ -5404,6 +5456,23 @@ void checkUnnamed73(core.Map<core.String, core.String> o) {
   );
 }
 
+core.Map<core.String, core.String> buildUnnamed74() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed74(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterScope = 0;
 api.Scope buildScope() {
   final o = api.Scope();
@@ -5411,9 +5480,9 @@ api.Scope buildScope() {
   if (buildCounterScope < 3) {
     o.createTime = 'foo';
     o.deleteTime = 'foo';
-    o.labels = buildUnnamed72();
+    o.labels = buildUnnamed73();
     o.name = 'foo';
-    o.namespaceLabels = buildUnnamed73();
+    o.namespaceLabels = buildUnnamed74();
     o.state = buildScopeLifecycleState();
     o.uid = 'foo';
     o.updateTime = 'foo';
@@ -5433,12 +5502,12 @@ void checkScope(api.Scope o) {
       o.deleteTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed72(o.labels!);
+    checkUnnamed73(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed73(o.namespaceLabels!);
+    checkUnnamed74(o.namespaceLabels!);
     checkScopeLifecycleState(o.state!);
     unittest.expect(
       o.uid!,
@@ -5572,12 +5641,12 @@ void checkServiceMeshCondition(api.ServiceMeshCondition o) {
   buildCounterServiceMeshCondition--;
 }
 
-core.List<api.ServiceMeshStatusDetails> buildUnnamed74() => [
+core.List<api.ServiceMeshStatusDetails> buildUnnamed75() => [
       buildServiceMeshStatusDetails(),
       buildServiceMeshStatusDetails(),
     ];
 
-void checkUnnamed74(core.List<api.ServiceMeshStatusDetails> o) {
+void checkUnnamed75(core.List<api.ServiceMeshStatusDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceMeshStatusDetails(o[0]);
   checkServiceMeshStatusDetails(o[1]);
@@ -5588,7 +5657,7 @@ api.ServiceMeshControlPlaneManagement buildServiceMeshControlPlaneManagement() {
   final o = api.ServiceMeshControlPlaneManagement();
   buildCounterServiceMeshControlPlaneManagement++;
   if (buildCounterServiceMeshControlPlaneManagement < 3) {
-    o.details = buildUnnamed74();
+    o.details = buildUnnamed75();
     o.implementation = 'foo';
     o.state = 'foo';
   }
@@ -5600,7 +5669,7 @@ void checkServiceMeshControlPlaneManagement(
     api.ServiceMeshControlPlaneManagement o) {
   buildCounterServiceMeshControlPlaneManagement++;
   if (buildCounterServiceMeshControlPlaneManagement < 3) {
-    checkUnnamed74(o.details!);
+    checkUnnamed75(o.details!);
     unittest.expect(
       o.implementation!,
       unittest.equals('foo'),
@@ -5613,12 +5682,12 @@ void checkServiceMeshControlPlaneManagement(
   buildCounterServiceMeshControlPlaneManagement--;
 }
 
-core.List<api.ServiceMeshStatusDetails> buildUnnamed75() => [
+core.List<api.ServiceMeshStatusDetails> buildUnnamed76() => [
       buildServiceMeshStatusDetails(),
       buildServiceMeshStatusDetails(),
     ];
 
-void checkUnnamed75(core.List<api.ServiceMeshStatusDetails> o) {
+void checkUnnamed76(core.List<api.ServiceMeshStatusDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceMeshStatusDetails(o[0]);
   checkServiceMeshStatusDetails(o[1]);
@@ -5629,7 +5698,7 @@ api.ServiceMeshDataPlaneManagement buildServiceMeshDataPlaneManagement() {
   final o = api.ServiceMeshDataPlaneManagement();
   buildCounterServiceMeshDataPlaneManagement++;
   if (buildCounterServiceMeshDataPlaneManagement < 3) {
-    o.details = buildUnnamed75();
+    o.details = buildUnnamed76();
     o.state = 'foo';
   }
   buildCounterServiceMeshDataPlaneManagement--;
@@ -5639,7 +5708,7 @@ api.ServiceMeshDataPlaneManagement buildServiceMeshDataPlaneManagement() {
 void checkServiceMeshDataPlaneManagement(api.ServiceMeshDataPlaneManagement o) {
   buildCounterServiceMeshDataPlaneManagement++;
   if (buildCounterServiceMeshDataPlaneManagement < 3) {
-    checkUnnamed75(o.details!);
+    checkUnnamed76(o.details!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -5680,12 +5749,12 @@ void checkServiceMeshMembershipSpec(api.ServiceMeshMembershipSpec o) {
   buildCounterServiceMeshMembershipSpec--;
 }
 
-core.List<api.ServiceMeshCondition> buildUnnamed76() => [
+core.List<api.ServiceMeshCondition> buildUnnamed77() => [
       buildServiceMeshCondition(),
       buildServiceMeshCondition(),
     ];
 
-void checkUnnamed76(core.List<api.ServiceMeshCondition> o) {
+void checkUnnamed77(core.List<api.ServiceMeshCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceMeshCondition(o[0]);
   checkServiceMeshCondition(o[1]);
@@ -5696,7 +5765,7 @@ api.ServiceMeshMembershipState buildServiceMeshMembershipState() {
   final o = api.ServiceMeshMembershipState();
   buildCounterServiceMeshMembershipState++;
   if (buildCounterServiceMeshMembershipState < 3) {
-    o.conditions = buildUnnamed76();
+    o.conditions = buildUnnamed77();
     o.controlPlaneManagement = buildServiceMeshControlPlaneManagement();
     o.dataPlaneManagement = buildServiceMeshDataPlaneManagement();
   }
@@ -5707,7 +5776,7 @@ api.ServiceMeshMembershipState buildServiceMeshMembershipState() {
 void checkServiceMeshMembershipState(api.ServiceMeshMembershipState o) {
   buildCounterServiceMeshMembershipState++;
   if (buildCounterServiceMeshMembershipState < 3) {
-    checkUnnamed76(o.conditions!);
+    checkUnnamed77(o.conditions!);
     checkServiceMeshControlPlaneManagement(o.controlPlaneManagement!);
     checkServiceMeshDataPlaneManagement(o.dataPlaneManagement!);
   }
@@ -5792,42 +5861,6 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.List<core.String> buildUnnamed77() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed77(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed77();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed77(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
 core.List<core.String> buildUnnamed78() => [
       'foo',
       'foo',
@@ -5845,12 +5878,48 @@ void checkUnnamed78(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed78();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed78(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed79() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed79(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed78();
+    o.permissions = buildUnnamed79();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -5859,7 +5928,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed78(o.permissions!);
+    checkUnnamed79(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -5889,6 +5958,23 @@ void checkTypeMeta(api.TypeMeta o) {
     );
   }
   buildCounterTypeMeta--;
+}
+
+core.List<core.String> buildUnnamed80() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed80(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -7291,6 +7377,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RBACRoleBindingActuationFeatureSpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRBACRoleBindingActuationFeatureSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RBACRoleBindingActuationFeatureSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRBACRoleBindingActuationFeatureSpec(od);
+    });
+  });
+
+  unittest.group('obj-schema-RBACRoleBindingActuationFeatureState', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRBACRoleBindingActuationFeatureState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RBACRoleBindingActuationFeatureState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRBACRoleBindingActuationFeatureState(od);
+    });
+  });
+
   unittest.group('obj-schema-RBACRoleBindingLifecycleState', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRBACRoleBindingLifecycleState();
@@ -7615,6 +7721,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.GKEHubApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed80();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7652,6 +7759,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -7675,6 +7786,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

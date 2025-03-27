@@ -55,6 +55,7 @@
 ///     - [OrganizationsDevelopersAttributesResource]
 ///     - [OrganizationsDevelopersBalanceResource]
 ///     - [OrganizationsDevelopersSubscriptionsResource]
+///   - [OrganizationsDnsZonesResource]
 ///   - [OrganizationsEndpointAttachmentsResource]
 ///   - [OrganizationsEnvgroupsResource]
 ///     - [OrganizationsEnvgroupsAttachmentsResource]
@@ -105,6 +106,7 @@
 ///   - [OrganizationsOptimizedHostStatsResource]
 ///   - [OrganizationsReportsResource]
 ///   - [OrganizationsSecurityAssessmentResultsResource]
+///   - [OrganizationsSecurityMonitoringConditionsResource]
 ///   - [OrganizationsSecurityProfilesResource]
 ///     - [OrganizationsSecurityProfilesEnvironmentsResource]
 ///   - [OrganizationsSecurityProfilesV2Resource]
@@ -228,6 +230,8 @@ class OrganizationsResource {
       OrganizationsDeploymentsResource(_requester);
   OrganizationsDevelopersResource get developers =>
       OrganizationsDevelopersResource(_requester);
+  OrganizationsDnsZonesResource get dnsZones =>
+      OrganizationsDnsZonesResource(_requester);
   OrganizationsEndpointAttachmentsResource get endpointAttachments =>
       OrganizationsEndpointAttachmentsResource(_requester);
   OrganizationsEnvgroupsResource get envgroups =>
@@ -253,6 +257,9 @@ class OrganizationsResource {
   OrganizationsSecurityAssessmentResultsResource
       get securityAssessmentResults =>
           OrganizationsSecurityAssessmentResultsResource(_requester);
+  OrganizationsSecurityMonitoringConditionsResource
+      get securityMonitoringConditions =>
+          OrganizationsSecurityMonitoringConditionsResource(_requester);
   OrganizationsSecurityProfilesResource get securityProfiles =>
       OrganizationsSecurityProfilesResource(_requester);
   OrganizationsSecurityProfilesV2Resource get securityProfilesV2 =>
@@ -3623,9 +3630,9 @@ class OrganizationsAppgroupsAppsKeysResource {
   /// secret should not exceed 2 KBs each. **Note**: When creating the consumer
   /// key and secret, an association to API products will not be made.
   /// Therefore, you should not specify the associated API products in your
-  /// request. Instead, use the ProductizeAppGroupAppKey API to make the
-  /// association after the consumer key and secret are created. If a consumer
-  /// key and secret already exist, you can keep them or delete them using the
+  /// request. Instead, use the UpdateAppGroupAppKey API to make the association
+  /// after the consumer key and secret are created. If a consumer key and
+  /// secret already exist, you can keep them or delete them using the
   /// DeleteAppGroupAppKey API.
   ///
   /// [request] - The metadata request object.
@@ -3755,8 +3762,8 @@ class OrganizationsAppgroupsAppsKeysResource {
   /// Adds an API product to an AppGroupAppKey, enabling the app that holds the
   /// key to access the API resources bundled in the API product.
   ///
-  /// In addition, you can add attributes to the AppGroupAppKey. This API
-  /// replaces the existing attributes with those specified in the request.
+  /// In addition, you can add attributes and scopes to the AppGroupAppKey. This
+  /// API replaces the existing attributes with those specified in the request.
   /// Include or exclude any existing attributes that you want to retain or
   /// delete, respectively. You can use the same key to access all API products
   /// associated with the app.
@@ -3987,7 +3994,7 @@ class OrganizationsAppsResource {
   /// [pageToken] - Optional. The starting index record for listing the
   /// developers. "page_token" is supported from ver 1.10.0 and above.
   ///
-  /// [rows] - Optional. Maximum number of app IDs to return. Defaults to 10000.
+  /// [rows] - Optional. Maximum number of app IDs to return. Defaults to 1000.
   ///
   /// [startKey] - Returns the list of apps starting from the specified app ID.
   ///
@@ -5621,11 +5628,14 @@ class OrganizationsDevelopersAppsKeysResource {
   /// Adds an API product to a developer app key, enabling the app that holds
   /// the key to access the API resources bundled in the API product.
   ///
-  /// In addition, you can add attributes to a developer app key. This API
-  /// replaces the existing attributes with those specified in the request.
-  /// Include or exclude any existing attributes that you want to retain or
-  /// delete, respectively. You can use the same key to access all API products
-  /// associated with the app.
+  /// In addition, you can add attributes and scopes associated with the API
+  /// product to the developer app key. The status of the key can be updated via
+  /// "action" Query Parameter. None of the other fields can be updated via this
+  /// API. This API replaces the existing attributes with those specified in the
+  /// request. Include or exclude any existing attributes that you want to
+  /// retain or delete, respectively. None of the other fields can be updated.
+  /// You can use the same key to access all API products associated with the
+  /// app.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6295,6 +6305,182 @@ class OrganizationsDevelopersSubscriptionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsDnsZonesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsDnsZonesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new DNS zone.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Organization where the DNS zone will be created.
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [dnsZoneId] - Required. User assigned ID for this resource. Must be unique
+  /// within the organization. The name must be 1-63 characters long, must begin
+  /// with a letter, end with a letter or digit, and only contain lowercase
+  /// letters, digits or dashes.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudApigeeV1DnsZone request,
+    core.String parent, {
+    core.String? dnsZoneId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (dnsZoneId != null) 'dnsZoneId': [dnsZoneId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsZones';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a previously created DNS zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the DNS zone to delete. Use the following
+  /// structure in your request: `organizations/{org}/dnsZones/{dns_zone}`.
+  /// Value must have pattern `^organizations/\[^/\]+/dnsZones/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fetches the representation of an existing DNS zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the DNS zone to fetch. Use the following
+  /// structure in your request: `organizations/{org}/dnsZones/{dns_zone}`.
+  /// Value must have pattern `^organizations/\[^/\]+/dnsZones/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1DnsZone].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1DnsZone> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1DnsZone.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enumerates DNS zones that have been created but not yet deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization for which to list the DNS
+  /// zones. Use the following structure in your request: `organizations/{org}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of DNS zones to return. If
+  /// unspecified, at most 25 DNS zones will be returned.
+  ///
+  /// [pageToken] - Optional. Page token, returned from a previous
+  /// `ListDnsZones` call, that you can use to retrieve the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListDnsZonesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListDnsZonesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsZones';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListDnsZonesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -8540,7 +8726,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   ///
   /// [name] - Required. The name of the debug session to retrieve. Must be of
   /// the form:
-  /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{session}`.
+  /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debug_session}`.
   /// If the API proxy resource has the `space` attribute set, IAM permissions
   /// are checked differently . To learn more, read the
   /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
@@ -8590,11 +8776,11 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of debug sessions to return. The page size
-  /// defaults to 25.
+  /// [pageSize] - Optional. Maximum number of debug sessions to return. The
+  /// page size defaults to 25.
   ///
-  /// [pageToken] - Page token, returned from a previous ListDebugSessions call,
-  /// that you can use to retrieve the next page.
+  /// [pageToken] - Optional. Page token, returned from a previous
+  /// ListDebugSessions call, that you can use to retrieve the next page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8643,7 +8829,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource {
   ///
   /// [name] - Required. The name of the debug session transaction. Must be of
   /// the form:
-  /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{session}/data/{transaction}`.
+  /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debug_session}/data/{transaction}`.
   /// If the API proxy resource has the `space` attribute set, IAM permissions
   /// are checked differently . To learn more, read the
   /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
@@ -9958,6 +10144,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
 
   /// Updates the certificate in an alias.
   ///
+  /// The updated certificate must be in PEM- or DER-encoded X.509 format.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -10416,8 +10604,7 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
   /// [filter] - Filter that enables you to drill-down on specific dimension
   /// values.
   ///
-  /// [limit] - Maximum number of result items to return. The default and
-  /// maximum value that can be returned is 14400.
+  /// [limit] - Maximum number of result items to return.
   ///
   /// [offset] - Offset value. Use `offset` with `limit` to enable pagination of
   /// results. For example, to display results 11-20, set limit to `10` and
@@ -10434,7 +10621,7 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
   /// [sort] - Flag that specifies whether the sort order should be ascending or
   /// descending. Valid values include `DESC` and `ASC`.
   ///
-  /// [sortby] - Comma-separated list of columns to sort the final result.
+  /// [sortby] - Comma-separated list of metrics to sort the final result.
   ///
   /// [timeRange] - Required. Time interval for the interactive query. Time
   /// range is specified in GMT as `start~end`. For example: `04/15/2017
@@ -11305,6 +11492,45 @@ class OrganizationsEnvironmentsSecurityActionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Delete a SecurityAction.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the security monitoring condition to
+  /// delete. Format:
+  /// `organizations/{org}/environment/{env}/securityActions/{security_action}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/securityActions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Disable a SecurityAction.
   ///
   /// The `state` of the SecurityAction after disabling is `DISABLED`.
@@ -11496,6 +11722,57 @@ class OrganizationsEnvironmentsSecurityActionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1ListSecurityActionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a SecurityAction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. This field is ignored during creation as per AIP-133.
+  /// Please set the `security_action_id` field in the
+  /// CreateSecurityActionRequest when creating a new SecurityAction. Format:
+  /// organizations/{org}/environments/{env}/securityActions/{security_action}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/securityActions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Valid fields to
+  /// update are `description`, `state`, `allow`, `deny`, and `flag`,
+  /// `expire_time`, and `ttl`, `api_proxies`, and `condition_config`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityAction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityAction> patch(
+    GoogleCloudApigeeV1SecurityAction request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityAction.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -12313,8 +12590,7 @@ class OrganizationsEnvironmentsStatsResource {
   /// [filter] - Filter that enables you to drill down on specific dimension
   /// values.
   ///
-  /// [limit] - Maximum number of result items to return. The default and
-  /// maximum value that can be returned is 14400.
+  /// [limit] - Maximum number of result items to return.
   ///
   /// [offset] - Offset value. Use `offset` with `limit` to enable pagination of
   /// results. For example, to display results 11-20, set limit to `10` and
@@ -12331,7 +12607,7 @@ class OrganizationsEnvironmentsStatsResource {
   /// [sort] - Flag that specifies whether the sort order should be ascending or
   /// descending. Valid values include: `DESC` and `ASC`.
   ///
-  /// [sortby] - Comma-separated list of columns to sort the final result.
+  /// [sortby] - Comma-separated list of metrics to sort the final result.
   ///
   /// [timeRange] - Time interval for the interactive query. Time range is
   /// specified in GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017
@@ -13369,8 +13645,7 @@ class OrganizationsHostStatsResource {
   ///
   /// [filter] - Flag that enables drill-down on specific dimension values.
   ///
-  /// [limit] - Maximum number of result items to return. The default and
-  /// maximum value that can be returned is 14400.
+  /// [limit] - Maximum number of result items to return.
   ///
   /// [offset] - Offset value. Use `offset` with `limit` to enable pagination of
   /// results. For example, to display results 11-20, set limit to `10` and
@@ -13385,7 +13660,7 @@ class OrganizationsHostStatsResource {
   /// [sort] - Flag that specifies if the sort order should be ascending or
   /// descending. Valid values are `DESC` and `ASC`.
   ///
-  /// [sortby] - Comma-separated list of columns to sort the final result.
+  /// [sortby] - Comma-separated list of metrics to sort the final result.
   ///
   /// [timeRange] - Time interval for the interactive query. Time range is
   /// specified in GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017
@@ -14731,8 +15006,7 @@ class OrganizationsOptimizedHostStatsResource {
   /// [filter] - Filter that enables you to drill-down on specific dimension
   /// values.
   ///
-  /// [limit] - Maximum number of result items to return. The default and
-  /// maximum value that can be returned is 14400.
+  /// [limit] - Maximum number of result items to return.
   ///
   /// [offset] - Offset value. Use `offset` with `limit` to enable pagination of
   /// results. For example, to display results 11-20, set limit to `10` and
@@ -14747,7 +15021,7 @@ class OrganizationsOptimizedHostStatsResource {
   /// [sort] - Flag that specifies whether the sort order should be ascending or
   /// descending. Valid values include `DESC` and `ASC`.
   ///
-  /// [sortby] - Comma-separated list of columns used to sort the final result.
+  /// [sortby] - Comma-separated list of metrics used to sort the final result.
   ///
   /// [timeRange] - Required. Time interval for the interactive query. Time
   /// range is specified in GMT as `start~end`. For example: `04/15/2017
@@ -15087,6 +15361,249 @@ class OrganizationsSecurityAssessmentResultsResource {
     );
     return GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsSecurityMonitoringConditionsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSecurityMonitoringConditionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a security monitoring condition.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. Format:
+  /// `organizations/{org}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [securityMonitoringConditionId] - Optional. Optional: The security
+  /// monitoring condition id. If not specified, a monitoring condition uuid
+  /// will be generated by the backend. This value should be 4-63 characters,
+  /// and valid characters are /a-z-/.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityMonitoringCondition].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityMonitoringCondition> create(
+    GoogleCloudApigeeV1SecurityMonitoringCondition request,
+    core.String parent, {
+    core.String? securityMonitoringConditionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (securityMonitoringConditionId != null)
+        'securityMonitoringConditionId': [securityMonitoringConditionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/securityMonitoringConditions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityMonitoringCondition.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a security monitoring condition.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the security monitoring condition to
+  /// delete. Format:
+  /// `organizations/{org}/securityMonitoringConditions/{security_monitoring_condition}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityMonitoringConditions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a security monitoring condition.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the security monitoring condition to get.
+  /// Format:
+  /// `organizations/{org}/securityMonitoringConditions/{security_monitoring_condition}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityMonitoringConditions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityMonitoringCondition].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityMonitoringCondition> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityMonitoringCondition.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List security monitoring conditions.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. For a specific organization, list all the security
+  /// monitoring conditions. Format: `organizations/{org}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter for the monitoring conditions. For example:
+  /// `profile=profile1 AND scope=env1`
+  ///
+  /// [pageSize] - Optional. The maximum number of monitoring conditions to
+  /// return.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSecurityMonitoringConditions` call. Provide this to retrieve the
+  /// subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse>
+      list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/securityMonitoringConditions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a security monitoring condition.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the security monitoring condition resource.
+  /// Format:
+  /// organizations/{org}/securityMonitoringConditions/{security_monitoring_condition}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityMonitoringConditions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Valid fields to
+  /// update are `include_all_resources` and `include`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityMonitoringCondition].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityMonitoringCondition> patch(
+    GoogleCloudApigeeV1SecurityMonitoringCondition request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityMonitoringCondition.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -18792,8 +19309,7 @@ class GoogleCloudApigeeV1ApiSecurityConfig {
   /// Flag that specifies whether the API security add-on is enabled.
   core.bool? enabled;
 
-  /// Time at which the API Security add-on expires in in milliseconds since
-  /// epoch.
+  /// Time at which the API Security add-on expires in milliseconds since epoch.
   ///
   /// If unspecified, the add-on will never expire.
   ///
@@ -21825,6 +22341,9 @@ class GoogleCloudApigeeV1DeveloperApp {
   core.String? appFamily;
 
   /// ID of the developer app.
+  ///
+  /// This ID is not user specified but is automatically generated on app
+  /// creation. appId is a UUID.
   core.String? appId;
 
   /// List of attributes for the developer app.
@@ -22211,6 +22730,125 @@ class GoogleCloudApigeeV1DimensionMetric {
 
 /// Message to disable an enabled SecurityAction.
 typedef GoogleCloudApigeeV1DisableSecurityActionRequest = $Empty;
+
+/// A DNS zone is a resource under an Apigee organization that is used to create
+/// a DNS peering with Apigee's network.
+///
+/// DNS peering will let Apigee instances resolve the hostnames created in a
+/// peered network.
+class GoogleCloudApigeeV1DnsZone {
+  /// The time that this resource was created on the server.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the resource.
+  ///
+  /// String of at most 1024 characters associated with this resource for the
+  /// user's convenience.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// The domain name for hosts in this private zone, for instance
+  /// "example.com.".
+  ///
+  /// Required.
+  core.String? domain;
+
+  /// Identifier.
+  ///
+  /// Unique name for the resource. Defined by the server Format:
+  /// "organizations/{organization}/dnsZones/{dns_zone}".
+  core.String? name;
+
+  /// DNS PEERING zone configuration.
+  GoogleCloudApigeeV1DnsZonePeeringConfig? peeringConfig;
+
+  /// State of the DNS Peering.
+  ///
+  /// Values other than `ACTIVE` mean the resource is not ready to use.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Resource is in an unspecified state.
+  /// - "CREATING" : Resource is being created.
+  /// - "ACTIVE" : Resource is provisioned and ready to use.
+  /// - "DELETING" : The resource is being deleted.
+  /// - "UPDATING" : The resource is being updated.
+  core.String? state;
+
+  /// The time that this resource was updated on the server.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudApigeeV1DnsZone({
+    this.createTime,
+    this.description,
+    this.domain,
+    this.name,
+    this.peeringConfig,
+    this.state,
+    this.updateTime,
+  });
+
+  GoogleCloudApigeeV1DnsZone.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          domain: json_['domain'] as core.String?,
+          name: json_['name'] as core.String?,
+          peeringConfig: json_.containsKey('peeringConfig')
+              ? GoogleCloudApigeeV1DnsZonePeeringConfig.fromJson(
+                  json_['peeringConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (domain != null) 'domain': domain!,
+        if (name != null) 'name': name!,
+        if (peeringConfig != null) 'peeringConfig': peeringConfig!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Fields for DNS PEERING zone.
+class GoogleCloudApigeeV1DnsZonePeeringConfig {
+  /// The VPC network where the records for that private DNS zone's namespace
+  /// are available.
+  ///
+  /// Apigee will be performing DNS peering with this VPC network.
+  ///
+  /// Required.
+  core.String? targetNetworkId;
+
+  /// The ID of the project that contains the producer VPC network.
+  ///
+  /// Required.
+  core.String? targetProjectId;
+
+  GoogleCloudApigeeV1DnsZonePeeringConfig({
+    this.targetNetworkId,
+    this.targetProjectId,
+  });
+
+  GoogleCloudApigeeV1DnsZonePeeringConfig.fromJson(core.Map json_)
+      : this(
+          targetNetworkId: json_['targetNetworkId'] as core.String?,
+          targetProjectId: json_['targetProjectId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetNetworkId != null) 'targetNetworkId': targetNetworkId!,
+        if (targetProjectId != null) 'targetProjectId': targetProjectId!,
+      };
+}
 
 /// Documentation file contents for a catalog item.
 class GoogleCloudApigeeV1DocumentationFile {
@@ -23856,6 +24494,8 @@ class GoogleCloudApigeeV1Instance {
   /// If not specified, a Google-Managed encryption key will be used. Use the
   /// following format:
   /// `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+  ///
+  /// Optional.
   core.String? diskEncryptionKeyName;
 
   /// Display name for the instance.
@@ -24848,6 +25488,37 @@ class GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse {
       };
 }
 
+/// Response for list DNS zones.
+class GoogleCloudApigeeV1ListDnsZonesResponse {
+  /// DNS zones in a given organization.
+  core.List<GoogleCloudApigeeV1DnsZone>? dnsZones;
+
+  /// Page token that you can include in an `ListDnsZones` request to retrieve
+  /// the next page.
+  ///
+  /// If omitted, no subsequent pages exist.
+  core.String? nextPageToken;
+
+  GoogleCloudApigeeV1ListDnsZonesResponse({
+    this.dnsZones,
+    this.nextPageToken,
+  });
+
+  GoogleCloudApigeeV1ListDnsZonesResponse.fromJson(core.Map json_)
+      : this(
+          dnsZones: (json_['dnsZones'] as core.List?)
+              ?.map((value) => GoogleCloudApigeeV1DnsZone.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dnsZones != null) 'dnsZones': dnsZones!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response for ListEndpointAttachments method.
 class GoogleCloudApigeeV1ListEndpointAttachmentsResponse {
   /// Endpoint attachments in the specified organization.
@@ -25268,6 +25939,41 @@ class GoogleCloudApigeeV1ListSecurityIncidentsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (securityIncidents != null) 'securityIncidents': securityIncidents!,
+      };
+}
+
+/// Response for ListSecurityMonitoringConditions.
+class GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse {
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of security monitoring conditions in the organization.
+  core.List<GoogleCloudApigeeV1SecurityMonitoringCondition>?
+      securityMonitoringConditions;
+
+  GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse({
+    this.nextPageToken,
+    this.securityMonitoringConditions,
+  });
+
+  GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          securityMonitoringConditions:
+              (json_['securityMonitoringConditions'] as core.List?)
+                  ?.map((value) =>
+                      GoogleCloudApigeeV1SecurityMonitoringCondition.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (securityMonitoringConditions != null)
+          'securityMonitoringConditions': securityMonitoringConditions!,
       };
 }
 
@@ -25951,6 +26657,7 @@ class GoogleCloudApigeeV1OperationGroup {
       };
 }
 
+/// Encapsulates a response format for JavaScript Optimized Scenario.
 class GoogleCloudApigeeV1OptimizedStats {
   /// Wraps the `stats` response for JavaScript Optimized Scenario with a
   /// response key.
@@ -25991,7 +26698,7 @@ class GoogleCloudApigeeV1OptimizedStats {
 /// node type can be a simple metric value or dimension identifier with list of
 /// metrics.
 class GoogleCloudApigeeV1OptimizedStatsNode {
-  ///
+  /// List of data values.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -26061,6 +26768,8 @@ class GoogleCloudApigeeV1OptimizedStatsResponse {
 
 class GoogleCloudApigeeV1Organization {
   /// Addon configurations of the Apigee organization.
+  ///
+  /// Optional.
   GoogleCloudApigeeV1AddonsConfig? addonsConfig;
 
   /// DEPRECATED: This field will eventually be deprecated and replaced with a
@@ -26081,6 +26790,8 @@ class GoogleCloudApigeeV1Organization {
   /// If not specified or \[BillingType\](#BillingType) is `EVALUATION`, a
   /// Google-Managed encryption key will be used. Format: `projects / *
   /// /locations / * /keyRings / * /cryptoKeys / * `
+  ///
+  /// Optional.
   core.String? apiConsumerDataEncryptionKeyName;
 
   /// This field is needed only for customers using non-default data residency
@@ -26089,6 +26800,8 @@ class GoogleCloudApigeeV1Organization {
   /// Apigee stores some control plane data only in single region. This field
   /// determines which single region Apigee should use. For example: "us-west1"
   /// when control plane is in US or "europe-west2" when control plane is in EU.
+  ///
+  /// Optional.
   core.String? apiConsumerDataLocation;
 
   /// Apigee Project ID associated with the organization.
@@ -26124,11 +26837,15 @@ class GoogleCloudApigeeV1Organization {
   /// `projects/{host-project-id}/{region}/networks/{network-name}`. For
   /// example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:**
   /// Not supported for Apigee hybrid.
+  ///
+  /// Optional.
   core.String? authorizedNetwork;
 
   /// Billing type of the Apigee organization.
   ///
   /// See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "BILLING_TYPE_UNSPECIFIED" : Billing type not specified.
   /// - "SUBSCRIPTION" : A pre-paid subscription to Apigee.
@@ -26159,6 +26876,8 @@ class GoogleCloudApigeeV1Organization {
   /// \[BillingType\](#BillingType) is `EVALUATION`, a Google-Managed encryption
   /// key will be used. Format: `projects / * /locations / * /keyRings / *
   /// /cryptoKeys / * `
+  ///
+  /// Optional.
   core.String? controlPlaneEncryptionKeyName;
 
   /// Time that the Apigee organization was created in milliseconds since epoch.
@@ -26170,6 +26889,8 @@ class GoogleCloudApigeeV1Organization {
   core.String? customerName;
 
   /// Description of the Apigee organization.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Flag that specifies whether the VPC Peering through Private Google Access
@@ -26191,6 +26912,8 @@ class GoogleCloudApigeeV1Organization {
   /// Display name for the Apigee organization.
   ///
   /// Unused, but reserved for future use.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// List of environments in the Apigee organization.
@@ -26214,7 +26937,17 @@ class GoogleCloudApigeeV1Organization {
   /// Output only.
   core.String? name;
 
+  /// Flag that specifies if internet egress is restricted for VPC Service
+  /// Controls.
+  ///
+  /// Valid only when runtime_type is `CLOUD` and disable_vpc_peering is `true`.
+  ///
+  /// Optional.
+  core.bool? networkEgressRestricted;
+
   /// Configuration for the Portals settings.
+  ///
+  /// Optional.
   core.bool? portalDisabled;
 
   /// Project ID associated with the Apigee organization.
@@ -26223,6 +26956,8 @@ class GoogleCloudApigeeV1Organization {
   core.String? projectId;
 
   /// Properties defined in the Apigee organization profile.
+  ///
+  /// Optional.
   GoogleCloudApigeeV1Properties? properties;
 
   /// Cloud KMS key name used for encrypting the data that is stored and
@@ -26233,6 +26968,8 @@ class GoogleCloudApigeeV1Organization {
   /// key will be used. For example:
   /// "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not
   /// supported for Apigee hybrid.
+  ///
+  /// Optional.
   core.String? runtimeDatabaseEncryptionKeyName;
 
   /// Runtime type of the Apigee organization based on the Apigee subscription
@@ -26318,6 +27055,7 @@ class GoogleCloudApigeeV1Organization {
     this.expiresAt,
     this.lastModifiedAt,
     this.name,
+    this.networkEgressRestricted,
     this.portalDisabled,
     this.projectId,
     this.properties,
@@ -26360,6 +27098,8 @@ class GoogleCloudApigeeV1Organization {
           expiresAt: json_['expiresAt'] as core.String?,
           lastModifiedAt: json_['lastModifiedAt'] as core.String?,
           name: json_['name'] as core.String?,
+          networkEgressRestricted:
+              json_['networkEgressRestricted'] as core.bool?,
           portalDisabled: json_['portalDisabled'] as core.bool?,
           projectId: json_['projectId'] as core.String?,
           properties: json_.containsKey('properties')
@@ -26398,6 +27138,8 @@ class GoogleCloudApigeeV1Organization {
         if (expiresAt != null) 'expiresAt': expiresAt!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
         if (name != null) 'name': name!,
+        if (networkEgressRestricted != null)
+          'networkEgressRestricted': networkEgressRestricted!,
         if (portalDisabled != null) 'portalDisabled': portalDisabled!,
         if (projectId != null) 'projectId': projectId!,
         if (properties != null) 'properties': properties!,
@@ -27369,12 +28111,14 @@ class GoogleCloudApigeeV1RatePlan {
   /// calls is within a given range.
   ///
   /// The method used to calculate the final fee depends on the selected pricing
-  /// model. For example, if the pricing model is `STAIRSTEP` and the ranges are
-  /// defined as follows: ``` { "start": 1, "end": 100, "fee": 75 }, { "start":
-  /// 101, "end": 200, "fee": 100 }, } ``` Then the following fees would be
-  /// charged based on the total number of API calls (assuming the currency
-  /// selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls
-  /// cost $100 The number of API calls cannot exceed 200.
+  /// model. For example, if the pricing model is `BANDED` and the ranges are
+  /// defined as follows: ``` { "start": 1, "end": 100, "fee": 2 }, { "start":
+  /// 101, "end": 200, "fee": 1.50 }, { "start": 201, "end": 0, "fee": 1 }, }
+  /// ``` Then the following fees would be charged based on the total number of
+  /// API calls (assuming the currency selected is `USD`): * 50 calls cost 50 x
+  /// $2 = $100 * 150 calls cost 100 x $2 + 50 x $1.5 = $275 * 250 calls cost
+  /// 100 x $2 + 100 x $1.5 + 50 x $1 = $400 * 500 calls cost 100 x $2 + 100 x
+  /// $1.5 + 300 x $1 = $650
   core.List<GoogleCloudApigeeV1RateRange>? consumptionPricingRates;
 
   /// Pricing model used for consumption-based charges.
@@ -27386,8 +28130,7 @@ class GoogleCloudApigeeV1RatePlan {
   /// Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per
   /// call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2
   /// = $100 * Total price for 150 calls: 100 x $2 + 50 x $1.5 = $275 * Total
-  /// price for 250 calls: 100 x $2 + 100 x $1.5 + 50 x $1 = $400. **Note**: Not
-  /// supported by Apigee at this time.
+  /// price for 250 calls: 100 x $2 + 100 x $1.5 + 50 x $1 = $400.
   /// - "TIERED" : **Note**: Not supported by Apigee at this time.
   /// - "STAIRSTEP" : **Note**: Not supported by Apigee at this time.
   core.String? consumptionPricingType;
@@ -29557,6 +30300,104 @@ class GoogleCloudApigeeV1SecurityIncident {
       };
 }
 
+/// Security monitoring condition for risk assessment version 2.
+class GoogleCloudApigeeV1SecurityMonitoringCondition {
+  /// The time of the security monitoring condition creation.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Include only these resources.
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray?
+      include;
+
+  /// Include all resources under the scope.
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll?
+      includeAllResources;
+
+  /// Identifier.
+  ///
+  /// Name of the security monitoring condition resource. Format:
+  /// organizations/{org}/securityMonitoringConditions/{security_monitoring_condition}
+  core.String? name;
+
+  /// ID of security profile of the security monitoring condition.
+  ///
+  /// Required.
+  core.String? profile;
+
+  /// Scope of the security monitoring condition.
+  ///
+  /// For Apigee, the environment is the scope of the resources.
+  ///
+  /// Required.
+  core.String? scope;
+
+  /// Total number of deployed resources within scope.
+  ///
+  /// Output only.
+  core.int? totalDeployedResources;
+
+  /// Total number of monitored resources within this condition.
+  ///
+  /// Output only.
+  core.int? totalMonitoredResources;
+
+  /// The time of the security monitoring condition update.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudApigeeV1SecurityMonitoringCondition({
+    this.createTime,
+    this.include,
+    this.includeAllResources,
+    this.name,
+    this.profile,
+    this.scope,
+    this.totalDeployedResources,
+    this.totalMonitoredResources,
+    this.updateTime,
+  });
+
+  GoogleCloudApigeeV1SecurityMonitoringCondition.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          include: json_.containsKey('include')
+              ? GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray
+                  .fromJson(
+                      json_['include'] as core.Map<core.String, core.dynamic>)
+              : null,
+          includeAllResources: json_.containsKey('includeAllResources')
+              ? GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll
+                  .fromJson(json_['includeAllResources']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          profile: json_['profile'] as core.String?,
+          scope: json_['scope'] as core.String?,
+          totalDeployedResources: json_['totalDeployedResources'] as core.int?,
+          totalMonitoredResources:
+              json_['totalMonitoredResources'] as core.int?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (include != null) 'include': include!,
+        if (includeAllResources != null)
+          'includeAllResources': includeAllResources!,
+        if (name != null) 'name': name!,
+        if (profile != null) 'profile': profile!,
+        if (scope != null) 'scope': scope!,
+        if (totalDeployedResources != null)
+          'totalDeployedResources': totalDeployedResources!,
+        if (totalMonitoredResources != null)
+          'totalMonitoredResources': totalMonitoredResources!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Represents a SecurityProfile resource.
 class GoogleCloudApigeeV1SecurityProfile {
   /// Description of the security profile.
@@ -31413,9 +32254,10 @@ class GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest {
   /// for this App Key. Duplicates will be ignored.
   core.List<core.String>? apiProducts;
 
-  /// The new AppGroupKey to be amended.
+  /// Note that only Scopes and Attributes of the AppGroupAppKey can be amended.
   ///
-  /// Note that the status can be updated only via action.
+  /// Scopes and Attributes mentioned in the request will be inserted and the
+  /// existing scopes and attributes will be removed.
   GoogleCloudApigeeV1AppGroupAppKey? appGroupAppKey;
 
   GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest({

@@ -222,6 +222,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -244,12 +248,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudLocationListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1680,6 +1686,13 @@ class GoogleCloudDocumentaiV1Document {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// An internal identifier for document.
+  ///
+  /// Should be loggable (no PII).
+  ///
+  /// Optional.
+  core.String? docid;
+
   /// Parsed layout of the document.
   GoogleCloudDocumentaiV1DocumentDocumentLayout? documentLayout;
 
@@ -1744,6 +1757,7 @@ class GoogleCloudDocumentaiV1Document {
   GoogleCloudDocumentaiV1Document({
     this.chunkedDocument,
     this.content,
+    this.docid,
     this.documentLayout,
     this.entities,
     this.entityRelations,
@@ -1766,6 +1780,7 @@ class GoogleCloudDocumentaiV1Document {
                       as core.Map<core.String, core.dynamic>)
               : null,
           content: json_['content'] as core.String?,
+          docid: json_['docid'] as core.String?,
           documentLayout: json_.containsKey('documentLayout')
               ? GoogleCloudDocumentaiV1DocumentDocumentLayout.fromJson(
                   json_['documentLayout']
@@ -1813,6 +1828,7 @@ class GoogleCloudDocumentaiV1Document {
   core.Map<core.String, core.dynamic> toJson() => {
         if (chunkedDocument != null) 'chunkedDocument': chunkedDocument!,
         if (content != null) 'content': content!,
+        if (docid != null) 'docid': docid!,
         if (documentLayout != null) 'documentLayout': documentLayout!,
         if (entities != null) 'entities': entities!,
         if (entityRelations != null) 'entityRelations': entityRelations!,
@@ -2012,6 +2028,9 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
   /// ID of the block.
   core.String? blockId;
 
+  /// Identifies the bounding box for the block.
+  GoogleCloudDocumentaiV1BoundingPoly? boundingBox;
+
   /// Block consisting of list content/structure.
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock?
       listBlock;
@@ -2030,6 +2049,7 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
 
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock({
     this.blockId,
+    this.boundingBox,
     this.listBlock,
     this.pageSpan,
     this.tableBlock,
@@ -2040,6 +2060,10 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
       core.Map json_)
       : this(
           blockId: json_['blockId'] as core.String?,
+          boundingBox: json_.containsKey('boundingBox')
+              ? GoogleCloudDocumentaiV1BoundingPoly.fromJson(
+                  json_['boundingBox'] as core.Map<core.String, core.dynamic>)
+              : null,
           listBlock: json_.containsKey('listBlock')
               ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock
                   .fromJson(
@@ -2064,6 +2088,7 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (blockId != null) 'blockId': blockId!,
+        if (boundingBox != null) 'boundingBox': boundingBox!,
         if (listBlock != null) 'listBlock': listBlock!,
         if (pageSpan != null) 'pageSpan': pageSpan!,
         if (tableBlock != null) 'tableBlock': tableBlock!,
@@ -2456,6 +2481,7 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
   /// See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
   GoogleTypeMoney? moneyValue;
+  core.bool? signatureValue;
 
   /// An optional field to store a normalized string.
   ///
@@ -2478,6 +2504,7 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
     this.floatValue,
     this.integerValue,
     this.moneyValue,
+    this.signatureValue,
     this.text,
   });
 
@@ -2502,6 +2529,7 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
               ? GoogleTypeMoney.fromJson(
                   json_['moneyValue'] as core.Map<core.String, core.dynamic>)
               : null,
+          signatureValue: json_['signatureValue'] as core.bool?,
           text: json_['text'] as core.String?,
         );
 
@@ -2513,6 +2541,7 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
         if (floatValue != null) 'floatValue': floatValue!,
         if (integerValue != null) 'integerValue': integerValue!,
         if (moneyValue != null) 'moneyValue': moneyValue!,
+        if (signatureValue != null) 'signatureValue': signatureValue!,
         if (text != null) 'text': text!,
       };
 }
@@ -3973,6 +4002,15 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
   /// User defined name for the property.
   core.String? displayName;
 
+  /// Specifies how the entity's value is obtained.
+  /// Possible string values are:
+  /// - "METHOD_UNSPECIFIED" : Unspecified method. It defaults to `EXTRACT`.
+  /// - "EXTRACT" : The entity's value is directly extracted as-is from the
+  /// document text.
+  /// - "DERIVE" : The entity's value is derived through inference and is not
+  /// necessarily an exact text extraction from the document.
+  core.String? method;
+
   /// The name of the property.
   ///
   /// Follows the same guidelines as the EntityType name.
@@ -3999,6 +4037,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
 
   GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty({
     this.displayName,
+    this.method,
     this.name,
     this.occurrenceType,
     this.valueType,
@@ -4008,6 +4047,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
       core.Map json_)
       : this(
           displayName: json_['displayName'] as core.String?,
+          method: json_['method'] as core.String?,
           name: json_['name'] as core.String?,
           occurrenceType: json_['occurrenceType'] as core.String?,
           valueType: json_['valueType'] as core.String?,
@@ -4015,6 +4055,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
+        if (method != null) 'method': method!,
         if (name != null) 'name': name!,
         if (occurrenceType != null) 'occurrenceType': occurrenceType!,
         if (valueType != null) 'valueType': valueType!,
@@ -5380,6 +5421,8 @@ class GoogleCloudDocumentaiV1ProcessResponse {
 /// document.
 class GoogleCloudDocumentaiV1Processor {
   /// The time the processor was created.
+  ///
+  /// Output only.
   core.String? createTime;
 
   /// The default processor version.
@@ -5633,9 +5676,13 @@ class GoogleCloudDocumentaiV1ProcessorTypeLocationInfo {
 /// at a time. Its document-processing behavior is defined by that version.
 class GoogleCloudDocumentaiV1ProcessorVersion {
   /// The time the processor version was created.
+  ///
+  /// Output only.
   core.String? createTime;
 
   /// If set, information about the eventual deprecation of this version.
+  ///
+  /// Output only.
   GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo? deprecationInfo;
 
   /// The display name of the processor version.
@@ -5644,6 +5691,8 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   /// The schema of the processor version.
   ///
   /// Describes the output.
+  ///
+  /// Output only.
   GoogleCloudDocumentaiV1DocumentSchema? documentSchema;
 
   /// Information about Generative AI model-based processor versions.
@@ -5657,12 +5706,18 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   core.bool? googleManaged;
 
   /// The KMS key name used for encryption.
+  ///
+  /// Output only.
   core.String? kmsKeyName;
 
   /// The KMS key version with which data is encrypted.
+  ///
+  /// Output only.
   core.String? kmsKeyVersionName;
 
   /// The most recently invoked evaluation for the processor version.
+  ///
+  /// Output only.
   GoogleCloudDocumentaiV1EvaluationReference? latestEvaluation;
 
   /// The model type of this processor version.
@@ -6581,19 +6636,20 @@ class GoogleTypeDateTime {
 /// Represents an amount of money with its currency type.
 typedef GoogleTypeMoney = $Money;
 
-/// Represents a postal address.
+/// Represents a postal address, such as for postal delivery or payments
+/// addresses.
 ///
-/// For example for postal delivery or payments addresses. Given a postal
-/// address, a postal service can deliver items to a premise, P.O. Box or
-/// similar. It is not intended to model geographical locations (roads, towns,
-/// mountains). In typical usage an address would be created by user input or
-/// from importing existing data, depending on the type of process. Advice on
-/// address input / editing: - Use an internationalization-ready address widget
-/// such as https://github.com/google/libaddressinput) - Users should not be
-/// presented with UI elements for input or editing of fields outside countries
-/// where that field is used. For more guidance on how to use this schema, see:
-/// https://support.google.com/business/answer/6397478
-typedef GoogleTypePostalAddress = $PostalAddress;
+/// With a postal address, a postal service can deliver items to a premise, P.O.
+/// box, or similar. A postal address is not intended to model geographical
+/// locations like roads, towns, or mountains. In typical usage, an address
+/// would be created by user input or from importing existing data, depending on
+/// the type of process. Advice on address input or editing: - Use an
+/// internationalization-ready address widget such as
+/// https://github.com/google/libaddressinput. - Users should not be presented
+/// with UI elements for input or editing of fields outside countries where that
+/// field is used. For more guidance on how to use this schema, see:
+/// https://support.google.com/business/answer/6397478.
+typedef GoogleTypePostalAddress = $PostalAddress00;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

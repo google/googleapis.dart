@@ -198,6 +198,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -220,12 +224,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -6269,6 +6275,14 @@ class Cluster {
 ///
 /// These constraints ensure that `Upgrade` specific requirements are met.
 class Constraints {
+  /// A list of intervals in which maintenance windows are not allowed.
+  ///
+  /// Any time window that overlaps with any of these intervals will be
+  /// considered invalid.
+  ///
+  /// Output only.
+  core.List<WeeklyTimeInterval>? disallowedIntervals;
+
   /// Minimum number of hours must be allotted for the upgrade activities for
   /// each selected day.
   ///
@@ -6292,6 +6306,7 @@ class Constraints {
   Interval? rescheduleDateRange;
 
   Constraints({
+    this.disallowedIntervals,
     this.minHoursDay,
     this.minHoursWeek,
     this.rescheduleDateRange,
@@ -6299,6 +6314,10 @@ class Constraints {
 
   Constraints.fromJson(core.Map json_)
       : this(
+          disallowedIntervals: (json_['disallowedIntervals'] as core.List?)
+              ?.map((value) => WeeklyTimeInterval.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           minHoursDay: json_['minHoursDay'] as core.int?,
           minHoursWeek: json_['minHoursWeek'] as core.int?,
           rescheduleDateRange: json_.containsKey('rescheduleDateRange')
@@ -6308,6 +6327,8 @@ class Constraints {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (disallowedIntervals != null)
+          'disallowedIntervals': disallowedIntervals!,
         if (minHoursDay != null) 'minHoursDay': minHoursDay!,
         if (minHoursWeek != null) 'minHoursWeek': minHoursWeek!,
         if (rescheduleDateRange != null)
@@ -8159,6 +8180,8 @@ class NetworkPeering {
   /// PowerScale Filers
   /// - "GOOGLE_CLOUD_NETAPP_VOLUMES" : Peering connection used for connecting
   /// to Google Cloud NetApp Volumes.
+  /// - "GOOGLE_CLOUD_FILESTORE_INSTANCES" : Peering connection used for
+  /// connecting to Google Cloud Filestore Instances.
   core.String? peerNetworkType;
 
   /// State of the network peering.
@@ -8673,7 +8696,7 @@ class NodeTypeConfig {
 }
 
 /// Details about a NSX Manager appliance.
-typedef Nsx = $Shared15;
+typedef Nsx = $Shared13;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -10020,7 +10043,7 @@ class Upgrade {
 }
 
 /// Details about a vCenter Server management appliance.
-typedef Vcenter = $Shared15;
+typedef Vcenter = $Shared13;
 
 /// VMware Engine network resource that provides connectivity for VMware Engine
 /// private clouds.
@@ -10228,5 +10251,78 @@ class VpcNetwork {
   core.Map<core.String, core.dynamic> toJson() => {
         if (network != null) 'network': network!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Represents a time interval, spanning across days of the week.
+///
+/// Until local timezones are supported, this interval is in UTC.
+class WeeklyTimeInterval {
+  /// The day on which the interval ends.
+  ///
+  /// Can be same as start day.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? endDay;
+
+  /// The time on the end day at which the interval ends.
+  ///
+  /// Output only.
+  TimeOfDay? endTime;
+
+  /// The day on which the interval starts.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? startDay;
+
+  /// The time on the start day at which the interval starts.
+  ///
+  /// Output only.
+  TimeOfDay? startTime;
+
+  WeeklyTimeInterval({
+    this.endDay,
+    this.endTime,
+    this.startDay,
+    this.startTime,
+  });
+
+  WeeklyTimeInterval.fromJson(core.Map json_)
+      : this(
+          endDay: json_['endDay'] as core.String?,
+          endTime: json_.containsKey('endTime')
+              ? TimeOfDay.fromJson(
+                  json_['endTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startDay: json_['startDay'] as core.String?,
+          startTime: json_.containsKey('startTime')
+              ? TimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endDay != null) 'endDay': endDay!,
+        if (endTime != null) 'endTime': endTime!,
+        if (startDay != null) 'startDay': startDay!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }

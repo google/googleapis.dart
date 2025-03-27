@@ -16,7 +16,8 @@
 ///
 /// Provides a historical view of activity in Google Drive.
 ///
-/// For more information, see <https://developers.google.com/drive/activity/>
+/// For more information, see
+/// <https://developers.google.com/workspace/drive/activity/>
 ///
 /// Create an instance of [DriveActivityApi] to access these resources:
 ///
@@ -890,7 +891,7 @@ class DriveItem {
 
   /// The MIME type of the Drive item.
   ///
-  /// See https://developers.google.com/drive/v3/web/mime-types.
+  /// See https://developers.google.com/workspace/drive/v3/web/mime-types.
   core.String? mimeType;
 
   /// The target Drive item.
@@ -1193,21 +1194,21 @@ class FieldValueChange {
 }
 
 /// This item is deprecated; please see `DriveFile` instead.
-typedef File = $Shared01;
+typedef File = $Shared02;
 
 /// A comment on a file.
 class FileComment {
   /// The comment in the discussion thread.
   ///
   /// This identifier is an opaque string compatible with the Drive API; see
-  /// https://developers.google.com/drive/v3/reference/comments/get
+  /// https://developers.google.com/workspace/drive/v3/reference/comments/get
   core.String? legacyCommentId;
 
   /// The discussion thread to which the comment was added.
   ///
   /// This identifier is an opaque string compatible with the Drive API and
   /// references the first comment in a discussion; see
-  /// https://developers.google.com/drive/v3/reference/comments/get
+  /// https://developers.google.com/workspace/drive/v3/reference/comments/get
   core.String? legacyDiscussionId;
 
   /// The link to the discussion thread containing this comment, for example,
@@ -1484,7 +1485,7 @@ class Permission {
   Group? group;
 
   /// Indicates the
-  /// [Google Drive permissions role](https://developers.google.com/drive/web/manage-sharing#roles).
+  /// [Google Drive permissions role](https://developers.google.com/workspace/drive/web/manage-sharing#roles).
   ///
   /// The role determines a user's ability to read, write, and comment on items.
   /// Possible string values are:
@@ -1777,6 +1778,7 @@ class RestrictionChange {
   /// individual items.
   /// - "ITEM_DUPLICATION" : When restricted, this prevents actions like copy,
   /// download, and print that might result in uncontrolled duplicates of items.
+  /// Now deprecated in favor of READERS_CAN_DOWNLOAD.
   /// - "DRIVE_FILE_STREAM" : When restricted, this prevents use of Drive File
   /// Stream.
   /// - "FILE_ORGANIZER_CAN_SHARE_FOLDERS" : When restricted, this limits
@@ -1954,7 +1956,7 @@ class SystemEvent {
 /// Information about the target of activity.
 ///
 /// For more information on how activity history is shared with users, see
-/// [Activity history visibility](https://developers.google.com/drive/activity/v2#activityhistory).
+/// [Activity history visibility](https://developers.google.com/workspace/drive/activity/v2#activityhistory).
 class Target {
   /// The target is a shared drive.
   Drive? drive;

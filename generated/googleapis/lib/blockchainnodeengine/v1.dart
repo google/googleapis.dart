@@ -115,6 +115,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -137,12 +141,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -661,13 +667,12 @@ class BlockchainNode {
   /// public endpoints are exposed.
   ///
   /// Otherwise, the node is only accessible via public endpoints. Warning:
-  /// Private Service Connect enabled nodes may require a manual migration
-  /// effort to remain compatible with future versions of the product. If this
-  /// feature is enabled, you will be notified of these changes along with any
-  /// required action to avoid disruption. See
-  /// https://cloud.google.com/vpc/docs/private-service-connect.
+  /// These nodes are deprecated, please use public endpoints instead.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? privateServiceConnectEnabled;
 
   /// A status representing the state of the node.
@@ -1238,6 +1243,9 @@ class ValidatorConfig {
   /// client.
   ///
   /// Immutable.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? managedValidatorClient;
 
   /// URLs for MEV-relay services to use for block building.

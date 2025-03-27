@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Google Play Game Management - v1management
+/// Google Play Games Services Management API - v1management
 ///
 /// The Google Play Games Management API allows developers to manage resources
 /// from the Google Play Game service.

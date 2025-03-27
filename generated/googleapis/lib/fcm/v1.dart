@@ -84,9 +84,8 @@ class ProjectsMessagesResource {
   ///
   /// [parent] - Required. It contains the Firebase project id (i.e. the unique
   /// identifier for your Firebase project), in the format of
-  /// `projects/{project_id}`. For legacy support, the numeric project number
-  /// with no padding is also supported in the format of
-  /// `projects/{project_number}`.
+  /// `projects/{project_id}`. The numeric project number with no padding is
+  /// also supported in the format of `projects/{project_number}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -127,6 +126,9 @@ class AndroidConfig {
   /// If set to true, messages will be allowed to be delivered to the app while
   /// the device is in bandwidth constrained mode.
   ///
+  /// This should only be enabled when the app has been tested to properly
+  /// handle messages in bandwidth constrained mode.
+  ///
   /// Optional.
   core.bool? bandwidthConstrainedOk;
 
@@ -146,6 +148,8 @@ class AndroidConfig {
   ///
   /// See
   /// [Support Direct Boot mode](https://developer.android.com/training/articles/direct-boot).
+  ///
+  /// Optional.
   core.bool? directBootOk;
 
   /// Options for features provided by the FCM SDK for Android.
@@ -179,6 +183,18 @@ class AndroidConfig {
   /// order to receive the message.
   core.String? restrictedPackageName;
 
+  /// If set to true, messages will be allowed to be delivered to the app while
+  /// the device is connected over a restricted satellite network.
+  ///
+  /// This should only be enabled for messages that can be handled over a
+  /// restricted satellite network and only for apps that are enabled to work
+  /// over a restricted satellite network. Note that the ability of the app to
+  /// connect to a restricted satellite network is dependent on the carrier's
+  /// settings and the device model.
+  ///
+  /// Optional.
+  core.bool? restrictedSatelliteOk;
+
   /// How long (in seconds) the message should be kept in FCM storage if the
   /// device is offline.
   ///
@@ -202,6 +218,7 @@ class AndroidConfig {
     this.notification,
     this.priority,
     this.restrictedPackageName,
+    this.restrictedSatelliteOk,
     this.ttl,
   });
 
@@ -226,6 +243,7 @@ class AndroidConfig {
               : null,
           priority: json_['priority'] as core.String?,
           restrictedPackageName: json_['restrictedPackageName'] as core.String?,
+          restrictedSatelliteOk: json_['restrictedSatelliteOk'] as core.bool?,
           ttl: json_['ttl'] as core.String?,
         );
 
@@ -240,6 +258,8 @@ class AndroidConfig {
         if (priority != null) 'priority': priority!,
         if (restrictedPackageName != null)
           'restrictedPackageName': restrictedPackageName!,
+        if (restrictedSatelliteOk != null)
+          'restrictedSatelliteOk': restrictedSatelliteOk!,
         if (ttl != null) 'ttl': ttl!,
       };
 }

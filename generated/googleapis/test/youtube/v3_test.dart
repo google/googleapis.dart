@@ -2051,6 +2051,7 @@ api.CommentSnippet buildCommentSnippet() {
     o.likeCount = 42;
     o.moderationStatus = 'foo';
     o.parentId = 'foo';
+    o.postId = 'foo';
     o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.textDisplay = 'foo';
     o.textOriginal = 'foo';
@@ -2093,6 +2094,10 @@ void checkCommentSnippet(api.CommentSnippet o) {
     );
     unittest.expect(
       o.parentId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.postId!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2278,6 +2283,7 @@ api.CommentThreadSnippet buildCommentThreadSnippet() {
     o.canReply = true;
     o.channelId = 'foo';
     o.isPublic = true;
+    o.postId = 'foo';
     o.topLevelComment = buildComment();
     o.totalReplyCount = 42;
     o.videoId = 'foo';
@@ -2295,6 +2301,10 @@ void checkCommentThreadSnippet(api.CommentThreadSnippet o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.isPublic!, unittest.isTrue);
+    unittest.expect(
+      o.postId!,
+      unittest.equals('foo'),
+    );
     checkComment(o.topLevelComment!);
     unittest.expect(
       o.totalReplyCount!,
@@ -9665,6 +9675,23 @@ void checkUnnamed142(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed143() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed143(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-AbuseReport', () {
     unittest.test('to-json--from-json', () async {
@@ -12857,6 +12884,7 @@ void main() {
       final arg_moderationStatus = 'foo';
       final arg_order = 'foo';
       final arg_pageToken = 'foo';
+      final arg_postId = 'foo';
       final arg_searchTerms = 'foo';
       final arg_textFormat = 'foo';
       final arg_videoId = 'foo';
@@ -12925,6 +12953,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
           queryMap['searchTerms']!.first,
           unittest.equals(arg_searchTerms),
         );
@@ -12955,6 +12987,7 @@ void main() {
           moderationStatus: arg_moderationStatus,
           order: arg_order,
           pageToken: arg_pageToken,
+          postId: arg_postId,
           searchTerms: arg_searchTerms,
           textFormat: arg_textFormat,
           videoId: arg_videoId,
@@ -17843,6 +17876,96 @@ void main() {
       final response = await res.updateCommentThreads(arg_request,
           part: arg_part, $fields: arg_$fields);
       checkCommentThread(response as api.CommentThread);
+    });
+  });
+
+  unittest.group('resource-YoutubeV3LiveChatMessagesResource', () {
+    unittest.test('method--stream', () async {
+      final mock = HttpServerMock();
+      final res = api.YouTubeApi(mock).youtube.v3.liveChat.messages;
+      final arg_hl = 'foo';
+      final arg_liveChatId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_part = buildUnnamed143();
+      final arg_profileImageSize = 42;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 35),
+          unittest.equals('youtube/v3/liveChat/messages/stream'),
+        );
+        pathOffset += 35;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['hl']!.first,
+          unittest.equals(arg_hl),
+        );
+        unittest.expect(
+          queryMap['liveChatId']!.first,
+          unittest.equals(arg_liveChatId),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['maxResults']!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['part']!,
+          unittest.equals(arg_part),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['profileImageSize']!.first),
+          unittest.equals(arg_profileImageSize),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildLiveChatMessageListResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.stream(
+          hl: arg_hl,
+          liveChatId: arg_liveChatId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          part: arg_part,
+          profileImageSize: arg_profileImageSize,
+          $fields: arg_$fields);
+      checkLiveChatMessageListResponse(
+          response as api.LiveChatMessageListResponse);
     });
   });
 }

@@ -16,7 +16,7 @@
 ///
 /// The Google Tasks API lets you manage your tasks and task lists.
 ///
-/// For more information, see <https://developers.google.com/tasks/>
+/// For more information, see <https://developers.google.com/workspace/tasks/>
 ///
 /// Create an instance of [TasksApi] to access these resources:
 ///
@@ -480,7 +480,7 @@ class TasksResource {
 
   /// Returns all tasks in the specified task list.
   ///
-  /// Does not return assigned tasks be default (from Docs, Chat Spaces). A user
+  /// Doesn't return assigned tasks by default (from Docs, Chat Spaces). A user
   /// can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in
   /// total at a time.
   ///
@@ -596,10 +596,10 @@ class TasksResource {
   ///
   /// [parent] - Optional. New parent task identifier. If the task is moved to
   /// the top level, this parameter is omitted. The task set as parent must
-  /// exist in the task list and can not be hidden. Exceptions: 1. Assigned
-  /// tasks can not be set as parent task (have subtasks) or be moved under a
-  /// parent task (become subtasks). 2. Tasks that are both completed and hidden
-  /// cannot be nested, so the parent field must be empty.
+  /// exist in the task list and can not be hidden. Exceptions: 1. Assigned and
+  /// repeating tasks cannot be set as parent tasks (have subtasks), or be moved
+  /// under a parent task (become subtasks). 2. Tasks that are both completed
+  /// and hidden cannot be nested, so the parent field must be empty.
   ///
   /// [previous] - Optional. New previous sibling task identifier. If the task
   /// is moved to the first position among its siblings, this parameter is
@@ -860,15 +860,13 @@ class SpaceInfo {
 }
 
 class TaskLinks {
-  /// The description.
-  ///
-  /// In HTML speak: Everything between \<a\> and \</a\>.
+  /// The description (might be empty).
   core.String? description;
 
   /// The URL.
   core.String? link;
 
-  /// Type of the link, e.g. "email".
+  /// Type of the link, e.g. "email", "generic", "chat_message", "keep_note".
   core.String? type;
 
   TaskLinks({

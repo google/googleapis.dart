@@ -236,11 +236,15 @@ class GoogleMapsAddressvalidationV1Address {
   /// formatted mailing address but were not found in the input AND could not be
   /// inferred.
   ///
-  /// Components of this type are not present in `formatted_address`,
-  /// `postal_address`, or `address_components`. An example might be
-  /// `['street_number', 'route']` for an input like "Boulder, Colorado, 80301,
-  /// USA". The list of possible types can be found
+  /// An example might be `['street_number', 'route']` for an input like
+  /// "Boulder, Colorado, 80301, USA". The list of possible types can be found
   /// [here](https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types).
+  /// **Note: you might see a missing component type when you think you've
+  /// already supplied the missing component.** For example, this can happen
+  /// when the input address contains the building name, but not the premise
+  /// number. In the address "渋谷区渋谷３丁目　Shibuya Stream", the building name
+  /// "Shibuya Stream" has the component type `premise`, but the premise number
+  /// is missing, so `missing_component_types` will contain `premise`.
   core.List<core.String>? missingComponentTypes;
 
   /// The post-processed address represented as a postal address.
@@ -399,7 +403,7 @@ class GoogleMapsAddressvalidationV1AddressComponent {
       };
 }
 
-/// The metadata for the address.
+/// The metadata for the post-processed address.
 ///
 /// `metadata` is not guaranteed to be fully populated for every address sent to
 /// the Address Validation API.
@@ -1325,8 +1329,8 @@ class GoogleMapsAddressvalidationV1ValidationResult {
 
 /// High level overview of the address validation result and geocode.
 class GoogleMapsAddressvalidationV1Verdict {
-  /// The address is considered complete if there are no unresolved tokens, no
-  /// unexpected or missing address components.
+  /// The post-processed address is considered complete if there are no
+  /// unresolved tokens, no unexpected or missing address components.
   ///
   /// If unset, indicates that the value is `false`. See
   /// `missing_component_types`, `unresolved_tokens` or `unexpected` fields for
@@ -1366,6 +1370,11 @@ class GoogleMapsAddressvalidationV1Verdict {
   /// details.
   core.bool? hasReplacedComponents;
 
+  /// At least one address component was spell-corrected, see
+  /// \[google.maps.addressvalidation.v1.Address.address_components\] for
+  /// details.
+  core.bool? hasSpellCorrectedComponents;
+
   /// At least one address component cannot be categorized or validated, see
   /// \[google.maps.addressvalidation.v1.Address.address_components\] for
   /// details.
@@ -1377,9 +1386,9 @@ class GoogleMapsAddressvalidationV1Verdict {
   /// validation signals. For validation signals, refer to
   /// `validation_granularity` below. For example, if the input address includes
   /// a specific apartment number, then the `input_granularity` here will be
-  /// `SUB_PREMISE`. If we cannot match the apartment number in the databases or
-  /// the apartment number is invalid, the `validation_granularity` will likely
-  /// be `PREMISE` or below.
+  /// `SUB_PREMISE`. If the address validation service cannot match the
+  /// apartment number in the databases or the apartment number is invalid, the
+  /// `validation_granularity` will likely be `PREMISE` or more coarse.
   /// Possible string values are:
   /// - "GRANULARITY_UNSPECIFIED" : Default value. This value is unused.
   /// - "SUB_PREMISE" : Below-building level result, such as an apartment.
@@ -1394,11 +1403,51 @@ class GoogleMapsAddressvalidationV1Verdict {
   /// they are not deliverable.
   core.String? inputGranularity;
 
-  /// The granularity level that the API can fully **validate** the address to.
+  /// Preview: This feature is in Preview (pre-GA).
   ///
-  /// For example, an `validation_granularity` of `PREMISE` indicates all
-  /// address components at the level of `PREMISE` or more coarse can be
-  /// validated. Per address component validation result can be found in
+  /// Pre-GA products and features might have limited support, and changes to
+  /// pre-GA products and features might not be compatible with other pre-GA
+  /// versions. Pre-GA Offerings are covered by the
+  /// [Google Maps Platform Service Specific Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms).
+  /// For more information, see the
+  /// [launch stage descriptions](https://developers.google.com/maps/launch-stages).
+  /// Offers an interpretive summary of the API response, intended to assist in
+  /// determining a potential subsequent action to take. This field is derived
+  /// from other fields in the API response and should not be considered as a
+  /// guarantee of address accuracy or deliverability. See
+  /// [Build your validation logic](https://developers.google.com/maps/documentation/address-validation/build-validation-logic)
+  /// for more details.
+  /// Possible string values are:
+  /// - "POSSIBLE_NEXT_ACTION_UNSPECIFIED" : Default value. This value is
+  /// unused.
+  /// - "FIX" : One or more fields of the API response indicate a potential
+  /// issue with the post-processed address, for example the
+  /// `verdict.validation_granularity` is `OTHER`. Prompting your customer to
+  /// edit the address could help improve the quality of the address.
+  /// - "CONFIRM_ADD_SUBPREMISES" : The API response indicates the
+  /// post-processed address might be missing a subpremises. Prompting your
+  /// customer to review the address and consider adding a unit number could
+  /// help improve the quality of the address. The post-processed address might
+  /// also have other minor issues. Note: this enum value can only be returned
+  /// for US addresses.
+  /// - "CONFIRM" : One or more fields of the API response indicate potential
+  /// minor issues with the post-processed address, for example the
+  /// `postal_code` address component was `replaced`. Prompting your customer to
+  /// review the address could help improve the quality of the address.
+  /// - "ACCEPT" : The API response does not contain signals that warrant one of
+  /// the other PossibleNextAction values. You might consider using the
+  /// post-processed address without further prompting your customer, though
+  /// this does not guarantee the address is valid, and the address might still
+  /// contain corrections. It is your responsibility to determine if and how to
+  /// prompt your customer, depending on your own risk assessment.
+  core.String? possibleNextAction;
+
+  /// The level of granularity for the post-processed address that the API can
+  /// fully validate.
+  ///
+  /// For example, a `validation_granularity` of `PREMISE` indicates all address
+  /// components at the level of `PREMISE` or more coarse can be validated. Per
+  /// address component validation result can be found in
   /// \[google.maps.addressvalidation.v1.Address.address_components\].
   /// Possible string values are:
   /// - "GRANULARITY_UNSPECIFIED" : Default value. This value is unused.
@@ -1419,8 +1468,10 @@ class GoogleMapsAddressvalidationV1Verdict {
     this.geocodeGranularity,
     this.hasInferredComponents,
     this.hasReplacedComponents,
+    this.hasSpellCorrectedComponents,
     this.hasUnconfirmedComponents,
     this.inputGranularity,
+    this.possibleNextAction,
     this.validationGranularity,
   });
 
@@ -1430,9 +1481,12 @@ class GoogleMapsAddressvalidationV1Verdict {
           geocodeGranularity: json_['geocodeGranularity'] as core.String?,
           hasInferredComponents: json_['hasInferredComponents'] as core.bool?,
           hasReplacedComponents: json_['hasReplacedComponents'] as core.bool?,
+          hasSpellCorrectedComponents:
+              json_['hasSpellCorrectedComponents'] as core.bool?,
           hasUnconfirmedComponents:
               json_['hasUnconfirmedComponents'] as core.bool?,
           inputGranularity: json_['inputGranularity'] as core.String?,
+          possibleNextAction: json_['possibleNextAction'] as core.String?,
           validationGranularity: json_['validationGranularity'] as core.String?,
         );
 
@@ -1444,9 +1498,13 @@ class GoogleMapsAddressvalidationV1Verdict {
           'hasInferredComponents': hasInferredComponents!,
         if (hasReplacedComponents != null)
           'hasReplacedComponents': hasReplacedComponents!,
+        if (hasSpellCorrectedComponents != null)
+          'hasSpellCorrectedComponents': hasSpellCorrectedComponents!,
         if (hasUnconfirmedComponents != null)
           'hasUnconfirmedComponents': hasUnconfirmedComponents!,
         if (inputGranularity != null) 'inputGranularity': inputGranularity!,
+        if (possibleNextAction != null)
+          'possibleNextAction': possibleNextAction!,
         if (validationGranularity != null)
           'validationGranularity': validationGranularity!,
       };
@@ -1459,16 +1517,17 @@ class GoogleMapsAddressvalidationV1Verdict {
 /// the WGS84 standard. Values must be within normalized ranges.
 typedef GoogleTypeLatLng = $LatLng;
 
-/// Represents a postal address.
+/// Represents a postal address, such as for postal delivery or payments
+/// addresses.
 ///
-/// For example for postal delivery or payments addresses. Given a postal
-/// address, a postal service can deliver items to a premise, P.O. Box or
-/// similar. It is not intended to model geographical locations (roads, towns,
-/// mountains). In typical usage an address would be created by user input or
-/// from importing existing data, depending on the type of process. Advice on
-/// address input / editing: - Use an internationalization-ready address widget
-/// such as https://github.com/google/libaddressinput) - Users should not be
-/// presented with UI elements for input or editing of fields outside countries
-/// where that field is used. For more guidance on how to use this schema, see:
-/// https://support.google.com/business/answer/6397478
-typedef GoogleTypePostalAddress = $PostalAddress;
+/// With a postal address, a postal service can deliver items to a premise, P.O.
+/// box, or similar. A postal address is not intended to model geographical
+/// locations like roads, towns, or mountains. In typical usage, an address
+/// would be created by user input or from importing existing data, depending on
+/// the type of process. Advice on address input or editing: - Use an
+/// internationalization-ready address widget such as
+/// https://github.com/google/libaddressinput. - Users should not be presented
+/// with UI elements for input or editing of fields outside countries where that
+/// field is used. For more guidance on how to use this schema, see:
+/// https://support.google.com/business/answer/6397478.
+typedef GoogleTypePostalAddress = $PostalAddress00;

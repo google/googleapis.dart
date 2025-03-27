@@ -30,10 +30,15 @@
 ///     - [ProjectsLocationsAddressGroupsResource]
 ///     - [ProjectsLocationsAuthorizationPoliciesResource]
 ///     - [ProjectsLocationsAuthzPoliciesResource]
+///     - [ProjectsLocationsBackendAuthenticationConfigsResource]
 ///     - [ProjectsLocationsClientTlsPoliciesResource]
 ///     - [ProjectsLocationsFirewallEndpointAssociationsResource]
 ///     - [ProjectsLocationsGatewaySecurityPoliciesResource]
 ///       - [ProjectsLocationsGatewaySecurityPoliciesRulesResource]
+///     - [ProjectsLocationsInterceptDeploymentGroupsResource]
+///     - [ProjectsLocationsInterceptDeploymentsResource]
+///     - [ProjectsLocationsInterceptEndpointGroupAssociationsResource]
+///     - [ProjectsLocationsInterceptEndpointGroupsResource]
 ///     - [ProjectsLocationsMirroringDeploymentGroupsResource]
 ///     - [ProjectsLocationsMirroringDeploymentsResource]
 ///     - [ProjectsLocationsMirroringEndpointGroupAssociationsResource]
@@ -1513,6 +1518,9 @@ class ProjectsLocationsResource {
       ProjectsLocationsAuthorizationPoliciesResource(_requester);
   ProjectsLocationsAuthzPoliciesResource get authzPolicies =>
       ProjectsLocationsAuthzPoliciesResource(_requester);
+  ProjectsLocationsBackendAuthenticationConfigsResource
+      get backendAuthenticationConfigs =>
+          ProjectsLocationsBackendAuthenticationConfigsResource(_requester);
   ProjectsLocationsClientTlsPoliciesResource get clientTlsPolicies =>
       ProjectsLocationsClientTlsPoliciesResource(_requester);
   ProjectsLocationsFirewallEndpointAssociationsResource
@@ -1521,6 +1529,18 @@ class ProjectsLocationsResource {
   ProjectsLocationsGatewaySecurityPoliciesResource
       get gatewaySecurityPolicies =>
           ProjectsLocationsGatewaySecurityPoliciesResource(_requester);
+  ProjectsLocationsInterceptDeploymentGroupsResource
+      get interceptDeploymentGroups =>
+          ProjectsLocationsInterceptDeploymentGroupsResource(_requester);
+  ProjectsLocationsInterceptDeploymentsResource get interceptDeployments =>
+      ProjectsLocationsInterceptDeploymentsResource(_requester);
+  ProjectsLocationsInterceptEndpointGroupAssociationsResource
+      get interceptEndpointGroupAssociations =>
+          ProjectsLocationsInterceptEndpointGroupAssociationsResource(
+              _requester);
+  ProjectsLocationsInterceptEndpointGroupsResource
+      get interceptEndpointGroups =>
+          ProjectsLocationsInterceptEndpointGroupsResource(_requester);
   ProjectsLocationsMirroringDeploymentGroupsResource
       get mirroringDeploymentGroups =>
           ProjectsLocationsMirroringDeploymentGroupsResource(_requester);
@@ -1586,6 +1606,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -1608,12 +1632,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3074,6 +3100,255 @@ class ProjectsLocationsAuthzPoliciesResource {
   }
 }
 
+class ProjectsLocationsBackendAuthenticationConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBackendAuthenticationConfigsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new BackendAuthenticationConfig in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the
+  /// BackendAuthenticationConfig. Must be in the format `projects / *
+  /// /locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [backendAuthenticationConfigId] - Required. Short name of the
+  /// BackendAuthenticationConfig resource to be created. This value should be
+  /// 1-63 characters long, containing only letters, numbers, hyphens, and
+  /// underscores, and should not start with a number. E.g.
+  /// "backend-auth-config".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    BackendAuthenticationConfig request,
+    core.String parent, {
+    core.String? backendAuthenticationConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (backendAuthenticationConfigId != null)
+        'backendAuthenticationConfigId': [backendAuthenticationConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/backendAuthenticationConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single BackendAuthenticationConfig to
+  /// BackendAuthenticationConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the BackendAuthenticationConfig to delete.
+  /// Must be in the format `projects / *
+  /// /locations/{location}/backendAuthenticationConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backendAuthenticationConfigs/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. Etag of the resource. If this is provided, it must
+  /// match the server's etag.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single BackendAuthenticationConfig to
+  /// BackendAuthenticationConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the BackendAuthenticationConfig to get. Must
+  /// be in the format `projects / *
+  /// /locations/{location}/backendAuthenticationConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backendAuthenticationConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackendAuthenticationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackendAuthenticationConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BackendAuthenticationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists BackendAuthenticationConfigs in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the
+  /// BackendAuthenticationConfigs should be listed, specified in the format
+  /// `projects / * /locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of BackendAuthenticationConfigs to return per
+  /// call.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListBackendAuthenticationConfigsResponse` Indicates that this is a
+  /// continuation of a prior `ListBackendAuthenticationConfigs` call, and that
+  /// the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackendAuthenticationConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackendAuthenticationConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/backendAuthenticationConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBackendAuthenticationConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single BackendAuthenticationConfig to
+  /// BackendAuthenticationConfig.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the BackendAuthenticationConfig resource. It
+  /// matches the pattern `projects / *
+  /// /locations/{location}/backendAuthenticationConfigs/{backend_authentication_config}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backendAuthenticationConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the BackendAuthenticationConfig resource by the update. The
+  /// fields specified in the update_mask are relative to the resource, not the
+  /// full request. A field will be overwritten if it is in the mask. If the
+  /// user does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    BackendAuthenticationConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsClientTlsPoliciesResource {
   final commons.ApiRequester _requester;
 
@@ -3317,8 +3592,8 @@ class ProjectsLocationsClientTlsPoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the ClientTlsPolicy resource. It matches the
-  /// pattern `projects / *
-  /// /locations/{location}/clientTlsPolicies/{client_tls_policy}`
+  /// pattern
+  /// `projects/{project}/locations/{location}/clientTlsPolicies/{client_tls_policy}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clientTlsPolicies/\[^/\]+$`.
   ///
@@ -4201,6 +4476,1100 @@ class ProjectsLocationsGatewaySecurityPoliciesRulesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsInterceptDeploymentGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInterceptDeploymentGroupsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a deployment group in a given project and location.
+  ///
+  /// See https://google.aip.dev/133.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this deployment group will
+  /// be created. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [interceptDeploymentGroupId] - Required. The ID to use for the new
+  /// deployment group, which will become the final component of the deployment
+  /// group's resource name.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    InterceptDeploymentGroup request,
+    core.String parent, {
+    core.String? interceptDeploymentGroupId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (interceptDeploymentGroupId != null)
+        'interceptDeploymentGroupId': [interceptDeploymentGroupId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/interceptDeploymentGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a deployment group.
+  ///
+  /// See https://google.aip.dev/135.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The deployment group to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interceptDeploymentGroups/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a specific deployment group.
+  ///
+  /// See https://google.aip.dev/131.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the deployment group to retrieve. Format:
+  /// projects/{project}/locations/{location}/interceptDeploymentGroups/{intercept_deployment_group}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interceptDeploymentGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InterceptDeploymentGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InterceptDeploymentGroup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InterceptDeploymentGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists deployment groups in a given project and location.
+  ///
+  /// See https://google.aip.dev/132.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of deployment
+  /// groups. Example: `projects/123456789/locations/global`. See
+  /// https://google.aip.dev/132 for more details.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression. See
+  /// https://google.aip.dev/160#filtering for more details.
+  ///
+  /// [orderBy] - Optional. Sort expression. See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  /// See https://google.aip.dev/158 for more details.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListInterceptDeploymentGroups` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListInterceptDeploymentGroups` must match the call that provided the page
+  /// token. See https://google.aip.dev/158 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInterceptDeploymentGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInterceptDeploymentGroupsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/interceptDeploymentGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInterceptDeploymentGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a deployment group.
+  ///
+  /// See https://google.aip.dev/134.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. The resource name of this deployment
+  /// group, for example:
+  /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See
+  /// https://google.aip.dev/122 for more details.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interceptDeploymentGroups/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Fields are
+  /// specified relative to the deployment group (e.g. `description`; *not*
+  /// `intercept_deployment_group.description`). See https://google.aip.dev/161
+  /// for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    InterceptDeploymentGroup request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsInterceptDeploymentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInterceptDeploymentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a deployment in a given project and location.
+  ///
+  /// See https://google.aip.dev/133.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this deployment will be
+  /// created. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [interceptDeploymentId] - Required. The ID to use for the new deployment,
+  /// which will become the final component of the deployment's resource name.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    InterceptDeployment request,
+    core.String parent, {
+    core.String? interceptDeploymentId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (interceptDeploymentId != null)
+        'interceptDeploymentId': [interceptDeploymentId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/interceptDeployments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a deployment.
+  ///
+  /// See https://google.aip.dev/135.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interceptDeployments/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a specific deployment.
+  ///
+  /// See https://google.aip.dev/131.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the deployment to retrieve. Format:
+  /// projects/{project}/locations/{location}/interceptDeployments/{intercept_deployment}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interceptDeployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InterceptDeployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InterceptDeployment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InterceptDeployment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists deployments in a given project and location.
+  ///
+  /// See https://google.aip.dev/132.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// deployments. Example: `projects/123456789/locations/us-central1-a`. See
+  /// https://google.aip.dev/132 for more details.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression. See
+  /// https://google.aip.dev/160#filtering for more details.
+  ///
+  /// [orderBy] - Optional. Sort expression. See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  /// See https://google.aip.dev/158 for more details.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListInterceptDeployments` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListInterceptDeployments` must match the call that provided the page
+  /// token. See https://google.aip.dev/158 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInterceptDeploymentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInterceptDeploymentsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/interceptDeployments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInterceptDeploymentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a deployment.
+  ///
+  /// See https://google.aip.dev/134.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. The resource name of this deployment, for
+  /// example:
+  /// `projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`.
+  /// See https://google.aip.dev/122 for more details.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interceptDeployments/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Fields are
+  /// specified relative to the deployment (e.g. `description`; *not*
+  /// `intercept_deployment.description`). See https://google.aip.dev/161 for
+  /// more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    InterceptDeployment request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsInterceptEndpointGroupAssociationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInterceptEndpointGroupAssociationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an association in a given project and location.
+  ///
+  /// See https://google.aip.dev/133.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this association will be
+  /// created. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [interceptEndpointGroupAssociationId] - Optional. The ID to use for the
+  /// new association, which will become the final component of the endpoint
+  /// group's resource name. If not provided, the server will generate a unique
+  /// ID.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    InterceptEndpointGroupAssociation request,
+    core.String parent, {
+    core.String? interceptEndpointGroupAssociationId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (interceptEndpointGroupAssociationId != null)
+        'interceptEndpointGroupAssociationId': [
+          interceptEndpointGroupAssociationId
+        ],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/interceptEndpointGroupAssociations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an association.
+  ///
+  /// See https://google.aip.dev/135.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The association to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interceptEndpointGroupAssociations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a specific association.
+  ///
+  /// See https://google.aip.dev/131.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the association to retrieve. Format:
+  /// projects/{project}/locations/{location}/interceptEndpointGroupAssociations/{intercept_endpoint_group_association}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interceptEndpointGroupAssociations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InterceptEndpointGroupAssociation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InterceptEndpointGroupAssociation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InterceptEndpointGroupAssociation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists associations in a given project and location.
+  ///
+  /// See https://google.aip.dev/132.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// associations. Example: `projects/123456789/locations/global`. See
+  /// https://google.aip.dev/132 for more details.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression. See
+  /// https://google.aip.dev/160#filtering for more details.
+  ///
+  /// [orderBy] - Optional. Sort expression. See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  /// See https://google.aip.dev/158 for more details.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListInterceptEndpointGroups` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListInterceptEndpointGroups` must match the call that provided the page
+  /// token. See https://google.aip.dev/158 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInterceptEndpointGroupAssociationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInterceptEndpointGroupAssociationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/interceptEndpointGroupAssociations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInterceptEndpointGroupAssociationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an association.
+  ///
+  /// See https://google.aip.dev/134.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. The resource name of this endpoint group
+  /// association, for example:
+  /// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
+  /// See https://google.aip.dev/122 for more details.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interceptEndpointGroupAssociations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Fields are
+  /// specified relative to the association (e.g. `description`; *not*
+  /// `intercept_endpoint_group_association.description`). See
+  /// https://google.aip.dev/161 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    InterceptEndpointGroupAssociation request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsInterceptEndpointGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInterceptEndpointGroupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an endpoint group in a given project and location.
+  ///
+  /// See https://google.aip.dev/133.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this endpoint group will be
+  /// created. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [interceptEndpointGroupId] - Required. The ID to use for the endpoint
+  /// group, which will become the final component of the endpoint group's
+  /// resource name.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    InterceptEndpointGroup request,
+    core.String parent, {
+    core.String? interceptEndpointGroupId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (interceptEndpointGroupId != null)
+        'interceptEndpointGroupId': [interceptEndpointGroupId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/interceptEndpointGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an endpoint group.
+  ///
+  /// See https://google.aip.dev/135.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The endpoint group to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interceptEndpointGroups/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a specific endpoint group.
+  ///
+  /// See https://google.aip.dev/131.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the endpoint group to retrieve. Format:
+  /// projects/{project}/locations/{location}/interceptEndpointGroups/{intercept_endpoint_group}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interceptEndpointGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InterceptEndpointGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InterceptEndpointGroup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InterceptEndpointGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists endpoint groups in a given project and location.
+  ///
+  /// See https://google.aip.dev/132.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of endpoint
+  /// groups. Example: `projects/123456789/locations/global`. See
+  /// https://google.aip.dev/132 for more details.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression. See
+  /// https://google.aip.dev/160#filtering for more details.
+  ///
+  /// [orderBy] - Optional. Sort expression. See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  /// See https://google.aip.dev/158 for more details.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListInterceptEndpointGroups` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListInterceptEndpointGroups` must match the call that provided the page
+  /// token. See https://google.aip.dev/158 for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInterceptEndpointGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInterceptEndpointGroupsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/interceptEndpointGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInterceptEndpointGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an endpoint group.
+  ///
+  /// See https://google.aip.dev/134.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. The resource name of this endpoint group,
+  /// for example:
+  /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See
+  /// https://google.aip.dev/122 for more details.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interceptEndpointGroups/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Must be a
+  /// UUID4. This request is only idempotent if a `request_id` is provided. See
+  /// https://google.aip.dev/155 for more details.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Fields are
+  /// specified relative to the endpoint group (e.g. `description`; *not*
+  /// `intercept_endpoint_group.description`). See https://google.aip.dev/161
+  /// for more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    InterceptEndpointGroup request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
@@ -5700,6 +7069,13 @@ class ProjectsLocationsServerTlsPoliciesResource {
   /// prior `ListServerTlsPolicies` call, and that the system should return the
   /// next page of data.
   ///
+  /// [returnPartialSuccess] - Optional. Setting this field to `true` will opt
+  /// the request into returning the resources that are reachable, and into
+  /// including the names of those that were unreachable in the
+  /// \[ListServerTlsPoliciesResponse.unreachable\] field. This can only be
+  /// `true` when reading across collections e.g. when `parent` is set to
+  /// `"projects/example/locations/-"`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5714,11 +7090,14 @@ class ProjectsLocationsServerTlsPoliciesResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -6532,7 +7911,7 @@ class AntivirusOverride {
   /// Required.
   /// Possible string values are:
   /// - "PROTOCOL_UNSPECIFIED" : Protocol not specified.
-  /// - "SMTP" : SMTP prtocol
+  /// - "SMTP" : SMTP protocol
   /// - "SMB" : SMB protocol
   /// - "POP3" : POP3 protocol
   /// - "IMAP" : IMAP protocol
@@ -6881,20 +8260,25 @@ class AuthzPolicyAuthzRuleFrom {
 
 /// Describes the properties of a single source.
 class AuthzPolicyAuthzRuleFromRequestSource {
-  /// A list of identities derived from the client's certificate.
+  /// A list of IP addresses or IP address ranges to match against the source IP
+  /// address of the request.
   ///
-  /// This field will not match on a request unless mutual TLS is enabled for
-  /// the forwarding rule or Gateway. For Application Load Balancers, each
-  /// identity is a string whose value is matched against the URI SAN, or DNS
-  /// SAN, or SPIFFE ID, or the subject field in the client's certificate. For
-  /// Cloud Service Mesh, each identity is a string whose value is matched
-  /// against the URI SAN, or DNS SAN, or the subject field in the client's
-  /// certificate. The match can be exact, prefix, suffix, or a substring match.
-  /// One of exact, prefix, suffix, or contains must be specified. Limited to 5
-  /// principals.
+  /// Limited to 5 ip_blocks.
   ///
   /// Optional.
-  core.List<AuthzPolicyAuthzRuleStringMatch>? principals;
+  core.List<AuthzPolicyAuthzRuleIpBlock>? ipBlocks;
+
+  /// A list of identities derived from the client's certificate.
+  ///
+  /// This field will not match on a request unless frontend mutual TLS is
+  /// enabled for the forwarding rule or Gateway and the client certificate has
+  /// been successfully validated by mTLS. Each identity is a string whose value
+  /// is matched against a list of URI SANs, DNS Name SANs, or the common name
+  /// in the client's certificate. A match happens when any principal matches
+  /// with the rule. Limited to 5 principals.
+  ///
+  /// Optional.
+  core.List<AuthzPolicyAuthzRulePrincipal>? principals;
 
   /// A list of resources to match against the resource of the source VM of a
   /// request.
@@ -6905,14 +8289,19 @@ class AuthzPolicyAuthzRuleFromRequestSource {
   core.List<AuthzPolicyAuthzRuleRequestResource>? resources;
 
   AuthzPolicyAuthzRuleFromRequestSource({
+    this.ipBlocks,
     this.principals,
     this.resources,
   });
 
   AuthzPolicyAuthzRuleFromRequestSource.fromJson(core.Map json_)
       : this(
+          ipBlocks: (json_['ipBlocks'] as core.List?)
+              ?.map((value) => AuthzPolicyAuthzRuleIpBlock.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           principals: (json_['principals'] as core.List?)
-              ?.map((value) => AuthzPolicyAuthzRuleStringMatch.fromJson(
+              ?.map((value) => AuthzPolicyAuthzRulePrincipal.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           resources: (json_['resources'] as core.List?)
@@ -6922,6 +8311,7 @@ class AuthzPolicyAuthzRuleFromRequestSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (ipBlocks != null) 'ipBlocks': ipBlocks!,
         if (principals != null) 'principals': principals!,
         if (resources != null) 'resources': resources!,
       };
@@ -6956,6 +8346,92 @@ class AuthzPolicyAuthzRuleHeaderMatch {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Represents a range of IP Addresses.
+class AuthzPolicyAuthzRuleIpBlock {
+  /// The length of the address range.
+  ///
+  /// Required.
+  core.int? length;
+
+  /// The address prefix.
+  ///
+  /// Required.
+  core.String? prefix;
+
+  AuthzPolicyAuthzRuleIpBlock({
+    this.length,
+    this.prefix,
+  });
+
+  AuthzPolicyAuthzRuleIpBlock.fromJson(core.Map json_)
+      : this(
+          length: json_['length'] as core.int?,
+          prefix: json_['prefix'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (length != null) 'length': length!,
+        if (prefix != null) 'prefix': prefix!,
+      };
+}
+
+/// Describes the properties of a principal to be matched against.
+class AuthzPolicyAuthzRulePrincipal {
+  /// A non-empty string whose value is matched against the principal value
+  /// based on the principal_selector.
+  ///
+  /// Only exact match can be applied for CLIENT_CERT_URI_SAN,
+  /// CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+  ///
+  /// Required.
+  AuthzPolicyAuthzRuleStringMatch? principal;
+
+  /// An enum to decide what principal value the principal rule will match
+  /// against.
+  ///
+  /// If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRINCIPAL_SELECTOR_UNSPECIFIED" : Unspecified principal selector. It
+  /// will be treated as CLIENT_CERT_URI_SAN by default.
+  /// - "CLIENT_CERT_URI_SAN" : The principal rule is matched against a list of
+  /// URI SANs in the validated client’s certificate. A match happens when there
+  /// is any exact URI SAN value match. This is the default principal selector.
+  /// - "CLIENT_CERT_DNS_NAME_SAN" : The principal rule is matched against a
+  /// list of DNS Name SANs in the validated client’s certificate. A match
+  /// happens when there is any exact DNS Name SAN value match.
+  /// - "CLIENT_CERT_COMMON_NAME" : The principal rule is matched against the
+  /// common name in the client’s certificate. Authorization against multiple
+  /// common names in the client certificate is not supported. Requests with
+  /// multiple common names in the client certificate will be rejected if
+  /// CLIENT_CERT_COMMON_NAME is set as the principal selector. A match happens
+  /// when there is an exact common name value match. This is only applicable
+  /// for Application Load Balancers except for classic Global External
+  /// Application load balancer. CLIENT_CERT_COMMON_NAME is not supported for
+  /// INTERNAL_SELF_MANAGED load balancing scheme.
+  core.String? principalSelector;
+
+  AuthzPolicyAuthzRulePrincipal({
+    this.principal,
+    this.principalSelector,
+  });
+
+  AuthzPolicyAuthzRulePrincipal.fromJson(core.Map json_)
+      : this(
+          principal: json_.containsKey('principal')
+              ? AuthzPolicyAuthzRuleStringMatch.fromJson(
+                  json_['principal'] as core.Map<core.String, core.dynamic>)
+              : null,
+          principalSelector: json_['principalSelector'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (principal != null) 'principal': principal!,
+        if (principalSelector != null) 'principalSelector': principalSelector!,
       };
 }
 
@@ -7360,6 +8836,130 @@ class AuthzPolicyTarget {
       };
 }
 
+/// BackendAuthenticationConfig message groups the TrustConfig together with
+/// other settings that control how the load balancer authenticates, and
+/// expresses its identity to, the backend: * `trustConfig` is the attached
+/// TrustConfig.
+///
+/// * `wellKnownRoots` indicates whether the load balance should trust backend
+/// server certificates that are issued by public certificate authorities, in
+/// addition to certificates trusted by the TrustConfig. * `clientCertificate`
+/// is a client certificate that the load balancer uses to express its identity
+/// to the backend, if the connection to the backend uses mTLS. You can attach
+/// the BackendAuthenticationConfig to the load balancer's BackendService
+/// directly determining how that BackendService negotiates TLS.
+class BackendAuthenticationConfig {
+  /// A reference to a certificatemanager.googleapis.com.Certificate resource.
+  ///
+  /// This is a relative resource path following the form
+  /// "projects/{project}/locations/{location}/certificates/{certificate}". Used
+  /// by a BackendService to negotiate mTLS when the backend connection uses TLS
+  /// and the backend requests a client certificate. Must have a CLIENT_AUTH
+  /// scope.
+  ///
+  /// Optional.
+  core.String? clientCertificate;
+
+  /// The timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Free-text description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Etag of the resource.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Set of label tags associated with the resource.
+  core.Map<core.String, core.String>? labels;
+
+  /// Name of the BackendAuthenticationConfig resource.
+  ///
+  /// It matches the pattern `projects / *
+  /// /locations/{location}/backendAuthenticationConfigs/{backend_authentication_config}`
+  ///
+  /// Required.
+  core.String? name;
+
+  /// A reference to a TrustConfig resource from the
+  /// certificatemanager.googleapis.com namespace.
+  ///
+  /// This is a relative resource path following the form
+  /// "projects/{project}/locations/{location}/trustConfigs/{trust_config}". A
+  /// BackendService uses the chain of trust represented by this TrustConfig, if
+  /// specified, to validate the server certificates presented by the backend.
+  /// Required unless wellKnownRoots is set to PUBLIC_ROOTS.
+  ///
+  /// Optional.
+  core.String? trustConfig;
+
+  /// The timestamp when the resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Well known roots to use for server certificate validation.
+  /// Possible string values are:
+  /// - "WELL_KNOWN_ROOTS_UNSPECIFIED" : Equivalent to NONE.
+  /// - "NONE" : The BackendService will only validate server certificates
+  /// against roots specified in TrustConfig.
+  /// - "PUBLIC_ROOTS" : The BackendService uses a set of well-known public
+  /// roots, in addition to any roots specified in the trustConfig field, when
+  /// validating the server certificates presented by the backend. Validation
+  /// with these roots is only considered when the TlsSettings.sni field in the
+  /// BackendService is set. The well-known roots are a set of root CAs managed
+  /// by Google. CAs in this set can be added or removed without notice.
+  core.String? wellKnownRoots;
+
+  BackendAuthenticationConfig({
+    this.clientCertificate,
+    this.createTime,
+    this.description,
+    this.etag,
+    this.labels,
+    this.name,
+    this.trustConfig,
+    this.updateTime,
+    this.wellKnownRoots,
+  });
+
+  BackendAuthenticationConfig.fromJson(core.Map json_)
+      : this(
+          clientCertificate: json_['clientCertificate'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          trustConfig: json_['trustConfig'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          wellKnownRoots: json_['wellKnownRoots'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientCertificate != null) 'clientCertificate': clientCertificate!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (trustConfig != null) 'trustConfig': trustConfig!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (wellKnownRoots != null) 'wellKnownRoots': wellKnownRoots!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -7424,8 +9024,8 @@ class ClientTlsPolicy {
 
   /// Name of the ClientTlsPolicy resource.
   ///
-  /// It matches the pattern `projects / *
-  /// /locations/{location}/clientTlsPolicies/{client_tls_policy}`
+  /// It matches the pattern
+  /// `projects/{project}/locations/{location}/clientTlsPolicies/{client_tls_policy}`
   ///
   /// Required.
   core.String? name;
@@ -8571,6 +10171,768 @@ class HttpHeaderMatch {
       };
 }
 
+/// A deployment represents a zonal intercept backend ready to accept
+/// GENEVE-encapsulated traffic, e.g. a zonal instance group fronted by an
+/// internal passthrough load balancer.
+///
+/// Deployments are always part of a global deployment group which represents a
+/// global intercept service.
+class InterceptDeployment {
+  /// The timestamp when the resource was created.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description of the deployment.
+  ///
+  /// Used as additional context for the deployment.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The regional forwarding rule that fronts the interceptors, for example:
+  /// `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Required. Immutable.
+  core.String? forwardingRule;
+
+  /// The deployment group that this deployment is a part of, for example:
+  /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Required. Immutable.
+  core.String? interceptDeploymentGroup;
+
+  /// Labels are key/value pairs that help to organize and filter resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of this deployment, for example:
+  /// `projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`.
+  /// See https://google.aip.dev/122 for more details.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The current state of the resource does not match the user's intended
+  /// state, and the system is working to reconcile them.
+  ///
+  /// This part of the normal operation (e.g. linking a new association to the
+  /// parent group). See https://google.aip.dev/128.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The current state of the deployment.
+  ///
+  /// See https://google.aip.dev/216.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set (this is not a valid state).
+  /// - "ACTIVE" : The deployment is ready and in sync with the parent group.
+  /// - "CREATING" : The deployment is being created.
+  /// - "DELETING" : The deployment is being deleted.
+  /// - "OUT_OF_SYNC" : The deployment is out of sync with the parent group. In
+  /// most cases, this is a result of a transient issue within the system (e.g.
+  /// a delayed data-path config) and the system is expected to recover
+  /// automatically. See the parent deployment group's state for more details.
+  /// - "DELETE_FAILED" : An attempt to delete the deployment has failed. This
+  /// is a terminal state and the deployment is not expected to recover. The
+  /// only permitted operation is to retry deleting the deployment.
+  core.String? state;
+
+  /// The timestamp when the resource was most recently updated.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  InterceptDeployment({
+    this.createTime,
+    this.description,
+    this.forwardingRule,
+    this.interceptDeploymentGroup,
+    this.labels,
+    this.name,
+    this.reconciling,
+    this.state,
+    this.updateTime,
+  });
+
+  InterceptDeployment.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          forwardingRule: json_['forwardingRule'] as core.String?,
+          interceptDeploymentGroup:
+              json_['interceptDeploymentGroup'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (forwardingRule != null) 'forwardingRule': forwardingRule!,
+        if (interceptDeploymentGroup != null)
+          'interceptDeploymentGroup': interceptDeploymentGroup!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A deployment group aggregates many zonal intercept backends (deployments)
+/// into a single global intercept service.
+///
+/// Consumers can connect this service using an endpoint group.
+class InterceptDeploymentGroup {
+  /// The list of endpoint groups that are connected to this resource.
+  ///
+  /// Output only.
+  core.List<InterceptDeploymentGroupConnectedEndpointGroup>?
+      connectedEndpointGroups;
+
+  /// The timestamp when the resource was created.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description of the deployment group.
+  ///
+  /// Used as additional context for the deployment group.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Labels are key/value pairs that help to organize and filter resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The list of locations where the deployment group is present.
+  ///
+  /// Output only.
+  core.List<InterceptLocation>? locations;
+
+  /// Identifier.
+  ///
+  /// The resource name of this deployment group, for example:
+  /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See
+  /// https://google.aip.dev/122 for more details.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The list of Intercept Deployments that belong to this group.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<InterceptDeploymentGroupDeployment>? nestedDeployments;
+
+  /// The network that will be used for all child deployments, for example:
+  /// `projects/{project}/global/networks/{network}`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Required. Immutable.
+  core.String? network;
+
+  /// The current state of the resource does not match the user's intended
+  /// state, and the system is working to reconcile them.
+  ///
+  /// This is part of the normal operation (e.g. adding a new deployment to the
+  /// group) See https://google.aip.dev/128.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The current state of the deployment group.
+  ///
+  /// See https://google.aip.dev/216.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set (this is not a valid state).
+  /// - "ACTIVE" : The deployment group is ready.
+  /// - "CREATING" : The deployment group is being created.
+  /// - "DELETING" : The deployment group is being deleted.
+  core.String? state;
+
+  /// The timestamp when the resource was most recently updated.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  InterceptDeploymentGroup({
+    this.connectedEndpointGroups,
+    this.createTime,
+    this.description,
+    this.labels,
+    this.locations,
+    this.name,
+    this.nestedDeployments,
+    this.network,
+    this.reconciling,
+    this.state,
+    this.updateTime,
+  });
+
+  InterceptDeploymentGroup.fromJson(core.Map json_)
+      : this(
+          connectedEndpointGroups:
+              (json_['connectedEndpointGroups'] as core.List?)
+                  ?.map((value) =>
+                      InterceptDeploymentGroupConnectedEndpointGroup.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => InterceptLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+          nestedDeployments: (json_['nestedDeployments'] as core.List?)
+              ?.map((value) => InterceptDeploymentGroupDeployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          network: json_['network'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectedEndpointGroups != null)
+          'connectedEndpointGroups': connectedEndpointGroups!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (locations != null) 'locations': locations!,
+        if (name != null) 'name': name!,
+        if (nestedDeployments != null) 'nestedDeployments': nestedDeployments!,
+        if (network != null) 'network': network!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// An endpoint group connected to this deployment group.
+class InterceptDeploymentGroupConnectedEndpointGroup {
+  /// The connected endpoint group's resource name, for example:
+  /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Output only.
+  core.String? name;
+
+  InterceptDeploymentGroupConnectedEndpointGroup({
+    this.name,
+  });
+
+  InterceptDeploymentGroupConnectedEndpointGroup.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+/// A deployment belonging to this deployment group.
+class InterceptDeploymentGroupDeployment {
+  /// The name of the Intercept Deployment, in the format:
+  /// `projects/{project}/locations/{location}/interceptDeployments/{intercept_deployment}`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Most recent known state of the deployment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set (this is not a valid state).
+  /// - "ACTIVE" : The deployment is ready and in sync with the parent group.
+  /// - "CREATING" : The deployment is being created.
+  /// - "DELETING" : The deployment is being deleted.
+  /// - "OUT_OF_SYNC" : The deployment is out of sync with the parent group. In
+  /// most cases, this is a result of a transient issue within the system (e.g.
+  /// a delayed data-path config) and the system is expected to recover
+  /// automatically. See the parent deployment group's state for more details.
+  /// - "DELETE_FAILED" : An attempt to delete the deployment has failed. This
+  /// is a terminal state and the deployment is not expected to recover. The
+  /// only permitted operation is to retry deleting the deployment.
+  core.String? state;
+
+  InterceptDeploymentGroupDeployment({
+    this.name,
+    this.state,
+  });
+
+  InterceptDeploymentGroupDeployment.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// An endpoint group is a consumer frontend for a deployment group (backend).
+///
+/// In order to configure intercept for a network, consumers must create: - An
+/// association between their network and the endpoint group. - A security
+/// profile that points to the endpoint group. - A firewall rule that references
+/// the security profile (group).
+class InterceptEndpointGroup {
+  /// List of associations to this endpoint group.
+  ///
+  /// Output only.
+  core.List<InterceptEndpointGroupAssociationDetails>? associations;
+
+  /// Details about the connected deployment group to this endpoint group.
+  ///
+  /// Output only.
+  InterceptEndpointGroupConnectedDeploymentGroup? connectedDeploymentGroup;
+
+  /// The timestamp when the resource was created.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description of the endpoint group.
+  ///
+  /// Used as additional context for the endpoint group.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The deployment group that this endpoint group is connected to, for
+  /// example:
+  /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Required. Immutable.
+  core.String? interceptDeploymentGroup;
+
+  /// Labels are key/value pairs that help to organize and filter resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of this endpoint group, for example:
+  /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See
+  /// https://google.aip.dev/122 for more details.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The current state of the resource does not match the user's intended
+  /// state, and the system is working to reconcile them.
+  ///
+  /// This is part of the normal operation (e.g. adding a new association to the
+  /// group). See https://google.aip.dev/128.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The current state of the endpoint group.
+  ///
+  /// See https://google.aip.dev/216.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set (this is not a valid state).
+  /// - "ACTIVE" : The endpoint group is ready and in sync with the target
+  /// deployment group.
+  /// - "CLOSED" : The deployment group backing this endpoint group has been
+  /// force-deleted. This endpoint group cannot be used and interception is
+  /// effectively disabled.
+  /// - "CREATING" : The endpoint group is being created.
+  /// - "DELETING" : The endpoint group is being deleted.
+  /// - "OUT_OF_SYNC" : The endpoint group is out of sync with the backing
+  /// deployment group. In most cases, this is a result of a transient issue
+  /// within the system (e.g. an inaccessible location) and the system is
+  /// expected to recover automatically. See the associations field for details
+  /// per network and location.
+  /// - "DELETE_FAILED" : An attempt to delete the endpoint group has failed.
+  /// This is a terminal state and the endpoint group is not expected to
+  /// recover. The only permitted operation is to retry deleting the endpoint
+  /// group.
+  core.String? state;
+
+  /// The timestamp when the resource was most recently updated.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  InterceptEndpointGroup({
+    this.associations,
+    this.connectedDeploymentGroup,
+    this.createTime,
+    this.description,
+    this.interceptDeploymentGroup,
+    this.labels,
+    this.name,
+    this.reconciling,
+    this.state,
+    this.updateTime,
+  });
+
+  InterceptEndpointGroup.fromJson(core.Map json_)
+      : this(
+          associations: (json_['associations'] as core.List?)
+              ?.map((value) =>
+                  InterceptEndpointGroupAssociationDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          connectedDeploymentGroup:
+              json_.containsKey('connectedDeploymentGroup')
+                  ? InterceptEndpointGroupConnectedDeploymentGroup.fromJson(
+                      json_['connectedDeploymentGroup']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          interceptDeploymentGroup:
+              json_['interceptDeploymentGroup'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (associations != null) 'associations': associations!,
+        if (connectedDeploymentGroup != null)
+          'connectedDeploymentGroup': connectedDeploymentGroup!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (interceptDeploymentGroup != null)
+          'interceptDeploymentGroup': interceptDeploymentGroup!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// An endpoint group association represents a link between a network and an
+/// endpoint group in the organization.
+///
+/// Creating an association creates the networking infrastructure linking the
+/// network to the endpoint group, but does not enable intercept by itself. To
+/// enable intercept, the user must also create a network firewall policy
+/// containing intercept rules and associate it with the network.
+class InterceptEndpointGroupAssociation {
+  /// The timestamp when the resource was created.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The endpoint group that this association is connected to, for example:
+  /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Required. Immutable.
+  core.String? interceptEndpointGroup;
+
+  /// Labels are key/value pairs that help to organize and filter resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The list of locations where the association is configured.
+  ///
+  /// This information is retrieved from the linked endpoint group.
+  ///
+  /// Output only.
+  core.List<InterceptLocation>? locations;
+
+  /// The list of locations where the association is present.
+  ///
+  /// This information is retrieved from the linked endpoint group, and not
+  /// configured as part of the association itself.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<InterceptEndpointGroupAssociationLocationDetails>? locationsDetails;
+
+  /// Identifier.
+  ///
+  /// The resource name of this endpoint group association, for example:
+  /// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
+  /// See https://google.aip.dev/122 for more details.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The VPC network that is associated.
+  ///
+  /// for example: `projects/123456789/global/networks/my-network`. See
+  /// https://google.aip.dev/124.
+  ///
+  /// Required. Immutable.
+  core.String? network;
+
+  /// The current state of the resource does not match the user's intended
+  /// state, and the system is working to reconcile them.
+  ///
+  /// This part of the normal operation (e.g. adding a new location to the
+  /// target deployment group). See https://google.aip.dev/128.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// Current state of the endpoint group association.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "ACTIVE" : The association is ready and in sync with the linked endpoint
+  /// group.
+  /// - "CREATING" : The association is being created.
+  /// - "DELETING" : The association is being deleted.
+  /// - "CLOSED" : The association is disabled due to a breaking change in
+  /// another resource.
+  /// - "OUT_OF_SYNC" : The association is out of sync with the linked endpoint
+  /// group. In most cases, this is a result of a transient issue within the
+  /// system (e.g. an inaccessible location) and the system is expected to
+  /// recover automatically. Check the `locations_details` field for more
+  /// details.
+  /// - "DELETE_FAILED" : An attempt to delete the association has failed. This
+  /// is a terminal state and the association is not expected to be usable as
+  /// some of its resources have been deleted. The only permitted operation is
+  /// to retry deleting the association.
+  core.String? state;
+
+  /// The timestamp when the resource was most recently updated.
+  ///
+  /// See https://google.aip.dev/148#timestamps.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  InterceptEndpointGroupAssociation({
+    this.createTime,
+    this.interceptEndpointGroup,
+    this.labels,
+    this.locations,
+    this.locationsDetails,
+    this.name,
+    this.network,
+    this.reconciling,
+    this.state,
+    this.updateTime,
+  });
+
+  InterceptEndpointGroupAssociation.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          interceptEndpointGroup:
+              json_['interceptEndpointGroup'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => InterceptLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          locationsDetails: (json_['locationsDetails'] as core.List?)
+              ?.map((value) =>
+                  InterceptEndpointGroupAssociationLocationDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (interceptEndpointGroup != null)
+          'interceptEndpointGroup': interceptEndpointGroup!,
+        if (labels != null) 'labels': labels!,
+        if (locations != null) 'locations': locations!,
+        if (locationsDetails != null) 'locationsDetails': locationsDetails!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The endpoint group's view of a connected association.
+class InterceptEndpointGroupAssociationDetails {
+  /// The connected association's resource name, for example:
+  /// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-ega`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The associated network, for example:
+  /// projects/123456789/global/networks/my-network.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Output only.
+  core.String? network;
+
+  /// Most recent known state of the association.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "ACTIVE" : The association is ready and in sync with the linked endpoint
+  /// group.
+  /// - "CREATING" : The association is being created.
+  /// - "DELETING" : The association is being deleted.
+  /// - "CLOSED" : The association is disabled due to a breaking change in
+  /// another resource.
+  /// - "OUT_OF_SYNC" : The association is out of sync with the linked endpoint
+  /// group. In most cases, this is a result of a transient issue within the
+  /// system (e.g. an inaccessible location) and the system is expected to
+  /// recover automatically. Check the `locations_details` field for more
+  /// details.
+  /// - "DELETE_FAILED" : An attempt to delete the association has failed. This
+  /// is a terminal state and the association is not expected to be usable as
+  /// some of its resources have been deleted. The only permitted operation is
+  /// to retry deleting the association.
+  core.String? state;
+
+  InterceptEndpointGroupAssociationDetails({
+    this.name,
+    this.network,
+    this.state,
+  });
+
+  InterceptEndpointGroupAssociationDetails.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Contains details about the state of an association in a specific cloud
+/// location.
+typedef InterceptEndpointGroupAssociationLocationDetails
+    = $EndpointGroupAssociationLocationDetails;
+
+/// The endpoint group's view of a connected deployment group.
+class InterceptEndpointGroupConnectedDeploymentGroup {
+  /// The list of locations where the deployment group is present.
+  ///
+  /// Output only.
+  core.List<InterceptLocation>? locations;
+
+  /// The connected deployment group's resource name, for example:
+  /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+  ///
+  /// See https://google.aip.dev/124.
+  ///
+  /// Output only.
+  core.String? name;
+
+  InterceptEndpointGroupConnectedDeploymentGroup({
+    this.locations,
+    this.name,
+  });
+
+  InterceptEndpointGroupConnectedDeploymentGroup.fromJson(core.Map json_)
+      : this(
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => InterceptLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (locations != null) 'locations': locations!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Details about intercept in a specific cloud location.
+typedef InterceptLocation = $Location02;
+
 /// Response of the ListAddressGroupReferences method.
 class ListAddressGroupReferencesResponse {
   /// A list of references that matches the specified filter in the request.
@@ -8743,6 +11105,48 @@ class ListAuthzPoliciesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authzPolicies != null) 'authzPolicies': authzPolicies!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response returned by the ListBackendAuthenticationConfigs method.
+class ListBackendAuthenticationConfigsResponse {
+  /// List of BackendAuthenticationConfig resources.
+  core.List<BackendAuthenticationConfig>? backendAuthenticationConfigs;
+
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListBackendAuthenticationConfigsResponse({
+    this.backendAuthenticationConfigs,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListBackendAuthenticationConfigsResponse.fromJson(core.Map json_)
+      : this(
+          backendAuthenticationConfigs:
+              (json_['backendAuthenticationConfigs'] as core.List?)
+                  ?.map((value) => BackendAuthenticationConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backendAuthenticationConfigs != null)
+          'backendAuthenticationConfigs': backendAuthenticationConfigs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -8935,6 +11339,147 @@ class ListGatewaySecurityPolicyRulesResponse {
           'gatewaySecurityPolicyRules': gatewaySecurityPolicyRules!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for ListInterceptDeploymentGroups.
+class ListInterceptDeploymentGroupsResponse {
+  /// The deployment groups from the specified parent.
+  core.List<InterceptDeploymentGroup>? interceptDeploymentGroups;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages. See
+  /// https://google.aip.dev/158 for more details.
+  core.String? nextPageToken;
+
+  ListInterceptDeploymentGroupsResponse({
+    this.interceptDeploymentGroups,
+    this.nextPageToken,
+  });
+
+  ListInterceptDeploymentGroupsResponse.fromJson(core.Map json_)
+      : this(
+          interceptDeploymentGroups:
+              (json_['interceptDeploymentGroups'] as core.List?)
+                  ?.map((value) => InterceptDeploymentGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (interceptDeploymentGroups != null)
+          'interceptDeploymentGroups': interceptDeploymentGroups!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListInterceptDeployments.
+class ListInterceptDeploymentsResponse {
+  /// The deployments from the specified parent.
+  core.List<InterceptDeployment>? interceptDeployments;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages. See
+  /// https://google.aip.dev/158 for more details.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListInterceptDeploymentsResponse({
+    this.interceptDeployments,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListInterceptDeploymentsResponse.fromJson(core.Map json_)
+      : this(
+          interceptDeployments: (json_['interceptDeployments'] as core.List?)
+              ?.map((value) => InterceptDeployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (interceptDeployments != null)
+          'interceptDeployments': interceptDeployments!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for ListInterceptEndpointGroupAssociations.
+class ListInterceptEndpointGroupAssociationsResponse {
+  /// The associations from the specified parent.
+  core.List<InterceptEndpointGroupAssociation>?
+      interceptEndpointGroupAssociations;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages. See
+  /// https://google.aip.dev/158 for more details.
+  core.String? nextPageToken;
+
+  ListInterceptEndpointGroupAssociationsResponse({
+    this.interceptEndpointGroupAssociations,
+    this.nextPageToken,
+  });
+
+  ListInterceptEndpointGroupAssociationsResponse.fromJson(core.Map json_)
+      : this(
+          interceptEndpointGroupAssociations:
+              (json_['interceptEndpointGroupAssociations'] as core.List?)
+                  ?.map((value) => InterceptEndpointGroupAssociation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (interceptEndpointGroupAssociations != null)
+          'interceptEndpointGroupAssociations':
+              interceptEndpointGroupAssociations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListInterceptEndpointGroups.
+class ListInterceptEndpointGroupsResponse {
+  /// The endpoint groups from the specified parent.
+  core.List<InterceptEndpointGroup>? interceptEndpointGroups;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages. See
+  /// https://google.aip.dev/158 for more details.
+  core.String? nextPageToken;
+
+  ListInterceptEndpointGroupsResponse({
+    this.interceptEndpointGroups,
+    this.nextPageToken,
+  });
+
+  ListInterceptEndpointGroupsResponse.fromJson(core.Map json_)
+      : this(
+          interceptEndpointGroups:
+              (json_['interceptEndpointGroups'] as core.List?)
+                  ?.map((value) => InterceptEndpointGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (interceptEndpointGroups != null)
+          'interceptEndpointGroups': interceptEndpointGroups!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -9212,9 +11757,17 @@ class ListServerTlsPoliciesResponse {
   /// List of ServerTlsPolicy resources.
   core.List<ServerTlsPolicy>? serverTlsPolicies;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request opts into `return_partial_success` and reading
+  /// across collections e.g. when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   ListServerTlsPoliciesResponse({
     this.nextPageToken,
     this.serverTlsPolicies,
+    this.unreachable,
   });
 
   ListServerTlsPoliciesResponse.fromJson(core.Map json_)
@@ -9224,11 +11777,15 @@ class ListServerTlsPoliciesResponse {
               ?.map((value) => ServerTlsPolicy.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (serverTlsPolicies != null) 'serverTlsPolicies': serverTlsPolicies!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -9543,6 +12100,11 @@ class MirroringDeploymentGroup {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// The list of locations where the deployment group is present.
+  ///
+  /// Output only.
+  core.List<MirroringLocation>? locations;
+
   /// Identifier.
   ///
   /// The resource name of this deployment group, for example:
@@ -9555,6 +12117,9 @@ class MirroringDeploymentGroup {
   /// The list of Mirroring Deployments that belong to this group.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<MirroringDeploymentGroupDeployment>? nestedDeployments;
 
   /// The network that will be used for all child deployments, for example:
@@ -9598,6 +12163,7 @@ class MirroringDeploymentGroup {
     this.createTime,
     this.description,
     this.labels,
+    this.locations,
     this.name,
     this.nestedDeployments,
     this.network,
@@ -9623,6 +12189,10 @@ class MirroringDeploymentGroup {
               value as core.String,
             ),
           ),
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => MirroringLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
           nestedDeployments: (json_['nestedDeployments'] as core.List?)
               ?.map((value) => MirroringDeploymentGroupDeployment.fromJson(
@@ -9640,6 +12210,7 @@ class MirroringDeploymentGroup {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
+        if (locations != null) 'locations': locations!,
         if (name != null) 'name': name!,
         if (nestedDeployments != null) 'nestedDeployments': nestedDeployments!,
         if (network != null) 'network': network!,
@@ -9727,6 +12298,13 @@ class MirroringEndpointGroup {
   /// Output only.
   core.List<MirroringEndpointGroupAssociationDetails>? associations;
 
+  /// List of details about the connected deployment groups to this endpoint
+  /// group.
+  ///
+  /// Output only.
+  core.List<MirroringEndpointGroupConnectedDeploymentGroup>?
+      connectedDeploymentGroups;
+
   /// The timestamp when the resource was created.
   ///
   /// See https://google.aip.dev/148#timestamps.
@@ -9807,6 +12385,7 @@ class MirroringEndpointGroup {
 
   MirroringEndpointGroup({
     this.associations,
+    this.connectedDeploymentGroups,
     this.createTime,
     this.description,
     this.labels,
@@ -9824,6 +12403,12 @@ class MirroringEndpointGroup {
                   MirroringEndpointGroupAssociationDetails.fromJson(
                       value as core.Map<core.String, core.dynamic>))
               .toList(),
+          connectedDeploymentGroups:
+              (json_['connectedDeploymentGroups'] as core.List?)
+                  ?.map((value) =>
+                      MirroringEndpointGroupConnectedDeploymentGroup.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList(),
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           labels:
@@ -9843,6 +12428,8 @@ class MirroringEndpointGroup {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (associations != null) 'associations': associations!,
+        if (connectedDeploymentGroups != null)
+          'connectedDeploymentGroups': connectedDeploymentGroups!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
@@ -9875,12 +12462,22 @@ class MirroringEndpointGroupAssociation {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// The list of locations where the association is configured.
+  ///
+  /// This information is retrieved from the linked endpoint group.
+  ///
+  /// Output only.
+  core.List<MirroringLocation>? locations;
+
   /// The list of locations where the association is present.
   ///
   /// This information is retrieved from the linked endpoint group, and not
   /// configured as part of the association itself.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<MirroringEndpointGroupAssociationLocationDetails>? locationsDetails;
 
   /// The endpoint group that this association is connected to, for example:
@@ -9949,6 +12546,7 @@ class MirroringEndpointGroupAssociation {
   MirroringEndpointGroupAssociation({
     this.createTime,
     this.labels,
+    this.locations,
     this.locationsDetails,
     this.mirroringEndpointGroup,
     this.name,
@@ -9968,6 +12566,10 @@ class MirroringEndpointGroupAssociation {
               value as core.String,
             ),
           ),
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => MirroringLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           locationsDetails: (json_['locationsDetails'] as core.List?)
               ?.map((value) =>
                   MirroringEndpointGroupAssociationLocationDetails.fromJson(
@@ -9985,6 +12587,7 @@ class MirroringEndpointGroupAssociation {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (labels != null) 'labels': labels!,
+        if (locations != null) 'locations': locations!,
         if (locationsDetails != null) 'locationsDetails': locationsDetails!,
         if (mirroringEndpointGroup != null)
           'mirroringEndpointGroup': mirroringEndpointGroup!,
@@ -10058,41 +12661,46 @@ class MirroringEndpointGroupAssociationDetails {
 
 /// Contains details about the state of an association in a specific cloud
 /// location.
-class MirroringEndpointGroupAssociationLocationDetails {
-  /// The cloud location, e.g. "us-central1-a" or "asia-south1".
+typedef MirroringEndpointGroupAssociationLocationDetails
+    = $EndpointGroupAssociationLocationDetails;
+
+/// The endpoint group's view of a connected deployment group.
+class MirroringEndpointGroupConnectedDeploymentGroup {
+  /// The list of locations where the deployment group is present.
   ///
   /// Output only.
-  core.String? location;
+  core.List<MirroringLocation>? locations;
 
-  /// The current state of the association in this location.
+  /// The connected deployment group's resource name, for example:
+  /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+  ///
+  /// See https://google.aip.dev/124.
   ///
   /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Not set.
-  /// - "ACTIVE" : The association is ready and in sync with the linked endpoint
-  /// group.
-  /// - "OUT_OF_SYNC" : The association is out of sync with the linked endpoint
-  /// group. In most cases, this is a result of a transient issue within the
-  /// system (e.g. an inaccessible location) and the system is expected to
-  /// recover automatically.
-  core.String? state;
+  core.String? name;
 
-  MirroringEndpointGroupAssociationLocationDetails({
-    this.location,
-    this.state,
+  MirroringEndpointGroupConnectedDeploymentGroup({
+    this.locations,
+    this.name,
   });
 
-  MirroringEndpointGroupAssociationLocationDetails.fromJson(core.Map json_)
+  MirroringEndpointGroupConnectedDeploymentGroup.fromJson(core.Map json_)
       : this(
-          location: json_['location'] as core.String?,
-          state: json_['state'] as core.String?,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => MirroringLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!,
-        if (state != null) 'state': state!,
+        if (locations != null) 'locations': locations!,
+        if (name != null) 'name': name!,
       };
 }
+
+/// Details about mirroring in a specific cloud location.
+typedef MirroringLocation = $Location02;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.

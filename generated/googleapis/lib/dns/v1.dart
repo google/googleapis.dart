@@ -3253,6 +3253,9 @@ class ManagedZoneForwardingConfig {
 }
 
 class ManagedZoneForwardingConfigNameServerTarget {
+  /// Fully qualified domain name for the forwarding target.
+  core.String? domainName;
+
   /// Forwarding path for this NameServerTarget.
   ///
   /// If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on
@@ -3277,6 +3280,7 @@ class ManagedZoneForwardingConfigNameServerTarget {
   core.String? kind;
 
   ManagedZoneForwardingConfigNameServerTarget({
+    this.domainName,
     this.forwardingPath,
     this.ipv4Address,
     this.ipv6Address,
@@ -3285,6 +3289,7 @@ class ManagedZoneForwardingConfigNameServerTarget {
 
   ManagedZoneForwardingConfigNameServerTarget.fromJson(core.Map json_)
       : this(
+          domainName: json_['domainName'] as core.String?,
           forwardingPath: json_['forwardingPath'] as core.String?,
           ipv4Address: json_['ipv4Address'] as core.String?,
           ipv6Address: json_['ipv6Address'] as core.String?,
@@ -3292,6 +3297,7 @@ class ManagedZoneForwardingConfigNameServerTarget {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (domainName != null) 'domainName': domainName!,
         if (forwardingPath != null) 'forwardingPath': forwardingPath!,
         if (ipv4Address != null) 'ipv4Address': ipv4Address!,
         if (ipv6Address != null) 'ipv6Address': ipv6Address!,

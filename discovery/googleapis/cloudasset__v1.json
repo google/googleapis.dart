@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250215",
+    "revision": "20250711",
     "rootUrl": "https://cloudasset.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Asset API",
@@ -1325,6 +1325,13 @@
                     },
                     "type": "array"
                 },
+                "assetExceptions": {
+                    "description": "The exceptions of a resource.",
+                    "items": {
+                        "$ref": "AssetException"
+                    },
+                    "type": "array"
+                },
                 "assetType": {
                     "description": "The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.",
                     "type": "string"
@@ -1380,6 +1387,29 @@
                 "resourceOwners": {
                     "$ref": "ResourceOwners",
                     "description": "The resource owners for a resource. Note that this field only contains the members that have \"roles/owner\" role in the resource's IAM Policy."
+                }
+            },
+            "type": "object"
+        },
+        "AssetException": {
+            "description": "An exception of an asset.",
+            "id": "AssetException",
+            "properties": {
+                "details": {
+                    "description": "The details of the exception.",
+                    "type": "string"
+                },
+                "exceptionType": {
+                    "description": "The type of exception.",
+                    "enum": [
+                        "EXCEPTION_TYPE_UNSPECIFIED",
+                        "TRUNCATION"
+                    ],
+                    "enumDescriptions": [
+                        "exception_type is not applicable for the current asset.",
+                        "The asset content is truncated."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1487,7 +1517,7 @@
                     "type": "string"
                 },
                 "force": {
-                    "description": "If the destination table already exists and this flag is `TRUE`, the table will be overwritten by the contents of assets snapshot. If the flag is `FALSE` or unset and the destination table already exists, the export call returns an INVALID_ARGUMEMT error.",
+                    "description": "If the destination table already exists and this flag is `TRUE`, the table will be overwritten by the contents of assets snapshot. If the flag is `FALSE` or unset and the destination table already exists, the export call returns an INVALID_ARGUMENT error.",
                     "type": "boolean"
                 },
                 "partitionSpec": {
@@ -2920,6 +2950,13 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "roles": {
+                    "description": "IAM roles that represent the set of operations that the sources specified in the corresponding EgressFrom. are allowed to perform in this ServicePerimeter.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -3008,6 +3045,13 @@
                 },
                 "resources": {
                     "description": "A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "roles": {
+                    "description": "IAM roles that represent the set of operations that the sources specified in the corresponding IngressFrom are allowed to perform in this ServicePerimeter.",
                     "items": {
                         "type": "string"
                     },

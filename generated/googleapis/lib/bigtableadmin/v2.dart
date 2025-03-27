@@ -33,6 +33,7 @@
 ///     - [ProjectsInstancesMaterializedViewsResource]
 ///     - [ProjectsInstancesTablesResource]
 ///       - [ProjectsInstancesTablesAuthorizedViewsResource]
+///       - [ProjectsInstancesTablesSchemaBundlesResource]
 ///   - [ProjectsLocationsResource]
 library;
 
@@ -108,6 +109,89 @@ class OperationsResource {
       OperationsProjectsResource(_requester);
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern `^operations/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern `^operations/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -835,7 +919,8 @@ class ProjectsInstancesAppProfilesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The unique name of the app profile. Values are of the form
+  /// [name] - The unique name of the app profile, up to 50 characters long.
+  /// Values are of the form
   /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/appProfiles/\[^/\]+$`.
@@ -1720,6 +1805,135 @@ class ProjectsInstancesLogicalViewsResource {
   ProjectsInstancesLogicalViewsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a logical view within an instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent instance where this logical view will be
+  /// created. Format: `projects/{project}/instances/{instance}`.
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [logicalViewId] - Required. The ID to use for the logical view, which will
+  /// become the final component of the logical view's resource name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    LogicalView request,
+    core.String parent, {
+    core.String? logicalViewId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (logicalViewId != null) 'logicalViewId': [logicalViewId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logicalViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a logical view from an instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique name of the logical view to be deleted.
+  /// Format:
+  /// `projects/{project}/instances/{instance}/logicalViews/{logical_view}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/logicalViews/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The current etag of the logical view. If an etag is
+  /// provided and does not match the current etag of the logical view, deletion
+  /// will be blocked and an ABORTED error will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a logical view.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique name of the requested logical view. Values
+  /// are of the form
+  /// `projects/{project}/instances/{instance}/logicalViews/{logical_view}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/logicalViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogicalView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogicalView> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LogicalView.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for an instance resource.
   ///
   /// Returns an empty policy if an instance exists but does not have a policy
@@ -1765,6 +1979,102 @@ class ProjectsInstancesLogicalViewsResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about logical views in an instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The unique name of the instance for which the list of
+  /// logical views is requested. Values are of the form
+  /// `projects/{project}/instances/{instance}`.
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of logical views to return. The
+  /// service may return fewer than this value
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListLogicalViews` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListLogicalViews` must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLogicalViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLogicalViewsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logicalViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLogicalViewsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a logical view within an instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The unique name of the logical view. Format:
+  /// `projects/{project}/instances/{instance}/logicalViews/{logical_view}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/logicalViews/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    LogicalView request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on an instance resource.
@@ -1867,6 +2177,137 @@ class ProjectsInstancesMaterializedViewsResource {
   ProjectsInstancesMaterializedViewsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a materialized view within an instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent instance where this materialized view will
+  /// be created. Format: `projects/{project}/instances/{instance}`.
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [materializedViewId] - Required. The ID to use for the materialized view,
+  /// which will become the final component of the materialized view's resource
+  /// name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    MaterializedView request,
+    core.String parent, {
+    core.String? materializedViewId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (materializedViewId != null)
+        'materializedViewId': [materializedViewId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/materializedViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a materialized view from an instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique name of the materialized view to be deleted.
+  /// Format:
+  /// `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/materializedViews/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The current etag of the materialized view. If an etag
+  /// is provided and does not match the current etag of the materialized view,
+  /// deletion will be blocked and an ABORTED error will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a materialized view.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique name of the requested materialized view.
+  /// Values are of the form
+  /// `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/materializedViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MaterializedView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MaterializedView> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MaterializedView.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for an instance resource.
   ///
   /// Returns an empty policy if an instance exists but does not have a policy
@@ -1912,6 +2353,102 @@ class ProjectsInstancesMaterializedViewsResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about materialized views in an instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The unique name of the instance for which the list of
+  /// materialized views is requested. Values are of the form
+  /// `projects/{project}/instances/{instance}`.
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of materialized views to return.
+  /// The service may return fewer than this value
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListMaterializedViews` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListMaterializedViews` must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMaterializedViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMaterializedViewsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/materializedViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMaterializedViewsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a materialized view within an instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The unique name of the materialized view. Format:
+  /// `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/materializedViews/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    MaterializedView request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on an instance resource.
@@ -2013,6 +2550,8 @@ class ProjectsInstancesTablesResource {
 
   ProjectsInstancesTablesAuthorizedViewsResource get authorizedViews =>
       ProjectsInstancesTablesAuthorizedViewsResource(_requester);
+  ProjectsInstancesTablesSchemaBundlesResource get schemaBundles =>
+      ProjectsInstancesTablesSchemaBundlesResource(_requester);
 
   ProjectsInstancesTablesResource(commons.ApiRequester client)
       : _requester = client;
@@ -2477,6 +3016,9 @@ class ProjectsInstancesTablesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
+  /// [ignoreWarnings] - Optional. If true, ignore safety checks when updating
+  /// the table.
+  ///
   /// [updateMask] - Required. The list of fields to update. A mask specifying
   /// which fields (e.g. `change_stream_config`) in the `table` field should be
   /// updated. This mask is relative to the `table` field, not to the request
@@ -2502,11 +3044,13 @@ class ProjectsInstancesTablesResource {
   async.Future<Operation> patch(
     Table request,
     core.String name, {
+    core.bool? ignoreWarnings,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (ignoreWarnings != null) 'ignoreWarnings': ['${ignoreWarnings}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
@@ -3118,10 +3662,441 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
   }
 }
 
+class ProjectsInstancesTablesSchemaBundlesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstancesTablesSchemaBundlesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new schema bundle in the specified table.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this schema bundle will be
+  /// created. Values are of the form
+  /// `projects/{project}/instances/{instance}/tables/{table}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
+  ///
+  /// [schemaBundleId] - Required. The unique ID to use for the schema bundle,
+  /// which will become the final component of the schema bundle's resource
+  /// name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    SchemaBundle request,
+    core.String parent, {
+    core.String? schemaBundleId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (schemaBundleId != null) 'schemaBundleId': [schemaBundleId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/schemaBundles';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a schema bundle in the specified table.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique name of the schema bundle to delete. Values
+  /// are of the form
+  /// `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/schemaBundles/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The etag of the schema bundle. If this is provided, it
+  /// must match the server's etag. The server returns an ABORTED error on a
+  /// mismatched etag.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets metadata information about the specified schema bundle.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique name of the schema bundle to retrieve.
+  /// Values are of the form
+  /// `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/schemaBundles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SchemaBundle].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SchemaBundle> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SchemaBundle.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a Bigtable resource.
+  ///
+  /// Returns an empty policy if the resource exists but does not have a policy
+  /// set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/schemaBundles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all schema bundles associated with the specified table.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of schema
+  /// bundles. Values are of the form
+  /// `projects/{project}/instances/{instance}/tables/{table}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of schema bundles to return. If the value
+  /// is positive, the server may return at most this value. If unspecified, the
+  /// server will return the maximum allowed page size.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListSchemaBundles`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListSchemaBundles` must match the call that
+  /// provided the page token.
+  ///
+  /// [view] - Optional. The resource_view to be applied to the returned
+  /// SchemaBundles' fields. Defaults to NAME_ONLY.
+  /// Possible string values are:
+  /// - "SCHEMA_BUNDLE_VIEW_UNSPECIFIED" : Uses the default view for each method
+  /// as documented in the request.
+  /// - "NAME_ONLY" : Only populates `name`.
+  /// - "BASIC" : Only populates the SchemaBundle's basic metadata. This
+  /// includes: name, etag, create_time, update_time.
+  /// - "FULL" : Populates every field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSchemaBundlesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSchemaBundlesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/schemaBundles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSchemaBundlesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a schema bundle in the specified table.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The unique name identifying this schema bundle.
+  /// Values are of the form
+  /// `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/schemaBundles/\[^/\]+$`.
+  ///
+  /// [ignoreWarnings] - Optional. If set, ignore the safety checks when
+  /// updating the Schema Bundle. The safety checks are: - The new Schema Bundle
+  /// is backwards compatible with the existing Schema Bundle.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    SchemaBundle request,
+    core.String name, {
+    core.bool? ignoreWarnings,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (ignoreWarnings != null) 'ignoreWarnings': ['${ignoreWarnings}'],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on a Bigtable resource.
+  ///
+  /// Replaces any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/schemaBundles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that the caller has on the specified Bigtable
+  /// resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/schemaBundles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Lists information about the supported locations for this service.
   ///
@@ -3129,6 +4104,10 @@ class ProjectsLocationsResource {
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3152,12 +4131,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3200,7 +4181,7 @@ class AppProfile {
   /// Use a multi-cluster routing policy.
   MultiClusterRoutingUseAny? multiClusterRoutingUseAny;
 
-  /// The unique name of the app profile.
+  /// The unique name of the app profile, up to 50 characters long.
   ///
   /// Values are of the form
   /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
@@ -4963,6 +5944,35 @@ class GoogleBigtableAdminV2TypeBytesEncodingRaw {
 /// Date Values of type `Date` are stored in `Value.date_value`.
 typedef GoogleBigtableAdminV2TypeDate = $Empty;
 
+/// A protobuf enum type.
+///
+/// Values of type `Enum` are stored in `Value.int_value`.
+class GoogleBigtableAdminV2TypeEnum {
+  /// The fully qualified name of the protobuf enum message, including package.
+  ///
+  /// In the format of "foo.bar.EnumMessage".
+  core.String? enumName;
+
+  /// The ID of the schema bundle that this enum is defined in.
+  core.String? schemaBundleId;
+
+  GoogleBigtableAdminV2TypeEnum({
+    this.enumName,
+    this.schemaBundleId,
+  });
+
+  GoogleBigtableAdminV2TypeEnum.fromJson(core.Map json_)
+      : this(
+          enumName: json_['enumName'] as core.String?,
+          schemaBundleId: json_['schemaBundleId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enumName != null) 'enumName': enumName!,
+        if (schemaBundleId != null) 'schemaBundleId': schemaBundleId!,
+      };
+}
+
 /// Float32 Values of type `Float32` are stored in `Value.float_value`.
 typedef GoogleBigtableAdminV2TypeFloat32 = $Empty;
 
@@ -5098,6 +6108,35 @@ class GoogleBigtableAdminV2TypeMap {
       };
 }
 
+/// A protobuf message type.
+///
+/// Values of type `Proto` are stored in `Value.bytes_value`.
+class GoogleBigtableAdminV2TypeProto {
+  /// The fully qualified name of the protobuf message, including package.
+  ///
+  /// In the format of "foo.bar.Message".
+  core.String? messageName;
+
+  /// The ID of the schema bundle that this proto is defined in.
+  core.String? schemaBundleId;
+
+  GoogleBigtableAdminV2TypeProto({
+    this.messageName,
+    this.schemaBundleId,
+  });
+
+  GoogleBigtableAdminV2TypeProto.fromJson(core.Map json_)
+      : this(
+          messageName: json_['messageName'] as core.String?,
+          schemaBundleId: json_['schemaBundleId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (messageName != null) 'messageName': messageName!,
+        if (schemaBundleId != null) 'schemaBundleId': schemaBundleId!,
+      };
+}
+
 /// String Values of type `String` are stored in `Value.string_value`.
 class GoogleBigtableAdminV2TypeString {
   /// The encoding to use when converting to or from lower level types.
@@ -5185,7 +6224,7 @@ class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes {
 }
 
 /// Deprecated: prefer the equivalent `Utf8Bytes`.
-typedef GoogleBigtableAdminV2TypeStringEncodingUtf8Raw = $Shared01;
+typedef GoogleBigtableAdminV2TypeStringEncodingUtf8Raw = $Shared02;
 
 /// A structured data value, consisting of fields which map to dynamically typed
 /// values.
@@ -5872,6 +6911,66 @@ class ListLocationsResponse {
       };
 }
 
+/// Response message for BigtableInstanceAdmin.ListLogicalViews.
+class ListLogicalViewsResponse {
+  /// The list of requested logical views.
+  core.List<LogicalView>? logicalViews;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListLogicalViewsResponse({
+    this.logicalViews,
+    this.nextPageToken,
+  });
+
+  ListLogicalViewsResponse.fromJson(core.Map json_)
+      : this(
+          logicalViews: (json_['logicalViews'] as core.List?)
+              ?.map((value) => LogicalView.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logicalViews != null) 'logicalViews': logicalViews!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for BigtableInstanceAdmin.ListMaterializedViews.
+class ListMaterializedViewsResponse {
+  /// The list of requested materialized views.
+  core.List<MaterializedView>? materializedViews;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListMaterializedViewsResponse({
+    this.materializedViews,
+    this.nextPageToken,
+  });
+
+  ListMaterializedViewsResponse.fromJson(core.Map json_)
+      : this(
+          materializedViews: (json_['materializedViews'] as core.List?)
+              ?.map((value) => MaterializedView.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (materializedViews != null) 'materializedViews': materializedViews!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -5897,6 +6996,36 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// The response for ListSchemaBundles.
+class ListSchemaBundlesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The schema bundles from the specified table.
+  core.List<SchemaBundle>? schemaBundles;
+
+  ListSchemaBundlesResponse({
+    this.nextPageToken,
+    this.schemaBundles,
+  });
+
+  ListSchemaBundlesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          schemaBundles: (json_['schemaBundles'] as core.List?)
+              ?.map((value) => SchemaBundle.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (schemaBundles != null) 'schemaBundles': schemaBundles!,
       };
 }
 
@@ -5933,6 +7062,106 @@ class ListTablesResponse {
 
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
+
+/// A SQL logical view object that can be referenced in SQL queries.
+class LogicalView {
+  /// Set to true to make the LogicalView protected against deletion.
+  ///
+  /// Optional.
+  core.bool? deletionProtection;
+
+  /// The etag for this logical view.
+  ///
+  /// This may be sent on update requests to ensure that the client has an
+  /// up-to-date value before proceeding. The server returns an ABORTED error on
+  /// a mismatched etag.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The unique name of the logical view. Format:
+  /// `projects/{project}/instances/{instance}/logicalViews/{logical_view}`
+  core.String? name;
+
+  /// The logical view's select query.
+  ///
+  /// Required.
+  core.String? query;
+
+  LogicalView({
+    this.deletionProtection,
+    this.etag,
+    this.name,
+    this.query,
+  });
+
+  LogicalView.fromJson(core.Map json_)
+      : this(
+          deletionProtection: json_['deletionProtection'] as core.bool?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          query: json_['query'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deletionProtection != null)
+          'deletionProtection': deletionProtection!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (query != null) 'query': query!,
+      };
+}
+
+/// A materialized view object that can be referenced in SQL queries.
+class MaterializedView {
+  /// Set to true to make the MaterializedView protected against deletion.
+  core.bool? deletionProtection;
+
+  /// The etag for this materialized view.
+  ///
+  /// This may be sent on update requests to ensure that the client has an
+  /// up-to-date value before proceeding. The server returns an ABORTED error on
+  /// a mismatched etag.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The unique name of the materialized view. Format:
+  /// `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`
+  core.String? name;
+
+  /// The materialized view's select query.
+  ///
+  /// Required. Immutable.
+  core.String? query;
+
+  MaterializedView({
+    this.deletionProtection,
+    this.etag,
+    this.name,
+    this.query,
+  });
+
+  MaterializedView.fromJson(core.Map json_)
+      : this(
+          deletionProtection: json_['deletionProtection'] as core.bool?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          query: json_['query'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deletionProtection != null)
+          'deletionProtection': deletionProtection!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (query != null) 'query': query!,
+      };
+}
 
 /// A create, update, or delete of a particular column family.
 class Modification {
@@ -6260,6 +7489,44 @@ class Policy {
       };
 }
 
+/// Represents a protobuf schema.
+class ProtoSchema {
+  /// Contains a protobuf-serialized
+  /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto),
+  /// which could include multiple proto files.
+  ///
+  /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and
+  /// run `protoc` with `--include_imports` and `--descriptor_set_out`. For
+  /// example, to generate for moon/shot/app.proto, run ``` $protoc
+  /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \
+  /// --descriptor_set_out=descriptors.pb \ moon/shot/app.proto ``` For more
+  /// details, see protobuffer
+  /// [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
+  ///
+  /// Required.
+  core.String? protoDescriptors;
+  core.List<core.int> get protoDescriptorsAsBytes =>
+      convert.base64.decode(protoDescriptors!);
+
+  set protoDescriptorsAsBytes(core.List<core.int> bytes_) {
+    protoDescriptors =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  ProtoSchema({
+    this.protoDescriptors,
+  });
+
+  ProtoSchema.fromJson(core.Map json_)
+      : this(
+          protoDescriptors: json_['protoDescriptors'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (protoDescriptors != null) 'protoDescriptors': protoDescriptors!,
+      };
+}
+
 /// Information about a table restore.
 class RestoreInfo {
   /// Information about the backup used to restore the table.
@@ -6336,6 +7603,49 @@ class RestoreTableRequest {
 /// be unaffected by the new cluster. Moreover, clusters specified in the
 /// cluster group cannot be deleted unless removed from the cluster group.
 typedef RowAffinity = $Empty;
+
+/// A named collection of related schemas.
+class SchemaBundle {
+  /// The etag for this schema bundle.
+  ///
+  /// This may be sent on update and delete requests to ensure the client has an
+  /// up-to-date value before proceeding. The server returns an ABORTED error on
+  /// a mismatched etag.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The unique name identifying this schema bundle. Values are of the form
+  /// `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}`
+  core.String? name;
+
+  /// Schema for Protobufs.
+  ProtoSchema? protoSchema;
+
+  SchemaBundle({
+    this.etag,
+    this.name,
+    this.protoSchema,
+  });
+
+  SchemaBundle.fromJson(core.Map json_)
+      : this(
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          protoSchema: json_.containsKey('protoSchema')
+              ? ProtoSchema.fromJson(
+                  json_['protoSchema'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (protoSchema != null) 'protoSchema': protoSchema!,
+      };
+}
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
@@ -6536,6 +7846,43 @@ class Table {
   /// Output only.
   RestoreInfo? restoreInfo;
 
+  /// The row key schema for this table.
+  ///
+  /// The schema is used to decode the raw row key bytes into a structured
+  /// format. The order of field declarations in this schema is important, as it
+  /// reflects how the raw row key bytes are structured. Currently, this only
+  /// affects how the key is read via a GoogleSQL query from the ExecuteQuery
+  /// API. For a SQL query, the _key column is still read as raw bytes. But
+  /// queries can reference the key fields by name, which will be decoded from
+  /// _key using provided type and encoding. Queries that reference key fields
+  /// will fail if they encounter an invalid row key. For example, if _key =
+  /// "some_id#2024-04-30#\x00\x13\x00\xf3" with the following schema: { fields
+  /// { field_name: "id" type { string { encoding: utf8_bytes {} } } } fields {
+  /// field_name: "date" type { string { encoding: utf8_bytes {} } } } fields {
+  /// field_name: "product_code" type { int64 { encoding: big_endian_bytes {} }
+  /// } } encoding { delimited_bytes { delimiter: "#" } } } The decoded key
+  /// parts would be: id = "some_id", date = "2024-04-30", product_code =
+  /// 1245427 The query "SELECT _key, product_code FROM table" will return two
+  /// columns: /------------------------------------------------------\ | _key |
+  /// product_code | | --------------------------------------|--------------| |
+  /// "some_id#2024-04-30#\x00\x13\x00\xf3" | 1245427 |
+  /// \------------------------------------------------------/ The schema has
+  /// the following invariants: (1) The decoded field values are
+  /// order-preserved. For read, the field values will be decoded in sorted mode
+  /// from the raw bytes. (2) Every field in the schema must specify a non-empty
+  /// name. (3) Every field must specify a type with an associated encoding. The
+  /// type is limited to scalar types only: Array, Map, Aggregate, and Struct
+  /// are not allowed. (4) The field names must not collide with existing column
+  /// family names and reserved keywords "_key" and "_timestamp". The following
+  /// update operations are allowed for row_key_schema: - Update from an empty
+  /// schema to a new schema. - Remove the existing schema. This operation
+  /// requires setting the `ignore_warnings` flag to `true`, since it might be a
+  /// backward incompatible change. Without the flag, the update request will
+  /// fail with an INVALID_ARGUMENT error. Any other row key schema update
+  /// operation (e.g. update existing schema columns names or types) is
+  /// currently unsupported.
+  GoogleBigtableAdminV2TypeStruct? rowKeySchema;
+
   /// Only available with STATS_VIEW, this includes summary statistics about the
   /// entire table contents.
   ///
@@ -6544,6 +7891,15 @@ class Table {
   ///
   /// Output only.
   TableStats? stats;
+
+  /// Rules to specify what data is stored in each storage tier.
+  ///
+  /// Different tiers store data differently, providing different trade-offs
+  /// between cost and performance. Different parts of a table can be stored
+  /// separately on different tiers. If a config is specified, tiered storage is
+  /// enabled for this table. Otherwise, tiered storage is disabled. Only SSD
+  /// instances can configure tiered storage.
+  TieredStorageConfig? tieredStorageConfig;
 
   Table({
     this.automatedBackupPolicy,
@@ -6554,7 +7910,9 @@ class Table {
     this.granularity,
     this.name,
     this.restoreInfo,
+    this.rowKeySchema,
     this.stats,
+    this.tieredStorageConfig,
   });
 
   Table.fromJson(core.Map json_)
@@ -6592,9 +7950,17 @@ class Table {
               ? RestoreInfo.fromJson(
                   json_['restoreInfo'] as core.Map<core.String, core.dynamic>)
               : null,
+          rowKeySchema: json_.containsKey('rowKeySchema')
+              ? GoogleBigtableAdminV2TypeStruct.fromJson(
+                  json_['rowKeySchema'] as core.Map<core.String, core.dynamic>)
+              : null,
           stats: json_.containsKey('stats')
               ? TableStats.fromJson(
                   json_['stats'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tieredStorageConfig: json_.containsKey('tieredStorageConfig')
+              ? TieredStorageConfig.fromJson(json_['tieredStorageConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6610,7 +7976,10 @@ class Table {
         if (granularity != null) 'granularity': granularity!,
         if (name != null) 'name': name!,
         if (restoreInfo != null) 'restoreInfo': restoreInfo!,
+        if (rowKeySchema != null) 'rowKeySchema': rowKeySchema!,
         if (stats != null) 'stats': stats!,
+        if (tieredStorageConfig != null)
+          'tieredStorageConfig': tieredStorageConfig!,
       };
 }
 
@@ -6680,6 +8049,56 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
+/// Config for tiered storage.
+///
+/// A valid config must have a valid TieredStorageRule. Otherwise the whole
+/// TieredStorageConfig must be unset. By default all data is stored in the SSD
+/// tier (only SSD instances can configure tiered storage).
+class TieredStorageConfig {
+  /// Rule to specify what data is stored in the infrequent access(IA) tier.
+  ///
+  /// The IA tier allows storing more data per node with reduced performance.
+  TieredStorageRule? infrequentAccess;
+
+  TieredStorageConfig({
+    this.infrequentAccess,
+  });
+
+  TieredStorageConfig.fromJson(core.Map json_)
+      : this(
+          infrequentAccess: json_.containsKey('infrequentAccess')
+              ? TieredStorageRule.fromJson(json_['infrequentAccess']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (infrequentAccess != null) 'infrequentAccess': infrequentAccess!,
+      };
+}
+
+/// Rule to specify what data is stored in a storage tier.
+class TieredStorageRule {
+  /// Include cells older than the given age.
+  ///
+  /// For the infrequent access tier, this value must be at least 30 days.
+  core.String? includeIfOlderThan;
+
+  TieredStorageRule({
+    this.includeIfOlderThan,
+  });
+
+  TieredStorageRule.fromJson(core.Map json_)
+      : this(
+          includeIfOlderThan: json_['includeIfOlderThan'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (includeIfOlderThan != null)
+          'includeIfOlderThan': includeIfOlderThan!,
+      };
+}
+
 /// `Type` represents the type of data that is written to, read from, or stored
 /// in Bigtable.
 ///
@@ -6714,6 +8133,9 @@ class Type {
   /// Date
   GoogleBigtableAdminV2TypeDate? dateType;
 
+  /// Enum
+  GoogleBigtableAdminV2TypeEnum? enumType;
+
   /// Float32
   GoogleBigtableAdminV2TypeFloat32? float32Type;
 
@@ -6725,6 +8147,9 @@ class Type {
 
   /// Map
   GoogleBigtableAdminV2TypeMap? mapType;
+
+  /// Proto
+  GoogleBigtableAdminV2TypeProto? protoType;
 
   /// String
   GoogleBigtableAdminV2TypeString? stringType;
@@ -6741,10 +8166,12 @@ class Type {
     this.boolType,
     this.bytesType,
     this.dateType,
+    this.enumType,
     this.float32Type,
     this.float64Type,
     this.int64Type,
     this.mapType,
+    this.protoType,
     this.stringType,
     this.structType,
     this.timestampType,
@@ -6772,6 +8199,10 @@ class Type {
               ? GoogleBigtableAdminV2TypeDate.fromJson(
                   json_['dateType'] as core.Map<core.String, core.dynamic>)
               : null,
+          enumType: json_.containsKey('enumType')
+              ? GoogleBigtableAdminV2TypeEnum.fromJson(
+                  json_['enumType'] as core.Map<core.String, core.dynamic>)
+              : null,
           float32Type: json_.containsKey('float32Type')
               ? GoogleBigtableAdminV2TypeFloat32.fromJson(
                   json_['float32Type'] as core.Map<core.String, core.dynamic>)
@@ -6787,6 +8218,10 @@ class Type {
           mapType: json_.containsKey('mapType')
               ? GoogleBigtableAdminV2TypeMap.fromJson(
                   json_['mapType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          protoType: json_.containsKey('protoType')
+              ? GoogleBigtableAdminV2TypeProto.fromJson(
+                  json_['protoType'] as core.Map<core.String, core.dynamic>)
               : null,
           stringType: json_.containsKey('stringType')
               ? GoogleBigtableAdminV2TypeString.fromJson(
@@ -6808,10 +8243,12 @@ class Type {
         if (boolType != null) 'boolType': boolType!,
         if (bytesType != null) 'bytesType': bytesType!,
         if (dateType != null) 'dateType': dateType!,
+        if (enumType != null) 'enumType': enumType!,
         if (float32Type != null) 'float32Type': float32Type!,
         if (float64Type != null) 'float64Type': float64Type!,
         if (int64Type != null) 'int64Type': int64Type!,
         if (mapType != null) 'mapType': mapType!,
+        if (protoType != null) 'protoType': protoType!,
         if (stringType != null) 'stringType': stringType!,
         if (structType != null) 'structType': structType!,
         if (timestampType != null) 'timestampType': timestampType!,

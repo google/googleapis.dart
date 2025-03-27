@@ -24,16 +24,3 @@ index 8854b81c9..a943922e7 100644
      "endpoints": [
          {
              "description": "Regional Endpoint",
-diff --git a/discovery/googleapis/versionhistory__v1.json b/discovery/googleapis/versionhistory__v1.json
-index b58039a1c..96384ec58 100644
---- a/discovery/googleapis/versionhistory__v1.json
-+++ b/discovery/googleapis/versionhistory__v1.json
-@@ -5,7 +5,7 @@
-     "canonicalName": "Version History",
-     "description": "Version History API - Prod",
-     "discoveryVersion": "v1",
--    "documentationLink": "https://developers.chrome.com/versionhistory",
-+    "documentationLink": "https://developer.chrome.com/docs/web-platform/versionhistory/guide",
-     "icons": {
-         "x16": "http://www.google.com/images/icons/product/search-16.gif",
-         "x32": "http://www.google.com/images/icons/product/search-32.gif"

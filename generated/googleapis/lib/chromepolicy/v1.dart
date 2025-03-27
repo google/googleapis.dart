@@ -1454,6 +1454,9 @@ class GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest {
 }
 
 /// A network setting contains network configurations.
+///
+/// It adheres to the PolicyAPI formats defined under the namespace
+/// chrome.networks.{wifi/ethernet/cellular/vpn}.Details
 class GoogleChromePolicyVersionsV1NetworkSetting {
   /// The fully qualified name of the network setting.
   core.String? policySchema;
@@ -2497,12 +2500,20 @@ class Proto2DescriptorProto {
   core.List<Proto2DescriptorProto>? nestedType;
   core.List<Proto2OneofDescriptorProto>? oneofDecl;
 
+  /// Support for `export` and `local` keywords on enums.
+  /// Possible string values are:
+  /// - "VISIBILITY_UNSET"
+  /// - "VISIBILITY_LOCAL"
+  /// - "VISIBILITY_EXPORT"
+  core.String? visibility;
+
   Proto2DescriptorProto({
     this.enumType,
     this.field,
     this.name,
     this.nestedType,
     this.oneofDecl,
+    this.visibility,
   });
 
   Proto2DescriptorProto.fromJson(core.Map json_)
@@ -2524,6 +2535,7 @@ class Proto2DescriptorProto {
               ?.map((value) => Proto2OneofDescriptorProto.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          visibility: json_['visibility'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2532,6 +2544,7 @@ class Proto2DescriptorProto {
         if (name != null) 'name': name!,
         if (nestedType != null) 'nestedType': nestedType!,
         if (oneofDecl != null) 'oneofDecl': oneofDecl!,
+        if (visibility != null) 'visibility': visibility!,
       };
 }
 
@@ -2540,9 +2553,17 @@ class Proto2EnumDescriptorProto {
   core.String? name;
   core.List<Proto2EnumValueDescriptorProto>? value;
 
+  /// Support for `export` and `local` keywords on enums.
+  /// Possible string values are:
+  /// - "VISIBILITY_UNSET"
+  /// - "VISIBILITY_LOCAL"
+  /// - "VISIBILITY_EXPORT"
+  core.String? visibility;
+
   Proto2EnumDescriptorProto({
     this.name,
     this.value,
+    this.visibility,
   });
 
   Proto2EnumDescriptorProto.fromJson(core.Map json_)
@@ -2552,11 +2573,13 @@ class Proto2EnumDescriptorProto {
               ?.map((value) => Proto2EnumValueDescriptorProto.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          visibility: json_['visibility'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
+        if (visibility != null) 'visibility': visibility!,
       };
 }
 
@@ -2715,10 +2738,10 @@ class Proto2FieldDescriptorProto {
 
 /// Describes a complete .proto file.
 class Proto2FileDescriptorProto {
-  /// BEGIN GOOGLE-INTERNAL TODO(b/297898292) Deprecate and remove this field in
+  /// copybara:strip_begin TODO(b/297898292) Deprecate and remove this field in
   /// favor of enums.
   ///
-  /// END GOOGLE-INTERNAL
+  /// copybara:strip_end
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -2730,6 +2753,12 @@ class Proto2FileDescriptorProto {
 
   /// file name, relative to root of source tree
   core.String? name;
+
+  /// Names of files imported by this file purely for the purpose of providing
+  /// option extensions.
+  ///
+  /// These are excluded from the dependency list above.
+  core.List<core.String>? optionDependency;
 
   /// e.g. "foo", "foo.bar", etc.
   core.String? package;
@@ -2748,6 +2777,7 @@ class Proto2FileDescriptorProto {
     this.enumType,
     this.messageType,
     this.name,
+    this.optionDependency,
     this.package,
     this.syntax,
   });
@@ -2764,6 +2794,9 @@ class Proto2FileDescriptorProto {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
+          optionDependency: (json_['optionDependency'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           package: json_['package'] as core.String?,
           syntax: json_['syntax'] as core.String?,
         );
@@ -2773,6 +2806,7 @@ class Proto2FileDescriptorProto {
         if (enumType != null) 'enumType': enumType!,
         if (messageType != null) 'messageType': messageType!,
         if (name != null) 'name': name!,
+        if (optionDependency != null) 'optionDependency': optionDependency!,
         if (package != null) 'package': package!,
         if (syntax != null) 'syntax': syntax!,
       };

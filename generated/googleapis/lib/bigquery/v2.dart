@@ -190,11 +190,11 @@ class DatasetsResource {
   /// Possible string values are:
   /// - "DATASET_VIEW_UNSPECIFIED" : The default value. Default to the FULL
   /// view.
-  /// - "METADATA" : Includes metadata information for the dataset, such as
-  /// location, etag, lastModifiedTime, etc.
-  /// - "ACL" : Includes ACL information for the dataset, which defines dataset
+  /// - "METADATA" : View metadata information for the dataset, such as
+  /// friendlyName, description, labels, etc.
+  /// - "ACL" : View ACL information for the dataset, which defines dataset
   /// access for one or more entities.
-  /// - "FULL" : Includes both dataset metadata and ACL information.
+  /// - "FULL" : View both dataset metadata and ACL information.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -382,6 +382,18 @@ class DatasetsResource {
   /// (https://cloud.google.com/iam/docs/policies#versions) and will be used to
   /// set policy in IAM.
   ///
+  /// [updateMode] - Optional. Specifies the fields of dataset that update/patch
+  /// operation is targeting By default, both metadata and ACL fields are
+  /// updated.
+  /// Possible string values are:
+  /// - "UPDATE_MODE_UNSPECIFIED" : The default value. Default to the
+  /// UPDATE_FULL.
+  /// - "UPDATE_METADATA" : Includes metadata information for the dataset, such
+  /// as friendlyName, description, labels, etc.
+  /// - "UPDATE_ACL" : Includes ACL information for the dataset, which defines
+  /// dataset access for one or more entities.
+  /// - "UPDATE_FULL" : Includes both dataset metadata and ACL information.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -397,12 +409,14 @@ class DatasetsResource {
     core.String projectId,
     core.String datasetId, {
     core.int? accessPolicyVersion,
+    core.String? updateMode,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (accessPolicyVersion != null)
         'accessPolicyVersion': ['${accessPolicyVersion}'],
+      if (updateMode != null) 'updateMode': [updateMode],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -503,6 +517,18 @@ class DatasetsResource {
   /// (https://cloud.google.com/iam/docs/policies#versions) and will be used to
   /// set policy in IAM.
   ///
+  /// [updateMode] - Optional. Specifies the fields of dataset that update/patch
+  /// operation is targeting By default, both metadata and ACL fields are
+  /// updated.
+  /// Possible string values are:
+  /// - "UPDATE_MODE_UNSPECIFIED" : The default value. Default to the
+  /// UPDATE_FULL.
+  /// - "UPDATE_METADATA" : Includes metadata information for the dataset, such
+  /// as friendlyName, description, labels, etc.
+  /// - "UPDATE_ACL" : Includes ACL information for the dataset, which defines
+  /// dataset access for one or more entities.
+  /// - "UPDATE_FULL" : Includes both dataset metadata and ACL information.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -518,12 +544,14 @@ class DatasetsResource {
     core.String projectId,
     core.String datasetId, {
     core.int? accessPolicyVersion,
+    core.String? updateMode,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (accessPolicyVersion != null)
         'accessPolicyVersion': ['${accessPolicyVersion}'],
+      if (updateMode != null) 'updateMode': [updateMode],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -721,6 +749,17 @@ class JobsResource {
   /// [jobId] - Required. Job ID of the query job.
   /// Value must have pattern `^\[^/\]+$`.
   ///
+  /// [formatOptions_timestampOutputFormat] - Optional. The API output format
+  /// for a timestamp. This offers more explicit control over the timestamp
+  /// output format as compared to the existing `use_int64_timestamp` option.
+  /// Possible string values are:
+  /// - "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED" : Corresponds to default API
+  /// output behavior, which is FLOAT64.
+  /// - "FLOAT64" : Timestamp is output as float64 seconds since Unix epoch.
+  /// - "INT64" : Timestamp is output as int64 microseconds since Unix epoch.
+  /// - "ISO8601_STRING" : Timestamp is output as ISO 8601 String
+  /// ("YYYY-MM-DDTHH:MM:SS.FFFFFFFFFFFFZ").
+  ///
   /// [formatOptions_useInt64Timestamp] - Optional. Output timestamp as usec
   /// int64. Default is false.
   ///
@@ -763,6 +802,7 @@ class JobsResource {
   async.Future<GetQueryResultsResponse> getQueryResults(
     core.String projectId,
     core.String jobId, {
+    core.String? formatOptions_timestampOutputFormat,
     core.bool? formatOptions_useInt64Timestamp,
     core.String? location,
     core.int? maxResults,
@@ -772,6 +812,10 @@ class JobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (formatOptions_timestampOutputFormat != null)
+        'formatOptions.timestampOutputFormat': [
+          formatOptions_timestampOutputFormat
+        ],
       if (formatOptions_useInt64Timestamp != null)
         'formatOptions.useInt64Timestamp': [
           '${formatOptions_useInt64Timestamp}'
@@ -1616,6 +1660,56 @@ class RoutinesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/datasets/\[^/\]+/routines/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates information in an existing routine.
   ///
   /// The update method replaces the entire Routine resource.
@@ -2201,6 +2295,17 @@ class TabledataResource {
   /// [tableId] - Required. Table id of the table to list.
   /// Value must have pattern `^\[^/\]+$`.
   ///
+  /// [formatOptions_timestampOutputFormat] - Optional. The API output format
+  /// for a timestamp. This offers more explicit control over the timestamp
+  /// output format as compared to the existing `use_int64_timestamp` option.
+  /// Possible string values are:
+  /// - "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED" : Corresponds to default API
+  /// output behavior, which is FLOAT64.
+  /// - "FLOAT64" : Timestamp is output as float64 seconds since Unix epoch.
+  /// - "INT64" : Timestamp is output as int64 microseconds since Unix epoch.
+  /// - "ISO8601_STRING" : Timestamp is output as ISO 8601 String
+  /// ("YYYY-MM-DDTHH:MM:SS.FFFFFFFFFFFFZ").
+  ///
   /// [formatOptions_useInt64Timestamp] - Optional. Output timestamp as usec
   /// int64. Default is false.
   ///
@@ -2229,6 +2334,7 @@ class TabledataResource {
     core.String projectId,
     core.String datasetId,
     core.String tableId, {
+    core.String? formatOptions_timestampOutputFormat,
     core.bool? formatOptions_useInt64Timestamp,
     core.int? maxResults,
     core.String? pageToken,
@@ -2237,6 +2343,10 @@ class TabledataResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (formatOptions_timestampOutputFormat != null)
+        'formatOptions.timestampOutputFormat': [
+          formatOptions_timestampOutputFormat
+        ],
       if (formatOptions_useInt64Timestamp != null)
         'formatOptions.useInt64Timestamp': [
           '${formatOptions_useInt64Timestamp}'
@@ -3595,7 +3705,8 @@ class BiEngineStatistics {
       };
 }
 
-/// Configuration for BigLake managed tables.
+/// Configuration for BigQuery tables for Apache Iceberg (formerly BigLake
+/// managed tables.)
 class BigLakeConfiguration {
   /// The connection specifying the credentials to be used to read and write to
   /// external storage, such as Cloud Storage.
@@ -4640,6 +4751,18 @@ class CsvOptions {
   /// Optional.
   core.String? nullMarker;
 
+  /// A list of strings represented as SQL NULL value in a CSV file.
+  ///
+  /// null_marker and null_markers can't be set at the same time. If null_marker
+  /// is set, null_markers has to be not set. If null_markers is set,
+  /// null_marker has to be not set. If both null_marker and null_markers are
+  /// set at the same time, a user error would be thrown. Any strings listed in
+  /// null_markers, including empty string would be interpreted as SQL NULL.
+  /// This applies to all column types.
+  ///
+  /// Optional.
+  core.List<core.String>? nullMarkers;
+
   /// Indicates if the embedded ASCII control characters (the first 32
   /// characters in the ASCII-table, from '\x00' to '\x1F') are preserved.
   ///
@@ -4678,15 +4801,30 @@ class CsvOptions {
   /// Optional.
   core.String? skipLeadingRows;
 
+  /// Controls the strategy used to match loaded columns to the schema.
+  ///
+  /// If not set, a sensible default is chosen based on how the schema is
+  /// provided. If autodetect is used, then columns are matched by name.
+  /// Otherwise, columns are matched by position. This is done to keep the
+  /// behavior backward-compatible. Acceptable values are: POSITION - matches by
+  /// position. This assumes that the columns are ordered the same way as the
+  /// schema. NAME - matches by name. This reads the header row as column names
+  /// and reorders columns to match the field names in the schema.
+  ///
+  /// Optional.
+  core.String? sourceColumnMatch;
+
   CsvOptions({
     this.allowJaggedRows,
     this.allowQuotedNewlines,
     this.encoding,
     this.fieldDelimiter,
     this.nullMarker,
+    this.nullMarkers,
     this.preserveAsciiControlCharacters,
     this.quote,
     this.skipLeadingRows,
+    this.sourceColumnMatch,
   });
 
   CsvOptions.fromJson(core.Map json_)
@@ -4696,10 +4834,14 @@ class CsvOptions {
           encoding: json_['encoding'] as core.String?,
           fieldDelimiter: json_['fieldDelimiter'] as core.String?,
           nullMarker: json_['nullMarker'] as core.String?,
+          nullMarkers: (json_['nullMarkers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           preserveAsciiControlCharacters:
               json_['preserveAsciiControlCharacters'] as core.bool?,
           quote: json_['quote'] as core.String?,
           skipLeadingRows: json_['skipLeadingRows'] as core.String?,
+          sourceColumnMatch: json_['sourceColumnMatch'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4709,15 +4851,32 @@ class CsvOptions {
         if (encoding != null) 'encoding': encoding!,
         if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
         if (nullMarker != null) 'nullMarker': nullMarker!,
+        if (nullMarkers != null) 'nullMarkers': nullMarkers!,
         if (preserveAsciiControlCharacters != null)
           'preserveAsciiControlCharacters': preserveAsciiControlCharacters!,
         if (quote != null) 'quote': quote!,
         if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows!,
+        if (sourceColumnMatch != null) 'sourceColumnMatch': sourceColumnMatch!,
       };
 }
 
 /// Options for data format adjustments.
 class DataFormatOptions {
+  /// The API output format for a timestamp.
+  ///
+  /// This offers more explicit control over the timestamp output format as
+  /// compared to the existing `use_int64_timestamp` option.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED" : Corresponds to default API
+  /// output behavior, which is FLOAT64.
+  /// - "FLOAT64" : Timestamp is output as float64 seconds since Unix epoch.
+  /// - "INT64" : Timestamp is output as int64 microseconds since Unix epoch.
+  /// - "ISO8601_STRING" : Timestamp is output as ISO 8601 String
+  /// ("YYYY-MM-DDTHH:MM:SS.FFFFFFFFFFFFZ").
+  core.String? timestampOutputFormat;
+
   /// Output timestamp as usec int64.
   ///
   /// Default is false.
@@ -4726,15 +4885,19 @@ class DataFormatOptions {
   core.bool? useInt64Timestamp;
 
   DataFormatOptions({
+    this.timestampOutputFormat,
     this.useInt64Timestamp,
   });
 
   DataFormatOptions.fromJson(core.Map json_)
       : this(
+          timestampOutputFormat: json_['timestampOutputFormat'] as core.String?,
           useInt64Timestamp: json_['useInt64Timestamp'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (timestampOutputFormat != null)
+          'timestampOutputFormat': timestampOutputFormat!,
         if (useInt64Timestamp != null) 'useInt64Timestamp': useInt64Timestamp!,
       };
 }
@@ -5461,6 +5624,14 @@ class DatasetListDatasets {
   /// project ID or dataset ID.
   DatasetReference? datasetReference;
 
+  /// Reference to a read-only external dataset defined in data catalogs outside
+  /// of BigQuery.
+  ///
+  /// Filled out when the dataset type is EXTERNAL.
+  ///
+  /// Output only.
+  ExternalDatasetReference? externalDatasetReference;
+
   /// An alternate name for the dataset.
   ///
   /// The friendly name is purely decorative in nature.
@@ -5484,6 +5655,7 @@ class DatasetListDatasets {
 
   DatasetListDatasets({
     this.datasetReference,
+    this.externalDatasetReference,
     this.friendlyName,
     this.id,
     this.kind,
@@ -5497,6 +5669,12 @@ class DatasetListDatasets {
               ? DatasetReference.fromJson(json_['datasetReference']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          externalDatasetReference:
+              json_.containsKey('externalDatasetReference')
+                  ? ExternalDatasetReference.fromJson(
+                      json_['externalDatasetReference']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           friendlyName: json_['friendlyName'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -5512,6 +5690,8 @@ class DatasetListDatasets {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datasetReference != null) 'datasetReference': datasetReference!,
+        if (externalDatasetReference != null)
+          'externalDatasetReference': externalDatasetReference!,
         if (friendlyName != null) 'friendlyName': friendlyName!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -6977,6 +7157,76 @@ class ExternalDatasetReference {
       };
 }
 
+/// Options for the runtime of the external system.
+class ExternalRuntimeOptions {
+  /// Amount of CPU provisioned for a Python UDF container instance.
+  ///
+  /// For more information, see
+  /// [Configure container limits for Python UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+  ///
+  /// Optional.
+  core.double? containerCpu;
+
+  /// Amount of memory provisioned for a Python UDF container instance.
+  ///
+  /// Format: {number}{unit} where unit is one of "M", "G", "Mi" and "Gi" (e.g.
+  /// 1G, 512Mi). If not specified, the default value is 512Mi. For more
+  /// information, see
+  /// [Configure container limits for Python UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+  ///
+  /// Optional.
+  core.String? containerMemory;
+
+  /// Maximum number of rows in each batch sent to the external runtime.
+  ///
+  /// If absent or if 0, BigQuery dynamically decides the number of rows in a
+  /// batch.
+  ///
+  /// Optional.
+  core.String? maxBatchingRows;
+
+  /// Fully qualified name of the connection whose service account will be used
+  /// to execute the code in the container.
+  ///
+  /// Format:
+  /// ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+  ///
+  /// Optional.
+  core.String? runtimeConnection;
+
+  /// Language runtime version.
+  ///
+  /// Example: `python-3.11`.
+  ///
+  /// Optional.
+  core.String? runtimeVersion;
+
+  ExternalRuntimeOptions({
+    this.containerCpu,
+    this.containerMemory,
+    this.maxBatchingRows,
+    this.runtimeConnection,
+    this.runtimeVersion,
+  });
+
+  ExternalRuntimeOptions.fromJson(core.Map json_)
+      : this(
+          containerCpu: (json_['containerCpu'] as core.num?)?.toDouble(),
+          containerMemory: json_['containerMemory'] as core.String?,
+          maxBatchingRows: json_['maxBatchingRows'] as core.String?,
+          runtimeConnection: json_['runtimeConnection'] as core.String?,
+          runtimeVersion: json_['runtimeVersion'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containerCpu != null) 'containerCpu': containerCpu!,
+        if (containerMemory != null) 'containerMemory': containerMemory!,
+        if (maxBatchingRows != null) 'maxBatchingRows': maxBatchingRows!,
+        if (runtimeConnection != null) 'runtimeConnection': runtimeConnection!,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+      };
+}
+
 /// The external service cost is a portion of the total cost, these costs are
 /// not additive with total_bytes_billed.
 ///
@@ -6989,6 +7239,12 @@ class ExternalDatasetReference {
 /// amount of US dollars. Services may not directly correlate to these metrics,
 /// but these are the equivalents for billing purposes. Output only.
 class ExternalServiceCost {
+  /// The billing method used for the external job.
+  ///
+  /// This field is only used when billed on the services sku, set to
+  /// "SERVICES_SKU". Otherwise, it is unspecified for backward compatibility.
+  core.String? billingMethod;
+
   /// External service cost in terms of bigquery bytes billed.
   core.String? bytesBilled;
 
@@ -7008,6 +7264,7 @@ class ExternalServiceCost {
   core.String? slotMs;
 
   ExternalServiceCost({
+    this.billingMethod,
     this.bytesBilled,
     this.bytesProcessed,
     this.externalService,
@@ -7017,6 +7274,7 @@ class ExternalServiceCost {
 
   ExternalServiceCost.fromJson(core.Map json_)
       : this(
+          billingMethod: json_['billingMethod'] as core.String?,
           bytesBilled: json_['bytesBilled'] as core.String?,
           bytesProcessed: json_['bytesProcessed'] as core.String?,
           externalService: json_['externalService'] as core.String?,
@@ -7025,6 +7283,7 @@ class ExternalServiceCost {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (billingMethod != null) 'billingMethod': billingMethod!,
         if (bytesBilled != null) 'bytesBilled': bytesBilled!,
         if (bytesProcessed != null) 'bytesProcessed': bytesProcessed!,
         if (externalService != null) 'externalService': externalService!,
@@ -7878,6 +8137,11 @@ class IndexUnusedReason {
   /// - "ESTIMATED_PERFORMANCE_GAIN_TOO_LOW" : Indicates that the estimated
   /// performance gain from using the search index is too low for the given
   /// search query.
+  /// - "COLUMN_METADATA_INDEX_NOT_USED" : Indicates that the column metadata
+  /// index (which the search index depends on) is not used. User can refer to
+  /// the
+  /// [column metadata index usage](https://cloud.google.com/bigquery/docs/metadata-indexing-managed-tables#view_column_metadata_index_usage)
+  /// for more details on why it was not used.
   /// - "NOT_SUPPORTED_IN_STANDARD_EDITION" : Indicates that search indexes can
   /// not be used for search query with STANDARD edition.
   /// - "INDEX_SUPPRESSED_BY_FUNCTION_OPTION" : Indicates that an option in the
@@ -8158,8 +8422,6 @@ class Job {
 
   /// The reason why a Job was created.
   ///
-  /// [Preview](https://cloud.google.com/products/#product-launch-stages)
-  ///
   /// Output only.
   JobCreationReason? jobCreationReason;
 
@@ -8342,6 +8604,16 @@ class JobConfiguration {
   /// \[Pick one\] Configures a query job.
   JobConfigurationQuery? query;
 
+  /// The reservation that job would use.
+  ///
+  /// User can specify a reservation to execute the job. If reservation is not
+  /// set, reservation is determined based on the rules defined by the
+  /// reservation assignments. The expected format is
+  /// `projects/{project}/locations/{location}/reservations/{reservation}`.
+  ///
+  /// Optional.
+  core.String? reservation;
+
   JobConfiguration({
     this.copy,
     this.dryRun,
@@ -8351,6 +8623,7 @@ class JobConfiguration {
     this.labels,
     this.load,
     this.query,
+    this.reservation,
   });
 
   JobConfiguration.fromJson(core.Map json_)
@@ -8381,6 +8654,7 @@ class JobConfiguration {
               ? JobConfigurationQuery.fromJson(
                   json_['query'] as core.Map<core.String, core.dynamic>)
               : null,
+          reservation: json_['reservation'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8392,6 +8666,7 @@ class JobConfiguration {
         if (labels != null) 'labels': labels!,
         if (load != null) 'load': load!,
         if (query != null) 'query': query!,
+        if (reservation != null) 'reservation': reservation!,
       };
 }
 
@@ -8761,6 +9036,18 @@ class JobConfigurationLoad {
   /// Optional.
   core.String? nullMarker;
 
+  /// A list of strings represented as SQL NULL value in a CSV file.
+  ///
+  /// null_marker and null_markers can't be set at the same time. If null_marker
+  /// is set, null_markers has to be not set. If null_markers is set,
+  /// null_marker has to be not set. If both null_marker and null_markers are
+  /// set at the same time, a user error would be thrown. Any strings listed in
+  /// null_markers, including empty string would be interpreted as SQL NULL.
+  /// This applies to all column types.
+  ///
+  /// Optional.
+  core.List<core.String>? nullMarkers;
+
   /// Additional properties to set if sourceFormat is set to PARQUET.
   ///
   /// Optional.
@@ -8861,6 +9148,25 @@ class JobConfigurationLoad {
   /// Optional.
   core.int? skipLeadingRows;
 
+  /// Controls the strategy used to match loaded columns to the schema.
+  ///
+  /// If not set, a sensible default is chosen based on how the schema is
+  /// provided. If autodetect is used, then columns are matched by name.
+  /// Otherwise, columns are matched by position. This is done to keep the
+  /// behavior backward-compatible.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SOURCE_COLUMN_MATCH_UNSPECIFIED" : Uses sensible defaults based on how
+  /// the schema is provided. If autodetect is used, then columns are matched by
+  /// name. Otherwise, columns are matched by position. This is done to keep the
+  /// behavior backward-compatible.
+  /// - "POSITION" : Matches by position. This assumes that the columns are
+  /// ordered the same way as the schema.
+  /// - "NAME" : Matches by name. This reads the header row as column names and
+  /// reorders columns to match the field names in the schema.
+  core.String? sourceColumnMatch;
+
   /// The format of the data files.
   ///
   /// For CSV files, specify "CSV". For datastore backups, specify
@@ -8894,8 +9200,8 @@ class JobConfigurationLoad {
   /// Only one of timePartitioning and rangePartitioning should be specified.
   TimePartitioning? timePartitioning;
 
-  /// \[Experimental\] Default time zone that will apply when parsing timestamp
-  /// values that have no specific time zone.
+  /// Default time zone that will apply when parsing timestamp values that have
+  /// no specific time zone.
   ///
   /// Optional.
   core.String? timeZone;
@@ -8916,7 +9222,9 @@ class JobConfigurationLoad {
   ///
   /// The following values are supported: * WRITE_TRUNCATE: If the table already
   /// exists, BigQuery overwrites the data, removes the constraints and uses the
-  /// schema from the load job. * WRITE_APPEND: If the table already exists,
+  /// schema from the load job. * WRITE_TRUNCATE_DATA: If the table already
+  /// exists, BigQuery overwrites the data, but keeps the constraints and schema
+  /// of the existing table. * WRITE_APPEND: If the table already exists,
   /// BigQuery appends the data to the table. * WRITE_EMPTY: If the table
   /// already exists and contains data, a 'duplicate' error is returned in the
   /// job result. The default value is WRITE_APPEND. Each action is atomic and
@@ -8951,6 +9259,7 @@ class JobConfigurationLoad {
     this.jsonExtension,
     this.maxBadRecords,
     this.nullMarker,
+    this.nullMarkers,
     this.parquetOptions,
     this.preserveAsciiControlCharacters,
     this.projectionFields,
@@ -8962,6 +9271,7 @@ class JobConfigurationLoad {
     this.schemaInlineFormat,
     this.schemaUpdateOptions,
     this.skipLeadingRows,
+    this.sourceColumnMatch,
     this.sourceFormat,
     this.sourceUris,
     this.timeFormat,
@@ -9023,6 +9333,9 @@ class JobConfigurationLoad {
           jsonExtension: json_['jsonExtension'] as core.String?,
           maxBadRecords: json_['maxBadRecords'] as core.int?,
           nullMarker: json_['nullMarker'] as core.String?,
+          nullMarkers: (json_['nullMarkers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           parquetOptions: json_.containsKey('parquetOptions')
               ? ParquetOptions.fromJson(json_['parquetOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -9049,6 +9362,7 @@ class JobConfigurationLoad {
               ?.map((value) => value as core.String)
               .toList(),
           skipLeadingRows: json_['skipLeadingRows'] as core.int?,
+          sourceColumnMatch: json_['sourceColumnMatch'] as core.String?,
           sourceFormat: json_['sourceFormat'] as core.String?,
           sourceUris: (json_['sourceUris'] as core.List?)
               ?.map((value) => value as core.String)
@@ -9097,6 +9411,7 @@ class JobConfigurationLoad {
         if (jsonExtension != null) 'jsonExtension': jsonExtension!,
         if (maxBadRecords != null) 'maxBadRecords': maxBadRecords!,
         if (nullMarker != null) 'nullMarker': nullMarker!,
+        if (nullMarkers != null) 'nullMarkers': nullMarkers!,
         if (parquetOptions != null) 'parquetOptions': parquetOptions!,
         if (preserveAsciiControlCharacters != null)
           'preserveAsciiControlCharacters': preserveAsciiControlCharacters!,
@@ -9112,6 +9427,7 @@ class JobConfigurationLoad {
         if (schemaUpdateOptions != null)
           'schemaUpdateOptions': schemaUpdateOptions!,
         if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows!,
+        if (sourceColumnMatch != null) 'sourceColumnMatch': sourceColumnMatch!,
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
         if (sourceUris != null) 'sourceUris': sourceUris!,
         if (timeFormat != null) 'timeFormat': timeFormat!,
@@ -9326,7 +9642,9 @@ class JobConfigurationQuery {
   ///
   /// The following values are supported: * WRITE_TRUNCATE: If the table already
   /// exists, BigQuery overwrites the data, removes the constraints, and uses
-  /// the schema from the query result. * WRITE_APPEND: If the table already
+  /// the schema from the query result. * WRITE_TRUNCATE_DATA: If the table
+  /// already exists, BigQuery overwrites the data, but keeps the constraints
+  /// and schema of the existing table. * WRITE_APPEND: If the table already
   /// exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the
   /// table already exists and contains data, a 'duplicate' error is returned in
   /// the job result. The default value is WRITE_EMPTY. Each action is atomic
@@ -9623,7 +9941,6 @@ class JobConfigurationTableCopy {
 /// For
 /// \[`jobs.insert`\](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/insert)
 /// method calls it will always be `REQUESTED`.
-/// [Preview](https://cloud.google.com/products/#product-launch-stages)
 class JobCreationReason {
   /// Specifies the high level reason why a Job was created.
   ///
@@ -10332,8 +10649,6 @@ class JobStatistics2 {
 
   /// Referenced tables for the job.
   ///
-  /// Queries that reference more than 50 tables will not have a complete list.
-  ///
   /// Output only.
   core.List<TableReference>? referencedTables;
 
@@ -10491,6 +10806,16 @@ class JobStatistics2 {
   /// Output only.
   core.String? totalPartitionsProcessed;
 
+  /// Total slot-milliseconds for the job that run on external services and
+  /// billed on the service SKU.
+  ///
+  /// This field is only populated for jobs that have external service costs,
+  /// and is the total of the usage for costs whose billing method is
+  /// "SERVICES_SKU".
+  ///
+  /// Output only.
+  core.String? totalServicesSkuSlotMs;
+
   /// Slot-milliseconds for the job.
   ///
   /// Output only.
@@ -10554,6 +10879,7 @@ class JobStatistics2 {
     this.totalBytesProcessed,
     this.totalBytesProcessedAccuracy,
     this.totalPartitionsProcessed,
+    this.totalServicesSkuSlotMs,
     this.totalSlotMs,
     this.transferredBytes,
     this.undeclaredQueryParameters,
@@ -10694,6 +11020,8 @@ class JobStatistics2 {
               json_['totalBytesProcessedAccuracy'] as core.String?,
           totalPartitionsProcessed:
               json_['totalPartitionsProcessed'] as core.String?,
+          totalServicesSkuSlotMs:
+              json_['totalServicesSkuSlotMs'] as core.String?,
           totalSlotMs: json_['totalSlotMs'] as core.String?,
           transferredBytes: json_['transferredBytes'] as core.String?,
           undeclaredQueryParameters:
@@ -10768,6 +11096,8 @@ class JobStatistics2 {
           'totalBytesProcessedAccuracy': totalBytesProcessedAccuracy!,
         if (totalPartitionsProcessed != null)
           'totalPartitionsProcessed': totalPartitionsProcessed!,
+        if (totalServicesSkuSlotMs != null)
+          'totalServicesSkuSlotMs': totalServicesSkuSlotMs!,
         if (totalSlotMs != null) 'totalSlotMs': totalSlotMs!,
         if (transferredBytes != null) 'transferredBytes': transferredBytes!,
         if (undeclaredQueryParameters != null)
@@ -12591,6 +12921,42 @@ class ProjectReference {
       };
 }
 
+/// Options for a user-defined Python function.
+class PythonOptions {
+  /// The name of the function defined in Python code as the entry point when
+  /// the Python UDF is invoked.
+  ///
+  /// Required.
+  core.String? entryPoint;
+
+  /// A list of Python package names along with versions to be installed.
+  ///
+  /// Example: \["pandas\>=2.1", "google-cloud-translate==3.11"\]. For more
+  /// information, see \[Use third-party
+  /// packages\](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages).
+  ///
+  /// Optional.
+  core.List<core.String>? packages;
+
+  PythonOptions({
+    this.entryPoint,
+    this.packages,
+  });
+
+  PythonOptions.fromJson(core.Map json_)
+      : this(
+          entryPoint: json_['entryPoint'] as core.String?,
+          packages: (json_['packages'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entryPoint != null) 'entryPoint': entryPoint!,
+        if (packages != null) 'packages': packages!,
+      };
+}
+
 /// Query optimization information for a QUERY job.
 class QueryInfo {
   /// Information about query optimizations.
@@ -12721,6 +13087,15 @@ class QueryParameterType {
   /// Optional.
   core.List<QueryParameterTypeStructTypes>? structTypes;
 
+  /// Precision (maximum number of total digits in base 10) for seconds of
+  /// TIMESTAMP type.
+  ///
+  /// Possible values include: * 6 (Default, for TIMESTAMP type with microsecond
+  /// precision) * 12 (For TIMESTAMP type with picosecond precision)
+  ///
+  /// Optional.
+  core.String? timestampPrecision;
+
   /// The top level type of this field.
   ///
   /// Required.
@@ -12730,6 +13105,7 @@ class QueryParameterType {
     this.arrayType,
     this.rangeElementType,
     this.structTypes,
+    this.timestampPrecision,
     this.type,
   });
 
@@ -12747,6 +13123,7 @@ class QueryParameterType {
               ?.map((value) => QueryParameterTypeStructTypes.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          timestampPrecision: json_['timestampPrecision'] as core.String?,
           type: json_['type'] as core.String?,
         );
 
@@ -12754,6 +13131,8 @@ class QueryParameterType {
         if (arrayType != null) 'arrayType': arrayType!,
         if (rangeElementType != null) 'rangeElementType': rangeElementType!,
         if (structTypes != null) 'structTypes': structTypes!,
+        if (timestampPrecision != null)
+          'timestampPrecision': timestampPrecision!,
         if (type != null) 'type': type!,
       };
 }
@@ -12871,7 +13250,6 @@ class QueryRequest {
   ///
   /// If set, the query request will follow the behavior described
   /// JobCreationMode.
-  /// [Preview](https://cloud.google.com/products/#product-launch-stages)
   ///
   /// Optional.
   /// Possible string values are:
@@ -12983,6 +13361,15 @@ class QueryRequest {
   /// Optional.
   core.String? requestId;
 
+  /// The reservation that jobs.query request would use.
+  ///
+  /// User can specify a reservation to execute the job.query. The expected
+  /// format is
+  /// `projects/{project}/locations/{location}/reservations/{reservation}`.
+  ///
+  /// Optional.
+  core.String? reservation;
+
   /// Optional: Specifies the maximum amount of time, in milliseconds, that the
   /// client is willing to wait for the query to complete.
   ///
@@ -13044,6 +13431,7 @@ class QueryRequest {
     this.query,
     this.queryParameters,
     this.requestId,
+    this.reservation,
     this.timeoutMs,
     this.useLegacySql,
     this.useQueryCache,
@@ -13094,6 +13482,7 @@ class QueryRequest {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           requestId: json_['requestId'] as core.String?,
+          reservation: json_['reservation'] as core.String?,
           timeoutMs: json_['timeoutMs'] as core.int?,
           useLegacySql: json_['useLegacySql'] as core.bool?,
           useQueryCache: json_['useQueryCache'] as core.bool?,
@@ -13125,6 +13514,7 @@ class QueryRequest {
         if (query != null) 'query': query!,
         if (queryParameters != null) 'queryParameters': queryParameters!,
         if (requestId != null) 'requestId': requestId!,
+        if (reservation != null) 'reservation': reservation!,
         if (timeoutMs != null) 'timeoutMs': timeoutMs!,
         if (useLegacySql != null) 'useLegacySql': useLegacySql!,
         if (useQueryCache != null) 'useQueryCache': useQueryCache!,
@@ -13177,7 +13567,6 @@ class QueryResponse {
   ///
   /// Only relevant when a job_reference is present in the response. If
   /// job_reference is not present it will always be unset.
-  /// [Preview](https://cloud.google.com/products/#product-launch-stages)
   ///
   /// Optional.
   JobCreationReason? jobCreationReason;
@@ -13220,8 +13609,6 @@ class QueryResponse {
   core.String? pageToken;
 
   /// Auto-generated ID for the query.
-  ///
-  /// [Preview](https://cloud.google.com/products/#product-launch-stages)
   core.String? queryId;
 
   /// An object with as many results as can be contained within the maximum
@@ -13396,6 +13783,11 @@ class QueryTimelineSample {
   /// running.
   core.String? pendingUnits;
 
+  /// Total shuffle usage ratio in shuffle RAM per reservation of this query.
+  ///
+  /// This will be provided for reservation customers only.
+  core.double? shuffleRamUsageRatio;
+
   /// Cumulative slot-ms consumed by the query.
   core.String? totalSlotMs;
 
@@ -13405,6 +13797,7 @@ class QueryTimelineSample {
     this.elapsedMs,
     this.estimatedRunnableUnits,
     this.pendingUnits,
+    this.shuffleRamUsageRatio,
     this.totalSlotMs,
   });
 
@@ -13416,6 +13809,8 @@ class QueryTimelineSample {
           estimatedRunnableUnits:
               json_['estimatedRunnableUnits'] as core.String?,
           pendingUnits: json_['pendingUnits'] as core.String?,
+          shuffleRamUsageRatio:
+              (json_['shuffleRamUsageRatio'] as core.num?)?.toDouble(),
           totalSlotMs: json_['totalSlotMs'] as core.String?,
         );
 
@@ -13426,6 +13821,8 @@ class QueryTimelineSample {
         if (estimatedRunnableUnits != null)
           'estimatedRunnableUnits': estimatedRunnableUnits!,
         if (pendingUnits != null) 'pendingUnits': pendingUnits!,
+        if (shuffleRamUsageRatio != null)
+          'shuffleRamUsageRatio': shuffleRamUsageRatio!,
         if (totalSlotMs != null) 'totalSlotMs': totalSlotMs!,
       };
 }
@@ -13866,6 +14263,14 @@ class Routine {
   /// Output only.
   core.String? etag;
 
+  /// Options for the runtime of the external system executing the routine.
+  ///
+  /// This field is only applicable for Python UDFs.
+  /// [Preview](https://cloud.google.com/products/#product-launch-stages)
+  ///
+  /// Optional.
+  ExternalRuntimeOptions? externalRuntimeOptions;
+
   /// If language = "JAVASCRIPT", this field stores the path of the imported
   /// JAVASCRIPT libraries.
   ///
@@ -13890,6 +14295,13 @@ class Routine {
   ///
   /// Output only.
   core.String? lastModifiedTime;
+
+  /// Options for the Python UDF.
+  ///
+  /// [Preview](https://cloud.google.com/products/#product-launch-stages)
+  ///
+  /// Optional.
+  PythonOptions? pythonOptions;
 
   /// Remote function specific options.
   ///
@@ -13982,9 +14394,11 @@ class Routine {
     this.description,
     this.determinismLevel,
     this.etag,
+    this.externalRuntimeOptions,
     this.importedLibraries,
     this.language,
     this.lastModifiedTime,
+    this.pythonOptions,
     this.remoteFunctionOptions,
     this.returnTableType,
     this.returnType,
@@ -14007,11 +14421,19 @@ class Routine {
           description: json_['description'] as core.String?,
           determinismLevel: json_['determinismLevel'] as core.String?,
           etag: json_['etag'] as core.String?,
+          externalRuntimeOptions: json_.containsKey('externalRuntimeOptions')
+              ? ExternalRuntimeOptions.fromJson(json_['externalRuntimeOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           importedLibraries: (json_['importedLibraries'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           language: json_['language'] as core.String?,
           lastModifiedTime: json_['lastModifiedTime'] as core.String?,
+          pythonOptions: json_.containsKey('pythonOptions')
+              ? PythonOptions.fromJson(
+                  json_['pythonOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
           remoteFunctionOptions: json_.containsKey('remoteFunctionOptions')
               ? RemoteFunctionOptions.fromJson(json_['remoteFunctionOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -14046,9 +14468,12 @@ class Routine {
         if (description != null) 'description': description!,
         if (determinismLevel != null) 'determinismLevel': determinismLevel!,
         if (etag != null) 'etag': etag!,
+        if (externalRuntimeOptions != null)
+          'externalRuntimeOptions': externalRuntimeOptions!,
         if (importedLibraries != null) 'importedLibraries': importedLibraries!,
         if (language != null) 'language': language!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (pythonOptions != null) 'pythonOptions': pythonOptions!,
         if (remoteFunctionOptions != null)
           'remoteFunctionOptions': remoteFunctionOptions!,
         if (returnTableType != null) 'returnTableType': returnTableType!,
@@ -15429,7 +15854,7 @@ class SystemVariables {
 }
 
 class Table {
-  /// Specifies the configuration of a BigLake managed table.
+  /// Specifies the configuration of a BigQuery table for Apache Iceberg.
   ///
   /// Optional.
   BigLakeConfiguration? biglakeConfiguration;
@@ -15566,7 +15991,8 @@ class Table {
   /// Possible string values are:
   /// - "MANAGED_TABLE_TYPE_UNSPECIFIED" : No managed table type specified.
   /// - "NATIVE" : The managed table is a native BigQuery table.
-  /// - "ICEBERG" : The managed table is a BigQuery table for Apache Iceberg.
+  /// - "BIGLAKE" : The managed table is a BigLake table for Apache Iceberg in
+  /// BigQuery.
   core.String? managedTableType;
 
   /// The materialized view definition.

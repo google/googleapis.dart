@@ -34,6 +34,8 @@
 ///     - [ProjectsLocationsDbSystemShapesResource]
 ///     - [ProjectsLocationsEntitlementsResource]
 ///     - [ProjectsLocationsGiVersionsResource]
+///     - [ProjectsLocationsOdbNetworksResource]
+///       - [ProjectsLocationsOdbNetworksOdbSubnetsResource]
 ///     - [ProjectsLocationsOperationsResource]
 library;
 
@@ -102,6 +104,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsEntitlementsResource(_requester);
   ProjectsLocationsGiVersionsResource get giVersions =>
       ProjectsLocationsGiVersionsResource(_requester);
+  ProjectsLocationsOdbNetworksResource get odbNetworks =>
+      ProjectsLocationsOdbNetworksResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
 
@@ -149,6 +153,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -171,12 +179,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -583,6 +593,49 @@ class ProjectsLocationsAutonomousDatabasesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Restarts an Autonomous Database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Autonomous Database in the following
+  /// format:
+  /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autonomousDatabases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> restart(
+    RestartAutonomousDatabaseRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restart';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Restores a single Autonomous Database.
   ///
   /// [request] - The metadata request object.
@@ -616,6 +669,136 @@ class ProjectsLocationsAutonomousDatabasesResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Starts an Autonomous Database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Autonomous Database in the following
+  /// format:
+  /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autonomousDatabases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> start(
+    StartAutonomousDatabaseRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':start';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Stops an Autonomous Database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Autonomous Database in the following
+  /// format:
+  /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autonomousDatabases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> stop(
+    StopAutonomousDatabaseRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':stop';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Initiates a switchover of specified autonomous database to the associated
+  /// peer database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Autonomous Database in the following
+  /// format:
+  /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autonomousDatabases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> switchover(
+    SwitchoverAutonomousDatabaseRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':switchover';
 
     final response_ = await _requester.request(
       url_,
@@ -1183,6 +1366,7 @@ class ProjectsLocationsCloudVmClustersDbNodesResource {
   /// [parent] - Required. The parent value for database node in the following
   /// format:
   /// projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}.
+  /// .
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/cloudVmClusters/\[^/\]+$`.
   ///
@@ -1352,6 +1536,10 @@ class ProjectsLocationsGiVersionsResource {
   /// the following format: Format: projects/{project}/locations/{location}.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. Only the shape and gi_version fields are supported in this
+  /// format: `shape="{shape}"`.
+  ///
   /// [pageSize] - Optional. The maximum number of items to return. If
   /// unspecified, a maximum of 50 Oracle Grid Infrastructure (GI) versions will
   /// be returned. The maximum value is 1000; values above 1000 will be reset to
@@ -1372,11 +1560,13 @@ class ProjectsLocationsGiVersionsResource {
   /// this method will complete with the same error.
   async.Future<ListGiVersionsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1390,6 +1580,426 @@ class ProjectsLocationsGiVersionsResource {
       queryParams: queryParams_,
     );
     return ListGiVersionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOdbNetworksResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOdbNetworksOdbSubnetsResource get odbSubnets =>
+      ProjectsLocationsOdbNetworksOdbSubnetsResource(_requester);
+
+  ProjectsLocationsOdbNetworksResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new ODB Network in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for the OdbNetwork in the following
+  /// format: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [odbNetworkId] - Required. The ID of the OdbNetwork to create. This value
+  /// is restricted to (^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$) and must be a
+  /// maximum of 63 characters in length. The value must start with a letter and
+  /// end with a letter or a number.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    OdbNetwork request,
+    core.String parent, {
+    core.String? odbNetworkId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (odbNetworkId != null) 'odbNetworkId': [odbNetworkId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/odbNetworks';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single ODB Network.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource in the following format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/odbNetworks/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single ODB Network.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the OdbNetwork in the following format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/odbNetworks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OdbNetwork].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OdbNetwork> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return OdbNetwork.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the ODB Networks in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for the ODB Network in the following
+  /// format: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request.
+  ///
+  /// [orderBy] - Optional. An expression for ordering the results of the
+  /// request.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, at most 50 ODB Networks will be returned. The maximum value
+  /// is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOdbNetworksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOdbNetworksResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/odbNetworks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOdbNetworksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOdbNetworksOdbSubnetsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOdbNetworksOdbSubnetsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new ODB Subnet in a given ODB Network.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for the OdbSubnet in the following
+  /// format: projects/{project}/locations/{location}/odbNetworks/{odb_network}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/odbNetworks/\[^/\]+$`.
+  ///
+  /// [odbSubnetId] - Required. The ID of the OdbSubnet to create. This value is
+  /// restricted to (^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$) and must be a
+  /// maximum of 63 characters in length. The value must start with a letter and
+  /// end with a letter or a number.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    OdbSubnet request,
+    core.String parent, {
+    core.String? odbSubnetId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (odbSubnetId != null) 'odbSubnetId': [odbSubnetId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/odbSubnets';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single ODB Subnet.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource in the following format:
+  /// projects/{project}/locations/{region}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/odbNetworks/\[^/\]+/odbSubnets/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single ODB Subnet.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the OdbSubnet in the following format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/odbNetworks/\[^/\]+/odbSubnets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OdbSubnet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OdbSubnet> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return OdbSubnet.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the ODB Subnets in a given ODB Network.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for the OdbSubnet in the following
+  /// format: projects/{project}/locations/{location}/odbNetworks/{odb_network}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/odbNetworks/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request.
+  ///
+  /// [orderBy] - Optional. An expression for ordering the results of the
+  /// request.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, at most 50 ODB Networks will be returned. The maximum value
+  /// is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOdbSubnetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOdbSubnetsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/odbSubnets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOdbSubnetsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1630,7 +2240,7 @@ class AutonomousDatabase {
   /// Optional.
   core.String? adminPassword;
 
-  /// The subnet CIDR range for the Autonmous Database.
+  /// The subnet CIDR range for the Autonomous Database.
   ///
   /// Optional.
   core.String? cidr;
@@ -1647,6 +2257,14 @@ class AutonomousDatabase {
   ///
   /// Optional.
   core.String? database;
+
+  /// List of supported GCP region to clone the Autonomous Database for disaster
+  /// recovery.
+  ///
+  /// Format: `project/{project}/locations/{location}`.
+  ///
+  /// Output only.
+  core.List<core.String>? disasterRecoverySupportedLocations;
 
   /// The display name for the Autonomous Database.
   ///
@@ -1678,22 +2296,58 @@ class AutonomousDatabase {
   /// Optional.
   core.String? network;
 
+  /// The name of the OdbNetwork associated with the Autonomous Database.
+  ///
+  /// Format: projects/{project}/locations/{location}/odbNetworks/{odb_network}
+  /// It is optional but if specified, this should match the parent ODBNetwork
+  /// of the OdbSubnet.
+  ///
+  /// Optional.
+  core.String? odbNetwork;
+
+  /// The name of the OdbSubnet associated with the Autonomous Database.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+  ///
+  /// Optional.
+  core.String? odbSubnet;
+
+  /// The peer Autonomous Database names of the given Autonomous Database.
+  ///
+  /// Output only.
+  core.List<core.String>? peerAutonomousDatabases;
+
   /// The properties of the Autonomous Database.
   ///
   /// Optional.
   AutonomousDatabaseProperties? properties;
+
+  /// The source Autonomous Database configuration for the standby Autonomous
+  /// Database.
+  ///
+  /// The source Autonomous Database is configured while creating the Peer
+  /// Autonomous Database and can't be updated after creation.
+  ///
+  /// Optional.
+  SourceConfig? sourceConfig;
 
   AutonomousDatabase({
     this.adminPassword,
     this.cidr,
     this.createTime,
     this.database,
+    this.disasterRecoverySupportedLocations,
     this.displayName,
     this.entitlementId,
     this.labels,
     this.name,
     this.network,
+    this.odbNetwork,
+    this.odbSubnet,
+    this.peerAutonomousDatabases,
     this.properties,
+    this.sourceConfig,
   });
 
   AutonomousDatabase.fromJson(core.Map json_)
@@ -1702,6 +2356,10 @@ class AutonomousDatabase {
           cidr: json_['cidr'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           database: json_['database'] as core.String?,
+          disasterRecoverySupportedLocations:
+              (json_['disasterRecoverySupportedLocations'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           displayName: json_['displayName'] as core.String?,
           entitlementId: json_['entitlementId'] as core.String?,
           labels:
@@ -1713,9 +2371,19 @@ class AutonomousDatabase {
           ),
           name: json_['name'] as core.String?,
           network: json_['network'] as core.String?,
+          odbNetwork: json_['odbNetwork'] as core.String?,
+          odbSubnet: json_['odbSubnet'] as core.String?,
+          peerAutonomousDatabases:
+              (json_['peerAutonomousDatabases'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           properties: json_.containsKey('properties')
               ? AutonomousDatabaseProperties.fromJson(
                   json_['properties'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceConfig: json_.containsKey('sourceConfig')
+              ? SourceConfig.fromJson(
+                  json_['sourceConfig'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1724,12 +2392,20 @@ class AutonomousDatabase {
         if (cidr != null) 'cidr': cidr!,
         if (createTime != null) 'createTime': createTime!,
         if (database != null) 'database': database!,
+        if (disasterRecoverySupportedLocations != null)
+          'disasterRecoverySupportedLocations':
+              disasterRecoverySupportedLocations!,
         if (displayName != null) 'displayName': displayName!,
         if (entitlementId != null) 'entitlementId': entitlementId!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
+        if (odbNetwork != null) 'odbNetwork': odbNetwork!,
+        if (odbSubnet != null) 'odbSubnet': odbSubnet!,
+        if (peerAutonomousDatabases != null)
+          'peerAutonomousDatabases': peerAutonomousDatabases!,
         if (properties != null) 'properties': properties!,
+        if (sourceConfig != null) 'sourceConfig': sourceConfig!,
       };
 }
 
@@ -2255,6 +2931,11 @@ class AutonomousDatabaseProperties {
   /// Output only.
   core.double? allocatedStorageSizeTb;
 
+  /// The list of allowlisted IP addresses for the Autonomous Database.
+  ///
+  /// Optional.
+  core.List<core.String>? allowlistedIps;
+
   /// The details for the Oracle APEX Application Development.
   ///
   /// Output only.
@@ -2324,6 +3005,12 @@ class AutonomousDatabaseProperties {
   /// Optional.
   core.List<CustomerContact>? customerContacts;
 
+  /// The date and time the Autonomous Data Guard role was changed for the
+  /// standby Autonomous Database.
+  ///
+  /// Output only.
+  core.String? dataGuardRoleChangedTime;
+
   /// The current state of the Data Safe registration for the Autonomous
   /// Database.
   ///
@@ -2385,6 +3072,12 @@ class AutonomousDatabaseProperties {
   /// - "APEX" : Autonomous Database with the Oracle APEX Application
   /// Development workload type.
   core.String? dbWorkload;
+
+  /// The date and time the Disaster Recovery role was changed for the standby
+  /// Autonomous Database.
+  ///
+  /// Output only.
+  core.String? disasterRecoveryRoleChangedTime;
 
   /// This field indicates the number of seconds of data loss during a Data
   /// Guard failover.
@@ -2678,6 +3371,7 @@ class AutonomousDatabaseProperties {
   AutonomousDatabaseProperties({
     this.actualUsedDataStorageSizeTb,
     this.allocatedStorageSizeTb,
+    this.allowlistedIps,
     this.apexDetails,
     this.arePrimaryAllowlistedIpsUsed,
     this.autonomousContainerDatabaseId,
@@ -2689,6 +3383,7 @@ class AutonomousDatabaseProperties {
     this.connectionUrls,
     this.cpuCoreCount,
     this.customerContacts,
+    this.dataGuardRoleChangedTime,
     this.dataSafeState,
     this.dataStorageSizeGb,
     this.dataStorageSizeTb,
@@ -2696,6 +3391,7 @@ class AutonomousDatabaseProperties {
     this.dbEdition,
     this.dbVersion,
     this.dbWorkload,
+    this.disasterRecoveryRoleChangedTime,
     this.failedDataRecoveryDuration,
     this.isAutoScalingEnabled,
     this.isLocalDataGuardEnabled,
@@ -2741,6 +3437,9 @@ class AutonomousDatabaseProperties {
               (json_['actualUsedDataStorageSizeTb'] as core.num?)?.toDouble(),
           allocatedStorageSizeTb:
               (json_['allocatedStorageSizeTb'] as core.num?)?.toDouble(),
+          allowlistedIps: (json_['allowlistedIps'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           apexDetails: json_.containsKey('apexDetails')
               ? AutonomousDatabaseApex.fromJson(
                   json_['apexDetails'] as core.Map<core.String, core.dynamic>)
@@ -2772,6 +3471,8 @@ class AutonomousDatabaseProperties {
               ?.map((value) => CustomerContact.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          dataGuardRoleChangedTime:
+              json_['dataGuardRoleChangedTime'] as core.String?,
           dataSafeState: json_['dataSafeState'] as core.String?,
           dataStorageSizeGb: json_['dataStorageSizeGb'] as core.int?,
           dataStorageSizeTb: json_['dataStorageSizeTb'] as core.int?,
@@ -2780,6 +3481,8 @@ class AutonomousDatabaseProperties {
           dbEdition: json_['dbEdition'] as core.String?,
           dbVersion: json_['dbVersion'] as core.String?,
           dbWorkload: json_['dbWorkload'] as core.String?,
+          disasterRecoveryRoleChangedTime:
+              json_['disasterRecoveryRoleChangedTime'] as core.String?,
           failedDataRecoveryDuration:
               json_['failedDataRecoveryDuration'] as core.String?,
           isAutoScalingEnabled: json_['isAutoScalingEnabled'] as core.bool?,
@@ -2846,6 +3549,7 @@ class AutonomousDatabaseProperties {
           'actualUsedDataStorageSizeTb': actualUsedDataStorageSizeTb!,
         if (allocatedStorageSizeTb != null)
           'allocatedStorageSizeTb': allocatedStorageSizeTb!,
+        if (allowlistedIps != null) 'allowlistedIps': allowlistedIps!,
         if (apexDetails != null) 'apexDetails': apexDetails!,
         if (arePrimaryAllowlistedIpsUsed != null)
           'arePrimaryAllowlistedIpsUsed': arePrimaryAllowlistedIpsUsed!,
@@ -2861,6 +3565,8 @@ class AutonomousDatabaseProperties {
         if (connectionUrls != null) 'connectionUrls': connectionUrls!,
         if (cpuCoreCount != null) 'cpuCoreCount': cpuCoreCount!,
         if (customerContacts != null) 'customerContacts': customerContacts!,
+        if (dataGuardRoleChangedTime != null)
+          'dataGuardRoleChangedTime': dataGuardRoleChangedTime!,
         if (dataSafeState != null) 'dataSafeState': dataSafeState!,
         if (dataStorageSizeGb != null) 'dataStorageSizeGb': dataStorageSizeGb!,
         if (dataStorageSizeTb != null) 'dataStorageSizeTb': dataStorageSizeTb!,
@@ -2869,6 +3575,8 @@ class AutonomousDatabaseProperties {
         if (dbEdition != null) 'dbEdition': dbEdition!,
         if (dbVersion != null) 'dbVersion': dbVersion!,
         if (dbWorkload != null) 'dbWorkload': dbWorkload!,
+        if (disasterRecoveryRoleChangedTime != null)
+          'disasterRecoveryRoleChangedTime': disasterRecoveryRoleChangedTime!,
         if (failedDataRecoveryDuration != null)
           'failedDataRecoveryDuration': failedDataRecoveryDuration!,
         if (isAutoScalingEnabled != null)
@@ -3250,6 +3958,18 @@ class CloudExadataInfrastructureProperties {
   /// Optional.
   core.int? computeCount;
 
+  /// The compute model of the Exadata Infrastructure.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMPUTE_MODEL_UNSPECIFIED" : Unspecified compute model.
+  /// - "COMPUTE_MODEL_ECPU" : Abstract measure of compute resources. ECPUs are
+  /// based on the number of cores elastically allocated from a pool of compute
+  /// and storage servers.
+  /// - "COMPUTE_MODEL_OCPU" : Physical measure of compute resources. OCPUs are
+  /// based on the physical core of a processor.
+  core.String? computeModel;
+
   /// The number of enabled CPU cores.
   ///
   /// Output only.
@@ -3264,6 +3984,11 @@ class CloudExadataInfrastructureProperties {
   ///
   /// Output only.
   core.double? dataStorageSizeTb;
+
+  /// The database server type of the Exadata Infrastructure.
+  ///
+  /// Output only.
+  core.String? databaseServerType;
 
   /// The local node storage allocated in GBs.
   ///
@@ -3378,6 +4103,11 @@ class CloudExadataInfrastructureProperties {
   /// Optional.
   core.int? storageCount;
 
+  /// The storage server type of the Exadata Infrastructure.
+  ///
+  /// Output only.
+  core.String? storageServerType;
+
   /// The software version of the storage servers (cells) in the Exadata
   /// Infrastructure.
   ///
@@ -3395,9 +4125,11 @@ class CloudExadataInfrastructureProperties {
     this.additionalStorageCount,
     this.availableStorageSizeGb,
     this.computeCount,
+    this.computeModel,
     this.cpuCount,
     this.customerContacts,
     this.dataStorageSizeTb,
+    this.databaseServerType,
     this.dbNodeStorageSizeGb,
     this.dbServerVersion,
     this.maintenanceWindow,
@@ -3416,6 +4148,7 @@ class CloudExadataInfrastructureProperties {
     this.shape,
     this.state,
     this.storageCount,
+    this.storageServerType,
     this.storageServerVersion,
     this.totalStorageSizeGb,
   });
@@ -3426,6 +4159,7 @@ class CloudExadataInfrastructureProperties {
           additionalStorageCount: json_['additionalStorageCount'] as core.int?,
           availableStorageSizeGb: json_['availableStorageSizeGb'] as core.int?,
           computeCount: json_['computeCount'] as core.int?,
+          computeModel: json_['computeModel'] as core.String?,
           cpuCount: json_['cpuCount'] as core.int?,
           customerContacts: (json_['customerContacts'] as core.List?)
               ?.map((value) => CustomerContact.fromJson(
@@ -3433,6 +4167,7 @@ class CloudExadataInfrastructureProperties {
               .toList(),
           dataStorageSizeTb:
               (json_['dataStorageSizeTb'] as core.num?)?.toDouble(),
+          databaseServerType: json_['databaseServerType'] as core.String?,
           dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
           dbServerVersion: json_['dbServerVersion'] as core.String?,
           maintenanceWindow: json_.containsKey('maintenanceWindow')
@@ -3459,6 +4194,7 @@ class CloudExadataInfrastructureProperties {
           shape: json_['shape'] as core.String?,
           state: json_['state'] as core.String?,
           storageCount: json_['storageCount'] as core.int?,
+          storageServerType: json_['storageServerType'] as core.String?,
           storageServerVersion: json_['storageServerVersion'] as core.String?,
           totalStorageSizeGb: json_['totalStorageSizeGb'] as core.int?,
         );
@@ -3471,9 +4207,12 @@ class CloudExadataInfrastructureProperties {
         if (availableStorageSizeGb != null)
           'availableStorageSizeGb': availableStorageSizeGb!,
         if (computeCount != null) 'computeCount': computeCount!,
+        if (computeModel != null) 'computeModel': computeModel!,
         if (cpuCount != null) 'cpuCount': cpuCount!,
         if (customerContacts != null) 'customerContacts': customerContacts!,
         if (dataStorageSizeTb != null) 'dataStorageSizeTb': dataStorageSizeTb!,
+        if (databaseServerType != null)
+          'databaseServerType': databaseServerType!,
         if (dbNodeStorageSizeGb != null)
           'dbNodeStorageSizeGb': dbNodeStorageSizeGb!,
         if (dbServerVersion != null) 'dbServerVersion': dbServerVersion!,
@@ -3499,6 +4238,7 @@ class CloudExadataInfrastructureProperties {
         if (shape != null) 'shape': shape!,
         if (state != null) 'state': state!,
         if (storageCount != null) 'storageCount': storageCount!,
+        if (storageServerType != null) 'storageServerType': storageServerType!,
         if (storageServerVersion != null)
           'storageServerVersion': storageServerVersion!,
         if (totalStorageSizeGb != null)
@@ -3510,16 +4250,24 @@ class CloudExadataInfrastructureProperties {
 ///
 /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/CloudVmCluster/
 class CloudVmCluster {
+  /// The name of the backup OdbSubnet associated with the VM Cluster.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+  ///
+  /// Optional.
+  core.String? backupOdbSubnet;
+
   /// CIDR range of the backup subnet.
   ///
-  /// Required.
+  /// Optional.
   core.String? backupSubnetCidr;
 
   /// Network settings.
   ///
   /// CIDR to use for cluster IP allocation.
   ///
-  /// Required.
+  /// Optional.
   core.String? cidr;
 
   /// The date and time that the VM cluster was created.
@@ -3561,8 +4309,26 @@ class CloudVmCluster {
   ///
   /// Format: projects/{project}/global/networks/{network}
   ///
-  /// Required.
+  /// Optional.
   core.String? network;
+
+  /// The name of the OdbNetwork associated with the VM Cluster.
+  ///
+  /// Format: projects/{project}/locations/{location}/odbNetworks/{odb_network}
+  /// It is optional but if specified, this should match the parent ODBNetwork
+  /// of the odb_subnet and backup_odb_subnet.
+  ///
+  /// Optional.
+  core.String? odbNetwork;
+
+  /// The name of the OdbSubnet associated with the VM Cluster for IP
+  /// allocation.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+  ///
+  /// Optional.
+  core.String? odbSubnet;
 
   /// Various properties of the VM Cluster.
   ///
@@ -3570,6 +4336,7 @@ class CloudVmCluster {
   CloudVmClusterProperties? properties;
 
   CloudVmCluster({
+    this.backupOdbSubnet,
     this.backupSubnetCidr,
     this.cidr,
     this.createTime,
@@ -3579,11 +4346,14 @@ class CloudVmCluster {
     this.labels,
     this.name,
     this.network,
+    this.odbNetwork,
+    this.odbSubnet,
     this.properties,
   });
 
   CloudVmCluster.fromJson(core.Map json_)
       : this(
+          backupOdbSubnet: json_['backupOdbSubnet'] as core.String?,
           backupSubnetCidr: json_['backupSubnetCidr'] as core.String?,
           cidr: json_['cidr'] as core.String?,
           createTime: json_['createTime'] as core.String?,
@@ -3599,6 +4369,8 @@ class CloudVmCluster {
           ),
           name: json_['name'] as core.String?,
           network: json_['network'] as core.String?,
+          odbNetwork: json_['odbNetwork'] as core.String?,
+          odbSubnet: json_['odbSubnet'] as core.String?,
           properties: json_.containsKey('properties')
               ? CloudVmClusterProperties.fromJson(
                   json_['properties'] as core.Map<core.String, core.dynamic>)
@@ -3606,6 +4378,7 @@ class CloudVmCluster {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (backupOdbSubnet != null) 'backupOdbSubnet': backupOdbSubnet!,
         if (backupSubnetCidr != null) 'backupSubnetCidr': backupSubnetCidr!,
         if (cidr != null) 'cidr': cidr!,
         if (createTime != null) 'createTime': createTime!,
@@ -3616,6 +4389,8 @@ class CloudVmCluster {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
+        if (odbNetwork != null) 'odbNetwork': odbNetwork!,
+        if (odbSubnet != null) 'odbSubnet': odbSubnet!,
         if (properties != null) 'properties': properties!,
       };
 }
@@ -3631,6 +4406,18 @@ class CloudVmClusterProperties {
   ///
   /// Output only.
   core.String? compartmentId;
+
+  /// The compute model of the VM Cluster.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMPUTE_MODEL_UNSPECIFIED" : Unspecified compute model.
+  /// - "COMPUTE_MODEL_ECPU" : Abstract measure of compute resources. ECPUs are
+  /// based on the number of cores elastically allocated from a pool of compute
+  /// and storage servers.
+  /// - "COMPUTE_MODEL_OCPU" : Physical measure of compute resources. OCPUs are
+  /// based on the physical core of a processor.
+  core.String? computeModel;
 
   /// Number of enabled CPU cores.
   ///
@@ -3814,6 +4601,7 @@ class CloudVmClusterProperties {
   CloudVmClusterProperties({
     this.clusterName,
     this.compartmentId,
+    this.computeModel,
     this.cpuCoreCount,
     this.dataStorageSizeTb,
     this.dbNodeStorageSizeGb,
@@ -3850,6 +4638,7 @@ class CloudVmClusterProperties {
       : this(
           clusterName: json_['clusterName'] as core.String?,
           compartmentId: json_['compartmentId'] as core.String?,
+          computeModel: json_['computeModel'] as core.String?,
           cpuCoreCount: json_['cpuCoreCount'] as core.int?,
           dataStorageSizeTb:
               (json_['dataStorageSizeTb'] as core.num?)?.toDouble(),
@@ -3900,6 +4689,7 @@ class CloudVmClusterProperties {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterName != null) 'clusterName': clusterName!,
         if (compartmentId != null) 'compartmentId': compartmentId!,
+        if (computeModel != null) 'computeModel': computeModel!,
         if (cpuCoreCount != null) 'cpuCoreCount': cpuCoreCount!,
         if (dataStorageSizeTb != null) 'dataStorageSizeTb': dataStorageSizeTb!,
         if (dbNodeStorageSizeGb != null)
@@ -4159,6 +4949,11 @@ class DbNode {
 
 /// Various properties and settings associated with Db node.
 class DbNodeProperties {
+  /// The date and time that the database node was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
   /// Local storage per database node.
   ///
   /// Optional.
@@ -4207,6 +5002,7 @@ class DbNodeProperties {
   core.int? totalCpuCoreCount;
 
   DbNodeProperties({
+    this.createTime,
     this.dbNodeStorageSizeGb,
     this.dbServerOcid,
     this.hostname,
@@ -4219,6 +5015,7 @@ class DbNodeProperties {
 
   DbNodeProperties.fromJson(core.Map json_)
       : this(
+          createTime: json_['createTime'] as core.String?,
           dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
           dbServerOcid: json_['dbServerOcid'] as core.String?,
           hostname: json_['hostname'] as core.String?,
@@ -4230,6 +5027,7 @@ class DbNodeProperties {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (dbNodeStorageSizeGb != null)
           'dbNodeStorageSizeGb': dbNodeStorageSizeGb!,
         if (dbServerOcid != null) 'dbServerOcid': dbServerOcid!,
@@ -5024,6 +5822,80 @@ class ListLocationsResponse {
       };
 }
 
+/// The response for `OdbNetwork.List`.
+class ListOdbNetworksResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The list of ODB Networks.
+  core.List<OdbNetwork>? odbNetworks;
+
+  /// Unreachable locations when listing resources across all locations using
+  /// wildcard location '-'.
+  core.List<core.String>? unreachable;
+
+  ListOdbNetworksResponse({
+    this.nextPageToken,
+    this.odbNetworks,
+    this.unreachable,
+  });
+
+  ListOdbNetworksResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          odbNetworks: (json_['odbNetworks'] as core.List?)
+              ?.map((value) => OdbNetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (odbNetworks != null) 'odbNetworks': odbNetworks!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// The response for `OdbSubnet.List`.
+class ListOdbSubnetsResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The list of ODB Subnets.
+  core.List<OdbSubnet>? odbSubnets;
+
+  /// Unreachable locations when listing resources across all locations using
+  /// wildcard location '-'.
+  core.List<core.String>? unreachable;
+
+  ListOdbSubnetsResponse({
+    this.nextPageToken,
+    this.odbSubnets,
+    this.unreachable,
+  });
+
+  ListOdbSubnetsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          odbSubnets: (json_['odbSubnets'] as core.List?)
+              ?.map((value) => OdbSubnet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (odbSubnets != null) 'odbSubnets': odbSubnets!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -5186,6 +6058,159 @@ class MaintenanceWindow {
       };
 }
 
+/// Represents OdbNetwork resource.
+class OdbNetwork {
+  /// The date and time that the OdbNetwork was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The ID of the subscription entitlement associated with the OdbNetwork.
+  ///
+  /// Output only.
+  core.String? entitlementId;
+
+  /// Labels or tags associated with the resource.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the OdbNetwork resource in the following format:
+  /// projects/{project}/locations/{region}/odbNetworks/{odb_network}
+  core.String? name;
+
+  /// The name of the VPC network in the following format:
+  /// projects/{project}/global/networks/{network}
+  ///
+  /// Required.
+  core.String? network;
+
+  /// State of the ODB Network.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default unspecified value.
+  /// - "PROVISIONING" : Indicates that the resource is in provisioning state.
+  /// - "AVAILABLE" : Indicates that the resource is in available state.
+  /// - "TERMINATING" : Indicates that the resource is in terminating state.
+  /// - "FAILED" : Indicates that the resource is in failed state.
+  core.String? state;
+
+  OdbNetwork({
+    this.createTime,
+    this.entitlementId,
+    this.labels,
+    this.name,
+    this.network,
+    this.state,
+  });
+
+  OdbNetwork.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          entitlementId: json_['entitlementId'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (entitlementId != null) 'entitlementId': entitlementId!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Represents OdbSubnet resource.
+class OdbSubnet {
+  /// The CIDR range of the subnet.
+  ///
+  /// Required.
+  core.String? cidrRange;
+
+  /// The date and time that the OdbNetwork was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Labels or tags associated with the resource.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the OdbSubnet resource in the following format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+  core.String? name;
+
+  /// Purpose of the subnet.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PURPOSE_UNSPECIFIED" : Default unspecified value.
+  /// - "CLIENT_SUBNET" : Subnet to be used for client connections.
+  /// - "BACKUP_SUBNET" : Subnet to be used for backup.
+  core.String? purpose;
+
+  /// State of the ODB Subnet.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default unspecified value.
+  /// - "PROVISIONING" : Indicates that the resource is in provisioning state.
+  /// - "AVAILABLE" : Indicates that the resource is in available state.
+  /// - "TERMINATING" : Indicates that the resource is in terminating state.
+  /// - "FAILED" : Indicates that the resource is in failed state.
+  core.String? state;
+
+  OdbSubnet({
+    this.cidrRange,
+    this.createTime,
+    this.labels,
+    this.name,
+    this.purpose,
+    this.state,
+  });
+
+  OdbSubnet.fromJson(core.Map json_)
+      : this(
+          cidrRange: json_['cidrRange'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          purpose: json_['purpose'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cidrRange != null) 'cidrRange': cidrRange!,
+        if (createTime != null) 'createTime': createTime!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (purpose != null) 'purpose': purpose!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -5262,6 +6287,9 @@ class Operation {
       };
 }
 
+/// The request for `AutonomousDatabase.Restart`.
+typedef RestartAutonomousDatabaseRequest = $Empty;
+
 /// The request for `AutonomousDatabase.Restore`.
 class RestoreAutonomousDatabaseRequest {
   /// The time and date to restore the database to.
@@ -5337,6 +6365,44 @@ class ScheduledOperationDetails {
       };
 }
 
+/// The source configuration for the standby Autonomous Database.
+class SourceConfig {
+  /// This field specifies if the replication of automatic backups is enabled
+  /// when creating a Data Guard.
+  ///
+  /// Optional.
+  core.bool? automaticBackupsReplicationEnabled;
+
+  /// The name of the primary Autonomous Database that is used to create a Peer
+  /// Autonomous Database from a source.
+  ///
+  /// Optional.
+  core.String? autonomousDatabase;
+
+  SourceConfig({
+    this.automaticBackupsReplicationEnabled,
+    this.autonomousDatabase,
+  });
+
+  SourceConfig.fromJson(core.Map json_)
+      : this(
+          automaticBackupsReplicationEnabled:
+              json_['automaticBackupsReplicationEnabled'] as core.bool?,
+          autonomousDatabase: json_['autonomousDatabase'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (automaticBackupsReplicationEnabled != null)
+          'automaticBackupsReplicationEnabled':
+              automaticBackupsReplicationEnabled!,
+        if (autonomousDatabase != null)
+          'autonomousDatabase': autonomousDatabase!,
+      };
+}
+
+/// The request for `AutonomousDatabase.Start`.
+typedef StartAutonomousDatabaseRequest = $Empty;
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -5345,6 +6411,32 @@ class ScheduledOperationDetails {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// The request for `AutonomousDatabase.Stop`.
+typedef StopAutonomousDatabaseRequest = $Empty;
+
+/// The request for `OracleDatabase.SwitchoverAutonomousDatabase`.
+class SwitchoverAutonomousDatabaseRequest {
+  /// The peer database name to switch over to.
+  ///
+  /// Required.
+  core.String? peerAutonomousDatabase;
+
+  SwitchoverAutonomousDatabaseRequest({
+    this.peerAutonomousDatabase,
+  });
+
+  SwitchoverAutonomousDatabaseRequest.fromJson(core.Map json_)
+      : this(
+          peerAutonomousDatabase:
+              json_['peerAutonomousDatabase'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (peerAutonomousDatabase != null)
+          'peerAutonomousDatabase': peerAutonomousDatabase!,
+      };
+}
 
 /// Represents a time of day.
 ///

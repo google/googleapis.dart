@@ -461,7 +461,7 @@ class CasesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name for the case.
+  /// [name] - Identifier. The resource name for the case.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
   /// [updateMask] - A list of attributes of the case that should be updated.
@@ -778,8 +778,9 @@ class MediaResource {
 
   /// Download a file attached to a case.
   ///
-  /// Note: HTTP requests must append "?alt=media" to the URL. EXAMPLES: cURL:
-  /// ```shell
+  /// When this endpoint is called, no "response body" will be returned.
+  /// Instead, the attachment's blob will be returned. Note: HTTP requests must
+  /// append "?alt=media" to the URL. EXAMPLES: cURL: ```shell
   /// name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ"
   /// curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)"
   /// \ "https://cloudsupport.googleapis.com/v2/$name:download?alt=media" ```
@@ -929,7 +930,7 @@ class Actor {
   /// If not provided, it is inferred from the credentials supplied during case
   /// creation. When a name is provided, an email must also be provided. If the
   /// user is a Google Support agent, this is obfuscated. This field is
-  /// deprecated. Use **username** field instead.
+  /// deprecated. Use `username` instead.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -1002,6 +1003,8 @@ class Attachment {
   /// Output only.
   core.String? mimeType;
 
+  /// Identifier.
+  ///
   /// The resource name of the attachment.
   ///
   /// Output only.
@@ -1156,6 +1159,8 @@ class Case {
   /// https://cloud.google.com/support/docs/language-working-hours
   core.String? languageCode;
 
+  /// Identifier.
+  ///
   /// The resource name for the case.
   core.String? name;
 

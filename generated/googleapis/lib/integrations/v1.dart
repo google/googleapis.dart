@@ -1024,6 +1024,52 @@ class ProjectsLocationsClientsResource {
   ProjectsLocationsClientsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Updates the client customer configuration for the given project and
+  /// location resource name
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Required: Format -
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse>
+      changeConfig(
+    GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/clients:changeConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Perform the deprovisioning steps to disable a user GCP project to use IP
   /// and purge all related data in a wipeout-compliant way.
   ///
@@ -1111,6 +1157,53 @@ class ProjectsLocationsClientsResource {
     );
     return GoogleProtobufEmpty.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Perform post provisioning steps after client is provisioned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Required: The ID of the GCP Project to be
+  /// provisioned.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse>
+      provisionClientPostProcessor(
+    GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/clients:provisionClientPostProcessor';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update run-as service account for provisioned client
@@ -1230,6 +1323,48 @@ class ProjectsLocationsClientsResource {
     final url_ = 'v1/' +
         core.Uri.encodeFull('$parent') +
         '/clients:switchVariableMasking';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enable/Disable http call for provisioned client
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Required: The ID of the GCP Project to be
+  /// provisioned.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> toggleHttp(
+    GoogleCloudIntegrationsV1alphaToggleHttpRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/clients:toggleHttp';
 
     final response_ = await _requester.request(
       url_,
@@ -1636,10 +1771,6 @@ class ProjectsLocationsIntegrationsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+$`.
   ///
-  /// [GCPCloudEventsMode] - Optional. LINT: LEGACY_NAMES The query parameter
-  /// value for __GCP_CloudEventsMode, set by the Eventarc service when
-  /// configuring triggers.
-  ///
   /// [triggerId] - Required. Id of the integration trigger config. The
   /// trigger_id is in the format:
   /// `integration_connector_trigger/projects/{gcp_project_id}/location/{location}/connections/{connection_name}/subscriptions/{subscription_name}`.
@@ -1656,13 +1787,10 @@ class ProjectsLocationsIntegrationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudIntegrationsV1alphaExecuteEventResponse> executeEvent(
     core.String name, {
-    core.String? GCPCloudEventsMode,
     core.String? triggerId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (GCPCloudEventsMode != null)
-        'GCPCloudEventsMode': [GCPCloudEventsMode],
       if (triggerId != null) 'triggerId': [triggerId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1782,6 +1910,80 @@ class ProjectsLocationsIntegrationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Searches and returns the list of integrations in the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Project and location from which the integrations
+  /// should be listed. Format: projects / * /locations / *
+  /// /resources/integrations
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [enableNaturalLanguageQueryUnderstanding] - Optional. Whether to enable
+  /// natural language query understanding.
+  ///
+  /// [filter] - Optional. The pre-filter to be applied to the search. This
+  /// should follow the expressions defined in
+  /// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata.
+  /// For example, "status:ANY("ACTIVE")" will return all the resources whose
+  /// status contains the "ACTIVE".
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return. The
+  /// service may return fewer than this value. If unspecified, at most 10
+  /// results will be returned. The maximum value is 100; values above 100 will
+  /// be coerced to 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `SearchIntegrations` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `SearchIntegrations`
+  /// must match the call that provided the page token.
+  ///
+  /// [query] - Required. The user query
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse> search(
+    core.String parent, {
+    core.bool? enableNaturalLanguageQueryUnderstanding,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (enableNaturalLanguageQueryUnderstanding != null)
+        'enableNaturalLanguageQueryUnderstanding': [
+          '${enableNaturalLanguageQueryUnderstanding}'
+        ],
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/integrations:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -6444,6 +6646,9 @@ class ProjectsLocationsTemplatesResource {
   /// [parent] - Required. The client, which owns this collection of Templates.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [enableNaturalLanguageQueryUnderstanding] - Optional. Whether to enable
+  /// natural language query understanding.
+  ///
   /// [filter] - Optional. Standard filter field to filter templates. client_id
   /// filter won't be supported and will restrict to templates belonging to the
   /// current client only. Return all templates of the current client if the
@@ -6458,6 +6663,9 @@ class ProjectsLocationsTemplatesResource {
   /// coerced to 1000.
   ///
   /// [pageToken] - Optional. The token returned in the previous response.
+  ///
+  /// [query] - Optional. The search query that will be passed to Vertex search
+  /// service.
   ///
   /// [readMask] - Optional. The mask which specifies fields that need to be
   /// returned in the template's response.
@@ -6474,18 +6682,25 @@ class ProjectsLocationsTemplatesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudIntegrationsV1alphaSearchTemplatesResponse> search(
     core.String parent, {
+    core.bool? enableNaturalLanguageQueryUnderstanding,
     core.String? filter,
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? query,
     core.String? readMask,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (enableNaturalLanguageQueryUnderstanding != null)
+        'enableNaturalLanguageQueryUnderstanding': [
+          '${enableNaturalLanguageQueryUnderstanding}'
+        ],
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
       if (readMask != null) 'readMask': [readMask],
       if ($fields != null) 'fields': [$fields],
     };
@@ -8786,6 +9001,10 @@ class EnterpriseCrmEventbusProtoTaskAlertConfig {
 ///
 /// Next available id: 11
 class EnterpriseCrmEventbusProtoTaskExecutionDetails {
+  /// Indicates whether the task was skipped on failure.
+  ///
+  /// Only relevant if the task is in SKIPPED state.
+  core.bool? skippedOnFailure;
   core.List<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats>?
       taskAttemptStats;
 
@@ -8820,6 +9039,7 @@ class EnterpriseCrmEventbusProtoTaskExecutionDetails {
   core.String? taskNumber;
 
   EnterpriseCrmEventbusProtoTaskExecutionDetails({
+    this.skippedOnFailure,
     this.taskAttemptStats,
     this.taskExecutionState,
     this.taskNumber,
@@ -8827,6 +9047,7 @@ class EnterpriseCrmEventbusProtoTaskExecutionDetails {
 
   EnterpriseCrmEventbusProtoTaskExecutionDetails.fromJson(core.Map json_)
       : this(
+          skippedOnFailure: json_['skippedOnFailure'] as core.bool?,
           taskAttemptStats: (json_['taskAttemptStats'] as core.List?)
               ?.map((value) =>
                   EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats
@@ -8837,6 +9058,7 @@ class EnterpriseCrmEventbusProtoTaskExecutionDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (skippedOnFailure != null) 'skippedOnFailure': skippedOnFailure!,
         if (taskAttemptStats != null) 'taskAttemptStats': taskAttemptStats!,
         if (taskExecutionState != null)
           'taskExecutionState': taskExecutionState!,
@@ -11431,12 +11653,18 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameters {
 /// AuthConfig defines details of a authentication type.
 class GoogleCloudConnectorsV1AuthConfig {
   /// List containing additional auth configs.
+  ///
+  /// Optional.
   core.List<GoogleCloudConnectorsV1ConfigVariable>? additionalVariables;
 
   /// Identifier key for auth config
+  ///
+  /// Optional.
   core.String? authKey;
 
   /// The type of authentication configured.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "AUTH_TYPE_UNSPECIFIED" : Authentication type not specified.
   /// - "USER_PASSWORD" : Username and Password Authentication.
@@ -11544,28 +11772,44 @@ class GoogleCloudConnectorsV1AuthConfig {
 /// See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
 class GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow {
   /// Authorization code to be exchanged for access and refresh tokens.
+  ///
+  /// Optional.
   core.String? authCode;
 
   /// Auth URL for Authorization Code Flow
+  ///
+  /// Optional.
   core.String? authUri;
 
   /// Client ID for user-provided OAuth app.
+  ///
+  /// Optional.
   core.String? clientId;
 
   /// Client secret for user-provided OAuth app.
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1Secret? clientSecret;
 
   /// Whether to enable PKCE when the user performs the auth code flow.
+  ///
+  /// Optional.
   core.bool? enablePkce;
 
   /// PKCE verifier to be used during the auth code exchange.
+  ///
+  /// Optional.
   core.String? pkceVerifier;
 
   /// Redirect URI to be provided during the auth code exchange.
+  ///
+  /// Optional.
   core.String? redirectUri;
 
   /// Scopes the connection will request when the user performs the auth code
   /// flow.
+  ///
+  /// Optional.
   core.List<core.String>? scopes;
 
   GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow({
@@ -11620,9 +11864,13 @@ typedef GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged
 /// See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
 class GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials {
   /// The client identifier.
+  ///
+  /// Optional.
   core.String? clientId;
 
   /// Secret version reference containing the client secret.
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1Secret? clientSecret;
 
   GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials({
@@ -11657,9 +11905,13 @@ class GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer {
   /// This private key will be used to sign JWTs used for the jwt-bearer
   /// authorization grant. Specified in the form as: `projects / * /secrets / *
   /// /versions / * `.
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1Secret? clientKey;
 
   /// JwtClaims providers fields to generate the token.
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims? jwtClaims;
 
   GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer({
@@ -11692,17 +11944,25 @@ typedef GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims = $JwtClaims;
 /// Parameters to support Ssh public key Authentication.
 class GoogleCloudConnectorsV1AuthConfigSshPublicKey {
   /// Format of SSH Client cert.
+  ///
+  /// Optional.
   core.String? certType;
 
   /// SSH Client Cert.
   ///
   /// It should contain both public and private key.
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1Secret? sshClientCert;
 
   /// Password (passphrase) for ssh client certificate if it has one.
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1Secret? sshClientCertPass;
 
   /// The user account used to authenticate.
+  ///
+  /// Optional.
   core.String? username;
 
   GoogleCloudConnectorsV1AuthConfigSshPublicKey({
@@ -11738,9 +11998,13 @@ class GoogleCloudConnectorsV1AuthConfigSshPublicKey {
 /// Parameters to support Username and Password Authentication.
 class GoogleCloudConnectorsV1AuthConfigUserPassword {
   /// Secret version reference containing the password.
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1Secret? password;
 
   /// Username.
+  ///
+  /// Optional.
   core.String? username;
 
   GoogleCloudConnectorsV1AuthConfigUserPassword({
@@ -11780,6 +12044,8 @@ class GoogleCloudConnectorsV1ConfigVariable {
   core.String? intValue;
 
   /// Key of the config variable.
+  ///
+  /// Optional.
   core.String? key;
 
   /// Value is a secret.
@@ -11918,6 +12184,15 @@ class GoogleCloudConnectorsV1Connection {
   /// Output only.
   core.String? envoyImageLocation;
 
+  /// Additional Oauth2.0 Auth config for EUA.
+  ///
+  /// If the connection is configured using non-OAuth authentication but OAuth
+  /// needs to be used for EUA, this field can be populated with the OAuth
+  /// config. This should be a OAuth2AuthCodeFlow Auth type only.
+  ///
+  /// Optional.
+  GoogleCloudConnectorsV1AuthConfig? euaOauthAuthConfig;
+
   /// Eventing config of a connection
   ///
   /// Optional.
@@ -11939,6 +12214,15 @@ class GoogleCloudConnectorsV1Connection {
   ///
   /// Output only.
   GoogleCloudConnectorsV1EventingRuntimeData? eventingRuntimeData;
+
+  /// Fallback on admin credentials for the connection.
+  ///
+  /// If this both auth_override_enabled and fallback_on_admin_credentials are
+  /// set to true, the connection will use the admin credentials if the dynamic
+  /// auth header is not present during auth override.
+  ///
+  /// Optional.
+  core.bool? fallbackOnAdminCredentials;
 
   /// The name of the Hostname of the Service Directory service with TLS.
   ///
@@ -12029,6 +12313,11 @@ class GoogleCloudConnectorsV1Connection {
   /// Output only.
   core.String? tlsServiceDirectory;
 
+  /// Traffic shaping configuration for the connection.
+  ///
+  /// Optional.
+  core.List<GoogleCloudConnectorsV1TrafficShapingConfig>? trafficShapingConfigs;
+
   /// Updated time.
   ///
   /// Output only.
@@ -12048,9 +12337,11 @@ class GoogleCloudConnectorsV1Connection {
     this.description,
     this.destinationConfigs,
     this.envoyImageLocation,
+    this.euaOauthAuthConfig,
     this.eventingConfig,
     this.eventingEnablementType,
     this.eventingRuntimeData,
+    this.fallbackOnAdminCredentials,
     this.host,
     this.imageLocation,
     this.isTrustedTester,
@@ -12066,6 +12357,7 @@ class GoogleCloudConnectorsV1Connection {
     this.subscriptionType,
     this.suspended,
     this.tlsServiceDirectory,
+    this.trafficShapingConfigs,
     this.updateTime,
   });
 
@@ -12103,6 +12395,11 @@ class GoogleCloudConnectorsV1Connection {
                       value as core.Map<core.String, core.dynamic>))
               .toList(),
           envoyImageLocation: json_['envoyImageLocation'] as core.String?,
+          euaOauthAuthConfig: json_.containsKey('euaOauthAuthConfig')
+              ? GoogleCloudConnectorsV1AuthConfig.fromJson(
+                  json_['euaOauthAuthConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           eventingConfig: json_.containsKey('eventingConfig')
               ? GoogleCloudConnectorsV1EventingConfig.fromJson(
                   json_['eventingConfig']
@@ -12115,6 +12412,8 @@ class GoogleCloudConnectorsV1Connection {
                   json_['eventingRuntimeData']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          fallbackOnAdminCredentials:
+              json_['fallbackOnAdminCredentials'] as core.bool?,
           host: json_['host'] as core.String?,
           imageLocation: json_['imageLocation'] as core.String?,
           isTrustedTester: json_['isTrustedTester'] as core.bool?,
@@ -12151,6 +12450,11 @@ class GoogleCloudConnectorsV1Connection {
           subscriptionType: json_['subscriptionType'] as core.String?,
           suspended: json_['suspended'] as core.bool?,
           tlsServiceDirectory: json_['tlsServiceDirectory'] as core.String?,
+          trafficShapingConfigs: (json_['trafficShapingConfigs'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudConnectorsV1TrafficShapingConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -12175,11 +12479,15 @@ class GoogleCloudConnectorsV1Connection {
           'destinationConfigs': destinationConfigs!,
         if (envoyImageLocation != null)
           'envoyImageLocation': envoyImageLocation!,
+        if (euaOauthAuthConfig != null)
+          'euaOauthAuthConfig': euaOauthAuthConfig!,
         if (eventingConfig != null) 'eventingConfig': eventingConfig!,
         if (eventingEnablementType != null)
           'eventingEnablementType': eventingEnablementType!,
         if (eventingRuntimeData != null)
           'eventingRuntimeData': eventingRuntimeData!,
+        if (fallbackOnAdminCredentials != null)
+          'fallbackOnAdminCredentials': fallbackOnAdminCredentials!,
         if (host != null) 'host': host!,
         if (imageLocation != null) 'imageLocation': imageLocation!,
         if (isTrustedTester != null) 'isTrustedTester': isTrustedTester!,
@@ -12196,6 +12504,8 @@ class GoogleCloudConnectorsV1Connection {
         if (suspended != null) 'suspended': suspended!,
         if (tlsServiceDirectory != null)
           'tlsServiceDirectory': tlsServiceDirectory!,
+        if (trafficShapingConfigs != null)
+          'trafficShapingConfigs': trafficShapingConfigs!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -12203,7 +12513,7 @@ class GoogleCloudConnectorsV1Connection {
 /// ConnectionStatus indicates the state of the connection.
 typedef GoogleCloudConnectorsV1ConnectionStatus = $ConnectionStatus;
 
-/// This cofiguration provides infra configs like rate limit threshold which
+/// This configuration provides infra configs like rate limit threshold which
 /// need to be configurable for every connector version
 class GoogleCloudConnectorsV1ConnectorVersionInfraConfig {
   /// The window used for ratelimiting runtime requests to connections.
@@ -12378,7 +12688,7 @@ typedef GoogleCloudConnectorsV1EncryptionKey = $EncryptionKey;
 /// Data enrichment configuration.
 typedef GoogleCloudConnectorsV1EnrichmentConfig = $EnrichmentConfig;
 
-/// Eventing Configuration of a connection
+/// Eventing Configuration of a connection next: 19
 class GoogleCloudConnectorsV1EventingConfig {
   /// Additional eventing related field values
   ///
@@ -12417,6 +12727,12 @@ class GoogleCloudConnectorsV1EventingConfig {
   /// Optional.
   GoogleCloudConnectorsV1AuthConfig? listenerAuthConfig;
 
+  /// List of projects to be allowlisted for the service attachment created in
+  /// the tenant project for eventing ingress.
+  ///
+  /// Optional.
+  core.List<core.String>? privateConnectivityAllowlistedProjects;
+
   /// Private Connectivity Enabled.
   ///
   /// Optional.
@@ -12432,6 +12748,11 @@ class GoogleCloudConnectorsV1EventingConfig {
   /// Optional.
   GoogleCloudConnectorsV1DestinationConfig? registrationDestinationConfig;
 
+  /// Ssl config of a connection
+  ///
+  /// Optional.
+  GoogleCloudConnectorsV1SslConfig? sslConfig;
+
   GoogleCloudConnectorsV1EventingConfig({
     this.additionalVariables,
     this.authConfig,
@@ -12440,9 +12761,11 @@ class GoogleCloudConnectorsV1EventingConfig {
     this.enrichmentEnabled,
     this.eventsListenerIngressEndpoint,
     this.listenerAuthConfig,
+    this.privateConnectivityAllowlistedProjects,
     this.privateConnectivityEnabled,
     this.proxyDestinationConfig,
     this.registrationDestinationConfig,
+    this.sslConfig,
   });
 
   GoogleCloudConnectorsV1EventingConfig.fromJson(core.Map json_)
@@ -12473,6 +12796,10 @@ class GoogleCloudConnectorsV1EventingConfig {
                   json_['listenerAuthConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          privateConnectivityAllowlistedProjects:
+              (json_['privateConnectivityAllowlistedProjects'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           privateConnectivityEnabled:
               json_['privateConnectivityEnabled'] as core.bool?,
           proxyDestinationConfig: json_.containsKey('proxyDestinationConfig')
@@ -12486,6 +12813,10 @@ class GoogleCloudConnectorsV1EventingConfig {
                       json_['registrationDestinationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          sslConfig: json_.containsKey('sslConfig')
+              ? GoogleCloudConnectorsV1SslConfig.fromJson(
+                  json_['sslConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12499,12 +12830,16 @@ class GoogleCloudConnectorsV1EventingConfig {
           'eventsListenerIngressEndpoint': eventsListenerIngressEndpoint!,
         if (listenerAuthConfig != null)
           'listenerAuthConfig': listenerAuthConfig!,
+        if (privateConnectivityAllowlistedProjects != null)
+          'privateConnectivityAllowlistedProjects':
+              privateConnectivityAllowlistedProjects!,
         if (privateConnectivityEnabled != null)
           'privateConnectivityEnabled': privateConnectivityEnabled!,
         if (proxyDestinationConfig != null)
           'proxyDestinationConfig': proxyDestinationConfig!,
         if (registrationDestinationConfig != null)
           'registrationDestinationConfig': registrationDestinationConfig!,
+        if (sslConfig != null) 'sslConfig': sslConfig!,
       };
 }
 
@@ -12840,6 +13175,19 @@ class GoogleCloudConnectorsV1SslConfig {
       };
 }
 
+/// * TrafficShapingConfig defines the configuration for shaping API traffic by
+/// specifying a quota limit and the duration over which this limit is enforced.
+///
+/// This configuration helps to control and manage the rate at which API calls
+/// are made on the client side, preventing service overload on the backend. For
+/// example: - if the quota limit is 100 calls per 10 seconds, then the message
+/// would be: { quota_limit: 100 duration: { seconds: 10 } } - if the quota
+/// limit is 100 calls per 5 minutes, then the message would be: { quota_limit:
+/// 100 duration: { seconds: 300 } } - if the quota limit is 10000 calls per
+/// day, then the message would be: { quota_limit: 10000 duration: { seconds:
+/// 86400 } and so on.
+typedef GoogleCloudConnectorsV1TrafficShapingConfig = $TrafficShapingConfig;
+
 /// The access token represents the authorization of a specific application to
 /// access specific parts of a user’s data.
 class GoogleCloudIntegrationsV1alphaAccessToken {
@@ -13079,6 +13427,8 @@ class GoogleCloudIntegrationsV1alphaAuthConfig {
   core.String? creatorEmail;
 
   /// Credential type of the encrypted credential.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "CREDENTIAL_TYPE_UNSPECIFIED" : Unspecified credential type
   /// - "USERNAME_AND_PASSWORD" : Regular username/password pair.
@@ -13100,6 +13450,8 @@ class GoogleCloudIntegrationsV1alphaAuthConfig {
   GoogleCloudIntegrationsV1alphaCredential? decryptedCredential;
 
   /// A description of the auth config.
+  ///
+  /// Optional.
   core.String? description;
 
   /// The name of the auth config.
@@ -13123,6 +13475,8 @@ class GoogleCloudIntegrationsV1alphaAuthConfig {
   /// config becomes invalid.
   ///
   /// Support up to 30 days. Support granularity in hours.
+  ///
+  /// Optional.
   core.List<core.String>? expiryNotificationDuration;
 
   /// The last modifier's email address.
@@ -13141,12 +13495,18 @@ class GoogleCloudIntegrationsV1alphaAuthConfig {
   ///
   /// For the example of Salesforce, username/password credentials can be valid
   /// for 6 months depending on the instance settings.
+  ///
+  /// Optional.
   core.String? overrideValidTime;
 
   /// The reason / details of the current status.
+  ///
+  /// Output only.
   core.String? reason;
 
   /// The status of the auth config.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Status not specified.
   /// - "VALID" : Valid Auth config.
@@ -13166,9 +13526,13 @@ class GoogleCloudIntegrationsV1alphaAuthConfig {
   /// The time until the auth config is valid.
   ///
   /// Empty or max value is considered the auth config won't expire.
+  ///
+  /// Optional.
   core.String? validTime;
 
   /// The visibility of the auth config.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "AUTH_CONFIG_VISIBILITY_UNSPECIFIED" : Visibility not specified.
   /// - "PRIVATE" : Profile visible to the creator only.
@@ -13426,6 +13790,69 @@ class GoogleCloudIntegrationsV1alphaCertificate {
       };
 }
 
+/// Request for the ChangeCustomerConfig rpc
+class GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest {
+  /// The customer configuration to be updated.
+  ///
+  /// Optional.
+  GoogleCloudIntegrationsV1alphaCustomerConfig? customerConfig;
+
+  /// Field mask specifying the fields in the customer config that have been
+  /// modified and must be updated.
+  ///
+  /// If absent or empty, no fields are updated.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest({
+    this.customerConfig,
+    this.updateMask,
+  });
+
+  GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest.fromJson(
+      core.Map json_)
+      : this(
+          customerConfig: json_.containsKey('customerConfig')
+              ? GoogleCloudIntegrationsV1alphaCustomerConfig.fromJson(
+                  json_['customerConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_['updateMask'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customerConfig != null) 'customerConfig': customerConfig!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Response for the ChangeCustomerConfig rpc
+class GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse {
+  /// The updated customer configuration.
+  ///
+  /// Required.
+  GoogleCloudIntegrationsV1alphaCustomerConfig? customerConfig;
+
+  GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse({
+    this.customerConfig,
+  });
+
+  GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse.fromJson(
+      core.Map json_)
+      : this(
+          customerConfig: json_.containsKey('customerConfig')
+              ? GoogleCloudIntegrationsV1alphaCustomerConfig.fromJson(
+                  json_['customerConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customerConfig != null) 'customerConfig': customerConfig!,
+      };
+}
+
 /// Contains client certificate information
 class GoogleCloudIntegrationsV1alphaClientCertificate {
   /// The ssl certificate encoded in PEM format.
@@ -13512,15 +13939,23 @@ class GoogleCloudIntegrationsV1alphaClientConfig {
   /// - "CLIENT_STATE_DISABLED" : The client is disabled and will soon be
   /// deleted
   core.String? clientState;
-
-  /// Cloud KMS config for Auth Module to encrypt/decrypt credentials.
   GoogleCloudIntegrationsV1alphaCloudKmsConfig? cloudKmsConfig;
 
   /// The timestamp when the client was first created.
   core.String? createTime;
 
+  /// Customer configuration information for the given client.
+  ///
+  /// Optional.
+  GoogleCloudIntegrationsV1alphaCustomerConfig? customerConfig;
+
   /// Description of what the client is used for
   core.String? description;
+
+  ///
+  ///
+  /// Optional.
+  core.bool? enableHttpCall;
 
   /// Indicates the client enables internal IP feature, this is applicable for
   /// internal clients only.
@@ -13528,7 +13963,12 @@ class GoogleCloudIntegrationsV1alphaClientConfig {
   /// Optional.
   core.bool? enableInternalIp;
 
-  /// True if variable masking feature should be turned on for this region
+  ///
+  ///
+  /// Optional.
+  core.bool? enableManagedAiFeatures;
+
+  ///
   ///
   /// Optional.
   core.bool? enableVariableMasking;
@@ -13549,10 +13989,6 @@ class GoogleCloudIntegrationsV1alphaClientConfig {
 
   /// The region the client is linked to.
   core.String? region;
-
-  /// Default run-as service account email, set up during project provision
-  /// time, that will be used to generate auth token to be used in Connector
-  /// task, Rest caller task, Cloud function task and Subworkflows.
   core.String? runAsServiceAccount;
 
   GoogleCloudIntegrationsV1alphaClientConfig({
@@ -13560,8 +13996,11 @@ class GoogleCloudIntegrationsV1alphaClientConfig {
     this.clientState,
     this.cloudKmsConfig,
     this.createTime,
+    this.customerConfig,
     this.description,
+    this.enableHttpCall,
     this.enableInternalIp,
+    this.enableManagedAiFeatures,
     this.enableVariableMasking,
     this.id,
     this.isGmek,
@@ -13581,8 +14020,16 @@ class GoogleCloudIntegrationsV1alphaClientConfig {
                       as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
+          customerConfig: json_.containsKey('customerConfig')
+              ? GoogleCloudIntegrationsV1alphaCustomerConfig.fromJson(
+                  json_['customerConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           description: json_['description'] as core.String?,
+          enableHttpCall: json_['enableHttpCall'] as core.bool?,
           enableInternalIp: json_['enableInternalIp'] as core.bool?,
+          enableManagedAiFeatures:
+              json_['enableManagedAiFeatures'] as core.bool?,
           enableVariableMasking: json_['enableVariableMasking'] as core.bool?,
           id: json_['id'] as core.String?,
           isGmek: json_['isGmek'] as core.bool?,
@@ -13597,8 +14044,12 @@ class GoogleCloudIntegrationsV1alphaClientConfig {
         if (clientState != null) 'clientState': clientState!,
         if (cloudKmsConfig != null) 'cloudKmsConfig': cloudKmsConfig!,
         if (createTime != null) 'createTime': createTime!,
+        if (customerConfig != null) 'customerConfig': customerConfig!,
         if (description != null) 'description': description!,
+        if (enableHttpCall != null) 'enableHttpCall': enableHttpCall!,
         if (enableInternalIp != null) 'enableInternalIp': enableInternalIp!,
+        if (enableManagedAiFeatures != null)
+          'enableManagedAiFeatures': enableManagedAiFeatures!,
         if (enableVariableMasking != null)
           'enableVariableMasking': enableVariableMasking!,
         if (id != null) 'id': id!,
@@ -13878,12 +14329,22 @@ class GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest {
   /// The function region of CF to be created
   core.String? functionRegion;
 
+  /// The api version of CF to be created
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GCF_API_VERSION_UNSPECIFIED" : Unspecified.
+  /// - "API_VERSION_V1" : V1 API version.
+  /// - "API_VERSION_V2" : V2 API version.
+  core.String? gcfApiVersion;
+
   /// Indicates the id of the GCP project that the function will be created in.
   core.String? projectId;
 
   GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest({
     this.functionName,
     this.functionRegion,
+    this.gcfApiVersion,
     this.projectId,
   });
 
@@ -13892,12 +14353,14 @@ class GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest {
       : this(
           functionName: json_['functionName'] as core.String?,
           functionRegion: json_['functionRegion'] as core.String?,
+          gcfApiVersion: json_['gcfApiVersion'] as core.String?,
           projectId: json_['projectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (functionName != null) 'functionName': functionName!,
         if (functionRegion != null) 'functionRegion': functionRegion!,
+        if (gcfApiVersion != null) 'gcfApiVersion': gcfApiVersion!,
         if (projectId != null) 'projectId': projectId!,
       };
 }
@@ -14044,6 +14507,73 @@ class GoogleCloudIntegrationsV1alphaCredential {
           'serviceAccountCredentials': serviceAccountCredentials!,
         if (usernameAndPassword != null)
           'usernameAndPassword': usernameAndPassword!,
+      };
+}
+
+/// Customer configuration information for the given client
+class GoogleCloudIntegrationsV1alphaCustomerConfig {
+  /// Cloud KMS config for Auth Module to encrypt/decrypt credentials.
+  ///
+  /// Optional.
+  GoogleCloudIntegrationsV1alphaCloudKmsConfig? cloudKmsConfig;
+
+  /// Indicates if the client should be allowed to make HTTP calls.
+  ///
+  /// True if http call feature should be turned on for this region.
+  ///
+  /// Optional.
+  core.bool? enableHttpCall;
+
+  /// Indicates if the client should be allowed to use managed AI features, i.e.
+  /// using Cloud Companion APIs of the tenant project.
+  ///
+  /// This will allow the customers to use features like Troubleshooting,
+  /// OpenAPI spec enrichment, etc. for free.
+  ///
+  /// Optional.
+  core.bool? enableManagedAiFeatures;
+
+  /// True if variable masking feature should be turned on for this region.
+  ///
+  /// Optional.
+  core.bool? enableVariableMasking;
+
+  /// Run-as service account to be updated for the provisioned client.
+  ///
+  /// Optional.
+  core.String? runAsServiceAccount;
+
+  GoogleCloudIntegrationsV1alphaCustomerConfig({
+    this.cloudKmsConfig,
+    this.enableHttpCall,
+    this.enableManagedAiFeatures,
+    this.enableVariableMasking,
+    this.runAsServiceAccount,
+  });
+
+  GoogleCloudIntegrationsV1alphaCustomerConfig.fromJson(core.Map json_)
+      : this(
+          cloudKmsConfig: json_.containsKey('cloudKmsConfig')
+              ? GoogleCloudIntegrationsV1alphaCloudKmsConfig.fromJson(
+                  json_['cloudKmsConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          enableHttpCall: json_['enableHttpCall'] as core.bool?,
+          enableManagedAiFeatures:
+              json_['enableManagedAiFeatures'] as core.bool?,
+          enableVariableMasking: json_['enableVariableMasking'] as core.bool?,
+          runAsServiceAccount: json_['runAsServiceAccount'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudKmsConfig != null) 'cloudKmsConfig': cloudKmsConfig!,
+        if (enableHttpCall != null) 'enableHttpCall': enableHttpCall!,
+        if (enableManagedAiFeatures != null)
+          'enableManagedAiFeatures': enableManagedAiFeatures!,
+        if (enableVariableMasking != null)
+          'enableVariableMasking': enableVariableMasking!,
+        if (runAsServiceAccount != null)
+          'runAsServiceAccount': runAsServiceAccount!,
       };
 }
 
@@ -16021,7 +16551,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationVersion {
   /// latest(snapshot_number)\]. However, last created snapshot need not be same
   /// as the HEAD. So users should always use "HEAD" tag to identify the head.
   ///
-  /// Optional.
+  /// Output only.
   core.String? snapshotNumber;
 
   /// User should not set it as an input.
@@ -17429,6 +17959,34 @@ class GoogleCloudIntegrationsV1alphaProjectProperties {
       };
 }
 
+/// Request for PostProvisioning rpc call.
+class GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest {
+  /// Indicate which workflows to create
+  ///
+  /// Optional.
+  core.List<core.String>? workflows;
+
+  GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest({
+    this.workflows,
+  });
+
+  GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest.fromJson(
+      core.Map json_)
+      : this(
+          workflows: (json_['workflows'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (workflows != null) 'workflows': workflows!,
+      };
+}
+
+/// Response for PostProvisioning rpc call.
+typedef GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse
+    = $Empty;
+
 /// Request for the Provision rpc
 class GoogleCloudIntegrationsV1alphaProvisionClientRequest {
   /// OPTIONAL: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
@@ -17440,6 +17998,20 @@ class GoogleCloudIntegrationsV1alphaProvisionClientRequest {
   ///
   /// Optional.
   core.bool? createSampleWorkflows;
+
+  /// Indicates if the client should be allowed to make HTTP calls.
+  ///
+  /// Optional.
+  core.bool? enableHttpCall;
+
+  /// Indicates if the client should be allowed to use managed AI features, i.e.
+  /// using Cloud Companion APIs of the tenant project.
+  ///
+  /// This will allow the customers to use features like Troubleshooting,
+  /// OpenAPI spec enrichment, etc. for free.
+  ///
+  /// Optional.
+  core.bool? enableManagedAiFeatures;
 
   /// Indicates provision with GMEK or CMEK.
   ///
@@ -17466,6 +18038,8 @@ class GoogleCloudIntegrationsV1alphaProvisionClientRequest {
   GoogleCloudIntegrationsV1alphaProvisionClientRequest({
     this.cloudKmsConfig,
     this.createSampleWorkflows,
+    this.enableHttpCall,
+    this.enableManagedAiFeatures,
     this.provisionGmek,
     this.runAsServiceAccount,
     this.skipCpProvision,
@@ -17479,6 +18053,9 @@ class GoogleCloudIntegrationsV1alphaProvisionClientRequest {
                       as core.Map<core.String, core.dynamic>)
               : null,
           createSampleWorkflows: json_['createSampleWorkflows'] as core.bool?,
+          enableHttpCall: json_['enableHttpCall'] as core.bool?,
+          enableManagedAiFeatures:
+              json_['enableManagedAiFeatures'] as core.bool?,
           provisionGmek: json_['provisionGmek'] as core.bool?,
           runAsServiceAccount: json_['runAsServiceAccount'] as core.String?,
           skipCpProvision: json_['skipCpProvision'] as core.bool?,
@@ -17488,6 +18065,9 @@ class GoogleCloudIntegrationsV1alphaProvisionClientRequest {
         if (cloudKmsConfig != null) 'cloudKmsConfig': cloudKmsConfig!,
         if (createSampleWorkflows != null)
           'createSampleWorkflows': createSampleWorkflows!,
+        if (enableHttpCall != null) 'enableHttpCall': enableHttpCall!,
+        if (enableManagedAiFeatures != null)
+          'enableManagedAiFeatures': enableManagedAiFeatures!,
         if (provisionGmek != null) 'provisionGmek': provisionGmek!,
         if (runAsServiceAccount != null)
           'runAsServiceAccount': runAsServiceAccount!,
@@ -17874,6 +18454,112 @@ class GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse {
       };
 }
 
+/// Response for SearchIntegrations.
+class GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse {
+  /// The list of integrations that match the search criteria.
+  core.List<
+          GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult>?
+      integrations;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse({
+    this.integrations,
+    this.nextPageToken,
+  });
+
+  GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse.fromJson(
+      core.Map json_)
+      : this(
+          integrations: (json_['integrations'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (integrations != null) 'integrations': integrations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The integration search result with integration level information.
+class GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult {
+  /// The create time of the integration version.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The creator of the integration version.
+  core.String? creator;
+
+  /// The description of the integration version.
+  core.String? description;
+
+  /// The integration id.
+  core.String? id;
+
+  /// The integration document metadata.
+  core.String? name;
+
+  /// The region of the integration version.
+  core.String? region;
+
+  /// The status of the integration version.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "INTEGRATION_STATE_UNSPECIFIED" : Default.
+  /// - "DRAFT" : Draft.
+  /// - "ACTIVE" : Active.
+  /// - "ARCHIVED" : Archived.
+  /// - "SNAPSHOT" : Snapshot.
+  core.String? status;
+
+  /// The version of the integration version.
+  core.String? version;
+
+  GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult({
+    this.createTime,
+    this.creator,
+    this.description,
+    this.id,
+    this.name,
+    this.region,
+    this.status,
+    this.version,
+  });
+
+  GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult.fromJson(
+      core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          creator: json_['creator'] as core.String?,
+          description: json_['description'] as core.String?,
+          id: json_['id'] as core.String?,
+          name: json_['name'] as core.String?,
+          region: json_['region'] as core.String?,
+          status: json_['status'] as core.String?,
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!,
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (region != null) 'region': region!,
+        if (status != null) 'status': status!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Response for a request to search templates
 class GoogleCloudIntegrationsV1alphaSearchTemplatesResponse {
   /// The token used to retrieve the next page results.
@@ -17962,6 +18648,8 @@ class GoogleCloudIntegrationsV1alphaServiceAccountCredentials {
 /// The SfdcChannel that points to a CDC or Platform Event Channel.
 class GoogleCloudIntegrationsV1alphaSfdcChannel {
   /// The Channel topic defined by salesforce once an channel is opened
+  ///
+  /// Required.
   core.String? channelTopic;
 
   /// Time when the channel is created
@@ -17977,18 +18665,26 @@ class GoogleCloudIntegrationsV1alphaSfdcChannel {
   core.String? deleteTime;
 
   /// The description for this channel
+  ///
+  /// Optional.
   core.String? description;
 
   /// Client level unique name/alias to easily reference a channel.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Indicated if a channel has any active integrations referencing it.
   ///
   /// Set to false when the channel is created, and set to true if there is any
   /// integration published with the channel configured in it.
+  ///
+  /// Output only.
   core.bool? isActive;
 
   /// Last sfdc messsage replay id for channel
+  ///
+  /// Output only.
   core.String? lastReplayId;
 
   /// Resource name of the SFDC channel
@@ -18056,9 +18752,13 @@ class GoogleCloudIntegrationsV1alphaSfdcInstance {
   core.String? deleteTime;
 
   /// A description of the sfdc instance.
+  ///
+  /// Optional.
   core.String? description;
 
   /// User selected unique name/alias to easily reference an instance.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Resource name of the SFDC instance
@@ -18067,6 +18767,8 @@ class GoogleCloudIntegrationsV1alphaSfdcInstance {
 
   /// URL used for API calls after authentication (the login authority is
   /// configured within the referenced AuthConfig).
+  ///
+  /// Optional.
   core.String? serviceAuthority;
 
   /// The SFDC Org Id.
@@ -19444,6 +20146,27 @@ class GoogleCloudIntegrationsV1alphaTestTaskConfig {
         if (task != null) 'task': task!,
         if (taskConfig != null) 'taskConfig': taskConfig!,
         if (taskNumber != null) 'taskNumber': taskNumber!,
+      };
+}
+
+/// Request to enable/disable http call for a provisioned client
+class GoogleCloudIntegrationsV1alphaToggleHttpRequest {
+  /// REQUIRED: True if http call feature should be turned on for this region
+  ///
+  /// Required.
+  core.bool? enableHttpCall;
+
+  GoogleCloudIntegrationsV1alphaToggleHttpRequest({
+    this.enableHttpCall,
+  });
+
+  GoogleCloudIntegrationsV1alphaToggleHttpRequest.fromJson(core.Map json_)
+      : this(
+          enableHttpCall: json_['enableHttpCall'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableHttpCall != null) 'enableHttpCall': enableHttpCall!,
       };
 }
 

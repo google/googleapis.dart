@@ -73,8 +73,8 @@ class CustomersResource {
   /// Use this operation to see a customer account already in your reseller
   /// management, or to see the minimal account information for an existing
   /// customer that you do not manage. For more information about the API
-  /// response for existing customers, see \[retrieving a customer
-  /// account\](/admin-sdk/reseller/v1/how-tos/manage_customers#get_customer).
+  /// response for existing customers, see
+  /// [retrieving a customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#get_customer).
   ///
   /// Request parameters:
   ///
@@ -118,21 +118,19 @@ class CustomersResource {
   ///
   /// Before ordering a new customer account, establish whether the customer
   /// account already exists using the
-  /// \[`customers.get`\](/admin-sdk/reseller/v1/reference/customers/get) If the
-  /// customer account exists as a direct Google account or as a resold customer
-  /// account from another reseller, use the `customerAuthToken\` as described
-  /// in \[order a resold account for an existing
-  /// customer\](/admin-sdk/reseller/v1/how-tos/manage_customers#create_existing_customer).
-  /// For more information about ordering a new customer account, see \[order a
-  /// new customer
-  /// account\](/admin-sdk/reseller/v1/how-tos/manage_customers#create_customer).
+  /// \[`customers.get`\](https://developers.google.com/workspace/admin/reseller/v1/reference/customers/get)
+  /// If the customer account exists as a direct Google account or as a resold
+  /// customer account from another reseller, use the `customerAuthToken\` as
+  /// described in
+  /// [order a resold account for an existing customer](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_existing_customer).
+  /// For more information about ordering a new customer account, see
+  /// [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_customer).
   /// After creating a new customer account, you must provision a user as an
   /// administrator. The customer's administrator is required to sign in to the
   /// Admin console and sign the G Suite via Reseller agreement to activate the
   /// account. Resellers are prohibited from signing the G Suite via Reseller
-  /// agreement on the customer's behalf. For more information, see \[order a
-  /// new customer
-  /// account\](/admin-sdk/reseller/v1/how-tos/manage_customers#tos).
+  /// agreement on the customer's behalf. For more information, see
+  /// [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#tos).
   ///
   /// [request] - The metadata request object.
   ///
@@ -231,8 +229,8 @@ class CustomersResource {
   ///
   /// You cannot update `customerType` via the Reseller API, but a `"team"`
   /// customer can verify their domain and become `customerType = "domain"`. For
-  /// more information, see \[update a customer's
-  /// settings\](/admin-sdk/reseller/v1/how-tos/manage_customers#update_customer).
+  /// more information, see
+  /// [update a customer's settings](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#update_customer).
   ///
   /// [request] - The metadata request object.
   ///
@@ -457,8 +455,8 @@ class SubscriptionsResource {
   /// Use this method to update a plan for a 30-day trial or a flexible plan
   /// subscription to an annual commitment plan with monthly or yearly payments.
   /// How a plan is updated differs depending on the plan and the products. For
-  /// more information, see the description in \[manage
-  /// subscriptions\](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#update_subscription_plan).
+  /// more information, see the description in
+  /// [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_subscription_plan).
   ///
   /// [request] - The metadata request object.
   ///
@@ -517,8 +515,8 @@ class SubscriptionsResource {
   /// Updates a user license's renewal settings.
   ///
   /// This is applicable for accounts with annual commitment plans only. For
-  /// more information, see the description in \[manage
-  /// subscriptions\](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#update_renewal).
+  /// more information, see the description in
+  /// [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_renewal).
   ///
   /// [request] - The metadata request object.
   ///
@@ -577,8 +575,8 @@ class SubscriptionsResource {
   /// Updates a subscription's user license settings.
   ///
   /// For more information about updating an annual commitment plan or a
-  /// flexible plan subscription’s licenses, see \[Manage
-  /// Subscriptions\](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#update_subscription_seat).
+  /// flexible plan subscription’s licenses, see
+  /// [Manage Subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_subscription_seat).
   ///
   /// [request] - The metadata request object.
   ///
@@ -697,11 +695,11 @@ class SubscriptionsResource {
 
   /// Gets a specific subscription.
   ///
-  /// The `subscriptionId` can be found using the \[Retrieve all reseller
-  /// subscriptions\](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#get_all_subscriptions)
+  /// The `subscriptionId` can be found using the
+  /// [Retrieve all reseller subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#get_all_subscriptions)
   /// method. For more information about retrieving a specific subscription, see
-  /// the information descrived in \[manage
-  /// subscriptions\](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#get_subscription).
+  /// the information descrived in
+  /// [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#get_subscription).
   ///
   /// Request parameters:
   ///
@@ -754,18 +752,17 @@ class SubscriptionsResource {
   /// Creates or transfer a subscription.
   ///
   /// Create a subscription for a customer's account that you ordered using the
-  /// \[Order a new customer
-  /// account\](/admin-sdk/reseller/v1/reference/customers/insert.html) method.
-  /// For more information about creating a subscription for different payment
-  /// plans, see \[manage
-  /// subscriptions\](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#create_subscription).\
+  /// [Order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/reference/customers/insert.html)
+  /// method. For more information about creating a subscription for different
+  /// payment plans, see
+  /// [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#create_subscription).\
   /// If you did not order the customer's account using the customer insert
   /// method, use the customer's `customerAuthToken` when creating a
   /// subscription for that customer. If transferring a G Suite subscription
   /// with an associated Google Drive or Google Vault subscription, use the
-  /// \[batch operation\](/admin-sdk/reseller/v1/how-tos/batch.html) to transfer
-  /// all of these subscriptions. For more information, see how to \[transfer
-  /// subscriptions\](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#transfer_a_subscription).
+  /// [batch operation](https://developers.google.com/workspace/admin/reseller/v1/how-tos/batch.html)
+  /// to transfer all of these subscriptions. For more information, see how to
+  /// [transfer subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#transfer_a_subscription).
   ///
   /// [request] - The metadata request object.
   ///
@@ -778,11 +775,9 @@ class SubscriptionsResource {
   /// used. We recommend storing the unique identifier in your systems where
   /// applicable.
   ///
-  /// [action] - The intented insert action. The usage of this field is governed
-  /// by certain policies which are being developed & tested currently. Hence,
-  /// these might not work as intended. Once this is fully tested & available to
-  /// consume, we will share more information about its usage, limitations and
-  /// policy documentation.
+  /// [action] - The intented insert action. Advised to set this when the
+  /// customer already has a subscription for a different SKU in the same
+  /// product.
   /// Possible string values are:
   /// - "actionUnspecified" : Auto determines whether to create new
   /// subscription, upgrade or downagrade existing subscription or transfer the
@@ -799,11 +794,7 @@ class SubscriptionsResource {
   /// administrator help center.
   ///
   /// [sourceSkuId] - The sku_id of the existing subscription to be upgraded or
-  /// downgraded. This is required when action is SWITCH. The usage of this
-  /// field is governed by certain policies which are being developed & tested
-  /// currently. Hence, these might not work as intended. Once this is fully
-  /// tested & available to consume, we will share more information about its
-  /// usage, limitations and policy documentation.
+  /// downgraded. This is required when action is SWITCH.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -850,8 +841,8 @@ class SubscriptionsResource {
   /// The list can be all subscriptions, all of a customer's subscriptions, or
   /// all of a customer's transferable subscriptions. Optionally, this method
   /// can filter the response by a `customerNamePrefix`. For more information,
-  /// see \[manage
-  /// subscriptions\](/admin-sdk/reseller/v1/how-tos/manage_subscriptions).
+  /// see
+  /// [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions).
   ///
   /// Request parameters:
   ///
@@ -927,8 +918,8 @@ class SubscriptionsResource {
   /// subscription.
   ///
   /// This method is only applicable if a payment plan has already been set up
-  /// for the 30-day trial subscription. For more information, see \[manage
-  /// subscriptions\](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#paid_service).
+  /// for the 30-day trial subscription. For more information, see
+  /// [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#paid_service).
   ///
   /// Request parameters:
   ///
@@ -1434,7 +1425,7 @@ class Seats {
   ///
   /// This field's value is equivalent to the numerical count of users returned
   /// by the Enterprise License Manager API method:
-  /// \[`listForProductAndSku`\](/admin-sdk/licensing/v1/reference/licenseAssignments/listForProductAndSku).
+  /// \[`listForProductAndSku`\](https://developers.google.com/workspace/admin/licensing/v1/reference/licenseAssignments/listForProductAndSku).
   core.int? licensedNumberOfSeats;
 
   /// This is a required property and is exclusive to subscriptions with

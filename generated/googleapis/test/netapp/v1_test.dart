@@ -219,10 +219,12 @@ api.Backup buildBackup() {
   final o = api.Backup();
   buildCounterBackup++;
   if (buildCounterBackup < 3) {
+    o.backupRegion = 'foo';
     o.backupType = 'foo';
     o.chainStorageBytes = 'foo';
     o.createTime = 'foo';
     o.description = 'foo';
+    o.enforcedRetentionEndTime = 'foo';
     o.labels = buildUnnamed4();
     o.name = 'foo';
     o.satisfiesPzi = true;
@@ -230,6 +232,7 @@ api.Backup buildBackup() {
     o.sourceSnapshot = 'foo';
     o.sourceVolume = 'foo';
     o.state = 'foo';
+    o.volumeRegion = 'foo';
     o.volumeUsageBytes = 'foo';
   }
   buildCounterBackup--;
@@ -239,6 +242,10 @@ api.Backup buildBackup() {
 void checkBackup(api.Backup o) {
   buildCounterBackup++;
   if (buildCounterBackup < 3) {
+    unittest.expect(
+      o.backupRegion!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.backupType!,
       unittest.equals('foo'),
@@ -253,6 +260,10 @@ void checkBackup(api.Backup o) {
     );
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.enforcedRetentionEndTime!,
       unittest.equals('foo'),
     );
     checkUnnamed4(o.labels!);
@@ -272,6 +283,10 @@ void checkBackup(api.Backup o) {
     );
     unittest.expect(
       o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.volumeRegion!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -408,6 +423,36 @@ void checkBackupPolicy(api.BackupPolicy o) {
   buildCounterBackupPolicy--;
 }
 
+core.int buildCounterBackupRetentionPolicy = 0;
+api.BackupRetentionPolicy buildBackupRetentionPolicy() {
+  final o = api.BackupRetentionPolicy();
+  buildCounterBackupRetentionPolicy++;
+  if (buildCounterBackupRetentionPolicy < 3) {
+    o.backupMinimumEnforcedRetentionDays = 42;
+    o.dailyBackupImmutable = true;
+    o.manualBackupImmutable = true;
+    o.monthlyBackupImmutable = true;
+    o.weeklyBackupImmutable = true;
+  }
+  buildCounterBackupRetentionPolicy--;
+  return o;
+}
+
+void checkBackupRetentionPolicy(api.BackupRetentionPolicy o) {
+  buildCounterBackupRetentionPolicy++;
+  if (buildCounterBackupRetentionPolicy < 3) {
+    unittest.expect(
+      o.backupMinimumEnforcedRetentionDays!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.dailyBackupImmutable!, unittest.isTrue);
+    unittest.expect(o.manualBackupImmutable!, unittest.isTrue);
+    unittest.expect(o.monthlyBackupImmutable!, unittest.isTrue);
+    unittest.expect(o.weeklyBackupImmutable!, unittest.isTrue);
+  }
+  buildCounterBackupRetentionPolicy--;
+}
+
 core.Map<core.String, core.String> buildUnnamed7() => {
       'x': 'foo',
       'y': 'foo',
@@ -430,10 +475,16 @@ api.BackupVault buildBackupVault() {
   final o = api.BackupVault();
   buildCounterBackupVault++;
   if (buildCounterBackupVault < 3) {
+    o.backupRegion = 'foo';
+    o.backupRetentionPolicy = buildBackupRetentionPolicy();
+    o.backupVaultType = 'foo';
     o.createTime = 'foo';
     o.description = 'foo';
+    o.destinationBackupVault = 'foo';
     o.labels = buildUnnamed7();
     o.name = 'foo';
+    o.sourceBackupVault = 'foo';
+    o.sourceRegion = 'foo';
     o.state = 'foo';
   }
   buildCounterBackupVault--;
@@ -444,6 +495,15 @@ void checkBackupVault(api.BackupVault o) {
   buildCounterBackupVault++;
   if (buildCounterBackupVault < 3) {
     unittest.expect(
+      o.backupRegion!,
+      unittest.equals('foo'),
+    );
+    checkBackupRetentionPolicy(o.backupRetentionPolicy!);
+    unittest.expect(
+      o.backupVaultType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
     );
@@ -451,9 +511,21 @@ void checkBackupVault(api.BackupVault o) {
       o.description!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.destinationBackupVault!,
+      unittest.equals('foo'),
+    );
     checkUnnamed7(o.labels!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceBackupVault!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceRegion!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2340,9 +2412,12 @@ api.StoragePool buildStoragePool() {
     o.allowAutoTiering = true;
     o.capacityGib = 'foo';
     o.createTime = 'foo';
+    o.customPerformanceEnabled = true;
     o.description = 'foo';
+    o.enableHotTierAutoResize = true;
     o.encryptionType = 'foo';
     o.globalAccessAllowed = true;
+    o.hotTierSizeGib = 'foo';
     o.kmsConfig = 'foo';
     o.labels = buildUnnamed44();
     o.ldapEnabled = true;
@@ -2355,6 +2430,8 @@ api.StoragePool buildStoragePool() {
     o.serviceLevel = 'foo';
     o.state = 'foo';
     o.stateDetails = 'foo';
+    o.totalIops = 'foo';
+    o.totalThroughputMibps = 'foo';
     o.volumeCapacityGib = 'foo';
     o.volumeCount = 42;
     o.zone = 'foo';
@@ -2379,15 +2456,21 @@ void checkStoragePool(api.StoragePool o) {
       o.createTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.customPerformanceEnabled!, unittest.isTrue);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.enableHotTierAutoResize!, unittest.isTrue);
     unittest.expect(
       o.encryptionType!,
       unittest.equals('foo'),
     );
     unittest.expect(o.globalAccessAllowed!, unittest.isTrue);
+    unittest.expect(
+      o.hotTierSizeGib!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.kmsConfig!,
       unittest.equals('foo'),
@@ -2422,6 +2505,14 @@ void checkStoragePool(api.StoragePool o) {
     );
     unittest.expect(
       o.stateDetails!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalIops!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalThroughputMibps!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2476,6 +2567,7 @@ api.TieringPolicy buildTieringPolicy() {
   buildCounterTieringPolicy++;
   if (buildCounterTieringPolicy < 3) {
     o.coolingThresholdDays = 42;
+    o.hotTierBypassModeEnabled = true;
     o.tierAction = 'foo';
   }
   buildCounterTieringPolicy--;
@@ -2489,6 +2581,7 @@ void checkTieringPolicy(api.TieringPolicy o) {
       o.coolingThresholdDays!,
       unittest.equals(42),
     );
+    unittest.expect(o.hotTierBypassModeEnabled!, unittest.isTrue);
     unittest.expect(
       o.tierAction!,
       unittest.equals('foo'),
@@ -2893,6 +2986,23 @@ void checkWeeklySchedule(api.WeeklySchedule o) {
   buildCounterWeeklySchedule--;
 }
 
+core.List<core.String> buildUnnamed50() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed50(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-ActiveDirectory', () {
     unittest.test('to-json--from-json', () async {
@@ -2931,6 +3041,16 @@ void main() {
       final od = api.BackupPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkBackupPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-BackupRetentionPolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBackupRetentionPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BackupRetentionPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBackupRetentionPolicy(od);
     });
   });
 
@@ -3481,6 +3601,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.NetAppFilesApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed50();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3518,6 +3639,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -3541,6 +3666,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

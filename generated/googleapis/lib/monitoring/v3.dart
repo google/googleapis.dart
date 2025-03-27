@@ -5898,18 +5898,24 @@ class CreateTimeSeriesSummary {
 /// The Snooze will suppress alerts that come from one of the AlertPolicys whose
 /// names are supplied.
 class Criteria {
-  /// The filter string to match on Alert fields when silencing the alerts.
+  /// When you define a snooze, you can also define a filter for that snooze.
   ///
-  /// It follows the standard https://google.aip.dev/160 syntax. A filter string
-  /// used to apply the snooze to specific incidents that have matching filter
-  /// values. Filters can be defined for snoozes that apply to one alerting
-  /// policy. Filters must be a string formatted as one or more resource labels
-  /// with specific label values. If multiple resource labels are used, then
-  /// they must be connected with an AND operator. For example, the following
-  /// filter applies the snooze to incidents that have an instance ID of
-  /// 1234567890 and a zone of us-central1-a:
-  /// resource.labels.instance_id="1234567890" AND
-  /// resource.labels.zone="us-central1-a"
+  /// The filter is a string containing one or more key-value pairs. The string
+  /// uses the standard https://google.aip.dev/160 filter syntax. If you define
+  /// a filter for a snooze, then the snooze can only apply to one alert policy.
+  /// When the snooze is active, incidents won't be created when the incident
+  /// would have key-value pairs (labels) that match those specified by the
+  /// filter in the snooze.Snooze filters support resource, metric, and metadata
+  /// labels. If multiple labels are used, then they must be connected with an
+  /// AND operator. For example, the following filter applies the snooze to
+  /// incidents that have a resource label with an instance ID of 1234567890, a
+  /// metric label with an instance name of test_group, a metadata user label
+  /// with a key of foo and a value of bar, and a metadata system label with a
+  /// key of region and a value of us-central1: "filter":
+  /// "resource.labels.instance_id=\"1234567890\" AND
+  /// metric.labels.instance_name=\"test_group\" AND
+  /// metadata.user_labels.foo=\"bar\" AND
+  /// metadata.system_labels.region=\"us-central1\""
   ///
   /// Optional.
   core.String? filter;
@@ -7561,11 +7567,16 @@ class ListTimeSeriesResponse {
   /// types, or a unit is absent), then unit will be "{not_a_unit}".
   core.String? unit;
 
+  /// Cloud regions that were unreachable which may have caused incomplete data
+  /// to be returned.
+  core.List<core.String>? unreachable;
+
   ListTimeSeriesResponse({
     this.executionErrors,
     this.nextPageToken,
     this.timeSeries,
     this.unit,
+    this.unreachable,
   });
 
   ListTimeSeriesResponse.fromJson(core.Map json_)
@@ -7580,6 +7591,9 @@ class ListTimeSeriesResponse {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           unit: json_['unit'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7587,6 +7601,7 @@ class ListTimeSeriesResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (timeSeries != null) 'timeSeries': timeSeries!,
         if (unit != null) 'unit': unit!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -10528,6 +10543,9 @@ class UptimeCheckConfig {
   /// check.
   core.List<ContentMatcher>? contentMatchers;
 
+  /// Whether the check is disabled or not.
+  core.bool? disabled;
+
   /// A human-friendly name for the Uptime check configuration.
   ///
   /// The display name should be unique within a Cloud Monitoring Workspace in
@@ -10619,6 +10637,7 @@ class UptimeCheckConfig {
   UptimeCheckConfig({
     this.checkerType,
     this.contentMatchers,
+    this.disabled,
     this.displayName,
     this.httpCheck,
     this.internalCheckers,
@@ -10642,6 +10661,7 @@ class UptimeCheckConfig {
               ?.map((value) => ContentMatcher.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          disabled: json_['disabled'] as core.bool?,
           displayName: json_['displayName'] as core.String?,
           httpCheck: json_.containsKey('httpCheck')
               ? HttpCheck.fromJson(
@@ -10688,6 +10708,7 @@ class UptimeCheckConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (checkerType != null) 'checkerType': checkerType!,
         if (contentMatchers != null) 'contentMatchers': contentMatchers!,
+        if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
         if (httpCheck != null) 'httpCheck': httpCheck!,
         if (internalCheckers != null) 'internalCheckers': internalCheckers!,

@@ -132,6 +132,15 @@ class AssetlinksResource {
   /// A query with relation `delegate_permission/common.handle_all_urls` matches
   /// an asset link with relation `delegate_permission/common.handle_all_urls`.
   ///
+  /// [returnRelationExtensions] - Whether to return relation_extensions
+  /// payloads specified in the source Digital Asset Links statements linking
+  /// the requested source and target assets by the requested relation type. If
+  /// this is set to `false` (default), relation_extensions specified will not
+  /// be returned, even if they are specified in the DAL statement file. If set
+  /// to `true`, the API will propagate any and all relation_extensions, across
+  /// statements, linking the source and target assets by the requested relation
+  /// type, if specified in the DAL statement file.
+  ///
   /// [source_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
   /// fingerprint of the certificate. From the PEM certificate, it can be
   /// acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256:
@@ -216,6 +225,7 @@ class AssetlinksResource {
   /// this method will complete with the same error.
   async.Future<CheckResponse> check({
     core.String? relation,
+    core.bool? returnRelationExtensions,
     core.String? source_androidApp_certificate_sha256Fingerprint,
     core.String? source_androidApp_packageName,
     core.String? source_web_site,
@@ -226,6 +236,8 @@ class AssetlinksResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (relation != null) 'relation': [relation],
+      if (returnRelationExtensions != null)
+        'returnRelationExtensions': ['${returnRelationExtensions}'],
       if (source_androidApp_certificate_sha256Fingerprint != null)
         'source.androidApp.certificate.sha256Fingerprint': [
           source_androidApp_certificate_sha256Fingerprint
@@ -287,6 +299,13 @@ class StatementsResource {
   /// `delegate_permission/common.handle_all_urls` matches an asset link with
   /// relation `delegate_permission/common.handle_all_urls`.
   ///
+  /// [returnRelationExtensions] - Whether to return any relation_extensions
+  /// payloads specified in the source digital asset links statements. If this
+  /// is set to `false` (default), relation_extensions specified will not be
+  /// returned, even if they are specified in the DAL statement file. If set to
+  /// `true`, the API will propagate relation_extensions associated with each
+  /// statement's relation type, if specified in the DAL statement file.
+  ///
   /// [source_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
   /// fingerprint of the certificate. From the PEM certificate, it can be
   /// acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256:
@@ -335,6 +354,7 @@ class StatementsResource {
   /// this method will complete with the same error.
   async.Future<ListResponse> list({
     core.String? relation,
+    core.bool? returnRelationExtensions,
     core.String? source_androidApp_certificate_sha256Fingerprint,
     core.String? source_androidApp_packageName,
     core.String? source_web_site,
@@ -342,6 +362,8 @@ class StatementsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (relation != null) 'relation': [relation],
+      if (returnRelationExtensions != null)
+        'returnRelationExtensions': ['${returnRelationExtensions}'],
       if (source_androidApp_certificate_sha256Fingerprint != null)
         'source.androidApp.certificate.sha256Fingerprint': [
           source_androidApp_certificate_sha256Fingerprint
@@ -456,6 +478,10 @@ class BulkCheckRequest {
   /// specify a target.
   Asset? defaultTarget;
 
+  /// Same configuration as in CheckRequest; all statement checks will use the
+  /// same configuration.
+  core.bool? returnRelationExtensions;
+
   /// List of statements to check.
   ///
   /// For each statement, you can omit a field if the corresponding default_*
@@ -467,6 +493,7 @@ class BulkCheckRequest {
     this.defaultRelation,
     this.defaultSource,
     this.defaultTarget,
+    this.returnRelationExtensions,
     this.statements,
   });
 
@@ -481,6 +508,8 @@ class BulkCheckRequest {
               ? Asset.fromJson(
                   json_['defaultTarget'] as core.Map<core.String, core.dynamic>)
               : null,
+          returnRelationExtensions:
+              json_['returnRelationExtensions'] as core.bool?,
           statements: (json_['statements'] as core.List?)
               ?.map((value) => StatementTemplate.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -491,6 +520,8 @@ class BulkCheckRequest {
         if (defaultRelation != null) 'defaultRelation': defaultRelation!,
         if (defaultSource != null) 'defaultSource': defaultSource!,
         if (defaultTarget != null) 'defaultTarget': defaultTarget!,
+        if (returnRelationExtensions != null)
+          'returnRelationExtensions': returnRelationExtensions!,
         if (statements != null) 'statements': statements!,
       };
 }
@@ -606,11 +637,24 @@ class CheckResponse {
   /// REQUIRED
   core.String? maxAge;
 
+  /// Statements may specify relation level extensions/payloads to express more
+  /// details when declaring permissions to grant from the source asset to the
+  /// target asset.
+  ///
+  /// When requested, the API will return relation_extensions specified in any
+  /// and all statements linking the requested source and target assets by the
+  /// relation specified in the request.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object?>>? relationExtensions;
+
   CheckResponse({
     this.debugString,
     this.errorCode,
     this.linked,
     this.maxAge,
+    this.relationExtensions,
   });
 
   CheckResponse.fromJson(core.Map json_)
@@ -621,6 +665,9 @@ class CheckResponse {
               .toList(),
           linked: json_['linked'] as core.bool?,
           maxAge: json_['maxAge'] as core.String?,
+          relationExtensions: (json_['relationExtensions'] as core.List?)
+              ?.map((value) => value as core.Map<core.String, core.dynamic>)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -628,6 +675,8 @@ class CheckResponse {
         if (errorCode != null) 'errorCode': errorCode!,
         if (linked != null) 'linked': linked!,
         if (maxAge != null) 'maxAge': maxAge!,
+        if (relationExtensions != null)
+          'relationExtensions': relationExtensions!,
       };
 }
 
@@ -703,6 +752,25 @@ class Statement {
   /// `delegate_permission/common.handle_all_urls` REQUIRED
   core.String? relation;
 
+  /// Statements may specify relation level extensions/payloads to express more
+  /// details when declaring permissions to grant from the source asset to the
+  /// target asset.
+  ///
+  /// These relation extensions should be specified in the `relation_extensions`
+  /// object, keyed by the relation type they're associated with. { relation:
+  /// \["delegate_permission/common.handle_all_urls"\], target: {...},
+  /// relation_extensions: { "delegate_permission/common.handle_all_urls": {
+  /// ...handle_all_urls specific payload specified here... } } } When
+  /// requested, and specified in the statement file, the API will return
+  /// relation_extensions associated with the statement's relation type. i.e.
+  /// the API will only return relation_extensions specified for
+  /// "delegate_permission/common.handle_all_urls" if this statement object's
+  /// relation type is "delegate_permission/common.handle_all_urls".
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? relationExtensions;
+
   /// Every statement has a source asset.
   ///
   /// REQUIRED
@@ -715,6 +783,7 @@ class Statement {
 
   Statement({
     this.relation,
+    this.relationExtensions,
     this.source,
     this.target,
   });
@@ -722,6 +791,10 @@ class Statement {
   Statement.fromJson(core.Map json_)
       : this(
           relation: json_['relation'] as core.String?,
+          relationExtensions: json_.containsKey('relationExtensions')
+              ? json_['relationExtensions']
+                  as core.Map<core.String, core.dynamic>
+              : null,
           source: json_.containsKey('source')
               ? Asset.fromJson(
                   json_['source'] as core.Map<core.String, core.dynamic>)
@@ -734,6 +807,8 @@ class Statement {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (relation != null) 'relation': relation!,
+        if (relationExtensions != null)
+          'relationExtensions': relationExtensions!,
         if (source != null) 'source': source!,
         if (target != null) 'target': target!,
       };

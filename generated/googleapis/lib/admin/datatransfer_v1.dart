@@ -18,7 +18,7 @@
 /// resources like user, groups etc. It also provides audit and usage reports of
 /// domain.
 ///
-/// For more information, see <https://developers.google.com/admin-sdk/>
+/// For more information, see <https://developers.google.com/workspace/admin/>
 ///
 /// Create an instance of [DataTransferApi] to access these resources:
 ///
@@ -194,7 +194,8 @@ class TransfersResource {
 
   /// Inserts a data transfer request.
   ///
-  /// See the \[Transfer parameters\](/admin-sdk/data-transfer/v1/parameters)
+  /// See the
+  /// [Transfer parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters)
   /// reference for specific application requirements.
   ///
   /// [request] - The metadata request object.
@@ -300,7 +301,7 @@ class Application {
   /// The application's ID.
   ///
   /// Retrievable by using the
-  /// \[`applications.list()`\](/admin-sdk/data-transfer/reference/rest/v1/applications/list)
+  /// \[`applications.list()`\](https://developers.google.com/workspace/admin/data-transfer/reference/rest/v1/applications/list)
   /// method.
   core.String? id;
 
@@ -353,8 +354,9 @@ class ApplicationDataTransfer {
   ///
   /// These parameters are used to select the data which will get transferred in
   /// context of this application. For more information about the specific
-  /// values available for each application, see the \[Transfer
-  /// parameters\](/admin-sdk/data-transfer/v1/parameters) reference.
+  /// values available for each application, see the
+  /// [Transfer parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters)
+  /// reference.
   core.List<ApplicationTransferParam>? applicationTransferParams;
 
   /// Read-only.

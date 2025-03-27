@@ -1452,6 +1452,23 @@ void checkUnnamed24(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed25() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed25(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-CheckValidCredsRequest', () {
     unittest.test('to-json--from-json', () async {
@@ -2105,6 +2122,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.BigQueryDataTransferApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed19();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2142,6 +2160,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -2165,6 +2187,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
@@ -2600,7 +2623,7 @@ void main() {
       final res =
           api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
       final arg_parent = 'foo';
-      final arg_dataSourceIds = buildUnnamed19();
+      final arg_dataSourceIds = buildUnnamed20();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -2997,7 +3020,7 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_runAttempt = 'foo';
-      final arg_states = buildUnnamed20();
+      final arg_states = buildUnnamed21();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -3079,7 +3102,7 @@ void main() {
           .runs
           .transferLogs;
       final arg_parent = 'foo';
-      final arg_messageTypes = buildUnnamed21();
+      final arg_messageTypes = buildUnnamed22();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -3332,7 +3355,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.BigQueryDataTransferApi(mock).projects.transferConfigs;
       final arg_parent = 'foo';
-      final arg_dataSourceIds = buildUnnamed22();
+      final arg_dataSourceIds = buildUnnamed23();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -3717,7 +3740,7 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_runAttempt = 'foo';
-      final arg_states = buildUnnamed23();
+      final arg_states = buildUnnamed24();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -3798,7 +3821,7 @@ void main() {
           .runs
           .transferLogs;
       final arg_parent = 'foo';
-      final arg_messageTypes = buildUnnamed24();
+      final arg_messageTypes = buildUnnamed25();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';

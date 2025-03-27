@@ -88,6 +88,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://cloudbuild.europe-north2.rep.googleapis.com/",
+            "location": "europe-north2"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://cloudbuild.europe-southwest1.rep.googleapis.com/",
             "location": "europe-southwest1"
         },
@@ -247,7 +252,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250303",
+    "revision": "20250718",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Build API",
@@ -369,6 +374,12 @@
                                 "name"
                             ],
                             "parameters": {
+                                "extraLocationTypes": {
+                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "filter": {
                                     "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
@@ -1242,27 +1253,6 @@
             "description": "The request message for Operations.CancelOperation.",
             "id": "CancelOperationRequest",
             "properties": {},
-            "type": "object"
-        },
-        "Capabilities": {
-            "description": "Capabilities adds and removes POSIX capabilities from running containers.",
-            "id": "Capabilities",
-            "properties": {
-                "add": {
-                    "description": "Optional. Added capabilities +optional",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "drop": {
-                    "description": "Optional. Removed capabilities +optional",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
             "type": "object"
         },
         "ChildStatusReference": {
@@ -2799,10 +2789,6 @@
                 "allowPrivilegeEscalation": {
                     "description": "Optional. AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN Note that this field cannot be set when spec.os.name is windows. +optional",
                     "type": "boolean"
-                },
-                "capabilities": {
-                    "$ref": "Capabilities",
-                    "description": "Optional. Adds and removes POSIX capabilities from running containers."
                 },
                 "privileged": {
                     "description": "Run container in privileged mode.",

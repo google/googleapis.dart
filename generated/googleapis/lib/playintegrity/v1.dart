@@ -163,6 +163,49 @@ class V1Resource {
     return DecodeIntegrityTokenResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Decodes the PC integrity token and returns the PC token payload.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Package name of the app the attached integrity token
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DecodePcIntegrityTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DecodePcIntegrityTokenResponse> decodePcIntegrityToken(
+    DecodePcIntegrityTokenRequest request,
+    core.String packageName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$packageName') + ':decodePcIntegrityToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DecodePcIntegrityTokenResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 /// (Restricted Access) Contains a signal helping apps differentiating between
@@ -203,6 +246,9 @@ class AccountActivity {
 class AccountDetails {
   /// (Restricted Access) Details about the account activity for the user in the
   /// scope.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   AccountActivity? accountActivity;
 
   /// Details about the licensing status of the user for the app in the scope.
@@ -325,23 +371,7 @@ class AppIntegrity {
 }
 
 /// Request to decode the integrity token.
-class DecodeIntegrityTokenRequest {
-  /// Encoded integrity token.
-  core.String? integrityToken;
-
-  DecodeIntegrityTokenRequest({
-    this.integrityToken,
-  });
-
-  DecodeIntegrityTokenRequest.fromJson(core.Map json_)
-      : this(
-          integrityToken: json_['integrityToken'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (integrityToken != null) 'integrityToken': integrityToken!,
-      };
-}
+typedef DecodeIntegrityTokenRequest = $IntegrityTokenRequest;
 
 /// Response containing the decoded integrity payload.
 class DecodeIntegrityTokenResponse {
@@ -356,6 +386,32 @@ class DecodeIntegrityTokenResponse {
       : this(
           tokenPayloadExternal: json_.containsKey('tokenPayloadExternal')
               ? TokenPayloadExternal.fromJson(json_['tokenPayloadExternal']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tokenPayloadExternal != null)
+          'tokenPayloadExternal': tokenPayloadExternal!,
+      };
+}
+
+/// Request to decode the PC integrity token.
+typedef DecodePcIntegrityTokenRequest = $IntegrityTokenRequest;
+
+/// Response containing the decoded PC integrity payload.
+class DecodePcIntegrityTokenResponse {
+  /// Plain token payload generated from the decoded integrity token.
+  PcTokenPayloadExternal? tokenPayloadExternal;
+
+  DecodePcIntegrityTokenResponse({
+    this.tokenPayloadExternal,
+  });
+
+  DecodePcIntegrityTokenResponse.fromJson(core.Map json_)
+      : this(
+          tokenPayloadExternal: json_.containsKey('tokenPayloadExternal')
+              ? PcTokenPayloadExternal.fromJson(json_['tokenPayloadExternal']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -531,6 +587,102 @@ class EnvironmentDetails {
           'appAccessRiskVerdict': appAccessRiskVerdict!,
         if (playProtectVerdict != null)
           'playProtectVerdict': playProtectVerdict!,
+      };
+}
+
+/// Contains the device attestation information.
+class PcDeviceIntegrity {
+  /// Details about the integrity of the device the app is running on.
+  core.List<core.String>? deviceRecognitionVerdict;
+
+  PcDeviceIntegrity({
+    this.deviceRecognitionVerdict,
+  });
+
+  PcDeviceIntegrity.fromJson(core.Map json_)
+      : this(
+          deviceRecognitionVerdict:
+              (json_['deviceRecognitionVerdict'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceRecognitionVerdict != null)
+          'deviceRecognitionVerdict': deviceRecognitionVerdict!,
+      };
+}
+
+/// Contains the integrity request information.
+class PcRequestDetails {
+  /// Request hash that was provided in the request.
+  core.String? requestHash;
+
+  /// Application package name this attestation was requested for.
+  ///
+  /// Note: This field makes no guarantees or promises on the caller integrity.
+  ///
+  /// Required.
+  core.String? requestPackageName;
+
+  /// Timestamp, of the integrity application request.
+  ///
+  /// Required.
+  core.String? requestTime;
+
+  PcRequestDetails({
+    this.requestHash,
+    this.requestPackageName,
+    this.requestTime,
+  });
+
+  PcRequestDetails.fromJson(core.Map json_)
+      : this(
+          requestHash: json_['requestHash'] as core.String?,
+          requestPackageName: json_['requestPackageName'] as core.String?,
+          requestTime: json_['requestTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestHash != null) 'requestHash': requestHash!,
+        if (requestPackageName != null)
+          'requestPackageName': requestPackageName!,
+        if (requestTime != null) 'requestTime': requestTime!,
+      };
+}
+
+/// Contains PC device attestation details.
+class PcTokenPayloadExternal {
+  /// Details about the device integrity.
+  ///
+  /// Required.
+  PcDeviceIntegrity? deviceIntegrity;
+
+  /// Details about the integrity request.
+  ///
+  /// Required.
+  PcRequestDetails? requestDetails;
+
+  PcTokenPayloadExternal({
+    this.deviceIntegrity,
+    this.requestDetails,
+  });
+
+  PcTokenPayloadExternal.fromJson(core.Map json_)
+      : this(
+          deviceIntegrity: json_.containsKey('deviceIntegrity')
+              ? PcDeviceIntegrity.fromJson(json_['deviceIntegrity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          requestDetails: json_.containsKey('requestDetails')
+              ? PcRequestDetails.fromJson(json_['requestDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceIntegrity != null) 'deviceIntegrity': deviceIntegrity!,
+        if (requestDetails != null) 'requestDetails': requestDetails!,
       };
 }
 

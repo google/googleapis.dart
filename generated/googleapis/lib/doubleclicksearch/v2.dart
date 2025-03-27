@@ -693,6 +693,8 @@ class Availability {
 }
 
 /// A conversion containing data relevant to DoubleClick Search.
+///
+/// Common DS3 API conversion fields: Id Range \[1 - 2800\]. Next Id to use: 33
 class Conversion {
   /// DS ad group ID.
   core.String? adGroupId;

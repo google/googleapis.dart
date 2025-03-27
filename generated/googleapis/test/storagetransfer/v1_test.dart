@@ -180,6 +180,7 @@ api.AzureBlobStorageData buildAzureBlobStorageData() {
     o.azureCredentials = buildAzureCredentials();
     o.container = 'foo';
     o.credentialsSecret = 'foo';
+    o.federatedIdentityConfig = buildFederatedIdentityConfig();
     o.path = 'foo';
     o.storageAccount = 'foo';
   }
@@ -199,6 +200,7 @@ void checkAzureBlobStorageData(api.AzureBlobStorageData o) {
       o.credentialsSecret!,
       unittest.equals('foo'),
     );
+    checkFederatedIdentityConfig(o.federatedIdentityConfig!);
     unittest.expect(
       o.path!,
       unittest.equals('foo'),
@@ -347,6 +349,33 @@ void checkEventStream(api.EventStream o) {
     );
   }
   buildCounterEventStream--;
+}
+
+core.int buildCounterFederatedIdentityConfig = 0;
+api.FederatedIdentityConfig buildFederatedIdentityConfig() {
+  final o = api.FederatedIdentityConfig();
+  buildCounterFederatedIdentityConfig++;
+  if (buildCounterFederatedIdentityConfig < 3) {
+    o.clientId = 'foo';
+    o.tenantId = 'foo';
+  }
+  buildCounterFederatedIdentityConfig--;
+  return o;
+}
+
+void checkFederatedIdentityConfig(api.FederatedIdentityConfig o) {
+  buildCounterFederatedIdentityConfig++;
+  if (buildCounterFederatedIdentityConfig < 3) {
+    unittest.expect(
+      o.clientId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tenantId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFederatedIdentityConfig--;
 }
 
 core.int buildCounterGcsData = 0;
@@ -1219,6 +1248,7 @@ api.TransferJob buildTransferJob() {
     o.projectId = 'foo';
     o.replicationSpec = buildReplicationSpec();
     o.schedule = buildSchedule();
+    o.serviceAccount = 'foo';
     o.status = 'foo';
     o.transferSpec = buildTransferSpec();
   }
@@ -1262,6 +1292,10 @@ void checkTransferJob(api.TransferJob o) {
     );
     checkReplicationSpec(o.replicationSpec!);
     checkSchedule(o.schedule!);
+    unittest.expect(
+      o.serviceAccount!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.status!,
       unittest.equals('foo'),
@@ -1513,6 +1547,16 @@ void main() {
       final od = api.EventStream.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEventStream(od);
+    });
+  });
+
+  unittest.group('obj-schema-FederatedIdentityConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFederatedIdentityConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FederatedIdentityConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFederatedIdentityConfig(od);
     });
   });
 

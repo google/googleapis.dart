@@ -149,9 +149,12 @@ class ProjectsDataSourcesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The data source in the form:
-  /// `projects/{project_id}/dataSources/{data_source_id}` or
-  /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
+  /// [name] - Required. The name of the data source. If you are using the
+  /// regionless method, the location must be `US` and the name should be in the
+  /// following form: * `projects/{project_id}/dataSources/{data_source_id}` If
+  /// you are using the regionalized method, the name should be in the following
+  /// form: *
+  /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
   /// Value must have pattern `^projects/\[^/\]+/dataSources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -190,8 +193,11 @@ class ProjectsDataSourcesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The field will contain name of the resource requested,
-  /// for example: `projects/{project_id}/dataSources/{data_source_id}` or
+  /// [name] - Required. The name of the resource requested. If you are using
+  /// the regionless method, the location must be `US` and the name should be in
+  /// the following form: * `projects/{project_id}/dataSources/{data_source_id}`
+  /// If you are using the regionalized method, the name should be in the
+  /// following form: *
   /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
   /// Value must have pattern `^projects/\[^/\]+/dataSources/\[^/\]+$`.
   ///
@@ -376,6 +382,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -398,12 +408,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -482,9 +494,12 @@ class ProjectsLocationsDataSourcesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The data source in the form:
-  /// `projects/{project_id}/dataSources/{data_source_id}` or
-  /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
+  /// [name] - Required. The name of the data source. If you are using the
+  /// regionless method, the location must be `US` and the name should be in the
+  /// following form: * `projects/{project_id}/dataSources/{data_source_id}` If
+  /// you are using the regionalized method, the name should be in the following
+  /// form: *
+  /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataSources/\[^/\]+$`.
   ///
@@ -524,8 +539,11 @@ class ProjectsLocationsDataSourcesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The field will contain name of the resource requested,
-  /// for example: `projects/{project_id}/dataSources/{data_source_id}` or
+  /// [name] - Required. The name of the resource requested. If you are using
+  /// the regionless method, the location must be `US` and the name should be in
+  /// the following form: * `projects/{project_id}/dataSources/{data_source_id}`
+  /// If you are using the regionalized method, the name should be in the
+  /// following form: *
   /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataSources/\[^/\]+$`.
@@ -708,8 +726,11 @@ class ProjectsLocationsTransferConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The field will contain name of the resource requested,
-  /// for example: `projects/{project_id}/transferConfigs/{config_id}` or
+  /// [name] - Required. The name of the resource to delete. If you are using
+  /// the regionless method, the location must be `US` and the name should be in
+  /// the following form: * `projects/{project_id}/transferConfigs/{config_id}`
+  /// If you are using the regionalized method, the name should be in the
+  /// following form: *
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
@@ -746,8 +767,11 @@ class ProjectsLocationsTransferConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The field will contain name of the resource requested,
-  /// for example: `projects/{project_id}/transferConfigs/{config_id}` or
+  /// [name] - Required. The name of the resource requested. If you are using
+  /// the regionless method, the location must be `US` and the name should be in
+  /// the following form: * `projects/{project_id}/transferConfigs/{config_id}`
+  /// If you are using the regionalized method, the name should be in the
+  /// following form: *
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
@@ -787,8 +811,11 @@ class ProjectsLocationsTransferConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The BigQuery project id for which transfer configs
-  /// should be returned: `projects/{project_id}` or
-  /// `projects/{project_id}/locations/{location_id}`
+  /// should be returned. If you are using the regionless method, the location
+  /// must be \`US\` and \`parent\` should be in the following form: *
+  /// \`projects/{project_id} If you are using the regionalized method,
+  /// \`parent\` should be in the following form: *
+  /// \`projects/{project_id}/locations/{location_id}\`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [dataSourceIds] - When specified, only configurations of requested data
@@ -940,9 +967,12 @@ class ProjectsLocationsTransferConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Transfer configuration name in the form:
-  /// `projects/{project_id}/transferConfigs/{config_id}` or
-  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+  /// [parent] - Required. Transfer configuration name. If you are using the
+  /// regionless method, the location must be `US` and the name should be in the
+  /// following form: * `projects/{project_id}/transferConfigs/{config_id}` If
+  /// you are using the regionalized method, the name should be in the following
+  /// form: *
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
@@ -981,20 +1011,25 @@ class ProjectsLocationsTransferConfigsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Start manual transfer runs to be executed now with schedule_time equal to
-  /// current time.
+  /// Manually initiates transfer runs.
   ///
-  /// The transfer runs can be created for a time range where the run_time is
-  /// between start_time (inclusive) and end_time (exclusive), or for a specific
-  /// run_time.
+  /// You can schedule these runs in two ways: 1. For a specific point in time
+  /// using the 'requested_run_time' parameter. 2. For a period between
+  /// 'start_time' (inclusive) and 'end_time' (exclusive). If scheduling a
+  /// single run, it is set to execute immediately (schedule_time equals the
+  /// current time). When scheduling multiple runs within a time range, the
+  /// first run starts now, and subsequent runs are delayed by 15 seconds each.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Transfer configuration name in the form:
-  /// `projects/{project_id}/transferConfigs/{config_id}` or
-  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+  /// [parent] - Required. Transfer configuration name. If you are using the
+  /// regionless method, the location must be `US` and the name should be in the
+  /// following form: * `projects/{project_id}/transferConfigs/{config_id}` If
+  /// you are using the regionalized method, the name should be in the following
+  /// form: *
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
@@ -1044,9 +1079,12 @@ class ProjectsLocationsTransferConfigsRunsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The field will contain name of the resource requested,
-  /// for example:
-  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+  /// [name] - Required. The name of the resource requested. If you are using
+  /// the regionless method, the location must be `US` and the name should be in
+  /// the following form: *
+  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you
+  /// are using the regionalized method, the name should be in the following
+  /// form: *
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+/runs/\[^/\]+$`.
@@ -1083,9 +1121,12 @@ class ProjectsLocationsTransferConfigsRunsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The field will contain name of the resource requested,
-  /// for example:
-  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+  /// [name] - Required. The name of the resource requested. If you are using
+  /// the regionless method, the location must be `US` and the name should be in
+  /// the following form: *
+  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you
+  /// are using the regionalized method, the name should be in the following
+  /// form: *
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+/runs/\[^/\]+$`.
@@ -1124,9 +1165,11 @@ class ProjectsLocationsTransferConfigsRunsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of transfer configuration for which transfer
-  /// runs should be retrieved. Format of transfer configuration resource name
-  /// is: `projects/{project_id}/transferConfigs/{config_id}` or
-  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+  /// runs should be retrieved. If you are using the regionless method, the
+  /// location must be `US` and the name should be in the following form: *
+  /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the
+  /// regionalized method, the name should be in the following form: *
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
@@ -1195,8 +1238,11 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Transfer run name in the form:
-  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+  /// [parent] - Required. Transfer run name. If you are using the regionless
+  /// method, the location must be `US` and the name should be in the following
+  /// form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+  /// If you are using the regionalized method, the name should be in the
+  /// following form: *
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+/runs/\[^/\]+$`.
@@ -1346,8 +1392,11 @@ class ProjectsTransferConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The field will contain name of the resource requested,
-  /// for example: `projects/{project_id}/transferConfigs/{config_id}` or
+  /// [name] - Required. The name of the resource to delete. If you are using
+  /// the regionless method, the location must be `US` and the name should be in
+  /// the following form: * `projects/{project_id}/transferConfigs/{config_id}`
+  /// If you are using the regionalized method, the name should be in the
+  /// following form: *
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
@@ -1383,8 +1432,11 @@ class ProjectsTransferConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The field will contain name of the resource requested,
-  /// for example: `projects/{project_id}/transferConfigs/{config_id}` or
+  /// [name] - Required. The name of the resource requested. If you are using
+  /// the regionless method, the location must be `US` and the name should be in
+  /// the following form: * `projects/{project_id}/transferConfigs/{config_id}`
+  /// If you are using the regionalized method, the name should be in the
+  /// following form: *
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
@@ -1423,8 +1475,11 @@ class ProjectsTransferConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The BigQuery project id for which transfer configs
-  /// should be returned: `projects/{project_id}` or
-  /// `projects/{project_id}/locations/{location_id}`
+  /// should be returned. If you are using the regionless method, the location
+  /// must be \`US\` and \`parent\` should be in the following form: *
+  /// \`projects/{project_id} If you are using the regionalized method,
+  /// \`parent\` should be in the following form: *
+  /// \`projects/{project_id}/locations/{location_id}\`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [dataSourceIds] - When specified, only configurations of requested data
@@ -1575,9 +1630,12 @@ class ProjectsTransferConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Transfer configuration name in the form:
-  /// `projects/{project_id}/transferConfigs/{config_id}` or
-  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+  /// [parent] - Required. Transfer configuration name. If you are using the
+  /// regionless method, the location must be `US` and the name should be in the
+  /// following form: * `projects/{project_id}/transferConfigs/{config_id}` If
+  /// you are using the regionalized method, the name should be in the following
+  /// form: *
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1615,20 +1673,25 @@ class ProjectsTransferConfigsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Start manual transfer runs to be executed now with schedule_time equal to
-  /// current time.
+  /// Manually initiates transfer runs.
   ///
-  /// The transfer runs can be created for a time range where the run_time is
-  /// between start_time (inclusive) and end_time (exclusive), or for a specific
-  /// run_time.
+  /// You can schedule these runs in two ways: 1. For a specific point in time
+  /// using the 'requested_run_time' parameter. 2. For a period between
+  /// 'start_time' (inclusive) and 'end_time' (exclusive). If scheduling a
+  /// single run, it is set to execute immediately (schedule_time equals the
+  /// current time). When scheduling multiple runs within a time range, the
+  /// first run starts now, and subsequent runs are delayed by 15 seconds each.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Transfer configuration name in the form:
-  /// `projects/{project_id}/transferConfigs/{config_id}` or
-  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+  /// [parent] - Required. Transfer configuration name. If you are using the
+  /// regionless method, the location must be `US` and the name should be in the
+  /// following form: * `projects/{project_id}/transferConfigs/{config_id}` If
+  /// you are using the regionalized method, the name should be in the following
+  /// form: *
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1677,9 +1740,12 @@ class ProjectsTransferConfigsRunsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The field will contain name of the resource requested,
-  /// for example:
-  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+  /// [name] - Required. The name of the resource requested. If you are using
+  /// the regionless method, the location must be `US` and the name should be in
+  /// the following form: *
+  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you
+  /// are using the regionalized method, the name should be in the following
+  /// form: *
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/transferConfigs/\[^/\]+/runs/\[^/\]+$`.
@@ -1716,9 +1782,12 @@ class ProjectsTransferConfigsRunsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The field will contain name of the resource requested,
-  /// for example:
-  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+  /// [name] - Required. The name of the resource requested. If you are using
+  /// the regionless method, the location must be `US` and the name should be in
+  /// the following form: *
+  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you
+  /// are using the regionalized method, the name should be in the following
+  /// form: *
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/transferConfigs/\[^/\]+/runs/\[^/\]+$`.
@@ -1757,9 +1826,11 @@ class ProjectsTransferConfigsRunsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of transfer configuration for which transfer
-  /// runs should be retrieved. Format of transfer configuration resource name
-  /// is: `projects/{project_id}/transferConfigs/{config_id}` or
-  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+  /// runs should be retrieved. If you are using the regionless method, the
+  /// location must be `US` and the name should be in the following form: *
+  /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the
+  /// regionalized method, the name should be in the following form: *
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
@@ -1826,8 +1897,11 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Transfer run name in the form:
-  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+  /// [parent] - Required. Transfer run name. If you are using the regionless
+  /// method, the location must be `US` and the name should be in the following
+  /// form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+  /// If you are using the regionalized method, the name should be in the
+  /// following form: *
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/transferConfigs/\[^/\]+/runs/\[^/\]+$`.

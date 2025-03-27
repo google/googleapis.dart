@@ -121,6 +121,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -143,12 +147,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -514,6 +520,9 @@ class ProjectsLocationsWorkstationClustersResource {
   /// [parent] - Required. Parent resource name.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filter the WorkstationClusters to be listed. Possible
+  /// filters are described in https://google.aip.dev/160.
+  ///
   /// [pageSize] - Optional. Maximum number of items to return.
   ///
   /// [pageToken] - Optional. next_page_token value returned from a previous
@@ -531,11 +540,13 @@ class ProjectsLocationsWorkstationClustersResource {
   /// this method will complete with the same error.
   async.Future<ListWorkstationClustersResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -829,6 +840,9 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workstationClusters/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filter the WorkstationConfigs to be listed. Possible
+  /// filters are described in https://google.aip.dev/160.
+  ///
   /// [pageSize] - Optional. Maximum number of items to return.
   ///
   /// [pageToken] - Optional. next_page_token value returned from a previous
@@ -846,11 +860,13 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
   /// this method will complete with the same error.
   async.Future<ListWorkstationConfigsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1325,6 +1341,9 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workstationClusters/\[^/\]+/workstationConfigs/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filter the Workstations to be listed. Possible
+  /// filters are described in https://google.aip.dev/160.
+  ///
   /// [pageSize] - Optional. Maximum number of items to return.
   ///
   /// [pageToken] - Optional. next_page_token value returned from a previous
@@ -1342,11 +1361,13 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   /// this method will complete with the same error.
   async.Future<ListWorkstationsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2145,6 +2166,29 @@ class EphemeralDirectory {
 /// information.
 typedef Expr = $Expr;
 
+/// Configuration options for Cluster HTTP Gateway.
+class GatewayConfig {
+  /// Whether HTTP/2 is enabled for this workstation cluster.
+  ///
+  /// Defaults to false.
+  ///
+  /// Optional.
+  core.bool? http2Enabled;
+
+  GatewayConfig({
+    this.http2Enabled,
+  });
+
+  GatewayConfig.fromJson(core.Map json_)
+      : this(
+          http2Enabled: json_['http2Enabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (http2Enabled != null) 'http2Enabled': http2Enabled!,
+      };
+}
+
 /// A set of Compute Engine Confidential VM instance options.
 class GceConfidentialInstanceConfig {
   /// Whether the instance has confidential compute enabled.
@@ -2473,8 +2517,9 @@ class GcePersistentDisk {
   /// Updating source_snapshot will update content in the ephemeral directory
   /// after the workstation is restarted. Only file systems supported by
   /// Container-Optimized OS (COS) are explicitly supported. For a list of
-  /// supported file systems, please refer to the
-  /// [COS documentation](https://cloud.google.com/container-optimized-os/docs/concepts/supported-filesystems).
+  /// supported file systems, see \[the filesystems available in
+  /// Container-Optimized
+  /// OS\](https://cloud.google.com/container-optimized-os/docs/concepts/supported-filesystems).
   /// This field is mutable.
   ///
   /// Optional.
@@ -2554,7 +2599,8 @@ class GceRegionalPersistentDisk {
 
   /// Name of the snapshot to use as the source for the disk.
   ///
-  /// If set, size_gb and fs_type must be empty.
+  /// If set, size_gb and fs_type must be empty. Must be formatted as ext4 file
+  /// system with no partitions.
   ///
   /// Optional.
   core.String? sourceSnapshot;
@@ -3703,7 +3749,8 @@ class WorkstationCluster {
   /// Whether this workstation cluster is in degraded mode, in which case it may
   /// require user action to restore full functionality.
   ///
-  /// Details can be found in conditions.
+  /// The conditions field contains detailed information about the status of the
+  /// cluster.
   ///
   /// Output only.
   core.bool? degraded;
@@ -3730,6 +3777,11 @@ class WorkstationCluster {
   ///
   /// Optional.
   core.String? etag;
+
+  /// Configuration options for Cluster HTTP Gateway.
+  ///
+  /// Optional.
+  GatewayConfig? gatewayConfig;
 
   /// [Labels](https://cloud.google.com/workstations/docs/label-resources) that
   /// are applied to the workstation cluster and that are also propagated to the
@@ -3768,10 +3820,10 @@ class WorkstationCluster {
   /// Immutable.
   core.String? subnetwork;
 
-  /// Tag keys/values directly bound to this resource.
+  /// Input only.
   ///
-  /// For example: "123/environment": "production", "123/costCenter":
-  /// "marketing"
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
   ///
   /// Optional.
   core.Map<core.String, core.String>? tags;
@@ -3796,6 +3848,7 @@ class WorkstationCluster {
     this.displayName,
     this.domainConfig,
     this.etag,
+    this.gatewayConfig,
     this.labels,
     this.name,
     this.network,
@@ -3831,6 +3884,10 @@ class WorkstationCluster {
                   json_['domainConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_['etag'] as core.String?,
+          gatewayConfig: json_.containsKey('gatewayConfig')
+              ? GatewayConfig.fromJson(
+                  json_['gatewayConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -3866,6 +3923,7 @@ class WorkstationCluster {
         if (displayName != null) 'displayName': displayName!,
         if (domainConfig != null) 'domainConfig': domainConfig!,
         if (etag != null) 'etag': etag!,
+        if (gatewayConfig != null) 'gatewayConfig': gatewayConfig!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
@@ -3903,7 +3961,8 @@ class WorkstationConfig {
   /// Optional.
   core.Map<core.String, core.String>? annotations;
 
-  /// Status conditions describing the current resource state.
+  /// Status conditions describing the workstation configuration's current
+  /// state.
   ///
   /// Output only.
   core.List<Status>? conditions;
@@ -3919,10 +3978,11 @@ class WorkstationConfig {
   /// Output only.
   core.String? createTime;
 
-  /// Whether this resource is degraded, in which case it may require user
-  /// action to restore full functionality.
+  /// Whether this workstation configuration is in degraded mode, in which case
+  /// it may require user action to restore full functionality.
   ///
-  /// See also the conditions field.
+  /// The conditions field contains detailed information about the status of the
+  /// configuration.
   ///
   /// Output only.
   core.bool? degraded;

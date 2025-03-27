@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 14.0.0
+    version: 14.1.0-wip
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -31,7 +31,6 @@ packages:
     - alloydb:v1
     - analytics:v3 # https://developers.google.com/analytics/
     - analyticshub:v1
-    - analyticsreporting:v4 # https://developers.google.com/analytics/devguides/reporting/core/v4/
     - androiddeviceprovisioning:v1 # https://developers.google.com/zero-touch/
     - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
     - androidmanagement:v1 # https://developers.google.com/android/management
@@ -39,6 +38,7 @@ packages:
     - apigateway:v1
     - apigee:v1
     - apigeeregistry:v1
+    - apihub:v1
     - apikeys:v2
     - appengine:v1 # https://cloud.google.com/appengine/docs/admin-api/
     - apphub:v1
@@ -142,6 +142,8 @@ packages:
     - file:v1
     - firebaseappcheck:v1
     - firebaseappdistribution:v1
+    - firebaseapphosting:v1
+    - firebasedataconnect:v1
     - firebasedynamiclinks:v1 # https://firebase.google.com/docs/dynamic-links/
     - firebasehosting:v1
     - firebaseml:v1
@@ -185,11 +187,11 @@ packages:
     - logging:v2 # https://cloud.google.com/logging/docs/
     - looker:v1
     - managedidentities:v1
+    - managedkafka:v1
     - manufacturers:v1 # https://developers.google.com/manufacturers/
     - meet:v2
     - memcache:v1
     - metastore:v1
-    - metastore:v2
     - migrationcenter:v1
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3 # https://cloud.google.com/monitoring/api/
@@ -208,13 +210,16 @@ packages:
     - notebooks:v1
     - notebooks:v2
     - oauth2:v2 # Note: this is used many places and sometimes the document is missing
+    - observability:v1
     - ondemandscanning:v1
     - oracledatabase:v1
     - orgpolicy:v2
     - osconfig:v1
+    - osconfig:v2
     - oslogin:v1 # https://cloud.google.com/compute/docs/oslogin/rest/
     - pagespeedonline:v5 # https://developers.google.com/speed/docs/insights/about
     - parallelstore:v1
+    - parametermanager:v1
     - paymentsresellersubscription:v1
     - people:v1 # https://developers.google.com/people/
     - places:v1
@@ -244,6 +249,7 @@ packages:
     - script:v1 # https://developers.google.com/apps-script/execution/rest/v1/run
     - searchconsole:v1 # https://developers.google.com/webmaster-tools/search-console-api/
     - secretmanager:v1
+    - securesourcemanager:v1
     - securitycenter:v1
     - securityposture:v1
     - serviceconsumermanagement:v1 # https://cloud.google.com/service-consumer-management/docs/overview
@@ -261,6 +267,7 @@ packages:
     - spanner:v1 # https://cloud.google.com/spanner/docs/
     - speech:v1 # https://cloud.google.com/speech/
     - storage:v1 # https://developers.google.com/storage/
+    - storagebatchoperations:v1
     - storagetransfer:v1 # https://cloud.google.com/storage/transfer/
     - streetviewpublish:v1 # https://developers.google.com/streetview/publish/
     - sts:v1
@@ -354,6 +361,7 @@ skipped_apis:
 - artifactregistry:v1beta2 #v1 included
 - assuredworkloads:v1beta1
 - authorizedbuyersmarketplace:v1alpha
+- authorizedbuyersmarketplace:v1beta
 - beyondcorp:v1alpha
 - billingbudgets:v1beta1 # v1 included
 - binaryauthorization:v1beta1 # v1 included
@@ -368,6 +376,7 @@ skipped_apis:
 - cloudfunctions:v2alpha # v2beta included
 - cloudfunctions:v2beta
 - cloudidentity:v1beta1 # v1 included
+- cloudlocationfinder:v1alpha
 - cloudresourcemanager:v1beta1 # v1 included
 - cloudresourcemanager:v2beta1 # v2 included
 - cloudscheduler:v1beta1
@@ -403,6 +412,7 @@ skipped_apis:
 - drivelabels:v2beta
 - file:v1beta1
 - firebaseappdistribution:v1alpha
+- firebaseapphosting:v1beta
 - firebasedataconnect:v1beta
 - firebasehosting:v1beta1 # v1 included
 - firebaseml:v1beta2
@@ -429,8 +439,10 @@ skipped_apis:
 - merchantapi:conversions_v1beta
 - merchantapi:datasources_v1beta
 - merchantapi:inventories_v1beta
+- merchantapi:issueresolution_v1beta
 - merchantapi:lfp_v1beta
 - merchantapi:notifications_v1beta
+- merchantapi:ordertracking_v1beta
 - merchantapi:products_v1beta
 - merchantapi:promotions_v1beta
 - merchantapi:quota_v1beta
@@ -438,8 +450,6 @@ skipped_apis:
 - merchantapi:reviews_v1beta
 - metastore:v1alpha # v1beta included
 - metastore:v1beta
-- metastore:v2alpha
-- metastore:v2beta
 - migrationcenter:v1alpha1
 - monitoring:v1 # v3 included
 - netapp:v1beta1
@@ -471,6 +481,7 @@ skipped_apis:
 - retail:v2alpha # v2 included
 - retail:v2beta # v2 included
 - runtimeconfig:v1beta1 # v1 included
+- saasservicemgmt:v1beta1
 - searchads360:v0
 - secretmanager:v1beta1 # v1 included
 - secretmanager:v1beta2

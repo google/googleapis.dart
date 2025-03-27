@@ -54,6 +54,8 @@
 /// - [WatermarksResource]
 /// - [YoutubeResource]
 ///   - [YoutubeV3Resource]
+///     - [YoutubeV3LiveChatResource]
+///       - [YoutubeV3LiveChatMessagesResource]
 library;
 
 import 'dart:async' as async;
@@ -1311,6 +1313,8 @@ class CommentThreadsResource {
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
   ///
+  /// [postId] - Returns the comment threads of the specified post.
+  ///
   /// [searchTerms] - Limits the returned comment threads to those matching the
   /// specified key words. Not compatible with the 'id' filter.
   ///
@@ -1341,6 +1345,7 @@ class CommentThreadsResource {
     core.String? moderationStatus,
     core.String? order,
     core.String? pageToken,
+    core.String? postId,
     core.String? searchTerms,
     core.String? textFormat,
     core.String? videoId,
@@ -1359,6 +1364,7 @@ class CommentThreadsResource {
       if (moderationStatus != null) 'moderationStatus': [moderationStatus],
       if (order != null) 'order': [order],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (postId != null) 'postId': [postId],
       if (searchTerms != null) 'searchTerms': [searchTerms],
       if (textFormat != null) 'textFormat': [textFormat],
       if (videoId != null) 'videoId': [videoId],
@@ -5843,6 +5849,9 @@ class YoutubeResource {
 class YoutubeV3Resource {
   final commons.ApiRequester _requester;
 
+  YoutubeV3LiveChatResource get liveChat =>
+      YoutubeV3LiveChatResource(_requester);
+
   YoutubeV3Resource(commons.ApiRequester client) : _requester = client;
 
   /// Updates an existing resource.
@@ -5890,6 +5899,89 @@ class YoutubeV3Resource {
   }
 }
 
+class YoutubeV3LiveChatResource {
+  final commons.ApiRequester _requester;
+
+  YoutubeV3LiveChatMessagesResource get messages =>
+      YoutubeV3LiveChatMessagesResource(_requester);
+
+  YoutubeV3LiveChatResource(commons.ApiRequester client) : _requester = client;
+}
+
+class YoutubeV3LiveChatMessagesResource {
+  final commons.ApiRequester _requester;
+
+  YoutubeV3LiveChatMessagesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Allows a user to load live chat through a server-streamed RPC.
+  ///
+  /// Request parameters:
+  ///
+  /// [hl] - Specifies the localization language in which the system messages
+  /// should be returned.
+  ///
+  /// [liveChatId] - The id of the live chat for which comments should be
+  /// returned.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set. Not used in the streaming
+  /// RPC.
+  /// Value must be between "200" and "2000".
+  ///
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the nextPageToken
+  /// property identify other pages that could be retrieved.
+  ///
+  /// [part] - The *part* parameter specifies the liveChatComment resource parts
+  /// that the API response will include. Supported values are id, snippet, and
+  /// authorDetails.
+  ///
+  /// [profileImageSize] - Specifies the size of the profile image that should
+  /// be returned for each user.
+  /// Value must be between "16" and "720".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiveChatMessageListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiveChatMessageListResponse> stream({
+    core.String? hl,
+    core.String? liveChatId,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.List<core.String>? part,
+    core.int? profileImageSize,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (hl != null) 'hl': [hl],
+      if (liveChatId != null) 'liveChatId': [liveChatId],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (part != null) 'part': part,
+      if (profileImageSize != null) 'profileImageSize': ['${profileImageSize}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'youtube/v3/liveChat/messages/stream';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LiveChatMessageListResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class AbuseReport {
   core.List<AbuseType>? abuseTypes;
   core.String? description;
@@ -5928,7 +6020,7 @@ class AbuseReport {
       };
 }
 
-typedef AbuseType = $Shared00;
+typedef AbuseType = $Shared01;
 
 /// Rights management policy for YouTube resources.
 class AccessPolicy {
@@ -8551,7 +8643,7 @@ class CommentSnippet {
   /// The id of the corresponding YouTube channel.
   ///
   /// In case of a channel comment this is the channel the comment refers to. In
-  /// case of a video comment it's the video's channel.
+  /// case of a video or post comment it's the video/post's channel.
   core.String? channelId;
 
   /// The total number of likes this comment has received.
@@ -8567,8 +8659,11 @@ class CommentSnippet {
   /// - "rejected" : The comment is unfit for display.
   core.String? moderationStatus;
 
-  /// The unique id of the parent comment, only set for replies.
+  /// The unique id of the top-level comment, only set for replies.
   core.String? parentId;
+
+  /// The ID of the post the comment refers to, if any.
+  core.String? postId;
 
   /// The date and time when the comment was originally published.
   core.DateTime? publishedAt;
@@ -8613,6 +8708,7 @@ class CommentSnippet {
     this.likeCount,
     this.moderationStatus,
     this.parentId,
+    this.postId,
     this.publishedAt,
     this.textDisplay,
     this.textOriginal,
@@ -8635,6 +8731,7 @@ class CommentSnippet {
           likeCount: json_['likeCount'] as core.int?,
           moderationStatus: json_['moderationStatus'] as core.String?,
           parentId: json_['parentId'] as core.String?,
+          postId: json_['postId'] as core.String?,
           publishedAt: json_.containsKey('publishedAt')
               ? core.DateTime.parse(json_['publishedAt'] as core.String)
               : null,
@@ -8658,6 +8755,7 @@ class CommentSnippet {
         if (likeCount != null) 'likeCount': likeCount!,
         if (moderationStatus != null) 'moderationStatus': moderationStatus!,
         if (parentId != null) 'parentId': parentId!,
+        if (postId != null) 'postId': postId!,
         if (publishedAt != null)
           'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (textDisplay != null) 'textDisplay': textDisplay!,
@@ -8669,8 +8767,24 @@ class CommentSnippet {
       };
 }
 
-/// The id of the author's YouTube channel, if any.
-typedef CommentSnippetAuthorChannelId = $Shared17;
+/// Contains the id of the author's YouTube channel, if any.
+class CommentSnippetAuthorChannelId {
+  /// The id of the author's YouTube channel.
+  core.String? value;
+
+  CommentSnippetAuthorChannelId({
+    this.value,
+  });
+
+  CommentSnippetAuthorChannelId.fromJson(core.Map json_)
+      : this(
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
 
 /// A *comment thread* represents information that applies to a top level
 /// comment and all its replies.
@@ -8844,12 +8958,16 @@ class CommentThreadSnippet {
   /// The YouTube channel the comments in the thread refer to or the channel
   /// with the video the comments refer to.
   ///
-  /// If video_id isn't set the comments refer to the channel itself.
+  /// If neither video_id nor post_id is set the comments refer to the channel
+  /// itself.
   core.String? channelId;
 
   /// Whether the thread (and therefore all its comments) is visible to all
   /// YouTube users.
   core.bool? isPublic;
+
+  /// The ID of the post the comments refer to, if any.
+  core.String? postId;
 
   /// The top level comment of this thread.
   Comment? topLevelComment;
@@ -8858,14 +8976,13 @@ class CommentThreadSnippet {
   core.int? totalReplyCount;
 
   /// The ID of the video the comments refer to, if any.
-  ///
-  /// No video_id implies a channel discussion comment.
   core.String? videoId;
 
   CommentThreadSnippet({
     this.canReply,
     this.channelId,
     this.isPublic,
+    this.postId,
     this.topLevelComment,
     this.totalReplyCount,
     this.videoId,
@@ -8876,6 +8993,7 @@ class CommentThreadSnippet {
           canReply: json_['canReply'] as core.bool?,
           channelId: json_['channelId'] as core.String?,
           isPublic: json_['isPublic'] as core.bool?,
+          postId: json_['postId'] as core.String?,
           topLevelComment: json_.containsKey('topLevelComment')
               ? Comment.fromJson(json_['topLevelComment']
                   as core.Map<core.String, core.dynamic>)
@@ -8888,6 +9006,7 @@ class CommentThreadSnippet {
         if (canReply != null) 'canReply': canReply!,
         if (channelId != null) 'channelId': channelId!,
         if (isPublic != null) 'isPublic': isPublic!,
+        if (postId != null) 'postId': postId!,
         if (topLevelComment != null) 'topLevelComment': topLevelComment!,
         if (totalReplyCount != null) 'totalReplyCount': totalReplyCount!,
         if (videoId != null) 'videoId': videoId!,
@@ -10950,7 +11069,22 @@ class InvideoTiming {
       };
 }
 
-typedef LanguageTag = $Shared17;
+class LanguageTag {
+  core.String? value;
+
+  LanguageTag({
+    this.value,
+  });
+
+  LanguageTag.fromJson(core.Map json_)
+      : this(
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
 
 class LevelDetails {
   /// The name that should be used when referring to this level.

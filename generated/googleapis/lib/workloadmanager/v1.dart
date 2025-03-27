@@ -25,7 +25,6 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsDiscoveredprofilesResource]
-///       - [ProjectsLocationsDiscoveredprofilesHealthesResource]
 ///     - [ProjectsLocationsEvaluationsResource]
 ///       - [ProjectsLocationsEvaluationsExecutionsResource]
 ///         - [ProjectsLocationsEvaluationsExecutionsResultsResource]
@@ -135,6 +134,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -157,12 +160,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -184,48 +189,8 @@ class ProjectsLocationsResource {
 class ProjectsLocationsDiscoveredprofilesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDiscoveredprofilesHealthesResource get healthes =>
-      ProjectsLocationsDiscoveredprofilesHealthesResource(_requester);
-
   ProjectsLocationsDiscoveredprofilesResource(commons.ApiRequester client)
       : _requester = client;
-
-  /// Gets details of a discovered workload profile.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/discoveredprofiles/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [WorkloadProfile].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<WorkloadProfile> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return WorkloadProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
 
   /// List discovered workload profiles
   ///
@@ -274,51 +239,6 @@ class ProjectsLocationsDiscoveredprofilesResource {
       queryParams: queryParams_,
     );
     return ListDiscoveredProfilesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsDiscoveredprofilesHealthesResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsDiscoveredprofilesHealthesResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Get the health of a discovered workload profile.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/discoveredprofiles/\[^/\]+/healthes/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [WorkloadProfileHealth].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<WorkloadProfileHealth> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return WorkloadProfileHealth.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1170,6 +1090,15 @@ class ProjectsLocationsRulesResource {
   ///
   /// [customRulesBucket] - The Cloud Storage bucket name for custom rules.
   ///
+  /// [evaluationType] - Optional. The evaluation type of the rules will be
+  /// applied to. The Cloud Storage bucket name for custom rules.
+  /// Possible string values are:
+  /// - "EVALUATION_TYPE_UNSPECIFIED" : Not specified
+  /// - "SAP" : SAP best practices
+  /// - "SQL_SERVER" : SQL best practices
+  /// - "OTHER" : Customized best practices
+  /// - "SCC_IAC" : SCC IaC (Infra as Code) best practices.
+  ///
   /// [filter] - Filter based on primary_category, secondary_category
   ///
   /// [pageSize] - Requested page size. Server may return fewer items than
@@ -1191,6 +1120,7 @@ class ProjectsLocationsRulesResource {
   async.Future<ListRulesResponse> list(
     core.String parent, {
     core.String? customRulesBucket,
+    core.String? evaluationType,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
@@ -1198,6 +1128,7 @@ class ProjectsLocationsRulesResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (customRulesBucket != null) 'customRulesBucket': [customRulesBucket],
+      if (evaluationType != null) 'evaluationType': [evaluationType],
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1214,46 +1145,6 @@ class ProjectsLocationsRulesResource {
     return ListRulesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
-}
-
-/// The API layer server
-class APILayerServer {
-  /// The api layer name
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// OS information
-  ///
-  /// Output only.
-  core.String? osVersion;
-
-  /// resources in the component
-  ///
-  /// Output only.
-  core.List<CloudResource>? resources;
-
-  APILayerServer({
-    this.name,
-    this.osVersion,
-    this.resources,
-  });
-
-  APILayerServer.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          osVersion: json_['osVersion'] as core.String?,
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) => CloudResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (osVersion != null) 'osVersion': osVersion!,
-        if (resources != null) 'resources': resources!,
-      };
 }
 
 /// * An AgentCommand specifies a one-time executable program for the agent to
@@ -1290,108 +1181,403 @@ class AgentCommand {
       };
 }
 
-/// The availability groups for sqlserver
-class AvailabilityGroup {
-  /// The databases
+/// Agent status.
+class AgentStates {
+  /// The available version of the agent in artifact registry.
   ///
-  /// Output only.
-  core.List<core.String>? databases;
+  /// Optional.
+  core.String? availableVersion;
 
-  /// The availability group name
+  /// The installed version of the agent on the host.
   ///
-  /// Output only.
-  core.String? name;
+  /// Optional.
+  core.String? installedVersion;
 
-  /// The primary server
-  ///
-  /// Output only.
-  core.String? primaryServer;
-
-  /// The secondary servers
-  ///
-  /// Output only.
-  core.List<core.String>? secondaryServers;
-
-  AvailabilityGroup({
-    this.databases,
-    this.name,
-    this.primaryServer,
-    this.secondaryServers,
+  AgentStates({
+    this.availableVersion,
+    this.installedVersion,
   });
 
-  AvailabilityGroup.fromJson(core.Map json_)
+  AgentStates.fromJson(core.Map json_)
       : this(
-          databases: (json_['databases'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          primaryServer: json_['primaryServer'] as core.String?,
-          secondaryServers: (json_['secondaryServers'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
+          availableVersion: json_['availableVersion'] as core.String?,
+          installedVersion: json_['installedVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (databases != null) 'databases': databases!,
-        if (name != null) 'name': name!,
-        if (primaryServer != null) 'primaryServer': primaryServer!,
-        if (secondaryServers != null) 'secondaryServers': secondaryServers!,
+        if (availableVersion != null) 'availableVersion': availableVersion!,
+        if (installedVersion != null) 'installedVersion': installedVersion!,
       };
 }
 
-/// The backend server
-class BackendServer {
-  /// The backup file
+/// The schema of agent status data.
+class AgentStatus {
+  /// The name of the agent.
   ///
   /// Output only.
-  core.String? backupFile;
+  core.String? agentName;
 
-  /// The backup schedule
+  /// The available version of the agent in artifact registry.
   ///
   /// Output only.
-  core.String? backupSchedule;
+  core.String? availableVersion;
 
-  /// The backend name
+  /// Whether the agent has full access to Cloud APIs.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_STATE" : The state is unspecified and has not been checked
+  /// yet.
+  /// - "SUCCESS_STATE" : The state is successful (enabled, granted, fully
+  /// functional).
+  /// - "FAILURE_STATE" : The state is failed (disabled, denied, not fully
+  /// functional).
+  /// - "ERROR_STATE" : There was an internal error while checking the state,
+  /// state is unknown.
+  core.String? cloudApiAccessFullScopesGranted;
+
+  /// The error message for the agent configuration if invalid.
+  ///
+  /// Output only.
+  core.String? configurationErrorMessage;
+
+  /// The path to the agent configuration file.
+  ///
+  /// Output only.
+  core.String? configurationFilePath;
+
+  /// Whether the agent configuration is valid.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_STATE" : The state is unspecified and has not been checked
+  /// yet.
+  /// - "SUCCESS_STATE" : The state is successful (enabled, granted, fully
+  /// functional).
+  /// - "FAILURE_STATE" : The state is failed (disabled, denied, not fully
+  /// functional).
+  /// - "ERROR_STATE" : There was an internal error while checking the state,
+  /// state is unknown.
+  core.String? configurationValid;
+
+  /// The installed version of the agent on the host.
+  ///
+  /// Output only.
+  core.String? installedVersion;
+
+  /// The URI of the instance.
+  ///
+  /// Format: projects//zones//instances/
+  ///
+  /// Output only.
+  core.String? instanceUri;
+
+  /// The kernel version of the system.
+  ///
+  /// Output only.
+  SapDiscoveryResourceInstancePropertiesKernelVersion? kernelVersion;
+
+  /// Optional references to public documentation.
+  ///
+  /// Output only.
+  core.List<AgentStatusReference>? references;
+
+  /// The services (process metrics, host metrics, etc.).
+  ///
+  /// Output only.
+  core.List<AgentStatusServiceStatus>? services;
+
+  /// Whether the agent service is enabled in systemd.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_STATE" : The state is unspecified and has not been checked
+  /// yet.
+  /// - "SUCCESS_STATE" : The state is successful (enabled, granted, fully
+  /// functional).
+  /// - "FAILURE_STATE" : The state is failed (disabled, denied, not fully
+  /// functional).
+  /// - "ERROR_STATE" : There was an internal error while checking the state,
+  /// state is unknown.
+  core.String? systemdServiceEnabled;
+
+  /// Whether the agent service is running in systemd.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_STATE" : The state is unspecified and has not been checked
+  /// yet.
+  /// - "SUCCESS_STATE" : The state is successful (enabled, granted, fully
+  /// functional).
+  /// - "FAILURE_STATE" : The state is failed (disabled, denied, not fully
+  /// functional).
+  /// - "ERROR_STATE" : There was an internal error while checking the state,
+  /// state is unknown.
+  core.String? systemdServiceRunning;
+
+  AgentStatus({
+    this.agentName,
+    this.availableVersion,
+    this.cloudApiAccessFullScopesGranted,
+    this.configurationErrorMessage,
+    this.configurationFilePath,
+    this.configurationValid,
+    this.installedVersion,
+    this.instanceUri,
+    this.kernelVersion,
+    this.references,
+    this.services,
+    this.systemdServiceEnabled,
+    this.systemdServiceRunning,
+  });
+
+  AgentStatus.fromJson(core.Map json_)
+      : this(
+          agentName: json_['agentName'] as core.String?,
+          availableVersion: json_['availableVersion'] as core.String?,
+          cloudApiAccessFullScopesGranted:
+              json_['cloudApiAccessFullScopesGranted'] as core.String?,
+          configurationErrorMessage:
+              json_['configurationErrorMessage'] as core.String?,
+          configurationFilePath: json_['configurationFilePath'] as core.String?,
+          configurationValid: json_['configurationValid'] as core.String?,
+          installedVersion: json_['installedVersion'] as core.String?,
+          instanceUri: json_['instanceUri'] as core.String?,
+          kernelVersion: json_.containsKey('kernelVersion')
+              ? SapDiscoveryResourceInstancePropertiesKernelVersion.fromJson(
+                  json_['kernelVersion'] as core.Map<core.String, core.dynamic>)
+              : null,
+          references: (json_['references'] as core.List?)
+              ?.map((value) => AgentStatusReference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          services: (json_['services'] as core.List?)
+              ?.map((value) => AgentStatusServiceStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          systemdServiceEnabled: json_['systemdServiceEnabled'] as core.String?,
+          systemdServiceRunning: json_['systemdServiceRunning'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentName != null) 'agentName': agentName!,
+        if (availableVersion != null) 'availableVersion': availableVersion!,
+        if (cloudApiAccessFullScopesGranted != null)
+          'cloudApiAccessFullScopesGranted': cloudApiAccessFullScopesGranted!,
+        if (configurationErrorMessage != null)
+          'configurationErrorMessage': configurationErrorMessage!,
+        if (configurationFilePath != null)
+          'configurationFilePath': configurationFilePath!,
+        if (configurationValid != null)
+          'configurationValid': configurationValid!,
+        if (installedVersion != null) 'installedVersion': installedVersion!,
+        if (instanceUri != null) 'instanceUri': instanceUri!,
+        if (kernelVersion != null) 'kernelVersion': kernelVersion!,
+        if (references != null) 'references': references!,
+        if (services != null) 'services': services!,
+        if (systemdServiceEnabled != null)
+          'systemdServiceEnabled': systemdServiceEnabled!,
+        if (systemdServiceRunning != null)
+          'systemdServiceRunning': systemdServiceRunning!,
+      };
+}
+
+/// The configuration value.
+class AgentStatusConfigValue {
+  /// Whether the configuration value is the default value or overridden.
+  ///
+  /// Output only.
+  core.bool? isDefault;
+
+  /// The name of the configuration value.
   ///
   /// Output only.
   core.String? name;
 
-  /// OS information
+  /// The value of the configuration value.
   ///
   /// Output only.
-  core.String? osVersion;
+  core.String? value;
 
-  /// resources in the component
-  ///
-  /// Output only.
-  core.List<CloudResource>? resources;
-
-  BackendServer({
-    this.backupFile,
-    this.backupSchedule,
+  AgentStatusConfigValue({
+    this.isDefault,
     this.name,
-    this.osVersion,
-    this.resources,
+    this.value,
   });
 
-  BackendServer.fromJson(core.Map json_)
+  AgentStatusConfigValue.fromJson(core.Map json_)
       : this(
-          backupFile: json_['backupFile'] as core.String?,
-          backupSchedule: json_['backupSchedule'] as core.String?,
+          isDefault: json_['isDefault'] as core.bool?,
           name: json_['name'] as core.String?,
-          osVersion: json_['osVersion'] as core.String?,
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) => CloudResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupFile != null) 'backupFile': backupFile!,
-        if (backupSchedule != null) 'backupSchedule': backupSchedule!,
+        if (isDefault != null) 'isDefault': isDefault!,
         if (name != null) 'name': name!,
-        if (osVersion != null) 'osVersion': osVersion!,
-        if (resources != null) 'resources': resources!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// The IAM permission status.
+class AgentStatusIAMPermission {
+  /// Whether the permission is granted.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_STATE" : The state is unspecified and has not been checked
+  /// yet.
+  /// - "SUCCESS_STATE" : The state is successful (enabled, granted, fully
+  /// functional).
+  /// - "FAILURE_STATE" : The state is failed (disabled, denied, not fully
+  /// functional).
+  /// - "ERROR_STATE" : There was an internal error while checking the state,
+  /// state is unknown.
+  core.String? granted;
+
+  /// The name of the permission.
+  ///
+  /// Output only.
+  core.String? name;
+
+  AgentStatusIAMPermission({
+    this.granted,
+    this.name,
+  });
+
+  AgentStatusIAMPermission.fromJson(core.Map json_)
+      : this(
+          granted: json_['granted'] as core.String?,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (granted != null) 'granted': granted!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// The reference to public documentation.
+class AgentStatusReference {
+  /// The name of the reference.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The URL of the reference.
+  ///
+  /// Output only.
+  core.String? url;
+
+  AgentStatusReference({
+    this.name,
+    this.url,
+  });
+
+  AgentStatusReference.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          url: json_['url'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (url != null) 'url': url!,
+      };
+}
+
+/// The status of a service (process metrics, host metrics, etc.).
+class AgentStatusServiceStatus {
+  /// The configuration values for the service.
+  ///
+  /// Output only.
+  core.List<AgentStatusConfigValue>? configValues;
+
+  /// The error message for the service if it is not fully functional.
+  ///
+  /// Output only.
+  core.String? errorMessage;
+
+  /// Whether the service is fully functional (all checks passed).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_STATE" : The state is unspecified and has not been checked
+  /// yet.
+  /// - "SUCCESS_STATE" : The state is successful (enabled, granted, fully
+  /// functional).
+  /// - "FAILURE_STATE" : The state is failed (disabled, denied, not fully
+  /// functional).
+  /// - "ERROR_STATE" : There was an internal error while checking the state,
+  /// state is unknown.
+  core.String? fullyFunctional;
+
+  /// The permissions required for the service.
+  ///
+  /// Output only.
+  core.List<AgentStatusIAMPermission>? iamPermissions;
+
+  /// The name of the service.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The state of the service (enabled or disabled in the configuration).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_STATE" : The state is unspecified and has not been checked
+  /// yet.
+  /// - "SUCCESS_STATE" : The state is successful (enabled, granted, fully
+  /// functional).
+  /// - "FAILURE_STATE" : The state is failed (disabled, denied, not fully
+  /// functional).
+  /// - "ERROR_STATE" : There was an internal error while checking the state,
+  /// state is unknown.
+  core.String? state;
+
+  /// The message to display when the service state is unspecified.
+  ///
+  /// Output only.
+  core.String? unspecifiedStateMessage;
+
+  AgentStatusServiceStatus({
+    this.configValues,
+    this.errorMessage,
+    this.fullyFunctional,
+    this.iamPermissions,
+    this.name,
+    this.state,
+    this.unspecifiedStateMessage,
+  });
+
+  AgentStatusServiceStatus.fromJson(core.Map json_)
+      : this(
+          configValues: (json_['configValues'] as core.List?)
+              ?.map((value) => AgentStatusConfigValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          errorMessage: json_['errorMessage'] as core.String?,
+          fullyFunctional: json_['fullyFunctional'] as core.String?,
+          iamPermissions: (json_['iamPermissions'] as core.List?)
+              ?.map((value) => AgentStatusIAMPermission.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
+          unspecifiedStateMessage:
+              json_['unspecifiedStateMessage'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configValues != null) 'configValues': configValues!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (fullyFunctional != null) 'fullyFunctional': fullyFunctional!,
+        if (iamPermissions != null) 'iamPermissions': iamPermissions!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (unspecifiedStateMessage != null)
+          'unspecifiedStateMessage': unspecifiedStateMessage!,
       };
 }
 
@@ -1515,37 +1701,6 @@ class CloudResource {
       };
 }
 
-/// The cluster for sqlserver
-class Cluster {
-  /// The nodes
-  ///
-  /// Output only.
-  core.List<core.String>? nodes;
-
-  /// The witness server
-  ///
-  /// Output only.
-  core.String? witnessServer;
-
-  Cluster({
-    this.nodes,
-    this.witnessServer,
-  });
-
-  Cluster.fromJson(core.Map json_)
-      : this(
-          nodes: (json_['nodes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          witnessServer: json_['witnessServer'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nodes != null) 'nodes': nodes!,
-        if (witnessServer != null) 'witnessServer': witnessServer!,
-      };
-}
-
 /// * Command specifies the type of command to execute.
 class Command {
   /// AgentCommand specifies a one-time executable program for the agent to run.
@@ -1574,126 +1729,6 @@ class Command {
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentCommand != null) 'agentCommand': agentCommand!,
         if (shellCommand != null) 'shellCommand': shellCommand!,
-      };
-}
-
-/// HealthCondition contains the detailed health check of each component.
-class ComponentHealth {
-  /// The component of a workload.
-  core.String? component;
-
-  /// The detailed health checks of the component.
-  core.List<HealthCheck>? componentHealthChecks;
-
-  /// The type of the component health.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified
-  /// - "TYPE_REQUIRED" : required
-  /// - "TYPE_OPTIONAL" : optional
-  /// - "TYPE_SPECIAL" : special
-  core.String? componentHealthType;
-
-  /// The requirement of the component.
-  ///
-  /// Output only.
-  core.bool? isRequired;
-
-  /// The health state of the component.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "HEALTH_STATE_UNSPECIFIED" : Unspecified
-  /// - "HEALTHY" : healthy workload
-  /// - "UNHEALTHY" : unhealthy workload
-  /// - "CRITICAL" : has critical issues
-  /// - "UNSUPPORTED" : unsupported
-  core.String? state;
-
-  /// Sub component health.
-  core.List<ComponentHealth>? subComponentHealthes;
-
-  ComponentHealth({
-    this.component,
-    this.componentHealthChecks,
-    this.componentHealthType,
-    this.isRequired,
-    this.state,
-    this.subComponentHealthes,
-  });
-
-  ComponentHealth.fromJson(core.Map json_)
-      : this(
-          component: json_['component'] as core.String?,
-          componentHealthChecks: (json_['componentHealthChecks'] as core.List?)
-              ?.map((value) => HealthCheck.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          componentHealthType: json_['componentHealthType'] as core.String?,
-          isRequired: json_['isRequired'] as core.bool?,
-          state: json_['state'] as core.String?,
-          subComponentHealthes: (json_['subComponentHealthes'] as core.List?)
-              ?.map((value) => ComponentHealth.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (component != null) 'component': component!,
-        if (componentHealthChecks != null)
-          'componentHealthChecks': componentHealthChecks!,
-        if (componentHealthType != null)
-          'componentHealthType': componentHealthType!,
-        if (isRequired != null) 'isRequired': isRequired!,
-        if (state != null) 'state': state!,
-        if (subComponentHealthes != null)
-          'subComponentHealthes': subComponentHealthes!,
-      };
-}
-
-/// The database for sqlserver
-class Database {
-  /// The backup file
-  ///
-  /// Output only.
-  core.String? backupFile;
-
-  /// The backup schedule
-  ///
-  /// Output only.
-  core.String? backupSchedule;
-
-  /// The host VM
-  ///
-  /// Output only.
-  core.String? hostVm;
-
-  /// The database name
-  ///
-  /// Output only.
-  core.String? name;
-
-  Database({
-    this.backupFile,
-    this.backupSchedule,
-    this.hostVm,
-    this.name,
-  });
-
-  Database.fromJson(core.Map json_)
-      : this(
-          backupFile: json_['backupFile'] as core.String?,
-          backupSchedule: json_['backupSchedule'] as core.String?,
-          hostVm: json_['hostVm'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (backupFile != null) 'backupFile': backupFile!,
-        if (backupSchedule != null) 'backupSchedule': backupSchedule!,
-        if (hostVm != null) 'hostVm': hostVm!,
-        if (name != null) 'name': name!,
       };
 }
 
@@ -1747,7 +1782,7 @@ class DatabaseProperties {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// LINT.IfChange Message describing Evaluation object
+/// Message describing Evaluation object
 class Evaluation {
   /// BigQuery destination
   ///
@@ -1771,8 +1806,14 @@ class Evaluation {
   /// - "SAP" : SAP best practices
   /// - "SQL_SERVER" : SQL best practices
   /// - "OTHER" : Customized best practices
-  /// - "SCC_IAC" : SCC IaC (Infra as Code) best practices
+  /// - "SCC_IAC" : SCC IaC (Infra as Code) best practices.
   core.String? evaluationType;
+
+  /// Customer-managed encryption key name, in the format projects / *
+  /// /locations / * /keyRings / * /cryptoKeys / * .
+  ///
+  /// Optional. Immutable.
+  core.String? kmsKey;
 
   /// Labels as key value pairs
   core.Map<core.String, core.String>? labels;
@@ -1813,6 +1854,7 @@ class Evaluation {
     this.customRulesBucket,
     this.description,
     this.evaluationType,
+    this.kmsKey,
     this.labels,
     this.name,
     this.resourceFilter,
@@ -1833,6 +1875,7 @@ class Evaluation {
           customRulesBucket: json_['customRulesBucket'] as core.String?,
           description: json_['description'] as core.String?,
           evaluationType: json_['evaluationType'] as core.String?,
+          kmsKey: json_['kmsKey'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -1866,6 +1909,7 @@ class Evaluation {
         if (customRulesBucket != null) 'customRulesBucket': customRulesBucket!,
         if (description != null) 'description': description!,
         if (evaluationType != null) 'evaluationType': evaluationType!,
+        if (kmsKey != null) 'kmsKey': kmsKey!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (resourceFilter != null) 'resourceFilter': resourceFilter!,
@@ -2141,46 +2185,6 @@ class ExternalDataSources {
       };
 }
 
-/// The front end server
-class FrontEndServer {
-  /// The frontend name
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// OS information
-  ///
-  /// Output only.
-  core.String? osVersion;
-
-  /// resources in the component
-  ///
-  /// Output only.
-  core.List<CloudResource>? resources;
-
-  FrontEndServer({
-    this.name,
-    this.osVersion,
-    this.resources,
-  });
-
-  FrontEndServer.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          osVersion: json_['osVersion'] as core.String?,
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) => CloudResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (osVersion != null) 'osVersion': osVersion!,
-        if (resources != null) 'resources': resources!,
-      };
-}
-
 /// Message describing compute engine instance filter
 class GceInstanceFilter {
   /// Service account of compute engine
@@ -2202,72 +2206,11 @@ class GceInstanceFilter {
       };
 }
 
-/// HealthCheck contains the detailed health check of a component based on
-/// asource.
-class HealthCheck {
-  /// The message of the health check.
-  ///
-  /// Output only.
-  core.String? message;
-
-  /// The health check source metric name.
-  ///
-  /// Output only.
-  core.String? metric;
-
-  /// The resource the check performs on.
-  ///
-  /// Output only.
-  CloudResource? resource;
-
-  /// The source of the health check.
-  ///
-  /// Output only.
-  core.String? source;
-
-  /// The state of the health check.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified
-  /// - "PASSED" : passed
-  /// - "FAILED" : failed
-  /// - "DEGRADED" : degraded
-  /// - "SKIPPED" : skipped
-  /// - "UNSUPPORTED" : unsupported
-  core.String? state;
-
-  HealthCheck({
-    this.message,
-    this.metric,
-    this.resource,
-    this.source,
-    this.state,
-  });
-
-  HealthCheck.fromJson(core.Map json_)
-      : this(
-          message: json_['message'] as core.String?,
-          metric: json_['metric'] as core.String?,
-          resource: json_.containsKey('resource')
-              ? CloudResource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          source: json_['source'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!,
-        if (metric != null) 'metric': metric!,
-        if (resource != null) 'resource': resource!,
-        if (source != null) 'source': source!,
-        if (state != null) 'state': state!,
-      };
-}
-
 /// A presentation of host resource usage where the workload runs.
 class Insight {
+  /// The insights data for the agent status.
+  AgentStatus? agentStatus;
+
   /// The instance id where the insight is generated from
   ///
   /// Required.
@@ -2294,6 +2237,7 @@ class Insight {
   TorsoValidation? torsoValidation;
 
   Insight({
+    this.agentStatus,
     this.instanceId,
     this.sapDiscovery,
     this.sapValidation,
@@ -2304,6 +2248,10 @@ class Insight {
 
   Insight.fromJson(core.Map json_)
       : this(
+          agentStatus: json_.containsKey('agentStatus')
+              ? AgentStatus.fromJson(
+                  json_['agentStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
           instanceId: json_['instanceId'] as core.String?,
           sapDiscovery: json_.containsKey('sapDiscovery')
               ? SapDiscovery.fromJson(
@@ -2325,6 +2273,7 @@ class Insight {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (agentStatus != null) 'agentStatus': agentStatus!,
         if (instanceId != null) 'instanceId': instanceId!,
         if (sapDiscovery != null) 'sapDiscovery': sapDiscovery!,
         if (sapValidation != null) 'sapValidation': sapValidation!,
@@ -2332,58 +2281,6 @@ class Insight {
         if (sqlserverValidation != null)
           'sqlserverValidation': sqlserverValidation!,
         if (torsoValidation != null) 'torsoValidation': torsoValidation!,
-      };
-}
-
-/// a vm instance
-class Instance {
-  /// name of the VM
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The location of the VM
-  ///
-  /// Output only.
-  core.String? region;
-
-  /// The state of the VM
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "INSTANCESTATE_UNSPECIFIED" : The Status of the VM is unspecified
-  /// - "PROVISIONING" : Resources are being allocated for the instance.
-  /// - "STAGING" : All required resources have been allocated and the instance
-  /// is being started.
-  /// - "RUNNING" : The instance is running.
-  /// - "STOPPING" : The instance is currently stopping (either being deleted or
-  /// killed).
-  /// - "STOPPED" : The instance has stopped due to various reasons (user
-  /// request, VM preemption, project freezing, etc.).
-  /// - "TERMINATED" : The instance has failed in some way.
-  /// - "SUSPENDING" : The instance is suspending.
-  /// - "SUSPENDED" : The instance is suspended.
-  /// - "REPAIRING" : The instance is in repair.
-  /// - "DEPROVISIONING" : The instance is in de-provisioning state.
-  core.String? status;
-
-  Instance({
-    this.name,
-    this.region,
-    this.status,
-  });
-
-  Instance.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          region: json_['region'] as core.String?,
-          status: json_['status'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (region != null) 'region': region!,
-        if (status != null) 'status': status!,
       };
 }
 
@@ -2398,21 +2295,6 @@ class InstanceProperties {
   ///
   /// Optional.
   core.String? machineType;
-
-  /// Instance role.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "INSTANCE_ROLE_UNSPECIFIED" : Unspecified role.
-  /// - "INSTANCE_ROLE_ASCS" : ASCS role.
-  /// - "INSTANCE_ROLE_ERS" : ERS role.
-  /// - "INSTANCE_ROLE_APP_SERVER" : APP server.
-  /// - "INSTANCE_ROLE_HANA_PRIMARY" : HANA primary role.
-  /// - "INSTANCE_ROLE_HANA_SECONDARY" : HANA secondary role.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? role;
 
   /// Instance roles.
   ///
@@ -2437,7 +2319,6 @@ class InstanceProperties {
   InstanceProperties({
     this.instanceNumber,
     this.machineType,
-    this.role,
     this.roles,
     this.sapInstanceProperties,
     this.status,
@@ -2448,7 +2329,6 @@ class InstanceProperties {
       : this(
           instanceNumber: json_['instanceNumber'] as core.String?,
           machineType: json_['machineType'] as core.String?,
-          role: json_['role'] as core.String?,
           roles: (json_['roles'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -2468,59 +2348,12 @@ class InstanceProperties {
   core.Map<core.String, core.dynamic> toJson() => {
         if (instanceNumber != null) 'instanceNumber': instanceNumber!,
         if (machineType != null) 'machineType': machineType!,
-        if (role != null) 'role': role!,
         if (roles != null) 'roles': roles!,
         if (sapInstanceProperties != null)
           'sapInstanceProperties': sapInstanceProperties!,
         if (status != null) 'status': status!,
         if (upcomingMaintenanceEvent != null)
           'upcomingMaintenanceEvent': upcomingMaintenanceEvent!,
-      };
-}
-
-/// The database layer
-class Layer {
-  /// the application layer
-  core.String? applicationType;
-
-  /// the database layer
-  ///
-  /// Optional.
-  core.String? databaseType;
-
-  /// instances in a layer
-  ///
-  /// Optional.
-  core.List<Instance>? instances;
-
-  /// system identification of a layer
-  ///
-  /// Output only.
-  core.String? sid;
-
-  Layer({
-    this.applicationType,
-    this.databaseType,
-    this.instances,
-    this.sid,
-  });
-
-  Layer.fromJson(core.Map json_)
-      : this(
-          applicationType: json_['applicationType'] as core.String?,
-          databaseType: json_['databaseType'] as core.String?,
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => Instance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          sid: json_['sid'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationType != null) 'applicationType': applicationType!,
-        if (databaseType != null) 'databaseType': databaseType!,
-        if (instances != null) 'instances': instances!,
-        if (sid != null) 'sid': sid!,
       };
 }
 
@@ -2780,35 +2613,6 @@ class ListScannedResourcesResponse {
       };
 }
 
-/// The load balancer for sqlserver
-class LoadBalancerServer {
-  /// The IP address
-  ///
-  /// Output only.
-  core.String? ip;
-
-  /// The VM name
-  ///
-  /// Output only.
-  core.String? vm;
-
-  LoadBalancerServer({
-    this.ip,
-    this.vm,
-  });
-
-  LoadBalancerServer.fromJson(core.Map json_)
-      : this(
-          ip: json_['ip'] as core.String?,
-          vm: json_['vm'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ip != null) 'ip': ip!,
-        if (vm != null) 'vm': vm!,
-      };
-}
-
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
@@ -2910,7 +2714,7 @@ class Operation {
 }
 
 /// Product contains the details of a product.
-typedef Product = $Shared16;
+typedef Product = $Shared14;
 
 /// Message represent resource in execution result
 class Resource {
@@ -3883,6 +3687,11 @@ class SapDiscoveryResourceInstanceProperties {
   /// Optional.
   core.bool? isDrSite;
 
+  /// The kernel version of the instance.
+  ///
+  /// Optional.
+  SapDiscoveryResourceInstancePropertiesKernelVersion? osKernelVersion;
+
   /// A virtual hostname of the instance if it has one.
   ///
   /// Optional.
@@ -3895,6 +3704,7 @@ class SapDiscoveryResourceInstanceProperties {
     this.instanceNumber,
     this.instanceRole,
     this.isDrSite,
+    this.osKernelVersion,
     this.virtualHostname,
   });
 
@@ -3916,6 +3726,11 @@ class SapDiscoveryResourceInstanceProperties {
           instanceNumber: json_['instanceNumber'] as core.String?,
           instanceRole: json_['instanceRole'] as core.String?,
           isDrSite: json_['isDrSite'] as core.bool?,
+          osKernelVersion: json_.containsKey('osKernelVersion')
+              ? SapDiscoveryResourceInstancePropertiesKernelVersion.fromJson(
+                  json_['osKernelVersion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           virtualHostname: json_['virtualHostname'] as core.String?,
         );
 
@@ -3926,6 +3741,7 @@ class SapDiscoveryResourceInstanceProperties {
         if (instanceNumber != null) 'instanceNumber': instanceNumber!,
         if (instanceRole != null) 'instanceRole': instanceRole!,
         if (isDrSite != null) 'isDrSite': isDrSite!,
+        if (osKernelVersion != null) 'osKernelVersion': osKernelVersion!,
         if (virtualHostname != null) 'virtualHostname': virtualHostname!,
       };
 }
@@ -3961,6 +3777,11 @@ class SapDiscoveryResourceInstancePropertiesAppInstance {
 
 /// Disk mount on the instance.
 class SapDiscoveryResourceInstancePropertiesDiskMount {
+  /// Names of the disks providing this mount point.
+  ///
+  /// Optional.
+  core.List<core.String>? diskNames;
+
   /// Filesystem mount point.
   ///
   /// Optional.
@@ -3972,19 +3793,128 @@ class SapDiscoveryResourceInstancePropertiesDiskMount {
   core.String? name;
 
   SapDiscoveryResourceInstancePropertiesDiskMount({
+    this.diskNames,
     this.mountPoint,
     this.name,
   });
 
   SapDiscoveryResourceInstancePropertiesDiskMount.fromJson(core.Map json_)
       : this(
+          diskNames: (json_['diskNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           mountPoint: json_['mountPoint'] as core.String?,
           name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (diskNames != null) 'diskNames': diskNames!,
         if (mountPoint != null) 'mountPoint': mountPoint!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// KernelVersion encapsulates the kernel version data for the system.
+class SapDiscoveryResourceInstancePropertiesKernelVersion {
+  /// Captures the distro-specific kernel version, the portion of the string
+  /// following the first dash.
+  ///
+  /// Optional.
+  SapDiscoveryResourceInstancePropertiesKernelVersionVersion? distroKernel;
+
+  /// Captures the OS-specific kernel version, the portion of the string up to
+  /// the first dash.
+  ///
+  /// Optional.
+  SapDiscoveryResourceInstancePropertiesKernelVersionVersion? osKernel;
+
+  /// Raw string of the kernel version.
+  ///
+  /// Optional.
+  core.String? rawString;
+
+  SapDiscoveryResourceInstancePropertiesKernelVersion({
+    this.distroKernel,
+    this.osKernel,
+    this.rawString,
+  });
+
+  SapDiscoveryResourceInstancePropertiesKernelVersion.fromJson(core.Map json_)
+      : this(
+          distroKernel: json_.containsKey('distroKernel')
+              ? SapDiscoveryResourceInstancePropertiesKernelVersionVersion
+                  .fromJson(json_['distroKernel']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          osKernel: json_.containsKey('osKernel')
+              ? SapDiscoveryResourceInstancePropertiesKernelVersionVersion
+                  .fromJson(
+                      json_['osKernel'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rawString: json_['rawString'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (distroKernel != null) 'distroKernel': distroKernel!,
+        if (osKernel != null) 'osKernel': osKernel!,
+        if (rawString != null) 'rawString': rawString!,
+      };
+}
+
+/// Version is reported as Major.Minor.Build.Patch.
+class SapDiscoveryResourceInstancePropertiesKernelVersionVersion {
+  /// The build version number.
+  ///
+  /// Optional.
+  core.int? build;
+
+  /// The major version number.
+  ///
+  /// Optional.
+  core.int? major;
+
+  /// The minor version number.
+  ///
+  /// Optional.
+  core.int? minor;
+
+  /// The patch version number.
+  ///
+  /// Optional.
+  core.int? patch;
+
+  /// A catch-all for any unparsed version components.
+  ///
+  /// This is in case the number of points in the version string exceeds the
+  /// expected count of 4.
+  ///
+  /// Optional.
+  core.String? remainder;
+
+  SapDiscoveryResourceInstancePropertiesKernelVersionVersion({
+    this.build,
+    this.major,
+    this.minor,
+    this.patch,
+    this.remainder,
+  });
+
+  SapDiscoveryResourceInstancePropertiesKernelVersionVersion.fromJson(
+      core.Map json_)
+      : this(
+          build: json_['build'] as core.int?,
+          major: json_['major'] as core.int?,
+          minor: json_['minor'] as core.int?,
+          patch: json_['patch'] as core.int?,
+          remainder: json_['remainder'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (build != null) 'build': build!,
+        if (major != null) 'major': major!,
+        if (minor != null) 'minor': minor!,
+        if (patch != null) 'patch': patch!,
+        if (remainder != null) 'remainder': remainder!,
       };
 }
 
@@ -4030,7 +3960,7 @@ class SapDiscoveryWorkloadProperties {
 }
 
 /// A product name and version.
-typedef SapDiscoveryWorkloadPropertiesProductVersion = $Shared16;
+typedef SapDiscoveryWorkloadPropertiesProductVersion = $Shared14;
 
 /// A SAP software component name, version, and type.
 class SapDiscoveryWorkloadPropertiesSoftwareComponentProperties {
@@ -4080,6 +4010,11 @@ class SapDiscoveryWorkloadPropertiesSoftwareComponentProperties {
 
 /// SAP instance properties.
 class SapInstanceProperties {
+  /// Sap Instance Agent status.
+  ///
+  /// Optional.
+  AgentStates? agentStates;
+
   /// SAP Instance numbers.
   ///
   /// They are from '00' to '99'.
@@ -4088,17 +4023,23 @@ class SapInstanceProperties {
   core.List<core.String>? numbers;
 
   SapInstanceProperties({
+    this.agentStates,
     this.numbers,
   });
 
   SapInstanceProperties.fromJson(core.Map json_)
       : this(
+          agentStates: json_.containsKey('agentStates')
+              ? AgentStates.fromJson(
+                  json_['agentStates'] as core.Map<core.String, core.dynamic>)
+              : null,
           numbers: (json_['numbers'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (agentStates != null) 'agentStates': agentStates!,
         if (numbers != null) 'numbers': numbers!,
       };
 }
@@ -4468,64 +4409,6 @@ class SqlserverValidationValidationDetail {
       };
 }
 
-/// The body of sqlserver workload
-class SqlserverWorkload {
-  /// The availability groups for sqlserver
-  ///
-  /// Output only.
-  core.List<AvailabilityGroup>? ags;
-
-  /// The cluster for sqlserver
-  ///
-  /// Output only.
-  Cluster? cluster;
-
-  /// The databases for sqlserver
-  ///
-  /// Output only.
-  core.List<Database>? databases;
-
-  /// The load balancer for sqlserver
-  ///
-  /// Output only.
-  LoadBalancerServer? loadBalancerServer;
-
-  SqlserverWorkload({
-    this.ags,
-    this.cluster,
-    this.databases,
-    this.loadBalancerServer,
-  });
-
-  SqlserverWorkload.fromJson(core.Map json_)
-      : this(
-          ags: (json_['ags'] as core.List?)
-              ?.map((value) => AvailabilityGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          cluster: json_.containsKey('cluster')
-              ? Cluster.fromJson(
-                  json_['cluster'] as core.Map<core.String, core.dynamic>)
-              : null,
-          databases: (json_['databases'] as core.List?)
-              ?.map((value) => Database.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          loadBalancerServer: json_.containsKey('loadBalancerServer')
-              ? LoadBalancerServer.fromJson(json_['loadBalancerServer']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ags != null) 'ags': ags!,
-        if (cluster != null) 'cluster': cluster!,
-        if (databases != null) 'databases': databases!,
-        if (loadBalancerServer != null)
-          'loadBalancerServer': loadBalancerServer!,
-      };
-}
-
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -4569,60 +4452,6 @@ class Summary {
         if (failures != null) 'failures': failures!,
         if (newFailures != null) 'newFailures': newFailures!,
         if (newFixes != null) 'newFixes': newFixes!,
-      };
-}
-
-/// The body of three tier workload
-class ThreeTierWorkload {
-  /// The API layer for three tier workload
-  ///
-  /// Output only.
-  APILayerServer? apiLayer;
-
-  /// The backend for three tier workload
-  ///
-  /// Output only.
-  BackendServer? backend;
-
-  /// the workload endpoint
-  ///
-  /// Output only.
-  core.String? endpoint;
-
-  /// The frontend for three tier workload
-  ///
-  /// Output only.
-  FrontEndServer? frontend;
-
-  ThreeTierWorkload({
-    this.apiLayer,
-    this.backend,
-    this.endpoint,
-    this.frontend,
-  });
-
-  ThreeTierWorkload.fromJson(core.Map json_)
-      : this(
-          apiLayer: json_.containsKey('apiLayer')
-              ? APILayerServer.fromJson(
-                  json_['apiLayer'] as core.Map<core.String, core.dynamic>)
-              : null,
-          backend: json_.containsKey('backend')
-              ? BackendServer.fromJson(
-                  json_['backend'] as core.Map<core.String, core.dynamic>)
-              : null,
-          endpoint: json_['endpoint'] as core.String?,
-          frontend: json_.containsKey('frontend')
-              ? FrontEndServer.fromJson(
-                  json_['frontend'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiLayer != null) 'apiLayer': apiLayer!,
-        if (backend != null) 'backend': backend!,
-        if (endpoint != null) 'endpoint': endpoint!,
-        if (frontend != null) 'frontend': frontend!,
       };
 }
 
@@ -4706,6 +4535,13 @@ class UpcomingMaintenanceEvent {
   /// Optional.
   core.String? maintenanceStatus;
 
+  /// Instance maintenance behavior.
+  ///
+  /// Could be "MIGRATE" or "TERMINATE".
+  ///
+  /// Optional.
+  core.String? onHostMaintenance;
+
   /// Start time
   ///
   /// Optional.
@@ -4719,6 +4555,7 @@ class UpcomingMaintenanceEvent {
   UpcomingMaintenanceEvent({
     this.endTime,
     this.maintenanceStatus,
+    this.onHostMaintenance,
     this.startTime,
     this.type,
   });
@@ -4727,6 +4564,7 @@ class UpcomingMaintenanceEvent {
       : this(
           endTime: json_['endTime'] as core.String?,
           maintenanceStatus: json_['maintenanceStatus'] as core.String?,
+          onHostMaintenance: json_['onHostMaintenance'] as core.String?,
           startTime: json_['startTime'] as core.String?,
           type: json_['type'] as core.String?,
         );
@@ -4734,6 +4572,7 @@ class UpcomingMaintenanceEvent {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (maintenanceStatus != null) 'maintenanceStatus': maintenanceStatus!,
+        if (onHostMaintenance != null) 'onHostMaintenance': onHostMaintenance!,
         if (startTime != null) 'startTime': startTime!,
         if (type != null) 'type': type!,
       };
@@ -4778,30 +4617,6 @@ class ViolationDetails {
 
 /// workload resource
 class WorkloadProfile {
-  /// The application layer
-  ///
-  /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  Layer? application;
-
-  /// The ascs layer
-  ///
-  /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  Layer? ascs;
-
-  /// The database layer
-  ///
-  /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  Layer? database;
-
   /// such as name, description, version.
   ///
   /// More example can be found in deployment
@@ -4812,7 +4627,7 @@ class WorkloadProfile {
   /// Identifier.
   ///
   /// name of resource names have the form
-  /// 'projects/{project_id}/workloads/{workload_id}'
+  /// 'projects/{project_id}/locations/{location}/workloadProfiles/{workload_id}'
   core.String? name;
 
   /// time when the workload data was refreshed
@@ -4823,64 +4638,24 @@ class WorkloadProfile {
   /// The sap workload content
   SapWorkload? sapWorkload;
 
-  /// The sqlserver workload content
-  SqlserverWorkload? sqlserverWorkload;
-
-  /// the current state if a a workload
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : unspecified
-  /// - "ACTIVE" : ACTIVE state
-  /// - "DEPLOYING" : workload is in Deploying state
-  /// - "DESTROYING" : The workload is in Destroying state
-  /// - "MAINTENANCE" : The Workload is undermaintance
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? state;
-
-  /// The 3 tier web app workload content
-  ThreeTierWorkload? threeTierWorkload;
-
   /// The type of the workload
   ///
   /// Required.
   /// Possible string values are:
   /// - "WORKLOAD_TYPE_UNSPECIFIED" : unspecified workload type
   /// - "S4_HANA" : running sap workload s4/hana
-  /// - "SQL_SERVER" : running sqlserver workload
-  /// - "THREE_TIER_WEB_APP" : running 3 tier web app workload
   core.String? workloadType;
 
   WorkloadProfile({
-    this.application,
-    this.ascs,
-    this.database,
     this.labels,
     this.name,
     this.refreshedTime,
     this.sapWorkload,
-    this.sqlserverWorkload,
-    this.state,
-    this.threeTierWorkload,
     this.workloadType,
   });
 
   WorkloadProfile.fromJson(core.Map json_)
       : this(
-          application: json_.containsKey('application')
-              ? Layer.fromJson(
-                  json_['application'] as core.Map<core.String, core.dynamic>)
-              : null,
-          ascs: json_.containsKey('ascs')
-              ? Layer.fromJson(
-                  json_['ascs'] as core.Map<core.String, core.dynamic>)
-              : null,
-          database: json_.containsKey('database')
-              ? Layer.fromJson(
-                  json_['database'] as core.Map<core.String, core.dynamic>)
-              : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -4894,72 +4669,15 @@ class WorkloadProfile {
               ? SapWorkload.fromJson(
                   json_['sapWorkload'] as core.Map<core.String, core.dynamic>)
               : null,
-          sqlserverWorkload: json_.containsKey('sqlserverWorkload')
-              ? SqlserverWorkload.fromJson(json_['sqlserverWorkload']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          threeTierWorkload: json_.containsKey('threeTierWorkload')
-              ? ThreeTierWorkload.fromJson(json_['threeTierWorkload']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
           workloadType: json_['workloadType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (application != null) 'application': application!,
-        if (ascs != null) 'ascs': ascs!,
-        if (database != null) 'database': database!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (refreshedTime != null) 'refreshedTime': refreshedTime!,
         if (sapWorkload != null) 'sapWorkload': sapWorkload!,
-        if (sqlserverWorkload != null) 'sqlserverWorkload': sqlserverWorkload!,
-        if (state != null) 'state': state!,
-        if (threeTierWorkload != null) 'threeTierWorkload': threeTierWorkload!,
         if (workloadType != null) 'workloadType': workloadType!,
-      };
-}
-
-/// WorkloadProfileHealth contains the detailed health check of workload.
-class WorkloadProfileHealth {
-  /// The time when the health check was performed.
-  core.String? checkTime;
-
-  /// The detailed condition reports of each component.
-  core.List<ComponentHealth>? componentHealthes;
-
-  /// The health state of the workload.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "HEALTH_STATE_UNSPECIFIED" : Unspecified
-  /// - "HEALTHY" : healthy workload
-  /// - "UNHEALTHY" : unhealthy workload
-  /// - "CRITICAL" : has critical issues
-  /// - "UNSUPPORTED" : unsupported
-  core.String? state;
-
-  WorkloadProfileHealth({
-    this.checkTime,
-    this.componentHealthes,
-    this.state,
-  });
-
-  WorkloadProfileHealth.fromJson(core.Map json_)
-      : this(
-          checkTime: json_['checkTime'] as core.String?,
-          componentHealthes: (json_['componentHealthes'] as core.List?)
-              ?.map((value) => ComponentHealth.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          state: json_['state'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (checkTime != null) 'checkTime': checkTime!,
-        if (componentHealthes != null) 'componentHealthes': componentHealthes!,
-        if (state != null) 'state': state!,
       };
 }
 

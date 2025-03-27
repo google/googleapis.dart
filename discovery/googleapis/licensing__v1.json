@@ -13,7 +13,7 @@
     "batchPath": "batch",
     "description": "The Google Enterprise License Manager API lets you manage Google Workspace and related licenses for all users of a customer that you manage.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/admin-sdk/licensing/",
+    "documentationLink": "https://developers.google.com/workspace/admin/licensing/",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -24,7 +24,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20220430",
+    "revision": "20250419",
     "rootUrl": "https://licensing.googleapis.com/",
     "servicePath": "",
     "title": "Enterprise License Manager API",

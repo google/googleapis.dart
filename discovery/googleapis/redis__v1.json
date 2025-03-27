@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250303",
+    "revision": "20250729",
     "rootUrl": "https://redis.googleapis.com/",
     "servicePath": "",
     "title": "Google Cloud Memorystore for Redis API",
@@ -147,6 +147,12 @@
                                 "name"
                             ],
                             "parameters": {
+                                "extraLocationTypes": {
+                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "filter": {
                                     "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
@@ -193,7 +199,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Redis backupCollection resource name using the form: `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}` where `location_id` refers to a GCP region.",
+                                            "description": "Required. Redis backupCollection resource name using the form: `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}` where `location_id` refers to a Google Cloud region.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/backupCollections/[^/]+$",
                                             "required": true,
@@ -229,7 +235,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. The resource name of the backupCollection location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.",
+                                            "description": "Required. The resource name of the backupCollection location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -383,7 +389,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Redis cluster resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to a GCP region.",
+                                            "description": "Required. Redis cluster resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to a Google Cloud region.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                             "required": true,
@@ -416,7 +422,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. The resource name of the cluster location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.",
+                                            "description": "Required. The resource name of the cluster location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -449,7 +455,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Redis cluster resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to a GCP region.",
+                                            "description": "Required. Redis cluster resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to a Google Cloud region.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                             "required": true,
@@ -479,7 +485,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Redis cluster resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to a GCP region.",
+                                            "description": "Required. Redis cluster resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to a Google Cloud region.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                             "required": true,
@@ -504,7 +510,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Redis cluster certificate authority resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}/certificateAuthority` where `location_id` refers to a GCP region.",
+                                            "description": "Required. Redis cluster certificate authority resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}/certificateAuthority` where `location_id` refers to a Google Cloud region.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/certificateAuthority$",
                                             "required": true,
@@ -540,7 +546,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. The resource name of the cluster location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.",
+                                            "description": "Required. The resource name of the cluster location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -604,7 +610,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Redis Cluster instance resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to a GCP region.",
+                                            "description": "Required. Redis Cluster instance resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to a Google Cloud region.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                             "required": true,
@@ -1363,6 +1369,49 @@
             },
             "type": "object"
         },
+        "BackupDRConfiguration": {
+            "description": "BackupDRConfiguration to capture the backup and disaster recovery details of database resource.",
+            "id": "BackupDRConfiguration",
+            "properties": {
+                "backupdrManaged": {
+                    "description": "Indicates if the resource is managed by BackupDR.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "BackupDRMetadata": {
+            "description": "BackupDRMetadata contains information about the backup and disaster recovery metadata of a database resource.",
+            "id": "BackupDRMetadata",
+            "properties": {
+                "backupConfiguration": {
+                    "$ref": "BackupConfiguration",
+                    "description": "Backup configuration for this instance."
+                },
+                "backupRun": {
+                    "$ref": "BackupRun",
+                    "description": "Latest backup run information for this instance."
+                },
+                "backupdrConfiguration": {
+                    "$ref": "BackupDRConfiguration",
+                    "description": "BackupDR configuration for this instance."
+                },
+                "fullResourceName": {
+                    "description": "Required. Full resource name of this instance.",
+                    "type": "string"
+                },
+                "lastRefreshTime": {
+                    "description": "Required. Last time backup configuration was refreshed.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "resourceId": {
+                    "$ref": "DatabaseResourceId",
+                    "description": "Required. Database resource id."
+                }
+            },
+            "type": "object"
+        },
         "BackupFile": {
             "description": "Backup is consisted of multiple backup files.",
             "id": "BackupFile",
@@ -1453,6 +1502,10 @@
             "description": "A cluster instance.",
             "id": "Cluster",
             "properties": {
+                "allowFewerZonesDeployment": {
+                    "description": "Optional. Immutable. Allows customers to specify if they are okay with deploying a multi-zone cluster in less than 3 zones. Once set, if there is a zonal outage during the cluster creation, the cluster will only be deployed in 2 zones, and stay within the 2 zones for its lifecycle.",
+                    "type": "boolean"
+                },
                 "asyncClusterEndpointsDeletionEnabled": {
                     "description": "Optional. If true, cluster endpoints that are created and registered by customers can be deleted asynchronously. That is, such a cluster endpoint can be de-registered before the forwarding rules in the cluster endpoint are deleted.",
                     "type": "boolean"
@@ -1558,6 +1611,7 @@
                     "type": "string"
                 },
                 "ondemandMaintenance": {
+                    "deprecated": true,
                     "description": "Optional. Input only. Ondemand maintenance for the cluster. This field can be used to trigger ondemand critical update on the cluster.",
                     "type": "boolean"
                 },
@@ -1606,10 +1660,24 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "satisfiesPzi": {
+                    "description": "Optional. Output only. Reserved for future use.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "satisfiesPzs": {
+                    "description": "Optional. Output only. Reserved for future use.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "shardCount": {
                     "description": "Optional. Number of shards for the Redis cluster.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "simulateMaintenanceEvent": {
+                    "description": "Optional. Input only. Simulate a maintenance event.",
+                    "type": "boolean"
                 },
                 "sizeGb": {
                     "description": "Output only. Redis memory size in GB for the entire cluster rounded up to the next integer.",
@@ -1762,7 +1830,7 @@
             "id": "ClusterWeeklyMaintenanceWindow",
             "properties": {
                 "day": {
-                    "description": "Allows to define schedule that runs specified day of the week.",
+                    "description": "Optional. Allows to define schedule that runs specified day of the week.",
                     "enum": [
                         "DAY_OF_WEEK_UNSPECIFIED",
                         "MONDAY",
@@ -1787,7 +1855,7 @@
                 },
                 "startTime": {
                     "$ref": "TimeOfDay",
-                    "description": "Start time of the window in UTC."
+                    "description": "Optional. Start time of the window in UTC."
                 }
             },
             "type": "object"
@@ -1802,6 +1870,50 @@
                 },
                 "version": {
                     "description": "Version of the standard or benchmark, for example, 1.1",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConfigBasedSignalData": {
+            "description": "Config based signal data. This is used to send signals to Condor which are based on the DB level configurations. These will be used to send signals for self managed databases.",
+            "id": "ConfigBasedSignalData",
+            "properties": {
+                "fullResourceName": {
+                    "description": "Required. Full Resource name of the source resource.",
+                    "type": "string"
+                },
+                "lastRefreshTime": {
+                    "description": "Required. Last time signal was refreshed",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "resourceId": {
+                    "$ref": "DatabaseResourceId",
+                    "description": "Database resource id."
+                },
+                "signalBoolValue": {
+                    "description": "Signal data for boolean signals.",
+                    "type": "boolean"
+                },
+                "signalType": {
+                    "description": "Required. Signal type of the signal",
+                    "enum": [
+                        "SIGNAL_TYPE_UNSPECIFIED",
+                        "SIGNAL_TYPE_OUTDATED_MINOR_VERSION",
+                        "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED",
+                        "SIGNAL_TYPE_NO_ROOT_PASSWORD",
+                        "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS",
+                        "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified signal type.",
+                        "Outdated Minor Version",
+                        "Represents database auditing is disabled.",
+                        "Represents if a database has a password configured for the root account or not.",
+                        "Represents if a resource is exposed to public access.",
+                        "Represents if a resources requires all incoming connections to use SSL or not."
+                    ],
                     "type": "string"
                 }
             },
@@ -1827,7 +1939,7 @@
             "id": "CrossClusterReplicationConfig",
             "properties": {
                 "clusterRole": {
-                    "description": "The role of the cluster in cross cluster replication.",
+                    "description": "Output only. The role of the cluster in cross cluster replication.",
                     "enum": [
                         "CLUSTER_ROLE_UNSPECIFIED",
                         "NONE",
@@ -1840,6 +1952,7 @@
                         "A cluster that allows both reads and writes. Any data written to this cluster is also replicated to the attached secondary clusters.",
                         "A cluster that allows only reads and replicates data from a primary cluster."
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "membership": {
@@ -1882,9 +1995,17 @@
             "type": "object"
         },
         "DatabaseResourceFeed": {
-            "description": "DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into Condor platform.",
+            "description": "DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into Condor platform. Next ID: 10",
             "id": "DatabaseResourceFeed",
             "properties": {
+                "backupdrMetadata": {
+                    "$ref": "BackupDRMetadata",
+                    "description": "BackupDR metadata is used to ingest metadata from BackupDR."
+                },
+                "configBasedSignalData": {
+                    "$ref": "ConfigBasedSignalData",
+                    "description": "Config based signal data is used to ingest signals that are generated based on the configuration of the database resource."
+                },
                 "feedTimestamp": {
                     "description": "Required. Timestamp when feed is generated.",
                     "format": "google-datetime",
@@ -1897,14 +2018,18 @@
                         "RESOURCE_METADATA",
                         "OBSERVABILITY_DATA",
                         "SECURITY_FINDING_DATA",
-                        "RECOMMENDATION_SIGNAL_DATA"
+                        "RECOMMENDATION_SIGNAL_DATA",
+                        "CONFIG_BASED_SIGNAL_DATA",
+                        "BACKUPDR_METADATA"
                     ],
                     "enumDescriptions": [
                         "",
                         "Database resource metadata feed from control plane",
                         "Database resource monitoring data",
                         "Database resource security health signal data",
-                        "Database resource recommendation signal data"
+                        "Database resource recommendation signal data",
+                        "Database config based signal data",
+                        "Database resource metadata from BackupDR"
                     ],
                     "type": "string"
                 },
@@ -1958,6 +2083,10 @@
                 },
                 "externalUri": {
                     "description": "The external-uri of the signal, using which more information about this signal can be obtained. In GCP, this will take user to SCC page to get more details about signals.",
+                    "type": "string"
+                },
+                "location": {
+                    "description": "This is used to identify the location of the resource. Example: \"us-central1\"",
                     "type": "string"
                 },
                 "name": {
@@ -2126,7 +2255,20 @@
                         "SIGNAL_TYPE_EXPENSIVE_COMMANDS",
                         "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED",
                         "SIGNAL_TYPE_NO_DELETION_PROTECTION",
-                        "SIGNAL_TYPE_INEFFICIENT_QUERY"
+                        "SIGNAL_TYPE_INEFFICIENT_QUERY",
+                        "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD",
+                        "SIGNAL_TYPE_MEMORY_LIMIT",
+                        "SIGNAL_TYPE_MAX_SERVER_MEMORY",
+                        "SIGNAL_TYPE_LARGE_ROWS",
+                        "SIGNAL_TYPE_HIGH_WRITE_PRESSURE",
+                        "SIGNAL_TYPE_HIGH_READ_PRESSURE",
+                        "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED",
+                        "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED",
+                        "SIGNAL_TYPE_OUTDATED_MINOR_VERSION",
+                        "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED",
+                        "SIGNAL_TYPE_MANY_IDLE_CONNECTIONS",
+                        "SIGNAL_TYPE_REPLICATION_LAG",
+                        "SIGNAL_TYPE_OUTDATED_VERSION"
                     ],
                     "enumDeprecated": [
                         false,
@@ -2134,6 +2276,19 @@
                         false,
                         true,
                         true,
+                        true,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
                         false,
                         false,
                         false,
@@ -2306,7 +2461,20 @@
                         "Detects that expensive commands are being run on a database instance impacting overall performance.",
                         "Indicates that the instance does not have a maintenance policy configured.",
                         "Deletion Protection Disabled for the resource",
-                        "Indicates that the instance has inefficient queries detected."
+                        "Indicates that the instance has inefficient queries detected.",
+                        "Indicates that the instance has read intensive workload.",
+                        "Indicates that the instance is nearing memory limit.",
+                        "Indicates that the instance's max server memory is configured higher than the recommended value.",
+                        "Indicates that the database has large rows beyond the recommended limit.",
+                        "Heavy write pressure on the database rows.",
+                        "Heavy read pressure on the database rows.",
+                        "Encryption org policy not satisfied.",
+                        "Location org policy not satisfied.",
+                        "Outdated DB minor version.",
+                        "Schema not optimized.",
+                        "High number of idle connections.",
+                        "Replication delay.",
+                        "Outdated version."
                     ],
                     "type": "string"
                 },
@@ -2359,7 +2527,7 @@
                     "type": "string"
                 },
                 "resourceType": {
-                    "description": "Required. The type of resource this ID is identifying. Ex redis.googleapis.com/Instance, redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance, spanner.googleapis.com/Database, firestore.googleapis.com/Database, sqladmin.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel",
+                    "description": "Required. The type of resource this ID is identifying. Ex go/keep-sorted start alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance compute.googleapis.com/Instance firestore.googleapis.com/Database, redis.googleapis.com/Instance, redis.googleapis.com/Cluster, oracledatabase.googleapis.com/CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/Instance, spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please refer go/condor-common-datamodel",
                     "type": "string"
                 },
                 "uniqueId": {
@@ -2370,7 +2538,7 @@
             "type": "object"
         },
         "DatabaseResourceMetadata": {
-            "description": "Common model for database resource instance metadata. Next ID: 25",
+            "description": "Common model for database resource instance metadata. Next ID: 26",
             "id": "DatabaseResourceMetadata",
             "properties": {
                 "availabilityConfiguration": {
@@ -2384,6 +2552,10 @@
                 "backupRun": {
                     "$ref": "BackupRun",
                     "description": "Latest backup run information for this instance"
+                },
+                "backupdrConfiguration": {
+                    "$ref": "BackupDRConfiguration",
+                    "description": "Optional. BackupDR Configuration for the resource."
                 },
                 "creationTime": {
                     "description": "The creation time of the resource, i.e. the time when resource is created and recorded in partner service.",
@@ -2457,6 +2629,7 @@
                 },
                 "gcbdrConfiguration": {
                     "$ref": "GCBDRConfiguration",
+                    "deprecated": true,
                     "description": "GCBDR configuration for the resource."
                 },
                 "id": {
@@ -2715,7 +2888,20 @@
                         "SIGNAL_TYPE_EXPENSIVE_COMMANDS",
                         "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED",
                         "SIGNAL_TYPE_NO_DELETION_PROTECTION",
-                        "SIGNAL_TYPE_INEFFICIENT_QUERY"
+                        "SIGNAL_TYPE_INEFFICIENT_QUERY",
+                        "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD",
+                        "SIGNAL_TYPE_MEMORY_LIMIT",
+                        "SIGNAL_TYPE_MAX_SERVER_MEMORY",
+                        "SIGNAL_TYPE_LARGE_ROWS",
+                        "SIGNAL_TYPE_HIGH_WRITE_PRESSURE",
+                        "SIGNAL_TYPE_HIGH_READ_PRESSURE",
+                        "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED",
+                        "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED",
+                        "SIGNAL_TYPE_OUTDATED_MINOR_VERSION",
+                        "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED",
+                        "SIGNAL_TYPE_MANY_IDLE_CONNECTIONS",
+                        "SIGNAL_TYPE_REPLICATION_LAG",
+                        "SIGNAL_TYPE_OUTDATED_VERSION"
                     ],
                     "enumDeprecated": [
                         false,
@@ -2723,6 +2909,19 @@
                         false,
                         true,
                         true,
+                        true,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
                         false,
                         false,
                         false,
@@ -2895,7 +3094,20 @@
                         "Detects that expensive commands are being run on a database instance impacting overall performance.",
                         "Indicates that the instance does not have a maintenance policy configured.",
                         "Deletion Protection Disabled for the resource",
-                        "Indicates that the instance has inefficient queries detected."
+                        "Indicates that the instance has inefficient queries detected.",
+                        "Indicates that the instance has read intensive workload.",
+                        "Indicates that the instance is nearing memory limit.",
+                        "Indicates that the instance's max server memory is configured higher than the recommended value.",
+                        "Indicates that the database has large rows beyond the recommended limit.",
+                        "Heavy write pressure on the database rows.",
+                        "Heavy read pressure on the database rows.",
+                        "Encryption org policy not satisfied.",
+                        "Location org policy not satisfied.",
+                        "Outdated DB minor version.",
+                        "Schema not optimized.",
+                        "High number of idle connections.",
+                        "Replication delay.",
+                        "Outdated version."
                     ],
                     "type": "string"
                 }
@@ -3448,6 +3660,13 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example: \"123/environment\": \"production\", \"123/costCenter\": \"marketing\"",
+                    "type": "object"
                 },
                 "tier": {
                     "description": "Required. The service tier of the instance.",
@@ -4100,7 +4319,10 @@
                         "ENGINE_MEMORYSTORE_FOR_REDIS_CLUSTER",
                         "ENGINE_OTHER",
                         "ENGINE_FIRESTORE_WITH_NATIVE_MODE",
-                        "ENGINE_FIRESTORE_WITH_DATASTORE_MODE"
+                        "ENGINE_FIRESTORE_WITH_DATASTORE_MODE",
+                        "ENGINE_FIRESTORE_WITH_MONGODB_COMPATIBILITY_MODE",
+                        "ENGINE_EXADATA_ORACLE",
+                        "ENGINE_ADB_SERVERLESS_ORACLE"
                     ],
                     "enumDeprecated": [
                         false,
@@ -4112,6 +4334,9 @@
                         true,
                         false,
                         true,
+                        false,
+                        false,
+                        false,
                         false,
                         false,
                         false,
@@ -4136,8 +4361,15 @@
                         "Memorystore with Redis cluster dialect.",
                         "Other refers to rest of other database engine. This is to be when engine is known, but it is not present in this enum.",
                         "Firestore with native mode.",
-                        "Firestore with datastore mode."
+                        "Firestore with datastore mode.",
+                        "Firestore with MongoDB compatibility mode.",
+                        "Oracle Exadata engine.",
+                        "Oracle Autonomous DB Serverless engine."
                     ],
+                    "type": "string"
+                },
+                "minorVersion": {
+                    "description": "Minor version of the underlying database engine. Example values: For MySQL, it could be \"8.0.32\", \"5.7.32\" etc.. For Postgres, it could be \"14.3\", \"15.3\" etc..",
                     "type": "string"
                 },
                 "type": {
@@ -4153,8 +4385,10 @@
                         "ON_PREM",
                         "PRODUCT_TYPE_MEMORYSTORE",
                         "PRODUCT_TYPE_BIGTABLE",
-                        "PRODUCT_TYPE_OTHER",
-                        "PRODUCT_TYPE_FIRESTORE"
+                        "PRODUCT_TYPE_FIRESTORE",
+                        "PRODUCT_TYPE_COMPUTE_ENGINE",
+                        "PRODUCT_TYPE_ORACLE_ON_GCP",
+                        "PRODUCT_TYPE_OTHER"
                     ],
                     "enumDeprecated": [
                         false,
@@ -4165,6 +4399,8 @@
                         false,
                         false,
                         true,
+                        false,
+                        false,
                         false,
                         false,
                         false,
@@ -4181,8 +4417,10 @@
                         "On premises database product.",
                         "Memorystore product area in GCP",
                         "Bigtable product area in GCP",
-                        "Other refers to rest of other product type. This is to be when product type is known, but it is not present in this enum.",
-                        "Firestore product area in GCP."
+                        "Firestore product area in GCP.",
+                        "Compute Engine self managed databases",
+                        "Oracle product area in GCP",
+                        "Other refers to rest of other product type. This is to be when product type is known, but it is not present in this enum."
                     ],
                     "type": "string"
                 },
@@ -4304,7 +4542,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "description": "Output only. The port number of the exposed discovery endpoint.",
+                    "description": "Output only. port will only be set for Primary/Reader or Discovery endpoint.",
                     "format": "int32",
                     "readOnly": true,
                     "type": "integer"
@@ -4434,7 +4672,8 @@
             "id": "RemoteCluster",
             "properties": {
                 "cluster": {
-                    "description": "The full resource path of the remote cluster in the format: projects//locations//clusters/",
+                    "description": "Output only. The full resource path of the remote cluster in the format: projects//locations//clusters/",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "uid": {
@@ -4531,6 +4770,7 @@
                     "type": "string"
                 },
                 "timeBasedRetention": {
+                    "deprecated": true,
                     "format": "google-duration",
                     "type": "string"
                 },

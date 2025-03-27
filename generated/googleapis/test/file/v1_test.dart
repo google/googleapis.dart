@@ -1115,6 +1115,7 @@ api.ReplicaConfig buildReplicaConfig() {
     o.peerInstance = 'foo';
     o.state = 'foo';
     o.stateReasons = buildUnnamed23();
+    o.stateUpdateTime = 'foo';
   }
   buildCounterReplicaConfig--;
   return o;
@@ -1136,6 +1137,10 @@ void checkReplicaConfig(api.ReplicaConfig o) {
       unittest.equals('foo'),
     );
     checkUnnamed23(o.stateReasons!);
+    unittest.expect(
+      o.stateUpdateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterReplicaConfig--;
 }
@@ -1387,6 +1392,23 @@ void checkStatus(api.Status o) {
     );
   }
   buildCounterStatus--;
+}
+
+core.List<core.String> buildUnnamed29() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed29(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -1697,8 +1719,8 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudFilestoreApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed29();
       final arg_filter = 'foo';
-      final arg_includeUnrevealedLocations = true;
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -1735,12 +1757,12 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
         );
         unittest.expect(
-          queryMap['includeUnrevealedLocations']!.first,
-          unittest.equals('$arg_includeUnrevealedLocations'),
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
         );
         unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
@@ -1762,8 +1784,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
-          includeUnrevealedLocations: arg_includeUnrevealedLocations,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);

@@ -17,7 +17,7 @@
 /// Manipulates events and other calendar data.
 ///
 /// For more information, see
-/// <https://developers.google.com/google-apps/calendar/firstapp>
+/// <https://developers.google.com/workspace/calendar/firstapp>
 ///
 /// Create an instance of [CalendarApi] to access these resources:
 ///

@@ -147,6 +147,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -169,12 +173,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2012,6 +2018,63 @@ class ProjectsLocationsInternalRangesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/internalRanges/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists internal ranges in a given project and location.
   ///
   /// Request parameters:
@@ -2072,7 +2135,7 @@ class ProjectsLocationsInternalRangesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The name of an internal range. Format:
+  /// [name] - Identifier. The name of an internal range. Format:
   /// projects/{project}/locations/{location}/internalRanges/{internal_range}
   /// See: https://google.aip.dev/122#fields-representing-resource-names
   /// Value must have pattern
@@ -2129,6 +2192,104 @@ class ProjectsLocationsInternalRangesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/internalRanges/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/internalRanges/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2336,7 +2497,7 @@ class ProjectsLocationsRegionalEndpointsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [regionalEndpointId] - Required. Unique id of the Regional Endpoint to be
-  /// created.
+  /// created. @pattern: ^\[-a-z0-9\](?:\[-a-z0-9\]{0,44})\[a-z0-9\]$
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
@@ -4536,6 +4697,63 @@ class AcceptSpokeUpdateRequest {
       };
 }
 
+/// Range auto-allocation options, to be optionally used when CIDR block is not
+/// explicitly set.
+class AllocationOptions {
+  /// Allocation strategy Not setting this field when the allocation is
+  /// requested means an implementation defined strategy is used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ALLOCATION_STRATEGY_UNSPECIFIED" : Unspecified is the only valid option
+  /// when the range is specified explicitly by ip_cidr_range field. Otherwise
+  /// unspefified means using the default strategy.
+  /// - "RANDOM" : Random strategy, the legacy algorithm, used for backwards
+  /// compatibility. This allocation strategy remains efficient in the case of
+  /// concurrent allocation requests in the same peered network space and
+  /// doesn't require providing the level of concurrency in an explicit
+  /// parameter, but it is prone to fragmenting available address space.
+  /// - "FIRST_AVAILABLE" : Pick the first available address range. This
+  /// strategy is deterministic and the result is easy to predict.
+  /// - "RANDOM_FIRST_N_AVAILABLE" : Pick an arbitrary range out of the first N
+  /// available ones. The N will be set in the
+  /// first_available_ranges_lookup_size field. This strategy should be used
+  /// when concurrent allocation requests are made in the same space of peered
+  /// networks while the fragmentation of the addrress space is reduced.
+  /// - "FIRST_SMALLEST_FITTING" : Pick the smallest but fitting available
+  /// range. This deterministic strategy minimizes fragmentation of the address
+  /// space.
+  core.String? allocationStrategy;
+
+  /// This field must be set only when allocation_strategy is set to
+  /// RANDOM_FIRST_N_AVAILABLE.
+  ///
+  /// The value should be the maximum expected parallelism of range creation
+  /// requests issued to the same space of peered netwroks.
+  ///
+  /// Optional.
+  core.int? firstAvailableRangesLookupSize;
+
+  AllocationOptions({
+    this.allocationStrategy,
+    this.firstAvailableRangesLookupSize,
+  });
+
+  AllocationOptions.fromJson(core.Map json_)
+      : this(
+          allocationStrategy: json_['allocationStrategy'] as core.String?,
+          firstAvailableRangesLookupSize:
+              json_['firstAvailableRangesLookupSize'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allocationStrategy != null)
+          'allocationStrategy': allocationStrategy!,
+        if (firstAvailableRangesLookupSize != null)
+          'firstAvailableRangesLookupSize': firstAvailableRangesLookupSize!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -5072,7 +5290,8 @@ class Filter {
   /// The destination IP range of outgoing packets that this policy-based route
   /// applies to.
   ///
-  /// Default is "0.0.0.0/0" if protocol version is IPv4.
+  /// Default is "0.0.0.0/0" if protocol version is IPv4 and "::/0" if protocol
+  /// version is IPv6.
   ///
   /// Optional.
   core.String? destRange;
@@ -5086,18 +5305,20 @@ class Filter {
 
   /// Internet protocol versions this policy-based route applies to.
   ///
-  /// For this version, only IPV4 is supported. IPV6 is supported in preview.
+  /// IPV4 and IPV6 is supported.
   ///
   /// Required.
   /// Possible string values are:
   /// - "PROTOCOL_VERSION_UNSPECIFIED" : Default value.
   /// - "IPV4" : The PBR is for IPv4 internet protocol traffic.
+  /// - "IPV6" : The PBR is for IPv6 internet protocol traffic.
   core.String? protocolVersion;
 
   /// The source IP range of outgoing packets that this policy-based route
   /// applies to.
   ///
-  /// Default is "0.0.0.0/0" if protocol version is IPv4.
+  /// Default is "0.0.0.0/0" if protocol version is IPv4 and "::/0" if protocol
+  /// version is IPv6.
   ///
   /// Optional.
   core.String? srcRange;
@@ -5515,6 +5736,8 @@ class Hub {
   ///
   /// This field is read-only. Network Connectivity Center automatically
   /// populates it based on the set of spokes attached to the hub.
+  ///
+  /// Output only.
   core.List<RoutingVPC>? routingVpcs;
 
   /// A summary of the spokes associated with a hub.
@@ -5695,17 +5918,42 @@ class InterconnectAttachment {
 /// characteristics of that range (its usage and peering behavior). Networking
 /// resources can link to this range if they are created as belonging to it.
 class InternalRange {
+  /// Range auto-allocation options, may be set only when auto-allocation is
+  /// selected by not setting ip_cidr_range (and setting prefix_length).
+  ///
+  /// Optional.
+  AllocationOptions? allocationOptions;
+
   /// Time when the internal range was created.
   core.String? createTime;
 
   /// A description of this resource.
+  ///
+  /// Optional.
   core.String? description;
+
+  /// ExcludeCidrRanges flag.
+  ///
+  /// Specifies a set of CIDR blocks that allows exclusion of particular CIDR
+  /// ranges from the auto-allocation process, without having to reserve these
+  /// blocks
+  ///
+  /// Optional.
+  core.List<core.String>? excludeCidrRanges;
+
+  /// Immutable ranges cannot have their fields modified, except for labels and
+  /// description.
+  ///
+  /// Optional.
+  core.bool? immutable;
 
   /// The IP range that this internal range defines.
   ///
   /// NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and
   /// peering=FOR_SELF. NOTE: For IPv6 Ranges this field is compulsory, i.e. the
   /// address range must be specified explicitly.
+  ///
+  /// Optional.
   core.String? ipCidrRange;
 
   /// User-defined labels.
@@ -5716,13 +5964,11 @@ class InternalRange {
   /// Optional.
   Migration? migration;
 
-  /// The name of an internal range.
+  /// Identifier.
   ///
-  /// Format:
+  /// The name of an internal range. Format:
   /// projects/{project}/locations/{location}/internalRanges/{internal_range}
   /// See: https://google.aip.dev/122#fields-representing-resource-names
-  ///
-  /// Immutable.
   core.String? name;
 
   /// The URL or resource ID of the network in which to reserve the internal
@@ -5732,6 +5978,8 @@ class InternalRange {
   /// referring to it. Legacy networks are not supported. For example:
   /// https://www.googleapis.com/compute/v1/projects/{project}/locations/global/networks/{network}
   /// projects/{project}/locations/global/networks/{network} {network}
+  ///
+  /// Immutable.
   core.String? network;
 
   /// Types of resources that are allowed to overlap with the current internal
@@ -5741,6 +5989,8 @@ class InternalRange {
   core.List<core.String>? overlaps;
 
   /// The type of peering set for this internal range.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "PEERING_UNSPECIFIED" : If Peering is left unspecified in
   /// CreateInternalRange or UpdateInternalRange, it will be defaulted to
@@ -5772,6 +6022,8 @@ class InternalRange {
   /// this field only works if ip_cidr_range is set as well, and both fields
   /// must match. In other words, with IPv6 this field only works as a redundant
   /// parameter.
+  ///
+  /// Optional.
   core.int? prefixLength;
 
   /// Can be set to narrow down or pick a different address space while
@@ -5788,6 +6040,8 @@ class InternalRange {
   core.String? updateTime;
 
   /// The type of usage set for this InternalRange.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "USAGE_UNSPECIFIED" : Unspecified usage is allowed in calls which
   /// identify the resource by other fields and do not need Usage set to
@@ -5819,8 +6073,11 @@ class InternalRange {
   core.List<core.String>? users;
 
   InternalRange({
+    this.allocationOptions,
     this.createTime,
     this.description,
+    this.excludeCidrRanges,
+    this.immutable,
     this.ipCidrRange,
     this.labels,
     this.migration,
@@ -5837,8 +6094,16 @@ class InternalRange {
 
   InternalRange.fromJson(core.Map json_)
       : this(
+          allocationOptions: json_.containsKey('allocationOptions')
+              ? AllocationOptions.fromJson(json_['allocationOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
+          excludeCidrRanges: (json_['excludeCidrRanges'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          immutable: json_['immutable'] as core.bool?,
           ipCidrRange: json_['ipCidrRange'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -5869,8 +6134,11 @@ class InternalRange {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allocationOptions != null) 'allocationOptions': allocationOptions!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (excludeCidrRanges != null) 'excludeCidrRanges': excludeCidrRanges!,
+        if (immutable != null) 'immutable': immutable!,
         if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
         if (labels != null) 'labels': labels!,
         if (migration != null) 'migration': migration!,
@@ -5892,10 +6160,8 @@ class InternalRange {
 /// prefixes to Google Cloud. Alternatively, in active/passive configurations,
 /// all attachments should be capable of advertising the same prefixes.
 class LinkedInterconnectAttachments {
-  /// IP ranges allowed to be included during import from hub (does not control
-  /// transit connectivity).
-  ///
-  /// The only allowed value for now is "ALL_IPV4_RANGES".
+  /// Hub routes fully encompassed by include import ranges are included during
+  /// import from hub.
   ///
   /// Optional.
   core.List<core.String>? includeImportRanges;
@@ -5974,10 +6240,16 @@ class LinkedProducerVpcNetwork {
   /// Output only.
   core.String? producerNetwork;
 
+  /// The proposed exclude export IP ranges waiting for hub administration's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedExcludeExportRanges;
+
   /// The proposed include export IP ranges waiting for hub administration's
   /// approval.
   ///
-  /// Optional.
+  /// Output only.
   core.List<core.String>? proposedIncludeExportRanges;
 
   /// The Service Consumer Network spoke.
@@ -5991,6 +6263,7 @@ class LinkedProducerVpcNetwork {
     this.network,
     this.peering,
     this.producerNetwork,
+    this.proposedExcludeExportRanges,
     this.proposedIncludeExportRanges,
     this.serviceConsumerVpcSpoke,
   });
@@ -6006,6 +6279,10 @@ class LinkedProducerVpcNetwork {
           network: json_['network'] as core.String?,
           peering: json_['peering'] as core.String?,
           producerNetwork: json_['producerNetwork'] as core.String?,
+          proposedExcludeExportRanges:
+              (json_['proposedExcludeExportRanges'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           proposedIncludeExportRanges:
               (json_['proposedIncludeExportRanges'] as core.List?)
                   ?.map((value) => value as core.String)
@@ -6022,6 +6299,8 @@ class LinkedProducerVpcNetwork {
         if (network != null) 'network': network!,
         if (peering != null) 'peering': peering!,
         if (producerNetwork != null) 'producerNetwork': producerNetwork!,
+        if (proposedExcludeExportRanges != null)
+          'proposedExcludeExportRanges': proposedExcludeExportRanges!,
         if (proposedIncludeExportRanges != null)
           'proposedIncludeExportRanges': proposedIncludeExportRanges!,
         if (serviceConsumerVpcSpoke != null)
@@ -6035,10 +6314,8 @@ class LinkedProducerVpcNetwork {
 /// the same set of sites outside of Google Cloud, we recommend that you
 /// associate those instances with the same spoke.
 class LinkedRouterApplianceInstances {
-  /// IP ranges allowed to be included during import from hub (does not control
-  /// transit connectivity).
-  ///
-  /// The only allowed value for now is "ALL_IPV4_RANGES".
+  /// Hub routes fully encompassed by include import ranges are included during
+  /// import from hub.
   ///
   /// Optional.
   core.List<core.String>? includeImportRanges;
@@ -6104,7 +6381,7 @@ class LinkedVpcNetwork {
   /// VPC spoke for.
   ///
   /// These producer VPCs are connected through VPC peering to this spoke's
-  /// backing VPC network. Because they are directly connected throuh VPC
+  /// backing VPC network. Because they are directly connected through VPC
   /// peering, NCC export filters do not apply between the service consumer VPC
   /// spoke and any of its producer VPC spokes. This VPC spoke cannot be deleted
   /// as long as any of these producer VPC spokes are connected to the NCC Hub.
@@ -6112,10 +6389,16 @@ class LinkedVpcNetwork {
   /// Output only.
   core.List<core.String>? producerVpcSpokes;
 
+  /// The proposed exclude export IP ranges waiting for hub administration's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedExcludeExportRanges;
+
   /// The proposed include export IP ranges waiting for hub administration's
   /// approval.
   ///
-  /// Optional.
+  /// Output only.
   core.List<core.String>? proposedIncludeExportRanges;
 
   /// The URI of the VPC network resource.
@@ -6127,6 +6410,7 @@ class LinkedVpcNetwork {
     this.excludeExportRanges,
     this.includeExportRanges,
     this.producerVpcSpokes,
+    this.proposedExcludeExportRanges,
     this.proposedIncludeExportRanges,
     this.uri,
   });
@@ -6142,6 +6426,10 @@ class LinkedVpcNetwork {
           producerVpcSpokes: (json_['producerVpcSpokes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          proposedExcludeExportRanges:
+              (json_['proposedExcludeExportRanges'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           proposedIncludeExportRanges:
               (json_['proposedIncludeExportRanges'] as core.List?)
                   ?.map((value) => value as core.String)
@@ -6155,6 +6443,8 @@ class LinkedVpcNetwork {
         if (includeExportRanges != null)
           'includeExportRanges': includeExportRanges!,
         if (producerVpcSpokes != null) 'producerVpcSpokes': producerVpcSpokes!,
+        if (proposedExcludeExportRanges != null)
+          'proposedExcludeExportRanges': proposedExcludeExportRanges!,
         if (proposedIncludeExportRanges != null)
           'proposedIncludeExportRanges': proposedIncludeExportRanges!,
         if (uri != null) 'uri': uri!,
@@ -6168,10 +6458,8 @@ class LinkedVpcNetwork {
 /// configuration, all tunnels should be capable of advertising the same
 /// prefixes.
 class LinkedVpnTunnels {
-  /// IP ranges allowed to be included during import from hub (does not control
-  /// transit connectivity).
-  ///
-  /// The only allowed value for now is "ALL_IPV4_RANGES".
+  /// Hub routes fully encompassed by include import ranges are included during
+  /// import from hub.
   ///
   /// Optional.
   core.List<core.String>? includeImportRanges;
@@ -6875,6 +7163,39 @@ class NextHopRouterApplianceInstance {
       };
 }
 
+/// A route next hop that leads to a spoke resource.
+class NextHopSpoke {
+  /// Indicates whether site-to-site data transfer is allowed for this spoke
+  /// resource.
+  ///
+  /// Data transfer is available only in
+  /// [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
+  /// Whether this route is accessible to other hybrid spokes with site-to-site
+  /// data transfer enabled. If this is false, the route is only accessible to
+  /// VPC spokes of the connected Hub.
+  core.bool? siteToSiteDataTransfer;
+
+  /// The URI of the spoke resource.
+  core.String? uri;
+
+  NextHopSpoke({
+    this.siteToSiteDataTransfer,
+    this.uri,
+  });
+
+  NextHopSpoke.fromJson(core.Map json_)
+      : this(
+          siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
+          uri: json_['uri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (siteToSiteDataTransfer != null)
+          'siteToSiteDataTransfer': siteToSiteDataTransfer!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// A route next hop that leads to a VPN tunnel resource.
 class NextHopVPNTunnel {
   /// Indicates whether site-to-site data transfer is allowed for this VPN
@@ -7276,7 +7597,7 @@ class PscConfig {
   /// ProducerInstanceLocation is used to specify which authorization mechanism
   /// to use to determine which projects the Producer instance can be within.
   ///
-  /// Required.
+  /// Optional.
   /// Possible string values are:
   /// - "PRODUCER_INSTANCE_LOCATION_UNSPECIFIED" : Producer instance location is
   /// not specified. When this option is chosen, then the PSC connections
@@ -7660,8 +7981,8 @@ class RegionalEndpoint {
 
   /// The name of a RegionalEndpoint.
   ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/regionalEndpoints/{regional_endpoint}`.
+  /// Pattern:
+  /// `projects/{project}/locations/{location}/regionalEndpoints/^[-a-z0-9](?:[-a-z0-9]{0,44})[a-z0-9]$`.
   ///
   /// Output only.
   core.String? name;
@@ -7905,6 +8226,11 @@ class Route {
   /// Immutable.
   NextHopRouterApplianceInstance? nextHopRouterApplianceInstance;
 
+  /// The next-hop spoke for packets on this route.
+  ///
+  /// Immutable.
+  NextHopSpoke? nextHopSpoke;
+
   /// The destination VPC network for packets on this route.
   ///
   /// Immutable.
@@ -7989,6 +8315,7 @@ class Route {
     this.name,
     this.nextHopInterconnectAttachment,
     this.nextHopRouterApplianceInstance,
+    this.nextHopSpoke,
     this.nextHopVpcNetwork,
     this.nextHopVpnTunnel,
     this.priority,
@@ -8025,6 +8352,10 @@ class Route {
                       json_['nextHopRouterApplianceInstance']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          nextHopSpoke: json_.containsKey('nextHopSpoke')
+              ? NextHopSpoke.fromJson(
+                  json_['nextHopSpoke'] as core.Map<core.String, core.dynamic>)
+              : null,
           nextHopVpcNetwork: json_.containsKey('nextHopVpcNetwork')
               ? NextHopVpcNetwork.fromJson(json_['nextHopVpcNetwork']
                   as core.Map<core.String, core.dynamic>)
@@ -8052,6 +8383,7 @@ class Route {
           'nextHopInterconnectAttachment': nextHopInterconnectAttachment!,
         if (nextHopRouterApplianceInstance != null)
           'nextHopRouterApplianceInstance': nextHopRouterApplianceInstance!,
+        if (nextHopSpoke != null) 'nextHopSpoke': nextHopSpoke!,
         if (nextHopVpcNetwork != null) 'nextHopVpcNetwork': nextHopVpcNetwork!,
         if (nextHopVpnTunnel != null) 'nextHopVpnTunnel': nextHopVpnTunnel!,
         if (priority != null) 'priority': priority!,

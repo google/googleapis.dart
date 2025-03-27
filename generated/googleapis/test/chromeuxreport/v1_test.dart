@@ -457,6 +457,7 @@ api.QueryHistoryRequest buildQueryHistoryRequest() {
   final o = api.QueryHistoryRequest();
   buildCounterQueryHistoryRequest++;
   if (buildCounterQueryHistoryRequest < 3) {
+    o.collectionPeriodCount = 42;
     o.formFactor = 'foo';
     o.metrics = buildUnnamed7();
     o.origin = 'foo';
@@ -469,6 +470,10 @@ api.QueryHistoryRequest buildQueryHistoryRequest() {
 void checkQueryHistoryRequest(api.QueryHistoryRequest o) {
   buildCounterQueryHistoryRequest++;
   if (buildCounterQueryHistoryRequest < 3) {
+    unittest.expect(
+      o.collectionPeriodCount!,
+      unittest.equals(42),
+    );
     unittest.expect(
       o.formFactor!,
       unittest.equals('foo'),

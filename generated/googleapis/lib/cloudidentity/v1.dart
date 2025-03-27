@@ -4764,8 +4764,8 @@ class Group {
 
   /// One or more label entries that apply to the Group.
   ///
-  /// Currently supported labels contain a key with an empty value. Google
-  /// Groups are the default type of group and have a label with a key of
+  /// Labels contain a key with an empty value. Google Groups are the default
+  /// type of group and have a label with a key of
   /// `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value.
   /// Existing Google Groups can have an additional label with a key of
   /// `cloudidentity.googleapis.com/groups.security` and an empty value added to
@@ -4773,7 +4773,11 @@ class Group {
   /// removed once added.** Dynamic groups have a label with a key of
   /// `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for
   /// Cloud Search have a label with a key of `system/groups/external` and an
-  /// empty value.
+  /// empty value. Google Groups can be
+  /// [locked](https://support.google.com/a?p=locked-groups). To lock a group,
+  /// add a label with a key of `cloudidentity.googleapis.com/groups.locked` and
+  /// an empty value. Doing so locks the group. To unlock the group, remove this
+  /// label.
   ///
   /// Required.
   core.Map<core.String, core.String>? labels;

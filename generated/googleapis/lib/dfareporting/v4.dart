@@ -51,6 +51,8 @@
 /// - [CreativesResource]
 /// - [DimensionValuesResource]
 /// - [DirectorySitesResource]
+/// - [DynamicFeedsResource]
+/// - [DynamicProfilesResource]
 /// - [DynamicTargetingKeysResource]
 /// - [EventTagsResource]
 /// - [FilesResource]
@@ -177,6 +179,9 @@ class DfareportingApi {
       DimensionValuesResource(_requester);
   DirectorySitesResource get directorySites =>
       DirectorySitesResource(_requester);
+  DynamicFeedsResource get dynamicFeeds => DynamicFeedsResource(_requester);
+  DynamicProfilesResource get dynamicProfiles =>
+      DynamicProfilesResource(_requester);
   DynamicTargetingKeysResource get dynamicTargetingKeys =>
       DynamicTargetingKeysResource(_requester);
   EventTagsResource get eventTags => EventTagsResource(_requester);
@@ -5347,6 +5352,202 @@ class DirectorySitesResource {
       queryParams: queryParams_,
     );
     return DirectorySitesListResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class DynamicFeedsResource {
+  final commons.ApiRequester _requester;
+
+  DynamicFeedsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets a dynamic feed by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [dynamicFeedId] - Required. Dynamic feed ID.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DynamicFeed].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DynamicFeed> get(
+    core.String dynamicFeedId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'studio/dynamicFeeds/' + core.Uri.encodeFull('$dynamicFeedId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DynamicFeed.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Inserts a new dynamic feed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DynamicFeed].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DynamicFeed> insert(
+    DynamicFeedsInsertRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'studio/dynamicFeeds';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DynamicFeed.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class DynamicProfilesResource {
+  final commons.ApiRequester _requester;
+
+  DynamicProfilesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets a dynamic profile by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [dynamicProfileId] - Required. Dynamic profile ID.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DynamicProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DynamicProfile> get(
+    core.String dynamicProfileId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'studio/dynamicProfiles/' + core.Uri.encodeFull('$dynamicProfileId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DynamicProfile.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Inserts a new dynamic profile.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DynamicProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DynamicProfile> insert(
+    DynamicProfile request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'studio/dynamicProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DynamicProfile.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing dynamic profile.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DynamicProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DynamicProfile> update(
+    DynamicProfile request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'studio/dynamicProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DynamicProfile.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -14352,10 +14553,12 @@ class CampaignsListResponse {
       };
 }
 
-/// Contains additional information about cart data.
+///  *Beta:* This feature is currently in beta.
 ///
-/// This field may only be used when calling batchinsert; it is not supported by
-/// batchupdate.
+/// Contains additional information about cart data. This field may only be used
+/// when calling batchinsert; it is not supported by batchupdate. Cart data
+/// reporting is only supported in SA360.
+/// [Learn more](https://support.google.com/sa360/topic/13425788)
 class CartData {
   /// Data of the items purchased.
   core.List<CartDataItem>? items;
@@ -15136,6 +15339,139 @@ class ContentCategory {
       };
 }
 
+/// Contains the content source of the dynamic feed.
+class ContentSource {
+  /// The name of the content source.
+  ///
+  /// It is defaulted to content source file name if not provided.
+  ///
+  /// Optional.
+  core.String? contentSourceName;
+
+  /// The creation timestamp of the content source.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  LastModifiedInfo? createInfo;
+
+  /// The last modified timestamp of the content source.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  LastModifiedInfo? lastModifiedInfo;
+
+  /// Metadata of the content source.
+  ///
+  /// It contains the number of rows and the column names from resource link.
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  ContentSourceMetaData? metaData;
+
+  /// The link to the file of the content source.
+  ///
+  /// Required.
+  core.String? resourceLink;
+
+  /// The resource type of the content source.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESOURCE_TYPE_UNSPECIFIED" : The resource type is unspecified.
+  /// - "RESOURCE_TYPE_GOOGLE_SPREADSHEET" : The resource type is google
+  /// spreadsheet.
+  /// - "RESOURCE_TYPE_REMOTE_FILE" : The resource type is remote file.
+  core.String? resourceType;
+
+  ContentSource({
+    this.contentSourceName,
+    this.createInfo,
+    this.lastModifiedInfo,
+    this.metaData,
+    this.resourceLink,
+    this.resourceType,
+  });
+
+  ContentSource.fromJson(core.Map json_)
+      : this(
+          contentSourceName: json_['contentSourceName'] as core.String?,
+          createInfo: json_.containsKey('createInfo')
+              ? LastModifiedInfo.fromJson(
+                  json_['createInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          lastModifiedInfo: json_.containsKey('lastModifiedInfo')
+              ? LastModifiedInfo.fromJson(json_['lastModifiedInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          metaData: json_.containsKey('metaData')
+              ? ContentSourceMetaData.fromJson(
+                  json_['metaData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resourceLink: json_['resourceLink'] as core.String?,
+          resourceType: json_['resourceType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentSourceName != null) 'contentSourceName': contentSourceName!,
+        if (createInfo != null) 'createInfo': createInfo!,
+        if (lastModifiedInfo != null) 'lastModifiedInfo': lastModifiedInfo!,
+        if (metaData != null) 'metaData': metaData!,
+        if (resourceLink != null) 'resourceLink': resourceLink!,
+        if (resourceType != null) 'resourceType': resourceType!,
+      };
+}
+
+/// Contains the meta data of the content source.
+///
+/// This is a read-only field.
+class ContentSourceMetaData {
+  /// The charset of the content source.
+  ///
+  /// Output only.
+  core.String? charset;
+
+  /// The list of column names in the content source.
+  ///
+  /// Output only.
+  core.List<core.String>? fieldNames;
+
+  /// The number of rows in the content source.
+  ///
+  /// Output only.
+  core.int? rowNumber;
+
+  /// The separator of the content source.
+  ///
+  /// Output only.
+  core.String? separator;
+
+  ContentSourceMetaData({
+    this.charset,
+    this.fieldNames,
+    this.rowNumber,
+    this.separator,
+  });
+
+  ContentSourceMetaData.fromJson(core.Map json_)
+      : this(
+          charset: json_['charset'] as core.String?,
+          fieldNames: (json_['fieldNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          rowNumber: json_['rowNumber'] as core.int?,
+          separator: json_['separator'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (charset != null) 'charset': charset!,
+        if (fieldNames != null) 'fieldNames': fieldNames!,
+        if (rowNumber != null) 'rowNumber': rowNumber!,
+        if (separator != null) 'separator': separator!,
+      };
+}
+
 /// A Conversion represents when a user successfully performs a desired action
 /// after seeing an ad.
 class Conversion {
@@ -15252,6 +15588,19 @@ class Conversion {
   /// This is a required field.
   core.String? quantity;
 
+  /// Session attributes for the conversion, encoded as based64 bytes.
+  ///
+  /// This field may only be used when calling batchinsert; it is not supported
+  /// by batchupdate.
+  core.String? sessionAttributesEncoded;
+  core.List<core.int> get sessionAttributesEncodedAsBytes =>
+      convert.base64.decode(sessionAttributesEncoded!);
+
+  set sessionAttributesEncodedAsBytes(core.List<core.int> bytes_) {
+    sessionAttributesEncoded =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   /// The timestamp of conversion, in Unix epoch micros.
   ///
   /// This is a required field.
@@ -15292,6 +15641,7 @@ class Conversion {
     this.nonPersonalizedAd,
     this.ordinal,
     this.quantity,
+    this.sessionAttributesEncoded,
     this.timestampMicros,
     this.treatmentForUnderage,
     this.userIdentifiers,
@@ -15328,6 +15678,8 @@ class Conversion {
           nonPersonalizedAd: json_['nonPersonalizedAd'] as core.bool?,
           ordinal: json_['ordinal'] as core.String?,
           quantity: json_['quantity'] as core.String?,
+          sessionAttributesEncoded:
+              json_['sessionAttributesEncoded'] as core.String?,
           timestampMicros: json_['timestampMicros'] as core.String?,
           treatmentForUnderage: json_['treatmentForUnderage'] as core.bool?,
           userIdentifiers: (json_['userIdentifiers'] as core.List?)
@@ -15360,6 +15712,8 @@ class Conversion {
         if (nonPersonalizedAd != null) 'nonPersonalizedAd': nonPersonalizedAd!,
         if (ordinal != null) 'ordinal': ordinal!,
         if (quantity != null) 'quantity': quantity!,
+        if (sessionAttributesEncoded != null)
+          'sessionAttributesEncoded': sessionAttributesEncoded!,
         if (timestampMicros != null) 'timestampMicros': timestampMicros!,
         if (treatmentForUnderage != null)
           'treatmentForUnderage': treatmentForUnderage!,
@@ -18181,8 +18535,8 @@ class CrossMediaReachReportCompatibleFields {
 
 /// A custom floodlight variable.
 ///
-/// This field may only be used when calling batchinsert; it is not supported by
-/// batchupdate.
+/// Can be used in both batchinsert and batchupdate. Adding this in batchupdate
+/// will update or append the variable to the existing list.
 class CustomFloodlightVariable {
   /// Identifies what kind of resource this is.
   ///
@@ -18348,6 +18702,75 @@ class CustomRichMediaEvents {
   core.Map<core.String, core.dynamic> toJson() => {
         if (filteredEventIds != null) 'filteredEventIds': filteredEventIds!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Contains custom rule information.
+class CustomRule {
+  /// Name of this custom rule.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Priority of the custom rule.
+  ///
+  /// Optional.
+  core.int? priority;
+
+  /// A list of field filter, the custom rule will apply.
+  ///
+  /// Optional.
+  core.List<RuleBlock>? ruleBlocks;
+
+  CustomRule({
+    this.name,
+    this.priority,
+    this.ruleBlocks,
+  });
+
+  CustomRule.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          priority: json_['priority'] as core.int?,
+          ruleBlocks: (json_['ruleBlocks'] as core.List?)
+              ?.map((value) => RuleBlock.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (priority != null) 'priority': priority!,
+        if (ruleBlocks != null) 'ruleBlocks': ruleBlocks!,
+      };
+}
+
+/// Contains custom value field information.
+class CustomValueField {
+  /// Field ID in the element.
+  ///
+  /// Optional.
+  core.int? fieldId;
+
+  /// Custom key used to match for auto filtering.
+  ///
+  /// Optional.
+  core.String? requestKey;
+
+  CustomValueField({
+    this.fieldId,
+    this.requestKey,
+  });
+
+  CustomValueField.fromJson(core.Map json_)
+      : this(
+          fieldId: json_['fieldId'] as core.int?,
+          requestKey: json_['requestKey'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (requestKey != null) 'requestKey': requestKey!,
       };
 }
 
@@ -18695,6 +19118,35 @@ class DeliverySchedule {
         if (hardCutoff != null) 'hardCutoff': hardCutoff!,
         if (impressionRatio != null) 'impressionRatio': impressionRatio!,
         if (priority != null) 'priority': priority!,
+      };
+}
+
+/// Contains dependent field value information.
+class DependentFieldValue {
+  /// The ID of the element that value's field will match against.
+  ///
+  /// Optional.
+  core.String? elementId;
+
+  /// The field id of the dependent field.
+  ///
+  /// Optional.
+  core.int? fieldId;
+
+  DependentFieldValue({
+    this.elementId,
+    this.fieldId,
+  });
+
+  DependentFieldValue.fromJson(core.Map json_)
+      : this(
+          elementId: json_['elementId'] as core.String?,
+          fieldId: json_['fieldId'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (elementId != null) 'elementId': elementId!,
+        if (fieldId != null) 'fieldId': fieldId!,
       };
 }
 
@@ -19090,6 +19542,532 @@ class DirectorySitesListResponse {
       };
 }
 
+/// Contains dynamic feed information.
+class DynamicFeed {
+  /// The content source of the dynamic feed.
+  ///
+  /// This is a required field.
+  ///
+  /// Required.
+  ContentSource? contentSource;
+
+  /// The creation timestamp of the dynamic feed.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  LastModifiedInfo? createInfo;
+
+  /// Unique ID of this dynamic feed.
+  ///
+  /// This is a read-only, auto-generated field.
+  ///
+  /// Output only.
+  core.String? dynamicFeedId;
+
+  /// Name of this dynamic feed.
+  ///
+  /// It is defaulted to content source file name if not provided.
+  ///
+  /// Optional.
+  core.String? dynamicFeedName;
+
+  /// The element of the dynamic feed that is to specify the schema of the feed.
+  ///
+  /// This is a required field.
+  ///
+  /// Required.
+  Element? element;
+
+  /// The ingestion status of the dynamic feed.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  FeedIngestionStatus? feedIngestionStatus;
+
+  /// The schedule of the dynamic feed.
+  ///
+  /// It can be set if the feed is published.
+  ///
+  /// Optional.
+  FeedSchedule? feedSchedule;
+
+  /// Indicates whether the dynamic feed has a published version.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  core.bool? hasPublished;
+
+  /// The last modified timestamp of the dynamic feed.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  LastModifiedInfo? lastModifiedInfo;
+
+  /// The status of the feed.
+  ///
+  /// It is a read-only field that depends on the the feed ingestion status. The
+  /// default value is INACTIVE, and it will be updated to ACTIVE once the feed
+  /// is ingested successfully.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATUS_UNKNOWN" : The status is unknown.
+  /// - "ACTIVE" : The feedstatus is active.
+  /// - "INACTIVE" : The feed status is inactive.
+  /// - "DELETED" : The feed status is deleted.
+  core.String? status;
+
+  /// Advertiser ID of this dynamic feed.
+  ///
+  /// This is a required field.
+  ///
+  /// Required.
+  core.String? studioAdvertiserId;
+
+  DynamicFeed({
+    this.contentSource,
+    this.createInfo,
+    this.dynamicFeedId,
+    this.dynamicFeedName,
+    this.element,
+    this.feedIngestionStatus,
+    this.feedSchedule,
+    this.hasPublished,
+    this.lastModifiedInfo,
+    this.status,
+    this.studioAdvertiserId,
+  });
+
+  DynamicFeed.fromJson(core.Map json_)
+      : this(
+          contentSource: json_.containsKey('contentSource')
+              ? ContentSource.fromJson(
+                  json_['contentSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createInfo: json_.containsKey('createInfo')
+              ? LastModifiedInfo.fromJson(
+                  json_['createInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dynamicFeedId: json_['dynamicFeedId'] as core.String?,
+          dynamicFeedName: json_['dynamicFeedName'] as core.String?,
+          element: json_.containsKey('element')
+              ? Element.fromJson(
+                  json_['element'] as core.Map<core.String, core.dynamic>)
+              : null,
+          feedIngestionStatus: json_.containsKey('feedIngestionStatus')
+              ? FeedIngestionStatus.fromJson(json_['feedIngestionStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          feedSchedule: json_.containsKey('feedSchedule')
+              ? FeedSchedule.fromJson(
+                  json_['feedSchedule'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hasPublished: json_['hasPublished'] as core.bool?,
+          lastModifiedInfo: json_.containsKey('lastModifiedInfo')
+              ? LastModifiedInfo.fromJson(json_['lastModifiedInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          status: json_['status'] as core.String?,
+          studioAdvertiserId: json_['studioAdvertiserId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentSource != null) 'contentSource': contentSource!,
+        if (createInfo != null) 'createInfo': createInfo!,
+        if (dynamicFeedId != null) 'dynamicFeedId': dynamicFeedId!,
+        if (dynamicFeedName != null) 'dynamicFeedName': dynamicFeedName!,
+        if (element != null) 'element': element!,
+        if (feedIngestionStatus != null)
+          'feedIngestionStatus': feedIngestionStatus!,
+        if (feedSchedule != null) 'feedSchedule': feedSchedule!,
+        if (hasPublished != null) 'hasPublished': hasPublished!,
+        if (lastModifiedInfo != null) 'lastModifiedInfo': lastModifiedInfo!,
+        if (status != null) 'status': status!,
+        if (studioAdvertiserId != null)
+          'studioAdvertiserId': studioAdvertiserId!,
+      };
+}
+
+/// Dynamic profile ID is required for dynamic feed insert as the current GPA
+/// API only can create a dynamic feed under profile context,even though the
+/// dynnamic feed itself don't need the dynamic profile id.
+///
+/// See go/cm3-dco-display-api-interface
+class DynamicFeedsInsertRequest {
+  /// Dynamic feed to insert.
+  ///
+  /// Required.
+  DynamicFeed? dynamicFeed;
+
+  /// Dynamic profile ID of the inserted dynamic feed.
+  ///
+  /// Required.
+  core.String? dynamicProfileId;
+
+  DynamicFeedsInsertRequest({
+    this.dynamicFeed,
+    this.dynamicProfileId,
+  });
+
+  DynamicFeedsInsertRequest.fromJson(core.Map json_)
+      : this(
+          dynamicFeed: json_.containsKey('dynamicFeed')
+              ? DynamicFeed.fromJson(
+                  json_['dynamicFeed'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dynamicProfileId: json_['dynamicProfileId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dynamicFeed != null) 'dynamicFeed': dynamicFeed!,
+        if (dynamicProfileId != null) 'dynamicProfileId': dynamicProfileId!,
+      };
+}
+
+/// Contains dynamic profile information.
+class DynamicProfile {
+  /// Active version of the dynamic profile.
+  ///
+  /// Optional.
+  DynamicProfileVersion? active;
+
+  /// Archive status of this dynamic profile.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ARCHIVE_STATUS_UNKNOWN" : The dynamic profile archive status is
+  /// unknown. This value is unused.
+  /// - "UNARCHIVED" : The dynamic profile archive status is unarchived.
+  /// - "ARCHIVED" : The dynamic profile archive status is archived.
+  core.String? archiveStatus;
+
+  /// The creation timestamp of the dynamic profile.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  LastModifiedInfo? createInfo;
+
+  /// Description of this dynamic profile.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Draft version of the dynamic profile.
+  ///
+  /// Optional.
+  DynamicProfileVersion? draft;
+
+  /// Unique ID of this dynamic profile.
+  ///
+  /// This is a read-only, auto-generated field.
+  ///
+  /// Output only.
+  core.String? dynamicProfileId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#dynamicProfile".
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// The last modified timestamp of the dynamic profile.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  LastModifiedInfo? lastModifiedInfo;
+
+  /// Identifier.
+  ///
+  /// Name of this dynamic profile. This is a required field and must be less
+  /// than 256 characters long.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Status of this dynamic profile.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STATUS_UNKNOWN" : The dynamic profile status is unknown. This value is
+  /// unused.
+  /// - "ACTIVE" : The dynamic profile is active.
+  /// - "INACTIVE" : The dynamic profile is inactive.
+  /// - "DELETED" : The dynamic profile is deleted.
+  core.String? status;
+
+  /// Advertiser ID of this dynamic profile.
+  ///
+  /// This is a required field on insertion.
+  ///
+  /// Required.
+  core.String? studioAdvertiserId;
+
+  DynamicProfile({
+    this.active,
+    this.archiveStatus,
+    this.createInfo,
+    this.description,
+    this.draft,
+    this.dynamicProfileId,
+    this.kind,
+    this.lastModifiedInfo,
+    this.name,
+    this.status,
+    this.studioAdvertiserId,
+  });
+
+  DynamicProfile.fromJson(core.Map json_)
+      : this(
+          active: json_.containsKey('active')
+              ? DynamicProfileVersion.fromJson(
+                  json_['active'] as core.Map<core.String, core.dynamic>)
+              : null,
+          archiveStatus: json_['archiveStatus'] as core.String?,
+          createInfo: json_.containsKey('createInfo')
+              ? LastModifiedInfo.fromJson(
+                  json_['createInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: json_['description'] as core.String?,
+          draft: json_.containsKey('draft')
+              ? DynamicProfileVersion.fromJson(
+                  json_['draft'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dynamicProfileId: json_['dynamicProfileId'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          lastModifiedInfo: json_.containsKey('lastModifiedInfo')
+              ? LastModifiedInfo.fromJson(json_['lastModifiedInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          status: json_['status'] as core.String?,
+          studioAdvertiserId: json_['studioAdvertiserId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (active != null) 'active': active!,
+        if (archiveStatus != null) 'archiveStatus': archiveStatus!,
+        if (createInfo != null) 'createInfo': createInfo!,
+        if (description != null) 'description': description!,
+        if (draft != null) 'draft': draft!,
+        if (dynamicProfileId != null) 'dynamicProfileId': dynamicProfileId!,
+        if (kind != null) 'kind': kind!,
+        if (lastModifiedInfo != null) 'lastModifiedInfo': lastModifiedInfo!,
+        if (name != null) 'name': name!,
+        if (status != null) 'status': status!,
+        if (studioAdvertiserId != null)
+          'studioAdvertiserId': studioAdvertiserId!,
+      };
+}
+
+/// Contains dynamic profile specific settings for an associated dynamic feed.
+class DynamicProfileFeedSettings {
+  /// Dynamic feed ID associated with dynamic profile version.
+  ///
+  /// Optional.
+  core.String? dynamicFeedId;
+
+  /// Dynamic rules for row selection for the given dynamic feed in the given
+  /// dynamic profile.
+  ///
+  /// Optional.
+  DynamicRules? dynamicRules;
+
+  /// The number of this dynamic feed rows needed by the dynamic profile,
+  /// default value is 1.
+  ///
+  /// Acceptable values are between 1 to 99, inclusive.
+  ///
+  /// Optional.
+  core.int? quantity;
+
+  DynamicProfileFeedSettings({
+    this.dynamicFeedId,
+    this.dynamicRules,
+    this.quantity,
+  });
+
+  DynamicProfileFeedSettings.fromJson(core.Map json_)
+      : this(
+          dynamicFeedId: json_['dynamicFeedId'] as core.String?,
+          dynamicRules: json_.containsKey('dynamicRules')
+              ? DynamicRules.fromJson(
+                  json_['dynamicRules'] as core.Map<core.String, core.dynamic>)
+              : null,
+          quantity: json_['quantity'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dynamicFeedId != null) 'dynamicFeedId': dynamicFeedId!,
+        if (dynamicRules != null) 'dynamicRules': dynamicRules!,
+        if (quantity != null) 'quantity': quantity!,
+      };
+}
+
+/// Contains dynamic profile version information.
+class DynamicProfileVersion {
+  /// Associated dynamic feeds and their settings (including dynamic rules) for
+  /// this dynamic profile version.
+  ///
+  /// Optional.
+  core.List<DynamicProfileFeedSettings>? dynamicProfileFeedSettings;
+
+  /// Version ID of this dynamic profile version.
+  ///
+  /// This is a read-only, auto-generated field. -1 for draft version, 0+ for
+  /// published versions.
+  ///
+  /// Output only.
+  core.String? versionId;
+
+  DynamicProfileVersion({
+    this.dynamicProfileFeedSettings,
+    this.versionId,
+  });
+
+  DynamicProfileVersion.fromJson(core.Map json_)
+      : this(
+          dynamicProfileFeedSettings:
+              (json_['dynamicProfileFeedSettings'] as core.List?)
+                  ?.map((value) => DynamicProfileFeedSettings.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          versionId: json_['versionId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dynamicProfileFeedSettings != null)
+          'dynamicProfileFeedSettings': dynamicProfileFeedSettings!,
+        if (versionId != null) 'versionId': versionId!,
+      };
+}
+
+/// Contains dynamic rules information.
+class DynamicRules {
+  /// List of field IDs in this element that should be auto-targeted.
+  ///
+  /// Applicable when rule type is AUTO.
+  ///
+  /// Optional.
+  core.List<core.int>? autoTargetedFieldIds;
+
+  /// The custom rules of the dynamic feed, only applicable when rule type is
+  /// CUSTOM.
+  ///
+  /// Optional.
+  core.List<CustomRule>? customRules;
+
+  /// Mapping between field ID and custom key that are used to match for auto
+  /// filtering.
+  ///
+  /// Optional.
+  core.List<CustomValueField>? customValueFields;
+
+  /// The proximity targeting rules of the dynamic feed, only applicable when
+  /// rule type is PROXIMITY_TARGETING.
+  ///
+  /// Optional.
+  ProximityFilter? proximityFilter;
+
+  /// The link between an element field ID and a list of user attribute IDs.
+  ///
+  /// Optional.
+  core.List<RemarketingValueAttribute>? remarketingValueAttributes;
+
+  /// The rotation type to select from eligible rows.
+  ///
+  /// Rotation type only apply when the filtering rule results in more than one
+  /// eligible rows.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ROTATION_TYPE_UNKNOWN" : The rotation type is unknown. This value is
+  /// unused.
+  /// - "RANDOM" : The rotation type is random. It is the default value.
+  /// - "OPTIMIZED" : The rotation type is optimized.
+  /// - "WEIGHTED" : The rotation type is weighted.
+  core.String? rotationType;
+
+  /// The type of the rule, the default value is OPEN.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RULE_SET_TYPE_UNKNOWN" : The rule type is unknown. This value is
+  /// unused.
+  /// - "OPEN" : The rule type is open, all feed rows are eligible for
+  /// selection. This is the default value.
+  /// - "AUTO" : The rule type is auto, the feed rows are eligible for selection
+  /// based on the automatic rules.
+  /// - "CUSTOM" : The rule type is custom, the feed rows are eligible for
+  /// selection based on the custom rules.
+  /// - "PROXIMITY_TARGETING" : The rule type is proximity targeting, the feed
+  /// rows are eligible for selection based on the proximity targeting rules.
+  core.String? ruleType;
+
+  /// The field ID for the feed that will be used for weighted rotation, only
+  /// applicable when rotation type is WEIGHTED.
+  ///
+  /// Optional.
+  core.int? weightFieldId;
+
+  DynamicRules({
+    this.autoTargetedFieldIds,
+    this.customRules,
+    this.customValueFields,
+    this.proximityFilter,
+    this.remarketingValueAttributes,
+    this.rotationType,
+    this.ruleType,
+    this.weightFieldId,
+  });
+
+  DynamicRules.fromJson(core.Map json_)
+      : this(
+          autoTargetedFieldIds: (json_['autoTargetedFieldIds'] as core.List?)
+              ?.map((value) => value as core.int)
+              .toList(),
+          customRules: (json_['customRules'] as core.List?)
+              ?.map((value) => CustomRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          customValueFields: (json_['customValueFields'] as core.List?)
+              ?.map((value) => CustomValueField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          proximityFilter: json_.containsKey('proximityFilter')
+              ? ProximityFilter.fromJson(json_['proximityFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          remarketingValueAttributes:
+              (json_['remarketingValueAttributes'] as core.List?)
+                  ?.map((value) => RemarketingValueAttribute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          rotationType: json_['rotationType'] as core.String?,
+          ruleType: json_['ruleType'] as core.String?,
+          weightFieldId: json_['weightFieldId'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoTargetedFieldIds != null)
+          'autoTargetedFieldIds': autoTargetedFieldIds!,
+        if (customRules != null) 'customRules': customRules!,
+        if (customValueFields != null) 'customValueFields': customValueFields!,
+        if (proximityFilter != null) 'proximityFilter': proximityFilter!,
+        if (remarketingValueAttributes != null)
+          'remarketingValueAttributes': remarketingValueAttributes!,
+        if (rotationType != null) 'rotationType': rotationType!,
+        if (ruleType != null) 'ruleType': ruleType!,
+        if (weightFieldId != null) 'weightFieldId': weightFieldId!,
+      };
+}
+
 /// Contains properties of a dynamic targeting key.
 ///
 /// Dynamic targeting keys are unique, user-friendly labels, created at the
@@ -19175,6 +20153,151 @@ class DynamicTargetingKeysListResponse {
         if (dynamicTargetingKeys != null)
           'dynamicTargetingKeys': dynamicTargetingKeys!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Contains the element of the dynamic feed.
+class Element {
+  /// The field ID to specify the active field in the feed.
+  ///
+  /// Optional.
+  core.int? activeFieldId;
+
+  /// The creation timestamp of the element.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  LastModifiedInfo? createInfo;
+
+  /// The field ID to specify the field that represents the default field in the
+  /// feed.
+  ///
+  /// Optional.
+  core.int? defaultFieldId;
+
+  /// The name of the element.
+  ///
+  /// It is defaulted to resource file name if not provided.
+  ///
+  /// Optional.
+  core.String? elementName;
+
+  /// The field ID to specify the field that represents the end timestamp.
+  ///
+  /// Only applicable if you're planning to use scheduling in your dynamic
+  /// creative.
+  ///
+  /// Optional.
+  core.int? endTimestampFieldId;
+
+  /// The field ID to specify the field used for uniquely identifying the feed
+  /// row.
+  ///
+  /// This is a required field.
+  ///
+  /// Required.
+  core.int? externalIdFieldId;
+
+  /// The list of fields of the element.
+  ///
+  /// The field order and name should match the meta data in the content source
+  /// source.
+  ///
+  /// Required.
+  core.List<FeedField>? feedFields;
+
+  /// Whether the start and end timestamp is local timestamp.
+  ///
+  /// The default value is false which means start and end timestamp is in UTC.
+  ///
+  /// Optional.
+  core.bool? isLocalTimestamp;
+
+  /// The last modified timestamp of the element.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  LastModifiedInfo? lastModifiedInfo;
+
+  /// The field ID that specify field used for proximity targeting.
+  ///
+  /// Optional.
+  core.int? proximityTargetingFieldId;
+
+  /// The field ID to specify the field used for dynamic reporting in Campaign
+  /// Manager 360.
+  ///
+  /// Required.
+  core.int? reportingLabelFieldId;
+
+  /// The field ID to specify the field that represents the start timestamp.
+  ///
+  /// Only applicable if you're planning to use scheduling in your dynamic
+  /// creative.
+  ///
+  /// Optional.
+  core.int? startTimestampFieldId;
+
+  Element({
+    this.activeFieldId,
+    this.createInfo,
+    this.defaultFieldId,
+    this.elementName,
+    this.endTimestampFieldId,
+    this.externalIdFieldId,
+    this.feedFields,
+    this.isLocalTimestamp,
+    this.lastModifiedInfo,
+    this.proximityTargetingFieldId,
+    this.reportingLabelFieldId,
+    this.startTimestampFieldId,
+  });
+
+  Element.fromJson(core.Map json_)
+      : this(
+          activeFieldId: json_['activeFieldId'] as core.int?,
+          createInfo: json_.containsKey('createInfo')
+              ? LastModifiedInfo.fromJson(
+                  json_['createInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          defaultFieldId: json_['defaultFieldId'] as core.int?,
+          elementName: json_['elementName'] as core.String?,
+          endTimestampFieldId: json_['endTimestampFieldId'] as core.int?,
+          externalIdFieldId: json_['externalIdFieldId'] as core.int?,
+          feedFields: (json_['feedFields'] as core.List?)
+              ?.map((value) => FeedField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          isLocalTimestamp: json_['isLocalTimestamp'] as core.bool?,
+          lastModifiedInfo: json_.containsKey('lastModifiedInfo')
+              ? LastModifiedInfo.fromJson(json_['lastModifiedInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          proximityTargetingFieldId:
+              json_['proximityTargetingFieldId'] as core.int?,
+          reportingLabelFieldId: json_['reportingLabelFieldId'] as core.int?,
+          startTimestampFieldId: json_['startTimestampFieldId'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeFieldId != null) 'activeFieldId': activeFieldId!,
+        if (createInfo != null) 'createInfo': createInfo!,
+        if (defaultFieldId != null) 'defaultFieldId': defaultFieldId!,
+        if (elementName != null) 'elementName': elementName!,
+        if (endTimestampFieldId != null)
+          'endTimestampFieldId': endTimestampFieldId!,
+        if (externalIdFieldId != null) 'externalIdFieldId': externalIdFieldId!,
+        if (feedFields != null) 'feedFields': feedFields!,
+        if (isLocalTimestamp != null) 'isLocalTimestamp': isLocalTimestamp!,
+        if (lastModifiedInfo != null) 'lastModifiedInfo': lastModifiedInfo!,
+        if (proximityTargetingFieldId != null)
+          'proximityTargetingFieldId': proximityTargetingFieldId!,
+        if (reportingLabelFieldId != null)
+          'reportingLabelFieldId': reportingLabelFieldId!,
+        if (startTimestampFieldId != null)
+          'startTimestampFieldId': startTimestampFieldId!,
       };
 }
 
@@ -19483,6 +20606,495 @@ class EventTagsListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (eventTags != null) 'eventTags': eventTags!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Each field of the element.
+///
+/// This is a required field.
+class FeedField {
+  /// The default value of the field.
+  ///
+  /// Optional.
+  core.String? defaultValue;
+
+  /// Whether the field is filterable.
+  ///
+  /// Could be set as true when the field type is any of the following and is
+  /// not renderable: - STRING - BOOL - COUNTRY_CODE_ISO - CM360_SITE_ID -
+  /// CM360_KEYWORD - CM360_CREATIVE_ID - CM360_PLACEMENT_ID - CM360_AD_ID -
+  /// CM360_ADVERTISER_ID - CM360_CAMPAIGN_ID - CITY - REGION - POSTAL_CODE -
+  /// METRO - CUSTOM_VALUE - REMARKETING_VALUE - GEO_CANONICAL - STRING_LIST -
+  /// CREATIVE_DIMENSION - USERLIST_ID - CM360_DYNAMIC_TARGETING_KEY -
+  /// DV360_LINE_ITEM_ID
+  ///
+  /// Optional.
+  core.bool? filterable;
+
+  /// The ID of the field.
+  ///
+  /// The ID is based on the column index starting from 0, and it should match
+  /// the column index in the resource link.
+  ///
+  /// Required.
+  core.int? id;
+
+  /// The name of the field.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Whether the field is able to display.
+  ///
+  /// Could be set as true when the field type is not in any of the following
+  /// and the field is not filterable: - COUNTRY_CODE_ISO - CITY - REGION -
+  /// POSTAL_CODE - METRO - GEO_CANONICAL - USERLIST_ID - CONTEXTUAL_KEYWORD -
+  /// CM360_DYNAMIC_TARGETING_KEY - WEIGHT
+  ///
+  /// Optional.
+  core.bool? renderable;
+
+  /// Whether the field is required and should not be empty in the feed.
+  ///
+  /// Could be set as true when the field type is any of the following: -
+  /// GPA_SERVED_IMAGE_URL - GPA_SERVED_ASSET_URL - ASSET_LIBRARY_HANDLE -
+  /// ASSET_LIBRARY_VIDEO_HANDLE - ASSET_LIBRARY_DIRECTORY_HANDLE
+  ///
+  /// Optional.
+  core.bool? required;
+
+  /// The type of the field.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNKNOWN" : The type is unspecified. This is an unused value.
+  /// - "STRING" : The field type is text.
+  /// - "LONG" : The field type is whole number.
+  /// - "GPA_SERVED_IMAGE_URL" : The field type is image url
+  /// - "GPA_SERVED_ASSET_URL" : The field type is asset url.
+  /// - "COUNTRY_CODE_ISO" : The field type is the ISO 3166-2 alpha-2 codes. It
+  /// is two-letter country codes defined in ISO 3166-1 published by the
+  /// International Organization for Standardization.
+  /// - "FLOAT" : The field type is decimal.
+  /// - "CM360_KEYWORD" : The field type is custom CM360 ad tag parameter.
+  /// - "CM360_SITE_ID" : The field type is CM360 site ID.
+  /// - "BOOL" : The field type is boolean.
+  /// - "EXIT_URL" : The field type is exit url.
+  /// - "DATETIME" : The field type is datetime.
+  /// - "CM360_CREATIVE_ID" : The field type is CM360 creative ID.
+  /// - "CM360_PLACEMENT_ID" : The field type is CM360 placement ID.
+  /// - "CM360_AD_ID" : The field type is CM360 ad ID.
+  /// - "CM360_ADVERTISER_ID" : The field type is CM360 advertiser ID.
+  /// - "CM360_CAMPAIGN_ID" : The field type is CM360 campaign ID.
+  /// - "CITY" : The field type is cities.
+  /// - "REGION" : The field type is region.
+  /// - "POSTAL_CODE" : The field type is postal code.
+  /// - "METRO" : The field type is metro code.
+  /// - "CUSTOM_VALUE" : The field type is custom value.
+  /// - "REMARKETING_VALUE" : The field type is remarketing value.
+  /// - "GEO_CANONICAL" : The field type is accurate geographic type.
+  /// - "WEIGHT" : The field type is weight.
+  /// - "STRING_LIST" : The field type is a list of values.
+  /// - "CREATIVE_DIMENSION" : The field type is creative dimension.
+  /// - "USERLIST_ID" : The field type is CM/DV360 Audience ID.
+  /// - "ASSET_LIBRARY_DIRECTORY_HANDLE" : The field type is AssetLibrary
+  /// directory path.
+  /// - "ASSET_LIBRARY_VIDEO_HANDLE" : The field type is AssetLibrary video file
+  /// path.
+  /// - "ASSET_LIBRARY_HANDLE" : The field type is AssetLibrary path.
+  /// - "THIRD_PARTY_SERVED_URL" : The field type is third party served url.
+  /// - "CM360_DYNAMIC_TARGETING_KEY" : The field type is CM dynamic targeting
+  /// key.
+  /// - "DV360_LINE_ITEM_ID" : The field type is DV360 line item ID.
+  core.String? type;
+
+  FeedField({
+    this.defaultValue,
+    this.filterable,
+    this.id,
+    this.name,
+    this.renderable,
+    this.required,
+    this.type,
+  });
+
+  FeedField.fromJson(core.Map json_)
+      : this(
+          defaultValue: json_['defaultValue'] as core.String?,
+          filterable: json_['filterable'] as core.bool?,
+          id: json_['id'] as core.int?,
+          name: json_['name'] as core.String?,
+          renderable: json_['renderable'] as core.bool?,
+          required: json_['required'] as core.bool?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultValue != null) 'defaultValue': defaultValue!,
+        if (filterable != null) 'filterable': filterable!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (renderable != null) 'renderable': renderable!,
+        if (required != null) 'required': required!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Contains the ingestion status of the dynamic feed.
+///
+/// Feed ingestion is an asynchronous process. If the feed create request is
+/// successful, feed ingestion will be processed in the background, including
+/// validation, assets retrieval, and saving the data from the resource link.
+/// The processing time is dependent on the data size in the resource link. This
+/// read-only status field contains the current stage of that processing and its
+/// ingestion state.
+class FeedIngestionStatus {
+  /// The ingestion error records of the feed.
+  ///
+  /// Output only.
+  core.List<IngestionErrorRecord>? ingestionErrorRecords;
+
+  /// The ingestion status of the feed.
+  ///
+  /// Output only.
+  IngestionStatus? ingestionStatus;
+
+  /// The processing state of the feed.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FEED_PROCESSING_STATE_UNKNOWN" : The feed processing state is unknown.
+  /// - "CANCELLED" : The feed processing state is cancelled.
+  /// - "INGESTING_QUEUED" : The feed processing state is ingesting queued.
+  /// - "INGESTING" : The feed processing state is ingesting.
+  /// - "INGESTED_SUCCESS" : The feed processing state is ingested successfully.
+  /// - "INGESTED_FAILURE" : The feed processing state is ingested with failure.
+  /// - "REQUEST_TO_PUBLISH" : The feed processing state is request to publish.
+  /// - "PUBLISHING" : The feed processing state is publishing.
+  /// - "PUBLISHED_SUCCESS" : The feed processing state is published
+  /// successfully.
+  /// - "PUBLISHED_FAILURE" : The feed processing state is published with
+  /// failure.
+  core.String? state;
+
+  FeedIngestionStatus({
+    this.ingestionErrorRecords,
+    this.ingestionStatus,
+    this.state,
+  });
+
+  FeedIngestionStatus.fromJson(core.Map json_)
+      : this(
+          ingestionErrorRecords: (json_['ingestionErrorRecords'] as core.List?)
+              ?.map((value) => IngestionErrorRecord.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          ingestionStatus: json_.containsKey('ingestionStatus')
+              ? IngestionStatus.fromJson(json_['ingestionStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ingestionErrorRecords != null)
+          'ingestionErrorRecords': ingestionErrorRecords!,
+        if (ingestionStatus != null) 'ingestionStatus': ingestionStatus!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Contains the schedule of the dynamic feed.
+class FeedSchedule {
+  /// The number of times the feed retransforms within one day.
+  ///
+  /// This is a required field if the schedule is enabled. Acceptable values are
+  /// between 1 to 6, inclusive.
+  ///
+  /// Optional.
+  core.String? repeatValue;
+
+  /// Whether the schedule is enabled.
+  ///
+  /// Optional.
+  core.bool? scheduleEnabled;
+
+  /// The hour of the day to start the feed.
+  ///
+  /// It is applicable if the repeat value is equal to 1. Default value is 0.
+  ///
+  /// Optional.
+  core.String? startHour;
+
+  /// The minute of the hour to start the feed.
+  ///
+  /// It is applicable if the repeat value is equal to 1. Default value is 0.
+  ///
+  /// Optional.
+  core.String? startMinute;
+
+  /// The time zone to schedule the feed.
+  ///
+  /// It is applicable if the repeat value is equal to 1. Default value is
+  /// "America/Los_Angeles".
+  ///
+  /// Optional.
+  core.String? timeZone;
+
+  FeedSchedule({
+    this.repeatValue,
+    this.scheduleEnabled,
+    this.startHour,
+    this.startMinute,
+    this.timeZone,
+  });
+
+  FeedSchedule.fromJson(core.Map json_)
+      : this(
+          repeatValue: json_['repeatValue'] as core.String?,
+          scheduleEnabled: json_['scheduleEnabled'] as core.bool?,
+          startHour: json_['startHour'] as core.String?,
+          startMinute: json_['startMinute'] as core.String?,
+          timeZone: json_['timeZone'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (repeatValue != null) 'repeatValue': repeatValue!,
+        if (scheduleEnabled != null) 'scheduleEnabled': scheduleEnabled!,
+        if (startHour != null) 'startHour': startHour!,
+        if (startMinute != null) 'startMinute': startMinute!,
+        if (timeZone != null) 'timeZone': timeZone!,
+      };
+}
+
+/// Contains the field error of the dynamic feed.
+class FieldError {
+  /// The ID of the field.
+  ///
+  /// Output only.
+  core.int? fieldId;
+
+  /// The name of the field.
+  ///
+  /// Output only.
+  core.String? fieldName;
+
+  /// The list of values of the field.
+  ///
+  /// Output only.
+  core.List<core.String>? fieldValues;
+
+  /// The ingestion error of the field.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNKNOWN_PARSING_ERROR" : The ingestion error is unknown.
+  /// - "MISSING_ID" : The ingestion error when the ID value is missing.
+  /// - "MISSING_REPORTING_LABEL" : The ingestion error when the element value
+  /// name used for reporting is missing.
+  /// - "EMPTY_VALUE" : The ingestion error when a required value is empty
+  /// - "ASSET_DOWNLOAD_ERROR" : The ingestion error when asset retrieval fails
+  /// for a particular image or asset.
+  /// - "ID_TOO_LONG" : The ingestion error when the ID value exceeds the string
+  /// length limit.
+  /// - "DUPLICATE_ID" : The ingestion error when the ID value is duplicate.
+  /// - "PARSING_ERROR" : The ingestion error when parsing the field fails.
+  /// - "COUNTRY_PARSING_ERROR" : The ingestion error when parsing the country
+  /// code fails.
+  /// - "LONG_PARSING_ERROR" : The ingestion error when parsing the long value
+  /// fails.
+  /// - "BOOL_PARSING_ERROR" : The ingestion error when parsing the boolean
+  /// value fails.
+  /// - "EXPANDED_URL_PARSING_ERROR" : The ingestion error when parsing the
+  /// expanded url fails.
+  /// - "FLOAT_PARSING_ERROR" : The ingestion error when parsing the float value
+  /// fails.
+  /// - "DATETIME_PARSING_ERROR" : The ingestion error when parsing the datetime
+  /// value fails.
+  /// - "INVALID_PREFERENCE_VALUE" : The ingestion error when the preference
+  /// value is not a positive float.
+  /// - "GEO_NOT_FOUND_ERROR" : The ingestion error when a geo location is not
+  /// found.
+  /// - "GEO_PARSING_ERROR" : The ingestion error when parsing the geo field
+  /// fails.
+  /// - "GEO_PROXIMITY_TARGETING_MULTIPLE_LOCATION_ERROR" : The ingestion error
+  /// when a feed row has multiple geotargets with proximity targeting enabled.
+  /// - "POSTAL_CODE_PARSING_ERROR" : The ingestion error when parsing the
+  /// postal code value fails.
+  /// - "METRO_CODE_PARSING_ERROR" : The ingestion error when parsing the metro
+  /// code value fails.
+  /// - "DATETIME_WITHOUT_TIMEZONE_PARSING_ERROR" : The ingestion error when
+  /// parsing the datetime value fails.
+  /// - "WEIGHT_PARSING_ERROR" : The ingestion error when parsing the weight
+  /// value fails.
+  /// - "CREATIVE_DIMENSION_PARSING_ERROR" : The ingestion error when parsing
+  /// the creative dimension value fails.
+  /// - "MULTIVALUE_ID" : The ingestion error when a STRING_LIST type ID has
+  /// multiple values.
+  /// - "ENDTIME_BEFORE_STARTTIME" : The ingestion error when the end time is
+  /// before the start time.
+  /// - "INVALID_ASSET_LIBRARY_HANDLE" : The ingestion error when the asset
+  /// library handle is invalid.
+  /// - "INVALID_ASSET_LIBRARY_VIDEO_HANDLE" : The ingestion error when the
+  /// asset library video handle is invalid.
+  /// - "INVALID_ASSET_LIBRARY_DIRECTORY_HANDLE" : The ingestion error when the
+  /// asset library directory handle is invalid.
+  /// - "DYNAMIC_TARGETING_KEY_NOT_DEFINED_FOR_ADVERTISER" : The ingestion error
+  /// when a targeting key used but not defined for the CM360 Advertiser.
+  /// - "USERLIST_ID_NOT_ACCESSIBLE_FOR_ADVERTISER" : The ingestion error when
+  /// the userlist ID is not accessible for the CM360 Advertiser.
+  /// - "ENDTIME_PASSED" : The ingestion error when the end time is passed.
+  /// - "ENDTIME_TOO_SOON" : The ingestion error when the end time is in the
+  /// near future (i.e., \<7 days).
+  /// - "TEXT_ASSET_REFERENCE" : The ingestion error when a text field specifies
+  /// a reference to an asset.
+  /// - "IMAGE_ASSET_SCS_REFERENCE" : The ingestion error when Image field
+  /// specifies a reference to an asset hosted on SCS
+  /// (s0.2mdn.net/s0qa.2mdn.net).
+  /// - "AIRPORT_GEO_TARGET" : The ingestion error when a geo target is an
+  /// airport.
+  /// - "CANONICAL_NAME_QUERY_MISMATCH" : The ingestion error when the geo
+  /// target's canonical name does not match the query string used to obtain it.
+  /// - "NO_DEFAULT_ROW" : The ingestion error or warning when the default row
+  /// is not set.
+  /// - "NO_ACTIVE_DEFAULT_ROW" : The ingestion error or warning when the
+  /// default row is not active.
+  /// - "NO_DEFAULT_ROW_IN_DATE_RANGE" : The ingestion error or warning when the
+  /// default row is not in the date range.
+  /// - "NO_ACTIVE_DEFAULT_ROW_IN_DATE_RANGE" : The ingestion error or warning
+  /// when the default row is not in the date range.
+  /// - "PAYLOAD_LIMIT_EXCEEDED" : The ingestion error when when the payload of
+  /// the record is above a threshold.
+  /// - "SSL_NOT_COMPLIANT" : The ingestion error or warning when the field is
+  /// not SSL compliant.
+  core.String? ingestionError;
+
+  /// Incidcates whether the field has error or warning.
+  ///
+  /// Output only.
+  core.bool? isError;
+
+  FieldError({
+    this.fieldId,
+    this.fieldName,
+    this.fieldValues,
+    this.ingestionError,
+    this.isError,
+  });
+
+  FieldError.fromJson(core.Map json_)
+      : this(
+          fieldId: json_['fieldId'] as core.int?,
+          fieldName: json_['fieldName'] as core.String?,
+          fieldValues: (json_['fieldValues'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          ingestionError: json_['ingestionError'] as core.String?,
+          isError: json_['isError'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (fieldValues != null) 'fieldValues': fieldValues!,
+        if (ingestionError != null) 'ingestionError': ingestionError!,
+        if (isError != null) 'isError': isError!,
+      };
+}
+
+/// Contains field filter information.
+class FieldFilter {
+  /// The boolean values, only applicable when rhs_value_type is BOOL.
+  ///
+  /// Optional.
+  core.bool? boolValue;
+
+  /// The dependent values, only applicable when rhs_value_type is DEPENDENT.
+  ///
+  /// Optional.
+  DependentFieldValue? dependentFieldValue;
+
+  /// The field ID on the left hand side of the expression.
+  ///
+  /// Optional.
+  core.int? fieldId;
+
+  /// Left hand side of the expression match type.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LHS_MATCH_TYPE_UNKNOWN" : The left hand side of the expression is
+  /// unknown. This value is unused.
+  /// - "EQUALS_OR_UNRESTRICTED" : The left hand side of the expression is
+  /// equals or unrestricted. It is the default value.
+  /// - "EQUALS" : The left hand side of the expression is equals.
+  /// - "UNRESTRICTED" : The left hand side of the expression is unrestricted.
+  /// Unrestricted is used to target fields with no restrictions. For example,
+  /// country targeting fields hold a list of countries. If the list is empty,
+  /// we consider the element value to have no restrictions.
+  /// - "NOT_EQUALS" : Left hand side of the expression is not equals. Not
+  /// equals specifies which fields should not be targeted.
+  core.String? matchType;
+
+  /// The request value, only applicable when rhs_value_type is REQUEST.
+  ///
+  /// Optional.
+  RequestValue? requestValue;
+
+  /// The string value, only applicable when rhs_value_type is STRING.
+  ///
+  /// Optional.
+  core.String? stringValue;
+
+  /// Right hand side of the expression.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RHS_VALUE_TYPE_UNKNOWN" : The right hand side of the expression is
+  /// unknown. This value is unused.
+  /// - "STRING" : The right hand side of the expression is a string.
+  /// - "REQUEST" : The right hand side of the expression is a request value.
+  /// - "BOOL" : The right hand side of the expression is a boolean.
+  /// - "DEPENDENT" : The right hand side of the expression is a dependent field
+  /// value.
+  core.String? valueType;
+
+  FieldFilter({
+    this.boolValue,
+    this.dependentFieldValue,
+    this.fieldId,
+    this.matchType,
+    this.requestValue,
+    this.stringValue,
+    this.valueType,
+  });
+
+  FieldFilter.fromJson(core.Map json_)
+      : this(
+          boolValue: json_['boolValue'] as core.bool?,
+          dependentFieldValue: json_.containsKey('dependentFieldValue')
+              ? DependentFieldValue.fromJson(json_['dependentFieldValue']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          fieldId: json_['fieldId'] as core.int?,
+          matchType: json_['matchType'] as core.String?,
+          requestValue: json_.containsKey('requestValue')
+              ? RequestValue.fromJson(
+                  json_['requestValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stringValue: json_['stringValue'] as core.String?,
+          valueType: json_['valueType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (dependentFieldValue != null)
+          'dependentFieldValue': dependentFieldValue!,
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (matchType != null) 'matchType': matchType!,
+        if (requestValue != null) 'requestValue': requestValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
@@ -20805,6 +22417,93 @@ class GeoTargeting {
         if (metros != null) 'metros': metros!,
         if (postalCodes != null) 'postalCodes': postalCodes!,
         if (regions != null) 'regions': regions!,
+      };
+}
+
+/// Contains the ingestion error record of the dynamic feed.
+///
+/// limited to 100 records.
+class IngestionErrorRecord {
+  /// The list of field errors of the ingestion error record.
+  ///
+  /// Output only.
+  core.List<FieldError>? errors;
+
+  /// The record ID of the ingestion error record.
+  ///
+  /// Output only.
+  core.String? recordId;
+
+  IngestionErrorRecord({
+    this.errors,
+    this.recordId,
+  });
+
+  IngestionErrorRecord.fromJson(core.Map json_)
+      : this(
+          errors: (json_['errors'] as core.List?)
+              ?.map((value) => FieldError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          recordId: json_['recordId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errors != null) 'errors': errors!,
+        if (recordId != null) 'recordId': recordId!,
+      };
+}
+
+/// Contains the ingestion status of the dynamic feed.
+class IngestionStatus {
+  /// The number of active rows in the feed.
+  ///
+  /// Output only.
+  core.String? numActiveRows;
+
+  /// The number of rows processed in the feed.
+  ///
+  /// Output only.
+  core.String? numRowsProcessed;
+
+  /// The total number of rows in the feed.
+  ///
+  /// Output only.
+  core.String? numRowsTotal;
+
+  /// The number of rows with errors in the feed.
+  ///
+  /// Output only.
+  core.String? numRowsWithErrors;
+
+  /// The total number of warnings in the feed.
+  ///
+  /// Output only.
+  core.String? numWarningsTotal;
+
+  IngestionStatus({
+    this.numActiveRows,
+    this.numRowsProcessed,
+    this.numRowsTotal,
+    this.numRowsWithErrors,
+    this.numWarningsTotal,
+  });
+
+  IngestionStatus.fromJson(core.Map json_)
+      : this(
+          numActiveRows: json_['numActiveRows'] as core.String?,
+          numRowsProcessed: json_['numRowsProcessed'] as core.String?,
+          numRowsTotal: json_['numRowsTotal'] as core.String?,
+          numRowsWithErrors: json_['numRowsWithErrors'] as core.String?,
+          numWarningsTotal: json_['numWarningsTotal'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (numActiveRows != null) 'numActiveRows': numActiveRows!,
+        if (numRowsProcessed != null) 'numRowsProcessed': numRowsProcessed!,
+        if (numRowsTotal != null) 'numRowsTotal': numRowsTotal!,
+        if (numRowsWithErrors != null) 'numRowsWithErrors': numRowsWithErrors!,
+        if (numWarningsTotal != null) 'numWarningsTotal': numWarningsTotal!,
       };
 }
 
@@ -24536,6 +26235,63 @@ class ProjectsListResponse {
       };
 }
 
+/// Contains proximity filter information.
+class ProximityFilter {
+  /// Field ID in the element.
+  ///
+  /// Optional.
+  core.int? fieldId;
+
+  /// The radius bucket type of the proximity filter
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RADIUS_BUCKET_TYPE_UNKNOWN" : The radius bucket type is unknown.
+  /// - "SMALL" : The radius bucket type is small.
+  /// - "MEDIUM" : The radius bucket type is medium.
+  /// - "LARGE" : The radius bucket type is large.
+  /// - "MULTI_REGIONAL" : The radius bucket type is multi-regional.
+  /// - "NATIONAL" : The radius bucket type is national.
+  core.String? radiusBucketType;
+
+  /// The units of the radius value
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RADIUS_UNIT_TYPE_UNKNOWN" : The units of the radius value are unknown.
+  /// This value is unused.
+  /// - "KILOMETERS" : The units of the radius value are kilometers.
+  /// - "MILES" : The units of the radius value are miles.
+  core.String? radiusUnitType;
+
+  /// Radius length in units defined by radius_units.
+  ///
+  /// Optional.
+  core.int? radiusValue;
+
+  ProximityFilter({
+    this.fieldId,
+    this.radiusBucketType,
+    this.radiusUnitType,
+    this.radiusValue,
+  });
+
+  ProximityFilter.fromJson(core.Map json_)
+      : this(
+          fieldId: json_['fieldId'] as core.int?,
+          radiusBucketType: json_['radiusBucketType'] as core.String?,
+          radiusUnitType: json_['radiusUnitType'] as core.String?,
+          radiusValue: json_['radiusValue'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (radiusBucketType != null) 'radiusBucketType': radiusBucketType!,
+        if (radiusUnitType != null) 'radiusUnitType': radiusUnitType!,
+        if (radiusValue != null) 'radiusValue': radiusValue!,
+      };
+}
+
 /// Represents fields that are compatible to be selected for a report of type
 /// "REACH".
 class ReachReportCompatibleFields {
@@ -24950,6 +26706,37 @@ class RemarketingListsListResponse {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (remarketingLists != null) 'remarketingLists': remarketingLists!,
+      };
+}
+
+/// Contains remarketing value attribute information.
+class RemarketingValueAttribute {
+  /// Field ID in the element.
+  ///
+  /// Optional.
+  core.int? fieldId;
+
+  /// Remarketing user attribute IDs for auto filtering.
+  ///
+  /// Optional.
+  core.List<core.String>? userAttributeIds;
+
+  RemarketingValueAttribute({
+    this.fieldId,
+    this.userAttributeIds,
+  });
+
+  RemarketingValueAttribute.fromJson(core.Map json_)
+      : this(
+          fieldId: json_['fieldId'] as core.int?,
+          userAttributeIds: (json_['userAttributeIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (userAttributeIds != null) 'userAttributeIds': userAttributeIds!,
       };
 }
 
@@ -26073,6 +27860,55 @@ class ReportsConfiguration {
       };
 }
 
+/// Contains request value information.
+class RequestValue {
+  /// User attribute IDs in the request that should be excluded.
+  ///
+  /// Used only when the field type is REMARKETING_VALUE or USER_ATTRIBUTE_ID.
+  ///
+  /// Optional.
+  core.List<core.String>? excludeFromUserAttributeIds;
+
+  /// Custom key in the request.
+  ///
+  /// Used only when the field type is CUSTOM_VALUE.
+  ///
+  /// Optional.
+  core.String? key;
+
+  /// User attribute IDs in the request.
+  ///
+  /// Used only when the field type is REMARKETING_VALUE or USER_ATTRIBUTE_ID.
+  ///
+  /// Optional.
+  core.List<core.String>? userAttributeIds;
+
+  RequestValue({
+    this.excludeFromUserAttributeIds,
+    this.key,
+    this.userAttributeIds,
+  });
+
+  RequestValue.fromJson(core.Map json_)
+      : this(
+          excludeFromUserAttributeIds:
+              (json_['excludeFromUserAttributeIds'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          key: json_['key'] as core.String?,
+          userAttributeIds: (json_['userAttributeIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeFromUserAttributeIds != null)
+          'excludeFromUserAttributeIds': excludeFromUserAttributeIds!,
+        if (key != null) 'key': key!,
+        if (userAttributeIds != null) 'userAttributeIds': userAttributeIds!,
+      };
+}
+
 /// Rich Media Exit Override.
 class RichMediaExitOverride {
   /// Click-through URL of this rich media exit override.
@@ -26151,6 +27987,30 @@ class Rule {
         if (name != null) 'name': name!,
         if (targetingTemplateId != null)
           'targetingTemplateId': targetingTemplateId!,
+      };
+}
+
+/// Contains a list of field filters that the given custom rule will apply.
+class RuleBlock {
+  /// A list of non-auto field filters
+  ///
+  /// Optional.
+  core.List<FieldFilter>? fieldFilter;
+
+  RuleBlock({
+    this.fieldFilter,
+  });
+
+  RuleBlock.fromJson(core.Map json_)
+      : this(
+          fieldFilter: (json_['fieldFilter'] as core.List?)
+              ?.map((value) => FieldFilter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldFilter != null) 'fieldFilter': fieldFilter!,
       };
 }
 

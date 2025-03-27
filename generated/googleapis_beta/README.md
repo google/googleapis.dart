@@ -24,7 +24,7 @@ Accesses the latest features for managing Authorized Buyers accounts, Real-Time 
 
 Manages alerts on issues affecting your domain. Note: The current version of this API (v1beta1) is available to all Google Workspace customers. 
 
-- [Original documentation](https://developers.google.com/admin-sdk/alertcenter/)
+- [Original documentation](https://developers.google.com/workspace/admin/alertcenter/)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/alertcenter_v1beta1/alertcenter_v1beta1-library.html)
 
 #### Google Analytics Admin API - `analyticsadmin/v1alpha`

@@ -141,6 +141,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -163,12 +167,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3365,6 +3371,13 @@ class ActiveDirectory {
 
 /// A NetApp Backup.
 class Backup {
+  /// Region in which backup is stored.
+  ///
+  /// Format: `projects/{project_id}/locations/{location}`
+  ///
+  /// Output only.
+  core.String? backupRegion;
+
   /// Type of backup, manually created or created by a backup policy.
   ///
   /// Output only.
@@ -3389,6 +3402,11 @@ class Backup {
   ///
   /// Requests with longer descriptions will be rejected.
   core.String? description;
+
+  /// The time until which the backup is not deletable.
+  ///
+  /// Output only.
+  core.String? enforcedRetentionEndTime;
 
   /// Resource labels to represent user provided metadata.
   core.Map<core.String, core.String>? labels;
@@ -3438,6 +3456,13 @@ class Backup {
   /// - "UPDATING" : Backup is being updated.
   core.String? state;
 
+  /// Region of the volume from which the backup was created.
+  ///
+  /// Format: `projects/{project_id}/locations/{location}`
+  ///
+  /// Output only.
+  core.String? volumeRegion;
+
   /// Size of the file system when the backup was created.
   ///
   /// When creating a new volume from the backup, the volume capacity will have
@@ -3447,10 +3472,12 @@ class Backup {
   core.String? volumeUsageBytes;
 
   Backup({
+    this.backupRegion,
     this.backupType,
     this.chainStorageBytes,
     this.createTime,
     this.description,
+    this.enforcedRetentionEndTime,
     this.labels,
     this.name,
     this.satisfiesPzi,
@@ -3458,15 +3485,19 @@ class Backup {
     this.sourceSnapshot,
     this.sourceVolume,
     this.state,
+    this.volumeRegion,
     this.volumeUsageBytes,
   });
 
   Backup.fromJson(core.Map json_)
       : this(
+          backupRegion: json_['backupRegion'] as core.String?,
           backupType: json_['backupType'] as core.String?,
           chainStorageBytes: json_['chainStorageBytes'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
+          enforcedRetentionEndTime:
+              json_['enforcedRetentionEndTime'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -3480,14 +3511,18 @@ class Backup {
           sourceSnapshot: json_['sourceSnapshot'] as core.String?,
           sourceVolume: json_['sourceVolume'] as core.String?,
           state: json_['state'] as core.String?,
+          volumeRegion: json_['volumeRegion'] as core.String?,
           volumeUsageBytes: json_['volumeUsageBytes'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (backupRegion != null) 'backupRegion': backupRegion!,
         if (backupType != null) 'backupType': backupType!,
         if (chainStorageBytes != null) 'chainStorageBytes': chainStorageBytes!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (enforcedRetentionEndTime != null)
+          'enforcedRetentionEndTime': enforcedRetentionEndTime!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
@@ -3495,6 +3530,7 @@ class Backup {
         if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
         if (sourceVolume != null) 'sourceVolume': sourceVolume!,
         if (state != null) 'state': state!,
+        if (volumeRegion != null) 'volumeRegion': volumeRegion!,
         if (volumeUsageBytes != null) 'volumeUsageBytes': volumeUsageBytes!,
       };
 }
@@ -3662,8 +3698,103 @@ class BackupPolicy {
       };
 }
 
+/// Retention policy for backups in the backup vault
+class BackupRetentionPolicy {
+  /// Minimum retention duration in days for backups in the backup vault.
+  ///
+  /// Required.
+  core.int? backupMinimumEnforcedRetentionDays;
+
+  /// Indicates if the daily backups are immutable.
+  ///
+  /// At least one of daily_backup_immutable, weekly_backup_immutable,
+  /// monthly_backup_immutable and manual_backup_immutable must be true.
+  ///
+  /// Optional.
+  core.bool? dailyBackupImmutable;
+
+  /// Indicates if the manual backups are immutable.
+  ///
+  /// At least one of daily_backup_immutable, weekly_backup_immutable,
+  /// monthly_backup_immutable and manual_backup_immutable must be true.
+  ///
+  /// Optional.
+  core.bool? manualBackupImmutable;
+
+  /// Indicates if the monthly backups are immutable.
+  ///
+  /// At least one of daily_backup_immutable, weekly_backup_immutable,
+  /// monthly_backup_immutable and manual_backup_immutable must be true.
+  ///
+  /// Optional.
+  core.bool? monthlyBackupImmutable;
+
+  /// Indicates if the weekly backups are immutable.
+  ///
+  /// At least one of daily_backup_immutable, weekly_backup_immutable,
+  /// monthly_backup_immutable and manual_backup_immutable must be true.
+  ///
+  /// Optional.
+  core.bool? weeklyBackupImmutable;
+
+  BackupRetentionPolicy({
+    this.backupMinimumEnforcedRetentionDays,
+    this.dailyBackupImmutable,
+    this.manualBackupImmutable,
+    this.monthlyBackupImmutable,
+    this.weeklyBackupImmutable,
+  });
+
+  BackupRetentionPolicy.fromJson(core.Map json_)
+      : this(
+          backupMinimumEnforcedRetentionDays:
+              json_['backupMinimumEnforcedRetentionDays'] as core.int?,
+          dailyBackupImmutable: json_['dailyBackupImmutable'] as core.bool?,
+          manualBackupImmutable: json_['manualBackupImmutable'] as core.bool?,
+          monthlyBackupImmutable: json_['monthlyBackupImmutable'] as core.bool?,
+          weeklyBackupImmutable: json_['weeklyBackupImmutable'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupMinimumEnforcedRetentionDays != null)
+          'backupMinimumEnforcedRetentionDays':
+              backupMinimumEnforcedRetentionDays!,
+        if (dailyBackupImmutable != null)
+          'dailyBackupImmutable': dailyBackupImmutable!,
+        if (manualBackupImmutable != null)
+          'manualBackupImmutable': manualBackupImmutable!,
+        if (monthlyBackupImmutable != null)
+          'monthlyBackupImmutable': monthlyBackupImmutable!,
+        if (weeklyBackupImmutable != null)
+          'weeklyBackupImmutable': weeklyBackupImmutable!,
+      };
+}
+
 /// A NetApp BackupVault.
 class BackupVault {
+  /// Region where the backups are stored.
+  ///
+  /// Format: `projects/{project_id}/locations/{location}`
+  ///
+  /// Optional.
+  core.String? backupRegion;
+
+  /// Backup retention policy defining the retenton of backups.
+  ///
+  /// Optional.
+  BackupRetentionPolicy? backupRetentionPolicy;
+
+  /// Type of backup vault to be created.
+  ///
+  /// Default is IN_REGION.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BACKUP_VAULT_TYPE_UNSPECIFIED" : BackupVault type not set.
+  /// - "IN_REGION" : BackupVault type is IN_REGION.
+  /// - "CROSS_REGION" : BackupVault type is CROSS_REGION.
+  core.String? backupVaultType;
+
   /// Create time of the backup vault.
   ///
   /// Output only.
@@ -3671,6 +3802,14 @@ class BackupVault {
 
   /// Description of the backup vault.
   core.String? description;
+
+  /// Name of the Backup vault created in backup region.
+  ///
+  /// Format:
+  /// `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}`
+  ///
+  /// Output only.
+  core.String? destinationBackupVault;
 
   /// Resource labels to represent user provided metadata.
   core.Map<core.String, core.String>? labels;
@@ -3680,6 +3819,21 @@ class BackupVault {
   /// The resource name of the backup vault. Format:
   /// `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}`.
   core.String? name;
+
+  /// Name of the Backup vault created in source region.
+  ///
+  /// Format:
+  /// `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}`
+  ///
+  /// Output only.
+  core.String? sourceBackupVault;
+
+  /// Region in which the backup vault is created.
+  ///
+  /// Format: `projects/{project_id}/locations/{location}`
+  ///
+  /// Output only.
+  core.String? sourceRegion;
 
   /// The backup vault state.
   ///
@@ -3694,17 +3848,31 @@ class BackupVault {
   core.String? state;
 
   BackupVault({
+    this.backupRegion,
+    this.backupRetentionPolicy,
+    this.backupVaultType,
     this.createTime,
     this.description,
+    this.destinationBackupVault,
     this.labels,
     this.name,
+    this.sourceBackupVault,
+    this.sourceRegion,
     this.state,
   });
 
   BackupVault.fromJson(core.Map json_)
       : this(
+          backupRegion: json_['backupRegion'] as core.String?,
+          backupRetentionPolicy: json_.containsKey('backupRetentionPolicy')
+              ? BackupRetentionPolicy.fromJson(json_['backupRetentionPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          backupVaultType: json_['backupVaultType'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
+          destinationBackupVault:
+              json_['destinationBackupVault'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -3713,14 +3881,24 @@ class BackupVault {
             ),
           ),
           name: json_['name'] as core.String?,
+          sourceBackupVault: json_['sourceBackupVault'] as core.String?,
+          sourceRegion: json_['sourceRegion'] as core.String?,
           state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (backupRegion != null) 'backupRegion': backupRegion!,
+        if (backupRetentionPolicy != null)
+          'backupRetentionPolicy': backupRetentionPolicy!,
+        if (backupVaultType != null) 'backupVaultType': backupVaultType!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (destinationBackupVault != null)
+          'destinationBackupVault': destinationBackupVault!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (sourceBackupVault != null) 'sourceBackupVault': sourceBackupVault!,
+        if (sourceRegion != null) 'sourceRegion': sourceRegion!,
         if (state != null) 'state': state!,
       };
 }
@@ -3934,40 +4112,40 @@ class HybridPeeringDetails {
   /// Copy-paste-able commands to be used on user's ONTAP to accept peering
   /// requests.
   ///
-  /// Optional.
+  /// Output only.
   core.String? command;
 
   /// Expiration time for the peering command to be executed on user's ONTAP.
   ///
-  /// Optional.
+  /// Output only.
   core.String? commandExpiryTime;
 
   /// Temporary passphrase generated to accept cluster peering command.
   ///
-  /// Optional.
+  /// Output only.
   core.String? passphrase;
 
   /// Name of the user's local source cluster to be peered with the destination
   /// cluster.
   ///
-  /// Optional.
+  /// Output only.
   core.String? peerClusterName;
 
   /// Name of the user's local source vserver svm to be peered with the
   /// destination vserver svm.
   ///
-  /// Optional.
+  /// Output only.
   core.String? peerSvmName;
 
   /// Name of the user's local source volume to be peered with the destination
   /// volume.
   ///
-  /// Optional.
+  /// Output only.
   core.String? peerVolumeName;
 
   /// IP address of the subnet.
   ///
-  /// Optional.
+  /// Output only.
   core.String? subnetIp;
 
   HybridPeeringDetails({
@@ -5490,10 +5668,25 @@ class StoragePool {
   /// Output only.
   core.String? createTime;
 
+  /// True if using Independent Scaling of capacity and performance (Hyperdisk)
+  /// By default set to false
+  ///
+  /// Optional.
+  core.bool? customPerformanceEnabled;
+
   /// Description of the storage pool
   ///
   /// Optional.
   core.String? description;
+
+  /// Flag indicating that the hot-tier threshold will be auto-increased by 10%
+  /// of the hot-tier when it hits 100%.
+  ///
+  /// Default is true. The increment will kick in only if the new size after
+  /// increment is still less than or equal to storage pool size.
+  ///
+  /// Optional.
+  core.bool? enableHotTierAutoResize;
 
   /// Specifies the current pool encryption key source.
   ///
@@ -5512,6 +5705,15 @@ class StoragePool {
     'Not supported. Member documentation may have more information.',
   )
   core.bool? globalAccessAllowed;
+
+  /// Total hot tier capacity for the Storage Pool.
+  ///
+  /// It is applicable only to Flex service level. It should be less than the
+  /// minimum storage pool size and cannot be more than the current storage pool
+  /// size. It cannot be decreased once set.
+  ///
+  /// Optional.
+  core.String? hotTierSizeGib;
 
   /// Specifies the KMS config to be used for volume encryption.
   ///
@@ -5592,6 +5794,17 @@ class StoragePool {
   /// Output only.
   core.String? stateDetails;
 
+  /// Custom Performance Total IOPS of the pool if not provided, it will be
+  /// calculated based on the total_throughput_mibps
+  ///
+  /// Optional.
+  core.String? totalIops;
+
+  /// Custom Performance Total Throughput of the pool (in MiBps)
+  ///
+  /// Optional.
+  core.String? totalThroughputMibps;
+
   /// Allocated size of all volumes in GIB in the storage pool
   ///
   /// Output only.
@@ -5612,9 +5825,12 @@ class StoragePool {
     this.allowAutoTiering,
     this.capacityGib,
     this.createTime,
+    this.customPerformanceEnabled,
     this.description,
+    this.enableHotTierAutoResize,
     this.encryptionType,
     this.globalAccessAllowed,
+    this.hotTierSizeGib,
     this.kmsConfig,
     this.labels,
     this.ldapEnabled,
@@ -5627,6 +5843,8 @@ class StoragePool {
     this.serviceLevel,
     this.state,
     this.stateDetails,
+    this.totalIops,
+    this.totalThroughputMibps,
     this.volumeCapacityGib,
     this.volumeCount,
     this.zone,
@@ -5638,9 +5856,14 @@ class StoragePool {
           allowAutoTiering: json_['allowAutoTiering'] as core.bool?,
           capacityGib: json_['capacityGib'] as core.String?,
           createTime: json_['createTime'] as core.String?,
+          customPerformanceEnabled:
+              json_['customPerformanceEnabled'] as core.bool?,
           description: json_['description'] as core.String?,
+          enableHotTierAutoResize:
+              json_['enableHotTierAutoResize'] as core.bool?,
           encryptionType: json_['encryptionType'] as core.String?,
           globalAccessAllowed: json_['globalAccessAllowed'] as core.bool?,
+          hotTierSizeGib: json_['hotTierSizeGib'] as core.String?,
           kmsConfig: json_['kmsConfig'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -5659,6 +5882,8 @@ class StoragePool {
           serviceLevel: json_['serviceLevel'] as core.String?,
           state: json_['state'] as core.String?,
           stateDetails: json_['stateDetails'] as core.String?,
+          totalIops: json_['totalIops'] as core.String?,
+          totalThroughputMibps: json_['totalThroughputMibps'] as core.String?,
           volumeCapacityGib: json_['volumeCapacityGib'] as core.String?,
           volumeCount: json_['volumeCount'] as core.int?,
           zone: json_['zone'] as core.String?,
@@ -5669,10 +5894,15 @@ class StoragePool {
         if (allowAutoTiering != null) 'allowAutoTiering': allowAutoTiering!,
         if (capacityGib != null) 'capacityGib': capacityGib!,
         if (createTime != null) 'createTime': createTime!,
+        if (customPerformanceEnabled != null)
+          'customPerformanceEnabled': customPerformanceEnabled!,
         if (description != null) 'description': description!,
+        if (enableHotTierAutoResize != null)
+          'enableHotTierAutoResize': enableHotTierAutoResize!,
         if (encryptionType != null) 'encryptionType': encryptionType!,
         if (globalAccessAllowed != null)
           'globalAccessAllowed': globalAccessAllowed!,
+        if (hotTierSizeGib != null) 'hotTierSizeGib': hotTierSizeGib!,
         if (kmsConfig != null) 'kmsConfig': kmsConfig!,
         if (labels != null) 'labels': labels!,
         if (ldapEnabled != null) 'ldapEnabled': ldapEnabled!,
@@ -5685,6 +5915,9 @@ class StoragePool {
         if (serviceLevel != null) 'serviceLevel': serviceLevel!,
         if (state != null) 'state': state!,
         if (stateDetails != null) 'stateDetails': stateDetails!,
+        if (totalIops != null) 'totalIops': totalIops!,
+        if (totalThroughputMibps != null)
+          'totalThroughputMibps': totalThroughputMibps!,
         if (volumeCapacityGib != null) 'volumeCapacityGib': volumeCapacityGib!,
         if (volumeCount != null) 'volumeCount': volumeCount!,
         if (zone != null) 'zone': zone!,
@@ -5701,12 +5934,19 @@ typedef SyncReplicationRequest = $Empty;
 /// Defines tiering policy for the volume.
 class TieringPolicy {
   /// Time in days to mark the volume's data block as cold and make it eligible
-  /// for tiering, can be range from 7-183.
+  /// for tiering, can be range from 2-183.
   ///
   /// Default is 31.
   ///
   /// Optional.
   core.int? coolingThresholdDays;
+
+  /// Flag indicating that the hot tier bypass mode is enabled.
+  ///
+  /// Default is false. This is only applicable to Flex service level.
+  ///
+  /// Optional.
+  core.bool? hotTierBypassModeEnabled;
 
   /// Flag indicating if the volume has tiering policy enable/pause.
   ///
@@ -5722,18 +5962,23 @@ class TieringPolicy {
 
   TieringPolicy({
     this.coolingThresholdDays,
+    this.hotTierBypassModeEnabled,
     this.tierAction,
   });
 
   TieringPolicy.fromJson(core.Map json_)
       : this(
           coolingThresholdDays: json_['coolingThresholdDays'] as core.int?,
+          hotTierBypassModeEnabled:
+              json_['hotTierBypassModeEnabled'] as core.bool?,
           tierAction: json_['tierAction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coolingThresholdDays != null)
           'coolingThresholdDays': coolingThresholdDays!,
+        if (hotTierBypassModeEnabled != null)
+          'hotTierBypassModeEnabled': hotTierBypassModeEnabled!,
         if (tierAction != null) 'tierAction': tierAction!,
       };
 }
@@ -5760,7 +6005,7 @@ class TransferStats {
   /// relationship.
   core.String? totalTransferDuration;
 
-  /// Cumulative bytes trasferred so far for the replication relatinonship.
+  /// Cumulative bytes transferred so far for the replication relationship.
   core.String? transferBytes;
 
   /// Time when progress was updated last.

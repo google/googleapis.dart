@@ -17,7 +17,8 @@
 /// The Gmail API lets you view and manage Gmail mailbox data like threads,
 /// messages, and labels.
 ///
-/// For more information, see <https://developers.google.com/gmail/api/>
+/// For more information, see
+/// <https://developers.google.com/workspace/gmail/api/>
 ///
 /// Create an instance of [GmailApi] to access these resources:
 ///
@@ -1317,6 +1318,9 @@ class UsersMessagesResource {
 
   /// Lists the messages in the user's mailbox.
   ///
+  /// For example usage, see
+  /// [List Gmail messages](https://developers.google.com/workspace/gmail/api/guides/list-messages).
+  ///
   /// Request parameters:
   ///
   /// [userId] - The user's email address. The special value `me` can be used to
@@ -1328,7 +1332,7 @@ class UsersMessagesResource {
   /// [labelIds] - Only return messages with labels that match all of the
   /// specified label IDs. Messages in a thread might have labels that other
   /// messages in the same thread don't have. To learn more, see
-  /// [Manage labels on messages and threads](https://developers.google.com/gmail/api/guides/labels#manage_labels_on_messages_threads).
+  /// [Manage labels on messages and threads](https://developers.google.com/workspace/gmail/api/guides/labels#manage_labels_on_messages_threads).
   ///
   /// [maxResults] - Maximum number of messages to return. This field defaults
   /// to 100. The maximum allowed value for this field is 500.
@@ -1432,7 +1436,7 @@ class UsersMessagesResource {
   /// headers.
   ///
   /// For example usage, see
-  /// [Sending email](https://developers.google.com/gmail/api/guides/sending).
+  /// [Sending email](https://developers.google.com/workspace/gmail/api/guides/sending).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2085,7 +2089,16 @@ class UsersSettingsCseIdentitiesResource {
   ///
   /// Google publishes the S/MIME certificate to a shared domain-wide directory
   /// so that people within a Google Workspace organization can encrypt and send
-  /// mail to the identity.
+  /// mail to the identity. For administrators managing identities and keypairs
+  /// for users in their organization, requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+  /// managing their own identities and keypairs, requests require
+  /// [hardware key encryption](https://support.google.com/a/answer/14153163)
+  /// turned on and configured.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2133,7 +2146,16 @@ class UsersSettingsCseIdentitiesResource {
   /// The authenticated user can no longer use the identity to send encrypted
   /// messages. You cannot restore the identity after you delete it. Instead,
   /// use the CreateCseIdentity method to create another identity with the same
-  /// configuration.
+  /// configuration. For administrators managing identities and keypairs for
+  /// users in their organization, requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+  /// managing their own identities and keypairs, requests require
+  /// [hardware key encryption](https://support.google.com/a/answer/14153163)
+  /// turned on and configured.
   ///
   /// Request parameters:
   ///
@@ -2174,6 +2196,17 @@ class UsersSettingsCseIdentitiesResource {
   }
 
   /// Retrieves a client-side encryption identity configuration.
+  ///
+  /// For administrators managing identities and keypairs for users in their
+  /// organization, requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+  /// managing their own identities and keypairs, requests require
+  /// [hardware key encryption](https://support.google.com/a/answer/14153163)
+  /// turned on and configured.
   ///
   /// Request parameters:
   ///
@@ -2217,6 +2250,17 @@ class UsersSettingsCseIdentitiesResource {
   }
 
   /// Lists the client-side encrypted identities for an authenticated user.
+  ///
+  /// For administrators managing identities and keypairs for users in their
+  /// organization, requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+  /// managing their own identities and keypairs, requests require
+  /// [hardware key encryption](https://support.google.com/a/answer/14153163)
+  /// turned on and configured.
   ///
   /// Request parameters:
   ///
@@ -2270,6 +2314,16 @@ class UsersSettingsCseIdentitiesResource {
   ///
   /// The updated key pair must validate against Google's
   /// [S/MIME certificate profiles](https://support.google.com/a/answer/7300887).
+  /// For administrators managing identities and keypairs for users in their
+  /// organization, requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+  /// managing their own identities and keypairs, requests require
+  /// [hardware key encryption](https://support.google.com/a/answer/14153163)
+  /// turned on and configured.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2327,6 +2381,17 @@ class UsersSettingsCseKeypairsResource {
   /// Creates and uploads a client-side encryption S/MIME public key certificate
   /// chain and private key metadata for the authenticated user.
   ///
+  /// For administrators managing identities and keypairs for users in their
+  /// organization, requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+  /// managing their own identities and keypairs, requests require
+  /// [hardware key encryption](https://support.google.com/a/answer/14153163)
+  /// turned on and configured.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2374,6 +2439,16 @@ class UsersSettingsCseKeypairsResource {
   /// CSE message texts or sign outgoing CSE mail. To regain access, use the
   /// EnableCseKeyPair to turn on the key pair. After 30 days, you can
   /// permanently delete the key pair by using the ObliterateCseKeyPair method.
+  /// For administrators managing identities and keypairs for users in their
+  /// organization, requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+  /// managing their own identities and keypairs, requests require
+  /// [hardware key encryption](https://support.google.com/a/answer/14153163)
+  /// turned on and configured.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2424,7 +2499,16 @@ class UsersSettingsCseKeypairsResource {
   /// Turns on a client-side encryption key pair that was turned off.
   ///
   /// The key pair becomes active again for any associated client-side
-  /// encryption identities.
+  /// encryption identities. For administrators managing identities and keypairs
+  /// for users in their organization, requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+  /// managing their own identities and keypairs, requests require
+  /// [hardware key encryption](https://support.google.com/a/answer/14153163)
+  /// turned on and configured.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2474,6 +2558,17 @@ class UsersSettingsCseKeypairsResource {
 
   /// Retrieves an existing client-side encryption key pair.
   ///
+  /// For administrators managing identities and keypairs for users in their
+  /// organization, requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+  /// managing their own identities and keypairs, requests require
+  /// [hardware key encryption](https://support.google.com/a/answer/14153163)
+  /// turned on and configured.
+  ///
   /// Request parameters:
   ///
   /// [userId] - The requester's primary email address. To indicate the
@@ -2515,6 +2610,17 @@ class UsersSettingsCseKeypairsResource {
   }
 
   /// Lists client-side encryption key pairs for an authenticated user.
+  ///
+  /// For administrators managing identities and keypairs for users in their
+  /// organization, requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+  /// managing their own identities and keypairs, requests require
+  /// [hardware key encryption](https://support.google.com/a/answer/14153163)
+  /// turned on and configured.
   ///
   /// Request parameters:
   ///
@@ -2569,7 +2675,17 @@ class UsersSettingsCseKeypairsResource {
   /// more than 30 days. To turn off a key pair, use the DisableCseKeyPair
   /// method. Gmail can't restore or decrypt any messages that were encrypted by
   /// an obliterated key. Authenticated users and Google Workspace
-  /// administrators lose access to reading the encrypted messages.
+  /// administrators lose access to reading the encrypted messages. For
+  /// administrators managing identities and keypairs for users in their
+  /// organization, requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+  /// managing their own identities and keypairs, requests require
+  /// [hardware key encryption](https://support.google.com/a/answer/14153163)
+  /// turned on and configured.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4131,7 +4247,17 @@ class BatchModifyMessagesRequest {
 /// authenticated user.
 ///
 /// Gmail uses CSE configurations to save drafts of client-side encrypted email
-/// messages, and to sign and send encrypted email messages.
+/// messages, and to sign and send encrypted email messages. For administrators
+/// managing identities and keypairs for users in their organization, requests
+/// require authorization with a
+/// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+/// that has \[domain-wide delegation
+/// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+/// to impersonate users with the
+/// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+/// managing their own identities and keypairs, requests require
+/// [hardware key encryption](https://support.google.com/a/answer/14153163)
+/// turned on and configured.
 class CseIdentity {
   /// The email address for the sending identity.
   ///
@@ -4176,7 +4302,17 @@ class CseIdentity {
 /// Gmail uses the key pair to complete the following tasks: - Sign outgoing
 /// client-side encrypted messages. - Save and reopen drafts of client-side
 /// encrypted messages. - Save and reopen sent messages. - Decrypt incoming or
-/// archived S/MIME messages.
+/// archived S/MIME messages. For administrators managing identities and
+/// keypairs for users in their organization, requests require authorization
+/// with a
+/// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+/// that has \[domain-wide delegation
+/// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+/// to impersonate users with the
+/// `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+/// managing their own identities and keypairs, requests require
+/// [hardware key encryption](https://support.google.com/a/answer/14153163)
+/// turned on and configured.
 class CseKeyPair {
   /// If a key pair is set to `DISABLED`, the time that the key pair's state
   /// changed from `ENABLED` to `DISABLED`.
@@ -4578,6 +4714,12 @@ class ForwardingAddress {
 }
 
 /// Metadata for hardware keys.
+///
+/// If [hardware key encryption](https://support.google.com/a/answer/14153163)
+/// is set up for the Google Workspace organization, users can optionally store
+/// their private key on their smart card and use it to sign and decrypt email
+/// messages in Gmail by inserting their smart card into a reader attached to
+/// their Windows device.
 class HardwareKeyMetadata {
   /// Description about the hardware key.
   core.String? description;
@@ -5015,12 +5157,13 @@ class LanguageSettings {
   ///
   /// The set of languages supported by Gmail evolves over time, so please refer
   /// to the "Language" dropdown in the Gmail settings for all available
-  /// options, as described in the language settings help article. A table of
-  /// sample values is also provided in the Managing Language Settings guide Not
-  /// all Gmail clients can display the same set of languages. In the case that
-  /// a user's display language is not available for use on a particular client,
-  /// said client automatically chooses to display in the closest supported
-  /// variant (or a reasonable default).
+  /// options, as described in the language settings help article. For a table
+  /// of sample values, see
+  /// [Manage language settings](https://developers.google.com/workspace/gmail/api/guides/language-settings).
+  /// Not all Gmail clients can display the same set of languages. In the case
+  /// that a user's display language is not available for use on a particular
+  /// client, said client automatically chooses to display in the closest
+  /// supported variant (or a reasonable default).
   core.String? displayLanguage;
 
   LanguageSettings({
@@ -5126,8 +5269,9 @@ class ListDraftsResponse {
   /// List of drafts.
   ///
   /// Note that the `Message` property in each `Draft` resource only contains an
-  /// `id` and a `threadId`. The messages.get method can fetch additional
-  /// message details.
+  /// `id` and a `threadId`. The
+  /// \[`messages.get`\](https://developers.google.com/workspace/gmail/api/v1/reference/users/messages/get)
+  /// method can fetch additional message details.
   core.List<Draft>? drafts;
 
   /// Token to retrieve the next page of results in the list.
@@ -5245,7 +5389,8 @@ class ListLabelsResponse {
   /// List of labels.
   ///
   /// Note that each label resource only contains an `id`, `name`,
-  /// `messageListVisibility`, `labelListVisibility`, and `type`. The labels.get
+  /// `messageListVisibility`, `labelListVisibility`, and `type`. The
+  /// \[`labels.get`\](https://developers.google.com/workspace/gmail/api/v1/reference/users/labels/get)
   /// method can fetch additional label details.
   core.List<Label>? labels;
 
@@ -5356,7 +5501,8 @@ class ListThreadsResponse {
   /// List of threads.
   ///
   /// Note that each thread resource does not contain a list of `messages`. The
-  /// list of `messages` for a given thread can be fetched using the threads.get
+  /// list of `messages` for a given thread can be fetched using the
+  /// \[`threads.get`\](https://developers.google.com/workspace/gmail/api/v1/reference/users/threads/get)
   /// method.
   core.List<Thread>? threads;
 

@@ -135,6 +135,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -157,12 +161,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -247,6 +253,9 @@ class ProjectsLocationsInstancesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
+  /// [force] - Optional. If set to true, any nested resources from this
+  /// instance will also be deleted.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -259,9 +268,11 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.bool? force,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1558,6 +1569,14 @@ class Instance {
   /// Output only.
   core.String? stateMessage;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// The name of the tenant project.
   ///
   /// Output only.
@@ -1638,6 +1657,7 @@ class Instance {
     this.serviceEndpoint,
     this.state,
     this.stateMessage,
+    this.tags,
     this.tenantProjectId,
     this.type,
     this.updateTime,
@@ -1722,6 +1742,12 @@ class Instance {
           serviceEndpoint: json_['serviceEndpoint'] as core.String?,
           state: json_['state'] as core.String?,
           stateMessage: json_['stateMessage'] as core.String?,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           tenantProjectId: json_['tenantProjectId'] as core.String?,
           type: json_['type'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -1771,6 +1797,7 @@ class Instance {
         if (serviceEndpoint != null) 'serviceEndpoint': serviceEndpoint!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (tags != null) 'tags': tags!,
         if (tenantProjectId != null) 'tenantProjectId': tenantProjectId!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,

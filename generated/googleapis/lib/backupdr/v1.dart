@@ -23,9 +23,11 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsBackupPlanAssociationsResource]
 ///     - [ProjectsLocationsBackupPlansResource]
+///       - [ProjectsLocationsBackupPlansRevisionsResource]
 ///     - [ProjectsLocationsBackupVaultsResource]
 ///       - [ProjectsLocationsBackupVaultsDataSourcesResource]
 ///         - [ProjectsLocationsBackupVaultsDataSourcesBackupsResource]
+///     - [ProjectsLocationsDataSourceReferencesResource]
 ///     - [ProjectsLocationsManagementServersResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsResourceBackupConfigsResource]
@@ -80,6 +82,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsBackupPlansResource(_requester);
   ProjectsLocationsBackupVaultsResource get backupVaults =>
       ProjectsLocationsBackupVaultsResource(_requester);
+  ProjectsLocationsDataSourceReferencesResource get dataSourceReferences =>
+      ProjectsLocationsDataSourceReferencesResource(_requester);
   ProjectsLocationsManagementServersResource get managementServers =>
       ProjectsLocationsManagementServersResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -133,6 +137,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -155,12 +163,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -301,6 +311,80 @@ class ProjectsLocationsBackupPlanAssociationsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// List BackupPlanAssociations for a given resource type.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that filters the results fetched
+  /// in the response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. Supported
+  /// fields: * resource * backup_plan * state * data_source *
+  /// cloud_sql_instance_backup_plan_association_properties.instance_create_time
+  ///
+  /// [orderBy] - Optional. A comma-separated list of fields to order by, sorted
+  /// in ascending order. Use "desc" after a field name for descending.
+  /// Supported fields: * name
+  ///
+  /// [pageSize] - Optional. The maximum number of BackupPlanAssociations to
+  /// return. The service may return fewer than this value. If unspecified, at
+  /// most 50 BackupPlanAssociations will be returned. The maximum value is 100;
+  /// values above 100 will be coerced to 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous call of
+  /// `FetchBackupPlanAssociationsForResourceType`. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `FetchBackupPlanAssociationsForResourceType` must match the call that
+  /// provided the page token.
+  ///
+  /// [resourceType] - Required. The type of the GCP resource. Ex:
+  /// sql.googleapis.com/Instance
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchBackupPlanAssociationsForResourceTypeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchBackupPlanAssociationsForResourceTypeResponse>
+      fetchForResourceType(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? resourceType,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (resourceType != null) 'resourceType': [resourceType],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/backupPlanAssociations:fetchForResourceType';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchBackupPlanAssociationsForResourceTypeResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets details of a single BackupPlanAssociation.
   ///
   /// Request parameters:
@@ -395,6 +479,73 @@ class ProjectsLocationsBackupPlanAssociationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Update a BackupPlanAssociation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. The resource name of
+  /// BackupPlanAssociation in below format Format :
+  /// projects/{project}/locations/{location}/backupPlanAssociations/{backupPlanAssociationId}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlanAssociations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and t he request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. The list of fields to update. Field mask is used
+  /// to specify the fields to be overwritten in the BackupPlanAssociation
+  /// resource by the update. The fields specified in the update_mask are
+  /// relative to the resource, not the full request. A field will be
+  /// overwritten if it is in the mask. If the user does not provide a mask then
+  /// the request will fail. Currently backup_plan_association.backup_plan is
+  /// the only supported field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    BackupPlanAssociation request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Triggers a new Backup.
   ///
   /// [request] - The metadata request object.
@@ -441,6 +592,9 @@ class ProjectsLocationsBackupPlanAssociationsResource {
 
 class ProjectsLocationsBackupPlansResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsBackupPlansRevisionsResource get revisions =>
+      ProjectsLocationsBackupPlansRevisionsResource(_requester);
 
   ProjectsLocationsBackupPlansResource(commons.ApiRequester client)
       : _requester = client;
@@ -660,6 +814,175 @@ class ProjectsLocationsBackupPlansResource {
       queryParams: queryParams_,
     );
     return ListBackupPlansResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a BackupPlan.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. The resource name of the `BackupPlan`.
+  /// Format:
+  /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and t he request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. The list of fields to update. Field mask is used
+  /// to specify the fields to be overwritten in the BackupPlan resource by the
+  /// update. The fields specified in the update_mask are relative to the
+  /// resource, not the full request. A field will be overwritten if it is in
+  /// the mask. If the user does not provide a mask then the request will fail.
+  /// Currently, these fields are supported in update: description, schedules,
+  /// retention period, adding and removing Backup Rules.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    BackupPlan request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsBackupPlansRevisionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBackupPlansRevisionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a single BackupPlanRevision.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the `BackupPlanRevision` to
+  /// retrieve. Format:
+  /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}/revisions/{revision}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackupPlanRevision].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackupPlanRevision> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BackupPlanRevision.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists BackupPlanRevisions in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location for which to retrieve
+  /// `BackupPlanRevisions` information. Format:
+  /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}`. In
+  /// Cloud BackupDR, locations map to GCP regions, for e.g. **us-central1**.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of `BackupPlans` to return in a
+  /// single response. If not specified, a default value will be chosen by the
+  /// service. Note that the response may include a partial list and a caller
+  /// should only rely on the response's next_page_token to determine if there
+  /// are more instances left to be queried.
+  ///
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListBackupPlans` call. Provide this to retrieve the subsequent
+  /// page in a multi-page list of results. When paginating, all other
+  /// parameters provided to `ListBackupPlans` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackupPlanRevisionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackupPlanRevisionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/revisions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBackupPlanRevisionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1019,6 +1342,10 @@ class ProjectsLocationsBackupVaultsResource {
   /// [force] - Optional. If set to true, will not check plan duration against
   /// backup vault enforcement duration.
   ///
+  /// [forceUpdateAccessRestriction] - Optional. If set to true, we will force
+  /// update access restriction even if some non compliant data sources are
+  /// present. The default is 'false'.
+  ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server will know to ignore the request if it has already been completed.
@@ -1054,6 +1381,7 @@ class ProjectsLocationsBackupVaultsResource {
     BackupVault request,
     core.String name, {
     core.bool? force,
+    core.bool? forceUpdateAccessRestriction,
     core.String? requestId,
     core.String? updateMask,
     core.bool? validateOnly,
@@ -1062,6 +1390,8 @@ class ProjectsLocationsBackupVaultsResource {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
+      if (forceUpdateAccessRestriction != null)
+        'forceUpdateAccessRestriction': ['${forceUpdateAccessRestriction}'],
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
@@ -1863,6 +2193,132 @@ class ProjectsLocationsBackupVaultsDataSourcesBackupsResource {
   }
 }
 
+class ProjectsLocationsDataSourceReferencesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDataSourceReferencesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Fetch DataSourceReferences for a given project, location and resource
+  /// type.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that filters the results fetched
+  /// in the response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. Supported
+  /// fields: * data_source * data_source_gcp_resource_info.gcp_resourcename *
+  /// data_source_backup_config_state * data_source_backup_count *
+  /// data_source_backup_config_info.last_backup_state *
+  /// data_source_gcp_resource_info.gcp_resourcename *
+  /// data_source_gcp_resource_info.type *
+  /// data_source_gcp_resource_info.location *
+  /// data_source_gcp_resource_info.cloud_sql_instance_properties.instance_create_time
+  ///
+  /// [orderBy] - Optional. A comma-separated list of fields to order by, sorted
+  /// in ascending order. Use "desc" after a field name for descending.
+  /// Supported fields: * name
+  ///
+  /// [pageSize] - Optional. The maximum number of DataSourceReferences to
+  /// return. The service may return fewer than this value. If unspecified, at
+  /// most 50 DataSourceReferences will be returned. The maximum value is 100;
+  /// values above 100 will be coerced to 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous call of
+  /// `FetchDataSourceReferencesForResourceType`. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `FetchDataSourceReferencesForResourceType` must match the call that
+  /// provided the page token.
+  ///
+  /// [resourceType] - Required. The type of the GCP resource. Ex:
+  /// sql.googleapis.com/Instance
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchDataSourceReferencesForResourceTypeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchDataSourceReferencesForResourceTypeResponse>
+      fetchForResourceType(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? resourceType,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (resourceType != null) 'resourceType': [resourceType],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/dataSourceReferences:fetchForResourceType';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchDataSourceReferencesForResourceTypeResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single DataSourceReference.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DataSourceReference to retrieve.
+  /// Format:
+  /// projects/{project}/locations/{location}/dataSourceReferences/{data_source_reference}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataSourceReferences/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DataSourceReference].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DataSourceReference> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DataSourceReference.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsManagementServersResource {
   final commons.ApiRequester _requester;
 
@@ -2132,6 +2588,52 @@ class ProjectsLocationsManagementServersResource {
       queryParams: queryParams_,
     );
     return ListManagementServersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the Assured Workloads compliance metadata for a given project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location to be used to check CSS
+  /// metadata for target project information, in the format
+  /// 'projects/{project_id}/locations/{location}'. In Cloud BackupDR, locations
+  /// map to Google Cloud regions, for example **us-central1**.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/managementServers$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchMsComplianceMetadataResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchMsComplianceMetadataResponse> msComplianceMetadata(
+    FetchMsComplianceMetadataRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':msComplianceMetadata';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return FetchMsComplianceMetadataResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -2441,7 +2943,8 @@ class ProjectsLocationsResourceBackupConfigsResource {
   /// [orderBy] - Optional. Hint for how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
-  /// than requested. If unspecified, server will pick an appropriate default.
+  /// than requested. If unspecified, server will use 100 as default. Maximum
+  /// value is 500 and values above 500 will be coerced to 500.
   ///
   /// [pageToken] - Optional. A token identifying a page of results the server
   /// should return.
@@ -3105,7 +3608,13 @@ class Backup {
   /// - "BACKUP_TYPE_UNSPECIFIED" : Backup type is unspecified.
   /// - "SCHEDULED" : Scheduled backup.
   /// - "ON_DEMAND" : On demand backup.
+  /// - "ON_DEMAND_OPERATIONAL" : Operational backup.
   core.String? backupType;
+
+  /// Cloud SQL specific backup properties.
+  ///
+  /// Output only.
+  CloudSqlInstanceBackupProperties? cloudSqlInstanceBackupProperties;
 
   /// Compute Engine specific backup properties.
   ///
@@ -3126,6 +3635,11 @@ class Backup {
   ///
   /// Output only.
   core.String? description;
+
+  /// Disk specific backup properties.
+  ///
+  /// Output only.
+  DiskBackupProperties? diskBackupProperties;
 
   /// The backup can not be deleted before this time.
   ///
@@ -3194,6 +3708,7 @@ class Backup {
   /// - "ACTIVE" : The backup has been created and is fully usable.
   /// - "DELETING" : The backup is being deleted.
   /// - "ERROR" : The backup is experiencing an issue and might be unusable.
+  /// - "UPLOADING" : The backup is being uploaded.
   core.String? state;
 
   /// The time when the instance was updated.
@@ -3205,10 +3720,12 @@ class Backup {
     this.backupApplianceBackupProperties,
     this.backupApplianceLocks,
     this.backupType,
+    this.cloudSqlInstanceBackupProperties,
     this.computeInstanceBackupProperties,
     this.consistencyTime,
     this.createTime,
     this.description,
+    this.diskBackupProperties,
     this.enforcedRetentionEndTime,
     this.etag,
     this.expireTime,
@@ -3236,6 +3753,12 @@ class Backup {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           backupType: json_['backupType'] as core.String?,
+          cloudSqlInstanceBackupProperties:
+              json_.containsKey('cloudSqlInstanceBackupProperties')
+                  ? CloudSqlInstanceBackupProperties.fromJson(
+                      json_['cloudSqlInstanceBackupProperties']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           computeInstanceBackupProperties:
               json_.containsKey('computeInstanceBackupProperties')
                   ? ComputeInstanceBackupProperties.fromJson(
@@ -3245,6 +3768,10 @@ class Backup {
           consistencyTime: json_['consistencyTime'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
+          diskBackupProperties: json_.containsKey('diskBackupProperties')
+              ? DiskBackupProperties.fromJson(json_['diskBackupProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           enforcedRetentionEndTime:
               json_['enforcedRetentionEndTime'] as core.String?,
           etag: json_['etag'] as core.String?,
@@ -3278,11 +3805,15 @@ class Backup {
         if (backupApplianceLocks != null)
           'backupApplianceLocks': backupApplianceLocks!,
         if (backupType != null) 'backupType': backupType!,
+        if (cloudSqlInstanceBackupProperties != null)
+          'cloudSqlInstanceBackupProperties': cloudSqlInstanceBackupProperties!,
         if (computeInstanceBackupProperties != null)
           'computeInstanceBackupProperties': computeInstanceBackupProperties!,
         if (consistencyTime != null) 'consistencyTime': consistencyTime!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (diskBackupProperties != null)
+          'diskBackupProperties': diskBackupProperties!,
         if (enforcedRetentionEndTime != null)
           'enforcedRetentionEndTime': enforcedRetentionEndTime!,
         if (etag != null) 'etag': etag!,
@@ -3869,9 +4400,7 @@ class BackupLock {
 class BackupPlan {
   /// The backup rules for this `BackupPlan`.
   ///
-  /// There must be at least one `BackupRule` message.
-  ///
-  /// Required.
+  /// Optional.
   core.List<BackupRule>? backupRules;
 
   /// Resource name of backup vault which will be used as storage location for
@@ -3921,6 +4450,15 @@ class BackupPlan {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Applicable only for CloudSQL resource_type.
+  ///
+  /// Configures how long logs will be stored. It is defined in “days”. This
+  /// value should be greater than or equal to minimum enforced log retention
+  /// duration of the backup vault.
+  ///
+  /// Optional.
+  core.String? logRetentionDays;
+
   /// Identifier.
   ///
   /// The resource name of the `BackupPlan`. Format:
@@ -3929,10 +4467,29 @@ class BackupPlan {
   /// Output only.
   core.String? name;
 
+  /// The resource type to which the `BackupPlan` will be applied.
   ///
+  /// Examples include, "compute.googleapis.com/Instance",
+  /// "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster",
+  /// "compute.googleapis.com/Disk".
   ///
   /// Required.
   core.String? resourceType;
+
+  /// The user friendly revision ID of the `BackupPlanRevision`.
+  ///
+  /// Example: v0, v1, v2, etc.
+  ///
+  /// Output only.
+  core.String? revisionId;
+
+  /// The resource id of the `BackupPlanRevision`.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}/revisions/{revision_id}`
+  ///
+  /// Output only.
+  core.String? revisionName;
 
   /// The `State` for the `BackupPlan`.
   ///
@@ -3943,7 +4500,13 @@ class BackupPlan {
   /// - "ACTIVE" : The resource has been created and is fully usable.
   /// - "DELETING" : The resource is being deleted.
   /// - "INACTIVE" : The resource has been created but is not usable.
+  /// - "UPDATING" : The resource is being updated.
   core.String? state;
+
+  /// All resource types to which backupPlan can be applied.
+  ///
+  /// Output only.
+  core.List<core.String>? supportedResourceTypes;
 
   /// When the `BackupPlan` was last updated.
   ///
@@ -3958,9 +4521,13 @@ class BackupPlan {
     this.description,
     this.etag,
     this.labels,
+    this.logRetentionDays,
     this.name,
     this.resourceType,
+    this.revisionId,
+    this.revisionName,
     this.state,
+    this.supportedResourceTypes,
     this.updateTime,
   });
 
@@ -3983,9 +4550,16 @@ class BackupPlan {
               value as core.String,
             ),
           ),
+          logRetentionDays: json_['logRetentionDays'] as core.String?,
           name: json_['name'] as core.String?,
           resourceType: json_['resourceType'] as core.String?,
+          revisionId: json_['revisionId'] as core.String?,
+          revisionName: json_['revisionName'] as core.String?,
           state: json_['state'] as core.String?,
+          supportedResourceTypes:
+              (json_['supportedResourceTypes'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -3998,9 +4572,14 @@ class BackupPlan {
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (labels != null) 'labels': labels!,
+        if (logRetentionDays != null) 'logRetentionDays': logRetentionDays!,
         if (name != null) 'name': name!,
         if (resourceType != null) 'resourceType': resourceType!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (revisionName != null) 'revisionName': revisionName!,
         if (state != null) 'state': state!,
+        if (supportedResourceTypes != null)
+          'supportedResourceTypes': supportedResourceTypes!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -4014,6 +4593,27 @@ class BackupPlanAssociation {
   ///
   /// Required.
   core.String? backupPlan;
+
+  /// The user friendly revision ID of the `BackupPlanRevision`.
+  ///
+  /// Example: v0, v1, v2, etc.
+  ///
+  /// Output only.
+  core.String? backupPlanRevisionId;
+
+  /// The resource id of the `BackupPlanRevision`.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}/revisions/{revision_id}`
+  ///
+  /// Output only.
+  core.String? backupPlanRevisionName;
+
+  /// Cloud SQL instance's backup plan association properties.
+  ///
+  /// Output only.
+  CloudSqlInstanceBackupPlanAssociationProperties?
+      cloudSqlInstanceBackupPlanAssociationProperties;
 
   /// The time when the instance was created.
   ///
@@ -4037,12 +4637,17 @@ class BackupPlanAssociation {
   /// Output only.
   core.String? name;
 
-  /// Resource name of workload on which backupplan is applied
+  /// Resource name of workload on which the backup plan is applied.
+  ///
+  /// The format can either be the resource name (e.g.,
+  /// "projects/my-project/zones/us-central1-a/instances/my-instance") or the
+  /// full resource URI (e.g.,
+  /// "https://www.googleapis.com/compute/v1/projects/my-project/zones/us-central1-a/instances/my-instance").
   ///
   /// Required. Immutable.
   core.String? resource;
 
-  ///
+  /// Resource type of workload on which backupplan is applied
   ///
   /// Required. Immutable.
   core.String? resourceType;
@@ -4071,6 +4676,9 @@ class BackupPlanAssociation {
 
   BackupPlanAssociation({
     this.backupPlan,
+    this.backupPlanRevisionId,
+    this.backupPlanRevisionName,
+    this.cloudSqlInstanceBackupPlanAssociationProperties,
     this.createTime,
     this.dataSource,
     this.name,
@@ -4084,6 +4692,15 @@ class BackupPlanAssociation {
   BackupPlanAssociation.fromJson(core.Map json_)
       : this(
           backupPlan: json_['backupPlan'] as core.String?,
+          backupPlanRevisionId: json_['backupPlanRevisionId'] as core.String?,
+          backupPlanRevisionName:
+              json_['backupPlanRevisionName'] as core.String?,
+          cloudSqlInstanceBackupPlanAssociationProperties: json_.containsKey(
+                  'cloudSqlInstanceBackupPlanAssociationProperties')
+              ? CloudSqlInstanceBackupPlanAssociationProperties.fromJson(
+                  json_['cloudSqlInstanceBackupPlanAssociationProperties']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: json_['createTime'] as core.String?,
           dataSource: json_['dataSource'] as core.String?,
           name: json_['name'] as core.String?,
@@ -4099,6 +4716,13 @@ class BackupPlanAssociation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupPlan != null) 'backupPlan': backupPlan!,
+        if (backupPlanRevisionId != null)
+          'backupPlanRevisionId': backupPlanRevisionId!,
+        if (backupPlanRevisionName != null)
+          'backupPlanRevisionName': backupPlanRevisionName!,
+        if (cloudSqlInstanceBackupPlanAssociationProperties != null)
+          'cloudSqlInstanceBackupPlanAssociationProperties':
+              cloudSqlInstanceBackupPlanAssociationProperties!,
         if (createTime != null) 'createTime': createTime!,
         if (dataSource != null) 'dataSource': dataSource!,
         if (name != null) 'name': name!,
@@ -4110,17 +4734,81 @@ class BackupPlanAssociation {
       };
 }
 
+/// `BackupPlanRevision` represents a snapshot of a `BackupPlan` at a point in
+/// time.
+class BackupPlanRevision {
+  /// The Backup Plan being encompassed by this revision.
+  BackupPlan? backupPlanSnapshot;
+
+  /// The timestamp that the revision was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// The resource name of the `BackupPlanRevision`. Format:
+  /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}/revisions/{revision}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The user friendly revision ID of the `BackupPlanRevision`.
+  ///
+  /// Example: v0, v1, v2, etc.
+  ///
+  /// Output only.
+  core.String? revisionId;
+
+  /// Resource State
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set.
+  /// - "CREATING" : The resource is being created.
+  /// - "ACTIVE" : The resource has been created and is fully usable.
+  /// - "DELETING" : The resource is being deleted.
+  /// - "INACTIVE" : The resource has been created but is not usable.
+  core.String? state;
+
+  BackupPlanRevision({
+    this.backupPlanSnapshot,
+    this.createTime,
+    this.name,
+    this.revisionId,
+    this.state,
+  });
+
+  BackupPlanRevision.fromJson(core.Map json_)
+      : this(
+          backupPlanSnapshot: json_.containsKey('backupPlanSnapshot')
+              ? BackupPlan.fromJson(json_['backupPlanSnapshot']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          revisionId: json_['revisionId'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupPlanSnapshot != null)
+          'backupPlanSnapshot': backupPlanSnapshot!,
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// `BackupRule` binds the backup schedule to a retention policy.
 class BackupRule {
   /// Configures the duration for which backup data will be kept.
   ///
   /// It is defined in “days”. The value should be greater than or equal to
   /// minimum enforced retention of the backup vault. Minimum value is 1 and
-  /// maximum value is 90 for hourly backups. Minimum value is 1 and maximum
-  /// value is 90 for daily backups. Minimum value is 7 and maximum value is 186
-  /// for weekly backups. Minimum value is 30 and maximum value is 732 for
-  /// monthly backups. Minimum value is 365 and maximum value is 36159 for
-  /// yearly backups.
+  /// maximum value is 36159 for custom retention on-demand backup. Minimum and
+  /// maximum values are workload specific for all other rules.
   ///
   /// Required.
   core.int? backupRetentionDays;
@@ -4137,7 +4825,7 @@ class BackupRule {
   /// Defines a schedule that runs within the confines of a defined window of
   /// time.
   ///
-  /// Required.
+  /// Optional.
   StandardSchedule? standardSchedule;
 
   BackupRule({
@@ -4269,6 +4957,7 @@ class BackupVault {
   /// - "DELETING" : The backup vault is being deleted.
   /// - "ERROR" : The backup vault is experiencing an issue and might be
   /// unusable.
+  /// - "UPDATING" : The backup vault is being updated.
   core.String? state;
 
   /// Total size of the storage used by all backup resources.
@@ -4505,6 +5194,115 @@ class Binding {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Cloud SQL instance's BPA properties.
+class CloudSqlInstanceBackupPlanAssociationProperties {
+  /// The time when the instance was created.
+  ///
+  /// Output only.
+  core.String? instanceCreateTime;
+
+  CloudSqlInstanceBackupPlanAssociationProperties({
+    this.instanceCreateTime,
+  });
+
+  CloudSqlInstanceBackupPlanAssociationProperties.fromJson(core.Map json_)
+      : this(
+          instanceCreateTime: json_['instanceCreateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceCreateTime != null)
+          'instanceCreateTime': instanceCreateTime!,
+      };
+}
+
+/// CloudSqlInstanceBackupProperties represents Cloud SQL Instance Backup
+/// properties.
+class CloudSqlInstanceBackupProperties {
+  /// The installed database version of the Cloud SQL instance when the backup
+  /// was taken.
+  ///
+  /// Output only.
+  core.String? databaseInstalledVersion;
+
+  /// Whether the backup is a final backup.
+  ///
+  /// Output only.
+  core.bool? finalBackup;
+
+  /// The tier (or machine type) for this instance.
+  ///
+  /// Example: `db-custom-1-3840`
+  ///
+  /// Output only.
+  core.String? instanceTier;
+
+  /// The source instance of the backup.
+  ///
+  /// Format: projects/{project}/instances/{instance}
+  ///
+  /// Output only.
+  core.String? sourceInstance;
+
+  CloudSqlInstanceBackupProperties({
+    this.databaseInstalledVersion,
+    this.finalBackup,
+    this.instanceTier,
+    this.sourceInstance,
+  });
+
+  CloudSqlInstanceBackupProperties.fromJson(core.Map json_)
+      : this(
+          databaseInstalledVersion:
+              json_['databaseInstalledVersion'] as core.String?,
+          finalBackup: json_['finalBackup'] as core.bool?,
+          instanceTier: json_['instanceTier'] as core.String?,
+          sourceInstance: json_['sourceInstance'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseInstalledVersion != null)
+          'databaseInstalledVersion': databaseInstalledVersion!,
+        if (finalBackup != null) 'finalBackup': finalBackup!,
+        if (instanceTier != null) 'instanceTier': instanceTier!,
+        if (sourceInstance != null) 'sourceInstance': sourceInstance!,
+      };
+}
+
+/// CloudSqlInstanceDataSourceProperties represents the properties of a Cloud
+/// SQL resource that are stored in the DataSource.
+typedef CloudSqlInstanceDataSourceProperties = $Properties;
+
+/// CloudSqlInstanceDataSourceReferenceProperties represents the properties of a
+/// Cloud SQL resource that are stored in the DataSourceReference.
+typedef CloudSqlInstanceDataSourceReferenceProperties = $Properties;
+
+/// CloudSqlInstanceInitializationConfig contains the configuration for
+/// initializing a Cloud SQL instance.
+class CloudSqlInstanceInitializationConfig {
+  /// The edition of the Cloud SQL instance.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : Unspecified edition.
+  /// - "ENTERPRISE" : Enterprise edition.
+  /// - "ENTERPRISE_PLUS" : Enterprise Plus edition.
+  core.String? edition;
+
+  CloudSqlInstanceInitializationConfig({
+    this.edition,
+  });
+
+  CloudSqlInstanceInitializationConfig.fromJson(core.Map json_)
+      : this(
+          edition: json_['edition'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (edition != null) 'edition': edition!,
+      };
+}
 
 /// ComputeInstanceBackupProperties represents Compute Engine instance backup
 /// properties.
@@ -4756,7 +5554,9 @@ class ComputeInstanceRestoreProperties {
 
   /// Array of disks associated with this instance.
   ///
-  /// Persistent disks must be created before you can assign them.
+  /// Persistent disks must be created before you can assign them. Source
+  /// regional persistent disks will be restored with default replica zones if
+  /// not specified.
   ///
   /// Optional.
   core.List<AttachedDisk>? disks;
@@ -4827,7 +5627,8 @@ class ComputeInstanceRestoreProperties {
   ///
   /// These specify how interfaces are configured to interact with other network
   /// services, such as connecting to the internet. Multiple interfaces are
-  /// supported per instance.
+  /// supported per instance. Required to restore in different project or
+  /// region.
   ///
   /// Optional.
   core.List<NetworkInterface>? networkInterfaces;
@@ -4869,6 +5670,8 @@ class ComputeInstanceRestoreProperties {
   AllocationAffinity? reservationAffinity;
 
   /// Resource policies applied to this instance.
+  ///
+  /// By default, no resource policies will be applied.
   ///
   /// Optional.
   core.List<core.String>? resourcePolicies;
@@ -5133,6 +5936,12 @@ class CustomerEncryptionKey {
 /// Datasource object used to represent Datasource details for both admin and
 /// basic view.
 class DataSource {
+  /// This field is set to true if the backup is blocked by vault access
+  /// restriction.
+  ///
+  /// Output only.
+  core.bool? backupBlockedByVaultAccessRestriction;
+
   /// Details of how the resource is configured for backup.
   ///
   /// Output only.
@@ -5210,6 +6019,7 @@ class DataSource {
   core.String? updateTime;
 
   DataSource({
+    this.backupBlockedByVaultAccessRestriction,
     this.backupConfigInfo,
     this.backupCount,
     this.configState,
@@ -5226,6 +6036,8 @@ class DataSource {
 
   DataSource.fromJson(core.Map json_)
       : this(
+          backupBlockedByVaultAccessRestriction:
+              json_['backupBlockedByVaultAccessRestriction'] as core.bool?,
           backupConfigInfo: json_.containsKey('backupConfigInfo')
               ? BackupConfigInfo.fromJson(json_['backupConfigInfo']
                   as core.Map<core.String, core.dynamic>)
@@ -5258,6 +6070,9 @@ class DataSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (backupBlockedByVaultAccessRestriction != null)
+          'backupBlockedByVaultAccessRestriction':
+              backupBlockedByVaultAccessRestriction!,
         if (backupConfigInfo != null) 'backupConfigInfo': backupConfigInfo!,
         if (backupCount != null) 'backupCount': backupCount!,
         if (configState != null) 'configState': configState!,
@@ -5334,15 +6149,64 @@ class DataSourceBackupApplianceApplication {
       };
 }
 
+/// Information of backup configuration on the DataSource.
+class DataSourceBackupConfigInfo {
+  /// The status of the last backup in this DataSource
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LAST_BACKUP_STATE_UNSPECIFIED" : Status not set.
+  /// - "FIRST_BACKUP_PENDING" : The first backup has not yet completed
+  /// - "SUCCEEDED" : The most recent backup was successful
+  /// - "FAILED" : The most recent backup failed
+  /// - "PERMISSION_DENIED" : The most recent backup could not be run/failed
+  /// because of the lack of permissions
+  core.String? lastBackupState;
+
+  /// Timestamp of the last successful backup to this DataSource.
+  ///
+  /// Output only.
+  core.String? lastSuccessfulBackupConsistencyTime;
+
+  DataSourceBackupConfigInfo({
+    this.lastBackupState,
+    this.lastSuccessfulBackupConsistencyTime,
+  });
+
+  DataSourceBackupConfigInfo.fromJson(core.Map json_)
+      : this(
+          lastBackupState: json_['lastBackupState'] as core.String?,
+          lastSuccessfulBackupConsistencyTime:
+              json_['lastSuccessfulBackupConsistencyTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastBackupState != null) 'lastBackupState': lastBackupState!,
+        if (lastSuccessfulBackupConsistencyTime != null)
+          'lastSuccessfulBackupConsistencyTime':
+              lastSuccessfulBackupConsistencyTime!,
+      };
+}
+
 /// DataSourceGcpResource is used for protected resources that are Google Cloud
 /// Resources.
 ///
 /// This name is easeier to understand than GcpResourceDataSource or
 /// GcpDataSourceResource
 class DataSourceGcpResource {
+  /// CloudSqlInstanceDataSourceProperties has a subset of Cloud SQL Instance
+  /// properties that are useful at the Datasource level.
+  ///
+  /// Output only.
+  CloudSqlInstanceDataSourceProperties? cloudSqlInstanceDatasourceProperties;
+
   /// ComputeInstanceDataSourceProperties has a subset of Compute Instance
   /// properties that are useful at the Datasource level.
   ComputeInstanceDataSourceProperties? computeInstanceDatasourceProperties;
+
+  /// DiskDataSourceProperties has a subset of Disk properties that are useful
+  /// at the Datasource level.
+  DiskDataSourceProperties? diskDatasourceProperties;
 
   /// Full resource pathname URL of the source Google Cloud resource.
   ///
@@ -5358,7 +6222,9 @@ class DataSourceGcpResource {
   core.String? type;
 
   DataSourceGcpResource({
+    this.cloudSqlInstanceDatasourceProperties,
     this.computeInstanceDatasourceProperties,
+    this.diskDatasourceProperties,
     this.gcpResourcename,
     this.location,
     this.type,
@@ -5366,10 +6232,22 @@ class DataSourceGcpResource {
 
   DataSourceGcpResource.fromJson(core.Map json_)
       : this(
+          cloudSqlInstanceDatasourceProperties:
+              json_.containsKey('cloudSqlInstanceDatasourceProperties')
+                  ? CloudSqlInstanceDataSourceProperties.fromJson(
+                      json_['cloudSqlInstanceDatasourceProperties']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           computeInstanceDatasourceProperties:
               json_.containsKey('computeInstanceDatasourceProperties')
                   ? ComputeInstanceDataSourceProperties.fromJson(
                       json_['computeInstanceDatasourceProperties']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          diskDatasourceProperties:
+              json_.containsKey('diskDatasourceProperties')
+                  ? DiskDataSourceProperties.fromJson(
+                      json_['diskDatasourceProperties']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           gcpResourcename: json_['gcpResourcename'] as core.String?,
@@ -5378,12 +6256,544 @@ class DataSourceGcpResource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudSqlInstanceDatasourceProperties != null)
+          'cloudSqlInstanceDatasourceProperties':
+              cloudSqlInstanceDatasourceProperties!,
         if (computeInstanceDatasourceProperties != null)
           'computeInstanceDatasourceProperties':
               computeInstanceDatasourceProperties!,
+        if (diskDatasourceProperties != null)
+          'diskDatasourceProperties': diskDatasourceProperties!,
         if (gcpResourcename != null) 'gcpResourcename': gcpResourcename!,
         if (location != null) 'location': location!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// The GCP resource that the DataSource is associated with.
+class DataSourceGcpResourceInfo {
+  /// The properties of the Cloud SQL instance.
+  ///
+  /// Output only.
+  CloudSqlInstanceDataSourceReferenceProperties? cloudSqlInstanceProperties;
+
+  /// The resource name of the GCP resource.
+  ///
+  /// Ex: projects/{project}/zones/{zone}/instances/{instance}
+  ///
+  /// Output only.
+  core.String? gcpResourcename;
+
+  /// The location of the GCP resource.
+  ///
+  /// Ex: //"global"/"unspecified"
+  ///
+  /// Output only.
+  core.String? location;
+
+  /// The type of the GCP resource.
+  ///
+  /// Ex: compute.googleapis.com/Instance
+  ///
+  /// Output only.
+  core.String? type;
+
+  DataSourceGcpResourceInfo({
+    this.cloudSqlInstanceProperties,
+    this.gcpResourcename,
+    this.location,
+    this.type,
+  });
+
+  DataSourceGcpResourceInfo.fromJson(core.Map json_)
+      : this(
+          cloudSqlInstanceProperties:
+              json_.containsKey('cloudSqlInstanceProperties')
+                  ? CloudSqlInstanceDataSourceReferenceProperties.fromJson(
+                      json_['cloudSqlInstanceProperties']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          gcpResourcename: json_['gcpResourcename'] as core.String?,
+          location: json_['location'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudSqlInstanceProperties != null)
+          'cloudSqlInstanceProperties': cloudSqlInstanceProperties!,
+        if (gcpResourcename != null) 'gcpResourcename': gcpResourcename!,
+        if (location != null) 'location': location!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// DataSourceReference is a reference to a DataSource resource.
+class DataSourceReference {
+  /// The time when the DataSourceReference was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The resource name of the DataSource.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/backupVaults/{backupVault}/dataSources/{dataSource}
+  ///
+  /// Output only.
+  core.String? dataSource;
+
+  /// Information of backup configuration on the DataSource.
+  ///
+  /// Output only.
+  DataSourceBackupConfigInfo? dataSourceBackupConfigInfo;
+
+  /// The backup configuration state of the DataSource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BACKUP_CONFIG_STATE_UNSPECIFIED" : The possible states of backup
+  /// configuration. Status not set.
+  /// - "ACTIVE" : The data source is actively protected (i.e. there is a
+  /// BackupPlanAssociation or Appliance SLA pointing to it)
+  /// - "PASSIVE" : The data source is no longer protected (but may have backups
+  /// under it)
+  core.String? dataSourceBackupConfigState;
+
+  /// Number of backups in the DataSource.
+  ///
+  /// Output only.
+  core.String? dataSourceBackupCount;
+
+  /// The GCP resource that the DataSource is associated with.
+  ///
+  /// Output only.
+  DataSourceGcpResourceInfo? dataSourceGcpResourceInfo;
+
+  /// Identifier.
+  ///
+  /// The resource name of the DataSourceReference. Format:
+  /// projects/{project}/locations/{location}/dataSourceReferences/{data_source_reference}
+  core.String? name;
+
+  DataSourceReference({
+    this.createTime,
+    this.dataSource,
+    this.dataSourceBackupConfigInfo,
+    this.dataSourceBackupConfigState,
+    this.dataSourceBackupCount,
+    this.dataSourceGcpResourceInfo,
+    this.name,
+  });
+
+  DataSourceReference.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          dataSource: json_['dataSource'] as core.String?,
+          dataSourceBackupConfigInfo:
+              json_.containsKey('dataSourceBackupConfigInfo')
+                  ? DataSourceBackupConfigInfo.fromJson(
+                      json_['dataSourceBackupConfigInfo']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          dataSourceBackupConfigState:
+              json_['dataSourceBackupConfigState'] as core.String?,
+          dataSourceBackupCount: json_['dataSourceBackupCount'] as core.String?,
+          dataSourceGcpResourceInfo:
+              json_.containsKey('dataSourceGcpResourceInfo')
+                  ? DataSourceGcpResourceInfo.fromJson(
+                      json_['dataSourceGcpResourceInfo']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (dataSource != null) 'dataSource': dataSource!,
+        if (dataSourceBackupConfigInfo != null)
+          'dataSourceBackupConfigInfo': dataSourceBackupConfigInfo!,
+        if (dataSourceBackupConfigState != null)
+          'dataSourceBackupConfigState': dataSourceBackupConfigState!,
+        if (dataSourceBackupCount != null)
+          'dataSourceBackupCount': dataSourceBackupCount!,
+        if (dataSourceGcpResourceInfo != null)
+          'dataSourceGcpResourceInfo': dataSourceGcpResourceInfo!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// DiskBackupProperties represents the properties of a Disk backup.
+class DiskBackupProperties {
+  /// The architecture of the source disk.
+  ///
+  /// Valid values are ARM64 or X86_64.
+  /// Possible string values are:
+  /// - "ARCHITECTURE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "X86_64" : Disks with architecture X86_64
+  /// - "ARM64" : Disks with architecture ARM64
+  core.String? architecture;
+
+  /// A description of the source disk.
+  core.String? description;
+
+  /// A list of guest OS features that are applicable to this backup.
+  core.List<GuestOsFeature>? guestOsFeature;
+
+  /// A list of publicly available licenses that are applicable to this backup.
+  ///
+  /// This is applicable if the original image had licenses attached, e.g.
+  /// Windows image.
+  core.List<core.String>? licenses;
+
+  /// Region and zone are mutually exclusive fields.
+  ///
+  /// The URL of the region of the source disk.
+  core.String? region;
+
+  /// The URL of the Zones where the source disk should be replicated.
+  core.List<core.String>? replicaZones;
+
+  /// Size(in GB) of the source disk.
+  core.String? sizeGb;
+
+  /// The source disk used to create this backup.
+  core.String? sourceDisk;
+
+  /// The URL of the type of the disk.
+  core.String? type;
+
+  /// The URL of the Zone where the source disk.
+  core.String? zone;
+
+  DiskBackupProperties({
+    this.architecture,
+    this.description,
+    this.guestOsFeature,
+    this.licenses,
+    this.region,
+    this.replicaZones,
+    this.sizeGb,
+    this.sourceDisk,
+    this.type,
+    this.zone,
+  });
+
+  DiskBackupProperties.fromJson(core.Map json_)
+      : this(
+          architecture: json_['architecture'] as core.String?,
+          description: json_['description'] as core.String?,
+          guestOsFeature: (json_['guestOsFeature'] as core.List?)
+              ?.map((value) => GuestOsFeature.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          licenses: (json_['licenses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          region: json_['region'] as core.String?,
+          replicaZones: (json_['replicaZones'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          sizeGb: json_['sizeGb'] as core.String?,
+          sourceDisk: json_['sourceDisk'] as core.String?,
+          type: json_['type'] as core.String?,
+          zone: json_['zone'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (description != null) 'description': description!,
+        if (guestOsFeature != null) 'guestOsFeature': guestOsFeature!,
+        if (licenses != null) 'licenses': licenses!,
+        if (region != null) 'region': region!,
+        if (replicaZones != null) 'replicaZones': replicaZones!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+        if (sourceDisk != null) 'sourceDisk': sourceDisk!,
+        if (type != null) 'type': type!,
+        if (zone != null) 'zone': zone!,
+      };
+}
+
+/// DiskDataSourceProperties represents the properties of a Disk resource that
+/// are stored in the DataSource.
+///
+/// .
+class DiskDataSourceProperties {
+  /// The description of the disk.
+  core.String? description;
+
+  /// Name of the disk backed up by the datasource.
+  core.String? name;
+
+  /// The size of the disk in GB.
+  core.String? sizeGb;
+
+  /// The type of the disk.
+  core.String? type;
+
+  DiskDataSourceProperties({
+    this.description,
+    this.name,
+    this.sizeGb,
+    this.type,
+  });
+
+  DiskDataSourceProperties.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          name: json_['name'] as core.String?,
+          sizeGb: json_['sizeGb'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// DiskRestoreProperties represents the properties of a Disk restore.
+class DiskRestoreProperties {
+  /// The access mode of the disk.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "READ_WRITE_SINGLE" : The default AccessMode, means the disk can be
+  /// attached to single instance in RW mode.
+  /// - "READ_WRITE_MANY" : The AccessMode means the disk can be attached to
+  /// multiple instances in RW mode.
+  /// - "READ_ONLY_MANY" : The AccessMode means the disk can be attached to
+  /// multiple instances in RO mode.
+  core.String? accessMode;
+
+  /// The architecture of the source disk.
+  ///
+  /// Valid values are ARM64 or X86_64.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ARCHITECTURE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "X86_64" : Disks with architecture X86_64
+  /// - "ARM64" : Disks with architecture ARM64
+  core.String? architecture;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you create the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Encrypts the disk using a customer-supplied encryption key or a
+  /// customer-managed encryption key.
+  ///
+  /// Optional.
+  CustomerEncryptionKey? diskEncryptionKey;
+
+  /// Indicates whether this disk is using confidential compute mode.
+  ///
+  /// Encryption with a Cloud KMS key is required to enable this option.
+  ///
+  /// Optional.
+  core.bool? enableConfidentialCompute;
+
+  /// A list of features to enable in the guest operating system.
+  ///
+  /// This is applicable only for bootable images.
+  ///
+  /// Optional.
+  core.List<GuestOsFeature>? guestOsFeature;
+
+  /// Labels to apply to this disk.
+  ///
+  /// These can be modified later using setLabels method. Label values can be
+  /// empty.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// A list of publicly available licenses that are applicable to this backup.
+  ///
+  /// This is applicable if the original image had licenses attached, e.g.
+  /// Windows image
+  ///
+  /// Optional.
+  core.List<core.String>? licenses;
+
+  /// Name of the disk.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Physical block size of the persistent disk, in bytes.
+  ///
+  /// If not present in a request, a default value is used. Currently, the
+  /// supported size is 4096.
+  ///
+  /// Optional.
+  core.String? physicalBlockSizeBytes;
+
+  /// Indicates how many IOPS to provision for the disk.
+  ///
+  /// This sets the number of I/O operations per second that the disk can
+  /// handle.
+  ///
+  /// Optional.
+  core.String? provisionedIops;
+
+  /// Indicates how much throughput to provision for the disk.
+  ///
+  /// This sets the number of throughput MB per second that the disk can handle.
+  ///
+  /// Optional.
+  core.String? provisionedThroughput;
+
+  /// Resource manager tags to be bound to the disk.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? resourceManagerTags;
+
+  /// Resource policies applied to this disk.
+  ///
+  /// Optional.
+  core.List<core.String>? resourcePolicy;
+
+  /// The size of the disk in GB.
+  ///
+  /// Required.
+  core.String? sizeGb;
+
+  /// The storage pool in which the new disk is created.
+  ///
+  /// You can provide this as a partial or full URL to the resource.
+  ///
+  /// Optional.
+  core.String? storagePool;
+
+  /// URL of the disk type resource describing which disk type to use to create
+  /// the disk.
+  ///
+  /// Required.
+  core.String? type;
+
+  DiskRestoreProperties({
+    this.accessMode,
+    this.architecture,
+    this.description,
+    this.diskEncryptionKey,
+    this.enableConfidentialCompute,
+    this.guestOsFeature,
+    this.labels,
+    this.licenses,
+    this.name,
+    this.physicalBlockSizeBytes,
+    this.provisionedIops,
+    this.provisionedThroughput,
+    this.resourceManagerTags,
+    this.resourcePolicy,
+    this.sizeGb,
+    this.storagePool,
+    this.type,
+  });
+
+  DiskRestoreProperties.fromJson(core.Map json_)
+      : this(
+          accessMode: json_['accessMode'] as core.String?,
+          architecture: json_['architecture'] as core.String?,
+          description: json_['description'] as core.String?,
+          diskEncryptionKey: json_.containsKey('diskEncryptionKey')
+              ? CustomerEncryptionKey.fromJson(json_['diskEncryptionKey']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          enableConfidentialCompute:
+              json_['enableConfidentialCompute'] as core.bool?,
+          guestOsFeature: (json_['guestOsFeature'] as core.List?)
+              ?.map((value) => GuestOsFeature.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          licenses: (json_['licenses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          name: json_['name'] as core.String?,
+          physicalBlockSizeBytes:
+              json_['physicalBlockSizeBytes'] as core.String?,
+          provisionedIops: json_['provisionedIops'] as core.String?,
+          provisionedThroughput: json_['provisionedThroughput'] as core.String?,
+          resourceManagerTags: (json_['resourceManagerTags']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          resourcePolicy: (json_['resourcePolicy'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          sizeGb: json_['sizeGb'] as core.String?,
+          storagePool: json_['storagePool'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessMode != null) 'accessMode': accessMode!,
+        if (architecture != null) 'architecture': architecture!,
+        if (description != null) 'description': description!,
+        if (diskEncryptionKey != null) 'diskEncryptionKey': diskEncryptionKey!,
+        if (enableConfidentialCompute != null)
+          'enableConfidentialCompute': enableConfidentialCompute!,
+        if (guestOsFeature != null) 'guestOsFeature': guestOsFeature!,
+        if (labels != null) 'labels': labels!,
+        if (licenses != null) 'licenses': licenses!,
+        if (name != null) 'name': name!,
+        if (physicalBlockSizeBytes != null)
+          'physicalBlockSizeBytes': physicalBlockSizeBytes!,
+        if (provisionedIops != null) 'provisionedIops': provisionedIops!,
+        if (provisionedThroughput != null)
+          'provisionedThroughput': provisionedThroughput!,
+        if (resourceManagerTags != null)
+          'resourceManagerTags': resourceManagerTags!,
+        if (resourcePolicy != null) 'resourcePolicy': resourcePolicy!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+        if (storagePool != null) 'storagePool': storagePool!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// DiskTargetEnvironment represents the target environment for the disk.
+class DiskTargetEnvironment {
+  /// Target project for the disk.
+  ///
+  /// Required.
+  core.String? project;
+
+  /// Target zone for the disk.
+  ///
+  /// Required.
+  core.String? zone;
+
+  DiskTargetEnvironment({
+    this.project,
+    this.zone,
+  });
+
+  DiskTargetEnvironment.fromJson(core.Map json_)
+      : this(
+          project: json_['project'] as core.String?,
+          zone: json_['zone'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (project != null) 'project': project!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -5527,6 +6937,114 @@ class FetchAccessTokenResponse {
       };
 }
 
+/// Response for the FetchBackupPlanAssociationsForResourceType method.
+class FetchBackupPlanAssociationsForResourceTypeResponse {
+  /// The BackupPlanAssociations from the specified parent.
+  ///
+  /// Output only.
+  core.List<BackupPlanAssociation>? backupPlanAssociations;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  FetchBackupPlanAssociationsForResourceTypeResponse({
+    this.backupPlanAssociations,
+    this.nextPageToken,
+  });
+
+  FetchBackupPlanAssociationsForResourceTypeResponse.fromJson(core.Map json_)
+      : this(
+          backupPlanAssociations:
+              (json_['backupPlanAssociations'] as core.List?)
+                  ?.map((value) => BackupPlanAssociation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupPlanAssociations != null)
+          'backupPlanAssociations': backupPlanAssociations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response for the FetchDataSourceReferencesForResourceType method.
+class FetchDataSourceReferencesForResourceTypeResponse {
+  /// The DataSourceReferences from the specified parent.
+  core.List<DataSourceReference>? dataSourceReferences;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  FetchDataSourceReferencesForResourceTypeResponse({
+    this.dataSourceReferences,
+    this.nextPageToken,
+  });
+
+  FetchDataSourceReferencesForResourceTypeResponse.fromJson(core.Map json_)
+      : this(
+          dataSourceReferences: (json_['dataSourceReferences'] as core.List?)
+              ?.map((value) => DataSourceReference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataSourceReferences != null)
+          'dataSourceReferences': dataSourceReferences!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Request message for GetMsComplianceMetadata
+class FetchMsComplianceMetadataRequest {
+  /// The project id of the target project
+  ///
+  /// Required.
+  core.String? projectId;
+
+  FetchMsComplianceMetadataRequest({
+    this.projectId,
+  });
+
+  FetchMsComplianceMetadataRequest.fromJson(core.Map json_)
+      : this(
+          projectId: json_['projectId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
+      };
+}
+
+/// Response message for GetMsComplianceMetadata
+class FetchMsComplianceMetadataResponse {
+  /// The ms compliance metadata of the target project, if the project is an
+  /// assured workloads project, values will be true, otherwise false.
+  core.bool? isAssuredWorkload;
+
+  FetchMsComplianceMetadataResponse({
+    this.isAssuredWorkload,
+  });
+
+  FetchMsComplianceMetadataResponse.fromJson(core.Map json_)
+      : this(
+          isAssuredWorkload: json_['isAssuredWorkload'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isAssuredWorkload != null) 'isAssuredWorkload': isAssuredWorkload!,
+      };
+}
+
 /// Response message for fetching usable BackupVaults.
 class FetchUsableBackupVaultsResponse {
   /// The list of BackupVault instances in the project for the specified
@@ -5667,23 +7185,43 @@ class GCPBackupPlanInfo {
   /// Format: projects/{project}/locations/{location}/backupPlans/{backupPlanId}
   core.String? backupPlan;
 
+  /// The user friendly id of the backup plan revision which triggered this
+  /// backup in case of scheduled backup or used for on demand backup.
+  core.String? backupPlanRevisionId;
+
+  /// Resource name of the backup plan revision which triggered this backup in
+  /// case of scheduled backup or used for on demand backup.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/backupPlans/{backupPlanId}/revisions/{revisionId}
+  core.String? backupPlanRevisionName;
+
   /// The rule id of the backup plan which triggered this backup in case of
   /// scheduled backup or used for
   core.String? backupPlanRuleId;
 
   GCPBackupPlanInfo({
     this.backupPlan,
+    this.backupPlanRevisionId,
+    this.backupPlanRevisionName,
     this.backupPlanRuleId,
   });
 
   GCPBackupPlanInfo.fromJson(core.Map json_)
       : this(
           backupPlan: json_['backupPlan'] as core.String?,
+          backupPlanRevisionId: json_['backupPlanRevisionId'] as core.String?,
+          backupPlanRevisionName:
+              json_['backupPlanRevisionName'] as core.String?,
           backupPlanRuleId: json_['backupPlanRuleId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupPlan != null) 'backupPlan': backupPlan!,
+        if (backupPlanRevisionId != null)
+          'backupPlanRevisionId': backupPlanRevisionId!,
+        if (backupPlanRevisionName != null)
+          'backupPlanRevisionName': backupPlanRevisionName!,
         if (backupPlanRuleId != null) 'backupPlanRuleId': backupPlanRuleId!,
       };
 }
@@ -5703,6 +7241,14 @@ class GcpBackupConfig {
   /// The description of the backup plan.
   core.String? backupPlanDescription;
 
+  /// The user friendly id of the backup plan revision.
+  ///
+  /// E.g. v0, v1 etc.
+  core.String? backupPlanRevisionId;
+
+  /// The name of the backup plan revision.
+  core.String? backupPlanRevisionName;
+
   /// The names of the backup plan rules which point to this backupvault
   core.List<core.String>? backupPlanRules;
 
@@ -5710,6 +7256,8 @@ class GcpBackupConfig {
     this.backupPlan,
     this.backupPlanAssociation,
     this.backupPlanDescription,
+    this.backupPlanRevisionId,
+    this.backupPlanRevisionName,
     this.backupPlanRules,
   });
 
@@ -5718,6 +7266,9 @@ class GcpBackupConfig {
           backupPlan: json_['backupPlan'] as core.String?,
           backupPlanAssociation: json_['backupPlanAssociation'] as core.String?,
           backupPlanDescription: json_['backupPlanDescription'] as core.String?,
+          backupPlanRevisionId: json_['backupPlanRevisionId'] as core.String?,
+          backupPlanRevisionName:
+              json_['backupPlanRevisionName'] as core.String?,
           backupPlanRules: (json_['backupPlanRules'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -5729,6 +7280,10 @@ class GcpBackupConfig {
           'backupPlanAssociation': backupPlanAssociation!,
         if (backupPlanDescription != null)
           'backupPlanDescription': backupPlanDescription!,
+        if (backupPlanRevisionId != null)
+          'backupPlanRevisionId': backupPlanRevisionId!,
+        if (backupPlanRevisionName != null)
+          'backupPlanRevisionName': backupPlanRevisionName!,
         if (backupPlanRules != null) 'backupPlanRules': backupPlanRules!,
       };
 }
@@ -5806,6 +7361,11 @@ class InitializeParams {
 
 /// Request message for initializing the service.
 class InitializeServiceRequest {
+  /// The configuration for initializing a Cloud SQL instance.
+  ///
+  /// Optional.
+  CloudSqlInstanceInitializationConfig? cloudSqlInstanceInitializationConfig;
+
   /// An optional request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
@@ -5831,17 +7391,27 @@ class InitializeServiceRequest {
   core.String? resourceType;
 
   InitializeServiceRequest({
+    this.cloudSqlInstanceInitializationConfig,
     this.requestId,
     this.resourceType,
   });
 
   InitializeServiceRequest.fromJson(core.Map json_)
       : this(
+          cloudSqlInstanceInitializationConfig:
+              json_.containsKey('cloudSqlInstanceInitializationConfig')
+                  ? CloudSqlInstanceInitializationConfig.fromJson(
+                      json_['cloudSqlInstanceInitializationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           requestId: json_['requestId'] as core.String?,
           resourceType: json_['resourceType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudSqlInstanceInitializationConfig != null)
+          'cloudSqlInstanceInitializationConfig':
+              cloudSqlInstanceInitializationConfig!,
         if (requestId != null) 'requestId': requestId!,
         if (resourceType != null) 'resourceType': resourceType!,
       };
@@ -5991,6 +7561,54 @@ class ListBackupPlanAssociationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupPlanAssociations != null)
           'backupPlanAssociations': backupPlanAssociations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// The response message for getting a list of `BackupPlanRevision`.
+class ListBackupPlanRevisionsResponse {
+  /// The list of `BackupPlanRevisions` in the project for the specified
+  /// location.
+  ///
+  /// If the `{location}` value in the request is "-", the response contains a
+  /// list of resources from all locations. In case any location is unreachable,
+  /// the response will only return backup plans in reachable locations and the
+  /// 'unreachable' field will be populated with a list of unreachable
+  /// locations.
+  core.List<BackupPlanRevision>? backupPlanRevisions;
+
+  /// A token which may be sent as page_token in a subsequent
+  /// `ListBackupPlanRevisions` call to retrieve the next page of results.
+  ///
+  /// If this field is omitted or empty, then there are no more results to
+  /// return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListBackupPlanRevisionsResponse({
+    this.backupPlanRevisions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListBackupPlanRevisionsResponse.fromJson(core.Map json_)
+      : this(
+          backupPlanRevisions: (json_['backupPlanRevisions'] as core.List?)
+              ?.map((value) => BackupPlanRevision.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupPlanRevisions != null)
+          'backupPlanRevisions': backupPlanRevisions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -7060,6 +8678,45 @@ class Policy {
       };
 }
 
+/// RegionDiskTargetEnvironment represents the target environment for the disk.
+class RegionDiskTargetEnvironment {
+  /// Target project for the disk.
+  ///
+  /// Required.
+  core.String? project;
+
+  /// Target region for the disk.
+  ///
+  /// Required.
+  core.String? region;
+
+  /// Target URLs of the replica zones for the disk.
+  ///
+  /// Required.
+  core.List<core.String>? replicaZones;
+
+  RegionDiskTargetEnvironment({
+    this.project,
+    this.region,
+    this.replicaZones,
+  });
+
+  RegionDiskTargetEnvironment.fromJson(core.Map json_)
+      : this(
+          project: json_['project'] as core.String?,
+          region: json_['region'] as core.String?,
+          replicaZones: (json_['replicaZones'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (project != null) 'project': project!,
+        if (region != null) 'region': region!,
+        if (replicaZones != null) 'replicaZones': replicaZones!,
+      };
+}
+
 /// Message for deleting a DataSource.
 typedef RemoveDataSourceRequest = $Request00;
 
@@ -7188,6 +8845,15 @@ class RestoreBackupRequest {
   /// Compute Engine target environment to be used during restore.
   ComputeInstanceTargetEnvironment? computeInstanceTargetEnvironment;
 
+  /// Disk properties to be overridden during restore.
+  DiskRestoreProperties? diskRestoreProperties;
+
+  /// Disk target environment to be used during restore.
+  DiskTargetEnvironment? diskTargetEnvironment;
+
+  /// Region disk target environment to be used during restore.
+  RegionDiskTargetEnvironment? regionDiskTargetEnvironment;
+
   /// An optional request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
@@ -7207,6 +8873,9 @@ class RestoreBackupRequest {
   RestoreBackupRequest({
     this.computeInstanceRestoreProperties,
     this.computeInstanceTargetEnvironment,
+    this.diskRestoreProperties,
+    this.diskTargetEnvironment,
+    this.regionDiskTargetEnvironment,
     this.requestId,
   });
 
@@ -7224,6 +8893,20 @@ class RestoreBackupRequest {
                       json_['computeInstanceTargetEnvironment']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          diskRestoreProperties: json_.containsKey('diskRestoreProperties')
+              ? DiskRestoreProperties.fromJson(json_['diskRestoreProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          diskTargetEnvironment: json_.containsKey('diskTargetEnvironment')
+              ? DiskTargetEnvironment.fromJson(json_['diskTargetEnvironment']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          regionDiskTargetEnvironment:
+              json_.containsKey('regionDiskTargetEnvironment')
+                  ? RegionDiskTargetEnvironment.fromJson(
+                      json_['regionDiskTargetEnvironment']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           requestId: json_['requestId'] as core.String?,
         );
 
@@ -7232,6 +8915,12 @@ class RestoreBackupRequest {
           'computeInstanceRestoreProperties': computeInstanceRestoreProperties!,
         if (computeInstanceTargetEnvironment != null)
           'computeInstanceTargetEnvironment': computeInstanceTargetEnvironment!,
+        if (diskRestoreProperties != null)
+          'diskRestoreProperties': diskRestoreProperties!,
+        if (diskTargetEnvironment != null)
+          'diskTargetEnvironment': diskTargetEnvironment!,
+        if (regionDiskTargetEnvironment != null)
+          'regionDiskTargetEnvironment': regionDiskTargetEnvironment!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -7788,7 +9477,10 @@ class TriggerBackupRequest {
 
   /// backup rule_id for which a backup needs to be triggered.
   ///
-  /// Required.
+  /// If not specified, on-demand backup with custom retention will be
+  /// triggered.
+  ///
+  /// Optional.
   core.String? ruleId;
 
   TriggerBackupRequest({

@@ -1964,7 +1964,9 @@ class ConversionsourcesResource {
   /// [conversionSourceId] - Required. The ID of the conversion source to be
   /// updated.
   ///
-  /// [updateMask] - Optional. List of fields being updated.
+  /// [updateMask] - Optional. List of fields being updated. The following
+  /// fields can be updated: `attribution_settings`, `display_name`,
+  /// `currency_code`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3161,7 +3163,7 @@ class LiasettingsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the inventory verification contract for the specified country.
+  /// Sets the inventory verification contact for the specified country.
   ///
   /// Request parameters:
   ///
@@ -7954,6 +7956,11 @@ class AccountUser {
   /// Whether user can manage payment settings.
   core.bool? paymentsManager;
 
+  /// Whether user has standard read-only access.
+  ///
+  /// Optional.
+  core.bool? readOnly;
+
   /// Whether user is a reporting manager.
   ///
   /// This role is equivalent to the Performance and insights role in Merchant
@@ -7966,6 +7973,7 @@ class AccountUser {
     this.orderManager,
     this.paymentsAnalyst,
     this.paymentsManager,
+    this.readOnly,
     this.reportingManager,
   });
 
@@ -7976,6 +7984,7 @@ class AccountUser {
           orderManager: json_['orderManager'] as core.bool?,
           paymentsAnalyst: json_['paymentsAnalyst'] as core.bool?,
           paymentsManager: json_['paymentsManager'] as core.bool?,
+          readOnly: json_['readOnly'] as core.bool?,
           reportingManager: json_['reportingManager'] as core.bool?,
         );
 
@@ -7985,6 +7994,7 @@ class AccountUser {
         if (orderManager != null) 'orderManager': orderManager!,
         if (paymentsAnalyst != null) 'paymentsAnalyst': paymentsAnalyst!,
         if (paymentsManager != null) 'paymentsManager': paymentsManager!,
+        if (readOnly != null) 'readOnly': readOnly!,
         if (reportingManager != null) 'reportingManager': reportingManager!,
       };
 }
@@ -16765,7 +16775,10 @@ class PriceInsights {
 ///
 /// See the Product Data Specification Help Center article for information.
 /// Product data. After inserting, updating, or deleting a product, it may take
-/// several minutes before changes take effect.
+/// several minutes before changes take effect. The following reference
+/// documentation lists the field names in the **camelCase** casing style while
+/// the Products Data Specification lists the names in the **snake_case** casing
+/// style.
 class Product {
   /// Additional URLs of images of the item.
   core.List<core.String>? additionalImageLinks;
@@ -17027,6 +17040,11 @@ class Product {
   /// Maximal product handling time (in business days).
   core.String? maxHandlingTime;
 
+  /// Maximum retail price (MRP) of the item.
+  ///
+  /// Applicable to India only.
+  Price? maximumRetailPrice;
+
   /// The energy efficiency class as defined in EU directive 2010/30/EU.
   core.String? minEnergyEfficiencyClass;
 
@@ -17275,6 +17293,7 @@ class Product {
     this.material,
     this.maxEnergyEfficiencyClass,
     this.maxHandlingTime,
+    this.maximumRetailPrice,
     this.minEnergyEfficiencyClass,
     this.minHandlingTime,
     this.mobileLink,
@@ -17423,6 +17442,10 @@ class Product {
           maxEnergyEfficiencyClass:
               json_['maxEnergyEfficiencyClass'] as core.String?,
           maxHandlingTime: json_['maxHandlingTime'] as core.String?,
+          maximumRetailPrice: json_.containsKey('maximumRetailPrice')
+              ? Price.fromJson(json_['maximumRetailPrice']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           minEnergyEfficiencyClass:
               json_['minEnergyEfficiencyClass'] as core.String?,
           minHandlingTime: json_['minHandlingTime'] as core.String?,
@@ -17614,6 +17637,8 @@ class Product {
         if (maxEnergyEfficiencyClass != null)
           'maxEnergyEfficiencyClass': maxEnergyEfficiencyClass!,
         if (maxHandlingTime != null) 'maxHandlingTime': maxHandlingTime!,
+        if (maximumRetailPrice != null)
+          'maximumRetailPrice': maximumRetailPrice!,
         if (minEnergyEfficiencyClass != null)
           'minEnergyEfficiencyClass': minEnergyEfficiencyClass!,
         if (minHandlingTime != null) 'minHandlingTime': minHandlingTime!,
@@ -19720,6 +19745,12 @@ class Promotion {
   /// - "FREE_SHIPPING_TWO_DAY" : Two day free shipping coupon value type.
   core.String? couponValueType;
 
+  /// The custom redemption restriction for the promotion.
+  ///
+  /// If the `redemption_restriction` field is set to `CUSTOM`, this field must
+  /// be set.
+  core.String? customRedemptionRestriction;
+
   /// Free gift description for the promotion.
   core.String? freeGiftDescription;
 
@@ -19769,6 +19800,11 @@ class Promotion {
   ///
   /// Required.
   core.String? longTitle;
+
+  /// The maximum monetary discount a customer can receive for the promotion.
+  ///
+  /// This field is only supported with the `Percent off` coupon value type.
+  PriceAmount? maxDiscountAmount;
 
   /// Minimum purchase amount for the promotion.
   PriceAmount? minimumPurchaseAmount;
@@ -19865,6 +19901,25 @@ class Promotion {
   /// Required.
   core.List<core.String>? redemptionChannel;
 
+  /// The redemption restriction for the promotion.
+  /// Possible string values are:
+  /// - "REDEMPTION_RESTRICTION_UNSPECIFIED" : The redemption restriction is
+  /// unspecified.
+  /// - "SUBSCRIBE_AND_SAVE" : The customer must subscribe to the merchant's
+  /// channel to redeem the promotion.
+  /// - "FIRST_ORDER" : The customer must be a first-time customer to redeem the
+  /// promotion.
+  /// - "SIGN_UP_FOR_EMAIL" : The customer must sign up for email's to redeem
+  /// the promotion.
+  /// - "SIGN_UP_FOR_TEXT" : The customer must sign up for text to redeem the
+  /// promotion.
+  /// - "FORMS_OF_PAYMENT" : The customer must use a specific form of payment to
+  /// redeem the promotion.
+  /// - "CUSTOM" : The customer must meet a custom restriction to redeem the
+  /// promotion. If selected, the `custom_redemption_restriction` field must be
+  /// set.
+  core.String? redemptionRestriction;
+
   /// Shipping service names for the promotion.
   core.List<core.String>? shippingServiceNames;
 
@@ -19900,6 +19955,7 @@ class Promotion {
     this.brandExclusion,
     this.contentLanguage,
     this.couponValueType,
+    this.customRedemptionRestriction,
     this.freeGiftDescription,
     this.freeGiftItemId,
     this.freeGiftValue,
@@ -19913,6 +19969,7 @@ class Promotion {
     this.limitQuantity,
     this.limitValue,
     this.longTitle,
+    this.maxDiscountAmount,
     this.minimumPurchaseAmount,
     this.minimumPurchaseQuantity,
     this.moneyBudget,
@@ -19932,6 +19989,7 @@ class Promotion {
     this.promotionStatus,
     this.promotionUrl,
     this.redemptionChannel,
+    this.redemptionRestriction,
     this.shippingServiceNames,
     this.storeApplicability,
     this.storeCode,
@@ -19949,6 +20007,8 @@ class Promotion {
               .toList(),
           contentLanguage: json_['contentLanguage'] as core.String?,
           couponValueType: json_['couponValueType'] as core.String?,
+          customRedemptionRestriction:
+              json_['customRedemptionRestriction'] as core.String?,
           freeGiftDescription: json_['freeGiftDescription'] as core.String?,
           freeGiftItemId: json_['freeGiftItemId'] as core.String?,
           freeGiftValue: json_.containsKey('freeGiftValue')
@@ -19977,6 +20037,10 @@ class Promotion {
                   json_['limitValue'] as core.Map<core.String, core.dynamic>)
               : null,
           longTitle: json_['longTitle'] as core.String?,
+          maxDiscountAmount: json_.containsKey('maxDiscountAmount')
+              ? PriceAmount.fromJson(json_['maxDiscountAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           minimumPurchaseAmount: json_.containsKey('minimumPurchaseAmount')
               ? PriceAmount.fromJson(json_['minimumPurchaseAmount']
                   as core.Map<core.String, core.dynamic>)
@@ -20027,6 +20091,7 @@ class Promotion {
           redemptionChannel: (json_['redemptionChannel'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          redemptionRestriction: json_['redemptionRestriction'] as core.String?,
           shippingServiceNames: (json_['shippingServiceNames'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -20045,6 +20110,8 @@ class Promotion {
         if (brandExclusion != null) 'brandExclusion': brandExclusion!,
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
         if (couponValueType != null) 'couponValueType': couponValueType!,
+        if (customRedemptionRestriction != null)
+          'customRedemptionRestriction': customRedemptionRestriction!,
         if (freeGiftDescription != null)
           'freeGiftDescription': freeGiftDescription!,
         if (freeGiftItemId != null) 'freeGiftItemId': freeGiftItemId!,
@@ -20062,6 +20129,7 @@ class Promotion {
         if (limitQuantity != null) 'limitQuantity': limitQuantity!,
         if (limitValue != null) 'limitValue': limitValue!,
         if (longTitle != null) 'longTitle': longTitle!,
+        if (maxDiscountAmount != null) 'maxDiscountAmount': maxDiscountAmount!,
         if (minimumPurchaseAmount != null)
           'minimumPurchaseAmount': minimumPurchaseAmount!,
         if (minimumPurchaseQuantity != null)
@@ -20090,6 +20158,8 @@ class Promotion {
         if (promotionStatus != null) 'promotionStatus': promotionStatus!,
         if (promotionUrl != null) 'promotionUrl': promotionUrl!,
         if (redemptionChannel != null) 'redemptionChannel': redemptionChannel!,
+        if (redemptionRestriction != null)
+          'redemptionRestriction': redemptionRestriction!,
         if (shippingServiceNames != null)
           'shippingServiceNames': shippingServiceNames!,
         if (storeApplicability != null)

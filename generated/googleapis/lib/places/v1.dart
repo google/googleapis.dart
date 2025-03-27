@@ -597,35 +597,7 @@ class GoogleMapsPlacesV1AddressDescriptorLandmark {
 /// Information about the author of the UGC data.
 ///
 /// Used in Photo, and Review.
-class GoogleMapsPlacesV1AuthorAttribution {
-  /// Name of the author of the Photo or Review.
-  core.String? displayName;
-
-  /// Profile photo URI of the author of the Photo or Review.
-  core.String? photoUri;
-
-  /// URI of the author of the Photo or Review.
-  core.String? uri;
-
-  GoogleMapsPlacesV1AuthorAttribution({
-    this.displayName,
-    this.photoUri,
-    this.uri,
-  });
-
-  GoogleMapsPlacesV1AuthorAttribution.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          photoUri: json_['photoUri'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (photoUri != null) 'photoUri': photoUri!,
-        if (uri != null) 'uri': uri!,
-      };
-}
+typedef GoogleMapsPlacesV1AuthorAttribution = $AuthorAttribution;
 
 /// Request proto for AutocompletePlaces.
 class GoogleMapsPlacesV1AutocompletePlacesRequest {
@@ -1250,20 +1222,14 @@ class GoogleMapsPlacesV1ContentBlock {
   /// Content related to the topic.
   GoogleTypeLocalizedText? content;
 
-  /// Experimental: See
-  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-  /// for more details.
+  /// The list of resource names of the referenced places.
   ///
-  /// References that are related to this block of content.
-  GoogleMapsPlacesV1References? references;
-
-  /// The topic of the content, for example "overview" or "restaurant".
-  core.String? topic;
+  /// This name can be used in other APIs that accept Place resource names.
+  core.List<core.String>? referencedPlaces;
 
   GoogleMapsPlacesV1ContentBlock({
     this.content,
-    this.references,
-    this.topic,
+    this.referencedPlaces,
   });
 
   GoogleMapsPlacesV1ContentBlock.fromJson(core.Map json_)
@@ -1272,17 +1238,14 @@ class GoogleMapsPlacesV1ContentBlock {
               ? GoogleTypeLocalizedText.fromJson(
                   json_['content'] as core.Map<core.String, core.dynamic>)
               : null,
-          references: json_.containsKey('references')
-              ? GoogleMapsPlacesV1References.fromJson(
-                  json_['references'] as core.Map<core.String, core.dynamic>)
-              : null,
-          topic: json_['topic'] as core.String?,
+          referencedPlaces: (json_['referencedPlaces'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
-        if (references != null) 'references': references!,
-        if (topic != null) 'topic': topic!,
+        if (referencedPlaces != null) 'referencedPlaces': referencedPlaces!,
       };
 }
 
@@ -1837,13 +1800,6 @@ class GoogleMapsPlacesV1Place {
   /// Place allows dogs.
   core.bool? allowsDogs;
 
-  /// Experimental: See
-  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-  /// for more details.
-  ///
-  /// AI-generated summary of the area that the place is in.
-  GoogleMapsPlacesV1PlaceAreaSummary? areaSummary;
-
   /// A set of data provider that must be shown with this result.
   core.List<GoogleMapsPlacesV1PlaceAttribution>? attributions;
 
@@ -1900,6 +1856,9 @@ class GoogleMapsPlacesV1Place {
   /// as-is and can not be modified or altered.
   GoogleTypeLocalizedText? editorialSummary;
 
+  /// The summary of amenities near the EV charging station.
+  GoogleMapsPlacesV1PlaceEvChargeAmenitySummary? evChargeAmenitySummary;
+
   /// Information of ev charging options.
   GoogleMapsPlacesV1EVChargeOptions? evChargeOptions;
 
@@ -1911,10 +1870,6 @@ class GoogleMapsPlacesV1Place {
   /// This information is updated regularly.
   GoogleMapsPlacesV1FuelOptions? fuelOptions;
 
-  /// Experimental: See
-  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-  /// for more details.
-  ///
   /// AI-generated summary of the place.
   GoogleMapsPlacesV1PlaceGenerativeSummary? generativeSummary;
 
@@ -1965,6 +1920,9 @@ class GoogleMapsPlacesV1Place {
   /// A human-readable phone number for the place, in national format.
   core.String? nationalPhoneNumber;
 
+  /// A summary of points of interest near the place.
+  GoogleMapsPlacesV1PlaceNeighborhoodSummary? neighborhoodSummary;
+
   /// Place provides outdoor seating.
   core.bool? outdoorSeating;
 
@@ -1985,6 +1943,9 @@ class GoogleMapsPlacesV1Place {
   /// Plus code of the place location lat/long.
   GoogleMapsPlacesV1PlacePlusCode? plusCode;
 
+  /// The address in postal address format.
+  GoogleTypePostalAddress? postalAddress;
+
   /// Price level of the place.
   /// Possible string values are:
   /// - "PRICE_LEVEL_UNSPECIFIED" : Place price level is unspecified or unknown.
@@ -2000,18 +1961,23 @@ class GoogleMapsPlacesV1Place {
 
   /// The primary type of the given result.
   ///
-  /// This type must one of the Places API supported types. For example,
+  /// This type must be one of the Places API supported types. For example,
   /// "restaurant", "cafe", "airport", etc. A place can only have a single
   /// primary type. For the complete list of possible values, see Table A and
   /// Table B at
-  /// https://developers.google.com/maps/documentation/places/web-service/place-types
+  /// https://developers.google.com/maps/documentation/places/web-service/place-types.
+  /// The primary type may be missing if the place's primary type is not a
+  /// supported type. When a primary type is present, it is always one of the
+  /// types in the `types` field.
   core.String? primaryType;
 
   /// The display name of the primary type, localized to the request language if
   /// applicable.
   ///
   /// For the complete list of possible values, see Table A and Table B at
-  /// https://developers.google.com/maps/documentation/places/web-service/place-types
+  /// https://developers.google.com/maps/documentation/places/web-service/place-types.
+  /// The primary type may be missing if the place's primary type is not a
+  /// supported type.
   GoogleTypeLocalizedText? primaryTypeDisplayName;
 
   /// Indicates whether the place is a pure service area business.
@@ -2029,8 +1995,14 @@ class GoogleMapsPlacesV1Place {
   ///
   /// Note that if a place is always open (24 hours), the `close` field will not
   /// be set. Clients can rely on always open (24 hours) being represented as an
-  /// `open` period containing `day` with value `0`, `hour` with value `0`, and
-  /// `minute` with value `0`.
+  /// \[`open`\](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#Period)
+  /// period containing
+  /// \[`day`\](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#Point)
+  /// with value `0`,
+  /// \[`hour`\](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#Point)
+  /// with value `0`, and
+  /// \[`minute`\](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#Point)
+  /// with value `0`.
   GoogleMapsPlacesV1PlaceOpeningHours? regularOpeningHours;
 
   /// Contains an array of entries for information about regular secondary hours
@@ -2048,6 +2020,9 @@ class GoogleMapsPlacesV1Place {
 
   /// Place has restroom.
   core.bool? restroom;
+
+  /// AI-generated summary of the place using user reviews.
+  GoogleMapsPlacesV1PlaceReviewSummary? reviewSummary;
 
   /// List of reviews about this place, sorted by relevance.
   ///
@@ -2087,7 +2062,7 @@ class GoogleMapsPlacesV1Place {
   /// A short, human-readable address for this place.
   core.String? shortFormattedAddress;
 
-  /// A list of sub destinations related to the place.
+  /// A list of sub-destinations related to the place.
   core.List<GoogleMapsPlacesV1PlaceSubDestination>? subDestinations;
 
   /// Specifies if the business supports takeout.
@@ -2133,7 +2108,6 @@ class GoogleMapsPlacesV1Place {
     this.addressDescriptor,
     this.adrFormatAddress,
     this.allowsDogs,
-    this.areaSummary,
     this.attributions,
     this.businessStatus,
     this.containingPlaces,
@@ -2144,6 +2118,7 @@ class GoogleMapsPlacesV1Place {
     this.dineIn,
     this.displayName,
     this.editorialSummary,
+    this.evChargeAmenitySummary,
     this.evChargeOptions,
     this.formattedAddress,
     this.fuelOptions,
@@ -2162,11 +2137,13 @@ class GoogleMapsPlacesV1Place {
     this.menuForChildren,
     this.name,
     this.nationalPhoneNumber,
+    this.neighborhoodSummary,
     this.outdoorSeating,
     this.parkingOptions,
     this.paymentOptions,
     this.photos,
     this.plusCode,
+    this.postalAddress,
     this.priceLevel,
     this.priceRange,
     this.primaryType,
@@ -2177,6 +2154,7 @@ class GoogleMapsPlacesV1Place {
     this.regularSecondaryOpeningHours,
     this.reservable,
     this.restroom,
+    this.reviewSummary,
     this.reviews,
     this.servesBeer,
     this.servesBreakfast,
@@ -2217,10 +2195,6 @@ class GoogleMapsPlacesV1Place {
               : null,
           adrFormatAddress: json_['adrFormatAddress'] as core.String?,
           allowsDogs: json_['allowsDogs'] as core.bool?,
-          areaSummary: json_.containsKey('areaSummary')
-              ? GoogleMapsPlacesV1PlaceAreaSummary.fromJson(
-                  json_['areaSummary'] as core.Map<core.String, core.dynamic>)
-              : null,
           attributions: (json_['attributions'] as core.List?)
               ?.map((value) => GoogleMapsPlacesV1PlaceAttribution.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -2250,6 +2224,11 @@ class GoogleMapsPlacesV1Place {
           editorialSummary: json_.containsKey('editorialSummary')
               ? GoogleTypeLocalizedText.fromJson(json_['editorialSummary']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          evChargeAmenitySummary: json_.containsKey('evChargeAmenitySummary')
+              ? GoogleMapsPlacesV1PlaceEvChargeAmenitySummary.fromJson(
+                  json_['evChargeAmenitySummary']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           evChargeOptions: json_.containsKey('evChargeOptions')
               ? GoogleMapsPlacesV1EVChargeOptions.fromJson(
@@ -2288,6 +2267,11 @@ class GoogleMapsPlacesV1Place {
           menuForChildren: json_['menuForChildren'] as core.bool?,
           name: json_['name'] as core.String?,
           nationalPhoneNumber: json_['nationalPhoneNumber'] as core.String?,
+          neighborhoodSummary: json_.containsKey('neighborhoodSummary')
+              ? GoogleMapsPlacesV1PlaceNeighborhoodSummary.fromJson(
+                  json_['neighborhoodSummary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           outdoorSeating: json_['outdoorSeating'] as core.bool?,
           parkingOptions: json_.containsKey('parkingOptions')
               ? GoogleMapsPlacesV1PlaceParkingOptions.fromJson(
@@ -2306,6 +2290,10 @@ class GoogleMapsPlacesV1Place {
           plusCode: json_.containsKey('plusCode')
               ? GoogleMapsPlacesV1PlacePlusCode.fromJson(
                   json_['plusCode'] as core.Map<core.String, core.dynamic>)
+              : null,
+          postalAddress: json_.containsKey('postalAddress')
+              ? GoogleTypePostalAddress.fromJson(
+                  json_['postalAddress'] as core.Map<core.String, core.dynamic>)
               : null,
           priceLevel: json_['priceLevel'] as core.String?,
           priceRange: json_.containsKey('priceRange')
@@ -2332,6 +2320,10 @@ class GoogleMapsPlacesV1Place {
                   .toList(),
           reservable: json_['reservable'] as core.bool?,
           restroom: json_['restroom'] as core.bool?,
+          reviewSummary: json_.containsKey('reviewSummary')
+              ? GoogleMapsPlacesV1PlaceReviewSummary.fromJson(
+                  json_['reviewSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
           reviews: (json_['reviews'] as core.List?)
               ?.map((value) => GoogleMapsPlacesV1Review.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -2375,7 +2367,6 @@ class GoogleMapsPlacesV1Place {
         if (addressDescriptor != null) 'addressDescriptor': addressDescriptor!,
         if (adrFormatAddress != null) 'adrFormatAddress': adrFormatAddress!,
         if (allowsDogs != null) 'allowsDogs': allowsDogs!,
-        if (areaSummary != null) 'areaSummary': areaSummary!,
         if (attributions != null) 'attributions': attributions!,
         if (businessStatus != null) 'businessStatus': businessStatus!,
         if (containingPlaces != null) 'containingPlaces': containingPlaces!,
@@ -2388,6 +2379,8 @@ class GoogleMapsPlacesV1Place {
         if (dineIn != null) 'dineIn': dineIn!,
         if (displayName != null) 'displayName': displayName!,
         if (editorialSummary != null) 'editorialSummary': editorialSummary!,
+        if (evChargeAmenitySummary != null)
+          'evChargeAmenitySummary': evChargeAmenitySummary!,
         if (evChargeOptions != null) 'evChargeOptions': evChargeOptions!,
         if (formattedAddress != null) 'formattedAddress': formattedAddress!,
         if (fuelOptions != null) 'fuelOptions': fuelOptions!,
@@ -2410,11 +2403,14 @@ class GoogleMapsPlacesV1Place {
         if (name != null) 'name': name!,
         if (nationalPhoneNumber != null)
           'nationalPhoneNumber': nationalPhoneNumber!,
+        if (neighborhoodSummary != null)
+          'neighborhoodSummary': neighborhoodSummary!,
         if (outdoorSeating != null) 'outdoorSeating': outdoorSeating!,
         if (parkingOptions != null) 'parkingOptions': parkingOptions!,
         if (paymentOptions != null) 'paymentOptions': paymentOptions!,
         if (photos != null) 'photos': photos!,
         if (plusCode != null) 'plusCode': plusCode!,
+        if (postalAddress != null) 'postalAddress': postalAddress!,
         if (priceLevel != null) 'priceLevel': priceLevel!,
         if (priceRange != null) 'priceRange': priceRange!,
         if (primaryType != null) 'primaryType': primaryType!,
@@ -2429,6 +2425,7 @@ class GoogleMapsPlacesV1Place {
           'regularSecondaryOpeningHours': regularSecondaryOpeningHours!,
         if (reservable != null) 'reservable': reservable!,
         if (restroom != null) 'restroom': restroom!,
+        if (reviewSummary != null) 'reviewSummary': reviewSummary!,
         if (reviews != null) 'reviews': reviews!,
         if (servesBeer != null) 'servesBeer': servesBeer!,
         if (servesBreakfast != null) 'servesBreakfast': servesBreakfast!,
@@ -2545,40 +2542,6 @@ class GoogleMapsPlacesV1PlaceAddressComponent {
       };
 }
 
-/// Experimental: See
-/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-/// for more details.
-///
-/// AI-generated summary of the area that the place is in.
-class GoogleMapsPlacesV1PlaceAreaSummary {
-  /// Content blocks that compose the area summary.
-  ///
-  /// Each block has a separate topic about the area.
-  core.List<GoogleMapsPlacesV1ContentBlock>? contentBlocks;
-
-  /// A link where users can flag a problem with the summary.
-  core.String? flagContentUri;
-
-  GoogleMapsPlacesV1PlaceAreaSummary({
-    this.contentBlocks,
-    this.flagContentUri,
-  });
-
-  GoogleMapsPlacesV1PlaceAreaSummary.fromJson(core.Map json_)
-      : this(
-          contentBlocks: (json_['contentBlocks'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1ContentBlock.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          flagContentUri: json_['flagContentUri'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentBlocks != null) 'contentBlocks': contentBlocks!,
-        if (flagContentUri != null) 'flagContentUri': flagContentUri!,
-      };
-}
-
 /// Information about data providers of this place.
 class GoogleMapsPlacesV1PlaceAttribution {
   /// Name of the Place's data provider.
@@ -2629,17 +2592,86 @@ class GoogleMapsPlacesV1PlaceContainingPlace {
       };
 }
 
-/// Experimental: See
-/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-/// for more details.
+/// The summary of amenities near the EV charging station.
 ///
+/// This only applies to places with type `electric_vehicle_charging_station`.
+/// The `overview` field is guaranteed to be provided while the other fields are
+/// optional.
+class GoogleMapsPlacesV1PlaceEvChargeAmenitySummary {
+  /// A summary of the nearby coffee options.
+  GoogleMapsPlacesV1ContentBlock? coffee;
+
+  /// The AI disclosure message "Summarized with Gemini" (and its localized
+  /// variants).
+  ///
+  /// This will be in the language specified in the request if available.
+  GoogleTypeLocalizedText? disclosureText;
+
+  /// A link where users can flag a problem with the summary.
+  core.String? flagContentUri;
+
+  /// An overview of the available amenities.
+  ///
+  /// This is guaranteed to be provided.
+  GoogleMapsPlacesV1ContentBlock? overview;
+
+  /// A summary of the nearby restaurants.
+  GoogleMapsPlacesV1ContentBlock? restaurant;
+
+  /// A summary of the nearby gas stations.
+  GoogleMapsPlacesV1ContentBlock? store;
+
+  GoogleMapsPlacesV1PlaceEvChargeAmenitySummary({
+    this.coffee,
+    this.disclosureText,
+    this.flagContentUri,
+    this.overview,
+    this.restaurant,
+    this.store,
+  });
+
+  GoogleMapsPlacesV1PlaceEvChargeAmenitySummary.fromJson(core.Map json_)
+      : this(
+          coffee: json_.containsKey('coffee')
+              ? GoogleMapsPlacesV1ContentBlock.fromJson(
+                  json_['coffee'] as core.Map<core.String, core.dynamic>)
+              : null,
+          disclosureText: json_.containsKey('disclosureText')
+              ? GoogleTypeLocalizedText.fromJson(json_['disclosureText']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          flagContentUri: json_['flagContentUri'] as core.String?,
+          overview: json_.containsKey('overview')
+              ? GoogleMapsPlacesV1ContentBlock.fromJson(
+                  json_['overview'] as core.Map<core.String, core.dynamic>)
+              : null,
+          restaurant: json_.containsKey('restaurant')
+              ? GoogleMapsPlacesV1ContentBlock.fromJson(
+                  json_['restaurant'] as core.Map<core.String, core.dynamic>)
+              : null,
+          store: json_.containsKey('store')
+              ? GoogleMapsPlacesV1ContentBlock.fromJson(
+                  json_['store'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (coffee != null) 'coffee': coffee!,
+        if (disclosureText != null) 'disclosureText': disclosureText!,
+        if (flagContentUri != null) 'flagContentUri': flagContentUri!,
+        if (overview != null) 'overview': overview!,
+        if (restaurant != null) 'restaurant': restaurant!,
+        if (store != null) 'store': store!,
+      };
+}
+
 /// AI-generated summary of the place.
 class GoogleMapsPlacesV1PlaceGenerativeSummary {
-  /// The detailed description of the place.
-  GoogleTypeLocalizedText? description;
-
-  /// A link where users can flag a problem with the description summary.
-  core.String? descriptionFlagContentUri;
+  /// The AI disclosure message "Summarized with Gemini" (and its localized
+  /// variants).
+  ///
+  /// This will be in the language specified in the request if available.
+  GoogleTypeLocalizedText? disclosureText;
 
   /// The overview of the place.
   GoogleTypeLocalizedText? overview;
@@ -2647,45 +2679,31 @@ class GoogleMapsPlacesV1PlaceGenerativeSummary {
   /// A link where users can flag a problem with the overview summary.
   core.String? overviewFlagContentUri;
 
-  /// References that are used to generate the summary description.
-  GoogleMapsPlacesV1References? references;
-
   GoogleMapsPlacesV1PlaceGenerativeSummary({
-    this.description,
-    this.descriptionFlagContentUri,
+    this.disclosureText,
     this.overview,
     this.overviewFlagContentUri,
-    this.references,
   });
 
   GoogleMapsPlacesV1PlaceGenerativeSummary.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? GoogleTypeLocalizedText.fromJson(
-                  json_['description'] as core.Map<core.String, core.dynamic>)
+          disclosureText: json_.containsKey('disclosureText')
+              ? GoogleTypeLocalizedText.fromJson(json_['disclosureText']
+                  as core.Map<core.String, core.dynamic>)
               : null,
-          descriptionFlagContentUri:
-              json_['descriptionFlagContentUri'] as core.String?,
           overview: json_.containsKey('overview')
               ? GoogleTypeLocalizedText.fromJson(
                   json_['overview'] as core.Map<core.String, core.dynamic>)
               : null,
           overviewFlagContentUri:
               json_['overviewFlagContentUri'] as core.String?,
-          references: json_.containsKey('references')
-              ? GoogleMapsPlacesV1References.fromJson(
-                  json_['references'] as core.Map<core.String, core.dynamic>)
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (descriptionFlagContentUri != null)
-          'descriptionFlagContentUri': descriptionFlagContentUri!,
+        if (disclosureText != null) 'disclosureText': disclosureText!,
         if (overview != null) 'overview': overview!,
         if (overviewFlagContentUri != null)
           'overviewFlagContentUri': overviewFlagContentUri!,
-        if (references != null) 'references': references!,
       };
 }
 
@@ -2697,25 +2715,16 @@ class GoogleMapsPlacesV1PlaceGoogleMapsLinks {
   /// travel mode `DRIVE`.
   core.String? directionsUri;
 
-  /// A link to show photos of this place.
-  ///
-  /// This link is currently not supported on Google Maps Mobile and only works
-  /// on the web version of Google Maps.
+  /// A link to show reviews of this place on Google Maps.
   core.String? photosUri;
 
   /// A link to show this place.
   core.String? placeUri;
 
-  /// A link to show reviews of this place.
-  ///
-  /// This link is currently not supported on Google Maps Mobile and only works
-  /// on the web version of Google Maps.
+  /// A link to show reviews of this place on Google Maps.
   core.String? reviewsUri;
 
-  /// A link to write a review for this place.
-  ///
-  /// This link is currently not supported on Google Maps Mobile and only works
-  /// on the web version of Google Maps.
+  /// A link to write a review for this place on Google Maps.
   core.String? writeAReviewUri;
 
   GoogleMapsPlacesV1PlaceGoogleMapsLinks({
@@ -2741,6 +2750,55 @@ class GoogleMapsPlacesV1PlaceGoogleMapsLinks {
         if (placeUri != null) 'placeUri': placeUri!,
         if (reviewsUri != null) 'reviewsUri': reviewsUri!,
         if (writeAReviewUri != null) 'writeAReviewUri': writeAReviewUri!,
+      };
+}
+
+/// A summary of points of interest near the place.
+class GoogleMapsPlacesV1PlaceNeighborhoodSummary {
+  /// A detailed description of the neighborhood.
+  GoogleMapsPlacesV1ContentBlock? description;
+
+  /// The AI disclosure message "Summarized with Gemini" (and its localized
+  /// variants).
+  ///
+  /// This will be in the language specified in the request if available.
+  GoogleTypeLocalizedText? disclosureText;
+
+  /// A link where users can flag a problem with the summary.
+  core.String? flagContentUri;
+
+  /// An overview summary of the neighborhood.
+  GoogleMapsPlacesV1ContentBlock? overview;
+
+  GoogleMapsPlacesV1PlaceNeighborhoodSummary({
+    this.description,
+    this.disclosureText,
+    this.flagContentUri,
+    this.overview,
+  });
+
+  GoogleMapsPlacesV1PlaceNeighborhoodSummary.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? GoogleMapsPlacesV1ContentBlock.fromJson(
+                  json_['description'] as core.Map<core.String, core.dynamic>)
+              : null,
+          disclosureText: json_.containsKey('disclosureText')
+              ? GoogleTypeLocalizedText.fromJson(json_['disclosureText']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          flagContentUri: json_['flagContentUri'] as core.String?,
+          overview: json_.containsKey('overview')
+              ? GoogleMapsPlacesV1ContentBlock.fromJson(
+                  json_['overview'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (disclosureText != null) 'disclosureText': disclosureText!,
+        if (flagContentUri != null) 'flagContentUri': flagContentUri!,
+        if (overview != null) 'overview': overview!,
       };
 }
 
@@ -2770,9 +2828,16 @@ class GoogleMapsPlacesV1PlaceOpeningHours {
 
   /// The periods that this place is open during the week.
   ///
-  /// The periods are in chronological order, starting with Sunday in the
-  /// place-local timezone. An empty (but not absent) value indicates a place
-  /// that is never open, e.g. because it is closed temporarily for renovations.
+  /// The periods are in chronological order, in the place-local timezone. An
+  /// empty (but not absent) value indicates a place that is never open, e.g.
+  /// because it is closed temporarily for renovations. The starting day of
+  /// `periods` is NOT fixed and should not be assumed to be Sunday. The API
+  /// determines the start day based on a variety of factors. For example, for a
+  /// 24/7 business, the first period may begin on the day of the request. For
+  /// other businesses, it might be the first day of the week that they are
+  /// open. NOTE: The ordering of the `periods` array is independent of the
+  /// ordering of the `weekday_descriptions` array. Do not assume they will
+  /// begin on the same day.
   core.List<GoogleMapsPlacesV1PlaceOpeningHoursPeriod>? periods;
 
   /// A type string used to identify the type of secondary hours.
@@ -2806,8 +2871,12 @@ class GoogleMapsPlacesV1PlaceOpeningHours {
   /// Localized strings describing the opening hours of this place, one string
   /// for each day of the week.
   ///
-  /// Will be empty if the hours are unknown or could not be converted to
-  /// localized text. Example: "Sun: 18:00–06:00"
+  /// NOTE: The order of the days and the start of the week is determined by the
+  /// locale (language and region). The ordering of the `periods` array is
+  /// independent of the ordering of the `weekday_descriptions` array. Do not
+  /// assume they will begin on the same day. Will be empty if the hours are
+  /// unknown or could not be converted to localized text. Example: "Sun:
+  /// 18:00–06:00"
   core.List<core.String>? weekdayDescriptions;
 
   GoogleMapsPlacesV1PlaceOpeningHours({
@@ -3070,20 +3139,66 @@ class GoogleMapsPlacesV1PlacePaymentOptions {
 /// and compound code, replacing the prefix with a reference location.
 typedef GoogleMapsPlacesV1PlacePlusCode = $PlusCode;
 
-/// Sub destinations are specific places associated with a main place.
+/// AI-generated summary of the place using user reviews.
+class GoogleMapsPlacesV1PlaceReviewSummary {
+  /// The AI disclosure message "Summarized with Gemini" (and its localized
+  /// variants).
+  ///
+  /// This will be in the language specified in the request if available.
+  GoogleTypeLocalizedText? disclosureText;
+
+  /// A link where users can flag a problem with the summary.
+  core.String? flagContentUri;
+
+  /// A link to show reviews of this place on Google Maps.
+  core.String? reviewsUri;
+
+  /// The summary of user reviews.
+  GoogleTypeLocalizedText? text;
+
+  GoogleMapsPlacesV1PlaceReviewSummary({
+    this.disclosureText,
+    this.flagContentUri,
+    this.reviewsUri,
+    this.text,
+  });
+
+  GoogleMapsPlacesV1PlaceReviewSummary.fromJson(core.Map json_)
+      : this(
+          disclosureText: json_.containsKey('disclosureText')
+              ? GoogleTypeLocalizedText.fromJson(json_['disclosureText']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          flagContentUri: json_['flagContentUri'] as core.String?,
+          reviewsUri: json_['reviewsUri'] as core.String?,
+          text: json_.containsKey('text')
+              ? GoogleTypeLocalizedText.fromJson(
+                  json_['text'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disclosureText != null) 'disclosureText': disclosureText!,
+        if (flagContentUri != null) 'flagContentUri': flagContentUri!,
+        if (reviewsUri != null) 'reviewsUri': reviewsUri!,
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Sub-destinations are specific places associated with a main place.
 ///
-/// These provide more specific destinations for users who are searching for a
-/// large or complex place, like an airport, national park, university, or
-/// stadium. For example, sub destinations at an airport might include
-/// associated terminals and parking lots. Sub destinations return the place id
+/// These provide more specific destinations for users who are searching within
+/// a large or complex place, like an airport, national park, university, or
+/// stadium. For example, sub-destinations at an airport might include
+/// associated terminals and parking lots. Sub-destinations return the place ID
 /// and place resource name, which can be used in subsequent Place Details (New)
-/// requests to fetch richer details, including the sub destination's
-/// displayName and location.
+/// requests to fetch richer details, including the sub-destination's display
+/// name and location.
 class GoogleMapsPlacesV1PlaceSubDestination {
-  /// The place id of the sub destination.
+  /// The place id of the sub-destination.
   core.String? id;
 
-  /// The resource name of the sub destination.
+  /// The resource name of the sub-destination.
   core.String? name;
 
   GoogleMapsPlacesV1PlaceSubDestination({
@@ -3171,42 +3286,6 @@ class GoogleMapsPlacesV1PriceRange {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endPrice != null) 'endPrice': endPrice!,
         if (startPrice != null) 'startPrice': startPrice!,
-      };
-}
-
-/// Experimental: See
-/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-/// for more details.
-///
-/// Reference that the generative content is related to.
-class GoogleMapsPlacesV1References {
-  /// The list of resource names of the referenced places.
-  ///
-  /// This name can be used in other APIs that accept Place resource names.
-  core.List<core.String>? places;
-
-  /// Reviews that serve as references.
-  core.List<GoogleMapsPlacesV1Review>? reviews;
-
-  GoogleMapsPlacesV1References({
-    this.places,
-    this.reviews,
-  });
-
-  GoogleMapsPlacesV1References.fromJson(core.Map json_)
-      : this(
-          places: (json_['places'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          reviews: (json_['reviews'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1Review.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (places != null) 'places': places!,
-        if (reviews != null) 'reviews': reviews!,
       };
 }
 
@@ -4228,6 +4307,21 @@ typedef GoogleTypeLocalizedText = $GoogleTypeLocalizedText;
 
 /// Represents an amount of money with its currency type.
 typedef GoogleTypeMoney = $Money;
+
+/// Represents a postal address, such as for postal delivery or payments
+/// addresses.
+///
+/// With a postal address, a postal service can deliver items to a premise, P.O.
+/// box, or similar. A postal address is not intended to model geographical
+/// locations like roads, towns, or mountains. In typical usage, an address
+/// would be created by user input or from importing existing data, depending on
+/// the type of process. Advice on address input or editing: - Use an
+/// internationalization-ready address widget such as
+/// https://github.com/google/libaddressinput. - Users should not be presented
+/// with UI elements for input or editing of fields outside countries where that
+/// field is used. For more guidance on how to use this schema, see:
+/// https://support.google.com/business/answer/6397478.
+typedef GoogleTypePostalAddress = $PostalAddress00;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

@@ -1189,6 +1189,55 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingD
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec--;
 }
 
+core.int
+    buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest =
+    0;
+api.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest
+    buildGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest() {
+  final o =
+      api.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest <
+      3) {}
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest(
+    api.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest <
+      3) {}
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest--;
+}
+
+core.int
+    buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse =
+    0;
+api.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse
+    buildGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse() {
+  final o =
+      api.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse <
+      3) {
+    o.subscription =
+        buildGoogleCloudPaymentsResellerSubscriptionV1Subscription();
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse(
+    api.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse <
+      3) {
+    checkGoogleCloudPaymentsResellerSubscriptionV1Subscription(o.subscription!);
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse--;
+}
+
 core.int buildCounterGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod = 0;
 api.GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod
     buildGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod() {
@@ -1669,6 +1718,56 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeD
     );
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails--;
+}
+
+core.int
+    buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest =
+    0;
+api.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest
+    buildGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest() {
+  final o =
+      api.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest <
+      3) {}
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest(
+    api.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest <
+      3) {}
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest--;
+}
+
+core.int
+    buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse =
+    0;
+api.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse
+    buildGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse() {
+  final o = api
+      .GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse <
+      3) {
+    o.subscription =
+        buildGoogleCloudPaymentsResellerSubscriptionV1Subscription();
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse(
+    api.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse
+        o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse <
+      3) {
+    checkGoogleCloudPaymentsResellerSubscriptionV1Subscription(o.subscription!);
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse--;
 }
 
 core.int
@@ -2327,6 +2426,36 @@ void main() {
   });
 
   unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse(
+          od);
+    });
+  });
+
+  unittest.group(
       'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod();
@@ -2450,6 +2579,36 @@ void main() {
           api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse(
           od);
     });
   });
@@ -3139,6 +3298,136 @@ void main() {
           subscriptionId: arg_subscriptionId, $fields: arg_$fields);
       checkGoogleCloudPaymentsResellerSubscriptionV1Subscription(response
           as api.GoogleCloudPaymentsResellerSubscriptionV1Subscription);
+    });
+
+    unittest.test('method--resume', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.PaymentsResellerSubscriptionApi(mock).partners.subscriptions;
+      final arg_request =
+          buildGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest(
+            obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.resume(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse(
+          response as api
+              .GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse);
+    });
+
+    unittest.test('method--suspend', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.PaymentsResellerSubscriptionApi(mock).partners.subscriptions;
+      final arg_request =
+          buildGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest(
+            obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.suspend(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse(
+          response as api
+              .GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse);
     });
 
     unittest.test('method--undoCancel', () async {

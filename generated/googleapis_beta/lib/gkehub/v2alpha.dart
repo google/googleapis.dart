@@ -117,6 +117,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -139,12 +143,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -809,6 +815,9 @@ class ClusterUpgradeUpgradeStatus {
   /// upgrade doesn't finish within a certain limit, despite it's actual status.
   /// - "COMPLETE" : The upgrade has passed all post conditions (soaking). At
   /// the scope level, this means all eligible clusters are in COMPLETE status.
+  /// - "FORCED_COMPLETE" : The upgrade was forced into soaking and the soaking
+  /// time has passed. This is the equivalent of COMPLETE status for upgrades
+  /// that were forced into soaking.
   core.String? code;
 
   /// Reason for this status.
@@ -1440,7 +1449,7 @@ class ConfigManagementDeploymentOverride {
   /// Required.
   core.String? deploymentName;
 
-  /// The namespace of the deployment resource to be overridden..
+  /// The namespace of the deployment resource to be overridden.
   ///
   /// Required.
   core.String? deploymentNamespace;
@@ -2486,6 +2495,9 @@ class FeatureSpec {
   /// Policycontroller-specific FeatureSpec.
   PolicyControllerSpec? policycontroller;
 
+  /// Rbacrolebindingactuation-specific FeatureSpec.
+  RBACRoleBindingActuationSpec? rbacrolebindingactuation;
+
   /// ServiceMesh Feature Spec.
   ServiceMeshSpec? servicemesh;
 
@@ -2498,6 +2510,7 @@ class FeatureSpec {
     this.identityservice,
     this.origin,
     this.policycontroller,
+    this.rbacrolebindingactuation,
     this.servicemesh,
     this.workloadcertificate,
   });
@@ -2524,6 +2537,12 @@ class FeatureSpec {
               ? PolicyControllerSpec.fromJson(json_['policycontroller']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          rbacrolebindingactuation:
+              json_.containsKey('rbacrolebindingactuation')
+                  ? RBACRoleBindingActuationSpec.fromJson(
+                      json_['rbacrolebindingactuation']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           servicemesh: json_.containsKey('servicemesh')
               ? ServiceMeshSpec.fromJson(
                   json_['servicemesh'] as core.Map<core.String, core.dynamic>)
@@ -2540,6 +2559,8 @@ class FeatureSpec {
         if (identityservice != null) 'identityservice': identityservice!,
         if (origin != null) 'origin': origin!,
         if (policycontroller != null) 'policycontroller': policycontroller!,
+        if (rbacrolebindingactuation != null)
+          'rbacrolebindingactuation': rbacrolebindingactuation!,
         if (servicemesh != null) 'servicemesh': servicemesh!,
         if (workloadcertificate != null)
           'workloadcertificate': workloadcertificate!,
@@ -2567,6 +2588,9 @@ class FeatureState {
   /// Policy Controller state
   PolicyControllerState? policycontroller;
 
+  /// RBAC Role Binding Actuation state
+  RBACRoleBindingActuationState? rbacrolebindingactuation;
+
   /// Service mesh state
   ServiceMeshState? servicemesh;
 
@@ -2580,6 +2604,7 @@ class FeatureState {
     this.identityservice,
     this.metering,
     this.policycontroller,
+    this.rbacrolebindingactuation,
     this.servicemesh,
     this.state,
   });
@@ -2610,6 +2635,12 @@ class FeatureState {
               ? PolicyControllerState.fromJson(json_['policycontroller']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          rbacrolebindingactuation:
+              json_.containsKey('rbacrolebindingactuation')
+                  ? RBACRoleBindingActuationState.fromJson(
+                      json_['rbacrolebindingactuation']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           servicemesh: json_.containsKey('servicemesh')
               ? ServiceMeshState.fromJson(
                   json_['servicemesh'] as core.Map<core.String, core.dynamic>)
@@ -2627,6 +2658,8 @@ class FeatureState {
         if (identityservice != null) 'identityservice': identityservice!,
         if (metering != null) 'metering': metering!,
         if (policycontroller != null) 'policycontroller': policycontroller!,
+        if (rbacrolebindingactuation != null)
+          'rbacrolebindingactuation': rbacrolebindingactuation!,
         if (servicemesh != null) 'servicemesh': servicemesh!,
         if (state != null) 'state': state!,
       };
@@ -4447,6 +4480,84 @@ class PolicyControllerToleration {
       };
 }
 
+/// RBACRoleBindingState is the status of an RBACRoleBinding which exists on a
+/// membership.
+class RBACRoleBindingActuationRBACRoleBindingState {
+  /// The reason for the failure.
+  core.String? description;
+
+  /// The state of the RBACRoleBinding.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ROLE_BINDING_STATE_UNSPECIFIED" : Unspecified state.
+  /// - "OK" : RBACRoleBinding is created properly on the cluster.
+  /// - "CUSTOM_ROLE_MISSING_FROM_CLUSTER" : The RBACRoleBinding was created on
+  /// the cluster but the specified custom role does not exist on the cluster,
+  /// hence the RBACRoleBinding has no effect.
+  core.String? state;
+
+  /// The time the RBACRoleBinding status was last updated.
+  core.String? updateTime;
+
+  RBACRoleBindingActuationRBACRoleBindingState({
+    this.description,
+    this.state,
+    this.updateTime,
+  });
+
+  RBACRoleBindingActuationRBACRoleBindingState.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// **RBAC RoleBinding Actuation**: The membership-specific input for
+/// RBACRoleBindingActuation feature.
+typedef RBACRoleBindingActuationSpec = $Empty;
+
+/// **RBAC RoleBinding Actuation**: A membership-specific Feature state for the
+/// RBACRoleBindingActuation fleet feature.
+class RBACRoleBindingActuationState {
+  /// The state of RBACRoleBindings using custom roles that exist on the
+  /// cluster, keyed by RBACRoleBinding resource name with format:
+  /// projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}.
+  ///
+  /// Output only.
+  core.Map<core.String, RBACRoleBindingActuationRBACRoleBindingState>?
+      rbacrolebindingStates;
+
+  RBACRoleBindingActuationState({
+    this.rbacrolebindingStates,
+  });
+
+  RBACRoleBindingActuationState.fromJson(core.Map json_)
+      : this(
+          rbacrolebindingStates: (json_['rbacrolebindingStates']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              RBACRoleBindingActuationRBACRoleBindingState.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rbacrolebindingStates != null)
+          'rbacrolebindingStates': rbacrolebindingStates!,
+      };
+}
+
 /// AnalysisMessage is a single message produced by an analyzer, and it used to
 /// communicate to the end user about the state of their Service Mesh
 /// configuration.
@@ -4599,6 +4710,12 @@ class ServiceMeshCondition {
   /// - "QUOTA_EXCEEDED_TCP_FILTERS" : TCPFilter quota exceeded error code.
   /// - "QUOTA_EXCEEDED_NETWORK_ENDPOINT_GROUPS" : NetworkEndpointGroup quota
   /// exceeded error code.
+  /// - "LEGACY_MC_SECRETS" : Legacy istio secrets found for multicluster error
+  /// code
+  /// - "WORKLOAD_IDENTITY_REQUIRED" : Workload identity required error code
+  /// - "NON_STANDARD_BINARY_USAGE" : Non-standard binary usage error code
+  /// - "UNSUPPORTED_GATEWAY_CLASS" : Unsupported gateway class error code
+  /// - "MANAGED_CNI_NOT_ENABLED" : Managed CNI not enabled error code
   /// - "MODERNIZATION_SCHEDULED" : Modernization is scheduled for a cluster.
   /// - "MODERNIZATION_IN_PROGRESS" : Modernization is in progress for a
   /// cluster.
@@ -4678,6 +4795,8 @@ class ServiceMeshControlPlaneManagement {
   /// migrate workloads to a new control plane revision.)
   /// - "DEGRADED" : DEGRADED means that the component is ready, but operating
   /// in a degraded state.
+  /// - "DEPROVISIONING" : DEPROVISIONING means that deprovisioning is in
+  /// progress.
   core.String? state;
 
   ServiceMeshControlPlaneManagement({
@@ -4724,6 +4843,8 @@ class ServiceMeshDataPlaneManagement {
   /// migrate workloads to a new control plane revision.)
   /// - "DEGRADED" : DEGRADED means that the component is ready, but operating
   /// in a degraded state.
+  /// - "DEPROVISIONING" : DEPROVISIONING means that deprovisioning is in
+  /// progress.
   core.String? state;
 
   ServiceMeshDataPlaneManagement({
@@ -4796,6 +4917,8 @@ class ServiceMeshSpec {
   /// cluster.
   /// - "MANAGEMENT_MANUAL" : User will manually configure their service mesh
   /// components.
+  /// - "MANAGEMENT_NOT_INSTALLED" : Google should remove any managed Service
+  /// Mesh components from this cluster and deprovision any resources.
   core.String? management;
 
   ServiceMeshSpec({

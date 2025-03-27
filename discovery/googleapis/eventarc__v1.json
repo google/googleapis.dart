@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250228",
+    "revision": "20250624",
     "rootUrl": "https://eventarc.googleapis.com/",
     "servicePath": "",
     "title": "Eventarc API",
@@ -172,6 +172,12 @@
                                 "name"
                             ],
                             "parameters": {
+                                "extraLocationTypes": {
+                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "filter": {
                                     "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
@@ -2751,7 +2757,7 @@
                     "type": "object"
                 },
                 "messageBus": {
-                    "description": "Required. Resource name of the message bus identifying the source of the messages. It matches the form projects/{project}/locations/{location}/messageBuses/{messageBus}.",
+                    "description": "Required. Immutable. Resource name of the message bus identifying the source of the messages. It matches the form projects/{project}/locations/{location}/messageBuses/{messageBus}.",
                     "type": "string"
                 },
                 "name": {
@@ -2968,6 +2974,13 @@
                 "cryptoKeyName": {
                     "description": "Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.",
                     "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Resource labels.",
+                    "type": "object"
                 },
                 "name": {
                     "description": "Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`. In API responses, the config name always includes the projectID, regardless of whether the projectID or projectNumber was provided.",
@@ -3768,6 +3781,11 @@
                 "retryPolicy": {
                     "$ref": "GoogleCloudEventarcV1PipelineRetryPolicy",
                     "description": "Optional. The retry policy to use in the pipeline."
+                },
+                "satisfiesPzs": {
+                    "description": "Output only. Whether or not this Pipeline satisfies the requirements of physical zone separation",
+                    "readOnly": true,
+                    "type": "boolean"
                 },
                 "uid": {
                     "description": "Output only. Server-assigned unique identifier for the Pipeline. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.",

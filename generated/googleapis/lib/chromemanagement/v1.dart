@@ -28,12 +28,14 @@
 ///     - [CustomersAppsChromeResource]
 ///     - [CustomersAppsWebResource]
 ///   - [CustomersProfilesResource]
+///     - [CustomersProfilesCommandsResource]
 ///   - [CustomersReportsResource]
 ///   - [CustomersTelemetryResource]
 ///     - [CustomersTelemetryDevicesResource]
 ///     - [CustomersTelemetryEventsResource]
 ///     - [CustomersTelemetryNotificationConfigsResource]
 ///     - [CustomersTelemetryUsersResource]
+///   - [CustomersThirdPartyProfileUsersResource]
 library;
 
 import 'dart:async' as async;
@@ -97,6 +99,8 @@ class CustomersResource {
   CustomersReportsResource get reports => CustomersReportsResource(_requester);
   CustomersTelemetryResource get telemetry =>
       CustomersTelemetryResource(_requester);
+  CustomersThirdPartyProfileUsersResource get thirdPartyProfileUsers =>
+      CustomersThirdPartyProfileUsersResource(_requester);
 
   CustomersResource(commons.ApiRequester client) : _requester = client;
 }
@@ -438,6 +442,9 @@ class CustomersAppsWebResource {
 class CustomersProfilesResource {
   final commons.ApiRequester _requester;
 
+  CustomersProfilesCommandsResource get commands =>
+      CustomersProfilesCommandsResource(_requester);
+
   CustomersProfilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the data collected from a Chrome browser profile.
@@ -527,28 +534,29 @@ class CustomersProfilesResource {
   /// - last_activity_time - last_policy_sync_time - last_status_report_time -
   /// first_enrollment_time - os_platform_type - os_version - browser_version -
   /// browser_channel - policy_count - extension_count - identity_provider -
-  /// affiliation_state - ouId Any of the above fields can be used to specify a
-  /// filter, and filtering by multiple fields is supported with AND operator.
-  /// String type fields and enum type fields support '=' and '!=' operators.
-  /// The integer type and the timestamp type fields support '=', '!=', '\<',
-  /// '\>', '\<=' and '\>=' operators. Timestamps expect an RFC-3339 formatted
-  /// string (e.g. 2012-04-21T11:30:00-04:00). Wildcard '*' can be used with a
-  /// string type field filter. In addition, string literal filtering is also
-  /// supported, for example, 'ABC' as a filter maps to a filter that checks if
-  /// any of the filterable string type fields contains 'ABC'. Organization unit
-  /// number can be used as a filtering criteria here by specifying 'ouId =
-  /// ${your_org_unit_id}', please note that only single OU ID matching is
-  /// supported.
+  /// affiliation_state - os_platform_version - ouId Any of the above fields can
+  /// be used to specify a filter, and filtering by multiple fields is supported
+  /// with AND operator. String type fields and enum type fields support '=' and
+  /// '!=' operators. The integer type and the timestamp type fields support
+  /// '=', '!=', '\<', '\>', '\<=' and '\>=' operators. Timestamps expect an
+  /// RFC-3339 formatted string (e.g. 2012-04-21T11:30:00-04:00). Wildcard '*'
+  /// can be used with a string type field filter. In addition, string literal
+  /// filtering is also supported, for example, 'ABC' as a filter maps to a
+  /// filter that checks if any of the filterable string type fields contains
+  /// 'ABC'. Organization unit number can be used as a filtering criteria here
+  /// by specifying 'ouId = ${your_org_unit_id}', please note that only single
+  /// OU ID matching is supported.
   ///
   /// [orderBy] - Optional. The fields used to specify the ordering of the
   /// results. The supported fields are: - profile_id - display_name -
   /// user_email - last_activity_time - last_policy_sync_time -
   /// last_status_report_time - first_enrollment_time - os_platform_type -
   /// os_version - browser_version - browser_channel - policy_count -
-  /// extension_count - identity_provider - affiliation_state By default,
-  /// sorting is in ascending order, to specify descending order for a field, a
-  /// suffix " desc" should be added to the field name. The default ordering is
-  /// the descending order of last_status_report_time.
+  /// extension_count - identity_provider - affiliation_state -
+  /// os_platform_version By default, sorting is in ascending order, to specify
+  /// descending order for a field, a suffix " desc" should be added to the
+  /// field name. The default ordering is the descending order of
+  /// last_status_report_time.
   ///
   /// [pageSize] - Optional. The maximum number of profiles to return. The
   /// default page size is 100 if page_size is unspecified, and the maximum page
@@ -594,6 +602,147 @@ class CustomersProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CustomersProfilesCommandsResource {
+  final commons.ApiRequester _requester;
+
+  CustomersProfilesCommandsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Chrome browser profile remote command.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format:
+  /// customers/{customer_id}/profiles/{profile_permanent_id}
+  /// Value must have pattern `^customers/\[^/\]+/profiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>
+      create(
+    GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/commands';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a Chrome browser profile remote command.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// customers/{customer_id}/profiles/{profile_permanent_id}/commands/{command_id}
+  /// Value must have pattern
+  /// `^customers/\[^/\]+/profiles/\[^/\]+/commands/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists remote commands of a Chrome browser profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format:
+  /// customers/{customer_id}/profiles/{profile_permanent_id}
+  /// Value must have pattern `^customers/\[^/\]+/profiles/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of commands to return. The
+  /// default page size is 100 if page_size is unspecified, and the maximum page
+  /// size allowed is 100.
+  ///
+  /// [pageToken] - Optional. The page token used to retrieve a specific page of
+  /// the listing request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse>
+      list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/commands';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1239,7 +1388,8 @@ class CustomersReportsResource {
   /// the 32-character id (e.g. ehoadneljpdggcbbknedodolkkjodefl). For Android
   /// apps, the package name (e.g. com.evernote).
   ///
-  /// [appType] - Type of the app.
+  /// [appType] - Type of the app. Optional. If not provided, an app type will
+  /// be inferred from the format of the app ID.
   /// Possible string values are:
   /// - "APP_TYPE_UNSPECIFIED" : App type not specified.
   /// - "EXTENSION" : Chrome extension.
@@ -1488,7 +1638,8 @@ class CustomersTelemetryEventsResource {
   /// usb_peripherals_event - https_latency_change_event -
   /// network_state_change_event - wifi_signal_strength_event -
   /// vpn_connection_state_change_event - app_install_event -
-  /// app_uninstall_event - app_launch_event - os_crash_event
+  /// app_uninstall_event - app_launch_event - os_crash_event -
+  /// external_displays_event
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1782,6 +1933,61 @@ class CustomersTelemetryUsersResource {
   }
 }
 
+class CustomersThirdPartyProfileUsersResource {
+  final commons.ApiRequester _requester;
+
+  CustomersThirdPartyProfileUsersResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Moves a third party chrome profile user to a destination OU.
+  ///
+  /// All profiles associated to that user will be moved to the destination OU.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id}
+  /// Value must have pattern
+  /// `^customers/\[^/\]+/thirdPartyProfileUsers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async
+      .Future<GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse>
+      move(
+    GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':move';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Android app information.
 class GoogleChromeManagementV1AndroidAppInfo {
   /// Permissions requested by an Android app.
@@ -2068,22 +2274,22 @@ class GoogleChromeManagementV1AppUsageData {
   /// Possible string values are:
   /// - "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED" : Application type unknown.
   /// - "APPLICATION_TYPE_ARC" : Application type arc (Android app).
-  /// - "APPLICATION_TYPE_BUILT_IN" : Deprecated. This vaule is no longer used.
+  /// - "APPLICATION_TYPE_BUILT_IN" : Deprecated. This value is no longer used.
   /// Application type built-in.
   /// - "APPLICATION_TYPE_CROSTINI" : Application type Linux (via Crostini).
   /// - "APPLICATION_TYPE_CHROME_APP" : Application type Chrome app.
   /// - "APPLICATION_TYPE_WEB" : Application type web.
   /// - "APPLICATION_TYPE_MAC_OS" : Application type Mac OS.
   /// - "APPLICATION_TYPE_PLUGIN_VM" : Application type Plugin VM.
-  /// - "APPLICATION_TYPE_STANDALONE_BROWSER" : Deprecated. This vaule is no
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER" : Deprecated. This value is no
   /// longer used. Application type standalone browser (Lacros browser app).
   /// - "APPLICATION_TYPE_REMOTE" : Application type remote.
   /// - "APPLICATION_TYPE_BOREALIS" : Application type borealis.
   /// - "APPLICATION_TYPE_SYSTEM_WEB" : Application type system web.
   /// - "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP" : Deprecated. This
-  /// vaule is no longer used. Application type standalone browser chrome app.
+  /// value is no longer used. Application type standalone browser chrome app.
   /// - "APPLICATION_TYPE_EXTENSION" : Application type extension.
-  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION" : Deprecated. This vaule
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION" : Deprecated. This value
   /// is no longer used. Application type standalone browser extension.
   /// - "APPLICATION_TYPE_BRUSCHETTA" : Application type bruschetta.
   core.String? appType;
@@ -2515,7 +2721,6 @@ class GoogleChromeManagementV1BrowserVersion {
   /// - "DEV" : Dev release channel.
   /// - "BETA" : Beta release channel.
   /// - "STABLE" : Stable release channel.
-  /// - "LTS" : Long-term support release channel.
   core.String? channel;
 
   /// Count grouped by device_system and major version
@@ -2609,6 +2814,11 @@ class GoogleChromeManagementV1ChromeAppInfo {
   /// Output only.
   core.bool? kioskEnabled;
 
+  /// The version of this extension's manifest.
+  ///
+  /// Output only.
+  core.String? manifestVersion;
+
   /// The minimum number of users using this app.
   ///
   /// Output only.
@@ -2655,6 +2865,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
     this.isKioskOnly,
     this.isTheme,
     this.kioskEnabled,
+    this.manifestVersion,
     this.minUserCount,
     this.permissions,
     this.siteAccess,
@@ -2671,6 +2882,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
           isKioskOnly: json_['isKioskOnly'] as core.bool?,
           isTheme: json_['isTheme'] as core.bool?,
           kioskEnabled: json_['kioskEnabled'] as core.bool?,
+          manifestVersion: json_['manifestVersion'] as core.String?,
           minUserCount: json_['minUserCount'] as core.int?,
           permissions: (json_['permissions'] as core.List?)
               ?.map((value) =>
@@ -2694,6 +2906,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
         if (isKioskOnly != null) 'isKioskOnly': isKioskOnly!,
         if (isTheme != null) 'isTheme': isTheme!,
         if (kioskEnabled != null) 'kioskEnabled': kioskEnabled!,
+        if (manifestVersion != null) 'manifestVersion': manifestVersion!,
         if (minUserCount != null) 'minUserCount': minUserCount!,
         if (permissions != null) 'permissions': permissions!,
         if (siteAccess != null) 'siteAccess': siteAccess!,
@@ -3763,6 +3976,11 @@ class GoogleChromeManagementV1DisplayDevice {
   /// Output only.
   core.int? displayWidthMm;
 
+  /// EDID version.
+  ///
+  /// Output only.
+  core.String? edidVersion;
+
   /// Is display internal or not.
   ///
   /// Output only.
@@ -3783,14 +4001,21 @@ class GoogleChromeManagementV1DisplayDevice {
   /// Output only.
   core.int? modelId;
 
+  /// Serial number.
+  ///
+  /// Output only.
+  core.int? serialNumber;
+
   GoogleChromeManagementV1DisplayDevice({
     this.displayHeightMm,
     this.displayName,
     this.displayWidthMm,
+    this.edidVersion,
     this.internal,
     this.manufactureYear,
     this.manufacturerId,
     this.modelId,
+    this.serialNumber,
   });
 
   GoogleChromeManagementV1DisplayDevice.fromJson(core.Map json_)
@@ -3798,20 +4023,24 @@ class GoogleChromeManagementV1DisplayDevice {
           displayHeightMm: json_['displayHeightMm'] as core.int?,
           displayName: json_['displayName'] as core.String?,
           displayWidthMm: json_['displayWidthMm'] as core.int?,
+          edidVersion: json_['edidVersion'] as core.String?,
           internal: json_['internal'] as core.bool?,
           manufactureYear: json_['manufactureYear'] as core.int?,
           manufacturerId: json_['manufacturerId'] as core.String?,
           modelId: json_['modelId'] as core.int?,
+          serialNumber: json_['serialNumber'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayHeightMm != null) 'displayHeightMm': displayHeightMm!,
         if (displayName != null) 'displayName': displayName!,
         if (displayWidthMm != null) 'displayWidthMm': displayWidthMm!,
+        if (edidVersion != null) 'edidVersion': edidVersion!,
         if (internal != null) 'internal': internal!,
         if (manufactureYear != null) 'manufactureYear': manufactureYear!,
         if (manufacturerId != null) 'manufacturerId': manufacturerId!,
         if (modelId != null) 'modelId': modelId!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
       };
 }
 
@@ -3826,6 +4055,11 @@ class GoogleChromeManagementV1DisplayInfo {
   ///
   /// Output only.
   core.String? displayName;
+
+  /// EDID version.
+  ///
+  /// Output only.
+  core.String? edidVersion;
 
   /// Indicates if display is internal or not.
   ///
@@ -3847,32 +4081,43 @@ class GoogleChromeManagementV1DisplayInfo {
   /// Output only.
   core.int? resolutionWidth;
 
+  /// Serial number.
+  ///
+  /// Output only.
+  core.int? serialNumber;
+
   GoogleChromeManagementV1DisplayInfo({
     this.deviceId,
     this.displayName,
+    this.edidVersion,
     this.isInternal,
     this.refreshRate,
     this.resolutionHeight,
     this.resolutionWidth,
+    this.serialNumber,
   });
 
   GoogleChromeManagementV1DisplayInfo.fromJson(core.Map json_)
       : this(
           deviceId: json_['deviceId'] as core.String?,
           displayName: json_['displayName'] as core.String?,
+          edidVersion: json_['edidVersion'] as core.String?,
           isInternal: json_['isInternal'] as core.bool?,
           refreshRate: json_['refreshRate'] as core.int?,
           resolutionHeight: json_['resolutionHeight'] as core.int?,
           resolutionWidth: json_['resolutionWidth'] as core.int?,
+          serialNumber: json_['serialNumber'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (displayName != null) 'displayName': displayName!,
+        if (edidVersion != null) 'edidVersion': edidVersion!,
         if (isInternal != null) 'isInternal': isInternal!,
         if (refreshRate != null) 'refreshRate': refreshRate!,
         if (resolutionHeight != null) 'resolutionHeight': resolutionHeight!,
         if (resolutionWidth != null) 'resolutionWidth': resolutionWidth!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
       };
 }
 
@@ -4198,6 +4443,7 @@ class GoogleChromeManagementV1HeartbeatStatusReport {
   /// - "UNKNOWN" : Device is not eligible for heartbeat monitoring
   /// - "ONLINE" : Device is online
   /// - "OFFLINE" : Device is offline
+  /// - "DEVICE_OUTDATED" : Device is outdated
   core.String? state;
 
   GoogleChromeManagementV1HeartbeatStatusReport({
@@ -5362,6 +5608,7 @@ class GoogleChromeManagementV1RiskAssessmentEntry {
   /// is specified.
   /// - "RISK_ASSESSMENT_PROVIDER_CRXCAVATOR" : CRXcavator.
   /// - "RISK_ASSESSMENT_PROVIDER_SPIN_AI" : Spin.Ai.
+  /// - "RISK_ASSESSMENT_PROVIDER_LAYERX" : LayerX Security.
   core.String? provider;
 
   /// The details of the provider's risk assessment.
@@ -5632,22 +5879,22 @@ class GoogleChromeManagementV1TelemetryAppInstallEvent {
   /// Possible string values are:
   /// - "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED" : Application type unknown.
   /// - "APPLICATION_TYPE_ARC" : Application type arc (Android app).
-  /// - "APPLICATION_TYPE_BUILT_IN" : Deprecated. This vaule is no longer used.
+  /// - "APPLICATION_TYPE_BUILT_IN" : Deprecated. This value is no longer used.
   /// Application type built-in.
   /// - "APPLICATION_TYPE_CROSTINI" : Application type Linux (via Crostini).
   /// - "APPLICATION_TYPE_CHROME_APP" : Application type Chrome app.
   /// - "APPLICATION_TYPE_WEB" : Application type web.
   /// - "APPLICATION_TYPE_MAC_OS" : Application type Mac OS.
   /// - "APPLICATION_TYPE_PLUGIN_VM" : Application type Plugin VM.
-  /// - "APPLICATION_TYPE_STANDALONE_BROWSER" : Deprecated. This vaule is no
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER" : Deprecated. This value is no
   /// longer used. Application type standalone browser (Lacros browser app).
   /// - "APPLICATION_TYPE_REMOTE" : Application type remote.
   /// - "APPLICATION_TYPE_BOREALIS" : Application type borealis.
   /// - "APPLICATION_TYPE_SYSTEM_WEB" : Application type system web.
   /// - "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP" : Deprecated. This
-  /// vaule is no longer used. Application type standalone browser chrome app.
+  /// value is no longer used. Application type standalone browser chrome app.
   /// - "APPLICATION_TYPE_EXTENSION" : Application type extension.
-  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION" : Deprecated. This vaule
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION" : Deprecated. This value
   /// is no longer used. Application type standalone browser extension.
   /// - "APPLICATION_TYPE_BRUSCHETTA" : Application type bruschetta.
   core.String? appType;
@@ -5778,22 +6025,22 @@ class GoogleChromeManagementV1TelemetryAppLaunchEvent {
   /// Possible string values are:
   /// - "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED" : Application type unknown.
   /// - "APPLICATION_TYPE_ARC" : Application type arc (Android app).
-  /// - "APPLICATION_TYPE_BUILT_IN" : Deprecated. This vaule is no longer used.
+  /// - "APPLICATION_TYPE_BUILT_IN" : Deprecated. This value is no longer used.
   /// Application type built-in.
   /// - "APPLICATION_TYPE_CROSTINI" : Application type Linux (via Crostini).
   /// - "APPLICATION_TYPE_CHROME_APP" : Application type Chrome app.
   /// - "APPLICATION_TYPE_WEB" : Application type web.
   /// - "APPLICATION_TYPE_MAC_OS" : Application type Mac OS.
   /// - "APPLICATION_TYPE_PLUGIN_VM" : Application type Plugin VM.
-  /// - "APPLICATION_TYPE_STANDALONE_BROWSER" : Deprecated. This vaule is no
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER" : Deprecated. This value is no
   /// longer used. Application type standalone browser (Lacros browser app).
   /// - "APPLICATION_TYPE_REMOTE" : Application type remote.
   /// - "APPLICATION_TYPE_BOREALIS" : Application type borealis.
   /// - "APPLICATION_TYPE_SYSTEM_WEB" : Application type system web.
   /// - "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP" : Deprecated. This
-  /// vaule is no longer used. Application type standalone browser chrome app.
+  /// value is no longer used. Application type standalone browser chrome app.
   /// - "APPLICATION_TYPE_EXTENSION" : Application type extension.
-  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION" : Deprecated. This vaule
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION" : Deprecated. This value
   /// is no longer used. Application type standalone browser extension.
   /// - "APPLICATION_TYPE_BRUSCHETTA" : Application type bruschetta.
   core.String? appType;
@@ -5830,22 +6077,22 @@ class GoogleChromeManagementV1TelemetryAppUninstallEvent {
   /// Possible string values are:
   /// - "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED" : Application type unknown.
   /// - "APPLICATION_TYPE_ARC" : Application type arc (Android app).
-  /// - "APPLICATION_TYPE_BUILT_IN" : Deprecated. This vaule is no longer used.
+  /// - "APPLICATION_TYPE_BUILT_IN" : Deprecated. This value is no longer used.
   /// Application type built-in.
   /// - "APPLICATION_TYPE_CROSTINI" : Application type Linux (via Crostini).
   /// - "APPLICATION_TYPE_CHROME_APP" : Application type Chrome app.
   /// - "APPLICATION_TYPE_WEB" : Application type web.
   /// - "APPLICATION_TYPE_MAC_OS" : Application type Mac OS.
   /// - "APPLICATION_TYPE_PLUGIN_VM" : Application type Plugin VM.
-  /// - "APPLICATION_TYPE_STANDALONE_BROWSER" : Deprecated. This vaule is no
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER" : Deprecated. This value is no
   /// longer used. Application type standalone browser (Lacros browser app).
   /// - "APPLICATION_TYPE_REMOTE" : Application type remote.
   /// - "APPLICATION_TYPE_BOREALIS" : Application type borealis.
   /// - "APPLICATION_TYPE_SYSTEM_WEB" : Application type system web.
   /// - "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP" : Deprecated. This
-  /// vaule is no longer used. Application type standalone browser chrome app.
+  /// value is no longer used. Application type standalone browser chrome app.
   /// - "APPLICATION_TYPE_EXTENSION" : Application type extension.
-  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION" : Deprecated. This vaule
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION" : Deprecated. This value
   /// is no longer used. Application type standalone browser extension.
   /// - "APPLICATION_TYPE_BRUSCHETTA" : Application type bruschetta.
   core.String? appType;
@@ -6335,6 +6582,10 @@ class GoogleChromeManagementV1TelemetryEvent {
   /// - "APP_UNINSTALLED" : Triggered when an app is uninstalled.
   /// - "APP_LAUNCHED" : Triggered when an app is launched.
   /// - "OS_CRASH" : Triggered when a crash occurs.
+  /// - "EXTERNAL_DISPLAY_CONNECTED" : Triggered when an external display is
+  /// connected.
+  /// - "EXTERNAL_DISPLAY_DISCONNECTED" : Triggered when an external display is
+  /// disconnected.
   core.String? eventType;
 
   /// Payload for HTTPS latency change event.
@@ -6357,6 +6608,13 @@ class GoogleChromeManagementV1TelemetryEvent {
   /// Output only.
   GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent?
       networkStateChangeEvent;
+
+  /// Payload for OS crash event.
+  ///
+  /// Present only when `event_type` is `OS_CRASH`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryOsCrashEvent? osCrashEvent;
 
   /// Timestamp that represents when the event was reported.
   core.String? reportTime;
@@ -6401,6 +6659,7 @@ class GoogleChromeManagementV1TelemetryEvent {
     this.httpsLatencyChangeEvent,
     this.name,
     this.networkStateChangeEvent,
+    this.osCrashEvent,
     this.reportTime,
     this.usbPeripheralsEvent,
     this.user,
@@ -6447,6 +6706,10 @@ class GoogleChromeManagementV1TelemetryEvent {
                   .fromJson(json_['networkStateChangeEvent']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          osCrashEvent: json_.containsKey('osCrashEvent')
+              ? GoogleChromeManagementV1TelemetryOsCrashEvent.fromJson(
+                  json_['osCrashEvent'] as core.Map<core.String, core.dynamic>)
+              : null,
           reportTime: json_['reportTime'] as core.String?,
           usbPeripheralsEvent: json_.containsKey('usbPeripheralsEvent')
               ? GoogleChromeManagementV1TelemetryUsbPeripheralsEvent.fromJson(
@@ -6483,6 +6746,7 @@ class GoogleChromeManagementV1TelemetryEvent {
         if (name != null) 'name': name!,
         if (networkStateChangeEvent != null)
           'networkStateChangeEvent': networkStateChangeEvent!,
+        if (osCrashEvent != null) 'osCrashEvent': osCrashEvent!,
         if (reportTime != null) 'reportTime': reportTime!,
         if (usbPeripheralsEvent != null)
           'usbPeripheralsEvent': usbPeripheralsEvent!,
@@ -6723,6 +6987,47 @@ class GoogleChromeManagementV1TelemetryNotificationFilter {
           'telemetryEventNotificationFilter': telemetryEventNotificationFilter!,
         if (userEmail != null) 'userEmail': userEmail!,
         if (userOrgUnitId != null) 'userOrgUnitId': userOrgUnitId!,
+      };
+}
+
+/// OS crash data.
+class GoogleChromeManagementV1TelemetryOsCrashEvent {
+  /// Crash id.
+  core.String? crashId;
+
+  /// Crash type.
+  /// Possible string values are:
+  /// - "CRASH_TYPE_UNSPECIFIED" : Crash type unknown.
+  /// - "CRASH_TYPE_KERNEL" : Kernel crash.
+  /// - "CRASH_TYPE_EMBEDDED_CONTROLLER" : Embedded controller crash.
+  core.String? crashType;
+
+  /// Session type.
+  /// Possible string values are:
+  /// - "SESSION_TYPE_UNSPECIFIED" : Session type unknown.
+  /// - "SESSION_TYPE_SIGNED_IN_USER" : Signed in user.
+  /// - "SESSION_TYPE_KIOSK" : Kiosk.
+  /// - "SESSION_TYPE_MANAGED_GUEST" : Managed guest session.
+  /// - "SESSION_TYPE_ACTIVE_DIRECTORY" : Active directory session.
+  core.String? sessionType;
+
+  GoogleChromeManagementV1TelemetryOsCrashEvent({
+    this.crashId,
+    this.crashType,
+    this.sessionType,
+  });
+
+  GoogleChromeManagementV1TelemetryOsCrashEvent.fromJson(core.Map json_)
+      : this(
+          crashId: json_['crashId'] as core.String?,
+          crashType: json_['crashType'] as core.String?,
+          sessionType: json_['sessionType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (crashId != null) 'crashId': crashId!,
+        if (crashType != null) 'crashType': crashType!,
+        if (sessionType != null) 'sessionType': sessionType!,
       };
 }
 
@@ -7442,9 +7747,8 @@ class GoogleChromeManagementVersionsV1ChromeBrowserProfile {
   /// Output only.
   core.String? osPlatformType;
 
-  /// Major OS version of the device on which the profile exists.
-  ///
-  /// (i.e. Windows 10)
+  /// Major OS platform version of the device on which the profile exists, from
+  /// profile reporting.
   ///
   /// Output only.
   core.String? osPlatformVersion;
@@ -7594,6 +7898,143 @@ class GoogleChromeManagementVersionsV1ChromeBrowserProfile {
       };
 }
 
+/// A representation of a remote command for a Chrome browser profile.
+class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand {
+  /// Result of the remote command.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult?
+      commandResult;
+
+  /// State of the remote command.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMMAND_STATE_UNSPECIFIED" : Represents an unspecified command state.
+  /// - "PENDING" : Represents a command in a pending state.
+  /// - "EXPIRED" : Represents a command that has expired.
+  /// - "EXECUTED_BY_CLIENT" : Represents a command that has been executed by
+  /// the client.
+  core.String? commandState;
+
+  /// Type of the remote command.
+  ///
+  /// The only supported command_type is "clearBrowsingData".
+  ///
+  /// Required.
+  core.String? commandType;
+
+  /// Timestamp of the issurance of the remote command.
+  ///
+  /// Output only.
+  core.String? issueTime;
+
+  /// Identifier.
+  ///
+  /// Format:
+  /// customers/{customer_id}/profiles/{profile_permanent_id}/commands/{command_id}
+  core.String? name;
+
+  /// Payload of the remote command.
+  ///
+  /// The payload for "clearBrowsingData" command supports: - fields
+  /// "clearCache" and "clearCookies" - values of boolean type.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? payload;
+
+  /// Valid duration of the remote command.
+  ///
+  /// Output only.
+  core.String? validDuration;
+
+  GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand({
+    this.commandResult,
+    this.commandState,
+    this.commandType,
+    this.issueTime,
+    this.name,
+    this.payload,
+    this.validDuration,
+  });
+
+  GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand.fromJson(
+      core.Map json_)
+      : this(
+          commandResult: json_.containsKey('commandResult')
+              ? GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult
+                  .fromJson(json_['commandResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          commandState: json_['commandState'] as core.String?,
+          commandType: json_['commandType'] as core.String?,
+          issueTime: json_['issueTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          payload: json_.containsKey('payload')
+              ? json_['payload'] as core.Map<core.String, core.dynamic>
+              : null,
+          validDuration: json_['validDuration'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commandResult != null) 'commandResult': commandResult!,
+        if (commandState != null) 'commandState': commandState!,
+        if (commandType != null) 'commandType': commandType!,
+        if (issueTime != null) 'issueTime': issueTime!,
+        if (name != null) 'name': name!,
+        if (payload != null) 'payload': payload!,
+        if (validDuration != null) 'validDuration': validDuration!,
+      };
+}
+
+/// Result of the execution of a command.
+class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult {
+  /// Timestamp of the client execution of the remote command.
+  ///
+  /// Output only.
+  core.String? clientExecutionTime;
+
+  /// Result code that indicates the type of error or success of the command.
+  ///
+  /// Output only.
+  core.String? resultCode;
+
+  /// Result type of the remote command.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMMAND_RESULT_TYPE_UNSPECIFIED" : Represents an unspecified command
+  /// result.
+  /// - "IGNORED" : Represents a command with an ignored result.
+  /// - "FAILURE" : Represents a failed command.
+  /// - "SUCCESS" : Represents a succeeded command.
+  core.String? resultType;
+
+  GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult({
+    this.clientExecutionTime,
+    this.resultCode,
+    this.resultType,
+  });
+
+  GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult.fromJson(
+      core.Map json_)
+      : this(
+          clientExecutionTime: json_['clientExecutionTime'] as core.String?,
+          resultCode: json_['resultCode'] as core.String?,
+          resultType: json_['resultType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientExecutionTime != null)
+          'clientExecutionTime': clientExecutionTime!,
+        if (resultCode != null) 'resultCode': resultCode!,
+        if (resultType != null) 'resultType': resultType!,
+      };
+}
+
 /// Information of a device that runs a Chrome browser profile.
 class GoogleChromeManagementVersionsV1DeviceInfo {
   /// Device ID that identifies the affiliated device on which the profile
@@ -7651,6 +8092,45 @@ class GoogleChromeManagementVersionsV1DeviceInfo {
       };
 }
 
+/// Response to ListChromeBrowserProfileCommands method.
+class GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse {
+  /// The list of commands returned.
+  core.List<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>?
+      chromeBrowserProfileCommands;
+
+  /// The pagination token that can be used to list the next page.
+  core.String? nextPageToken;
+
+  /// Total size represents an estimated number of resources returned.
+  core.String? totalSize;
+
+  GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse({
+    this.chromeBrowserProfileCommands,
+    this.nextPageToken,
+    this.totalSize,
+  });
+
+  GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse.fromJson(
+      core.Map json_)
+      : this(
+          chromeBrowserProfileCommands: (json_['chromeBrowserProfileCommands']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          totalSize: json_['totalSize'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (chromeBrowserProfileCommands != null)
+          'chromeBrowserProfileCommands': chromeBrowserProfileCommands!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
+      };
+}
+
 /// Response to ListChromeBrowserProfiles method.
 class GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse {
   /// The list of profiles returned.
@@ -7688,6 +8168,57 @@ class GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse {
           'chromeBrowserProfiles': chromeBrowserProfiles!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
+      };
+}
+
+/// Request to MoveThirdPartyProfileUser method.
+class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest {
+  /// Destination organizational unit where the third party chrome profile user
+  /// will be moved to.
+  ///
+  /// Required.
+  core.String? destinationOrgUnit;
+
+  GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest({
+    this.destinationOrgUnit,
+  });
+
+  GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest.fromJson(
+      core.Map json_)
+      : this(
+          destinationOrgUnit: json_['destinationOrgUnit'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationOrgUnit != null)
+          'destinationOrgUnit': destinationOrgUnit!,
+      };
+}
+
+/// Response for MoveThirdPartyProfileUser method.
+class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse {
+  /// The moved third party profile user.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1ThirdPartyProfileUser? thirdPartyProfileUser;
+
+  GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse({
+    this.thirdPartyProfileUser,
+  });
+
+  GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse.fromJson(
+      core.Map json_)
+      : this(
+          thirdPartyProfileUser: json_.containsKey('thirdPartyProfileUser')
+              ? GoogleChromeManagementVersionsV1ThirdPartyProfileUser.fromJson(
+                  json_['thirdPartyProfileUser']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (thirdPartyProfileUser != null)
+          'thirdPartyProfileUser': thirdPartyProfileUser!,
       };
 }
 
@@ -8035,6 +8566,37 @@ class GoogleChromeManagementVersionsV1ReportingDataPolicyData {
         if (name != null) 'name': name!,
         if (source != null) 'source': source!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// A representation of non-Google (third party) user that is associated with a
+/// managed Chrome profile.
+class GoogleChromeManagementVersionsV1ThirdPartyProfileUser {
+  /// Identifier.
+  ///
+  /// Format:
+  /// customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id}
+  core.String? name;
+
+  /// The ID of the organizational unit assigned to the user.
+  ///
+  /// Output only.
+  core.String? orgUnitId;
+
+  GoogleChromeManagementVersionsV1ThirdPartyProfileUser({
+    this.name,
+    this.orgUnitId,
+  });
+
+  GoogleChromeManagementVersionsV1ThirdPartyProfileUser.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          orgUnitId: json_['orgUnitId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
       };
 }
 

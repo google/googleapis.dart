@@ -1386,6 +1386,21 @@ class AccessApprovalSettings {
   /// Output only.
   core.bool? ancestorHasActiveKeyVersion;
 
+  /// Policy for approval.
+  ///
+  /// This contains all policies.
+  ///
+  /// Optional.
+  CustomerApprovalApprovalPolicy? approvalPolicy;
+
+  /// Policy for approval included inherited settings to understand the exact
+  /// policy applied to this resource.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  CustomerApprovalApprovalPolicy? effectiveApprovalPolicy;
+
   /// This field is read only (not settable via UpdateAccessApprovalSettings
   /// method).
   ///
@@ -1478,6 +1493,8 @@ class AccessApprovalSettings {
   AccessApprovalSettings({
     this.activeKeyVersion,
     this.ancestorHasActiveKeyVersion,
+    this.approvalPolicy,
+    this.effectiveApprovalPolicy,
     this.enrolledAncestor,
     this.enrolledServices,
     this.invalidKeyVersion,
@@ -1495,6 +1512,15 @@ class AccessApprovalSettings {
           activeKeyVersion: json_['activeKeyVersion'] as core.String?,
           ancestorHasActiveKeyVersion:
               json_['ancestorHasActiveKeyVersion'] as core.bool?,
+          approvalPolicy: json_.containsKey('approvalPolicy')
+              ? CustomerApprovalApprovalPolicy.fromJson(json_['approvalPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          effectiveApprovalPolicy: json_.containsKey('effectiveApprovalPolicy')
+              ? CustomerApprovalApprovalPolicy.fromJson(
+                  json_['effectiveApprovalPolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           enrolledAncestor: json_['enrolledAncestor'] as core.bool?,
           enrolledServices: (json_['enrolledServices'] as core.List?)
               ?.map((value) => EnrolledService.fromJson(
@@ -1521,6 +1547,9 @@ class AccessApprovalSettings {
         if (activeKeyVersion != null) 'activeKeyVersion': activeKeyVersion!,
         if (ancestorHasActiveKeyVersion != null)
           'ancestorHasActiveKeyVersion': ancestorHasActiveKeyVersion!,
+        if (approvalPolicy != null) 'approvalPolicy': approvalPolicy!,
+        if (effectiveApprovalPolicy != null)
+          'effectiveApprovalPolicy': effectiveApprovalPolicy!,
         if (enrolledAncestor != null) 'enrolledAncestor': enrolledAncestor!,
         if (enrolledServices != null) 'enrolledServices': enrolledServices!,
         if (invalidKeyVersion != null) 'invalidKeyVersion': invalidKeyVersion!,
@@ -1780,6 +1809,9 @@ class ApproveDecision {
   /// If set, denotes the timestamp at which the approval is invalidated.
   core.String? invalidateTime;
 
+  /// True when the request has been approved by the customer's defined policy.
+  core.bool? policyApproved;
+
   /// The signature for the ApprovalRequest and details on how it was signed.
   SignatureInfo? signatureInfo;
 
@@ -1788,6 +1820,7 @@ class ApproveDecision {
     this.autoApproved,
     this.expireTime,
     this.invalidateTime,
+    this.policyApproved,
     this.signatureInfo,
   });
 
@@ -1797,6 +1830,7 @@ class ApproveDecision {
           autoApproved: json_['autoApproved'] as core.bool?,
           expireTime: json_['expireTime'] as core.String?,
           invalidateTime: json_['invalidateTime'] as core.String?,
+          policyApproved: json_['policyApproved'] as core.bool?,
           signatureInfo: json_.containsKey('signatureInfo')
               ? SignatureInfo.fromJson(
                   json_['signatureInfo'] as core.Map<core.String, core.dynamic>)
@@ -1808,6 +1842,7 @@ class ApproveDecision {
         if (autoApproved != null) 'autoApproved': autoApproved!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (invalidateTime != null) 'invalidateTime': invalidateTime!,
+        if (policyApproved != null) 'policyApproved': policyApproved!,
         if (signatureInfo != null) 'signatureInfo': signatureInfo!,
       };
 }
@@ -1829,6 +1864,40 @@ class AugmentedInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (command != null) 'command': command!,
+      };
+}
+
+/// Represents all the policies that can be set for Customer Approval.
+class CustomerApprovalApprovalPolicy {
+  /// Policy for approval based on the justification given.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "JUSTIFICATION_BASED_APPROVAL_POLICY_UNSPECIFIED" : Default value for
+  /// proto.
+  /// - "JUSTIFICATION_BASED_APPROVAL_ENABLED_ALL" : Instant approval is enabled
+  /// for all accesses.
+  /// - "JUSTIFICATION_BASED_APPROVAL_ENABLED_EXTERNAL_JUSTIFICATIONS" : Instant
+  /// approval is enabled for external justifications.
+  /// - "JUSTIFICATION_BASED_APPROVAL_NOT_ENABLED" : Instant approval is not
+  /// enabled for any accesses.
+  /// - "JUSTIFICATION_BASED_APPROVAL_INHERITED" : Instant approval is inherited
+  /// from the parent.
+  core.String? justificationBasedApprovalPolicy;
+
+  CustomerApprovalApprovalPolicy({
+    this.justificationBasedApprovalPolicy,
+  });
+
+  CustomerApprovalApprovalPolicy.fromJson(core.Map json_)
+      : this(
+          justificationBasedApprovalPolicy:
+              json_['justificationBasedApprovalPolicy'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (justificationBasedApprovalPolicy != null)
+          'justificationBasedApprovalPolicy': justificationBasedApprovalPolicy!,
       };
 }
 
@@ -2048,10 +2117,17 @@ class SignatureInfo {
   /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
+  /// - "ML_KEM_768" : ML-KEM-768 (FIPS 203)
+  /// - "ML_KEM_1024" : ML-KEM-1024 (FIPS 203)
+  /// - "KEM_XWING" : X-Wing hybrid KEM combining ML-KEM-768 with X25519
+  /// following datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/.
   /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
   /// Signature Algorithm, at security level 3. Randomized version.
   /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
   /// digital signature algorithm, at security level 1. Randomized version.
+  /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
+  /// hash-based digital signature algorithm, at security level 1. Randomized
+  /// pre-hash version supporting SHA256 digests.
   core.String? googleKeyAlgorithm;
 
   /// The public key for the Google default signing, encoded in PEM format.

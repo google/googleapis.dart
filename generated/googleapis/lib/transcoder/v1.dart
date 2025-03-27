@@ -1939,6 +1939,11 @@ class Image {
 
 /// Input asset.
 class Input {
+  /// Input Attributes.
+  ///
+  /// Optional.
+  InputAttributes? attributes;
+
   /// A unique key for this input.
   ///
   /// Must be specified when using advanced mapping and edit lists.
@@ -1956,6 +1961,7 @@ class Input {
   core.String? uri;
 
   Input({
+    this.attributes,
     this.key,
     this.preprocessingConfig,
     this.uri,
@@ -1963,6 +1969,10 @@ class Input {
 
   Input.fromJson(core.Map json_)
       : this(
+          attributes: json_.containsKey('attributes')
+              ? InputAttributes.fromJson(
+                  json_['attributes'] as core.Map<core.String, core.dynamic>)
+              : null,
           key: json_['key'] as core.String?,
           preprocessingConfig: json_.containsKey('preprocessingConfig')
               ? PreprocessingConfig.fromJson(json_['preprocessingConfig']
@@ -1972,10 +1982,35 @@ class Input {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
         if (key != null) 'key': key!,
         if (preprocessingConfig != null)
           'preprocessingConfig': preprocessingConfig!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Input attributes that provide additional information about the input asset.
+class InputAttributes {
+  /// A list of track definitions for the input asset.
+  ///
+  /// Optional.
+  core.List<TrackDefinition>? trackDefinitions;
+
+  InputAttributes({
+    this.trackDefinitions,
+  });
+
+  InputAttributes.fromJson(core.Map json_)
+      : this(
+          trackDefinitions: (json_['trackDefinitions'] as core.List?)
+              ?.map((value) => TrackDefinition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (trackDefinitions != null) 'trackDefinitions': trackDefinitions!,
       };
 }
 
@@ -2007,6 +2042,12 @@ class Job {
   ///
   /// Output only.
   Status? error;
+
+  /// Insert silence and duplicate frames when timestamp gaps are detected in a
+  /// given stream.
+  ///
+  /// Optional.
+  core.bool? fillContentGaps;
 
   /// Input only.
   ///
@@ -2098,6 +2139,7 @@ class Job {
     this.createTime,
     this.endTime,
     this.error,
+    this.fillContentGaps,
     this.inputUri,
     this.labels,
     this.mode,
@@ -2123,6 +2165,7 @@ class Job {
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
+          fillContentGaps: json_['fillContentGaps'] as core.bool?,
           inputUri: json_['inputUri'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -2147,6 +2190,7 @@ class Job {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
+        if (fillContentGaps != null) 'fillContentGaps': fillContentGaps!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (labels != null) 'labels': labels!,
         if (mode != null) 'mode': mode!,
@@ -3078,6 +3122,65 @@ class TextStream {
         if (displayName != null) 'displayName': displayName!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (mapping != null) 'mapping': mapping!,
+      };
+}
+
+/// Track definition for the input asset.
+class TrackDefinition {
+  /// Whether to automatically detect the languages present in the track.
+  ///
+  /// If true, the system will attempt to identify all the languages present in
+  /// the track and populate the languages field.
+  ///
+  /// Optional.
+  core.bool? detectLanguages;
+
+  /// A list of languages detected in the input asset, represented by a BCP 47
+  /// language code, such as "en-US" or "sr-Latn".
+  ///
+  /// For more information, see
+  /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. This
+  /// field is only populated if the detect_languages field is set to true.
+  ///
+  /// Output only.
+  core.List<core.String>? detectedLanguages;
+
+  /// The input track.
+  core.int? inputTrack;
+
+  /// A list of languages spoken in the input asset, represented by a BCP 47
+  /// language code, such as "en-US" or "sr-Latn".
+  ///
+  /// For more information, see
+  /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  ///
+  /// Optional.
+  core.List<core.String>? languages;
+
+  TrackDefinition({
+    this.detectLanguages,
+    this.detectedLanguages,
+    this.inputTrack,
+    this.languages,
+  });
+
+  TrackDefinition.fromJson(core.Map json_)
+      : this(
+          detectLanguages: json_['detectLanguages'] as core.bool?,
+          detectedLanguages: (json_['detectedLanguages'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          inputTrack: json_['inputTrack'] as core.int?,
+          languages: (json_['languages'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detectLanguages != null) 'detectLanguages': detectLanguages!,
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (inputTrack != null) 'inputTrack': inputTrack!,
+        if (languages != null) 'languages': languages!,
       };
 }
 

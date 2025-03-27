@@ -36,6 +36,7 @@
 ///     - [OrganizationsLocationsDiscoveryConfigsResource]
 ///     - [OrganizationsLocationsDlpJobsResource]
 ///     - [OrganizationsLocationsFileStoreDataProfilesResource]
+///     - [OrganizationsLocationsInfoTypesResource]
 ///     - [OrganizationsLocationsInspectTemplatesResource]
 ///     - [OrganizationsLocationsJobTriggersResource]
 ///     - [OrganizationsLocationsProjectDataProfilesResource]
@@ -58,6 +59,7 @@
 ///     - [ProjectsLocationsDlpJobsResource]
 ///     - [ProjectsLocationsFileStoreDataProfilesResource]
 ///     - [ProjectsLocationsImageResource]
+///     - [ProjectsLocationsInfoTypesResource]
 ///     - [ProjectsLocationsInspectTemplatesResource]
 ///     - [ProjectsLocationsJobTriggersResource]
 ///     - [ProjectsLocationsProjectDataProfilesResource]
@@ -832,6 +834,8 @@ class OrganizationsLocationsResource {
   OrganizationsLocationsFileStoreDataProfilesResource
       get fileStoreDataProfiles =>
           OrganizationsLocationsFileStoreDataProfilesResource(_requester);
+  OrganizationsLocationsInfoTypesResource get infoTypes =>
+      OrganizationsLocationsInfoTypesResource(_requester);
   OrganizationsLocationsInspectTemplatesResource get inspectTemplates =>
       OrganizationsLocationsInspectTemplatesResource(_requester);
   OrganizationsLocationsJobTriggersResource get jobTriggers =>
@@ -2045,6 +2049,70 @@ class OrganizationsLocationsFileStoreDataProfilesResource {
       queryParams: queryParams_,
     );
     return GooglePrivacyDlpV2ListFileStoreDataProfilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsLocationsInfoTypesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsInfoTypesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns a list of the sensitive information types that the DLP API
+  /// supports.
+  ///
+  /// See
+  /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference
+  /// to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent resource name. The format of this value is as
+  /// follows: `locations/{location_id}`
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - filter to only return infoTypes supported by certain parts of
+  /// the API. Defaults to supported_by=INSPECT.
+  ///
+  /// [languageCode] - BCP-47 language code for localized infoType friendly
+  /// names. If omitted, or if localized strings are not available, en-US
+  /// strings will be returned.
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListInfoTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListInfoTypesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? languageCode,
+    core.String? locationId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (locationId != null) 'locationId': [locationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/infoTypes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4929,6 +4997,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsFileStoreDataProfilesResource(_requester);
   ProjectsLocationsImageResource get image =>
       ProjectsLocationsImageResource(_requester);
+  ProjectsLocationsInfoTypesResource get infoTypes =>
+      ProjectsLocationsInfoTypesResource(_requester);
   ProjectsLocationsInspectTemplatesResource get inspectTemplates =>
       ProjectsLocationsInspectTemplatesResource(_requester);
   ProjectsLocationsJobTriggersResource get jobTriggers =>
@@ -6669,6 +6739,70 @@ class ProjectsLocationsImageResource {
       queryParams: queryParams_,
     );
     return GooglePrivacyDlpV2RedactImageResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsInfoTypesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInfoTypesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns a list of the sensitive information types that the DLP API
+  /// supports.
+  ///
+  /// See
+  /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference
+  /// to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent resource name. The format of this value is as
+  /// follows: `locations/{location_id}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - filter to only return infoTypes supported by certain parts of
+  /// the API. Defaults to supported_by=INSPECT.
+  ///
+  /// [languageCode] - BCP-47 language code for localized infoType friendly
+  /// names. If omitted, or if localized strings are not available, en-US
+  /// strings will be returned.
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListInfoTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListInfoTypesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? languageCode,
+    core.String? locationId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (locationId != null) 'locationId': [locationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/infoTypes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -11182,6 +11316,10 @@ class GooglePrivacyDlpV2DataProfileAction {
   /// analytics\](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
   GooglePrivacyDlpV2PublishToChronicle? publishToChronicle;
 
+  /// Publishes a portion of each profile to Dataplex Catalog with the aspect
+  /// type Sensitive Data Protection Profile.
+  GooglePrivacyDlpV2PublishToDataplexCatalog? publishToDataplexCatalog;
+
   /// Publishes findings to Security Command Center for each data profile.
   GooglePrivacyDlpV2PublishToSecurityCommandCenter? publishToScc;
 
@@ -11192,6 +11330,7 @@ class GooglePrivacyDlpV2DataProfileAction {
     this.exportData,
     this.pubSubNotification,
     this.publishToChronicle,
+    this.publishToDataplexCatalog,
     this.publishToScc,
     this.tagResources,
   });
@@ -11212,6 +11351,12 @@ class GooglePrivacyDlpV2DataProfileAction {
                   json_['publishToChronicle']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          publishToDataplexCatalog:
+              json_.containsKey('publishToDataplexCatalog')
+                  ? GooglePrivacyDlpV2PublishToDataplexCatalog.fromJson(
+                      json_['publishToDataplexCatalog']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           publishToScc: json_.containsKey('publishToScc')
               ? GooglePrivacyDlpV2PublishToSecurityCommandCenter.fromJson(
                   json_['publishToScc'] as core.Map<core.String, core.dynamic>)
@@ -11228,6 +11373,8 @@ class GooglePrivacyDlpV2DataProfileAction {
           'pubSubNotification': pubSubNotification!,
         if (publishToChronicle != null)
           'publishToChronicle': publishToChronicle!,
+        if (publishToDataplexCatalog != null)
+          'publishToDataplexCatalog': publishToDataplexCatalog!,
         if (publishToScc != null) 'publishToScc': publishToScc!,
         if (tagResources != null) 'tagResources': tagResources!,
       };
@@ -11814,17 +11961,11 @@ class GooglePrivacyDlpV2DateTime {
       };
 }
 
-/// Create a de-identified copy of the requested table or files.
+/// Create a de-identified copy of a storage bucket.
 ///
-/// A TransformationDetail will be created for each transformation. If any rows
-/// in BigQuery are skipped during de-identification (transformation errors or
-/// row size exceeds BigQuery insert API limits) they are placed in the failure
-/// output table. If the original row exceeds the BigQuery insert API limit it
-/// will be truncated when written to the failure output table. The failure
-/// output table can be set in the
-/// action.deidentify.output.big_query_output.deidentified_failure_output_table
-/// field, if no table is set, a table will be automatically created in the same
-/// project and dataset as the original table. Compatible with: Inspect
+/// Only compatible with Cloud Storage buckets. A TransformationDetail will be
+/// created for each transformation. Compatible with: Inspection of Cloud
+/// Storage
 class GooglePrivacyDlpV2Deidentify {
   /// User settable Cloud Storage bucket and folders to store de-identified
   /// files.
@@ -11839,12 +11980,12 @@ class GooglePrivacyDlpV2Deidentify {
 
   /// List of user-specified file type groups to transform.
   ///
-  /// If specified, only the files with these file types will be transformed. If
-  /// empty, all supported files will be transformed. Supported types may be
-  /// automatically added over time. If a file type is set in this field that
-  /// isn't supported by the Deidentify action then the job will fail and will
-  /// not be successfully created/started. Currently the only file types
-  /// supported are: IMAGES, TEXT_FILES, CSV, TSV.
+  /// If specified, only the files with these file types are transformed. If
+  /// empty, all supported files are transformed. Supported types may be
+  /// automatically added over time. Any unsupported file types that are set in
+  /// this field are excluded from de-identification. An error is recorded for
+  /// each unsupported file in the TransformationDetails output table. Currently
+  /// the only file types supported are: IMAGES, TEXT_FILES, CSV, TSV.
   core.List<core.String>? fileTypesToTransform;
 
   /// User specified deidentify templates and configs for structured,
@@ -11853,11 +11994,42 @@ class GooglePrivacyDlpV2Deidentify {
 
   /// Config for storing transformation details.
   ///
-  /// This is separate from the de-identified content, and contains metadata
-  /// about the successful transformations and/or failures that occurred while
-  /// de-identifying. This needs to be set in order for users to access
-  /// information about the status of each transformation (see
-  /// TransformationDetails message for more information about what is noted).
+  /// This field specifies the configuration for storing detailed metadata about
+  /// each transformation performed during a de-identification process. The
+  /// metadata is stored separately from the de-identified content itself and
+  /// provides a granular record of both successful transformations and any
+  /// failures that occurred. Enabling this configuration is essential for users
+  /// who need to access comprehensive information about the status, outcome,
+  /// and specifics of each transformation. The details are captured in the
+  /// TransformationDetails message for each operation. Key use cases: *
+  /// **Auditing and compliance** * Provides a verifiable audit trail of
+  /// de-identification activities, which is crucial for meeting regulatory
+  /// requirements and internal data governance policies. * Logs what data was
+  /// transformed, what transformations were applied, when they occurred, and
+  /// their success status. This helps demonstrate accountability and due
+  /// diligence in protecting sensitive data. * **Troubleshooting and
+  /// debugging** * Offers detailed error messages and context if a
+  /// transformation fails. This information is useful for diagnosing and
+  /// resolving issues in the de-identification pipeline. * Helps pinpoint the
+  /// exact location and nature of failures, speeding up the debugging process.
+  /// * **Process verification and quality assurance** * Allows users to confirm
+  /// that de-identification rules and transformations were applied correctly
+  /// and consistently across the dataset as intended. * Helps in verifying the
+  /// effectiveness of the chosen de-identification strategies. * **Data lineage
+  /// and impact analysis** * Creates a record of how data elements were
+  /// modified, contributing to data lineage. This is useful for understanding
+  /// the provenance of de-identified data. * Aids in assessing the potential
+  /// impact of de-identification choices on downstream analytical processes or
+  /// data usability. * **Reporting and operational insights** * You can analyze
+  /// the metadata stored in a queryable BigQuery table to generate reports on
+  /// transformation success rates, common error types, processing volumes
+  /// (e.g., transformedBytes), and the types of transformations applied. *
+  /// These insights can inform optimization of de-identification configurations
+  /// and resource planning. To take advantage of these benefits, set this
+  /// configuration. The stored details include a description of the
+  /// transformation, success or error codes, error messages, the number of
+  /// bytes transformed, the location of the transformed content, and
+  /// identifiers for the job and source data.
   GooglePrivacyDlpV2TransformationDetailsStorageConfig?
       transformationDetailsStorageConfig;
 
@@ -13814,6 +13986,43 @@ class GooglePrivacyDlpV2DlpJob {
       };
 }
 
+/// Configure document processing to fall back to any of the following
+/// processing options if document processing is unavailable in the original
+/// request location.
+class GooglePrivacyDlpV2DocumentFallbackLocation {
+  /// Processing occurs in the global region.
+  GooglePrivacyDlpV2GlobalProcessing? globalProcessing;
+
+  /// Processing occurs in a multi-region that contains the current region if
+  /// available.
+  GooglePrivacyDlpV2MultiRegionProcessing? multiRegionProcessing;
+
+  GooglePrivacyDlpV2DocumentFallbackLocation({
+    this.globalProcessing,
+    this.multiRegionProcessing,
+  });
+
+  GooglePrivacyDlpV2DocumentFallbackLocation.fromJson(core.Map json_)
+      : this(
+          globalProcessing: json_.containsKey('globalProcessing')
+              ? GooglePrivacyDlpV2GlobalProcessing.fromJson(
+                  json_['globalProcessing']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          multiRegionProcessing: json_.containsKey('multiRegionProcessing')
+              ? GooglePrivacyDlpV2MultiRegionProcessing.fromJson(
+                  json_['multiRegionProcessing']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (globalProcessing != null) 'globalProcessing': globalProcessing!,
+        if (multiRegionProcessing != null)
+          'multiRegionProcessing': multiRegionProcessing!,
+      };
+}
+
 /// Location of a finding within a document.
 class GooglePrivacyDlpV2DocumentLocation {
   /// Offset of the line, from the beginning of the file, where the finding is
@@ -13831,6 +14040,39 @@ class GooglePrivacyDlpV2DocumentLocation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileOffset != null) 'fileOffset': fileOffset!,
+      };
+}
+
+/// A domain represents a thematic category that a data profile can fall under.
+class GooglePrivacyDlpV2Domain {
+  /// A domain category that this profile is related to.
+  /// Possible string values are:
+  /// - "CATEGORY_UNSPECIFIED" : Category unspecified.
+  /// - "AI" : Indicates that the data profile is related to artificial
+  /// intelligence. When set, all findings stored to Security Command Center
+  /// will set the corresponding AI domain field of `Finding` objects.
+  /// - "CODE" : Indicates that the data profile is related to code.
+  core.String? category;
+
+  /// The collection of signals that influenced selection of the category.
+  core.List<core.String>? signals;
+
+  GooglePrivacyDlpV2Domain({
+    this.category,
+    this.signals,
+  });
+
+  GooglePrivacyDlpV2Domain.fromJson(core.Map json_)
+      : this(
+          category: json_['category'] as core.String?,
+          signals: (json_['signals'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (category != null) 'category': category!,
+        if (signals != null) 'signals': signals!,
       };
 }
 
@@ -14426,7 +14668,7 @@ class GooglePrivacyDlpV2FileSet {
       };
 }
 
-/// Match file stores (e.g. buckets) using regex filters.
+/// Match file stores (e.g. buckets) using filters.
 class GooglePrivacyDlpV2FileStoreCollection {
   /// A collection of regular expressions to match a file store against.
   ///
@@ -14477,6 +14719,9 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
   /// always picked as the processing and storage location for the data profile.
   core.List<core.String>? dataStorageLocations;
 
+  /// Domains associated with the profile.
+  core.List<GooglePrivacyDlpV2Domain>? domains;
+
   /// FileClusterSummary per each cluster.
   core.List<GooglePrivacyDlpV2FileClusterSummary>? fileClusterSummaries;
 
@@ -14485,6 +14730,8 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
       fileStoreInfoTypeSummaries;
 
   /// The file store does not have any files.
+  ///
+  /// If the profiling operation failed, this is false.
   core.bool? fileStoreIsEmpty;
 
   /// The location of the file store.
@@ -14576,12 +14823,17 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
   /// failed.
   core.String? state;
 
+  /// The tags attached to the resource, including any tags attached during
+  /// profiling.
+  core.List<GooglePrivacyDlpV2Tag>? tags;
+
   GooglePrivacyDlpV2FileStoreDataProfile({
     this.configSnapshot,
     this.createTime,
     this.dataRiskLevel,
     this.dataSourceType,
     this.dataStorageLocations,
+    this.domains,
     this.fileClusterSummaries,
     this.fileStoreInfoTypeSummaries,
     this.fileStoreIsEmpty,
@@ -14602,6 +14854,7 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
     this.sampleFindingsTable,
     this.sensitivityScore,
     this.state,
+    this.tags,
   });
 
   GooglePrivacyDlpV2FileStoreDataProfile.fromJson(core.Map json_)
@@ -14623,6 +14876,10 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
               : null,
           dataStorageLocations: (json_['dataStorageLocations'] as core.List?)
               ?.map((value) => value as core.String)
+              .toList(),
+          domains: (json_['domains'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2Domain.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           fileClusterSummaries: (json_['fileClusterSummaries'] as core.List?)
               ?.map((value) => GooglePrivacyDlpV2FileClusterSummary.fromJson(
@@ -14681,6 +14938,10 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
                       as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2Tag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14690,6 +14951,7 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
         if (dataSourceType != null) 'dataSourceType': dataSourceType!,
         if (dataStorageLocations != null)
           'dataStorageLocations': dataStorageLocations!,
+        if (domains != null) 'domains': domains!,
         if (fileClusterSummaries != null)
           'fileClusterSummaries': fileClusterSummaries!,
         if (fileStoreInfoTypeSummaries != null)
@@ -14717,6 +14979,7 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
           'sampleFindingsTable': sampleFindingsTable!,
         if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
         if (state != null) 'state': state!,
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -15056,7 +15319,7 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfig {
       };
 }
 
-/// Processing will happen in the global region.
+/// Processing occurs in the global region.
 typedef GooglePrivacyDlpV2GlobalProcessing = $Empty;
 
 /// The rule that adjusts the likelihood of findings within a certain proximity
@@ -15375,14 +15638,14 @@ class GooglePrivacyDlpV2HybridOptions {
       };
 }
 
-/// Configure image processing to fall back to the configured processing option
-/// below if unavailable in the request location.
+/// Configure image processing to fall back to any of the following processing
+/// options if image processing is unavailable in the original request location.
 class GooglePrivacyDlpV2ImageFallbackLocation {
-  /// Processing will happen in the global region.
+  /// Processing occurs in the global region.
   GooglePrivacyDlpV2GlobalProcessing? globalProcessing;
 
-  /// Processing will happen in a multi-region that contains the current region
-  /// if available.
+  /// Processing occurs in a multi-region that contains the current region if
+  /// available.
   GooglePrivacyDlpV2MultiRegionProcessing? multiRegionProcessing;
 
   GooglePrivacyDlpV2ImageFallbackLocation({
@@ -15624,6 +15887,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "ARGENTINA" : The infoType is typically used in Argentina.
   /// - "ARMENIA" : The infoType is typically used in Armenia.
   /// - "AUSTRALIA" : The infoType is typically used in Australia.
+  /// - "AUSTRIA" : The infoType is typically used in Austria.
   /// - "AZERBAIJAN" : The infoType is typically used in Azerbaijan.
   /// - "BELARUS" : The infoType is typically used in Belarus.
   /// - "BELGIUM" : The infoType is typically used in Belgium.
@@ -15735,6 +15999,15 @@ class GooglePrivacyDlpV2InfoTypeDescription {
   /// The default sensitivity of the infoType.
   GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
 
+  /// If this field is set, this infoType is a general infoType and these
+  /// specific infoTypes are contained within it.
+  ///
+  /// General infoTypes are infoTypes that encompass multiple specific
+  /// infoTypes. For example, the "GEOGRAPHIC_DATA" general infoType would have
+  /// set for this field "LOCATION", "LOCATION_COORDINATES", and
+  /// "STREET_ADDRESS".
+  core.List<core.String>? specificInfoTypes;
+
   /// Which parts of the API supports this InfoType.
   core.List<core.String>? supportedBy;
 
@@ -15748,6 +16021,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
     this.example,
     this.name,
     this.sensitivityScore,
+    this.specificInfoTypes,
     this.supportedBy,
     this.versions,
   });
@@ -15767,6 +16041,9 @@ class GooglePrivacyDlpV2InfoTypeDescription {
                   json_['sensitivityScore']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          specificInfoTypes: (json_['specificInfoTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           supportedBy: (json_['supportedBy'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -15783,6 +16060,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
         if (example != null) 'example': example!,
         if (name != null) 'name': name!,
         if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
+        if (specificInfoTypes != null) 'specificInfoTypes': specificInfoTypes!,
         if (supportedBy != null) 'supportedBy': supportedBy!,
         if (versions != null) 'versions': versions!,
       };
@@ -17728,7 +18006,7 @@ class GooglePrivacyDlpV2MetadataLocation {
       };
 }
 
-/// Processing will happen in a multi-region that contains the current region if
+/// Processing occurs in a multi-region that contains the current region if
 /// available.
 typedef GooglePrivacyDlpV2MultiRegionProcessing = $Empty;
 
@@ -18459,15 +18737,25 @@ class GooglePrivacyDlpV2PrivacyMetric {
 /// For example, image OCR is only provided in limited regions but configuring
 /// ProcessingLocation will redirect OCR to a location where OCR is provided.
 class GooglePrivacyDlpV2ProcessingLocation {
-  /// Image processing will fall back using this configuration.
+  /// Document processing falls back using this configuration.
+  GooglePrivacyDlpV2DocumentFallbackLocation? documentFallbackLocation;
+
+  /// Image processing falls back using this configuration.
   GooglePrivacyDlpV2ImageFallbackLocation? imageFallbackLocation;
 
   GooglePrivacyDlpV2ProcessingLocation({
+    this.documentFallbackLocation,
     this.imageFallbackLocation,
   });
 
   GooglePrivacyDlpV2ProcessingLocation.fromJson(core.Map json_)
       : this(
+          documentFallbackLocation:
+              json_.containsKey('documentFallbackLocation')
+                  ? GooglePrivacyDlpV2DocumentFallbackLocation.fromJson(
+                      json_['documentFallbackLocation']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           imageFallbackLocation: json_.containsKey('imageFallbackLocation')
               ? GooglePrivacyDlpV2ImageFallbackLocation.fromJson(
                   json_['imageFallbackLocation']
@@ -18476,6 +18764,8 @@ class GooglePrivacyDlpV2ProcessingLocation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (documentFallbackLocation != null)
+          'documentFallbackLocation': documentFallbackLocation!,
         if (imageFallbackLocation != null)
           'imageFallbackLocation': imageFallbackLocation!,
       };
@@ -18784,6 +19074,36 @@ typedef GooglePrivacyDlpV2PublishSummaryToCscc = $Empty;
 /// Message expressing intention to publish to Google Security Operations.
 typedef GooglePrivacyDlpV2PublishToChronicle = $Empty;
 
+/// Create Dataplex Catalog aspects for profiled resources with the aspect type
+/// Sensitive Data Protection Profile.
+///
+/// To learn more about aspects, see
+/// https://cloud.google.com/sensitive-data-protection/docs/add-aspects.
+class GooglePrivacyDlpV2PublishToDataplexCatalog {
+  /// Whether creating a Dataplex Catalog aspect for a profiled resource should
+  /// lower the risk of the profile for that resource.
+  ///
+  /// This also lowers the data risk of resources at the lower levels of the
+  /// resource hierarchy. For example, reducing the data risk of a table data
+  /// profile also reduces the data risk of the constituent column data
+  /// profiles.
+  core.bool? lowerDataRiskToLow;
+
+  GooglePrivacyDlpV2PublishToDataplexCatalog({
+    this.lowerDataRiskToLow,
+  });
+
+  GooglePrivacyDlpV2PublishToDataplexCatalog.fromJson(core.Map json_)
+      : this(
+          lowerDataRiskToLow: json_['lowerDataRiskToLow'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lowerDataRiskToLow != null)
+          'lowerDataRiskToLow': lowerDataRiskToLow!,
+      };
+}
+
 /// Publish a message into a given Pub/Sub topic when DlpJob has completed.
 ///
 /// The message contains a single field, `DlpJobName`, which is equal to the
@@ -18828,7 +19148,7 @@ class GooglePrivacyDlpV2QuasiId {
   /// A column can be tagged with a custom tag.
   ///
   /// In this case, the user must indicate an auxiliary table that contains
-  /// statistical information on the possible values of this column (below).
+  /// statistical information on the possible values of this column.
   core.String? customTag;
 
   /// Identifies the column.
@@ -18915,7 +19235,7 @@ class GooglePrivacyDlpV2QuasiIdentifierField {
   /// A column can be tagged with a custom tag.
   ///
   /// In this case, the user must indicate an auxiliary table that contains
-  /// statistical information on the possible values of this column (below).
+  /// statistical information on the possible values of this column.
   core.String? customTag;
 
   /// Identifies the column.
@@ -19595,7 +19915,7 @@ class GooglePrivacyDlpV2RequestedRiskAnalysisOptions {
       };
 }
 
-/// All result fields mentioned below are updated while the job is processing.
+/// All Result fields are updated while the job is processing.
 class GooglePrivacyDlpV2Result {
   /// Statistics related to the processing of hybrid inspect.
   GooglePrivacyDlpV2HybridInspectStatistics? hybridStats;
@@ -20424,6 +20744,9 @@ class GooglePrivacyDlpV2TableDataProfile {
   /// The Google Cloud project ID that owns the resource.
   core.String? datasetProjectId;
 
+  /// Domains associated with the profile.
+  core.List<GooglePrivacyDlpV2Domain>? domains;
+
   /// How the table is encrypted.
   /// Possible string values are:
   /// - "ENCRYPTION_STATUS_UNSPECIFIED" : Unused.
@@ -20500,6 +20823,9 @@ class GooglePrivacyDlpV2TableDataProfile {
   GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
 
   /// State of a profile.
+  ///
+  /// This will always be set to DONE when the table data profile is written to
+  /// another service like BigQuery or Pub/Sub.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unused.
   /// - "RUNNING" : The profile is currently running. Once a profile has
@@ -20515,6 +20841,13 @@ class GooglePrivacyDlpV2TableDataProfile {
   /// The size of the table when the profile was generated.
   core.String? tableSizeBytes;
 
+  /// The tags attached to the table, including any tags attached during
+  /// profiling.
+  ///
+  /// Because tags are attached to Cloud SQL instances rather than Cloud SQL
+  /// tables, this field is empty for Cloud SQL table profiles.
+  core.List<GooglePrivacyDlpV2Tag>? tags;
+
   GooglePrivacyDlpV2TableDataProfile({
     this.configSnapshot,
     this.createTime,
@@ -20523,6 +20856,7 @@ class GooglePrivacyDlpV2TableDataProfile {
     this.datasetId,
     this.datasetLocation,
     this.datasetProjectId,
+    this.domains,
     this.encryptionStatus,
     this.expirationTime,
     this.failedColumnCount,
@@ -20544,6 +20878,7 @@ class GooglePrivacyDlpV2TableDataProfile {
     this.state,
     this.tableId,
     this.tableSizeBytes,
+    this.tags,
   });
 
   GooglePrivacyDlpV2TableDataProfile.fromJson(core.Map json_)
@@ -20566,6 +20901,10 @@ class GooglePrivacyDlpV2TableDataProfile {
           datasetId: json_['datasetId'] as core.String?,
           datasetLocation: json_['datasetLocation'] as core.String?,
           datasetProjectId: json_['datasetProjectId'] as core.String?,
+          domains: (json_['domains'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2Domain.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           encryptionStatus: json_['encryptionStatus'] as core.String?,
           expirationTime: json_['expirationTime'] as core.String?,
           failedColumnCount: json_['failedColumnCount'] as core.String?,
@@ -20614,6 +20953,10 @@ class GooglePrivacyDlpV2TableDataProfile {
           state: json_['state'] as core.String?,
           tableId: json_['tableId'] as core.String?,
           tableSizeBytes: json_['tableSizeBytes'] as core.String?,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2Tag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20624,6 +20967,7 @@ class GooglePrivacyDlpV2TableDataProfile {
         if (datasetId != null) 'datasetId': datasetId!,
         if (datasetLocation != null) 'datasetLocation': datasetLocation!,
         if (datasetProjectId != null) 'datasetProjectId': datasetProjectId!,
+        if (domains != null) 'domains': domains!,
         if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
         if (expirationTime != null) 'expirationTime': expirationTime!,
         if (failedColumnCount != null) 'failedColumnCount': failedColumnCount!,
@@ -20651,6 +20995,7 @@ class GooglePrivacyDlpV2TableDataProfile {
         if (state != null) 'state': state!,
         if (tableId != null) 'tableId': tableId!,
         if (tableSizeBytes != null) 'tableSizeBytes': tableSizeBytes!,
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -20712,23 +21057,74 @@ class GooglePrivacyDlpV2TableReference {
   /// Dataset ID of the table.
   core.String? datasetId;
 
+  /// The Google Cloud project ID of the project containing the table.
+  ///
+  /// If omitted, the project ID is inferred from the parent project. This field
+  /// is required if the parent resource is an organization.
+  core.String? projectId;
+
   /// Name of the table.
   core.String? tableId;
 
   GooglePrivacyDlpV2TableReference({
     this.datasetId,
+    this.projectId,
     this.tableId,
   });
 
   GooglePrivacyDlpV2TableReference.fromJson(core.Map json_)
       : this(
           datasetId: json_['datasetId'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
           tableId: json_['tableId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datasetId != null) 'datasetId': datasetId!,
+        if (projectId != null) 'projectId': projectId!,
         if (tableId != null) 'tableId': tableId!,
+      };
+}
+
+/// A tag associated with a resource.
+class GooglePrivacyDlpV2Tag {
+  /// The key of a tag key-value pair.
+  ///
+  /// For Google Cloud resources, this is the resource name of the key, for
+  /// example, "tagKeys/123456".
+  core.String? key;
+
+  /// The namespaced name for the tag value to attach to Google Cloud resources.
+  ///
+  /// Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for
+  /// example, "123456/environment/prod". This is only set for Google Cloud
+  /// resources.
+  core.String? namespacedTagValue;
+
+  /// The value of a tag key-value pair.
+  ///
+  /// For Google Cloud resources, this is the resource name of the value, for
+  /// example, "tagValues/123456".
+  core.String? value;
+
+  GooglePrivacyDlpV2Tag({
+    this.key,
+    this.namespacedTagValue,
+    this.value,
+  });
+
+  GooglePrivacyDlpV2Tag.fromJson(core.Map json_)
+      : this(
+          key: json_['key'] as core.String?,
+          namespacedTagValue: json_['namespacedTagValue'] as core.String?,
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (namespacedTagValue != null)
+          'namespacedTagValue': namespacedTagValue!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -20855,7 +21251,7 @@ class GooglePrivacyDlpV2TaggedField {
   /// A column can be tagged with a custom tag.
   ///
   /// In this case, the user must indicate an auxiliary table that contains
-  /// statistical information on the possible values of this column (below).
+  /// statistical information on the possible values of this column.
   core.String? customTag;
 
   /// Identifies the column.

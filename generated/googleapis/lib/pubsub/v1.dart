@@ -2339,7 +2339,39 @@ class AcknowledgeRequest {
 
 /// Information about an associated
 /// [Analytics Hub subscription](https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
-typedef AnalyticsHubSubscriptionInfo = $AnalyticsHubSubscriptionInfo;
+class AnalyticsHubSubscriptionInfo {
+  /// The name of the associated Analytics Hub listing resource.
+  ///
+  /// Pattern:
+  /// "projects/{project}/locations/{location}/dataExchanges/{data_exchange}/listings/{listing}"
+  ///
+  /// Optional.
+  core.String? listing;
+
+  /// The name of the associated Analytics Hub subscription resource.
+  ///
+  /// Pattern:
+  /// "projects/{project}/locations/{location}/subscriptions/{subscription}"
+  ///
+  /// Optional.
+  core.String? subscription;
+
+  AnalyticsHubSubscriptionInfo({
+    this.listing,
+    this.subscription,
+  });
+
+  AnalyticsHubSubscriptionInfo.fromJson(core.Map json_)
+      : this(
+          listing: json_['listing'] as core.String?,
+          subscription: json_['subscription'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (listing != null) 'listing': listing!,
+        if (subscription != null) 'subscription': subscription!,
+      };
+}
 
 /// Configuration for writing message data in Avro format.
 ///
@@ -2602,7 +2634,116 @@ class AzureEventHubs {
 }
 
 /// Configuration for a BigQuery subscription.
-typedef BigQueryConfig = $BigQueryConfig;
+class BigQueryConfig {
+  /// When true and use_topic_schema is true, any fields that are a part of the
+  /// topic schema that are not part of the BigQuery table schema are dropped
+  /// when writing to BigQuery.
+  ///
+  /// Otherwise, the schemas must be kept in sync and any messages with extra
+  /// fields are not written and remain in the subscription's backlog.
+  ///
+  /// Optional.
+  core.bool? dropUnknownFields;
+
+  /// The service account to use to write to BigQuery.
+  ///
+  /// The subscription creator or updater that specifies this field must have
+  /// `iam.serviceAccounts.actAs` permission on the service account. If not
+  /// specified, the Pub/Sub
+  /// [service agent](https://cloud.google.com/iam/docs/service-agents),
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+  ///
+  /// Optional.
+  core.String? serviceAccountEmail;
+
+  /// An output-only field that indicates whether or not the subscription can
+  /// receive messages.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : The subscription can actively send messages to BigQuery
+  /// - "PERMISSION_DENIED" : Cannot write to the BigQuery table because of
+  /// permission denied errors. This can happen if - Pub/Sub SA has not been
+  /// granted the
+  /// [appropriate BigQuery IAM permissions](https://cloud.google.com/pubsub/docs/create-subscription#assign_bigquery_service_account)
+  /// - bigquery.googleapis.com API is not enabled for the project
+  /// ([instructions](https://cloud.google.com/service-usage/docs/enable-disable))
+  /// - "NOT_FOUND" : Cannot write to the BigQuery table because it does not
+  /// exist.
+  /// - "SCHEMA_MISMATCH" : Cannot write to the BigQuery table due to a schema
+  /// mismatch.
+  /// - "IN_TRANSIT_LOCATION_RESTRICTION" : Cannot write to the destination
+  /// because enforce_in_transit is set to true and the destination locations
+  /// are not in the allowed regions.
+  core.String? state;
+
+  /// The name of the table to which to write data, of the form
+  /// {projectId}.{datasetId}.{tableId}
+  ///
+  /// Optional.
+  core.String? table;
+
+  /// When true, use the BigQuery table's schema as the columns to write to in
+  /// BigQuery.
+  ///
+  /// `use_table_schema` and `use_topic_schema` cannot be enabled at the same
+  /// time.
+  ///
+  /// Optional.
+  core.bool? useTableSchema;
+
+  /// When true, use the topic's schema as the columns to write to in BigQuery,
+  /// if it exists.
+  ///
+  /// `use_topic_schema` and `use_table_schema` cannot be enabled at the same
+  /// time.
+  ///
+  /// Optional.
+  core.bool? useTopicSchema;
+
+  /// When true, write the subscription name, message_id, publish_time,
+  /// attributes, and ordering_key to additional columns in the table.
+  ///
+  /// The subscription name, message_id, and publish_time fields are put in
+  /// their own columns while all other message properties (other than data) are
+  /// written to a JSON object in the attributes column.
+  ///
+  /// Optional.
+  core.bool? writeMetadata;
+
+  BigQueryConfig({
+    this.dropUnknownFields,
+    this.serviceAccountEmail,
+    this.state,
+    this.table,
+    this.useTableSchema,
+    this.useTopicSchema,
+    this.writeMetadata,
+  });
+
+  BigQueryConfig.fromJson(core.Map json_)
+      : this(
+          dropUnknownFields: json_['dropUnknownFields'] as core.bool?,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+          state: json_['state'] as core.String?,
+          table: json_['table'] as core.String?,
+          useTableSchema: json_['useTableSchema'] as core.bool?,
+          useTopicSchema: json_['useTopicSchema'] as core.bool?,
+          writeMetadata: json_['writeMetadata'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dropUnknownFields != null) 'dropUnknownFields': dropUnknownFields!,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail!,
+        if (state != null) 'state': state!,
+        if (table != null) 'table': table!,
+        if (useTableSchema != null) 'useTableSchema': useTableSchema!,
+        if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
+        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
+      };
+}
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -3123,7 +3264,49 @@ class CreateSnapshotRequest {
 /// The same message might be dead lettered multiple times. If validation on any
 /// of the fields fails at subscription creation/updation, the create/update
 /// subscription request will fail.
-typedef DeadLetterPolicy = $DeadLetterPolicy;
+class DeadLetterPolicy {
+  /// The name of the topic to which dead letter messages should be published.
+  ///
+  /// Format is `projects/{project}/topics/{topic}`.The Pub/Sub service account
+  /// associated with the enclosing subscription's parent project (i.e.,
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+  /// permission to Publish() to this topic. The operation will fail if the
+  /// topic does not exist. Users should ensure that there is a subscription
+  /// attached to this topic since messages published to a topic with no
+  /// subscriptions are lost.
+  ///
+  /// Optional.
+  core.String? deadLetterTopic;
+
+  /// The maximum number of delivery attempts for any message.
+  ///
+  /// The value must be between 5 and 100. The number of delivery attempts is
+  /// defined as 1 + (the sum of number of NACKs and number of times the
+  /// acknowledgment deadline has been exceeded for the message). A NACK is any
+  /// call to ModifyAckDeadline with a 0 deadline. Note that client libraries
+  /// may automatically extend ack_deadlines. This field will be honored on a
+  /// best effort basis. If this parameter is 0, a default value of 5 is used.
+  ///
+  /// Optional.
+  core.int? maxDeliveryAttempts;
+
+  DeadLetterPolicy({
+    this.deadLetterTopic,
+    this.maxDeliveryAttempts,
+  });
+
+  DeadLetterPolicy.fromJson(core.Map json_)
+      : this(
+          deadLetterTopic: json_['deadLetterTopic'] as core.String?,
+          maxDeliveryAttempts: json_['maxDeliveryAttempts'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic!,
+        if (maxDeliveryAttempts != null)
+          'maxDeliveryAttempts': maxDeliveryAttempts!,
+      };
+}
 
 /// Response for the DetachSubscription method.
 ///
@@ -3246,7 +3429,45 @@ class IngestionDataSourceSettings {
 
 /// User-defined JavaScript function that can transform or filter a Pub/Sub
 /// message.
-typedef JavaScriptUDF = $JavaScriptUDF;
+class JavaScriptUDF {
+  /// JavaScript code that contains a function `function_name` with the below
+  /// signature: ``` / * * * Transforms a Pub/Sub message.
+  ///
+  /// * @return {(Object)>|null)} - To * filter a message, return `null`. To
+  /// transform a message return a map * with the following keys: * - (required)
+  /// 'data' : {string} * - (optional) 'attributes' : {Object} * Returning empty
+  /// `attributes` will remove all attributes from the * message. * * @param
+  /// {(Object)>} Pub/Sub * message. Keys: * - (required) 'data' : {string} * -
+  /// (required) 'attributes' : {Object} * * @param {Object} metadata - Pub/Sub
+  /// message metadata. * Keys: * - (optional) 'message_id' : {string} * -
+  /// (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format * -
+  /// (optional) 'ordering_key': {string} * / function (message, metadata) { }
+  /// ```
+  ///
+  /// Required.
+  core.String? code;
+
+  /// Name of the JavasScript function that should applied to Pub/Sub messages.
+  ///
+  /// Required.
+  core.String? functionName;
+
+  JavaScriptUDF({
+    this.code,
+    this.functionName,
+  });
+
+  JavaScriptUDF.fromJson(core.Map json_)
+      : this(
+          code: json_['code'] as core.String?,
+          functionName: json_['functionName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (functionName != null) 'functionName': functionName!,
+      };
+}
 
 /// Response for the `ListSchemaRevisions` method.
 class ListSchemaRevisionsResponse {
@@ -3519,12 +3740,19 @@ class MessageStoragePolicy {
 
 /// All supported message transforms types.
 class MessageTransform {
-  /// If set to true, the transform is enabled.
+  /// If true, the transform is disabled and will not be applied to messages.
   ///
-  /// If false, the transform is disabled and will not be applied to messages.
-  /// Defaults to `true`.
+  /// Defaults to `false`.
   ///
   /// Optional.
+  core.bool? disabled;
+
+  /// This field is deprecated, use the `disabled` field to disable transforms.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enabled;
 
   /// JavaScript User Defined Function.
@@ -3536,12 +3764,14 @@ class MessageTransform {
   JavaScriptUDF? javascriptUdf;
 
   MessageTransform({
+    this.disabled,
     this.enabled,
     this.javascriptUdf,
   });
 
   MessageTransform.fromJson(core.Map json_)
       : this(
+          disabled: json_['disabled'] as core.bool?,
           enabled: json_['enabled'] as core.bool?,
           javascriptUdf: json_.containsKey('javascriptUdf')
               ? JavaScriptUDF.fromJson(
@@ -3550,6 +3780,7 @@ class MessageTransform {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (disabled != null) 'disabled': disabled!,
         if (enabled != null) 'enabled': enabled!,
         if (javascriptUdf != null) 'javascriptUdf': javascriptUdf!,
       };

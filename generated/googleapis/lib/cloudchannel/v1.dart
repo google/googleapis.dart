@@ -4179,10 +4179,9 @@ class GoogleCloudChannelV1ChangeOfferRequest {
 
   /// Price reference ID for the offer.
   ///
-  /// Optional field only for offers that require additional price information.
-  /// Used to guarantee that the pricing is consistent between quoting the offer
-  /// and placing the order. Not yet implemented: if populated in a request,
-  /// this field isn't evaluated in the API.
+  /// Only for offers that require additional price information. Used to
+  /// guarantee that the pricing is consistent between quoting the offer and
+  /// placing the order.
   ///
   /// Optional.
   core.String? priceReferenceId;
@@ -4989,6 +4988,22 @@ class GoogleCloudChannelV1Customer {
   /// Output only.
   core.String? createTime;
 
+  /// Indicate if a customer is attesting about the correctness of provided
+  /// information.
+  ///
+  /// Only required if creating a GCP Entitlement.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CUSTOMER_ATTESTATION_STATE_UNSPECIFIED" : Default value if not set yet
+  /// - "EXEMPT" : Customer is exempt from attesting based on exemption list at
+  /// https://cloud.google.com/terms/direct-tos-exemptions. Contact information
+  /// of customer will be mandatory.
+  /// - "NON_EXEMPT_AND_INFO_VERIFIED" : Customer is not exempt and has verified
+  /// the information provided is correct. Contact information of customer will
+  /// be mandatory.
+  core.String? customerAttestationState;
+
   /// The customer's primary domain.
   ///
   /// Must match the primary contact email's domain.
@@ -5040,6 +5055,7 @@ class GoogleCloudChannelV1Customer {
     this.cloudIdentityInfo,
     this.correlationId,
     this.createTime,
+    this.customerAttestationState,
     this.domain,
     this.languageCode,
     this.name,
@@ -5061,6 +5077,8 @@ class GoogleCloudChannelV1Customer {
               : null,
           correlationId: json_['correlationId'] as core.String?,
           createTime: json_['createTime'] as core.String?,
+          customerAttestationState:
+              json_['customerAttestationState'] as core.String?,
           domain: json_['domain'] as core.String?,
           languageCode: json_['languageCode'] as core.String?,
           name: json_['name'] as core.String?,
@@ -5084,6 +5102,8 @@ class GoogleCloudChannelV1Customer {
         if (cloudIdentityInfo != null) 'cloudIdentityInfo': cloudIdentityInfo!,
         if (correlationId != null) 'correlationId': correlationId!,
         if (createTime != null) 'createTime': createTime!,
+        if (customerAttestationState != null)
+          'customerAttestationState': customerAttestationState!,
         if (domain != null) 'domain': domain!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (name != null) 'name': name!,
@@ -5343,10 +5363,9 @@ class GoogleCloudChannelV1Entitlement {
 
   /// Price reference ID for the offer.
   ///
-  /// Optional field only for offers that require additional price information.
-  /// Used to guarantee that the pricing is consistent between quoting the offer
-  /// and placing the order. Not yet implemented: if this field is populated in
-  /// a request, it isn't evaluated in the API.
+  /// Only for offers that require additional price information. Used to
+  /// guarantee that the pricing is consistent between quoting the offer and
+  /// placing the order.
   ///
   /// Optional.
   core.String? priceReferenceId;
@@ -6001,6 +6020,9 @@ class GoogleCloudChannelV1ListOffersResponse {
   core.String? nextPageToken;
 
   /// The list of Offers requested.
+  ///
+  /// The pricing information for each Offer only includes the base price.
+  /// Effective prices and discounts aren't populated.
   core.List<GoogleCloudChannelV1Offer>? offers;
 
   GoogleCloudChannelV1ListOffersResponse({
@@ -7195,9 +7217,9 @@ class GoogleCloudChannelV1PurchasableOffer {
 
   /// Price reference ID for the offer.
   ///
-  /// Optional field only for offers that require additional price information.
-  /// Used to guarantee that the pricing is consistent between quoting the offer
-  /// and placing the order.
+  /// Only for offers that require additional price information. Used to
+  /// guarantee that the pricing is consistent between quoting the offer and
+  /// placing the order.
   ///
   /// Optional.
   core.String? priceReferenceId;
@@ -7644,6 +7666,8 @@ class GoogleCloudChannelV1RepricingConfig {
   /// RepricingConfig.EntitlementGranularity.entitlement. This is the
   /// recommended value for both CustomerRepricingConfig and
   /// ChannelPartnerRepricingConfig.
+  ///
+  /// Required.
   GoogleCloudChannelV1RepricingConfigEntitlementGranularity?
       entitlementGranularity;
 
@@ -7718,7 +7742,7 @@ class GoogleCloudChannelV1RepricingConfig {
 /// json object. Deprecated: This is no longer supported. Use
 /// RepricingConfig.EntitlementGranularity instead.
 typedef GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
-    = $Shared01;
+    = $Shared02;
 
 /// Applies the repricing configuration at the entitlement level.
 class GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
@@ -8103,9 +8127,9 @@ class GoogleCloudChannelV1TransferableOffer {
 
   /// Price reference ID for the offer.
   ///
-  /// Optional field only for offers that require additional price information.
-  /// Used to guarantee that the pricing is consistent between quoting the offer
-  /// and placing the order.
+  /// Only for offers that require additional price information. Used to
+  /// guarantee that the pricing is consistent between quoting the offer and
+  /// placing the order.
   ///
   /// Optional.
   core.String? priceReferenceId;
@@ -8678,19 +8702,20 @@ class GoogleTypeDecimal {
 /// Represents an amount of money with its currency type.
 typedef GoogleTypeMoney = $Money;
 
-/// Represents a postal address.
+/// Represents a postal address, such as for postal delivery or payments
+/// addresses.
 ///
-/// For example for postal delivery or payments addresses. Given a postal
-/// address, a postal service can deliver items to a premise, P.O. Box or
-/// similar. It is not intended to model geographical locations (roads, towns,
-/// mountains). In typical usage an address would be created by user input or
-/// from importing existing data, depending on the type of process. Advice on
-/// address input / editing: - Use an internationalization-ready address widget
-/// such as https://github.com/google/libaddressinput) - Users should not be
-/// presented with UI elements for input or editing of fields outside countries
-/// where that field is used. For more guidance on how to use this schema, see:
-/// https://support.google.com/business/answer/6397478
-typedef GoogleTypePostalAddress = $PostalAddress;
+/// With a postal address, a postal service can deliver items to a premise, P.O.
+/// box, or similar. A postal address is not intended to model geographical
+/// locations like roads, towns, or mountains. In typical usage, an address
+/// would be created by user input or from importing existing data, depending on
+/// the type of process. Advice on address input or editing: - Use an
+/// internationalization-ready address widget such as
+/// https://github.com/google/libaddressinput. - Users should not be presented
+/// with UI elements for input or editing of fields outside countries where that
+/// field is used. For more guidance on how to use this schema, see:
+/// https://support.google.com/business/answer/6397478.
+typedef GoogleTypePostalAddress = $PostalAddress00;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

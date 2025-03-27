@@ -884,6 +884,8 @@ api.AssignedTargetingOption buildAssignedTargetingOption() {
         buildContentOutstreamPositionAssignedTargetingOptionDetails();
     o.contentStreamTypeDetails =
         buildContentStreamTypeAssignedTargetingOptionDetails();
+    o.contentThemeExclusionDetails =
+        buildContentThemeAssignedTargetingOptionDetails();
     o.dayAndTimeDetails = buildDayAndTimeAssignedTargetingOptionDetails();
     o.deviceMakeModelDetails =
         buildDeviceMakeModelAssignedTargetingOptionDetails();
@@ -975,6 +977,8 @@ void checkAssignedTargetingOption(api.AssignedTargetingOption o) {
         o.contentOutstreamPositionDetails!);
     checkContentStreamTypeAssignedTargetingOptionDetails(
         o.contentStreamTypeDetails!);
+    checkContentThemeAssignedTargetingOptionDetails(
+        o.contentThemeExclusionDetails!);
     checkDayAndTimeAssignedTargetingOptionDetails(o.dayAndTimeDetails!);
     checkDeviceMakeModelAssignedTargetingOptionDetails(
         o.deviceMakeModelDetails!);
@@ -3611,6 +3615,64 @@ void checkContentStreamTypeTargetingOptionDetails(
     );
   }
   buildCounterContentStreamTypeTargetingOptionDetails--;
+}
+
+core.int buildCounterContentThemeAssignedTargetingOptionDetails = 0;
+api.ContentThemeAssignedTargetingOptionDetails
+    buildContentThemeAssignedTargetingOptionDetails() {
+  final o = api.ContentThemeAssignedTargetingOptionDetails();
+  buildCounterContentThemeAssignedTargetingOptionDetails++;
+  if (buildCounterContentThemeAssignedTargetingOptionDetails < 3) {
+    o.contentTheme = 'foo';
+    o.excludedContentTheme = 'foo';
+    o.excludedTargetingOptionId = 'foo';
+  }
+  buildCounterContentThemeAssignedTargetingOptionDetails--;
+  return o;
+}
+
+void checkContentThemeAssignedTargetingOptionDetails(
+    api.ContentThemeAssignedTargetingOptionDetails o) {
+  buildCounterContentThemeAssignedTargetingOptionDetails++;
+  if (buildCounterContentThemeAssignedTargetingOptionDetails < 3) {
+    unittest.expect(
+      o.contentTheme!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.excludedContentTheme!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.excludedTargetingOptionId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterContentThemeAssignedTargetingOptionDetails--;
+}
+
+core.int buildCounterContentThemeTargetingOptionDetails = 0;
+api.ContentThemeTargetingOptionDetails
+    buildContentThemeTargetingOptionDetails() {
+  final o = api.ContentThemeTargetingOptionDetails();
+  buildCounterContentThemeTargetingOptionDetails++;
+  if (buildCounterContentThemeTargetingOptionDetails < 3) {
+    o.contentTheme = 'foo';
+  }
+  buildCounterContentThemeTargetingOptionDetails--;
+  return o;
+}
+
+void checkContentThemeTargetingOptionDetails(
+    api.ContentThemeTargetingOptionDetails o) {
+  buildCounterContentThemeTargetingOptionDetails++;
+  if (buildCounterContentThemeTargetingOptionDetails < 3) {
+    unittest.expect(
+      o.contentTheme!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterContentThemeTargetingOptionDetails--;
 }
 
 core.List<api.TrackingFloodlightActivityConfig> buildUnnamed49() => [
@@ -11414,6 +11476,7 @@ api.TargetingOption buildTargetingOption() {
     o.contentOutstreamPositionDetails =
         buildContentOutstreamPositionTargetingOptionDetails();
     o.contentStreamTypeDetails = buildContentStreamTypeTargetingOptionDetails();
+    o.contentThemeDetails = buildContentThemeTargetingOptionDetails();
     o.deviceMakeModelDetails = buildDeviceMakeModelTargetingOptionDetails();
     o.deviceTypeDetails = buildDeviceTypeTargetingOptionDetails();
     o.digitalContentLabelDetails =
@@ -11464,6 +11527,7 @@ void checkTargetingOption(api.TargetingOption o) {
     checkContentOutstreamPositionTargetingOptionDetails(
         o.contentOutstreamPositionDetails!);
     checkContentStreamTypeTargetingOptionDetails(o.contentStreamTypeDetails!);
+    checkContentThemeTargetingOptionDetails(o.contentThemeDetails!);
     checkDeviceMakeModelTargetingOptionDetails(o.deviceMakeModelDetails!);
     checkDeviceTypeTargetingOptionDetails(o.deviceTypeDetails!);
     checkDigitalContentLabelTargetingOptionDetails(
@@ -11973,6 +12037,29 @@ void checkUserRewardedContentTargetingOptionDetails(
   buildCounterUserRewardedContentTargetingOptionDetails--;
 }
 
+core.int buildCounterVideoAdInventoryControl = 0;
+api.VideoAdInventoryControl buildVideoAdInventoryControl() {
+  final o = api.VideoAdInventoryControl();
+  buildCounterVideoAdInventoryControl++;
+  if (buildCounterVideoAdInventoryControl < 3) {
+    o.allowInFeed = true;
+    o.allowInStream = true;
+    o.allowShorts = true;
+  }
+  buildCounterVideoAdInventoryControl--;
+  return o;
+}
+
+void checkVideoAdInventoryControl(api.VideoAdInventoryControl o) {
+  buildCounterVideoAdInventoryControl++;
+  if (buildCounterVideoAdInventoryControl < 3) {
+    unittest.expect(o.allowInFeed!, unittest.isTrue);
+    unittest.expect(o.allowInStream!, unittest.isTrue);
+    unittest.expect(o.allowShorts!, unittest.isTrue);
+  }
+  buildCounterVideoAdInventoryControl--;
+}
+
 core.List<api.VideoAdSequenceStep> buildUnnamed162() => [
       buildVideoAdSequenceStep(),
       buildVideoAdSequenceStep(),
@@ -12435,6 +12522,7 @@ api.YoutubeAndPartnersSettings buildYoutubeAndPartnersSettings() {
     o.relatedVideoIds = buildUnnamed170();
     o.targetFrequency = buildTargetFrequency();
     o.thirdPartyMeasurementConfigs = buildThirdPartyMeasurementConfigs();
+    o.videoAdInventoryControl = buildVideoAdInventoryControl();
     o.videoAdSequenceSettings = buildVideoAdSequenceSettings();
     o.viewFrequencyCap = buildFrequencyCap();
   }
@@ -12465,6 +12553,7 @@ void checkYoutubeAndPartnersSettings(api.YoutubeAndPartnersSettings o) {
     checkUnnamed170(o.relatedVideoIds!);
     checkTargetFrequency(o.targetFrequency!);
     checkThirdPartyMeasurementConfigs(o.thirdPartyMeasurementConfigs!);
+    checkVideoAdInventoryControl(o.videoAdInventoryControl!);
     checkVideoAdSequenceSettings(o.videoAdSequenceSettings!);
     checkFrequencyCap(o.viewFrequencyCap!);
   }
@@ -13534,6 +13623,26 @@ void main() {
       final od = api.ContentStreamTypeTargetingOptionDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkContentStreamTypeTargetingOptionDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-ContentThemeAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildContentThemeAssignedTargetingOptionDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ContentThemeAssignedTargetingOptionDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkContentThemeAssignedTargetingOptionDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-ContentThemeTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildContentThemeTargetingOptionDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ContentThemeTargetingOptionDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkContentThemeTargetingOptionDetails(od);
     });
   });
 
@@ -15749,6 +15858,16 @@ void main() {
       final od = api.UserRewardedContentTargetingOptionDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUserRewardedContentTargetingOptionDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-VideoAdInventoryControl', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVideoAdInventoryControl();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VideoAdInventoryControl.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVideoAdInventoryControl(od);
     });
   });
 
@@ -26411,60 +26530,6 @@ void main() {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.DisplayVideoApi(mock).sdfdownloadtasks.operations;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v3/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
-      checkOperation(response as api.Operation);
-    });
-  });
-
-  unittest.group('resource-SdfuploadtasksOperationsResource', () {
-    unittest.test('method--get', () async {
-      final mock = HttpServerMock();
-      final res = api.DisplayVideoApi(mock).sdfuploadtasks.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

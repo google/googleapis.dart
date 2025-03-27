@@ -18,7 +18,7 @@
 /// resources like user, groups etc. It also provides audit and usage reports of
 /// domain.
 ///
-/// For more information, see <https://developers.google.com/admin-sdk/>
+/// For more information, see <https://developers.google.com/workspace/admin/>
 ///
 /// Create an instance of [DirectoryApi] to access these resources:
 ///
@@ -395,7 +395,7 @@ class ChromeosdevicesResource {
   ChromeosdevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Use
-  /// \[BatchChangeChromeOsDeviceStatus\](/admin-sdk/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus)
+  /// [BatchChangeChromeOsDeviceStatus](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus)
   /// instead.
   ///
   /// Takes an action that affects a Chrome OS Device. This includes
@@ -416,12 +416,12 @@ class ChromeosdevicesResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [resourceId] - The unique ID of the device. The `resourceId`s are returned
   /// in the response from the
-  /// \[chromeosdevices.list\](/admin-sdk/directory/v1/reference/chromeosdevices/list)
+  /// [chromeosdevices.list](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices/list)
   /// method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -468,12 +468,12 @@ class ChromeosdevicesResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [deviceId] - The unique ID of the device. The `deviceId`s are returned in
   /// the response from the
-  /// \[chromeosdevices.list\](/admin-sdk/directory/v1/reference/chromeosdevices/list)
+  /// [chromeosdevices.list](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices/list)
   /// method.
   ///
   /// [projection] - Determines whether the response contains the full list of
@@ -525,8 +525,8 @@ class ChromeosdevicesResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [includeChildOrgunits] - Return devices from all child orgunits, as well
   /// as the specified org unit. If this is set to true, 'orgUnitPath' must be
@@ -546,7 +546,7 @@ class ChromeosdevicesResource {
   /// - "serialNumber" : The Chrome device serial number entered when the device
   /// was enabled.
   /// - "status" : Chrome device status. For more information, see the \<a
-  /// \[chromeosdevices\](/admin-sdk/directory/v1/reference/chromeosdevices.html).
+  /// [chromeosdevices](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices.html).
   ///
   /// [orgUnitPath] - The full path of the organizational unit (minus the
   /// leading `/`) or its unique ID.
@@ -563,7 +563,7 @@ class ChromeosdevicesResource {
   /// - "FULL" : Includes all metadata fields
   ///
   /// [query] - Search string in the format given at
-  /// https://developers.google.com/admin-sdk/directory/v1/list-query-operators
+  /// https://developers.google.com/workspace/admin/directory/v1/list-query-operators
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Must be used with the `orderBy` parameter.
@@ -667,8 +667,8 @@ class ChromeosdevicesResource {
   /// Updates a device's updatable properties, such as `annotatedUser`,
   /// `annotatedLocation`, `notes`, `orgUnitPath`, or `annotatedAssetId`.
   ///
-  /// This method supports \[patch
-  /// semantics\](/admin-sdk/directory/v1/guides/performance#patch).
+  /// This method supports
+  /// [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
   ///
   /// [request] - The metadata request object.
   ///
@@ -677,12 +677,12 @@ class ChromeosdevicesResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [deviceId] - The unique ID of the device. The `deviceId`s are returned in
   /// the response from the
-  /// \[chromeosdevices.list\](/admin-sdk/v1/reference/chromeosdevices/list)
+  /// [chromeosdevices.list](https://developers.google.com/workspace/admin/v1/reference/chromeosdevices/list)
   /// method.
   ///
   /// [projection] - Determines whether the response contains the full list of
@@ -740,12 +740,12 @@ class ChromeosdevicesResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [deviceId] - The unique ID of the device. The `deviceId`s are returned in
   /// the response from the
-  /// \[chromeosdevices.list\](/admin-sdk/v1/reference/chromeosdevices/list)
+  /// [chromeosdevices.list](https://developers.google.com/workspace/admin/v1/reference/chromeosdevices/list)
   /// method.
   ///
   /// [projection] - Determines whether the response contains the full list of
@@ -1113,7 +1113,7 @@ class CustomersChromePrintServersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The
-  /// [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers)
+  /// [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers)
   /// of the customer's Google Workspace account. Format: `customers/{id}`
   /// Value must have pattern `^customers/\[^/\]+$`.
   ///
@@ -1158,7 +1158,7 @@ class CustomersChromePrintServersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The
-  /// [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers)
+  /// [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers)
   /// of the customer's Google Workspace account. Format:
   /// `customers/{customer.id}`
   /// Value must have pattern `^customers/\[^/\]+$`.
@@ -1204,7 +1204,7 @@ class CustomersChromePrintServersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The
-  /// [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers)
+  /// [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers)
   /// of the customer's Google Workspace account. Format: `customers/{id}`
   /// Value must have pattern `^customers/\[^/\]+$`.
   ///
@@ -1283,7 +1283,7 @@ class CustomersChromePrintServersResource {
   /// Request parameters:
   ///
   /// [name] - Required. The
-  /// [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers)
+  /// [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers)
   /// of the customer's Google Workspace account. Format: `customers/{id}`
   /// Value must have pattern `^customers/\[^/\]+/chrome/printServers/\[^/\]+$`.
   ///
@@ -1321,7 +1321,7 @@ class CustomersChromePrintServersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The
-  /// [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers)
+  /// [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers)
   /// of the customer's Google Workspace account. Format: `customers/{id}`
   /// Value must have pattern `^customers/\[^/\]+$`.
   ///
@@ -1395,7 +1395,7 @@ class CustomersChromePrintServersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. Resource name of the print server. Leave empty when
+  /// [name] - Identifier. Resource name of the print server. Leave empty when
   /// creating. Format: `customers/{customer.id}/printServers/{print_server.id}`
   /// Value must have pattern `^customers/\[^/\]+/chrome/printServers/\[^/\]+$`.
   ///
@@ -1776,9 +1776,9 @@ class CustomersChromePrintersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the Printer object, in the format
-  /// customers/{customer-id}/printers/{printer-id} (During printer creation
-  /// leave empty)
+  /// [name] - Identifier. The resource name of the Printer object, in the
+  /// format customers/{customer-id}/printers/{printer-id} (During printer
+  /// creation leave empty)
   /// Value must have pattern `^customers/\[^/\]+/chrome/printers/\[^/\]+$`.
   ///
   /// [clearMask] - The list of fields to be cleared. Note, some of the fields
@@ -1876,7 +1876,8 @@ class DomainAliasesResource {
   /// case of a multi-domain account, to fetch all groups for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -1965,7 +1966,8 @@ class DomainAliasesResource {
   /// case of a multi-domain account, to fetch all groups for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -2057,7 +2059,8 @@ class DomainsResource {
   /// case of a multi-domain account, to fetch all groups for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -2144,7 +2147,8 @@ class DomainsResource {
   /// case of a multi-domain account, to fetch all groups for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -2300,7 +2304,8 @@ class GroupsResource {
   /// case of a multi-domain account, to fetch all groups for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -2377,8 +2382,8 @@ class GroupsResource {
 
   /// Updates a group's properties.
   ///
-  /// This method supports \[patch
-  /// semantics\](/admin-sdk/directory/v1/guides/performance#patch).
+  /// This method supports
+  /// [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2769,7 +2774,7 @@ class MembersResource {
   /// Retrieves a paginated list of all members in a group.
   ///
   /// This method times out after 60 minutes. For more information, see
-  /// [Troubleshoot error codes](https://developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
+  /// [Troubleshoot error codes](https://developers.google.com/workspace/admin/directory/v1/guides/troubleshoot-error-codes).
   ///
   /// Request parameters:
   ///
@@ -2828,8 +2833,8 @@ class MembersResource {
 
   /// Updates the membership properties of a user in the specified group.
   ///
-  /// This method supports \[patch
-  /// semantics\](/admin-sdk/directory/v1/guides/performance#patch).
+  /// This method supports
+  /// [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2942,8 +2947,8 @@ class MobiledevicesResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [resourceId] - The unique ID the API service uses to identify the mobile
   /// device.
@@ -2989,8 +2994,8 @@ class MobiledevicesResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [resourceId] - The unique ID the API service uses to identify the mobile
   /// device.
@@ -3032,8 +3037,8 @@ class MobiledevicesResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [resourceId] - The unique ID the API service uses to identify the mobile
   /// device.
@@ -3086,15 +3091,15 @@ class MobiledevicesResource {
   /// Identity
   /// [Devices API](https://cloud.google.com/identity/docs/concepts/overview-devices)
   /// instead. This method times out after 60 minutes. For more information, see
-  /// [Troubleshoot error codes](https://developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
+  /// [Troubleshoot error codes](https://developers.google.com/workspace/admin/directory/v1/guides/troubleshoot-error-codes).
   ///
   /// Request parameters:
   ///
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [maxResults] - Maximum number of results to return. Max allowed value is
   /// 100.
@@ -3121,7 +3126,7 @@ class MobiledevicesResource {
   /// - "FULL" : Includes all metadata fields
   ///
   /// [query] - Search string in the format given at
-  /// https://developers.google.com/admin-sdk/directory/v1/search-operators
+  /// https://developers.google.com/workspace/admin/directory/v1/search-operators
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Must be used with the `orderBy` parameter.
@@ -3185,8 +3190,8 @@ class OrgunitsResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [orgUnitPath] - The full path of the organizational unit (minus the
   /// leading `/`) or its unique ID.
@@ -3229,8 +3234,8 @@ class OrgunitsResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [orgUnitPath] - The full path of the organizational unit (minus the
   /// leading `/`) or its unique ID.
@@ -3277,8 +3282,8 @@ class OrgunitsResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3320,8 +3325,8 @@ class OrgunitsResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [orgUnitPath] - The full path to the organizational unit or its unique ID.
   /// Returns the children of the specified organizational unit.
@@ -3370,8 +3375,8 @@ class OrgunitsResource {
 
   /// Updates an organizational unit.
   ///
-  /// This method supports \[patch
-  /// semantics\](/admin-sdk/directory/v1/guides/performance#patch)
+  /// This method supports
+  /// [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch)
   ///
   /// [request] - The metadata request object.
   ///
@@ -3380,8 +3385,8 @@ class OrgunitsResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [orgUnitPath] - The full path of the organizational unit (minus the
   /// leading `/`) or its unique ID.
@@ -3431,8 +3436,8 @@ class OrgunitsResource {
   /// [customerId] - The unique ID for the customer's Google Workspace account.
   /// As an account administrator, you can also use the `my_customer` alias to
   /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users).
+  /// as part of the
+  /// [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
   ///
   /// [orgUnitPath] - The full path of the organizational unit (minus the
   /// leading `/`) or its unique ID.
@@ -3487,7 +3492,8 @@ class PrivilegesResource {
   /// case of a multi-domain account, to fetch all groups for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -4517,7 +4523,8 @@ class RoleAssignmentsResource {
   /// case of a multi-domain account, to fetch all groups for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -4606,7 +4613,8 @@ class RoleAssignmentsResource {
   /// case of a multi-domain account, to fetch all groups for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -4721,7 +4729,8 @@ class RolesResource {
   /// case of a multi-domain account, to fetch all groups for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -4808,7 +4817,8 @@ class RolesResource {
   /// case of a multi-domain account, to fetch all groups for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -4993,7 +5003,8 @@ class SchemasResource {
   /// In case of a multi-domain account, to fetch all groups for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -5080,7 +5091,8 @@ class SchemasResource {
   /// In case of a multi-domain account, to fetch all groups for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -5433,7 +5445,7 @@ class UsersResource {
   ///
   /// [viewType] - Whether to fetch the administrator-only or domain-wide public
   /// view of the user. For more information, see \[Retrieve a user as a
-  /// non-administrator\](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
+  /// non-administrator\](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin).
   /// Possible string values are:
   /// - "admin_view" : Results include both administrator-only and domain-public
   /// fields for the user.
@@ -5543,7 +5555,8 @@ class UsersResource {
   /// case of a multi-domain account, to fetch all users for a customer, use
   /// this field instead of `domain`. You can also use the `my_customer` alias
   /// to represent your account's `customerId`. The `customerId` is also
-  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// returned as part of the
+  /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users)
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
@@ -5580,8 +5593,8 @@ class UsersResource {
   /// - "full" : Include all fields associated with this user.
   ///
   /// [query] - Query string for searching user fields. For more information on
-  /// constructing user queries, see \[Search for
-  /// Users\](/admin-sdk/directory/v1/guides/search-users).
+  /// constructing user queries, see
+  /// [Search for Users](https://developers.google.com/workspace/admin/directory/v1/guides/search-users).
   ///
   /// [showDeleted] - If set to `true`, retrieves the list of deleted users.
   /// (Default: `false`)
@@ -5594,7 +5607,7 @@ class UsersResource {
   ///
   /// [viewType] - Whether to fetch the administrator-only or domain-wide public
   /// view of the user. For more information, see \[Retrieve a user as a
-  /// non-administrator\](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
+  /// non-administrator\](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin).
   /// Possible string values are:
   /// - "admin_view" : Results include both administrator-only and domain-public
   /// fields for the user.
@@ -5697,7 +5710,7 @@ class UsersResource {
   /// The update method should be used instead, because it also supports patch
   /// semantics and has better performance. If you're mapping an external
   /// identity to a Google identity, use the
-  /// \[`update`\](https://developers.google.com/admin-sdk/directory/v1/reference/users/update)
+  /// \[`update`\](https://developers.google.com/workspace/admin/directory/v1/reference/users/update)
   /// method instead of the `patch` method. This method is unable to clear
   /// fields that contain repeated objects (`addresses`, `phones`, etc). Use the
   /// update method instead.
@@ -5827,7 +5840,7 @@ class UsersResource {
   /// repeating fields that contain arrays, individual items in the array can't
   /// be patched piecemeal; they must be supplied in the request body with the
   /// desired values for all items. See the
-  /// [user accounts guide](https://developers.google.com/admin-sdk/directory/v1/guides/manage-users#update_user)
+  /// [user accounts guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#update_user)
   /// for more information.
   ///
   /// [request] - The metadata request object.
@@ -5926,7 +5939,7 @@ class UsersResource {
   ///
   /// [viewType] - Whether to fetch the administrator-only or domain-wide public
   /// view of the user. For more information, see \[Retrieve a user as a
-  /// non-administrator\](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
+  /// non-administrator\](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin).
   /// Possible string values are:
   /// - "admin_view" : Results include both administrator-only and domain-public
   /// fields.
@@ -6246,8 +6259,8 @@ class UsersPhotosResource {
 
   /// Adds a photo for the user.
   ///
-  /// This method supports \[patch
-  /// semantics\](/admin-sdk/directory/v1/guides/performance#patch).
+  /// This method supports
+  /// [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
   ///
   /// [request] - The metadata request object.
   ///
@@ -8064,8 +8077,8 @@ class ChromeOsDeviceTpmVersionInfo {
 /// Google Chrome devices run on the
 /// [Chrome OS](https://support.google.com/chromeos).
 ///
-/// For more information about common API tasks, see the \[Developer's
-/// Guide\](/admin-sdk/directory/v1/guides/manage-chrome-devices).
+/// For more information about common API tasks, see the
+/// [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-chrome-devices).
 class ChromeOsDevice {
   /// A list of active time ranges (Read-only).
   core.List<ChromeOsDeviceActiveTimeRanges>? activeTimeRanges;
@@ -8175,6 +8188,18 @@ class ChromeOsDevice {
   /// - "education" : The device is bundled with a perpetual Chrome Education
   /// Upgrade.
   /// - "kioskUpgrade" : The device has an annual Kiosk Upgrade.
+  /// - "enterpriseUpgradePerpetual" : Indicates that the device is consuming a
+  /// standalone, perpetual Chrome Enterprise Upgrade, a Chrome Enterprise
+  /// license.
+  /// - "enterpriseUpgradeFixedTerm" : Indicates that the device is consuming a
+  /// standalone, fixed-term Chrome Enterprise Upgrade, a Chrome Enterprise
+  /// license.
+  /// - "educationUpgradePerpetual" : Indicates that the device is consuming a
+  /// standalone, perpetual Chrome Education Upgrade(AKA Chrome EDU perpetual
+  /// license).
+  /// - "educationUpgradeFixedTerm" : Indicates that the device is consuming a
+  /// standalone, fixed-term Chrome Education Upgrade(AKA Chrome EDU fixed-term
+  /// license).
   core.String? deviceLicenseType;
 
   /// How much disk space the device has available and is currently using.
@@ -8268,8 +8293,8 @@ class ChromeOsDevice {
   /// A MEID/IMEI is typically used when adding a device to a wireless carrier's
   /// post-pay service plan. If the device does not have this information, this
   /// property is not included in the response. For more information on how to
-  /// export a MEID/IMEI list, see the \[Developer's
-  /// Guide\](/admin-sdk/directory/v1/guides/manage-chrome-devices.html#export_meid).
+  /// export a MEID/IMEI list, see the
+  /// [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-chrome-devices.html#export_meid).
   core.String? meid;
 
   /// The device's model information.
@@ -8282,9 +8307,9 @@ class ChromeOsDevice {
   ///
   /// This property can be
   /// [searched](https://support.google.com/chrome/a/answer/1698333) with the
-  /// \[list\](/admin-sdk/directory/v1/reference/chromeosdevices/list) method's
-  /// `query` parameter. Maximum length is 500 characters. Empty values are
-  /// allowed.
+  /// [list](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices/list)
+  /// method's `query` parameter. Maximum length is 500 characters. Empty values
+  /// are allowed.
   core.String? notes;
 
   /// The device's order number.
@@ -8297,7 +8322,7 @@ class ChromeOsDevice {
   /// orgUnitPath is the human readable version of orgUnitId. While orgUnitPath
   /// may change by renaming an organizational unit within the path, orgUnitId
   /// is unchangeable for one organizational unit. This property can be
-  /// \[updated\](/admin-sdk/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou)
+  /// [updated](https://developers.google.com/workspace/admin/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou)
   /// using the API. For more information about how to create an organizational
   /// structure for your device, see the
   /// [administration help center](https://support.google.com/a/answer/182433).
@@ -8309,7 +8334,7 @@ class ChromeOsDevice {
   /// Path names are case insensitive. If the parent organizational unit is the
   /// top-level organization, it is represented as a forward slash, `/`. This
   /// property can be
-  /// \[updated\](/admin-sdk/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou)
+  /// [updated](https://developers.google.com/workspace/admin/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou)
   /// using the API. For more information about how to create an organizational
   /// structure for your device, see the
   /// [administration help center](https://support.google.com/a/answer/182433).
@@ -8681,7 +8706,7 @@ class ChromeOsMoveDevicesToOu {
 /// Request for adding a new print server.
 class CreatePrintServerRequest {
   /// The
-  /// [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers)
+  /// [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers)
   /// of the customer's Google Workspace account.
   ///
   /// Format: `customers/{id}`
@@ -8694,7 +8719,7 @@ class CreatePrintServerRequest {
   /// If you want to place the print server under a specific organizational unit
   /// (OU), then populate the `org_unit_id`. Otherwise the print server is
   /// created under the root OU. The `org_unit_id` can be retrieved using the
-  /// [Directory API](https://developers.google.com/admin-sdk/directory/v1/guides/manage-org-units).
+  /// [Directory API](https://developers.google.com/workspace/admin/directory/v1/guides/manage-org-units).
   ///
   /// Required.
   PrintServer? printServer;
@@ -8786,10 +8811,11 @@ class Customer {
 
   /// The customer's ISO 639-2 language code.
   ///
-  /// See the \[Language Codes\](/admin-sdk/directory/v1/languages) page for the
-  /// list of supported codes. Valid language codes outside the supported set
-  /// will be accepted by the API but may lead to unexpected behavior. The
-  /// default value is `en`.
+  /// See the
+  /// [Language Codes](https://developers.google.com/workspace/admin/directory/v1/languages)
+  /// page for the list of supported codes. Valid language codes outside the
+  /// supported set will be accepted by the API but may lead to unexpected
+  /// behavior. The default value is `en`.
   core.String? language;
 
   /// The customer's contact phone number in
@@ -8980,12 +9006,15 @@ class DirectoryChromeosdevicesCommand {
   /// - "DEVICE_START_CRD_SESSION" : Starts a Chrome Remote Desktop session.
   /// - "CAPTURE_LOGS" : Capture the system logs of a kiosk device. The logs can
   /// be downloaded from the downloadUrl link present in `deviceFiles` field of
-  /// [chromeosdevices](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
+  /// [chromeosdevices](https://developers.google.com/workspace/admin/directory/reference/rest/v1/chromeosdevices)
+  /// - "FETCH_CRD_AVAILABILITY_INFO" : Fetches available type(s) of Chrome
+  /// Remote Desktop sessions (private or shared) that can be used to remotely
+  /// connect to the device.
   /// - "FETCH_SUPPORT_PACKET" : Fetch support packet from a device remotely.
   /// Support packet is a zip archive that contains various system logs and
   /// debug data from a ChromeOS device. The support packet can be downloaded
   /// from the downloadURL link present in the `deviceFiles` field of
-  /// \[`chromeosdevices`\](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
+  /// \[`chromeosdevices`\](https://developers.google.com/workspace/admin/directory/reference/rest/v1/chromeosdevices)
   core.String? type;
 
   DirectoryChromeosdevicesCommand({
@@ -9029,8 +9058,15 @@ class DirectoryChromeosdevicesCommandResult {
   ///
   /// The following commands respond with a payload: *
   /// `DEVICE_START_CRD_SESSION`: Payload is a stringified JSON object in the
-  /// form: { "url": url }. The URL provides a link to the Chrome Remote Desktop
-  /// session.
+  /// form: { "url": url }. The provided URL links to the Chrome Remote Desktop
+  /// session and requires authentication using only the `email` associated with
+  /// the command's issuance. * `FETCH_CRD_AVAILABILITY_INFO`: Payload is a
+  /// stringified JSON object in the form: { "deviceIdleTimeInSeconds": number,
+  /// "userSessionType": string, "remoteSupportAvailability": string,
+  /// "remoteAccessAvailability": string }. The "remoteSupportAvailability"
+  /// field is set to "AVAILABLE" if `shared` CRD session to the device is
+  /// available. The "remoteAccessAvailability" field is set to "AVAILABLE" if
+  /// `private` CRD session to the device is available.
   core.String? commandResultPayload;
 
   /// The error message with a short explanation as to why the command failed.
@@ -9097,12 +9133,15 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// - "DEVICE_START_CRD_SESSION" : Starts a Chrome Remote Desktop session.
   /// - "CAPTURE_LOGS" : Capture the system logs of a kiosk device. The logs can
   /// be downloaded from the downloadUrl link present in `deviceFiles` field of
-  /// [chromeosdevices](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
+  /// [chromeosdevices](https://developers.google.com/workspace/admin/directory/reference/rest/v1/chromeosdevices)
+  /// - "FETCH_CRD_AVAILABILITY_INFO" : Fetches available type(s) of Chrome
+  /// Remote Desktop sessions (private or shared) that can be used to remotely
+  /// connect to the device.
   /// - "FETCH_SUPPORT_PACKET" : Fetch support packet from a device remotely.
   /// Support packet is a zip archive that contains various system logs and
   /// debug data from a ChromeOS device. The support packet can be downloaded
   /// from the downloadURL link present in the `deviceFiles` field of
-  /// \[`chromeosdevices`\](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
+  /// \[`chromeosdevices`\](https://developers.google.com/workspace/admin/directory/reference/rest/v1/chromeosdevices)
   core.String? commandType;
 
   /// The payload for the command, provide it only if command supports it.
@@ -9118,17 +9157,18 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// values `private` (which grants the remote admin exclusive control of the
   /// ChromeOS device) or `shared` (which allows the admin and the local user to
   /// share control of the ChromeOS device). If not set, `crdSessionType`
-  /// defaults to `shared`. * `REBOOT`: Payload is a stringified JSON object in
-  /// the form: { "user_session_delay_seconds": 300 }. The
-  /// `user_session_delay_seconds` is the amount of seconds to wait before
-  /// rebooting the device if a user is logged in. It has to be an integer in
-  /// the range \[0,300\]. When payload is not present for reboot, 0 delay is
-  /// the default. Note: This only applies if an actual user is logged in,
-  /// including a Guest. If the device is in the login screen or in Kiosk mode
-  /// the value is not respected and the device immediately reboots. *
-  /// `FETCH_SUPPORT_PACKET`: Payload is optionally a stringified JSON object in
-  /// the form: {"supportPacketDetails":{ "issueCaseId":
-  /// optional_support_case_id_string, "issueDescription":
+  /// defaults to `shared`. The `FETCH_CRD_AVAILABILITY_INFO` command can be
+  /// used to determine available session types on the device. * `REBOOT`:
+  /// Payload is a stringified JSON object in the form: {
+  /// "user_session_delay_seconds": 300 }. The `user_session_delay_seconds` is
+  /// the amount of seconds to wait before rebooting the device if a user is
+  /// logged in. It has to be an integer in the range \[0,300\]. When payload is
+  /// not present for reboot, 0 delay is the default. Note: This only applies if
+  /// an actual user is logged in, including a Guest. If the device is in the
+  /// login screen or in Kiosk mode the value is not respected and the device
+  /// immediately reboots. * `FETCH_SUPPORT_PACKET`: Payload is optionally a
+  /// stringified JSON object in the form: {"supportPacketDetails":{
+  /// "issueCaseId": optional_support_case_id_string, "issueDescription":
   /// optional_issue_description_string, "requestedDataCollectors": \[\]}} The
   /// list of available `data_collector_enums` are as following: Chrome System
   /// Information (1), Crash IDs (2), Memory Details (3), UI Hierarchy (4),
@@ -9608,12 +9648,12 @@ class Features {
 /// people using the group's email address.
 ///
 /// For more information about common tasks, see the
-/// [Developer's Guide](https://developers.google.com/admin-sdk/directory/v1/guides/manage-groups).
+/// [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-groups).
 /// For information about other types of groups, see the
 /// [Cloud Identity Groups API documentation](https://cloud.google.com/identity/docs/groups).
 /// Note: The user calling the API (or being impersonated by a service account)
 /// must have an assigned
-/// [role](https://developers.google.com/admin-sdk/directory/v1/guides/manage-roles)
+/// [role](https://developers.google.com/workspace/admin/directory/v1/guides/manage-roles)
 /// that includes Admin API Groups permissions, such as Super Admin or Groups
 /// Admin.
 class Group {
@@ -9864,8 +9904,8 @@ class ListPrintersResponse {
 /// A Google Groups member can be a user or another group.
 ///
 /// This member can be inside or outside of your account's domains. For more
-/// information about common group member tasks, see the \[Developer's
-/// Guide\](/admin-sdk/directory/v1/guides/manage-group-members).
+/// information about common group member tasks, see the
+/// [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-group-members).
 class Member {
   /// Defines mail delivery preferences of member.
   ///
@@ -10066,8 +10106,7 @@ class MobileDeviceApplications {
 /// [Google Sync](https://support.google.com/a/answer/135937), and iOS devices.
 ///
 /// For more information about common group mobile device API tasks, see the
-/// \[Developer's
-/// Guide\](/admin-sdk/directory/v1/guides/manage-mobile-devices.html).
+/// [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-mobile-devices.html).
 class MobileDevice {
   /// Adb (USB debugging) enabled or disabled on device (Read-only)
   core.bool? adbStatus;
@@ -10115,9 +10154,10 @@ class MobileDevice {
   /// The list of the owner's email addresses.
   ///
   /// If your application needs the current list of user emails, use the
-  /// \[get\](/admin-sdk/directory/v1/reference/mobiledevices/get.html) method.
-  /// For additional information, see the \[retrieve a
-  /// user\](/admin-sdk/directory/v1/guides/manage-users#get_user) method.
+  /// [get](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/get.html)
+  /// method. For additional information, see the
+  /// [retrieve a user](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#get_user)
+  /// method.
   core.List<core.String>? email;
 
   /// Mobile Device Encryption Status (Read-only)
@@ -10167,18 +10207,18 @@ class MobileDevice {
   /// The mobile device's model name, for example Nexus S.
   ///
   /// This property can be
-  /// \[updated\](/admin-sdk/directory/v1/reference/mobiledevices/update.html).
-  /// For more information, see the \[Developer's
-  /// Guide\](/admin-sdk/directory/v1/guides/manage-mobile=devices#update_mobile_device).
+  /// [updated](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/update.html).
+  /// For more information, see the
+  /// [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-mobile=devices#update_mobile_device).
   core.String? model;
 
   /// The list of the owner's user names.
   ///
   /// If your application needs the current list of device owner names, use the
-  /// \[get\](/admin-sdk/directory/v1/reference/mobiledevices/get.html) method.
-  /// For more information about retrieving mobile device user information, see
-  /// the \[Developer's
-  /// Guide\](/admin-sdk/directory/v1/guides/manage-users#get_user).
+  /// [get](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/get.html)
+  /// method. For more information about retrieving mobile device user
+  /// information, see the
+  /// [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#get_user).
   core.List<core.String>? name;
 
   /// Mobile Device mobile or network operator (if available) (Read-only)
@@ -10188,9 +10228,9 @@ class MobileDevice {
   /// 2.3.5.
   ///
   /// This property can be
-  /// \[updated\](/admin-sdk/directory/v1/reference/mobiledevices/update.html).
-  /// For more information, see the \[Developer's
-  /// Guide\](/admin-sdk/directory/v1/guides/manage-mobile-devices#update_mobile_device).
+  /// [updated](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/update.html).
+  /// For more information, see the
+  /// [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-mobile-devices#update_mobile_device).
   core.String? os;
 
   /// The list of accounts added on device (Read-only)
@@ -10226,9 +10266,9 @@ class MobileDevice {
   /// Gives information about the device such as `os` version.
   ///
   /// This property can be
-  /// \[updated\](/admin-sdk/directory/v1/reference/mobiledevices/update.html).
-  /// For more information, see the \[Developer's
-  /// Guide\](/admin-sdk/directory/v1/guides/manage-mobile-devices#update_mobile_device).
+  /// [updated](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/update.html).
+  /// For more information, see the
+  /// [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-mobile-devices#update_mobile_device).
   core.String? userAgent;
 
   /// The device's MAC address on Wi-Fi networks.
@@ -10449,7 +10489,7 @@ class MobileDevices {
 /// users' access to services and custom settings.
 ///
 /// For more information about common organizational unit tasks, see the
-/// \[Developer's Guide\](/admin-sdk/directory/v1/guides/manage-org-units.html).
+/// [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-org-units.html).
 /// The customer's organizational unit hierarchy is limited to 35 levels of
 /// depth.
 class OrgUnit {
@@ -10492,8 +10532,7 @@ class OrgUnit {
   /// the
   /// [administration help center](https://support.google.com/a/answer/4352075).
   /// For more information about moving a user to a different organization, see
-  /// \[Update a
-  /// user\](/admin-sdk/directory/v1/guides/manage-users.html#update_user).
+  /// [Update a user](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.html#update_user).
   core.String? orgUnitPath;
 
   /// The unique ID of the parent organizational unit.
@@ -10667,20 +10706,18 @@ class PrintServer {
   /// Immutable.
   core.String? id;
 
-  /// Resource name of the print server.
+  /// Identifier.
   ///
-  /// Leave empty when creating. Format:
+  /// Resource name of the print server. Leave empty when creating. Format:
   /// `customers/{customer.id}/printServers/{print_server.id}`
-  ///
-  /// Immutable.
   core.String? name;
 
   /// ID of the organization unit (OU) that owns this print server.
   ///
   /// This value can only be set when the print server is initially created. If
   /// it's not populated, the print server is placed under the root OU. The
-  /// `org_unit_id` can be retrieved using the \[Directory
-  /// API\](/admin-sdk/directory/reference/rest/v1/orgunits).
+  /// `org_unit_id` can be retrieved using the
+  /// [Directory API](https://developers.google.com/workspace/admin/directory/reference/rest/v1/orgunits).
   core.String? orgUnitId;
 
   /// Editable.
@@ -10873,6 +10910,8 @@ class Printer {
   /// seen in ListPrinterModels response.
   core.String? makeAndModel;
 
+  /// Identifier.
+  ///
   /// The resource name of the Printer object, in the format
   /// customers/{customer-id}/printers/{printer-id} (During printer creation
   /// leave empty)
@@ -10999,7 +11038,7 @@ class Privilege {
   /// The obfuscated ID of the service this privilege is for.
   ///
   /// This value is returned with
-  /// \[`Privileges.list()`\](/admin-sdk/directory/v1/reference/privileges/list).
+  /// \[`Privileges.list()`\](https://developers.google.com/workspace/admin/directory/v1/reference/privileges/list).
   core.String? serviceId;
 
   /// The name of the service this privilege is for.
@@ -11082,7 +11121,7 @@ class RoleRolePrivileges {
   /// The obfuscated ID of the service this privilege is for.
   ///
   /// This value is returned with
-  /// \[`Privileges.list()`\](/admin-sdk/directory/v1/reference/privileges/list).
+  /// \[`Privileges.list()`\](https://developers.google.com/workspace/admin/directory/v1/reference/privileges/list).
   core.String? serviceId;
 
   RoleRolePrivileges({
@@ -11205,8 +11244,7 @@ class RoleAssignment {
   /// administrator roles\](https://support.google.com/a/answer/2405986): -
   /// Groups Editor - Groups Reader The condition follows
   /// [Cloud IAM condition syntax](https://cloud.google.com/iam/docs/conditions-overview).
-  /// Additional conditions related to Locked Groups are available under Open
-  /// Beta. - To make the `RoleAssignment` not applicable to
+  /// - To make the `RoleAssignment` not applicable to
   /// [Locked Groups](https://cloud.google.com/identity/docs/groups#group_types):
   /// `!api.getAttribute('cloudidentity.googleapis.com/groups.labels',
   /// []).hasAny(['groups.locked']) && resource.type ==
@@ -11448,8 +11486,8 @@ class SchemaFieldSpecNumericIndexingSpec {
 ///
 /// You can use these fields to store information such as the projects your
 /// users work on, their physical locations, their hire dates, or whatever else
-/// fits your business needs. For more information, see \[Custom User
-/// Fields\](/admin-sdk/directory/v1/guides/manage-schemas).
+/// fits your business needs. For more information, see
+/// [Custom User Fields](https://developers.google.com/workspace/admin/directory/v1/guides/manage-schemas).
 class SchemaFieldSpec {
   /// Display Name of the field.
   core.String? displayName;
@@ -11490,7 +11528,7 @@ class SchemaFieldSpec {
   /// Specifies who can view values of this field.
   ///
   /// See \[Retrieve users as a
-  /// non-administrator\](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin)
+  /// non-administrator\](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin)
   /// for more information. Note: It may take up to 24 hours for changes to this
   /// field to be reflected.
   core.String? readAccessType;
@@ -11693,10 +11731,10 @@ class Tokens {
 /// The Directory API allows you to create and manage your account's users, user
 /// aliases, and user Google profile photos.
 ///
-/// For more information about common tasks, see the \[User Accounts Developer's
-/// Guide\](/admin-sdk/directory/v1/guides/manage-users.html) and the \[User
-/// Aliases Developer's
-/// Guide\](/admin-sdk/directory/v1/guides/manage-user-aliases.html).
+/// For more information about common tasks, see the
+/// [User Accounts Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.html)
+/// and the
+/// [User Aliases Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-user-aliases.html).
 class User {
   /// The list of the user's addresses.
   ///
@@ -11737,14 +11775,15 @@ class User {
   /// 'field_value'`.
   core.Map<core.String, UserCustomProperties>? customSchemas;
 
-  /// The customer ID to \[retrieve all account
-  /// users\](/admin-sdk/directory/v1/guides/manage-users.html#get_all_users).
+  /// The customer ID to
+  /// [retrieve all account users](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.html#get_all_users).
   ///
   /// You can use the alias `my_customer` to represent your account's
   /// `customerId`. As a reseller administrator, you can use the resold customer
   /// account's `customerId`. To get a `customerId`, use the account's primary
   /// domain in the `domain` parameter of a
-  /// \[users.list\](/admin-sdk/directory/v1/reference/users/list) request.
+  /// [users.list](https://developers.google.com/workspace/admin/directory/v1/reference/users/list)
+  /// request.
   ///
   /// Output only.
   core.String? customerId;
@@ -11817,16 +11856,17 @@ class User {
   /// \[`allowlist`\](https://support.google.com/a/answer/60752) configuration.
   core.bool? ipWhitelisted;
 
-  /// Indicates a user with super admininistrator privileges.
+  /// Indicates a user with super administrator privileges.
   ///
-  /// The `isAdmin` property can only be edited in the \[Make a user an
-  /// administrator\](/admin-sdk/directory/v1/guides/manage-users.html#make_admin)
+  /// The `isAdmin` property can only be edited in the
+  /// [Make a user an administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.html#make_admin)
   /// operation (
-  /// \[makeAdmin\](/admin-sdk/directory/v1/reference/users/makeAdmin.html)
+  /// [makeAdmin](https://developers.google.com/workspace/admin/directory/v1/reference/users/makeAdmin.html)
   /// method). If edited in the user
-  /// \[insert\](/admin-sdk/directory/v1/reference/users/insert.html) or
-  /// \[update\](/admin-sdk/directory/v1/reference/users/update.html) methods,
-  /// the edit is ignored by the API service.
+  /// [insert](https://developers.google.com/workspace/admin/directory/v1/reference/users/insert.html)
+  /// or
+  /// [update](https://developers.google.com/workspace/admin/directory/v1/reference/users/update.html)
+  /// methods, the edit is ignored by the API service.
   ///
   /// Output only.
   core.bool? isAdmin;

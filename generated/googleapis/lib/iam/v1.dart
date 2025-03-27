@@ -32,6 +32,8 @@
 ///       - [LocationsWorkforcePoolsProvidersKeysResource]
 ///         - [LocationsWorkforcePoolsProvidersKeysOperationsResource]
 ///       - [LocationsWorkforcePoolsProvidersOperationsResource]
+///       - [LocationsWorkforcePoolsProvidersScimTenantsResource]
+///         - [LocationsWorkforcePoolsProvidersScimTenantsTokensResource]
 ///     - [LocationsWorkforcePoolsSubjectsResource]
 ///       - [LocationsWorkforcePoolsSubjectsOperationsResource]
 /// - [OrganizationsResource]
@@ -681,6 +683,8 @@ class LocationsWorkforcePoolsProvidersResource {
       LocationsWorkforcePoolsProvidersKeysResource(_requester);
   LocationsWorkforcePoolsProvidersOperationsResource get operations =>
       LocationsWorkforcePoolsProvidersOperationsResource(_requester);
+  LocationsWorkforcePoolsProvidersScimTenantsResource get scimTenants =>
+      LocationsWorkforcePoolsProvidersScimTenantsResource(_requester);
 
   LocationsWorkforcePoolsProvidersResource(commons.ApiRequester client)
       : _requester = client;
@@ -1287,6 +1291,592 @@ class LocationsWorkforcePoolsProvidersOperationsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LocationsWorkforcePoolsProvidersScimTenantsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsProvidersScimTenantsTokensResource get tokens =>
+      LocationsWorkforcePoolsProvidersScimTenantsTokensResource(_requester);
+
+  LocationsWorkforcePoolsProvidersScimTenantsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new WorkforcePoolProviderScimTenant in a WorkforcePoolProvider.
+  ///
+  /// You cannot reuse the name of a deleted scim tenant until 30 days after
+  /// deletion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent to create scim tenant. Format:
+  /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [workforcePoolProviderScimTenantId] - Required. The ID to use for the scim
+  /// tenant, which becomes the final component of the resource name. This value
+  /// should be 4-32 characters, and may contain the characters \[a-z0-9-\].
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolProviderScimTenant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolProviderScimTenant> create(
+    WorkforcePoolProviderScimTenant request,
+    core.String parent, {
+    core.String? workforcePoolProviderScimTenantId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (workforcePoolProviderScimTenantId != null)
+        'workforcePoolProviderScimTenantId': [
+          workforcePoolProviderScimTenantId
+        ],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/scimTenants';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolProviderScimTenant.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a WorkforcePoolProviderScimTenant.
+  ///
+  /// You can undelete a scim tenant for 30 days. After 30 days, deletion is
+  /// permanent. You cannot update deleted scim tenants. However, you can view
+  /// and list them.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the scim tenant to delete. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolProviderScimTenant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolProviderScimTenant> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolProviderScimTenant.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an individual WorkforcePoolProviderScimTenant.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the scim tenant to retrieve. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolProviderScimTenant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolProviderScimTenant> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolProviderScimTenant.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all non-deleted WorkforcePoolProviderScimTenants in a
+  /// WorkforcePoolProvider.
+  ///
+  /// If `show_deleted` is set to `true`, then deleted scim tenants are also
+  /// listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent to list scim tenants. Format:
+  /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of scim tenants to return. If
+  /// unspecified, at most 1 scim tenant will be returned.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListScimTenants` call. Provide this to retrieve the subsequent page.
+  ///
+  /// [showDeleted] - Optional. Whether to return soft-deleted scim tenants.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkforcePoolProviderScimTenantsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkforcePoolProviderScimTenantsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/scimTenants';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWorkforcePoolProviderScimTenantsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing WorkforcePoolProviderScimTenant.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the SCIM Tenant. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool}/providers/
+  /// {workforce_pool_provider}/scimTenants/{scim_tenant}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolProviderScimTenant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolProviderScimTenant> patch(
+    WorkforcePoolProviderScimTenant request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolProviderScimTenant.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes a WorkforcePoolProviderScimTenant, as long as it was deleted
+  /// fewer than 30 days ago.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the scim tenant to undelete. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolProviderScimTenant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolProviderScimTenant> undelete(
+    UndeleteWorkforcePoolProviderScimTenantRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolProviderScimTenant.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LocationsWorkforcePoolsProvidersScimTenantsTokensResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsProvidersScimTenantsTokensResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new WorkforcePoolProviderScimToken in a
+  /// WorkforcePoolProviderScimTenant.
+  ///
+  /// You cannot reuse the name of a deleted SCIM token until 30 days after
+  /// deletion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent tenant to create scim token. Format:
+  /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+$`.
+  ///
+  /// [workforcePoolProviderScimTokenId] - Required. The ID to use for the scim
+  /// token, which becomes the final component of the resource name. This value
+  /// should be 4-32 characters and follow this pattern:
+  /// "(\[a-z\](\[a-z0-9\\-\]{2,30}\[a-z0-9\]))"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolProviderScimToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolProviderScimToken> create(
+    WorkforcePoolProviderScimToken request,
+    core.String parent, {
+    core.String? workforcePoolProviderScimTokenId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (workforcePoolProviderScimTokenId != null)
+        'workforcePoolProviderScimTokenId': [workforcePoolProviderScimTokenId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolProviderScimToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a WorkforcePoolProviderScimToken.
+  ///
+  /// You can undelete a scim token for 30 days. After 30 days, deletion is
+  /// permanent. You cannot update deleted scim tokens. However, you can view
+  /// and list them.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the scim token to delete. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+/tokens/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolProviderScimToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolProviderScimToken> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolProviderScimToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an individual WorkforcePoolProviderScimToken.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the scim token to retrieve. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+/tokens/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolProviderScimToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolProviderScimToken> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolProviderScimToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all non-deleted WorkforcePoolProviderScimTokenss in a
+  /// WorkforcePoolProviderScimTenant.
+  ///
+  /// If `show_deleted` is set to `true`, then deleted SCIM tokens are also
+  /// listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent to list scim tokens. Format:
+  /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of scim tokens to return. If
+  /// unspecified, at most 2 scim tokens will be returned.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListWorkforcePoolProviderScimTokens` call. Provide this to retrieve the
+  /// subsequent page.
+  ///
+  /// [showDeleted] - Optional. Whether to return soft-deleted scim tokens.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkforcePoolProviderScimTokensResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkforcePoolProviderScimTokensResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWorkforcePoolProviderScimTokensResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing WorkforcePoolProviderScimToken.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the SCIM Token. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool}/providers/
+  /// {workforce_pool_provider}/scimTenants/{scim_tenant}/tokens/{token}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+/tokens/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolProviderScimToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolProviderScimToken> patch(
+    WorkforcePoolProviderScimToken request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolProviderScimToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes a WorkforcePoolProviderScimToken, as long as it was deleted
+  /// fewer than 30 days ago.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the scim token to undelete. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+/tokens/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolProviderScimToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolProviderScimToken> undelete(
+    UndeleteWorkforcePoolProviderScimTokenRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolProviderScimToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2587,6 +3177,50 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the IAM policy of a WorkloadIdentityPool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists all non-deleted WorkloadIdentityPools in a project.
   ///
   /// If `show_deleted` is set to `true`, then deleted pools are also listed.
@@ -2687,6 +3321,96 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Sets the IAM policies on a WorkloadIdentityPool
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the caller's permissions on a WorkloadIdentityPool
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Undeletes a WorkloadIdentityPool, as long as it was deleted fewer than 30
   /// days ago.
   ///
@@ -2745,6 +3469,278 @@ class ProjectsLocationsWorkloadIdentityPoolsNamespacesResource {
   ProjectsLocationsWorkloadIdentityPoolsNamespacesResource(
       commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates a new WorkloadIdentityPoolNamespace in a WorkloadIdentityPool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to create the namespace in. The
+  /// only supported location is `global`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [workloadIdentityPoolNamespaceId] - Required. The ID to use for the
+  /// namespace. This value must: * contain at most 63 characters * contain only
+  /// lowercase alphanumeric characters or `-` * start with an alphanumeric
+  /// character * end with an alphanumeric character The prefix "gcp-" will be
+  /// reserved for future uses.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    WorkloadIdentityPoolNamespace request,
+    core.String parent, {
+    core.String? workloadIdentityPoolNamespaceId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (workloadIdentityPoolNamespaceId != null)
+        'workloadIdentityPoolNamespaceId': [workloadIdentityPoolNamespaceId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/namespaces';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a WorkloadIdentityPoolNamespace.
+  ///
+  /// You can undelete a namespace for 30 days. After 30 days, deletion is
+  /// permanent.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the namespace to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an individual WorkloadIdentityPoolNamespace.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the namespace to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkloadIdentityPoolNamespace].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkloadIdentityPoolNamespace> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkloadIdentityPoolNamespace.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all non-deleted WorkloadIdentityPoolNamespaces in a workload
+  /// identity pool.
+  ///
+  /// If `show_deleted` is set to `true`, then deleted namespaces are also
+  /// listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to list namespaces for.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of namespaces to return. If unspecified,
+  /// at most 50 namespaces are returned. The maximum value is 1000; values
+  /// above are 1000 truncated to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListWorkloadIdentityPoolNamespaces` call. Provide this to retrieve the
+  /// subsequent page.
+  ///
+  /// [showDeleted] - Whether to return soft-deleted namespaces.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkloadIdentityPoolNamespacesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkloadIdentityPoolNamespacesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/namespaces';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWorkloadIdentityPoolNamespacesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing WorkloadIdentityPoolNamespace in a
+  /// WorkloadIdentityPool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the namespace.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    WorkloadIdentityPoolNamespace request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes a WorkloadIdentityPoolNamespace, as long as it was deleted fewer
+  /// than 30 days ago.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the namespace to undelete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteWorkloadIdentityPoolNamespaceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResource {
@@ -2762,6 +3758,472 @@ class ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResource 
   ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResource(
       commons.ApiRequester client)
       : _requester = client;
+
+  /// Add an AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+  ///
+  /// The total attestation rules after addition must not exceed 50.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The resource name of the managed identity or
+  /// namespace resource to add an attestation rule to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/managedIdentities/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addAttestationRule(
+    AddAttestationRuleRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':addAttestationRule';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new WorkloadIdentityPoolManagedIdentity in a
+  /// WorkloadIdentityPoolNamespace.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to create the manage identity in.
+  /// The only supported location is `global`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+$`.
+  ///
+  /// [workloadIdentityPoolManagedIdentityId] - Required. The ID to use for the
+  /// managed identity. This value must: * contain at most 63 characters *
+  /// contain only lowercase alphanumeric characters or `-` * start with an
+  /// alphanumeric character * end with an alphanumeric character The prefix
+  /// "gcp-" will be reserved for future uses.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    WorkloadIdentityPoolManagedIdentity request,
+    core.String parent, {
+    core.String? workloadIdentityPoolManagedIdentityId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (workloadIdentityPoolManagedIdentityId != null)
+        'workloadIdentityPoolManagedIdentityId': [
+          workloadIdentityPoolManagedIdentityId
+        ],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/managedIdentities';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a WorkloadIdentityPoolManagedIdentity.
+  ///
+  /// You can undelete a managed identity for 30 days. After 30 days, deletion
+  /// is permanent.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the managed identity to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/managedIdentities/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an individual WorkloadIdentityPoolManagedIdentity.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the managed identity to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/managedIdentities/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkloadIdentityPoolManagedIdentity].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkloadIdentityPoolManagedIdentity> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkloadIdentityPoolManagedIdentity.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all non-deleted WorkloadIdentityPoolManagedIdentitys in a namespace.
+  ///
+  /// If `show_deleted` is set to `true`, then deleted managed identities are
+  /// also listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to list managed identities for.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of managed identities to return. If
+  /// unspecified, at most 50 managed identities are returned. The maximum value
+  /// is 1000; values above are 1000 truncated to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListWorkloadIdentityPoolManagedIdentities` call. Provide this to retrieve
+  /// the subsequent page.
+  ///
+  /// [showDeleted] - Whether to return soft-deleted managed identities.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkloadIdentityPoolManagedIdentitiesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkloadIdentityPoolManagedIdentitiesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/managedIdentities';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWorkloadIdentityPoolManagedIdentitiesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The resource name of the managed identity or
+  /// namespace resource to list attestation rules of.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/managedIdentities/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A query filter. Supports the following function: *
+  /// `container_ids()`: Returns only the AttestationRules under the specific
+  /// container ids. The function expects a comma-delimited list with only
+  /// project numbers and must use the format `projects/`. For example:
+  /// `container_ids(projects/, projects/,...)`.
+  ///
+  /// [pageSize] - Optional. The maximum number of AttestationRules to return.
+  /// If unspecified, at most 50 AttestationRules are returned. The maximum
+  /// value is 100; values above 100 are truncated to 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListWorkloadIdentityPoolProviderKeys` call. Provide this to retrieve the
+  /// subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAttestationRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAttestationRulesResponse> listAttestationRules(
+    core.String resource, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':listAttestationRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAttestationRulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing WorkloadIdentityPoolManagedIdentity in a
+  /// WorkloadIdentityPoolNamespace.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the managed identity.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/managedIdentities/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    WorkloadIdentityPoolManagedIdentity request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Remove an AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The resource name of the managed identity or
+  /// namespace resource to remove an attestation rule from.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/managedIdentities/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> removeAttestationRule(
+    RemoveAttestationRuleRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':removeAttestationRule';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Set all AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+  ///
+  /// A maximum of 50 AttestationRules can be set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The resource name of the managed identity or
+  /// namespace resource to add an attestation rule to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/managedIdentities/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setAttestationRules(
+    SetAttestationRulesRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':setAttestationRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes a WorkloadIdentityPoolManagedIdentity, as long as it was deleted
+  /// fewer than 30 days ago.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the managed identity to undelete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/managedIdentities/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteWorkloadIdentityPoolManagedIdentityRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsResource {
@@ -4479,15 +5941,7 @@ class ProjectsServiceAccountsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// **Note:** This method is deprecated.
-  ///
-  /// Use the
-  /// [signBlob](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob)
-  /// method in the IAM Service Account Credentials API instead. If you
-  /// currently use this method, see the
-  /// [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api)
-  /// for instructions. Signs a blob using the system-managed private key for a
-  /// ServiceAccount.
+  ///  Signs a blob using the system-managed private key for a ServiceAccount.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4543,15 +5997,8 @@ class ProjectsServiceAccountsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// **Note:** This method is deprecated.
-  ///
-  /// Use the
-  /// [signJwt](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt)
-  /// method in the IAM Service Account Credentials API instead. If you
-  /// currently use this method, see the
-  /// [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api)
-  /// for instructions. Signs a JSON Web Token (JWT) using the system-managed
-  /// private key for a ServiceAccount.
+  /// Signs a JSON Web Token (JWT) using the system-managed private key for a
+  /// ServiceAccount.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5385,6 +6832,58 @@ class AccessRestrictions {
       };
 }
 
+/// Request message for AddAttestationRule.
+class AddAttestationRuleRequest {
+  /// The attestation rule to be added.
+  ///
+  /// Required.
+  AttestationRule? attestationRule;
+
+  AddAttestationRuleRequest({
+    this.attestationRule,
+  });
+
+  AddAttestationRuleRequest.fromJson(core.Map json_)
+      : this(
+          attestationRule: json_.containsKey('attestationRule')
+              ? AttestationRule.fromJson(json_['attestationRule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attestationRule != null) 'attestationRule': attestationRule!,
+      };
+}
+
+/// Defines which workloads can receive an identity within a pool.
+///
+/// When an AttestationRule is defined under a managed identity, matching
+/// workloads may receive that identity.
+class AttestationRule {
+  /// A single workload operating on Google Cloud.
+  ///
+  /// For example:
+  /// `//compute.googleapis.com/projects/123/uid/zones/us-central1-a/instances/12345`.
+  ///
+  /// Optional.
+  core.String? googleCloudResource;
+
+  AttestationRule({
+    this.googleCloudResource,
+  });
+
+  AttestationRule.fromJson(core.Map json_)
+      : this(
+          googleCloudResource: json_['googleCloudResource'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (googleCloudResource != null)
+          'googleCloudResource': googleCloudResource!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -5860,21 +7359,23 @@ class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client {
   /// Possible string values are:
   /// - "ATTRIBUTES_TYPE_UNSPECIFIED" : No AttributesType specified.
   /// - "AZURE_AD_GROUPS_MAIL" : Used to get the user's group claims from the
-  /// Microsoft Entra ID identity provider using configuration provided in
-  /// ExtraAttributesOAuth2Client and `mail` property of the
+  /// Microsoft Entra ID identity provider using the configuration provided in
+  /// ExtraAttributesOAuth2Client. The `mail` property of the
   /// `microsoft.graph.group` object is used for claim mapping. See
   /// https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
-  /// for more details on `microsoft.graph.group` properties. The attributes
-  /// obtained from idntity provider are mapped to `assertion.groups`.
+  /// for more details on `microsoft.graph.group` properties. The group mail
+  /// addresses of the user's groups that are returned from Microsoft Entra ID
+  /// can be mapped by using the following attributes: * OIDC:
+  /// `assertion.groups` * SAML: `assertion.attributes.groups`
   /// - "AZURE_AD_GROUPS_ID" : Used to get the user's group claims from the
-  /// Microsoft Entra ID identity provider using configuration provided in
-  /// ExtraAttributesOAuth2Client and `id` property of the
+  /// Microsoft Entra ID identity provider using the configuration provided in
+  /// ExtraAttributesOAuth2Client. The `id` property of the
   /// `microsoft.graph.group` object is used for claim mapping. See
   /// https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
-  /// for more details on `microsoft.graph.group` properties. The group IDs
-  /// obtained from Microsoft Entra ID are present in `assertion. groups` for
-  /// OIDC providers and `assertion.attributes.groups` for SAML providers for
-  /// attribute mapping.
+  /// for more details on `microsoft.graph.group` properties. The group IDs of
+  /// the user's groups that are returned from Microsoft Entra ID can be mapped
+  /// by using the following attributes: * OIDC: `assertion.groups` * SAML:
+  /// `assertion.attributes.groups`
   core.String? attributesType;
 
   /// The OAuth 2.0 client ID for retrieving extra attributes from the identity
@@ -5943,14 +7444,22 @@ class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client {
 
 /// Represents the parameters to control which claims are fetched from an IdP.
 class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters {
-  /// The filter used to request specific records from IdP.
+  /// The filter used to request specific records from the IdP.
   ///
-  /// In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
-  /// filter used to request specific groups for users from IdP. By default, all
-  /// of the groups associated with the user are fetched. The groups should be
-  /// mail enabled and security enabled. See
-  /// https://learn.microsoft.com/en-us/graph/search-query-parameter for more
-  /// details.
+  /// By default, all of the groups that are associated with a user are fetched.
+  /// For Microsoft Entra ID, you can add `$search` query parameters using
+  /// [Keyword Query Language](https://learn.microsoft.com/en-us/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference).
+  /// To learn more about `$search` querying in Microsoft Entra ID, see \[Use
+  /// the `$search` query
+  /// parameter\](https://learn.microsoft.com/en-us/graph/search-query-parameter).
+  /// Additionally, Workforce Identity Federation automatically adds the
+  /// following \[`$filter` query
+  /// parameters\](https://learn.microsoft.com/en-us/graph/filter-query-parameter),
+  /// based on the value of `attributes_type`. Values passed to `filter` are
+  /// converted to `$search` query parameters. Additional `$filter` query
+  /// parameters cannot be added using this field. * `AZURE_AD_GROUPS_MAIL`:
+  /// `mailEnabled` and `securityEnabled` filters are applied. *
+  /// `AZURE_AD_GROUPS_ID`: `securityEnabled` filter is applied.
   ///
   /// Optional.
   core.String? filter;
@@ -6177,7 +7686,7 @@ class GoogleIamAdminV1WorkforcePoolProviderSaml {
   /// constraints: 1) Must contain an Identity Provider Entity ID. 2) Must
   /// contain at least one non-expired signing key certificate. 3) For each
   /// signing key: a) Valid from should be no more than 7 days from now. b)
-  /// Valid to should be no more than 20 years in the future. 4) Up to 3 IdP
+  /// Valid to should be no more than 25 years in the future. 4) Up to 3 IdP
   /// signing keys are allowed in the metadata xml. When updating the provider's
   /// metadata xml, at least one non-expired signing key must overlap with the
   /// existing metadata. This requirement is skipped if there are no non-expired
@@ -6197,6 +7706,152 @@ class GoogleIamAdminV1WorkforcePoolProviderSaml {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (idpMetadataXml != null) 'idpMetadataXml': idpMetadataXml!,
+      };
+}
+
+/// Represents configuration for generating mutual TLS (mTLS) certificates for
+/// the identities within this pool.
+class InlineCertificateIssuanceConfig {
+  /// A required mapping of a Google Cloud region to the CA pool resource
+  /// located in that region.
+  ///
+  /// The CA pool is used for certificate issuance, adhering to the following
+  /// constraints: * Key format: A supported cloud region name equivalent to the
+  /// location identifier in the corresponding map entry's value. * Value
+  /// format: A valid CA pool resource path format like:
+  /// "projects/{project}/locations/{location}/caPools/{ca_pool}" * Region
+  /// Matching: Workloads are ONLY issued certificates from CA pools within the
+  /// same region. Also the CA pool region (in value) must match the workload's
+  /// region (key).
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? caPools;
+
+  /// Key algorithm to use when generating the key pair.
+  ///
+  /// This key pair will be used to create the certificate. If not specified,
+  /// this will default to ECDSA_P256.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "KEY_ALGORITHM_UNSPECIFIED" : Unspecified key algorithm. Defaults to
+  /// ECDSA_P256.
+  /// - "RSA_2048" : Specifies RSA with a 2048-bit modulus.
+  /// - "RSA_3072" : Specifies RSA with a 3072-bit modulus.
+  /// - "RSA_4096" : Specifies RSA with a 4096-bit modulus.
+  /// - "ECDSA_P256" : Specifies ECDSA with curve P256.
+  /// - "ECDSA_P384" : Specifies ECDSA with curve P384.
+  core.String? keyAlgorithm;
+
+  /// Lifetime of the workload certificates issued by the CA pool.
+  ///
+  /// Must be between 24 hours and 30 days. If not specified, this will be
+  /// defaulted to 24 hours.
+  ///
+  /// Optional.
+  core.String? lifetime;
+
+  /// Rotation window percentage, the percentage of remaining lifetime after
+  /// which certificate rotation is initiated.
+  ///
+  /// Must be between 50 and 80. If no value is specified, rotation window
+  /// percentage is defaulted to 50.
+  ///
+  /// Optional.
+  core.int? rotationWindowPercentage;
+
+  InlineCertificateIssuanceConfig({
+    this.caPools,
+    this.keyAlgorithm,
+    this.lifetime,
+    this.rotationWindowPercentage,
+  });
+
+  InlineCertificateIssuanceConfig.fromJson(core.Map json_)
+      : this(
+          caPools:
+              (json_['caPools'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          keyAlgorithm: json_['keyAlgorithm'] as core.String?,
+          lifetime: json_['lifetime'] as core.String?,
+          rotationWindowPercentage:
+              json_['rotationWindowPercentage'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caPools != null) 'caPools': caPools!,
+        if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm!,
+        if (lifetime != null) 'lifetime': lifetime!,
+        if (rotationWindowPercentage != null)
+          'rotationWindowPercentage': rotationWindowPercentage!,
+      };
+}
+
+/// Defines configuration for extending trust to additional trust domains.
+///
+/// By establishing trust with another domain, the current domain will recognize
+/// and accept certificates issued by entities within the trusted domains. Note
+/// that a trust domain automatically trusts itself, eliminating the need for
+/// explicit configuration.
+class InlineTrustConfig {
+  /// Maps specific trust domains (e.g., "example.com") to their corresponding
+  /// TrustStore, which contain the trusted root certificates for that domain.
+  ///
+  /// There can be a maximum of 10 trust domain entries in this map. Note that a
+  /// trust domain automatically trusts itself and don't need to be specified
+  /// here. If however, this WorkloadIdentityPool's trust domain contains any
+  /// trust anchors in the additional_trust_bundles map, those trust anchors
+  /// will be *appended to* the trust bundle automatically derived from your
+  /// InlineCertificateIssuanceConfig's ca_pools.
+  ///
+  /// Optional.
+  core.Map<core.String, TrustStore>? additionalTrustBundles;
+
+  InlineTrustConfig({
+    this.additionalTrustBundles,
+  });
+
+  InlineTrustConfig.fromJson(core.Map json_)
+      : this(
+          additionalTrustBundles: (json_['additionalTrustBundles']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              TrustStore.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalTrustBundles != null)
+          'additionalTrustBundles': additionalTrustBundles!,
+      };
+}
+
+/// Intermediate CA certificates used for building the trust chain to trust
+/// anchor
+class IntermediateCA {
+  /// PEM certificate of the PKI used for validation.
+  ///
+  /// Must only contain one ca certificate.
+  core.String? pemCertificate;
+
+  IntermediateCA({
+    this.pemCertificate,
+  });
+
+  IntermediateCA.fromJson(core.Map json_)
+      : this(
+          pemCertificate: json_['pemCertificate'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pemCertificate != null) 'pemCertificate': pemCertificate!,
       };
 }
 
@@ -6417,6 +8072,38 @@ class LintResult {
       };
 }
 
+/// Response message for ListAttestationRules.
+class ListAttestationRulesResponse {
+  /// A list of AttestationRules.
+  core.List<AttestationRule>? attestationRules;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  ListAttestationRulesResponse({
+    this.attestationRules,
+    this.nextPageToken,
+  });
+
+  ListAttestationRulesResponse.fromJson(core.Map json_)
+      : this(
+          attestationRules: (json_['attestationRules'] as core.List?)
+              ?.map((value) => AttestationRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attestationRules != null) 'attestationRules': attestationRules!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for ListOauthClientCredentials.
 class ListOauthClientCredentialsResponse {
   /// A list of OauthClientCredentials.
@@ -6585,6 +8272,78 @@ class ListWorkforcePoolProviderKeysResponse {
       };
 }
 
+/// Response message for ListWorkforcePoolProviderScimTenants.
+class ListWorkforcePoolProviderScimTenantsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  /// A list of scim tenants.
+  ///
+  /// Output only.
+  core.List<WorkforcePoolProviderScimTenant>? workforcePoolProviderScimTenants;
+
+  ListWorkforcePoolProviderScimTenantsResponse({
+    this.nextPageToken,
+    this.workforcePoolProviderScimTenants,
+  });
+
+  ListWorkforcePoolProviderScimTenantsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          workforcePoolProviderScimTenants:
+              (json_['workforcePoolProviderScimTenants'] as core.List?)
+                  ?.map((value) => WorkforcePoolProviderScimTenant.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workforcePoolProviderScimTenants != null)
+          'workforcePoolProviderScimTenants': workforcePoolProviderScimTenants!,
+      };
+}
+
+/// Response message for ListWorkforcePoolProviderScimTokens.
+class ListWorkforcePoolProviderScimTokensResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  /// A list of scim tokens.
+  ///
+  /// Output only.
+  core.List<WorkforcePoolProviderScimToken>? workforcePoolProviderScimTokens;
+
+  ListWorkforcePoolProviderScimTokensResponse({
+    this.nextPageToken,
+    this.workforcePoolProviderScimTokens,
+  });
+
+  ListWorkforcePoolProviderScimTokensResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          workforcePoolProviderScimTokens:
+              (json_['workforcePoolProviderScimTokens'] as core.List?)
+                  ?.map((value) => WorkforcePoolProviderScimToken.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workforcePoolProviderScimTokens != null)
+          'workforcePoolProviderScimTokens': workforcePoolProviderScimTokens!,
+      };
+}
+
 /// Response message for ListWorkforcePoolProviders.
 class ListWorkforcePoolProvidersResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
@@ -6644,6 +8403,72 @@ class ListWorkforcePoolsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workforcePools != null) 'workforcePools': workforcePools!,
+      };
+}
+
+/// Response message for ListWorkloadIdentityPoolManagedIdentities.
+class ListWorkloadIdentityPoolManagedIdentitiesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// A list of managed identities.
+  core.List<WorkloadIdentityPoolManagedIdentity>?
+      workloadIdentityPoolManagedIdentities;
+
+  ListWorkloadIdentityPoolManagedIdentitiesResponse({
+    this.nextPageToken,
+    this.workloadIdentityPoolManagedIdentities,
+  });
+
+  ListWorkloadIdentityPoolManagedIdentitiesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          workloadIdentityPoolManagedIdentities:
+              (json_['workloadIdentityPoolManagedIdentities'] as core.List?)
+                  ?.map((value) => WorkloadIdentityPoolManagedIdentity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workloadIdentityPoolManagedIdentities != null)
+          'workloadIdentityPoolManagedIdentities':
+              workloadIdentityPoolManagedIdentities!,
+      };
+}
+
+/// Response message for ListWorkloadIdentityPoolNamespaces.
+class ListWorkloadIdentityPoolNamespacesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// A list of namespaces.
+  core.List<WorkloadIdentityPoolNamespace>? workloadIdentityPoolNamespaces;
+
+  ListWorkloadIdentityPoolNamespacesResponse({
+    this.nextPageToken,
+    this.workloadIdentityPoolNamespaces,
+  });
+
+  ListWorkloadIdentityPoolNamespacesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          workloadIdentityPoolNamespaces:
+              (json_['workloadIdentityPoolNamespaces'] as core.List?)
+                  ?.map((value) => WorkloadIdentityPoolNamespace.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workloadIdentityPoolNamespaces != null)
+          'workloadIdentityPoolNamespaces': workloadIdentityPoolNamespaces!,
       };
 }
 
@@ -6965,7 +8790,10 @@ class Oidc {
 
   /// The OIDC issuer URL.
   ///
-  /// Must be an HTTPS endpoint.
+  /// Must be an HTTPS endpoint. Per OpenID Connect Discovery 1.0 spec, the OIDC
+  /// issuer URL is used to locate the provider's public keys (via `jwks_uri`)
+  /// for verifying tokens like the OIDC ID token. These public key types must
+  /// be 'EC' or 'RSA'.
   ///
   /// Required.
   core.String? issuerUri;
@@ -7078,6 +8906,28 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// The Google Cloud service that owns this namespace.
+class OwnerService {
+  /// The service agent principal subject, e.g.
+  /// "serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com".
+  ///
+  /// Required.
+  core.String? principalSubject;
+
+  OwnerService({
+    this.principalSubject,
+  });
+
+  OwnerService.fromJson(core.Map json_)
+      : this(
+          principalSubject: json_['principalSubject'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (principalSubject != null) 'principalSubject': principalSubject!,
       };
 }
 
@@ -7500,6 +9350,30 @@ class QueryTestablePermissionsResponse {
       };
 }
 
+/// Request message for RemoveAttestationRule.
+class RemoveAttestationRuleRequest {
+  /// The attestation rule to be removed.
+  ///
+  /// Required.
+  AttestationRule? attestationRule;
+
+  RemoveAttestationRuleRequest({
+    this.attestationRule,
+  });
+
+  RemoveAttestationRuleRequest.fromJson(core.Map json_)
+      : this(
+          attestationRule: json_.containsKey('attestationRule')
+              ? AttestationRule.fromJson(json_['attestationRule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attestationRule != null) 'attestationRule': attestationRule!,
+      };
+}
+
 /// A role in the Identity and Access Management API.
 class Role {
   /// The current deleted state of the role.
@@ -7603,7 +9477,7 @@ class Saml {
   /// SAML metadata XML document must satisfy the following constraints: * Must
   /// contain an IdP Entity ID. * Must contain at least one non-expired signing
   /// certificate. * For each signing certificate, the expiration must be: *
-  /// From no more than 7 days in the future. * To no more than 20 years in the
+  /// From no more than 7 days in the future. * To no more than 25 years in the
   /// future. * Up to three IdP signing keys are allowed. When updating the
   /// provider's metadata XML, at least one non-expired signing key must overlap
   /// with the existing metadata. This requirement is skipped if there are no
@@ -7947,6 +9821,32 @@ class ServiceConfig {
       };
 }
 
+/// Request message for SetAttestationRules.
+class SetAttestationRulesRequest {
+  /// The attestation rules to be set.
+  ///
+  /// At most 50 attestation rules can be set.
+  ///
+  /// Required.
+  core.List<AttestationRule>? attestationRules;
+
+  SetAttestationRulesRequest({
+    this.attestationRules,
+  });
+
+  SetAttestationRulesRequest.fromJson(core.Map json_)
+      : this(
+          attestationRules: (json_['attestationRules'] as core.List?)
+              ?.map((value) => AttestationRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attestationRules != null) 'attestationRules': attestationRules!,
+      };
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -8162,6 +10062,71 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
+/// Represents a root of trust.
+class TrustAnchor {
+  /// PEM certificate of the PKI used for validation.
+  ///
+  /// Must only contain one ca certificate(either root or intermediate cert).
+  core.String? pemCertificate;
+
+  TrustAnchor({
+    this.pemCertificate,
+  });
+
+  TrustAnchor.fromJson(core.Map json_)
+      : this(
+          pemCertificate: json_['pemCertificate'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pemCertificate != null) 'pemCertificate': pemCertificate!,
+      };
+}
+
+/// Trust store that contains trust anchors and optional intermediate CAs used
+/// in PKI to build a trust chain(trust hierarchy) and verify a client's
+/// identity.
+class TrustStore {
+  /// Set of intermediate CA certificates used for building the trust chain to
+  /// the trust anchor.
+  ///
+  /// Important: Intermediate CAs are only supported for X.509 federation.
+  ///
+  /// Optional.
+  core.List<IntermediateCA>? intermediateCas;
+
+  /// List of trust anchors to be used while performing validation against a
+  /// given TrustStore.
+  ///
+  /// The incoming end entity's certificate must be in the trust chain of one of
+  /// the trust anchors here.
+  ///
+  /// Required.
+  core.List<TrustAnchor>? trustAnchors;
+
+  TrustStore({
+    this.intermediateCas,
+    this.trustAnchors,
+  });
+
+  TrustStore.fromJson(core.Map json_)
+      : this(
+          intermediateCas: (json_['intermediateCas'] as core.List?)
+              ?.map((value) => IntermediateCA.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          trustAnchors: (json_['trustAnchors'] as core.List?)
+              ?.map((value) => TrustAnchor.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (intermediateCas != null) 'intermediateCas': intermediateCas!,
+        if (trustAnchors != null) 'trustAnchors': trustAnchors!,
+      };
+}
+
 /// Request message for UndeleteOauthClient.
 typedef UndeleteOauthClientRequest = $Empty;
 
@@ -8220,11 +10185,23 @@ typedef UndeleteWorkforcePoolProviderKeyRequest = $Empty;
 /// Request message for UndeleteWorkforcePoolProvider.
 typedef UndeleteWorkforcePoolProviderRequest = $Empty;
 
+/// Request message for UndeleteWorkforcePoolProviderScimTenant.
+typedef UndeleteWorkforcePoolProviderScimTenantRequest = $Empty;
+
+/// Request message for UndeleteWorkforcePoolProviderScimToken.
+typedef UndeleteWorkforcePoolProviderScimTokenRequest = $Empty;
+
 /// Request message for UndeleteWorkforcePool.
 typedef UndeleteWorkforcePoolRequest = $Empty;
 
 /// Request message for UndeleteWorkforcePoolSubject.
 typedef UndeleteWorkforcePoolSubjectRequest = $Empty;
+
+/// Request message for UndeleteWorkloadIdentityPoolManagedIdentity.
+typedef UndeleteWorkloadIdentityPoolManagedIdentityRequest = $Empty;
+
+/// Request message for UndeleteWorkloadIdentityPoolNamespace.
+typedef UndeleteWorkloadIdentityPoolNamespaceRequest = $Empty;
 
 /// Request message for UndeleteWorkloadIdentityPoolProviderKey.
 typedef UndeleteWorkloadIdentityPoolProviderKeyRequest = $Empty;
@@ -8468,6 +10445,15 @@ class WorkforcePoolProvider {
   /// Optional.
   core.String? description;
 
+  /// If true, populates additional debug information in Cloud Audit Logs for
+  /// this provider.
+  ///
+  /// Logged attribute mappings and values can be found in `sts.googleapis.com`
+  /// data access logs. Default value is false.
+  ///
+  /// Optional.
+  core.bool? detailedAuditLogging;
+
   /// Disables the workforce pool provider.
   ///
   /// You cannot use a disabled provider to exchange tokens. However, existing
@@ -8488,6 +10474,23 @@ class WorkforcePoolProvider {
   ///
   /// Output only.
   core.String? expireTime;
+
+  /// The configuration for OAuth 2.0 client used to get the extended group
+  /// memberships for user identities.
+  ///
+  /// Only the `AZURE_AD_GROUPS_ID` attribute type is supported. Extended groups
+  /// supports a subset of Google Cloud services. When the user accesses these
+  /// services, extended group memberships override the mapped `google.groups`
+  /// attribute. Extended group memberships cannot be used in attribute mapping
+  /// or attribute condition expressions. To keep extended group memberships up
+  /// to date, extended groups are retrieved when the user signs in and at
+  /// regular intervals during the user's active session. Each user identity in
+  /// the workforce identity pool must map to a specific, unique Microsoft Entra
+  /// ID user.
+  ///
+  /// Optional.
+  GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client?
+      extendedAttributesOauth2Client;
 
   /// The configuration for OAuth 2.0 client used to get the additional user
   /// attributes.
@@ -8528,9 +10531,11 @@ class WorkforcePoolProvider {
     this.attributeCondition,
     this.attributeMapping,
     this.description,
+    this.detailedAuditLogging,
     this.disabled,
     this.displayName,
     this.expireTime,
+    this.extendedAttributesOauth2Client,
     this.extraAttributesOauth2Client,
     this.name,
     this.oidc,
@@ -8550,9 +10555,16 @@ class WorkforcePoolProvider {
             ),
           ),
           description: json_['description'] as core.String?,
+          detailedAuditLogging: json_['detailedAuditLogging'] as core.bool?,
           disabled: json_['disabled'] as core.bool?,
           displayName: json_['displayName'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
+          extendedAttributesOauth2Client: json_
+                  .containsKey('extendedAttributesOauth2Client')
+              ? GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client
+                  .fromJson(json_['extendedAttributesOauth2Client']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           extraAttributesOauth2Client: json_
                   .containsKey('extraAttributesOauth2Client')
               ? GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client
@@ -8576,9 +10588,13 @@ class WorkforcePoolProvider {
           'attributeCondition': attributeCondition!,
         if (attributeMapping != null) 'attributeMapping': attributeMapping!,
         if (description != null) 'description': description!,
+        if (detailedAuditLogging != null)
+          'detailedAuditLogging': detailedAuditLogging!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
         if (expireTime != null) 'expireTime': expireTime!,
+        if (extendedAttributesOauth2Client != null)
+          'extendedAttributesOauth2Client': extendedAttributesOauth2Client!,
         if (extraAttributesOauth2Client != null)
           'extraAttributesOauth2Client': extraAttributesOauth2Client!,
         if (name != null) 'name': name!,
@@ -8662,6 +10678,161 @@ class WorkforcePoolProviderKey {
       };
 }
 
+/// Represents a scim tenant.
+///
+/// Used for provisioning and managing identity data (such as Users and Groups)
+/// in cross-domain environments.
+class WorkforcePoolProviderScimTenant {
+  /// Represents the base URI as defined in
+  /// [RFC 7644, Section 1.3](https://datatracker.ietf.org/doc/html/rfc7644#section-1.3).
+  ///
+  /// Clients must use this as the root address for managing resources under the
+  /// tenant. Format: https://iamscim.googleapis.com/{version}/{tenant_id}/
+  ///
+  /// Output only.
+  core.String? baseUri;
+
+  /// Maps BYOID claims to SCIM claims.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? claimMapping;
+
+  /// The user-specified description of the scim tenant.
+  ///
+  /// Cannot exceed 256 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The user-specified display name of the scim tenant.
+  ///
+  /// Cannot exceed 32 characters.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// The resource name of the SCIM Tenant. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool}/providers/
+  /// {workforce_pool_provider}/scimTenants/{scim_tenant}`
+  core.String? name;
+
+  /// The timestamp when the scim tenant is going to be purged.
+  ///
+  /// Output only.
+  core.String? purgeTime;
+
+  /// The state of the tenant.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "ACTIVE" : The tenant is active and may be used to provision users and
+  /// groups.
+  /// - "DELETED" : The tenant is soft-deleted. Soft-deleted tenants are
+  /// permanently deleted after approximately 30 days.
+  core.String? state;
+
+  WorkforcePoolProviderScimTenant({
+    this.baseUri,
+    this.claimMapping,
+    this.description,
+    this.displayName,
+    this.name,
+    this.purgeTime,
+    this.state,
+  });
+
+  WorkforcePoolProviderScimTenant.fromJson(core.Map json_)
+      : this(
+          baseUri: json_['baseUri'] as core.String?,
+          claimMapping:
+              (json_['claimMapping'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          purgeTime: json_['purgeTime'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseUri != null) 'baseUri': baseUri!,
+        if (claimMapping != null) 'claimMapping': claimMapping!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (purgeTime != null) 'purgeTime': purgeTime!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Represents a token for the WorkforcePoolProviderScimTenant.
+///
+/// Used for authenticating SCIM Provisioning requests.
+class WorkforcePoolProviderScimToken {
+  /// The user-specified display name of the scim token.
+  ///
+  /// Cannot exceed 32 characters.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// The resource name of the SCIM Token. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool}/providers/
+  /// {workforce_pool_provider}/scimTenants/{scim_tenant}/tokens/{token}`
+  core.String? name;
+
+  /// The token string.
+  ///
+  /// Provide this to the IdP for authentication. Will be set only during
+  /// creation.
+  ///
+  /// Output only.
+  core.String? securityToken;
+
+  /// The state of the token.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "ACTIVE" : The tenant is active and may be used to provision users and
+  /// groups.
+  /// - "DELETED" : The tenant is soft-deleted. Soft-deleted tenants are
+  /// permanently deleted after approximately 30 days.
+  core.String? state;
+
+  WorkforcePoolProviderScimToken({
+    this.displayName,
+    this.name,
+    this.securityToken,
+    this.state,
+  });
+
+  WorkforcePoolProviderScimToken.fromJson(core.Map json_)
+      : this(
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          securityToken: json_['securityToken'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (securityToken != null) 'securityToken': securityToken!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Represents a collection of workload identities.
 ///
 /// You can define IAM policies to grant these identities access to Google Cloud
@@ -8696,6 +10867,37 @@ class WorkloadIdentityPool {
   /// Output only.
   core.String? expireTime;
 
+  /// Defines the Certificate Authority (CA) pool resources and configurations
+  /// required for issuance and rotation of mTLS workload certificates.
+  ///
+  /// Optional.
+  InlineCertificateIssuanceConfig? inlineCertificateIssuanceConfig;
+
+  /// Represents config to add additional trusted trust domains.
+  ///
+  /// Optional.
+  InlineTrustConfig? inlineTrustConfig;
+
+  /// The mode the pool is operating in.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : State unspecified. New pools should not use this
+  /// mode. Pools with an unspecified mode will operate as if they are in
+  /// federation-only mode.
+  /// - "FEDERATION_ONLY" : Federation-only mode. Federation-only pools can only
+  /// be used for federating external workload identities into Google Cloud.
+  /// Unless otherwise noted, no structure or format constraints are applied to
+  /// workload identities in a federation-only pool, and you cannot create any
+  /// resources within the pool besides providers.
+  /// - "TRUST_DOMAIN" : Trust-domain mode. Trust-domain pools can be used to
+  /// assign identities to Google Cloud workloads. All identities within a
+  /// trust-domain pool must consist of a single namespace and individual
+  /// workload identifier. The subject identifier for all identities must
+  /// conform to the following format: `ns//sa/` WorkloadIdentityPoolProviders
+  /// cannot be created within trust-domain pools.
+  core.String? mode;
+
   /// The resource name of the pool.
   ///
   /// Output only.
@@ -8721,6 +10923,9 @@ class WorkloadIdentityPool {
     this.disabled,
     this.displayName,
     this.expireTime,
+    this.inlineCertificateIssuanceConfig,
+    this.inlineTrustConfig,
+    this.mode,
     this.name,
     this.state,
   });
@@ -8731,6 +10936,17 @@ class WorkloadIdentityPool {
           disabled: json_['disabled'] as core.bool?,
           displayName: json_['displayName'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
+          inlineCertificateIssuanceConfig:
+              json_.containsKey('inlineCertificateIssuanceConfig')
+                  ? InlineCertificateIssuanceConfig.fromJson(
+                      json_['inlineCertificateIssuanceConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          inlineTrustConfig: json_.containsKey('inlineTrustConfig')
+              ? InlineTrustConfig.fromJson(json_['inlineTrustConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mode: json_['mode'] as core.String?,
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
         );
@@ -8740,7 +10956,151 @@ class WorkloadIdentityPool {
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
         if (expireTime != null) 'expireTime': expireTime!,
+        if (inlineCertificateIssuanceConfig != null)
+          'inlineCertificateIssuanceConfig': inlineCertificateIssuanceConfig!,
+        if (inlineTrustConfig != null) 'inlineTrustConfig': inlineTrustConfig!,
+        if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Represents a managed identity for a workload identity pool namespace.
+class WorkloadIdentityPoolManagedIdentity {
+  /// A description of the managed identity.
+  ///
+  /// Cannot exceed 256 characters.
+  core.String? description;
+
+  /// Whether the managed identity is disabled.
+  ///
+  /// If disabled, credentials may no longer be issued for the identity, however
+  /// existing credentials will still be accepted until they expire.
+  core.bool? disabled;
+
+  /// Time after which the managed identity will be permanently purged and
+  /// cannot be recovered.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// The resource name of the managed identity.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The state of the managed identity.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "ACTIVE" : The managed identity is active.
+  /// - "DELETED" : The managed identity is soft-deleted. Soft-deleted managed
+  /// identities are permanently deleted after approximately 30 days. You can
+  /// restore a soft-deleted managed identity using
+  /// UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
+  /// soft-deleted managed identity until it is permanently deleted.
+  core.String? state;
+
+  WorkloadIdentityPoolManagedIdentity({
+    this.description,
+    this.disabled,
+    this.expireTime,
+    this.name,
+    this.state,
+  });
+
+  WorkloadIdentityPoolManagedIdentity.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          disabled: json_['disabled'] as core.bool?,
+          expireTime: json_['expireTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Represents a namespace for a workload identity pool.
+///
+/// Namespaces are used to segment identities within the pool.
+class WorkloadIdentityPoolNamespace {
+  /// A description of the namespace.
+  ///
+  /// Cannot exceed 256 characters.
+  core.String? description;
+
+  /// Whether the namespace is disabled.
+  ///
+  /// If disabled, credentials may no longer be issued for identities within
+  /// this namespace, however existing credentials will still be accepted until
+  /// they expire.
+  core.bool? disabled;
+
+  /// Time after which the namespace will be permanently purged and cannot be
+  /// recovered.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// The resource name of the namespace.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The Google Cloud service that owns this namespace.
+  ///
+  /// Output only.
+  OwnerService? ownerService;
+
+  /// The state of the namespace.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "ACTIVE" : The namespace is active.
+  /// - "DELETED" : The namespace is soft-deleted. Soft-deleted namespaces are
+  /// permanently deleted after approximately 30 days. You can restore a
+  /// soft-deleted namespace using UndeleteWorkloadIdentityPoolNamespace. You
+  /// cannot reuse the ID of a soft-deleted namespace until it is permanently
+  /// deleted.
+  core.String? state;
+
+  WorkloadIdentityPoolNamespace({
+    this.description,
+    this.disabled,
+    this.expireTime,
+    this.name,
+    this.ownerService,
+    this.state,
+  });
+
+  WorkloadIdentityPoolNamespace.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          disabled: json_['disabled'] as core.bool?,
+          expireTime: json_['expireTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          ownerService: json_.containsKey('ownerService')
+              ? OwnerService.fromJson(
+                  json_['ownerService'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (name != null) 'name': name!,
+        if (ownerService != null) 'ownerService': ownerService!,
         if (state != null) 'state': state!,
       };
 }
@@ -8867,6 +11227,9 @@ class WorkloadIdentityPoolProvider {
   /// deleted.
   core.String? state;
 
+  /// An X.509-type identity provider.
+  X509? x509;
+
   WorkloadIdentityPoolProvider({
     this.attributeCondition,
     this.attributeMapping,
@@ -8879,6 +11242,7 @@ class WorkloadIdentityPoolProvider {
     this.oidc,
     this.saml,
     this.state,
+    this.x509,
   });
 
   WorkloadIdentityPoolProvider.fromJson(core.Map json_)
@@ -8910,6 +11274,10 @@ class WorkloadIdentityPoolProvider {
                   json_['saml'] as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
+          x509: json_.containsKey('x509')
+              ? X509.fromJson(
+                  json_['x509'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8925,6 +11293,7 @@ class WorkloadIdentityPoolProvider {
         if (oidc != null) 'oidc': oidc!,
         if (saml != null) 'saml': saml!,
         if (state != null) 'state': state!,
+        if (x509 != null) 'x509': x509!,
       };
 }
 
@@ -9000,5 +11369,37 @@ class WorkloadIdentityPoolProviderKey {
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (use != null) 'use': use!,
+      };
+}
+
+/// An X.509-type identity provider represents a CA.
+///
+/// It is trusted to assert a client identity if the client has a certificate
+/// that chains up to this CA.
+class X509 {
+  /// A TrustStore.
+  ///
+  /// Use this trust store as a wrapper to config the trust anchor and optional
+  /// intermediate cas to help build the trust chain for the incoming end entity
+  /// certificate. Follow the X.509 guidelines to define those PEM encoded
+  /// certs. Only one trust store is currently supported.
+  ///
+  /// Required.
+  TrustStore? trustStore;
+
+  X509({
+    this.trustStore,
+  });
+
+  X509.fromJson(core.Map json_)
+      : this(
+          trustStore: json_.containsKey('trustStore')
+              ? TrustStore.fromJson(
+                  json_['trustStore'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (trustStore != null) 'trustStore': trustStore!,
       };
 }

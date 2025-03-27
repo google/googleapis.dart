@@ -1166,6 +1166,8 @@ class GoogleCloudEssentialcontactsV1Contact {
   ///
   /// A contact is considered stale if its validation state was updated more
   /// than 1 year ago.
+  ///
+  /// Output only.
   core.String? validateTime;
 
   /// The validity of the contact.

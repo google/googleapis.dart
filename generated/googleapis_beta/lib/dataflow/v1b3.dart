@@ -279,10 +279,11 @@ class ProjectsJobsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates a Cloud Dataflow job.
+  /// A Job is a multi-stage computation graph run by the Cloud Dataflow
+  /// service.
   ///
-  /// To create a job, we recommend using `projects.locations.jobs.create` with
-  /// a
+  /// Creates a Cloud Dataflow job. To create a job, we recommend using
+  /// `projects.locations.jobs.create` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.create` is not recommended, as your job will always
   /// start in `us-central1`. Do not enter confidential information when you
@@ -1156,10 +1157,11 @@ class ProjectsLocationsJobsResource {
   ProjectsLocationsJobsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a Cloud Dataflow job.
+  /// A Job is a multi-stage computation graph run by the Cloud Dataflow
+  /// service.
   ///
-  /// To create a job, we recommend using `projects.locations.jobs.create` with
-  /// a
+  /// Creates a Cloud Dataflow job. To create a job, we recommend using
+  /// `projects.locations.jobs.create` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.create` is not recommended, as your job will always
   /// start in `us-central1`. Do not enter confidential information when you
@@ -1713,6 +1715,60 @@ class ProjectsLocationsJobsDebugResource {
       queryParams: queryParams_,
     );
     return GetDebugConfigResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get worker stacktraces from debug capture.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The project id.
+  ///
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// that contains the job specified by job_id.
+  ///
+  /// [jobId] - The job for which to get stacktraces.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetWorkerStacktracesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetWorkerStacktracesResponse> getWorkerStacktraces(
+    GetWorkerStacktracesRequest request,
+    core.String projectId,
+    core.String location,
+    core.String jobId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1b3/projects/' +
+        commons.escapeVariable('$projectId') +
+        '/locations/' +
+        commons.escapeVariable('$location') +
+        '/jobs/' +
+        commons.escapeVariable('$jobId') +
+        '/debug/getWorkerStacktraces';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GetWorkerStacktracesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -4635,6 +4691,11 @@ class Environment {
   /// bucket.storage.googleapis.com/{object}
   core.String? tempStoragePrefix;
 
+  /// True when any worker pool that uses public IPs is present.
+  ///
+  /// Optional.
+  core.bool? usePublicIps;
+
   /// Whether the job uses the Streaming Engine resource-based billing model.
   ///
   /// Output only.
@@ -4694,6 +4755,7 @@ class Environment {
     this.shuffleMode,
     this.streamingMode,
     this.tempStoragePrefix,
+    this.usePublicIps,
     this.useStreamingEngineResourceBasedBilling,
     this.userAgent,
     this.version,
@@ -4732,6 +4794,7 @@ class Environment {
           shuffleMode: json_['shuffleMode'] as core.String?,
           streamingMode: json_['streamingMode'] as core.String?,
           tempStoragePrefix: json_['tempStoragePrefix'] as core.String?,
+          usePublicIps: json_['usePublicIps'] as core.bool?,
           useStreamingEngineResourceBasedBilling:
               json_['useStreamingEngineResourceBasedBilling'] as core.bool?,
           userAgent: json_.containsKey('userAgent')
@@ -4767,6 +4830,7 @@ class Environment {
         if (shuffleMode != null) 'shuffleMode': shuffleMode!,
         if (streamingMode != null) 'streamingMode': streamingMode!,
         if (tempStoragePrefix != null) 'tempStoragePrefix': tempStoragePrefix!,
+        if (usePublicIps != null) 'usePublicIps': usePublicIps!,
         if (useStreamingEngineResourceBasedBilling != null)
           'useStreamingEngineResourceBasedBilling':
               useStreamingEngineResourceBasedBilling!,
@@ -5501,6 +5565,50 @@ class GetTemplateResponse {
         if (runtimeMetadata != null) 'runtimeMetadata': runtimeMetadata!,
         if (status != null) 'status': status!,
         if (templateType != null) 'templateType': templateType!,
+      };
+}
+
+/// Request to get worker stacktraces from debug capture.
+class GetWorkerStacktracesRequest {
+  /// The worker for which to get stacktraces.
+  ///
+  /// The returned stacktraces will be for the SDK harness running on this
+  /// worker.
+  core.String? workerId;
+
+  GetWorkerStacktracesRequest({
+    this.workerId,
+  });
+
+  GetWorkerStacktracesRequest.fromJson(core.Map json_)
+      : this(
+          workerId: json_['workerId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (workerId != null) 'workerId': workerId!,
+      };
+}
+
+/// Response to get worker stacktraces from debug capture.
+class GetWorkerStacktracesResponse {
+  /// Repeated as unified worker may have multiple SDK processes.
+  core.List<Sdk>? sdks;
+
+  GetWorkerStacktracesResponse({
+    this.sdks,
+  });
+
+  GetWorkerStacktracesResponse.fromJson(core.Map json_)
+      : this(
+          sdks: (json_['sdks'] as core.List?)
+              ?.map((value) =>
+                  Sdk.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sdks != null) 'sdks': sdks!,
       };
 }
 
@@ -7296,6 +7404,16 @@ class MetricStructuredName {
 
 /// Describes the state of a metric.
 class MetricUpdate {
+  /// Worker-computed aggregate value for the "Trie" aggregation kind.
+  ///
+  /// The only possible value type is a BoundedTrieNode. Introduced this field
+  /// to avoid breaking older SDKs when Dataflow service starts to populate the
+  /// `bounded_trie` field.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? boundedTrie;
+
   /// True if this metric is reported as the total cumulative aggregate value
   /// accumulated since the worker started working on this WorkItem.
   ///
@@ -7389,6 +7507,7 @@ class MetricUpdate {
   core.String? updateTime;
 
   MetricUpdate({
+    this.boundedTrie,
     this.cumulative,
     this.distribution,
     this.gauge,
@@ -7405,6 +7524,7 @@ class MetricUpdate {
 
   MetricUpdate.fromJson(core.Map json_)
       : this(
+          boundedTrie: json_['boundedTrie'],
           cumulative: json_['cumulative'] as core.bool?,
           distribution: json_['distribution'],
           gauge: json_['gauge'],
@@ -7423,6 +7543,7 @@ class MetricUpdate {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (boundedTrie != null) 'boundedTrie': boundedTrie!,
         if (cumulative != null) 'cumulative': cumulative!,
         if (distribution != null) 'distribution': distribution!,
         if (gauge != null) 'gauge': gauge!,
@@ -9073,6 +9194,34 @@ class SDKInfo {
       };
 }
 
+/// A structured representation of an SDK.
+class Sdk {
+  /// The SDK harness id.
+  core.String? sdkId;
+
+  /// The stacktraces for the processes running on the SDK harness.
+  core.List<Stack>? stacks;
+
+  Sdk({
+    this.sdkId,
+    this.stacks,
+  });
+
+  Sdk.fromJson(core.Map json_)
+      : this(
+          sdkId: json_['sdkId'] as core.String?,
+          stacks: (json_['stacks'] as core.List?)
+              ?.map((value) =>
+                  Stack.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sdkId != null) 'sdkId': sdkId!,
+        if (stacks != null) 'stacks': stacks!,
+      };
+}
+
 /// A bug found in the Dataflow SDK.
 class SdkBug {
   /// How severe the SDK bug is.
@@ -10224,6 +10373,57 @@ class SplitInt64 {
   core.Map<core.String, core.dynamic> toJson() => {
         if (highBits != null) 'highBits': highBits!,
         if (lowBits != null) 'lowBits': lowBits!,
+      };
+}
+
+/// A structuredstacktrace for a process running on the worker.
+class Stack {
+  /// The raw stack trace.
+  core.String? stackContent;
+
+  /// With java thread dumps we may get collapsed stacks e.g., N threads in
+  /// stack "".
+  ///
+  /// Instead of having to copy over the same stack trace N times, this int
+  /// field captures this.
+  core.int? threadCount;
+
+  /// Thread name.
+  ///
+  /// For example, "CommitThread-0,10,main"
+  core.String? threadName;
+
+  /// The state of the thread.
+  ///
+  /// For example, "WAITING".
+  core.String? threadState;
+
+  /// Timestamp at which the stack was captured.
+  core.String? timestamp;
+
+  Stack({
+    this.stackContent,
+    this.threadCount,
+    this.threadName,
+    this.threadState,
+    this.timestamp,
+  });
+
+  Stack.fromJson(core.Map json_)
+      : this(
+          stackContent: json_['stackContent'] as core.String?,
+          threadCount: json_['threadCount'] as core.int?,
+          threadName: json_['threadName'] as core.String?,
+          threadState: json_['threadState'] as core.String?,
+          timestamp: json_['timestamp'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stackContent != null) 'stackContent': stackContent!,
+        if (threadCount != null) 'threadCount': threadCount!,
+        if (threadName != null) 'threadName': threadName!,
+        if (threadState != null) 'threadState': threadState!,
+        if (timestamp != null) 'timestamp': timestamp!,
       };
 }
 

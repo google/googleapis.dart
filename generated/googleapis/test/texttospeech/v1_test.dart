@@ -531,6 +531,7 @@ api.SynthesisInput buildSynthesisInput() {
   buildCounterSynthesisInput++;
   if (buildCounterSynthesisInput < 3) {
     o.customPronunciations = buildCustomPronunciations();
+    o.markup = 'foo';
     o.multiSpeakerMarkup = buildMultiSpeakerMarkup();
     o.ssml = 'foo';
     o.text = 'foo';
@@ -543,6 +544,10 @@ void checkSynthesisInput(api.SynthesisInput o) {
   buildCounterSynthesisInput++;
   if (buildCounterSynthesisInput < 3) {
     checkCustomPronunciations(o.customPronunciations!);
+    unittest.expect(
+      o.markup!,
+      unittest.equals('foo'),
+    );
     checkMultiSpeakerMarkup(o.multiSpeakerMarkup!);
     unittest.expect(
       o.ssml!,

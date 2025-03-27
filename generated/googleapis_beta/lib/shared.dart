@@ -863,6 +863,7 @@ class $DataStreamWebStreamData {
 /// Used by:
 ///
 /// - adexchangebuyer2:v2beta1 : Date
+/// - analyticsadmin:v1alpha : GoogleTypeDate
 /// - fcmdata:v1beta1 : GoogleTypeDate
 class $Date {
   /// Day of a month.
@@ -977,8 +978,6 @@ class $DimensionValue {
 /// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
 /// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest
 /// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
 /// - analyticsadmin:v1alpha : GoogleProtobufEmpty
 /// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse
 /// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest
@@ -1020,6 +1019,7 @@ class $DimensionValue {
 /// - firebasestorage:v1beta : RemoveFirebaseRequest
 /// - gkehub:v2alpha : CancelOperationRequest
 /// - gkehub:v2alpha : Empty
+/// - gkehub:v2alpha : RBACRoleBindingActuationSpec
 /// - lifesciences:v2beta : CancelOperationRequest
 /// - lifesciences:v2beta : Empty
 /// - prod_tt_sasportal:v1alpha1 : SasPortalEmpty

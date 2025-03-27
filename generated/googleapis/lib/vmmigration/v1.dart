@@ -137,6 +137,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -159,12 +163,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1797,6 +1803,48 @@ class ProjectsLocationsSourcesMigratingVmsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Extend the migrating VM time to live.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [migratingVm] - Required. The name of the MigratingVm.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+/migratingVms/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> extendMigration(
+    ExtendMigrationRequest request,
+    core.String migratingVm, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$migratingVm') + ':extendMigration';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3636,7 +3684,7 @@ class AwsVmDetails {
   /// The total size of the storage allocated to the VM in MB.
   core.String? committedStorageMb;
 
-  /// The number of cpus the VM has.
+  /// The number of CPU cores the VM has.
   core.int? cpuCount;
 
   /// The number of disks the VM has.
@@ -3680,6 +3728,11 @@ class AwsVmDetails {
   /// The tags of the VM.
   core.Map<core.String, core.String>? tags;
 
+  /// The number of vCPUs the VM has.
+  ///
+  /// It is calculated as the number of CPU cores * threads per CPU the VM has.
+  core.int? vcpuCount;
+
   /// The virtualization type.
   /// Possible string values are:
   /// - "VM_VIRTUALIZATION_TYPE_UNSPECIFIED" : The virtualization type is
@@ -3712,6 +3765,7 @@ class AwsVmDetails {
     this.sourceDescription,
     this.sourceId,
     this.tags,
+    this.vcpuCount,
     this.virtualizationType,
     this.vmId,
     this.vpcId,
@@ -3742,6 +3796,7 @@ class AwsVmDetails {
               value as core.String,
             ),
           ),
+          vcpuCount: json_['vcpuCount'] as core.int?,
           virtualizationType: json_['virtualizationType'] as core.String?,
           vmId: json_['vmId'] as core.String?,
           vpcId: json_['vpcId'] as core.String?,
@@ -3764,6 +3819,7 @@ class AwsVmDetails {
         if (sourceDescription != null) 'sourceDescription': sourceDescription!,
         if (sourceId != null) 'sourceId': sourceId!,
         if (tags != null) 'tags': tags!,
+        if (vcpuCount != null) 'vcpuCount': vcpuCount!,
         if (virtualizationType != null)
           'virtualizationType': virtualizationType!,
         if (vmId != null) 'vmId': vmId!,
@@ -4578,6 +4634,18 @@ class ComputeEngineTargetDefaults {
   /// Compute instance scheduling information (if empty default is used).
   ComputeScheduling? computeScheduling;
 
+  /// Additional replica zones of the target regional disks.
+  ///
+  /// If this list is not empty a regional disk will be created. The first
+  /// supported zone would be the one stated in the zone field. The rest are
+  /// taken from this list. Please refer to the
+  /// [regional disk creation API](https://cloud.google.com/compute/docs/regions-zones/global-regional-zonal-resources)
+  /// for further details about regional vs zonal disks. If not specified, a
+  /// zonal disk will be created in the same zone the VM is created.
+  ///
+  /// Optional.
+  core.List<core.String>? diskReplicaZones;
+
   /// The disk type to use in the VM.
   /// Possible string values are:
   /// - "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED" : An unspecified disk type. Will
@@ -4647,6 +4715,8 @@ class ComputeEngineTargetDefaults {
   core.bool? secureBoot;
 
   /// The service account to associate the VM with.
+  ///
+  /// Optional.
   core.String? serviceAccount;
 
   /// The full path of the resource of type TargetProject which represents the
@@ -4665,6 +4735,7 @@ class ComputeEngineTargetDefaults {
     this.bootConversion,
     this.bootOption,
     this.computeScheduling,
+    this.diskReplicaZones,
     this.diskType,
     this.enableIntegrityMonitoring,
     this.enableVtpm,
@@ -4699,6 +4770,9 @@ class ComputeEngineTargetDefaults {
               ? ComputeScheduling.fromJson(json_['computeScheduling']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          diskReplicaZones: (json_['diskReplicaZones'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           diskType: json_['diskType'] as core.String?,
           enableIntegrityMonitoring:
               json_['enableIntegrityMonitoring'] as core.bool?,
@@ -4746,6 +4820,7 @@ class ComputeEngineTargetDefaults {
         if (bootConversion != null) 'bootConversion': bootConversion!,
         if (bootOption != null) 'bootOption': bootOption!,
         if (computeScheduling != null) 'computeScheduling': computeScheduling!,
+        if (diskReplicaZones != null) 'diskReplicaZones': diskReplicaZones!,
         if (diskType != null) 'diskType': diskType!,
         if (enableIntegrityMonitoring != null)
           'enableIntegrityMonitoring': enableIntegrityMonitoring!,
@@ -4797,6 +4872,18 @@ class ComputeEngineTargetDetails {
 
   /// Compute instance scheduling information (if empty default is used).
   ComputeScheduling? computeScheduling;
+
+  /// Additional replica zones of the target regional disks.
+  ///
+  /// If this list is not empty a regional disk will be created. The first
+  /// supported zone would be the one stated in the zone field. The rest are
+  /// taken from this list. Please refer to the
+  /// [regional disk creation API](https://cloud.google.com/compute/docs/regions-zones/global-regional-zonal-resources)
+  /// for further details about regional vs zonal disks. If not specified, a
+  /// zonal disk will be created in the same zone the VM is created.
+  ///
+  /// Optional.
+  core.List<core.String>? diskReplicaZones;
 
   /// The disk type to use in the VM.
   /// Possible string values are:
@@ -4879,6 +4966,7 @@ class ComputeEngineTargetDetails {
     this.bootConversion,
     this.bootOption,
     this.computeScheduling,
+    this.diskReplicaZones,
     this.diskType,
     this.enableIntegrityMonitoring,
     this.enableVtpm,
@@ -4913,6 +5001,9 @@ class ComputeEngineTargetDetails {
               ? ComputeScheduling.fromJson(json_['computeScheduling']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          diskReplicaZones: (json_['diskReplicaZones'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           diskType: json_['diskType'] as core.String?,
           enableIntegrityMonitoring:
               json_['enableIntegrityMonitoring'] as core.bool?,
@@ -4960,6 +5051,7 @@ class ComputeEngineTargetDetails {
         if (bootConversion != null) 'bootConversion': bootConversion!,
         if (bootOption != null) 'bootOption': bootOption!,
         if (computeScheduling != null) 'computeScheduling': computeScheduling!,
+        if (diskReplicaZones != null) 'diskReplicaZones': diskReplicaZones!,
         if (diskType != null) 'diskType': diskType!,
         if (enableIntegrityMonitoring != null)
           'enableIntegrityMonitoring': enableIntegrityMonitoring!,
@@ -5914,6 +6006,46 @@ class Encryption {
       };
 }
 
+/// Expiration holds information about the expiration of a MigratingVm.
+class Expiration {
+  /// Timestamp of when this resource is considered expired.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// Describes whether the expiration can be extended.
+  ///
+  /// Output only.
+  core.bool? extendable;
+
+  /// The number of times expiration was extended.
+  ///
+  /// Output only.
+  core.int? extensionCount;
+
+  Expiration({
+    this.expireTime,
+    this.extendable,
+    this.extensionCount,
+  });
+
+  Expiration.fromJson(core.Map json_)
+      : this(
+          expireTime: json_['expireTime'] as core.String?,
+          extendable: json_['extendable'] as core.bool?,
+          extensionCount: json_['extensionCount'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (extendable != null) 'extendable': extendable!,
+        if (extensionCount != null) 'extensionCount': extensionCount!,
+      };
+}
+
+/// Request message for 'ExtendMigrationRequest' request.
+typedef ExtendMigrationRequest = $Empty;
+
 /// Response message for fetchInventory.
 class FetchInventoryResponse {
   /// The description of the VMs in a Source of type AWS.
@@ -6269,6 +6401,19 @@ class ImageImportJob {
 
 /// Parameters affecting the OS adaptation process.
 class ImageImportOsAdaptationParameters {
+  /// By default the image will keep its existing boot option.
+  ///
+  /// Setting this property will trigger an internal process which will convert
+  /// the image from using the existing boot option to another. The size of the
+  /// boot disk might be increased to allow the conversion
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BOOT_CONVERSION_UNSPECIFIED" : Unspecified conversion type.
+  /// - "NONE" : No conversion.
+  /// - "BIOS_TO_EFI" : Convert from BIOS to EFI.
+  core.String? bootConversion;
+
   /// Set to true in order to generalize the imported image.
   ///
   /// The generalization process enables co-existence of multiple VMs created
@@ -6292,17 +6437,20 @@ class ImageImportOsAdaptationParameters {
   core.String? licenseType;
 
   ImageImportOsAdaptationParameters({
+    this.bootConversion,
     this.generalize,
     this.licenseType,
   });
 
   ImageImportOsAdaptationParameters.fromJson(core.Map json_)
       : this(
+          bootConversion: json_['bootConversion'] as core.String?,
           generalize: json_['generalize'] as core.bool?,
           licenseType: json_['licenseType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bootConversion != null) 'bootConversion': bootConversion!,
         if (generalize != null) 'generalize': generalize!,
         if (licenseType != null) 'licenseType': licenseType!,
       };
@@ -6986,6 +7134,9 @@ class MachineImageTargetDetails {
 
   /// The encryption to apply to the machine image.
   ///
+  /// If the Image Import resource has an encryption, this field must be set to
+  /// the same encryption key.
+  ///
   /// Immutable.
   Encryption? encryption;
 
@@ -7008,7 +7159,8 @@ class MachineImageTargetDetails {
   /// The network interfaces to create with the instance created by the machine
   /// image.
   ///
-  /// Internal and external IP addresses are ignored for machine image import.
+  /// Internal and external IP addresses, and network tiers are ignored for
+  /// machine image import.
   ///
   /// Optional.
   core.List<NetworkInterface>? networkInterfaces;
@@ -7194,6 +7346,11 @@ class MigratingVm {
   /// Output only.
   Status? error;
 
+  /// Provides details about the expiration state of the migrating VM.
+  ///
+  /// Output only.
+  Expiration? expiration;
+
   /// The group this migrating vm is included in, if any.
   ///
   /// The group is represented by the full path of the appropriate Group
@@ -7278,6 +7435,11 @@ class MigratingVm {
   /// finalized and no longer consumes billable resources.
   /// - "ERROR" : The replication process encountered an unrecoverable error and
   /// was aborted.
+  /// - "EXPIRED" : The migrating VM has passed its expiration date. It might be
+  /// possible to bring it back to "Active" state by updating the TTL field. For
+  /// more information, see the documentation.
+  /// - "FINALIZED_EXPIRED" : The migrating VM's has been finalized and
+  /// migration resources have been removed.
   core.String? state;
 
   /// The last time the migrating VM state was updated.
@@ -7306,6 +7468,7 @@ class MigratingVm {
     this.description,
     this.displayName,
     this.error,
+    this.expiration,
     this.group,
     this.labels,
     this.lastReplicationCycle,
@@ -7357,6 +7520,10 @@ class MigratingVm {
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          expiration: json_.containsKey('expiration')
+              ? Expiration.fromJson(
+                  json_['expiration'] as core.Map<core.String, core.dynamic>)
               : null,
           group: json_['group'] as core.String?,
           labels:
@@ -7412,6 +7579,7 @@ class MigratingVm {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (error != null) 'error': error!,
+        if (expiration != null) 'expiration': expiration!,
         if (group != null) 'group': group!,
         if (labels != null) 'labels': labels!,
         if (lastReplicationCycle != null)
@@ -7511,6 +7679,8 @@ class NetworkInterface {
   core.String? internalIp;
 
   /// The network to connect the NIC to.
+  ///
+  /// Optional.
   core.String? network;
 
   /// The networking tier used for optimizing connectivity between instances and

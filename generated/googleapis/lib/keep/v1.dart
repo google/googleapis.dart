@@ -17,7 +17,7 @@
 /// The Google Keep API is used in an enterprise environment to manage Google
 /// Keep content and resolve issues identified by cloud security software.
 ///
-/// For more information, see <https://developers.google.com/keep/api>
+/// For more information, see <https://developers.google.com/workspace/keep/api>
 ///
 /// Create an instance of [KeepApi] to access these resources:
 ///

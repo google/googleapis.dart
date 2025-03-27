@@ -38,10 +38,15 @@
 ///         - [ProjectsLocationsAgentsFlowsVersionsResource]
 ///       - [ProjectsLocationsAgentsGeneratorsResource]
 ///       - [ProjectsLocationsAgentsIntentsResource]
+///       - [ProjectsLocationsAgentsPlaybooksResource]
+///         - [ProjectsLocationsAgentsPlaybooksExamplesResource]
+///         - [ProjectsLocationsAgentsPlaybooksVersionsResource]
 ///       - [ProjectsLocationsAgentsSessionsResource]
 ///         - [ProjectsLocationsAgentsSessionsEntityTypesResource]
 ///       - [ProjectsLocationsAgentsTestCasesResource]
 ///         - [ProjectsLocationsAgentsTestCasesResultsResource]
+///       - [ProjectsLocationsAgentsToolsResource]
+///         - [ProjectsLocationsAgentsToolsVersionsResource]
 ///       - [ProjectsLocationsAgentsTransitionRouteGroupsResource]
 ///       - [ProjectsLocationsAgentsWebhooksResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -150,6 +155,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -172,12 +181,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudLocationListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -211,10 +222,14 @@ class ProjectsLocationsAgentsResource {
       ProjectsLocationsAgentsGeneratorsResource(_requester);
   ProjectsLocationsAgentsIntentsResource get intents =>
       ProjectsLocationsAgentsIntentsResource(_requester);
+  ProjectsLocationsAgentsPlaybooksResource get playbooks =>
+      ProjectsLocationsAgentsPlaybooksResource(_requester);
   ProjectsLocationsAgentsSessionsResource get sessions =>
       ProjectsLocationsAgentsSessionsResource(_requester);
   ProjectsLocationsAgentsTestCasesResource get testCases =>
       ProjectsLocationsAgentsTestCasesResource(_requester);
+  ProjectsLocationsAgentsToolsResource get tools =>
+      ProjectsLocationsAgentsToolsResource(_requester);
   ProjectsLocationsAgentsTransitionRouteGroupsResource
       get transitionRouteGroups =>
           ProjectsLocationsAgentsTransitionRouteGroupsResource(_requester);
@@ -4629,6 +4644,769 @@ class ProjectsLocationsAgentsIntentsResource {
   }
 }
 
+class ProjectsLocationsAgentsPlaybooksResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentsPlaybooksExamplesResource get examples =>
+      ProjectsLocationsAgentsPlaybooksExamplesResource(_requester);
+  ProjectsLocationsAgentsPlaybooksVersionsResource get versions =>
+      ProjectsLocationsAgentsPlaybooksVersionsResource(_requester);
+
+  ProjectsLocationsAgentsPlaybooksResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a playbook in a specified agent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to create a playbook for. Format:
+  /// `projects//locations//agents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3Playbook].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3Playbook> create(
+    GoogleCloudDialogflowCxV3Playbook request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/playbooks';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3Playbook.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a specified playbook.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the playbook to delete. Format:
+  /// `projects//locations//agents//playbooks/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Exports the specified playbook to a binary file.
+  ///
+  /// Note that resources (e.g. examples, tools) that the playbook references
+  /// will also be exported.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the playbook to export. Format:
+  /// `projects//locations//agents//playbooks/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> export(
+    GoogleCloudDialogflowCxV3ExportPlaybookRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name') + ':export';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified Playbook.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the playbook. Format:
+  /// `projects//locations//agents//playbooks/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3Playbook].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3Playbook> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3Playbook.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Imports the specified playbook to the specified agent from a binary file.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to import the playbook into. Format:
+  /// `projects//locations//agents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> import(
+    GoogleCloudDialogflowCxV3ImportPlaybookRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/playbooks:import';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of playbooks in the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to list playbooks from. Format:
+  /// `projects//locations//agents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 100 and at most 1000.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3ListPlaybooksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3ListPlaybooksResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/playbooks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3ListPlaybooksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified Playbook.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The unique identifier of the playbook. Format:
+  /// `projects//locations//agents//playbooks/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+$`.
+  ///
+  /// [updateMask] - The mask to control which fields get updated. If the mask
+  /// is not present, all fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3Playbook].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3Playbook> patch(
+    GoogleCloudDialogflowCxV3Playbook request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3Playbook.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentsPlaybooksExamplesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentsPlaybooksExamplesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an example in the specified playbook.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The playbook to create an example for. Format:
+  /// `projects//locations//agents//playbooks/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3Example].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3Example> create(
+    GoogleCloudDialogflowCxV3Example request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/examples';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3Example.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified example.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the example to delete. Format:
+  /// `projects//locations//agents//playbooks//examples/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+/examples/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified example.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the example. Format:
+  /// `projects//locations//agents//playbooks//examples/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+/examples/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3Example].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3Example> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3Example.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of examples in the specified playbook.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The playbook to list the examples from. Format:
+  /// `projects//locations//agents//playbooks/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+$`.
+  ///
+  /// [languageCode] - Optional. The language to list examples for. If not
+  /// specified, list all examples under the playbook. Note: languages must be
+  /// enabled in the agent before they can be used.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3ListExamplesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3ListExamplesResponse> list(
+    core.String parent, {
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/examples';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3ListExamplesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update the specified example.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The unique identifier of the playbook example. Format:
+  /// `projects//locations//agents//playbooks//examples/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+/examples/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The mask to control which fields get updated. If
+  /// the mask is not present, all fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3Example].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3Example> patch(
+    GoogleCloudDialogflowCxV3Example request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3Example.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentsPlaybooksVersionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentsPlaybooksVersionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a version for the specified Playbook.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The playbook to create a version for. Format:
+  /// `projects//locations//agents//playbooks/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3PlaybookVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3PlaybookVersion> create(
+    GoogleCloudDialogflowCxV3PlaybookVersion request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/versions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3PlaybookVersion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified version of the Playbook.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the playbook version to delete. Format:
+  /// `projects//locations//agents//playbooks//versions/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified version of the Playbook.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the playbook version. Format:
+  /// `projects//locations//agents//playbooks//versions/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3PlaybookVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3PlaybookVersion> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3PlaybookVersion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists versions for the specified Playbook.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The playbook to list versions for. Format:
+  /// `projects//locations//agents//playbooks/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/versions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified version of the Playbook and stores it as the
+  /// current playbook draft, returning the playbook with resources updated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the playbook version. Format:
+  /// `projects//locations//agents//playbooks//versions/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/playbooks/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse> restore(
+    GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name') + ':restore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsAgentsSessionsResource {
   final commons.ApiRequester _requester;
 
@@ -5739,6 +6517,465 @@ class ProjectsLocationsAgentsTestCasesResultsResource {
   }
 }
 
+class ProjectsLocationsAgentsToolsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentsToolsVersionsResource get versions =>
+      ProjectsLocationsAgentsToolsVersionsResource(_requester);
+
+  ProjectsLocationsAgentsToolsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Tool in the specified agent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to create a Tool for. Format:
+  /// `projects//locations//agents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3Tool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3Tool> create(
+    GoogleCloudDialogflowCxV3Tool request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/tools';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3Tool.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a specified Tool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Tool to be deleted. Format:
+  /// `projects//locations//agents//tools/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/tools/\[^/\]+$`.
+  ///
+  /// [force] - This field has no effect for Tools not being used. For Tools
+  /// that are used: * If `force` is set to false, an error will be returned
+  /// with message indicating the referenced resources. * If `force` is set to
+  /// true, Dialogflow will remove the tool, as well as any references to the
+  /// tool.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified Tool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Tool. Format:
+  /// `projects//locations//agents//tools/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/tools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3Tool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3Tool> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3Tool.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of Tools in the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to list the Tools from. Format:
+  /// `projects//locations//agents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 100 and at most 1000.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3ListToolsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3ListToolsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/tools';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3ListToolsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update the specified Tool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The unique identifier of the Tool. Format:
+  /// `projects//locations//agents//tools/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/tools/\[^/\]+$`.
+  ///
+  /// [updateMask] - The mask to control which fields get updated. If the mask
+  /// is not present, all fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3Tool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3Tool> patch(
+    GoogleCloudDialogflowCxV3Tool request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3Tool.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentsToolsVersionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentsToolsVersionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a version for the specified Tool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The tool to create a version for. Format:
+  /// `projects//locations//agents//tools/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/tools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3ToolVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3ToolVersion> create(
+    GoogleCloudDialogflowCxV3ToolVersion request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/versions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3ToolVersion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified version of the Tool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the tool version to delete. Format:
+  /// `projects//locations//agents//tools//versions/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/tools/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [force] - Optional. This field has no effect for Tools not being used. For
+  /// Tools that are used: * If `force` is set to false, an error will be
+  /// returned with message indicating the referenced resources. * If `force` is
+  /// set to true, Dialogflow will remove the tool, as well as any references to
+  /// the tool.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified version of the Tool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the tool version. Format:
+  /// `projects//locations//agents//tools//versions/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/tools/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3ToolVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3ToolVersion> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3ToolVersion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List versions of the specified Tool.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent of the tool versions. Format:
+  /// `projects//locations//agents//tools/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/tools/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3ListToolVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3ListToolVersionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/versions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3ListToolVersionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified version of the Tool and stores it as the current
+  /// tool draft, returning the tool with resources updated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the tool version. Format:
+  /// `projects//locations//agents//tools//versions/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/tools/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3RestoreToolVersionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3RestoreToolVersionResponse> restore(
+    GoogleCloudDialogflowCxV3RestoreToolVersionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name') + ':restore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3RestoreToolVersionResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsAgentsTransitionRouteGroupsResource {
   final commons.ApiRequester _requester;
 
@@ -6771,6 +8008,78 @@ class ProjectsOperationsResource {
   }
 }
 
+/// Action performed by end user or Dialogflow agent in the conversation.
+class GoogleCloudDialogflowCxV3Action {
+  /// Action performed by the agent as a message.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3AgentUtterance? agentUtterance;
+
+  /// Action performed on behalf of the agent by invoking a CX flow.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3FlowInvocation? flowInvocation;
+
+  /// Action performed on behalf of the agent by invoking a child playbook.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3PlaybookInvocation? playbookInvocation;
+
+  /// Action performed on behalf of the agent by calling a plugin tool.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3ToolUse? toolUse;
+
+  /// Agent obtained a message from the customer.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3UserUtterance? userUtterance;
+
+  GoogleCloudDialogflowCxV3Action({
+    this.agentUtterance,
+    this.flowInvocation,
+    this.playbookInvocation,
+    this.toolUse,
+    this.userUtterance,
+  });
+
+  GoogleCloudDialogflowCxV3Action.fromJson(core.Map json_)
+      : this(
+          agentUtterance: json_.containsKey('agentUtterance')
+              ? GoogleCloudDialogflowCxV3AgentUtterance.fromJson(
+                  json_['agentUtterance']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          flowInvocation: json_.containsKey('flowInvocation')
+              ? GoogleCloudDialogflowCxV3FlowInvocation.fromJson(
+                  json_['flowInvocation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          playbookInvocation: json_.containsKey('playbookInvocation')
+              ? GoogleCloudDialogflowCxV3PlaybookInvocation.fromJson(
+                  json_['playbookInvocation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          toolUse: json_.containsKey('toolUse')
+              ? GoogleCloudDialogflowCxV3ToolUse.fromJson(
+                  json_['toolUse'] as core.Map<core.String, core.dynamic>)
+              : null,
+          userUtterance: json_.containsKey('userUtterance')
+              ? GoogleCloudDialogflowCxV3UserUtterance.fromJson(
+                  json_['userUtterance'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentUtterance != null) 'agentUtterance': agentUtterance!,
+        if (flowInvocation != null) 'flowInvocation': flowInvocation!,
+        if (playbookInvocation != null)
+          'playbookInvocation': playbookInvocation!,
+        if (toolUse != null) 'toolUse': toolUse!,
+        if (userUtterance != null) 'userUtterance': userUtterance!,
+      };
+}
+
 /// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
 ///
 /// Settings exposed at lower level overrides the settings exposed at higher
@@ -7110,10 +8419,17 @@ class GoogleCloudDialogflowCxV3Agent {
   ///
   /// A start flow will be automatically created when the agent is created, and
   /// can only be deleted by deleting the agent. Format:
-  /// `projects//locations//agents//flows/`.
-  ///
-  /// Immutable.
+  /// `projects//locations//agents//flows/`. Currently only the default start
+  /// flow with id "00000000-0000-0000-0000-000000000000" is allowed.
   core.String? startFlow;
+
+  /// Name of the start playbook in this agent.
+  ///
+  /// A start playbook will be automatically created when the agent is created,
+  /// and can only be deleted by deleting the agent. Format:
+  /// `projects//locations//agents//playbooks/`. Currently only the default
+  /// playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
+  core.String? startPlaybook;
 
   /// The list of all languages supported by the agent (except for the
   /// `default_language_code`).
@@ -7151,6 +8467,7 @@ class GoogleCloudDialogflowCxV3Agent {
     this.securitySettings,
     this.speechToTextSettings,
     this.startFlow,
+    this.startPlaybook,
     this.supportedLanguageCodes,
     this.textToSpeechSettings,
     this.timeZone,
@@ -7209,6 +8526,7 @@ class GoogleCloudDialogflowCxV3Agent {
                       as core.Map<core.String, core.dynamic>)
               : null,
           startFlow: json_['startFlow'] as core.String?,
+          startPlaybook: json_['startPlaybook'] as core.String?,
           supportedLanguageCodes:
               (json_['supportedLanguageCodes'] as core.List?)
                   ?.map((value) => value as core.String)
@@ -7252,6 +8570,7 @@ class GoogleCloudDialogflowCxV3Agent {
         if (speechToTextSettings != null)
           'speechToTextSettings': speechToTextSettings!,
         if (startFlow != null) 'startFlow': startFlow!,
+        if (startPlaybook != null) 'startPlaybook': startPlaybook!,
         if (supportedLanguageCodes != null)
           'supportedLanguageCodes': supportedLanguageCodes!,
         if (textToSpeechSettings != null)
@@ -7460,6 +8779,9 @@ class GoogleCloudDialogflowCxV3AgentPersonalizationSettings {
           'defaultEndUserMetadata': defaultEndUserMetadata!,
       };
 }
+
+/// AgentUtterance represents one message sent by the agent.
+typedef GoogleCloudDialogflowCxV3AgentUtterance = $Utterance;
 
 /// The response message for Agents.GetAgentValidationResult.
 class GoogleCloudDialogflowCxV3AgentValidationResult {
@@ -8709,12 +10031,19 @@ class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet {
   /// Present if specified for the document.
   core.String? documentUri;
 
+  /// Metadata associated with the document.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
   /// Text included in the prompt.
   core.String? text;
 
   GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet({
     this.documentTitle,
     this.documentUri,
+    this.metadata,
     this.text,
   });
 
@@ -8723,12 +10052,16 @@ class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet {
       : this(
           documentTitle: json_['documentTitle'] as core.String?,
           documentUri: json_['documentUri'] as core.String?,
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
           text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (documentTitle != null) 'documentTitle': documentTitle!,
         if (documentUri != null) 'documentUri': documentUri!,
+        if (metadata != null) 'metadata': metadata!,
         if (text != null) 'text': text!,
       };
 }
@@ -9320,11 +10653,12 @@ class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
 
 /// Configuration for the version.
 class GoogleCloudDialogflowCxV3EnvironmentVersionConfig {
-  /// Both flow and playbook versions are supported.
+  /// Flow, playbook and tool versions are supported.
   ///
   /// Format for flow version: projects//locations//agents//flows//versions/.
   /// Format for playbook version:
-  /// projects//locations//agents//playbooks//versions/.
+  /// projects//locations//agents//playbooks//versions/. Format for tool
+  /// version: projects//locations//agents//tools//versions/.
   ///
   /// Required.
   core.String? version;
@@ -9459,6 +10793,134 @@ class GoogleCloudDialogflowCxV3EventInput {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (event != null) 'event': event!,
+      };
+}
+
+/// Example represents a sample execution of the playbook in the conversation.
+///
+/// An example consists of a list of ordered actions performed by end user or
+/// Dialogflow agent according the playbook instructions to fulfill the task.
+class GoogleCloudDialogflowCxV3Example {
+  /// The ordered list of actions performed by the end user and the Dialogflow
+  /// agent.
+  ///
+  /// Required.
+  core.List<GoogleCloudDialogflowCxV3Action>? actions;
+
+  /// Example's output state.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OUTPUT_STATE_UNSPECIFIED" : Unspecified output.
+  /// - "OUTPUT_STATE_OK" : Succeeded.
+  /// - "OUTPUT_STATE_CANCELLED" : Cancelled.
+  /// - "OUTPUT_STATE_FAILED" : Failed.
+  /// - "OUTPUT_STATE_ESCALATED" : Escalated.
+  /// - "OUTPUT_STATE_PENDING" : Pending.
+  core.String? conversationState;
+
+  /// The timestamp of initial example creation.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The high level concise description of the example.
+  ///
+  /// The max number of characters is 200.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The display name of the example.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The language code of the example.
+  ///
+  /// If not specified, the agent's default language is used. Note: languages
+  /// must be enabled in the agent before they can be used. Note: example's
+  /// language code is not currently used in dialogflow agents.
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  /// The unique identifier of the playbook example.
+  ///
+  /// Format: `projects//locations//agents//playbooks//examples/`.
+  core.String? name;
+
+  /// The input to the playbook in the example.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3PlaybookInput? playbookInput;
+
+  /// The output of the playbook in the example.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3PlaybookOutput? playbookOutput;
+
+  /// Estimated number of tokes current example takes when sent to the LLM.
+  ///
+  /// Output only.
+  core.String? tokenCount;
+
+  /// Last time the example was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDialogflowCxV3Example({
+    this.actions,
+    this.conversationState,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.languageCode,
+    this.name,
+    this.playbookInput,
+    this.playbookOutput,
+    this.tokenCount,
+    this.updateTime,
+  });
+
+  GoogleCloudDialogflowCxV3Example.fromJson(core.Map json_)
+      : this(
+          actions: (json_['actions'] as core.List?)
+              ?.map((value) => GoogleCloudDialogflowCxV3Action.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          conversationState: json_['conversationState'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
+          name: json_['name'] as core.String?,
+          playbookInput: json_.containsKey('playbookInput')
+              ? GoogleCloudDialogflowCxV3PlaybookInput.fromJson(
+                  json_['playbookInput'] as core.Map<core.String, core.dynamic>)
+              : null,
+          playbookOutput: json_.containsKey('playbookOutput')
+              ? GoogleCloudDialogflowCxV3PlaybookOutput.fromJson(
+                  json_['playbookOutput']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          tokenCount: json_['tokenCount'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+        if (conversationState != null) 'conversationState': conversationState!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (name != null) 'name': name!,
+        if (playbookInput != null) 'playbookInput': playbookInput!,
+        if (playbookOutput != null) 'playbookOutput': playbookOutput!,
+        if (tokenCount != null) 'tokenCount': tokenCount!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -10110,6 +11572,49 @@ class GoogleCloudDialogflowCxV3ExportIntentsRequest {
       };
 }
 
+/// The request message for Playbooks.ExportPlaybook.
+class GoogleCloudDialogflowCxV3ExportPlaybookRequest {
+  /// The data format of the exported agent.
+  ///
+  /// If not specified, `BLOB` is assumed.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format.
+  /// - "BLOB" : Flow content will be exported as raw bytes.
+  /// - "JSON" : Flow content will be exported in JSON format.
+  core.String? dataFormat;
+
+  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
+  /// export the playbook to.
+  ///
+  /// The format of this URI must be `gs:///`. If left unspecified, the
+  /// serialized playbook is returned inline. Dialogflow performs a write
+  /// operation for the Cloud Storage object on the caller's behalf, so your
+  /// request authentication must have write permissions for the object. For
+  /// more information, see
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
+  ///
+  /// Optional.
+  core.String? playbookUri;
+
+  GoogleCloudDialogflowCxV3ExportPlaybookRequest({
+    this.dataFormat,
+    this.playbookUri,
+  });
+
+  GoogleCloudDialogflowCxV3ExportPlaybookRequest.fromJson(core.Map json_)
+      : this(
+          dataFormat: json_['dataFormat'] as core.String?,
+          playbookUri: json_['playbookUri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataFormat != null) 'dataFormat': dataFormat!,
+        if (playbookUri != null) 'playbookUri': playbookUri!,
+      };
+}
+
 /// The request message for TestCases.ExportTestCases.
 class GoogleCloudDialogflowCxV3ExportTestCasesRequest {
   /// The data format of the exported test cases.
@@ -10395,6 +11900,52 @@ class GoogleCloudDialogflowCxV3FlowImportStrategy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (globalImportStrategy != null)
           'globalImportStrategy': globalImportStrategy!,
+      };
+}
+
+/// Stores metadata of the invocation of a CX flow.
+class GoogleCloudDialogflowCxV3FlowInvocation {
+  /// The display name of the flow.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The unique identifier of the flow.
+  ///
+  /// Format: `projects//locations//agents//flows/`.
+  ///
+  /// Required.
+  core.String? flow;
+
+  /// Flow invocation's output state.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OUTPUT_STATE_UNSPECIFIED" : Unspecified output.
+  /// - "OUTPUT_STATE_OK" : Succeeded.
+  /// - "OUTPUT_STATE_CANCELLED" : Cancelled.
+  /// - "OUTPUT_STATE_FAILED" : Failed.
+  /// - "OUTPUT_STATE_ESCALATED" : Escalated.
+  /// - "OUTPUT_STATE_PENDING" : Pending.
+  core.String? flowState;
+
+  GoogleCloudDialogflowCxV3FlowInvocation({
+    this.displayName,
+    this.flow,
+    this.flowState,
+  });
+
+  GoogleCloudDialogflowCxV3FlowInvocation.fromJson(core.Map json_)
+      : this(
+          displayName: json_['displayName'] as core.String?,
+          flow: json_['flow'] as core.String?,
+          flowState: json_['flowState'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (flow != null) 'flow': flow!,
+        if (flowState != null) 'flowState': flowState!,
       };
 }
 
@@ -10797,6 +12348,9 @@ class GoogleCloudDialogflowCxV3Fulfillment {
   /// no-match event handlers.
   core.bool? enableGenerativeFallback;
 
+  /// A list of Generators to be called during this fulfillment.
+  core.List<GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings>? generators;
+
   /// The list of rich message responses to present to the user.
   core.List<GoogleCloudDialogflowCxV3ResponseMessage>? messages;
 
@@ -10833,6 +12387,7 @@ class GoogleCloudDialogflowCxV3Fulfillment {
     this.advancedSettings,
     this.conditionalCases,
     this.enableGenerativeFallback,
+    this.generators,
     this.messages,
     this.returnPartialResponses,
     this.setParameterActions,
@@ -10854,6 +12409,11 @@ class GoogleCloudDialogflowCxV3Fulfillment {
               .toList(),
           enableGenerativeFallback:
               json_['enableGenerativeFallback'] as core.bool?,
+          generators: (json_['generators'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) =>
                   GoogleCloudDialogflowCxV3ResponseMessage.fromJson(
@@ -10874,6 +12434,7 @@ class GoogleCloudDialogflowCxV3Fulfillment {
         if (conditionalCases != null) 'conditionalCases': conditionalCases!,
         if (enableGenerativeFallback != null)
           'enableGenerativeFallback': enableGenerativeFallback!,
+        if (generators != null) 'generators': generators!,
         if (messages != null) 'messages': messages!,
         if (returnPartialResponses != null)
           'returnPartialResponses': returnPartialResponses!,
@@ -10982,6 +12543,58 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent {
       };
 }
 
+/// Generator settings used by the LLM to generate a text response.
+class GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings {
+  /// The generator to call.
+  ///
+  /// Format: `projects//locations//agents//generators/`.
+  ///
+  /// Required.
+  core.String? generator;
+
+  /// Map from placeholder parameter in the Generator to corresponding session
+  /// parameters.
+  ///
+  /// By default, Dialogflow uses the session parameter with the same name to
+  /// fill in the generator template. e.g. If there is a placeholder parameter
+  /// `city` in the Generator, Dialogflow default to fill in the `$city` with
+  /// `$session.params.city`. However, you may choose to fill `$city` with
+  /// `$session.params.desination-city`. - Map key: parameter ID - Map value:
+  /// session parameter name
+  core.Map<core.String, core.String>? inputParameters;
+
+  /// Output parameter which should contain the generator response.
+  ///
+  /// Required.
+  core.String? outputParameter;
+
+  GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings({
+    this.generator,
+    this.inputParameters,
+    this.outputParameter,
+  });
+
+  GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings.fromJson(core.Map json_)
+      : this(
+          generator: json_['generator'] as core.String?,
+          inputParameters:
+              (json_['inputParameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          outputParameter: json_['outputParameter'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (generator != null) 'generator': generator!,
+        if (inputParameters != null) 'inputParameters': inputParameters!,
+        if (outputParameter != null) 'outputParameter': outputParameter!,
+      };
+}
+
 /// Setting a parameter value.
 class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
   /// Display name of the parameter.
@@ -11054,6 +12667,9 @@ class GoogleCloudDialogflowCxV3GenerativeSettings {
   /// Language for this settings.
   core.String? languageCode;
 
+  /// LLM model settings.
+  GoogleCloudDialogflowCxV3LlmModelSettings? llmModelSettings;
+
   /// Format: `projects//locations//agents//generativeSettings`.
   core.String? name;
 
@@ -11062,6 +12678,7 @@ class GoogleCloudDialogflowCxV3GenerativeSettings {
     this.generativeSafetySettings,
     this.knowledgeConnectorSettings,
     this.languageCode,
+    this.llmModelSettings,
     this.name,
   });
 
@@ -11085,6 +12702,11 @@ class GoogleCloudDialogflowCxV3GenerativeSettings {
                       as core.Map<core.String, core.dynamic>)
               : null,
           languageCode: json_['languageCode'] as core.String?,
+          llmModelSettings: json_.containsKey('llmModelSettings')
+              ? GoogleCloudDialogflowCxV3LlmModelSettings.fromJson(
+                  json_['llmModelSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_['name'] as core.String?,
         );
 
@@ -11095,6 +12717,7 @@ class GoogleCloudDialogflowCxV3GenerativeSettings {
         if (knowledgeConnectorSettings != null)
           'knowledgeConnectorSettings': knowledgeConnectorSettings!,
         if (languageCode != null) 'languageCode': languageCode!,
+        if (llmModelSettings != null) 'llmModelSettings': llmModelSettings!,
         if (name != null) 'name': name!,
       };
 }
@@ -11248,6 +12871,9 @@ class GoogleCloudDialogflowCxV3Generator {
   /// Required.
   core.String? displayName;
 
+  /// The LLM model settings.
+  GoogleCloudDialogflowCxV3LlmModelSettings? llmModelSettings;
+
   /// Parameters passed to the LLM to configure its behavior.
   GoogleCloudDialogflowCxV3GeneratorModelParameter? modelParameter;
 
@@ -11270,6 +12896,7 @@ class GoogleCloudDialogflowCxV3Generator {
 
   GoogleCloudDialogflowCxV3Generator({
     this.displayName,
+    this.llmModelSettings,
     this.modelParameter,
     this.name,
     this.placeholders,
@@ -11279,6 +12906,11 @@ class GoogleCloudDialogflowCxV3Generator {
   GoogleCloudDialogflowCxV3Generator.fromJson(core.Map json_)
       : this(
           displayName: json_['displayName'] as core.String?,
+          llmModelSettings: json_.containsKey('llmModelSettings')
+              ? GoogleCloudDialogflowCxV3LlmModelSettings.fromJson(
+                  json_['llmModelSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           modelParameter: json_.containsKey('modelParameter')
               ? GoogleCloudDialogflowCxV3GeneratorModelParameter.fromJson(
                   json_['modelParameter']
@@ -11298,6 +12930,7 @@ class GoogleCloudDialogflowCxV3Generator {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
+        if (llmModelSettings != null) 'llmModelSettings': llmModelSettings!,
         if (modelParameter != null) 'modelParameter': modelParameter!,
         if (name != null) 'name': name!,
         if (placeholders != null) 'placeholders': placeholders!,
@@ -11379,6 +13012,123 @@ class GoogleCloudDialogflowCxV3GeneratorPlaceholder {
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Handler can be used to define custom logic to be executed based on the
+/// user-specified triggers.
+class GoogleCloudDialogflowCxV3Handler {
+  /// A handler triggered by event.
+  GoogleCloudDialogflowCxV3HandlerEventHandler? eventHandler;
+
+  /// A handler triggered during specific lifecycle of the playbook execution.
+  GoogleCloudDialogflowCxV3HandlerLifecycleHandler? lifecycleHandler;
+
+  GoogleCloudDialogflowCxV3Handler({
+    this.eventHandler,
+    this.lifecycleHandler,
+  });
+
+  GoogleCloudDialogflowCxV3Handler.fromJson(core.Map json_)
+      : this(
+          eventHandler: json_.containsKey('eventHandler')
+              ? GoogleCloudDialogflowCxV3HandlerEventHandler.fromJson(
+                  json_['eventHandler'] as core.Map<core.String, core.dynamic>)
+              : null,
+          lifecycleHandler: json_.containsKey('lifecycleHandler')
+              ? GoogleCloudDialogflowCxV3HandlerLifecycleHandler.fromJson(
+                  json_['lifecycleHandler']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventHandler != null) 'eventHandler': eventHandler!,
+        if (lifecycleHandler != null) 'lifecycleHandler': lifecycleHandler!,
+      };
+}
+
+/// A handler that is triggered by the specified event.
+class GoogleCloudDialogflowCxV3HandlerEventHandler {
+  /// The condition that must be satisfied to trigger this handler.
+  ///
+  /// Optional.
+  core.String? condition;
+
+  /// The name of the event that triggers this handler.
+  ///
+  /// Required.
+  core.String? event;
+
+  /// The fulfillment to call when the event occurs.
+  ///
+  /// Required.
+  GoogleCloudDialogflowCxV3Fulfillment? fulfillment;
+
+  GoogleCloudDialogflowCxV3HandlerEventHandler({
+    this.condition,
+    this.event,
+    this.fulfillment,
+  });
+
+  GoogleCloudDialogflowCxV3HandlerEventHandler.fromJson(core.Map json_)
+      : this(
+          condition: json_['condition'] as core.String?,
+          event: json_['event'] as core.String?,
+          fulfillment: json_.containsKey('fulfillment')
+              ? GoogleCloudDialogflowCxV3Fulfillment.fromJson(
+                  json_['fulfillment'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (event != null) 'event': event!,
+        if (fulfillment != null) 'fulfillment': fulfillment!,
+      };
+}
+
+/// A handler that is triggered on the specific lifecycle_stage of the playbook
+/// execution.
+class GoogleCloudDialogflowCxV3HandlerLifecycleHandler {
+  /// The condition that must be satisfied to trigger this handler.
+  ///
+  /// Optional.
+  core.String? condition;
+
+  /// The fulfillment to call when this handler is triggered.
+  ///
+  /// Required.
+  GoogleCloudDialogflowCxV3Fulfillment? fulfillment;
+
+  /// The name of the lifecycle stage that triggers this handler.
+  ///
+  /// Supported values: * `playbook-start` * `pre-action-selection` *
+  /// `pre-action-execution`
+  ///
+  /// Required.
+  core.String? lifecycleStage;
+
+  GoogleCloudDialogflowCxV3HandlerLifecycleHandler({
+    this.condition,
+    this.fulfillment,
+    this.lifecycleStage,
+  });
+
+  GoogleCloudDialogflowCxV3HandlerLifecycleHandler.fromJson(core.Map json_)
+      : this(
+          condition: json_['condition'] as core.String?,
+          fulfillment: json_.containsKey('fulfillment')
+              ? GoogleCloudDialogflowCxV3Fulfillment.fromJson(
+                  json_['fulfillment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          lifecycleStage: json_['lifecycleStage'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (fulfillment != null) 'fulfillment': fulfillment!,
+        if (lifecycleStage != null) 'lifecycleStage': lifecycleStage!,
       };
 }
 
@@ -11581,6 +13331,50 @@ class GoogleCloudDialogflowCxV3ImportIntentsRequest {
       };
 }
 
+/// The request message for Playbooks.ImportPlaybook.
+class GoogleCloudDialogflowCxV3ImportPlaybookRequest {
+  /// Specifies the import strategy used when resolving resource conflicts.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3PlaybookImportStrategy? importStrategy;
+
+  /// Uncompressed raw byte content for playbook.
+  core.String? playbookContent;
+  core.List<core.int> get playbookContentAsBytes =>
+      convert.base64.decode(playbookContent!);
+
+  set playbookContentAsBytes(core.List<core.int> bytes_) {
+    playbookContent =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
+  core.String? playbookUri;
+
+  GoogleCloudDialogflowCxV3ImportPlaybookRequest({
+    this.importStrategy,
+    this.playbookContent,
+    this.playbookUri,
+  });
+
+  GoogleCloudDialogflowCxV3ImportPlaybookRequest.fromJson(core.Map json_)
+      : this(
+          importStrategy: json_.containsKey('importStrategy')
+              ? GoogleCloudDialogflowCxV3PlaybookImportStrategy.fromJson(
+                  json_['importStrategy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          playbookContent: json_['playbookContent'] as core.String?,
+          playbookUri: json_['playbookUri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (importStrategy != null) 'importStrategy': importStrategy!,
+        if (playbookContent != null) 'playbookContent': playbookContent!,
+        if (playbookUri != null) 'playbookUri': playbookUri!,
+      };
+}
+
 /// The request message for TestCases.ImportTestCases.
 class GoogleCloudDialogflowCxV3ImportTestCasesRequest {
   /// Uncompressed raw byte content for test cases.
@@ -11653,7 +13447,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
   /// Possible string values are:
   /// - "AUDIO_ENCODING_UNSPECIFIED" : Not specified.
   /// - "AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed little-endian
-  /// samples (Linear PCM).
+  /// samples (Linear PCM). LINT: LEGACY_NAMES
   /// - "AUDIO_ENCODING_FLAC" :
   /// \[`FLAC`\](https://xiph.org/flac/documentation.html) (Free Lossless Audio
   /// Codec) is the recommended encoding because it is lossless (therefore
@@ -12392,6 +14186,38 @@ class GoogleCloudDialogflowCxV3ListEnvironmentsResponse {
       };
 }
 
+/// The response message for Examples.ListExamples.
+class GoogleCloudDialogflowCxV3ListExamplesResponse {
+  /// The list of examples.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
+  core.List<GoogleCloudDialogflowCxV3Example>? examples;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudDialogflowCxV3ListExamplesResponse({
+    this.examples,
+    this.nextPageToken,
+  });
+
+  GoogleCloudDialogflowCxV3ListExamplesResponse.fromJson(core.Map json_)
+      : this(
+          examples: (json_['examples'] as core.List?)
+              ?.map((value) => GoogleCloudDialogflowCxV3Example.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (examples != null) 'examples': examples!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response message for Experiments.ListExperiments.
 class GoogleCloudDialogflowCxV3ListExperimentsResponse {
   /// The list of experiments.
@@ -12553,6 +14379,71 @@ class GoogleCloudDialogflowCxV3ListPagesResponse {
       };
 }
 
+/// The response message for Playbooks.ListPlaybookVersions.
+class GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// The list of playbook version.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
+  core.List<GoogleCloudDialogflowCxV3PlaybookVersion>? playbookVersions;
+
+  GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse({
+    this.nextPageToken,
+    this.playbookVersions,
+  });
+
+  GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          playbookVersions: (json_['playbookVersions'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDialogflowCxV3PlaybookVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (playbookVersions != null) 'playbookVersions': playbookVersions!,
+      };
+}
+
+/// The response message for Playbooks.ListPlaybooks.
+class GoogleCloudDialogflowCxV3ListPlaybooksResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// The list of playbooks.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
+  core.List<GoogleCloudDialogflowCxV3Playbook>? playbooks;
+
+  GoogleCloudDialogflowCxV3ListPlaybooksResponse({
+    this.nextPageToken,
+    this.playbooks,
+  });
+
+  GoogleCloudDialogflowCxV3ListPlaybooksResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          playbooks: (json_['playbooks'] as core.List?)
+              ?.map((value) => GoogleCloudDialogflowCxV3Playbook.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (playbooks != null) 'playbooks': playbooks!,
+      };
+}
+
 /// The response message for SecuritySettings.ListSecuritySettings.
 class GoogleCloudDialogflowCxV3ListSecuritySettingsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -12679,6 +14570,70 @@ class GoogleCloudDialogflowCxV3ListTestCasesResponse {
       };
 }
 
+/// The response message for Tools.ListToolVersions.
+class GoogleCloudDialogflowCxV3ListToolVersionsResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// The list of tool versions.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
+  core.List<GoogleCloudDialogflowCxV3ToolVersion>? toolVersions;
+
+  GoogleCloudDialogflowCxV3ListToolVersionsResponse({
+    this.nextPageToken,
+    this.toolVersions,
+  });
+
+  GoogleCloudDialogflowCxV3ListToolVersionsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          toolVersions: (json_['toolVersions'] as core.List?)
+              ?.map((value) => GoogleCloudDialogflowCxV3ToolVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (toolVersions != null) 'toolVersions': toolVersions!,
+      };
+}
+
+/// The response message for Tools.ListTools.
+class GoogleCloudDialogflowCxV3ListToolsResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// The list of Tools.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
+  core.List<GoogleCloudDialogflowCxV3Tool>? tools;
+
+  GoogleCloudDialogflowCxV3ListToolsResponse({
+    this.nextPageToken,
+    this.tools,
+  });
+
+  GoogleCloudDialogflowCxV3ListToolsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          tools: (json_['tools'] as core.List?)
+              ?.map((value) => GoogleCloudDialogflowCxV3Tool.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (tools != null) 'tools': tools!,
+      };
+}
+
 /// The response message for TransitionRouteGroups.ListTransitionRouteGroups.
 class GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -12778,6 +14733,31 @@ class GoogleCloudDialogflowCxV3ListWebhooksResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (webhooks != null) 'webhooks': webhooks!,
+      };
+}
+
+/// Settings for LLM models.
+class GoogleCloudDialogflowCxV3LlmModelSettings {
+  /// The selected LLM model.
+  core.String? model;
+
+  /// The custom prompt to use.
+  core.String? promptText;
+
+  GoogleCloudDialogflowCxV3LlmModelSettings({
+    this.model,
+    this.promptText,
+  });
+
+  GoogleCloudDialogflowCxV3LlmModelSettings.fromJson(core.Map json_)
+      : this(
+          model: json_['model'] as core.String?,
+          promptText: json_['promptText'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (model != null) 'model': model!,
+        if (promptText != null) 'promptText': promptText!,
       };
 }
 
@@ -13099,9 +15079,10 @@ class GoogleCloudDialogflowCxV3OutputAudioConfig {
   /// - "OUTPUT_AUDIO_ENCODING_UNSPECIFIED" : Not specified.
   /// - "OUTPUT_AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed
   /// little-endian samples (Linear PCM). Audio content returned as LINEAR16
-  /// also contains a WAV header.
+  /// also contains a WAV header. LINT: LEGACY_NAMES
   /// - "OUTPUT_AUDIO_ENCODING_MP3" : MP3 audio at 32kbps.
-  /// - "OUTPUT_AUDIO_ENCODING_MP3_64_KBPS" : MP3 audio at 64kbps.
+  /// - "OUTPUT_AUDIO_ENCODING_MP3_64_KBPS" : MP3 audio at 64kbps. LINT:
+  /// LEGACY_NAMES
   /// - "OUTPUT_AUDIO_ENCODING_OGG_OPUS" : Opus encoded audio wrapped in an ogg
   /// container. The result will be a file which can be played natively on
   /// Android, and in browsers (at least Chrome and Firefox). The quality of the
@@ -13326,6 +15307,471 @@ class GoogleCloudDialogflowCxV3Phrase {
       };
 }
 
+/// Playbook is the basic building block to instruct the LLM how to execute a
+/// certain task.
+///
+/// A playbook consists of a goal to accomplish, an optional list of step by
+/// step instructions (the step instruction may refers to name of the custom or
+/// default plugin tools to use) to perform the task, a list of contextual input
+/// data to be passed in at the beginning of the invoked, and a list of output
+/// parameters to store the playbook result.
+class GoogleCloudDialogflowCxV3Playbook {
+  /// The timestamp of initial playbook creation.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The human-readable name of the playbook, unique within an agent.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// High level description of the goal the playbook intend to accomplish.
+  ///
+  /// A goal should be concise since it's visible to other playbooks that may
+  /// reference this playbook.
+  ///
+  /// Required.
+  core.String? goal;
+
+  /// A list of registered handlers to execuate based on the specified triggers.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3Handler>? handlers;
+
+  /// Instruction to accomplish target goal.
+  GoogleCloudDialogflowCxV3PlaybookInstruction? instruction;
+
+  /// Llm model settings for the playbook.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3LlmModelSettings? llmModelSettings;
+
+  /// The unique identifier of the playbook.
+  ///
+  /// Format: `projects//locations//agents//playbooks/`.
+  core.String? name;
+
+  /// The resource name of flows referenced by the current playbook in the
+  /// instructions.
+  ///
+  /// Output only.
+  core.List<core.String>? referencedFlows;
+
+  /// The resource name of other playbooks referenced by the current playbook in
+  /// the instructions.
+  ///
+  /// Output only.
+  core.List<core.String>? referencedPlaybooks;
+
+  /// The resource name of tools referenced by the current playbook in the
+  /// instructions.
+  ///
+  /// If not provided explicitly, they are will be implied using the tool being
+  /// referenced in goal and steps.
+  ///
+  /// Optional.
+  core.List<core.String>? referencedTools;
+
+  /// Estimated number of tokes current playbook takes when sent to the LLM.
+  ///
+  /// Output only.
+  core.String? tokenCount;
+
+  /// Last time the playbook version was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDialogflowCxV3Playbook({
+    this.createTime,
+    this.displayName,
+    this.goal,
+    this.handlers,
+    this.instruction,
+    this.llmModelSettings,
+    this.name,
+    this.referencedFlows,
+    this.referencedPlaybooks,
+    this.referencedTools,
+    this.tokenCount,
+    this.updateTime,
+  });
+
+  GoogleCloudDialogflowCxV3Playbook.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          goal: json_['goal'] as core.String?,
+          handlers: (json_['handlers'] as core.List?)
+              ?.map((value) => GoogleCloudDialogflowCxV3Handler.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          instruction: json_.containsKey('instruction')
+              ? GoogleCloudDialogflowCxV3PlaybookInstruction.fromJson(
+                  json_['instruction'] as core.Map<core.String, core.dynamic>)
+              : null,
+          llmModelSettings: json_.containsKey('llmModelSettings')
+              ? GoogleCloudDialogflowCxV3LlmModelSettings.fromJson(
+                  json_['llmModelSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          referencedFlows: (json_['referencedFlows'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          referencedPlaybooks: (json_['referencedPlaybooks'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          referencedTools: (json_['referencedTools'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          tokenCount: json_['tokenCount'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (goal != null) 'goal': goal!,
+        if (handlers != null) 'handlers': handlers!,
+        if (instruction != null) 'instruction': instruction!,
+        if (llmModelSettings != null) 'llmModelSettings': llmModelSettings!,
+        if (name != null) 'name': name!,
+        if (referencedFlows != null) 'referencedFlows': referencedFlows!,
+        if (referencedPlaybooks != null)
+          'referencedPlaybooks': referencedPlaybooks!,
+        if (referencedTools != null) 'referencedTools': referencedTools!,
+        if (tokenCount != null) 'tokenCount': tokenCount!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The playbook import strategy used for resource conflict resolution
+/// associated with an ImportPlaybookRequest.
+class GoogleCloudDialogflowCxV3PlaybookImportStrategy {
+  /// Specifies the import strategy used when resolving conflicts with the main
+  /// playbook.
+  ///
+  /// If not specified, 'CREATE_NEW' is assumed.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "IMPORT_STRATEGY_UNSPECIFIED" : Unspecified. Treated as 'CREATE_NEW'.
+  /// - "IMPORT_STRATEGY_CREATE_NEW" : Create a new resource with a numeric
+  /// suffix appended to the end of the existing display name.
+  /// - "IMPORT_STRATEGY_REPLACE" : Replace existing resource with incoming
+  /// resource in the content to be imported.
+  /// - "IMPORT_STRATEGY_KEEP" : Keep existing resource and discard incoming
+  /// resource in the content to be imported.
+  /// - "IMPORT_STRATEGY_MERGE" : Combine existing and incoming resources when a
+  /// conflict is encountered.
+  /// - "IMPORT_STRATEGY_THROW_ERROR" : Throw error if a conflict is
+  /// encountered.
+  core.String? mainPlaybookImportStrategy;
+
+  /// Specifies the import strategy used when resolving referenced playbook/flow
+  /// conflicts.
+  ///
+  /// If not specified, 'CREATE_NEW' is assumed.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "IMPORT_STRATEGY_UNSPECIFIED" : Unspecified. Treated as 'CREATE_NEW'.
+  /// - "IMPORT_STRATEGY_CREATE_NEW" : Create a new resource with a numeric
+  /// suffix appended to the end of the existing display name.
+  /// - "IMPORT_STRATEGY_REPLACE" : Replace existing resource with incoming
+  /// resource in the content to be imported.
+  /// - "IMPORT_STRATEGY_KEEP" : Keep existing resource and discard incoming
+  /// resource in the content to be imported.
+  /// - "IMPORT_STRATEGY_MERGE" : Combine existing and incoming resources when a
+  /// conflict is encountered.
+  /// - "IMPORT_STRATEGY_THROW_ERROR" : Throw error if a conflict is
+  /// encountered.
+  core.String? nestedResourceImportStrategy;
+
+  /// Specifies the import strategy used when resolving tool conflicts.
+  ///
+  /// If not specified, 'CREATE_NEW' is assumed. This will be applied after the
+  /// main playbook and nested resource import strategies, meaning if the
+  /// playbook that references the tool is skipped, the tool will also be
+  /// skipped.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "IMPORT_STRATEGY_UNSPECIFIED" : Unspecified. Treated as 'CREATE_NEW'.
+  /// - "IMPORT_STRATEGY_CREATE_NEW" : Create a new resource with a numeric
+  /// suffix appended to the end of the existing display name.
+  /// - "IMPORT_STRATEGY_REPLACE" : Replace existing resource with incoming
+  /// resource in the content to be imported.
+  /// - "IMPORT_STRATEGY_KEEP" : Keep existing resource and discard incoming
+  /// resource in the content to be imported.
+  /// - "IMPORT_STRATEGY_MERGE" : Combine existing and incoming resources when a
+  /// conflict is encountered.
+  /// - "IMPORT_STRATEGY_THROW_ERROR" : Throw error if a conflict is
+  /// encountered.
+  core.String? toolImportStrategy;
+
+  GoogleCloudDialogflowCxV3PlaybookImportStrategy({
+    this.mainPlaybookImportStrategy,
+    this.nestedResourceImportStrategy,
+    this.toolImportStrategy,
+  });
+
+  GoogleCloudDialogflowCxV3PlaybookImportStrategy.fromJson(core.Map json_)
+      : this(
+          mainPlaybookImportStrategy:
+              json_['mainPlaybookImportStrategy'] as core.String?,
+          nestedResourceImportStrategy:
+              json_['nestedResourceImportStrategy'] as core.String?,
+          toolImportStrategy: json_['toolImportStrategy'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mainPlaybookImportStrategy != null)
+          'mainPlaybookImportStrategy': mainPlaybookImportStrategy!,
+        if (nestedResourceImportStrategy != null)
+          'nestedResourceImportStrategy': nestedResourceImportStrategy!,
+        if (toolImportStrategy != null)
+          'toolImportStrategy': toolImportStrategy!,
+      };
+}
+
+/// Input of the playbook.
+class GoogleCloudDialogflowCxV3PlaybookInput {
+  /// Summary string of the preceding conversation for the child playbook
+  /// invocation.
+  ///
+  /// Optional.
+  core.String? precedingConversationSummary;
+
+  GoogleCloudDialogflowCxV3PlaybookInput({
+    this.precedingConversationSummary,
+  });
+
+  GoogleCloudDialogflowCxV3PlaybookInput.fromJson(core.Map json_)
+      : this(
+          precedingConversationSummary:
+              json_['precedingConversationSummary'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (precedingConversationSummary != null)
+          'precedingConversationSummary': precedingConversationSummary!,
+      };
+}
+
+/// Message of the Instruction of the playbook.
+class GoogleCloudDialogflowCxV3PlaybookInstruction {
+  /// General guidelines for the playbook.
+  ///
+  /// These are unstructured instructions that are not directly part of the
+  /// goal, e.g. "Always be polite". It's valid for this text to be long and
+  /// used instead of steps altogether.
+  core.String? guidelines;
+
+  /// Ordered list of step by step execution instructions to accomplish target
+  /// goal.
+  core.List<GoogleCloudDialogflowCxV3PlaybookStep>? steps;
+
+  GoogleCloudDialogflowCxV3PlaybookInstruction({
+    this.guidelines,
+    this.steps,
+  });
+
+  GoogleCloudDialogflowCxV3PlaybookInstruction.fromJson(core.Map json_)
+      : this(
+          guidelines: json_['guidelines'] as core.String?,
+          steps: (json_['steps'] as core.List?)
+              ?.map((value) => GoogleCloudDialogflowCxV3PlaybookStep.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (guidelines != null) 'guidelines': guidelines!,
+        if (steps != null) 'steps': steps!,
+      };
+}
+
+/// Stores metadata of the invocation of a child playbook.
+class GoogleCloudDialogflowCxV3PlaybookInvocation {
+  /// The display name of the playbook.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The unique identifier of the playbook.
+  ///
+  /// Format: `projects//locations//agents//playbooks/`.
+  ///
+  /// Required.
+  core.String? playbook;
+
+  /// Input of the child playbook invocation.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3PlaybookInput? playbookInput;
+
+  /// Output of the child playbook invocation.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3PlaybookOutput? playbookOutput;
+
+  /// Playbook invocation's output state.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OUTPUT_STATE_UNSPECIFIED" : Unspecified output.
+  /// - "OUTPUT_STATE_OK" : Succeeded.
+  /// - "OUTPUT_STATE_CANCELLED" : Cancelled.
+  /// - "OUTPUT_STATE_FAILED" : Failed.
+  /// - "OUTPUT_STATE_ESCALATED" : Escalated.
+  /// - "OUTPUT_STATE_PENDING" : Pending.
+  core.String? playbookState;
+
+  GoogleCloudDialogflowCxV3PlaybookInvocation({
+    this.displayName,
+    this.playbook,
+    this.playbookInput,
+    this.playbookOutput,
+    this.playbookState,
+  });
+
+  GoogleCloudDialogflowCxV3PlaybookInvocation.fromJson(core.Map json_)
+      : this(
+          displayName: json_['displayName'] as core.String?,
+          playbook: json_['playbook'] as core.String?,
+          playbookInput: json_.containsKey('playbookInput')
+              ? GoogleCloudDialogflowCxV3PlaybookInput.fromJson(
+                  json_['playbookInput'] as core.Map<core.String, core.dynamic>)
+              : null,
+          playbookOutput: json_.containsKey('playbookOutput')
+              ? GoogleCloudDialogflowCxV3PlaybookOutput.fromJson(
+                  json_['playbookOutput']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          playbookState: json_['playbookState'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (playbook != null) 'playbook': playbook!,
+        if (playbookInput != null) 'playbookInput': playbookInput!,
+        if (playbookOutput != null) 'playbookOutput': playbookOutput!,
+        if (playbookState != null) 'playbookState': playbookState!,
+      };
+}
+
+/// Output of the playbook.
+class GoogleCloudDialogflowCxV3PlaybookOutput {
+  /// Summary string of the execution result of the child playbook.
+  ///
+  /// Optional.
+  core.String? executionSummary;
+
+  GoogleCloudDialogflowCxV3PlaybookOutput({
+    this.executionSummary,
+  });
+
+  GoogleCloudDialogflowCxV3PlaybookOutput.fromJson(core.Map json_)
+      : this(
+          executionSummary: json_['executionSummary'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionSummary != null) 'executionSummary': executionSummary!,
+      };
+}
+
+/// Message of single step execution.
+class GoogleCloudDialogflowCxV3PlaybookStep {
+  /// Sub-processing needed to execute the current step.
+  core.List<GoogleCloudDialogflowCxV3PlaybookStep>? steps;
+
+  /// Step instruction in text format.
+  core.String? text;
+
+  GoogleCloudDialogflowCxV3PlaybookStep({
+    this.steps,
+    this.text,
+  });
+
+  GoogleCloudDialogflowCxV3PlaybookStep.fromJson(core.Map json_)
+      : this(
+          steps: (json_['steps'] as core.List?)
+              ?.map((value) => GoogleCloudDialogflowCxV3PlaybookStep.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          text: json_['text'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (steps != null) 'steps': steps!,
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Playbook version is a snapshot of the playbook at certain timestamp.
+class GoogleCloudDialogflowCxV3PlaybookVersion {
+  /// The description of the playbook version.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Snapshot of the examples belonging to the playbook when the playbook
+  /// version is created.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowCxV3Example>? examples;
+
+  /// The unique identifier of the playbook version.
+  ///
+  /// Format: `projects//locations//agents//playbooks//versions/`.
+  core.String? name;
+
+  /// Snapshot of the playbook when the playbook version is created.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowCxV3Playbook? playbook;
+
+  /// Last time the playbook version was created or modified.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDialogflowCxV3PlaybookVersion({
+    this.description,
+    this.examples,
+    this.name,
+    this.playbook,
+    this.updateTime,
+  });
+
+  GoogleCloudDialogflowCxV3PlaybookVersion.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          examples: (json_['examples'] as core.List?)
+              ?.map((value) => GoogleCloudDialogflowCxV3Example.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+          playbook: json_.containsKey('playbook')
+              ? GoogleCloudDialogflowCxV3Playbook.fromJson(
+                  json_['playbook'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (examples != null) 'examples': examples!,
+        if (name != null) 'name': name!,
+        if (playbook != null) 'playbook': playbook!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Represents the query input.
 ///
 /// It can contain one of: 1. A conversational query in the form of text. 2. An
@@ -13359,6 +15805,9 @@ class GoogleCloudDialogflowCxV3QueryInput {
   /// The natural language text to be processed.
   GoogleCloudDialogflowCxV3TextInput? text;
 
+  /// The results of a tool executed by the client.
+  GoogleCloudDialogflowCxV3ToolCallResult? toolCallResult;
+
   GoogleCloudDialogflowCxV3QueryInput({
     this.audio,
     this.dtmf,
@@ -13366,6 +15815,7 @@ class GoogleCloudDialogflowCxV3QueryInput {
     this.intent,
     this.languageCode,
     this.text,
+    this.toolCallResult,
   });
 
   GoogleCloudDialogflowCxV3QueryInput.fromJson(core.Map json_)
@@ -13391,6 +15841,11 @@ class GoogleCloudDialogflowCxV3QueryInput {
               ? GoogleCloudDialogflowCxV3TextInput.fromJson(
                   json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
+          toolCallResult: json_.containsKey('toolCallResult')
+              ? GoogleCloudDialogflowCxV3ToolCallResult.fromJson(
+                  json_['toolCallResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13400,6 +15855,7 @@ class GoogleCloudDialogflowCxV3QueryInput {
         if (intent != null) 'intent': intent!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (text != null) 'text': text!,
+        if (toolCallResult != null) 'toolCallResult': toolCallResult!,
       };
 }
 
@@ -13427,6 +15883,16 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// parameters. In most cases, current_page and parameters should be
   /// configured together to direct a session to a specific state.
   core.String? currentPage;
+
+  /// The unique identifier of the playbook to start or continue the session
+  /// with.
+  ///
+  /// If `current_playbook` is specified, the previous state of the session will
+  /// be ignored by Dialogflow. Format:
+  /// `projects//locations//agents//playbooks/`.
+  ///
+  /// Optional.
+  core.String? currentPlaybook;
 
   /// Whether to disable webhook calls for this request.
   core.bool? disableWebhook;
@@ -13456,6 +15922,19 @@ class GoogleCloudDialogflowCxV3QueryParameters {
 
   /// The geo location of this conversational query.
   GoogleTypeLatLng? geoLocation;
+
+  /// Use the specified LLM model settings for processing the request.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3LlmModelSettings? llmModelSettings;
+
+  /// Scope for the parameters.
+  ///
+  /// If not specified, parameters will be treated as session parameters.
+  /// Parameters with custom scope will not be put into session parameters. You
+  /// can reference the parameters with custom scope in the agent with the
+  /// following format: $parameter-scope.params.parameter-id.
+  core.String? parameterScope;
 
   /// Additional parameters to be put into session parameters.
   ///
@@ -13541,10 +16020,13 @@ class GoogleCloudDialogflowCxV3QueryParameters {
     this.analyzeQueryTextSentiment,
     this.channel,
     this.currentPage,
+    this.currentPlaybook,
     this.disableWebhook,
     this.endUserMetadata,
     this.flowVersions,
     this.geoLocation,
+    this.llmModelSettings,
+    this.parameterScope,
     this.parameters,
     this.payload,
     this.populateDataStoreConnectionSignals,
@@ -13561,6 +16043,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
               json_['analyzeQueryTextSentiment'] as core.bool?,
           channel: json_['channel'] as core.String?,
           currentPage: json_['currentPage'] as core.String?,
+          currentPlaybook: json_['currentPlaybook'] as core.String?,
           disableWebhook: json_['disableWebhook'] as core.bool?,
           endUserMetadata: json_.containsKey('endUserMetadata')
               ? json_['endUserMetadata'] as core.Map<core.String, core.dynamic>
@@ -13572,6 +16055,12 @@ class GoogleCloudDialogflowCxV3QueryParameters {
               ? GoogleTypeLatLng.fromJson(
                   json_['geoLocation'] as core.Map<core.String, core.dynamic>)
               : null,
+          llmModelSettings: json_.containsKey('llmModelSettings')
+              ? GoogleCloudDialogflowCxV3LlmModelSettings.fromJson(
+                  json_['llmModelSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          parameterScope: json_['parameterScope'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? json_['parameters'] as core.Map<core.String, core.dynamic>
               : null,
@@ -13606,10 +16095,13 @@ class GoogleCloudDialogflowCxV3QueryParameters {
           'analyzeQueryTextSentiment': analyzeQueryTextSentiment!,
         if (channel != null) 'channel': channel!,
         if (currentPage != null) 'currentPage': currentPage!,
+        if (currentPlaybook != null) 'currentPlaybook': currentPlaybook!,
         if (disableWebhook != null) 'disableWebhook': disableWebhook!,
         if (endUserMetadata != null) 'endUserMetadata': endUserMetadata!,
         if (flowVersions != null) 'flowVersions': flowVersions!,
         if (geoLocation != null) 'geoLocation': geoLocation!,
+        if (llmModelSettings != null) 'llmModelSettings': llmModelSettings!,
+        if (parameterScope != null) 'parameterScope': parameterScope!,
         if (parameters != null) 'parameters': parameters!,
         if (payload != null) 'payload': payload!,
         if (populateDataStoreConnectionSignals != null)
@@ -13988,6 +16480,10 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   /// Returns a text response.
   GoogleCloudDialogflowCxV3ResponseMessageText? text;
 
+  /// Returns the definition of a tool call that should be executed by the
+  /// client.
+  GoogleCloudDialogflowCxV3ToolCall? toolCall;
+
   GoogleCloudDialogflowCxV3ResponseMessage({
     this.channel,
     this.conversationSuccess,
@@ -14001,6 +16497,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
     this.responseType,
     this.telephonyTransferCall,
     this.text,
+    this.toolCall,
   });
 
   GoogleCloudDialogflowCxV3ResponseMessage.fromJson(core.Map json_)
@@ -14052,6 +16549,10 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
               ? GoogleCloudDialogflowCxV3ResponseMessageText.fromJson(
                   json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
+          toolCall: json_.containsKey('toolCall')
+              ? GoogleCloudDialogflowCxV3ToolCall.fromJson(
+                  json_['toolCall'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14069,6 +16570,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
         if (telephonyTransferCall != null)
           'telephonyTransferCall': telephonyTransferCall!,
         if (text != null) 'text': text!,
+        if (toolCall != null) 'toolCall': toolCall!,
       };
 }
 
@@ -14447,6 +16949,57 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource {
       };
 }
 
+/// The request message for Playbooks.RestorePlaybookVersion.
+typedef GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest = $Empty;
+
+/// The response message for Playbooks.RestorePlaybookVersion.
+class GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse {
+  /// The updated playbook.
+  GoogleCloudDialogflowCxV3Playbook? playbook;
+
+  GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse({
+    this.playbook,
+  });
+
+  GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse.fromJson(
+      core.Map json_)
+      : this(
+          playbook: json_.containsKey('playbook')
+              ? GoogleCloudDialogflowCxV3Playbook.fromJson(
+                  json_['playbook'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (playbook != null) 'playbook': playbook!,
+      };
+}
+
+/// The request message for Tools.RestoreToolVersion.
+typedef GoogleCloudDialogflowCxV3RestoreToolVersionRequest = $Empty;
+
+/// The response message for Tools.RestoreToolVersion.
+class GoogleCloudDialogflowCxV3RestoreToolVersionResponse {
+  /// The updated tool.
+  GoogleCloudDialogflowCxV3Tool? tool;
+
+  GoogleCloudDialogflowCxV3RestoreToolVersionResponse({
+    this.tool,
+  });
+
+  GoogleCloudDialogflowCxV3RestoreToolVersionResponse.fromJson(core.Map json_)
+      : this(
+          tool: json_.containsKey('tool')
+              ? GoogleCloudDialogflowCxV3Tool.fromJson(
+                  json_['tool'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tool != null) 'tool': tool!,
+      };
+}
+
 /// The configuration for auto rollout.
 class GoogleCloudDialogflowCxV3RolloutConfig {
   /// The conditions that are used to evaluate the failure of a rollout step.
@@ -14593,8 +17146,29 @@ class GoogleCloudDialogflowCxV3SafetySettings {
   /// Banned phrases for generated text.
   core.List<GoogleCloudDialogflowCxV3SafetySettingsPhrase>? bannedPhrases;
 
+  /// Default phrase match strategy for banned phrases.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PHRASE_MATCH_STRATEGY_UNSPECIFIED" : Unspecified, defaults to
+  /// PARTIAL_MATCH.
+  /// - "PARTIAL_MATCH" : Text that contains the phrase as a substring will be
+  /// matched, e.g. "foo" will match "afoobar".
+  /// - "WORD_MATCH" : Text that contains the tokenized words of the phrase will
+  /// be matched, e.g. "foo" will match "a foo bar" and "foo bar", but not
+  /// "foobar".
+  core.String? defaultBannedPhraseMatchStrategy;
+
+  /// Settings for prompt security checks.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings?
+      promptSecuritySettings;
+
   GoogleCloudDialogflowCxV3SafetySettings({
     this.bannedPhrases,
+    this.defaultBannedPhraseMatchStrategy,
+    this.promptSecuritySettings,
   });
 
   GoogleCloudDialogflowCxV3SafetySettings.fromJson(core.Map json_)
@@ -14604,10 +17178,21 @@ class GoogleCloudDialogflowCxV3SafetySettings {
                   GoogleCloudDialogflowCxV3SafetySettingsPhrase.fromJson(
                       value as core.Map<core.String, core.dynamic>))
               .toList(),
+          defaultBannedPhraseMatchStrategy:
+              json_['defaultBannedPhraseMatchStrategy'] as core.String?,
+          promptSecuritySettings: json_.containsKey('promptSecuritySettings')
+              ? GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings
+                  .fromJson(json_['promptSecuritySettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bannedPhrases != null) 'bannedPhrases': bannedPhrases!,
+        if (defaultBannedPhraseMatchStrategy != null)
+          'defaultBannedPhraseMatchStrategy': defaultBannedPhraseMatchStrategy!,
+        if (promptSecuritySettings != null)
+          'promptSecuritySettings': promptSecuritySettings!,
       };
 }
 
@@ -14637,6 +17222,29 @@ class GoogleCloudDialogflowCxV3SafetySettingsPhrase {
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
         if (text != null) 'text': text!,
+      };
+}
+
+/// Settings for prompt security checks.
+class GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings {
+  /// Enable prompt security checks.
+  ///
+  /// Optional.
+  core.bool? enablePromptSecurity;
+
+  GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings({
+    this.enablePromptSecurity,
+  });
+
+  GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings.fromJson(
+      core.Map json_)
+      : this(
+          enablePromptSecurity: json_['enablePromptSecurity'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enablePromptSecurity != null)
+          'enablePromptSecurity': enablePromptSecurity!,
       };
 }
 
@@ -14941,7 +17549,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
 /// negative, or neutral.
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared13;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared12;
 
 /// Session entity types are referred to as **User** entity types and are
 /// entities that are built for an individual user such as favorites,
@@ -15447,6 +18055,828 @@ class GoogleCloudDialogflowCxV3TextToSpeechSettings {
       };
 }
 
+/// A tool provides a list of actions which are available to the Playbook to
+/// attain its goal.
+///
+/// A Tool consists of a description of the tool's usage and a specification of
+/// the tool which contains the schema and authentication information.
+class GoogleCloudDialogflowCxV3Tool {
+  /// Data store search tool specification.
+  GoogleCloudDialogflowCxV3ToolDataStoreTool? dataStoreSpec;
+
+  /// High level description of the Tool and its usage.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// The human-readable name of the Tool, unique within an agent.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Client side executed function specification.
+  GoogleCloudDialogflowCxV3ToolFunctionTool? functionSpec;
+
+  /// The unique identifier of the Tool.
+  ///
+  /// Format: `projects//locations//agents//tools/`.
+  core.String? name;
+
+  /// OpenAPI specification of the Tool.
+  GoogleCloudDialogflowCxV3ToolOpenApiTool? openApiSpec;
+
+  /// The tool type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TOOL_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "CUSTOMIZED_TOOL" : Customer provided tool.
+  /// - "BUILTIN_TOOL" : First party built-in tool created by Dialogflow which
+  /// cannot be modified.
+  core.String? toolType;
+
+  GoogleCloudDialogflowCxV3Tool({
+    this.dataStoreSpec,
+    this.description,
+    this.displayName,
+    this.functionSpec,
+    this.name,
+    this.openApiSpec,
+    this.toolType,
+  });
+
+  GoogleCloudDialogflowCxV3Tool.fromJson(core.Map json_)
+      : this(
+          dataStoreSpec: json_.containsKey('dataStoreSpec')
+              ? GoogleCloudDialogflowCxV3ToolDataStoreTool.fromJson(
+                  json_['dataStoreSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          functionSpec: json_.containsKey('functionSpec')
+              ? GoogleCloudDialogflowCxV3ToolFunctionTool.fromJson(
+                  json_['functionSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          openApiSpec: json_.containsKey('openApiSpec')
+              ? GoogleCloudDialogflowCxV3ToolOpenApiTool.fromJson(
+                  json_['openApiSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          toolType: json_['toolType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataStoreSpec != null) 'dataStoreSpec': dataStoreSpec!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (functionSpec != null) 'functionSpec': functionSpec!,
+        if (name != null) 'name': name!,
+        if (openApiSpec != null) 'openApiSpec': openApiSpec!,
+        if (toolType != null) 'toolType': toolType!,
+      };
+}
+
+/// Authentication information required for API calls
+class GoogleCloudDialogflowCxV3ToolAuthentication {
+  /// Config for API key auth.
+  GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig? apiKeyConfig;
+
+  /// Config for bearer token auth.
+  GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig?
+      bearerTokenConfig;
+
+  /// Config for OAuth.
+  GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig? oauthConfig;
+
+  /// Config for
+  /// [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent)
+  /// auth.
+  GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig?
+      serviceAgentAuthConfig;
+
+  GoogleCloudDialogflowCxV3ToolAuthentication({
+    this.apiKeyConfig,
+    this.bearerTokenConfig,
+    this.oauthConfig,
+    this.serviceAgentAuthConfig,
+  });
+
+  GoogleCloudDialogflowCxV3ToolAuthentication.fromJson(core.Map json_)
+      : this(
+          apiKeyConfig: json_.containsKey('apiKeyConfig')
+              ? GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig
+                  .fromJson(json_['apiKeyConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          bearerTokenConfig: json_.containsKey('bearerTokenConfig')
+              ? GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig
+                  .fromJson(json_['bearerTokenConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          oauthConfig: json_.containsKey('oauthConfig')
+              ? GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig.fromJson(
+                  json_['oauthConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceAgentAuthConfig: json_.containsKey('serviceAgentAuthConfig')
+              ? GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig
+                  .fromJson(json_['serviceAgentAuthConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiKeyConfig != null) 'apiKeyConfig': apiKeyConfig!,
+        if (bearerTokenConfig != null) 'bearerTokenConfig': bearerTokenConfig!,
+        if (oauthConfig != null) 'oauthConfig': oauthConfig!,
+        if (serviceAgentAuthConfig != null)
+          'serviceAgentAuthConfig': serviceAgentAuthConfig!,
+      };
+}
+
+/// Config for authentication with API key.
+class GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig {
+  /// The API key.
+  ///
+  /// If the `secret_version_for_api_key` field is set, this field will be
+  /// ignored.
+  ///
+  /// Optional.
+  core.String? apiKey;
+
+  /// The parameter name or the header name of the API key.
+  ///
+  /// E.g., If the API request is "https://example.com/act?X-Api-Key=",
+  /// "X-Api-Key" would be the parameter name.
+  ///
+  /// Required.
+  core.String? keyName;
+
+  /// Key location in the request.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "REQUEST_LOCATION_UNSPECIFIED" : Default value. This value is unused.
+  /// - "HEADER" : Represents the key in http header.
+  /// - "QUERY_STRING" : Represents the key in query string.
+  core.String? requestLocation;
+
+  /// The name of the SecretManager secret version resource storing the API key.
+  ///
+  /// If this field is set, the `api_key` field will be ignored. Format:
+  /// `projects/{project}/secrets/{secret}/versions/{version}`
+  ///
+  /// Optional.
+  core.String? secretVersionForApiKey;
+
+  GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig({
+    this.apiKey,
+    this.keyName,
+    this.requestLocation,
+    this.secretVersionForApiKey,
+  });
+
+  GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig.fromJson(
+      core.Map json_)
+      : this(
+          apiKey: json_['apiKey'] as core.String?,
+          keyName: json_['keyName'] as core.String?,
+          requestLocation: json_['requestLocation'] as core.String?,
+          secretVersionForApiKey:
+              json_['secretVersionForApiKey'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiKey != null) 'apiKey': apiKey!,
+        if (keyName != null) 'keyName': keyName!,
+        if (requestLocation != null) 'requestLocation': requestLocation!,
+        if (secretVersionForApiKey != null)
+          'secretVersionForApiKey': secretVersionForApiKey!,
+      };
+}
+
+/// Config for authentication using bearer token.
+class GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig {
+  /// The name of the SecretManager secret version resource storing the Bearer
+  /// token.
+  ///
+  /// If this field is set, the `token` field will be ignored. Format:
+  /// `projects/{project}/secrets/{secret}/versions/{version}`
+  ///
+  /// Optional.
+  core.String? secretVersionForToken;
+
+  /// The text token appended to the text `Bearer` to the request Authorization
+  /// header.
+  ///
+  /// [Session parameters reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref)
+  /// can be used to pass the token dynamically, e.g.
+  /// `$session.params.parameter-id`.
+  ///
+  /// Optional.
+  core.String? token;
+
+  GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig({
+    this.secretVersionForToken,
+    this.token,
+  });
+
+  GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig.fromJson(
+      core.Map json_)
+      : this(
+          secretVersionForToken: json_['secretVersionForToken'] as core.String?,
+          token: json_['token'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (secretVersionForToken != null)
+          'secretVersionForToken': secretVersionForToken!,
+        if (token != null) 'token': token!,
+      };
+}
+
+/// Config for authentication with OAuth.
+class GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig {
+  /// The client ID from the OAuth provider.
+  ///
+  /// Required.
+  core.String? clientId;
+
+  /// The client secret from the OAuth provider.
+  ///
+  /// If the `secret_version_for_client_secret` field is set, this field will be
+  /// ignored.
+  ///
+  /// Optional.
+  core.String? clientSecret;
+
+  /// OAuth grant types.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OAUTH_GRANT_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "CLIENT_CREDENTIAL" : Represents the
+  /// [client credential flow](https://oauth.net/2/grant-types/client-credentials).
+  core.String? oauthGrantType;
+
+  /// The OAuth scopes to grant.
+  ///
+  /// Optional.
+  core.List<core.String>? scopes;
+
+  /// The name of the SecretManager secret version resource storing the client
+  /// secret.
+  ///
+  /// If this field is set, the `client_secret` field will be ignored. Format:
+  /// `projects/{project}/secrets/{secret}/versions/{version}`
+  ///
+  /// Optional.
+  core.String? secretVersionForClientSecret;
+
+  /// The token endpoint in the OAuth provider to exchange for an access token.
+  ///
+  /// Required.
+  core.String? tokenEndpoint;
+
+  GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig({
+    this.clientId,
+    this.clientSecret,
+    this.oauthGrantType,
+    this.scopes,
+    this.secretVersionForClientSecret,
+    this.tokenEndpoint,
+  });
+
+  GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig.fromJson(
+      core.Map json_)
+      : this(
+          clientId: json_['clientId'] as core.String?,
+          clientSecret: json_['clientSecret'] as core.String?,
+          oauthGrantType: json_['oauthGrantType'] as core.String?,
+          scopes: (json_['scopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          secretVersionForClientSecret:
+              json_['secretVersionForClientSecret'] as core.String?,
+          tokenEndpoint: json_['tokenEndpoint'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (oauthGrantType != null) 'oauthGrantType': oauthGrantType!,
+        if (scopes != null) 'scopes': scopes!,
+        if (secretVersionForClientSecret != null)
+          'secretVersionForClientSecret': secretVersionForClientSecret!,
+        if (tokenEndpoint != null) 'tokenEndpoint': tokenEndpoint!,
+      };
+}
+
+/// Config for auth using
+/// [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+class GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig {
+  /// Indicate the auth token type generated from the
+  /// [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+  ///
+  /// The generated token is sent in the Authorization header.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SERVICE_AGENT_AUTH_UNSPECIFIED" : Service agent auth type unspecified.
+  /// Default to ID_TOKEN.
+  /// - "ID_TOKEN" : Use
+  /// [ID token](https://cloud.google.com/docs/authentication/token-types#id)
+  /// generated from service agent. This can be used to access Cloud Function
+  /// and Cloud Run after you grant Invoker role to
+  /// `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`.
+  /// - "ACCESS_TOKEN" : Use
+  /// [access token](https://cloud.google.com/docs/authentication/token-types#access)
+  /// generated from service agent. This can be used to access other Google
+  /// Cloud APIs after you grant required roles to
+  /// `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`.
+  core.String? serviceAgentAuth;
+
+  GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig({
+    this.serviceAgentAuth,
+  });
+
+  GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig.fromJson(
+      core.Map json_)
+      : this(
+          serviceAgentAuth: json_['serviceAgentAuth'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (serviceAgentAuth != null) 'serviceAgentAuth': serviceAgentAuth!,
+      };
+}
+
+/// Represents a call of a specific tool's action with the specified inputs.
+class GoogleCloudDialogflowCxV3ToolCall {
+  /// The name of the tool's action associated with this call.
+  ///
+  /// Required.
+  core.String? action;
+
+  /// The action's input parameters.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? inputParameters;
+
+  /// The tool associated with this call.
+  ///
+  /// Format: `projects//locations//agents//tools/`.
+  ///
+  /// Required.
+  core.String? tool;
+
+  GoogleCloudDialogflowCxV3ToolCall({
+    this.action,
+    this.inputParameters,
+    this.tool,
+  });
+
+  GoogleCloudDialogflowCxV3ToolCall.fromJson(core.Map json_)
+      : this(
+          action: json_['action'] as core.String?,
+          inputParameters: json_.containsKey('inputParameters')
+              ? json_['inputParameters'] as core.Map<core.String, core.dynamic>
+              : null,
+          tool: json_['tool'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (inputParameters != null) 'inputParameters': inputParameters!,
+        if (tool != null) 'tool': tool!,
+      };
+}
+
+/// The result of calling a tool's action that has been executed by the client.
+class GoogleCloudDialogflowCxV3ToolCallResult {
+  /// The name of the tool's action associated with this call.
+  ///
+  /// Required.
+  core.String? action;
+
+  /// The tool call's error.
+  GoogleCloudDialogflowCxV3ToolCallResultError? error;
+
+  /// The tool call's output parameters.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? outputParameters;
+
+  /// The tool associated with this call.
+  ///
+  /// Format: `projects//locations//agents//tools/`.
+  ///
+  /// Required.
+  core.String? tool;
+
+  GoogleCloudDialogflowCxV3ToolCallResult({
+    this.action,
+    this.error,
+    this.outputParameters,
+    this.tool,
+  });
+
+  GoogleCloudDialogflowCxV3ToolCallResult.fromJson(core.Map json_)
+      : this(
+          action: json_['action'] as core.String?,
+          error: json_.containsKey('error')
+              ? GoogleCloudDialogflowCxV3ToolCallResultError.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          outputParameters: json_.containsKey('outputParameters')
+              ? json_['outputParameters'] as core.Map<core.String, core.dynamic>
+              : null,
+          tool: json_['tool'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (error != null) 'error': error!,
+        if (outputParameters != null) 'outputParameters': outputParameters!,
+        if (tool != null) 'tool': tool!,
+      };
+}
+
+/// An error produced by the tool call.
+typedef GoogleCloudDialogflowCxV3ToolCallResultError = $ToolCallResultError;
+
+/// A DataStoreTool is a way to provide specifications needed to search a list
+/// of data stores.
+class GoogleCloudDialogflowCxV3ToolDataStoreTool {
+  /// List of data stores to search.
+  ///
+  /// Required.
+  core.List<GoogleCloudDialogflowCxV3DataStoreConnection>? dataStoreConnections;
+
+  /// Fallback prompt configurations to use.
+  ///
+  /// Required.
+  GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt? fallbackPrompt;
+
+  GoogleCloudDialogflowCxV3ToolDataStoreTool({
+    this.dataStoreConnections,
+    this.fallbackPrompt,
+  });
+
+  GoogleCloudDialogflowCxV3ToolDataStoreTool.fromJson(core.Map json_)
+      : this(
+          dataStoreConnections: (json_['dataStoreConnections'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDialogflowCxV3DataStoreConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          fallbackPrompt: json_.containsKey('fallbackPrompt')
+              ? GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt
+                  .fromJson(json_['fallbackPrompt']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataStoreConnections != null)
+          'dataStoreConnections': dataStoreConnections!,
+        if (fallbackPrompt != null) 'fallbackPrompt': fallbackPrompt!,
+      };
+}
+
+/// A FallbackPrompt is a way to provide specifications for the Data Store
+/// fallback prompt when generating responses.
+typedef GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt = $Empty;
+
+/// A Function tool describes the functions to be invoked on the client side.
+class GoogleCloudDialogflowCxV3ToolFunctionTool {
+  /// The JSON schema is encapsulated in a google.protobuf.Struct to describe
+  /// the input of the function.
+  ///
+  /// This input is a JSON object that contains the function's parameters as
+  /// properties of the object.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? inputSchema;
+
+  /// The JSON schema is encapsulated in a google.protobuf.Struct to describe
+  /// the output of the function.
+  ///
+  /// This output is a JSON object that contains the function's parameters as
+  /// properties of the object.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? outputSchema;
+
+  GoogleCloudDialogflowCxV3ToolFunctionTool({
+    this.inputSchema,
+    this.outputSchema,
+  });
+
+  GoogleCloudDialogflowCxV3ToolFunctionTool.fromJson(core.Map json_)
+      : this(
+          inputSchema: json_.containsKey('inputSchema')
+              ? json_['inputSchema'] as core.Map<core.String, core.dynamic>
+              : null,
+          outputSchema: json_.containsKey('outputSchema')
+              ? json_['outputSchema'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inputSchema != null) 'inputSchema': inputSchema!,
+        if (outputSchema != null) 'outputSchema': outputSchema!,
+      };
+}
+
+/// An OpenAPI tool is a way to provide the Tool specifications in the Open API
+/// schema format.
+class GoogleCloudDialogflowCxV3ToolOpenApiTool {
+  /// Authentication information required by the API.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3ToolAuthentication? authentication;
+
+  /// Service Directory configuration.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig? serviceDirectoryConfig;
+
+  /// The OpenAPI schema specified as a text.
+  ///
+  /// Required.
+  core.String? textSchema;
+
+  /// TLS configuration for the HTTPS verification.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3ToolTLSConfig? tlsConfig;
+
+  GoogleCloudDialogflowCxV3ToolOpenApiTool({
+    this.authentication,
+    this.serviceDirectoryConfig,
+    this.textSchema,
+    this.tlsConfig,
+  });
+
+  GoogleCloudDialogflowCxV3ToolOpenApiTool.fromJson(core.Map json_)
+      : this(
+          authentication: json_.containsKey('authentication')
+              ? GoogleCloudDialogflowCxV3ToolAuthentication.fromJson(
+                  json_['authentication']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
+              ? GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig.fromJson(
+                  json_['serviceDirectoryConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          textSchema: json_['textSchema'] as core.String?,
+          tlsConfig: json_.containsKey('tlsConfig')
+              ? GoogleCloudDialogflowCxV3ToolTLSConfig.fromJson(
+                  json_['tlsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authentication != null) 'authentication': authentication!,
+        if (serviceDirectoryConfig != null)
+          'serviceDirectoryConfig': serviceDirectoryConfig!,
+        if (textSchema != null) 'textSchema': textSchema!,
+        if (tlsConfig != null) 'tlsConfig': tlsConfig!,
+      };
+}
+
+/// Configuration for tools using Service Directory.
+class GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig {
+  /// The name of
+  /// [Service Directory](https://cloud.google.com/service-directory) service.
+  ///
+  /// Format: `projects//locations//namespaces//services/`. `LocationID` of the
+  /// service directory must be the same as the location of the agent.
+  ///
+  /// Required.
+  core.String? service;
+
+  GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig({
+    this.service,
+  });
+
+  GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig.fromJson(core.Map json_)
+      : this(
+          service: json_['service'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (service != null) 'service': service!,
+      };
+}
+
+/// The TLS configuration.
+class GoogleCloudDialogflowCxV3ToolTLSConfig {
+  /// Specifies a list of allowed custom CA certificates for HTTPS verification.
+  ///
+  /// Required.
+  core.List<GoogleCloudDialogflowCxV3ToolTLSConfigCACert>? caCerts;
+
+  GoogleCloudDialogflowCxV3ToolTLSConfig({
+    this.caCerts,
+  });
+
+  GoogleCloudDialogflowCxV3ToolTLSConfig.fromJson(core.Map json_)
+      : this(
+          caCerts: (json_['caCerts'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDialogflowCxV3ToolTLSConfigCACert.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caCerts != null) 'caCerts': caCerts!,
+      };
+}
+
+/// The CA certificate.
+class GoogleCloudDialogflowCxV3ToolTLSConfigCACert {
+  /// The allowed custom CA certificates (in DER format) for HTTPS verification.
+  ///
+  /// This overrides the default SSL trust store. If this is empty or
+  /// unspecified, Dialogflow will use Google's default trust store to verify
+  /// certificates. N.B. Make sure the HTTPS server certificates are signed with
+  /// "subject alt name". For instance a certificate can be self-signed using
+  /// the following command: ``` openssl x509 -req -days 200 -in example.com.csr
+  /// \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf
+  /// "\nsubjectAltName='DNS:www.example.com'") ```
+  ///
+  /// Required.
+  core.String? cert;
+  core.List<core.int> get certAsBytes => convert.base64.decode(cert!);
+
+  set certAsBytes(core.List<core.int> bytes_) {
+    cert =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The name of the allowed custom CA certificates.
+  ///
+  /// This can be used to disambiguate the custom CA certificates.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  GoogleCloudDialogflowCxV3ToolTLSConfigCACert({
+    this.cert,
+    this.displayName,
+  });
+
+  GoogleCloudDialogflowCxV3ToolTLSConfigCACert.fromJson(core.Map json_)
+      : this(
+          cert: json_['cert'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cert != null) 'cert': cert!,
+        if (displayName != null) 'displayName': displayName!,
+      };
+}
+
+/// Stores metadata of the invocation of an action supported by a tool.
+class GoogleCloudDialogflowCxV3ToolUse {
+  /// Name of the action to be called during the tool use.
+  ///
+  /// Optional.
+  core.String? action;
+
+  /// The display name of the tool.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// A list of input parameters for the action.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? inputActionParameters;
+
+  /// A list of output parameters generated by the action.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? outputActionParameters;
+
+  /// The tool that should be used.
+  ///
+  /// Format: `projects//locations//agents//tools/`.
+  ///
+  /// Required.
+  core.String? tool;
+
+  GoogleCloudDialogflowCxV3ToolUse({
+    this.action,
+    this.displayName,
+    this.inputActionParameters,
+    this.outputActionParameters,
+    this.tool,
+  });
+
+  GoogleCloudDialogflowCxV3ToolUse.fromJson(core.Map json_)
+      : this(
+          action: json_['action'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          inputActionParameters: json_.containsKey('inputActionParameters')
+              ? json_['inputActionParameters']
+                  as core.Map<core.String, core.dynamic>
+              : null,
+          outputActionParameters: json_.containsKey('outputActionParameters')
+              ? json_['outputActionParameters']
+                  as core.Map<core.String, core.dynamic>
+              : null,
+          tool: json_['tool'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (displayName != null) 'displayName': displayName!,
+        if (inputActionParameters != null)
+          'inputActionParameters': inputActionParameters!,
+        if (outputActionParameters != null)
+          'outputActionParameters': outputActionParameters!,
+        if (tool != null) 'tool': tool!,
+      };
+}
+
+/// Tool version is a snapshot of the tool at certain timestamp.
+class GoogleCloudDialogflowCxV3ToolVersion {
+  /// Last time the tool version was created or modified.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The display name of the tool version.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// The unique identifier of the tool version. Format:
+  /// `projects//locations//agents//tools//versions/`.
+  core.String? name;
+
+  /// Snapshot of the tool to be associated with this version.
+  ///
+  /// Required.
+  GoogleCloudDialogflowCxV3Tool? tool;
+
+  /// Last time the tool version was created or modified.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDialogflowCxV3ToolVersion({
+    this.createTime,
+    this.displayName,
+    this.name,
+    this.tool,
+    this.updateTime,
+  });
+
+  GoogleCloudDialogflowCxV3ToolVersion.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          tool: json_.containsKey('tool')
+              ? GoogleCloudDialogflowCxV3Tool.fromJson(
+                  json_['tool'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (tool != null) 'tool': tool!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// The request message for Flows.TrainFlow.
 typedef GoogleCloudDialogflowCxV3TrainFlowRequest = $Empty;
 
@@ -15830,6 +19260,9 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition {
         if (transitionRoute != null) 'transitionRoute': transitionRoute!,
       };
 }
+
+/// UserUtterance represents one message sent by the customer.
+typedef GoogleCloudDialogflowCxV3UserUtterance = $Utterance;
 
 /// The request message for Agents.ValidateAgent.
 typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Request10;
@@ -16253,6 +19686,26 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   /// The HTTP request headers to send together with webhook requests.
   core.Map<core.String, core.String>? requestHeaders;
 
+  /// The SecretManager secret version resource storing the username:password
+  /// pair for HTTP Basic authentication.
+  ///
+  /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+  ///
+  /// Optional.
+  core.String? secretVersionForUsernamePassword;
+
+  /// The HTTP request headers to send together with webhook requests.
+  ///
+  /// Header values are stored in SecretManager secret versions. When the same
+  /// header name is specified in both `request_headers` and
+  /// `secret_versions_for_request_headers`, the value in
+  /// `secret_versions_for_request_headers` will be used.
+  ///
+  /// Optional.
+  core.Map<core.String,
+          GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue>?
+      secretVersionsForRequestHeaders;
+
   /// Indicate the auth token type generated from the
   /// [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
   ///
@@ -16305,6 +19758,8 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
     this.password,
     this.requestBody,
     this.requestHeaders,
+    this.secretVersionForUsernamePassword,
+    this.secretVersionsForRequestHeaders,
     this.serviceAgentAuth,
     this.uri,
     this.username,
@@ -16340,6 +19795,18 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
               value as core.String,
             ),
           ),
+          secretVersionForUsernamePassword:
+              json_['secretVersionForUsernamePassword'] as core.String?,
+          secretVersionsForRequestHeaders:
+              (json_['secretVersionsForRequestHeaders']
+                      as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue
+                  .fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           serviceAgentAuth: json_['serviceAgentAuth'] as core.String?,
           uri: json_['uri'] as core.String?,
           username: json_['username'] as core.String?,
@@ -16354,6 +19821,10 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
         if (password != null) 'password': password!,
         if (requestBody != null) 'requestBody': requestBody!,
         if (requestHeaders != null) 'requestHeaders': requestHeaders!,
+        if (secretVersionForUsernamePassword != null)
+          'secretVersionForUsernamePassword': secretVersionForUsernamePassword!,
+        if (secretVersionsForRequestHeaders != null)
+          'secretVersionsForRequestHeaders': secretVersionsForRequestHeaders!,
         if (serviceAgentAuth != null) 'serviceAgentAuth': serviceAgentAuth!,
         if (uri != null) 'uri': uri!,
         if (username != null) 'username': username!,
@@ -16379,6 +19850,15 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig {
   /// Optional.
   core.List<core.String>? scopes;
 
+  /// The name of the SecretManager secret version resource storing the client
+  /// secret.
+  ///
+  /// If this field is set, the `client_secret` field will be ignored. Format:
+  /// `projects/{project}/secrets/{secret}/versions/{version}`
+  ///
+  /// Optional.
+  core.String? secretVersionForClientSecret;
+
   /// The token endpoint provided by the 3rd party platform to exchange an
   /// access token.
   ///
@@ -16389,6 +19869,7 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig {
     this.clientId,
     this.clientSecret,
     this.scopes,
+    this.secretVersionForClientSecret,
     this.tokenEndpoint,
   });
 
@@ -16400,6 +19881,8 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig {
           scopes: (json_['scopes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          secretVersionForClientSecret:
+              json_['secretVersionForClientSecret'] as core.String?,
           tokenEndpoint: json_['tokenEndpoint'] as core.String?,
         );
 
@@ -16407,7 +19890,34 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig {
         if (clientId != null) 'clientId': clientId!,
         if (clientSecret != null) 'clientSecret': clientSecret!,
         if (scopes != null) 'scopes': scopes!,
+        if (secretVersionForClientSecret != null)
+          'secretVersionForClientSecret': secretVersionForClientSecret!,
         if (tokenEndpoint != null) 'tokenEndpoint': tokenEndpoint!,
+      };
+}
+
+/// Represents the value of an HTTP header stored in a SecretManager secret
+/// version.
+class GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue {
+  /// The SecretManager secret version resource storing the header value.
+  ///
+  /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+  ///
+  /// Required.
+  core.String? secretVersion;
+
+  GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue({
+    this.secretVersion,
+  });
+
+  GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue.fromJson(
+      core.Map json_)
+      : this(
+          secretVersion: json_['secretVersion'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (secretVersion != null) 'secretVersion': secretVersion!,
       };
 }
 

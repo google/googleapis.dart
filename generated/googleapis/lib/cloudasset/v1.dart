@@ -2258,6 +2258,9 @@ class Asset {
   /// `["projects/123456789", "folders/5432", "organizations/1234"]`
   core.List<core.String>? ancestors;
 
+  /// The exceptions of a resource.
+  core.List<AssetException>? assetExceptions;
+
   /// The type of the asset.
   ///
   /// Example: `compute.googleapis.com/Disk` See
@@ -2331,6 +2334,7 @@ class Asset {
     this.accessLevel,
     this.accessPolicy,
     this.ancestors,
+    this.assetExceptions,
     this.assetType,
     this.iamPolicy,
     this.name,
@@ -2355,6 +2359,10 @@ class Asset {
               : null,
           ancestors: (json_['ancestors'] as core.List?)
               ?.map((value) => value as core.String)
+              .toList(),
+          assetExceptions: (json_['assetExceptions'] as core.List?)
+              ?.map((value) => AssetException.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList(),
           assetType: json_['assetType'] as core.String?,
           iamPolicy: json_.containsKey('iamPolicy')
@@ -2394,6 +2402,7 @@ class Asset {
         if (accessLevel != null) 'accessLevel': accessLevel!,
         if (accessPolicy != null) 'accessPolicy': accessPolicy!,
         if (ancestors != null) 'ancestors': ancestors!,
+        if (assetExceptions != null) 'assetExceptions': assetExceptions!,
         if (assetType != null) 'assetType': assetType!,
         if (iamPolicy != null) 'iamPolicy': iamPolicy!,
         if (name != null) 'name': name!,
@@ -2429,6 +2438,35 @@ class AssetEnrichment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceOwners != null) 'resourceOwners': resourceOwners!,
+      };
+}
+
+/// An exception of an asset.
+class AssetException {
+  /// The details of the exception.
+  core.String? details;
+
+  /// The type of exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_TYPE_UNSPECIFIED" : exception_type is not applicable for the
+  /// current asset.
+  /// - "TRUNCATION" : The asset content is truncated.
+  core.String? exceptionType;
+
+  AssetException({
+    this.details,
+    this.exceptionType,
+  });
+
+  AssetException.fromJson(core.Map json_)
+      : this(
+          details: json_['details'] as core.String?,
+          exceptionType: json_['exceptionType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (exceptionType != null) 'exceptionType': exceptionType!,
       };
 }
 
@@ -2594,7 +2632,7 @@ class BigQueryDestination {
   /// will be overwritten by the contents of assets snapshot.
   ///
   /// If the flag is `FALSE` or unset and the destination table already exists,
-  /// the export call returns an INVALID_ARGUMEMT error.
+  /// the export call returns an INVALID_ARGUMENT error.
   core.bool? force;
 
   /// \[partition_spec\] determines whether to export to partitioned table(s)
@@ -4958,10 +4996,17 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
   /// to all resources outside the perimeter.
   core.List<core.String>? resources;
 
+  /// IAM roles that represent the set of operations that the sources specified
+  /// in the corresponding EgressFrom.
+  ///
+  /// are allowed to perform in this ServicePerimeter.
+  core.List<core.String>? roles;
+
   GoogleIdentityAccesscontextmanagerV1EgressTo({
     this.externalResources,
     this.operations,
     this.resources,
+    this.roles,
   });
 
   GoogleIdentityAccesscontextmanagerV1EgressTo.fromJson(core.Map json_)
@@ -4977,12 +5022,16 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
           resources: (json_['resources'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          roles: (json_['roles'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (externalResources != null) 'externalResources': externalResources!,
         if (operations != null) 'operations': operations!,
         if (resources != null) 'resources': resources!,
+        if (roles != null) 'roles': roles!,
       };
 }
 
@@ -5122,9 +5171,15 @@ class GoogleIdentityAccesscontextmanagerV1IngressTo {
   /// perimeter are allowed.
   core.List<core.String>? resources;
 
+  /// IAM roles that represent the set of operations that the sources specified
+  /// in the corresponding IngressFrom are allowed to perform in this
+  /// ServicePerimeter.
+  core.List<core.String>? roles;
+
   GoogleIdentityAccesscontextmanagerV1IngressTo({
     this.operations,
     this.resources,
+    this.roles,
   });
 
   GoogleIdentityAccesscontextmanagerV1IngressTo.fromJson(core.Map json_)
@@ -5137,11 +5192,15 @@ class GoogleIdentityAccesscontextmanagerV1IngressTo {
           resources: (json_['resources'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          roles: (json_['roles'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operations != null) 'operations': operations!,
         if (resources != null) 'resources': resources!,
+        if (roles != null) 'roles': roles!,
       };
 }
 

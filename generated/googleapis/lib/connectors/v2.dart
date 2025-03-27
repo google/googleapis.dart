@@ -369,6 +369,13 @@ class ProjectsLocationsConnectionsActionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/actions/\[^/\]+$`.
   ///
+  /// [view] - Specified view of the action schema.
+  /// Possible string values are:
+  /// - "ACTION_SCHEMA_VIEW_UNSPECIFIED" : VIEW_UNSPECIFIED. The unset value.
+  /// Defaults to BASIC View.
+  /// - "ACTION_SCHEMA_VIEW_BASIC" : Return basic action schema.
+  /// - "ACTION_SCHEMA_VIEW_ENRICHED" : Return enriched action schema.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -381,9 +388,11 @@ class ProjectsLocationsConnectionsActionsResource {
   /// this method will complete with the same error.
   async.Future<Action> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -783,6 +792,9 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   ///
   /// [sortBy] - List of 'sort_by' columns to use when returning the results.
   ///
+  /// [sortOrder] - List of 'sort_order' columns to use when returning the
+  /// results.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -799,6 +811,7 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
     core.int? pageSize,
     core.String? pageToken,
     core.List<core.String>? sortBy,
+    core.List<core.String>? sortOrder,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -806,6 +819,7 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (sortBy != null) 'sortBy': sortBy,
+      if (sortOrder != null) 'sortOrder': sortOrder,
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1040,10 +1054,15 @@ class AuthCodeData {
   /// OAuth backends.
   core.String? redirectUri;
 
+  /// Scopes the connection will request when the user performs the auth code
+  /// flow.
+  core.List<core.String>? scopes;
+
   AuthCodeData({
     this.authCode,
     this.pkceVerifier,
     this.redirectUri,
+    this.scopes,
   });
 
   AuthCodeData.fromJson(core.Map json_)
@@ -1051,12 +1070,16 @@ class AuthCodeData {
           authCode: json_['authCode'] as core.String?,
           pkceVerifier: json_['pkceVerifier'] as core.String?,
           redirectUri: json_['redirectUri'] as core.String?,
+          scopes: (json_['scopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authCode != null) 'authCode': authCode!,
         if (pkceVerifier != null) 'pkceVerifier': pkceVerifier!,
         if (redirectUri != null) 'redirectUri': redirectUri!,
+        if (scopes != null) 'scopes': scopes!,
       };
 }
 

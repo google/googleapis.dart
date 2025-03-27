@@ -29,6 +29,7 @@
 ///       - [ProjectsDatabasesCollectionGroupsIndexesResource]
 ///     - [ProjectsDatabasesDocumentsResource]
 ///     - [ProjectsDatabasesOperationsResource]
+///     - [ProjectsDatabasesUserCredsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsBackupsResource]
 library;
@@ -90,6 +91,8 @@ class ProjectsDatabasesResource {
       ProjectsDatabasesDocumentsResource(_requester);
   ProjectsDatabasesOperationsResource get operations =>
       ProjectsDatabasesOperationsResource(_requester);
+  ProjectsDatabasesUserCredsResource get userCreds =>
+      ProjectsDatabasesUserCredsResource(_requester);
 
   ProjectsDatabasesResource(commons.ApiRequester client) : _requester = client;
 
@@ -130,6 +133,58 @@ class ProjectsDatabasesResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':bulkDeleteDocuments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new database by cloning an existing one.
+  ///
+  /// The new database must be in the same cloud region or multi-region location
+  /// as the existing database. This behaves similar to
+  /// FirestoreAdmin.CreateDatabase except instead of creating a new empty
+  /// database, a new database is created with the database type, index
+  /// configuration, and documents from an existing database. The long-running
+  /// operation can be used to track the progress of the clone, with the
+  /// Operation's metadata field type being the CloneDatabaseMetadata. The
+  /// response type is the Database if the clone was successful. The new
+  /// database is not readable or writeable until the LRO has completed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to clone the database in. Format is
+  /// `projects/{project_id}`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> clone(
+    GoogleFirestoreAdminV1CloneDatabaseRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/databases:clone';
 
     final response_ = await _requester.request(
       url_,
@@ -2173,6 +2228,312 @@ class ProjectsDatabasesOperationsResource {
   }
 }
 
+class ProjectsDatabasesUserCredsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsDatabasesUserCredsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a user creds.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. A parent name of the form
+  /// `projects/{project_id}/databases/{database_id}`
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [userCredsId] - Required. The ID to use for the user creds, which will
+  /// become the final component of the user creds's resource name. This value
+  /// should be 4-63 characters. Valid characters are /a-z-/ with first
+  /// character a letter and the last a letter or a number. Must not be
+  /// UUID-like /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1UserCreds].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1UserCreds> create(
+    GoogleFirestoreAdminV1UserCreds request,
+    core.String parent, {
+    core.String? userCredsId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (userCredsId != null) 'userCredsId': [userCredsId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/userCreds';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1UserCreds.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a user creds.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the form
+  /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/userCreds/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Disables a user creds.
+  ///
+  /// No-op if the user creds are already disabled.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the form
+  /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/userCreds/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1UserCreds].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1UserCreds> disable(
+    GoogleFirestoreAdminV1DisableUserCredsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':disable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1UserCreds.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enables a user creds.
+  ///
+  /// No-op if the user creds are already enabled.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the form
+  /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/userCreds/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1UserCreds].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1UserCreds> enable(
+    GoogleFirestoreAdminV1EnableUserCredsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':enable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1UserCreds.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a user creds resource.
+  ///
+  /// Note that the returned resource does not contain the secret value itself.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the form
+  /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/userCreds/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1UserCreds].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1UserCreds> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1UserCreds.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all user creds in the database.
+  ///
+  /// Note that the returned resource does not contain the secret value itself.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. A parent database name of the form
+  /// `projects/{project_id}/databases/{database_id}`
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1ListUserCredsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1ListUserCredsResponse> list(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/userCreds';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1ListUserCredsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Resets the password of a user creds.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the form
+  /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/userCreds/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1UserCreds].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1UserCreds> resetPassword(
+    GoogleFirestoreAdminV1ResetUserPasswordRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':resetPassword';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1UserCreds.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
@@ -2223,6 +2584,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -2245,12 +2610,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3762,6 +4129,80 @@ class GoogleFirestoreAdminV1BulkDeleteDocumentsRequest {
       };
 }
 
+/// The request message for FirestoreAdmin.CloneDatabase.
+class GoogleFirestoreAdminV1CloneDatabaseRequest {
+  /// The ID to use for the database, which will become the final component of
+  /// the database's resource name.
+  ///
+  /// This database ID must not be associated with an existing database. This
+  /// value should be 4-63 characters. Valid characters are /a-z-/ with first
+  /// character a letter and the last a letter or a number. Must not be
+  /// UUID-like /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)"
+  /// database ID is also valid.
+  ///
+  /// Required.
+  core.String? databaseId;
+
+  /// Encryption configuration for the cloned database.
+  ///
+  /// If this field is not specified, the cloned database will use the same
+  /// encryption configuration as the source database, namely
+  /// use_source_encryption.
+  ///
+  /// Optional.
+  GoogleFirestoreAdminV1EncryptionConfig? encryptionConfig;
+
+  /// Specification of the PITR data to clone from.
+  ///
+  /// The source database must exist. The cloned database will be created in the
+  /// same location as the source database.
+  ///
+  /// Required.
+  GoogleFirestoreAdminV1PitrSnapshot? pitrSnapshot;
+
+  /// Tags to be bound to the cloned database.
+  ///
+  /// The tags should be provided in the format of `tagKeys/{tag_key_id} ->
+  /// tagValues/{tag_value_id}`.
+  ///
+  /// Optional. Immutable.
+  core.Map<core.String, core.String>? tags;
+
+  GoogleFirestoreAdminV1CloneDatabaseRequest({
+    this.databaseId,
+    this.encryptionConfig,
+    this.pitrSnapshot,
+    this.tags,
+  });
+
+  GoogleFirestoreAdminV1CloneDatabaseRequest.fromJson(core.Map json_)
+      : this(
+          databaseId: json_['databaseId'] as core.String?,
+          encryptionConfig: json_.containsKey('encryptionConfig')
+              ? GoogleFirestoreAdminV1EncryptionConfig.fromJson(
+                  json_['encryptionConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          pitrSnapshot: json_.containsKey('pitrSnapshot')
+              ? GoogleFirestoreAdminV1PitrSnapshot.fromJson(
+                  json_['pitrSnapshot'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseId != null) 'databaseId': databaseId!,
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+        if (pitrSnapshot != null) 'pitrSnapshot': pitrSnapshot!,
+        if (tags != null) 'tags': tags!,
+      };
+}
+
 /// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
 /// database.
 ///
@@ -3884,6 +4325,16 @@ class GoogleFirestoreAdminV1Database {
   /// Output only.
   core.String? createTime;
 
+  /// The edition of the database.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "DATABASE_EDITION_UNSPECIFIED" : Not used.
+  /// - "STANDARD" : Standard edition. This is the default setting if not
+  /// specified.
+  /// - "ENTERPRISE" : Enterprise edition.
+  core.String? databaseEdition;
+
   /// State of delete protection for the database.
   /// Possible string values are:
   /// - "DELETE_PROTECTION_STATE_UNSPECIFIED" : The default value. Delete
@@ -3915,6 +4366,19 @@ class GoogleFirestoreAdminV1Database {
   /// fields, and may be sent on update and delete requests to ensure the client
   /// has an up-to-date value before proceeding.
   core.String? etag;
+
+  /// Background: Free tier is the ability of a Firestore database to use a
+  /// small amount of resources every day without being charged.
+  ///
+  /// Once usage exceeds the free tier limit further usage is charged. Whether
+  /// this database can make use of the free tier. Only one database per project
+  /// can be eligible for the free tier. The first (or next) database that is
+  /// created in a project without a free tier database will be marked as
+  /// eligible for the free tier. Databases that are created while there is a
+  /// free tier database will not be eligible for the free tier.
+  ///
+  /// Output only.
+  core.bool? freeTier;
 
   /// The key_prefix for this database.
   ///
@@ -3962,6 +4426,14 @@ class GoogleFirestoreAdminV1Database {
   /// Output only.
   GoogleFirestoreAdminV1SourceInfo? sourceInfo;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// The type of the database.
   ///
   /// See https://cloud.google.com/datastore/docs/firestore-or-datastore for
@@ -4001,16 +4473,19 @@ class GoogleFirestoreAdminV1Database {
     this.cmekConfig,
     this.concurrencyMode,
     this.createTime,
+    this.databaseEdition,
     this.deleteProtectionState,
     this.deleteTime,
     this.earliestVersionTime,
     this.etag,
+    this.freeTier,
     this.keyPrefix,
     this.locationId,
     this.name,
     this.pointInTimeRecoveryEnablement,
     this.previousId,
     this.sourceInfo,
+    this.tags,
     this.type,
     this.uid,
     this.updateTime,
@@ -4027,10 +4502,12 @@ class GoogleFirestoreAdminV1Database {
               : null,
           concurrencyMode: json_['concurrencyMode'] as core.String?,
           createTime: json_['createTime'] as core.String?,
+          databaseEdition: json_['databaseEdition'] as core.String?,
           deleteProtectionState: json_['deleteProtectionState'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           earliestVersionTime: json_['earliestVersionTime'] as core.String?,
           etag: json_['etag'] as core.String?,
+          freeTier: json_['freeTier'] as core.bool?,
           keyPrefix: json_['keyPrefix'] as core.String?,
           locationId: json_['locationId'] as core.String?,
           name: json_['name'] as core.String?,
@@ -4041,6 +4518,12 @@ class GoogleFirestoreAdminV1Database {
               ? GoogleFirestoreAdminV1SourceInfo.fromJson(
                   json_['sourceInfo'] as core.Map<core.String, core.dynamic>)
               : null,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           type: json_['type'] as core.String?,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -4054,12 +4537,14 @@ class GoogleFirestoreAdminV1Database {
         if (cmekConfig != null) 'cmekConfig': cmekConfig!,
         if (concurrencyMode != null) 'concurrencyMode': concurrencyMode!,
         if (createTime != null) 'createTime': createTime!,
+        if (databaseEdition != null) 'databaseEdition': databaseEdition!,
         if (deleteProtectionState != null)
           'deleteProtectionState': deleteProtectionState!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (earliestVersionTime != null)
           'earliestVersionTime': earliestVersionTime!,
         if (etag != null) 'etag': etag!,
+        if (freeTier != null) 'freeTier': freeTier!,
         if (keyPrefix != null) 'keyPrefix': keyPrefix!,
         if (locationId != null) 'locationId': locationId!,
         if (name != null) 'name': name!,
@@ -4067,6 +4552,7 @@ class GoogleFirestoreAdminV1Database {
           'pointInTimeRecoveryEnablement': pointInTimeRecoveryEnablement!,
         if (previousId != null) 'previousId': previousId!,
         if (sourceInfo != null) 'sourceInfo': sourceInfo!,
+        if (tags != null) 'tags': tags!,
         if (type != null) 'type': type!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4074,6 +4560,12 @@ class GoogleFirestoreAdminV1Database {
           'versionRetentionPeriod': versionRetentionPeriod!,
       };
 }
+
+/// The request for FirestoreAdmin.DisableUserCreds.
+typedef GoogleFirestoreAdminV1DisableUserCredsRequest = $Empty;
+
+/// The request for FirestoreAdmin.EnableUserCreds.
+typedef GoogleFirestoreAdminV1EnableUserCredsRequest = $Empty;
 
 /// Encryption configuration for a new database being created from another
 /// source.
@@ -4320,7 +4812,27 @@ class GoogleFirestoreAdminV1Index {
   /// API. This is the default.
   /// - "DATASTORE_MODE_API" : The index can only be used by the Firestore in
   /// Datastore Mode query API.
+  /// - "MONGODB_COMPATIBLE_API" : The index can only be used by the
+  /// MONGODB_COMPATIBLE_API.
   core.String? apiScope;
+
+  /// The density configuration of the index.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "DENSITY_UNSPECIFIED" : Unspecified. It will use database default
+  /// setting. This value is input only.
+  /// - "SPARSE_ALL" : In order for an index entry to be added, the document
+  /// must contain all fields specified in the index. This is the only allowed
+  /// value for indexes having ApiScope `ANY_API` and `DATASTORE_MODE_API`.
+  /// - "SPARSE_ANY" : In order for an index entry to be added, the document
+  /// must contain at least one of the fields specified in the index.
+  /// Non-existent fields are treated as having a NULL value when generating
+  /// index entries.
+  /// - "DENSE" : An index entry will be added regardless of whether the
+  /// document contains any of the fields specified in the index. Non-existent
+  /// fields are treated as having a NULL value when generating index entries.
+  core.String? density;
 
   /// The fields supported by this index.
   ///
@@ -4333,6 +4845,18 @@ class GoogleFirestoreAdminV1Index {
   /// single field indexes, this will always be exactly one entry with a field
   /// path equal to the field path of the associated field.
   core.List<GoogleFirestoreAdminV1IndexField>? fields;
+
+  /// Whether the index is multikey.
+  ///
+  /// By default, the index is not multikey. For non-multikey indexes, none of
+  /// the paths in the index definition reach or traverse an array, except via
+  /// an explicit array index. For multikey indexes, at most one of the paths in
+  /// the index definition reach or traverse an array, except via an explicit
+  /// array index. Violations will result in errors. Note this field only
+  /// applies to index with MONGODB_COMPATIBLE_API ApiScope.
+  ///
+  /// Optional.
+  core.bool? multikey;
 
   /// A server defined name for this index.
   ///
@@ -4364,6 +4888,11 @@ class GoogleFirestoreAdminV1Index {
   /// index. Only available for Datastore Mode databases.
   core.String? queryScope;
 
+  /// The number of shards for the index.
+  ///
+  /// Optional.
+  core.int? shardCount;
+
   /// The serving state of the index.
   ///
   /// Output only.
@@ -4385,29 +4914,38 @@ class GoogleFirestoreAdminV1Index {
 
   GoogleFirestoreAdminV1Index({
     this.apiScope,
+    this.density,
     this.fields,
+    this.multikey,
     this.name,
     this.queryScope,
+    this.shardCount,
     this.state,
   });
 
   GoogleFirestoreAdminV1Index.fromJson(core.Map json_)
       : this(
           apiScope: json_['apiScope'] as core.String?,
+          density: json_['density'] as core.String?,
           fields: (json_['fields'] as core.List?)
               ?.map((value) => GoogleFirestoreAdminV1IndexField.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          multikey: json_['multikey'] as core.bool?,
           name: json_['name'] as core.String?,
           queryScope: json_['queryScope'] as core.String?,
+          shardCount: json_['shardCount'] as core.int?,
           state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiScope != null) 'apiScope': apiScope!,
+        if (density != null) 'density': density!,
         if (fields != null) 'fields': fields!,
+        if (multikey != null) 'multikey': multikey!,
         if (name != null) 'name': name!,
         if (queryScope != null) 'queryScope': queryScope!,
+        if (shardCount != null) 'shardCount': shardCount!,
         if (state != null) 'state': state!,
       };
 }
@@ -4679,6 +5217,105 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
       };
 }
 
+/// The response for FirestoreAdmin.ListUserCreds.
+class GoogleFirestoreAdminV1ListUserCredsResponse {
+  /// The user creds for the database.
+  core.List<GoogleFirestoreAdminV1UserCreds>? userCreds;
+
+  GoogleFirestoreAdminV1ListUserCredsResponse({
+    this.userCreds,
+  });
+
+  GoogleFirestoreAdminV1ListUserCredsResponse.fromJson(core.Map json_)
+      : this(
+          userCreds: (json_['userCreds'] as core.List?)
+              ?.map((value) => GoogleFirestoreAdminV1UserCreds.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (userCreds != null) 'userCreds': userCreds!,
+      };
+}
+
+/// A consistent snapshot of a database at a specific point in time.
+///
+/// A PITR (Point-in-time recovery) snapshot with previous versions of a
+/// database's data is available for every minute up to the associated
+/// database's data retention period. If the PITR feature is enabled, the
+/// retention period is 7 days; otherwise, it is one hour.
+class GoogleFirestoreAdminV1PitrSnapshot {
+  /// The name of the database that this was a snapshot of.
+  ///
+  /// Format: `projects/{project}/databases/{database}`.
+  ///
+  /// Required.
+  core.String? database;
+
+  /// Public UUID of the database the snapshot was associated with.
+  ///
+  /// Output only.
+  core.String? databaseUid;
+  core.List<core.int> get databaseUidAsBytes =>
+      convert.base64.decode(databaseUid!);
+
+  set databaseUidAsBytes(core.List<core.int> bytes_) {
+    databaseUid =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Snapshot time of the database.
+  ///
+  /// Required.
+  core.String? snapshotTime;
+
+  GoogleFirestoreAdminV1PitrSnapshot({
+    this.database,
+    this.databaseUid,
+    this.snapshotTime,
+  });
+
+  GoogleFirestoreAdminV1PitrSnapshot.fromJson(core.Map json_)
+      : this(
+          database: json_['database'] as core.String?,
+          databaseUid: json_['databaseUid'] as core.String?,
+          snapshotTime: json_['snapshotTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (databaseUid != null) 'databaseUid': databaseUid!,
+        if (snapshotTime != null) 'snapshotTime': snapshotTime!,
+      };
+}
+
+/// The request for FirestoreAdmin.ResetUserPassword.
+typedef GoogleFirestoreAdminV1ResetUserPasswordRequest = $Empty;
+
+/// Describes a Resource Identity principal.
+class GoogleFirestoreAdminV1ResourceIdentity {
+  /// Principal identifier string.
+  ///
+  /// See: https://cloud.google.com/iam/docs/principal-identifiers
+  ///
+  /// Output only.
+  core.String? principal;
+
+  GoogleFirestoreAdminV1ResourceIdentity({
+    this.principal,
+  });
+
+  GoogleFirestoreAdminV1ResourceIdentity.fromJson(core.Map json_)
+      : this(
+          principal: json_['principal'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (principal != null) 'principal': principal!,
+      };
+}
+
 /// The request message for FirestoreAdmin.RestoreDatabase.
 class GoogleFirestoreAdminV1RestoreDatabaseRequest {
   /// Backup to restore from.
@@ -4710,10 +5347,19 @@ class GoogleFirestoreAdminV1RestoreDatabaseRequest {
   /// Optional.
   GoogleFirestoreAdminV1EncryptionConfig? encryptionConfig;
 
+  /// Tags to be bound to the restored database.
+  ///
+  /// The tags should be provided in the format of `tagKeys/{tag_key_id} ->
+  /// tagValues/{tag_value_id}`.
+  ///
+  /// Optional. Immutable.
+  core.Map<core.String, core.String>? tags;
+
   GoogleFirestoreAdminV1RestoreDatabaseRequest({
     this.backup,
     this.databaseId,
     this.encryptionConfig,
+    this.tags,
   });
 
   GoogleFirestoreAdminV1RestoreDatabaseRequest.fromJson(core.Map json_)
@@ -4725,12 +5371,19 @@ class GoogleFirestoreAdminV1RestoreDatabaseRequest {
                   json_['encryptionConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
         if (databaseId != null) 'databaseId': databaseId!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -4845,6 +5498,78 @@ class GoogleFirestoreAdminV1TtlConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
+      };
+}
+
+/// A Cloud Firestore User Creds.
+class GoogleFirestoreAdminV1UserCreds {
+  /// The time the user creds were created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// The resource name of the UserCreds. Format:
+  /// `projects/{project}/databases/{database}/userCreds/{user_creds}`
+  core.String? name;
+
+  /// Resource Identity descriptor.
+  GoogleFirestoreAdminV1ResourceIdentity? resourceIdentity;
+
+  /// The plaintext server-generated password for the user creds.
+  ///
+  /// Only populated in responses for CreateUserCreds and ResetUserPassword.
+  ///
+  /// Output only.
+  core.String? securePassword;
+
+  /// Whether the user creds are enabled or disabled.
+  ///
+  /// Defaults to ENABLED on creation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. Should not be used.
+  /// - "ENABLED" : The user creds are enabled.
+  /// - "DISABLED" : The user creds are disabled.
+  core.String? state;
+
+  /// The time the user creds were last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleFirestoreAdminV1UserCreds({
+    this.createTime,
+    this.name,
+    this.resourceIdentity,
+    this.securePassword,
+    this.state,
+    this.updateTime,
+  });
+
+  GoogleFirestoreAdminV1UserCreds.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          resourceIdentity: json_.containsKey('resourceIdentity')
+              ? GoogleFirestoreAdminV1ResourceIdentity.fromJson(
+                  json_['resourceIdentity']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          securePassword: json_['securePassword'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (resourceIdentity != null) 'resourceIdentity': resourceIdentity!,
+        if (securePassword != null) 'securePassword': securePassword!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

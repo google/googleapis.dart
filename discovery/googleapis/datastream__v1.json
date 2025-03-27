@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250219",
+    "revision": "20250722",
     "rootUrl": "https://datastream.googleapis.com/",
     "servicePath": "",
     "title": "Datastream API",
@@ -183,6 +183,12 @@
                                 "name"
                             ],
                             "parameters": {
+                                "extraLocationTypes": {
+                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "filter": {
                                     "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
@@ -602,6 +608,11 @@
                                             "description": "Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "validateOnly": {
+                                            "description": "Optional. When supplied with PSC Interface config, will get/create the tenant project required for the customer to allow list and won't actually create the private connection.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+parent}/privateConnections",
@@ -1271,6 +1282,10 @@
             "description": "Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.",
             "id": "BackfillAllStrategy",
             "properties": {
+                "mongodbExcludedObjects": {
+                    "$ref": "MongodbCluster",
+                    "description": "MongoDB data source objects to avoid backfilling"
+                },
                 "mysqlExcludedObjects": {
                     "$ref": "MysqlRdbms",
                     "description": "MySQL data source objects to avoid backfilling."
@@ -1363,6 +1378,12 @@
         "BackfillNoneStrategy": {
             "description": "Backfill strategy to disable automatic backfill for the Stream's objects.",
             "id": "BackfillNoneStrategy",
+            "properties": {},
+            "type": "object"
+        },
+        "BasicEncryption": {
+            "description": "Message to represent the option where Datastream will enforce encryption without authenticating server identity. Server certificates will be trusted by default.",
+            "id": "BasicEncryption",
             "properties": {},
             "type": "object"
         },
@@ -1526,6 +1547,10 @@
                     "description": "Labels.",
                     "type": "object"
                 },
+                "mongodbProfile": {
+                    "$ref": "MongodbProfile",
+                    "description": "MongoDB Connection Profile configuration."
+                },
                 "mysqlProfile": {
                     "$ref": "MysqlProfile",
                     "description": "MySQL ConnectionProfile configuration."
@@ -1637,6 +1662,10 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "mongodbCluster": {
+                    "$ref": "MongodbCluster",
+                    "description": "MongoDB cluster to enrich with child data objects and metadata."
+                },
                 "mysqlRdbms": {
                     "$ref": "MysqlRdbms",
                     "description": "MySQL RDBMS to enrich with child data objects and metadata."
@@ -1649,6 +1678,10 @@
                     "$ref": "PostgresqlRdbms",
                     "description": "PostgreSQL RDBMS to enrich with child data objects and metadata."
                 },
+                "salesforceOrg": {
+                    "$ref": "SalesforceOrg",
+                    "description": "Salesforce organization to enrich with child data objects and metadata."
+                },
                 "sqlServerRdbms": {
                     "$ref": "SqlServerRdbms",
                     "description": "SQLServer RDBMS to enrich with child data objects and metadata."
@@ -1660,6 +1693,10 @@
             "description": "Response from a discover request.",
             "id": "DiscoverConnectionProfileResponse",
             "properties": {
+                "mongodbCluster": {
+                    "$ref": "MongodbCluster",
+                    "description": "Enriched MongoDB cluster."
+                },
                 "mysqlRdbms": {
                     "$ref": "MysqlRdbms",
                     "description": "Enriched MySQL RDBMS object."
@@ -1671,6 +1708,10 @@
                 "postgresqlRdbms": {
                     "$ref": "PostgresqlRdbms",
                     "description": "Enriched PostgreSQL RDBMS object."
+                },
+                "salesforceOrg": {
+                    "$ref": "SalesforceOrg",
+                    "description": "Enriched Salesforce organization."
                 },
                 "sqlServerRdbms": {
                     "$ref": "SqlServerRdbms",
@@ -1688,6 +1729,27 @@
         "Empty": {
             "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
             "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "EncryptionAndServerValidation": {
+            "description": "Message to represent the option where Datastream will enforce encryption and authenticate server identity. ca_certificate must be set if user selects this option.",
+            "id": "EncryptionAndServerValidation",
+            "properties": {
+                "caCertificate": {
+                    "description": "Optional. Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.",
+                    "type": "string"
+                },
+                "serverCertificateHostname": {
+                    "description": "Optional. The hostname mentioned in the Subject or SAN extension of the server certificate. This field is used for bypassing the hostname validation while verifying server certificate. This is required for scenarios where the host name that datastream connects to is different from the certificate's subject. This specifically happens for private connectivity. It could also happen when the customer provides a public IP in connection profile but the same is not present in the server certificate.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EncryptionNotEnforced": {
+            "description": "Message to represent the option where encryption is not enforced. An empty message right now to allow future extensibility.",
+            "id": "EncryptionNotEnforced",
             "properties": {},
             "type": "object"
         },
@@ -1816,6 +1878,22 @@
             "description": "Use GTID based replication.",
             "id": "Gtid",
             "properties": {},
+            "type": "object"
+        },
+        "HostAddress": {
+            "description": "A HostAddress represents a transport end point, which is the combination of an IP address or hostname and a port number.",
+            "id": "HostAddress",
+            "properties": {
+                "hostname": {
+                    "description": "Required. Hostname for the connection.",
+                    "type": "string"
+                },
+                "port": {
+                    "description": "Optional. Port for the connection.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
             "type": "object"
         },
         "JsonFileFormat": {
@@ -2079,6 +2157,182 @@
             "properties": {},
             "type": "object"
         },
+        "MongodbCluster": {
+            "description": "MongoDB Cluster structure.",
+            "id": "MongodbCluster",
+            "properties": {
+                "databases": {
+                    "description": "MongoDB databases in the cluster.",
+                    "items": {
+                        "$ref": "MongodbDatabase"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "MongodbCollection": {
+            "description": "MongoDB Collection.",
+            "id": "MongodbCollection",
+            "properties": {
+                "collection": {
+                    "description": "Collection name.",
+                    "type": "string"
+                },
+                "fields": {
+                    "description": "Fields in the collection.",
+                    "items": {
+                        "$ref": "MongodbField"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "MongodbDatabase": {
+            "description": "MongoDB Database.",
+            "id": "MongodbDatabase",
+            "properties": {
+                "collections": {
+                    "description": "Collections in the database.",
+                    "items": {
+                        "$ref": "MongodbCollection"
+                    },
+                    "type": "array"
+                },
+                "database": {
+                    "description": "Database name.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MongodbField": {
+            "description": "MongoDB Field.",
+            "id": "MongodbField",
+            "properties": {
+                "field": {
+                    "description": "Field name.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MongodbObjectIdentifier": {
+            "description": "MongoDB data source object identifier.",
+            "id": "MongodbObjectIdentifier",
+            "properties": {
+                "collection": {
+                    "description": "Required. The collection name.",
+                    "type": "string"
+                },
+                "database": {
+                    "description": "Required. The database name.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MongodbProfile": {
+            "description": "MongoDB profile.",
+            "id": "MongodbProfile",
+            "properties": {
+                "hostAddresses": {
+                    "description": "Required. List of host addresses for a MongoDB cluster. For SRV connection format, this list must contain exactly one DNS host without a port. For Standard connection format, this list must contain all the required hosts in the cluster with their respective ports.",
+                    "items": {
+                        "$ref": "HostAddress"
+                    },
+                    "type": "array"
+                },
+                "password": {
+                    "description": "Optional. Password for the MongoDB connection. Mutually exclusive with the `secret_manager_stored_password` field.",
+                    "type": "string"
+                },
+                "replicaSet": {
+                    "description": "Optional. Name of the replica set. Only needed for self hosted replica set type MongoDB cluster. For SRV connection format, this field must be empty. For Standard connection format, this field must be specified.",
+                    "type": "string"
+                },
+                "secretManagerStoredPassword": {
+                    "description": "Optional. A reference to a Secret Manager resource name storing the SQLServer connection password. Mutually exclusive with the `password` field.",
+                    "type": "string"
+                },
+                "srvConnectionFormat": {
+                    "$ref": "SrvConnectionFormat",
+                    "description": "Srv connection format."
+                },
+                "sslConfig": {
+                    "$ref": "MongodbSslConfig",
+                    "description": "Optional. SSL configuration for the MongoDB connection."
+                },
+                "standardConnectionFormat": {
+                    "$ref": "StandardConnectionFormat",
+                    "description": "Standard connection format."
+                },
+                "username": {
+                    "description": "Required. Username for the MongoDB connection.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MongodbSourceConfig": {
+            "description": "MongoDB source configuration.",
+            "id": "MongodbSourceConfig",
+            "properties": {
+                "excludeObjects": {
+                    "$ref": "MongodbCluster",
+                    "description": "MongoDB collections to exclude from the stream."
+                },
+                "includeObjects": {
+                    "$ref": "MongodbCluster",
+                    "description": "MongoDB collections to include in the stream."
+                },
+                "maxConcurrentBackfillTasks": {
+                    "description": "Optional. Maximum number of concurrent backfill tasks. The number should be non-negative and less than or equal to 50. If not set (or set to 0), the system's default value is used",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "MongodbSslConfig": {
+            "description": "MongoDB SSL configuration information.",
+            "id": "MongodbSslConfig",
+            "properties": {
+                "caCertificate": {
+                    "description": "Optional. Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.",
+                    "type": "string"
+                },
+                "caCertificateSet": {
+                    "description": "Output only. Indicates whether the ca_certificate field is set.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "clientCertificate": {
+                    "description": "Optional. Input only. PEM-encoded certificate that will be used by the replica to authenticate against the source database server. If this field is used then the 'client_key' and the 'ca_certificate' fields are mandatory.",
+                    "type": "string"
+                },
+                "clientCertificateSet": {
+                    "description": "Output only. Indicates whether the client_certificate field is set.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "clientKey": {
+                    "description": "Optional. Input only. PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' and the 'ca_certificate' fields are mandatory.",
+                    "type": "string"
+                },
+                "clientKeySet": {
+                    "description": "Output only. Indicates whether the client_key field is set.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "secretManagerStoredClientKey": {
+                    "description": "Optional. Input only. A reference to a Secret Manager resource name storing the PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' and the 'ca_certificate' fields are mandatory. Mutually exclusive with the `client_key` field.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "MostRecentStartPosition": {
             "description": "CDC strategy to start replicating from the most recent position in the source.",
             "id": "MostRecentStartPosition",
@@ -2209,6 +2463,10 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "secretManagerStoredPassword": {
+                    "description": "Optional. A reference to a Secret Manager resource name storing the MySQL connection password. Mutually exclusive with the `password` field.",
+                    "type": "string"
+                },
                 "sslConfig": {
                     "$ref": "MysqlSslConfig",
                     "description": "SSL configuration for the MySQL connection."
@@ -2290,7 +2548,7 @@
                     "type": "boolean"
                 },
                 "clientKey": {
-                    "description": "Optional. Input only. PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' and the 'ca_certificate' fields are mandatory. Mutually exclusive with the `secret_manager_stored_client_key` field.",
+                    "description": "Optional. Input only. PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' and the 'ca_certificate' fields are mandatory.",
                     "type": "string"
                 },
                 "clientKeySet": {
@@ -2452,13 +2710,17 @@
                     "description": "Optional. SSL configuration for the Oracle connection."
                 },
                 "password": {
-                    "description": "Optional. Password for the Oracle ASM connection.",
+                    "description": "Optional. Password for the Oracle ASM connection. Mutually exclusive with the `secret_manager_stored_password` field.",
                     "type": "string"
                 },
                 "port": {
                     "description": "Required. Port for the Oracle ASM connection.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "secretManagerStoredPassword": {
+                    "description": "Optional. A reference to a Secret Manager resource name storing the Oracle ASM connection password. Mutually exclusive with the `password` field.",
+                    "type": "string"
                 },
                 "username": {
                     "description": "Required. Username for the Oracle ASM connection.",
@@ -2679,6 +2941,10 @@
                     "description": "Output only. Indicates whether the ca_certificate field has been set for this Connection-Profile.",
                     "readOnly": true,
                     "type": "boolean"
+                },
+                "serverCertificateDistinguishedName": {
+                    "description": "Optional. The distinguished name (DN) mentioned in the server certificate. This corresponds to SSL_SERVER_CERT_DN sqlnet parameter. Refer https://docs.oracle.com/en/database/oracle/oracle-database/19/netrf/local-naming-parameters-in-tns-ora-file.html#GUID-70AB0695-A9AA-4A94-B141-4C605236EEB7 If this field is not provided, the DN matching is not enforced.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2779,6 +3045,10 @@
                     "description": "Port for the PostgreSQL connection, default value is 5432.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "secretManagerStoredPassword": {
+                    "description": "Optional. A reference to a Secret Manager resource name storing the PostgreSQL connection password. Mutually exclusive with the `password` field.",
+                    "type": "string"
                 },
                 "sslConfig": {
                     "$ref": "PostgresqlSslConfig",
@@ -2915,6 +3185,10 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "pscInterfaceConfig": {
+                    "$ref": "PscInterfaceConfig",
+                    "description": "PSC Interface Config."
+                },
                 "satisfiesPzi": {
                     "description": "Output only. Reserved for future use.",
                     "readOnly": true,
@@ -2965,6 +3239,17 @@
             "properties": {
                 "privateConnection": {
                     "description": "Required. A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PscInterfaceConfig": {
+            "description": "The PSC Interface configuration is used to create PSC Interface between Datastream and the consumer's PSC.",
+            "id": "PscInterfaceConfig",
+            "properties": {
+                "networkAttachment": {
+                    "description": "Required. Fully qualified name of the Network Attachment that Datastream will connect to. Format: `projects/{project}/regions/{region}/networkAttachments/{name}`",
                     "type": "string"
                 }
             },
@@ -3143,7 +3428,11 @@
                     "type": "string"
                 },
                 "clientKey": {
-                    "description": "Optional. Input only. PEM-encoded private key associated with the client certificate. This value will be used during the SSL/TLS handshake, allowing the PostgreSQL server to authenticate the client's identity, i.e. identity of the Datastream. Mutually exclusive with the `secret_manager_stored_client_key` field.",
+                    "description": "Optional. Input only. PEM-encoded private key associated with the client certificate. This value will be used during the SSL/TLS handshake, allowing the PostgreSQL server to authenticate the client's identity, i.e. identity of the Datastream.",
+                    "type": "string"
+                },
+                "serverCertificateHostname": {
+                    "description": "Optional. The hostname mentioned in the Subject or SAN extension of the server certificate. If this field is not provided, the hostname in the server certificate is not validated.",
                     "type": "string"
                 }
             },
@@ -3155,6 +3444,10 @@
             "properties": {
                 "caCertificate": {
                     "description": "Required. Input only. PEM-encoded server root CA certificate.",
+                    "type": "string"
+                },
+                "serverCertificateHostname": {
+                    "description": "Optional. The hostname mentioned in the Subject or SAN extension of the server certificate. If this field is not provided, the hostname in the server certificate is not validated.",
                     "type": "string"
                 }
             },
@@ -3175,6 +3468,10 @@
             "description": "The configuration of the stream source.",
             "id": "SourceConfig",
             "properties": {
+                "mongodbSourceConfig": {
+                    "$ref": "MongodbSourceConfig",
+                    "description": "MongoDB data source configuration."
+                },
                 "mysqlSourceConfig": {
                     "$ref": "MysqlSourceConfig",
                     "description": "MySQL data source configuration."
@@ -3209,6 +3506,10 @@
                 "datasetTemplate": {
                     "$ref": "DatasetTemplate",
                     "description": "The dataset template to use for dynamic dataset creation."
+                },
+                "projectId": {
+                    "description": "Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3217,6 +3518,10 @@
             "description": "Represents an identifier of an object in the data source.",
             "id": "SourceObjectIdentifier",
             "properties": {
+                "mongodbIdentifier": {
+                    "$ref": "MongodbObjectIdentifier",
+                    "description": "MongoDB data source object identifier."
+                },
                 "mysqlIdentifier": {
                     "$ref": "MysqlObjectIdentifier",
                     "description": "Mysql data source object identifier."
@@ -3359,6 +3664,14 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "secretManagerStoredPassword": {
+                    "description": "Optional. A reference to a Secret Manager resource name storing the SQLServer connection password. Mutually exclusive with the `password` field.",
+                    "type": "string"
+                },
+                "sslConfig": {
+                    "$ref": "SqlServerSslConfig",
+                    "description": "Optional. SSL configuration for the SQLServer connection."
+                },
                 "username": {
                     "description": "Required. Username for the SQLServer connection.",
                     "type": "string"
@@ -3431,6 +3744,25 @@
             },
             "type": "object"
         },
+        "SqlServerSslConfig": {
+            "description": "SQL Server SSL configuration information.",
+            "id": "SqlServerSslConfig",
+            "properties": {
+                "basicEncryption": {
+                    "$ref": "BasicEncryption",
+                    "description": "If set, Datastream will enforce encryption without authenticating server identity. Server certificates will be trusted by default."
+                },
+                "encryptionAndServerValidation": {
+                    "$ref": "EncryptionAndServerValidation",
+                    "description": "If set, Datastream will enforce encryption and authenticate server identity."
+                },
+                "encryptionNotEnforced": {
+                    "$ref": "EncryptionNotEnforced",
+                    "description": "If set, Datastream will not enforce encryption. If the DB server mandates encryption, then connection will be encrypted but server identity will not be authenticated."
+                }
+            },
+            "type": "object"
+        },
         "SqlServerTable": {
             "description": "SQLServer table.",
             "id": "SqlServerTable",
@@ -3453,6 +3785,23 @@
             "description": "Configuration to use Transaction Logs CDC read method.",
             "id": "SqlServerTransactionLogs",
             "properties": {},
+            "type": "object"
+        },
+        "SrvConnectionFormat": {
+            "description": "Srv connection format.",
+            "id": "SrvConnectionFormat",
+            "properties": {},
+            "type": "object"
+        },
+        "StandardConnectionFormat": {
+            "description": "Standard connection format.",
+            "id": "StandardConnectionFormat",
+            "properties": {
+                "directConnection": {
+                    "description": "Optional. Specifies whether the client connects directly to the host[:port] in the connection URI.",
+                    "type": "boolean"
+                }
+            },
             "type": "object"
         },
         "StartBackfillJobRequest": {

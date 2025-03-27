@@ -477,13 +477,17 @@ class DeviceSignals {
   /// device's network settings.
   core.List<core.String>? systemDnsServers;
 
-  /// Whether Chrome is blocking third-party software injection or not.
+  /// The corresponding policy is now deprecated.
   ///
-  /// This setting may be controlled by an enterprise policy:
+  /// Whether Chrome is blocking third-party software injection or not. This
+  /// setting may be controlled by an enterprise policy:
   /// https://chromeenterprise.google/policies/?policy=ThirdPartyBlockingEnabled.
   /// Available on Windows only.
   ///
-  /// Output only.
+  /// Output only. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? thirdPartyBlockingEnabled;
 
   /// The trigger which generated this set of signals.
@@ -710,6 +714,11 @@ class VerifyChallengeResponseRequest {
 }
 
 /// Result message for VerifiedAccess.VerifyChallengeResponse.
+///
+/// The response returned when successful for Managed profiles on Unmanaged
+/// browsers will NOT have devicePermanentId, keyTrustLevel, virtualDeviceId and
+/// customerId fields. Managed profiles will INSTEAD have the profileCustomerId,
+/// virtualProfileId, profilePermanentId and profileKeyTrustLevel fields.
 class VerifyChallengeResponseResult {
   /// Attested device ID (ADID).
   ///

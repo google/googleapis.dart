@@ -33,6 +33,7 @@
 ///   - [NamespacesRoutesResource]
 ///   - [NamespacesServicesResource]
 ///   - [NamespacesTasksResource]
+///   - [NamespacesWorkerpoolsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsAuthorizeddomainsResource]
 ///   - [ProjectsLocationsResource]
@@ -44,6 +45,7 @@
 ///     - [ProjectsLocationsRevisionsResource]
 ///     - [ProjectsLocationsRoutesResource]
 ///     - [ProjectsLocationsServicesResource]
+///     - [ProjectsLocationsWorkerpoolsResource]
 library;
 
 import 'dart:async' as async;
@@ -101,6 +103,8 @@ class NamespacesResource {
   NamespacesServicesResource get services =>
       NamespacesServicesResource(_requester);
   NamespacesTasksResource get tasks => NamespacesTasksResource(_requester);
+  NamespacesWorkerpoolsResource get workerpools =>
+      NamespacesWorkerpoolsResource(_requester);
 
   NamespacesResource(commons.ApiRequester client) : _requester = client;
 }
@@ -1735,6 +1739,277 @@ class NamespacesTasksResource {
   }
 }
 
+class NamespacesWorkerpoolsResource {
+  final commons.ApiRequester _requester;
+
+  NamespacesWorkerpoolsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new WorkerPool.
+  ///
+  /// WorkerPool creation will trigger a new deployment. Use GetWorkerPool, and
+  /// check worker_pool.status to determine if the WorkerPool is ready.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource's parent. In Cloud Run, it may be one of
+  /// the following: * `{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}/workerpools` *
+  /// `projects/{project_id_or_number}/locations/{region}` *
+  /// `projects/{project_id_or_number}/regions/{region}`
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
+  ///
+  /// [dryRun] - Indicates that the server should validate the request and
+  /// populate default values without persisting the request. Supported values:
+  /// `all`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkerPool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkerPool> create(
+    WorkerPool request,
+    core.String parent, {
+    core.String? dryRun,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (dryRun != null) 'dryRun': [dryRun],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'apis/run.googleapis.com/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/workerpools';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WorkerPool.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the provided worker pool.
+  ///
+  /// This will cause the WorkerPool to stop all instances and will delete all
+  /// associated WorkerPoolRevisions.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the worker pool to delete.
+  /// It can be any of the following forms: *
+  /// `namespaces/{project_id_or_number}/workerpools/{worker_pool_name}` (only
+  /// when the `endpoint` is regional) *
+  /// `projects/{project_id_or_number}/locations/{region}/workerpools/{worker_pool_name}`
+  /// *
+  /// `projects/{project_id_or_number}/regions/{region}/workerpools/{worker_pool_name}`
+  /// Value must have pattern `^namespaces/\[^/\]+/workerpools/\[^/\]+$`.
+  ///
+  /// [dryRun] - Indicates that the server should validate the request and
+  /// populate default values without persisting the request. Supported values:
+  /// `all`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Status].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Status> delete(
+    core.String name, {
+    core.String? dryRun,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (dryRun != null) 'dryRun': [dryRun],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a worker pool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the worker pool to
+  /// retrieve. It can be any of the following forms: *
+  /// `namespaces/{project_id_or_number}/workerpools/{worker_pool_name}` (only
+  /// when the `endpoint` is regional) *
+  /// `projects/{project_id_or_number}/locations/{region}/workerpools/{worker_pool_name}`
+  /// *
+  /// `projects/{project_id_or_number}/regions/{region}/workerpools/{worker_pool_name}`
+  /// Value must have pattern `^namespaces/\[^/\]+/workerpools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkerPool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkerPool> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkerPool.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists worker pools for the given project and region.
+  ///
+  /// Results are sorted by creation time, descending.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent from where the resources should be listed.
+  /// In Cloud Run, it may be one of the following: * `{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}/workerpools` *
+  /// `projects/{project_id_or_number}/locations/{region}` *
+  /// `projects/{project_id_or_number}/regions/{region}`
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
+  ///
+  /// [continue_] - Encoded string to continue paging.
+  ///
+  /// [labelSelector] - =, !=, exists, in, and notIn.
+  ///
+  /// [limit] - The maximum number of records that should be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkerPoolsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkerPoolsResponse> list(
+    core.String parent, {
+    core.String? continue_,
+    core.String? labelSelector,
+    core.int? limit,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'apis/run.googleapis.com/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/workerpools';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWorkerPoolsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Replaces a worker pool.
+  ///
+  /// Only the spec and metadata labels and annotations are modifiable. After
+  /// the Update request, Cloud Run will work to make the 'status' match the
+  /// requested 'spec'. May provide metadata.resourceVersion to enforce update
+  /// from last read for optimistic concurrency control.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the worker pool to replace.
+  /// It can be any of the following forms: *
+  /// `namespaces/{project_id_or_number}/workerpools/{worker_pool_name}` (only
+  /// when the `endpoint` is regional) *
+  /// `projects/{project_id_or_number}/locations/{region}/workerpools/{worker_pool_name}`
+  /// *
+  /// `projects/{project_id_or_number}/regions/{region}/workerpools/{worker_pool_name}`
+  /// Value must have pattern `^namespaces/\[^/\]+/workerpools/\[^/\]+$`.
+  ///
+  /// [dryRun] - Indicates that the server should validate the request and
+  /// populate default values without persisting the request. Supported values:
+  /// `all`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkerPool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkerPool> replaceWorkerPool(
+    WorkerPool request,
+    core.String name, {
+    core.String? dryRun,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (dryRun != null) 'dryRun': [dryRun],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WorkerPool.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
@@ -1817,6 +2092,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsRoutesResource(_requester);
   ProjectsLocationsServicesResource get services =>
       ProjectsLocationsServicesResource(_requester);
+  ProjectsLocationsWorkerpoolsResource get workerpools =>
+      ProjectsLocationsWorkerpoolsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -1826,6 +2103,10 @@ class ProjectsLocationsResource {
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1849,12 +2130,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3364,6 +3647,164 @@ class ProjectsLocationsServicesResource {
   }
 }
 
+class ProjectsLocationsWorkerpoolsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkerpoolsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get the IAM Access Control policy currently in effect for the given worker
+  /// pool.
+  ///
+  /// This result does not include any inherited policies.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerpools/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the IAM Access control policy for the specified worker pool.
+  ///
+  /// Overwrites any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerpools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified worker pool.
+  ///
+  /// There are no permissions required for making this API call.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerpools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Information for connecting over HTTP(s).
 class Addressable {
   core.String? url;
@@ -3987,8 +4428,6 @@ class Container {
   core.List<ContainerPort>? ports;
 
   /// Readiness probe to be used for health checks.
-  ///
-  /// Not supported by Cloud Run.
   Probe? readinessProbe;
 
   /// Compute Resources required by this container.
@@ -5209,6 +5648,45 @@ class HTTPHeader {
       };
 }
 
+/// Holds a single instance split entry for the Worker.
+///
+/// Allocations can be done to a specific Revision name, or pointing to the
+/// latest Ready Revision.
+class InstanceSplit {
+  /// Uses the "status.latestReadyRevisionName" to determine the traffic target.
+  ///
+  /// When it changes, traffic will automatically migrate from the prior "latest
+  /// ready" revision to the new one.
+  core.bool? latestRevision;
+
+  /// Specifies percent of the instance split to this Revision.
+  ///
+  /// This defaults to zero if unspecified.
+  core.int? percent;
+
+  /// Revision to which to assign this portion of instances.
+  core.String? revisionName;
+
+  InstanceSplit({
+    this.latestRevision,
+    this.percent,
+    this.revisionName,
+  });
+
+  InstanceSplit.fromJson(core.Map json_)
+      : this(
+          latestRevision: json_['latestRevision'] as core.bool?,
+          percent: json_['percent'] as core.int?,
+          revisionName: json_['revisionName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latestRevision != null) 'latestRevision': latestRevision!,
+        if (percent != null) 'percent': percent!,
+        if (revisionName != null) 'revisionName': revisionName!,
+      };
+}
+
 /// Job represents the configuration of a single job, which references a
 /// container image which is run to completion.
 class Job {
@@ -5932,6 +6410,60 @@ class ListTasksResponse {
       };
 }
 
+/// A list of WorkerPool resources.
+class ListWorkerPoolsResponse {
+  /// The API version for this call; returns "run.googleapis.com/v1".
+  core.String? apiVersion;
+
+  /// List of WorkerPools.
+  core.List<WorkerPool>? items;
+
+  /// The kind of this resource; returns "WorkerPoolList".
+  core.String? kind;
+
+  /// Metadata associated with this WorkerPool list.
+  ListMeta? metadata;
+
+  /// For calls against the global endpoint, returns the list of Cloud locations
+  /// that could not be reached.
+  ///
+  /// For regional calls, this field is not used.
+  core.List<core.String>? unreachable;
+
+  ListWorkerPoolsResponse({
+    this.apiVersion,
+    this.items,
+    this.kind,
+    this.metadata,
+    this.unreachable,
+  });
+
+  ListWorkerPoolsResponse.fromJson(core.Map json_)
+      : this(
+          apiVersion: json_['apiVersion'] as core.String?,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => WorkerPool.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          kind: json_['kind'] as core.String?,
+          metadata: json_.containsKey('metadata')
+              ? ListMeta.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+        if (metadata != null) 'metadata': metadata!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Not supported by Cloud Run.
 ///
 /// LocalObjectReference contains enough information to let you locate the
@@ -6029,6 +6561,7 @@ class ObjectMeta {
   /// `run.googleapis.com/encryption-key`: Revision, Execution. *
   /// `run.googleapis.com/execution-environment`: Revision, Execution. *
   /// `run.googleapis.com/gc-traffic-tags`: Service. *
+  /// `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. *
   /// `run.googleapis.com/health-check-disabled`: Revision. *
   /// `run.googleapis.com/ingress`: Service. *
   /// `run.googleapis.com/launch-stage`: Service, Job. *
@@ -6689,6 +7222,8 @@ class RevisionSpec {
   ///
   /// Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed value is
   /// 3600 seconds (1 hour).
+  ///
+  /// Optional.
   core.int? timeoutSeconds;
   core.List<Volume>? volumes;
 
@@ -7796,6 +8331,7 @@ class TaskAttemptResult {
   ///
   /// This may be unset if the container was unable to exit cleanly with a code
   /// due to some other failure. See status field for possible failure details.
+  /// At most one of exit_code or term_signal will be set.
   ///
   /// Optional.
   core.int? exitCode;
@@ -7807,9 +8343,18 @@ class TaskAttemptResult {
   /// Optional.
   GoogleRpcStatus? status;
 
+  /// Termination signal of the container.
+  ///
+  /// This is set to non-zero if the container is terminated by the system. At
+  /// most one of exit_code or term_signal will be set.
+  ///
+  /// Optional.
+  core.int? termSignal;
+
   TaskAttemptResult({
     this.exitCode,
     this.status,
+    this.termSignal,
   });
 
   TaskAttemptResult.fromJson(core.Map json_)
@@ -7819,11 +8364,13 @@ class TaskAttemptResult {
               ? GoogleRpcStatus.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
+          termSignal: json_['termSignal'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exitCode != null) 'exitCode': exitCode!,
         if (status != null) 'status': status!,
+        if (termSignal != null) 'termSignal': termSignal!,
       };
 }
 
@@ -8235,5 +8782,175 @@ class VolumeMount {
         if (name != null) 'name': name!,
         if (readOnly != null) 'readOnly': readOnly!,
         if (subPath != null) 'subPath': subPath!,
+      };
+}
+
+/// WorkerPool acts as a top-level container that manages a set instance splits
+/// among a set of Revisions and a template for creating new Revisions.
+class WorkerPool {
+  /// The API version for this call.
+  ///
+  /// It must be "run.googleapis.com/v1".
+  core.String? apiVersion;
+
+  /// The kind of resource.
+  ///
+  /// It must be "WorkerPool".
+  core.String? kind;
+
+  /// Metadata associated with this WorkerPool, including name, namespace,
+  /// labels, and annotations.
+  ///
+  /// In Cloud Run, annotations with 'run.googleapis.com/' and
+  /// 'autoscaling.knative.dev' are restricted, and the accepted annotations
+  /// will be different depending on the resource type. The following Cloud
+  /// Run-specific annotations are accepted in WorkerPool.metadata.annotations.
+  /// * `run.googleapis.com/binary-authorization-breakglass` *
+  /// `run.googleapis.com/binary-authorization` *
+  /// `run.googleapis.com/client-name` * `run.googleapis.com/description`
+  ObjectMeta? metadata;
+
+  /// Holds the desired state of the WorkerPool (from the client).
+  WorkerPoolSpec? spec;
+
+  /// Communicates the system-controlled state of the WorkerPool.
+  WorkerPoolStatus? status;
+
+  WorkerPool({
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.spec,
+    this.status,
+  });
+
+  WorkerPool.fromJson(core.Map json_)
+      : this(
+          apiVersion: json_['apiVersion'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          metadata: json_.containsKey('metadata')
+              ? ObjectMeta.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          spec: json_.containsKey('spec')
+              ? WorkerPoolSpec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: json_.containsKey('status')
+              ? WorkerPoolStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (kind != null) 'kind': kind!,
+        if (metadata != null) 'metadata': metadata!,
+        if (spec != null) 'spec': spec!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// WorkerPoolSpec holds the desired state of the WorkerPool's template and
+/// instance splits.
+class WorkerPoolSpec {
+  /// Specifies how to distribute instances over a collection of Revisions.
+  core.List<InstanceSplit>? instanceSplits;
+
+  /// Holds the latest specification for the Revision to be stamped out.
+  RevisionTemplate? template;
+
+  WorkerPoolSpec({
+    this.instanceSplits,
+    this.template,
+  });
+
+  WorkerPoolSpec.fromJson(core.Map json_)
+      : this(
+          instanceSplits: (json_['instanceSplits'] as core.List?)
+              ?.map((value) => InstanceSplit.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          template: json_.containsKey('template')
+              ? RevisionTemplate.fromJson(
+                  json_['template'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceSplits != null) 'instanceSplits': instanceSplits!,
+        if (template != null) 'template': template!,
+      };
+}
+
+/// The current state of the WorkerPool.
+///
+/// Output only.
+class WorkerPoolStatus {
+  /// Conditions communicate information about ongoing/complete reconciliation
+  /// processes that bring the `spec` inline with the observed state of the
+  /// world.
+  ///
+  /// * `Ready`: `True` when all underlying resources are ready.
+  core.List<GoogleCloudRunV1Condition>? conditions;
+
+  /// Holds the configured traffic distribution.
+  ///
+  /// These entries will always contain RevisionName references. When
+  /// ConfigurationName appears in the spec, this will hold the
+  /// LatestReadyRevisionName that we last observed.
+  core.List<InstanceSplit>? instanceSplits;
+
+  /// Name of the last revision that was created from this WorkerPool's
+  /// template.
+  ///
+  /// It might not be ready yet, for that use LatestReadyRevisionName.
+  core.String? latestCreatedRevisionName;
+
+  /// Name of the latest Revision from this WorkerPool's template that has had
+  /// its `Ready` condition become `True`.
+  core.String? latestReadyRevisionName;
+
+  /// Returns the generation last seen by the system.
+  ///
+  /// Clients polling for completed reconciliation should poll until
+  /// observedGeneration = metadata.generation and the Ready condition's status
+  /// is True or False.
+  core.int? observedGeneration;
+
+  WorkerPoolStatus({
+    this.conditions,
+    this.instanceSplits,
+    this.latestCreatedRevisionName,
+    this.latestReadyRevisionName,
+    this.observedGeneration,
+  });
+
+  WorkerPoolStatus.fromJson(core.Map json_)
+      : this(
+          conditions: (json_['conditions'] as core.List?)
+              ?.map((value) => GoogleCloudRunV1Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          instanceSplits: (json_['instanceSplits'] as core.List?)
+              ?.map((value) => InstanceSplit.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          latestCreatedRevisionName:
+              json_['latestCreatedRevisionName'] as core.String?,
+          latestReadyRevisionName:
+              json_['latestReadyRevisionName'] as core.String?,
+          observedGeneration: json_['observedGeneration'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
+        if (instanceSplits != null) 'instanceSplits': instanceSplits!,
+        if (latestCreatedRevisionName != null)
+          'latestCreatedRevisionName': latestCreatedRevisionName!,
+        if (latestReadyRevisionName != null)
+          'latestReadyRevisionName': latestReadyRevisionName!,
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration!,
       };
 }

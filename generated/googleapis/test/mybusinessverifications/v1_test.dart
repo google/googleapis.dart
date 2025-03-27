@@ -203,6 +203,61 @@ void checkFetchVerificationOptionsResponse(
   buildCounterFetchVerificationOptionsResponse--;
 }
 
+core.int buildCounterGenerateInstantVerificationTokenRequest = 0;
+api.GenerateInstantVerificationTokenRequest
+    buildGenerateInstantVerificationTokenRequest() {
+  final o = api.GenerateInstantVerificationTokenRequest();
+  buildCounterGenerateInstantVerificationTokenRequest++;
+  if (buildCounterGenerateInstantVerificationTokenRequest < 3) {
+    o.locationData = buildLocationData();
+    o.locationId = 'foo';
+  }
+  buildCounterGenerateInstantVerificationTokenRequest--;
+  return o;
+}
+
+void checkGenerateInstantVerificationTokenRequest(
+    api.GenerateInstantVerificationTokenRequest o) {
+  buildCounterGenerateInstantVerificationTokenRequest++;
+  if (buildCounterGenerateInstantVerificationTokenRequest < 3) {
+    checkLocationData(o.locationData!);
+    unittest.expect(
+      o.locationId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGenerateInstantVerificationTokenRequest--;
+}
+
+core.int buildCounterGenerateInstantVerificationTokenResponse = 0;
+api.GenerateInstantVerificationTokenResponse
+    buildGenerateInstantVerificationTokenResponse() {
+  final o = api.GenerateInstantVerificationTokenResponse();
+  buildCounterGenerateInstantVerificationTokenResponse++;
+  if (buildCounterGenerateInstantVerificationTokenResponse < 3) {
+    o.instantVerificationToken = 'foo';
+    o.result = 'foo';
+  }
+  buildCounterGenerateInstantVerificationTokenResponse--;
+  return o;
+}
+
+void checkGenerateInstantVerificationTokenResponse(
+    api.GenerateInstantVerificationTokenResponse o) {
+  buildCounterGenerateInstantVerificationTokenResponse++;
+  if (buildCounterGenerateInstantVerificationTokenResponse < 3) {
+    unittest.expect(
+      o.instantVerificationToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.result!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGenerateInstantVerificationTokenResponse--;
+}
+
 core.List<api.Verification> buildUnnamed1() => [
       buildVerification(),
       buildVerification(),
@@ -236,6 +291,30 @@ void checkListVerificationsResponse(api.ListVerificationsResponse o) {
     checkUnnamed1(o.verifications!);
   }
   buildCounterListVerificationsResponse--;
+}
+
+core.int buildCounterLocationData = 0;
+api.LocationData buildLocationData() {
+  final o = api.LocationData();
+  buildCounterLocationData++;
+  if (buildCounterLocationData < 3) {
+    o.address = buildPostalAddress();
+    o.name = 'foo';
+  }
+  buildCounterLocationData--;
+  return o;
+}
+
+void checkLocationData(api.LocationData o) {
+  buildCounterLocationData++;
+  if (buildCounterLocationData < 3) {
+    checkPostalAddress(o.address!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLocationData--;
 }
 
 core.List<core.String> buildUnnamed2() => [
@@ -671,6 +750,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GenerateInstantVerificationTokenRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGenerateInstantVerificationTokenRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateInstantVerificationTokenRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGenerateInstantVerificationTokenRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-GenerateInstantVerificationTokenResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGenerateInstantVerificationTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateInstantVerificationTokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGenerateInstantVerificationTokenResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListVerificationsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListVerificationsResponse();
@@ -678,6 +777,16 @@ void main() {
       final od = api.ListVerificationsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListVerificationsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-LocationData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLocationData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocationData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLocationData(od);
     });
   });
 
@@ -1088,6 +1197,65 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListVerificationsResponse(response as api.ListVerificationsResponse);
+    });
+  });
+
+  unittest.group('resource-VerificationTokensResource', () {
+    unittest.test('method--generate', () async {
+      final mock = HttpServerMock();
+      final res = api.MyBusinessVerificationsApi(mock).verificationTokens;
+      final arg_request = buildGenerateInstantVerificationTokenRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GenerateInstantVerificationTokenRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGenerateInstantVerificationTokenRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals('v1/verificationTokens:generate'),
+        );
+        pathOffset += 30;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGenerateInstantVerificationTokenResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.generate(arg_request, $fields: arg_$fields);
+      checkGenerateInstantVerificationTokenResponse(
+          response as api.GenerateInstantVerificationTokenResponse);
     });
   });
 }

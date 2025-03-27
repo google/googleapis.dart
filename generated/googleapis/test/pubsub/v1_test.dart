@@ -1037,6 +1037,7 @@ api.MessageTransform buildMessageTransform() {
   final o = api.MessageTransform();
   buildCounterMessageTransform++;
   if (buildCounterMessageTransform < 3) {
+    o.disabled = true;
     o.enabled = true;
     o.javascriptUdf = buildJavaScriptUDF();
   }
@@ -1047,6 +1048,7 @@ api.MessageTransform buildMessageTransform() {
 void checkMessageTransform(api.MessageTransform o) {
   buildCounterMessageTransform++;
   if (buildCounterMessageTransform < 3) {
+    unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(o.enabled!, unittest.isTrue);
     checkJavaScriptUDF(o.javascriptUdf!);
   }

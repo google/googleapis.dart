@@ -448,8 +448,8 @@ class ProjectsKeysResource {
   /// Adds an IP override to a key.
   ///
   /// The following restrictions hold: * The maximum number of IP overrides per
-  /// key is 100. * For any conflict (such as IP already exists or IP part of an
-  /// existing IP range), an error is returned.
+  /// key is 1000. * For any conflict (such as IP already exists or IP part of
+  /// an existing IP range), an error is returned.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1653,6 +1653,44 @@ class GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment {
       };
 }
 
+/// Bot information and metadata.
+class GoogleCloudRecaptchaenterpriseV1Bot {
+  /// Enumerated field representing the type of bot.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BOT_TYPE_UNSPECIFIED" : Default unspecified type.
+  /// - "AI_AGENT" : Software program that interacts with a site and performs
+  /// tasks autonomously.
+  /// - "CONTENT_SCRAPER" : Software that extracts specific data from sites for
+  /// use.
+  /// - "SEARCH_INDEXER" : Software that crawls sites and stores content for the
+  /// purpose of efficient retrieval, likely as part of a search engine.
+  core.String? botType;
+
+  /// Enumerated string value that indicates the identity of the bot, formatted
+  /// in kebab-case.
+  ///
+  /// Optional.
+  core.String? name;
+
+  GoogleCloudRecaptchaenterpriseV1Bot({
+    this.botType,
+    this.name,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1Bot.fromJson(core.Map json_)
+      : this(
+          botType: json_['botType'] as core.String?,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (botType != null) 'botType': botType!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Metrics related to challenges.
 class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics {
   /// Count of submitted challenge solutions that were incorrect or otherwise
@@ -2246,6 +2284,14 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict?
       cardTestingVerdict;
 
+  /// Reasons why the transaction is probably fraudulent and received a high
+  /// transaction risk score.
+  ///
+  /// Output only.
+  core.List<
+          GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>?
+      riskReasons;
+
   /// Assessment of this transaction for risk of a stolen instrument.
   ///
   /// Output only.
@@ -2263,6 +2309,7 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment({
     this.behavioralTrustVerdict,
     this.cardTestingVerdict,
+    this.riskReasons,
     this.stolenInstrumentVerdict,
     this.transactionRisk,
   });
@@ -2280,6 +2327,11 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
                   .fromJson(json_['cardTestingVerdict']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          riskReasons: (json_['riskReasons'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           stolenInstrumentVerdict: json_.containsKey('stolenInstrumentVerdict')
               ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict
                   .fromJson(json_['stolenInstrumentVerdict']
@@ -2293,6 +2345,7 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
           'behavioralTrustVerdict': behavioralTrustVerdict!,
         if (cardTestingVerdict != null)
           'cardTestingVerdict': cardTestingVerdict!,
+        if (riskReasons != null) 'riskReasons': riskReasons!,
         if (stolenInstrumentVerdict != null)
           'stolenInstrumentVerdict': stolenInstrumentVerdict!,
         if (transactionRisk != null) 'transactionRisk': transactionRisk!,
@@ -2347,6 +2400,42 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdic
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (risk != null) 'risk': risk!,
+      };
+}
+
+/// Risk reasons applicable to the Fraud Prevention assessment.
+class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason {
+  /// Risk reasons applicable to the Fraud Prevention assessment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REASON_UNSPECIFIED" : Default unspecified type.
+  /// - "HIGH_TRANSACTION_VELOCITY" : A suspiciously high number of recent
+  /// transactions have used identifiers present in this transaction.
+  /// - "EXCESSIVE_ENUMERATION_PATTERN" : User is cycling through a suspiciously
+  /// large number of identifiers, suggesting enumeration or validation attacks
+  /// within a potential fraud network.
+  /// - "SHORT_IDENTITY_HISTORY" : User has a short history or no history in the
+  /// reCAPTCHA network, suggesting the possibility of synthetic identity
+  /// generation.
+  /// - "GEOLOCATION_DISCREPANCY" : Identifiers used in this transaction
+  /// originate from an unusual or conflicting set of geolocations.
+  /// - "ASSOCIATED_WITH_FRAUD_CLUSTER" : This transaction is linked to a
+  /// cluster of known fraudulent activity.
+  core.String? reason;
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason({
+    this.reason,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason.fromJson(
+      core.Map json_)
+      : this(
+          reason: json_['reason'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -3205,7 +3294,7 @@ class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse {
 
 /// Risk analysis result for an event.
 class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
-  /// Challenge information for SCORE_AND_CHALLENGE and INVISIBLE keys
+  /// Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE keys
   ///
   /// Output only.
   /// Possible string values are:
@@ -3236,11 +3325,18 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   /// Output only.
   core.double? score;
 
+  /// Bots with identities that have been verified by reCAPTCHA and detected in
+  /// the event.
+  ///
+  /// Output only.
+  core.List<GoogleCloudRecaptchaenterpriseV1Bot>? verifiedBots;
+
   GoogleCloudRecaptchaenterpriseV1RiskAnalysis({
     this.challenge,
     this.extendedVerdictReasons,
     this.reasons,
     this.score,
+    this.verifiedBots,
   });
 
   GoogleCloudRecaptchaenterpriseV1RiskAnalysis.fromJson(core.Map json_)
@@ -3254,6 +3350,10 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
               ?.map((value) => value as core.String)
               .toList(),
           score: (json_['score'] as core.num?)?.toDouble(),
+          verifiedBots: (json_['verifiedBots'] as core.List?)
+              ?.map((value) => GoogleCloudRecaptchaenterpriseV1Bot.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3262,6 +3362,7 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
           'extendedVerdictReasons': extendedVerdictReasons!,
         if (reasons != null) 'reasons': reasons!,
         if (score != null) 'score': score!,
+        if (verifiedBots != null) 'verifiedBots': verifiedBots!,
       };
 }
 
@@ -4206,8 +4307,7 @@ class GoogleCloudRecaptchaenterpriseV1WafSettings {
   /// - "SESSION_TOKEN" : Use reCAPTCHA session-tokens to protect the whole user
   /// session on the site's domain.
   /// - "ACTION_TOKEN" : Use reCAPTCHA action-tokens to protect user actions.
-  /// - "EXPRESS" : Use reCAPTCHA WAF express protection to protect any content
-  /// other than web pages, like APIs and IoT devices.
+  /// - "EXPRESS" : Deprecated: Use `express_settings` instead.
   core.String? wafFeature;
 
   /// The WAF service that uses this key.
@@ -4265,8 +4365,8 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   /// Settings for the frequency and difficulty at which this key triggers
   /// captcha challenges.
   ///
-  /// This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE
-  /// and SCORE_AND_CHALLENGE.
+  /// This should only be specified for `IntegrationType` CHECKBOX, INVISIBLE or
+  /// POLICY_BASED_CHALLENGE.
   ///
   /// Optional.
   /// Possible string values are:
@@ -4277,6 +4377,12 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   /// challenges.
   /// - "SECURITY" : Key tends to show more and harder challenges.
   core.String? challengeSecurityPreference;
+
+  /// Challenge settings.
+  ///
+  /// Optional.
+  GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings?
+      challengeSettings;
 
   /// Describes how this key is integrated with the website.
   ///
@@ -4291,6 +4397,8 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   /// captcha challenges after it is checked.
   /// - "INVISIBLE" : Doesn't display the "I'm not a robot" checkbox, but may
   /// show captcha challenges after risk analysis.
+  /// - "POLICY_BASED_CHALLENGE" : Displays a visual challenge or not depending
+  /// on the user risk analysis score.
   core.String? integrationType;
 
   GoogleCloudRecaptchaenterpriseV1WebKeySettings({
@@ -4298,6 +4406,7 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
     this.allowAmpTraffic,
     this.allowedDomains,
     this.challengeSecurityPreference,
+    this.challengeSettings,
     this.integrationType,
   });
 
@@ -4310,6 +4419,11 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
               .toList(),
           challengeSecurityPreference:
               json_['challengeSecurityPreference'] as core.String?,
+          challengeSettings: json_.containsKey('challengeSettings')
+              ? GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings
+                  .fromJson(json_['challengeSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           integrationType: json_['integrationType'] as core.String?,
         );
 
@@ -4319,7 +4433,84 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
         if (allowedDomains != null) 'allowedDomains': allowedDomains!,
         if (challengeSecurityPreference != null)
           'challengeSecurityPreference': challengeSecurityPreference!,
+        if (challengeSettings != null) 'challengeSettings': challengeSettings!,
         if (integrationType != null) 'integrationType': integrationType!,
+      };
+}
+
+/// Per-action challenge settings.
+class GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings {
+  /// A challenge is triggered if the end-user score is below that threshold.
+  ///
+  /// Value must be between 0 and 1 (inclusive).
+  ///
+  /// Required.
+  core.double? scoreThreshold;
+
+  GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings({
+    this.scoreThreshold,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings.fromJson(
+      core.Map json_)
+      : this(
+          scoreThreshold: (json_['scoreThreshold'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scoreThreshold != null) 'scoreThreshold': scoreThreshold!,
+      };
+}
+
+/// Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is
+/// triggered.
+class GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings {
+  /// The action to score threshold map.
+  ///
+  /// The action name should be the same as the action name passed in the
+  /// `data-action` attribute (see
+  /// https://cloud.google.com/recaptcha/docs/actions-website). Action names are
+  /// case-insensitive. There is a maximum of 100 action settings. An action
+  /// name has a maximum length of 100.
+  ///
+  /// Optional.
+  core.Map<core.String,
+          GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings>?
+      actionSettings;
+
+  /// Defines when a challenge is triggered (unless the default threshold is
+  /// overridden for the given action, see `action_settings`).
+  ///
+  /// Required.
+  GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings? defaultSettings;
+
+  GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings({
+    this.actionSettings,
+    this.defaultSettings,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings.fromJson(
+      core.Map json_)
+      : this(
+          actionSettings:
+              (json_['actionSettings'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings
+                  .fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          defaultSettings: json_.containsKey('defaultSettings')
+              ? GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings
+                  .fromJson(json_['defaultSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionSettings != null) 'actionSettings': actionSettings!,
+        if (defaultSettings != null) 'defaultSettings': defaultSettings!,
       };
 }
 
