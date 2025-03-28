@@ -48,126 +48,27 @@ After the Client ID has been created, you can obtain access credentials via
 import 'package:googleapis_auth/auth_browser.dart';
 
 // Initialize the browser oauth2 flow functionality then use it to obtain credentials.
-Future<AccessCredentials> obtainCredentials() async {
-  final flow = await createImplicitBrowserFlow(
-    ClientId('....apps.googleusercontent.com'),
-    ['scope1', 'scope2'],
-  );
-
-  try {
-    return await flow.obtainAccessCredentialsViaUserConsent();
-  } finally {
-    flow.close();
-  }
-}
+Future<AccessCredentials> obtainCredentials() => requestAccessCredentials(
+  clientId: '....apps.googleusercontent.com',
+  scopes: ['scope1', 'scope2'],
+);
 ```
 
 or obtain an authenticated HTTP client via
 
 ```dart
 import 'package:googleapis_auth/auth_browser.dart';
-
-// Initialize the browser oauth2 flow functionality then use it to
-// get an authenticated and auto refreshing client.
-Future<AuthClient> obtainAuthenticatedClient() async {
-  final flow = await createImplicitBrowserFlow(
-    ClientId('....apps.googleusercontent.com'),
-    ['scope1', 'scope2'],
-  );
-
-  try {
-    return await flow.clientViaUserConsent();
-  } finally {
-    flow.close();
-  }
-}
-```
-
-To prevent popup blockers from blocking the user authorization dialog, the
-methods `obtainAccessCredentialsViaUserConsent` and `clientViaUserConsent`
-should preferably only be called inside an event handler, since most browsers do
-not block popup windows created in response to a user interaction.
-
-The authenticated HTTP client can now access data on behalf a user for the
-requested oauth2 scopes.
-
-#### Installed/Console Application
-
-For installed/console applications a "Client ID" needs to be created (under
-DevConsole -> Project -> APIs & auth -> Credentials). When creating a new client
-ID, select the "Installed application -> Other" type.
-
-The redirect URIs for the automatic and manual flow will be configured
-automatically.
-
-After the Client ID has been created, you can obtain access credentials via
-
-```dart
-import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' as http;
 
-// Use the oauth2 authentication code flow functionality to obtain
-// credentials. [prompt] is used for directing the user to a URI.
-Future<AccessCredentials> obtainCredentials() async {
-  final client = http.Client();
+Future<AuthClient> obtainClient() async {
+  final credentials = await requestAccessCredentials(
+    clientId: '....apps.googleusercontent.com',
+    scopes: ['scope1', 'scope2'],
+  );
 
-  try {
-    return await obtainAccessCredentialsViaUserConsent(
-      ClientId('....apps.googleusercontent.com', '...'),
-      ['scope1', 'scope2'],
-      client,
-      _prompt,
-    );
-  } finally {
-    client.close();
-  }
-}
-
-void _prompt(String url) {
-  print('Please go to the following URL and grant access:');
-  print('  => $url');
-  print('');
+  return authenticatedClient(http.Client(), credentials);
 }
 ```
-
-or obtain an authenticated HTTP client via
-
-```dart
-import 'package:googleapis_auth/auth_io.dart';
-
-// Use the oauth2 code grant server flow functionality to
-// get an authenticated and auto refreshing client.
-Future<AuthClient> obtainCredentials() async => await clientViaUserConsent(
-  ClientId('....apps.googleusercontent.com', '...'),
-  ['scope1', 'scope2'],
-  _prompt,
-);
-
-void _prompt(String url) {
-  print('Please go to the following URL and grant access:');
-  print('  => $url');
-  print('');
-}
-```
-
-The Client ID must be created with a `client_secret` here, however there is no
-way to properly secure a `client_secret` for installed/console applications.
-Fortunately the OAuth2 flow used in this case
-[assumes that the app cannot keep secrets](https://developers.google.com/identity/protocols/oauth2/native-app)
-so this particular `client_secret` does not need to be kept secret. You should
-however make sure not to re-use the same `client_secret` anywhere secrecy is
-required.
-
-In case of misconfigured browsers/proxies or other issues, it is also possible
-to use a manual flow via `obtainAccessCredentialsViaUserConsentManual` and
-`clientViaUserConsentManual`. But in this case the `prompt` function needs to
-complete with a `Future<String>` which contains the "authorization code". The
-user obtains the "authorization code" (which is a string of characters) in a
-browser and needs to copy & paste it to the application. (The prompt function
-should block until it has gotten the "authorization code" from the user.)
-
-The authenticated HTTP client can now access data on behalf a user for the
-requested oauth2 scopes.
 
 #### Autonomous Application / Service Account
 
@@ -183,25 +84,23 @@ That private key is used for obtaining access credentials.
 After the service account was created, you can obtain access credentials via
 
 ```dart
-import "package:googleapis_auth/auth_io.dart";
-import "package:http/http.dart" as http;
-
-...
+import 'package:googleapis_auth/auth_io.dart';
+import 'package:http/http.dart' as http;
 
 // Use service account credentials to obtain oauth credentials.
 Future<AccessCredentials> obtainCredentials() async {
-  var accountCredentials = ServiceAccountCredentials.fromJson({
-    "private_key_id": "<please fill in>",
-    "private_key": "<please fill in>",
-    "client_email": "<please fill in>@developer.gserviceaccount.com",
-    "client_id": "<please fill in>.apps.googleusercontent.com",
-    "type": "service_account"
+  final accountCredentials = ServiceAccountCredentials.fromJson({
+    'private_key_id': '<please fill in>',
+    'private_key': '<please fill in>',
+    'client_email': '<please fill in>@developer.gserviceaccount.com',
+    'client_id': '<please fill in>.apps.googleusercontent.com',
+    'type': 'service_account'
   });
-  var scopes = [...];
+  final scopes = ['scope1', 'scope2'];
 
-  var client = http.Client();
-  AccessCredentials credentials =
-    await obtainAccessCredentialsViaServiceAccount(accountCredentials, scopes, client);
+  final client = http.Client();
+  final credentials = await obtainAccessCredentialsViaServiceAccount(
+          accountCredentials, scopes, client);
 
   client.close();
   return credentials;
@@ -211,22 +110,22 @@ Future<AccessCredentials> obtainCredentials() async {
 or an authenticated HTTP client via
 
 ```dart
-import "package:googleapis_auth/auth_io.dart";
+import 'package:googleapis_auth/auth_io.dart';
 
-...
-
-// Use service account credentials to get an authenticated and auto refreshing client.
+// Use service account credentials to get an authenticated and auto refreshing
+// client.
 Future<AuthClient> obtainAuthenticatedClient() async {
   final accountCredentials = ServiceAccountCredentials.fromJson({
-    "private_key_id": "<please fill in>",
-    "private_key": "<please fill in>",
-    "client_email": "<please fill in>@developer.gserviceaccount.com",
-    "client_id": "<please fill in>.apps.googleusercontent.com",
-    "type": "service_account"
+    'private_key_id': '<please fill in>',
+    'private_key': '<please fill in>',
+    'client_email': '<please fill in>@developer.gserviceaccount.com',
+    'client_id': '<please fill in>.apps.googleusercontent.com',
+    'type': 'service_account'
   });
-  var scopes = [...];
+  final scopes = ['scope1'];
 
-  AuthClient client = await clientViaServiceAccount(accountCredentials, scopes);
+  final AuthClient client =
+  await clientViaServiceAccount(accountCredentials, scopes);
 
   return client; // Remember to close the client when you are finished with it.
 }
@@ -258,17 +157,15 @@ Here is an example of using the metadata service for obtaining access
 credentials on a ComputeEngine VM.
 
 ```dart
-import "package:googleapis_auth/auth_io.dart";
-import "package:http/http.dart" as http;
-
-...
+import 'package:googleapis_auth/auth_io.dart';
+import 'package:http/http.dart' as http;
 
 // Use the metadata service to obtain oauth credentials.
 Future<AccessCredentials> obtainCredentials() async {
-  var client = http.Client();
+  final client = http.Client();
 
-  AccessCredentials credentials =
-      await obtainAccessCredentialsViaMetadataServer(client);
+  final credentials =
+  await obtainAccessCredentialsViaMetadataServer(client);
 
   client.close();
   return credentials;
@@ -278,14 +175,11 @@ Future<AccessCredentials> obtainCredentials() async {
 or an authenticated HTTP client via
 
 ```dart
-import "package:googleapis_auth/auth_io.dart";
-
-...
+import 'package:googleapis_auth/auth_io.dart';
 
 // Use the metadata service to get an authenticated and auto refreshing client.
 Future<AuthClient> obtainAuthenticatedClient() async {
-
-  AuthClient client = await clientViaMetadataServer();
+  final AuthClient client = await clientViaMetadataServer();
 
   return client; // Remember to close the client when you are finished with it.
 }
