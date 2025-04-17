@@ -174,10 +174,13 @@ class DiscoveryPackagesConfiguration {
       final name = entry.key;
       final package = entry.value;
       final results = generateAllLibraries(
-          '$discoveryDocsDir/$name', '$generatedApisDir/$name', package.pubspec,
-          deleteExisting: deleteExisting,
-          skipTests: skipTests,
-          knownApis: knownApis);
+        '$discoveryDocsDir/$name',
+        '$generatedApisDir/$name',
+        package.pubspec,
+        deleteExisting: deleteExisting,
+        skipTests: skipTests,
+        knownApis: knownApis,
+      );
       for (final result in results) {
         if (!result.success) {
           print(result.toString());
