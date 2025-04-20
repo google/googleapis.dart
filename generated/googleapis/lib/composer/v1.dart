@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Composer API - v1
 ///
@@ -38,6 +39,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1759,16 +1761,22 @@ class DagProcessorResource {
   DagProcessorResource.fromJson(core.Map json_)
       : this(
           count: json_['count'] as core.int?,
-          cpu: (json_['cpu'] as core.num?)?.toDouble(),
-          memoryGb: (json_['memoryGb'] as core.num?)?.toDouble(),
-          storageGb: (json_['storageGb'] as core.num?)?.toDouble(),
+          cpu: json_.containsKey('cpu')
+              ? decodeDouble(json_['cpu'] as core.Object)
+              : null,
+          memoryGb: json_.containsKey('memoryGb')
+              ? decodeDouble(json_['memoryGb'] as core.Object)
+              : null,
+          storageGb: json_.containsKey('storageGb')
+              ? decodeDouble(json_['storageGb'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
-        if (cpu != null) 'cpu': cpu!,
-        if (memoryGb != null) 'memoryGb': memoryGb!,
-        if (storageGb != null) 'storageGb': storageGb!,
+        if (cpu != null) 'cpu': encodeDouble(cpu!),
+        if (memoryGb != null) 'memoryGb': encodeDouble(memoryGb!),
+        if (storageGb != null) 'storageGb': encodeDouble(storageGb!),
       };
 }
 
@@ -3663,16 +3671,22 @@ class SchedulerResource {
   SchedulerResource.fromJson(core.Map json_)
       : this(
           count: json_['count'] as core.int?,
-          cpu: (json_['cpu'] as core.num?)?.toDouble(),
-          memoryGb: (json_['memoryGb'] as core.num?)?.toDouble(),
-          storageGb: (json_['storageGb'] as core.num?)?.toDouble(),
+          cpu: json_.containsKey('cpu')
+              ? decodeDouble(json_['cpu'] as core.Object)
+              : null,
+          memoryGb: json_.containsKey('memoryGb')
+              ? decodeDouble(json_['memoryGb'] as core.Object)
+              : null,
+          storageGb: json_.containsKey('storageGb')
+              ? decodeDouble(json_['storageGb'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
-        if (cpu != null) 'cpu': cpu!,
-        if (memoryGb != null) 'memoryGb': memoryGb!,
-        if (storageGb != null) 'storageGb': storageGb!,
+        if (cpu != null) 'cpu': encodeDouble(cpu!),
+        if (memoryGb != null) 'memoryGb': encodeDouble(memoryGb!),
+        if (storageGb != null) 'storageGb': encodeDouble(storageGb!),
       };
 }
 
@@ -4001,14 +4015,18 @@ class TriggererResource {
   TriggererResource.fromJson(core.Map json_)
       : this(
           count: json_['count'] as core.int?,
-          cpu: (json_['cpu'] as core.num?)?.toDouble(),
-          memoryGb: (json_['memoryGb'] as core.num?)?.toDouble(),
+          cpu: json_.containsKey('cpu')
+              ? decodeDouble(json_['cpu'] as core.Object)
+              : null,
+          memoryGb: json_.containsKey('memoryGb')
+              ? decodeDouble(json_['memoryGb'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
-        if (cpu != null) 'cpu': cpu!,
-        if (memoryGb != null) 'memoryGb': memoryGb!,
+        if (cpu != null) 'cpu': encodeDouble(cpu!),
+        if (memoryGb != null) 'memoryGb': encodeDouble(memoryGb!),
       };
 }
 
@@ -4170,15 +4188,21 @@ class WebServerResource {
 
   WebServerResource.fromJson(core.Map json_)
       : this(
-          cpu: (json_['cpu'] as core.num?)?.toDouble(),
-          memoryGb: (json_['memoryGb'] as core.num?)?.toDouble(),
-          storageGb: (json_['storageGb'] as core.num?)?.toDouble(),
+          cpu: json_.containsKey('cpu')
+              ? decodeDouble(json_['cpu'] as core.Object)
+              : null,
+          memoryGb: json_.containsKey('memoryGb')
+              ? decodeDouble(json_['memoryGb'] as core.Object)
+              : null,
+          storageGb: json_.containsKey('storageGb')
+              ? decodeDouble(json_['storageGb'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cpu != null) 'cpu': cpu!,
-        if (memoryGb != null) 'memoryGb': memoryGb!,
-        if (storageGb != null) 'storageGb': storageGb!,
+        if (cpu != null) 'cpu': encodeDouble(cpu!),
+        if (memoryGb != null) 'memoryGb': encodeDouble(memoryGb!),
+        if (storageGb != null) 'storageGb': encodeDouble(storageGb!),
       };
 }
 
@@ -4219,19 +4243,25 @@ class WorkerResource {
 
   WorkerResource.fromJson(core.Map json_)
       : this(
-          cpu: (json_['cpu'] as core.num?)?.toDouble(),
+          cpu: json_.containsKey('cpu')
+              ? decodeDouble(json_['cpu'] as core.Object)
+              : null,
           maxCount: json_['maxCount'] as core.int?,
-          memoryGb: (json_['memoryGb'] as core.num?)?.toDouble(),
+          memoryGb: json_.containsKey('memoryGb')
+              ? decodeDouble(json_['memoryGb'] as core.Object)
+              : null,
           minCount: json_['minCount'] as core.int?,
-          storageGb: (json_['storageGb'] as core.num?)?.toDouble(),
+          storageGb: json_.containsKey('storageGb')
+              ? decodeDouble(json_['storageGb'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cpu != null) 'cpu': cpu!,
+        if (cpu != null) 'cpu': encodeDouble(cpu!),
         if (maxCount != null) 'maxCount': maxCount!,
-        if (memoryGb != null) 'memoryGb': memoryGb!,
+        if (memoryGb != null) 'memoryGb': encodeDouble(memoryGb!),
         if (minCount != null) 'minCount': minCount!,
-        if (storageGb != null) 'storageGb': storageGb!,
+        if (storageGb != null) 'storageGb': encodeDouble(storageGb!),
       };
 }
 

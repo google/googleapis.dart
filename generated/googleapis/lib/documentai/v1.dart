@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Document AI API - v1
 ///
@@ -42,6 +43,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2376,7 +2378,9 @@ class GoogleCloudDocumentaiV1DocumentEntity {
 
   GoogleCloudDocumentaiV1DocumentEntity.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           id: json_['id'] as core.String?,
           mentionId: json_['mentionId'] as core.String?,
           mentionText: json_['mentionText'] as core.String?,
@@ -2406,7 +2410,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (id != null) 'id': id!,
         if (mentionId != null) 'mentionId': mentionId!,
         if (mentionText != null) 'mentionText': mentionText!,
@@ -2496,7 +2500,9 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
               ? GoogleTypeDateTime.fromJson(
                   json_['datetimeValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          floatValue: (json_['floatValue'] as core.num?)?.toDouble(),
+          floatValue: json_.containsKey('floatValue')
+              ? decodeDouble(json_['floatValue'] as core.Object)
+              : null,
           integerValue: json_['integerValue'] as core.int?,
           moneyValue: json_.containsKey('moneyValue')
               ? GoogleTypeMoney.fromJson(
@@ -2510,7 +2516,7 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (dateValue != null) 'dateValue': dateValue!,
         if (datetimeValue != null) 'datetimeValue': datetimeValue!,
-        if (floatValue != null) 'floatValue': floatValue!,
+        if (floatValue != null) 'floatValue': encodeDouble(floatValue!),
         if (integerValue != null) 'integerValue': integerValue!,
         if (moneyValue != null) 'moneyValue': moneyValue!,
         if (text != null) 'text': text!,
@@ -2895,7 +2901,9 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
               ? GoogleCloudDocumentaiV1BoundingPoly.fromJson(
                   json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           layoutId: json_['layoutId'] as core.String?,
           layoutType: json_['layoutType'] as core.String?,
           page: json_['page'] as core.String?,
@@ -2903,7 +2911,7 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boundingPoly != null) 'boundingPoly': boundingPoly!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (layoutId != null) 'layoutId': layoutId!,
         if (layoutType != null) 'layoutType': layoutType!,
         if (page != null) 'page': page!,
@@ -3118,12 +3126,14 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
                   GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
-          qualityScore: (json_['qualityScore'] as core.num?)?.toDouble(),
+          qualityScore: json_.containsKey('qualityScore')
+              ? decodeDouble(json_['qualityScore'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (detectedDefects != null) 'detectedDefects': detectedDefects!,
-        if (qualityScore != null) 'qualityScore': qualityScore!,
+        if (qualityScore != null) 'qualityScore': encodeDouble(qualityScore!),
       };
 }
 
@@ -3171,7 +3181,9 @@ class GoogleCloudDocumentaiV1DocumentPageLayout {
               ? GoogleCloudDocumentaiV1BoundingPoly.fromJson(
                   json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           orientation: json_['orientation'] as core.String?,
           textAnchor: json_.containsKey('textAnchor')
               ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
@@ -3181,7 +3193,7 @@ class GoogleCloudDocumentaiV1DocumentPageLayout {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boundingPoly != null) 'boundingPoly': boundingPoly!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (orientation != null) 'orientation': orientation!,
         if (textAnchor != null) 'textAnchor': textAnchor!,
       };
@@ -3605,8 +3617,12 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
           fontWeight: json_['fontWeight'] as core.int?,
           handwritten: json_['handwritten'] as core.bool?,
           italic: json_['italic'] as core.bool?,
-          letterSpacing: (json_['letterSpacing'] as core.num?)?.toDouble(),
-          pixelFontSize: (json_['pixelFontSize'] as core.num?)?.toDouble(),
+          letterSpacing: json_.containsKey('letterSpacing')
+              ? decodeDouble(json_['letterSpacing'] as core.Object)
+              : null,
+          pixelFontSize: json_.containsKey('pixelFontSize')
+              ? decodeDouble(json_['pixelFontSize'] as core.Object)
+              : null,
           smallcaps: json_['smallcaps'] as core.bool?,
           strikeout: json_['strikeout'] as core.bool?,
           subscript: json_['subscript'] as core.bool?,
@@ -3626,8 +3642,10 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
         if (fontWeight != null) 'fontWeight': fontWeight!,
         if (handwritten != null) 'handwritten': handwritten!,
         if (italic != null) 'italic': italic!,
-        if (letterSpacing != null) 'letterSpacing': letterSpacing!,
-        if (pixelFontSize != null) 'pixelFontSize': pixelFontSize!,
+        if (letterSpacing != null)
+          'letterSpacing': encodeDouble(letterSpacing!),
+        if (pixelFontSize != null)
+          'pixelFontSize': encodeDouble(pixelFontSize!),
         if (smallcaps != null) 'smallcaps': smallcaps!,
         if (strikeout != null) 'strikeout': strikeout!,
         if (subscript != null) 'subscript': subscript!,
@@ -4375,7 +4393,9 @@ class GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics {
   GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics.fromJson(
       core.Map json_)
       : this(
-          confidenceLevel: (json_['confidenceLevel'] as core.num?)?.toDouble(),
+          confidenceLevel: json_.containsKey('confidenceLevel')
+              ? decodeDouble(json_['confidenceLevel'] as core.Object)
+              : null,
           metrics: json_.containsKey('metrics')
               ? GoogleCloudDocumentaiV1EvaluationMetrics.fromJson(
                   json_['metrics'] as core.Map<core.String, core.dynamic>)
@@ -4383,7 +4403,8 @@ class GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidenceLevel != null) 'confidenceLevel': confidenceLevel!,
+        if (confidenceLevel != null)
+          'confidenceLevel': encodeDouble(confidenceLevel!),
         if (metrics != null) 'metrics': metrics!,
       };
 }
@@ -4483,24 +4504,30 @@ class GoogleCloudDocumentaiV1EvaluationMetrics {
 
   GoogleCloudDocumentaiV1EvaluationMetrics.fromJson(core.Map json_)
       : this(
-          f1Score: (json_['f1Score'] as core.num?)?.toDouble(),
+          f1Score: json_.containsKey('f1Score')
+              ? decodeDouble(json_['f1Score'] as core.Object)
+              : null,
           falseNegativesCount: json_['falseNegativesCount'] as core.int?,
           falsePositivesCount: json_['falsePositivesCount'] as core.int?,
           groundTruthDocumentCount:
               json_['groundTruthDocumentCount'] as core.int?,
           groundTruthOccurrencesCount:
               json_['groundTruthOccurrencesCount'] as core.int?,
-          precision: (json_['precision'] as core.num?)?.toDouble(),
+          precision: json_.containsKey('precision')
+              ? decodeDouble(json_['precision'] as core.Object)
+              : null,
           predictedDocumentCount: json_['predictedDocumentCount'] as core.int?,
           predictedOccurrencesCount:
               json_['predictedOccurrencesCount'] as core.int?,
-          recall: (json_['recall'] as core.num?)?.toDouble(),
+          recall: json_.containsKey('recall')
+              ? decodeDouble(json_['recall'] as core.Object)
+              : null,
           totalDocumentsCount: json_['totalDocumentsCount'] as core.int?,
           truePositivesCount: json_['truePositivesCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (f1Score != null) 'f1Score': f1Score!,
+        if (f1Score != null) 'f1Score': encodeDouble(f1Score!),
         if (falseNegativesCount != null)
           'falseNegativesCount': falseNegativesCount!,
         if (falsePositivesCount != null)
@@ -4509,12 +4536,12 @@ class GoogleCloudDocumentaiV1EvaluationMetrics {
           'groundTruthDocumentCount': groundTruthDocumentCount!,
         if (groundTruthOccurrencesCount != null)
           'groundTruthOccurrencesCount': groundTruthOccurrencesCount!,
-        if (precision != null) 'precision': precision!,
+        if (precision != null) 'precision': encodeDouble(precision!),
         if (predictedDocumentCount != null)
           'predictedDocumentCount': predictedDocumentCount!,
         if (predictedOccurrencesCount != null)
           'predictedOccurrencesCount': predictedOccurrencesCount!,
-        if (recall != null) 'recall': recall!,
+        if (recall != null) 'recall': encodeDouble(recall!),
         if (totalDocumentsCount != null)
           'totalDocumentsCount': totalDocumentsCount!,
         if (truePositivesCount != null)
@@ -4573,8 +4600,12 @@ class GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics {
   GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics.fromJson(
       core.Map json_)
       : this(
-          auprc: (json_['auprc'] as core.num?)?.toDouble(),
-          auprcExact: (json_['auprcExact'] as core.num?)?.toDouble(),
+          auprc: json_.containsKey('auprc')
+              ? decodeDouble(json_['auprc'] as core.Object)
+              : null,
+          auprcExact: json_.containsKey('auprcExact')
+              ? decodeDouble(json_['auprcExact'] as core.Object)
+              : null,
           confidenceLevelMetrics: (json_['confidenceLevelMetrics']
                   as core.List?)
               ?.map((value) =>
@@ -4587,25 +4618,30 @@ class GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics {
                   GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
-          estimatedCalibrationError:
-              (json_['estimatedCalibrationError'] as core.num?)?.toDouble(),
+          estimatedCalibrationError: json_
+                  .containsKey('estimatedCalibrationError')
+              ? decodeDouble(json_['estimatedCalibrationError'] as core.Object)
+              : null,
           estimatedCalibrationErrorExact:
-              (json_['estimatedCalibrationErrorExact'] as core.num?)
-                  ?.toDouble(),
+              json_.containsKey('estimatedCalibrationErrorExact')
+                  ? decodeDouble(
+                      json_['estimatedCalibrationErrorExact'] as core.Object)
+                  : null,
           metricsType: json_['metricsType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auprc != null) 'auprc': auprc!,
-        if (auprcExact != null) 'auprcExact': auprcExact!,
+        if (auprc != null) 'auprc': encodeDouble(auprc!),
+        if (auprcExact != null) 'auprcExact': encodeDouble(auprcExact!),
         if (confidenceLevelMetrics != null)
           'confidenceLevelMetrics': confidenceLevelMetrics!,
         if (confidenceLevelMetricsExact != null)
           'confidenceLevelMetricsExact': confidenceLevelMetricsExact!,
         if (estimatedCalibrationError != null)
-          'estimatedCalibrationError': estimatedCalibrationError!,
+          'estimatedCalibrationError': encodeDouble(estimatedCalibrationError!),
         if (estimatedCalibrationErrorExact != null)
-          'estimatedCalibrationErrorExact': estimatedCalibrationErrorExact!,
+          'estimatedCalibrationErrorExact':
+              encodeDouble(estimatedCalibrationErrorExact!),
         if (metricsType != null) 'metricsType': metricsType!,
       };
 }
@@ -6191,14 +6227,15 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOp
   GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions.fromJson(
       core.Map json_)
       : this(
-          learningRateMultiplier:
-              (json_['learningRateMultiplier'] as core.num?)?.toDouble(),
+          learningRateMultiplier: json_.containsKey('learningRateMultiplier')
+              ? decodeDouble(json_['learningRateMultiplier'] as core.Object)
+              : null,
           trainSteps: json_['trainSteps'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (learningRateMultiplier != null)
-          'learningRateMultiplier': learningRateMultiplier!,
+          'learningRateMultiplier': encodeDouble(learningRateMultiplier!),
         if (trainSteps != null) 'trainSteps': trainSteps!,
       };
 }

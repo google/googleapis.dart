@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Pub/Sub Lite API - v1
 ///
@@ -46,6 +47,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'

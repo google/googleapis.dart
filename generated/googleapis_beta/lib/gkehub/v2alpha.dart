@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// GKE Hub API - v2alpha
 ///
@@ -34,6 +35,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3726,8 +3728,10 @@ class MeteringState {
       : this(
           lastMeasurementTime: json_['lastMeasurementTime'] as core.String?,
           preciseLastMeasuredClusterVcpuCapacity:
-              (json_['preciseLastMeasuredClusterVcpuCapacity'] as core.num?)
-                  ?.toDouble(),
+              json_.containsKey('preciseLastMeasuredClusterVcpuCapacity')
+                  ? decodeDouble(json_['preciseLastMeasuredClusterVcpuCapacity']
+                      as core.Object)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3735,7 +3739,7 @@ class MeteringState {
           'lastMeasurementTime': lastMeasurementTime!,
         if (preciseLastMeasuredClusterVcpuCapacity != null)
           'preciseLastMeasuredClusterVcpuCapacity':
-              preciseLastMeasuredClusterVcpuCapacity!,
+              encodeDouble(preciseLastMeasuredClusterVcpuCapacity!),
       };
 }
 

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Vertex AI API - v1
 ///
@@ -141,6 +142,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -30746,13 +30748,16 @@ class GoogleCloudAiplatformV1Attribution {
 
   GoogleCloudAiplatformV1Attribution.fromJson(core.Map json_)
       : this(
-          approximationError:
-              (json_['approximationError'] as core.num?)?.toDouble(),
-          baselineOutputValue:
-              (json_['baselineOutputValue'] as core.num?)?.toDouble(),
+          approximationError: json_.containsKey('approximationError')
+              ? decodeDouble(json_['approximationError'] as core.Object)
+              : null,
+          baselineOutputValue: json_.containsKey('baselineOutputValue')
+              ? decodeDouble(json_['baselineOutputValue'] as core.Object)
+              : null,
           featureAttributions: json_['featureAttributions'],
-          instanceOutputValue:
-              (json_['instanceOutputValue'] as core.num?)?.toDouble(),
+          instanceOutputValue: json_.containsKey('instanceOutputValue')
+              ? decodeDouble(json_['instanceOutputValue'] as core.Object)
+              : null,
           outputDisplayName: json_['outputDisplayName'] as core.String?,
           outputIndex: (json_['outputIndex'] as core.List?)
               ?.map((value) => value as core.int)
@@ -30762,13 +30767,13 @@ class GoogleCloudAiplatformV1Attribution {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (approximationError != null)
-          'approximationError': approximationError!,
+          'approximationError': encodeDouble(approximationError!),
         if (baselineOutputValue != null)
-          'baselineOutputValue': baselineOutputValue!,
+          'baselineOutputValue': encodeDouble(baselineOutputValue!),
         if (featureAttributions != null)
           'featureAttributions': featureAttributions!,
         if (instanceOutputValue != null)
-          'instanceOutputValue': instanceOutputValue!,
+          'instanceOutputValue': encodeDouble(instanceOutputValue!),
         if (outputDisplayName != null) 'outputDisplayName': outputDisplayName!,
         if (outputIndex != null) 'outputIndex': outputIndex!,
         if (outputName != null) 'outputName': outputName!,
@@ -32313,11 +32318,13 @@ class GoogleCloudAiplatformV1BleuMetricValue {
 
   GoogleCloudAiplatformV1BleuMetricValue.fromJson(core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -32435,11 +32442,13 @@ class GoogleCloudAiplatformV1BlurBaselineConfig {
 
   GoogleCloudAiplatformV1BlurBaselineConfig.fromJson(core.Map json_)
       : this(
-          maxBlurSigma: (json_['maxBlurSigma'] as core.num?)?.toDouble(),
+          maxBlurSigma: json_.containsKey('maxBlurSigma')
+              ? decodeDouble(json_['maxBlurSigma'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxBlurSigma != null) 'maxBlurSigma': maxBlurSigma!,
+        if (maxBlurSigma != null) 'maxBlurSigma': encodeDouble(maxBlurSigma!),
       };
 }
 
@@ -32792,7 +32801,9 @@ class GoogleCloudAiplatformV1Candidate {
 
   GoogleCloudAiplatformV1Candidate.fromJson(core.Map json_)
       : this(
-          avgLogprobs: (json_['avgLogprobs'] as core.num?)?.toDouble(),
+          avgLogprobs: json_.containsKey('avgLogprobs')
+              ? decodeDouble(json_['avgLogprobs'] as core.Object)
+              : null,
           citationMetadata: json_.containsKey('citationMetadata')
               ? GoogleCloudAiplatformV1CitationMetadata.fromJson(
                   json_['citationMetadata']
@@ -32822,7 +32833,7 @@ class GoogleCloudAiplatformV1Candidate {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (avgLogprobs != null) 'avgLogprobs': avgLogprobs!,
+        if (avgLogprobs != null) 'avgLogprobs': encodeDouble(avgLogprobs!),
         if (citationMetadata != null) 'citationMetadata': citationMetadata!,
         if (content != null) 'content': content!,
         if (finishMessage != null) 'finishMessage': finishMessage!,
@@ -32952,14 +32963,16 @@ class GoogleCloudAiplatformV1Claim {
           factIndexes: (json_['factIndexes'] as core.List?)
               ?.map((value) => value as core.int)
               .toList(),
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           startIndex: json_['startIndex'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endIndex != null) 'endIndex': endIndex!,
         if (factIndexes != null) 'factIndexes': factIndexes!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
         if (startIndex != null) 'startIndex': startIndex!,
       };
 }
@@ -33086,15 +33099,19 @@ class GoogleCloudAiplatformV1CoherenceResult {
 
   GoogleCloudAiplatformV1CoherenceResult.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -33156,11 +33173,13 @@ class GoogleCloudAiplatformV1CometResult {
 
   GoogleCloudAiplatformV1CometResult.fromJson(core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -33785,12 +33804,14 @@ class GoogleCloudAiplatformV1CorroborateContentRequestParameters {
   GoogleCloudAiplatformV1CorroborateContentRequestParameters.fromJson(
       core.Map json_)
       : this(
-          citationThreshold:
-              (json_['citationThreshold'] as core.num?)?.toDouble(),
+          citationThreshold: json_.containsKey('citationThreshold')
+              ? decodeDouble(json_['citationThreshold'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (citationThreshold != null) 'citationThreshold': citationThreshold!,
+        if (citationThreshold != null)
+          'citationThreshold': encodeDouble(citationThreshold!),
       };
 }
 
@@ -33816,14 +33837,15 @@ class GoogleCloudAiplatformV1CorroborateContentResponse {
               ?.map((value) => GoogleCloudAiplatformV1Claim.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          corroborationScore:
-              (json_['corroborationScore'] as core.num?)?.toDouble(),
+          corroborationScore: json_.containsKey('corroborationScore')
+              ? decodeDouble(json_['corroborationScore'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (claims != null) 'claims': claims!,
         if (corroborationScore != null)
-          'corroborationScore': corroborationScore!,
+          'corroborationScore': encodeDouble(corroborationScore!),
       };
 }
 
@@ -36564,12 +36586,13 @@ class GoogleCloudAiplatformV1DoubleArray {
   GoogleCloudAiplatformV1DoubleArray.fromJson(core.Map json_)
       : this(
           values: (json_['values'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
+        if (values != null)
+          'values': values!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -36595,13 +36618,15 @@ class GoogleCloudAiplatformV1DynamicRetrievalConfig {
 
   GoogleCloudAiplatformV1DynamicRetrievalConfig.fromJson(core.Map json_)
       : this(
-          dynamicThreshold:
-              (json_['dynamicThreshold'] as core.num?)?.toDouble(),
+          dynamicThreshold: json_.containsKey('dynamicThreshold')
+              ? decodeDouble(json_['dynamicThreshold'] as core.Object)
+              : null,
           mode: json_['mode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dynamicThreshold != null) 'dynamicThreshold': dynamicThreshold!,
+        if (dynamicThreshold != null)
+          'dynamicThreshold': encodeDouble(dynamicThreshold!),
         if (mode != null) 'mode': mode!,
       };
 }
@@ -37158,16 +37183,20 @@ class GoogleCloudAiplatformV1ErrorAnalysisAnnotation {
                   GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
-          outlierScore: (json_['outlierScore'] as core.num?)?.toDouble(),
-          outlierThreshold:
-              (json_['outlierThreshold'] as core.num?)?.toDouble(),
+          outlierScore: json_.containsKey('outlierScore')
+              ? decodeDouble(json_['outlierScore'] as core.Object)
+              : null,
+          outlierThreshold: json_.containsKey('outlierThreshold')
+              ? decodeDouble(json_['outlierThreshold'] as core.Object)
+              : null,
           queryType: json_['queryType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributedItems != null) 'attributedItems': attributedItems!,
-        if (outlierScore != null) 'outlierScore': outlierScore!,
-        if (outlierThreshold != null) 'outlierThreshold': outlierThreshold!,
+        if (outlierScore != null) 'outlierScore': encodeDouble(outlierScore!),
+        if (outlierThreshold != null)
+          'outlierThreshold': encodeDouble(outlierThreshold!),
         if (queryType != null) 'queryType': queryType!,
       };
 }
@@ -37193,13 +37222,15 @@ class GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem {
       : this(
           annotationResourceName:
               json_['annotationResourceName'] as core.String?,
-          distance: (json_['distance'] as core.num?)?.toDouble(),
+          distance: json_.containsKey('distance')
+              ? decodeDouble(json_['distance'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotationResourceName != null)
           'annotationResourceName': annotationResourceName!,
-        if (distance != null) 'distance': distance!,
+        if (distance != null) 'distance': encodeDouble(distance!),
       };
 }
 
@@ -38358,11 +38389,13 @@ class GoogleCloudAiplatformV1ExactMatchMetricValue {
 
   GoogleCloudAiplatformV1ExactMatchMetricValue.fromJson(core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -39211,17 +39244,26 @@ class GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain 
   GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain.fromJson(
       core.Map json_)
       : this(
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
-          originalMean: (json_['originalMean'] as core.num?)?.toDouble(),
-          originalStddev: (json_['originalStddev'] as core.num?)?.toDouble(),
+          maxValue: json_.containsKey('maxValue')
+              ? decodeDouble(json_['maxValue'] as core.Object)
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? decodeDouble(json_['minValue'] as core.Object)
+              : null,
+          originalMean: json_.containsKey('originalMean')
+              ? decodeDouble(json_['originalMean'] as core.Object)
+              : null,
+          originalStddev: json_.containsKey('originalStddev')
+              ? decodeDouble(json_['originalStddev'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
-        if (originalMean != null) 'originalMean': originalMean!,
-        if (originalStddev != null) 'originalStddev': originalStddev!,
+        if (maxValue != null) 'maxValue': encodeDouble(maxValue!),
+        if (minValue != null) 'minValue': encodeDouble(minValue!),
+        if (originalMean != null) 'originalMean': encodeDouble(originalMean!),
+        if (originalStddev != null)
+          'originalStddev': encodeDouble(originalStddev!),
       };
 }
 
@@ -39310,10 +39352,12 @@ class GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization {
   GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization.fromJson(
       core.Map json_)
       : this(
-          clipPercentLowerbound:
-              (json_['clipPercentLowerbound'] as core.num?)?.toDouble(),
-          clipPercentUpperbound:
-              (json_['clipPercentUpperbound'] as core.num?)?.toDouble(),
+          clipPercentLowerbound: json_.containsKey('clipPercentLowerbound')
+              ? decodeDouble(json_['clipPercentLowerbound'] as core.Object)
+              : null,
+          clipPercentUpperbound: json_.containsKey('clipPercentUpperbound')
+              ? decodeDouble(json_['clipPercentUpperbound'] as core.Object)
+              : null,
           colorMap: json_['colorMap'] as core.String?,
           overlayType: json_['overlayType'] as core.String?,
           polarity: json_['polarity'] as core.String?,
@@ -39322,9 +39366,9 @@ class GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clipPercentLowerbound != null)
-          'clipPercentLowerbound': clipPercentLowerbound!,
+          'clipPercentLowerbound': encodeDouble(clipPercentLowerbound!),
         if (clipPercentUpperbound != null)
-          'clipPercentUpperbound': clipPercentUpperbound!,
+          'clipPercentUpperbound': encodeDouble(clipPercentUpperbound!),
         if (colorMap != null) 'colorMap': colorMap!,
         if (overlayType != null) 'overlayType': overlayType!,
         if (polarity != null) 'polarity': polarity!,
@@ -40122,20 +40166,25 @@ class GoogleCloudAiplatformV1Fact {
   GoogleCloudAiplatformV1Fact.fromJson(core.Map json_)
       : this(
           query: json_['query'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           summary: json_['summary'] as core.String?,
           title: json_['title'] as core.String?,
           uri: json_['uri'] as core.String?,
-          vectorDistance: (json_['vectorDistance'] as core.num?)?.toDouble(),
+          vectorDistance: json_.containsKey('vectorDistance')
+              ? decodeDouble(json_['vectorDistance'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (query != null) 'query': query!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
         if (summary != null) 'summary': summary!,
         if (title != null) 'title': title!,
         if (uri != null) 'uri': uri!,
-        if (vectorDistance != null) 'vectorDistance': vectorDistance!,
+        if (vectorDistance != null)
+          'vectorDistance': encodeDouble(vectorDistance!),
       };
 }
 
@@ -40600,12 +40649,14 @@ class GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature {
       core.Map json_)
       : this(
           name: json_['name'] as core.String?,
-          sigma: (json_['sigma'] as core.num?)?.toDouble(),
+          sigma: json_.containsKey('sigma')
+              ? decodeDouble(json_['sigma'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (sigma != null) 'sigma': sigma!,
+        if (sigma != null) 'sigma': encodeDouble(sigma!),
       };
 }
 
@@ -41003,25 +41054,30 @@ class GoogleCloudAiplatformV1FeatureStatsAnomaly {
 
   GoogleCloudAiplatformV1FeatureStatsAnomaly.fromJson(core.Map json_)
       : this(
-          anomalyDetectionThreshold:
-              (json_['anomalyDetectionThreshold'] as core.num?)?.toDouble(),
+          anomalyDetectionThreshold: json_
+                  .containsKey('anomalyDetectionThreshold')
+              ? decodeDouble(json_['anomalyDetectionThreshold'] as core.Object)
+              : null,
           anomalyUri: json_['anomalyUri'] as core.String?,
-          distributionDeviation:
-              (json_['distributionDeviation'] as core.num?)?.toDouble(),
+          distributionDeviation: json_.containsKey('distributionDeviation')
+              ? decodeDouble(json_['distributionDeviation'] as core.Object)
+              : null,
           endTime: json_['endTime'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           startTime: json_['startTime'] as core.String?,
           statsUri: json_['statsUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (anomalyDetectionThreshold != null)
-          'anomalyDetectionThreshold': anomalyDetectionThreshold!,
+          'anomalyDetectionThreshold': encodeDouble(anomalyDetectionThreshold!),
         if (anomalyUri != null) 'anomalyUri': anomalyUri!,
         if (distributionDeviation != null)
-          'distributionDeviation': distributionDeviation!,
+          'distributionDeviation': encodeDouble(distributionDeviation!),
         if (endTime != null) 'endTime': endTime!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
         if (startTime != null) 'startTime': startTime!,
         if (statsUri != null) 'statsUri': statsUri!,
       };
@@ -41097,7 +41153,9 @@ class GoogleCloudAiplatformV1FeatureValue {
                   json_['doubleArrayValue']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           int64ArrayValue: json_.containsKey('int64ArrayValue')
               ? GoogleCloudAiplatformV1Int64Array.fromJson(
                   json_['int64ArrayValue']
@@ -41125,7 +41183,7 @@ class GoogleCloudAiplatformV1FeatureValue {
         if (boolValue != null) 'boolValue': boolValue!,
         if (bytesValue != null) 'bytesValue': bytesValue!,
         if (doubleArrayValue != null) 'doubleArrayValue': doubleArrayValue!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (int64ArrayValue != null) 'int64ArrayValue': int64ArrayValue!,
         if (int64Value != null) 'int64Value': int64Value!,
         if (metadata != null) 'metadata': metadata!,
@@ -42324,11 +42382,13 @@ class GoogleCloudAiplatformV1FeaturestoreMonitoringConfigThresholdConfig {
   GoogleCloudAiplatformV1FeaturestoreMonitoringConfigThresholdConfig.fromJson(
       core.Map json_)
       : this(
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -42778,8 +42838,10 @@ class GoogleCloudAiplatformV1FindNeighborsRequestQuery {
                   json_['datapoint'] as core.Map<core.String, core.dynamic>)
               : null,
           fractionLeafNodesToSearchOverride:
-              (json_['fractionLeafNodesToSearchOverride'] as core.num?)
-                  ?.toDouble(),
+              json_.containsKey('fractionLeafNodesToSearchOverride')
+                  ? decodeDouble(
+                      json_['fractionLeafNodesToSearchOverride'] as core.Object)
+                  : null,
           neighborCount: json_['neighborCount'] as core.int?,
           perCrowdingAttributeNeighborCount:
               json_['perCrowdingAttributeNeighborCount'] as core.int?,
@@ -42795,7 +42857,7 @@ class GoogleCloudAiplatformV1FindNeighborsRequestQuery {
         if (datapoint != null) 'datapoint': datapoint!,
         if (fractionLeafNodesToSearchOverride != null)
           'fractionLeafNodesToSearchOverride':
-              fractionLeafNodesToSearchOverride!,
+              encodeDouble(fractionLeafNodesToSearchOverride!),
         if (neighborCount != null) 'neighborCount': neighborCount!,
         if (perCrowdingAttributeNeighborCount != null)
           'perCrowdingAttributeNeighborCount':
@@ -42821,11 +42883,13 @@ class GoogleCloudAiplatformV1FindNeighborsRequestQueryRRF {
 
   GoogleCloudAiplatformV1FindNeighborsRequestQueryRRF.fromJson(core.Map json_)
       : this(
-          alpha: (json_['alpha'] as core.num?)?.toDouble(),
+          alpha: json_.containsKey('alpha')
+              ? decodeDouble(json_['alpha'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alpha != null) 'alpha': alpha!,
+        if (alpha != null) 'alpha': encodeDouble(alpha!),
       };
 }
 
@@ -42910,14 +42974,19 @@ class GoogleCloudAiplatformV1FindNeighborsResponseNeighbor {
               ? GoogleCloudAiplatformV1IndexDatapoint.fromJson(
                   json_['datapoint'] as core.Map<core.String, core.dynamic>)
               : null,
-          distance: (json_['distance'] as core.num?)?.toDouble(),
-          sparseDistance: (json_['sparseDistance'] as core.num?)?.toDouble(),
+          distance: json_.containsKey('distance')
+              ? decodeDouble(json_['distance'] as core.Object)
+              : null,
+          sparseDistance: json_.containsKey('sparseDistance')
+              ? decodeDouble(json_['sparseDistance'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datapoint != null) 'datapoint': datapoint!,
-        if (distance != null) 'distance': distance!,
-        if (sparseDistance != null) 'sparseDistance': sparseDistance!,
+        if (distance != null) 'distance': encodeDouble(distance!),
+        if (sparseDistance != null)
+          'sparseDistance': encodeDouble(sparseDistance!),
       };
 }
 
@@ -42984,15 +43053,19 @@ class GoogleCloudAiplatformV1FluencyResult {
 
   GoogleCloudAiplatformV1FluencyResult.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -43098,15 +43171,19 @@ class GoogleCloudAiplatformV1FulfillmentResult {
 
   GoogleCloudAiplatformV1FulfillmentResult.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -43914,12 +43991,15 @@ class GoogleCloudAiplatformV1GenerationConfig {
       : this(
           audioTimestamp: json_['audioTimestamp'] as core.bool?,
           candidateCount: json_['candidateCount'] as core.int?,
-          frequencyPenalty:
-              (json_['frequencyPenalty'] as core.num?)?.toDouble(),
+          frequencyPenalty: json_.containsKey('frequencyPenalty')
+              ? decodeDouble(json_['frequencyPenalty'] as core.Object)
+              : null,
           logprobs: json_['logprobs'] as core.int?,
           maxOutputTokens: json_['maxOutputTokens'] as core.int?,
           mediaResolution: json_['mediaResolution'] as core.String?,
-          presencePenalty: (json_['presencePenalty'] as core.num?)?.toDouble(),
+          presencePenalty: json_.containsKey('presencePenalty')
+              ? decodeDouble(json_['presencePenalty'] as core.Object)
+              : null,
           responseLogprobs: json_['responseLogprobs'] as core.bool?,
           responseMimeType: json_['responseMimeType'] as core.String?,
           responseModalities: (json_['responseModalities'] as core.List?)
@@ -43941,19 +44021,27 @@ class GoogleCloudAiplatformV1GenerationConfig {
           stopSequences: (json_['stopSequences'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          temperature: (json_['temperature'] as core.num?)?.toDouble(),
-          topK: (json_['topK'] as core.num?)?.toDouble(),
-          topP: (json_['topP'] as core.num?)?.toDouble(),
+          temperature: json_.containsKey('temperature')
+              ? decodeDouble(json_['temperature'] as core.Object)
+              : null,
+          topK: json_.containsKey('topK')
+              ? decodeDouble(json_['topK'] as core.Object)
+              : null,
+          topP: json_.containsKey('topP')
+              ? decodeDouble(json_['topP'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioTimestamp != null) 'audioTimestamp': audioTimestamp!,
         if (candidateCount != null) 'candidateCount': candidateCount!,
-        if (frequencyPenalty != null) 'frequencyPenalty': frequencyPenalty!,
+        if (frequencyPenalty != null)
+          'frequencyPenalty': encodeDouble(frequencyPenalty!),
         if (logprobs != null) 'logprobs': logprobs!,
         if (maxOutputTokens != null) 'maxOutputTokens': maxOutputTokens!,
         if (mediaResolution != null) 'mediaResolution': mediaResolution!,
-        if (presencePenalty != null) 'presencePenalty': presencePenalty!,
+        if (presencePenalty != null)
+          'presencePenalty': encodeDouble(presencePenalty!),
         if (responseLogprobs != null) 'responseLogprobs': responseLogprobs!,
         if (responseMimeType != null) 'responseMimeType': responseMimeType!,
         if (responseModalities != null)
@@ -43963,9 +44051,9 @@ class GoogleCloudAiplatformV1GenerationConfig {
         if (seed != null) 'seed': seed!,
         if (speechConfig != null) 'speechConfig': speechConfig!,
         if (stopSequences != null) 'stopSequences': stopSequences!,
-        if (temperature != null) 'temperature': temperature!,
-        if (topK != null) 'topK': topK!,
-        if (topP != null) 'topP': topP!,
+        if (temperature != null) 'temperature': encodeDouble(temperature!),
+        if (topK != null) 'topK': encodeDouble(topK!),
+        if (topP != null) 'topP': encodeDouble(topP!),
       };
 }
 
@@ -44247,15 +44335,19 @@ class GoogleCloudAiplatformV1GroundednessResult {
 
   GoogleCloudAiplatformV1GroundednessResult.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -44445,7 +44537,7 @@ class GoogleCloudAiplatformV1GroundingSupport {
   GoogleCloudAiplatformV1GroundingSupport.fromJson(core.Map json_)
       : this(
           confidenceScores: (json_['confidenceScores'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           groundingChunkIndices: (json_['groundingChunkIndices'] as core.List?)
               ?.map((value) => value as core.int)
@@ -44457,7 +44549,9 @@ class GoogleCloudAiplatformV1GroundingSupport {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidenceScores != null) 'confidenceScores': confidenceScores!,
+        if (confidenceScores != null)
+          'confidenceScores':
+              confidenceScores!.map((value) => encodeDouble(value)).toList(),
         if (groundingChunkIndices != null)
           'groundingChunkIndices': groundingChunkIndices!,
         if (segment != null) 'segment': segment!,
@@ -45385,7 +45479,7 @@ class GoogleCloudAiplatformV1IndexDatapoint {
               : null,
           datapointId: json_['datapointId'] as core.String?,
           featureVector: (json_['featureVector'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           numericRestricts: (json_['numericRestricts'] as core.List?)
               ?.map((value) =>
@@ -45407,7 +45501,9 @@ class GoogleCloudAiplatformV1IndexDatapoint {
   core.Map<core.String, core.dynamic> toJson() => {
         if (crowdingTag != null) 'crowdingTag': crowdingTag!,
         if (datapointId != null) 'datapointId': datapointId!,
-        if (featureVector != null) 'featureVector': featureVector!,
+        if (featureVector != null)
+          'featureVector':
+              featureVector!.map((value) => encodeDouble(value)).toList(),
         if (numericRestricts != null) 'numericRestricts': numericRestricts!,
         if (restricts != null) 'restricts': restricts!,
         if (sparseEmbedding != null) 'sparseEmbedding': sparseEmbedding!,
@@ -45484,16 +45580,20 @@ class GoogleCloudAiplatformV1IndexDatapointNumericRestriction {
       : this(
           namespace: json_['namespace'] as core.String?,
           op: json_['op'] as core.String?,
-          valueDouble: (json_['valueDouble'] as core.num?)?.toDouble(),
-          valueFloat: (json_['valueFloat'] as core.num?)?.toDouble(),
+          valueDouble: json_.containsKey('valueDouble')
+              ? decodeDouble(json_['valueDouble'] as core.Object)
+              : null,
+          valueFloat: json_.containsKey('valueFloat')
+              ? decodeDouble(json_['valueFloat'] as core.Object)
+              : null,
           valueInt: json_['valueInt'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (namespace != null) 'namespace': namespace!,
         if (op != null) 'op': op!,
-        if (valueDouble != null) 'valueDouble': valueDouble!,
-        if (valueFloat != null) 'valueFloat': valueFloat!,
+        if (valueDouble != null) 'valueDouble': encodeDouble(valueDouble!),
+        if (valueFloat != null) 'valueFloat': encodeDouble(valueFloat!),
         if (valueInt != null) 'valueInt': valueInt!,
       };
 }
@@ -45565,13 +45665,14 @@ class GoogleCloudAiplatformV1IndexDatapointSparseEmbedding {
               ?.map((value) => value as core.String)
               .toList(),
           values: (json_['values'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null) 'dimensions': dimensions!,
-        if (values != null) 'values': values!,
+        if (values != null)
+          'values': values!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -47982,13 +48083,16 @@ class GoogleCloudAiplatformV1LogprobsResultCandidate {
 
   GoogleCloudAiplatformV1LogprobsResultCandidate.fromJson(core.Map json_)
       : this(
-          logProbability: (json_['logProbability'] as core.num?)?.toDouble(),
+          logProbability: json_.containsKey('logProbability')
+              ? decodeDouble(json_['logProbability'] as core.Object)
+              : null,
           token: json_['token'] as core.String?,
           tokenId: json_['tokenId'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (logProbability != null) 'logProbability': logProbability!,
+        if (logProbability != null)
+          'logProbability': encodeDouble(logProbability!),
         if (token != null) 'token': token!,
         if (tokenId != null) 'tokenId': tokenId!,
       };
@@ -48221,12 +48325,14 @@ class GoogleCloudAiplatformV1MeasurementMetric {
   GoogleCloudAiplatformV1MeasurementMetric.fromJson(core.Map json_)
       : this(
           metricId: json_['metricId'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metricId != null) 'metricId': metricId!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -48593,11 +48699,13 @@ class GoogleCloudAiplatformV1MetricxResult {
 
   GoogleCloudAiplatformV1MetricxResult.fromJson(core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -50875,13 +50983,17 @@ class GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecRange {
   GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecRange.fromJson(
       core.Map json_)
       : this(
-          high: (json_['high'] as core.num?)?.toDouble(),
-          low: (json_['low'] as core.num?)?.toDouble(),
+          high: json_.containsKey('high')
+              ? decodeDouble(json_['high'] as core.Object)
+              : null,
+          low: json_.containsKey('low')
+              ? decodeDouble(json_['low'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (high != null) 'high': high!,
-        if (low != null) 'low': low!,
+        if (high != null) 'high': encodeDouble(high!),
+        if (low != null) 'low': encodeDouble(low!),
       };
 }
 
@@ -50971,12 +51083,14 @@ class GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecValue {
   GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecValue.fromJson(
       core.Map json_)
       : this(
-          floatValue: (json_['floatValue'] as core.num?)?.toDouble(),
+          floatValue: json_.containsKey('floatValue')
+              ? decodeDouble(json_['floatValue'] as core.Object)
+              : null,
           stringValue: json_['stringValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (floatValue != null) 'floatValue': floatValue!,
+        if (floatValue != null) 'floatValue': encodeDouble(floatValue!),
         if (stringValue != null) 'stringValue': stringValue!,
       };
 }
@@ -52461,12 +52575,13 @@ class GoogleCloudAiplatformV1NearestNeighborQueryEmbedding {
   GoogleCloudAiplatformV1NearestNeighborQueryEmbedding.fromJson(core.Map json_)
       : this(
           value: (json_['value'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
+        if (value != null)
+          'value': value!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -52521,16 +52636,20 @@ class GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter {
       : this(
           name: json_['name'] as core.String?,
           op: json_['op'] as core.String?,
-          valueDouble: (json_['valueDouble'] as core.num?)?.toDouble(),
-          valueFloat: (json_['valueFloat'] as core.num?)?.toDouble(),
+          valueDouble: json_.containsKey('valueDouble')
+              ? decodeDouble(json_['valueDouble'] as core.Object)
+              : null,
+          valueFloat: json_.containsKey('valueFloat')
+              ? decodeDouble(json_['valueFloat'] as core.Object)
+              : null,
           valueInt: json_['valueInt'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (op != null) 'op': op!,
-        if (valueDouble != null) 'valueDouble': valueDouble!,
-        if (valueFloat != null) 'valueFloat': valueFloat!,
+        if (valueDouble != null) 'valueDouble': encodeDouble(valueDouble!),
+        if (valueFloat != null) 'valueFloat': encodeDouble(valueFloat!),
         if (valueInt != null) 'valueInt': valueInt!,
       };
 }
@@ -52562,15 +52681,16 @@ class GoogleCloudAiplatformV1NearestNeighborQueryParameters {
       : this(
           approximateNeighborCandidates:
               json_['approximateNeighborCandidates'] as core.int?,
-          leafNodesSearchFraction:
-              (json_['leafNodesSearchFraction'] as core.num?)?.toDouble(),
+          leafNodesSearchFraction: json_.containsKey('leafNodesSearchFraction')
+              ? decodeDouble(json_['leafNodesSearchFraction'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (approximateNeighborCandidates != null)
           'approximateNeighborCandidates': approximateNeighborCandidates!,
         if (leafNodesSearchFraction != null)
-          'leafNodesSearchFraction': leafNodesSearchFraction!,
+          'leafNodesSearchFraction': encodeDouble(leafNodesSearchFraction!),
       };
 }
 
@@ -52669,7 +52789,9 @@ class GoogleCloudAiplatformV1NearestNeighborsNeighbor {
 
   GoogleCloudAiplatformV1NearestNeighborsNeighbor.fromJson(core.Map json_)
       : this(
-          distance: (json_['distance'] as core.num?)?.toDouble(),
+          distance: json_.containsKey('distance')
+              ? decodeDouble(json_['distance'] as core.Object)
+              : null,
           entityId: json_['entityId'] as core.String?,
           entityKeyValues: json_.containsKey('entityKeyValues')
               ? GoogleCloudAiplatformV1FetchFeatureValuesResponse.fromJson(
@@ -52679,7 +52801,7 @@ class GoogleCloudAiplatformV1NearestNeighborsNeighbor {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (distance != null) 'distance': distance!,
+        if (distance != null) 'distance': encodeDouble(distance!),
         if (entityId != null) 'entityId': entityId!,
         if (entityKeyValues != null) 'entityKeyValues': entityKeyValues!,
       };
@@ -52704,13 +52826,15 @@ class GoogleCloudAiplatformV1Neighbor {
 
   GoogleCloudAiplatformV1Neighbor.fromJson(core.Map json_)
       : this(
-          neighborDistance:
-              (json_['neighborDistance'] as core.num?)?.toDouble(),
+          neighborDistance: json_.containsKey('neighborDistance')
+              ? decodeDouble(json_['neighborDistance'] as core.Object)
+              : null,
           neighborId: json_['neighborId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (neighborDistance != null) 'neighborDistance': neighborDistance!,
+        if (neighborDistance != null)
+          'neighborDistance': encodeDouble(neighborDistance!),
         if (neighborId != null) 'neighborId': neighborId!,
       };
 }
@@ -54189,13 +54313,15 @@ class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityResult {
   GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityResult.fromJson(
       core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
           pairwiseChoice: json_['pairwiseChoice'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
         if (pairwiseChoice != null) 'pairwiseChoice': pairwiseChoice!,
       };
@@ -54329,13 +54455,15 @@ class GoogleCloudAiplatformV1PairwiseSummarizationQualityResult {
   GoogleCloudAiplatformV1PairwiseSummarizationQualityResult.fromJson(
       core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
           pairwiseChoice: json_['pairwiseChoice'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
         if (pairwiseChoice != null) 'pairwiseChoice': pairwiseChoice!,
       };
@@ -55668,12 +55796,14 @@ class GoogleCloudAiplatformV1PointwiseMetricResult {
   GoogleCloudAiplatformV1PointwiseMetricResult.fromJson(core.Map json_)
       : this(
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -55950,14 +56080,16 @@ class GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig {
                       as core.Map<core.String, core.dynamic>)
               : null,
           enabled: json_['enabled'] as core.bool?,
-          samplingRate: (json_['samplingRate'] as core.num?)?.toDouble(),
+          samplingRate: json_.containsKey('samplingRate')
+              ? decodeDouble(json_['samplingRate'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDestination != null)
           'bigqueryDestination': bigqueryDestination!,
         if (enabled != null) 'enabled': enabled!,
-        if (samplingRate != null) 'samplingRate': samplingRate!,
+        if (samplingRate != null) 'samplingRate': encodeDouble(samplingRate!),
       };
 }
 
@@ -57651,15 +57783,19 @@ class GoogleCloudAiplatformV1QuestionAnsweringCorrectnessResult {
   GoogleCloudAiplatformV1QuestionAnsweringCorrectnessResult.fromJson(
       core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -57762,15 +57898,19 @@ class GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessResult {
   GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessResult.fromJson(
       core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -57912,15 +58052,19 @@ class GoogleCloudAiplatformV1QuestionAnsweringQualityResult {
 
   GoogleCloudAiplatformV1QuestionAnsweringQualityResult.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -57994,15 +58138,19 @@ class GoogleCloudAiplatformV1QuestionAnsweringRelevanceResult {
   GoogleCloudAiplatformV1QuestionAnsweringRelevanceResult.fromJson(
       core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -58090,14 +58238,16 @@ class GoogleCloudAiplatformV1RagContextsContext {
 
   GoogleCloudAiplatformV1RagContextsContext.fromJson(core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           sourceDisplayName: json_['sourceDisplayName'] as core.String?,
           sourceUri: json_['sourceUri'] as core.String?,
           text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
         if (sourceDisplayName != null) 'sourceDisplayName': sourceDisplayName!,
         if (sourceUri != null) 'sourceUri': sourceUri!,
         if (text != null) 'text': text!,
@@ -58563,18 +58713,21 @@ class GoogleCloudAiplatformV1RagRetrievalConfigFilter {
   GoogleCloudAiplatformV1RagRetrievalConfigFilter.fromJson(core.Map json_)
       : this(
           metadataFilter: json_['metadataFilter'] as core.String?,
-          vectorDistanceThreshold:
-              (json_['vectorDistanceThreshold'] as core.num?)?.toDouble(),
-          vectorSimilarityThreshold:
-              (json_['vectorSimilarityThreshold'] as core.num?)?.toDouble(),
+          vectorDistanceThreshold: json_.containsKey('vectorDistanceThreshold')
+              ? decodeDouble(json_['vectorDistanceThreshold'] as core.Object)
+              : null,
+          vectorSimilarityThreshold: json_
+                  .containsKey('vectorSimilarityThreshold')
+              ? decodeDouble(json_['vectorSimilarityThreshold'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadataFilter != null) 'metadataFilter': metadataFilter!,
         if (vectorDistanceThreshold != null)
-          'vectorDistanceThreshold': vectorDistanceThreshold!,
+          'vectorDistanceThreshold': encodeDouble(vectorDistanceThreshold!),
         if (vectorSimilarityThreshold != null)
-          'vectorSimilarityThreshold': vectorSimilarityThreshold!,
+          'vectorSimilarityThreshold': encodeDouble(vectorSimilarityThreshold!),
       };
 }
 
@@ -59836,11 +59989,13 @@ class GoogleCloudAiplatformV1ResourcesConsumed {
 
   GoogleCloudAiplatformV1ResourcesConsumed.fromJson(core.Map json_)
       : this(
-          replicaHours: (json_['replicaHours'] as core.num?)?.toDouble(),
+          replicaHours: json_.containsKey('replicaHours')
+              ? decodeDouble(json_['replicaHours'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (replicaHours != null) 'replicaHours': replicaHours!,
+        if (replicaHours != null) 'replicaHours': encodeDouble(replicaHours!),
       };
 }
 
@@ -59969,14 +60124,16 @@ class GoogleCloudAiplatformV1RetrievalMetadata {
   GoogleCloudAiplatformV1RetrievalMetadata.fromJson(core.Map json_)
       : this(
           googleSearchDynamicRetrievalScore:
-              (json_['googleSearchDynamicRetrievalScore'] as core.num?)
-                  ?.toDouble(),
+              json_.containsKey('googleSearchDynamicRetrievalScore')
+                  ? decodeDouble(
+                      json_['googleSearchDynamicRetrievalScore'] as core.Object)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleSearchDynamicRetrievalScore != null)
           'googleSearchDynamicRetrievalScore':
-              googleSearchDynamicRetrievalScore!,
+              encodeDouble(googleSearchDynamicRetrievalScore!),
       };
 }
 
@@ -60048,14 +60205,15 @@ class GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore {
                   GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
-          vectorDistanceThreshold:
-              (json_['vectorDistanceThreshold'] as core.num?)?.toDouble(),
+          vectorDistanceThreshold: json_.containsKey('vectorDistanceThreshold')
+              ? decodeDouble(json_['vectorDistanceThreshold'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ragResources != null) 'ragResources': ragResources!,
         if (vectorDistanceThreshold != null)
-          'vectorDistanceThreshold': vectorDistanceThreshold!,
+          'vectorDistanceThreshold': encodeDouble(vectorDistanceThreshold!),
       };
 }
 
@@ -60136,11 +60294,13 @@ class GoogleCloudAiplatformV1RougeMetricValue {
 
   GoogleCloudAiplatformV1RougeMetricValue.fromJson(core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -60311,19 +60471,24 @@ class GoogleCloudAiplatformV1SafetyRating {
           blocked: json_['blocked'] as core.bool?,
           category: json_['category'] as core.String?,
           probability: json_['probability'] as core.String?,
-          probabilityScore:
-              (json_['probabilityScore'] as core.num?)?.toDouble(),
+          probabilityScore: json_.containsKey('probabilityScore')
+              ? decodeDouble(json_['probabilityScore'] as core.Object)
+              : null,
           severity: json_['severity'] as core.String?,
-          severityScore: (json_['severityScore'] as core.num?)?.toDouble(),
+          severityScore: json_.containsKey('severityScore')
+              ? decodeDouble(json_['severityScore'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (blocked != null) 'blocked': blocked!,
         if (category != null) 'category': category!,
         if (probability != null) 'probability': probability!,
-        if (probabilityScore != null) 'probabilityScore': probabilityScore!,
+        if (probabilityScore != null)
+          'probabilityScore': encodeDouble(probabilityScore!),
         if (severity != null) 'severity': severity!,
-        if (severityScore != null) 'severityScore': severityScore!,
+        if (severityScore != null)
+          'severityScore': encodeDouble(severityScore!),
       };
 }
 
@@ -60352,15 +60517,19 @@ class GoogleCloudAiplatformV1SafetyResult {
 
   GoogleCloudAiplatformV1SafetyResult.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -60539,11 +60708,13 @@ class GoogleCloudAiplatformV1SamplingStrategyRandomSampleConfig {
   GoogleCloudAiplatformV1SamplingStrategyRandomSampleConfig.fromJson(
       core.Map json_)
       : this(
-          sampleRate: (json_['sampleRate'] as core.num?)?.toDouble(),
+          sampleRate: json_.containsKey('sampleRate')
+              ? decodeDouble(json_['sampleRate'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sampleRate != null) 'sampleRate': sampleRate!,
+        if (sampleRate != null) 'sampleRate': encodeDouble(sampleRate!),
       };
 }
 
@@ -60666,11 +60837,13 @@ class GoogleCloudAiplatformV1Scalar {
 
   GoogleCloudAiplatformV1Scalar.fromJson(core.Map json_)
       : this(
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -61203,11 +61376,15 @@ class GoogleCloudAiplatformV1Schema {
           maxItems: json_['maxItems'] as core.String?,
           maxLength: json_['maxLength'] as core.String?,
           maxProperties: json_['maxProperties'] as core.String?,
-          maximum: (json_['maximum'] as core.num?)?.toDouble(),
+          maximum: json_.containsKey('maximum')
+              ? decodeDouble(json_['maximum'] as core.Object)
+              : null,
           minItems: json_['minItems'] as core.String?,
           minLength: json_['minLength'] as core.String?,
           minProperties: json_['minProperties'] as core.String?,
-          minimum: (json_['minimum'] as core.num?)?.toDouble(),
+          minimum: json_.containsKey('minimum')
+              ? decodeDouble(json_['minimum'] as core.Object)
+              : null,
           nullable: json_['nullable'] as core.bool?,
           pattern: json_['pattern'] as core.String?,
           properties:
@@ -61240,11 +61417,11 @@ class GoogleCloudAiplatformV1Schema {
         if (maxItems != null) 'maxItems': maxItems!,
         if (maxLength != null) 'maxLength': maxLength!,
         if (maxProperties != null) 'maxProperties': maxProperties!,
-        if (maximum != null) 'maximum': maximum!,
+        if (maximum != null) 'maximum': encodeDouble(maximum!),
         if (minItems != null) 'minItems': minItems!,
         if (minLength != null) 'minLength': minLength!,
         if (minProperties != null) 'minProperties': minProperties!,
-        if (minimum != null) 'minimum': minimum!,
+        if (minimum != null) 'minimum': encodeDouble(minimum!),
         if (nullable != null) 'nullable': nullable!,
         if (pattern != null) 'pattern': pattern!,
         if (properties != null) 'properties': properties!,
@@ -62067,13 +62244,15 @@ class GoogleCloudAiplatformV1SmoothGradConfig {
                   json_['featureNoiseSigma']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          noiseSigma: (json_['noiseSigma'] as core.num?)?.toDouble(),
+          noiseSigma: json_.containsKey('noiseSigma')
+              ? decodeDouble(json_['noiseSigma'] as core.Object)
+              : null,
           noisySampleCount: json_['noisySampleCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (featureNoiseSigma != null) 'featureNoiseSigma': featureNoiseSigma!,
-        if (noiseSigma != null) 'noiseSigma': noiseSigma!,
+        if (noiseSigma != null) 'noiseSigma': encodeDouble(noiseSigma!),
         if (noisySampleCount != null) 'noisySampleCount': noisySampleCount!,
       };
 }
@@ -62321,19 +62500,24 @@ class GoogleCloudAiplatformV1StratifiedSplit {
   GoogleCloudAiplatformV1StratifiedSplit.fromJson(core.Map json_)
       : this(
           key: json_['key'] as core.String?,
-          testFraction: (json_['testFraction'] as core.num?)?.toDouble(),
-          trainingFraction:
-              (json_['trainingFraction'] as core.num?)?.toDouble(),
-          validationFraction:
-              (json_['validationFraction'] as core.num?)?.toDouble(),
+          testFraction: json_.containsKey('testFraction')
+              ? decodeDouble(json_['testFraction'] as core.Object)
+              : null,
+          trainingFraction: json_.containsKey('trainingFraction')
+              ? decodeDouble(json_['trainingFraction'] as core.Object)
+              : null,
+          validationFraction: json_.containsKey('validationFraction')
+              ? decodeDouble(json_['validationFraction'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
-        if (testFraction != null) 'testFraction': testFraction!,
-        if (trainingFraction != null) 'trainingFraction': trainingFraction!,
+        if (testFraction != null) 'testFraction': encodeDouble(testFraction!),
+        if (trainingFraction != null)
+          'trainingFraction': encodeDouble(trainingFraction!),
         if (validationFraction != null)
-          'validationFraction': validationFraction!,
+          'validationFraction': encodeDouble(validationFraction!),
       };
 }
 
@@ -63019,14 +63203,21 @@ class GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfig {
       core.Map json_)
       : this(
           desiredMinSafeTrialsFraction:
-              (json_['desiredMinSafeTrialsFraction'] as core.num?)?.toDouble(),
-          safetyThreshold: (json_['safetyThreshold'] as core.num?)?.toDouble(),
+              json_.containsKey('desiredMinSafeTrialsFraction')
+                  ? decodeDouble(
+                      json_['desiredMinSafeTrialsFraction'] as core.Object)
+                  : null,
+          safetyThreshold: json_.containsKey('safetyThreshold')
+              ? decodeDouble(json_['safetyThreshold'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (desiredMinSafeTrialsFraction != null)
-          'desiredMinSafeTrialsFraction': desiredMinSafeTrialsFraction!,
-        if (safetyThreshold != null) 'safetyThreshold': safetyThreshold!,
+          'desiredMinSafeTrialsFraction':
+              encodeDouble(desiredMinSafeTrialsFraction!),
+        if (safetyThreshold != null)
+          'safetyThreshold': encodeDouble(safetyThreshold!),
       };
 }
 
@@ -63273,12 +63464,13 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscr
       core.Map json_)
       : this(
           values: (json_['values'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
+        if (values != null)
+          'values': values!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -63336,15 +63528,18 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec {
   GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec.fromJson(
       core.Map json_)
       : this(
-          defaultValue: (json_['defaultValue'] as core.num?)?.toDouble(),
+          defaultValue: json_.containsKey('defaultValue')
+              ? decodeDouble(json_['defaultValue'] as core.Object)
+              : null,
           values: (json_['values'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultValue != null) 'defaultValue': defaultValue!,
-        if (values != null) 'values': values!,
+        if (defaultValue != null) 'defaultValue': encodeDouble(defaultValue!),
+        if (values != null)
+          'values': values!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -63377,15 +63572,21 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec {
   GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec.fromJson(
       core.Map json_)
       : this(
-          defaultValue: (json_['defaultValue'] as core.num?)?.toDouble(),
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
+          defaultValue: json_.containsKey('defaultValue')
+              ? decodeDouble(json_['defaultValue'] as core.Object)
+              : null,
+          maxValue: json_.containsKey('maxValue')
+              ? decodeDouble(json_['maxValue'] as core.Object)
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? decodeDouble(json_['minValue'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultValue != null) 'defaultValue': defaultValue!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
+        if (defaultValue != null) 'defaultValue': encodeDouble(defaultValue!),
+        if (maxValue != null) 'maxValue': encodeDouble(maxValue!),
+        if (minValue != null) 'minValue': encodeDouble(minValue!),
       };
 }
 
@@ -63696,15 +63897,19 @@ class GoogleCloudAiplatformV1SummarizationHelpfulnessResult {
 
   GoogleCloudAiplatformV1SummarizationHelpfulnessResult.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -63842,15 +64047,19 @@ class GoogleCloudAiplatformV1SummarizationQualityResult {
 
   GoogleCloudAiplatformV1SummarizationQualityResult.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -63946,15 +64155,19 @@ class GoogleCloudAiplatformV1SummarizationVerbosityResult {
 
   GoogleCloudAiplatformV1SummarizationVerbosityResult.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           explanation: json_['explanation'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (explanation != null) 'explanation': explanation!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -64023,15 +64236,16 @@ class GoogleCloudAiplatformV1SupervisedHyperParameters {
       : this(
           adapterSize: json_['adapterSize'] as core.String?,
           epochCount: json_['epochCount'] as core.String?,
-          learningRateMultiplier:
-              (json_['learningRateMultiplier'] as core.num?)?.toDouble(),
+          learningRateMultiplier: json_.containsKey('learningRateMultiplier')
+              ? decodeDouble(json_['learningRateMultiplier'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adapterSize != null) 'adapterSize': adapterSize!,
         if (epochCount != null) 'epochCount': epochCount!,
         if (learningRateMultiplier != null)
-          'learningRateMultiplier': learningRateMultiplier!,
+          'learningRateMultiplier': encodeDouble(learningRateMultiplier!),
       };
 }
 
@@ -64266,24 +64480,36 @@ class GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution {
                   GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
-          max: (json_['max'] as core.num?)?.toDouble(),
-          mean: (json_['mean'] as core.num?)?.toDouble(),
-          median: (json_['median'] as core.num?)?.toDouble(),
-          min: (json_['min'] as core.num?)?.toDouble(),
-          p5: (json_['p5'] as core.num?)?.toDouble(),
-          p95: (json_['p95'] as core.num?)?.toDouble(),
+          max: json_.containsKey('max')
+              ? decodeDouble(json_['max'] as core.Object)
+              : null,
+          mean: json_.containsKey('mean')
+              ? decodeDouble(json_['mean'] as core.Object)
+              : null,
+          median: json_.containsKey('median')
+              ? decodeDouble(json_['median'] as core.Object)
+              : null,
+          min: json_.containsKey('min')
+              ? decodeDouble(json_['min'] as core.Object)
+              : null,
+          p5: json_.containsKey('p5')
+              ? decodeDouble(json_['p5'] as core.Object)
+              : null,
+          p95: json_.containsKey('p95')
+              ? decodeDouble(json_['p95'] as core.Object)
+              : null,
           sum: json_['sum'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (billableSum != null) 'billableSum': billableSum!,
         if (buckets != null) 'buckets': buckets!,
-        if (max != null) 'max': max!,
-        if (mean != null) 'mean': mean!,
-        if (median != null) 'median': median!,
-        if (min != null) 'min': min!,
-        if (p5 != null) 'p5': p5!,
-        if (p95 != null) 'p95': p95!,
+        if (max != null) 'max': encodeDouble(max!),
+        if (mean != null) 'mean': encodeDouble(mean!),
+        if (median != null) 'median': encodeDouble(median!),
+        if (min != null) 'min': encodeDouble(min!),
+        if (p5 != null) 'p5': encodeDouble(p5!),
+        if (p95 != null) 'p95': encodeDouble(p95!),
         if (sum != null) 'sum': sum!,
       };
 }
@@ -64315,15 +64541,21 @@ class GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket {
   GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket.fromJson(
       core.Map json_)
       : this(
-          count: (json_['count'] as core.num?)?.toDouble(),
-          left: (json_['left'] as core.num?)?.toDouble(),
-          right: (json_['right'] as core.num?)?.toDouble(),
+          count: json_.containsKey('count')
+              ? decodeDouble(json_['count'] as core.Object)
+              : null,
+          left: json_.containsKey('left')
+              ? decodeDouble(json_['left'] as core.Object)
+              : null,
+          right: json_.containsKey('right')
+              ? decodeDouble(json_['right'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (left != null) 'left': left!,
-        if (right != null) 'right': right!,
+        if (count != null) 'count': encodeDouble(count!),
+        if (left != null) 'left': encodeDouble(left!),
+        if (right != null) 'right': encodeDouble(right!),
       };
 }
 
@@ -64518,11 +64750,11 @@ class GoogleCloudAiplatformV1Tensor {
               ?.map((value) => value as core.String)
               .toList(),
           doubleVal: (json_['doubleVal'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           dtype: json_['dtype'] as core.String?,
           floatVal: (json_['floatVal'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           int64Val: (json_['int64Val'] as core.List?)
               ?.map((value) => value as core.String)
@@ -64560,9 +64792,11 @@ class GoogleCloudAiplatformV1Tensor {
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolVal != null) 'boolVal': boolVal!,
         if (bytesVal != null) 'bytesVal': bytesVal!,
-        if (doubleVal != null) 'doubleVal': doubleVal!,
+        if (doubleVal != null)
+          'doubleVal': doubleVal!.map((value) => encodeDouble(value)).toList(),
         if (dtype != null) 'dtype': dtype!,
-        if (floatVal != null) 'floatVal': floatVal!,
+        if (floatVal != null)
+          'floatVal': floatVal!.map((value) => encodeDouble(value)).toList(),
         if (int64Val != null) 'int64Val': int64Val!,
         if (intVal != null) 'intVal': intVal!,
         if (listVal != null) 'listVal': listVal!,
@@ -65175,11 +65409,13 @@ class GoogleCloudAiplatformV1ThresholdConfig {
 
   GoogleCloudAiplatformV1ThresholdConfig.fromJson(core.Map json_)
       : this(
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -65324,19 +65560,24 @@ class GoogleCloudAiplatformV1TimestampSplit {
   GoogleCloudAiplatformV1TimestampSplit.fromJson(core.Map json_)
       : this(
           key: json_['key'] as core.String?,
-          testFraction: (json_['testFraction'] as core.num?)?.toDouble(),
-          trainingFraction:
-              (json_['trainingFraction'] as core.num?)?.toDouble(),
-          validationFraction:
-              (json_['validationFraction'] as core.num?)?.toDouble(),
+          testFraction: json_.containsKey('testFraction')
+              ? decodeDouble(json_['testFraction'] as core.Object)
+              : null,
+          trainingFraction: json_.containsKey('trainingFraction')
+              ? decodeDouble(json_['trainingFraction'] as core.Object)
+              : null,
+          validationFraction: json_.containsKey('validationFraction')
+              ? decodeDouble(json_['validationFraction'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
-        if (testFraction != null) 'testFraction': testFraction!,
-        if (trainingFraction != null) 'trainingFraction': trainingFraction!,
+        if (testFraction != null) 'testFraction': encodeDouble(testFraction!),
+        if (trainingFraction != null)
+          'trainingFraction': encodeDouble(trainingFraction!),
         if (validationFraction != null)
-          'validationFraction': validationFraction!,
+          'validationFraction': encodeDouble(validationFraction!),
       };
 }
 
@@ -65566,11 +65807,13 @@ class GoogleCloudAiplatformV1ToolCallValidMetricValue {
 
   GoogleCloudAiplatformV1ToolCallValidMetricValue.fromJson(core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -65709,11 +65952,13 @@ class GoogleCloudAiplatformV1ToolNameMatchMetricValue {
 
   GoogleCloudAiplatformV1ToolNameMatchMetricValue.fromJson(core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -65801,11 +66046,13 @@ class GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue {
   GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue.fromJson(
       core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -65913,11 +66160,13 @@ class GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue {
   GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue.fromJson(
       core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -66336,11 +66585,13 @@ class GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue {
   GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue.fromJson(
       core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -66468,11 +66719,13 @@ class GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue {
   GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue.fromJson(
       core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -66598,11 +66851,13 @@ class GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue {
   GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue.fromJson(
       core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -66729,11 +66984,13 @@ class GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue {
 
   GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue.fromJson(core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -66858,11 +67115,13 @@ class GoogleCloudAiplatformV1TrajectoryRecallMetricValue {
 
   GoogleCloudAiplatformV1TrajectoryRecallMetricValue.fromJson(core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -66975,11 +67234,13 @@ class GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue {
   GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue.fromJson(
       core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -67996,13 +68257,15 @@ class GoogleCloudAiplatformV1Value {
 
   GoogleCloudAiplatformV1Value.fromJson(core.Map json_)
       : this(
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           intValue: json_['intValue'] as core.String?,
           stringValue: json_['stringValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (intValue != null) 'intValue': intValue!,
         if (stringValue != null) 'stringValue': stringValue!,
       };
@@ -68087,8 +68350,9 @@ class GoogleCloudAiplatformV1VertexRagStore {
                       as core.Map<core.String, core.dynamic>)
               : null,
           similarityTopK: json_['similarityTopK'] as core.int?,
-          vectorDistanceThreshold:
-              (json_['vectorDistanceThreshold'] as core.num?)?.toDouble(),
+          vectorDistanceThreshold: json_.containsKey('vectorDistanceThreshold')
+              ? decodeDouble(json_['vectorDistanceThreshold'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -68097,7 +68361,7 @@ class GoogleCloudAiplatformV1VertexRagStore {
           'ragRetrievalConfig': ragRetrievalConfig!,
         if (similarityTopK != null) 'similarityTopK': similarityTopK!,
         if (vectorDistanceThreshold != null)
-          'vectorDistanceThreshold': vectorDistanceThreshold!,
+          'vectorDistanceThreshold': encodeDouble(vectorDistanceThreshold!),
       };
 }
 

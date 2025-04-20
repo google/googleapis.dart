@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Apigee API - v1
 ///
@@ -127,6 +128,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -28017,13 +28019,16 @@ class GoogleCloudApigeeV1RevenueShareRange {
   GoogleCloudApigeeV1RevenueShareRange.fromJson(core.Map json_)
       : this(
           end: json_['end'] as core.String?,
-          sharePercentage: (json_['sharePercentage'] as core.num?)?.toDouble(),
+          sharePercentage: json_.containsKey('sharePercentage')
+              ? decodeDouble(json_['sharePercentage'] as core.Object)
+              : null,
           start: json_['start'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (end != null) 'end': end!,
-        if (sharePercentage != null) 'sharePercentage': sharePercentage!,
+        if (sharePercentage != null)
+          'sharePercentage': encodeDouble(sharePercentage!),
         if (start != null) 'start': start!,
       };
 }

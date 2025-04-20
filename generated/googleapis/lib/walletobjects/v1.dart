@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Wallet API - v1
 ///
@@ -52,6 +53,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -11226,14 +11228,18 @@ class LatLongPoint {
   LatLongPoint.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
       };
 }
 
@@ -12535,7 +12541,9 @@ class LoyaltyPointsBalance {
 
   LoyaltyPointsBalance.fromJson(core.Map json_)
       : this(
-          double: (json_['double'] as core.num?)?.toDouble(),
+          double: json_.containsKey('double')
+              ? decodeDouble(json_['double'] as core.Object)
+              : null,
           int: json_['int'] as core.int?,
           money: json_.containsKey('money')
               ? Money.fromJson(
@@ -12545,7 +12553,7 @@ class LoyaltyPointsBalance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (double != null) 'double': double!,
+        if (double != null) 'double': encodeDouble(double!),
         if (int != null) 'int': int!,
         if (money != null) 'money': money!,
         if (string != null) 'string': string!,
@@ -13060,13 +13068,17 @@ class MerchantLocation {
 
   MerchantLocation.fromJson(core.Map json_)
       : this(
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
       };
 }
 

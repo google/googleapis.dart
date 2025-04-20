@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// NetApp API - v1
 ///
@@ -45,6 +46,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3748,15 +3750,22 @@ class DailySchedule {
 
   DailySchedule.fromJson(core.Map json_)
       : this(
-          hour: (json_['hour'] as core.num?)?.toDouble(),
-          minute: (json_['minute'] as core.num?)?.toDouble(),
-          snapshotsToKeep: (json_['snapshotsToKeep'] as core.num?)?.toDouble(),
+          hour: json_.containsKey('hour')
+              ? decodeDouble(json_['hour'] as core.Object)
+              : null,
+          minute: json_.containsKey('minute')
+              ? decodeDouble(json_['minute'] as core.Object)
+              : null,
+          snapshotsToKeep: json_.containsKey('snapshotsToKeep')
+              ? decodeDouble(json_['snapshotsToKeep'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hour != null) 'hour': hour!,
-        if (minute != null) 'minute': minute!,
-        if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
+        if (hour != null) 'hour': encodeDouble(hour!),
+        if (minute != null) 'minute': encodeDouble(minute!),
+        if (snapshotsToKeep != null)
+          'snapshotsToKeep': encodeDouble(snapshotsToKeep!),
       };
 }
 
@@ -3919,13 +3928,18 @@ class HourlySchedule {
 
   HourlySchedule.fromJson(core.Map json_)
       : this(
-          minute: (json_['minute'] as core.num?)?.toDouble(),
-          snapshotsToKeep: (json_['snapshotsToKeep'] as core.num?)?.toDouble(),
+          minute: json_.containsKey('minute')
+              ? decodeDouble(json_['minute'] as core.Object)
+              : null,
+          snapshotsToKeep: json_.containsKey('snapshotsToKeep')
+              ? decodeDouble(json_['snapshotsToKeep'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (minute != null) 'minute': minute!,
-        if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
+        if (minute != null) 'minute': encodeDouble(minute!),
+        if (snapshotsToKeep != null)
+          'snapshotsToKeep': encodeDouble(snapshotsToKeep!),
       };
 }
 
@@ -4654,16 +4668,23 @@ class MonthlySchedule {
   MonthlySchedule.fromJson(core.Map json_)
       : this(
           daysOfMonth: json_['daysOfMonth'] as core.String?,
-          hour: (json_['hour'] as core.num?)?.toDouble(),
-          minute: (json_['minute'] as core.num?)?.toDouble(),
-          snapshotsToKeep: (json_['snapshotsToKeep'] as core.num?)?.toDouble(),
+          hour: json_.containsKey('hour')
+              ? decodeDouble(json_['hour'] as core.Object)
+              : null,
+          minute: json_.containsKey('minute')
+              ? decodeDouble(json_['minute'] as core.Object)
+              : null,
+          snapshotsToKeep: json_.containsKey('snapshotsToKeep')
+              ? decodeDouble(json_['snapshotsToKeep'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (daysOfMonth != null) 'daysOfMonth': daysOfMonth!,
-        if (hour != null) 'hour': hour!,
-        if (minute != null) 'minute': minute!,
-        if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
+        if (hour != null) 'hour': encodeDouble(hour!),
+        if (minute != null) 'minute': encodeDouble(minute!),
+        if (snapshotsToKeep != null)
+          'snapshotsToKeep': encodeDouble(snapshotsToKeep!),
       };
 }
 
@@ -5357,7 +5378,9 @@ class Snapshot {
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
           stateDetails: json_['stateDetails'] as core.String?,
-          usedBytes: (json_['usedBytes'] as core.num?)?.toDouble(),
+          usedBytes: json_.containsKey('usedBytes')
+              ? decodeDouble(json_['usedBytes'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5367,7 +5390,7 @@ class Snapshot {
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (stateDetails != null) 'stateDetails': stateDetails!,
-        if (usedBytes != null) 'usedBytes': usedBytes!,
+        if (usedBytes != null) 'usedBytes': encodeDouble(usedBytes!),
       };
 }
 
@@ -6210,7 +6233,9 @@ class Volume {
           smbSettings: (json_['smbSettings'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          snapReserve: (json_['snapReserve'] as core.num?)?.toDouble(),
+          snapReserve: json_.containsKey('snapReserve')
+              ? decodeDouble(json_['snapReserve'] as core.Object)
+              : null,
           snapshotDirectory: json_['snapshotDirectory'] as core.bool?,
           snapshotPolicy: json_.containsKey('snapshotPolicy')
               ? SnapshotPolicy.fromJson(json_['snapshotPolicy']
@@ -6258,7 +6283,7 @@ class Volume {
         if (serviceLevel != null) 'serviceLevel': serviceLevel!,
         if (shareName != null) 'shareName': shareName!,
         if (smbSettings != null) 'smbSettings': smbSettings!,
-        if (snapReserve != null) 'snapReserve': snapReserve!,
+        if (snapReserve != null) 'snapReserve': encodeDouble(snapReserve!),
         if (snapshotDirectory != null) 'snapshotDirectory': snapshotDirectory!,
         if (snapshotPolicy != null) 'snapshotPolicy': snapshotPolicy!,
         if (state != null) 'state': state!,
@@ -6299,15 +6324,22 @@ class WeeklySchedule {
   WeeklySchedule.fromJson(core.Map json_)
       : this(
           day: json_['day'] as core.String?,
-          hour: (json_['hour'] as core.num?)?.toDouble(),
-          minute: (json_['minute'] as core.num?)?.toDouble(),
-          snapshotsToKeep: (json_['snapshotsToKeep'] as core.num?)?.toDouble(),
+          hour: json_.containsKey('hour')
+              ? decodeDouble(json_['hour'] as core.Object)
+              : null,
+          minute: json_.containsKey('minute')
+              ? decodeDouble(json_['minute'] as core.Object)
+              : null,
+          snapshotsToKeep: json_.containsKey('snapshotsToKeep')
+              ? decodeDouble(json_['snapshotsToKeep'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
-        if (hour != null) 'hour': hour!,
-        if (minute != null) 'minute': minute!,
-        if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
+        if (hour != null) 'hour': encodeDouble(hour!),
+        if (minute != null) 'minute': encodeDouble(minute!),
+        if (snapshotsToKeep != null)
+          'snapshotsToKeep': encodeDouble(snapshotsToKeep!),
       };
 }

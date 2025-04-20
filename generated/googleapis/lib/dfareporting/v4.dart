@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Campaign Manager 360 API - v4
 ///
@@ -99,6 +100,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -14435,13 +14437,15 @@ class CartDataItem {
       : this(
           itemId: json_['itemId'] as core.String?,
           quantity: json_['quantity'] as core.int?,
-          unitPrice: (json_['unitPrice'] as core.num?)?.toDouble(),
+          unitPrice: json_.containsKey('unitPrice')
+              ? decodeDouble(json_['unitPrice'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (itemId != null) 'itemId': itemId!,
         if (quantity != null) 'quantity': quantity!,
-        if (unitPrice != null) 'unitPrice': unitPrice!,
+        if (unitPrice != null) 'unitPrice': encodeDouble(unitPrice!),
       };
 }
 
@@ -15334,7 +15338,9 @@ class Conversion {
               ?.map((value) => UserIdentifier.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15364,7 +15370,7 @@ class Conversion {
         if (treatmentForUnderage != null)
           'treatmentForUnderage': treatmentForUnderage!,
         if (userIdentifiers != null) 'userIdentifiers': userIdentifiers!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -16331,7 +16337,9 @@ class Creative {
           latestTraffickedCreativeId:
               json_['latestTraffickedCreativeId'] as core.String?,
           mediaDescription: json_['mediaDescription'] as core.String?,
-          mediaDuration: (json_['mediaDuration'] as core.num?)?.toDouble(),
+          mediaDuration: json_.containsKey('mediaDuration')
+              ? decodeDouble(json_['mediaDuration'] as core.Object)
+              : null,
           name: json_['name'] as core.String?,
           obaIcon: json_.containsKey('obaIcon')
               ? ObaIcon.fromJson(
@@ -16439,7 +16447,8 @@ class Creative {
         if (latestTraffickedCreativeId != null)
           'latestTraffickedCreativeId': latestTraffickedCreativeId!,
         if (mediaDescription != null) 'mediaDescription': mediaDescription!,
-        if (mediaDuration != null) 'mediaDuration': mediaDuration!,
+        if (mediaDuration != null)
+          'mediaDuration': encodeDouble(mediaDuration!),
         if (name != null) 'name': name!,
         if (obaIcon != null) 'obaIcon': obaIcon!,
         if (overrideCss != null) 'overrideCss': overrideCss!,
@@ -16984,7 +16993,9 @@ class CreativeAsset {
               : null,
           fileSize: json_['fileSize'] as core.String?,
           flashVersion: json_['flashVersion'] as core.int?,
-          frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
+          frameRate: json_.containsKey('frameRate')
+              ? decodeDouble(json_['frameRate'] as core.Object)
+              : null,
           hideFlashObjects: json_['hideFlashObjects'] as core.bool?,
           hideSelectionBoxes: json_['hideSelectionBoxes'] as core.bool?,
           horizontallyLocked: json_['horizontallyLocked'] as core.bool?,
@@ -16993,7 +17004,9 @@ class CreativeAsset {
               ? DimensionValue.fromJson(json_['idDimensionValue']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          mediaDuration: (json_['mediaDuration'] as core.num?)?.toDouble(),
+          mediaDuration: json_.containsKey('mediaDuration')
+              ? decodeDouble(json_['mediaDuration'] as core.Object)
+              : null,
           mimeType: json_['mimeType'] as core.String?,
           offset: json_.containsKey('offset')
               ? OffsetPosition.fromJson(
@@ -17010,8 +17023,9 @@ class CreativeAsset {
           positionTopUnit: json_['positionTopUnit'] as core.String?,
           progressiveServingUrl: json_['progressiveServingUrl'] as core.String?,
           pushdown: json_['pushdown'] as core.bool?,
-          pushdownDuration:
-              (json_['pushdownDuration'] as core.num?)?.toDouble(),
+          pushdownDuration: json_.containsKey('pushdownDuration')
+              ? decodeDouble(json_['pushdownDuration'] as core.Object)
+              : null,
           role: json_['role'] as core.String?,
           size: json_.containsKey('size')
               ? Size.fromJson(
@@ -17052,7 +17066,7 @@ class CreativeAsset {
         if (expandedDimension != null) 'expandedDimension': expandedDimension!,
         if (fileSize != null) 'fileSize': fileSize!,
         if (flashVersion != null) 'flashVersion': flashVersion!,
-        if (frameRate != null) 'frameRate': frameRate!,
+        if (frameRate != null) 'frameRate': encodeDouble(frameRate!),
         if (hideFlashObjects != null) 'hideFlashObjects': hideFlashObjects!,
         if (hideSelectionBoxes != null)
           'hideSelectionBoxes': hideSelectionBoxes!,
@@ -17060,7 +17074,8 @@ class CreativeAsset {
           'horizontallyLocked': horizontallyLocked!,
         if (id != null) 'id': id!,
         if (idDimensionValue != null) 'idDimensionValue': idDimensionValue!,
-        if (mediaDuration != null) 'mediaDuration': mediaDuration!,
+        if (mediaDuration != null)
+          'mediaDuration': encodeDouble(mediaDuration!),
         if (mimeType != null) 'mimeType': mimeType!,
         if (offset != null) 'offset': offset!,
         if (orientation != null) 'orientation': orientation!,
@@ -17072,7 +17087,8 @@ class CreativeAsset {
         if (progressiveServingUrl != null)
           'progressiveServingUrl': progressiveServingUrl!,
         if (pushdown != null) 'pushdown': pushdown!,
-        if (pushdownDuration != null) 'pushdownDuration': pushdownDuration!,
+        if (pushdownDuration != null)
+          'pushdownDuration': encodeDouble(pushdownDuration!),
         if (role != null) 'role': role!,
         if (size != null) 'size': size!,
         if (sslCompliant != null) 'sslCompliant': sslCompliant!,
@@ -27819,7 +27835,9 @@ class TvCampaignSummary {
           impressions: json_['impressions'] as core.String?,
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,
-          spend: (json_['spend'] as core.num?)?.toDouble(),
+          spend: json_.containsKey('spend')
+              ? decodeDouble(json_['spend'] as core.Object)
+              : null,
           startDate: json_['startDate'] as core.String?,
           type: json_['type'] as core.String?,
         );
@@ -27831,7 +27849,7 @@ class TvCampaignSummary {
         if (impressions != null) 'impressions': impressions!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-        if (spend != null) 'spend': spend!,
+        if (spend != null) 'spend': encodeDouble(spend!),
         if (startDate != null) 'startDate': startDate!,
         if (type != null) 'type': type!,
       };
@@ -27866,13 +27884,15 @@ class TvCampaignTimepoint {
   TvCampaignTimepoint.fromJson(core.Map json_)
       : this(
           dateWindow: json_['dateWindow'] as core.String?,
-          spend: (json_['spend'] as core.num?)?.toDouble(),
+          spend: json_.containsKey('spend')
+              ? decodeDouble(json_['spend'] as core.Object)
+              : null,
           startDate: json_['startDate'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dateWindow != null) 'dateWindow': dateWindow!,
-        if (spend != null) 'spend': spend!,
+        if (spend != null) 'spend': encodeDouble(spend!),
         if (startDate != null) 'startDate': startDate!,
       };
 }

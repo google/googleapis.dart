@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Manufacturer Center API - v1
 ///
@@ -34,6 +35,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1205,12 +1207,14 @@ class FloatUnit {
 
   FloatUnit.fromJson(core.Map json_)
       : this(
-          amount: (json_['amount'] as core.num?)?.toDouble(),
+          amount: json_.containsKey('amount')
+              ? decodeDouble(json_['amount'] as core.Object)
+              : null,
           unit: json_['unit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!,
+        if (amount != null) 'amount': encodeDouble(amount!),
         if (unit != null) 'unit': unit!,
       };
 }
@@ -1295,7 +1299,9 @@ class Grocery {
   Grocery.fromJson(core.Map json_)
       : this(
           activeIngredients: json_['activeIngredients'] as core.String?,
-          alcoholByVolume: (json_['alcoholByVolume'] as core.num?)?.toDouble(),
+          alcoholByVolume: json_.containsKey('alcoholByVolume')
+              ? decodeDouble(json_['alcoholByVolume'] as core.Object)
+              : null,
           allergens: json_['allergens'] as core.String?,
           derivedNutritionClaim: (json_['derivedNutritionClaim'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1311,7 +1317,8 @@ class Grocery {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeIngredients != null) 'activeIngredients': activeIngredients!,
-        if (alcoholByVolume != null) 'alcoholByVolume': alcoholByVolume!,
+        if (alcoholByVolume != null)
+          'alcoholByVolume': encodeDouble(alcoholByVolume!),
         if (allergens != null) 'allergens': allergens!,
         if (derivedNutritionClaim != null)
           'derivedNutritionClaim': derivedNutritionClaim!,
@@ -1723,26 +1730,34 @@ class Nutrition {
               ? FloatUnit.fromJson(
                   json_['addedSugars'] as core.Map<core.String, core.dynamic>)
               : null,
-          addedSugarsDailyPercentage:
-              (json_['addedSugarsDailyPercentage'] as core.num?)?.toDouble(),
+          addedSugarsDailyPercentage: json_
+                  .containsKey('addedSugarsDailyPercentage')
+              ? decodeDouble(json_['addedSugarsDailyPercentage'] as core.Object)
+              : null,
           calcium: json_.containsKey('calcium')
               ? FloatUnit.fromJson(
                   json_['calcium'] as core.Map<core.String, core.dynamic>)
               : null,
-          calciumDailyPercentage:
-              (json_['calciumDailyPercentage'] as core.num?)?.toDouble(),
+          calciumDailyPercentage: json_.containsKey('calciumDailyPercentage')
+              ? decodeDouble(json_['calciumDailyPercentage'] as core.Object)
+              : null,
           cholesterol: json_.containsKey('cholesterol')
               ? FloatUnit.fromJson(
                   json_['cholesterol'] as core.Map<core.String, core.dynamic>)
               : null,
-          cholesterolDailyPercentage:
-              (json_['cholesterolDailyPercentage'] as core.num?)?.toDouble(),
+          cholesterolDailyPercentage: json_
+                  .containsKey('cholesterolDailyPercentage')
+              ? decodeDouble(json_['cholesterolDailyPercentage'] as core.Object)
+              : null,
           dietaryFiber: json_.containsKey('dietaryFiber')
               ? FloatUnit.fromJson(
                   json_['dietaryFiber'] as core.Map<core.String, core.dynamic>)
               : null,
           dietaryFiberDailyPercentage:
-              (json_['dietaryFiberDailyPercentage'] as core.num?)?.toDouble(),
+              json_.containsKey('dietaryFiberDailyPercentage')
+                  ? decodeDouble(
+                      json_['dietaryFiberDailyPercentage'] as core.Object)
+                  : null,
           energy: json_.containsKey('energy')
               ? FloatUnit.fromJson(
                   json_['energy'] as core.Map<core.String, core.dynamic>)
@@ -1751,19 +1766,23 @@ class Nutrition {
               ? FloatUnit.fromJson(
                   json_['energyFromFat'] as core.Map<core.String, core.dynamic>)
               : null,
-          folateDailyPercentage:
-              (json_['folateDailyPercentage'] as core.num?)?.toDouble(),
+          folateDailyPercentage: json_.containsKey('folateDailyPercentage')
+              ? decodeDouble(json_['folateDailyPercentage'] as core.Object)
+              : null,
           folateFolicAcid: json_.containsKey('folateFolicAcid')
               ? FloatUnit.fromJson(json_['folateFolicAcid']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          folateMcgDfe: (json_['folateMcgDfe'] as core.num?)?.toDouble(),
+          folateMcgDfe: json_.containsKey('folateMcgDfe')
+              ? decodeDouble(json_['folateMcgDfe'] as core.Object)
+              : null,
           iron: json_.containsKey('iron')
               ? FloatUnit.fromJson(
                   json_['iron'] as core.Map<core.String, core.dynamic>)
               : null,
-          ironDailyPercentage:
-              (json_['ironDailyPercentage'] as core.num?)?.toDouble(),
+          ironDailyPercentage: json_.containsKey('ironDailyPercentage')
+              ? decodeDouble(json_['ironDailyPercentage'] as core.Object)
+              : null,
           monounsaturatedFat: json_.containsKey('monounsaturatedFat')
               ? FloatUnit.fromJson(json_['monounsaturatedFat']
                   as core.Map<core.String, core.dynamic>)
@@ -1781,22 +1800,28 @@ class Nutrition {
               ? FloatUnit.fromJson(
                   json_['potassium'] as core.Map<core.String, core.dynamic>)
               : null,
-          potassiumDailyPercentage:
-              (json_['potassiumDailyPercentage'] as core.num?)?.toDouble(),
+          potassiumDailyPercentage: json_
+                  .containsKey('potassiumDailyPercentage')
+              ? decodeDouble(json_['potassiumDailyPercentage'] as core.Object)
+              : null,
           preparedSizeDescription:
               json_['preparedSizeDescription'] as core.String?,
           protein: json_.containsKey('protein')
               ? FloatUnit.fromJson(
                   json_['protein'] as core.Map<core.String, core.dynamic>)
               : null,
-          proteinDailyPercentage:
-              (json_['proteinDailyPercentage'] as core.num?)?.toDouble(),
+          proteinDailyPercentage: json_.containsKey('proteinDailyPercentage')
+              ? decodeDouble(json_['proteinDailyPercentage'] as core.Object)
+              : null,
           saturatedFat: json_.containsKey('saturatedFat')
               ? FloatUnit.fromJson(
                   json_['saturatedFat'] as core.Map<core.String, core.dynamic>)
               : null,
           saturatedFatDailyPercentage:
-              (json_['saturatedFatDailyPercentage'] as core.num?)?.toDouble(),
+              json_.containsKey('saturatedFatDailyPercentage')
+                  ? decodeDouble(
+                      json_['saturatedFatDailyPercentage'] as core.Object)
+                  : null,
           servingSizeDescription:
               json_['servingSizeDescription'] as core.String?,
           servingSizeMeasure: json_.containsKey('servingSizeMeasure')
@@ -1808,8 +1833,9 @@ class Nutrition {
               ? FloatUnit.fromJson(
                   json_['sodium'] as core.Map<core.String, core.dynamic>)
               : null,
-          sodiumDailyPercentage:
-              (json_['sodiumDailyPercentage'] as core.num?)?.toDouble(),
+          sodiumDailyPercentage: json_.containsKey('sodiumDailyPercentage')
+              ? decodeDouble(json_['sodiumDailyPercentage'] as core.Object)
+              : null,
           starch: json_.containsKey('starch')
               ? FloatUnit.fromJson(
                   json_['starch'] as core.Map<core.String, core.dynamic>)
@@ -1819,32 +1845,39 @@ class Nutrition {
                   as core.Map<core.String, core.dynamic>)
               : null,
           totalCarbohydrateDailyPercentage:
-              (json_['totalCarbohydrateDailyPercentage'] as core.num?)
-                  ?.toDouble(),
+              json_.containsKey('totalCarbohydrateDailyPercentage')
+                  ? decodeDouble(
+                      json_['totalCarbohydrateDailyPercentage'] as core.Object)
+                  : null,
           totalFat: json_.containsKey('totalFat')
               ? FloatUnit.fromJson(
                   json_['totalFat'] as core.Map<core.String, core.dynamic>)
               : null,
-          totalFatDailyPercentage:
-              (json_['totalFatDailyPercentage'] as core.num?)?.toDouble(),
+          totalFatDailyPercentage: json_.containsKey('totalFatDailyPercentage')
+              ? decodeDouble(json_['totalFatDailyPercentage'] as core.Object)
+              : null,
           totalSugars: json_.containsKey('totalSugars')
               ? FloatUnit.fromJson(
                   json_['totalSugars'] as core.Map<core.String, core.dynamic>)
               : null,
-          totalSugarsDailyPercentage:
-              (json_['totalSugarsDailyPercentage'] as core.num?)?.toDouble(),
+          totalSugarsDailyPercentage: json_
+                  .containsKey('totalSugarsDailyPercentage')
+              ? decodeDouble(json_['totalSugarsDailyPercentage'] as core.Object)
+              : null,
           transFat: json_.containsKey('transFat')
               ? FloatUnit.fromJson(
                   json_['transFat'] as core.Map<core.String, core.dynamic>)
               : null,
-          transFatDailyPercentage:
-              (json_['transFatDailyPercentage'] as core.num?)?.toDouble(),
+          transFatDailyPercentage: json_.containsKey('transFatDailyPercentage')
+              ? decodeDouble(json_['transFatDailyPercentage'] as core.Object)
+              : null,
           vitaminD: json_.containsKey('vitaminD')
               ? FloatUnit.fromJson(
                   json_['vitaminD'] as core.Map<core.String, core.dynamic>)
               : null,
-          vitaminDDailyPercentage:
-              (json_['vitaminDDailyPercentage'] as core.num?)?.toDouble(),
+          vitaminDDailyPercentage: json_.containsKey('vitaminDDailyPercentage')
+              ? decodeDouble(json_['vitaminDDailyPercentage'] as core.Object)
+              : null,
           voluntaryNutritionFact:
               (json_['voluntaryNutritionFact'] as core.List?)
                   ?.map((value) => VoluntaryNutritionFact.fromJson(
@@ -1855,25 +1888,28 @@ class Nutrition {
   core.Map<core.String, core.dynamic> toJson() => {
         if (addedSugars != null) 'addedSugars': addedSugars!,
         if (addedSugarsDailyPercentage != null)
-          'addedSugarsDailyPercentage': addedSugarsDailyPercentage!,
+          'addedSugarsDailyPercentage':
+              encodeDouble(addedSugarsDailyPercentage!),
         if (calcium != null) 'calcium': calcium!,
         if (calciumDailyPercentage != null)
-          'calciumDailyPercentage': calciumDailyPercentage!,
+          'calciumDailyPercentage': encodeDouble(calciumDailyPercentage!),
         if (cholesterol != null) 'cholesterol': cholesterol!,
         if (cholesterolDailyPercentage != null)
-          'cholesterolDailyPercentage': cholesterolDailyPercentage!,
+          'cholesterolDailyPercentage':
+              encodeDouble(cholesterolDailyPercentage!),
         if (dietaryFiber != null) 'dietaryFiber': dietaryFiber!,
         if (dietaryFiberDailyPercentage != null)
-          'dietaryFiberDailyPercentage': dietaryFiberDailyPercentage!,
+          'dietaryFiberDailyPercentage':
+              encodeDouble(dietaryFiberDailyPercentage!),
         if (energy != null) 'energy': energy!,
         if (energyFromFat != null) 'energyFromFat': energyFromFat!,
         if (folateDailyPercentage != null)
-          'folateDailyPercentage': folateDailyPercentage!,
+          'folateDailyPercentage': encodeDouble(folateDailyPercentage!),
         if (folateFolicAcid != null) 'folateFolicAcid': folateFolicAcid!,
-        if (folateMcgDfe != null) 'folateMcgDfe': folateMcgDfe!,
+        if (folateMcgDfe != null) 'folateMcgDfe': encodeDouble(folateMcgDfe!),
         if (iron != null) 'iron': iron!,
         if (ironDailyPercentage != null)
-          'ironDailyPercentage': ironDailyPercentage!,
+          'ironDailyPercentage': encodeDouble(ironDailyPercentage!),
         if (monounsaturatedFat != null)
           'monounsaturatedFat': monounsaturatedFat!,
         if (nutritionFactMeasure != null)
@@ -1883,15 +1919,16 @@ class Nutrition {
           'polyunsaturatedFat': polyunsaturatedFat!,
         if (potassium != null) 'potassium': potassium!,
         if (potassiumDailyPercentage != null)
-          'potassiumDailyPercentage': potassiumDailyPercentage!,
+          'potassiumDailyPercentage': encodeDouble(potassiumDailyPercentage!),
         if (preparedSizeDescription != null)
           'preparedSizeDescription': preparedSizeDescription!,
         if (protein != null) 'protein': protein!,
         if (proteinDailyPercentage != null)
-          'proteinDailyPercentage': proteinDailyPercentage!,
+          'proteinDailyPercentage': encodeDouble(proteinDailyPercentage!),
         if (saturatedFat != null) 'saturatedFat': saturatedFat!,
         if (saturatedFatDailyPercentage != null)
-          'saturatedFatDailyPercentage': saturatedFatDailyPercentage!,
+          'saturatedFatDailyPercentage':
+              encodeDouble(saturatedFatDailyPercentage!),
         if (servingSizeDescription != null)
           'servingSizeDescription': servingSizeDescription!,
         if (servingSizeMeasure != null)
@@ -1900,23 +1937,25 @@ class Nutrition {
           'servingsPerContainer': servingsPerContainer!,
         if (sodium != null) 'sodium': sodium!,
         if (sodiumDailyPercentage != null)
-          'sodiumDailyPercentage': sodiumDailyPercentage!,
+          'sodiumDailyPercentage': encodeDouble(sodiumDailyPercentage!),
         if (starch != null) 'starch': starch!,
         if (totalCarbohydrate != null) 'totalCarbohydrate': totalCarbohydrate!,
         if (totalCarbohydrateDailyPercentage != null)
-          'totalCarbohydrateDailyPercentage': totalCarbohydrateDailyPercentage!,
+          'totalCarbohydrateDailyPercentage':
+              encodeDouble(totalCarbohydrateDailyPercentage!),
         if (totalFat != null) 'totalFat': totalFat!,
         if (totalFatDailyPercentage != null)
-          'totalFatDailyPercentage': totalFatDailyPercentage!,
+          'totalFatDailyPercentage': encodeDouble(totalFatDailyPercentage!),
         if (totalSugars != null) 'totalSugars': totalSugars!,
         if (totalSugarsDailyPercentage != null)
-          'totalSugarsDailyPercentage': totalSugarsDailyPercentage!,
+          'totalSugarsDailyPercentage':
+              encodeDouble(totalSugarsDailyPercentage!),
         if (transFat != null) 'transFat': transFat!,
         if (transFatDailyPercentage != null)
-          'transFatDailyPercentage': transFatDailyPercentage!,
+          'transFatDailyPercentage': encodeDouble(transFatDailyPercentage!),
         if (vitaminD != null) 'vitaminD': vitaminD!,
         if (vitaminDDailyPercentage != null)
-          'vitaminDDailyPercentage': vitaminDDailyPercentage!,
+          'vitaminDDailyPercentage': encodeDouble(vitaminDDailyPercentage!),
         if (voluntaryNutritionFact != null)
           'voluntaryNutritionFact': voluntaryNutritionFact!,
       };
@@ -2214,7 +2253,9 @@ class VoluntaryNutritionFact {
 
   VoluntaryNutritionFact.fromJson(core.Map json_)
       : this(
-          dailyPercentage: (json_['dailyPercentage'] as core.num?)?.toDouble(),
+          dailyPercentage: json_.containsKey('dailyPercentage')
+              ? decodeDouble(json_['dailyPercentage'] as core.Object)
+              : null,
           name: json_['name'] as core.String?,
           value: json_.containsKey('value')
               ? FloatUnit.fromJson(
@@ -2223,7 +2264,8 @@ class VoluntaryNutritionFact {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dailyPercentage != null) 'dailyPercentage': dailyPercentage!,
+        if (dailyPercentage != null)
+          'dailyPercentage': encodeDouble(dailyPercentage!),
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// OS Config API - v1
 ///
@@ -45,6 +46,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1746,11 +1748,16 @@ class CVSSv3 {
           attackComplexity: json_['attackComplexity'] as core.String?,
           attackVector: json_['attackVector'] as core.String?,
           availabilityImpact: json_['availabilityImpact'] as core.String?,
-          baseScore: (json_['baseScore'] as core.num?)?.toDouble(),
+          baseScore: json_.containsKey('baseScore')
+              ? decodeDouble(json_['baseScore'] as core.Object)
+              : null,
           confidentialityImpact: json_['confidentialityImpact'] as core.String?,
-          exploitabilityScore:
-              (json_['exploitabilityScore'] as core.num?)?.toDouble(),
-          impactScore: (json_['impactScore'] as core.num?)?.toDouble(),
+          exploitabilityScore: json_.containsKey('exploitabilityScore')
+              ? decodeDouble(json_['exploitabilityScore'] as core.Object)
+              : null,
+          impactScore: json_.containsKey('impactScore')
+              ? decodeDouble(json_['impactScore'] as core.Object)
+              : null,
           integrityImpact: json_['integrityImpact'] as core.String?,
           privilegesRequired: json_['privilegesRequired'] as core.String?,
           scope: json_['scope'] as core.String?,
@@ -1762,12 +1769,12 @@ class CVSSv3 {
         if (attackVector != null) 'attackVector': attackVector!,
         if (availabilityImpact != null)
           'availabilityImpact': availabilityImpact!,
-        if (baseScore != null) 'baseScore': baseScore!,
+        if (baseScore != null) 'baseScore': encodeDouble(baseScore!),
         if (confidentialityImpact != null)
           'confidentialityImpact': confidentialityImpact!,
         if (exploitabilityScore != null)
-          'exploitabilityScore': exploitabilityScore!,
-        if (impactScore != null) 'impactScore': impactScore!,
+          'exploitabilityScore': encodeDouble(exploitabilityScore!),
+        if (impactScore != null) 'impactScore': encodeDouble(impactScore!),
         if (integrityImpact != null) 'integrityImpact': integrityImpact!,
         if (privilegesRequired != null)
           'privilegesRequired': privilegesRequired!,
@@ -4858,7 +4865,9 @@ class PatchJob {
                   json_['patchConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           patchDeployment: json_['patchDeployment'] as core.String?,
-          percentComplete: (json_['percentComplete'] as core.num?)?.toDouble(),
+          percentComplete: json_.containsKey('percentComplete')
+              ? decodeDouble(json_['percentComplete'] as core.Object)
+              : null,
           rollout: json_.containsKey('rollout')
               ? PatchRollout.fromJson(
                   json_['rollout'] as core.Map<core.String, core.dynamic>)
@@ -4880,7 +4889,8 @@ class PatchJob {
         if (name != null) 'name': name!,
         if (patchConfig != null) 'patchConfig': patchConfig!,
         if (patchDeployment != null) 'patchDeployment': patchDeployment!,
-        if (percentComplete != null) 'percentComplete': percentComplete!,
+        if (percentComplete != null)
+          'percentComplete': encodeDouble(percentComplete!),
         if (rollout != null) 'rollout': rollout!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -5494,7 +5504,9 @@ class VulnerabilityReportVulnerabilityDetails {
   VulnerabilityReportVulnerabilityDetails.fromJson(core.Map json_)
       : this(
           cve: json_['cve'] as core.String?,
-          cvssV2Score: (json_['cvssV2Score'] as core.num?)?.toDouble(),
+          cvssV2Score: json_.containsKey('cvssV2Score')
+              ? decodeDouble(json_['cvssV2Score'] as core.Object)
+              : null,
           cvssV3: json_.containsKey('cvssV3')
               ? CVSSv3.fromJson(
                   json_['cvssV3'] as core.Map<core.String, core.dynamic>)
@@ -5510,7 +5522,7 @@ class VulnerabilityReportVulnerabilityDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cve != null) 'cve': cve!,
-        if (cvssV2Score != null) 'cvssV2Score': cvssV2Score!,
+        if (cvssV2Score != null) 'cvssV2Score': encodeDouble(cvssV2Score!),
         if (cvssV3 != null) 'cvssV3': cvssV3!,
         if (description != null) 'description': description!,
         if (references != null) 'references': references!,

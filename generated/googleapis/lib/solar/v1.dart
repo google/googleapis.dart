@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Solar API - v1
 ///
@@ -33,6 +34,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -444,7 +446,9 @@ class CashPurchaseSavings {
               ? Money.fromJson(json_['outOfPocketCost']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          paybackYears: (json_['paybackYears'] as core.num?)?.toDouble(),
+          paybackYears: json_.containsKey('paybackYears')
+              ? decodeDouble(json_['paybackYears'] as core.Object)
+              : null,
           rebateValue: json_.containsKey('rebateValue')
               ? Money.fromJson(
                   json_['rebateValue'] as core.Map<core.String, core.dynamic>)
@@ -461,7 +465,7 @@ class CashPurchaseSavings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (outOfPocketCost != null) 'outOfPocketCost': outOfPocketCost!,
-        if (paybackYears != null) 'paybackYears': paybackYears!,
+        if (paybackYears != null) 'paybackYears': encodeDouble(paybackYears!),
         if (rebateValue != null) 'rebateValue': rebateValue!,
         if (savings != null) 'savings': savings!,
         if (upfrontCost != null) 'upfrontCost': upfrontCost!,
@@ -645,8 +649,9 @@ class FinancedPurchaseSavings {
               ? Money.fromJson(json_['annualLoanPayment']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          loanInterestRate:
-              (json_['loanInterestRate'] as core.num?)?.toDouble(),
+          loanInterestRate: json_.containsKey('loanInterestRate')
+              ? decodeDouble(json_['loanInterestRate'] as core.Object)
+              : null,
           rebateValue: json_.containsKey('rebateValue')
               ? Money.fromJson(
                   json_['rebateValue'] as core.Map<core.String, core.dynamic>)
@@ -659,7 +664,8 @@ class FinancedPurchaseSavings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annualLoanPayment != null) 'annualLoanPayment': annualLoanPayment!,
-        if (loanInterestRate != null) 'loanInterestRate': loanInterestRate!,
+        if (loanInterestRate != null)
+          'loanInterestRate': encodeDouble(loanInterestRate!),
         if (rebateValue != null) 'rebateValue': rebateValue!,
         if (savings != null) 'savings': savings!,
       };
@@ -715,8 +721,9 @@ class FinancialAnalysis {
 
   FinancialAnalysis.fromJson(core.Map json_)
       : this(
-          averageKwhPerMonth:
-              (json_['averageKwhPerMonth'] as core.num?)?.toDouble(),
+          averageKwhPerMonth: json_.containsKey('averageKwhPerMonth')
+              ? decodeDouble(json_['averageKwhPerMonth'] as core.Object)
+              : null,
           cashPurchaseSavings: json_.containsKey('cashPurchaseSavings')
               ? CashPurchaseSavings.fromJson(json_['cashPurchaseSavings']
                   as core.Map<core.String, core.dynamic>)
@@ -744,7 +751,7 @@ class FinancialAnalysis {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (averageKwhPerMonth != null)
-          'averageKwhPerMonth': averageKwhPerMonth!,
+          'averageKwhPerMonth': encodeDouble(averageKwhPerMonth!),
         if (cashPurchaseSavings != null)
           'cashPurchaseSavings': cashPurchaseSavings!,
         if (defaultBill != null) 'defaultBill': defaultBill!,
@@ -832,21 +839,26 @@ class FinancialDetails {
               ? Money.fromJson(json_['federalIncentive']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          initialAcKwhPerYear:
-              (json_['initialAcKwhPerYear'] as core.num?)?.toDouble(),
+          initialAcKwhPerYear: json_.containsKey('initialAcKwhPerYear')
+              ? decodeDouble(json_['initialAcKwhPerYear'] as core.Object)
+              : null,
           lifetimeSrecTotal: json_.containsKey('lifetimeSrecTotal')
               ? Money.fromJson(json_['lifetimeSrecTotal']
                   as core.Map<core.String, core.dynamic>)
               : null,
           netMeteringAllowed: json_['netMeteringAllowed'] as core.bool?,
-          percentageExportedToGrid:
-              (json_['percentageExportedToGrid'] as core.num?)?.toDouble(),
+          percentageExportedToGrid: json_
+                  .containsKey('percentageExportedToGrid')
+              ? decodeDouble(json_['percentageExportedToGrid'] as core.Object)
+              : null,
           remainingLifetimeUtilityBill:
               json_.containsKey('remainingLifetimeUtilityBill')
                   ? Money.fromJson(json_['remainingLifetimeUtilityBill']
                       as core.Map<core.String, core.dynamic>)
                   : null,
-          solarPercentage: (json_['solarPercentage'] as core.num?)?.toDouble(),
+          solarPercentage: json_.containsKey('solarPercentage')
+              ? decodeDouble(json_['solarPercentage'] as core.Object)
+              : null,
           stateIncentive: json_.containsKey('stateIncentive')
               ? Money.fromJson(json_['stateIncentive']
                   as core.Map<core.String, core.dynamic>)
@@ -862,15 +874,16 @@ class FinancialDetails {
           'costOfElectricityWithoutSolar': costOfElectricityWithoutSolar!,
         if (federalIncentive != null) 'federalIncentive': federalIncentive!,
         if (initialAcKwhPerYear != null)
-          'initialAcKwhPerYear': initialAcKwhPerYear!,
+          'initialAcKwhPerYear': encodeDouble(initialAcKwhPerYear!),
         if (lifetimeSrecTotal != null) 'lifetimeSrecTotal': lifetimeSrecTotal!,
         if (netMeteringAllowed != null)
           'netMeteringAllowed': netMeteringAllowed!,
         if (percentageExportedToGrid != null)
-          'percentageExportedToGrid': percentageExportedToGrid!,
+          'percentageExportedToGrid': encodeDouble(percentageExportedToGrid!),
         if (remainingLifetimeUtilityBill != null)
           'remainingLifetimeUtilityBill': remainingLifetimeUtilityBill!,
-        if (solarPercentage != null) 'solarPercentage': solarPercentage!,
+        if (solarPercentage != null)
+          'solarPercentage': encodeDouble(solarPercentage!),
         if (stateIncentive != null) 'stateIncentive': stateIncentive!,
         if (utilityIncentive != null) 'utilityIncentive': utilityIncentive!,
       };
@@ -1031,7 +1044,9 @@ class RoofSegmentSizeAndSunshineStats {
 
   RoofSegmentSizeAndSunshineStats.fromJson(core.Map json_)
       : this(
-          azimuthDegrees: (json_['azimuthDegrees'] as core.num?)?.toDouble(),
+          azimuthDegrees: json_.containsKey('azimuthDegrees')
+              ? decodeDouble(json_['azimuthDegrees'] as core.Object)
+              : null,
           boundingBox: json_.containsKey('boundingBox')
               ? LatLngBox.fromJson(
                   json_['boundingBox'] as core.Map<core.String, core.dynamic>)
@@ -1040,9 +1055,13 @@ class RoofSegmentSizeAndSunshineStats {
               ? LatLng.fromJson(
                   json_['center'] as core.Map<core.String, core.dynamic>)
               : null,
-          pitchDegrees: (json_['pitchDegrees'] as core.num?)?.toDouble(),
-          planeHeightAtCenterMeters:
-              (json_['planeHeightAtCenterMeters'] as core.num?)?.toDouble(),
+          pitchDegrees: json_.containsKey('pitchDegrees')
+              ? decodeDouble(json_['pitchDegrees'] as core.Object)
+              : null,
+          planeHeightAtCenterMeters: json_
+                  .containsKey('planeHeightAtCenterMeters')
+              ? decodeDouble(json_['planeHeightAtCenterMeters'] as core.Object)
+              : null,
           stats: json_.containsKey('stats')
               ? SizeAndSunshineStats.fromJson(
                   json_['stats'] as core.Map<core.String, core.dynamic>)
@@ -1050,12 +1069,13 @@ class RoofSegmentSizeAndSunshineStats {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (azimuthDegrees != null) 'azimuthDegrees': azimuthDegrees!,
+        if (azimuthDegrees != null)
+          'azimuthDegrees': encodeDouble(azimuthDegrees!),
         if (boundingBox != null) 'boundingBox': boundingBox!,
         if (center != null) 'center': center!,
-        if (pitchDegrees != null) 'pitchDegrees': pitchDegrees!,
+        if (pitchDegrees != null) 'pitchDegrees': encodeDouble(pitchDegrees!),
         if (planeHeightAtCenterMeters != null)
-          'planeHeightAtCenterMeters': planeHeightAtCenterMeters!,
+          'planeHeightAtCenterMeters': encodeDouble(planeHeightAtCenterMeters!),
         if (stats != null) 'stats': stats!,
       };
 }
@@ -1096,20 +1116,27 @@ class RoofSegmentSummary {
 
   RoofSegmentSummary.fromJson(core.Map json_)
       : this(
-          azimuthDegrees: (json_['azimuthDegrees'] as core.num?)?.toDouble(),
+          azimuthDegrees: json_.containsKey('azimuthDegrees')
+              ? decodeDouble(json_['azimuthDegrees'] as core.Object)
+              : null,
           panelsCount: json_['panelsCount'] as core.int?,
-          pitchDegrees: (json_['pitchDegrees'] as core.num?)?.toDouble(),
+          pitchDegrees: json_.containsKey('pitchDegrees')
+              ? decodeDouble(json_['pitchDegrees'] as core.Object)
+              : null,
           segmentIndex: json_['segmentIndex'] as core.int?,
-          yearlyEnergyDcKwh:
-              (json_['yearlyEnergyDcKwh'] as core.num?)?.toDouble(),
+          yearlyEnergyDcKwh: json_.containsKey('yearlyEnergyDcKwh')
+              ? decodeDouble(json_['yearlyEnergyDcKwh'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (azimuthDegrees != null) 'azimuthDegrees': azimuthDegrees!,
+        if (azimuthDegrees != null)
+          'azimuthDegrees': encodeDouble(azimuthDegrees!),
         if (panelsCount != null) 'panelsCount': panelsCount!,
-        if (pitchDegrees != null) 'pitchDegrees': pitchDegrees!,
+        if (pitchDegrees != null) 'pitchDegrees': encodeDouble(pitchDegrees!),
         if (segmentIndex != null) 'segmentIndex': segmentIndex!,
-        if (yearlyEnergyDcKwh != null) 'yearlyEnergyDcKwh': yearlyEnergyDcKwh!,
+        if (yearlyEnergyDcKwh != null)
+          'yearlyEnergyDcKwh': encodeDouble(yearlyEnergyDcKwh!),
       };
 }
 
@@ -1212,18 +1239,24 @@ class SizeAndSunshineStats {
 
   SizeAndSunshineStats.fromJson(core.Map json_)
       : this(
-          areaMeters2: (json_['areaMeters2'] as core.num?)?.toDouble(),
-          groundAreaMeters2:
-              (json_['groundAreaMeters2'] as core.num?)?.toDouble(),
+          areaMeters2: json_.containsKey('areaMeters2')
+              ? decodeDouble(json_['areaMeters2'] as core.Object)
+              : null,
+          groundAreaMeters2: json_.containsKey('groundAreaMeters2')
+              ? decodeDouble(json_['groundAreaMeters2'] as core.Object)
+              : null,
           sunshineQuantiles: (json_['sunshineQuantiles'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (areaMeters2 != null) 'areaMeters2': areaMeters2!,
-        if (groundAreaMeters2 != null) 'groundAreaMeters2': groundAreaMeters2!,
-        if (sunshineQuantiles != null) 'sunshineQuantiles': sunshineQuantiles!,
+        if (areaMeters2 != null) 'areaMeters2': encodeDouble(areaMeters2!),
+        if (groundAreaMeters2 != null)
+          'groundAreaMeters2': encodeDouble(groundAreaMeters2!),
+        if (sunshineQuantiles != null)
+          'sunshineQuantiles':
+              sunshineQuantiles!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -1268,15 +1301,17 @@ class SolarPanel {
               : null,
           orientation: json_['orientation'] as core.String?,
           segmentIndex: json_['segmentIndex'] as core.int?,
-          yearlyEnergyDcKwh:
-              (json_['yearlyEnergyDcKwh'] as core.num?)?.toDouble(),
+          yearlyEnergyDcKwh: json_.containsKey('yearlyEnergyDcKwh')
+              ? decodeDouble(json_['yearlyEnergyDcKwh'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (center != null) 'center': center!,
         if (orientation != null) 'orientation': orientation!,
         if (segmentIndex != null) 'segmentIndex': segmentIndex!,
-        if (yearlyEnergyDcKwh != null) 'yearlyEnergyDcKwh': yearlyEnergyDcKwh!,
+        if (yearlyEnergyDcKwh != null)
+          'yearlyEnergyDcKwh': encodeDouble(yearlyEnergyDcKwh!),
       };
 }
 
@@ -1313,15 +1348,17 @@ class SolarPanelConfig {
               ?.map((value) => RoofSegmentSummary.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          yearlyEnergyDcKwh:
-              (json_['yearlyEnergyDcKwh'] as core.num?)?.toDouble(),
+          yearlyEnergyDcKwh: json_.containsKey('yearlyEnergyDcKwh')
+              ? decodeDouble(json_['yearlyEnergyDcKwh'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (panelsCount != null) 'panelsCount': panelsCount!,
         if (roofSegmentSummaries != null)
           'roofSegmentSummaries': roofSegmentSummaries!,
-        if (yearlyEnergyDcKwh != null) 'yearlyEnergyDcKwh': yearlyEnergyDcKwh!,
+        if (yearlyEnergyDcKwh != null)
+          'yearlyEnergyDcKwh': encodeDouble(yearlyEnergyDcKwh!),
       };
 }
 
@@ -1434,24 +1471,31 @@ class SolarPotential {
               ? SizeAndSunshineStats.fromJson(
                   json_['buildingStats'] as core.Map<core.String, core.dynamic>)
               : null,
-          carbonOffsetFactorKgPerMwh:
-              (json_['carbonOffsetFactorKgPerMwh'] as core.num?)?.toDouble(),
+          carbonOffsetFactorKgPerMwh: json_
+                  .containsKey('carbonOffsetFactorKgPerMwh')
+              ? decodeDouble(json_['carbonOffsetFactorKgPerMwh'] as core.Object)
+              : null,
           financialAnalyses: (json_['financialAnalyses'] as core.List?)
               ?.map((value) => FinancialAnalysis.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          maxArrayAreaMeters2:
-              (json_['maxArrayAreaMeters2'] as core.num?)?.toDouble(),
+          maxArrayAreaMeters2: json_.containsKey('maxArrayAreaMeters2')
+              ? decodeDouble(json_['maxArrayAreaMeters2'] as core.Object)
+              : null,
           maxArrayPanelsCount: json_['maxArrayPanelsCount'] as core.int?,
-          maxSunshineHoursPerYear:
-              (json_['maxSunshineHoursPerYear'] as core.num?)?.toDouble(),
-          panelCapacityWatts:
-              (json_['panelCapacityWatts'] as core.num?)?.toDouble(),
-          panelHeightMeters:
-              (json_['panelHeightMeters'] as core.num?)?.toDouble(),
+          maxSunshineHoursPerYear: json_.containsKey('maxSunshineHoursPerYear')
+              ? decodeDouble(json_['maxSunshineHoursPerYear'] as core.Object)
+              : null,
+          panelCapacityWatts: json_.containsKey('panelCapacityWatts')
+              ? decodeDouble(json_['panelCapacityWatts'] as core.Object)
+              : null,
+          panelHeightMeters: json_.containsKey('panelHeightMeters')
+              ? decodeDouble(json_['panelHeightMeters'] as core.Object)
+              : null,
           panelLifetimeYears: json_['panelLifetimeYears'] as core.int?,
-          panelWidthMeters:
-              (json_['panelWidthMeters'] as core.num?)?.toDouble(),
+          panelWidthMeters: json_.containsKey('panelWidthMeters')
+              ? decodeDouble(json_['panelWidthMeters'] as core.Object)
+              : null,
           roofSegmentStats: (json_['roofSegmentStats'] as core.List?)
               ?.map((value) => RoofSegmentSizeAndSunshineStats.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -1473,20 +1517,23 @@ class SolarPotential {
   core.Map<core.String, core.dynamic> toJson() => {
         if (buildingStats != null) 'buildingStats': buildingStats!,
         if (carbonOffsetFactorKgPerMwh != null)
-          'carbonOffsetFactorKgPerMwh': carbonOffsetFactorKgPerMwh!,
+          'carbonOffsetFactorKgPerMwh':
+              encodeDouble(carbonOffsetFactorKgPerMwh!),
         if (financialAnalyses != null) 'financialAnalyses': financialAnalyses!,
         if (maxArrayAreaMeters2 != null)
-          'maxArrayAreaMeters2': maxArrayAreaMeters2!,
+          'maxArrayAreaMeters2': encodeDouble(maxArrayAreaMeters2!),
         if (maxArrayPanelsCount != null)
           'maxArrayPanelsCount': maxArrayPanelsCount!,
         if (maxSunshineHoursPerYear != null)
-          'maxSunshineHoursPerYear': maxSunshineHoursPerYear!,
+          'maxSunshineHoursPerYear': encodeDouble(maxSunshineHoursPerYear!),
         if (panelCapacityWatts != null)
-          'panelCapacityWatts': panelCapacityWatts!,
-        if (panelHeightMeters != null) 'panelHeightMeters': panelHeightMeters!,
+          'panelCapacityWatts': encodeDouble(panelCapacityWatts!),
+        if (panelHeightMeters != null)
+          'panelHeightMeters': encodeDouble(panelHeightMeters!),
         if (panelLifetimeYears != null)
           'panelLifetimeYears': panelLifetimeYears!,
-        if (panelWidthMeters != null) 'panelWidthMeters': panelWidthMeters!,
+        if (panelWidthMeters != null)
+          'panelWidthMeters': encodeDouble(panelWidthMeters!),
         if (roofSegmentStats != null) 'roofSegmentStats': roofSegmentStats!,
         if (solarPanelConfigs != null) 'solarPanelConfigs': solarPanelConfigs!,
         if (solarPanels != null) 'solarPanels': solarPanels!,

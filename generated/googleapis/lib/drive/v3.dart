@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Drive API - v3
 ///
@@ -43,6 +44,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4686,16 +4688,22 @@ class DriveBackgroundImageFile {
   DriveBackgroundImageFile.fromJson(core.Map json_)
       : this(
           id: json_['id'] as core.String?,
-          width: (json_['width'] as core.num?)?.toDouble(),
-          xCoordinate: (json_['xCoordinate'] as core.num?)?.toDouble(),
-          yCoordinate: (json_['yCoordinate'] as core.num?)?.toDouble(),
+          width: json_.containsKey('width')
+              ? decodeDouble(json_['width'] as core.Object)
+              : null,
+          xCoordinate: json_.containsKey('xCoordinate')
+              ? decodeDouble(json_['xCoordinate'] as core.Object)
+              : null,
+          yCoordinate: json_.containsKey('yCoordinate')
+              ? decodeDouble(json_['yCoordinate'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
-        if (width != null) 'width': width!,
-        if (xCoordinate != null) 'xCoordinate': xCoordinate!,
-        if (yCoordinate != null) 'yCoordinate': yCoordinate!,
+        if (width != null) 'width': encodeDouble(width!),
+        if (xCoordinate != null) 'xCoordinate': encodeDouble(xCoordinate!),
+        if (yCoordinate != null) 'yCoordinate': encodeDouble(yCoordinate!),
       };
 }
 
@@ -5748,15 +5756,21 @@ class FileImageMediaMetadataLocation {
 
   FileImageMediaMetadataLocation.fromJson(core.Map json_)
       : this(
-          altitude: (json_['altitude'] as core.num?)?.toDouble(),
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+          altitude: json_.containsKey('altitude')
+              ? decodeDouble(json_['altitude'] as core.Object)
+              : null,
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (altitude != null) 'altitude': altitude!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
+        if (altitude != null) 'altitude': encodeDouble(altitude!),
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
       };
 }
 
@@ -5897,15 +5911,23 @@ class FileImageMediaMetadata {
 
   FileImageMediaMetadata.fromJson(core.Map json_)
       : this(
-          aperture: (json_['aperture'] as core.num?)?.toDouble(),
+          aperture: json_.containsKey('aperture')
+              ? decodeDouble(json_['aperture'] as core.Object)
+              : null,
           cameraMake: json_['cameraMake'] as core.String?,
           cameraModel: json_['cameraModel'] as core.String?,
           colorSpace: json_['colorSpace'] as core.String?,
-          exposureBias: (json_['exposureBias'] as core.num?)?.toDouble(),
+          exposureBias: json_.containsKey('exposureBias')
+              ? decodeDouble(json_['exposureBias'] as core.Object)
+              : null,
           exposureMode: json_['exposureMode'] as core.String?,
-          exposureTime: (json_['exposureTime'] as core.num?)?.toDouble(),
+          exposureTime: json_.containsKey('exposureTime')
+              ? decodeDouble(json_['exposureTime'] as core.Object)
+              : null,
           flashUsed: json_['flashUsed'] as core.bool?,
-          focalLength: (json_['focalLength'] as core.num?)?.toDouble(),
+          focalLength: json_.containsKey('focalLength')
+              ? decodeDouble(json_['focalLength'] as core.Object)
+              : null,
           height: json_['height'] as core.int?,
           isoSpeed: json_['isoSpeed'] as core.int?,
           lens: json_['lens'] as core.String?,
@@ -5913,8 +5935,9 @@ class FileImageMediaMetadata {
               ? FileImageMediaMetadataLocation.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          maxApertureValue:
-              (json_['maxApertureValue'] as core.num?)?.toDouble(),
+          maxApertureValue: json_.containsKey('maxApertureValue')
+              ? decodeDouble(json_['maxApertureValue'] as core.Object)
+              : null,
           meteringMode: json_['meteringMode'] as core.String?,
           rotation: json_['rotation'] as core.int?,
           sensor: json_['sensor'] as core.String?,
@@ -5925,20 +5948,21 @@ class FileImageMediaMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aperture != null) 'aperture': aperture!,
+        if (aperture != null) 'aperture': encodeDouble(aperture!),
         if (cameraMake != null) 'cameraMake': cameraMake!,
         if (cameraModel != null) 'cameraModel': cameraModel!,
         if (colorSpace != null) 'colorSpace': colorSpace!,
-        if (exposureBias != null) 'exposureBias': exposureBias!,
+        if (exposureBias != null) 'exposureBias': encodeDouble(exposureBias!),
         if (exposureMode != null) 'exposureMode': exposureMode!,
-        if (exposureTime != null) 'exposureTime': exposureTime!,
+        if (exposureTime != null) 'exposureTime': encodeDouble(exposureTime!),
         if (flashUsed != null) 'flashUsed': flashUsed!,
-        if (focalLength != null) 'focalLength': focalLength!,
+        if (focalLength != null) 'focalLength': encodeDouble(focalLength!),
         if (height != null) 'height': height!,
         if (isoSpeed != null) 'isoSpeed': isoSpeed!,
         if (lens != null) 'lens': lens!,
         if (location != null) 'location': location!,
-        if (maxApertureValue != null) 'maxApertureValue': maxApertureValue!,
+        if (maxApertureValue != null)
+          'maxApertureValue': encodeDouble(maxApertureValue!),
         if (meteringMode != null) 'meteringMode': meteringMode!,
         if (rotation != null) 'rotation': rotation!,
         if (sensor != null) 'sensor': sensor!,
@@ -8207,16 +8231,22 @@ class TeamDriveBackgroundImageFile {
   TeamDriveBackgroundImageFile.fromJson(core.Map json_)
       : this(
           id: json_['id'] as core.String?,
-          width: (json_['width'] as core.num?)?.toDouble(),
-          xCoordinate: (json_['xCoordinate'] as core.num?)?.toDouble(),
-          yCoordinate: (json_['yCoordinate'] as core.num?)?.toDouble(),
+          width: json_.containsKey('width')
+              ? decodeDouble(json_['width'] as core.Object)
+              : null,
+          xCoordinate: json_.containsKey('xCoordinate')
+              ? decodeDouble(json_['xCoordinate'] as core.Object)
+              : null,
+          yCoordinate: json_.containsKey('yCoordinate')
+              ? decodeDouble(json_['yCoordinate'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
-        if (width != null) 'width': width!,
-        if (xCoordinate != null) 'xCoordinate': xCoordinate!,
-        if (yCoordinate != null) 'yCoordinate': yCoordinate!,
+        if (width != null) 'width': encodeDouble(width!),
+        if (xCoordinate != null) 'xCoordinate': encodeDouble(xCoordinate!),
+        if (yCoordinate != null) 'yCoordinate': encodeDouble(yCoordinate!),
       };
 }
 

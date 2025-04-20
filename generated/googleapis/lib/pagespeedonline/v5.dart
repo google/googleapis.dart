@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// PageSpeed Insights API - v5
 ///
@@ -33,6 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -169,7 +171,9 @@ class AuditRefs {
           relevantAudits: (json_['relevantAudits'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          weight: (json_['weight'] as core.num?)?.toDouble(),
+          weight: json_.containsKey('weight')
+              ? decodeDouble(json_['weight'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -177,7 +181,7 @@ class AuditRefs {
         if (group != null) 'group': group!,
         if (id != null) 'id': id!,
         if (relevantAudits != null) 'relevantAudits': relevantAudits!,
-        if (weight != null) 'weight': weight!,
+        if (weight != null) 'weight': encodeDouble(weight!),
       };
 }
 
@@ -205,13 +209,15 @@ class Bucket {
       : this(
           max: json_['max'] as core.int?,
           min: json_['min'] as core.int?,
-          proportion: (json_['proportion'] as core.num?)?.toDouble(),
+          proportion: json_.containsKey('proportion')
+              ? decodeDouble(json_['proportion'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (max != null) 'max': max!,
         if (min != null) 'min': min!,
-        if (proportion != null) 'proportion': proportion!,
+        if (proportion != null) 'proportion': encodeDouble(proportion!),
       };
 }
 
@@ -383,7 +389,9 @@ class Environment {
 
   Environment.fromJson(core.Map json_)
       : this(
-          benchmarkIndex: (json_['benchmarkIndex'] as core.num?)?.toDouble(),
+          benchmarkIndex: json_.containsKey('benchmarkIndex')
+              ? decodeDouble(json_['benchmarkIndex'] as core.Object)
+              : null,
           credits:
               (json_['credits'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -396,7 +404,8 @@ class Environment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (benchmarkIndex != null) 'benchmarkIndex': benchmarkIndex!,
+        if (benchmarkIndex != null)
+          'benchmarkIndex': encodeDouble(benchmarkIndex!),
         if (credits != null) 'credits': credits!,
         if (hostUserAgent != null) 'hostUserAgent': hostUserAgent!,
         if (networkUserAgent != null) 'networkUserAgent': networkUserAgent!,
@@ -578,7 +587,9 @@ class LighthouseAuditResultV5 {
                   json_['metricSavings'] as core.Map<core.String, core.dynamic>)
               : null,
           numericUnit: json_['numericUnit'] as core.String?,
-          numericValue: (json_['numericValue'] as core.num?)?.toDouble(),
+          numericValue: json_.containsKey('numericValue')
+              ? decodeDouble(json_['numericValue'] as core.Object)
+              : null,
           score: json_['score'],
           scoreDisplayMode: json_['scoreDisplayMode'] as core.String?,
           title: json_['title'] as core.String?,
@@ -594,7 +605,7 @@ class LighthouseAuditResultV5 {
         if (id != null) 'id': id!,
         if (metricSavings != null) 'metricSavings': metricSavings!,
         if (numericUnit != null) 'numericUnit': numericUnit!,
-        if (numericValue != null) 'numericValue': numericValue!,
+        if (numericValue != null) 'numericValue': encodeDouble(numericValue!),
         if (score != null) 'score': score!,
         if (scoreDisplayMode != null) 'scoreDisplayMode': scoreDisplayMode!,
         if (title != null) 'title': title!,
@@ -880,19 +891,29 @@ class MetricSavings {
 
   MetricSavings.fromJson(core.Map json_)
       : this(
-          CLS: (json_['CLS'] as core.num?)?.toDouble(),
-          FCP: (json_['FCP'] as core.num?)?.toDouble(),
-          INP: (json_['INP'] as core.num?)?.toDouble(),
-          LCP: (json_['LCP'] as core.num?)?.toDouble(),
-          TBT: (json_['TBT'] as core.num?)?.toDouble(),
+          CLS: json_.containsKey('CLS')
+              ? decodeDouble(json_['CLS'] as core.Object)
+              : null,
+          FCP: json_.containsKey('FCP')
+              ? decodeDouble(json_['FCP'] as core.Object)
+              : null,
+          INP: json_.containsKey('INP')
+              ? decodeDouble(json_['INP'] as core.Object)
+              : null,
+          LCP: json_.containsKey('LCP')
+              ? decodeDouble(json_['LCP'] as core.Object)
+              : null,
+          TBT: json_.containsKey('TBT')
+              ? decodeDouble(json_['TBT'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (CLS != null) 'CLS': CLS!,
-        if (FCP != null) 'FCP': FCP!,
-        if (INP != null) 'INP': INP!,
-        if (LCP != null) 'LCP': LCP!,
-        if (TBT != null) 'TBT': TBT!,
+        if (CLS != null) 'CLS': encodeDouble(CLS!),
+        if (FCP != null) 'FCP': encodeDouble(FCP!),
+        if (INP != null) 'INP': encodeDouble(INP!),
+        if (LCP != null) 'LCP': encodeDouble(LCP!),
+        if (TBT != null) 'TBT': encodeDouble(TBT!),
       };
 }
 
@@ -1524,11 +1545,13 @@ class Timing {
 
   Timing.fromJson(core.Map json_)
       : this(
-          total: (json_['total'] as core.num?)?.toDouble(),
+          total: json_.containsKey('total')
+              ? decodeDouble(json_['total'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (total != null) 'total': total!,
+        if (total != null) 'total': encodeDouble(total!),
       };
 }
 

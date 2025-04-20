@@ -14,6 +14,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
+// ignore_for_file: unused_import
 // ignore_for_file: unused_local_variable
 
 @unittest.Skip()

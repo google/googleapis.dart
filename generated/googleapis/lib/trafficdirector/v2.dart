@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Traffic Director API - v2
 ///
@@ -29,6 +30,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -315,7 +317,9 @@ class DoubleMatcher {
 
   DoubleMatcher.fromJson(core.Map json_)
       : this(
-          exact: (json_['exact'] as core.num?)?.toDouble(),
+          exact: json_.containsKey('exact')
+              ? decodeDouble(json_['exact'] as core.Object)
+              : null,
           range: json_.containsKey('range')
               ? DoubleRange.fromJson(
                   json_['range'] as core.Map<core.String, core.dynamic>)
@@ -323,7 +327,7 @@ class DoubleMatcher {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exact != null) 'exact': exact!,
+        if (exact != null) 'exact': encodeDouble(exact!),
         if (range != null) 'range': range!,
       };
 }

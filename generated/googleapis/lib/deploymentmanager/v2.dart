@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Deployment Manager V2 API - v2
 ///
@@ -37,6 +38,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3021,8 +3023,12 @@ class QuotaExceededInfo {
               value as core.String,
             ),
           ),
-          futureLimit: (json_['futureLimit'] as core.num?)?.toDouble(),
-          limit: (json_['limit'] as core.num?)?.toDouble(),
+          futureLimit: json_.containsKey('futureLimit')
+              ? decodeDouble(json_['futureLimit'] as core.Object)
+              : null,
+          limit: json_.containsKey('limit')
+              ? decodeDouble(json_['limit'] as core.Object)
+              : null,
           limitName: json_['limitName'] as core.String?,
           metricName: json_['metricName'] as core.String?,
           rolloutStatus: json_['rolloutStatus'] as core.String?,
@@ -3030,8 +3036,8 @@ class QuotaExceededInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null) 'dimensions': dimensions!,
-        if (futureLimit != null) 'futureLimit': futureLimit!,
-        if (limit != null) 'limit': limit!,
+        if (futureLimit != null) 'futureLimit': encodeDouble(futureLimit!),
+        if (limit != null) 'limit': encodeDouble(limit!),
         if (limitName != null) 'limitName': limitName!,
         if (metricName != null) 'metricName': metricName!,
         if (rolloutStatus != null) 'rolloutStatus': rolloutStatus!,

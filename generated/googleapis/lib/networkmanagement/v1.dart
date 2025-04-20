@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Network Management API - v1
 ///
@@ -37,6 +38,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -5078,7 +5080,9 @@ class VpcFlowLogsConfig {
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           filterExpr: json_['filterExpr'] as core.String?,
-          flowSampling: (json_['flowSampling'] as core.num?)?.toDouble(),
+          flowSampling: json_.containsKey('flowSampling')
+              ? decodeDouble(json_['flowSampling'] as core.Object)
+              : null,
           interconnectAttachment:
               json_['interconnectAttachment'] as core.String?,
           labels:
@@ -5105,7 +5109,7 @@ class VpcFlowLogsConfig {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (filterExpr != null) 'filterExpr': filterExpr!,
-        if (flowSampling != null) 'flowSampling': flowSampling!,
+        if (flowSampling != null) 'flowSampling': encodeDouble(flowSampling!),
         if (interconnectAttachment != null)
           'interconnectAttachment': interconnectAttachment!,
         if (labels != null) 'labels': labels!,

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Content API for Shopping - v2.1
 ///
@@ -65,6 +66,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -10035,13 +10037,17 @@ class CloudExportAdditionalProperties {
       : this(
           boolValue: json_['boolValue'] as core.bool?,
           floatValue: (json_['floatValue'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           intValue: (json_['intValue'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
+          maxValue: json_.containsKey('maxValue')
+              ? decodeDouble(json_['maxValue'] as core.Object)
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? decodeDouble(json_['minValue'] as core.Object)
+              : null,
           propertyName: json_['propertyName'] as core.String?,
           textValue: (json_['textValue'] as core.List?)
               ?.map((value) => value as core.String)
@@ -10051,10 +10057,12 @@ class CloudExportAdditionalProperties {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
-        if (floatValue != null) 'floatValue': floatValue!,
+        if (floatValue != null)
+          'floatValue':
+              floatValue!.map((value) => encodeDouble(value)).toList(),
         if (intValue != null) 'intValue': intValue!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
+        if (maxValue != null) 'maxValue': encodeDouble(maxValue!),
+        if (minValue != null) 'minValue': encodeDouble(minValue!),
         if (propertyName != null) 'propertyName': propertyName!,
         if (textValue != null) 'textValue': textValue!,
         if (unitCode != null) 'unitCode': unitCode!,
@@ -10218,14 +10226,18 @@ class CollectionFeaturedProduct {
   CollectionFeaturedProduct.fromJson(core.Map json_)
       : this(
           offerId: json_['offerId'] as core.String?,
-          x: (json_['x'] as core.num?)?.toDouble(),
-          y: (json_['y'] as core.num?)?.toDouble(),
+          x: json_.containsKey('x')
+              ? decodeDouble(json_['x'] as core.Object)
+              : null,
+          y: json_.containsKey('y')
+              ? decodeDouble(json_['y'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (offerId != null) 'offerId': offerId!,
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
+        if (x != null) 'x': encodeDouble(x!),
+        if (y != null) 'y': encodeDouble(y!),
       };
 }
 
@@ -10539,10 +10551,14 @@ class CompetitiveVisibility {
 
   CompetitiveVisibility.fromJson(core.Map json_)
       : this(
-          adsOrganicRatio: (json_['adsOrganicRatio'] as core.num?)?.toDouble(),
+          adsOrganicRatio: json_.containsKey('adsOrganicRatio')
+              ? decodeDouble(json_['adsOrganicRatio'] as core.Object)
+              : null,
           categoryBenchmarkVisibilityTrend:
-              (json_['categoryBenchmarkVisibilityTrend'] as core.num?)
-                  ?.toDouble(),
+              json_.containsKey('categoryBenchmarkVisibilityTrend')
+                  ? decodeDouble(
+                      json_['categoryBenchmarkVisibilityTrend'] as core.Object)
+                  : null,
           categoryId: json_['categoryId'] as core.String?,
           countryCode: json_['countryCode'] as core.String?,
           date: json_.containsKey('date')
@@ -10550,36 +10566,45 @@ class CompetitiveVisibility {
                   json_['date'] as core.Map<core.String, core.dynamic>)
               : null,
           domain: json_['domain'] as core.String?,
-          higherPositionRate:
-              (json_['higherPositionRate'] as core.num?)?.toDouble(),
+          higherPositionRate: json_.containsKey('higherPositionRate')
+              ? decodeDouble(json_['higherPositionRate'] as core.Object)
+              : null,
           isYourDomain: json_['isYourDomain'] as core.bool?,
-          pageOverlapRate: (json_['pageOverlapRate'] as core.num?)?.toDouble(),
+          pageOverlapRate: json_.containsKey('pageOverlapRate')
+              ? decodeDouble(json_['pageOverlapRate'] as core.Object)
+              : null,
           rank: json_['rank'] as core.String?,
-          relativeVisibility:
-              (json_['relativeVisibility'] as core.num?)?.toDouble(),
+          relativeVisibility: json_.containsKey('relativeVisibility')
+              ? decodeDouble(json_['relativeVisibility'] as core.Object)
+              : null,
           trafficSource: json_['trafficSource'] as core.String?,
-          yourDomainVisibilityTrend:
-              (json_['yourDomainVisibilityTrend'] as core.num?)?.toDouble(),
+          yourDomainVisibilityTrend: json_
+                  .containsKey('yourDomainVisibilityTrend')
+              ? decodeDouble(json_['yourDomainVisibilityTrend'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adsOrganicRatio != null) 'adsOrganicRatio': adsOrganicRatio!,
+        if (adsOrganicRatio != null)
+          'adsOrganicRatio': encodeDouble(adsOrganicRatio!),
         if (categoryBenchmarkVisibilityTrend != null)
-          'categoryBenchmarkVisibilityTrend': categoryBenchmarkVisibilityTrend!,
+          'categoryBenchmarkVisibilityTrend':
+              encodeDouble(categoryBenchmarkVisibilityTrend!),
         if (categoryId != null) 'categoryId': categoryId!,
         if (countryCode != null) 'countryCode': countryCode!,
         if (date != null) 'date': date!,
         if (domain != null) 'domain': domain!,
         if (higherPositionRate != null)
-          'higherPositionRate': higherPositionRate!,
+          'higherPositionRate': encodeDouble(higherPositionRate!),
         if (isYourDomain != null) 'isYourDomain': isYourDomain!,
-        if (pageOverlapRate != null) 'pageOverlapRate': pageOverlapRate!,
+        if (pageOverlapRate != null)
+          'pageOverlapRate': encodeDouble(pageOverlapRate!),
         if (rank != null) 'rank': rank!,
         if (relativeVisibility != null)
-          'relativeVisibility': relativeVisibility!,
+          'relativeVisibility': encodeDouble(relativeVisibility!),
         if (trafficSource != null) 'trafficSource': trafficSource!,
         if (yourDomainVisibilityTrend != null)
-          'yourDomainVisibilityTrend': yourDomainVisibilityTrend!,
+          'yourDomainVisibilityTrend': encodeDouble(yourDomainVisibilityTrend!),
       };
 }
 
@@ -14922,60 +14947,86 @@ class Metrics {
 
   Metrics.fromJson(core.Map json_)
       : this(
-          aos: (json_['aos'] as core.num?)?.toDouble(),
-          aovMicros: (json_['aovMicros'] as core.num?)?.toDouble(),
+          aos: json_.containsKey('aos')
+              ? decodeDouble(json_['aos'] as core.Object)
+              : null,
+          aovMicros: json_.containsKey('aovMicros')
+              ? decodeDouble(json_['aovMicros'] as core.Object)
+              : null,
           clicks: json_['clicks'] as core.String?,
-          conversionRate: (json_['conversionRate'] as core.num?)?.toDouble(),
+          conversionRate: json_.containsKey('conversionRate')
+              ? decodeDouble(json_['conversionRate'] as core.Object)
+              : null,
           conversionValueMicros: json_['conversionValueMicros'] as core.String?,
-          conversions: (json_['conversions'] as core.num?)?.toDouble(),
-          ctr: (json_['ctr'] as core.num?)?.toDouble(),
-          daysToShip: (json_['daysToShip'] as core.num?)?.toDouble(),
+          conversions: json_.containsKey('conversions')
+              ? decodeDouble(json_['conversions'] as core.Object)
+              : null,
+          ctr: json_.containsKey('ctr')
+              ? decodeDouble(json_['ctr'] as core.Object)
+              : null,
+          daysToShip: json_.containsKey('daysToShip')
+              ? decodeDouble(json_['daysToShip'] as core.Object)
+              : null,
           impressions: json_['impressions'] as core.String?,
-          itemDaysToShip: (json_['itemDaysToShip'] as core.num?)?.toDouble(),
-          itemFillRate: (json_['itemFillRate'] as core.num?)?.toDouble(),
+          itemDaysToShip: json_.containsKey('itemDaysToShip')
+              ? decodeDouble(json_['itemDaysToShip'] as core.Object)
+              : null,
+          itemFillRate: json_.containsKey('itemFillRate')
+              ? decodeDouble(json_['itemFillRate'] as core.Object)
+              : null,
           orderedItemSalesMicros:
               json_['orderedItemSalesMicros'] as core.String?,
           orderedItems: json_['orderedItems'] as core.String?,
           orders: json_['orders'] as core.String?,
           rejectedItems: json_['rejectedItems'] as core.String?,
-          returnRate: (json_['returnRate'] as core.num?)?.toDouble(),
+          returnRate: json_.containsKey('returnRate')
+              ? decodeDouble(json_['returnRate'] as core.Object)
+              : null,
           returnedItems: json_['returnedItems'] as core.String?,
           returnsMicros: json_['returnsMicros'] as core.String?,
           shippedItemSalesMicros:
               json_['shippedItemSalesMicros'] as core.String?,
           shippedItems: json_['shippedItems'] as core.String?,
           shippedOrders: json_['shippedOrders'] as core.String?,
-          unshippedItems: (json_['unshippedItems'] as core.num?)?.toDouble(),
-          unshippedOrders: (json_['unshippedOrders'] as core.num?)?.toDouble(),
+          unshippedItems: json_.containsKey('unshippedItems')
+              ? decodeDouble(json_['unshippedItems'] as core.Object)
+              : null,
+          unshippedOrders: json_.containsKey('unshippedOrders')
+              ? decodeDouble(json_['unshippedOrders'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aos != null) 'aos': aos!,
-        if (aovMicros != null) 'aovMicros': aovMicros!,
+        if (aos != null) 'aos': encodeDouble(aos!),
+        if (aovMicros != null) 'aovMicros': encodeDouble(aovMicros!),
         if (clicks != null) 'clicks': clicks!,
-        if (conversionRate != null) 'conversionRate': conversionRate!,
+        if (conversionRate != null)
+          'conversionRate': encodeDouble(conversionRate!),
         if (conversionValueMicros != null)
           'conversionValueMicros': conversionValueMicros!,
-        if (conversions != null) 'conversions': conversions!,
-        if (ctr != null) 'ctr': ctr!,
-        if (daysToShip != null) 'daysToShip': daysToShip!,
+        if (conversions != null) 'conversions': encodeDouble(conversions!),
+        if (ctr != null) 'ctr': encodeDouble(ctr!),
+        if (daysToShip != null) 'daysToShip': encodeDouble(daysToShip!),
         if (impressions != null) 'impressions': impressions!,
-        if (itemDaysToShip != null) 'itemDaysToShip': itemDaysToShip!,
-        if (itemFillRate != null) 'itemFillRate': itemFillRate!,
+        if (itemDaysToShip != null)
+          'itemDaysToShip': encodeDouble(itemDaysToShip!),
+        if (itemFillRate != null) 'itemFillRate': encodeDouble(itemFillRate!),
         if (orderedItemSalesMicros != null)
           'orderedItemSalesMicros': orderedItemSalesMicros!,
         if (orderedItems != null) 'orderedItems': orderedItems!,
         if (orders != null) 'orders': orders!,
         if (rejectedItems != null) 'rejectedItems': rejectedItems!,
-        if (returnRate != null) 'returnRate': returnRate!,
+        if (returnRate != null) 'returnRate': encodeDouble(returnRate!),
         if (returnedItems != null) 'returnedItems': returnedItems!,
         if (returnsMicros != null) 'returnsMicros': returnsMicros!,
         if (shippedItemSalesMicros != null)
           'shippedItemSalesMicros': shippedItemSalesMicros!,
         if (shippedItems != null) 'shippedItems': shippedItems!,
         if (shippedOrders != null) 'shippedOrders': shippedOrders!,
-        if (unshippedItems != null) 'unshippedItems': unshippedItems!,
-        if (unshippedOrders != null) 'unshippedOrders': unshippedOrders!,
+        if (unshippedItems != null)
+          'unshippedItems': encodeDouble(unshippedItems!),
+        if (unshippedOrders != null)
+          'unshippedOrders': encodeDouble(unshippedOrders!),
       };
 }
 
@@ -16714,16 +16765,25 @@ class PriceInsights {
       : this(
           effectiveness: json_['effectiveness'] as core.String?,
           predictedClicksChangeFraction:
-              (json_['predictedClicksChangeFraction'] as core.num?)?.toDouble(),
-          predictedConversionsChangeFraction:
-              (json_['predictedConversionsChangeFraction'] as core.num?)
-                  ?.toDouble(),
-          predictedGrossProfitChangeFraction:
-              (json_['predictedGrossProfitChangeFraction'] as core.num?)
-                  ?.toDouble(),
-          predictedImpressionsChangeFraction:
-              (json_['predictedImpressionsChangeFraction'] as core.num?)
-                  ?.toDouble(),
+              json_.containsKey('predictedClicksChangeFraction')
+                  ? decodeDouble(
+                      json_['predictedClicksChangeFraction'] as core.Object)
+                  : null,
+          predictedConversionsChangeFraction: json_
+                  .containsKey('predictedConversionsChangeFraction')
+              ? decodeDouble(
+                  json_['predictedConversionsChangeFraction'] as core.Object)
+              : null,
+          predictedGrossProfitChangeFraction: json_
+                  .containsKey('predictedGrossProfitChangeFraction')
+              ? decodeDouble(
+                  json_['predictedGrossProfitChangeFraction'] as core.Object)
+              : null,
+          predictedImpressionsChangeFraction: json_
+                  .containsKey('predictedImpressionsChangeFraction')
+              ? decodeDouble(
+                  json_['predictedImpressionsChangeFraction'] as core.Object)
+              : null,
           predictedMonthlyGrossProfitChangeCurrencyCode:
               json_['predictedMonthlyGrossProfitChangeCurrencyCode']
                   as core.String?,
@@ -16737,16 +16797,17 @@ class PriceInsights {
   core.Map<core.String, core.dynamic> toJson() => {
         if (effectiveness != null) 'effectiveness': effectiveness!,
         if (predictedClicksChangeFraction != null)
-          'predictedClicksChangeFraction': predictedClicksChangeFraction!,
+          'predictedClicksChangeFraction':
+              encodeDouble(predictedClicksChangeFraction!),
         if (predictedConversionsChangeFraction != null)
           'predictedConversionsChangeFraction':
-              predictedConversionsChangeFraction!,
+              encodeDouble(predictedConversionsChangeFraction!),
         if (predictedGrossProfitChangeFraction != null)
           'predictedGrossProfitChangeFraction':
-              predictedGrossProfitChangeFraction!,
+              encodeDouble(predictedGrossProfitChangeFraction!),
         if (predictedImpressionsChangeFraction != null)
           'predictedImpressionsChangeFraction':
-              predictedImpressionsChangeFraction!,
+              encodeDouble(predictedImpressionsChangeFraction!),
         if (predictedMonthlyGrossProfitChangeCurrencyCode != null)
           'predictedMonthlyGrossProfitChangeCurrencyCode':
               predictedMonthlyGrossProfitChangeCurrencyCode!,
@@ -17378,7 +17439,9 @@ class Product {
               ?.map((value) => value as core.String)
               .toList(),
           displayAdsTitle: json_['displayAdsTitle'] as core.String?,
-          displayAdsValue: (json_['displayAdsValue'] as core.num?)?.toDouble(),
+          displayAdsValue: json_.containsKey('displayAdsValue')
+              ? decodeDouble(json_['displayAdsValue'] as core.Object)
+              : null,
           energyEfficiencyClass: json_['energyEfficiencyClass'] as core.String?,
           excludedDestinations: (json_['excludedDestinations'] as core.List?)
               ?.map((value) => value as core.String)
@@ -17581,7 +17644,8 @@ class Product {
         if (displayAdsSimilarIds != null)
           'displayAdsSimilarIds': displayAdsSimilarIds!,
         if (displayAdsTitle != null) 'displayAdsTitle': displayAdsTitle!,
-        if (displayAdsValue != null) 'displayAdsValue': displayAdsValue!,
+        if (displayAdsValue != null)
+          'displayAdsValue': encodeDouble(displayAdsValue!),
         if (energyEfficiencyClass != null)
           'energyEfficiencyClass': energyEfficiencyClass!,
         if (excludedDestinations != null)
@@ -17993,12 +18057,14 @@ class ProductDimension {
   ProductDimension.fromJson(core.Map json_)
       : this(
           unit: json_['unit'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (unit != null) 'unit': unit!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -18343,12 +18409,14 @@ class ProductShippingDimension {
   ProductShippingDimension.fromJson(core.Map json_)
       : this(
           unit: json_['unit'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (unit != null) 'unit': unit!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -18367,12 +18435,14 @@ class ProductShippingWeight {
   ProductShippingWeight.fromJson(core.Map json_)
       : this(
           unit: json_['unit'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (unit != null) 'unit': unit!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -18727,13 +18797,15 @@ class ProductSustainabilityIncentive {
               ? Price.fromJson(
                   json_['amount'] as core.Map<core.String, core.dynamic>)
               : null,
-          percentage: (json_['percentage'] as core.num?)?.toDouble(),
+          percentage: json_.containsKey('percentage')
+              ? decodeDouble(json_['percentage'] as core.Object)
+              : null,
           type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (amount != null) 'amount': amount!,
-        if (percentage != null) 'percentage': percentage!,
+        if (percentage != null) 'percentage': encodeDouble(percentage!),
         if (type != null) 'type': type!,
       };
 }
@@ -18777,7 +18849,9 @@ class ProductTax {
           country: json_['country'] as core.String?,
           locationId: json_['locationId'] as core.String?,
           postalCode: json_['postalCode'] as core.String?,
-          rate: (json_['rate'] as core.num?)?.toDouble(),
+          rate: json_.containsKey('rate')
+              ? decodeDouble(json_['rate'] as core.Object)
+              : null,
           region: json_['region'] as core.String?,
           taxShip: json_['taxShip'] as core.bool?,
         );
@@ -18786,7 +18860,7 @@ class ProductTax {
         if (country != null) 'country': country!,
         if (locationId != null) 'locationId': locationId!,
         if (postalCode != null) 'postalCode': postalCode!,
-        if (rate != null) 'rate': rate!,
+        if (rate != null) 'rate': encodeDouble(rate!),
         if (region != null) 'region': region!,
         if (taxShip != null) 'taxShip': taxShip!,
       };
@@ -18831,12 +18905,14 @@ class ProductUnitPricingMeasure {
   ProductUnitPricingMeasure.fromJson(core.Map json_)
       : this(
           unit: json_['unit'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (unit != null) 'unit': unit!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -19255,12 +19331,14 @@ class ProductWeight {
   ProductWeight.fromJson(core.Map json_)
       : this(
           unit: json_['unit'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (unit != null) 'unit': unit!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -23588,17 +23666,27 @@ class TopicTrends {
               ? Date.fromJson(
                   json_['date'] as core.Map<core.String, core.dynamic>)
               : null,
-          last120DaysSearchInterest:
-              (json_['last120DaysSearchInterest'] as core.num?)?.toDouble(),
-          last30DaysSearchInterest:
-              (json_['last30DaysSearchInterest'] as core.num?)?.toDouble(),
-          last7DaysSearchInterest:
-              (json_['last7DaysSearchInterest'] as core.num?)?.toDouble(),
-          last90DaysSearchInterest:
-              (json_['last90DaysSearchInterest'] as core.num?)?.toDouble(),
-          next7DaysSearchInterest:
-              (json_['next7DaysSearchInterest'] as core.num?)?.toDouble(),
-          searchInterest: (json_['searchInterest'] as core.num?)?.toDouble(),
+          last120DaysSearchInterest: json_
+                  .containsKey('last120DaysSearchInterest')
+              ? decodeDouble(json_['last120DaysSearchInterest'] as core.Object)
+              : null,
+          last30DaysSearchInterest: json_
+                  .containsKey('last30DaysSearchInterest')
+              ? decodeDouble(json_['last30DaysSearchInterest'] as core.Object)
+              : null,
+          last7DaysSearchInterest: json_.containsKey('last7DaysSearchInterest')
+              ? decodeDouble(json_['last7DaysSearchInterest'] as core.Object)
+              : null,
+          last90DaysSearchInterest: json_
+                  .containsKey('last90DaysSearchInterest')
+              ? decodeDouble(json_['last90DaysSearchInterest'] as core.Object)
+              : null,
+          next7DaysSearchInterest: json_.containsKey('next7DaysSearchInterest')
+              ? decodeDouble(json_['next7DaysSearchInterest'] as core.Object)
+              : null,
+          searchInterest: json_.containsKey('searchInterest')
+              ? decodeDouble(json_['searchInterest'] as core.Object)
+              : null,
           topic: json_['topic'] as core.String?,
         );
 
@@ -23607,16 +23695,17 @@ class TopicTrends {
           'customerCountryCode': customerCountryCode!,
         if (date != null) 'date': date!,
         if (last120DaysSearchInterest != null)
-          'last120DaysSearchInterest': last120DaysSearchInterest!,
+          'last120DaysSearchInterest': encodeDouble(last120DaysSearchInterest!),
         if (last30DaysSearchInterest != null)
-          'last30DaysSearchInterest': last30DaysSearchInterest!,
+          'last30DaysSearchInterest': encodeDouble(last30DaysSearchInterest!),
         if (last7DaysSearchInterest != null)
-          'last7DaysSearchInterest': last7DaysSearchInterest!,
+          'last7DaysSearchInterest': encodeDouble(last7DaysSearchInterest!),
         if (last90DaysSearchInterest != null)
-          'last90DaysSearchInterest': last90DaysSearchInterest!,
+          'last90DaysSearchInterest': encodeDouble(last90DaysSearchInterest!),
         if (next7DaysSearchInterest != null)
-          'next7DaysSearchInterest': next7DaysSearchInterest!,
-        if (searchInterest != null) 'searchInterest': searchInterest!,
+          'next7DaysSearchInterest': encodeDouble(next7DaysSearchInterest!),
+        if (searchInterest != null)
+          'searchInterest': encodeDouble(searchInterest!),
         if (topic != null) 'topic': topic!,
       };
 }

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// On-Demand Scanning API - v1
 ///
@@ -36,6 +37,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3434,7 +3436,9 @@ class VulnerabilityOccurrence {
 
   VulnerabilityOccurrence.fromJson(core.Map json_)
       : this(
-          cvssScore: (json_['cvssScore'] as core.num?)?.toDouble(),
+          cvssScore: json_.containsKey('cvssScore')
+              ? decodeDouble(json_['cvssScore'] as core.Object)
+              : null,
           cvssV2: json_.containsKey('cvssV2')
               ? CVSS.fromJson(
                   json_['cvssV2'] as core.Map<core.String, core.dynamic>)
@@ -3466,7 +3470,7 @@ class VulnerabilityOccurrence {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (cvssScore != null) 'cvssScore': encodeDouble(cvssScore!),
         if (cvssV2 != null) 'cvssV2': cvssV2!,
         if (cvssVersion != null) 'cvssVersion': cvssVersion!,
         if (cvssv3 != null) 'cvssv3': cvssv3!,

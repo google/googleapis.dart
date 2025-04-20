@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Search Console API - v1
 ///
@@ -38,6 +39,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -706,21 +708,29 @@ class ApiDataRow {
 
   ApiDataRow.fromJson(core.Map json_)
       : this(
-          clicks: (json_['clicks'] as core.num?)?.toDouble(),
-          ctr: (json_['ctr'] as core.num?)?.toDouble(),
-          impressions: (json_['impressions'] as core.num?)?.toDouble(),
+          clicks: json_.containsKey('clicks')
+              ? decodeDouble(json_['clicks'] as core.Object)
+              : null,
+          ctr: json_.containsKey('ctr')
+              ? decodeDouble(json_['ctr'] as core.Object)
+              : null,
+          impressions: json_.containsKey('impressions')
+              ? decodeDouble(json_['impressions'] as core.Object)
+              : null,
           keys: (json_['keys'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          position: (json_['position'] as core.num?)?.toDouble(),
+          position: json_.containsKey('position')
+              ? decodeDouble(json_['position'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clicks != null) 'clicks': clicks!,
-        if (ctr != null) 'ctr': ctr!,
-        if (impressions != null) 'impressions': impressions!,
+        if (clicks != null) 'clicks': encodeDouble(clicks!),
+        if (ctr != null) 'ctr': encodeDouble(ctr!),
+        if (impressions != null) 'impressions': encodeDouble(impressions!),
         if (keys != null) 'keys': keys!,
-        if (position != null) 'position': position!,
+        if (position != null) 'position': encodeDouble(position!),
       };
 }
 

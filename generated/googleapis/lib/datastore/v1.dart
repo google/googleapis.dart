@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Datastore API - v1
 ///
@@ -34,6 +35,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1691,8 +1693,9 @@ class FindNearest {
           distanceMeasure: json_['distanceMeasure'] as core.String?,
           distanceResultProperty:
               json_['distanceResultProperty'] as core.String?,
-          distanceThreshold:
-              (json_['distanceThreshold'] as core.num?)?.toDouble(),
+          distanceThreshold: json_.containsKey('distanceThreshold')
+              ? decodeDouble(json_['distanceThreshold'] as core.Object)
+              : null,
           limit: json_['limit'] as core.int?,
           queryVector: json_.containsKey('queryVector')
               ? Value.fromJson(
@@ -1708,7 +1711,8 @@ class FindNearest {
         if (distanceMeasure != null) 'distanceMeasure': distanceMeasure!,
         if (distanceResultProperty != null)
           'distanceResultProperty': distanceResultProperty!,
-        if (distanceThreshold != null) 'distanceThreshold': distanceThreshold!,
+        if (distanceThreshold != null)
+          'distanceThreshold': encodeDouble(distanceThreshold!),
         if (limit != null) 'limit': limit!,
         if (queryVector != null) 'queryVector': queryVector!,
         if (vectorProperty != null) 'vectorProperty': vectorProperty!,
@@ -3906,7 +3910,9 @@ class Value {
               : null,
           blobValue: json_['blobValue'] as core.String?,
           booleanValue: json_['booleanValue'] as core.bool?,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           entityValue: json_.containsKey('entityValue')
               ? Entity.fromJson(
                   json_['entityValue'] as core.Map<core.String, core.dynamic>)
@@ -3931,7 +3937,7 @@ class Value {
         if (arrayValue != null) 'arrayValue': arrayValue!,
         if (blobValue != null) 'blobValue': blobValue!,
         if (booleanValue != null) 'booleanValue': booleanValue!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (entityValue != null) 'entityValue': entityValue!,
         if (excludeFromIndexes != null)
           'excludeFromIndexes': excludeFromIndexes!,

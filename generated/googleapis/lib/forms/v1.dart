@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Forms API - v1
 ///
@@ -34,6 +35,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1316,7 +1318,9 @@ class FormResponse {
           lastSubmittedTime: json_['lastSubmittedTime'] as core.String?,
           respondentEmail: json_['respondentEmail'] as core.String?,
           responseId: json_['responseId'] as core.String?,
-          totalScore: (json_['totalScore'] as core.num?)?.toDouble(),
+          totalScore: json_.containsKey('totalScore')
+              ? decodeDouble(json_['totalScore'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1326,7 +1330,7 @@ class FormResponse {
         if (lastSubmittedTime != null) 'lastSubmittedTime': lastSubmittedTime!,
         if (respondentEmail != null) 'respondentEmail': respondentEmail!,
         if (responseId != null) 'responseId': responseId!,
-        if (totalScore != null) 'totalScore': totalScore!,
+        if (totalScore != null) 'totalScore': encodeDouble(totalScore!),
       };
 }
 
@@ -1404,13 +1408,15 @@ class Grade {
               ? Feedback.fromJson(
                   json_['feedback'] as core.Map<core.String, core.dynamic>)
               : null,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (correct != null) 'correct': correct!,
         if (feedback != null) 'feedback': feedback!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Oracle Database@Google Cloud API - v1
 ///
@@ -45,6 +46,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1987,7 +1989,9 @@ class AutonomousDatabaseBackupProperties {
       : this(
           availableTillTime: json_['availableTillTime'] as core.String?,
           compartmentId: json_['compartmentId'] as core.String?,
-          databaseSizeTb: (json_['databaseSizeTb'] as core.num?)?.toDouble(),
+          databaseSizeTb: json_.containsKey('databaseSizeTb')
+              ? decodeDouble(json_['databaseSizeTb'] as core.Object)
+              : null,
           dbVersion: json_['dbVersion'] as core.String?,
           endTime: json_['endTime'] as core.String?,
           isAutomaticBackup: json_['isAutomaticBackup'] as core.bool?,
@@ -2001,7 +2005,9 @@ class AutonomousDatabaseBackupProperties {
           lifecycleState: json_['lifecycleState'] as core.String?,
           ocid: json_['ocid'] as core.String?,
           retentionPeriodDays: json_['retentionPeriodDays'] as core.int?,
-          sizeTb: (json_['sizeTb'] as core.num?)?.toDouble(),
+          sizeTb: json_.containsKey('sizeTb')
+              ? decodeDouble(json_['sizeTb'] as core.Object)
+              : null,
           startTime: json_['startTime'] as core.String?,
           type: json_['type'] as core.String?,
           vaultId: json_['vaultId'] as core.String?,
@@ -2010,7 +2016,8 @@ class AutonomousDatabaseBackupProperties {
   core.Map<core.String, core.dynamic> toJson() => {
         if (availableTillTime != null) 'availableTillTime': availableTillTime!,
         if (compartmentId != null) 'compartmentId': compartmentId!,
-        if (databaseSizeTb != null) 'databaseSizeTb': databaseSizeTb!,
+        if (databaseSizeTb != null)
+          'databaseSizeTb': encodeDouble(databaseSizeTb!),
         if (dbVersion != null) 'dbVersion': dbVersion!,
         if (endTime != null) 'endTime': endTime!,
         if (isAutomaticBackup != null) 'isAutomaticBackup': isAutomaticBackup!,
@@ -2025,7 +2032,7 @@ class AutonomousDatabaseBackupProperties {
         if (ocid != null) 'ocid': ocid!,
         if (retentionPeriodDays != null)
           'retentionPeriodDays': retentionPeriodDays!,
-        if (sizeTb != null) 'sizeTb': sizeTb!,
+        if (sizeTb != null) 'sizeTb': encodeDouble(sizeTb!),
         if (startTime != null) 'startTime': startTime!,
         if (type != null) 'type': type!,
         if (vaultId != null) 'vaultId': vaultId!,
@@ -2738,9 +2745,13 @@ class AutonomousDatabaseProperties {
   AutonomousDatabaseProperties.fromJson(core.Map json_)
       : this(
           actualUsedDataStorageSizeTb:
-              (json_['actualUsedDataStorageSizeTb'] as core.num?)?.toDouble(),
-          allocatedStorageSizeTb:
-              (json_['allocatedStorageSizeTb'] as core.num?)?.toDouble(),
+              json_.containsKey('actualUsedDataStorageSizeTb')
+                  ? decodeDouble(
+                      json_['actualUsedDataStorageSizeTb'] as core.Object)
+                  : null,
+          allocatedStorageSizeTb: json_.containsKey('allocatedStorageSizeTb')
+              ? decodeDouble(json_['allocatedStorageSizeTb'] as core.Object)
+              : null,
           apexDetails: json_.containsKey('apexDetails')
               ? AutonomousDatabaseApex.fromJson(
                   json_['apexDetails'] as core.Map<core.String, core.dynamic>)
@@ -2756,7 +2767,9 @@ class AutonomousDatabaseProperties {
           backupRetentionPeriodDays:
               json_['backupRetentionPeriodDays'] as core.int?,
           characterSet: json_['characterSet'] as core.String?,
-          computeCount: (json_['computeCount'] as core.num?)?.toDouble(),
+          computeCount: json_.containsKey('computeCount')
+              ? decodeDouble(json_['computeCount'] as core.Object)
+              : null,
           connectionStrings: json_.containsKey('connectionStrings')
               ? AutonomousDatabaseConnectionStrings.fromJson(
                   json_['connectionStrings']
@@ -2836,16 +2849,20 @@ class AutonomousDatabaseProperties {
               ?.map((value) => value as core.String)
               .toList(),
           totalAutoBackupStorageSizeGbs:
-              (json_['totalAutoBackupStorageSizeGbs'] as core.num?)?.toDouble(),
+              json_.containsKey('totalAutoBackupStorageSizeGbs')
+                  ? decodeDouble(
+                      json_['totalAutoBackupStorageSizeGbs'] as core.Object)
+                  : null,
           usedDataStorageSizeTbs: json_['usedDataStorageSizeTbs'] as core.int?,
           vaultId: json_['vaultId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actualUsedDataStorageSizeTb != null)
-          'actualUsedDataStorageSizeTb': actualUsedDataStorageSizeTb!,
+          'actualUsedDataStorageSizeTb':
+              encodeDouble(actualUsedDataStorageSizeTb!),
         if (allocatedStorageSizeTb != null)
-          'allocatedStorageSizeTb': allocatedStorageSizeTb!,
+          'allocatedStorageSizeTb': encodeDouble(allocatedStorageSizeTb!),
         if (apexDetails != null) 'apexDetails': apexDetails!,
         if (arePrimaryAllowlistedIpsUsed != null)
           'arePrimaryAllowlistedIpsUsed': arePrimaryAllowlistedIpsUsed!,
@@ -2856,7 +2873,7 @@ class AutonomousDatabaseProperties {
         if (backupRetentionPeriodDays != null)
           'backupRetentionPeriodDays': backupRetentionPeriodDays!,
         if (characterSet != null) 'characterSet': characterSet!,
-        if (computeCount != null) 'computeCount': computeCount!,
+        if (computeCount != null) 'computeCount': encodeDouble(computeCount!),
         if (connectionStrings != null) 'connectionStrings': connectionStrings!,
         if (connectionUrls != null) 'connectionUrls': connectionUrls!,
         if (cpuCoreCount != null) 'cpuCoreCount': cpuCoreCount!,
@@ -2922,7 +2939,8 @@ class AutonomousDatabaseProperties {
         if (supportedCloneRegions != null)
           'supportedCloneRegions': supportedCloneRegions!,
         if (totalAutoBackupStorageSizeGbs != null)
-          'totalAutoBackupStorageSizeGbs': totalAutoBackupStorageSizeGbs!,
+          'totalAutoBackupStorageSizeGbs':
+              encodeDouble(totalAutoBackupStorageSizeGbs!),
         if (usedDataStorageSizeTbs != null)
           'usedDataStorageSizeTbs': usedDataStorageSizeTbs!,
         if (vaultId != null) 'vaultId': vaultId!,
@@ -3431,8 +3449,9 @@ class CloudExadataInfrastructureProperties {
               ?.map((value) => CustomerContact.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          dataStorageSizeTb:
-              (json_['dataStorageSizeTb'] as core.num?)?.toDouble(),
+          dataStorageSizeTb: json_.containsKey('dataStorageSizeTb')
+              ? decodeDouble(json_['dataStorageSizeTb'] as core.Object)
+              : null,
           dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
           dbServerVersion: json_['dbServerVersion'] as core.String?,
           maintenanceWindow: json_.containsKey('maintenanceWindow')
@@ -3440,8 +3459,9 @@ class CloudExadataInfrastructureProperties {
                   as core.Map<core.String, core.dynamic>)
               : null,
           maxCpuCount: json_['maxCpuCount'] as core.int?,
-          maxDataStorageTb:
-              (json_['maxDataStorageTb'] as core.num?)?.toDouble(),
+          maxDataStorageTb: json_.containsKey('maxDataStorageTb')
+              ? decodeDouble(json_['maxDataStorageTb'] as core.Object)
+              : null,
           maxDbNodeStorageSizeGb: json_['maxDbNodeStorageSizeGb'] as core.int?,
           maxMemoryGb: json_['maxMemoryGb'] as core.int?,
           memorySizeGb: json_['memorySizeGb'] as core.int?,
@@ -3473,13 +3493,15 @@ class CloudExadataInfrastructureProperties {
         if (computeCount != null) 'computeCount': computeCount!,
         if (cpuCount != null) 'cpuCount': cpuCount!,
         if (customerContacts != null) 'customerContacts': customerContacts!,
-        if (dataStorageSizeTb != null) 'dataStorageSizeTb': dataStorageSizeTb!,
+        if (dataStorageSizeTb != null)
+          'dataStorageSizeTb': encodeDouble(dataStorageSizeTb!),
         if (dbNodeStorageSizeGb != null)
           'dbNodeStorageSizeGb': dbNodeStorageSizeGb!,
         if (dbServerVersion != null) 'dbServerVersion': dbServerVersion!,
         if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
         if (maxCpuCount != null) 'maxCpuCount': maxCpuCount!,
-        if (maxDataStorageTb != null) 'maxDataStorageTb': maxDataStorageTb!,
+        if (maxDataStorageTb != null)
+          'maxDataStorageTb': encodeDouble(maxDataStorageTb!),
         if (maxDbNodeStorageSizeGb != null)
           'maxDbNodeStorageSizeGb': maxDbNodeStorageSizeGb!,
         if (maxMemoryGb != null) 'maxMemoryGb': maxMemoryGb!,
@@ -3851,8 +3873,9 @@ class CloudVmClusterProperties {
           clusterName: json_['clusterName'] as core.String?,
           compartmentId: json_['compartmentId'] as core.String?,
           cpuCoreCount: json_['cpuCoreCount'] as core.int?,
-          dataStorageSizeTb:
-              (json_['dataStorageSizeTb'] as core.num?)?.toDouble(),
+          dataStorageSizeTb: json_.containsKey('dataStorageSizeTb')
+              ? decodeDouble(json_['dataStorageSizeTb'] as core.Object)
+              : null,
           dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
           dbServerOcids: (json_['dbServerOcids'] as core.List?)
               ?.map((value) => value as core.String)
@@ -3875,7 +3898,9 @@ class CloudVmClusterProperties {
           nodeCount: json_['nodeCount'] as core.int?,
           ociUrl: json_['ociUrl'] as core.String?,
           ocid: json_['ocid'] as core.String?,
-          ocpuCount: (json_['ocpuCount'] as core.num?)?.toDouble(),
+          ocpuCount: json_.containsKey('ocpuCount')
+              ? decodeDouble(json_['ocpuCount'] as core.Object)
+              : null,
           scanDns: json_['scanDns'] as core.String?,
           scanDnsRecordId: json_['scanDnsRecordId'] as core.String?,
           scanIpIds: (json_['scanIpIds'] as core.List?)
@@ -3901,7 +3926,8 @@ class CloudVmClusterProperties {
         if (clusterName != null) 'clusterName': clusterName!,
         if (compartmentId != null) 'compartmentId': compartmentId!,
         if (cpuCoreCount != null) 'cpuCoreCount': cpuCoreCount!,
-        if (dataStorageSizeTb != null) 'dataStorageSizeTb': dataStorageSizeTb!,
+        if (dataStorageSizeTb != null)
+          'dataStorageSizeTb': encodeDouble(dataStorageSizeTb!),
         if (dbNodeStorageSizeGb != null)
           'dbNodeStorageSizeGb': dbNodeStorageSizeGb!,
         if (dbServerOcids != null) 'dbServerOcids': dbServerOcids!,
@@ -3920,7 +3946,7 @@ class CloudVmClusterProperties {
         if (nodeCount != null) 'nodeCount': nodeCount!,
         if (ociUrl != null) 'ociUrl': ociUrl!,
         if (ocid != null) 'ocid': ocid!,
-        if (ocpuCount != null) 'ocpuCount': ocpuCount!,
+        if (ocpuCount != null) 'ocpuCount': encodeDouble(ocpuCount!),
         if (scanDns != null) 'scanDns': scanDns!,
         if (scanDnsRecordId != null) 'scanDnsRecordId': scanDnsRecordId!,
         if (scanIpIds != null) 'scanIpIds': scanIpIds!,

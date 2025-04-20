@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Data Labeling API - v1beta1
 ///
@@ -48,6 +49,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3131,11 +3133,13 @@ class GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
   GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions.fromJson(
       core.Map json_)
       : this(
-          iouThreshold: (json_['iouThreshold'] as core.num?)?.toDouble(),
+          iouThreshold: json_.containsKey('iouThreshold')
+              ? decodeDouble(json_['iouThreshold'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iouThreshold != null) 'iouThreshold': iouThreshold!,
+        if (iouThreshold != null) 'iouThreshold': encodeDouble(iouThreshold!),
       };
 }
 
@@ -3272,31 +3276,50 @@ class GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry {
 
   GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry.fromJson(core.Map json_)
       : this(
-          confidenceThreshold:
-              (json_['confidenceThreshold'] as core.num?)?.toDouble(),
-          f1Score: (json_['f1Score'] as core.num?)?.toDouble(),
-          f1ScoreAt1: (json_['f1ScoreAt1'] as core.num?)?.toDouble(),
-          f1ScoreAt5: (json_['f1ScoreAt5'] as core.num?)?.toDouble(),
-          precision: (json_['precision'] as core.num?)?.toDouble(),
-          precisionAt1: (json_['precisionAt1'] as core.num?)?.toDouble(),
-          precisionAt5: (json_['precisionAt5'] as core.num?)?.toDouble(),
-          recall: (json_['recall'] as core.num?)?.toDouble(),
-          recallAt1: (json_['recallAt1'] as core.num?)?.toDouble(),
-          recallAt5: (json_['recallAt5'] as core.num?)?.toDouble(),
+          confidenceThreshold: json_.containsKey('confidenceThreshold')
+              ? decodeDouble(json_['confidenceThreshold'] as core.Object)
+              : null,
+          f1Score: json_.containsKey('f1Score')
+              ? decodeDouble(json_['f1Score'] as core.Object)
+              : null,
+          f1ScoreAt1: json_.containsKey('f1ScoreAt1')
+              ? decodeDouble(json_['f1ScoreAt1'] as core.Object)
+              : null,
+          f1ScoreAt5: json_.containsKey('f1ScoreAt5')
+              ? decodeDouble(json_['f1ScoreAt5'] as core.Object)
+              : null,
+          precision: json_.containsKey('precision')
+              ? decodeDouble(json_['precision'] as core.Object)
+              : null,
+          precisionAt1: json_.containsKey('precisionAt1')
+              ? decodeDouble(json_['precisionAt1'] as core.Object)
+              : null,
+          precisionAt5: json_.containsKey('precisionAt5')
+              ? decodeDouble(json_['precisionAt5'] as core.Object)
+              : null,
+          recall: json_.containsKey('recall')
+              ? decodeDouble(json_['recall'] as core.Object)
+              : null,
+          recallAt1: json_.containsKey('recallAt1')
+              ? decodeDouble(json_['recallAt1'] as core.Object)
+              : null,
+          recallAt5: json_.containsKey('recallAt5')
+              ? decodeDouble(json_['recallAt5'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidenceThreshold != null)
-          'confidenceThreshold': confidenceThreshold!,
-        if (f1Score != null) 'f1Score': f1Score!,
-        if (f1ScoreAt1 != null) 'f1ScoreAt1': f1ScoreAt1!,
-        if (f1ScoreAt5 != null) 'f1ScoreAt5': f1ScoreAt5!,
-        if (precision != null) 'precision': precision!,
-        if (precisionAt1 != null) 'precisionAt1': precisionAt1!,
-        if (precisionAt5 != null) 'precisionAt5': precisionAt5!,
-        if (recall != null) 'recall': recall!,
-        if (recallAt1 != null) 'recallAt1': recallAt1!,
-        if (recallAt5 != null) 'recallAt5': recallAt5!,
+          'confidenceThreshold': encodeDouble(confidenceThreshold!),
+        if (f1Score != null) 'f1Score': encodeDouble(f1Score!),
+        if (f1ScoreAt1 != null) 'f1ScoreAt1': encodeDouble(f1ScoreAt1!),
+        if (f1ScoreAt5 != null) 'f1ScoreAt5': encodeDouble(f1ScoreAt5!),
+        if (precision != null) 'precision': encodeDouble(precision!),
+        if (precisionAt1 != null) 'precisionAt1': encodeDouble(precisionAt1!),
+        if (precisionAt5 != null) 'precisionAt5': encodeDouble(precisionAt5!),
+        if (recall != null) 'recall': encodeDouble(recall!),
+        if (recallAt1 != null) 'recallAt1': encodeDouble(recallAt1!),
+        if (recallAt5 != null) 'recallAt5': encodeDouble(recallAt5!),
       };
 }
 
@@ -3964,15 +3987,17 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
       : this(
           email: json_['email'] as core.String?,
           minAcceptableMeanAveragePrecision:
-              (json_['minAcceptableMeanAveragePrecision'] as core.num?)
-                  ?.toDouble(),
+              json_.containsKey('minAcceptableMeanAveragePrecision')
+                  ? decodeDouble(
+                      json_['minAcceptableMeanAveragePrecision'] as core.Object)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (minAcceptableMeanAveragePrecision != null)
           'minAcceptableMeanAveragePrecision':
-              minAcceptableMeanAveragePrecision!,
+              encodeDouble(minAcceptableMeanAveragePrecision!),
       };
 }
 
@@ -4126,8 +4151,9 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
                       as core.Map<core.String, core.dynamic>)
               : null,
           exampleCount: json_['exampleCount'] as core.int?,
-          exampleSamplePercentage:
-              (json_['exampleSamplePercentage'] as core.num?)?.toDouble(),
+          exampleSamplePercentage: json_.containsKey('exampleSamplePercentage')
+              ? decodeDouble(json_['exampleSamplePercentage'] as core.Object)
+              : null,
           humanAnnotationConfig: json_.containsKey('humanAnnotationConfig')
               ? GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(
                   json_['humanAnnotationConfig']
@@ -4161,7 +4187,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
           'evaluationJobAlertConfig': evaluationJobAlertConfig!,
         if (exampleCount != null) 'exampleCount': exampleCount!,
         if (exampleSamplePercentage != null)
-          'exampleSamplePercentage': exampleSamplePercentage!,
+          'exampleSamplePercentage': encodeDouble(exampleSamplePercentage!),
         if (humanAnnotationConfig != null)
           'humanAnnotationConfig': humanAnnotationConfig!,
         if (imageClassificationConfig != null)
@@ -5880,13 +5906,17 @@ class GoogleCloudDatalabelingV1beta1NormalizedVertex {
 
   GoogleCloudDatalabelingV1beta1NormalizedVertex.fromJson(core.Map json_)
       : this(
-          x: (json_['x'] as core.num?)?.toDouble(),
-          y: (json_['y'] as core.num?)?.toDouble(),
+          x: json_.containsKey('x')
+              ? decodeDouble(json_['x'] as core.Object)
+              : null,
+          y: json_.containsKey('y')
+              ? decodeDouble(json_['y'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
+        if (x != null) 'x': encodeDouble(x!),
+        if (y != null) 'y': encodeDouble(y!),
       };
 }
 
@@ -5915,14 +5945,15 @@ class GoogleCloudDatalabelingV1beta1ObjectDetectionConfig {
   GoogleCloudDatalabelingV1beta1ObjectDetectionConfig.fromJson(core.Map json_)
       : this(
           annotationSpecSet: json_['annotationSpecSet'] as core.String?,
-          extractionFrameRate:
-              (json_['extractionFrameRate'] as core.num?)?.toDouble(),
+          extractionFrameRate: json_.containsKey('extractionFrameRate')
+              ? decodeDouble(json_['extractionFrameRate'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
         if (extractionFrameRate != null)
-          'extractionFrameRate': extractionFrameRate!,
+          'extractionFrameRate': encodeDouble(extractionFrameRate!),
       };
 }
 
@@ -6056,14 +6087,16 @@ class GoogleCloudDatalabelingV1beta1OperatorMetadata {
               ?.map((value) => value as core.String)
               .toList(),
           labelVotes: json_['labelVotes'] as core.int?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           totalVotes: json_['totalVotes'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (comments != null) 'comments': comments!,
         if (labelVotes != null) 'labelVotes': labelVotes!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
         if (totalVotes != null) 'totalVotes': totalVotes!,
       };
 }
@@ -6194,24 +6227,28 @@ class GoogleCloudDatalabelingV1beta1PrCurve {
                   json_['annotationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          areaUnderCurve: (json_['areaUnderCurve'] as core.num?)?.toDouble(),
+          areaUnderCurve: json_.containsKey('areaUnderCurve')
+              ? decodeDouble(json_['areaUnderCurve'] as core.Object)
+              : null,
           confidenceMetricsEntries: (json_['confidenceMetricsEntries']
                   as core.List?)
               ?.map((value) =>
                   GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
               .toList(),
-          meanAveragePrecision:
-              (json_['meanAveragePrecision'] as core.num?)?.toDouble(),
+          meanAveragePrecision: json_.containsKey('meanAveragePrecision')
+              ? decodeDouble(json_['meanAveragePrecision'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpec != null) 'annotationSpec': annotationSpec!,
-        if (areaUnderCurve != null) 'areaUnderCurve': areaUnderCurve!,
+        if (areaUnderCurve != null)
+          'areaUnderCurve': encodeDouble(areaUnderCurve!),
         if (confidenceMetricsEntries != null)
           'confidenceMetricsEntries': confidenceMetricsEntries!,
         if (meanAveragePrecision != null)
-          'meanAveragePrecision': meanAveragePrecision!,
+          'meanAveragePrecision': encodeDouble(meanAveragePrecision!),
       };
 }
 
@@ -6844,7 +6881,9 @@ class GoogleCloudDatalabelingV1beta1VideoPayload {
 
   GoogleCloudDatalabelingV1beta1VideoPayload.fromJson(core.Map json_)
       : this(
-          frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
+          frameRate: json_.containsKey('frameRate')
+              ? decodeDouble(json_['frameRate'] as core.Object)
+              : null,
           mimeType: json_['mimeType'] as core.String?,
           signedUri: json_['signedUri'] as core.String?,
           videoThumbnails: (json_['videoThumbnails'] as core.List?)
@@ -6856,7 +6895,7 @@ class GoogleCloudDatalabelingV1beta1VideoPayload {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frameRate != null) 'frameRate': frameRate!,
+        if (frameRate != null) 'frameRate': encodeDouble(frameRate!),
         if (mimeType != null) 'mimeType': mimeType!,
         if (signedUri != null) 'signedUri': signedUri!,
         if (videoThumbnails != null) 'videoThumbnails': videoThumbnails!,

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Healthcare API - v1
 ///
@@ -57,6 +58,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -10832,7 +10834,9 @@ class EntityMention {
               ? Feature.fromJson(json_['certaintyAssessment']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           linkedEntities: (json_['linkedEntities'] as core.List?)
               ?.map((value) => LinkedEntity.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -10856,7 +10860,7 @@ class EntityMention {
   core.Map<core.String, core.dynamic> toJson() => {
         if (certaintyAssessment != null)
           'certaintyAssessment': certaintyAssessment!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (linkedEntities != null) 'linkedEntities': linkedEntities!,
         if (mentionId != null) 'mentionId': mentionId!,
         if (subject != null) 'subject': subject!,
@@ -10888,13 +10892,15 @@ class EntityMentionRelationship {
 
   EntityMentionRelationship.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           objectId: json_['objectId'] as core.String?,
           subjectId: json_['subjectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (objectId != null) 'objectId': objectId!,
         if (subjectId != null) 'subjectId': subjectId!,
       };
@@ -11464,12 +11470,14 @@ class Feature {
 
   Feature.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (value != null) 'value': value!,
       };
 }

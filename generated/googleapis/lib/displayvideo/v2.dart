@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Display & Video 360 API - v2
 ///
@@ -76,6 +77,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -21552,7 +21554,9 @@ class Transcode {
                   json_['dimensions'] as core.Map<core.String, core.dynamic>)
               : null,
           fileSizeBytes: json_['fileSizeBytes'] as core.String?,
-          frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
+          frameRate: json_.containsKey('frameRate')
+              ? decodeDouble(json_['frameRate'] as core.Object)
+              : null,
           mimeType: json_['mimeType'] as core.String?,
           name: json_['name'] as core.String?,
           transcoded: json_['transcoded'] as core.bool?,
@@ -21564,7 +21568,7 @@ class Transcode {
         if (bitRateKbps != null) 'bitRateKbps': bitRateKbps!,
         if (dimensions != null) 'dimensions': dimensions!,
         if (fileSizeBytes != null) 'fileSizeBytes': fileSizeBytes!,
-        if (frameRate != null) 'frameRate': frameRate!,
+        if (frameRate != null) 'frameRate': encodeDouble(frameRate!),
         if (mimeType != null) 'mimeType': mimeType!,
         if (name != null) 'name': name!,
         if (transcoded != null) 'transcoded': transcoded!,

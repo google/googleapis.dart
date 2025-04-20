@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Transcoder API - v1
 ///
@@ -35,6 +36,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -668,13 +670,15 @@ class Audio {
       : this(
           highBoost: json_['highBoost'] as core.bool?,
           lowBoost: json_['lowBoost'] as core.bool?,
-          lufs: (json_['lufs'] as core.num?)?.toDouble(),
+          lufs: json_.containsKey('lufs')
+              ? decodeDouble(json_['lufs'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (highBoost != null) 'highBoost': highBoost!,
         if (lowBoost != null) 'lowBoost': lowBoost!,
-        if (lufs != null) 'lufs': lufs!,
+        if (lufs != null) 'lufs': encodeDouble(lufs!),
       };
 }
 
@@ -724,7 +728,9 @@ class AudioMapping {
   AudioMapping.fromJson(core.Map json_)
       : this(
           atomKey: json_['atomKey'] as core.String?,
-          gainDb: (json_['gainDb'] as core.num?)?.toDouble(),
+          gainDb: json_.containsKey('gainDb')
+              ? decodeDouble(json_['gainDb'] as core.Object)
+              : null,
           inputChannel: json_['inputChannel'] as core.int?,
           inputKey: json_['inputKey'] as core.String?,
           inputTrack: json_['inputTrack'] as core.int?,
@@ -733,7 +739,7 @@ class AudioMapping {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (atomKey != null) 'atomKey': atomKey!,
-        if (gainDb != null) 'gainDb': gainDb!,
+        if (gainDb != null) 'gainDb': encodeDouble(gainDb!),
         if (inputChannel != null) 'inputChannel': inputChannel!,
         if (inputKey != null) 'inputKey': inputKey!,
         if (inputTrack != null) 'inputTrack': inputTrack!,
@@ -906,15 +912,21 @@ class Color {
 
   Color.fromJson(core.Map json_)
       : this(
-          brightness: (json_['brightness'] as core.num?)?.toDouble(),
-          contrast: (json_['contrast'] as core.num?)?.toDouble(),
-          saturation: (json_['saturation'] as core.num?)?.toDouble(),
+          brightness: json_.containsKey('brightness')
+              ? decodeDouble(json_['brightness'] as core.Object)
+              : null,
+          contrast: json_.containsKey('contrast')
+              ? decodeDouble(json_['contrast'] as core.Object)
+              : null,
+          saturation: json_.containsKey('saturation')
+              ? decodeDouble(json_['saturation'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (brightness != null) 'brightness': brightness!,
-        if (contrast != null) 'contrast': contrast!,
-        if (saturation != null) 'saturation': saturation!,
+        if (brightness != null) 'brightness': encodeDouble(brightness!),
+        if (contrast != null) 'contrast': encodeDouble(contrast!),
+        if (saturation != null) 'saturation': encodeDouble(saturation!),
       };
 }
 
@@ -1021,12 +1033,14 @@ class Deblock {
   Deblock.fromJson(core.Map json_)
       : this(
           enabled: json_['enabled'] as core.bool?,
-          strength: (json_['strength'] as core.num?)?.toDouble(),
+          strength: json_.containsKey('strength')
+              ? decodeDouble(json_['strength'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
-        if (strength != null) 'strength': strength!,
+        if (strength != null) 'strength': encodeDouble(strength!),
       };
 }
 
@@ -1084,12 +1098,14 @@ class Denoise {
 
   Denoise.fromJson(core.Map json_)
       : this(
-          strength: (json_['strength'] as core.num?)?.toDouble(),
+          strength: json_.containsKey('strength')
+              ? decodeDouble(json_['strength'] as core.Object)
+              : null,
           tune: json_['tune'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (strength != null) 'strength': strength!,
+        if (strength != null) 'strength': encodeDouble(strength!),
         if (tune != null) 'tune': tune!,
       };
 }
@@ -1550,14 +1566,18 @@ class H264CodecSettings {
   H264CodecSettings.fromJson(core.Map json_)
       : this(
           allowOpenGop: json_['allowOpenGop'] as core.bool?,
-          aqStrength: (json_['aqStrength'] as core.num?)?.toDouble(),
+          aqStrength: json_.containsKey('aqStrength')
+              ? decodeDouble(json_['aqStrength'] as core.Object)
+              : null,
           bFrameCount: json_['bFrameCount'] as core.int?,
           bPyramid: json_['bPyramid'] as core.bool?,
           bitrateBps: json_['bitrateBps'] as core.int?,
           crfLevel: json_['crfLevel'] as core.int?,
           enableTwoPass: json_['enableTwoPass'] as core.bool?,
           entropyCoder: json_['entropyCoder'] as core.String?,
-          frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
+          frameRate: json_.containsKey('frameRate')
+              ? decodeDouble(json_['frameRate'] as core.Object)
+              : null,
           frameRateConversionStrategy:
               json_['frameRateConversionStrategy'] as core.String?,
           gopDuration: json_['gopDuration'] as core.String?,
@@ -1583,14 +1603,14 @@ class H264CodecSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowOpenGop != null) 'allowOpenGop': allowOpenGop!,
-        if (aqStrength != null) 'aqStrength': aqStrength!,
+        if (aqStrength != null) 'aqStrength': encodeDouble(aqStrength!),
         if (bFrameCount != null) 'bFrameCount': bFrameCount!,
         if (bPyramid != null) 'bPyramid': bPyramid!,
         if (bitrateBps != null) 'bitrateBps': bitrateBps!,
         if (crfLevel != null) 'crfLevel': crfLevel!,
         if (enableTwoPass != null) 'enableTwoPass': enableTwoPass!,
         if (entropyCoder != null) 'entropyCoder': entropyCoder!,
-        if (frameRate != null) 'frameRate': frameRate!,
+        if (frameRate != null) 'frameRate': encodeDouble(frameRate!),
         if (frameRateConversionStrategy != null)
           'frameRateConversionStrategy': frameRateConversionStrategy!,
         if (gopDuration != null) 'gopDuration': gopDuration!,
@@ -1820,13 +1840,17 @@ class H265CodecSettings {
   H265CodecSettings.fromJson(core.Map json_)
       : this(
           allowOpenGop: json_['allowOpenGop'] as core.bool?,
-          aqStrength: (json_['aqStrength'] as core.num?)?.toDouble(),
+          aqStrength: json_.containsKey('aqStrength')
+              ? decodeDouble(json_['aqStrength'] as core.Object)
+              : null,
           bFrameCount: json_['bFrameCount'] as core.int?,
           bPyramid: json_['bPyramid'] as core.bool?,
           bitrateBps: json_['bitrateBps'] as core.int?,
           crfLevel: json_['crfLevel'] as core.int?,
           enableTwoPass: json_['enableTwoPass'] as core.bool?,
-          frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
+          frameRate: json_.containsKey('frameRate')
+              ? decodeDouble(json_['frameRate'] as core.Object)
+              : null,
           frameRateConversionStrategy:
               json_['frameRateConversionStrategy'] as core.String?,
           gopDuration: json_['gopDuration'] as core.String?,
@@ -1856,13 +1880,13 @@ class H265CodecSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowOpenGop != null) 'allowOpenGop': allowOpenGop!,
-        if (aqStrength != null) 'aqStrength': aqStrength!,
+        if (aqStrength != null) 'aqStrength': encodeDouble(aqStrength!),
         if (bFrameCount != null) 'bFrameCount': bFrameCount!,
         if (bPyramid != null) 'bPyramid': bPyramid!,
         if (bitrateBps != null) 'bitrateBps': bitrateBps!,
         if (crfLevel != null) 'crfLevel': crfLevel!,
         if (enableTwoPass != null) 'enableTwoPass': enableTwoPass!,
-        if (frameRate != null) 'frameRate': frameRate!,
+        if (frameRate != null) 'frameRate': encodeDouble(frameRate!),
         if (frameRateConversionStrategy != null)
           'frameRateConversionStrategy': frameRateConversionStrategy!,
         if (gopDuration != null) 'gopDuration': gopDuration!,
@@ -1922,7 +1946,9 @@ class Image {
 
   Image.fromJson(core.Map json_)
       : this(
-          alpha: (json_['alpha'] as core.num?)?.toDouble(),
+          alpha: json_.containsKey('alpha')
+              ? decodeDouble(json_['alpha'] as core.Object)
+              : null,
           resolution: json_.containsKey('resolution')
               ? NormalizedCoordinate.fromJson(
                   json_['resolution'] as core.Map<core.String, core.dynamic>)
@@ -1931,7 +1957,7 @@ class Image {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alpha != null) 'alpha': alpha!,
+        if (alpha != null) 'alpha': encodeDouble(alpha!),
         if (resolution != null) 'resolution': resolution!,
         if (uri != null) 'uri': uri!,
       };
@@ -2576,13 +2602,17 @@ class NormalizedCoordinate {
 
   NormalizedCoordinate.fromJson(core.Map json_)
       : this(
-          x: (json_['x'] as core.num?)?.toDouble(),
-          y: (json_['y'] as core.num?)?.toDouble(),
+          x: json_.containsKey('x')
+              ? decodeDouble(json_['x'] as core.Object)
+              : null,
+          y: json_.containsKey('y')
+              ? decodeDouble(json_['y'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
+        if (x != null) 'x': encodeDouble(x!),
+        if (y != null) 'y': encodeDouble(y!),
       };
 }
 
@@ -3252,7 +3282,9 @@ class Vp9CodecSettings {
       : this(
           bitrateBps: json_['bitrateBps'] as core.int?,
           crfLevel: json_['crfLevel'] as core.int?,
-          frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
+          frameRate: json_.containsKey('frameRate')
+              ? decodeDouble(json_['frameRate'] as core.Object)
+              : null,
           frameRateConversionStrategy:
               json_['frameRateConversionStrategy'] as core.String?,
           gopDuration: json_['gopDuration'] as core.String?,
@@ -3275,7 +3307,7 @@ class Vp9CodecSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bitrateBps != null) 'bitrateBps': bitrateBps!,
         if (crfLevel != null) 'crfLevel': crfLevel!,
-        if (frameRate != null) 'frameRate': frameRate!,
+        if (frameRate != null) 'frameRate': encodeDouble(frameRate!),
         if (frameRateConversionStrategy != null)
           'frameRateConversionStrategy': frameRateConversionStrategy!,
         if (gopDuration != null) 'gopDuration': gopDuration!,

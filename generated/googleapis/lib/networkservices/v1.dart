@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Network Services API - v1
 ///
@@ -50,6 +51,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -6762,12 +6764,15 @@ class HttpRouteRequestMirrorPolicy {
               ? HttpRouteDestination.fromJson(
                   json_['destination'] as core.Map<core.String, core.dynamic>)
               : null,
-          mirrorPercent: (json_['mirrorPercent'] as core.num?)?.toDouble(),
+          mirrorPercent: json_.containsKey('mirrorPercent')
+              ? decodeDouble(json_['mirrorPercent'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
-        if (mirrorPercent != null) 'mirrorPercent': mirrorPercent!,
+        if (mirrorPercent != null)
+          'mirrorPercent': encodeDouble(mirrorPercent!),
       };
 }
 
@@ -9446,13 +9451,15 @@ class WasmPluginLogConfig {
       : this(
           enable: json_['enable'] as core.bool?,
           minLogLevel: json_['minLogLevel'] as core.String?,
-          sampleRate: (json_['sampleRate'] as core.num?)?.toDouble(),
+          sampleRate: json_.containsKey('sampleRate')
+              ? decodeDouble(json_['sampleRate'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enable != null) 'enable': enable!,
         if (minLogLevel != null) 'minLogLevel': minLogLevel!,
-        if (sampleRate != null) 'sampleRate': sampleRate!,
+        if (sampleRate != null) 'sampleRate': encodeDouble(sampleRate!),
       };
 }
 

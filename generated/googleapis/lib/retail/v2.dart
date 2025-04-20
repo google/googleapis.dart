@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Vertex AI Search for commerce API - v2
 ///
@@ -51,6 +52,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -5226,7 +5228,7 @@ class GoogleCloudRetailV2CustomAttribute {
       : this(
           indexable: json_['indexable'] as core.bool?,
           numbers: (json_['numbers'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           searchable: json_['searchable'] as core.bool?,
           text: (json_['text'] as core.List?)
@@ -5236,7 +5238,8 @@ class GoogleCloudRetailV2CustomAttribute {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (indexable != null) 'indexable': indexable!,
-        if (numbers != null) 'numbers': numbers!,
+        if (numbers != null)
+          'numbers': numbers!.map((value) => encodeDouble(value)).toList(),
         if (searchable != null) 'searchable': searchable!,
         if (text != null) 'text': text!,
       };
@@ -5506,7 +5509,9 @@ class GoogleCloudRetailV2GenerativeQuestionConfig {
               .toList(),
           facet: json_['facet'] as core.String?,
           finalQuestion: json_['finalQuestion'] as core.String?,
-          frequency: (json_['frequency'] as core.num?)?.toDouble(),
+          frequency: json_.containsKey('frequency')
+              ? decodeDouble(json_['frequency'] as core.Object)
+              : null,
           generatedQuestion: json_['generatedQuestion'] as core.String?,
         );
 
@@ -5517,7 +5522,7 @@ class GoogleCloudRetailV2GenerativeQuestionConfig {
         if (exampleValues != null) 'exampleValues': exampleValues!,
         if (facet != null) 'facet': facet!,
         if (finalQuestion != null) 'finalQuestion': finalQuestion!,
-        if (frequency != null) 'frequency': frequency!,
+        if (frequency != null) 'frequency': encodeDouble(frequency!),
         if (generatedQuestion != null) 'generatedQuestion': generatedQuestion!,
       };
 }
@@ -5853,19 +5858,27 @@ class GoogleCloudRetailV2Interval {
 
   GoogleCloudRetailV2Interval.fromJson(core.Map json_)
       : this(
-          exclusiveMaximum:
-              (json_['exclusiveMaximum'] as core.num?)?.toDouble(),
-          exclusiveMinimum:
-              (json_['exclusiveMinimum'] as core.num?)?.toDouble(),
-          maximum: (json_['maximum'] as core.num?)?.toDouble(),
-          minimum: (json_['minimum'] as core.num?)?.toDouble(),
+          exclusiveMaximum: json_.containsKey('exclusiveMaximum')
+              ? decodeDouble(json_['exclusiveMaximum'] as core.Object)
+              : null,
+          exclusiveMinimum: json_.containsKey('exclusiveMinimum')
+              ? decodeDouble(json_['exclusiveMinimum'] as core.Object)
+              : null,
+          maximum: json_.containsKey('maximum')
+              ? decodeDouble(json_['maximum'] as core.Object)
+              : null,
+          minimum: json_.containsKey('minimum')
+              ? decodeDouble(json_['minimum'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exclusiveMaximum != null) 'exclusiveMaximum': exclusiveMaximum!,
-        if (exclusiveMinimum != null) 'exclusiveMinimum': exclusiveMinimum!,
-        if (maximum != null) 'maximum': maximum!,
-        if (minimum != null) 'minimum': minimum!,
+        if (exclusiveMaximum != null)
+          'exclusiveMaximum': encodeDouble(exclusiveMaximum!),
+        if (exclusiveMinimum != null)
+          'exclusiveMinimum': encodeDouble(exclusiveMinimum!),
+        if (maximum != null) 'maximum': encodeDouble(maximum!),
+        if (minimum != null) 'minimum': encodeDouble(minimum!),
       };
 }
 
@@ -6949,10 +6962,16 @@ class GoogleCloudRetailV2PriceInfo {
 
   GoogleCloudRetailV2PriceInfo.fromJson(core.Map json_)
       : this(
-          cost: (json_['cost'] as core.num?)?.toDouble(),
+          cost: json_.containsKey('cost')
+              ? decodeDouble(json_['cost'] as core.Object)
+              : null,
           currencyCode: json_['currencyCode'] as core.String?,
-          originalPrice: (json_['originalPrice'] as core.num?)?.toDouble(),
-          price: (json_['price'] as core.num?)?.toDouble(),
+          originalPrice: json_.containsKey('originalPrice')
+              ? decodeDouble(json_['originalPrice'] as core.Object)
+              : null,
+          price: json_.containsKey('price')
+              ? decodeDouble(json_['price'] as core.Object)
+              : null,
           priceEffectiveTime: json_['priceEffectiveTime'] as core.String?,
           priceExpireTime: json_['priceExpireTime'] as core.String?,
           priceRange: json_.containsKey('priceRange')
@@ -6962,10 +6981,11 @@ class GoogleCloudRetailV2PriceInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cost != null) 'cost': cost!,
+        if (cost != null) 'cost': encodeDouble(cost!),
         if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (originalPrice != null) 'originalPrice': originalPrice!,
-        if (price != null) 'price': price!,
+        if (originalPrice != null)
+          'originalPrice': encodeDouble(originalPrice!),
+        if (price != null) 'price': encodeDouble(price!),
         if (priceEffectiveTime != null)
           'priceEffectiveTime': priceEffectiveTime!,
         if (priceExpireTime != null) 'priceExpireTime': priceExpireTime!,
@@ -7838,19 +7858,25 @@ class GoogleCloudRetailV2PurchaseTransaction {
 
   GoogleCloudRetailV2PurchaseTransaction.fromJson(core.Map json_)
       : this(
-          cost: (json_['cost'] as core.num?)?.toDouble(),
+          cost: json_.containsKey('cost')
+              ? decodeDouble(json_['cost'] as core.Object)
+              : null,
           currencyCode: json_['currencyCode'] as core.String?,
           id: json_['id'] as core.String?,
-          revenue: (json_['revenue'] as core.num?)?.toDouble(),
-          tax: (json_['tax'] as core.num?)?.toDouble(),
+          revenue: json_.containsKey('revenue')
+              ? decodeDouble(json_['revenue'] as core.Object)
+              : null,
+          tax: json_.containsKey('tax')
+              ? decodeDouble(json_['tax'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cost != null) 'cost': cost!,
+        if (cost != null) 'cost': encodeDouble(cost!),
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (id != null) 'id': id!,
-        if (revenue != null) 'revenue': revenue!,
-        if (tax != null) 'tax': tax!,
+        if (revenue != null) 'revenue': encodeDouble(revenue!),
+        if (tax != null) 'tax': encodeDouble(tax!),
       };
 }
 
@@ -7974,7 +8000,9 @@ class GoogleCloudRetailV2Rating {
 
   GoogleCloudRetailV2Rating.fromJson(core.Map json_)
       : this(
-          averageRating: (json_['averageRating'] as core.num?)?.toDouble(),
+          averageRating: json_.containsKey('averageRating')
+              ? decodeDouble(json_['averageRating'] as core.Object)
+              : null,
           ratingCount: json_['ratingCount'] as core.int?,
           ratingHistogram: (json_['ratingHistogram'] as core.List?)
               ?.map((value) => value as core.int)
@@ -7982,7 +8010,8 @@ class GoogleCloudRetailV2Rating {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (averageRating != null) 'averageRating': averageRating!,
+        if (averageRating != null)
+          'averageRating': encodeDouble(averageRating!),
         if (ratingCount != null) 'ratingCount': ratingCount!,
         if (ratingHistogram != null) 'ratingHistogram': ratingHistogram!,
       };
@@ -8386,12 +8415,14 @@ class GoogleCloudRetailV2RuleBoostAction {
 
   GoogleCloudRetailV2RuleBoostAction.fromJson(core.Map json_)
       : this(
-          boost: (json_['boost'] as core.num?)?.toDouble(),
+          boost: json_.containsKey('boost')
+              ? decodeDouble(json_['boost'] as core.Object)
+              : null,
           productsFilter: json_['productsFilter'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boost != null) 'boost': boost!,
+        if (boost != null) 'boost': encodeDouble(boost!),
         if (productsFilter != null) 'productsFilter': productsFilter!,
       };
 }
@@ -9250,12 +9281,14 @@ class GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec {
   GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec.fromJson(
       core.Map json_)
       : this(
-          boost: (json_['boost'] as core.num?)?.toDouble(),
+          boost: json_.containsKey('boost')
+              ? decodeDouble(json_['boost'] as core.Object)
+              : null,
           condition: json_['condition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boost != null) 'boost': boost!,
+        if (boost != null) 'boost': encodeDouble(boost!),
         if (condition != null) 'condition': condition!,
       };
 }
@@ -10169,16 +10202,20 @@ class GoogleCloudRetailV2SearchResponseFacetFacetValue {
               ? GoogleCloudRetailV2Interval.fromJson(
                   json_['interval'] as core.Map<core.String, core.dynamic>)
               : null,
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
+          maxValue: json_.containsKey('maxValue')
+              ? decodeDouble(json_['maxValue'] as core.Object)
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? decodeDouble(json_['minValue'] as core.Object)
+              : null,
           value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (interval != null) 'interval': interval!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
+        if (maxValue != null) 'maxValue': encodeDouble(maxValue!),
+        if (minValue != null) 'minValue': encodeDouble(minValue!),
         if (value != null) 'value': value!,
       };
 }

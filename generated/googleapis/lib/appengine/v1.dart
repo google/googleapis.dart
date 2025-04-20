@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// App Engine Admin API - v1
 ///
@@ -48,6 +49,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3099,14 +3101,16 @@ class CpuUtilization {
       : this(
           aggregationWindowLength:
               json_['aggregationWindowLength'] as core.String?,
-          targetUtilization:
-              (json_['targetUtilization'] as core.num?)?.toDouble(),
+          targetUtilization: json_.containsKey('targetUtilization')
+              ? decodeDouble(json_['targetUtilization'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregationWindowLength != null)
           'aggregationWindowLength': aggregationWindowLength!,
-        if (targetUtilization != null) 'targetUtilization': targetUtilization!,
+        if (targetUtilization != null)
+          'targetUtilization': encodeDouble(targetUtilization!),
       };
 }
 
@@ -3863,7 +3867,9 @@ class Instance {
           id: json_['id'] as core.String?,
           memoryUsage: json_['memoryUsage'] as core.String?,
           name: json_['name'] as core.String?,
-          qps: (json_['qps'] as core.num?)?.toDouble(),
+          qps: json_.containsKey('qps')
+              ? decodeDouble(json_['qps'] as core.Object)
+              : null,
           requests: json_['requests'] as core.int?,
           startTime: json_['startTime'] as core.String?,
           vmDebugEnabled: json_['vmDebugEnabled'] as core.bool?,
@@ -3883,7 +3889,7 @@ class Instance {
         if (id != null) 'id': id!,
         if (memoryUsage != null) 'memoryUsage': memoryUsage!,
         if (name != null) 'name': name!,
-        if (qps != null) 'qps': qps!,
+        if (qps != null) 'qps': encodeDouble(qps!),
         if (requests != null) 'requests': requests!,
         if (startTime != null) 'startTime': startTime!,
         if (vmDebugEnabled != null) 'vmDebugEnabled': vmDebugEnabled!,
@@ -4746,10 +4752,16 @@ class Resources {
 
   Resources.fromJson(core.Map json_)
       : this(
-          cpu: (json_['cpu'] as core.num?)?.toDouble(),
-          diskGb: (json_['diskGb'] as core.num?)?.toDouble(),
+          cpu: json_.containsKey('cpu')
+              ? decodeDouble(json_['cpu'] as core.Object)
+              : null,
+          diskGb: json_.containsKey('diskGb')
+              ? decodeDouble(json_['diskGb'] as core.Object)
+              : null,
           kmsKeyReference: json_['kmsKeyReference'] as core.String?,
-          memoryGb: (json_['memoryGb'] as core.num?)?.toDouble(),
+          memoryGb: json_.containsKey('memoryGb')
+              ? decodeDouble(json_['memoryGb'] as core.Object)
+              : null,
           volumes: (json_['volumes'] as core.List?)
               ?.map((value) =>
                   Volume.fromJson(value as core.Map<core.String, core.dynamic>))
@@ -4757,10 +4769,10 @@ class Resources {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cpu != null) 'cpu': cpu!,
-        if (diskGb != null) 'diskGb': diskGb!,
+        if (cpu != null) 'cpu': encodeDouble(cpu!),
+        if (diskGb != null) 'diskGb': encodeDouble(diskGb!),
         if (kmsKeyReference != null) 'kmsKeyReference': kmsKeyReference!,
-        if (memoryGb != null) 'memoryGb': memoryGb!,
+        if (memoryGb != null) 'memoryGb': encodeDouble(memoryGb!),
         if (volumes != null) 'volumes': volumes!,
       };
 }
@@ -5053,19 +5065,24 @@ class StandardSchedulerSettings {
       : this(
           maxInstances: json_['maxInstances'] as core.int?,
           minInstances: json_['minInstances'] as core.int?,
-          targetCpuUtilization:
-              (json_['targetCpuUtilization'] as core.num?)?.toDouble(),
+          targetCpuUtilization: json_.containsKey('targetCpuUtilization')
+              ? decodeDouble(json_['targetCpuUtilization'] as core.Object)
+              : null,
           targetThroughputUtilization:
-              (json_['targetThroughputUtilization'] as core.num?)?.toDouble(),
+              json_.containsKey('targetThroughputUtilization')
+                  ? decodeDouble(
+                      json_['targetThroughputUtilization'] as core.Object)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxInstances != null) 'maxInstances': maxInstances!,
         if (minInstances != null) 'minInstances': minInstances!,
         if (targetCpuUtilization != null)
-          'targetCpuUtilization': targetCpuUtilization!,
+          'targetCpuUtilization': encodeDouble(targetCpuUtilization!),
         if (targetThroughputUtilization != null)
-          'targetThroughputUtilization': targetThroughputUtilization!,
+          'targetThroughputUtilization':
+              encodeDouble(targetThroughputUtilization!),
       };
 }
 
@@ -5203,14 +5220,16 @@ class TrafficSplit {
                   ?.map(
             (key, value) => core.MapEntry(
               key,
-              (value as core.num).toDouble(),
+              decodeDouble(value),
             ),
           ),
           shardBy: json_['shardBy'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allocations != null) 'allocations': allocations!,
+        if (allocations != null)
+          'allocations': allocations!
+              .map((key, item) => core.MapEntry(key, encodeDouble(item))),
         if (shardBy != null) 'shardBy': shardBy!,
       };
 }
@@ -5858,13 +5877,15 @@ class Volume {
   Volume.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
-          sizeGb: (json_['sizeGb'] as core.num?)?.toDouble(),
+          sizeGb: json_.containsKey('sizeGb')
+              ? decodeDouble(json_['sizeGb'] as core.Object)
+              : null,
           volumeType: json_['volumeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (sizeGb != null) 'sizeGb': sizeGb!,
+        if (sizeGb != null) 'sizeGb': encodeDouble(sizeGb!),
         if (volumeType != null) 'volumeType': volumeType!,
       };
 }

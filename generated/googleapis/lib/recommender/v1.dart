@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Recommender API - v1
 ///
@@ -52,6 +53,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4037,12 +4039,14 @@ class GoogleCloudRecommenderV1SustainabilityProjection {
   GoogleCloudRecommenderV1SustainabilityProjection.fromJson(core.Map json_)
       : this(
           duration: json_['duration'] as core.String?,
-          kgCO2e: (json_['kgCO2e'] as core.num?)?.toDouble(),
+          kgCO2e: json_.containsKey('kgCO2e')
+              ? decodeDouble(json_['kgCO2e'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
-        if (kgCO2e != null) 'kgCO2e': kgCO2e!,
+        if (kgCO2e != null) 'kgCO2e': encodeDouble(kgCO2e!),
       };
 }
 

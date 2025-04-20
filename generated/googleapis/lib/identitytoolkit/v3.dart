@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Identity Toolkit API - v3
 ///
@@ -31,6 +32,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3146,8 +3148,9 @@ class UserInfo {
           lastLoginAt: json_['lastLoginAt'] as core.String?,
           localId: json_['localId'] as core.String?,
           passwordHash: json_['passwordHash'] as core.String?,
-          passwordUpdatedAt:
-              (json_['passwordUpdatedAt'] as core.num?)?.toDouble(),
+          passwordUpdatedAt: json_.containsKey('passwordUpdatedAt')
+              ? decodeDouble(json_['passwordUpdatedAt'] as core.Object)
+              : null,
           phoneNumber: json_['phoneNumber'] as core.String?,
           photoUrl: json_['photoUrl'] as core.String?,
           providerUserInfo: (json_['providerUserInfo'] as core.List?)
@@ -3172,7 +3175,8 @@ class UserInfo {
         if (lastLoginAt != null) 'lastLoginAt': lastLoginAt!,
         if (localId != null) 'localId': localId!,
         if (passwordHash != null) 'passwordHash': passwordHash!,
-        if (passwordUpdatedAt != null) 'passwordUpdatedAt': passwordUpdatedAt!,
+        if (passwordUpdatedAt != null)
+          'passwordUpdatedAt': encodeDouble(passwordUpdatedAt!),
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (photoUrl != null) 'photoUrl': photoUrl!,
         if (providerUserInfo != null) 'providerUserInfo': providerUserInfo!,

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Monitoring API - v3
 ///
@@ -49,6 +50,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -6067,13 +6069,16 @@ class Distribution {
               ?.map((value) => Exemplar.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          mean: (json_['mean'] as core.num?)?.toDouble(),
+          mean: json_.containsKey('mean')
+              ? decodeDouble(json_['mean'] as core.Object)
+              : null,
           range: json_.containsKey('range')
               ? Range.fromJson(
                   json_['range'] as core.Map<core.String, core.dynamic>)
               : null,
-          sumOfSquaredDeviation:
-              (json_['sumOfSquaredDeviation'] as core.num?)?.toDouble(),
+          sumOfSquaredDeviation: json_.containsKey('sumOfSquaredDeviation')
+              ? decodeDouble(json_['sumOfSquaredDeviation'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6081,10 +6086,10 @@ class Distribution {
         if (bucketOptions != null) 'bucketOptions': bucketOptions!,
         if (count != null) 'count': count!,
         if (exemplars != null) 'exemplars': exemplars!,
-        if (mean != null) 'mean': mean!,
+        if (mean != null) 'mean': encodeDouble(mean!),
         if (range != null) 'range': range!,
         if (sumOfSquaredDeviation != null)
-          'sumOfSquaredDeviation': sumOfSquaredDeviation!,
+          'sumOfSquaredDeviation': encodeDouble(sumOfSquaredDeviation!),
       };
 }
 
@@ -6271,13 +6276,15 @@ class Exemplar {
               ?.map((value) => value as core.Map<core.String, core.dynamic>)
               .toList(),
           timestamp: json_['timestamp'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attachments != null) 'attachments': attachments!,
         if (timestamp != null) 'timestamp': timestamp!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -6570,13 +6577,17 @@ class GoogleMonitoringV3Range {
 
   GoogleMonitoringV3Range.fromJson(core.Map json_)
       : this(
-          max: (json_['max'] as core.num?)?.toDouble(),
-          min: (json_['min'] as core.num?)?.toDouble(),
+          max: json_.containsKey('max')
+              ? decodeDouble(json_['max'] as core.Object)
+              : null,
+          min: json_.containsKey('min')
+              ? decodeDouble(json_['min'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (max != null) 'max': max!,
-        if (min != null) 'min': min!,
+        if (max != null) 'max': encodeDouble(max!),
+        if (min != null) 'min': encodeDouble(min!),
       };
 }
 
@@ -8290,7 +8301,9 @@ class MetricThreshold {
               ? ForecastOptions.fromJson(json_['forecastOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          thresholdValue: (json_['thresholdValue'] as core.num?)?.toDouble(),
+          thresholdValue: json_.containsKey('thresholdValue')
+              ? decodeDouble(json_['thresholdValue'] as core.Object)
+              : null,
           trigger: json_.containsKey('trigger')
               ? Trigger.fromJson(
                   json_['trigger'] as core.Map<core.String, core.dynamic>)
@@ -8308,7 +8321,8 @@ class MetricThreshold {
           'evaluationMissingData': evaluationMissingData!,
         if (filter != null) 'filter': filter!,
         if (forecastOptions != null) 'forecastOptions': forecastOptions!,
-        if (thresholdValue != null) 'thresholdValue': thresholdValue!,
+        if (thresholdValue != null)
+          'thresholdValue': encodeDouble(thresholdValue!),
         if (trigger != null) 'trigger': trigger!,
       };
 }
@@ -8973,14 +8987,16 @@ class PerformanceThreshold {
               ? RequestBasedSli.fromJson(
                   json_['performance'] as core.Map<core.String, core.dynamic>)
               : null,
-          threshold: (json_['threshold'] as core.num?)?.toDouble(),
+          threshold: json_.containsKey('threshold')
+              ? decodeDouble(json_['threshold'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basicSliPerformance != null)
           'basicSliPerformance': basicSliPerformance!,
         if (performance != null) 'performance': performance!,
-        if (threshold != null) 'threshold': threshold!,
+        if (threshold != null) 'threshold': encodeDouble(threshold!),
       };
 }
 
@@ -9347,13 +9363,17 @@ class Range {
 
   Range.fromJson(core.Map json_)
       : this(
-          max: (json_['max'] as core.num?)?.toDouble(),
-          min: (json_['min'] as core.num?)?.toDouble(),
+          max: json_.containsKey('max')
+              ? decodeDouble(json_['max'] as core.Object)
+              : null,
+          min: json_.containsKey('min')
+              ? decodeDouble(json_['min'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (max != null) 'max': max!,
-        if (min != null) 'min': min!,
+        if (max != null) 'max': encodeDouble(max!),
+        if (min != null) 'min': encodeDouble(min!),
       };
 }
 
@@ -9837,7 +9857,9 @@ class ServiceLevelObjective {
       : this(
           calendarPeriod: json_['calendarPeriod'] as core.String?,
           displayName: json_['displayName'] as core.String?,
-          goal: (json_['goal'] as core.num?)?.toDouble(),
+          goal: json_.containsKey('goal')
+              ? decodeDouble(json_['goal'] as core.Object)
+              : null,
           name: json_['name'] as core.String?,
           rollingPeriod: json_['rollingPeriod'] as core.String?,
           serviceLevelIndicator: json_.containsKey('serviceLevelIndicator')
@@ -9857,7 +9879,7 @@ class ServiceLevelObjective {
   core.Map<core.String, core.dynamic> toJson() => {
         if (calendarPeriod != null) 'calendarPeriod': calendarPeriod!,
         if (displayName != null) 'displayName': displayName!,
-        if (goal != null) 'goal': goal!,
+        if (goal != null) 'goal': encodeDouble(goal!),
         if (name != null) 'name': name!,
         if (rollingPeriod != null) 'rollingPeriod': rollingPeriod!,
         if (serviceLevelIndicator != null)
@@ -10442,12 +10464,14 @@ class Trigger {
   Trigger.fromJson(core.Map json_)
       : this(
           count: json_['count'] as core.int?,
-          percent: (json_['percent'] as core.num?)?.toDouble(),
+          percent: json_.containsKey('percent')
+              ? decodeDouble(json_['percent'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
-        if (percent != null) 'percent': percent!,
+        if (percent != null) 'percent': encodeDouble(percent!),
       };
 }
 
@@ -10488,7 +10512,9 @@ class TypedValue {
               ? Distribution.fromJson(json_['distributionValue']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           int64Value: json_['int64Value'] as core.String?,
           stringValue: json_['stringValue'] as core.String?,
         );
@@ -10496,7 +10522,7 @@ class TypedValue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (distributionValue != null) 'distributionValue': distributionValue!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (int64Value != null) 'int64Value': int64Value!,
         if (stringValue != null) 'stringValue': stringValue!,
       };

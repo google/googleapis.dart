@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Play Android Developer API - v3
 ///
@@ -65,6 +66,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -11481,8 +11483,9 @@ class OtherRegionsSubscriptionOfferPhaseConfig {
                   json_['otherRegionsPrices']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          relativeDiscount:
-              (json_['relativeDiscount'] as core.num?)?.toDouble(),
+          relativeDiscount: json_.containsKey('relativeDiscount')
+              ? decodeDouble(json_['relativeDiscount'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11490,7 +11493,8 @@ class OtherRegionsSubscriptionOfferPhaseConfig {
         if (free != null) 'free': free!,
         if (otherRegionsPrices != null)
           'otherRegionsPrices': otherRegionsPrices!,
-        if (relativeDiscount != null) 'relativeDiscount': relativeDiscount!,
+        if (relativeDiscount != null)
+          'relativeDiscount': encodeDouble(relativeDiscount!),
       };
 }
 
@@ -12157,8 +12161,9 @@ class RegionalSubscriptionOfferPhaseConfig {
                   json_['price'] as core.Map<core.String, core.dynamic>)
               : null,
           regionCode: json_['regionCode'] as core.String?,
-          relativeDiscount:
-              (json_['relativeDiscount'] as core.num?)?.toDouble(),
+          relativeDiscount: json_.containsKey('relativeDiscount')
+              ? decodeDouble(json_['relativeDiscount'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12166,7 +12171,8 @@ class RegionalSubscriptionOfferPhaseConfig {
         if (free != null) 'free': free!,
         if (price != null) 'price': price!,
         if (regionCode != null) 'regionCode': regionCode!,
-        if (relativeDiscount != null) 'relativeDiscount': relativeDiscount!,
+        if (relativeDiscount != null)
+          'relativeDiscount': encodeDouble(relativeDiscount!),
       };
 }
 
@@ -14789,7 +14795,9 @@ class TrackRelease {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           status: json_['status'] as core.String?,
-          userFraction: (json_['userFraction'] as core.num?)?.toDouble(),
+          userFraction: json_.containsKey('userFraction')
+              ? decodeDouble(json_['userFraction'] as core.Object)
+              : null,
           versionCodes: (json_['versionCodes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -14802,7 +14810,7 @@ class TrackRelease {
         if (name != null) 'name': name!,
         if (releaseNotes != null) 'releaseNotes': releaseNotes!,
         if (status != null) 'status': status!,
-        if (userFraction != null) 'userFraction': userFraction!,
+        if (userFraction != null) 'userFraction': encodeDouble(userFraction!),
         if (versionCodes != null) 'versionCodes': versionCodes!,
       };
 }

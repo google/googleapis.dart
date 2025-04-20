@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Gmail Postmaster Tools API - v1
 ///
@@ -32,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -336,13 +338,15 @@ class DeliveryError {
   DeliveryError.fromJson(core.Map json_)
       : this(
           errorClass: json_['errorClass'] as core.String?,
-          errorRatio: (json_['errorRatio'] as core.num?)?.toDouble(),
+          errorRatio: json_.containsKey('errorRatio')
+              ? decodeDouble(json_['errorRatio'] as core.Object)
+              : null,
           errorType: json_['errorType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorClass != null) 'errorClass': errorClass!,
-        if (errorRatio != null) 'errorRatio': errorRatio!,
+        if (errorRatio != null) 'errorRatio': encodeDouble(errorRatio!),
         if (errorType != null) 'errorType': errorType!,
       };
 }
@@ -412,12 +416,14 @@ class FeedbackLoop {
   FeedbackLoop.fromJson(core.Map json_)
       : this(
           id: json_['id'] as core.String?,
-          spamRatio: (json_['spamRatio'] as core.num?)?.toDouble(),
+          spamRatio: json_.containsKey('spamRatio')
+              ? decodeDouble(json_['spamRatio'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
-        if (spamRatio != null) 'spamRatio': spamRatio!,
+        if (spamRatio != null) 'spamRatio': encodeDouble(spamRatio!),
       };
 }
 
@@ -663,54 +669,70 @@ class TrafficStats {
               ?.map((value) => DeliveryError.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          dkimSuccessRatio:
-              (json_['dkimSuccessRatio'] as core.num?)?.toDouble(),
-          dmarcSuccessRatio:
-              (json_['dmarcSuccessRatio'] as core.num?)?.toDouble(),
+          dkimSuccessRatio: json_.containsKey('dkimSuccessRatio')
+              ? decodeDouble(json_['dkimSuccessRatio'] as core.Object)
+              : null,
+          dmarcSuccessRatio: json_.containsKey('dmarcSuccessRatio')
+              ? decodeDouble(json_['dmarcSuccessRatio'] as core.Object)
+              : null,
           domainReputation: json_['domainReputation'] as core.String?,
-          inboundEncryptionRatio:
-              (json_['inboundEncryptionRatio'] as core.num?)?.toDouble(),
+          inboundEncryptionRatio: json_.containsKey('inboundEncryptionRatio')
+              ? decodeDouble(json_['inboundEncryptionRatio'] as core.Object)
+              : null,
           ipReputations: (json_['ipReputations'] as core.List?)
               ?.map((value) => IpReputation.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           name: json_['name'] as core.String?,
-          outboundEncryptionRatio:
-              (json_['outboundEncryptionRatio'] as core.num?)?.toDouble(),
+          outboundEncryptionRatio: json_.containsKey('outboundEncryptionRatio')
+              ? decodeDouble(json_['outboundEncryptionRatio'] as core.Object)
+              : null,
           spammyFeedbackLoops: (json_['spammyFeedbackLoops'] as core.List?)
               ?.map((value) => FeedbackLoop.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          spfSuccessRatio: (json_['spfSuccessRatio'] as core.num?)?.toDouble(),
-          userReportedSpamRatio:
-              (json_['userReportedSpamRatio'] as core.num?)?.toDouble(),
+          spfSuccessRatio: json_.containsKey('spfSuccessRatio')
+              ? decodeDouble(json_['spfSuccessRatio'] as core.Object)
+              : null,
+          userReportedSpamRatio: json_.containsKey('userReportedSpamRatio')
+              ? decodeDouble(json_['userReportedSpamRatio'] as core.Object)
+              : null,
           userReportedSpamRatioLowerBound:
-              (json_['userReportedSpamRatioLowerBound'] as core.num?)
-                  ?.toDouble(),
+              json_.containsKey('userReportedSpamRatioLowerBound')
+                  ? decodeDouble(
+                      json_['userReportedSpamRatioLowerBound'] as core.Object)
+                  : null,
           userReportedSpamRatioUpperBound:
-              (json_['userReportedSpamRatioUpperBound'] as core.num?)
-                  ?.toDouble(),
+              json_.containsKey('userReportedSpamRatioUpperBound')
+                  ? decodeDouble(
+                      json_['userReportedSpamRatioUpperBound'] as core.Object)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deliveryErrors != null) 'deliveryErrors': deliveryErrors!,
-        if (dkimSuccessRatio != null) 'dkimSuccessRatio': dkimSuccessRatio!,
-        if (dmarcSuccessRatio != null) 'dmarcSuccessRatio': dmarcSuccessRatio!,
+        if (dkimSuccessRatio != null)
+          'dkimSuccessRatio': encodeDouble(dkimSuccessRatio!),
+        if (dmarcSuccessRatio != null)
+          'dmarcSuccessRatio': encodeDouble(dmarcSuccessRatio!),
         if (domainReputation != null) 'domainReputation': domainReputation!,
         if (inboundEncryptionRatio != null)
-          'inboundEncryptionRatio': inboundEncryptionRatio!,
+          'inboundEncryptionRatio': encodeDouble(inboundEncryptionRatio!),
         if (ipReputations != null) 'ipReputations': ipReputations!,
         if (name != null) 'name': name!,
         if (outboundEncryptionRatio != null)
-          'outboundEncryptionRatio': outboundEncryptionRatio!,
+          'outboundEncryptionRatio': encodeDouble(outboundEncryptionRatio!),
         if (spammyFeedbackLoops != null)
           'spammyFeedbackLoops': spammyFeedbackLoops!,
-        if (spfSuccessRatio != null) 'spfSuccessRatio': spfSuccessRatio!,
+        if (spfSuccessRatio != null)
+          'spfSuccessRatio': encodeDouble(spfSuccessRatio!),
         if (userReportedSpamRatio != null)
-          'userReportedSpamRatio': userReportedSpamRatio!,
+          'userReportedSpamRatio': encodeDouble(userReportedSpamRatio!),
         if (userReportedSpamRatioLowerBound != null)
-          'userReportedSpamRatioLowerBound': userReportedSpamRatioLowerBound!,
+          'userReportedSpamRatioLowerBound':
+              encodeDouble(userReportedSpamRatioLowerBound!),
         if (userReportedSpamRatioUpperBound != null)
-          'userReportedSpamRatioUpperBound': userReportedSpamRatioUpperBound!,
+          'userReportedSpamRatioUpperBound':
+              encodeDouble(userReportedSpamRatioUpperBound!),
       };
 }

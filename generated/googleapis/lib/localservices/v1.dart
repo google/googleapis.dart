@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Local Services API - v1
 ///
@@ -29,6 +30,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -344,10 +346,12 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
                   json_['aggregatorInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          averageFiveStarRating:
-              (json_['averageFiveStarRating'] as core.num?)?.toDouble(),
-          averageWeeklyBudget:
-              (json_['averageWeeklyBudget'] as core.num?)?.toDouble(),
+          averageFiveStarRating: json_.containsKey('averageFiveStarRating')
+              ? decodeDouble(json_['averageFiveStarRating'] as core.Object)
+              : null,
+          averageWeeklyBudget: json_.containsKey('averageWeeklyBudget')
+              ? decodeDouble(json_['averageWeeklyBudget'] as core.Object)
+              : null,
           businessName: json_['businessName'] as core.String?,
           currencyCode: json_['currencyCode'] as core.String?,
           currentPeriodChargedLeads:
@@ -356,20 +360,23 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
               json_['currentPeriodConnectedPhoneCalls'] as core.String?,
           currentPeriodPhoneCalls:
               json_['currentPeriodPhoneCalls'] as core.String?,
-          currentPeriodTotalCost:
-              (json_['currentPeriodTotalCost'] as core.num?)?.toDouble(),
+          currentPeriodTotalCost: json_.containsKey('currentPeriodTotalCost')
+              ? decodeDouble(json_['currentPeriodTotalCost'] as core.Object)
+              : null,
           impressionsLastTwoDays:
               json_['impressionsLastTwoDays'] as core.String?,
-          phoneLeadResponsiveness:
-              (json_['phoneLeadResponsiveness'] as core.num?)?.toDouble(),
+          phoneLeadResponsiveness: json_.containsKey('phoneLeadResponsiveness')
+              ? decodeDouble(json_['phoneLeadResponsiveness'] as core.Object)
+              : null,
           previousPeriodChargedLeads:
               json_['previousPeriodChargedLeads'] as core.String?,
           previousPeriodConnectedPhoneCalls:
               json_['previousPeriodConnectedPhoneCalls'] as core.String?,
           previousPeriodPhoneCalls:
               json_['previousPeriodPhoneCalls'] as core.String?,
-          previousPeriodTotalCost:
-              (json_['previousPeriodTotalCost'] as core.num?)?.toDouble(),
+          previousPeriodTotalCost: json_.containsKey('previousPeriodTotalCost')
+              ? decodeDouble(json_['previousPeriodTotalCost'] as core.Object)
+              : null,
           totalReview: json_['totalReview'] as core.int?,
         );
 
@@ -377,9 +384,9 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
         if (accountId != null) 'accountId': accountId!,
         if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo!,
         if (averageFiveStarRating != null)
-          'averageFiveStarRating': averageFiveStarRating!,
+          'averageFiveStarRating': encodeDouble(averageFiveStarRating!),
         if (averageWeeklyBudget != null)
-          'averageWeeklyBudget': averageWeeklyBudget!,
+          'averageWeeklyBudget': encodeDouble(averageWeeklyBudget!),
         if (businessName != null) 'businessName': businessName!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (currentPeriodChargedLeads != null)
@@ -389,11 +396,11 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
         if (currentPeriodPhoneCalls != null)
           'currentPeriodPhoneCalls': currentPeriodPhoneCalls!,
         if (currentPeriodTotalCost != null)
-          'currentPeriodTotalCost': currentPeriodTotalCost!,
+          'currentPeriodTotalCost': encodeDouble(currentPeriodTotalCost!),
         if (impressionsLastTwoDays != null)
           'impressionsLastTwoDays': impressionsLastTwoDays!,
         if (phoneLeadResponsiveness != null)
-          'phoneLeadResponsiveness': phoneLeadResponsiveness!,
+          'phoneLeadResponsiveness': encodeDouble(phoneLeadResponsiveness!),
         if (previousPeriodChargedLeads != null)
           'previousPeriodChargedLeads': previousPeriodChargedLeads!,
         if (previousPeriodConnectedPhoneCalls != null)
@@ -402,7 +409,7 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
         if (previousPeriodPhoneCalls != null)
           'previousPeriodPhoneCalls': previousPeriodPhoneCalls!,
         if (previousPeriodTotalCost != null)
-          'previousPeriodTotalCost': previousPeriodTotalCost!,
+          'previousPeriodTotalCost': encodeDouble(previousPeriodTotalCost!),
         if (totalReview != null) 'totalReview': totalReview!,
       };
 }
@@ -582,7 +589,9 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
           leadCategory: json_['leadCategory'] as core.String?,
           leadCreationTimestamp: json_['leadCreationTimestamp'] as core.String?,
           leadId: json_['leadId'] as core.String?,
-          leadPrice: (json_['leadPrice'] as core.num?)?.toDouble(),
+          leadPrice: json_.containsKey('leadPrice')
+              ? decodeDouble(json_['leadPrice'] as core.Object)
+              : null,
           leadType: json_['leadType'] as core.String?,
           messageLead: json_.containsKey('messageLead')
               ? GoogleAdsHomeservicesLocalservicesV1MessageLead.fromJson(
@@ -612,7 +621,7 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
         if (leadCreationTimestamp != null)
           'leadCreationTimestamp': leadCreationTimestamp!,
         if (leadId != null) 'leadId': leadId!,
-        if (leadPrice != null) 'leadPrice': leadPrice!,
+        if (leadPrice != null) 'leadPrice': encodeDouble(leadPrice!),
         if (leadType != null) 'leadType': leadType!,
         if (messageLead != null) 'messageLead': messageLead!,
         if (phoneLead != null) 'phoneLead': phoneLead!,

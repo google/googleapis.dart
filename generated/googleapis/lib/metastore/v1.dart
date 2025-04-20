@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Dataproc Metastore API - v1
 ///
@@ -41,6 +42,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2689,8 +2691,9 @@ class AutoscalingConfig {
   AutoscalingConfig.fromJson(core.Map json_)
       : this(
           autoscalingEnabled: json_['autoscalingEnabled'] as core.bool?,
-          autoscalingFactor:
-              (json_['autoscalingFactor'] as core.num?)?.toDouble(),
+          autoscalingFactor: json_.containsKey('autoscalingFactor')
+              ? decodeDouble(json_['autoscalingFactor'] as core.Object)
+              : null,
           limitConfig: json_.containsKey('limitConfig')
               ? LimitConfig.fromJson(
                   json_['limitConfig'] as core.Map<core.String, core.dynamic>)
@@ -2700,7 +2703,8 @@ class AutoscalingConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoscalingEnabled != null)
           'autoscalingEnabled': autoscalingEnabled!,
-        if (autoscalingFactor != null) 'autoscalingFactor': autoscalingFactor!,
+        if (autoscalingFactor != null)
+          'autoscalingFactor': encodeDouble(autoscalingFactor!),
         if (limitConfig != null) 'limitConfig': limitConfig!,
       };
 }
@@ -3692,15 +3696,19 @@ class LimitConfig {
 
   LimitConfig.fromJson(core.Map json_)
       : this(
-          maxScalingFactor:
-              (json_['maxScalingFactor'] as core.num?)?.toDouble(),
-          minScalingFactor:
-              (json_['minScalingFactor'] as core.num?)?.toDouble(),
+          maxScalingFactor: json_.containsKey('maxScalingFactor')
+              ? decodeDouble(json_['maxScalingFactor'] as core.Object)
+              : null,
+          minScalingFactor: json_.containsKey('minScalingFactor')
+              ? decodeDouble(json_['minScalingFactor'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxScalingFactor != null) 'maxScalingFactor': maxScalingFactor!,
-        if (minScalingFactor != null) 'minScalingFactor': minScalingFactor!,
+        if (maxScalingFactor != null)
+          'maxScalingFactor': encodeDouble(maxScalingFactor!),
+        if (minScalingFactor != null)
+          'minScalingFactor': encodeDouble(minScalingFactor!),
       };
 }
 
@@ -4643,13 +4651,16 @@ class ScalingConfig {
                   as core.Map<core.String, core.dynamic>)
               : null,
           instanceSize: json_['instanceSize'] as core.String?,
-          scalingFactor: (json_['scalingFactor'] as core.num?)?.toDouble(),
+          scalingFactor: json_.containsKey('scalingFactor')
+              ? decodeDouble(json_['scalingFactor'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoscalingConfig != null) 'autoscalingConfig': autoscalingConfig!,
         if (instanceSize != null) 'instanceSize': instanceSize!,
-        if (scalingFactor != null) 'scalingFactor': scalingFactor!,
+        if (scalingFactor != null)
+          'scalingFactor': encodeDouble(scalingFactor!),
       };
 }
 

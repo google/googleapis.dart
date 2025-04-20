@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Identity API - v1
 ///
@@ -41,6 +42,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4029,13 +4031,15 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(core.Map json_)
       : this(
           boolValue: json_['boolValue'] as core.bool?,
-          numberValue: (json_['numberValue'] as core.num?)?.toDouble(),
+          numberValue: json_.containsKey('numberValue')
+              ? decodeDouble(json_['numberValue'] as core.Object)
+              : null,
           stringValue: json_['stringValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
-        if (numberValue != null) 'numberValue': numberValue!,
+        if (numberValue != null) 'numberValue': encodeDouble(numberValue!),
         if (stringValue != null) 'stringValue': stringValue!,
       };
 }
@@ -6045,14 +6049,16 @@ class PolicyQuery {
           group: json_['group'] as core.String?,
           orgUnit: json_['orgUnit'] as core.String?,
           query: json_['query'] as core.String?,
-          sortOrder: (json_['sortOrder'] as core.num?)?.toDouble(),
+          sortOrder: json_.containsKey('sortOrder')
+              ? decodeDouble(json_['sortOrder'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (group != null) 'group': group!,
         if (orgUnit != null) 'orgUnit': orgUnit!,
         if (query != null) 'query': query!,
-        if (sortOrder != null) 'sortOrder': sortOrder!,
+        if (sortOrder != null) 'sortOrder': encodeDouble(sortOrder!),
       };
 }
 

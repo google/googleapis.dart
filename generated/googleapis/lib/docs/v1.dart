@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Docs API - v1
 ///
@@ -31,6 +32,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1007,19 +1009,29 @@ class CropProperties {
 
   CropProperties.fromJson(core.Map json_)
       : this(
-          angle: (json_['angle'] as core.num?)?.toDouble(),
-          offsetBottom: (json_['offsetBottom'] as core.num?)?.toDouble(),
-          offsetLeft: (json_['offsetLeft'] as core.num?)?.toDouble(),
-          offsetRight: (json_['offsetRight'] as core.num?)?.toDouble(),
-          offsetTop: (json_['offsetTop'] as core.num?)?.toDouble(),
+          angle: json_.containsKey('angle')
+              ? decodeDouble(json_['angle'] as core.Object)
+              : null,
+          offsetBottom: json_.containsKey('offsetBottom')
+              ? decodeDouble(json_['offsetBottom'] as core.Object)
+              : null,
+          offsetLeft: json_.containsKey('offsetLeft')
+              ? decodeDouble(json_['offsetLeft'] as core.Object)
+              : null,
+          offsetRight: json_.containsKey('offsetRight')
+              ? decodeDouble(json_['offsetRight'] as core.Object)
+              : null,
+          offsetTop: json_.containsKey('offsetTop')
+              ? decodeDouble(json_['offsetTop'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (angle != null) 'angle': angle!,
-        if (offsetBottom != null) 'offsetBottom': offsetBottom!,
-        if (offsetLeft != null) 'offsetLeft': offsetLeft!,
-        if (offsetRight != null) 'offsetRight': offsetRight!,
-        if (offsetTop != null) 'offsetTop': offsetTop!,
+        if (angle != null) 'angle': encodeDouble(angle!),
+        if (offsetBottom != null) 'offsetBottom': encodeDouble(offsetBottom!),
+        if (offsetLeft != null) 'offsetLeft': encodeDouble(offsetLeft!),
+        if (offsetRight != null) 'offsetRight': encodeDouble(offsetRight!),
+        if (offsetTop != null) 'offsetTop': encodeDouble(offsetTop!),
       };
 }
 
@@ -1359,12 +1371,14 @@ class Dimension {
 
   Dimension.fromJson(core.Map json_)
       : this(
-          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
+          magnitude: json_.containsKey('magnitude')
+              ? decodeDouble(json_['magnitude'] as core.Object)
+              : null,
           unit: json_['unit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
+        if (magnitude != null) 'magnitude': encodeDouble(magnitude!),
         if (unit != null) 'unit': unit!,
       };
 }
@@ -2967,26 +2981,34 @@ class ImageProperties {
 
   ImageProperties.fromJson(core.Map json_)
       : this(
-          angle: (json_['angle'] as core.num?)?.toDouble(),
-          brightness: (json_['brightness'] as core.num?)?.toDouble(),
+          angle: json_.containsKey('angle')
+              ? decodeDouble(json_['angle'] as core.Object)
+              : null,
+          brightness: json_.containsKey('brightness')
+              ? decodeDouble(json_['brightness'] as core.Object)
+              : null,
           contentUri: json_['contentUri'] as core.String?,
-          contrast: (json_['contrast'] as core.num?)?.toDouble(),
+          contrast: json_.containsKey('contrast')
+              ? decodeDouble(json_['contrast'] as core.Object)
+              : null,
           cropProperties: json_.containsKey('cropProperties')
               ? CropProperties.fromJson(json_['cropProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
           sourceUri: json_['sourceUri'] as core.String?,
-          transparency: (json_['transparency'] as core.num?)?.toDouble(),
+          transparency: json_.containsKey('transparency')
+              ? decodeDouble(json_['transparency'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (angle != null) 'angle': angle!,
-        if (brightness != null) 'brightness': brightness!,
+        if (angle != null) 'angle': encodeDouble(angle!),
+        if (brightness != null) 'brightness': encodeDouble(brightness!),
         if (contentUri != null) 'contentUri': contentUri!,
-        if (contrast != null) 'contrast': contrast!,
+        if (contrast != null) 'contrast': encodeDouble(contrast!),
         if (cropProperties != null) 'cropProperties': cropProperties!,
         if (sourceUri != null) 'sourceUri': sourceUri!,
-        if (transparency != null) 'transparency': transparency!,
+        if (transparency != null) 'transparency': encodeDouble(transparency!),
       };
 }
 
@@ -5042,7 +5064,9 @@ class ParagraphStyle {
               : null,
           keepLinesTogether: json_['keepLinesTogether'] as core.bool?,
           keepWithNext: json_['keepWithNext'] as core.bool?,
-          lineSpacing: (json_['lineSpacing'] as core.num?)?.toDouble(),
+          lineSpacing: json_.containsKey('lineSpacing')
+              ? decodeDouble(json_['lineSpacing'] as core.Object)
+              : null,
           namedStyleType: json_['namedStyleType'] as core.String?,
           pageBreakBefore: json_['pageBreakBefore'] as core.bool?,
           shading: json_.containsKey('shading')
@@ -5080,7 +5104,7 @@ class ParagraphStyle {
         if (indentStart != null) 'indentStart': indentStart!,
         if (keepLinesTogether != null) 'keepLinesTogether': keepLinesTogether!,
         if (keepWithNext != null) 'keepWithNext': keepWithNext!,
-        if (lineSpacing != null) 'lineSpacing': lineSpacing!,
+        if (lineSpacing != null) 'lineSpacing': encodeDouble(lineSpacing!),
         if (namedStyleType != null) 'namedStyleType': namedStyleType!,
         if (pageBreakBefore != null) 'pageBreakBefore': pageBreakBefore!,
         if (shading != null) 'shading': shading!,

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Sheets API - v4
 ///
@@ -34,6 +35,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3843,7 +3845,9 @@ class BubbleChartSpec {
               : null,
           bubbleMaxRadiusSize: json_['bubbleMaxRadiusSize'] as core.int?,
           bubbleMinRadiusSize: json_['bubbleMinRadiusSize'] as core.int?,
-          bubbleOpacity: (json_['bubbleOpacity'] as core.num?)?.toDouble(),
+          bubbleOpacity: json_.containsKey('bubbleOpacity')
+              ? decodeDouble(json_['bubbleOpacity'] as core.Object)
+              : null,
           bubbleSizes: json_.containsKey('bubbleSizes')
               ? ChartData.fromJson(
                   json_['bubbleSizes'] as core.Map<core.String, core.dynamic>)
@@ -3876,7 +3880,8 @@ class BubbleChartSpec {
           'bubbleMaxRadiusSize': bubbleMaxRadiusSize!,
         if (bubbleMinRadiusSize != null)
           'bubbleMinRadiusSize': bubbleMinRadiusSize!,
-        if (bubbleOpacity != null) 'bubbleOpacity': bubbleOpacity!,
+        if (bubbleOpacity != null)
+          'bubbleOpacity': encodeDouble(bubbleOpacity!),
         if (bubbleSizes != null) 'bubbleSizes': bubbleSizes!,
         if (bubbleTextStyle != null) 'bubbleTextStyle': bubbleTextStyle!,
         if (domain != null) 'domain': domain!,
@@ -4495,14 +4500,20 @@ class ChartAxisViewWindowOptions {
 
   ChartAxisViewWindowOptions.fromJson(core.Map json_)
       : this(
-          viewWindowMax: (json_['viewWindowMax'] as core.num?)?.toDouble(),
-          viewWindowMin: (json_['viewWindowMin'] as core.num?)?.toDouble(),
+          viewWindowMax: json_.containsKey('viewWindowMax')
+              ? decodeDouble(json_['viewWindowMax'] as core.Object)
+              : null,
+          viewWindowMin: json_.containsKey('viewWindowMin')
+              ? decodeDouble(json_['viewWindowMin'] as core.Object)
+              : null,
           viewWindowMode: json_['viewWindowMode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (viewWindowMax != null) 'viewWindowMax': viewWindowMax!,
-        if (viewWindowMin != null) 'viewWindowMin': viewWindowMin!,
+        if (viewWindowMax != null)
+          'viewWindowMax': encodeDouble(viewWindowMax!),
+        if (viewWindowMin != null)
+          'viewWindowMin': encodeDouble(viewWindowMin!),
         if (viewWindowMode != null) 'viewWindowMode': viewWindowMode!,
       };
 }
@@ -4709,15 +4720,21 @@ class ChartHistogramRule {
 
   ChartHistogramRule.fromJson(core.Map json_)
       : this(
-          intervalSize: (json_['intervalSize'] as core.num?)?.toDouble(),
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
+          intervalSize: json_.containsKey('intervalSize')
+              ? decodeDouble(json_['intervalSize'] as core.Object)
+              : null,
+          maxValue: json_.containsKey('maxValue')
+              ? decodeDouble(json_['maxValue'] as core.Object)
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? decodeDouble(json_['minValue'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (intervalSize != null) 'intervalSize': intervalSize!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
+        if (intervalSize != null) 'intervalSize': encodeDouble(intervalSize!),
+        if (maxValue != null) 'maxValue': encodeDouble(maxValue!),
+        if (minValue != null) 'minValue': encodeDouble(minValue!),
       };
 }
 
@@ -7574,7 +7591,9 @@ class ExtendedValue {
                   json_['errorValue'] as core.Map<core.String, core.dynamic>)
               : null,
           formulaValue: json_['formulaValue'] as core.String?,
-          numberValue: (json_['numberValue'] as core.num?)?.toDouble(),
+          numberValue: json_.containsKey('numberValue')
+              ? decodeDouble(json_['numberValue'] as core.Object)
+              : null,
           stringValue: json_['stringValue'] as core.String?,
         );
 
@@ -7582,7 +7601,7 @@ class ExtendedValue {
         if (boolValue != null) 'boolValue': boolValue!,
         if (errorValue != null) 'errorValue': errorValue!,
         if (formulaValue != null) 'formulaValue': formulaValue!,
-        if (numberValue != null) 'numberValue': numberValue!,
+        if (numberValue != null) 'numberValue': encodeDouble(numberValue!),
         if (stringValue != null) 'stringValue': stringValue!,
       };
 }
@@ -8275,10 +8294,13 @@ class HistogramChartSpec {
 
   HistogramChartSpec.fromJson(core.Map json_)
       : this(
-          bucketSize: (json_['bucketSize'] as core.num?)?.toDouble(),
+          bucketSize: json_.containsKey('bucketSize')
+              ? decodeDouble(json_['bucketSize'] as core.Object)
+              : null,
           legendPosition: json_['legendPosition'] as core.String?,
-          outlierPercentile:
-              (json_['outlierPercentile'] as core.num?)?.toDouble(),
+          outlierPercentile: json_.containsKey('outlierPercentile')
+              ? decodeDouble(json_['outlierPercentile'] as core.Object)
+              : null,
           series: (json_['series'] as core.List?)
               ?.map((value) => HistogramSeries.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -8287,9 +8309,10 @@ class HistogramChartSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucketSize != null) 'bucketSize': bucketSize!,
+        if (bucketSize != null) 'bucketSize': encodeDouble(bucketSize!),
         if (legendPosition != null) 'legendPosition': legendPosition!,
-        if (outlierPercentile != null) 'outlierPercentile': outlierPercentile!,
+        if (outlierPercentile != null)
+          'outlierPercentile': encodeDouble(outlierPercentile!),
         if (series != null) 'series': series!,
         if (showItemDividers != null) 'showItemDividers': showItemDividers!,
       };
@@ -8340,15 +8363,21 @@ class HistogramRule {
 
   HistogramRule.fromJson(core.Map json_)
       : this(
-          end: (json_['end'] as core.num?)?.toDouble(),
-          interval: (json_['interval'] as core.num?)?.toDouble(),
-          start: (json_['start'] as core.num?)?.toDouble(),
+          end: json_.containsKey('end')
+              ? decodeDouble(json_['end'] as core.Object)
+              : null,
+          interval: json_.containsKey('interval')
+              ? decodeDouble(json_['interval'] as core.Object)
+              : null,
+          start: json_.containsKey('start')
+              ? decodeDouble(json_['start'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (end != null) 'end': end!,
-        if (interval != null) 'interval': interval!,
-        if (start != null) 'start': start!,
+        if (end != null) 'end': encodeDouble(end!),
+        if (interval != null) 'interval': encodeDouble(interval!),
+        if (start != null) 'start': encodeDouble(start!),
       };
 }
 
@@ -8575,14 +8604,15 @@ class IterativeCalculationSettings {
 
   IterativeCalculationSettings.fromJson(core.Map json_)
       : this(
-          convergenceThreshold:
-              (json_['convergenceThreshold'] as core.num?)?.toDouble(),
+          convergenceThreshold: json_.containsKey('convergenceThreshold')
+              ? decodeDouble(json_['convergenceThreshold'] as core.Object)
+              : null,
           maxIterations: json_['maxIterations'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (convergenceThreshold != null)
-          'convergenceThreshold': convergenceThreshold!,
+          'convergenceThreshold': encodeDouble(convergenceThreshold!),
         if (maxIterations != null) 'maxIterations': maxIterations!,
       };
 }
@@ -9299,7 +9329,9 @@ class PieChartSpec {
                   json_['domain'] as core.Map<core.String, core.dynamic>)
               : null,
           legendPosition: json_['legendPosition'] as core.String?,
-          pieHole: (json_['pieHole'] as core.num?)?.toDouble(),
+          pieHole: json_.containsKey('pieHole')
+              ? decodeDouble(json_['pieHole'] as core.Object)
+              : null,
           series: json_.containsKey('series')
               ? ChartData.fromJson(
                   json_['series'] as core.Map<core.String, core.dynamic>)
@@ -9310,7 +9342,7 @@ class PieChartSpec {
   core.Map<core.String, core.dynamic> toJson() => {
         if (domain != null) 'domain': domain!,
         if (legendPosition != null) 'legendPosition': legendPosition!,
-        if (pieHole != null) 'pieHole': pieHole!,
+        if (pieHole != null) 'pieHole': encodeDouble(pieHole!),
         if (series != null) 'series': series!,
         if (threeDimensional != null) 'threeDimensional': threeDimensional!,
       };
@@ -9921,12 +9953,14 @@ class PointStyle {
   PointStyle.fromJson(core.Map json_)
       : this(
           shape: json_['shape'] as core.String?,
-          size: (json_['size'] as core.num?)?.toDouble(),
+          size: json_.containsKey('size')
+              ? decodeDouble(json_['size'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (shape != null) 'shape': shape!,
-        if (size != null) 'size': size!,
+        if (size != null) 'size': encodeDouble(size!),
       };
 }
 
@@ -11277,7 +11311,9 @@ class ScorecardChartSpec {
                   as core.Map<core.String, core.dynamic>)
               : null,
           numberFormatSource: json_['numberFormatSource'] as core.String?,
-          scaleFactor: (json_['scaleFactor'] as core.num?)?.toDouble(),
+          scaleFactor: json_.containsKey('scaleFactor')
+              ? decodeDouble(json_['scaleFactor'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11291,7 +11327,7 @@ class ScorecardChartSpec {
         if (keyValueFormat != null) 'keyValueFormat': keyValueFormat!,
         if (numberFormatSource != null)
           'numberFormatSource': numberFormatSource!,
-        if (scaleFactor != null) 'scaleFactor': scaleFactor!,
+        if (scaleFactor != null) 'scaleFactor': encodeDouble(scaleFactor!),
       };
 }
 
@@ -12758,8 +12794,12 @@ class TreemapChartSpec {
                   json_['labels'] as core.Map<core.String, core.dynamic>)
               : null,
           levels: json_['levels'] as core.int?,
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
+          maxValue: json_.containsKey('maxValue')
+              ? decodeDouble(json_['maxValue'] as core.Object)
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? decodeDouble(json_['minValue'] as core.Object)
+              : null,
           parentLabels: json_.containsKey('parentLabels')
               ? ChartData.fromJson(
                   json_['parentLabels'] as core.Map<core.String, core.dynamic>)
@@ -12783,8 +12823,8 @@ class TreemapChartSpec {
         if (hintedLevels != null) 'hintedLevels': hintedLevels!,
         if (labels != null) 'labels': labels!,
         if (levels != null) 'levels': levels!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
+        if (maxValue != null) 'maxValue': encodeDouble(maxValue!),
+        if (minValue != null) 'minValue': encodeDouble(minValue!),
         if (parentLabels != null) 'parentLabels': parentLabels!,
         if (sizeData != null) 'sizeData': sizeData!,
         if (textFormat != null) 'textFormat': textFormat!,

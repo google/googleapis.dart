@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Blogger API - v3
 ///
@@ -39,6 +40,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2837,15 +2839,19 @@ class PostLocation {
 
   PostLocation.fromJson(core.Map json_)
       : this(
-          lat: (json_['lat'] as core.num?)?.toDouble(),
-          lng: (json_['lng'] as core.num?)?.toDouble(),
+          lat: json_.containsKey('lat')
+              ? decodeDouble(json_['lat'] as core.Object)
+              : null,
+          lng: json_.containsKey('lng')
+              ? decodeDouble(json_['lng'] as core.Object)
+              : null,
           name: json_['name'] as core.String?,
           span: json_['span'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lat != null) 'lat': lat!,
-        if (lng != null) 'lng': lng!,
+        if (lat != null) 'lat': encodeDouble(lat!),
+        if (lng != null) 'lng': encodeDouble(lng!),
         if (name != null) 'name': name!,
         if (span != null) 'span': span!,
       };

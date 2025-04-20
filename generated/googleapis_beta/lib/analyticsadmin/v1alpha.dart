@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Analytics Admin API - v1alpha
 ///
@@ -64,6 +65,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -8647,12 +8649,14 @@ class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue {
   GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue.fromJson(
       core.Map json_)
       : this(
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           int64Value: json_['int64Value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (int64Value != null) 'int64Value': int64Value!,
       };
 }
@@ -11286,17 +11290,23 @@ class GoogleAnalyticsAdminV1alphaEventMapping {
       : this(
           eventName: json_['eventName'] as core.String?,
           maxEventCount: json_['maxEventCount'] as core.String?,
-          maxEventValue: (json_['maxEventValue'] as core.num?)?.toDouble(),
+          maxEventValue: json_.containsKey('maxEventValue')
+              ? decodeDouble(json_['maxEventValue'] as core.Object)
+              : null,
           minEventCount: json_['minEventCount'] as core.String?,
-          minEventValue: (json_['minEventValue'] as core.num?)?.toDouble(),
+          minEventValue: json_.containsKey('minEventValue')
+              ? decodeDouble(json_['minEventValue'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (eventName != null) 'eventName': eventName!,
         if (maxEventCount != null) 'maxEventCount': maxEventCount!,
-        if (maxEventValue != null) 'maxEventValue': maxEventValue!,
+        if (maxEventValue != null)
+          'maxEventValue': encodeDouble(maxEventValue!),
         if (minEventCount != null) 'minEventCount': minEventCount!,
-        if (minEventValue != null) 'minEventValue': minEventValue!,
+        if (minEventValue != null)
+          'minEventValue': encodeDouble(minEventValue!),
       };
 }
 

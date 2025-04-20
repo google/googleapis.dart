@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Firestore API - v1
 ///
@@ -41,6 +42,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3502,8 +3504,9 @@ class FindNearest {
       : this(
           distanceMeasure: json_['distanceMeasure'] as core.String?,
           distanceResultField: json_['distanceResultField'] as core.String?,
-          distanceThreshold:
-              (json_['distanceThreshold'] as core.num?)?.toDouble(),
+          distanceThreshold: json_.containsKey('distanceThreshold')
+              ? decodeDouble(json_['distanceThreshold'] as core.Object)
+              : null,
           limit: json_['limit'] as core.int?,
           queryVector: json_.containsKey('queryVector')
               ? Value.fromJson(
@@ -3519,7 +3522,8 @@ class FindNearest {
         if (distanceMeasure != null) 'distanceMeasure': distanceMeasure!,
         if (distanceResultField != null)
           'distanceResultField': distanceResultField!,
-        if (distanceThreshold != null) 'distanceThreshold': distanceThreshold!,
+        if (distanceThreshold != null)
+          'distanceThreshold': encodeDouble(distanceThreshold!),
         if (limit != null) 'limit': limit!,
         if (queryVector != null) 'queryVector': queryVector!,
         if (vectorField != null) 'vectorField': vectorField!,
@@ -6140,7 +6144,9 @@ class Value {
               : null,
           booleanValue: json_['booleanValue'] as core.bool?,
           bytesValue: json_['bytesValue'] as core.String?,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           geoPointValue: json_.containsKey('geoPointValue')
               ? LatLng.fromJson(
                   json_['geoPointValue'] as core.Map<core.String, core.dynamic>)
@@ -6160,7 +6166,7 @@ class Value {
         if (arrayValue != null) 'arrayValue': arrayValue!,
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (bytesValue != null) 'bytesValue': bytesValue!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (geoPointValue != null) 'geoPointValue': geoPointValue!,
         if (integerValue != null) 'integerValue': integerValue!,
         if (mapValue != null) 'mapValue': mapValue!,

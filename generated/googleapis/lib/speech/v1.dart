@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Speech-to-Text API - v1
 ///
@@ -37,6 +38,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1318,12 +1320,14 @@ class Phrase {
 
   Phrase.fromJson(core.Map json_)
       : this(
-          boost: (json_['boost'] as core.num?)?.toDouble(),
+          boost: json_.containsKey('boost')
+              ? decodeDouble(json_['boost'] as core.Object)
+              : null,
           value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boost != null) 'boost': boost!,
+        if (boost != null) 'boost': encodeDouble(boost!),
         if (value != null) 'value': value!,
       };
 }
@@ -1460,7 +1464,9 @@ class PhraseSet {
               value as core.String,
             ),
           ),
-          boost: (json_['boost'] as core.num?)?.toDouble(),
+          boost: json_.containsKey('boost')
+              ? decodeDouble(json_['boost'] as core.Object)
+              : null,
           deleteTime: json_['deleteTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           etag: json_['etag'] as core.String?,
@@ -1479,7 +1485,7 @@ class PhraseSet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
-        if (boost != null) 'boost': boost!,
+        if (boost != null) 'boost': encodeDouble(boost!),
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (displayName != null) 'displayName': displayName!,
         if (etag != null) 'etag': etag!,
@@ -2257,14 +2263,16 @@ class SpeechContext {
 
   SpeechContext.fromJson(core.Map json_)
       : this(
-          boost: (json_['boost'] as core.num?)?.toDouble(),
+          boost: json_.containsKey('boost')
+              ? decodeDouble(json_['boost'] as core.Object)
+              : null,
           phrases: (json_['phrases'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boost != null) 'boost': boost!,
+        if (boost != null) 'boost': encodeDouble(boost!),
         if (phrases != null) 'phrases': phrases!,
       };
 }
@@ -2302,7 +2310,9 @@ class SpeechRecognitionAlternative {
 
   SpeechRecognitionAlternative.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           transcript: json_['transcript'] as core.String?,
           words: (json_['words'] as core.List?)
               ?.map((value) => WordInfo.fromJson(
@@ -2311,7 +2321,7 @@ class SpeechRecognitionAlternative {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (transcript != null) 'transcript': transcript!,
         if (words != null) 'words': words!,
       };
@@ -2500,7 +2510,9 @@ class WordInfo {
 
   WordInfo.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           endTime: json_['endTime'] as core.String?,
           speakerLabel: json_['speakerLabel'] as core.String?,
           speakerTag: json_['speakerTag'] as core.int?,
@@ -2509,7 +2521,7 @@ class WordInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (endTime != null) 'endTime': endTime!,
         if (speakerLabel != null) 'speakerLabel': speakerLabel!,
         if (speakerTag != null) 'speakerTag': speakerTag!,

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Bigtable Admin API - v2
 ///
@@ -44,6 +45,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4218,18 +4220,20 @@ class ColumnFamilyStats {
 
   ColumnFamilyStats.fromJson(core.Map json_)
       : this(
-          averageCellsPerColumn:
-              (json_['averageCellsPerColumn'] as core.num?)?.toDouble(),
-          averageColumnsPerRow:
-              (json_['averageColumnsPerRow'] as core.num?)?.toDouble(),
+          averageCellsPerColumn: json_.containsKey('averageCellsPerColumn')
+              ? decodeDouble(json_['averageCellsPerColumn'] as core.Object)
+              : null,
+          averageColumnsPerRow: json_.containsKey('averageColumnsPerRow')
+              ? decodeDouble(json_['averageColumnsPerRow'] as core.Object)
+              : null,
           logicalDataBytes: json_['logicalDataBytes'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (averageCellsPerColumn != null)
-          'averageCellsPerColumn': averageCellsPerColumn!,
+          'averageCellsPerColumn': encodeDouble(averageCellsPerColumn!),
         if (averageColumnsPerRow != null)
-          'averageColumnsPerRow': averageColumnsPerRow!,
+          'averageColumnsPerRow': encodeDouble(averageColumnsPerRow!),
         if (logicalDataBytes != null) 'logicalDataBytes': logicalDataBytes!,
       };
 }
@@ -5467,8 +5471,9 @@ class HotTablet {
           endKey: json_['endKey'] as core.String?,
           endTime: json_['endTime'] as core.String?,
           name: json_['name'] as core.String?,
-          nodeCpuUsagePercent:
-              (json_['nodeCpuUsagePercent'] as core.num?)?.toDouble(),
+          nodeCpuUsagePercent: json_.containsKey('nodeCpuUsagePercent')
+              ? decodeDouble(json_['nodeCpuUsagePercent'] as core.Object)
+              : null,
           startKey: json_['startKey'] as core.String?,
           startTime: json_['startTime'] as core.String?,
           tableName: json_['tableName'] as core.String?,
@@ -5479,7 +5484,7 @@ class HotTablet {
         if (endTime != null) 'endTime': endTime!,
         if (name != null) 'name': name!,
         if (nodeCpuUsagePercent != null)
-          'nodeCpuUsagePercent': nodeCpuUsagePercent!,
+          'nodeCpuUsagePercent': encodeDouble(nodeCpuUsagePercent!),
         if (startKey != null) 'startKey': startKey!,
         if (startTime != null) 'startTime': startTime!,
         if (tableName != null) 'tableName': tableName!,
@@ -6656,19 +6661,21 @@ class TableStats {
 
   TableStats.fromJson(core.Map json_)
       : this(
-          averageCellsPerColumn:
-              (json_['averageCellsPerColumn'] as core.num?)?.toDouble(),
-          averageColumnsPerRow:
-              (json_['averageColumnsPerRow'] as core.num?)?.toDouble(),
+          averageCellsPerColumn: json_.containsKey('averageCellsPerColumn')
+              ? decodeDouble(json_['averageCellsPerColumn'] as core.Object)
+              : null,
+          averageColumnsPerRow: json_.containsKey('averageColumnsPerRow')
+              ? decodeDouble(json_['averageColumnsPerRow'] as core.Object)
+              : null,
           logicalDataBytes: json_['logicalDataBytes'] as core.String?,
           rowCount: json_['rowCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (averageCellsPerColumn != null)
-          'averageCellsPerColumn': averageCellsPerColumn!,
+          'averageCellsPerColumn': encodeDouble(averageCellsPerColumn!),
         if (averageColumnsPerRow != null)
-          'averageColumnsPerRow': averageColumnsPerRow!,
+          'averageColumnsPerRow': encodeDouble(averageColumnsPerRow!),
         if (logicalDataBytes != null) 'logicalDataBytes': logicalDataBytes!,
         if (rowCount != null) 'rowCount': rowCount!,
       };

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Places API (New) - v1
 ///
@@ -31,6 +32,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -571,10 +573,13 @@ class GoogleMapsPlacesV1AddressDescriptorLandmark {
           name: json_['name'] as core.String?,
           placeId: json_['placeId'] as core.String?,
           spatialRelationship: json_['spatialRelationship'] as core.String?,
-          straightLineDistanceMeters:
-              (json_['straightLineDistanceMeters'] as core.num?)?.toDouble(),
-          travelDistanceMeters:
-              (json_['travelDistanceMeters'] as core.num?)?.toDouble(),
+          straightLineDistanceMeters: json_
+                  .containsKey('straightLineDistanceMeters')
+              ? decodeDouble(json_['straightLineDistanceMeters'] as core.Object)
+              : null,
+          travelDistanceMeters: json_.containsKey('travelDistanceMeters')
+              ? decodeDouble(json_['travelDistanceMeters'] as core.Object)
+              : null,
           types: (json_['types'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -587,9 +592,10 @@ class GoogleMapsPlacesV1AddressDescriptorLandmark {
         if (spatialRelationship != null)
           'spatialRelationship': spatialRelationship!,
         if (straightLineDistanceMeters != null)
-          'straightLineDistanceMeters': straightLineDistanceMeters!,
+          'straightLineDistanceMeters':
+              encodeDouble(straightLineDistanceMeters!),
         if (travelDistanceMeters != null)
-          'travelDistanceMeters': travelDistanceMeters!,
+          'travelDistanceMeters': encodeDouble(travelDistanceMeters!),
         if (types != null) 'types': types!,
       };
 }
@@ -1236,12 +1242,14 @@ class GoogleMapsPlacesV1Circle {
               ? GoogleTypeLatLng.fromJson(
                   json_['center'] as core.Map<core.String, core.dynamic>)
               : null,
-          radius: (json_['radius'] as core.num?)?.toDouble(),
+          radius: json_.containsKey('radius')
+              ? decodeDouble(json_['radius'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (center != null) 'center': center!,
-        if (radius != null) 'radius': radius!,
+        if (radius != null) 'radius': encodeDouble(radius!),
       };
 }
 
@@ -1621,7 +1629,9 @@ class GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation {
               json_['availabilityLastUpdateTime'] as core.String?,
           availableCount: json_['availableCount'] as core.int?,
           count: json_['count'] as core.int?,
-          maxChargeRateKw: (json_['maxChargeRateKw'] as core.num?)?.toDouble(),
+          maxChargeRateKw: json_.containsKey('maxChargeRateKw')
+              ? decodeDouble(json_['maxChargeRateKw'] as core.Object)
+              : null,
           outOfServiceCount: json_['outOfServiceCount'] as core.int?,
           type: json_['type'] as core.String?,
         );
@@ -1631,7 +1641,8 @@ class GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation {
           'availabilityLastUpdateTime': availabilityLastUpdateTime!,
         if (availableCount != null) 'availableCount': availableCount!,
         if (count != null) 'count': count!,
-        if (maxChargeRateKw != null) 'maxChargeRateKw': maxChargeRateKw!,
+        if (maxChargeRateKw != null)
+          'maxChargeRateKw': encodeDouble(maxChargeRateKw!),
         if (outOfServiceCount != null) 'outOfServiceCount': outOfServiceCount!,
         if (type != null) 'type': type!,
       };
@@ -2319,7 +2330,9 @@ class GoogleMapsPlacesV1Place {
               : null,
           pureServiceAreaBusiness:
               json_['pureServiceAreaBusiness'] as core.bool?,
-          rating: (json_['rating'] as core.num?)?.toDouble(),
+          rating: json_.containsKey('rating')
+              ? decodeDouble(json_['rating'] as core.Object)
+              : null,
           regularOpeningHours: json_.containsKey('regularOpeningHours')
               ? GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
                   json_['regularOpeningHours']
@@ -2422,7 +2435,7 @@ class GoogleMapsPlacesV1Place {
           'primaryTypeDisplayName': primaryTypeDisplayName!,
         if (pureServiceAreaBusiness != null)
           'pureServiceAreaBusiness': pureServiceAreaBusiness!,
-        if (rating != null) 'rating': rating!,
+        if (rating != null) 'rating': encodeDouble(rating!),
         if (regularOpeningHours != null)
           'regularOpeningHours': regularOpeningHours!,
         if (regularSecondaryOpeningHours != null)
@@ -3269,7 +3282,9 @@ class GoogleMapsPlacesV1Review {
                   json_['originalText'] as core.Map<core.String, core.dynamic>)
               : null,
           publishTime: json_['publishTime'] as core.String?,
-          rating: (json_['rating'] as core.num?)?.toDouble(),
+          rating: json_.containsKey('rating')
+              ? decodeDouble(json_['rating'] as core.Object)
+              : null,
           relativePublishTimeDescription:
               json_['relativePublishTimeDescription'] as core.String?,
           text: json_.containsKey('text')
@@ -3285,7 +3300,7 @@ class GoogleMapsPlacesV1Review {
         if (name != null) 'name': name!,
         if (originalText != null) 'originalText': originalText!,
         if (publishTime != null) 'publishTime': publishTime!,
-        if (rating != null) 'rating': rating!,
+        if (rating != null) 'rating': encodeDouble(rating!),
         if (relativePublishTimeDescription != null)
           'relativePublishTimeDescription': relativePublishTimeDescription!,
         if (text != null) 'text': text!,
@@ -3935,7 +3950,9 @@ class GoogleMapsPlacesV1SearchTextRequest {
                       as core.Map<core.String, core.dynamic>)
               : null,
           maxResultCount: json_['maxResultCount'] as core.int?,
-          minRating: (json_['minRating'] as core.num?)?.toDouble(),
+          minRating: json_.containsKey('minRating')
+              ? decodeDouble(json_['minRating'] as core.Object)
+              : null,
           openNow: json_['openNow'] as core.bool?,
           pageSize: json_['pageSize'] as core.int?,
           pageToken: json_['pageToken'] as core.String?,
@@ -3969,7 +3986,7 @@ class GoogleMapsPlacesV1SearchTextRequest {
         if (locationRestriction != null)
           'locationRestriction': locationRestriction!,
         if (maxResultCount != null) 'maxResultCount': maxResultCount!,
-        if (minRating != null) 'minRating': minRating!,
+        if (minRating != null) 'minRating': encodeDouble(minRating!),
         if (openNow != null) 'openNow': openNow!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
@@ -4012,14 +4029,15 @@ class GoogleMapsPlacesV1SearchTextRequestEVOptions {
           connectorTypes: (json_['connectorTypes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          minimumChargingRateKw:
-              (json_['minimumChargingRateKw'] as core.num?)?.toDouble(),
+          minimumChargingRateKw: json_.containsKey('minimumChargingRateKw')
+              ? decodeDouble(json_['minimumChargingRateKw'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectorTypes != null) 'connectorTypes': connectorTypes!,
         if (minimumChargingRateKw != null)
-          'minimumChargingRateKw': minimumChargingRateKw!,
+          'minimumChargingRateKw': encodeDouble(minimumChargingRateKw!),
       };
 }
 

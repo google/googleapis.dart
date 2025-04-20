@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Civic Information API - v2
 ///
@@ -32,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1417,8 +1419,12 @@ class PollingLocation {
                   json_['address'] as core.Map<core.String, core.dynamic>)
               : null,
           endDate: json_['endDate'] as core.String?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
           name: json_['name'] as core.String?,
           notes: json_['notes'] as core.String?,
           pollingHours: json_['pollingHours'] as core.String?,
@@ -1433,8 +1439,8 @@ class PollingLocation {
   core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
         if (endDate != null) 'endDate': endDate!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
         if (pollingHours != null) 'pollingHours': pollingHours!,

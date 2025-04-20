@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Chrome UX Report API - v1
 ///
@@ -33,6 +34,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -249,12 +251,13 @@ class FractionTimeseries {
   FractionTimeseries.fromJson(core.Map json_)
       : this(
           fractions: (json_['fractions'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fractions != null) 'fractions': fractions!,
+        if (fractions != null)
+          'fractions': fractions!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -460,7 +463,7 @@ class Metric {
               (json_['fractions'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
               key,
-              (value as core.num).toDouble(),
+              decodeDouble(value),
             ),
           ),
           histogram: (json_['histogram'] as core.List?)
@@ -474,7 +477,9 @@ class Metric {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fractions != null) 'fractions': fractions!,
+        if (fractions != null)
+          'fractions': fractions!
+              .map((key, item) => core.MapEntry(key, encodeDouble(item))),
         if (histogram != null) 'histogram': histogram!,
         if (percentiles != null) 'percentiles': percentiles!,
       };
@@ -881,14 +886,15 @@ class TimeseriesBin {
   TimeseriesBin.fromJson(core.Map json_)
       : this(
           densities: (json_['densities'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           end: json_['end'],
           start: json_['start'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (densities != null) 'densities': densities!,
+        if (densities != null)
+          'densities': densities!.map((value) => encodeDouble(value)).toList(),
         if (end != null) 'end': end!,
         if (start != null) 'start': start!,
       };

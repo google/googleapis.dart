@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Books API - v1
 ///
@@ -56,6 +57,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4803,13 +4805,17 @@ class GeolayerdataGeoViewportHi {
 
   GeolayerdataGeoViewportHi.fromJson(core.Map json_)
       : this(
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
       };
 }
 
@@ -4824,13 +4830,17 @@ class GeolayerdataGeoViewportLo {
 
   GeolayerdataGeoViewportLo.fromJson(core.Map json_)
       : this(
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
       };
 }
 
@@ -4918,8 +4928,12 @@ class GeolayerdataGeo {
               .toList(),
           cachePolicy: json_['cachePolicy'] as core.String?,
           countryCode: json_['countryCode'] as core.String?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
           mapType: json_['mapType'] as core.String?,
           viewport: json_.containsKey('viewport')
               ? GeolayerdataGeoViewport.fromJson(
@@ -4932,8 +4946,8 @@ class GeolayerdataGeo {
         if (boundary != null) 'boundary': boundary!,
         if (cachePolicy != null) 'cachePolicy': cachePolicy!,
         if (countryCode != null) 'countryCode': countryCode!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
         if (mapType != null) 'mapType': mapType!,
         if (viewport != null) 'viewport': viewport!,
         if (zoom != null) 'zoom': zoom!,
@@ -5589,14 +5603,17 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
   SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo.fromJson(
       core.Map json_)
       : this(
-          amountInMicros: (json_['amountInMicros'] as core.num?)?.toDouble(),
+          amountInMicros: json_.containsKey('amountInMicros')
+              ? decodeDouble(json_['amountInMicros'] as core.Object)
+              : null,
           currencyCode: json_['currencyCode'] as core.String?,
           releaseNumber: json_['releaseNumber'] as core.String?,
           releaseTime: json_['releaseTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amountInMicros != null) 'amountInMicros': amountInMicros!,
+        if (amountInMicros != null)
+          'amountInMicros': encodeDouble(amountInMicros!),
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (releaseNumber != null) 'releaseNumber': releaseNumber!,
         if (releaseTime != null) 'releaseTime': releaseTime!,
@@ -5619,14 +5636,17 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo {
   SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
       core.Map json_)
       : this(
-          amountInMicros: (json_['amountInMicros'] as core.num?)?.toDouble(),
+          amountInMicros: json_.containsKey('amountInMicros')
+              ? decodeDouble(json_['amountInMicros'] as core.Object)
+              : null,
           currencyCode: json_['currencyCode'] as core.String?,
           releaseNumber: json_['releaseNumber'] as core.String?,
           releaseTime: json_['releaseTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amountInMicros != null) 'amountInMicros': amountInMicros!,
+        if (amountInMicros != null)
+          'amountInMicros': encodeDouble(amountInMicros!),
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (releaseNumber != null) 'releaseNumber': releaseNumber!,
         if (releaseTime != null) 'releaseTime': releaseTime!,
@@ -6295,12 +6315,14 @@ class VolumeSaleInfoListPrice {
 
   VolumeSaleInfoListPrice.fromJson(core.Map json_)
       : this(
-          amount: (json_['amount'] as core.num?)?.toDouble(),
+          amount: json_.containsKey('amount')
+              ? decodeDouble(json_['amount'] as core.Object)
+              : null,
           currencyCode: json_['currencyCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!,
+        if (amount != null) 'amount': encodeDouble(amount!),
         if (currencyCode != null) 'currencyCode': currencyCode!,
       };
 }
@@ -6317,12 +6339,15 @@ class VolumeSaleInfoOffersListPrice {
 
   VolumeSaleInfoOffersListPrice.fromJson(core.Map json_)
       : this(
-          amountInMicros: (json_['amountInMicros'] as core.num?)?.toDouble(),
+          amountInMicros: json_.containsKey('amountInMicros')
+              ? decodeDouble(json_['amountInMicros'] as core.Object)
+              : null,
           currencyCode: json_['currencyCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amountInMicros != null) 'amountInMicros': amountInMicros!,
+        if (amountInMicros != null)
+          'amountInMicros': encodeDouble(amountInMicros!),
         if (currencyCode != null) 'currencyCode': currencyCode!,
       };
 }
@@ -6339,12 +6364,14 @@ class VolumeSaleInfoOffersRentalDuration {
 
   VolumeSaleInfoOffersRentalDuration.fromJson(core.Map json_)
       : this(
-          count: (json_['count'] as core.num?)?.toDouble(),
+          count: json_.containsKey('count')
+              ? decodeDouble(json_['count'] as core.Object)
+              : null,
           unit: json_['unit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
+        if (count != null) 'count': encodeDouble(count!),
         if (unit != null) 'unit': unit!,
       };
 }
@@ -6361,12 +6388,15 @@ class VolumeSaleInfoOffersRetailPrice {
 
   VolumeSaleInfoOffersRetailPrice.fromJson(core.Map json_)
       : this(
-          amountInMicros: (json_['amountInMicros'] as core.num?)?.toDouble(),
+          amountInMicros: json_.containsKey('amountInMicros')
+              ? decodeDouble(json_['amountInMicros'] as core.Object)
+              : null,
           currencyCode: json_['currencyCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amountInMicros != null) 'amountInMicros': amountInMicros!,
+        if (amountInMicros != null)
+          'amountInMicros': encodeDouble(amountInMicros!),
         if (currencyCode != null) 'currencyCode': currencyCode!,
       };
 }
@@ -6445,12 +6475,14 @@ class VolumeSaleInfoRetailPrice {
 
   VolumeSaleInfoRetailPrice.fromJson(core.Map json_)
       : this(
-          amount: (json_['amount'] as core.num?)?.toDouble(),
+          amount: json_.containsKey('amount')
+              ? decodeDouble(json_['amount'] as core.Object)
+              : null,
           currencyCode: json_['currencyCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!,
+        if (amount != null) 'amount': encodeDouble(amount!),
         if (currencyCode != null) 'currencyCode': currencyCode!,
       };
 }
@@ -7161,7 +7193,9 @@ class VolumeVolumeInfo {
           authors: (json_['authors'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          averageRating: (json_['averageRating'] as core.num?)?.toDouble(),
+          averageRating: json_.containsKey('averageRating')
+              ? decodeDouble(json_['averageRating'] as core.Object)
+              : null,
           canonicalVolumeLink: json_['canonicalVolumeLink'] as core.String?,
           categories: (json_['categories'] as core.List?)
               ?.map((value) => value as core.String)
@@ -7213,7 +7247,8 @@ class VolumeVolumeInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowAnonLogging != null) 'allowAnonLogging': allowAnonLogging!,
         if (authors != null) 'authors': authors!,
-        if (averageRating != null) 'averageRating': averageRating!,
+        if (averageRating != null)
+          'averageRating': encodeDouble(averageRating!),
         if (canonicalVolumeLink != null)
           'canonicalVolumeLink': canonicalVolumeLink!,
         if (categories != null) 'categories': categories!,

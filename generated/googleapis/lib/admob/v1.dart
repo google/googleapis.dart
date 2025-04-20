@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// AdMob API - v1
 ///
@@ -36,6 +37,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1694,13 +1696,15 @@ class ReportRowMetricValue {
 
   ReportRowMetricValue.fromJson(core.Map json_)
       : this(
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           integerValue: json_['integerValue'] as core.String?,
           microsValue: json_['microsValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (integerValue != null) 'integerValue': integerValue!,
         if (microsValue != null) 'microsValue': microsValue!,
       };

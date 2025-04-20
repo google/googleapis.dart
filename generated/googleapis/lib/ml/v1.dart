@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// AI Platform Training & Prediction API - v1
 ///
@@ -40,6 +41,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2323,12 +2325,15 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
   GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
       core.Map json_)
       : this(
-          objectiveValue: (json_['objectiveValue'] as core.num?)?.toDouble(),
+          objectiveValue: json_.containsKey('objectiveValue')
+              ? decodeDouble(json_['objectiveValue'] as core.Object)
+              : null,
           trainingStep: json_['trainingStep'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectiveValue != null) 'objectiveValue': objectiveValue!,
+        if (objectiveValue != null)
+          'objectiveValue': encodeDouble(objectiveValue!),
         if (trainingStep != null) 'trainingStep': trainingStep!,
       };
 }
@@ -2353,12 +2358,14 @@ class GoogleCloudMlV1MeasurementMetric {
   GoogleCloudMlV1MeasurementMetric.fromJson(core.Map json_)
       : this(
           metric: json_['metric'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metric != null) 'metric': metric!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -2401,12 +2408,13 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
       core.Map json_)
       : this(
           values: (json_['values'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
+        if (values != null)
+          'values': values!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -2429,13 +2437,17 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
   GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
       core.Map json_)
       : this(
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
+          maxValue: json_.containsKey('maxValue')
+              ? decodeDouble(json_['maxValue'] as core.Object)
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? decodeDouble(json_['minValue'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
+        if (maxValue != null) 'maxValue': encodeDouble(maxValue!),
+        if (minValue != null) 'minValue': encodeDouble(minValue!),
       };
 }
 
@@ -2507,12 +2519,13 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
       core.Map json_)
       : this(
           values: (json_['values'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
+        if (values != null)
+          'values': values!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -2740,14 +2753,16 @@ class GoogleCloudMlV1TrialParameter {
 
   GoogleCloudMlV1TrialParameter.fromJson(core.Map json_)
       : this(
-          floatValue: (json_['floatValue'] as core.num?)?.toDouble(),
+          floatValue: json_.containsKey('floatValue')
+              ? decodeDouble(json_['floatValue'] as core.Object)
+              : null,
           intValue: json_['intValue'] as core.String?,
           parameter: json_['parameter'] as core.String?,
           stringValue: json_['stringValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (floatValue != null) 'floatValue': floatValue!,
+        if (floatValue != null) 'floatValue': encodeDouble(floatValue!),
         if (intValue != null) 'intValue': intValue!,
         if (parameter != null) 'parameter': parameter!,
         if (stringValue != null) 'stringValue': stringValue!,
@@ -4418,10 +4433,14 @@ class GoogleCloudMlV1ParameterSpec {
               ?.map((value) => value as core.String)
               .toList(),
           discreteValues: (json_['discreteValues'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
+          maxValue: json_.containsKey('maxValue')
+              ? decodeDouble(json_['maxValue'] as core.Object)
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? decodeDouble(json_['minValue'] as core.Object)
+              : null,
           parameterName: json_['parameterName'] as core.String?,
           scaleType: json_['scaleType'] as core.String?,
           type: json_['type'] as core.String?,
@@ -4429,9 +4448,11 @@ class GoogleCloudMlV1ParameterSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (categoricalValues != null) 'categoricalValues': categoricalValues!,
-        if (discreteValues != null) 'discreteValues': discreteValues!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
+        if (discreteValues != null)
+          'discreteValues':
+              discreteValues!.map((value) => encodeDouble(value)).toList(),
+        if (maxValue != null) 'maxValue': encodeDouble(maxValue!),
+        if (minValue != null) 'minValue': encodeDouble(minValue!),
         if (parameterName != null) 'parameterName': parameterName!,
         if (scaleType != null) 'scaleType': scaleType!,
         if (type != null) 'type': type!,
@@ -4646,14 +4667,16 @@ class GoogleCloudMlV1PredictionOutput {
   GoogleCloudMlV1PredictionOutput.fromJson(core.Map json_)
       : this(
           errorCount: json_['errorCount'] as core.String?,
-          nodeHours: (json_['nodeHours'] as core.num?)?.toDouble(),
+          nodeHours: json_.containsKey('nodeHours')
+              ? decodeDouble(json_['nodeHours'] as core.Object)
+              : null,
           outputPath: json_['outputPath'] as core.String?,
           predictionCount: json_['predictionCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorCount != null) 'errorCount': errorCount!,
-        if (nodeHours != null) 'nodeHours': nodeHours!,
+        if (nodeHours != null) 'nodeHours': encodeDouble(nodeHours!),
         if (outputPath != null) 'outputPath': outputPath!,
         if (predictionCount != null) 'predictionCount': predictionCount!,
       };
@@ -4796,14 +4819,15 @@ class GoogleCloudMlV1RequestLoggingConfig {
   GoogleCloudMlV1RequestLoggingConfig.fromJson(core.Map json_)
       : this(
           bigqueryTableName: json_['bigqueryTableName'] as core.String?,
-          samplingPercentage:
-              (json_['samplingPercentage'] as core.num?)?.toDouble(),
+          samplingPercentage: json_.containsKey('samplingPercentage')
+              ? decodeDouble(json_['samplingPercentage'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryTableName != null) 'bigqueryTableName': bigqueryTableName!,
         if (samplingPercentage != null)
-          'samplingPercentage': samplingPercentage!,
+          'samplingPercentage': encodeDouble(samplingPercentage!),
       };
 }
 
@@ -5639,7 +5663,9 @@ class GoogleCloudMlV1TrainingOutput {
                       as core.Map<core.String, core.dynamic>)
               : null,
           completedTrialCount: json_['completedTrialCount'] as core.String?,
-          consumedMLUnits: (json_['consumedMLUnits'] as core.num?)?.toDouble(),
+          consumedMLUnits: json_.containsKey('consumedMLUnits')
+              ? decodeDouble(json_['consumedMLUnits'] as core.Object)
+              : null,
           hyperparameterMetricTag:
               json_['hyperparameterMetricTag'] as core.String?,
           isBuiltInAlgorithmJob: json_['isBuiltInAlgorithmJob'] as core.bool?,
@@ -5664,7 +5690,8 @@ class GoogleCloudMlV1TrainingOutput {
           'builtInAlgorithmOutput': builtInAlgorithmOutput!,
         if (completedTrialCount != null)
           'completedTrialCount': completedTrialCount!,
-        if (consumedMLUnits != null) 'consumedMLUnits': consumedMLUnits!,
+        if (consumedMLUnits != null)
+          'consumedMLUnits': encodeDouble(consumedMLUnits!),
         if (hyperparameterMetricTag != null)
           'hyperparameterMetricTag': hyperparameterMetricTag!,
         if (isBuiltInAlgorithmJob != null)

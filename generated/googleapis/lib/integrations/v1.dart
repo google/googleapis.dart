@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Application Integration API - v1
 ///
@@ -58,6 +59,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -8214,13 +8216,17 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange {
   EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange.fromJson(
       core.Map json_)
       : this(
-          max: (json_['max'] as core.num?)?.toDouble(),
-          min: (json_['min'] as core.num?)?.toDouble(),
+          max: json_.containsKey('max')
+              ? decodeDouble(json_['max'] as core.Object)
+              : null,
+          min: json_.containsKey('min')
+              ? decodeDouble(json_['min'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (max != null) 'max': max!,
-        if (min != null) 'min': min!,
+        if (max != null) 'max': encodeDouble(max!),
+        if (min != null) 'min': encodeDouble(min!),
       };
 }
 
@@ -8362,7 +8368,9 @@ class EnterpriseCrmEventbusProtoParameterValueType {
               ? EnterpriseCrmEventbusProtoDoubleParameterArray.fromJson(
                   json_['doubleArray'] as core.Map<core.String, core.dynamic>)
               : null,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           intArray: json_.containsKey('intArray')
               ? EnterpriseCrmEventbusProtoIntParameterArray.fromJson(
                   json_['intArray'] as core.Map<core.String, core.dynamic>)
@@ -8391,7 +8399,7 @@ class EnterpriseCrmEventbusProtoParameterValueType {
         if (booleanArray != null) 'booleanArray': booleanArray!,
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (doubleArray != null) 'doubleArray': doubleArray!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (intArray != null) 'intArray': intArray!,
         if (intValue != null) 'intValue': intValue!,
         if (protoArray != null) 'protoArray': protoArray!,
@@ -9390,7 +9398,9 @@ class EnterpriseCrmEventbusProtoValueType {
               ? EnterpriseCrmEventbusProtoDoubleArray.fromJson(
                   json_['doubleArray'] as core.Map<core.String, core.dynamic>)
               : null,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           intArray: json_.containsKey('intArray')
               ? EnterpriseCrmEventbusProtoIntArray.fromJson(
                   json_['intArray'] as core.Map<core.String, core.dynamic>)
@@ -9409,7 +9419,7 @@ class EnterpriseCrmEventbusProtoValueType {
   core.Map<core.String, core.dynamic> toJson() => {
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (doubleArray != null) 'doubleArray': doubleArray!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (intArray != null) 'intArray': intArray!,
         if (intValue != null) 'intValue': intValue!,
         if (protoValue != null) 'protoValue': protoValue!,
@@ -9602,19 +9612,27 @@ class EnterpriseCrmEventbusStats {
               ? EnterpriseCrmEventbusStatsDimensions.fromJson(
                   json_['dimensions'] as core.Map<core.String, core.dynamic>)
               : null,
-          durationInSeconds:
-              (json_['durationInSeconds'] as core.num?)?.toDouble(),
-          errorRate: (json_['errorRate'] as core.num?)?.toDouble(),
-          qps: (json_['qps'] as core.num?)?.toDouble(),
-          warningRate: (json_['warningRate'] as core.num?)?.toDouble(),
+          durationInSeconds: json_.containsKey('durationInSeconds')
+              ? decodeDouble(json_['durationInSeconds'] as core.Object)
+              : null,
+          errorRate: json_.containsKey('errorRate')
+              ? decodeDouble(json_['errorRate'] as core.Object)
+              : null,
+          qps: json_.containsKey('qps')
+              ? decodeDouble(json_['qps'] as core.Object)
+              : null,
+          warningRate: json_.containsKey('warningRate')
+              ? decodeDouble(json_['warningRate'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null) 'dimensions': dimensions!,
-        if (durationInSeconds != null) 'durationInSeconds': durationInSeconds!,
-        if (errorRate != null) 'errorRate': errorRate!,
-        if (qps != null) 'qps': qps!,
-        if (warningRate != null) 'warningRate': warningRate!,
+        if (durationInSeconds != null)
+          'durationInSeconds': encodeDouble(durationInSeconds!),
+        if (errorRate != null) 'errorRate': encodeDouble(errorRate!),
+        if (qps != null) 'qps': encodeDouble(qps!),
+        if (warningRate != null) 'warningRate': encodeDouble(warningRate!),
       };
 }
 
@@ -10485,7 +10503,9 @@ class EnterpriseCrmFrontendsEventbusProtoParameterValueType {
                   .fromJson(json_['doubleArray']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           intArray: json_.containsKey('intArray')
               ? EnterpriseCrmFrontendsEventbusProtoIntParameterArray.fromJson(
                   json_['intArray'] as core.Map<core.String, core.dynamic>)
@@ -10516,7 +10536,7 @@ class EnterpriseCrmFrontendsEventbusProtoParameterValueType {
         if (booleanArray != null) 'booleanArray': booleanArray!,
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (doubleArray != null) 'doubleArray': doubleArray!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (intArray != null) 'intArray': intArray!,
         if (intValue != null) 'intValue': intValue!,
         if (jsonValue != null) 'jsonValue': jsonValue!,
@@ -14062,12 +14082,14 @@ class GoogleCloudIntegrationsV1alphaDoubleParameterArray {
   GoogleCloudIntegrationsV1alphaDoubleParameterArray.fromJson(core.Map json_)
       : this(
           doubleValues: (json_['doubleValues'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (doubleValues != null) 'doubleValues': doubleValues!,
+        if (doubleValues != null)
+          'doubleValues':
+              doubleValues!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -20052,7 +20074,9 @@ class GoogleCloudIntegrationsV1alphaValueType {
               ? GoogleCloudIntegrationsV1alphaDoubleParameterArray.fromJson(
                   json_['doubleArray'] as core.Map<core.String, core.dynamic>)
               : null,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           intArray: json_.containsKey('intArray')
               ? GoogleCloudIntegrationsV1alphaIntParameterArray.fromJson(
                   json_['intArray'] as core.Map<core.String, core.dynamic>)
@@ -20070,7 +20094,7 @@ class GoogleCloudIntegrationsV1alphaValueType {
         if (booleanArray != null) 'booleanArray': booleanArray!,
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (doubleArray != null) 'doubleArray': doubleArray!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (intArray != null) 'intArray': intArray!,
         if (intValue != null) 'intValue': intValue!,
         if (jsonValue != null) 'jsonValue': jsonValue!,

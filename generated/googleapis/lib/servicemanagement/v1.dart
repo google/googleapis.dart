@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Service Management API - v1
 ///
@@ -37,6 +38,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http_1;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1707,13 +1709,18 @@ class BackendRule {
   BackendRule.fromJson(core.Map json_)
       : this(
           address: json_['address'] as core.String?,
-          deadline: (json_['deadline'] as core.num?)?.toDouble(),
+          deadline: json_.containsKey('deadline')
+              ? decodeDouble(json_['deadline'] as core.Object)
+              : null,
           disableAuth: json_['disableAuth'] as core.bool?,
           jwtAudience: json_['jwtAudience'] as core.String?,
           loadBalancingPolicy: json_['loadBalancingPolicy'] as core.String?,
-          minDeadline: (json_['minDeadline'] as core.num?)?.toDouble(),
-          operationDeadline:
-              (json_['operationDeadline'] as core.num?)?.toDouble(),
+          minDeadline: json_.containsKey('minDeadline')
+              ? decodeDouble(json_['minDeadline'] as core.Object)
+              : null,
+          operationDeadline: json_.containsKey('operationDeadline')
+              ? decodeDouble(json_['operationDeadline'] as core.Object)
+              : null,
           overridesByRequestProtocol: (json_['overridesByRequestProtocol']
                   as core.Map<core.String, core.dynamic>?)
               ?.map(
@@ -1730,13 +1737,14 @@ class BackendRule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
-        if (deadline != null) 'deadline': deadline!,
+        if (deadline != null) 'deadline': encodeDouble(deadline!),
         if (disableAuth != null) 'disableAuth': disableAuth!,
         if (jwtAudience != null) 'jwtAudience': jwtAudience!,
         if (loadBalancingPolicy != null)
           'loadBalancingPolicy': loadBalancingPolicy!,
-        if (minDeadline != null) 'minDeadline': minDeadline!,
-        if (operationDeadline != null) 'operationDeadline': operationDeadline!,
+        if (minDeadline != null) 'minDeadline': encodeDouble(minDeadline!),
+        if (operationDeadline != null)
+          'operationDeadline': encodeDouble(operationDeadline!),
         if (overridesByRequestProtocol != null)
           'overridesByRequestProtocol': overridesByRequestProtocol!,
         if (pathTranslation != null) 'pathTranslation': pathTranslation!,
@@ -3951,8 +3959,9 @@ class LongRunning {
       : this(
           initialPollDelay: json_['initialPollDelay'] as core.String?,
           maxPollDelay: json_['maxPollDelay'] as core.String?,
-          pollDelayMultiplier:
-              (json_['pollDelayMultiplier'] as core.num?)?.toDouble(),
+          pollDelayMultiplier: json_.containsKey('pollDelayMultiplier')
+              ? decodeDouble(json_['pollDelayMultiplier'] as core.Object)
+              : null,
           totalPollTimeout: json_['totalPollTimeout'] as core.String?,
         );
 
@@ -3960,7 +3969,7 @@ class LongRunning {
         if (initialPollDelay != null) 'initialPollDelay': initialPollDelay!,
         if (maxPollDelay != null) 'maxPollDelay': maxPollDelay!,
         if (pollDelayMultiplier != null)
-          'pollDelayMultiplier': pollDelayMultiplier!,
+          'pollDelayMultiplier': encodeDouble(pollDelayMultiplier!),
         if (totalPollTimeout != null) 'totalPollTimeout': totalPollTimeout!,
       };
 }
@@ -5954,13 +5963,15 @@ class TrafficPercentStrategy {
                   ?.map(
             (key, value) => core.MapEntry(
               key,
-              (value as core.num).toDouble(),
+              decodeDouble(value),
             ),
           ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (percentages != null) 'percentages': percentages!,
+        if (percentages != null)
+          'percentages': percentages!
+              .map((key, item) => core.MapEntry(key, encodeDouble(item))),
       };
 }
 

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Sensitive Data Protection (DLP) - v2
 ///
@@ -74,6 +75,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -9896,15 +9898,21 @@ class GooglePrivacyDlpV2Color {
 
   GooglePrivacyDlpV2Color.fromJson(core.Map json_)
       : this(
-          blue: (json_['blue'] as core.num?)?.toDouble(),
-          green: (json_['green'] as core.num?)?.toDouble(),
-          red: (json_['red'] as core.num?)?.toDouble(),
+          blue: json_.containsKey('blue')
+              ? decodeDouble(json_['blue'] as core.Object)
+              : null,
+          green: json_.containsKey('green')
+              ? decodeDouble(json_['green'] as core.Object)
+              : null,
+          red: json_.containsKey('red')
+              ? decodeDouble(json_['red'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blue != null) 'blue': blue!,
-        if (green != null) 'green': green!,
-        if (red != null) 'red': red!,
+        if (blue != null) 'blue': encodeDouble(blue!),
+        if (green != null) 'green': encodeDouble(green!),
+        if (red != null) 'red': encodeDouble(red!),
       };
 }
 
@@ -10075,7 +10083,9 @@ class GooglePrivacyDlpV2ColumnDataProfile {
               json_['estimatedNullPercentage'] as core.String?,
           estimatedUniquenessScore:
               json_['estimatedUniquenessScore'] as core.String?,
-          freeTextScore: (json_['freeTextScore'] as core.num?)?.toDouble(),
+          freeTextScore: json_.containsKey('freeTextScore')
+              ? decodeDouble(json_['freeTextScore'] as core.Object)
+              : null,
           name: json_['name'] as core.String?,
           otherMatches: (json_['otherMatches'] as core.List?)
               ?.map((value) => GooglePrivacyDlpV2OtherInfoTypeSummary.fromJson(
@@ -10110,7 +10120,8 @@ class GooglePrivacyDlpV2ColumnDataProfile {
           'estimatedNullPercentage': estimatedNullPercentage!,
         if (estimatedUniquenessScore != null)
           'estimatedUniquenessScore': estimatedUniquenessScore!,
-        if (freeTextScore != null) 'freeTextScore': freeTextScore!,
+        if (freeTextScore != null)
+          'freeTextScore': encodeDouble(freeTextScore!),
         if (name != null) 'name': name!,
         if (otherMatches != null) 'otherMatches': otherMatches!,
         if (policyState != null) 'policyState': policyState!,
@@ -12308,16 +12319,22 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
                   GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
-          maxProbability: (json_['maxProbability'] as core.num?)?.toDouble(),
-          minProbability: (json_['minProbability'] as core.num?)?.toDouble(),
+          maxProbability: json_.containsKey('maxProbability')
+              ? decodeDouble(json_['maxProbability'] as core.Object)
+              : null,
+          minProbability: json_.containsKey('minProbability')
+              ? decodeDouble(json_['minProbability'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucketSize != null) 'bucketSize': bucketSize!,
         if (bucketValueCount != null) 'bucketValueCount': bucketValueCount!,
         if (bucketValues != null) 'bucketValues': bucketValues!,
-        if (maxProbability != null) 'maxProbability': maxProbability!,
-        if (minProbability != null) 'minProbability': minProbability!,
+        if (maxProbability != null)
+          'maxProbability': encodeDouble(maxProbability!),
+        if (minProbability != null)
+          'minProbability': encodeDouble(minProbability!),
       };
 }
 
@@ -12345,8 +12362,9 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
   GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues.fromJson(
       core.Map json_)
       : this(
-          estimatedProbability:
-              (json_['estimatedProbability'] as core.num?)?.toDouble(),
+          estimatedProbability: json_.containsKey('estimatedProbability')
+              ? decodeDouble(json_['estimatedProbability'] as core.Object)
+              : null,
           quasiIdsValues: (json_['quasiIdsValues'] as core.List?)
               ?.map((value) => GooglePrivacyDlpV2Value.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -12355,7 +12373,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (estimatedProbability != null)
-          'estimatedProbability': estimatedProbability!,
+          'estimatedProbability': encodeDouble(estimatedProbability!),
         if (quasiIdsValues != null) 'quasiIdsValues': quasiIdsValues!,
       };
 }
@@ -15038,7 +15056,9 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfig {
 
   GooglePrivacyDlpV2FixedSizeBucketingConfig.fromJson(core.Map json_)
       : this(
-          bucketSize: (json_['bucketSize'] as core.num?)?.toDouble(),
+          bucketSize: json_.containsKey('bucketSize')
+              ? decodeDouble(json_['bucketSize'] as core.Object)
+              : null,
           lowerBound: json_.containsKey('lowerBound')
               ? GooglePrivacyDlpV2Value.fromJson(
                   json_['lowerBound'] as core.Map<core.String, core.dynamic>)
@@ -15050,7 +15070,7 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucketSize != null) 'bucketSize': bucketSize!,
+        if (bucketSize != null) 'bucketSize': encodeDouble(bucketSize!),
         if (lowerBound != null) 'lowerBound': lowerBound!,
         if (upperBound != null) 'upperBound': upperBound!,
       };
@@ -21607,7 +21627,9 @@ class GooglePrivacyDlpV2Value {
                   json_['dateValue'] as core.Map<core.String, core.dynamic>)
               : null,
           dayOfWeekValue: json_['dayOfWeekValue'] as core.String?,
-          floatValue: (json_['floatValue'] as core.num?)?.toDouble(),
+          floatValue: json_.containsKey('floatValue')
+              ? decodeDouble(json_['floatValue'] as core.Object)
+              : null,
           integerValue: json_['integerValue'] as core.String?,
           stringValue: json_['stringValue'] as core.String?,
           timeValue: json_.containsKey('timeValue')
@@ -21621,7 +21643,7 @@ class GooglePrivacyDlpV2Value {
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (dateValue != null) 'dateValue': dateValue!,
         if (dayOfWeekValue != null) 'dayOfWeekValue': dayOfWeekValue!,
-        if (floatValue != null) 'floatValue': floatValue!,
+        if (floatValue != null) 'floatValue': encodeDouble(floatValue!),
         if (integerValue != null) 'integerValue': integerValue!,
         if (stringValue != null) 'stringValue': stringValue!,
         if (timeValue != null) 'timeValue': timeValue!,

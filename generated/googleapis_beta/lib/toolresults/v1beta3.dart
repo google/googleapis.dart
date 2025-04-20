@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Tool Results API - v1beta3
 ///
@@ -41,6 +42,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2337,13 +2339,16 @@ class CPUInfo {
   CPUInfo.fromJson(core.Map json_)
       : this(
           cpuProcessor: json_['cpuProcessor'] as core.String?,
-          cpuSpeedInGhz: (json_['cpuSpeedInGhz'] as core.num?)?.toDouble(),
+          cpuSpeedInGhz: json_.containsKey('cpuSpeedInGhz')
+              ? decodeDouble(json_['cpuSpeedInGhz'] as core.Object)
+              : null,
           numberOfCores: json_['numberOfCores'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpuProcessor != null) 'cpuProcessor': cpuProcessor!,
-        if (cpuSpeedInGhz != null) 'cpuSpeedInGhz': cpuSpeedInGhz!,
+        if (cpuSpeedInGhz != null)
+          'cpuSpeedInGhz': encodeDouble(cpuSpeedInGhz!),
         if (numberOfCores != null) 'numberOfCores': numberOfCores!,
       };
 }
@@ -3853,12 +3858,14 @@ class PerfSample {
               ? Timestamp.fromJson(
                   json_['sampleTime'] as core.Map<core.String, core.dynamic>)
               : null,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sampleTime != null) 'sampleTime': sampleTime!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -4754,8 +4761,9 @@ class SuggestionProto {
               : null,
           resourceName: json_['resourceName'] as core.String?,
           screenId: json_['screenId'] as core.String?,
-          secondaryPriority:
-              (json_['secondaryPriority'] as core.num?)?.toDouble(),
+          secondaryPriority: json_.containsKey('secondaryPriority')
+              ? decodeDouble(json_['secondaryPriority'] as core.Object)
+              : null,
           shortMessage: json_.containsKey('shortMessage')
               ? SafeHtmlProto.fromJson(
                   json_['shortMessage'] as core.Map<core.String, core.dynamic>)
@@ -4771,7 +4779,8 @@ class SuggestionProto {
         if (region != null) 'region': region!,
         if (resourceName != null) 'resourceName': resourceName!,
         if (screenId != null) 'screenId': screenId!,
-        if (secondaryPriority != null) 'secondaryPriority': secondaryPriority!,
+        if (secondaryPriority != null)
+          'secondaryPriority': encodeDouble(secondaryPriority!),
         if (shortMessage != null) 'shortMessage': shortMessage!,
         if (title != null) 'title': title!,
       };

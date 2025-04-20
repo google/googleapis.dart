@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Billing Budget API - v1
 ///
@@ -34,6 +35,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -880,13 +882,15 @@ class GoogleCloudBillingBudgetsV1ThresholdRule {
   GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(core.Map json_)
       : this(
           spendBasis: json_['spendBasis'] as core.String?,
-          thresholdPercent:
-              (json_['thresholdPercent'] as core.num?)?.toDouble(),
+          thresholdPercent: json_.containsKey('thresholdPercent')
+              ? decodeDouble(json_['thresholdPercent'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (spendBasis != null) 'spendBasis': spendBasis!,
-        if (thresholdPercent != null) 'thresholdPercent': thresholdPercent!,
+        if (thresholdPercent != null)
+          'thresholdPercent': encodeDouble(thresholdPercent!),
       };
 }
 
