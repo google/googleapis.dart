@@ -9,6 +9,7 @@ import 'generated_googleapis/discovery/v1.dart';
 import 'unused_logic.dart';
 
 const sharedLibraryName = 'shared.dart';
+const convertLibraryName = 'src/convert.dart';
 
 final _packageZoneKey = Object();
 final _libraryZoneKey = Object();

@@ -78,14 +78,37 @@ class ApisPackageGenerator with DedupeMixin {
     _writeFile(pubspecYamlPath, _writePubspec);
     writeString(gitIgnorePath, _gitIgnore);
 
-    writeDartSource(
-      '$libFolderPath/$userAgentDartFilePath',
-      """
+    // src/user_agent.dart
+    writeDartSource('$libFolderPath/$userAgentDartFilePath', '''
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 
 ${requestHeadersField(pubspec.version)}
-""",
-    );
+''');
+
+    // src/convert.dart
+    writeDartSource('$libFolderPath/$convertLibraryName', r'''
+/// Encode 'float` and `double` values into JSON.
+Object? encodeDouble(double? value) {
+  if (value == null) {
+    return null;
+  }
+
+  return value.isNaN || value.isInfinite ? '$value' : value;
+}
+
+/// Decode a `double` value.
+double decodeDouble(dynamic value) {
+  if (value is String) {
+    if (value == 'NaN' || value == 'Infinity' || value == '-Infinity') {
+      return double.parse(value);
+    } else {
+      throw const FormatException('expected NaN, Infinity, or -Infinity');
+    }
+  } else {
+    return (value as num).toDouble();
+  }
+}
+''');
 
     // Test utility
     writeDartSource(
@@ -145,6 +168,7 @@ ${requestHeadersField(pubspec.version)}
         if (duplicateItems.any((element) => element.usedDartConvert == true))
           "import 'dart:convert' as convert;",
         "import 'dart:core' as core;",
+        "import '$convertLibraryName';",
       ];
 
       writeDartSource(
