@@ -64,7 +64,9 @@ ArgResults parseArguments(ArgParser parser, List<String> arguments) {
 Never dieWithUsage([String? message]) {
   if (message != null) {
     print(message);
+    print('');
   }
+
   print('Usage:');
   print('The discovery generator has the following sub-commands:');
   print('');
@@ -88,12 +90,15 @@ Never dieWithUsage([String? message]) {
 void main(List<String> arguments) {
   final parser = globalArgParser();
   final options = parseArguments(parser, arguments);
-  final commandOptions = options.command!;
-  final subCommands = ['package', 'files'];
 
   if (options['help'] as bool) {
     dieWithUsage();
-  } else if (!subCommands.contains(commandOptions.name)) {
+  }
+
+  final commandOptions = options.command;
+  final subCommands = ['package', 'files'];
+
+  if (commandOptions == null || !subCommands.contains(commandOptions.name)) {
     dieWithUsage('Invalid command');
   }
 
