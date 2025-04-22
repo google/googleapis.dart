@@ -46,6 +46,7 @@ class DiscoveryPackagesConfiguration {
   late final Set<String> excessApis;
   late final List<String> missingApis;
   late final Set<String> skipTests;
+  late final Set<String> knownApis;
   final existingApiRevisions = <String, String>{};
   Map<String?, String>? newRevisions;
   Map<String?, String>? oldRevisions;
@@ -178,6 +179,7 @@ class DiscoveryPackagesConfiguration {
         package.pubspec,
         deleteExisting: deleteExisting,
         skipTests: skipTests,
+        knownApis: knownApis,
       );
       for (final result in results) {
         if (!result.success) {
@@ -209,7 +211,7 @@ class DiscoveryPackagesConfiguration {
     packages =
         _packagesFromYaml(yaml['packages'] as YamlList, configFile, allApis);
     skipTests = _listFromYaml(yaml['skip_tests'] as YamlList?).toSet();
-    final knownApis = _calculateKnownApis(
+    knownApis = _calculateKnownApis(
       packages,
       _listFromYaml(yaml['skipped_apis'] as YamlList?),
     );

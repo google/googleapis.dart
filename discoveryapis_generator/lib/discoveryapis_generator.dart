@@ -5,6 +5,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:path/path.dart' as path;
+
 import 'src/apis_files_generator.dart';
 import 'src/apis_package_generator.dart';
 import 'src/generated_googleapis/discovery/v1.dart';
@@ -40,11 +42,20 @@ List<GenerateResult> generateAllLibraries(
   Pubspec pubspec, {
   bool deleteExisting = true,
   required Set<String> skipTests,
+  Set<String>? knownApis,
 }) {
   final apiDescriptions = Directory(inputDirectory)
       .listSync()
       .whereType<File>()
-      .where((fse) => fse.path.endsWith('.json'))
+      .where((fse) {
+        final isApiFile = fse.path.endsWith('.json');
+        final filename = path.basenameWithoutExtension(fse.path);
+        if (knownApis != null) {
+          final apiName = filename.replaceAll('__', ':');
+          return knownApis.contains(apiName) && isApiFile;
+        }
+        return isApiFile;
+      })
       .map((entity) => RestDescription.fromJson(
             json.decode(entity.readAsStringSync()) as Map,
           ))
