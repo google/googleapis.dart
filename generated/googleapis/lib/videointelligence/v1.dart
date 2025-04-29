@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Video Intelligence API - v1
 ///
@@ -41,6 +42,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -691,24 +693,28 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
 
   GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(core.Map json_)
       : this(
-          frameConfidenceThreshold:
-              (json_['frameConfidenceThreshold'] as core.num?)?.toDouble(),
+          frameConfidenceThreshold: json_
+                  .containsKey('frameConfidenceThreshold')
+              ? decodeDouble(json_['frameConfidenceThreshold'] as core.Object)
+              : null,
           labelDetectionMode: json_['labelDetectionMode'] as core.String?,
           model: json_['model'] as core.String?,
           stationaryCamera: json_['stationaryCamera'] as core.bool?,
-          videoConfidenceThreshold:
-              (json_['videoConfidenceThreshold'] as core.num?)?.toDouble(),
+          videoConfidenceThreshold: json_
+                  .containsKey('videoConfidenceThreshold')
+              ? decodeDouble(json_['videoConfidenceThreshold'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (frameConfidenceThreshold != null)
-          'frameConfidenceThreshold': frameConfidenceThreshold!,
+          'frameConfidenceThreshold': encodeDouble(frameConfidenceThreshold!),
         if (labelDetectionMode != null)
           'labelDetectionMode': labelDetectionMode!,
         if (model != null) 'model': model!,
         if (stationaryCamera != null) 'stationaryCamera': stationaryCamera!,
         if (videoConfidenceThreshold != null)
-          'videoConfidenceThreshold': videoConfidenceThreshold!,
+          'videoConfidenceThreshold': encodeDouble(videoConfidenceThreshold!),
       };
 }
 

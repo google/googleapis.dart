@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Dialogflow API - v3
 ///
@@ -57,6 +58,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -7798,7 +7800,9 @@ class GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec {
 
   GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec.fromJson(core.Map json_)
       : this(
-          boost: (json_['boost'] as core.num?)?.toDouble(),
+          boost: json_.containsKey('boost')
+              ? decodeDouble(json_['boost'] as core.Object)
+              : null,
           boostControlSpec: json_.containsKey('boostControlSpec')
               ? GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec
                   .fromJson(json_['boostControlSpec']
@@ -7808,7 +7812,7 @@ class GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boost != null) 'boost': boost!,
+        if (boost != null) 'boost': encodeDouble(boost!),
         if (boostControlSpec != null) 'boostControlSpec': boostControlSpec!,
         if (condition != null) 'condition': condition!,
       };
@@ -9704,17 +9708,26 @@ class GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval {
   GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval.fromJson(
       core.Map json_)
       : this(
-          confidenceLevel: (json_['confidenceLevel'] as core.num?)?.toDouble(),
-          lowerBound: (json_['lowerBound'] as core.num?)?.toDouble(),
-          ratio: (json_['ratio'] as core.num?)?.toDouble(),
-          upperBound: (json_['upperBound'] as core.num?)?.toDouble(),
+          confidenceLevel: json_.containsKey('confidenceLevel')
+              ? decodeDouble(json_['confidenceLevel'] as core.Object)
+              : null,
+          lowerBound: json_.containsKey('lowerBound')
+              ? decodeDouble(json_['lowerBound'] as core.Object)
+              : null,
+          ratio: json_.containsKey('ratio')
+              ? decodeDouble(json_['ratio'] as core.Object)
+              : null,
+          upperBound: json_.containsKey('upperBound')
+              ? decodeDouble(json_['upperBound'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidenceLevel != null) 'confidenceLevel': confidenceLevel!,
-        if (lowerBound != null) 'lowerBound': lowerBound!,
-        if (ratio != null) 'ratio': ratio!,
-        if (upperBound != null) 'upperBound': upperBound!,
+        if (confidenceLevel != null)
+          'confidenceLevel': encodeDouble(confidenceLevel!),
+        if (lowerBound != null) 'lowerBound': encodeDouble(lowerBound!),
+        if (ratio != null) 'ratio': encodeDouble(ratio!),
+        if (upperBound != null) 'upperBound': encodeDouble(upperBound!),
       };
 }
 
@@ -9772,18 +9785,22 @@ class GoogleCloudDialogflowCxV3ExperimentResultMetric {
                   .fromJson(json_['confidenceInterval']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          count: (json_['count'] as core.num?)?.toDouble(),
+          count: json_.containsKey('count')
+              ? decodeDouble(json_['count'] as core.Object)
+              : null,
           countType: json_['countType'] as core.String?,
-          ratio: (json_['ratio'] as core.num?)?.toDouble(),
+          ratio: json_.containsKey('ratio')
+              ? decodeDouble(json_['ratio'] as core.Object)
+              : null,
           type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidenceInterval != null)
           'confidenceInterval': confidenceInterval!,
-        if (count != null) 'count': count!,
+        if (count != null) 'count': encodeDouble(count!),
         if (countType != null) 'countType': countType!,
-        if (ratio != null) 'ratio': ratio!,
+        if (ratio != null) 'ratio': encodeDouble(ratio!),
         if (type != null) 'type': type!,
       };
 }
@@ -11344,16 +11361,20 @@ class GoogleCloudDialogflowCxV3GeneratorModelParameter {
   GoogleCloudDialogflowCxV3GeneratorModelParameter.fromJson(core.Map json_)
       : this(
           maxDecodeSteps: json_['maxDecodeSteps'] as core.int?,
-          temperature: (json_['temperature'] as core.num?)?.toDouble(),
+          temperature: json_.containsKey('temperature')
+              ? decodeDouble(json_['temperature'] as core.Object)
+              : null,
           topK: json_['topK'] as core.int?,
-          topP: (json_['topP'] as core.num?)?.toDouble(),
+          topP: json_.containsKey('topP')
+              ? decodeDouble(json_['topP'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxDecodeSteps != null) 'maxDecodeSteps': maxDecodeSteps!,
-        if (temperature != null) 'temperature': temperature!,
+        if (temperature != null) 'temperature': encodeDouble(temperature!),
         if (topK != null) 'topK': topK!,
-        if (topP != null) 'topP': topP!,
+        if (topP != null) 'topP': encodeDouble(topP!),
       };
 }
 
@@ -11933,7 +11954,9 @@ class GoogleCloudDialogflowCxV3IntentCoverage {
 
   GoogleCloudDialogflowCxV3IntentCoverage.fromJson(core.Map json_)
       : this(
-          coverageScore: (json_['coverageScore'] as core.num?)?.toDouble(),
+          coverageScore: json_.containsKey('coverageScore')
+              ? decodeDouble(json_['coverageScore'] as core.Object)
+              : null,
           intents: (json_['intents'] as core.List?)
               ?.map((value) =>
                   GoogleCloudDialogflowCxV3IntentCoverageIntent.fromJson(
@@ -11942,7 +11965,8 @@ class GoogleCloudDialogflowCxV3IntentCoverage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coverageScore != null) 'coverageScore': coverageScore!,
+        if (coverageScore != null)
+          'coverageScore': encodeDouble(coverageScore!),
         if (intents != null) 'intents': intents!,
       };
 }
@@ -12907,7 +12931,9 @@ class GoogleCloudDialogflowCxV3Match {
 
   GoogleCloudDialogflowCxV3Match.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           event: json_['event'] as core.String?,
           intent: json_.containsKey('intent')
               ? GoogleCloudDialogflowCxV3Intent.fromJson(
@@ -12921,7 +12947,7 @@ class GoogleCloudDialogflowCxV3Match {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (event != null) 'event': event!,
         if (intent != null) 'intent': intent!,
         if (matchType != null) 'matchType': matchType!,
@@ -13076,15 +13102,16 @@ class GoogleCloudDialogflowCxV3NluSettings {
 
   GoogleCloudDialogflowCxV3NluSettings.fromJson(core.Map json_)
       : this(
-          classificationThreshold:
-              (json_['classificationThreshold'] as core.num?)?.toDouble(),
+          classificationThreshold: json_.containsKey('classificationThreshold')
+              ? decodeDouble(json_['classificationThreshold'] as core.Object)
+              : null,
           modelTrainingMode: json_['modelTrainingMode'] as core.String?,
           modelType: json_['modelType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (classificationThreshold != null)
-          'classificationThreshold': classificationThreshold!,
+          'classificationThreshold': encodeDouble(classificationThreshold!),
         if (modelTrainingMode != null) 'modelTrainingMode': modelTrainingMode!,
         if (modelType != null) 'modelType': modelType!,
       };
@@ -13817,8 +13844,10 @@ class GoogleCloudDialogflowCxV3QueryResult {
               ? GoogleCloudDialogflowCxV3Intent.fromJson(
                   json_['intent'] as core.Map<core.String, core.dynamic>)
               : null,
-          intentDetectionConfidence:
-              (json_['intentDetectionConfidence'] as core.num?)?.toDouble(),
+          intentDetectionConfidence: json_
+                  .containsKey('intentDetectionConfidence')
+              ? decodeDouble(json_['intentDetectionConfidence'] as core.Object)
+              : null,
           languageCode: json_['languageCode'] as core.String?,
           match: json_.containsKey('match')
               ? GoogleCloudDialogflowCxV3Match.fromJson(
@@ -13861,7 +13890,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
         if (dtmf != null) 'dtmf': dtmf!,
         if (intent != null) 'intent': intent!,
         if (intentDetectionConfidence != null)
-          'intentDetectionConfidence': intentDetectionConfidence!,
+          'intentDetectionConfidence': encodeDouble(intentDetectionConfidence!),
         if (languageCode != null) 'languageCode': languageCode!,
         if (match != null) 'match': match!,
         if (parameters != null) 'parameters': parameters!,
@@ -15142,21 +15171,27 @@ class GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
           effectsProfileId: (json_['effectsProfileId'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          pitch: (json_['pitch'] as core.num?)?.toDouble(),
-          speakingRate: (json_['speakingRate'] as core.num?)?.toDouble(),
+          pitch: json_.containsKey('pitch')
+              ? decodeDouble(json_['pitch'] as core.Object)
+              : null,
+          speakingRate: json_.containsKey('speakingRate')
+              ? decodeDouble(json_['speakingRate'] as core.Object)
+              : null,
           voice: json_.containsKey('voice')
               ? GoogleCloudDialogflowCxV3VoiceSelectionParams.fromJson(
                   json_['voice'] as core.Map<core.String, core.dynamic>)
               : null,
-          volumeGainDb: (json_['volumeGainDb'] as core.num?)?.toDouble(),
+          volumeGainDb: json_.containsKey('volumeGainDb')
+              ? decodeDouble(json_['volumeGainDb'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (effectsProfileId != null) 'effectsProfileId': effectsProfileId!,
-        if (pitch != null) 'pitch': pitch!,
-        if (speakingRate != null) 'speakingRate': speakingRate!,
+        if (pitch != null) 'pitch': encodeDouble(pitch!),
+        if (speakingRate != null) 'speakingRate': encodeDouble(speakingRate!),
         if (voice != null) 'voice': voice!,
-        if (volumeGainDb != null) 'volumeGainDb': volumeGainDb!,
+        if (volumeGainDb != null) 'volumeGainDb': encodeDouble(volumeGainDb!),
       };
 }
 
@@ -15467,7 +15502,9 @@ class GoogleCloudDialogflowCxV3TransitionCoverage {
 
   GoogleCloudDialogflowCxV3TransitionCoverage.fromJson(core.Map json_)
       : this(
-          coverageScore: (json_['coverageScore'] as core.num?)?.toDouble(),
+          coverageScore: json_.containsKey('coverageScore')
+              ? decodeDouble(json_['coverageScore'] as core.Object)
+              : null,
           transitions: (json_['transitions'] as core.List?)
               ?.map((value) =>
                   GoogleCloudDialogflowCxV3TransitionCoverageTransition
@@ -15476,7 +15513,8 @@ class GoogleCloudDialogflowCxV3TransitionCoverage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coverageScore != null) 'coverageScore': coverageScore!,
+        if (coverageScore != null)
+          'coverageScore': encodeDouble(coverageScore!),
         if (transitions != null) 'transitions': transitions!,
       };
 }
@@ -15742,7 +15780,9 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage {
 
   GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage.fromJson(core.Map json_)
       : this(
-          coverageScore: (json_['coverageScore'] as core.num?)?.toDouble(),
+          coverageScore: json_.containsKey('coverageScore')
+              ? decodeDouble(json_['coverageScore'] as core.Object)
+              : null,
           coverages: (json_['coverages'] as core.List?)
               ?.map((value) =>
                   GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage
@@ -15751,7 +15791,8 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coverageScore != null) 'coverageScore': coverageScore!,
+        if (coverageScore != null)
+          'coverageScore': encodeDouble(coverageScore!),
         if (coverages != null) 'coverages': coverages!,
       };
 }
@@ -15781,7 +15822,9 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage {
   GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage.fromJson(
       core.Map json_)
       : this(
-          coverageScore: (json_['coverageScore'] as core.num?)?.toDouble(),
+          coverageScore: json_.containsKey('coverageScore')
+              ? decodeDouble(json_['coverageScore'] as core.Object)
+              : null,
           routeGroup: json_.containsKey('routeGroup')
               ? GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
                   json_['routeGroup'] as core.Map<core.String, core.dynamic>)
@@ -15794,7 +15837,8 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coverageScore != null) 'coverageScore': coverageScore!,
+        if (coverageScore != null)
+          'coverageScore': encodeDouble(coverageScore!),
         if (routeGroup != null) 'routeGroup': routeGroup!,
         if (transitions != null) 'transitions': transitions!,
       };
@@ -16060,14 +16104,16 @@ class GoogleCloudDialogflowCxV3VersionVariantsVariant {
   GoogleCloudDialogflowCxV3VersionVariantsVariant.fromJson(core.Map json_)
       : this(
           isControlGroup: json_['isControlGroup'] as core.bool?,
-          trafficAllocation:
-              (json_['trafficAllocation'] as core.num?)?.toDouble(),
+          trafficAllocation: json_.containsKey('trafficAllocation')
+              ? decodeDouble(json_['trafficAllocation'] as core.Object)
+              : null,
           version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (isControlGroup != null) 'isControlGroup': isControlGroup!,
-        if (trafficAllocation != null) 'trafficAllocation': trafficAllocation!,
+        if (trafficAllocation != null)
+          'trafficAllocation': encodeDouble(trafficAllocation!),
         if (version != null) 'version': version!,
       };
 }

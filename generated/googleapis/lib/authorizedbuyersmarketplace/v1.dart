@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Authorized Buyers Marketplace API - v1
 ///
@@ -44,6 +45,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4636,25 +4638,29 @@ class RtbMetrics {
   RtbMetrics.fromJson(core.Map json_)
       : this(
           adImpressions7Days: json_['adImpressions7Days'] as core.String?,
-          bidRate7Days: (json_['bidRate7Days'] as core.num?)?.toDouble(),
+          bidRate7Days: json_.containsKey('bidRate7Days')
+              ? decodeDouble(json_['bidRate7Days'] as core.Object)
+              : null,
           bidRequests7Days: json_['bidRequests7Days'] as core.String?,
           bids7Days: json_['bids7Days'] as core.String?,
-          filteredBidRate7Days:
-              (json_['filteredBidRate7Days'] as core.num?)?.toDouble(),
-          mustBidRateCurrentMonth:
-              (json_['mustBidRateCurrentMonth'] as core.num?)?.toDouble(),
+          filteredBidRate7Days: json_.containsKey('filteredBidRate7Days')
+              ? decodeDouble(json_['filteredBidRate7Days'] as core.Object)
+              : null,
+          mustBidRateCurrentMonth: json_.containsKey('mustBidRateCurrentMonth')
+              ? decodeDouble(json_['mustBidRateCurrentMonth'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adImpressions7Days != null)
           'adImpressions7Days': adImpressions7Days!,
-        if (bidRate7Days != null) 'bidRate7Days': bidRate7Days!,
+        if (bidRate7Days != null) 'bidRate7Days': encodeDouble(bidRate7Days!),
         if (bidRequests7Days != null) 'bidRequests7Days': bidRequests7Days!,
         if (bids7Days != null) 'bids7Days': bids7Days!,
         if (filteredBidRate7Days != null)
-          'filteredBidRate7Days': filteredBidRate7Days!,
+          'filteredBidRate7Days': encodeDouble(filteredBidRate7Days!),
         if (mustBidRateCurrentMonth != null)
-          'mustBidRateCurrentMonth': mustBidRateCurrentMonth!,
+          'mustBidRateCurrentMonth': encodeDouble(mustBidRateCurrentMonth!),
       };
 }
 

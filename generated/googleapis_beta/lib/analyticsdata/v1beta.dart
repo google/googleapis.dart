@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Analytics Data API - v1beta
 ///
@@ -39,6 +40,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -813,8 +815,9 @@ class AudienceExport {
               .toList(),
           errorMessage: json_['errorMessage'] as core.String?,
           name: json_['name'] as core.String?,
-          percentageCompleted:
-              (json_['percentageCompleted'] as core.num?)?.toDouble(),
+          percentageCompleted: json_.containsKey('percentageCompleted')
+              ? decodeDouble(json_['percentageCompleted'] as core.Object)
+              : null,
           rowCount: json_['rowCount'] as core.int?,
           state: json_['state'] as core.String?,
         );
@@ -830,7 +833,7 @@ class AudienceExport {
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (name != null) 'name': name!,
         if (percentageCompleted != null)
-          'percentageCompleted': percentageCompleted!,
+          'percentageCompleted': encodeDouble(percentageCompleted!),
         if (rowCount != null) 'rowCount': rowCount!,
         if (state != null) 'state': state!,
       };

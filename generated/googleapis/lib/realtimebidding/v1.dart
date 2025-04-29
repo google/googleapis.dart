@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Real-time Bidding API - v1
 ///
@@ -42,6 +43,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3848,7 +3850,9 @@ class NativeContent {
                   json_['logo'] as core.Map<core.String, core.dynamic>)
               : null,
           priceDisplayText: json_['priceDisplayText'] as core.String?,
-          starRating: (json_['starRating'] as core.num?)?.toDouble(),
+          starRating: json_.containsKey('starRating')
+              ? decodeDouble(json_['starRating'] as core.Object)
+              : null,
           videoUrl: json_['videoUrl'] as core.String?,
           videoVastXml: json_['videoVastXml'] as core.String?,
         );
@@ -3864,7 +3868,7 @@ class NativeContent {
         if (image != null) 'image': image!,
         if (logo != null) 'logo': logo!,
         if (priceDisplayText != null) 'priceDisplayText': priceDisplayText!,
-        if (starRating != null) 'starRating': starRating!,
+        if (starRating != null) 'starRating': encodeDouble(starRating!),
         if (videoUrl != null) 'videoUrl': videoUrl!,
         if (videoVastXml != null) 'videoVastXml': videoVastXml!,
       };

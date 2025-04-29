@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Domains API - v1
 ///
@@ -34,6 +35,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3118,13 +3120,16 @@ class PrimaryBackupPolicy {
               ? HealthCheckTargets.fromJson(json_['primaryTargets']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          trickleTraffic: (json_['trickleTraffic'] as core.num?)?.toDouble(),
+          trickleTraffic: json_.containsKey('trickleTraffic')
+              ? decodeDouble(json_['trickleTraffic'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupGeoTargets != null) 'backupGeoTargets': backupGeoTargets!,
         if (primaryTargets != null) 'primaryTargets': primaryTargets!,
-        if (trickleTraffic != null) 'trickleTraffic': trickleTraffic!,
+        if (trickleTraffic != null)
+          'trickleTraffic': encodeDouble(trickleTraffic!),
       };
 }
 
@@ -4139,7 +4144,9 @@ class WrrPolicyItem {
           signatureRrdata: (json_['signatureRrdata'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          weight: (json_['weight'] as core.num?)?.toDouble(),
+          weight: json_.containsKey('weight')
+              ? decodeDouble(json_['weight'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4147,6 +4154,6 @@ class WrrPolicyItem {
           'healthCheckedTargets': healthCheckedTargets!,
         if (rrdata != null) 'rrdata': rrdata!,
         if (signatureRrdata != null) 'signatureRrdata': signatureRrdata!,
-        if (weight != null) 'weight': weight!,
+        if (weight != null) 'weight': encodeDouble(weight!),
       };
 }

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Android Management API - v1
 ///
@@ -42,6 +43,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -5005,30 +5007,30 @@ class HardwareInfo {
       : this(
           batteryShutdownTemperatures:
               (json_['batteryShutdownTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
+                  ?.map((value) => decodeDouble(value))
                   .toList(),
           batteryThrottlingTemperatures:
               (json_['batteryThrottlingTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
+                  ?.map((value) => decodeDouble(value))
                   .toList(),
           brand: json_['brand'] as core.String?,
           cpuShutdownTemperatures:
               (json_['cpuShutdownTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
+                  ?.map((value) => decodeDouble(value))
                   .toList(),
           cpuThrottlingTemperatures:
               (json_['cpuThrottlingTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
+                  ?.map((value) => decodeDouble(value))
                   .toList(),
           deviceBasebandVersion: json_['deviceBasebandVersion'] as core.String?,
           enterpriseSpecificId: json_['enterpriseSpecificId'] as core.String?,
           gpuShutdownTemperatures:
               (json_['gpuShutdownTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
+                  ?.map((value) => decodeDouble(value))
                   .toList(),
           gpuThrottlingTemperatures:
               (json_['gpuThrottlingTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
+                  ?.map((value) => decodeDouble(value))
                   .toList(),
           hardware: json_['hardware'] as core.String?,
           manufacturer: json_['manufacturer'] as core.String?,
@@ -5036,40 +5038,56 @@ class HardwareInfo {
           serialNumber: json_['serialNumber'] as core.String?,
           skinShutdownTemperatures:
               (json_['skinShutdownTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
+                  ?.map((value) => decodeDouble(value))
                   .toList(),
           skinThrottlingTemperatures:
               (json_['skinThrottlingTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
+                  ?.map((value) => decodeDouble(value))
                   .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batteryShutdownTemperatures != null)
-          'batteryShutdownTemperatures': batteryShutdownTemperatures!,
+          'batteryShutdownTemperatures': batteryShutdownTemperatures!
+              .map((value) => encodeDouble(value))
+              .toList(),
         if (batteryThrottlingTemperatures != null)
-          'batteryThrottlingTemperatures': batteryThrottlingTemperatures!,
+          'batteryThrottlingTemperatures': batteryThrottlingTemperatures!
+              .map((value) => encodeDouble(value))
+              .toList(),
         if (brand != null) 'brand': brand!,
         if (cpuShutdownTemperatures != null)
-          'cpuShutdownTemperatures': cpuShutdownTemperatures!,
+          'cpuShutdownTemperatures': cpuShutdownTemperatures!
+              .map((value) => encodeDouble(value))
+              .toList(),
         if (cpuThrottlingTemperatures != null)
-          'cpuThrottlingTemperatures': cpuThrottlingTemperatures!,
+          'cpuThrottlingTemperatures': cpuThrottlingTemperatures!
+              .map((value) => encodeDouble(value))
+              .toList(),
         if (deviceBasebandVersion != null)
           'deviceBasebandVersion': deviceBasebandVersion!,
         if (enterpriseSpecificId != null)
           'enterpriseSpecificId': enterpriseSpecificId!,
         if (gpuShutdownTemperatures != null)
-          'gpuShutdownTemperatures': gpuShutdownTemperatures!,
+          'gpuShutdownTemperatures': gpuShutdownTemperatures!
+              .map((value) => encodeDouble(value))
+              .toList(),
         if (gpuThrottlingTemperatures != null)
-          'gpuThrottlingTemperatures': gpuThrottlingTemperatures!,
+          'gpuThrottlingTemperatures': gpuThrottlingTemperatures!
+              .map((value) => encodeDouble(value))
+              .toList(),
         if (hardware != null) 'hardware': hardware!,
         if (manufacturer != null) 'manufacturer': manufacturer!,
         if (model != null) 'model': model!,
         if (serialNumber != null) 'serialNumber': serialNumber!,
         if (skinShutdownTemperatures != null)
-          'skinShutdownTemperatures': skinShutdownTemperatures!,
+          'skinShutdownTemperatures': skinShutdownTemperatures!
+              .map((value) => encodeDouble(value))
+              .toList(),
         if (skinThrottlingTemperatures != null)
-          'skinThrottlingTemperatures': skinThrottlingTemperatures!,
+          'skinThrottlingTemperatures': skinThrottlingTemperatures!
+              .map((value) => encodeDouble(value))
+              .toList(),
       };
 }
 
@@ -5118,35 +5136,44 @@ class HardwareStatus {
   HardwareStatus.fromJson(core.Map json_)
       : this(
           batteryTemperatures: (json_['batteryTemperatures'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           cpuTemperatures: (json_['cpuTemperatures'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           cpuUsages: (json_['cpuUsages'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           createTime: json_['createTime'] as core.String?,
           fanSpeeds: (json_['fanSpeeds'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           gpuTemperatures: (json_['gpuTemperatures'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           skinTemperatures: (json_['skinTemperatures'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batteryTemperatures != null)
-          'batteryTemperatures': batteryTemperatures!,
-        if (cpuTemperatures != null) 'cpuTemperatures': cpuTemperatures!,
-        if (cpuUsages != null) 'cpuUsages': cpuUsages!,
+          'batteryTemperatures':
+              batteryTemperatures!.map((value) => encodeDouble(value)).toList(),
+        if (cpuTemperatures != null)
+          'cpuTemperatures':
+              cpuTemperatures!.map((value) => encodeDouble(value)).toList(),
+        if (cpuUsages != null)
+          'cpuUsages': cpuUsages!.map((value) => encodeDouble(value)).toList(),
         if (createTime != null) 'createTime': createTime!,
-        if (fanSpeeds != null) 'fanSpeeds': fanSpeeds!,
-        if (gpuTemperatures != null) 'gpuTemperatures': gpuTemperatures!,
-        if (skinTemperatures != null) 'skinTemperatures': skinTemperatures!,
+        if (fanSpeeds != null)
+          'fanSpeeds': fanSpeeds!.map((value) => encodeDouble(value)).toList(),
+        if (gpuTemperatures != null)
+          'gpuTemperatures':
+              gpuTemperatures!.map((value) => encodeDouble(value)).toList(),
+        if (skinTemperatures != null)
+          'skinTemperatures':
+              skinTemperatures!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -8216,13 +8243,15 @@ class PowerManagementEvent {
 
   PowerManagementEvent.fromJson(core.Map json_)
       : this(
-          batteryLevel: (json_['batteryLevel'] as core.num?)?.toDouble(),
+          batteryLevel: json_.containsKey('batteryLevel')
+              ? decodeDouble(json_['batteryLevel'] as core.Object)
+              : null,
           createTime: json_['createTime'] as core.String?,
           eventType: json_['eventType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (batteryLevel != null) 'batteryLevel': batteryLevel!,
+        if (batteryLevel != null) 'batteryLevel': encodeDouble(batteryLevel!),
         if (createTime != null) 'createTime': createTime!,
         if (eventType != null) 'eventType': eventType!,
       };

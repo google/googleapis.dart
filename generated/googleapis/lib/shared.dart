@@ -16,9 +16,11 @@ library;
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 import 'dart:convert' as convert;
 import 'dart:core' as core;
+import 'src/convert.dart';
 
 /// Used by:
 ///
@@ -2408,12 +2410,14 @@ class $BoostSpecConditionBoostSpecBoostControlSpecControlPoint {
       core.Map json_)
       : this(
           attributeValue: json_['attributeValue'] as core.String?,
-          boostAmount: (json_['boostAmount'] as core.num?)?.toDouble(),
+          boostAmount: json_.containsKey('boostAmount')
+              ? decodeDouble(json_['boostAmount'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributeValue != null) 'attributeValue': attributeValue!,
-        if (boostAmount != null) 'boostAmount': boostAmount!,
+        if (boostAmount != null) 'boostAmount': encodeDouble(boostAmount!),
       };
 }
 
@@ -2565,8 +2569,9 @@ class $BusinessChainAssignedTargetingOptionDetails {
   $BusinessChainAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
           displayName: json_['displayName'] as core.String?,
-          proximityRadiusAmount:
-              (json_['proximityRadiusAmount'] as core.num?)?.toDouble(),
+          proximityRadiusAmount: json_.containsKey('proximityRadiusAmount')
+              ? decodeDouble(json_['proximityRadiusAmount'] as core.Object)
+              : null,
           proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
           targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
@@ -2574,7 +2579,7 @@ class $BusinessChainAssignedTargetingOptionDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (proximityRadiusAmount != null)
-          'proximityRadiusAmount': proximityRadiusAmount!,
+          'proximityRadiusAmount': encodeDouble(proximityRadiusAmount!),
         if (proximityRadiusUnit != null)
           'proximityRadiusUnit': proximityRadiusUnit!,
         if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
@@ -2817,11 +2822,16 @@ class $CVSS {
           attackVector: json_['attackVector'] as core.String?,
           authentication: json_['authentication'] as core.String?,
           availabilityImpact: json_['availabilityImpact'] as core.String?,
-          baseScore: (json_['baseScore'] as core.num?)?.toDouble(),
+          baseScore: json_.containsKey('baseScore')
+              ? decodeDouble(json_['baseScore'] as core.Object)
+              : null,
           confidentialityImpact: json_['confidentialityImpact'] as core.String?,
-          exploitabilityScore:
-              (json_['exploitabilityScore'] as core.num?)?.toDouble(),
-          impactScore: (json_['impactScore'] as core.num?)?.toDouble(),
+          exploitabilityScore: json_.containsKey('exploitabilityScore')
+              ? decodeDouble(json_['exploitabilityScore'] as core.Object)
+              : null,
+          impactScore: json_.containsKey('impactScore')
+              ? decodeDouble(json_['impactScore'] as core.Object)
+              : null,
           integrityImpact: json_['integrityImpact'] as core.String?,
           privilegesRequired: json_['privilegesRequired'] as core.String?,
           scope: json_['scope'] as core.String?,
@@ -2834,12 +2844,12 @@ class $CVSS {
         if (authentication != null) 'authentication': authentication!,
         if (availabilityImpact != null)
           'availabilityImpact': availabilityImpact!,
-        if (baseScore != null) 'baseScore': baseScore!,
+        if (baseScore != null) 'baseScore': encodeDouble(baseScore!),
         if (confidentialityImpact != null)
           'confidentialityImpact': confidentialityImpact!,
         if (exploitabilityScore != null)
-          'exploitabilityScore': exploitabilityScore!,
-        if (impactScore != null) 'impactScore': impactScore!,
+          'exploitabilityScore': encodeDouble(exploitabilityScore!),
+        if (impactScore != null) 'impactScore': encodeDouble(impactScore!),
         if (integrityImpact != null) 'integrityImpact': integrityImpact!,
         if (privilegesRequired != null)
           'privilegesRequired': privilegesRequired!,
@@ -3713,17 +3723,25 @@ class $Color {
 
   $Color.fromJson(core.Map json_)
       : this(
-          alpha: (json_['alpha'] as core.num?)?.toDouble(),
-          blue: (json_['blue'] as core.num?)?.toDouble(),
-          green: (json_['green'] as core.num?)?.toDouble(),
-          red: (json_['red'] as core.num?)?.toDouble(),
+          alpha: json_.containsKey('alpha')
+              ? decodeDouble(json_['alpha'] as core.Object)
+              : null,
+          blue: json_.containsKey('blue')
+              ? decodeDouble(json_['blue'] as core.Object)
+              : null,
+          green: json_.containsKey('green')
+              ? decodeDouble(json_['green'] as core.Object)
+              : null,
+          red: json_.containsKey('red')
+              ? decodeDouble(json_['red'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alpha != null) 'alpha': alpha!,
-        if (blue != null) 'blue': blue!,
-        if (green != null) 'green': green!,
-        if (red != null) 'red': red!,
+        if (alpha != null) 'alpha': encodeDouble(alpha!),
+        if (blue != null) 'blue': encodeDouble(blue!),
+        if (green != null) 'green': encodeDouble(green!),
+        if (red != null) 'red': encodeDouble(red!),
       };
 }
 
@@ -6219,14 +6237,17 @@ class $DeviceTypeAssignedTargetingOptionDetails {
       : this(
           deviceType: json_['deviceType'] as core.String?,
           youtubeAndPartnersBidMultiplier:
-              (json_['youtubeAndPartnersBidMultiplier'] as core.num?)
-                  ?.toDouble(),
+              json_.containsKey('youtubeAndPartnersBidMultiplier')
+                  ? decodeDouble(
+                      json_['youtubeAndPartnersBidMultiplier'] as core.Object)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceType != null) 'deviceType': deviceType!,
         if (youtubeAndPartnersBidMultiplier != null)
-          'youtubeAndPartnersBidMultiplier': youtubeAndPartnersBidMultiplier!,
+          'youtubeAndPartnersBidMultiplier':
+              encodeDouble(youtubeAndPartnersBidMultiplier!),
       };
 }
 
@@ -6715,13 +6736,17 @@ class $DoubleRange {
 
   $DoubleRange.fromJson(core.Map json_)
       : this(
-          end: (json_['end'] as core.num?)?.toDouble(),
-          start: (json_['start'] as core.num?)?.toDouble(),
+          end: json_.containsKey('end')
+              ? decodeDouble(json_['end'] as core.Object)
+              : null,
+          start: json_.containsKey('start')
+              ? decodeDouble(json_['start'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (end != null) 'end': end!,
-        if (start != null) 'start': start!,
+        if (end != null) 'end': encodeDouble(end!),
+        if (start != null) 'start': encodeDouble(start!),
       };
 }
 
@@ -8557,12 +8582,14 @@ class $EventbusProtoDoubleParameterArray {
   $EventbusProtoDoubleParameterArray.fromJson(core.Map json_)
       : this(
           doubleValues: (json_['doubleValues'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (doubleValues != null) 'doubleValues': doubleValues!,
+        if (doubleValues != null)
+          'doubleValues':
+              doubleValues!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -9414,12 +9441,13 @@ class $Explicit {
   $Explicit.fromJson(core.Map json_)
       : this(
           bounds: (json_['bounds'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bounds != null) 'bounds': bounds!,
+        if (bounds != null)
+          'bounds': bounds!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -9445,15 +9473,19 @@ class $Exponential {
 
   $Exponential.fromJson(core.Map json_)
       : this(
-          growthFactor: (json_['growthFactor'] as core.num?)?.toDouble(),
+          growthFactor: json_.containsKey('growthFactor')
+              ? decodeDouble(json_['growthFactor'] as core.Object)
+              : null,
           numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
-          scale: (json_['scale'] as core.num?)?.toDouble(),
+          scale: json_.containsKey('scale')
+              ? decodeDouble(json_['scale'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (growthFactor != null) 'growthFactor': growthFactor!,
+        if (growthFactor != null) 'growthFactor': encodeDouble(growthFactor!),
         if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
-        if (scale != null) 'scale': scale!,
+        if (scale != null) 'scale': encodeDouble(scale!),
       };
 }
 
@@ -10052,18 +10084,23 @@ class $FractionSplit {
 
   $FractionSplit.fromJson(core.Map json_)
       : this(
-          testFraction: (json_['testFraction'] as core.num?)?.toDouble(),
-          trainingFraction:
-              (json_['trainingFraction'] as core.num?)?.toDouble(),
-          validationFraction:
-              (json_['validationFraction'] as core.num?)?.toDouble(),
+          testFraction: json_.containsKey('testFraction')
+              ? decodeDouble(json_['testFraction'] as core.Object)
+              : null,
+          trainingFraction: json_.containsKey('trainingFraction')
+              ? decodeDouble(json_['trainingFraction'] as core.Object)
+              : null,
+          validationFraction: json_.containsKey('validationFraction')
+              ? decodeDouble(json_['validationFraction'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (testFraction != null) 'testFraction': testFraction!,
-        if (trainingFraction != null) 'trainingFraction': trainingFraction!,
+        if (testFraction != null) 'testFraction': encodeDouble(testFraction!),
+        if (trainingFraction != null)
+          'trainingFraction': encodeDouble(trainingFraction!),
         if (validationFraction != null)
-          'validationFraction': validationFraction!,
+          'validationFraction': encodeDouble(validationFraction!),
       };
 }
 
@@ -11003,12 +11040,14 @@ class $GoogleCloudDocumentaiV1DocumentPageDetectedLanguage {
 
   $GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           languageCode: json_['languageCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (languageCode != null) 'languageCode': languageCode!,
       };
 }
@@ -11035,15 +11074,19 @@ class $GoogleCloudDocumentaiV1DocumentPageDimension {
 
   $GoogleCloudDocumentaiV1DocumentPageDimension.fromJson(core.Map json_)
       : this(
-          height: (json_['height'] as core.num?)?.toDouble(),
+          height: json_.containsKey('height')
+              ? decodeDouble(json_['height'] as core.Object)
+              : null,
           unit: json_['unit'] as core.String?,
-          width: (json_['width'] as core.num?)?.toDouble(),
+          width: json_.containsKey('width')
+              ? decodeDouble(json_['width'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
+        if (height != null) 'height': encodeDouble(height!),
         if (unit != null) 'unit': unit!,
-        if (width != null) 'width': width!,
+        if (width != null) 'width': encodeDouble(width!),
       };
 }
 
@@ -11122,12 +11165,14 @@ class $GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect {
   $GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromJson(
       core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (type != null) 'type': type!,
       };
 }
@@ -11338,12 +11383,14 @@ class $GoogleCloudDocumentaiV1DocumentStyleFontSize {
 
   $GoogleCloudDocumentaiV1DocumentStyleFontSize.fromJson(core.Map json_)
       : this(
-          size: (json_['size'] as core.num?)?.toDouble(),
+          size: json_.containsKey('size')
+              ? decodeDouble(json_['size'] as core.Object)
+              : null,
           unit: json_['unit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (size != null) 'size': size!,
+        if (size != null) 'size': encodeDouble(size!),
         if (unit != null) 'unit': unit!,
       };
 }
@@ -11394,13 +11441,17 @@ class $GoogleCloudDocumentaiV1NormalizedVertex {
 
   $GoogleCloudDocumentaiV1NormalizedVertex.fromJson(core.Map json_)
       : this(
-          x: (json_['x'] as core.num?)?.toDouble(),
-          y: (json_['y'] as core.num?)?.toDouble(),
+          x: json_.containsKey('x')
+              ? decodeDouble(json_['x'] as core.Object)
+              : null,
+          y: json_.containsKey('y')
+              ? decodeDouble(json_['y'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
+        if (x != null) 'x': encodeDouble(x!),
+        if (y != null) 'y': encodeDouble(y!),
       };
 }
 
@@ -14461,13 +14512,17 @@ class $LatLng {
 
   $LatLng.fromJson(core.Map json_)
       : this(
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
       };
 }
 
@@ -14754,14 +14809,18 @@ class $Linear {
   $Linear.fromJson(core.Map json_)
       : this(
           numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
-          offset: (json_['offset'] as core.num?)?.toDouble(),
-          width: (json_['width'] as core.num?)?.toDouble(),
+          offset: json_.containsKey('offset')
+              ? decodeDouble(json_['offset'] as core.Object)
+              : null,
+          width: json_.containsKey('width')
+              ? decodeDouble(json_['width'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
-        if (offset != null) 'offset': offset!,
-        if (width != null) 'width': width!,
+        if (offset != null) 'offset': encodeDouble(offset!),
+        if (width != null) 'width': encodeDouble(width!),
       };
 }
 
@@ -18152,20 +18211,25 @@ class $PoiAssignedTargetingOptionDetails {
   $PoiAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
           displayName: json_['displayName'] as core.String?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
-          proximityRadiusAmount:
-              (json_['proximityRadiusAmount'] as core.num?)?.toDouble(),
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
+          proximityRadiusAmount: json_.containsKey('proximityRadiusAmount')
+              ? decodeDouble(json_['proximityRadiusAmount'] as core.Object)
+              : null,
           proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
           targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
         if (proximityRadiusAmount != null)
-          'proximityRadiusAmount': proximityRadiusAmount!,
+          'proximityRadiusAmount': encodeDouble(proximityRadiusAmount!),
         if (proximityRadiusUnit != null)
           'proximityRadiusUnit': proximityRadiusUnit!,
         if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
@@ -18230,14 +18294,18 @@ class $PoiTargetingOptionDetails {
   $PoiTargetingOptionDetails.fromJson(core.Map json_)
       : this(
           displayName: json_['displayName'] as core.String?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
       };
 }
 
@@ -18726,14 +18794,17 @@ class $ProximityLocationListAssignedTargetingOptionDetails {
       : this(
           proximityLocationListId:
               json_['proximityLocationListId'] as core.String?,
-          proximityRadius: (json_['proximityRadius'] as core.num?)?.toDouble(),
+          proximityRadius: json_.containsKey('proximityRadius')
+              ? decodeDouble(json_['proximityRadius'] as core.Object)
+              : null,
           proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (proximityLocationListId != null)
           'proximityLocationListId': proximityLocationListId!,
-        if (proximityRadius != null) 'proximityRadius': proximityRadius!,
+        if (proximityRadius != null)
+          'proximityRadius': encodeDouble(proximityRadius!),
         if (proximityRadiusUnit != null)
           'proximityRadiusUnit': proximityRadiusUnit!,
       };
@@ -20148,15 +20219,21 @@ class $RgbColor {
 
   $RgbColor.fromJson(core.Map json_)
       : this(
-          blue: (json_['blue'] as core.num?)?.toDouble(),
-          green: (json_['green'] as core.num?)?.toDouble(),
-          red: (json_['red'] as core.num?)?.toDouble(),
+          blue: json_.containsKey('blue')
+              ? decodeDouble(json_['blue'] as core.Object)
+              : null,
+          green: json_.containsKey('green')
+              ? decodeDouble(json_['green'] as core.Object)
+              : null,
+          red: json_.containsKey('red')
+              ? decodeDouble(json_['red'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blue != null) 'blue': blue!,
-        if (green != null) 'green': green!,
-        if (red != null) 'red': red!,
+        if (blue != null) 'blue': encodeDouble(blue!),
+        if (green != null) 'green': encodeDouble(green!),
+        if (red != null) 'red': encodeDouble(red!),
       };
 }
 
@@ -21211,12 +21288,13 @@ class $Shared07 {
   $Shared07.fromJson(core.Map json_)
       : this(
           values: (json_['values'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
+        if (values != null)
+          'values': values!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -21388,13 +21466,17 @@ class $Shared13 {
 
   $Shared13.fromJson(core.Map json_)
       : this(
-          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
+          magnitude: json_.containsKey('magnitude')
+              ? decodeDouble(json_['magnitude'] as core.Object)
+              : null,
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
-        if (score != null) 'score': score!,
+        if (magnitude != null) 'magnitude': encodeDouble(magnitude!),
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -23366,12 +23448,14 @@ class $TraceSamplingConfig {
   $TraceSamplingConfig.fromJson(core.Map json_)
       : this(
           sampler: json_['sampler'] as core.String?,
-          samplingRate: (json_['samplingRate'] as core.num?)?.toDouble(),
+          samplingRate: json_.containsKey('samplingRate')
+              ? decodeDouble(json_['samplingRate'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sampler != null) 'sampler': sampler!,
-        if (samplingRate != null) 'samplingRate': samplingRate!,
+        if (samplingRate != null) 'samplingRate': encodeDouble(samplingRate!),
       };
 }
 

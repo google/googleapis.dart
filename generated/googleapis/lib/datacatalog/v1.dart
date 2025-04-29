@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Cloud Data Catalog API - v1
 ///
@@ -47,6 +48,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -7395,7 +7397,9 @@ class GoogleCloudDatacatalogV1TagField {
       : this(
           boolValue: json_['boolValue'] as core.bool?,
           displayName: json_['displayName'] as core.String?,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           enumValue: json_.containsKey('enumValue')
               ? GoogleCloudDatacatalogV1TagFieldEnumValue.fromJson(
                   json_['enumValue'] as core.Map<core.String, core.dynamic>)
@@ -7409,7 +7413,7 @@ class GoogleCloudDatacatalogV1TagField {
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (displayName != null) 'displayName': displayName!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (enumValue != null) 'enumValue': enumValue!,
         if (order != null) 'order': order!,
         if (richtextValue != null) 'richtextValue': richtextValue!,
@@ -7837,24 +7841,32 @@ class GoogleCloudDatacatalogV1UsageStats {
 
   GoogleCloudDatacatalogV1UsageStats.fromJson(core.Map json_)
       : this(
-          totalCancellations:
-              (json_['totalCancellations'] as core.num?)?.toDouble(),
-          totalCompletions:
-              (json_['totalCompletions'] as core.num?)?.toDouble(),
+          totalCancellations: json_.containsKey('totalCancellations')
+              ? decodeDouble(json_['totalCancellations'] as core.Object)
+              : null,
+          totalCompletions: json_.containsKey('totalCompletions')
+              ? decodeDouble(json_['totalCompletions'] as core.Object)
+              : null,
           totalExecutionTimeForCompletionsMillis:
-              (json_['totalExecutionTimeForCompletionsMillis'] as core.num?)
-                  ?.toDouble(),
-          totalFailures: (json_['totalFailures'] as core.num?)?.toDouble(),
+              json_.containsKey('totalExecutionTimeForCompletionsMillis')
+                  ? decodeDouble(json_['totalExecutionTimeForCompletionsMillis']
+                      as core.Object)
+                  : null,
+          totalFailures: json_.containsKey('totalFailures')
+              ? decodeDouble(json_['totalFailures'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (totalCancellations != null)
-          'totalCancellations': totalCancellations!,
-        if (totalCompletions != null) 'totalCompletions': totalCompletions!,
+          'totalCancellations': encodeDouble(totalCancellations!),
+        if (totalCompletions != null)
+          'totalCompletions': encodeDouble(totalCompletions!),
         if (totalExecutionTimeForCompletionsMillis != null)
           'totalExecutionTimeForCompletionsMillis':
-              totalExecutionTimeForCompletionsMillis!,
-        if (totalFailures != null) 'totalFailures': totalFailures!,
+              encodeDouble(totalExecutionTimeForCompletionsMillis!),
+        if (totalFailures != null)
+          'totalFailures': encodeDouble(totalFailures!),
       };
 }
 

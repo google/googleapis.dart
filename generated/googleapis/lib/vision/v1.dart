@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Vision API - v1
 ///
@@ -49,6 +50,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2730,7 +2732,9 @@ class Block {
               ? BoundingPoly.fromJson(
                   json_['boundingBox'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           paragraphs: (json_['paragraphs'] as core.List?)
               ?.map((value) => Paragraph.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -2744,7 +2748,7 @@ class Block {
   core.Map<core.String, core.dynamic> toJson() => {
         if (blockType != null) 'blockType': blockType!,
         if (boundingBox != null) 'boundingBox': boundingBox!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (paragraphs != null) 'paragraphs': paragraphs!,
         if (property != null) 'property': property!,
       };
@@ -2864,14 +2868,19 @@ class ColorInfo {
               ? Color.fromJson(
                   json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          pixelFraction: (json_['pixelFraction'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
+          pixelFraction: json_.containsKey('pixelFraction')
+              ? decodeDouble(json_['pixelFraction'] as core.Object)
+              : null,
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (color != null) 'color': color!,
-        if (pixelFraction != null) 'pixelFraction': pixelFraction!,
-        if (score != null) 'score': score!,
+        if (pixelFraction != null)
+          'pixelFraction': encodeDouble(pixelFraction!),
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -2903,16 +2912,19 @@ class CropHint {
               ? BoundingPoly.fromJson(
                   json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          importanceFraction:
-              (json_['importanceFraction'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
+          importanceFraction: json_.containsKey('importanceFraction')
+              ? decodeDouble(json_['importanceFraction'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boundingPoly != null) 'boundingPoly': boundingPoly!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (importanceFraction != null)
-          'importanceFraction': importanceFraction!,
+          'importanceFraction': encodeDouble(importanceFraction!),
       };
 }
 
@@ -2956,12 +2968,14 @@ class CropHintsParams {
   CropHintsParams.fromJson(core.Map json_)
       : this(
           aspectRatios: (json_['aspectRatios'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aspectRatios != null) 'aspectRatios': aspectRatios!,
+        if (aspectRatios != null)
+          'aspectRatios':
+              aspectRatios!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -3018,12 +3032,14 @@ class DetectedLanguage {
 
   DetectedLanguage.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           languageCode: json_['languageCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (languageCode != null) 'languageCode': languageCode!,
       };
 }
@@ -3132,7 +3148,9 @@ class EntityAnnotation {
               ? BoundingPoly.fromJson(
                   json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           description: json_['description'] as core.String?,
           locale: json_['locale'] as core.String?,
           locations: (json_['locations'] as core.List?)
@@ -3144,20 +3162,24 @@ class EntityAnnotation {
               ?.map((value) => Property.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          score: (json_['score'] as core.num?)?.toDouble(),
-          topicality: (json_['topicality'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
+          topicality: json_.containsKey('topicality')
+              ? decodeDouble(json_['topicality'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boundingPoly != null) 'boundingPoly': boundingPoly!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (description != null) 'description': description!,
         if (locale != null) 'locale': locale!,
         if (locations != null) 'locations': locations!,
         if (mid != null) 'mid': mid!,
         if (properties != null) 'properties': properties!,
-        if (score != null) 'score': score!,
-        if (topicality != null) 'topicality': topicality!,
+        if (score != null) 'score': encodeDouble(score!),
+        if (topicality != null) 'topicality': encodeDouble(topicality!),
       };
 }
 
@@ -3310,25 +3332,33 @@ class FaceAnnotation {
               ? BoundingPoly.fromJson(
                   json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
-          detectionConfidence:
-              (json_['detectionConfidence'] as core.num?)?.toDouble(),
+          detectionConfidence: json_.containsKey('detectionConfidence')
+              ? decodeDouble(json_['detectionConfidence'] as core.Object)
+              : null,
           fdBoundingPoly: json_.containsKey('fdBoundingPoly')
               ? BoundingPoly.fromJson(json_['fdBoundingPoly']
                   as core.Map<core.String, core.dynamic>)
               : null,
           headwearLikelihood: json_['headwearLikelihood'] as core.String?,
           joyLikelihood: json_['joyLikelihood'] as core.String?,
-          landmarkingConfidence:
-              (json_['landmarkingConfidence'] as core.num?)?.toDouble(),
+          landmarkingConfidence: json_.containsKey('landmarkingConfidence')
+              ? decodeDouble(json_['landmarkingConfidence'] as core.Object)
+              : null,
           landmarks: (json_['landmarks'] as core.List?)
               ?.map((value) => Landmark.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          panAngle: (json_['panAngle'] as core.num?)?.toDouble(),
-          rollAngle: (json_['rollAngle'] as core.num?)?.toDouble(),
+          panAngle: json_.containsKey('panAngle')
+              ? decodeDouble(json_['panAngle'] as core.Object)
+              : null,
+          rollAngle: json_.containsKey('rollAngle')
+              ? decodeDouble(json_['rollAngle'] as core.Object)
+              : null,
           sorrowLikelihood: json_['sorrowLikelihood'] as core.String?,
           surpriseLikelihood: json_['surpriseLikelihood'] as core.String?,
-          tiltAngle: (json_['tiltAngle'] as core.num?)?.toDouble(),
+          tiltAngle: json_.containsKey('tiltAngle')
+              ? decodeDouble(json_['tiltAngle'] as core.Object)
+              : null,
           underExposedLikelihood:
               json_['underExposedLikelihood'] as core.String?,
         );
@@ -3338,20 +3368,20 @@ class FaceAnnotation {
         if (blurredLikelihood != null) 'blurredLikelihood': blurredLikelihood!,
         if (boundingPoly != null) 'boundingPoly': boundingPoly!,
         if (detectionConfidence != null)
-          'detectionConfidence': detectionConfidence!,
+          'detectionConfidence': encodeDouble(detectionConfidence!),
         if (fdBoundingPoly != null) 'fdBoundingPoly': fdBoundingPoly!,
         if (headwearLikelihood != null)
           'headwearLikelihood': headwearLikelihood!,
         if (joyLikelihood != null) 'joyLikelihood': joyLikelihood!,
         if (landmarkingConfidence != null)
-          'landmarkingConfidence': landmarkingConfidence!,
+          'landmarkingConfidence': encodeDouble(landmarkingConfidence!),
         if (landmarks != null) 'landmarks': landmarks!,
-        if (panAngle != null) 'panAngle': panAngle!,
-        if (rollAngle != null) 'rollAngle': rollAngle!,
+        if (panAngle != null) 'panAngle': encodeDouble(panAngle!),
+        if (rollAngle != null) 'rollAngle': encodeDouble(rollAngle!),
         if (sorrowLikelihood != null) 'sorrowLikelihood': sorrowLikelihood!,
         if (surpriseLikelihood != null)
           'surpriseLikelihood': surpriseLikelihood!,
-        if (tiltAngle != null) 'tiltAngle': tiltAngle!,
+        if (tiltAngle != null) 'tiltAngle': encodeDouble(tiltAngle!),
         if (underExposedLikelihood != null)
           'underExposedLikelihood': underExposedLikelihood!,
       };
@@ -4203,7 +4233,9 @@ class LocalizedObjectAnnotation {
           languageCode: json_['languageCode'] as core.String?,
           mid: json_['mid'] as core.String?,
           name: json_['name'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4211,7 +4243,7 @@ class LocalizedObjectAnnotation {
         if (languageCode != null) 'languageCode': languageCode!,
         if (mid != null) 'mid': mid!,
         if (name != null) 'name': name!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -4255,13 +4287,17 @@ class NormalizedVertex {
 
   NormalizedVertex.fromJson(core.Map json_)
       : this(
-          x: (json_['x'] as core.num?)?.toDouble(),
-          y: (json_['y'] as core.num?)?.toDouble(),
+          x: json_.containsKey('x')
+              ? decodeDouble(json_['x'] as core.Object)
+              : null,
+          y: json_.containsKey('y')
+              ? decodeDouble(json_['y'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
+        if (x != null) 'x': encodeDouble(x!),
+        if (y != null) 'y': encodeDouble(y!),
       };
 }
 
@@ -4296,14 +4332,16 @@ class ObjectAnnotation {
           languageCode: json_['languageCode'] as core.String?,
           mid: json_['mid'] as core.String?,
           name: json_['name'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
         if (mid != null) 'mid': mid!,
         if (name != null) 'name': name!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -4458,7 +4496,9 @@ class Page {
               ?.map((value) =>
                   Block.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           height: json_['height'] as core.int?,
           property: json_.containsKey('property')
               ? TextProperty.fromJson(
@@ -4469,7 +4509,7 @@ class Page {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (blocks != null) 'blocks': blocks!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (height != null) 'height': height!,
         if (property != null) 'property': property!,
         if (width != null) 'width': width!,
@@ -4513,7 +4553,9 @@ class Paragraph {
               ? BoundingPoly.fromJson(
                   json_['boundingBox'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           property: json_.containsKey('property')
               ? TextProperty.fromJson(
                   json_['property'] as core.Map<core.String, core.dynamic>)
@@ -4526,7 +4568,7 @@ class Paragraph {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boundingBox != null) 'boundingBox': boundingBox!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (property != null) 'property': property!,
         if (words != null) 'words': words!,
       };
@@ -4554,15 +4596,21 @@ class Position {
 
   Position.fromJson(core.Map json_)
       : this(
-          x: (json_['x'] as core.num?)?.toDouble(),
-          y: (json_['y'] as core.num?)?.toDouble(),
-          z: (json_['z'] as core.num?)?.toDouble(),
+          x: json_.containsKey('x')
+              ? decodeDouble(json_['x'] as core.Object)
+              : null,
+          y: json_.containsKey('y')
+              ? decodeDouble(json_['y'] as core.Object)
+              : null,
+          z: json_.containsKey('z')
+              ? decodeDouble(json_['z'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-        if (z != null) 'z': z!,
+        if (x != null) 'x': encodeDouble(x!),
+        if (y != null) 'y': encodeDouble(y!),
+        if (z != null) 'z': encodeDouble(z!),
       };
 }
 
@@ -4995,13 +5043,15 @@ class Result {
               ? Product.fromJson(
                   json_['product'] as core.Map<core.String, core.dynamic>)
               : null,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (image != null) 'image': image!,
         if (product != null) 'product': product!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -5143,7 +5193,9 @@ class Symbol {
               ? BoundingPoly.fromJson(
                   json_['boundingBox'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           property: json_.containsKey('property')
               ? TextProperty.fromJson(
                   json_['property'] as core.Map<core.String, core.dynamic>)
@@ -5153,7 +5205,7 @@ class Symbol {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boundingBox != null) 'boundingBox': boundingBox!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (property != null) 'property': property!,
         if (text != null) 'text': text!,
       };
@@ -5418,13 +5470,15 @@ class WebEntity {
       : this(
           description: json_['description'] as core.String?,
           entityId: json_['entityId'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (entityId != null) 'entityId': entityId!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -5443,12 +5497,14 @@ class WebImage {
 
   WebImage.fromJson(core.Map json_)
       : this(
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
         if (url != null) 'url': url!,
       };
 }
@@ -5522,7 +5578,9 @@ class WebPage {
               ?.map((value) => WebImage.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           url: json_['url'] as core.String?,
         );
 
@@ -5532,7 +5590,7 @@ class WebPage {
         if (pageTitle != null) 'pageTitle': pageTitle!,
         if (partialMatchingImages != null)
           'partialMatchingImages': partialMatchingImages!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
         if (url != null) 'url': url!,
       };
 }
@@ -5576,7 +5634,9 @@ class Word {
               ? BoundingPoly.fromJson(
                   json_['boundingBox'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           property: json_.containsKey('property')
               ? TextProperty.fromJson(
                   json_['property'] as core.Map<core.String, core.dynamic>)
@@ -5589,7 +5649,7 @@ class Word {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boundingBox != null) 'boundingBox': boundingBox!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (property != null) 'property': property!,
         if (symbols != null) 'symbols': symbols!,
       };

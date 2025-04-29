@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// SAS Portal API (Testing) - v1alpha1
 ///
@@ -49,6 +50,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3706,12 +3708,14 @@ class SasPortalChannelWithScore {
               ? SasPortalFrequencyRange.fromJson(json_['frequencyRange']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (frequencyRange != null) 'frequencyRange': frequencyRange!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -4020,7 +4024,9 @@ class SasPortalDeviceGrant {
           grantId: json_['grantId'] as core.String?,
           lastHeartbeatTransmitExpireTime:
               json_['lastHeartbeatTransmitExpireTime'] as core.String?,
-          maxEirp: (json_['maxEirp'] as core.num?)?.toDouble(),
+          maxEirp: json_.containsKey('maxEirp')
+              ? decodeDouble(json_['maxEirp'] as core.Object)
+              : null,
           moveList: (json_['moveList'] as core.List?)
               ?.map((value) => SasPortalDpaMoveList.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -4038,7 +4044,7 @@ class SasPortalDeviceGrant {
         if (grantId != null) 'grantId': grantId!,
         if (lastHeartbeatTransmitExpireTime != null)
           'lastHeartbeatTransmitExpireTime': lastHeartbeatTransmitExpireTime!,
-        if (maxEirp != null) 'maxEirp': maxEirp!,
+        if (maxEirp != null) 'maxEirp': encodeDouble(maxEirp!),
         if (moveList != null) 'moveList': moveList!,
         if (state != null) 'state': state!,
         if (suspensionReason != null) 'suspensionReason': suspensionReason!,

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// My Business Lodging API - v1
 ///
@@ -34,6 +35,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3906,8 +3908,9 @@ class LivingAreaLayout {
       : this(
           balcony: json_['balcony'] as core.bool?,
           balconyException: json_['balconyException'] as core.String?,
-          livingAreaSqMeters:
-              (json_['livingAreaSqMeters'] as core.num?)?.toDouble(),
+          livingAreaSqMeters: json_.containsKey('livingAreaSqMeters')
+              ? decodeDouble(json_['livingAreaSqMeters'] as core.Object)
+              : null,
           livingAreaSqMetersException:
               json_['livingAreaSqMetersException'] as core.String?,
           loft: json_['loft'] as core.bool?,
@@ -3924,7 +3927,7 @@ class LivingAreaLayout {
         if (balcony != null) 'balcony': balcony!,
         if (balconyException != null) 'balconyException': balconyException!,
         if (livingAreaSqMeters != null)
-          'livingAreaSqMeters': livingAreaSqMeters!,
+          'livingAreaSqMeters': encodeDouble(livingAreaSqMeters!),
         if (livingAreaSqMetersException != null)
           'livingAreaSqMetersException': livingAreaSqMetersException!,
         if (loft != null) 'loft': loft!,

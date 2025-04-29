@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Natural Language API - v2
 ///
@@ -33,6 +34,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -644,15 +646,19 @@ class ClassificationCategory {
 
   ClassificationCategory.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           name: json_['name'] as core.String?,
-          severity: (json_['severity'] as core.num?)?.toDouble(),
+          severity: json_.containsKey('severity')
+              ? decodeDouble(json_['severity'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (name != null) 'name': name!,
-        if (severity != null) 'severity': severity!,
+        if (severity != null) 'severity': encodeDouble(severity!),
       };
 }
 
@@ -906,7 +912,9 @@ class EntityMention {
 
   EntityMention.fromJson(core.Map json_)
       : this(
-          probability: (json_['probability'] as core.num?)?.toDouble(),
+          probability: json_.containsKey('probability')
+              ? decodeDouble(json_['probability'] as core.Object)
+              : null,
           sentiment: json_.containsKey('sentiment')
               ? Sentiment.fromJson(
                   json_['sentiment'] as core.Map<core.String, core.dynamic>)
@@ -919,7 +927,7 @@ class EntityMention {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (probability != null) 'probability': probability!,
+        if (probability != null) 'probability': encodeDouble(probability!),
         if (sentiment != null) 'sentiment': sentiment!,
         if (text != null) 'text': text!,
         if (type != null) 'type': type!,
@@ -1059,13 +1067,17 @@ class Sentiment {
 
   Sentiment.fromJson(core.Map json_)
       : this(
-          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
+          magnitude: json_.containsKey('magnitude')
+              ? decodeDouble(json_['magnitude'] as core.Object)
+              : null,
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
-        if (score != null) 'score': score!,
+        if (magnitude != null) 'magnitude': encodeDouble(magnitude!),
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 

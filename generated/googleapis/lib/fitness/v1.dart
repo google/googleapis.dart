@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Fitness API - v1
 ///
@@ -36,6 +37,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1864,11 +1866,13 @@ class MapValue {
 
   MapValue.fromJson(core.Map json_)
       : this(
-          fpVal: (json_['fpVal'] as core.num?)?.toDouble(),
+          fpVal: json_.containsKey('fpVal')
+              ? decodeDouble(json_['fpVal'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fpVal != null) 'fpVal': fpVal!,
+        if (fpVal != null) 'fpVal': encodeDouble(fpVal!),
       };
 }
 
@@ -1989,7 +1993,9 @@ class Value {
 
   Value.fromJson(core.Map json_)
       : this(
-          fpVal: (json_['fpVal'] as core.num?)?.toDouble(),
+          fpVal: json_.containsKey('fpVal')
+              ? decodeDouble(json_['fpVal'] as core.Object)
+              : null,
           intVal: json_['intVal'] as core.int?,
           mapVal: (json_['mapVal'] as core.List?)
               ?.map((value) => ValueMapValEntry.fromJson(
@@ -1999,7 +2005,7 @@ class Value {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fpVal != null) 'fpVal': fpVal!,
+        if (fpVal != null) 'fpVal': encodeDouble(fpVal!),
         if (intVal != null) 'intVal': intVal!,
         if (mapVal != null) 'mapVal': mapVal!,
         if (stringVal != null) 'stringVal': stringVal!,

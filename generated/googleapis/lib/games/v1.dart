@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Play Game Services - v1
 ///
@@ -43,6 +44,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -5438,42 +5440,54 @@ class StatsResponse {
 
   StatsResponse.fromJson(core.Map json_)
       : this(
-          avgSessionLengthMinutes:
-              (json_['avg_session_length_minutes'] as core.num?)?.toDouble(),
-          churnProbability:
-              (json_['churn_probability'] as core.num?)?.toDouble(),
+          avgSessionLengthMinutes: json_
+                  .containsKey('avg_session_length_minutes')
+              ? decodeDouble(json_['avg_session_length_minutes'] as core.Object)
+              : null,
+          churnProbability: json_.containsKey('churn_probability')
+              ? decodeDouble(json_['churn_probability'] as core.Object)
+              : null,
           daysSinceLastPlayed: json_['days_since_last_played'] as core.int?,
-          highSpenderProbability:
-              (json_['high_spender_probability'] as core.num?)?.toDouble(),
+          highSpenderProbability: json_.containsKey('high_spender_probability')
+              ? decodeDouble(json_['high_spender_probability'] as core.Object)
+              : null,
           kind: json_['kind'] as core.String?,
           numPurchases: json_['num_purchases'] as core.int?,
           numSessions: json_['num_sessions'] as core.int?,
-          numSessionsPercentile:
-              (json_['num_sessions_percentile'] as core.num?)?.toDouble(),
-          spendPercentile: (json_['spend_percentile'] as core.num?)?.toDouble(),
-          spendProbability:
-              (json_['spend_probability'] as core.num?)?.toDouble(),
-          totalSpendNext28Days:
-              (json_['total_spend_next_28_days'] as core.num?)?.toDouble(),
+          numSessionsPercentile: json_.containsKey('num_sessions_percentile')
+              ? decodeDouble(json_['num_sessions_percentile'] as core.Object)
+              : null,
+          spendPercentile: json_.containsKey('spend_percentile')
+              ? decodeDouble(json_['spend_percentile'] as core.Object)
+              : null,
+          spendProbability: json_.containsKey('spend_probability')
+              ? decodeDouble(json_['spend_probability'] as core.Object)
+              : null,
+          totalSpendNext28Days: json_.containsKey('total_spend_next_28_days')
+              ? decodeDouble(json_['total_spend_next_28_days'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (avgSessionLengthMinutes != null)
-          'avg_session_length_minutes': avgSessionLengthMinutes!,
-        if (churnProbability != null) 'churn_probability': churnProbability!,
+          'avg_session_length_minutes': encodeDouble(avgSessionLengthMinutes!),
+        if (churnProbability != null)
+          'churn_probability': encodeDouble(churnProbability!),
         if (daysSinceLastPlayed != null)
           'days_since_last_played': daysSinceLastPlayed!,
         if (highSpenderProbability != null)
-          'high_spender_probability': highSpenderProbability!,
+          'high_spender_probability': encodeDouble(highSpenderProbability!),
         if (kind != null) 'kind': kind!,
         if (numPurchases != null) 'num_purchases': numPurchases!,
         if (numSessions != null) 'num_sessions': numSessions!,
         if (numSessionsPercentile != null)
-          'num_sessions_percentile': numSessionsPercentile!,
-        if (spendPercentile != null) 'spend_percentile': spendPercentile!,
-        if (spendProbability != null) 'spend_probability': spendProbability!,
+          'num_sessions_percentile': encodeDouble(numSessionsPercentile!),
+        if (spendPercentile != null)
+          'spend_percentile': encodeDouble(spendPercentile!),
+        if (spendProbability != null)
+          'spend_probability': encodeDouble(spendProbability!),
         if (totalSpendNext28Days != null)
-          'total_spend_next_28_days': totalSpendNext28Days!,
+          'total_spend_next_28_days': encodeDouble(totalSpendNext28Days!),
       };
 }
 

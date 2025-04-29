@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Channel API - v1
 ///
@@ -48,6 +49,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -6907,7 +6909,9 @@ class GoogleCloudChannelV1Price {
               ? GoogleTypeMoney.fromJson(
                   json_['basePrice'] as core.Map<core.String, core.dynamic>)
               : null,
-          discount: (json_['discount'] as core.num?)?.toDouble(),
+          discount: json_.containsKey('discount')
+              ? decodeDouble(json_['discount'] as core.Object)
+              : null,
           effectivePrice: json_.containsKey('effectivePrice')
               ? GoogleTypeMoney.fromJson(json_['effectivePrice']
                   as core.Map<core.String, core.dynamic>)
@@ -6917,7 +6921,7 @@ class GoogleCloudChannelV1Price {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basePrice != null) 'basePrice': basePrice!,
-        if (discount != null) 'discount': discount!,
+        if (discount != null) 'discount': encodeDouble(discount!),
         if (effectivePrice != null) 'effectivePrice': effectivePrice!,
         if (externalPriceUri != null) 'externalPriceUri': externalPriceUri!,
       };
@@ -8340,7 +8344,9 @@ class GoogleCloudChannelV1Value {
   GoogleCloudChannelV1Value.fromJson(core.Map json_)
       : this(
           boolValue: json_['boolValue'] as core.bool?,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           int64Value: json_['int64Value'] as core.String?,
           protoValue: json_.containsKey('protoValue')
               ? json_['protoValue'] as core.Map<core.String, core.dynamic>
@@ -8350,7 +8356,7 @@ class GoogleCloudChannelV1Value {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (int64Value != null) 'int64Value': int64Value!,
         if (protoValue != null) 'protoValue': protoValue!,
         if (stringValue != null) 'stringValue': stringValue!,

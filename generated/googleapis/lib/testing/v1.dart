@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Testing API - v1
 ///
@@ -36,6 +37,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1958,12 +1960,14 @@ class Distribution {
 
   Distribution.fromJson(core.Map json_)
       : this(
-          marketShare: (json_['marketShare'] as core.num?)?.toDouble(),
+          marketShare: json_.containsKey('marketShare')
+              ? decodeDouble(json_['marketShare'] as core.Object)
+              : null,
           measurementTime: json_['measurementTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (marketShare != null) 'marketShare': marketShare!,
+        if (marketShare != null) 'marketShare': encodeDouble(marketShare!),
         if (measurementTime != null) 'measurementTime': measurementTime!,
       };
 }
@@ -4663,21 +4667,29 @@ class TrafficRule {
 
   TrafficRule.fromJson(core.Map json_)
       : this(
-          bandwidth: (json_['bandwidth'] as core.num?)?.toDouble(),
-          burst: (json_['burst'] as core.num?)?.toDouble(),
+          bandwidth: json_.containsKey('bandwidth')
+              ? decodeDouble(json_['bandwidth'] as core.Object)
+              : null,
+          burst: json_.containsKey('burst')
+              ? decodeDouble(json_['burst'] as core.Object)
+              : null,
           delay: json_['delay'] as core.String?,
-          packetDuplicationRatio:
-              (json_['packetDuplicationRatio'] as core.num?)?.toDouble(),
-          packetLossRatio: (json_['packetLossRatio'] as core.num?)?.toDouble(),
+          packetDuplicationRatio: json_.containsKey('packetDuplicationRatio')
+              ? decodeDouble(json_['packetDuplicationRatio'] as core.Object)
+              : null,
+          packetLossRatio: json_.containsKey('packetLossRatio')
+              ? decodeDouble(json_['packetLossRatio'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bandwidth != null) 'bandwidth': bandwidth!,
-        if (burst != null) 'burst': burst!,
+        if (bandwidth != null) 'bandwidth': encodeDouble(bandwidth!),
+        if (burst != null) 'burst': encodeDouble(burst!),
         if (delay != null) 'delay': delay!,
         if (packetDuplicationRatio != null)
-          'packetDuplicationRatio': packetDuplicationRatio!,
-        if (packetLossRatio != null) 'packetLossRatio': packetLossRatio!,
+          'packetDuplicationRatio': encodeDouble(packetDuplicationRatio!),
+        if (packetLossRatio != null)
+          'packetLossRatio': encodeDouble(packetLossRatio!),
       };
 }
 

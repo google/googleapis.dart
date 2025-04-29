@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// BigQuery API - v2
 ///
@@ -38,6 +39,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2832,23 +2834,37 @@ class AggregateClassificationMetrics {
 
   AggregateClassificationMetrics.fromJson(core.Map json_)
       : this(
-          accuracy: (json_['accuracy'] as core.num?)?.toDouble(),
-          f1Score: (json_['f1Score'] as core.num?)?.toDouble(),
-          logLoss: (json_['logLoss'] as core.num?)?.toDouble(),
-          precision: (json_['precision'] as core.num?)?.toDouble(),
-          recall: (json_['recall'] as core.num?)?.toDouble(),
-          rocAuc: (json_['rocAuc'] as core.num?)?.toDouble(),
-          threshold: (json_['threshold'] as core.num?)?.toDouble(),
+          accuracy: json_.containsKey('accuracy')
+              ? decodeDouble(json_['accuracy'] as core.Object)
+              : null,
+          f1Score: json_.containsKey('f1Score')
+              ? decodeDouble(json_['f1Score'] as core.Object)
+              : null,
+          logLoss: json_.containsKey('logLoss')
+              ? decodeDouble(json_['logLoss'] as core.Object)
+              : null,
+          precision: json_.containsKey('precision')
+              ? decodeDouble(json_['precision'] as core.Object)
+              : null,
+          recall: json_.containsKey('recall')
+              ? decodeDouble(json_['recall'] as core.Object)
+              : null,
+          rocAuc: json_.containsKey('rocAuc')
+              ? decodeDouble(json_['rocAuc'] as core.Object)
+              : null,
+          threshold: json_.containsKey('threshold')
+              ? decodeDouble(json_['threshold'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accuracy != null) 'accuracy': accuracy!,
-        if (f1Score != null) 'f1Score': f1Score!,
-        if (logLoss != null) 'logLoss': logLoss!,
-        if (precision != null) 'precision': precision!,
-        if (recall != null) 'recall': recall!,
-        if (rocAuc != null) 'rocAuc': rocAuc!,
-        if (threshold != null) 'threshold': threshold!,
+        if (accuracy != null) 'accuracy': encodeDouble(accuracy!),
+        if (f1Score != null) 'f1Score': encodeDouble(f1Score!),
+        if (logLoss != null) 'logLoss': encodeDouble(logLoss!),
+        if (precision != null) 'precision': encodeDouble(precision!),
+        if (recall != null) 'recall': encodeDouble(recall!),
+        if (rocAuc != null) 'rocAuc': encodeDouble(rocAuc!),
+        if (threshold != null) 'threshold': encodeDouble(threshold!),
       };
 }
 
@@ -2985,23 +3001,28 @@ class ArimaCoefficients {
       : this(
           autoRegressiveCoefficients:
               (json_['autoRegressiveCoefficients'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
+                  ?.map((value) => decodeDouble(value))
                   .toList(),
-          interceptCoefficient:
-              (json_['interceptCoefficient'] as core.num?)?.toDouble(),
+          interceptCoefficient: json_.containsKey('interceptCoefficient')
+              ? decodeDouble(json_['interceptCoefficient'] as core.Object)
+              : null,
           movingAverageCoefficients:
               (json_['movingAverageCoefficients'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
+                  ?.map((value) => decodeDouble(value))
                   .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoRegressiveCoefficients != null)
-          'autoRegressiveCoefficients': autoRegressiveCoefficients!,
+          'autoRegressiveCoefficients': autoRegressiveCoefficients!
+              .map((value) => encodeDouble(value))
+              .toList(),
         if (interceptCoefficient != null)
-          'interceptCoefficient': interceptCoefficient!,
+          'interceptCoefficient': encodeDouble(interceptCoefficient!),
         if (movingAverageCoefficients != null)
-          'movingAverageCoefficients': movingAverageCoefficients!,
+          'movingAverageCoefficients': movingAverageCoefficients!
+              .map((value) => encodeDouble(value))
+              .toList(),
       };
 }
 
@@ -3024,15 +3045,22 @@ class ArimaFittingMetrics {
 
   ArimaFittingMetrics.fromJson(core.Map json_)
       : this(
-          aic: (json_['aic'] as core.num?)?.toDouble(),
-          logLikelihood: (json_['logLikelihood'] as core.num?)?.toDouble(),
-          variance: (json_['variance'] as core.num?)?.toDouble(),
+          aic: json_.containsKey('aic')
+              ? decodeDouble(json_['aic'] as core.Object)
+              : null,
+          logLikelihood: json_.containsKey('logLikelihood')
+              ? decodeDouble(json_['logLikelihood'] as core.Object)
+              : null,
+          variance: json_.containsKey('variance')
+              ? decodeDouble(json_['variance'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aic != null) 'aic': aic!,
-        if (logLikelihood != null) 'logLikelihood': logLikelihood!,
-        if (variance != null) 'variance': variance!,
+        if (aic != null) 'aic': encodeDouble(aic!),
+        if (logLikelihood != null)
+          'logLikelihood': encodeDouble(logLikelihood!),
+        if (variance != null) 'variance': encodeDouble(variance!),
       };
 }
 
@@ -4016,27 +4044,36 @@ class BinaryConfusionMatrix {
 
   BinaryConfusionMatrix.fromJson(core.Map json_)
       : this(
-          accuracy: (json_['accuracy'] as core.num?)?.toDouble(),
-          f1Score: (json_['f1Score'] as core.num?)?.toDouble(),
+          accuracy: json_.containsKey('accuracy')
+              ? decodeDouble(json_['accuracy'] as core.Object)
+              : null,
+          f1Score: json_.containsKey('f1Score')
+              ? decodeDouble(json_['f1Score'] as core.Object)
+              : null,
           falseNegatives: json_['falseNegatives'] as core.String?,
           falsePositives: json_['falsePositives'] as core.String?,
-          positiveClassThreshold:
-              (json_['positiveClassThreshold'] as core.num?)?.toDouble(),
-          precision: (json_['precision'] as core.num?)?.toDouble(),
-          recall: (json_['recall'] as core.num?)?.toDouble(),
+          positiveClassThreshold: json_.containsKey('positiveClassThreshold')
+              ? decodeDouble(json_['positiveClassThreshold'] as core.Object)
+              : null,
+          precision: json_.containsKey('precision')
+              ? decodeDouble(json_['precision'] as core.Object)
+              : null,
+          recall: json_.containsKey('recall')
+              ? decodeDouble(json_['recall'] as core.Object)
+              : null,
           trueNegatives: json_['trueNegatives'] as core.String?,
           truePositives: json_['truePositives'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accuracy != null) 'accuracy': accuracy!,
-        if (f1Score != null) 'f1Score': f1Score!,
+        if (accuracy != null) 'accuracy': encodeDouble(accuracy!),
+        if (f1Score != null) 'f1Score': encodeDouble(f1Score!),
         if (falseNegatives != null) 'falseNegatives': falseNegatives!,
         if (falsePositives != null) 'falsePositives': falsePositives!,
         if (positiveClassThreshold != null)
-          'positiveClassThreshold': positiveClassThreshold!,
-        if (precision != null) 'precision': precision!,
-        if (recall != null) 'recall': recall!,
+          'positiveClassThreshold': encodeDouble(positiveClassThreshold!),
+        if (precision != null) 'precision': encodeDouble(precision!),
+        if (recall != null) 'recall': encodeDouble(recall!),
         if (trueNegatives != null) 'trueNegatives': trueNegatives!,
         if (truePositives != null) 'truePositives': truePositives!,
       };
@@ -4174,18 +4211,24 @@ class BqmlIterationResult {
   BqmlIterationResult.fromJson(core.Map json_)
       : this(
           durationMs: json_['durationMs'] as core.String?,
-          evalLoss: (json_['evalLoss'] as core.num?)?.toDouble(),
+          evalLoss: json_.containsKey('evalLoss')
+              ? decodeDouble(json_['evalLoss'] as core.Object)
+              : null,
           index: json_['index'] as core.int?,
-          learnRate: (json_['learnRate'] as core.num?)?.toDouble(),
-          trainingLoss: (json_['trainingLoss'] as core.num?)?.toDouble(),
+          learnRate: json_.containsKey('learnRate')
+              ? decodeDouble(json_['learnRate'] as core.Object)
+              : null,
+          trainingLoss: json_.containsKey('trainingLoss')
+              ? decodeDouble(json_['trainingLoss'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (durationMs != null) 'durationMs': durationMs!,
-        if (evalLoss != null) 'evalLoss': evalLoss!,
+        if (evalLoss != null) 'evalLoss': encodeDouble(evalLoss!),
         if (index != null) 'index': index!,
-        if (learnRate != null) 'learnRate': learnRate!,
-        if (trainingLoss != null) 'trainingLoss': trainingLoss!,
+        if (learnRate != null) 'learnRate': encodeDouble(learnRate!),
+        if (trainingLoss != null) 'trainingLoss': encodeDouble(trainingLoss!),
       };
 }
 
@@ -4216,27 +4259,37 @@ class BqmlTrainingRunTrainingOptions {
   BqmlTrainingRunTrainingOptions.fromJson(core.Map json_)
       : this(
           earlyStop: json_['earlyStop'] as core.bool?,
-          l1Reg: (json_['l1Reg'] as core.num?)?.toDouble(),
-          l2Reg: (json_['l2Reg'] as core.num?)?.toDouble(),
-          learnRate: (json_['learnRate'] as core.num?)?.toDouble(),
+          l1Reg: json_.containsKey('l1Reg')
+              ? decodeDouble(json_['l1Reg'] as core.Object)
+              : null,
+          l2Reg: json_.containsKey('l2Reg')
+              ? decodeDouble(json_['l2Reg'] as core.Object)
+              : null,
+          learnRate: json_.containsKey('learnRate')
+              ? decodeDouble(json_['learnRate'] as core.Object)
+              : null,
           learnRateStrategy: json_['learnRateStrategy'] as core.String?,
-          lineSearchInitLearnRate:
-              (json_['lineSearchInitLearnRate'] as core.num?)?.toDouble(),
+          lineSearchInitLearnRate: json_.containsKey('lineSearchInitLearnRate')
+              ? decodeDouble(json_['lineSearchInitLearnRate'] as core.Object)
+              : null,
           maxIteration: json_['maxIteration'] as core.String?,
-          minRelProgress: (json_['minRelProgress'] as core.num?)?.toDouble(),
+          minRelProgress: json_.containsKey('minRelProgress')
+              ? decodeDouble(json_['minRelProgress'] as core.Object)
+              : null,
           warmStart: json_['warmStart'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (earlyStop != null) 'earlyStop': earlyStop!,
-        if (l1Reg != null) 'l1Reg': l1Reg!,
-        if (l2Reg != null) 'l2Reg': l2Reg!,
-        if (learnRate != null) 'learnRate': learnRate!,
+        if (l1Reg != null) 'l1Reg': encodeDouble(l1Reg!),
+        if (l2Reg != null) 'l2Reg': encodeDouble(l2Reg!),
+        if (learnRate != null) 'learnRate': encodeDouble(learnRate!),
         if (learnRateStrategy != null) 'learnRateStrategy': learnRateStrategy!,
         if (lineSearchInitLearnRate != null)
-          'lineSearchInitLearnRate': lineSearchInitLearnRate!,
+          'lineSearchInitLearnRate': encodeDouble(lineSearchInitLearnRate!),
         if (maxIteration != null) 'maxIteration': maxIteration!,
-        if (minRelProgress != null) 'minRelProgress': minRelProgress!,
+        if (minRelProgress != null)
+          'minRelProgress': encodeDouble(minRelProgress!),
         if (warmStart != null) 'warmStart': warmStart!,
       };
 }
@@ -4430,13 +4483,16 @@ class ClusterInfo {
   ClusterInfo.fromJson(core.Map json_)
       : this(
           centroidId: json_['centroidId'] as core.String?,
-          clusterRadius: (json_['clusterRadius'] as core.num?)?.toDouble(),
+          clusterRadius: json_.containsKey('clusterRadius')
+              ? decodeDouble(json_['clusterRadius'] as core.Object)
+              : null,
           clusterSize: json_['clusterSize'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (centroidId != null) 'centroidId': centroidId!,
-        if (clusterRadius != null) 'clusterRadius': clusterRadius!,
+        if (clusterRadius != null)
+          'clusterRadius': encodeDouble(clusterRadius!),
         if (clusterSize != null) 'clusterSize': clusterSize!,
       };
 }
@@ -4490,18 +4546,20 @@ class ClusteringMetrics {
               ?.map((value) => Cluster.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          daviesBouldinIndex:
-              (json_['daviesBouldinIndex'] as core.num?)?.toDouble(),
-          meanSquaredDistance:
-              (json_['meanSquaredDistance'] as core.num?)?.toDouble(),
+          daviesBouldinIndex: json_.containsKey('daviesBouldinIndex')
+              ? decodeDouble(json_['daviesBouldinIndex'] as core.Object)
+              : null,
+          meanSquaredDistance: json_.containsKey('meanSquaredDistance')
+              ? decodeDouble(json_['meanSquaredDistance'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusters != null) 'clusters': clusters!,
         if (daviesBouldinIndex != null)
-          'daviesBouldinIndex': daviesBouldinIndex!,
+          'daviesBouldinIndex': encodeDouble(daviesBouldinIndex!),
         if (meanSquaredDistance != null)
-          'meanSquaredDistance': meanSquaredDistance!,
+          'meanSquaredDistance': encodeDouble(meanSquaredDistance!),
       };
 }
 
@@ -4521,8 +4579,9 @@ class ConfusionMatrix {
 
   ConfusionMatrix.fromJson(core.Map json_)
       : this(
-          confidenceThreshold:
-              (json_['confidenceThreshold'] as core.num?)?.toDouble(),
+          confidenceThreshold: json_.containsKey('confidenceThreshold')
+              ? decodeDouble(json_['confidenceThreshold'] as core.Object)
+              : null,
           rows: (json_['rows'] as core.List?)
               ?.map((value) =>
                   Row.fromJson(value as core.Map<core.String, core.dynamic>))
@@ -4531,7 +4590,7 @@ class ConfusionMatrix {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidenceThreshold != null)
-          'confidenceThreshold': confidenceThreshold!,
+          'confidenceThreshold': encodeDouble(confidenceThreshold!),
         if (rows != null) 'rows': rows!,
       };
 }
@@ -5787,29 +5846,40 @@ class DifferentialPrivacyPolicy {
 
   DifferentialPrivacyPolicy.fromJson(core.Map json_)
       : this(
-          deltaBudget: (json_['deltaBudget'] as core.num?)?.toDouble(),
-          deltaBudgetRemaining:
-              (json_['deltaBudgetRemaining'] as core.num?)?.toDouble(),
-          deltaPerQuery: (json_['deltaPerQuery'] as core.num?)?.toDouble(),
-          epsilonBudget: (json_['epsilonBudget'] as core.num?)?.toDouble(),
-          epsilonBudgetRemaining:
-              (json_['epsilonBudgetRemaining'] as core.num?)?.toDouble(),
-          maxEpsilonPerQuery:
-              (json_['maxEpsilonPerQuery'] as core.num?)?.toDouble(),
+          deltaBudget: json_.containsKey('deltaBudget')
+              ? decodeDouble(json_['deltaBudget'] as core.Object)
+              : null,
+          deltaBudgetRemaining: json_.containsKey('deltaBudgetRemaining')
+              ? decodeDouble(json_['deltaBudgetRemaining'] as core.Object)
+              : null,
+          deltaPerQuery: json_.containsKey('deltaPerQuery')
+              ? decodeDouble(json_['deltaPerQuery'] as core.Object)
+              : null,
+          epsilonBudget: json_.containsKey('epsilonBudget')
+              ? decodeDouble(json_['epsilonBudget'] as core.Object)
+              : null,
+          epsilonBudgetRemaining: json_.containsKey('epsilonBudgetRemaining')
+              ? decodeDouble(json_['epsilonBudgetRemaining'] as core.Object)
+              : null,
+          maxEpsilonPerQuery: json_.containsKey('maxEpsilonPerQuery')
+              ? decodeDouble(json_['maxEpsilonPerQuery'] as core.Object)
+              : null,
           maxGroupsContributed: json_['maxGroupsContributed'] as core.String?,
           privacyUnitColumn: json_['privacyUnitColumn'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deltaBudget != null) 'deltaBudget': deltaBudget!,
+        if (deltaBudget != null) 'deltaBudget': encodeDouble(deltaBudget!),
         if (deltaBudgetRemaining != null)
-          'deltaBudgetRemaining': deltaBudgetRemaining!,
-        if (deltaPerQuery != null) 'deltaPerQuery': deltaPerQuery!,
-        if (epsilonBudget != null) 'epsilonBudget': epsilonBudget!,
+          'deltaBudgetRemaining': encodeDouble(deltaBudgetRemaining!),
+        if (deltaPerQuery != null)
+          'deltaPerQuery': encodeDouble(deltaPerQuery!),
+        if (epsilonBudget != null)
+          'epsilonBudget': encodeDouble(epsilonBudget!),
         if (epsilonBudgetRemaining != null)
-          'epsilonBudgetRemaining': epsilonBudgetRemaining!,
+          'epsilonBudgetRemaining': encodeDouble(epsilonBudgetRemaining!),
         if (maxEpsilonPerQuery != null)
-          'maxEpsilonPerQuery': maxEpsilonPerQuery!,
+          'maxEpsilonPerQuery': encodeDouble(maxEpsilonPerQuery!),
         if (maxGroupsContributed != null)
           'maxGroupsContributed': maxGroupsContributed!,
         if (privacyUnitColumn != null) 'privacyUnitColumn': privacyUnitColumn!,
@@ -5829,12 +5899,16 @@ class DimensionalityReductionMetrics {
   DimensionalityReductionMetrics.fromJson(core.Map json_)
       : this(
           totalExplainedVarianceRatio:
-              (json_['totalExplainedVarianceRatio'] as core.num?)?.toDouble(),
+              json_.containsKey('totalExplainedVarianceRatio')
+                  ? decodeDouble(
+                      json_['totalExplainedVarianceRatio'] as core.Object)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (totalExplainedVarianceRatio != null)
-          'totalExplainedVarianceRatio': totalExplainedVarianceRatio!,
+          'totalExplainedVarianceRatio':
+              encodeDouble(totalExplainedVarianceRatio!),
       };
 }
 
@@ -5893,12 +5967,14 @@ class DoubleCandidates {
   DoubleCandidates.fromJson(core.Map json_)
       : this(
           candidates: (json_['candidates'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (candidates != null) 'candidates': candidates!,
+        if (candidates != null)
+          'candidates':
+              candidates!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -5948,13 +6024,17 @@ class DoubleRange {
 
   DoubleRange.fromJson(core.Map json_)
       : this(
-          max: (json_['max'] as core.num?)?.toDouble(),
-          min: (json_['min'] as core.num?)?.toDouble(),
+          max: json_.containsKey('max')
+              ? decodeDouble(json_['max'] as core.Object)
+              : null,
+          min: json_.containsKey('min')
+              ? decodeDouble(json_['min'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (max != null) 'max': max!,
-        if (min != null) 'min': min!,
+        if (max != null) 'max': encodeDouble(max!),
+        if (min != null) 'min': encodeDouble(min!),
       };
 }
 
@@ -6286,8 +6366,12 @@ class ExplainQueryStage {
           computeMode: json_['computeMode'] as core.String?,
           computeMsAvg: json_['computeMsAvg'] as core.String?,
           computeMsMax: json_['computeMsMax'] as core.String?,
-          computeRatioAvg: (json_['computeRatioAvg'] as core.num?)?.toDouble(),
-          computeRatioMax: (json_['computeRatioMax'] as core.num?)?.toDouble(),
+          computeRatioAvg: json_.containsKey('computeRatioAvg')
+              ? decodeDouble(json_['computeRatioAvg'] as core.Object)
+              : null,
+          computeRatioMax: json_.containsKey('computeRatioMax')
+              ? decodeDouble(json_['computeRatioMax'] as core.Object)
+              : null,
           endMs: json_['endMs'] as core.String?,
           id: json_['id'] as core.String?,
           inputStages: (json_['inputStages'] as core.List?)
@@ -6297,8 +6381,12 @@ class ExplainQueryStage {
           parallelInputs: json_['parallelInputs'] as core.String?,
           readMsAvg: json_['readMsAvg'] as core.String?,
           readMsMax: json_['readMsMax'] as core.String?,
-          readRatioAvg: (json_['readRatioAvg'] as core.num?)?.toDouble(),
-          readRatioMax: (json_['readRatioMax'] as core.num?)?.toDouble(),
+          readRatioAvg: json_.containsKey('readRatioAvg')
+              ? decodeDouble(json_['readRatioAvg'] as core.Object)
+              : null,
+          readRatioMax: json_.containsKey('readRatioMax')
+              ? decodeDouble(json_['readRatioMax'] as core.Object)
+              : null,
           recordsRead: json_['recordsRead'] as core.String?,
           recordsWritten: json_['recordsWritten'] as core.String?,
           shuffleOutputBytes: json_['shuffleOutputBytes'] as core.String?,
@@ -6313,12 +6401,20 @@ class ExplainQueryStage {
               .toList(),
           waitMsAvg: json_['waitMsAvg'] as core.String?,
           waitMsMax: json_['waitMsMax'] as core.String?,
-          waitRatioAvg: (json_['waitRatioAvg'] as core.num?)?.toDouble(),
-          waitRatioMax: (json_['waitRatioMax'] as core.num?)?.toDouble(),
+          waitRatioAvg: json_.containsKey('waitRatioAvg')
+              ? decodeDouble(json_['waitRatioAvg'] as core.Object)
+              : null,
+          waitRatioMax: json_.containsKey('waitRatioMax')
+              ? decodeDouble(json_['waitRatioMax'] as core.Object)
+              : null,
           writeMsAvg: json_['writeMsAvg'] as core.String?,
           writeMsMax: json_['writeMsMax'] as core.String?,
-          writeRatioAvg: (json_['writeRatioAvg'] as core.num?)?.toDouble(),
-          writeRatioMax: (json_['writeRatioMax'] as core.num?)?.toDouble(),
+          writeRatioAvg: json_.containsKey('writeRatioAvg')
+              ? decodeDouble(json_['writeRatioAvg'] as core.Object)
+              : null,
+          writeRatioMax: json_.containsKey('writeRatioMax')
+              ? decodeDouble(json_['writeRatioMax'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6327,8 +6423,10 @@ class ExplainQueryStage {
         if (computeMode != null) 'computeMode': computeMode!,
         if (computeMsAvg != null) 'computeMsAvg': computeMsAvg!,
         if (computeMsMax != null) 'computeMsMax': computeMsMax!,
-        if (computeRatioAvg != null) 'computeRatioAvg': computeRatioAvg!,
-        if (computeRatioMax != null) 'computeRatioMax': computeRatioMax!,
+        if (computeRatioAvg != null)
+          'computeRatioAvg': encodeDouble(computeRatioAvg!),
+        if (computeRatioMax != null)
+          'computeRatioMax': encodeDouble(computeRatioMax!),
         if (endMs != null) 'endMs': endMs!,
         if (id != null) 'id': id!,
         if (inputStages != null) 'inputStages': inputStages!,
@@ -6336,8 +6434,8 @@ class ExplainQueryStage {
         if (parallelInputs != null) 'parallelInputs': parallelInputs!,
         if (readMsAvg != null) 'readMsAvg': readMsAvg!,
         if (readMsMax != null) 'readMsMax': readMsMax!,
-        if (readRatioAvg != null) 'readRatioAvg': readRatioAvg!,
-        if (readRatioMax != null) 'readRatioMax': readRatioMax!,
+        if (readRatioAvg != null) 'readRatioAvg': encodeDouble(readRatioAvg!),
+        if (readRatioMax != null) 'readRatioMax': encodeDouble(readRatioMax!),
         if (recordsRead != null) 'recordsRead': recordsRead!,
         if (recordsWritten != null) 'recordsWritten': recordsWritten!,
         if (shuffleOutputBytes != null)
@@ -6350,12 +6448,14 @@ class ExplainQueryStage {
         if (steps != null) 'steps': steps!,
         if (waitMsAvg != null) 'waitMsAvg': waitMsAvg!,
         if (waitMsMax != null) 'waitMsMax': waitMsMax!,
-        if (waitRatioAvg != null) 'waitRatioAvg': waitRatioAvg!,
-        if (waitRatioMax != null) 'waitRatioMax': waitRatioMax!,
+        if (waitRatioAvg != null) 'waitRatioAvg': encodeDouble(waitRatioAvg!),
+        if (waitRatioMax != null) 'waitRatioMax': encodeDouble(waitRatioMax!),
         if (writeMsAvg != null) 'writeMsAvg': writeMsAvg!,
         if (writeMsMax != null) 'writeMsMax': writeMsMax!,
-        if (writeRatioAvg != null) 'writeRatioAvg': writeRatioAvg!,
-        if (writeRatioMax != null) 'writeRatioMax': writeRatioMax!,
+        if (writeRatioAvg != null)
+          'writeRatioAvg': encodeDouble(writeRatioAvg!),
+        if (writeRatioMax != null)
+          'writeRatioMax': encodeDouble(writeRatioMax!),
       };
 }
 
@@ -6404,12 +6504,14 @@ class Explanation {
 
   Explanation.fromJson(core.Map json_)
       : this(
-          attribution: (json_['attribution'] as core.num?)?.toDouble(),
+          attribution: json_.containsKey('attribution')
+              ? decodeDouble(json_['attribution'] as core.Object)
+              : null,
           featureName: json_['featureName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attribution != null) 'attribution': attribution!,
+        if (attribution != null) 'attribution': encodeDouble(attribution!),
         if (featureName != null) 'featureName': featureName!,
       };
 }
@@ -7059,13 +7161,16 @@ class FeatureValue {
                   as core.Map<core.String, core.dynamic>)
               : null,
           featureColumn: json_['featureColumn'] as core.String?,
-          numericalValue: (json_['numericalValue'] as core.num?)?.toDouble(),
+          numericalValue: json_.containsKey('numericalValue')
+              ? decodeDouble(json_['numericalValue'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (categoricalValue != null) 'categoricalValue': categoricalValue!,
         if (featureColumn != null) 'featureColumn': featureColumn!,
-        if (numericalValue != null) 'numericalValue': numericalValue!,
+        if (numericalValue != null)
+          'numericalValue': encodeDouble(numericalValue!),
       };
 }
 
@@ -7797,7 +7902,9 @@ class HparamTuningTrial {
       : this(
           endTimeMs: json_['endTimeMs'] as core.String?,
           errorMessage: json_['errorMessage'] as core.String?,
-          evalLoss: (json_['evalLoss'] as core.num?)?.toDouble(),
+          evalLoss: json_.containsKey('evalLoss')
+              ? decodeDouble(json_['evalLoss'] as core.Object)
+              : null,
           evaluationMetrics: json_.containsKey('evaluationMetrics')
               ? EvaluationMetrics.fromJson(json_['evaluationMetrics']
                   as core.Map<core.String, core.dynamic>)
@@ -7814,21 +7921,23 @@ class HparamTuningTrial {
               : null,
           startTimeMs: json_['startTimeMs'] as core.String?,
           status: json_['status'] as core.String?,
-          trainingLoss: (json_['trainingLoss'] as core.num?)?.toDouble(),
+          trainingLoss: json_.containsKey('trainingLoss')
+              ? decodeDouble(json_['trainingLoss'] as core.Object)
+              : null,
           trialId: json_['trialId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeMs != null) 'endTimeMs': endTimeMs!,
         if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (evalLoss != null) 'evalLoss': evalLoss!,
+        if (evalLoss != null) 'evalLoss': encodeDouble(evalLoss!),
         if (evaluationMetrics != null) 'evaluationMetrics': evaluationMetrics!,
         if (hparamTuningEvaluationMetrics != null)
           'hparamTuningEvaluationMetrics': hparamTuningEvaluationMetrics!,
         if (hparams != null) 'hparams': hparams!,
         if (startTimeMs != null) 'startTimeMs': startTimeMs!,
         if (status != null) 'status': status!,
-        if (trainingLoss != null) 'trainingLoss': trainingLoss!,
+        if (trainingLoss != null) 'trainingLoss': encodeDouble(trainingLoss!),
         if (trialId != null) 'trialId': trialId!,
       };
 }
@@ -7938,13 +8047,15 @@ class InputDataChange {
 
   InputDataChange.fromJson(core.Map json_)
       : this(
-          recordsReadDiffPercentage:
-              (json_['recordsReadDiffPercentage'] as core.num?)?.toDouble(),
+          recordsReadDiffPercentage: json_
+                  .containsKey('recordsReadDiffPercentage')
+              ? decodeDouble(json_['recordsReadDiffPercentage'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (recordsReadDiffPercentage != null)
-          'recordsReadDiffPercentage': recordsReadDiffPercentage!,
+          'recordsReadDiffPercentage': encodeDouble(recordsReadDiffPercentage!),
       };
 }
 
@@ -8116,27 +8227,33 @@ class IterationResult {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           durationMs: json_['durationMs'] as core.String?,
-          evalLoss: (json_['evalLoss'] as core.num?)?.toDouble(),
+          evalLoss: json_.containsKey('evalLoss')
+              ? decodeDouble(json_['evalLoss'] as core.Object)
+              : null,
           index: json_['index'] as core.int?,
-          learnRate: (json_['learnRate'] as core.num?)?.toDouble(),
+          learnRate: json_.containsKey('learnRate')
+              ? decodeDouble(json_['learnRate'] as core.Object)
+              : null,
           principalComponentInfos:
               (json_['principalComponentInfos'] as core.List?)
                   ?.map((value) => PrincipalComponentInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList(),
-          trainingLoss: (json_['trainingLoss'] as core.num?)?.toDouble(),
+          trainingLoss: json_.containsKey('trainingLoss')
+              ? decodeDouble(json_['trainingLoss'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (arimaResult != null) 'arimaResult': arimaResult!,
         if (clusterInfos != null) 'clusterInfos': clusterInfos!,
         if (durationMs != null) 'durationMs': durationMs!,
-        if (evalLoss != null) 'evalLoss': evalLoss!,
+        if (evalLoss != null) 'evalLoss': encodeDouble(evalLoss!),
         if (index != null) 'index': index!,
-        if (learnRate != null) 'learnRate': learnRate!,
+        if (learnRate != null) 'learnRate': encodeDouble(learnRate!),
         if (principalComponentInfos != null)
           'principalComponentInfos': principalComponentInfos!,
-        if (trainingLoss != null) 'trainingLoss': trainingLoss!,
+        if (trainingLoss != null) 'trainingLoss': encodeDouble(trainingLoss!),
       };
 }
 
@@ -10050,7 +10167,9 @@ class JobStatistics {
 
   JobStatistics.fromJson(core.Map json_)
       : this(
-          completionRatio: (json_['completionRatio'] as core.num?)?.toDouble(),
+          completionRatio: json_.containsKey('completionRatio')
+              ? decodeDouble(json_['completionRatio'] as core.Object)
+              : null,
           copy: json_.containsKey('copy')
               ? JobStatistics5.fromJson(
                   json_['copy'] as core.Map<core.String, core.dynamic>)
@@ -10110,7 +10229,8 @@ class JobStatistics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (completionRatio != null) 'completionRatio': completionRatio!,
+        if (completionRatio != null)
+          'completionRatio': encodeDouble(completionRatio!),
         if (copy != null) 'copy': copy!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (dataMaskingStatistics != null)
@@ -12390,21 +12510,27 @@ class PrincipalComponentInfo {
   PrincipalComponentInfo.fromJson(core.Map json_)
       : this(
           cumulativeExplainedVarianceRatio:
-              (json_['cumulativeExplainedVarianceRatio'] as core.num?)
-                  ?.toDouble(),
-          explainedVariance:
-              (json_['explainedVariance'] as core.num?)?.toDouble(),
-          explainedVarianceRatio:
-              (json_['explainedVarianceRatio'] as core.num?)?.toDouble(),
+              json_.containsKey('cumulativeExplainedVarianceRatio')
+                  ? decodeDouble(
+                      json_['cumulativeExplainedVarianceRatio'] as core.Object)
+                  : null,
+          explainedVariance: json_.containsKey('explainedVariance')
+              ? decodeDouble(json_['explainedVariance'] as core.Object)
+              : null,
+          explainedVarianceRatio: json_.containsKey('explainedVarianceRatio')
+              ? decodeDouble(json_['explainedVarianceRatio'] as core.Object)
+              : null,
           principalComponentId: json_['principalComponentId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cumulativeExplainedVarianceRatio != null)
-          'cumulativeExplainedVarianceRatio': cumulativeExplainedVarianceRatio!,
-        if (explainedVariance != null) 'explainedVariance': explainedVariance!,
+          'cumulativeExplainedVarianceRatio':
+              encodeDouble(cumulativeExplainedVarianceRatio!),
+        if (explainedVariance != null)
+          'explainedVariance': encodeDouble(explainedVariance!),
         if (explainedVarianceRatio != null)
-          'explainedVarianceRatio': explainedVarianceRatio!,
+          'explainedVarianceRatio': encodeDouble(explainedVarianceRatio!),
         if (principalComponentId != null)
           'principalComponentId': principalComponentId!,
       };
@@ -13562,24 +13688,31 @@ class RankingMetrics {
 
   RankingMetrics.fromJson(core.Map json_)
       : this(
-          averageRank: (json_['averageRank'] as core.num?)?.toDouble(),
-          meanAveragePrecision:
-              (json_['meanAveragePrecision'] as core.num?)?.toDouble(),
-          meanSquaredError:
-              (json_['meanSquaredError'] as core.num?)?.toDouble(),
-          normalizedDiscountedCumulativeGain:
-              (json_['normalizedDiscountedCumulativeGain'] as core.num?)
-                  ?.toDouble(),
+          averageRank: json_.containsKey('averageRank')
+              ? decodeDouble(json_['averageRank'] as core.Object)
+              : null,
+          meanAveragePrecision: json_.containsKey('meanAveragePrecision')
+              ? decodeDouble(json_['meanAveragePrecision'] as core.Object)
+              : null,
+          meanSquaredError: json_.containsKey('meanSquaredError')
+              ? decodeDouble(json_['meanSquaredError'] as core.Object)
+              : null,
+          normalizedDiscountedCumulativeGain: json_
+                  .containsKey('normalizedDiscountedCumulativeGain')
+              ? decodeDouble(
+                  json_['normalizedDiscountedCumulativeGain'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (averageRank != null) 'averageRank': averageRank!,
+        if (averageRank != null) 'averageRank': encodeDouble(averageRank!),
         if (meanAveragePrecision != null)
-          'meanAveragePrecision': meanAveragePrecision!,
-        if (meanSquaredError != null) 'meanSquaredError': meanSquaredError!,
+          'meanAveragePrecision': encodeDouble(meanAveragePrecision!),
+        if (meanSquaredError != null)
+          'meanSquaredError': encodeDouble(meanSquaredError!),
         if (normalizedDiscountedCumulativeGain != null)
           'normalizedDiscountedCumulativeGain':
-              normalizedDiscountedCumulativeGain!,
+              encodeDouble(normalizedDiscountedCumulativeGain!),
       };
 }
 
@@ -13613,25 +13746,33 @@ class RegressionMetrics {
 
   RegressionMetrics.fromJson(core.Map json_)
       : this(
-          meanAbsoluteError:
-              (json_['meanAbsoluteError'] as core.num?)?.toDouble(),
-          meanSquaredError:
-              (json_['meanSquaredError'] as core.num?)?.toDouble(),
-          meanSquaredLogError:
-              (json_['meanSquaredLogError'] as core.num?)?.toDouble(),
-          medianAbsoluteError:
-              (json_['medianAbsoluteError'] as core.num?)?.toDouble(),
-          rSquared: (json_['rSquared'] as core.num?)?.toDouble(),
+          meanAbsoluteError: json_.containsKey('meanAbsoluteError')
+              ? decodeDouble(json_['meanAbsoluteError'] as core.Object)
+              : null,
+          meanSquaredError: json_.containsKey('meanSquaredError')
+              ? decodeDouble(json_['meanSquaredError'] as core.Object)
+              : null,
+          meanSquaredLogError: json_.containsKey('meanSquaredLogError')
+              ? decodeDouble(json_['meanSquaredLogError'] as core.Object)
+              : null,
+          medianAbsoluteError: json_.containsKey('medianAbsoluteError')
+              ? decodeDouble(json_['medianAbsoluteError'] as core.Object)
+              : null,
+          rSquared: json_.containsKey('rSquared')
+              ? decodeDouble(json_['rSquared'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (meanAbsoluteError != null) 'meanAbsoluteError': meanAbsoluteError!,
-        if (meanSquaredError != null) 'meanSquaredError': meanSquaredError!,
+        if (meanAbsoluteError != null)
+          'meanAbsoluteError': encodeDouble(meanAbsoluteError!),
+        if (meanSquaredError != null)
+          'meanSquaredError': encodeDouble(meanSquaredError!),
         if (meanSquaredLogError != null)
-          'meanSquaredLogError': meanSquaredLogError!,
+          'meanSquaredLogError': encodeDouble(meanSquaredLogError!),
         if (medianAbsoluteError != null)
-          'medianAbsoluteError': medianAbsoluteError!,
-        if (rSquared != null) 'rSquared': rSquared!,
+          'medianAbsoluteError': encodeDouble(medianAbsoluteError!),
+        if (rSquared != null) 'rSquared': encodeDouble(rSquared!),
       };
 }
 
@@ -17874,37 +18015,49 @@ class TrainingOptions {
           autoClassWeights: json_['autoClassWeights'] as core.bool?,
           batchSize: json_['batchSize'] as core.String?,
           boosterType: json_['boosterType'] as core.String?,
-          budgetHours: (json_['budgetHours'] as core.num?)?.toDouble(),
+          budgetHours: json_.containsKey('budgetHours')
+              ? decodeDouble(json_['budgetHours'] as core.Object)
+              : null,
           calculatePValues: json_['calculatePValues'] as core.bool?,
           categoryEncodingMethod:
               json_['categoryEncodingMethod'] as core.String?,
           cleanSpikesAndDips: json_['cleanSpikesAndDips'] as core.bool?,
           colorSpace: json_['colorSpace'] as core.String?,
-          colsampleBylevel:
-              (json_['colsampleBylevel'] as core.num?)?.toDouble(),
-          colsampleBynode: (json_['colsampleBynode'] as core.num?)?.toDouble(),
-          colsampleBytree: (json_['colsampleBytree'] as core.num?)?.toDouble(),
+          colsampleBylevel: json_.containsKey('colsampleBylevel')
+              ? decodeDouble(json_['colsampleBylevel'] as core.Object)
+              : null,
+          colsampleBynode: json_.containsKey('colsampleBynode')
+              ? decodeDouble(json_['colsampleBynode'] as core.Object)
+              : null,
+          colsampleBytree: json_.containsKey('colsampleBytree')
+              ? decodeDouble(json_['colsampleBytree'] as core.Object)
+              : null,
           contributionMetric: json_['contributionMetric'] as core.String?,
           dartNormalizeType: json_['dartNormalizeType'] as core.String?,
           dataFrequency: json_['dataFrequency'] as core.String?,
           dataSplitColumn: json_['dataSplitColumn'] as core.String?,
-          dataSplitEvalFraction:
-              (json_['dataSplitEvalFraction'] as core.num?)?.toDouble(),
+          dataSplitEvalFraction: json_.containsKey('dataSplitEvalFraction')
+              ? decodeDouble(json_['dataSplitEvalFraction'] as core.Object)
+              : null,
           dataSplitMethod: json_['dataSplitMethod'] as core.String?,
           decomposeTimeSeries: json_['decomposeTimeSeries'] as core.bool?,
           dimensionIdColumns: (json_['dimensionIdColumns'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           distanceType: json_['distanceType'] as core.String?,
-          dropout: (json_['dropout'] as core.num?)?.toDouble(),
+          dropout: json_.containsKey('dropout')
+              ? decodeDouble(json_['dropout'] as core.Object)
+              : null,
           earlyStop: json_['earlyStop'] as core.bool?,
           enableGlobalExplain: json_['enableGlobalExplain'] as core.bool?,
           feedbackType: json_['feedbackType'] as core.String?,
           fitIntercept: json_['fitIntercept'] as core.bool?,
-          forecastLimitLowerBound:
-              (json_['forecastLimitLowerBound'] as core.num?)?.toDouble(),
-          forecastLimitUpperBound:
-              (json_['forecastLimitUpperBound'] as core.num?)?.toDouble(),
+          forecastLimitLowerBound: json_.containsKey('forecastLimitLowerBound')
+              ? decodeDouble(json_['forecastLimitLowerBound'] as core.Object)
+              : null,
+          forecastLimitUpperBound: json_.containsKey('forecastLimitUpperBound')
+              ? decodeDouble(json_['forecastLimitUpperBound'] as core.Object)
+              : null,
           hiddenUnits: (json_['hiddenUnits'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -17918,8 +18071,9 @@ class TrainingOptions {
                   ?.map((value) => value as core.String)
                   .toList(),
           includeDrift: json_['includeDrift'] as core.bool?,
-          initialLearnRate:
-              (json_['initialLearnRate'] as core.num?)?.toDouble(),
+          initialLearnRate: json_.containsKey('initialLearnRate')
+              ? decodeDouble(json_['initialLearnRate'] as core.Object)
+              : null,
           inputLabelColumns: (json_['inputLabelColumns'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -17932,31 +18086,41 @@ class TrainingOptions {
               json_['kmeansInitializationColumn'] as core.String?,
           kmeansInitializationMethod:
               json_['kmeansInitializationMethod'] as core.String?,
-          l1RegActivation: (json_['l1RegActivation'] as core.num?)?.toDouble(),
-          l1Regularization:
-              (json_['l1Regularization'] as core.num?)?.toDouble(),
-          l2Regularization:
-              (json_['l2Regularization'] as core.num?)?.toDouble(),
+          l1RegActivation: json_.containsKey('l1RegActivation')
+              ? decodeDouble(json_['l1RegActivation'] as core.Object)
+              : null,
+          l1Regularization: json_.containsKey('l1Regularization')
+              ? decodeDouble(json_['l1Regularization'] as core.Object)
+              : null,
+          l2Regularization: json_.containsKey('l2Regularization')
+              ? decodeDouble(json_['l2Regularization'] as core.Object)
+              : null,
           labelClassWeights: (json_['labelClassWeights']
                   as core.Map<core.String, core.dynamic>?)
               ?.map(
             (key, value) => core.MapEntry(
               key,
-              (value as core.num).toDouble(),
+              decodeDouble(value),
             ),
           ),
-          learnRate: (json_['learnRate'] as core.num?)?.toDouble(),
+          learnRate: json_.containsKey('learnRate')
+              ? decodeDouble(json_['learnRate'] as core.Object)
+              : null,
           learnRateStrategy: json_['learnRateStrategy'] as core.String?,
           lossType: json_['lossType'] as core.String?,
           maxIterations: json_['maxIterations'] as core.String?,
           maxParallelTrials: json_['maxParallelTrials'] as core.String?,
           maxTimeSeriesLength: json_['maxTimeSeriesLength'] as core.String?,
           maxTreeDepth: json_['maxTreeDepth'] as core.String?,
-          minAprioriSupport:
-              (json_['minAprioriSupport'] as core.num?)?.toDouble(),
-          minRelativeProgress:
-              (json_['minRelativeProgress'] as core.num?)?.toDouble(),
-          minSplitLoss: (json_['minSplitLoss'] as core.num?)?.toDouble(),
+          minAprioriSupport: json_.containsKey('minAprioriSupport')
+              ? decodeDouble(json_['minAprioriSupport'] as core.Object)
+              : null,
+          minRelativeProgress: json_.containsKey('minRelativeProgress')
+              ? decodeDouble(json_['minRelativeProgress'] as core.Object)
+              : null,
+          minSplitLoss: json_.containsKey('minSplitLoss')
+              ? decodeDouble(json_['minSplitLoss'] as core.Object)
+              : null,
           minTimeSeriesLength: json_['minTimeSeriesLength'] as core.String?,
           minTreeChildWeight: json_['minTreeChildWeight'] as core.String?,
           modelRegistry: json_['modelRegistry'] as core.String?,
@@ -17973,22 +18137,28 @@ class TrainingOptions {
           numTrials: json_['numTrials'] as core.String?,
           optimizationStrategy: json_['optimizationStrategy'] as core.String?,
           optimizer: json_['optimizer'] as core.String?,
-          pcaExplainedVarianceRatio:
-              (json_['pcaExplainedVarianceRatio'] as core.num?)?.toDouble(),
+          pcaExplainedVarianceRatio: json_
+                  .containsKey('pcaExplainedVarianceRatio')
+              ? decodeDouble(json_['pcaExplainedVarianceRatio'] as core.Object)
+              : null,
           pcaSolver: json_['pcaSolver'] as core.String?,
           sampledShapleyNumPaths:
               json_['sampledShapleyNumPaths'] as core.String?,
           scaleFeatures: json_['scaleFeatures'] as core.bool?,
           standardizeFeatures: json_['standardizeFeatures'] as core.bool?,
-          subsample: (json_['subsample'] as core.num?)?.toDouble(),
+          subsample: json_.containsKey('subsample')
+              ? decodeDouble(json_['subsample'] as core.Object)
+              : null,
           tfVersion: json_['tfVersion'] as core.String?,
           timeSeriesDataColumn: json_['timeSeriesDataColumn'] as core.String?,
           timeSeriesIdColumn: json_['timeSeriesIdColumn'] as core.String?,
           timeSeriesIdColumns: (json_['timeSeriesIdColumns'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          timeSeriesLengthFraction:
-              (json_['timeSeriesLengthFraction'] as core.num?)?.toDouble(),
+          timeSeriesLengthFraction: json_
+                  .containsKey('timeSeriesLengthFraction')
+              ? decodeDouble(json_['timeSeriesLengthFraction'] as core.Object)
+              : null,
           timeSeriesTimestampColumn:
               json_['timeSeriesTimestampColumn'] as core.String?,
           treeMethod: json_['treeMethod'] as core.String?,
@@ -17999,7 +18169,9 @@ class TrainingOptions {
               (json_['vertexAiModelVersionAliases'] as core.List?)
                   ?.map((value) => value as core.String)
                   .toList(),
-          walsAlpha: (json_['walsAlpha'] as core.num?)?.toDouble(),
+          walsAlpha: json_.containsKey('walsAlpha')
+              ? decodeDouble(json_['walsAlpha'] as core.Object)
+              : null,
           warmStart: json_['warmStart'] as core.bool?,
           xgboostVersion: json_['xgboostVersion'] as core.String?,
         );
@@ -18015,39 +18187,42 @@ class TrainingOptions {
         if (autoClassWeights != null) 'autoClassWeights': autoClassWeights!,
         if (batchSize != null) 'batchSize': batchSize!,
         if (boosterType != null) 'boosterType': boosterType!,
-        if (budgetHours != null) 'budgetHours': budgetHours!,
+        if (budgetHours != null) 'budgetHours': encodeDouble(budgetHours!),
         if (calculatePValues != null) 'calculatePValues': calculatePValues!,
         if (categoryEncodingMethod != null)
           'categoryEncodingMethod': categoryEncodingMethod!,
         if (cleanSpikesAndDips != null)
           'cleanSpikesAndDips': cleanSpikesAndDips!,
         if (colorSpace != null) 'colorSpace': colorSpace!,
-        if (colsampleBylevel != null) 'colsampleBylevel': colsampleBylevel!,
-        if (colsampleBynode != null) 'colsampleBynode': colsampleBynode!,
-        if (colsampleBytree != null) 'colsampleBytree': colsampleBytree!,
+        if (colsampleBylevel != null)
+          'colsampleBylevel': encodeDouble(colsampleBylevel!),
+        if (colsampleBynode != null)
+          'colsampleBynode': encodeDouble(colsampleBynode!),
+        if (colsampleBytree != null)
+          'colsampleBytree': encodeDouble(colsampleBytree!),
         if (contributionMetric != null)
           'contributionMetric': contributionMetric!,
         if (dartNormalizeType != null) 'dartNormalizeType': dartNormalizeType!,
         if (dataFrequency != null) 'dataFrequency': dataFrequency!,
         if (dataSplitColumn != null) 'dataSplitColumn': dataSplitColumn!,
         if (dataSplitEvalFraction != null)
-          'dataSplitEvalFraction': dataSplitEvalFraction!,
+          'dataSplitEvalFraction': encodeDouble(dataSplitEvalFraction!),
         if (dataSplitMethod != null) 'dataSplitMethod': dataSplitMethod!,
         if (decomposeTimeSeries != null)
           'decomposeTimeSeries': decomposeTimeSeries!,
         if (dimensionIdColumns != null)
           'dimensionIdColumns': dimensionIdColumns!,
         if (distanceType != null) 'distanceType': distanceType!,
-        if (dropout != null) 'dropout': dropout!,
+        if (dropout != null) 'dropout': encodeDouble(dropout!),
         if (earlyStop != null) 'earlyStop': earlyStop!,
         if (enableGlobalExplain != null)
           'enableGlobalExplain': enableGlobalExplain!,
         if (feedbackType != null) 'feedbackType': feedbackType!,
         if (fitIntercept != null) 'fitIntercept': fitIntercept!,
         if (forecastLimitLowerBound != null)
-          'forecastLimitLowerBound': forecastLimitLowerBound!,
+          'forecastLimitLowerBound': encodeDouble(forecastLimitLowerBound!),
         if (forecastLimitUpperBound != null)
-          'forecastLimitUpperBound': forecastLimitUpperBound!,
+          'forecastLimitUpperBound': encodeDouble(forecastLimitUpperBound!),
         if (hiddenUnits != null) 'hiddenUnits': hiddenUnits!,
         if (holidayRegion != null) 'holidayRegion': holidayRegion!,
         if (holidayRegions != null) 'holidayRegions': holidayRegions!,
@@ -18055,7 +18230,8 @@ class TrainingOptions {
         if (hparamTuningObjectives != null)
           'hparamTuningObjectives': hparamTuningObjectives!,
         if (includeDrift != null) 'includeDrift': includeDrift!,
-        if (initialLearnRate != null) 'initialLearnRate': initialLearnRate!,
+        if (initialLearnRate != null)
+          'initialLearnRate': encodeDouble(initialLearnRate!),
         if (inputLabelColumns != null) 'inputLabelColumns': inputLabelColumns!,
         if (instanceWeightColumn != null)
           'instanceWeightColumn': instanceWeightColumn!,
@@ -18067,11 +18243,16 @@ class TrainingOptions {
           'kmeansInitializationColumn': kmeansInitializationColumn!,
         if (kmeansInitializationMethod != null)
           'kmeansInitializationMethod': kmeansInitializationMethod!,
-        if (l1RegActivation != null) 'l1RegActivation': l1RegActivation!,
-        if (l1Regularization != null) 'l1Regularization': l1Regularization!,
-        if (l2Regularization != null) 'l2Regularization': l2Regularization!,
-        if (labelClassWeights != null) 'labelClassWeights': labelClassWeights!,
-        if (learnRate != null) 'learnRate': learnRate!,
+        if (l1RegActivation != null)
+          'l1RegActivation': encodeDouble(l1RegActivation!),
+        if (l1Regularization != null)
+          'l1Regularization': encodeDouble(l1Regularization!),
+        if (l2Regularization != null)
+          'l2Regularization': encodeDouble(l2Regularization!),
+        if (labelClassWeights != null)
+          'labelClassWeights': labelClassWeights!
+              .map((key, item) => core.MapEntry(key, encodeDouble(item))),
+        if (learnRate != null) 'learnRate': encodeDouble(learnRate!),
         if (learnRateStrategy != null) 'learnRateStrategy': learnRateStrategy!,
         if (lossType != null) 'lossType': lossType!,
         if (maxIterations != null) 'maxIterations': maxIterations!,
@@ -18079,10 +18260,11 @@ class TrainingOptions {
         if (maxTimeSeriesLength != null)
           'maxTimeSeriesLength': maxTimeSeriesLength!,
         if (maxTreeDepth != null) 'maxTreeDepth': maxTreeDepth!,
-        if (minAprioriSupport != null) 'minAprioriSupport': minAprioriSupport!,
+        if (minAprioriSupport != null)
+          'minAprioriSupport': encodeDouble(minAprioriSupport!),
         if (minRelativeProgress != null)
-          'minRelativeProgress': minRelativeProgress!,
-        if (minSplitLoss != null) 'minSplitLoss': minSplitLoss!,
+          'minRelativeProgress': encodeDouble(minRelativeProgress!),
+        if (minSplitLoss != null) 'minSplitLoss': encodeDouble(minSplitLoss!),
         if (minTimeSeriesLength != null)
           'minTimeSeriesLength': minTimeSeriesLength!,
         if (minTreeChildWeight != null)
@@ -18100,14 +18282,14 @@ class TrainingOptions {
           'optimizationStrategy': optimizationStrategy!,
         if (optimizer != null) 'optimizer': optimizer!,
         if (pcaExplainedVarianceRatio != null)
-          'pcaExplainedVarianceRatio': pcaExplainedVarianceRatio!,
+          'pcaExplainedVarianceRatio': encodeDouble(pcaExplainedVarianceRatio!),
         if (pcaSolver != null) 'pcaSolver': pcaSolver!,
         if (sampledShapleyNumPaths != null)
           'sampledShapleyNumPaths': sampledShapleyNumPaths!,
         if (scaleFeatures != null) 'scaleFeatures': scaleFeatures!,
         if (standardizeFeatures != null)
           'standardizeFeatures': standardizeFeatures!,
-        if (subsample != null) 'subsample': subsample!,
+        if (subsample != null) 'subsample': encodeDouble(subsample!),
         if (tfVersion != null) 'tfVersion': tfVersion!,
         if (timeSeriesDataColumn != null)
           'timeSeriesDataColumn': timeSeriesDataColumn!,
@@ -18116,7 +18298,7 @@ class TrainingOptions {
         if (timeSeriesIdColumns != null)
           'timeSeriesIdColumns': timeSeriesIdColumns!,
         if (timeSeriesLengthFraction != null)
-          'timeSeriesLengthFraction': timeSeriesLengthFraction!,
+          'timeSeriesLengthFraction': encodeDouble(timeSeriesLengthFraction!),
         if (timeSeriesTimestampColumn != null)
           'timeSeriesTimestampColumn': timeSeriesTimestampColumn!,
         if (treeMethod != null) 'treeMethod': treeMethod!,
@@ -18125,7 +18307,7 @@ class TrainingOptions {
         if (userColumn != null) 'userColumn': userColumn!,
         if (vertexAiModelVersionAliases != null)
           'vertexAiModelVersionAliases': vertexAiModelVersionAliases!,
-        if (walsAlpha != null) 'walsAlpha': walsAlpha!,
+        if (walsAlpha != null) 'walsAlpha': encodeDouble(walsAlpha!),
         if (warmStart != null) 'warmStart': warmStart!,
         if (xgboostVersion != null) 'xgboostVersion': xgboostVersion!,
       };

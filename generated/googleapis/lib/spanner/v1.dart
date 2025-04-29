@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Spanner API - v1
 ///
@@ -52,6 +53,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -6818,14 +6820,16 @@ class ContextValue {
               : null,
           severity: json_['severity'] as core.String?,
           unit: json_['unit'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (label != null) 'label': label!,
         if (severity != null) 'severity': severity!,
         if (unit != null) 'unit': unit!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -8454,13 +8458,15 @@ class IndexAdvice {
           ddl: (json_['ddl'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          improvementFactor:
-              (json_['improvementFactor'] as core.num?)?.toDouble(),
+          improvementFactor: json_.containsKey('improvementFactor')
+              ? decodeDouble(json_['improvementFactor'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ddl != null) 'ddl': ddl!,
-        if (improvementFactor != null) 'improvementFactor': improvementFactor!,
+        if (improvementFactor != null)
+          'improvementFactor': encodeDouble(improvementFactor!),
       };
 }
 
@@ -9355,7 +9361,9 @@ class KeyRangeInfo {
               ? LocalizedString.fromJson(
                   json_['unit'] as core.Map<core.String, core.dynamic>)
               : null,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9367,7 +9375,7 @@ class KeyRangeInfo {
         if (startKeyIndex != null) 'startKeyIndex': startKeyIndex!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
         if (unit != null) 'unit': unit!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -10047,7 +10055,9 @@ class Metric {
                   json_['displayLabel'] as core.Map<core.String, core.dynamic>)
               : null,
           hasNonzeroData: json_['hasNonzeroData'] as core.bool?,
-          hotValue: (json_['hotValue'] as core.num?)?.toDouble(),
+          hotValue: json_.containsKey('hotValue')
+              ? decodeDouble(json_['hotValue'] as core.Object)
+              : null,
           indexedHotKeys:
               (json_['indexedHotKeys'] as core.Map<core.String, core.dynamic>?)
                   ?.map(
@@ -10087,7 +10097,7 @@ class Metric {
         if (derived != null) 'derived': derived!,
         if (displayLabel != null) 'displayLabel': displayLabel!,
         if (hasNonzeroData != null) 'hasNonzeroData': hasNonzeroData!,
-        if (hotValue != null) 'hotValue': hotValue!,
+        if (hotValue != null) 'hotValue': encodeDouble(hotValue!),
         if (indexedHotKeys != null) 'indexedHotKeys': indexedHotKeys!,
         if (indexedKeyRangeInfos != null)
           'indexedKeyRangeInfos': indexedKeyRangeInfos!,
@@ -10132,12 +10142,13 @@ class MetricMatrixRow {
   MetricMatrixRow.fromJson(core.Map json_)
       : this(
           cols: (json_['cols'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cols != null) 'cols': cols!,
+        if (cols != null)
+          'cols': cols!.map((value) => encodeDouble(value)).toList(),
       };
 }
 

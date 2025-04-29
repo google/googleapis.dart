@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Analytics API - v3
 ///
@@ -59,6 +60,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -6663,7 +6665,9 @@ class ExperimentVariations {
           name: json_['name'] as core.String?,
           status: json_['status'] as core.String?,
           url: json_['url'] as core.String?,
-          weight: (json_['weight'] as core.num?)?.toDouble(),
+          weight: json_.containsKey('weight')
+              ? decodeDouble(json_['weight'] as core.Object)
+              : null,
           won: json_['won'] as core.bool?,
         );
 
@@ -6671,7 +6675,7 @@ class ExperimentVariations {
         if (name != null) 'name': name!,
         if (status != null) 'status': status!,
         if (url != null) 'url': url!,
-        if (weight != null) 'weight': weight!,
+        if (weight != null) 'weight': encodeDouble(weight!),
         if (won != null) 'won': won!,
       };
 }
@@ -6919,7 +6923,9 @@ class Experiment {
               ? core.DateTime.parse(json_['startTime'] as core.String)
               : null,
           status: json_['status'] as core.String?,
-          trafficCoverage: (json_['trafficCoverage'] as core.num?)?.toDouble(),
+          trafficCoverage: json_.containsKey('trafficCoverage')
+              ? decodeDouble(json_['trafficCoverage'] as core.Object)
+              : null,
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
@@ -6928,8 +6934,9 @@ class Experiment {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           webPropertyId: json_['webPropertyId'] as core.String?,
-          winnerConfidenceLevel:
-              (json_['winnerConfidenceLevel'] as core.num?)?.toDouble(),
+          winnerConfidenceLevel: json_.containsKey('winnerConfidenceLevel')
+              ? decodeDouble(json_['winnerConfidenceLevel'] as core.Object)
+              : null,
           winnerFound: json_['winnerFound'] as core.bool?,
         );
 
@@ -6961,12 +6968,13 @@ class Experiment {
         if (startTime != null)
           'startTime': startTime!.toUtc().toIso8601String(),
         if (status != null) 'status': status!,
-        if (trafficCoverage != null) 'trafficCoverage': trafficCoverage!,
+        if (trafficCoverage != null)
+          'trafficCoverage': encodeDouble(trafficCoverage!),
         if (updated != null) 'updated': updated!.toUtc().toIso8601String(),
         if (variations != null) 'variations': variations!,
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
         if (winnerConfidenceLevel != null)
-          'winnerConfidenceLevel': winnerConfidenceLevel!,
+          'winnerConfidenceLevel': encodeDouble(winnerConfidenceLevel!),
         if (winnerFound != null) 'winnerFound': winnerFound!,
       };
 }
@@ -8426,7 +8434,9 @@ class Goal {
                   json_['urlDestinationDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
           visitNumPagesDetails: json_.containsKey('visitNumPagesDetails')
               ? GoalVisitNumPagesDetails.fromJson(json_['visitNumPagesDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -8456,7 +8466,7 @@ class Goal {
         if (updated != null) 'updated': updated!.toUtc().toIso8601String(),
         if (urlDestinationDetails != null)
           'urlDestinationDetails': urlDestinationDetails!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
         if (visitNumPagesDetails != null)
           'visitNumPagesDetails': visitNumPagesDetails!,
         if (visitTimeOnSiteDetails != null)

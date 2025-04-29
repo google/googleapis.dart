@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Kubernetes Engine API - v1
 ///
@@ -43,6 +44,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -7928,8 +7930,10 @@ class IPAllocationPolicy {
               json_['clusterSecondaryRangeName'] as core.String?,
           createSubnetwork: json_['createSubnetwork'] as core.bool?,
           defaultPodIpv4RangeUtilization:
-              (json_['defaultPodIpv4RangeUtilization'] as core.num?)
-                  ?.toDouble(),
+              json_.containsKey('defaultPodIpv4RangeUtilization')
+                  ? decodeDouble(
+                      json_['defaultPodIpv4RangeUtilization'] as core.Object)
+                  : null,
           ipv6AccessType: json_['ipv6AccessType'] as core.String?,
           nodeIpv4Cidr: json_['nodeIpv4Cidr'] as core.String?,
           nodeIpv4CidrBlock: json_['nodeIpv4CidrBlock'] as core.String?,
@@ -7962,7 +7966,8 @@ class IPAllocationPolicy {
           'clusterSecondaryRangeName': clusterSecondaryRangeName!,
         if (createSubnetwork != null) 'createSubnetwork': createSubnetwork!,
         if (defaultPodIpv4RangeUtilization != null)
-          'defaultPodIpv4RangeUtilization': defaultPodIpv4RangeUtilization!,
+          'defaultPodIpv4RangeUtilization':
+              encodeDouble(defaultPodIpv4RangeUtilization!),
         if (ipv6AccessType != null) 'ipv6AccessType': ipv6AccessType!,
         if (nodeIpv4Cidr != null) 'nodeIpv4Cidr': nodeIpv4Cidr!,
         if (nodeIpv4CidrBlock != null) 'nodeIpv4CidrBlock': nodeIpv4CidrBlock!,
@@ -8885,14 +8890,16 @@ class Metric {
 
   Metric.fromJson(core.Map json_)
       : this(
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           intValue: json_['intValue'] as core.String?,
           name: json_['name'] as core.String?,
           stringValue: json_['stringValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (intValue != null) 'intValue': intValue!,
         if (name != null) 'name': name!,
         if (stringValue != null) 'stringValue': stringValue!,
@@ -10208,8 +10215,9 @@ class NodeNetworkConfig {
                           as core.Map<core.String, core.dynamic>)
                   : null,
           podIpv4CidrBlock: json_['podIpv4CidrBlock'] as core.String?,
-          podIpv4RangeUtilization:
-              (json_['podIpv4RangeUtilization'] as core.num?)?.toDouble(),
+          podIpv4RangeUtilization: json_.containsKey('podIpv4RangeUtilization')
+              ? decodeDouble(json_['podIpv4RangeUtilization'] as core.Object)
+              : null,
           podRange: json_['podRange'] as core.String?,
         );
 
@@ -10227,7 +10235,7 @@ class NodeNetworkConfig {
           'podCidrOverprovisionConfig': podCidrOverprovisionConfig!,
         if (podIpv4CidrBlock != null) 'podIpv4CidrBlock': podIpv4CidrBlock!,
         if (podIpv4RangeUtilization != null)
-          'podIpv4RangeUtilization': podIpv4RangeUtilization!,
+          'podIpv4RangeUtilization': encodeDouble(podIpv4RangeUtilization!),
         if (podRange != null) 'podRange': podRange!,
       };
 }
@@ -11514,12 +11522,14 @@ class RangeInfo {
   RangeInfo.fromJson(core.Map json_)
       : this(
           rangeName: json_['rangeName'] as core.String?,
-          utilization: (json_['utilization'] as core.num?)?.toDouble(),
+          utilization: json_.containsKey('utilization')
+              ? decodeDouble(json_['utilization'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rangeName != null) 'rangeName': rangeName!,
-        if (utilization != null) 'utilization': utilization!,
+        if (utilization != null) 'utilization': encodeDouble(utilization!),
       };
 }
 
@@ -13229,13 +13239,16 @@ class StandardRolloutPolicy {
   StandardRolloutPolicy.fromJson(core.Map json_)
       : this(
           batchNodeCount: json_['batchNodeCount'] as core.int?,
-          batchPercentage: (json_['batchPercentage'] as core.num?)?.toDouble(),
+          batchPercentage: json_.containsKey('batchPercentage')
+              ? decodeDouble(json_['batchPercentage'] as core.Object)
+              : null,
           batchSoakDuration: json_['batchSoakDuration'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchNodeCount != null) 'batchNodeCount': batchNodeCount!,
-        if (batchPercentage != null) 'batchPercentage': batchPercentage!,
+        if (batchPercentage != null)
+          'batchPercentage': encodeDouble(batchPercentage!),
         if (batchSoakDuration != null) 'batchSoakDuration': batchSoakDuration!,
       };
 }

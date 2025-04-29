@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Search API - v1
 ///
@@ -61,6 +62,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -8004,11 +8006,13 @@ class SearchQualityMetadata {
 
   SearchQualityMetadata.fromJson(core.Map json_)
       : this(
-          quality: (json_['quality'] as core.num?)?.toDouble(),
+          quality: json_.containsKey('quality')
+              ? decodeDouble(json_['quality'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (quality != null) 'quality': quality!,
+        if (quality != null) 'quality': encodeDouble(quality!),
       };
 }
 
@@ -9240,7 +9244,9 @@ class Value {
               ? Date.fromJson(
                   json_['dateValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           integerValue: json_['integerValue'] as core.String?,
           stringValue: json_['stringValue'] as core.String?,
           timestampValue: json_['timestampValue'] as core.String?,
@@ -9249,7 +9255,7 @@ class Value {
   core.Map<core.String, core.dynamic> toJson() => {
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (dateValue != null) 'dateValue': dateValue!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (integerValue != null) 'integerValue': integerValue!,
         if (stringValue != null) 'stringValue': stringValue!,
         if (timestampValue != null) 'timestampValue': timestampValue!,

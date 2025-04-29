@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Recommendations AI (Beta) - v1beta1
 ///
@@ -47,6 +48,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1874,12 +1876,13 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapFloatList {
       core.Map json_)
       : this(
           value: (json_['value'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
+        if (value != null)
+          'value': value!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -2686,7 +2689,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
           costs: (json_['costs'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
               key,
-              (value as core.num).toDouble(),
+              decodeDouble(value),
             ),
           ),
           currencyCode: json_['currencyCode'] as core.String?,
@@ -2712,7 +2715,9 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
         if (availableQuantity != null) 'availableQuantity': availableQuantity!,
         if (canonicalProductUri != null)
           'canonicalProductUri': canonicalProductUri!,
-        if (costs != null) 'costs': costs!,
+        if (costs != null)
+          'costs':
+              costs!.map((key, item) => core.MapEntry(key, encodeDouble(item))),
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (exactPrice != null) 'exactPrice': exactPrice!,
         if (images != null) 'images': images!,
@@ -2743,13 +2748,18 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
   GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice.fromJson(
       core.Map json_)
       : this(
-          displayPrice: (json_['displayPrice'] as core.num?)?.toDouble(),
-          originalPrice: (json_['originalPrice'] as core.num?)?.toDouble(),
+          displayPrice: json_.containsKey('displayPrice')
+              ? decodeDouble(json_['displayPrice'] as core.Object)
+              : null,
+          originalPrice: json_.containsKey('originalPrice')
+              ? decodeDouble(json_['originalPrice'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayPrice != null) 'displayPrice': displayPrice!,
-        if (originalPrice != null) 'originalPrice': originalPrice!,
+        if (displayPrice != null) 'displayPrice': encodeDouble(displayPrice!),
+        if (originalPrice != null)
+          'originalPrice': encodeDouble(originalPrice!),
       };
 }
 
@@ -2774,13 +2784,17 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange {
   GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange.fromJson(
       core.Map json_)
       : this(
-          max: (json_['max'] as core.num?)?.toDouble(),
-          min: (json_['min'] as core.num?)?.toDouble(),
+          max: json_.containsKey('max')
+              ? decodeDouble(json_['max'] as core.Object)
+              : null,
+          min: json_.containsKey('min')
+              ? decodeDouble(json_['min'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (max != null) 'max': max!,
-        if (min != null) 'min': min!,
+        if (max != null) 'max': encodeDouble(max!),
+        if (min != null) 'min': encodeDouble(min!),
       };
 }
 
@@ -2873,14 +2887,18 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
       : this(
           availableQuantity: json_['availableQuantity'] as core.int?,
           currencyCode: json_['currencyCode'] as core.String?,
-          displayPrice: (json_['displayPrice'] as core.num?)?.toDouble(),
+          displayPrice: json_.containsKey('displayPrice')
+              ? decodeDouble(json_['displayPrice'] as core.Object)
+              : null,
           id: json_['id'] as core.String?,
           itemAttributes: json_.containsKey('itemAttributes')
               ? GoogleCloudRecommendationengineV1beta1FeatureMap.fromJson(
                   json_['itemAttributes']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          originalPrice: (json_['originalPrice'] as core.num?)?.toDouble(),
+          originalPrice: json_.containsKey('originalPrice')
+              ? decodeDouble(json_['originalPrice'] as core.Object)
+              : null,
           quantity: json_['quantity'] as core.int?,
           stockState: json_['stockState'] as core.String?,
         );
@@ -2888,10 +2906,11 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
   core.Map<core.String, core.dynamic> toJson() => {
         if (availableQuantity != null) 'availableQuantity': availableQuantity!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (displayPrice != null) 'displayPrice': displayPrice!,
+        if (displayPrice != null) 'displayPrice': encodeDouble(displayPrice!),
         if (id != null) 'id': id!,
         if (itemAttributes != null) 'itemAttributes': itemAttributes!,
-        if (originalPrice != null) 'originalPrice': originalPrice!,
+        if (originalPrice != null)
+          'originalPrice': encodeDouble(originalPrice!),
         if (quantity != null) 'quantity': quantity!,
         if (stockState != null) 'stockState': stockState!,
       };
@@ -3058,26 +3077,32 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
           costs: (json_['costs'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
               key,
-              (value as core.num).toDouble(),
+              decodeDouble(value),
             ),
           ),
           currencyCode: json_['currencyCode'] as core.String?,
           id: json_['id'] as core.String?,
-          revenue: (json_['revenue'] as core.num?)?.toDouble(),
+          revenue: json_.containsKey('revenue')
+              ? decodeDouble(json_['revenue'] as core.Object)
+              : null,
           taxes: (json_['taxes'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
               key,
-              (value as core.num).toDouble(),
+              decodeDouble(value),
             ),
           ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (costs != null) 'costs': costs!,
+        if (costs != null)
+          'costs':
+              costs!.map((key, item) => core.MapEntry(key, encodeDouble(item))),
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (id != null) 'id': id!,
-        if (revenue != null) 'revenue': revenue!,
-        if (taxes != null) 'taxes': taxes!,
+        if (revenue != null) 'revenue': encodeDouble(revenue!),
+        if (taxes != null)
+          'taxes':
+              taxes!.map((key, item) => core.MapEntry(key, encodeDouble(item))),
       };
 }
 

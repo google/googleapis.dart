@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// reCAPTCHA Enterprise API - v1
 ///
@@ -38,6 +39,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2285,7 +2287,9 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
                   .fromJson(json_['stolenInstrumentVerdict']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          transactionRisk: (json_['transactionRisk'] as core.num?)?.toDouble(),
+          transactionRisk: json_.containsKey('transactionRisk')
+              ? decodeDouble(json_['transactionRisk'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2295,7 +2299,8 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
           'cardTestingVerdict': cardTestingVerdict!,
         if (stolenInstrumentVerdict != null)
           'stolenInstrumentVerdict': stolenInstrumentVerdict!,
-        if (transactionRisk != null) 'transactionRisk': transactionRisk!,
+        if (transactionRisk != null)
+          'transactionRisk': encodeDouble(transactionRisk!),
       };
 }
 
@@ -2316,11 +2321,13 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVe
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict.fromJson(
       core.Map json_)
       : this(
-          trust: (json_['trust'] as core.num?)?.toDouble(),
+          trust: json_.containsKey('trust')
+              ? decodeDouble(json_['trust'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (trust != null) 'trust': trust!,
+        if (trust != null) 'trust': encodeDouble(trust!),
       };
 }
 
@@ -2342,11 +2349,13 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdic
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict.fromJson(
       core.Map json_)
       : this(
-          risk: (json_['risk'] as core.num?)?.toDouble(),
+          risk: json_.containsKey('risk')
+              ? decodeDouble(json_['risk'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (risk != null) 'risk': risk!,
+        if (risk != null) 'risk': encodeDouble(risk!),
       };
 }
 
@@ -2367,11 +2376,13 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentV
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict.fromJson(
       core.Map json_)
       : this(
-          risk: (json_['risk'] as core.num?)?.toDouble(),
+          risk: json_.containsKey('risk')
+              ? decodeDouble(json_['risk'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (risk != null) 'risk': risk!,
+        if (risk != null) 'risk': encodeDouble(risk!),
       };
 }
 
@@ -2460,13 +2471,16 @@ class GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals {
       core.Map json_)
       : this(
           activeDaysLowerBound: json_['activeDaysLowerBound'] as core.int?,
-          syntheticRisk: (json_['syntheticRisk'] as core.num?)?.toDouble(),
+          syntheticRisk: json_.containsKey('syntheticRisk')
+              ? decodeDouble(json_['syntheticRisk'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeDaysLowerBound != null)
           'activeDaysLowerBound': activeDaysLowerBound!,
-        if (syntheticRisk != null) 'syntheticRisk': syntheticRisk!,
+        if (syntheticRisk != null)
+          'syntheticRisk': encodeDouble(syntheticRisk!),
       };
 }
 
@@ -3253,7 +3267,9 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
           reasons: (json_['reasons'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3261,7 +3277,7 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
         if (extendedVerdictReasons != null)
           'extendedVerdictReasons': extendedVerdictReasons!,
         if (reasons != null) 'reasons': reasons!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -3468,12 +3484,14 @@ class GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict {
           reasons: (json_['reasons'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          risk: (json_['risk'] as core.num?)?.toDouble(),
+          risk: json_.containsKey('risk')
+              ? decodeDouble(json_['risk'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (reasons != null) 'reasons': reasons!,
-        if (risk != null) 'risk': risk!,
+        if (risk != null) 'risk': encodeDouble(risk!),
       };
 }
 
@@ -3510,12 +3528,14 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptions {
   GoogleCloudRecaptchaenterpriseV1TestingOptions.fromJson(core.Map json_)
       : this(
           testingChallenge: json_['testingChallenge'] as core.String?,
-          testingScore: (json_['testingScore'] as core.num?)?.toDouble(),
+          testingScore: json_.containsKey('testingScore')
+              ? decodeDouble(json_['testingScore'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (testingChallenge != null) 'testingChallenge': testingChallenge!,
-        if (testingScore != null) 'testingScore': testingScore!,
+        if (testingScore != null) 'testingScore': encodeDouble(testingScore!),
       };
 }
 
@@ -3730,13 +3750,17 @@ class GoogleCloudRecaptchaenterpriseV1TransactionData {
                   json_['shippingAddress']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          shippingValue: (json_['shippingValue'] as core.num?)?.toDouble(),
+          shippingValue: json_.containsKey('shippingValue')
+              ? decodeDouble(json_['shippingValue'] as core.Object)
+              : null,
           transactionId: json_['transactionId'] as core.String?,
           user: json_.containsKey('user')
               ? GoogleCloudRecaptchaenterpriseV1TransactionDataUser.fromJson(
                   json_['user'] as core.Map<core.String, core.dynamic>)
               : null,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3749,10 +3773,11 @@ class GoogleCloudRecaptchaenterpriseV1TransactionData {
         if (merchants != null) 'merchants': merchants!,
         if (paymentMethod != null) 'paymentMethod': paymentMethod!,
         if (shippingAddress != null) 'shippingAddress': shippingAddress!,
-        if (shippingValue != null) 'shippingValue': shippingValue!,
+        if (shippingValue != null)
+          'shippingValue': encodeDouble(shippingValue!),
         if (transactionId != null) 'transactionId': transactionId!,
         if (user != null) 'user': user!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -3910,14 +3935,16 @@ class GoogleCloudRecaptchaenterpriseV1TransactionDataItem {
           merchantAccountId: json_['merchantAccountId'] as core.String?,
           name: json_['name'] as core.String?,
           quantity: json_['quantity'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (merchantAccountId != null) 'merchantAccountId': merchantAccountId!,
         if (name != null) 'name': name!,
         if (quantity != null) 'quantity': quantity!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -4092,14 +4119,16 @@ class GoogleCloudRecaptchaenterpriseV1TransactionEvent {
           eventTime: json_['eventTime'] as core.String?,
           eventType: json_['eventType'] as core.String?,
           reason: json_['reason'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (eventTime != null) 'eventTime': eventTime!,
         if (eventType != null) 'eventType': eventType!,
         if (reason != null) 'reason': reason!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 

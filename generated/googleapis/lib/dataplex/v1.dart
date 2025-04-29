@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Dataplex API - v1
 ///
@@ -66,6 +67,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -11750,7 +11752,9 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo.fromJson(
       core.Map json_)
       : this(
-          distinctRatio: (json_['distinctRatio'] as core.num?)?.toDouble(),
+          distinctRatio: json_.containsKey('distinctRatio')
+              ? decodeDouble(json_['distinctRatio'] as core.Object)
+              : null,
           doubleProfile: json_.containsKey('doubleProfile')
               ? GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo
                   .fromJson(json_['doubleProfile']
@@ -11761,7 +11765,9 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
                   .fromJson(json_['integerProfile']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          nullRatio: (json_['nullRatio'] as core.num?)?.toDouble(),
+          nullRatio: json_.containsKey('nullRatio')
+              ? decodeDouble(json_['nullRatio'] as core.Object)
+              : null,
           stringProfile: json_.containsKey('stringProfile')
               ? GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo
                   .fromJson(json_['stringProfile']
@@ -11775,10 +11781,11 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (distinctRatio != null) 'distinctRatio': distinctRatio!,
+        if (distinctRatio != null)
+          'distinctRatio': encodeDouble(distinctRatio!),
         if (doubleProfile != null) 'doubleProfile': doubleProfile!,
         if (integerProfile != null) 'integerProfile': integerProfile!,
-        if (nullRatio != null) 'nullRatio': nullRatio!,
+        if (nullRatio != null) 'nullRatio': encodeDouble(nullRatio!),
         if (stringProfile != null) 'stringProfile': stringProfile!,
         if (topNValues != null) 'topNValues': topNValues!,
       };
@@ -11831,22 +11838,31 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldIn
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo.fromJson(
       core.Map json_)
       : this(
-          average: (json_['average'] as core.num?)?.toDouble(),
-          max: (json_['max'] as core.num?)?.toDouble(),
-          min: (json_['min'] as core.num?)?.toDouble(),
+          average: json_.containsKey('average')
+              ? decodeDouble(json_['average'] as core.Object)
+              : null,
+          max: json_.containsKey('max')
+              ? decodeDouble(json_['max'] as core.Object)
+              : null,
+          min: json_.containsKey('min')
+              ? decodeDouble(json_['min'] as core.Object)
+              : null,
           quartiles: (json_['quartiles'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
-          standardDeviation:
-              (json_['standardDeviation'] as core.num?)?.toDouble(),
+          standardDeviation: json_.containsKey('standardDeviation')
+              ? decodeDouble(json_['standardDeviation'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (average != null) 'average': average!,
-        if (max != null) 'max': max!,
-        if (min != null) 'min': min!,
-        if (quartiles != null) 'quartiles': quartiles!,
-        if (standardDeviation != null) 'standardDeviation': standardDeviation!,
+        if (average != null) 'average': encodeDouble(average!),
+        if (max != null) 'max': encodeDouble(max!),
+        if (min != null) 'min': encodeDouble(min!),
+        if (quartiles != null)
+          'quartiles': quartiles!.map((value) => encodeDouble(value)).toList(),
+        if (standardDeviation != null)
+          'standardDeviation': encodeDouble(standardDeviation!),
       };
 }
 
@@ -11897,22 +11913,26 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldI
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo.fromJson(
       core.Map json_)
       : this(
-          average: (json_['average'] as core.num?)?.toDouble(),
+          average: json_.containsKey('average')
+              ? decodeDouble(json_['average'] as core.Object)
+              : null,
           max: json_['max'] as core.String?,
           min: json_['min'] as core.String?,
           quartiles: (json_['quartiles'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          standardDeviation:
-              (json_['standardDeviation'] as core.num?)?.toDouble(),
+          standardDeviation: json_.containsKey('standardDeviation')
+              ? decodeDouble(json_['standardDeviation'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (average != null) 'average': average!,
+        if (average != null) 'average': encodeDouble(average!),
         if (max != null) 'max': max!,
         if (min != null) 'min': min!,
         if (quartiles != null) 'quartiles': quartiles!,
-        if (standardDeviation != null) 'standardDeviation': standardDeviation!,
+        if (standardDeviation != null)
+          'standardDeviation': encodeDouble(standardDeviation!),
       };
 }
 
@@ -11936,13 +11956,16 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldIn
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo.fromJson(
       core.Map json_)
       : this(
-          averageLength: (json_['averageLength'] as core.num?)?.toDouble(),
+          averageLength: json_.containsKey('averageLength')
+              ? decodeDouble(json_['averageLength'] as core.Object)
+              : null,
           maxLength: json_['maxLength'] as core.String?,
           minLength: json_['minLength'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (averageLength != null) 'averageLength': averageLength!,
+        if (averageLength != null)
+          'averageLength': encodeDouble(averageLength!),
         if (maxLength != null) 'maxLength': maxLength!,
         if (minLength != null) 'minLength': minLength!,
       };
@@ -11970,13 +11993,15 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue {
       core.Map json_)
       : this(
           count: json_['count'] as core.String?,
-          ratio: (json_['ratio'] as core.num?)?.toDouble(),
+          ratio: json_.containsKey('ratio')
+              ? decodeDouble(json_['ratio'] as core.Object)
+              : null,
           value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
-        if (ratio != null) 'ratio': ratio!,
+        if (ratio != null) 'ratio': encodeDouble(ratio!),
         if (value != null) 'value': value!,
       };
 }
@@ -12045,7 +12070,9 @@ class GoogleCloudDataplexV1DataProfileSpec {
                       as core.Map<core.String, core.dynamic>)
               : null,
           rowFilter: json_['rowFilter'] as core.String?,
-          samplingPercent: (json_['samplingPercent'] as core.num?)?.toDouble(),
+          samplingPercent: json_.containsKey('samplingPercent')
+              ? decodeDouble(json_['samplingPercent'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12053,7 +12080,8 @@ class GoogleCloudDataplexV1DataProfileSpec {
         if (includeFields != null) 'includeFields': includeFields!,
         if (postScanActions != null) 'postScanActions': postScanActions!,
         if (rowFilter != null) 'rowFilter': rowFilter!,
-        if (samplingPercent != null) 'samplingPercent': samplingPercent!,
+        if (samplingPercent != null)
+          'samplingPercent': encodeDouble(samplingPercent!),
       };
 }
 
@@ -12158,12 +12186,14 @@ class GoogleCloudDataplexV1DataQualityColumnResult {
   GoogleCloudDataplexV1DataQualityColumnResult.fromJson(core.Map json_)
       : this(
           column: json_['column'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -12221,13 +12251,15 @@ class GoogleCloudDataplexV1DataQualityDimensionResult {
                   json_['dimension'] as core.Map<core.String, core.dynamic>)
               : null,
           passed: json_['passed'] as core.bool?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimension != null) 'dimension': dimension!,
         if (passed != null) 'passed': passed!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -12308,7 +12340,9 @@ class GoogleCloudDataplexV1DataQualityResult {
               ? GoogleCloudDataplexV1ScannedData.fromJson(
                   json_['scannedData'] as core.Map<core.String, core.dynamic>)
               : null,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12320,7 +12354,7 @@ class GoogleCloudDataplexV1DataQualityResult {
         if (rowCount != null) 'rowCount': rowCount!,
         if (rules != null) 'rules': rules!,
         if (scannedData != null) 'scannedData': scannedData!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -12520,7 +12554,9 @@ class GoogleCloudDataplexV1DataQualityRule {
                   .fromJson(json_['tableConditionExpectation']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          threshold: (json_['threshold'] as core.num?)?.toDouble(),
+          threshold: json_.containsKey('threshold')
+              ? decodeDouble(json_['threshold'] as core.Object)
+              : null,
           uniquenessExpectation: json_.containsKey('uniquenessExpectation')
               ? GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
                   .fromJson(json_['uniquenessExpectation']
@@ -12547,7 +12583,7 @@ class GoogleCloudDataplexV1DataQualityRule {
         if (suspended != null) 'suspended': suspended!,
         if (tableConditionExpectation != null)
           'tableConditionExpectation': tableConditionExpectation!,
-        if (threshold != null) 'threshold': threshold!,
+        if (threshold != null) 'threshold': encodeDouble(threshold!),
         if (uniquenessExpectation != null)
           'uniquenessExpectation': uniquenessExpectation!,
       };
@@ -12685,7 +12721,9 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
           evaluatedCount: json_['evaluatedCount'] as core.String?,
           failingRowsQuery: json_['failingRowsQuery'] as core.String?,
           nullCount: json_['nullCount'] as core.String?,
-          passRatio: (json_['passRatio'] as core.num?)?.toDouble(),
+          passRatio: json_.containsKey('passRatio')
+              ? decodeDouble(json_['passRatio'] as core.Object)
+              : null,
           passed: json_['passed'] as core.bool?,
           passedCount: json_['passedCount'] as core.String?,
           rule: json_.containsKey('rule')
@@ -12699,7 +12737,7 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
         if (evaluatedCount != null) 'evaluatedCount': evaluatedCount!,
         if (failingRowsQuery != null) 'failingRowsQuery': failingRowsQuery!,
         if (nullCount != null) 'nullCount': nullCount!,
-        if (passRatio != null) 'passRatio': passRatio!,
+        if (passRatio != null) 'passRatio': encodeDouble(passRatio!),
         if (passed != null) 'passed': passed!,
         if (passedCount != null) 'passedCount': passedCount!,
         if (rule != null) 'rule': rule!,
@@ -12903,14 +12941,17 @@ class GoogleCloudDataplexV1DataQualitySpec {
               ?.map((value) => GoogleCloudDataplexV1DataQualityRule.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          samplingPercent: (json_['samplingPercent'] as core.num?)?.toDouble(),
+          samplingPercent: json_.containsKey('samplingPercent')
+              ? decodeDouble(json_['samplingPercent'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (postScanActions != null) 'postScanActions': postScanActions!,
         if (rowFilter != null) 'rowFilter': rowFilter!,
         if (rules != null) 'rules': rules!,
-        if (samplingPercent != null) 'samplingPercent': samplingPercent!,
+        if (samplingPercent != null)
+          'samplingPercent': encodeDouble(samplingPercent!),
       };
 }
 
@@ -13096,11 +13137,14 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger {
   GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger.fromJson(
       core.Map json_)
       : this(
-          scoreThreshold: (json_['scoreThreshold'] as core.num?)?.toDouble(),
+          scoreThreshold: json_.containsKey('scoreThreshold')
+              ? decodeDouble(json_['scoreThreshold'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (scoreThreshold != null) 'scoreThreshold': scoreThreshold!,
+        if (scoreThreshold != null)
+          'scoreThreshold': encodeDouble(scoreThreshold!),
       };
 }
 

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Dataproc API - v1
 ///
@@ -47,6 +48,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -8017,23 +8019,34 @@ class BasicYarnAutoscalingConfig {
       : this(
           gracefulDecommissionTimeout:
               json_['gracefulDecommissionTimeout'] as core.String?,
-          scaleDownFactor: (json_['scaleDownFactor'] as core.num?)?.toDouble(),
-          scaleDownMinWorkerFraction:
-              (json_['scaleDownMinWorkerFraction'] as core.num?)?.toDouble(),
-          scaleUpFactor: (json_['scaleUpFactor'] as core.num?)?.toDouble(),
-          scaleUpMinWorkerFraction:
-              (json_['scaleUpMinWorkerFraction'] as core.num?)?.toDouble(),
+          scaleDownFactor: json_.containsKey('scaleDownFactor')
+              ? decodeDouble(json_['scaleDownFactor'] as core.Object)
+              : null,
+          scaleDownMinWorkerFraction: json_
+                  .containsKey('scaleDownMinWorkerFraction')
+              ? decodeDouble(json_['scaleDownMinWorkerFraction'] as core.Object)
+              : null,
+          scaleUpFactor: json_.containsKey('scaleUpFactor')
+              ? decodeDouble(json_['scaleUpFactor'] as core.Object)
+              : null,
+          scaleUpMinWorkerFraction: json_
+                  .containsKey('scaleUpMinWorkerFraction')
+              ? decodeDouble(json_['scaleUpMinWorkerFraction'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gracefulDecommissionTimeout != null)
           'gracefulDecommissionTimeout': gracefulDecommissionTimeout!,
-        if (scaleDownFactor != null) 'scaleDownFactor': scaleDownFactor!,
+        if (scaleDownFactor != null)
+          'scaleDownFactor': encodeDouble(scaleDownFactor!),
         if (scaleDownMinWorkerFraction != null)
-          'scaleDownMinWorkerFraction': scaleDownMinWorkerFraction!,
-        if (scaleUpFactor != null) 'scaleUpFactor': scaleUpFactor!,
+          'scaleDownMinWorkerFraction':
+              encodeDouble(scaleDownMinWorkerFraction!),
+        if (scaleUpFactor != null)
+          'scaleUpFactor': encodeDouble(scaleUpFactor!),
         if (scaleUpMinWorkerFraction != null)
-          'scaleUpMinWorkerFraction': scaleUpMinWorkerFraction!,
+          'scaleUpMinWorkerFraction': encodeDouble(scaleUpMinWorkerFraction!),
       };
 }
 
@@ -9576,28 +9589,28 @@ class ExecutorMetricsDistributions {
   ExecutorMetricsDistributions.fromJson(core.Map json_)
       : this(
           diskBytesSpilled: (json_['diskBytesSpilled'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           failedTasks: (json_['failedTasks'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           inputBytes: (json_['inputBytes'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           inputRecords: (json_['inputRecords'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           killedTasks: (json_['killedTasks'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           memoryBytesSpilled: (json_['memoryBytesSpilled'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           outputBytes: (json_['outputBytes'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           outputRecords: (json_['outputRecords'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           peakMemoryMetrics: json_.containsKey('peakMemoryMetrics')
               ? ExecutorPeakMetricsDistributions.fromJson(
@@ -9605,48 +9618,74 @@ class ExecutorMetricsDistributions {
                       as core.Map<core.String, core.dynamic>)
               : null,
           quantiles: (json_['quantiles'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           shuffleRead: (json_['shuffleRead'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           shuffleReadRecords: (json_['shuffleReadRecords'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           shuffleWrite: (json_['shuffleWrite'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           shuffleWriteRecords: (json_['shuffleWriteRecords'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           succeededTasks: (json_['succeededTasks'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           taskTimeMillis: (json_['taskTimeMillis'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (diskBytesSpilled != null) 'diskBytesSpilled': diskBytesSpilled!,
-        if (failedTasks != null) 'failedTasks': failedTasks!,
-        if (inputBytes != null) 'inputBytes': inputBytes!,
-        if (inputRecords != null) 'inputRecords': inputRecords!,
-        if (killedTasks != null) 'killedTasks': killedTasks!,
+        if (diskBytesSpilled != null)
+          'diskBytesSpilled':
+              diskBytesSpilled!.map((value) => encodeDouble(value)).toList(),
+        if (failedTasks != null)
+          'failedTasks':
+              failedTasks!.map((value) => encodeDouble(value)).toList(),
+        if (inputBytes != null)
+          'inputBytes':
+              inputBytes!.map((value) => encodeDouble(value)).toList(),
+        if (inputRecords != null)
+          'inputRecords':
+              inputRecords!.map((value) => encodeDouble(value)).toList(),
+        if (killedTasks != null)
+          'killedTasks':
+              killedTasks!.map((value) => encodeDouble(value)).toList(),
         if (memoryBytesSpilled != null)
-          'memoryBytesSpilled': memoryBytesSpilled!,
-        if (outputBytes != null) 'outputBytes': outputBytes!,
-        if (outputRecords != null) 'outputRecords': outputRecords!,
+          'memoryBytesSpilled':
+              memoryBytesSpilled!.map((value) => encodeDouble(value)).toList(),
+        if (outputBytes != null)
+          'outputBytes':
+              outputBytes!.map((value) => encodeDouble(value)).toList(),
+        if (outputRecords != null)
+          'outputRecords':
+              outputRecords!.map((value) => encodeDouble(value)).toList(),
         if (peakMemoryMetrics != null) 'peakMemoryMetrics': peakMemoryMetrics!,
-        if (quantiles != null) 'quantiles': quantiles!,
-        if (shuffleRead != null) 'shuffleRead': shuffleRead!,
+        if (quantiles != null)
+          'quantiles': quantiles!.map((value) => encodeDouble(value)).toList(),
+        if (shuffleRead != null)
+          'shuffleRead':
+              shuffleRead!.map((value) => encodeDouble(value)).toList(),
         if (shuffleReadRecords != null)
-          'shuffleReadRecords': shuffleReadRecords!,
-        if (shuffleWrite != null) 'shuffleWrite': shuffleWrite!,
+          'shuffleReadRecords':
+              shuffleReadRecords!.map((value) => encodeDouble(value)).toList(),
+        if (shuffleWrite != null)
+          'shuffleWrite':
+              shuffleWrite!.map((value) => encodeDouble(value)).toList(),
         if (shuffleWriteRecords != null)
-          'shuffleWriteRecords': shuffleWriteRecords!,
-        if (succeededTasks != null) 'succeededTasks': succeededTasks!,
-        if (taskTimeMillis != null) 'taskTimeMillis': taskTimeMillis!,
+          'shuffleWriteRecords':
+              shuffleWriteRecords!.map((value) => encodeDouble(value)).toList(),
+        if (succeededTasks != null)
+          'succeededTasks':
+              succeededTasks!.map((value) => encodeDouble(value)).toList(),
+        if (taskTimeMillis != null)
+          'taskTimeMillis':
+              taskTimeMillis!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -9666,13 +9705,14 @@ class ExecutorPeakMetricsDistributions {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           quantiles: (json_['quantiles'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (executorMetrics != null) 'executorMetrics': executorMetrics!,
-        if (quantiles != null) 'quantiles': quantiles!,
+        if (quantiles != null)
+          'quantiles': quantiles!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -16729,8 +16769,9 @@ class SourceProgress {
       : this(
           description: json_['description'] as core.String?,
           endOffset: json_['endOffset'] as core.String?,
-          inputRowsPerSecond:
-              (json_['inputRowsPerSecond'] as core.num?)?.toDouble(),
+          inputRowsPerSecond: json_.containsKey('inputRowsPerSecond')
+              ? decodeDouble(json_['inputRowsPerSecond'] as core.Object)
+              : null,
           latestOffset: json_['latestOffset'] as core.String?,
           metrics:
               (json_['metrics'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -16740,8 +16781,9 @@ class SourceProgress {
             ),
           ),
           numInputRows: json_['numInputRows'] as core.String?,
-          processedRowsPerSecond:
-              (json_['processedRowsPerSecond'] as core.num?)?.toDouble(),
+          processedRowsPerSecond: json_.containsKey('processedRowsPerSecond')
+              ? decodeDouble(json_['processedRowsPerSecond'] as core.Object)
+              : null,
           startOffset: json_['startOffset'] as core.String?,
         );
 
@@ -16749,12 +16791,12 @@ class SourceProgress {
         if (description != null) 'description': description!,
         if (endOffset != null) 'endOffset': endOffset!,
         if (inputRowsPerSecond != null)
-          'inputRowsPerSecond': inputRowsPerSecond!,
+          'inputRowsPerSecond': encodeDouble(inputRowsPerSecond!),
         if (latestOffset != null) 'latestOffset': latestOffset!,
         if (metrics != null) 'metrics': metrics!,
         if (numInputRows != null) 'numInputRows': numInputRows!,
         if (processedRowsPerSecond != null)
-          'processedRowsPerSecond': processedRowsPerSecond!,
+          'processedRowsPerSecond': encodeDouble(processedRowsPerSecond!),
         if (startOffset != null) 'startOffset': startOffset!,
       };
 }
@@ -17549,12 +17591,20 @@ class SparkStandaloneAutoscalingConfig {
           gracefulDecommissionTimeout:
               json_['gracefulDecommissionTimeout'] as core.String?,
           removeOnlyIdleWorkers: json_['removeOnlyIdleWorkers'] as core.bool?,
-          scaleDownFactor: (json_['scaleDownFactor'] as core.num?)?.toDouble(),
-          scaleDownMinWorkerFraction:
-              (json_['scaleDownMinWorkerFraction'] as core.num?)?.toDouble(),
-          scaleUpFactor: (json_['scaleUpFactor'] as core.num?)?.toDouble(),
-          scaleUpMinWorkerFraction:
-              (json_['scaleUpMinWorkerFraction'] as core.num?)?.toDouble(),
+          scaleDownFactor: json_.containsKey('scaleDownFactor')
+              ? decodeDouble(json_['scaleDownFactor'] as core.Object)
+              : null,
+          scaleDownMinWorkerFraction: json_
+                  .containsKey('scaleDownMinWorkerFraction')
+              ? decodeDouble(json_['scaleDownMinWorkerFraction'] as core.Object)
+              : null,
+          scaleUpFactor: json_.containsKey('scaleUpFactor')
+              ? decodeDouble(json_['scaleUpFactor'] as core.Object)
+              : null,
+          scaleUpMinWorkerFraction: json_
+                  .containsKey('scaleUpMinWorkerFraction')
+              ? decodeDouble(json_['scaleUpMinWorkerFraction'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17562,12 +17612,15 @@ class SparkStandaloneAutoscalingConfig {
           'gracefulDecommissionTimeout': gracefulDecommissionTimeout!,
         if (removeOnlyIdleWorkers != null)
           'removeOnlyIdleWorkers': removeOnlyIdleWorkers!,
-        if (scaleDownFactor != null) 'scaleDownFactor': scaleDownFactor!,
+        if (scaleDownFactor != null)
+          'scaleDownFactor': encodeDouble(scaleDownFactor!),
         if (scaleDownMinWorkerFraction != null)
-          'scaleDownMinWorkerFraction': scaleDownMinWorkerFraction!,
-        if (scaleUpFactor != null) 'scaleUpFactor': scaleUpFactor!,
+          'scaleDownMinWorkerFraction':
+              encodeDouble(scaleDownMinWorkerFraction!),
+        if (scaleUpFactor != null)
+          'scaleUpFactor': encodeDouble(scaleUpFactor!),
         if (scaleUpMinWorkerFraction != null)
-          'scaleUpMinWorkerFraction': scaleUpMinWorkerFraction!,
+          'scaleUpMinWorkerFraction': encodeDouble(scaleUpMinWorkerFraction!),
       };
 }
 
@@ -18473,12 +18526,16 @@ class StartupConfig {
   StartupConfig.fromJson(core.Map json_)
       : this(
           requiredRegistrationFraction:
-              (json_['requiredRegistrationFraction'] as core.num?)?.toDouble(),
+              json_.containsKey('requiredRegistrationFraction')
+                  ? decodeDouble(
+                      json_['requiredRegistrationFraction'] as core.Object)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requiredRegistrationFraction != null)
-          'requiredRegistrationFraction': requiredRegistrationFraction!,
+          'requiredRegistrationFraction':
+              encodeDouble(requiredRegistrationFraction!),
       };
 }
 
@@ -19486,12 +19543,14 @@ class TaskResourceRequest {
 
   TaskResourceRequest.fromJson(core.Map json_)
       : this(
-          amount: (json_['amount'] as core.num?)?.toDouble(),
+          amount: json_.containsKey('amount')
+              ? decodeDouble(json_['amount'] as core.Object)
+              : null,
           resourceName: json_['resourceName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!,
+        if (amount != null) 'amount': encodeDouble(amount!),
         if (resourceName != null) 'resourceName': resourceName!,
       };
 }
@@ -20234,14 +20293,16 @@ class YarnApplication {
   YarnApplication.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
-          progress: (json_['progress'] as core.num?)?.toDouble(),
+          progress: json_.containsKey('progress')
+              ? decodeDouble(json_['progress'] as core.Object)
+              : null,
           state: json_['state'] as core.String?,
           trackingUrl: json_['trackingUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (progress != null) 'progress': progress!,
+        if (progress != null) 'progress': encodeDouble(progress!),
         if (state != null) 'state': state!,
         if (trackingUrl != null) 'trackingUrl': trackingUrl!,
       };

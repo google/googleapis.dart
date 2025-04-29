@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Container Analysis API - v1
 ///
@@ -45,6 +46,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2931,11 +2933,16 @@ class CVSSv3 {
           attackComplexity: json_['attackComplexity'] as core.String?,
           attackVector: json_['attackVector'] as core.String?,
           availabilityImpact: json_['availabilityImpact'] as core.String?,
-          baseScore: (json_['baseScore'] as core.num?)?.toDouble(),
+          baseScore: json_.containsKey('baseScore')
+              ? decodeDouble(json_['baseScore'] as core.Object)
+              : null,
           confidentialityImpact: json_['confidentialityImpact'] as core.String?,
-          exploitabilityScore:
-              (json_['exploitabilityScore'] as core.num?)?.toDouble(),
-          impactScore: (json_['impactScore'] as core.num?)?.toDouble(),
+          exploitabilityScore: json_.containsKey('exploitabilityScore')
+              ? decodeDouble(json_['exploitabilityScore'] as core.Object)
+              : null,
+          impactScore: json_.containsKey('impactScore')
+              ? decodeDouble(json_['impactScore'] as core.Object)
+              : null,
           integrityImpact: json_['integrityImpact'] as core.String?,
           privilegesRequired: json_['privilegesRequired'] as core.String?,
           scope: json_['scope'] as core.String?,
@@ -2947,12 +2954,12 @@ class CVSSv3 {
         if (attackVector != null) 'attackVector': attackVector!,
         if (availabilityImpact != null)
           'availabilityImpact': availabilityImpact!,
-        if (baseScore != null) 'baseScore': baseScore!,
+        if (baseScore != null) 'baseScore': encodeDouble(baseScore!),
         if (confidentialityImpact != null)
           'confidentialityImpact': confidentialityImpact!,
         if (exploitabilityScore != null)
-          'exploitabilityScore': exploitabilityScore!,
-        if (impactScore != null) 'impactScore': impactScore!,
+          'exploitabilityScore': encodeDouble(exploitabilityScore!),
+        if (impactScore != null) 'impactScore': encodeDouble(impactScore!),
         if (integrityImpact != null) 'integrityImpact': integrityImpact!,
         if (privilegesRequired != null)
           'privilegesRequired': privilegesRequired!,
@@ -6459,7 +6466,9 @@ class VulnerabilityNote {
 
   VulnerabilityNote.fromJson(core.Map json_)
       : this(
-          cvssScore: (json_['cvssScore'] as core.num?)?.toDouble(),
+          cvssScore: json_.containsKey('cvssScore')
+              ? decodeDouble(json_['cvssScore'] as core.Object)
+              : null,
           cvssV2: json_.containsKey('cvssV2')
               ? CVSS.fromJson(
                   json_['cvssV2'] as core.Map<core.String, core.dynamic>)
@@ -6482,7 +6491,7 @@ class VulnerabilityNote {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (cvssScore != null) 'cvssScore': encodeDouble(cvssScore!),
         if (cvssV2 != null) 'cvssV2': cvssV2!,
         if (cvssV3 != null) 'cvssV3': cvssV3!,
         if (cvssVersion != null) 'cvssVersion': cvssVersion!,
@@ -6602,7 +6611,9 @@ class VulnerabilityOccurrence {
 
   VulnerabilityOccurrence.fromJson(core.Map json_)
       : this(
-          cvssScore: (json_['cvssScore'] as core.num?)?.toDouble(),
+          cvssScore: json_.containsKey('cvssScore')
+              ? decodeDouble(json_['cvssScore'] as core.Object)
+              : null,
           cvssV2: json_.containsKey('cvssV2')
               ? CVSS.fromJson(
                   json_['cvssV2'] as core.Map<core.String, core.dynamic>)
@@ -6634,7 +6645,7 @@ class VulnerabilityOccurrence {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (cvssScore != null) 'cvssScore': encodeDouble(cvssScore!),
         if (cvssV2 != null) 'cvssV2': cvssV2!,
         if (cvssVersion != null) 'cvssVersion': cvssVersion!,
         if (cvssv3 != null) 'cvssv3': cvssv3!,

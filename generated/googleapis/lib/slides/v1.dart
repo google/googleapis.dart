@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Slides API - v1
 ///
@@ -32,6 +33,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -381,22 +383,34 @@ class AffineTransform {
 
   AffineTransform.fromJson(core.Map json_)
       : this(
-          scaleX: (json_['scaleX'] as core.num?)?.toDouble(),
-          scaleY: (json_['scaleY'] as core.num?)?.toDouble(),
-          shearX: (json_['shearX'] as core.num?)?.toDouble(),
-          shearY: (json_['shearY'] as core.num?)?.toDouble(),
-          translateX: (json_['translateX'] as core.num?)?.toDouble(),
-          translateY: (json_['translateY'] as core.num?)?.toDouble(),
+          scaleX: json_.containsKey('scaleX')
+              ? decodeDouble(json_['scaleX'] as core.Object)
+              : null,
+          scaleY: json_.containsKey('scaleY')
+              ? decodeDouble(json_['scaleY'] as core.Object)
+              : null,
+          shearX: json_.containsKey('shearX')
+              ? decodeDouble(json_['shearX'] as core.Object)
+              : null,
+          shearY: json_.containsKey('shearY')
+              ? decodeDouble(json_['shearY'] as core.Object)
+              : null,
+          translateX: json_.containsKey('translateX')
+              ? decodeDouble(json_['translateX'] as core.Object)
+              : null,
+          translateY: json_.containsKey('translateY')
+              ? decodeDouble(json_['translateY'] as core.Object)
+              : null,
           unit: json_['unit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (scaleX != null) 'scaleX': scaleX!,
-        if (scaleY != null) 'scaleY': scaleY!,
-        if (shearX != null) 'shearX': shearX!,
-        if (shearY != null) 'shearY': shearY!,
-        if (translateX != null) 'translateX': translateX!,
-        if (translateY != null) 'translateY': translateY!,
+        if (scaleX != null) 'scaleX': encodeDouble(scaleX!),
+        if (scaleY != null) 'scaleY': encodeDouble(scaleY!),
+        if (shearX != null) 'shearX': encodeDouble(shearX!),
+        if (shearY != null) 'shearY': encodeDouble(shearY!),
+        if (translateX != null) 'translateX': encodeDouble(translateX!),
+        if (translateY != null) 'translateY': encodeDouble(translateY!),
         if (unit != null) 'unit': unit!,
       };
 }
@@ -483,16 +497,19 @@ class Autofit {
   Autofit.fromJson(core.Map json_)
       : this(
           autofitType: json_['autofitType'] as core.String?,
-          fontScale: (json_['fontScale'] as core.num?)?.toDouble(),
-          lineSpacingReduction:
-              (json_['lineSpacingReduction'] as core.num?)?.toDouble(),
+          fontScale: json_.containsKey('fontScale')
+              ? decodeDouble(json_['fontScale'] as core.Object)
+              : null,
+          lineSpacingReduction: json_.containsKey('lineSpacingReduction')
+              ? decodeDouble(json_['lineSpacingReduction'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autofitType != null) 'autofitType': autofitType!,
-        if (fontScale != null) 'fontScale': fontScale!,
+        if (fontScale != null) 'fontScale': encodeDouble(fontScale!),
         if (lineSpacingReduction != null)
-          'lineSpacingReduction': lineSpacingReduction!,
+          'lineSpacingReduction': encodeDouble(lineSpacingReduction!),
       };
 }
 
@@ -653,18 +670,22 @@ class ColorStop {
 
   ColorStop.fromJson(core.Map json_)
       : this(
-          alpha: (json_['alpha'] as core.num?)?.toDouble(),
+          alpha: json_.containsKey('alpha')
+              ? decodeDouble(json_['alpha'] as core.Object)
+              : null,
           color: json_.containsKey('color')
               ? OpaqueColor.fromJson(
                   json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          position: (json_['position'] as core.num?)?.toDouble(),
+          position: json_.containsKey('position')
+              ? decodeDouble(json_['position'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alpha != null) 'alpha': alpha!,
+        if (alpha != null) 'alpha': encodeDouble(alpha!),
         if (color != null) 'color': color!,
-        if (position != null) 'position': position!,
+        if (position != null) 'position': encodeDouble(position!),
       };
 }
 
@@ -1638,19 +1659,29 @@ class CropProperties {
 
   CropProperties.fromJson(core.Map json_)
       : this(
-          angle: (json_['angle'] as core.num?)?.toDouble(),
-          bottomOffset: (json_['bottomOffset'] as core.num?)?.toDouble(),
-          leftOffset: (json_['leftOffset'] as core.num?)?.toDouble(),
-          rightOffset: (json_['rightOffset'] as core.num?)?.toDouble(),
-          topOffset: (json_['topOffset'] as core.num?)?.toDouble(),
+          angle: json_.containsKey('angle')
+              ? decodeDouble(json_['angle'] as core.Object)
+              : null,
+          bottomOffset: json_.containsKey('bottomOffset')
+              ? decodeDouble(json_['bottomOffset'] as core.Object)
+              : null,
+          leftOffset: json_.containsKey('leftOffset')
+              ? decodeDouble(json_['leftOffset'] as core.Object)
+              : null,
+          rightOffset: json_.containsKey('rightOffset')
+              ? decodeDouble(json_['rightOffset'] as core.Object)
+              : null,
+          topOffset: json_.containsKey('topOffset')
+              ? decodeDouble(json_['topOffset'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (angle != null) 'angle': angle!,
-        if (bottomOffset != null) 'bottomOffset': bottomOffset!,
-        if (leftOffset != null) 'leftOffset': leftOffset!,
-        if (rightOffset != null) 'rightOffset': rightOffset!,
-        if (topOffset != null) 'topOffset': topOffset!,
+        if (angle != null) 'angle': encodeDouble(angle!),
+        if (bottomOffset != null) 'bottomOffset': encodeDouble(bottomOffset!),
+        if (leftOffset != null) 'leftOffset': encodeDouble(leftOffset!),
+        if (rightOffset != null) 'rightOffset': encodeDouble(rightOffset!),
+        if (topOffset != null) 'topOffset': encodeDouble(topOffset!),
       };
 }
 
@@ -1858,12 +1889,14 @@ class Dimension {
 
   Dimension.fromJson(core.Map json_)
       : this(
-          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
+          magnitude: json_.containsKey('magnitude')
+              ? decodeDouble(json_['magnitude'] as core.Object)
+              : null,
           unit: json_['unit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
+        if (magnitude != null) 'magnitude': encodeDouble(magnitude!),
         if (unit != null) 'unit': unit!,
       };
 }
@@ -2134,8 +2167,12 @@ class ImageProperties {
 
   ImageProperties.fromJson(core.Map json_)
       : this(
-          brightness: (json_['brightness'] as core.num?)?.toDouble(),
-          contrast: (json_['contrast'] as core.num?)?.toDouble(),
+          brightness: json_.containsKey('brightness')
+              ? decodeDouble(json_['brightness'] as core.Object)
+              : null,
+          contrast: json_.containsKey('contrast')
+              ? decodeDouble(json_['contrast'] as core.Object)
+              : null,
           cropProperties: json_.containsKey('cropProperties')
               ? CropProperties.fromJson(json_['cropProperties']
                   as core.Map<core.String, core.dynamic>)
@@ -2156,18 +2193,20 @@ class ImageProperties {
               ? Shadow.fromJson(
                   json_['shadow'] as core.Map<core.String, core.dynamic>)
               : null,
-          transparency: (json_['transparency'] as core.num?)?.toDouble(),
+          transparency: json_.containsKey('transparency')
+              ? decodeDouble(json_['transparency'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (brightness != null) 'brightness': brightness!,
-        if (contrast != null) 'contrast': contrast!,
+        if (brightness != null) 'brightness': encodeDouble(brightness!),
+        if (contrast != null) 'contrast': encodeDouble(contrast!),
         if (cropProperties != null) 'cropProperties': cropProperties!,
         if (link != null) 'link': link!,
         if (outline != null) 'outline': outline!,
         if (recolor != null) 'recolor': recolor!,
         if (shadow != null) 'shadow': shadow!,
-        if (transparency != null) 'transparency': transparency!,
+        if (transparency != null) 'transparency': encodeDouble(transparency!),
       };
 }
 
@@ -3634,7 +3673,9 @@ class ParagraphStyle {
               ? Dimension.fromJson(
                   json_['indentStart'] as core.Map<core.String, core.dynamic>)
               : null,
-          lineSpacing: (json_['lineSpacing'] as core.num?)?.toDouble(),
+          lineSpacing: json_.containsKey('lineSpacing')
+              ? decodeDouble(json_['lineSpacing'] as core.Object)
+              : null,
           spaceAbove: json_.containsKey('spaceAbove')
               ? Dimension.fromJson(
                   json_['spaceAbove'] as core.Map<core.String, core.dynamic>)
@@ -3652,7 +3693,7 @@ class ParagraphStyle {
         if (indentEnd != null) 'indentEnd': indentEnd!,
         if (indentFirstLine != null) 'indentFirstLine': indentFirstLine!,
         if (indentStart != null) 'indentStart': indentStart!,
-        if (lineSpacing != null) 'lineSpacing': lineSpacing!,
+        if (lineSpacing != null) 'lineSpacing': encodeDouble(lineSpacing!),
         if (spaceAbove != null) 'spaceAbove': spaceAbove!,
         if (spaceBelow != null) 'spaceBelow': spaceBelow!,
         if (spacingMode != null) 'spacingMode': spacingMode!,
@@ -4988,7 +5029,9 @@ class Shadow {
   Shadow.fromJson(core.Map json_)
       : this(
           alignment: json_['alignment'] as core.String?,
-          alpha: (json_['alpha'] as core.num?)?.toDouble(),
+          alpha: json_.containsKey('alpha')
+              ? decodeDouble(json_['alpha'] as core.Object)
+              : null,
           blurRadius: json_.containsKey('blurRadius')
               ? Dimension.fromJson(
                   json_['blurRadius'] as core.Map<core.String, core.dynamic>)
@@ -5008,7 +5051,7 @@ class Shadow {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alignment != null) 'alignment': alignment!,
-        if (alpha != null) 'alpha': alpha!,
+        if (alpha != null) 'alpha': encodeDouble(alpha!),
         if (blurRadius != null) 'blurRadius': blurRadius!,
         if (color != null) 'color': color!,
         if (propertyState != null) 'propertyState': propertyState!,
@@ -5669,7 +5712,9 @@ class SolidFill {
 
   SolidFill.fromJson(core.Map json_)
       : this(
-          alpha: (json_['alpha'] as core.num?)?.toDouble(),
+          alpha: json_.containsKey('alpha')
+              ? decodeDouble(json_['alpha'] as core.Object)
+              : null,
           color: json_.containsKey('color')
               ? OpaqueColor.fromJson(
                   json_['color'] as core.Map<core.String, core.dynamic>)
@@ -5677,7 +5722,7 @@ class SolidFill {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alpha != null) 'alpha': alpha!,
+        if (alpha != null) 'alpha': encodeDouble(alpha!),
         if (color != null) 'color': color!,
       };
 }

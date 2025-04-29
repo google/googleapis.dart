@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Billing API - v1
 ///
@@ -39,6 +40,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1836,10 +1838,14 @@ class PricingExpression {
   PricingExpression.fromJson(core.Map json_)
       : this(
           baseUnit: json_['baseUnit'] as core.String?,
-          baseUnitConversionFactor:
-              (json_['baseUnitConversionFactor'] as core.num?)?.toDouble(),
+          baseUnitConversionFactor: json_
+                  .containsKey('baseUnitConversionFactor')
+              ? decodeDouble(json_['baseUnitConversionFactor'] as core.Object)
+              : null,
           baseUnitDescription: json_['baseUnitDescription'] as core.String?,
-          displayQuantity: (json_['displayQuantity'] as core.num?)?.toDouble(),
+          displayQuantity: json_.containsKey('displayQuantity')
+              ? decodeDouble(json_['displayQuantity'] as core.Object)
+              : null,
           tieredRates: (json_['tieredRates'] as core.List?)
               ?.map((value) => TierRate.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -1851,10 +1857,11 @@ class PricingExpression {
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseUnit != null) 'baseUnit': baseUnit!,
         if (baseUnitConversionFactor != null)
-          'baseUnitConversionFactor': baseUnitConversionFactor!,
+          'baseUnitConversionFactor': encodeDouble(baseUnitConversionFactor!),
         if (baseUnitDescription != null)
           'baseUnitDescription': baseUnitDescription!,
-        if (displayQuantity != null) 'displayQuantity': displayQuantity!,
+        if (displayQuantity != null)
+          'displayQuantity': encodeDouble(displayQuantity!),
         if (tieredRates != null) 'tieredRates': tieredRates!,
         if (usageUnit != null) 'usageUnit': usageUnit!,
         if (usageUnitDescription != null)
@@ -1910,8 +1917,9 @@ class PricingInfo {
               ? AggregationInfo.fromJson(json_['aggregationInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          currencyConversionRate:
-              (json_['currencyConversionRate'] as core.num?)?.toDouble(),
+          currencyConversionRate: json_.containsKey('currencyConversionRate')
+              ? decodeDouble(json_['currencyConversionRate'] as core.Object)
+              : null,
           effectiveTime: json_['effectiveTime'] as core.String?,
           pricingExpression: json_.containsKey('pricingExpression')
               ? PricingExpression.fromJson(json_['pricingExpression']
@@ -1923,7 +1931,7 @@ class PricingInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregationInfo != null) 'aggregationInfo': aggregationInfo!,
         if (currencyConversionRate != null)
-          'currencyConversionRate': currencyConversionRate!,
+          'currencyConversionRate': encodeDouble(currencyConversionRate!),
         if (effectiveTime != null) 'effectiveTime': effectiveTime!,
         if (pricingExpression != null) 'pricingExpression': pricingExpression!,
         if (summary != null) 'summary': summary!,
@@ -2180,8 +2188,9 @@ class TierRate {
 
   TierRate.fromJson(core.Map json_)
       : this(
-          startUsageAmount:
-              (json_['startUsageAmount'] as core.num?)?.toDouble(),
+          startUsageAmount: json_.containsKey('startUsageAmount')
+              ? decodeDouble(json_['startUsageAmount'] as core.Object)
+              : null,
           unitPrice: json_.containsKey('unitPrice')
               ? Money.fromJson(
                   json_['unitPrice'] as core.Map<core.String, core.dynamic>)
@@ -2189,7 +2198,8 @@ class TierRate {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (startUsageAmount != null) 'startUsageAmount': startUsageAmount!,
+        if (startUsageAmount != null)
+          'startUsageAmount': encodeDouble(startUsageAmount!),
         if (unitPrice != null) 'unitPrice': unitPrice!,
       };
 }

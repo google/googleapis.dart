@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Text-to-Speech API - v1
 ///
@@ -37,6 +38,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -524,19 +526,25 @@ class AudioConfig {
           effectsProfileId: (json_['effectsProfileId'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          pitch: (json_['pitch'] as core.num?)?.toDouble(),
+          pitch: json_.containsKey('pitch')
+              ? decodeDouble(json_['pitch'] as core.Object)
+              : null,
           sampleRateHertz: json_['sampleRateHertz'] as core.int?,
-          speakingRate: (json_['speakingRate'] as core.num?)?.toDouble(),
-          volumeGainDb: (json_['volumeGainDb'] as core.num?)?.toDouble(),
+          speakingRate: json_.containsKey('speakingRate')
+              ? decodeDouble(json_['speakingRate'] as core.Object)
+              : null,
+          volumeGainDb: json_.containsKey('volumeGainDb')
+              ? decodeDouble(json_['volumeGainDb'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioEncoding != null) 'audioEncoding': audioEncoding!,
         if (effectsProfileId != null) 'effectsProfileId': effectsProfileId!,
-        if (pitch != null) 'pitch': pitch!,
+        if (pitch != null) 'pitch': encodeDouble(pitch!),
         if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
-        if (speakingRate != null) 'speakingRate': speakingRate!,
-        if (volumeGainDb != null) 'volumeGainDb': volumeGainDb!,
+        if (speakingRate != null) 'speakingRate': encodeDouble(speakingRate!),
+        if (volumeGainDb != null) 'volumeGainDb': encodeDouble(volumeGainDb!),
       };
 }
 

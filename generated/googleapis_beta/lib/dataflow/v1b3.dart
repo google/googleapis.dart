@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Dataflow API - v1b3
 ///
@@ -47,6 +48,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2807,7 +2809,9 @@ class ApproximateProgress {
 
   ApproximateProgress.fromJson(core.Map json_)
       : this(
-          percentComplete: (json_['percentComplete'] as core.num?)?.toDouble(),
+          percentComplete: json_.containsKey('percentComplete')
+              ? decodeDouble(json_['percentComplete'] as core.Object)
+              : null,
           position: json_.containsKey('position')
               ? Position.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
@@ -2816,7 +2820,8 @@ class ApproximateProgress {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (percentComplete != null) 'percentComplete': percentComplete!,
+        if (percentComplete != null)
+          'percentComplete': encodeDouble(percentComplete!),
         if (position != null) 'position': position!,
         if (remainingTime != null) 'remainingTime': remainingTime!,
       };
@@ -2874,8 +2879,9 @@ class ApproximateReportedProgress {
               ? ReportedParallelism.fromJson(json_['consumedParallelism']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          fractionConsumed:
-              (json_['fractionConsumed'] as core.num?)?.toDouble(),
+          fractionConsumed: json_.containsKey('fractionConsumed')
+              ? decodeDouble(json_['fractionConsumed'] as core.Object)
+              : null,
           position: json_.containsKey('position')
               ? Position.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
@@ -2889,7 +2895,8 @@ class ApproximateReportedProgress {
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumedParallelism != null)
           'consumedParallelism': consumedParallelism!,
-        if (fractionConsumed != null) 'fractionConsumed': fractionConsumed!,
+        if (fractionConsumed != null)
+          'fractionConsumed': encodeDouble(fractionConsumed!),
         if (position != null) 'position': position!,
         if (remainingParallelism != null)
           'remainingParallelism': remainingParallelism!,
@@ -2917,10 +2924,12 @@ class ApproximateSplitRequest {
 
   ApproximateSplitRequest.fromJson(core.Map json_)
       : this(
-          fractionConsumed:
-              (json_['fractionConsumed'] as core.num?)?.toDouble(),
-          fractionOfRemainder:
-              (json_['fractionOfRemainder'] as core.num?)?.toDouble(),
+          fractionConsumed: json_.containsKey('fractionConsumed')
+              ? decodeDouble(json_['fractionConsumed'] as core.Object)
+              : null,
+          fractionOfRemainder: json_.containsKey('fractionOfRemainder')
+              ? decodeDouble(json_['fractionOfRemainder'] as core.Object)
+              : null,
           position: json_.containsKey('position')
               ? Position.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
@@ -2928,9 +2937,10 @@ class ApproximateSplitRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fractionConsumed != null) 'fractionConsumed': fractionConsumed!,
+        if (fractionConsumed != null)
+          'fractionConsumed': encodeDouble(fractionConsumed!),
         if (fractionOfRemainder != null)
-          'fractionOfRemainder': fractionOfRemainder!,
+          'fractionOfRemainder': encodeDouble(fractionOfRemainder!),
         if (position != null) 'position': position!,
       };
 }
@@ -3265,13 +3275,15 @@ class CPUTime {
 
   CPUTime.fromJson(core.Map json_)
       : this(
-          rate: (json_['rate'] as core.num?)?.toDouble(),
+          rate: json_.containsKey('rate')
+              ? decodeDouble(json_['rate'] as core.Object)
+              : null,
           timestamp: json_['timestamp'] as core.String?,
           totalMs: json_['totalMs'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rate != null) 'rate': rate!,
+        if (rate != null) 'rate': encodeDouble(rate!),
         if (timestamp != null) 'timestamp': timestamp!,
         if (totalMs != null) 'totalMs': totalMs!,
       };
@@ -3798,7 +3810,9 @@ class CounterUpdate {
               ? DistributionUpdate.fromJson(
                   json_['distribution'] as core.Map<core.String, core.dynamic>)
               : null,
-          floatingPoint: (json_['floatingPoint'] as core.num?)?.toDouble(),
+          floatingPoint: json_.containsKey('floatingPoint')
+              ? decodeDouble(json_['floatingPoint'] as core.Object)
+              : null,
           floatingPointList: json_.containsKey('floatingPointList')
               ? FloatingPointList.fromJson(json_['floatingPointList']
                   as core.Map<core.String, core.dynamic>)
@@ -3846,7 +3860,8 @@ class CounterUpdate {
         if (boundedTrie != null) 'boundedTrie': boundedTrie!,
         if (cumulative != null) 'cumulative': cumulative!,
         if (distribution != null) 'distribution': distribution!,
-        if (floatingPoint != null) 'floatingPoint': floatingPoint!,
+        if (floatingPoint != null)
+          'floatingPoint': encodeDouble(floatingPoint!),
         if (floatingPointList != null) 'floatingPointList': floatingPointList!,
         if (floatingPointMean != null) 'floatingPointMean': floatingPointMean!,
         if (integer != null) 'integer': integer!,
@@ -4383,7 +4398,9 @@ class DisplayData {
       : this(
           boolValue: json_['boolValue'] as core.bool?,
           durationValue: json_['durationValue'] as core.String?,
-          floatValue: (json_['floatValue'] as core.num?)?.toDouble(),
+          floatValue: json_.containsKey('floatValue')
+              ? decodeDouble(json_['floatValue'] as core.Object)
+              : null,
           int64Value: json_['int64Value'] as core.String?,
           javaClassValue: json_['javaClassValue'] as core.String?,
           key: json_['key'] as core.String?,
@@ -4398,7 +4415,7 @@ class DisplayData {
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (durationValue != null) 'durationValue': durationValue!,
-        if (floatValue != null) 'floatValue': floatValue!,
+        if (floatValue != null) 'floatValue': encodeDouble(floatValue!),
         if (int64Value != null) 'int64Value': int64Value!,
         if (javaClassValue != null) 'javaClassValue': javaClassValue!,
         if (key != null) 'key': key!,
@@ -4465,7 +4482,9 @@ class DistributionUpdate {
               ? SplitInt64.fromJson(
                   json_['sum'] as core.Map<core.String, core.dynamic>)
               : null,
-          sumOfSquares: (json_['sumOfSquares'] as core.num?)?.toDouble(),
+          sumOfSquares: json_.containsKey('sumOfSquares')
+              ? decodeDouble(json_['sumOfSquares'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4474,7 +4493,7 @@ class DistributionUpdate {
         if (max != null) 'max': max!,
         if (min != null) 'min': min!,
         if (sum != null) 'sum': sum!,
-        if (sumOfSquares != null) 'sumOfSquares': sumOfSquares!,
+        if (sumOfSquares != null) 'sumOfSquares': encodeDouble(sumOfSquares!),
       };
 }
 
@@ -5308,12 +5327,13 @@ class FloatingPointList {
   FloatingPointList.fromJson(core.Map json_)
       : this(
           elements: (json_['elements'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (elements != null) 'elements': elements!,
+        if (elements != null)
+          'elements': elements!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -5336,12 +5356,14 @@ class FloatingPointMean {
               ? SplitInt64.fromJson(
                   json_['count'] as core.Map<core.String, core.dynamic>)
               : null,
-          sum: (json_['sum'] as core.num?)?.toDouble(),
+          sum: json_.containsKey('sum')
+              ? decodeDouble(json_['sum'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
-        if (sum != null) 'sum': sum!,
+        if (sum != null) 'sum': encodeDouble(sum!),
       };
 }
 
@@ -5391,11 +5413,13 @@ class GPUUtilization {
 
   GPUUtilization.fromJson(core.Map json_)
       : this(
-          rate: (json_['rate'] as core.num?)?.toDouble(),
+          rate: json_.containsKey('rate')
+              ? decodeDouble(json_['rate'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rate != null) 'rate': rate!,
+        if (rate != null) 'rate': encodeDouble(rate!),
       };
 }
 
@@ -7011,14 +7035,18 @@ class Linear {
   Linear.fromJson(core.Map json_)
       : this(
           numberOfBuckets: json_['numberOfBuckets'] as core.int?,
-          start: (json_['start'] as core.num?)?.toDouble(),
-          width: (json_['width'] as core.num?)?.toDouble(),
+          start: json_.containsKey('start')
+              ? decodeDouble(json_['start'] as core.Object)
+              : null,
+          width: json_.containsKey('width')
+              ? decodeDouble(json_['width'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (numberOfBuckets != null) 'numberOfBuckets': numberOfBuckets!,
-        if (start != null) 'start': start!,
-        if (width != null) 'width': width!,
+        if (start != null) 'start': encodeDouble(start!),
+        if (width != null) 'width': encodeDouble(width!),
       };
 }
 
@@ -7604,16 +7632,21 @@ class OutlierStats {
   OutlierStats.fromJson(core.Map json_)
       : this(
           overflowCount: json_['overflowCount'] as core.String?,
-          overflowMean: (json_['overflowMean'] as core.num?)?.toDouble(),
+          overflowMean: json_.containsKey('overflowMean')
+              ? decodeDouble(json_['overflowMean'] as core.Object)
+              : null,
           underflowCount: json_['underflowCount'] as core.String?,
-          underflowMean: (json_['underflowMean'] as core.num?)?.toDouble(),
+          underflowMean: json_.containsKey('underflowMean')
+              ? decodeDouble(json_['underflowMean'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (overflowCount != null) 'overflowCount': overflowCount!,
-        if (overflowMean != null) 'overflowMean': overflowMean!,
+        if (overflowMean != null) 'overflowMean': encodeDouble(overflowMean!),
         if (underflowCount != null) 'underflowCount': underflowCount!,
-        if (underflowMean != null) 'underflowMean': underflowMean!,
+        if (underflowMean != null)
+          'underflowMean': encodeDouble(underflowMean!),
       };
 }
 
@@ -8265,12 +8298,14 @@ class Point {
   Point.fromJson(core.Map json_)
       : this(
           time: json_['time'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (time != null) 'time': time!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -8349,7 +8384,9 @@ class ProgressTimeseries {
 
   ProgressTimeseries.fromJson(core.Map json_)
       : this(
-          currentProgress: (json_['currentProgress'] as core.num?)?.toDouble(),
+          currentProgress: json_.containsKey('currentProgress')
+              ? decodeDouble(json_['currentProgress'] as core.Object)
+              : null,
           dataPoints: (json_['dataPoints'] as core.List?)
               ?.map((value) =>
                   Point.fromJson(value as core.Map<core.String, core.dynamic>))
@@ -8357,7 +8394,8 @@ class ProgressTimeseries {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentProgress != null) 'currentProgress': currentProgress!,
+        if (currentProgress != null)
+          'currentProgress': encodeDouble(currentProgress!),
         if (dataPoints != null) 'dataPoints': dataPoints!,
       };
 }
@@ -8642,12 +8680,14 @@ class ReportedParallelism {
   ReportedParallelism.fromJson(core.Map json_)
       : this(
           isInfinite: json_['isInfinite'] as core.bool?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (isInfinite != null) 'isInfinite': isInfinite!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -9026,15 +9066,16 @@ class RuntimeUpdatableParams {
       : this(
           maxNumWorkers: json_['maxNumWorkers'] as core.int?,
           minNumWorkers: json_['minNumWorkers'] as core.int?,
-          workerUtilizationHint:
-              (json_['workerUtilizationHint'] as core.num?)?.toDouble(),
+          workerUtilizationHint: json_.containsKey('workerUtilizationHint')
+              ? decodeDouble(json_['workerUtilizationHint'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxNumWorkers != null) 'maxNumWorkers': maxNumWorkers!,
         if (minNumWorkers != null) 'minNumWorkers': minNumWorkers!,
         if (workerUtilizationHint != null)
-          'workerUtilizationHint': workerUtilizationHint!,
+          'workerUtilizationHint': encodeDouble(workerUtilizationHint!),
       };
 }
 
@@ -12166,7 +12207,10 @@ class WorkItemStatus {
                   json_['stopPosition'] as core.Map<core.String, core.dynamic>)
               : null,
           totalThrottlerWaitTimeSeconds:
-              (json_['totalThrottlerWaitTimeSeconds'] as core.num?)?.toDouble(),
+              json_.containsKey('totalThrottlerWaitTimeSeconds')
+                  ? decodeDouble(
+                      json_['totalThrottlerWaitTimeSeconds'] as core.Object)
+                  : null,
           workItemId: json_['workItemId'] as core.String?,
         );
 
@@ -12187,7 +12231,8 @@ class WorkItemStatus {
           'sourceOperationResponse': sourceOperationResponse!,
         if (stopPosition != null) 'stopPosition': stopPosition!,
         if (totalThrottlerWaitTimeSeconds != null)
-          'totalThrottlerWaitTimeSeconds': totalThrottlerWaitTimeSeconds!,
+          'totalThrottlerWaitTimeSeconds':
+              encodeDouble(totalThrottlerWaitTimeSeconds!),
         if (workItemId != null) 'workItemId': workItemId!,
       };
 }

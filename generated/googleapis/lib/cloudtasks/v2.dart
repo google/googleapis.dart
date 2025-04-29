@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Tasks API - v2
 ///
@@ -34,6 +35,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2633,8 +2635,9 @@ class RateLimits {
           maxBurstSize: json_['maxBurstSize'] as core.int?,
           maxConcurrentDispatches:
               json_['maxConcurrentDispatches'] as core.int?,
-          maxDispatchesPerSecond:
-              (json_['maxDispatchesPerSecond'] as core.num?)?.toDouble(),
+          maxDispatchesPerSecond: json_.containsKey('maxDispatchesPerSecond')
+              ? decodeDouble(json_['maxDispatchesPerSecond'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2642,7 +2645,7 @@ class RateLimits {
         if (maxConcurrentDispatches != null)
           'maxConcurrentDispatches': maxConcurrentDispatches!,
         if (maxDispatchesPerSecond != null)
-          'maxDispatchesPerSecond': maxDispatchesPerSecond!,
+          'maxDispatchesPerSecond': encodeDouble(maxDispatchesPerSecond!),
       };
 }
 
@@ -2832,11 +2835,14 @@ class StackdriverLoggingConfig {
 
   StackdriverLoggingConfig.fromJson(core.Map json_)
       : this(
-          samplingRatio: (json_['samplingRatio'] as core.num?)?.toDouble(),
+          samplingRatio: json_.containsKey('samplingRatio')
+              ? decodeDouble(json_['samplingRatio'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (samplingRatio != null) 'samplingRatio': samplingRatio!,
+        if (samplingRatio != null)
+          'samplingRatio': encodeDouble(samplingRatio!),
       };
 }
 

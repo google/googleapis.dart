@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Dialogflow API - v2
 ///
@@ -95,6 +96,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -13788,8 +13790,9 @@ class GoogleCloudDialogflowV2Agent {
       : this(
           apiVersion: json_['apiVersion'] as core.String?,
           avatarUri: json_['avatarUri'] as core.String?,
-          classificationThreshold:
-              (json_['classificationThreshold'] as core.num?)?.toDouble(),
+          classificationThreshold: json_.containsKey('classificationThreshold')
+              ? decodeDouble(json_['classificationThreshold'] as core.Object)
+              : null,
           defaultLanguageCode: json_['defaultLanguageCode'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -13808,7 +13811,7 @@ class GoogleCloudDialogflowV2Agent {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (avatarUri != null) 'avatarUri': avatarUri!,
         if (classificationThreshold != null)
-          'classificationThreshold': classificationThreshold!,
+          'classificationThreshold': encodeDouble(classificationThreshold!),
         if (defaultLanguageCode != null)
           'defaultLanguageCode': defaultLanguageCode!,
         if (description != null) 'description': description!,
@@ -14529,7 +14532,9 @@ class GoogleCloudDialogflowV2ArticleAnswer {
   GoogleCloudDialogflowV2ArticleAnswer.fromJson(core.Map json_)
       : this(
           answerRecord: json_['answerRecord'] as core.String?,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           metadata:
               (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -14546,7 +14551,7 @@ class GoogleCloudDialogflowV2ArticleAnswer {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (answerRecord != null) 'answerRecord': answerRecord!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (metadata != null) 'metadata': metadata!,
         if (snippets != null) 'snippets': snippets!,
         if (title != null) 'title': title!,
@@ -17215,7 +17220,9 @@ class GoogleCloudDialogflowV2FaqAnswer {
       : this(
           answer: json_['answer'] as core.String?,
           answerRecord: json_['answerRecord'] as core.String?,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           metadata:
               (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -17230,7 +17237,7 @@ class GoogleCloudDialogflowV2FaqAnswer {
   core.Map<core.String, core.dynamic> toJson() => {
         if (answer != null) 'answer': answer!,
         if (answerRecord != null) 'answerRecord': answerRecord!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (metadata != null) 'metadata': metadata!,
         if (question != null) 'question': question!,
         if (source != null) 'source': source!,
@@ -18579,8 +18586,9 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig.fromJson(
       core.Map json_)
       : this(
-          confidenceThreshold:
-              (json_['confidenceThreshold'] as core.num?)?.toDouble(),
+          confidenceThreshold: json_.containsKey('confidenceThreshold')
+              ? decodeDouble(json_['confidenceThreshold'] as core.Object)
+              : null,
           contextFilterSettings: json_.containsKey('contextFilterSettings')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings
                   .fromJson(json_['contextFilterSettings']
@@ -18613,7 +18621,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidenceThreshold != null)
-          'confidenceThreshold': confidenceThreshold!,
+          'confidenceThreshold': encodeDouble(confidenceThreshold!),
         if (contextFilterSettings != null)
           'contextFilterSettings': contextFilterSettings!,
         if (contextSize != null) 'contextSize': contextSize!,
@@ -19175,16 +19183,20 @@ class GoogleCloudDialogflowV2InferenceParameter {
   GoogleCloudDialogflowV2InferenceParameter.fromJson(core.Map json_)
       : this(
           maxOutputTokens: json_['maxOutputTokens'] as core.int?,
-          temperature: (json_['temperature'] as core.num?)?.toDouble(),
+          temperature: json_.containsKey('temperature')
+              ? decodeDouble(json_['temperature'] as core.Object)
+              : null,
           topK: json_['topK'] as core.int?,
-          topP: (json_['topP'] as core.num?)?.toDouble(),
+          topP: json_.containsKey('topP')
+              ? decodeDouble(json_['topP'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxOutputTokens != null) 'maxOutputTokens': maxOutputTokens!,
-        if (temperature != null) 'temperature': temperature!,
+        if (temperature != null) 'temperature': encodeDouble(temperature!),
         if (topK != null) 'topK': topK!,
-        if (topP != null) 'topP': topP!,
+        if (topP != null) 'topP': encodeDouble(topP!),
       };
 }
 
@@ -22925,8 +22937,10 @@ class GoogleCloudDialogflowV2QueryResult {
               ? GoogleCloudDialogflowV2Intent.fromJson(
                   json_['intent'] as core.Map<core.String, core.dynamic>)
               : null,
-          intentDetectionConfidence:
-              (json_['intentDetectionConfidence'] as core.num?)?.toDouble(),
+          intentDetectionConfidence: json_
+                  .containsKey('intentDetectionConfidence')
+              ? decodeDouble(json_['intentDetectionConfidence'] as core.Object)
+              : null,
           languageCode: json_['languageCode'] as core.String?,
           outputContexts: (json_['outputContexts'] as core.List?)
               ?.map((value) => GoogleCloudDialogflowV2Context.fromJson(
@@ -22942,7 +22956,10 @@ class GoogleCloudDialogflowV2QueryResult {
                       as core.Map<core.String, core.dynamic>)
               : null,
           speechRecognitionConfidence:
-              (json_['speechRecognitionConfidence'] as core.num?)?.toDouble(),
+              json_.containsKey('speechRecognitionConfidence')
+                  ? decodeDouble(
+                      json_['speechRecognitionConfidence'] as core.Object)
+                  : null,
           webhookPayload: json_.containsKey('webhookPayload')
               ? json_['webhookPayload'] as core.Map<core.String, core.dynamic>
               : null,
@@ -22961,7 +22978,7 @@ class GoogleCloudDialogflowV2QueryResult {
         if (fulfillmentText != null) 'fulfillmentText': fulfillmentText!,
         if (intent != null) 'intent': intent!,
         if (intentDetectionConfidence != null)
-          'intentDetectionConfidence': intentDetectionConfidence!,
+          'intentDetectionConfidence': encodeDouble(intentDetectionConfidence!),
         if (languageCode != null) 'languageCode': languageCode!,
         if (outputContexts != null) 'outputContexts': outputContexts!,
         if (parameters != null) 'parameters': parameters!,
@@ -22969,7 +22986,8 @@ class GoogleCloudDialogflowV2QueryResult {
         if (sentimentAnalysisResult != null)
           'sentimentAnalysisResult': sentimentAnalysisResult!,
         if (speechRecognitionConfidence != null)
-          'speechRecognitionConfidence': speechRecognitionConfidence!,
+          'speechRecognitionConfidence':
+              encodeDouble(speechRecognitionConfidence!),
         if (webhookPayload != null) 'webhookPayload': webhookPayload!,
         if (webhookSource != null) 'webhookSource': webhookSource!,
       };
@@ -23493,7 +23511,9 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSp
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec.fromJson(
       core.Map json_)
       : this(
-          boost: (json_['boost'] as core.num?)?.toDouble(),
+          boost: json_.containsKey('boost')
+              ? decodeDouble(json_['boost'] as core.Object)
+              : null,
           boostControlSpec: json_.containsKey('boostControlSpec')
               ? GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec
                   .fromJson(json_['boostControlSpec']
@@ -23503,7 +23523,7 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSp
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boost != null) 'boost': boost!,
+        if (boost != null) 'boost': encodeDouble(boost!),
         if (boostControlSpec != null) 'boostControlSpec': boostControlSpec!,
         if (condition != null) 'condition': condition!,
       };
@@ -23869,13 +23889,15 @@ class GoogleCloudDialogflowV2SmartReplyAnswer {
   GoogleCloudDialogflowV2SmartReplyAnswer.fromJson(core.Map json_)
       : this(
           answerRecord: json_['answerRecord'] as core.String?,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           reply: json_['reply'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (answerRecord != null) 'answerRecord': answerRecord!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (reply != null) 'reply': reply!,
       };
 }
@@ -23902,8 +23924,9 @@ class GoogleCloudDialogflowV2SmartReplyMetrics {
 
   GoogleCloudDialogflowV2SmartReplyMetrics.fromJson(core.Map json_)
       : this(
-          allowlistCoverage:
-              (json_['allowlistCoverage'] as core.num?)?.toDouble(),
+          allowlistCoverage: json_.containsKey('allowlistCoverage')
+              ? decodeDouble(json_['allowlistCoverage'] as core.Object)
+              : null,
           conversationCount: json_['conversationCount'] as core.String?,
           topNMetrics: (json_['topNMetrics'] as core.List?)
               ?.map((value) =>
@@ -23913,7 +23936,8 @@ class GoogleCloudDialogflowV2SmartReplyMetrics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowlistCoverage != null) 'allowlistCoverage': allowlistCoverage!,
+        if (allowlistCoverage != null)
+          'allowlistCoverage': encodeDouble(allowlistCoverage!),
         if (conversationCount != null) 'conversationCount': conversationCount!,
         if (topNMetrics != null) 'topNMetrics': topNMetrics!,
       };
@@ -23942,12 +23966,14 @@ class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics {
   GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics.fromJson(core.Map json_)
       : this(
           n: json_['n'] as core.int?,
-          recall: (json_['recall'] as core.num?)?.toDouble(),
+          recall: json_.containsKey('recall')
+              ? decodeDouble(json_['recall'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (n != null) 'n': n!,
-        if (recall != null) 'recall': recall!,
+        if (recall != null) 'recall': encodeDouble(recall!),
       };
 }
 
@@ -24012,14 +24038,16 @@ class GoogleCloudDialogflowV2SpeechContext {
 
   GoogleCloudDialogflowV2SpeechContext.fromJson(core.Map json_)
       : this(
-          boost: (json_['boost'] as core.num?)?.toDouble(),
+          boost: json_.containsKey('boost')
+              ? decodeDouble(json_['boost'] as core.Object)
+              : null,
           phrases: (json_['phrases'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boost != null) 'boost': boost!,
+        if (boost != null) 'boost': encodeDouble(boost!),
         if (phrases != null) 'phrases': phrases!,
       };
 }
@@ -25090,21 +25118,27 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
           effectsProfileId: (json_['effectsProfileId'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          pitch: (json_['pitch'] as core.num?)?.toDouble(),
-          speakingRate: (json_['speakingRate'] as core.num?)?.toDouble(),
+          pitch: json_.containsKey('pitch')
+              ? decodeDouble(json_['pitch'] as core.Object)
+              : null,
+          speakingRate: json_.containsKey('speakingRate')
+              ? decodeDouble(json_['speakingRate'] as core.Object)
+              : null,
           voice: json_.containsKey('voice')
               ? GoogleCloudDialogflowV2VoiceSelectionParams.fromJson(
                   json_['voice'] as core.Map<core.String, core.dynamic>)
               : null,
-          volumeGainDb: (json_['volumeGainDb'] as core.num?)?.toDouble(),
+          volumeGainDb: json_.containsKey('volumeGainDb')
+              ? decodeDouble(json_['volumeGainDb'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (effectsProfileId != null) 'effectsProfileId': effectsProfileId!,
-        if (pitch != null) 'pitch': pitch!,
-        if (speakingRate != null) 'speakingRate': speakingRate!,
+        if (pitch != null) 'pitch': encodeDouble(pitch!),
+        if (speakingRate != null) 'speakingRate': encodeDouble(speakingRate!),
         if (voice != null) 'voice': voice!,
-        if (volumeGainDb != null) 'volumeGainDb': volumeGainDb!,
+        if (volumeGainDb != null) 'volumeGainDb': encodeDouble(volumeGainDb!),
       };
 }
 

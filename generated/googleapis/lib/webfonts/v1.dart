@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Web Fonts Developer API - v1
 ///
@@ -31,6 +32,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -139,14 +141,18 @@ class Axis {
 
   Axis.fromJson(core.Map json_)
       : this(
-          end: (json_['end'] as core.num?)?.toDouble(),
-          start: (json_['start'] as core.num?)?.toDouble(),
+          end: json_.containsKey('end')
+              ? decodeDouble(json_['end'] as core.Object)
+              : null,
+          start: json_.containsKey('start')
+              ? decodeDouble(json_['start'] as core.Object)
+              : null,
           tag: json_['tag'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (end != null) 'end': end!,
-        if (start != null) 'start': start!,
+        if (end != null) 'end': encodeDouble(end!),
+        if (start != null) 'start': encodeDouble(start!),
         if (tag != null) 'tag': tag!,
       };
 }

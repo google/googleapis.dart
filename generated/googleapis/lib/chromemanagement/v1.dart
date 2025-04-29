@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Chrome Management API - v1
 ///
@@ -44,6 +45,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1994,7 +1996,9 @@ class GoogleChromeManagementV1AppDetails {
           privacyPolicyUri: json_['privacyPolicyUri'] as core.String?,
           publisher: json_['publisher'] as core.String?,
           reviewNumber: json_['reviewNumber'] as core.String?,
-          reviewRating: (json_['reviewRating'] as core.num?)?.toDouble(),
+          reviewRating: json_.containsKey('reviewRating')
+              ? decodeDouble(json_['reviewRating'] as core.Object)
+              : null,
           revisionId: json_['revisionId'] as core.String?,
           serviceError: json_.containsKey('serviceError')
               ? GoogleRpcStatus.fromJson(
@@ -2019,7 +2023,7 @@ class GoogleChromeManagementV1AppDetails {
         if (privacyPolicyUri != null) 'privacyPolicyUri': privacyPolicyUri!,
         if (publisher != null) 'publisher': publisher!,
         if (reviewNumber != null) 'reviewNumber': reviewNumber!,
-        if (reviewRating != null) 'reviewRating': reviewRating!,
+        if (reviewRating != null) 'reviewRating': encodeDouble(reviewRating!),
         if (revisionId != null) 'revisionId': revisionId!,
         if (serviceError != null) 'serviceError': serviceError!,
         if (type != null) 'type': type!,

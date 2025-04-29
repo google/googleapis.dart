@@ -27,6 +27,7 @@ const ignoreForFileSet = {
   'unnecessary_brace_in_string_interps',
   'unnecessary_lambdas',
   'unnecessary_string_interpolations',
+  'unused_import',
 };
 
 String ignoreForFileComments(Iterable<String> ignores) =>
@@ -140,6 +141,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports
 
       yield* [
         if (generatedDuplicateLibraries()) "import '../$sharedLibraryName';",
+        "import '../$convertLibraryName';",
         "import '../$userAgentDartFilePath';",
       ];
     }
@@ -148,7 +150,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports
       'ApiRequestError',
       'DetailedApiRequestError',
       ...exportedClasses,
-    }.toList(growable: false)
+    }.toList()
           ..sort())
         .join(', ');
 

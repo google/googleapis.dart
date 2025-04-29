@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Contact Center AI Insights API - v1
 ///
@@ -48,6 +49,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4092,8 +4094,9 @@ class GoogleCloudContactcenterinsightsV1AnalysisRule {
   GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(core.Map json_)
       : this(
           active: json_['active'] as core.bool?,
-          analysisPercentage:
-              (json_['analysisPercentage'] as core.num?)?.toDouble(),
+          analysisPercentage: json_.containsKey('analysisPercentage')
+              ? decodeDouble(json_['analysisPercentage'] as core.Object)
+              : null,
           annotatorSelector: json_.containsKey('annotatorSelector')
               ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
                   json_['annotatorSelector']
@@ -4109,7 +4112,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisRule {
   core.Map<core.String, core.dynamic> toJson() => {
         if (active != null) 'active': active!,
         if (analysisPercentage != null)
-          'analysisPercentage': analysisPercentage!,
+          'analysisPercentage': encodeDouble(analysisPercentage!),
         if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
         if (conversationFilter != null)
           'conversationFilter': conversationFilter!,
@@ -4450,7 +4453,9 @@ class GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
   GoogleCloudContactcenterinsightsV1ArticleSuggestionData.fromJson(
       core.Map json_)
       : this(
-          confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
+          confidenceScore: json_.containsKey('confidenceScore')
+              ? decodeDouble(json_['confidenceScore'] as core.Object)
+              : null,
           metadata:
               (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -4465,7 +4470,8 @@ class GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidenceScore != null) 'confidenceScore': confidenceScore!,
+        if (confidenceScore != null)
+          'confidenceScore': encodeDouble(confidenceScore!),
         if (metadata != null) 'metadata': metadata!,
         if (queryRecord != null) 'queryRecord': queryRecord!,
         if (source != null) 'source': source!,
@@ -4506,8 +4512,9 @@ class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest {
   GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.fromJson(
       core.Map json_)
       : this(
-          analysisPercentage:
-              (json_['analysisPercentage'] as core.num?)?.toDouble(),
+          analysisPercentage: json_.containsKey('analysisPercentage')
+              ? decodeDouble(json_['analysisPercentage'] as core.Object)
+              : null,
           annotatorSelector: json_.containsKey('annotatorSelector')
               ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
                   json_['annotatorSelector']
@@ -4519,7 +4526,7 @@ class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (analysisPercentage != null)
-          'analysisPercentage': analysisPercentage!,
+          'analysisPercentage': encodeDouble(analysisPercentage!),
         if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
         if (filter != null) 'filter': filter!,
         if (parent != null) 'parent': parent!,
@@ -5484,13 +5491,15 @@ class GoogleCloudContactcenterinsightsV1ConversationLevelSilence {
       core.Map json_)
       : this(
           silenceDuration: json_['silenceDuration'] as core.String?,
-          silencePercentage:
-              (json_['silencePercentage'] as core.num?)?.toDouble(),
+          silencePercentage: json_.containsKey('silencePercentage')
+              ? decodeDouble(json_['silencePercentage'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (silenceDuration != null) 'silenceDuration': silenceDuration!,
-        if (silencePercentage != null) 'silencePercentage': silencePercentage!,
+        if (silencePercentage != null)
+          'silencePercentage': encodeDouble(silencePercentage!),
       };
 }
 
@@ -5721,7 +5730,9 @@ class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData 
       core.Map json_)
       : this(
           answerRecord: json_['answerRecord'] as core.String?,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           conversationModel: json_['conversationModel'] as core.String?,
           metadata:
               (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -5743,7 +5754,7 @@ class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData 
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (answerRecord != null) 'answerRecord': answerRecord!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (conversationModel != null) 'conversationModel': conversationModel!,
         if (metadata != null) 'metadata': metadata!,
         if (text != null) 'text': text!,
@@ -5835,7 +5846,9 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
       core.Map json_)
       : this(
           channelTag: json_['channelTag'] as core.int?,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           dialogflowSegmentMetadata: json_
                   .containsKey('dialogflowSegmentMetadata')
               ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata
@@ -5863,7 +5876,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelTag != null) 'channelTag': channelTag!,
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (dialogflowSegmentMetadata != null)
           'dialogflowSegmentMetadata': dialogflowSegmentMetadata!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -5929,14 +5942,16 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentW
   GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo.fromJson(
       core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           endOffset: json_['endOffset'] as core.String?,
           startOffset: json_['startOffset'] as core.String?,
           word: json_['word'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (endOffset != null) 'endOffset': endOffset!,
         if (startOffset != null) 'startOffset': startOffset!,
         if (word != null) 'word': word!,
@@ -6009,12 +6024,14 @@ class GoogleCloudContactcenterinsightsV1DialogflowInteractionData {
   GoogleCloudContactcenterinsightsV1DialogflowInteractionData.fromJson(
       core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
           dialogflowIntentId: json_['dialogflowIntentId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
         if (dialogflowIntentId != null)
           'dialogflowIntentId': dialogflowIntentId!,
       };
@@ -6422,7 +6439,9 @@ class GoogleCloudContactcenterinsightsV1Entity {
               value as core.String,
             ),
           ),
-          salience: (json_['salience'] as core.num?)?.toDouble(),
+          salience: json_.containsKey('salience')
+              ? decodeDouble(json_['salience'] as core.Object)
+              : null,
           sentiment: json_.containsKey('sentiment')
               ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
                   json_['sentiment'] as core.Map<core.String, core.dynamic>)
@@ -6433,7 +6452,7 @@ class GoogleCloudContactcenterinsightsV1Entity {
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (metadata != null) 'metadata': metadata!,
-        if (salience != null) 'salience': salience!,
+        if (salience != null) 'salience': encodeDouble(salience!),
         if (sentiment != null) 'sentiment': sentiment!,
         if (type != null) 'type': type!,
       };
@@ -6708,7 +6727,9 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerData {
   GoogleCloudContactcenterinsightsV1FaqAnswerData.fromJson(core.Map json_)
       : this(
           answer: json_['answer'] as core.String?,
-          confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
+          confidenceScore: json_.containsKey('confidenceScore')
+              ? decodeDouble(json_['confidenceScore'] as core.Object)
+              : null,
           metadata:
               (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -6723,7 +6744,8 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerData {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (answer != null) 'answer': answer!,
-        if (confidenceScore != null) 'confidenceScore': confidenceScore!,
+        if (confidenceScore != null)
+          'confidenceScore': encodeDouble(confidenceScore!),
         if (metadata != null) 'metadata': metadata!,
         if (queryRecord != null) 'queryRecord': queryRecord!,
         if (question != null) 'question': question!,
@@ -7297,13 +7319,15 @@ class GoogleCloudContactcenterinsightsV1IssueAssignment {
       : this(
           displayName: json_['displayName'] as core.String?,
           issue: json_['issue'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (issue != null) 'issue': issue!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -8380,10 +8404,18 @@ class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
           boolValue: json_['boolValue'] as core.bool?,
           key: json_['key'] as core.String?,
           naValue: json_['naValue'] as core.bool?,
-          normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
-          numValue: (json_['numValue'] as core.num?)?.toDouble(),
-          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
+          normalizedScore: json_.containsKey('normalizedScore')
+              ? decodeDouble(json_['normalizedScore'] as core.Object)
+              : null,
+          numValue: json_.containsKey('numValue')
+              ? decodeDouble(json_['numValue'] as core.Object)
+              : null,
+          potentialScore: json_.containsKey('potentialScore')
+              ? decodeDouble(json_['potentialScore'] as core.Object)
+              : null,
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           strValue: json_['strValue'] as core.String?,
         );
 
@@ -8391,10 +8423,12 @@ class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
         if (boolValue != null) 'boolValue': boolValue!,
         if (key != null) 'key': key!,
         if (naValue != null) 'naValue': naValue!,
-        if (normalizedScore != null) 'normalizedScore': normalizedScore!,
-        if (numValue != null) 'numValue': numValue!,
-        if (potentialScore != null) 'potentialScore': potentialScore!,
-        if (score != null) 'score': score!,
+        if (normalizedScore != null)
+          'normalizedScore': encodeDouble(normalizedScore!),
+        if (numValue != null) 'numValue': encodeDouble(numValue!),
+        if (potentialScore != null)
+          'potentialScore': encodeDouble(potentialScore!),
+        if (score != null) 'score': encodeDouble(score!),
         if (strValue != null) 'strValue': strValue!,
       };
 }
@@ -8555,8 +8589,12 @@ class GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice {
           boolValue: json_['boolValue'] as core.bool?,
           key: json_['key'] as core.String?,
           naValue: json_['naValue'] as core.bool?,
-          numValue: (json_['numValue'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
+          numValue: json_.containsKey('numValue')
+              ? decodeDouble(json_['numValue'] as core.Object)
+              : null,
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           strValue: json_['strValue'] as core.String?,
         );
 
@@ -8564,8 +8602,8 @@ class GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice {
         if (boolValue != null) 'boolValue': boolValue!,
         if (key != null) 'key': key!,
         if (naValue != null) 'naValue': naValue!,
-        if (numValue != null) 'numValue': numValue!,
-        if (score != null) 'score': score!,
+        if (numValue != null) 'numValue': encodeDouble(numValue!),
+        if (score != null) 'score': encodeDouble(score!),
         if (strValue != null) 'strValue': strValue!,
       };
 }
@@ -8586,11 +8624,13 @@ class GoogleCloudContactcenterinsightsV1QaQuestionMetrics {
 
   GoogleCloudContactcenterinsightsV1QaQuestionMetrics.fromJson(core.Map json_)
       : this(
-          accuracy: (json_['accuracy'] as core.num?)?.toDouble(),
+          accuracy: json_.containsKey('accuracy')
+              ? decodeDouble(json_['accuracy'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accuracy != null) 'accuracy': accuracy!,
+        if (accuracy != null) 'accuracy': encodeDouble(accuracy!),
       };
 }
 
@@ -8758,8 +8798,12 @@ class GoogleCloudContactcenterinsightsV1QaScorecardResult {
           conversation: json_['conversation'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           name: json_['name'] as core.String?,
-          normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
-          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
+          normalizedScore: json_.containsKey('normalizedScore')
+              ? decodeDouble(json_['normalizedScore'] as core.Object)
+              : null,
+          potentialScore: json_.containsKey('potentialScore')
+              ? decodeDouble(json_['potentialScore'] as core.Object)
+              : null,
           qaAnswers: (json_['qaAnswers'] as core.List?)
               ?.map((value) =>
                   GoogleCloudContactcenterinsightsV1QaAnswer.fromJson(
@@ -8771,7 +8815,9 @@ class GoogleCloudContactcenterinsightsV1QaScorecardResult {
                   GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           scoreSources: (json_['scoreSources'] as core.List?)
               ?.map((value) =>
                   GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource
@@ -8784,13 +8830,15 @@ class GoogleCloudContactcenterinsightsV1QaScorecardResult {
         if (conversation != null) 'conversation': conversation!,
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
-        if (normalizedScore != null) 'normalizedScore': normalizedScore!,
-        if (potentialScore != null) 'potentialScore': potentialScore!,
+        if (normalizedScore != null)
+          'normalizedScore': encodeDouble(normalizedScore!),
+        if (potentialScore != null)
+          'potentialScore': encodeDouble(potentialScore!),
         if (qaAnswers != null) 'qaAnswers': qaAnswers!,
         if (qaScorecardRevision != null)
           'qaScorecardRevision': qaScorecardRevision!,
         if (qaTagResults != null) 'qaTagResults': qaTagResults!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
         if (scoreSources != null) 'scoreSources': scoreSources!,
       };
 }
@@ -8819,16 +8867,24 @@ class GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult {
   GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult.fromJson(
       core.Map json_)
       : this(
-          normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
-          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
+          normalizedScore: json_.containsKey('normalizedScore')
+              ? decodeDouble(json_['normalizedScore'] as core.Object)
+              : null,
+          potentialScore: json_.containsKey('potentialScore')
+              ? decodeDouble(json_['potentialScore'] as core.Object)
+              : null,
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           tag: json_['tag'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (normalizedScore != null) 'normalizedScore': normalizedScore!,
-        if (potentialScore != null) 'potentialScore': potentialScore!,
-        if (score != null) 'score': score!,
+        if (normalizedScore != null)
+          'normalizedScore': encodeDouble(normalizedScore!),
+        if (potentialScore != null)
+          'potentialScore': encodeDouble(potentialScore!),
+        if (score != null) 'score': encodeDouble(score!),
         if (tag != null) 'tag': tag!,
       };
 }
@@ -8874,22 +8930,30 @@ class GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource {
   GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource.fromJson(
       core.Map json_)
       : this(
-          normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
-          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
+          normalizedScore: json_.containsKey('normalizedScore')
+              ? decodeDouble(json_['normalizedScore'] as core.Object)
+              : null,
+          potentialScore: json_.containsKey('potentialScore')
+              ? decodeDouble(json_['potentialScore'] as core.Object)
+              : null,
           qaTagResults: (json_['qaTagResults'] as core.List?)
               ?.map((value) =>
                   GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           sourceType: json_['sourceType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (normalizedScore != null) 'normalizedScore': normalizedScore!,
-        if (potentialScore != null) 'potentialScore': potentialScore!,
+        if (normalizedScore != null)
+          'normalizedScore': encodeDouble(normalizedScore!),
+        if (potentialScore != null)
+          'potentialScore': encodeDouble(potentialScore!),
         if (qaTagResults != null) 'qaTagResults': qaTagResults!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
         if (sourceType != null) 'sourceType': sourceType!,
       };
 }
@@ -9270,13 +9334,17 @@ class GoogleCloudContactcenterinsightsV1SentimentData {
 
   GoogleCloudContactcenterinsightsV1SentimentData.fromJson(core.Map json_)
       : this(
-          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
+          magnitude: json_.containsKey('magnitude')
+              ? decodeDouble(json_['magnitude'] as core.Object)
+              : null,
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
-        if (score != null) 'score': score!,
+        if (magnitude != null) 'magnitude': encodeDouble(magnitude!),
+        if (score != null) 'score': encodeDouble(score!),
       };
 }
 
@@ -9442,22 +9510,26 @@ class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
                   json_['annotatorSelector']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          runtimeIntegrationAnalysisPercentage:
-              (json_['runtimeIntegrationAnalysisPercentage'] as core.num?)
-                  ?.toDouble(),
-          uploadConversationAnalysisPercentage:
-              (json_['uploadConversationAnalysisPercentage'] as core.num?)
-                  ?.toDouble(),
+          runtimeIntegrationAnalysisPercentage: json_
+                  .containsKey('runtimeIntegrationAnalysisPercentage')
+              ? decodeDouble(
+                  json_['runtimeIntegrationAnalysisPercentage'] as core.Object)
+              : null,
+          uploadConversationAnalysisPercentage: json_
+                  .containsKey('uploadConversationAnalysisPercentage')
+              ? decodeDouble(
+                  json_['uploadConversationAnalysisPercentage'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
         if (runtimeIntegrationAnalysisPercentage != null)
           'runtimeIntegrationAnalysisPercentage':
-              runtimeIntegrationAnalysisPercentage!,
+              encodeDouble(runtimeIntegrationAnalysisPercentage!),
         if (uploadConversationAnalysisPercentage != null)
           'uploadConversationAnalysisPercentage':
-              uploadConversationAnalysisPercentage!,
+              encodeDouble(uploadConversationAnalysisPercentage!),
       };
 }
 
@@ -9494,7 +9566,9 @@ class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
   GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData.fromJson(
       core.Map json_)
       : this(
-          confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
+          confidenceScore: json_.containsKey('confidenceScore')
+              ? decodeDouble(json_['confidenceScore'] as core.Object)
+              : null,
           metadata:
               (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -9507,7 +9581,8 @@ class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidenceScore != null) 'confidenceScore': confidenceScore!,
+        if (confidenceScore != null)
+          'confidenceScore': encodeDouble(confidenceScore!),
         if (metadata != null) 'metadata': metadata!,
         if (queryRecord != null) 'queryRecord': queryRecord!,
         if (suggestion != null) 'suggestion': suggestion!,
@@ -9543,7 +9618,9 @@ class GoogleCloudContactcenterinsightsV1SmartReplyData {
 
   GoogleCloudContactcenterinsightsV1SmartReplyData.fromJson(core.Map json_)
       : this(
-          confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
+          confidenceScore: json_.containsKey('confidenceScore')
+              ? decodeDouble(json_['confidenceScore'] as core.Object)
+              : null,
           metadata:
               (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -9556,7 +9633,8 @@ class GoogleCloudContactcenterinsightsV1SmartReplyData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidenceScore != null) 'confidenceScore': confidenceScore!,
+        if (confidenceScore != null)
+          'confidenceScore': encodeDouble(confidenceScore!),
         if (metadata != null) 'metadata': metadata!,
         if (queryRecord != null) 'queryRecord': queryRecord!,
         if (reply != null) 'reply': reply!,

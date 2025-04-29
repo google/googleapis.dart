@@ -16,9 +16,11 @@ library;
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 import 'dart:convert' as convert;
 import 'dart:core' as core;
+import 'src/convert.dart';
 
 /// Used by:
 ///
@@ -370,12 +372,14 @@ class $ConversionEventDefaultConversionValue {
   $ConversionEventDefaultConversionValue.fromJson(core.Map json_)
       : this(
           currencyCode: json_['currencyCode'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -1258,12 +1262,14 @@ class $KeyEventDefaultValue {
   $KeyEventDefaultValue.fromJson(core.Map json_)
       : this(
           currencyCode: json_['currencyCode'] as core.String?,
-          numericValue: (json_['numericValue'] as core.num?)?.toDouble(),
+          numericValue: json_.containsKey('numericValue')
+              ? decodeDouble(json_['numericValue'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (numericValue != null) 'numericValue': numericValue!,
+        if (numericValue != null) 'numericValue': encodeDouble(numericValue!),
       };
 }
 
@@ -1423,12 +1429,14 @@ class $NumericValue {
 
   $NumericValue.fromJson(core.Map json_)
       : this(
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           int64Value: json_['int64Value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (int64Value != null) 'int64Value': int64Value!,
       };
 }
@@ -1994,14 +2002,19 @@ class $SasPortalFrequencyRange {
 
   $SasPortalFrequencyRange.fromJson(core.Map json_)
       : this(
-          highFrequencyMhz:
-              (json_['highFrequencyMhz'] as core.num?)?.toDouble(),
-          lowFrequencyMhz: (json_['lowFrequencyMhz'] as core.num?)?.toDouble(),
+          highFrequencyMhz: json_.containsKey('highFrequencyMhz')
+              ? decodeDouble(json_['highFrequencyMhz'] as core.Object)
+              : null,
+          lowFrequencyMhz: json_.containsKey('lowFrequencyMhz')
+              ? decodeDouble(json_['lowFrequencyMhz'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (highFrequencyMhz != null) 'highFrequencyMhz': highFrequencyMhz!,
-        if (lowFrequencyMhz != null) 'lowFrequencyMhz': lowFrequencyMhz!,
+        if (highFrequencyMhz != null)
+          'highFrequencyMhz': encodeDouble(highFrequencyMhz!),
+        if (lowFrequencyMhz != null)
+          'lowFrequencyMhz': encodeDouble(lowFrequencyMhz!),
       };
 }
 
@@ -2175,37 +2188,48 @@ class $SasPortalInstallationParams {
           antennaAzimuth: json_['antennaAzimuth'] as core.int?,
           antennaBeamwidth: json_['antennaBeamwidth'] as core.int?,
           antennaDowntilt: json_['antennaDowntilt'] as core.int?,
-          antennaGain: (json_['antennaGain'] as core.num?)?.toDouble(),
+          antennaGain: json_.containsKey('antennaGain')
+              ? decodeDouble(json_['antennaGain'] as core.Object)
+              : null,
           antennaModel: json_['antennaModel'] as core.String?,
           cpeCbsdIndication: json_['cpeCbsdIndication'] as core.bool?,
           eirpCapability: json_['eirpCapability'] as core.int?,
-          height: (json_['height'] as core.num?)?.toDouble(),
+          height: json_.containsKey('height')
+              ? decodeDouble(json_['height'] as core.Object)
+              : null,
           heightType: json_['heightType'] as core.String?,
-          horizontalAccuracy:
-              (json_['horizontalAccuracy'] as core.num?)?.toDouble(),
+          horizontalAccuracy: json_.containsKey('horizontalAccuracy')
+              ? decodeDouble(json_['horizontalAccuracy'] as core.Object)
+              : null,
           indoorDeployment: json_['indoorDeployment'] as core.bool?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
-          verticalAccuracy:
-              (json_['verticalAccuracy'] as core.num?)?.toDouble(),
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
+          verticalAccuracy: json_.containsKey('verticalAccuracy')
+              ? decodeDouble(json_['verticalAccuracy'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (antennaAzimuth != null) 'antennaAzimuth': antennaAzimuth!,
         if (antennaBeamwidth != null) 'antennaBeamwidth': antennaBeamwidth!,
         if (antennaDowntilt != null) 'antennaDowntilt': antennaDowntilt!,
-        if (antennaGain != null) 'antennaGain': antennaGain!,
+        if (antennaGain != null) 'antennaGain': encodeDouble(antennaGain!),
         if (antennaModel != null) 'antennaModel': antennaModel!,
         if (cpeCbsdIndication != null) 'cpeCbsdIndication': cpeCbsdIndication!,
         if (eirpCapability != null) 'eirpCapability': eirpCapability!,
-        if (height != null) 'height': height!,
+        if (height != null) 'height': encodeDouble(height!),
         if (heightType != null) 'heightType': heightType!,
         if (horizontalAccuracy != null)
-          'horizontalAccuracy': horizontalAccuracy!,
+          'horizontalAccuracy': encodeDouble(horizontalAccuracy!),
         if (indoorDeployment != null) 'indoorDeployment': indoorDeployment!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-        if (verticalAccuracy != null) 'verticalAccuracy': verticalAccuracy!,
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
+        if (verticalAccuracy != null)
+          'verticalAccuracy': encodeDouble(verticalAccuracy!),
       };
 }
 
@@ -2382,16 +2406,20 @@ class $SasPortalNrqzValidation {
       : this(
           caseId: json_['caseId'] as core.String?,
           cpiId: json_['cpiId'] as core.String?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
           state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (caseId != null) 'caseId': caseId!,
         if (cpiId != null) 'cpiId': cpiId!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
         if (state != null) 'state': state!,
       };
 }

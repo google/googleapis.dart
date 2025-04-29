@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Classroom API - v1
 ///
@@ -52,6 +53,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -6165,7 +6167,9 @@ class AddOnAttachment {
               : null,
           id: json_['id'] as core.String?,
           itemId: json_['itemId'] as core.String?,
-          maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
+          maxPoints: json_.containsKey('maxPoints')
+              ? decodeDouble(json_['maxPoints'] as core.Object)
+              : null,
           postId: json_['postId'] as core.String?,
           studentViewUri: json_.containsKey('studentViewUri')
               ? EmbedUri.fromJson(json_['studentViewUri']
@@ -6189,7 +6193,7 @@ class AddOnAttachment {
         if (dueTime != null) 'dueTime': dueTime!,
         if (id != null) 'id': id!,
         if (itemId != null) 'itemId': itemId!,
-        if (maxPoints != null) 'maxPoints': maxPoints!,
+        if (maxPoints != null) 'maxPoints': encodeDouble(maxPoints!),
         if (postId != null) 'postId': postId!,
         if (studentViewUri != null) 'studentViewUri': studentViewUri!,
         if (studentWorkReviewUri != null)
@@ -6225,12 +6229,14 @@ class AddOnAttachmentStudentSubmission {
 
   AddOnAttachmentStudentSubmission.fromJson(core.Map json_)
       : this(
-          pointsEarned: (json_['pointsEarned'] as core.num?)?.toDouble(),
+          pointsEarned: json_.containsKey('pointsEarned')
+              ? decodeDouble(json_['pointsEarned'] as core.Object)
+              : null,
           postSubmissionState: json_['postSubmissionState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pointsEarned != null) 'pointsEarned': pointsEarned!,
+        if (pointsEarned != null) 'pointsEarned': encodeDouble(pointsEarned!),
         if (postSubmissionState != null)
           'postSubmissionState': postSubmissionState!,
       };
@@ -7198,7 +7204,9 @@ class CourseWork {
               ?.map((value) => Material.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
+          maxPoints: json_.containsKey('maxPoints')
+              ? decodeDouble(json_['maxPoints'] as core.Object)
+              : null,
           multipleChoiceQuestion: json_.containsKey('multipleChoiceQuestion')
               ? MultipleChoiceQuestion.fromJson(json_['multipleChoiceQuestion']
                   as core.Map<core.String, core.dynamic>)
@@ -7230,7 +7238,7 @@ class CourseWork {
         if (individualStudentsOptions != null)
           'individualStudentsOptions': individualStudentsOptions!,
         if (materials != null) 'materials': materials!,
-        if (maxPoints != null) 'maxPoints': maxPoints!,
+        if (maxPoints != null) 'maxPoints': encodeDouble(maxPoints!),
         if (multipleChoiceQuestion != null)
           'multipleChoiceQuestion': multipleChoiceQuestion!,
         if (scheduledTime != null) 'scheduledTime': scheduledTime!,
@@ -7805,16 +7813,20 @@ class GradeHistory {
           actorUserId: json_['actorUserId'] as core.String?,
           gradeChangeType: json_['gradeChangeType'] as core.String?,
           gradeTimestamp: json_['gradeTimestamp'] as core.String?,
-          maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
-          pointsEarned: (json_['pointsEarned'] as core.num?)?.toDouble(),
+          maxPoints: json_.containsKey('maxPoints')
+              ? decodeDouble(json_['maxPoints'] as core.Object)
+              : null,
+          pointsEarned: json_.containsKey('pointsEarned')
+              ? decodeDouble(json_['pointsEarned'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actorUserId != null) 'actorUserId': actorUserId!,
         if (gradeChangeType != null) 'gradeChangeType': gradeChangeType!,
         if (gradeTimestamp != null) 'gradeTimestamp': gradeTimestamp!,
-        if (maxPoints != null) 'maxPoints': maxPoints!,
-        if (pointsEarned != null) 'pointsEarned': pointsEarned!,
+        if (maxPoints != null) 'maxPoints': encodeDouble(maxPoints!),
+        if (pointsEarned != null) 'pointsEarned': encodeDouble(pointsEarned!),
       };
 }
 
@@ -8082,14 +8094,16 @@ class Level {
       : this(
           description: json_['description'] as core.String?,
           id: json_['id'] as core.String?,
-          points: (json_['points'] as core.num?)?.toDouble(),
+          points: json_.containsKey('points')
+              ? decodeDouble(json_['points'] as core.Object)
+              : null,
           title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (id != null) 'id': id!,
-        if (points != null) 'points': points!,
+        if (points != null) 'points': encodeDouble(points!),
         if (title != null) 'title': title!,
       };
 }
@@ -8998,13 +9012,15 @@ class RubricGrade {
       : this(
           criterionId: json_['criterionId'] as core.String?,
           levelId: json_['levelId'] as core.String?,
-          points: (json_['points'] as core.num?)?.toDouble(),
+          points: json_.containsKey('points')
+              ? decodeDouble(json_['points'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (criterionId != null) 'criterionId': criterionId!,
         if (levelId != null) 'levelId': levelId!,
-        if (points != null) 'points': points!,
+        if (points != null) 'points': encodeDouble(points!),
       };
 }
 
@@ -9328,7 +9344,9 @@ class StudentSubmission {
   StudentSubmission.fromJson(core.Map json_)
       : this(
           alternateLink: json_['alternateLink'] as core.String?,
-          assignedGrade: (json_['assignedGrade'] as core.num?)?.toDouble(),
+          assignedGrade: json_.containsKey('assignedGrade')
+              ? decodeDouble(json_['assignedGrade'] as core.Object)
+              : null,
           assignedRubricGrades: (json_['assignedRubricGrades']
                   as core.Map<core.String, core.dynamic>?)
               ?.map(
@@ -9348,7 +9366,9 @@ class StudentSubmission {
           courseWorkId: json_['courseWorkId'] as core.String?,
           courseWorkType: json_['courseWorkType'] as core.String?,
           creationTime: json_['creationTime'] as core.String?,
-          draftGrade: (json_['draftGrade'] as core.num?)?.toDouble(),
+          draftGrade: json_.containsKey('draftGrade')
+              ? decodeDouble(json_['draftGrade'] as core.Object)
+              : null,
           draftRubricGrades: (json_['draftRubricGrades']
                   as core.Map<core.String, core.dynamic>?)
               ?.map(
@@ -9381,7 +9401,8 @@ class StudentSubmission {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
-        if (assignedGrade != null) 'assignedGrade': assignedGrade!,
+        if (assignedGrade != null)
+          'assignedGrade': encodeDouble(assignedGrade!),
         if (assignedRubricGrades != null)
           'assignedRubricGrades': assignedRubricGrades!,
         if (assignmentSubmission != null)
@@ -9392,7 +9413,7 @@ class StudentSubmission {
         if (courseWorkId != null) 'courseWorkId': courseWorkId!,
         if (courseWorkType != null) 'courseWorkType': courseWorkType!,
         if (creationTime != null) 'creationTime': creationTime!,
-        if (draftGrade != null) 'draftGrade': draftGrade!,
+        if (draftGrade != null) 'draftGrade': encodeDouble(draftGrade!),
         if (draftRubricGrades != null) 'draftRubricGrades': draftRubricGrades!,
         if (id != null) 'id': id!,
         if (late != null) 'late': late!,

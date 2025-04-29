@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Security Command Center API - v1
 ///
@@ -94,6 +95,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -9936,11 +9938,13 @@ class AdaptiveProtection {
 
   AdaptiveProtection.fromJson(core.Map json_)
       : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          confidence: json_.containsKey('confidence')
+              ? decodeDouble(json_['confidence'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
+        if (confidence != null) 'confidence': encodeDouble(confidence!),
       };
 }
 
@@ -10261,7 +10265,9 @@ class AttackExposure {
           exposedMediumValueResourcesCount:
               json_['exposedMediumValueResourcesCount'] as core.int?,
           latestCalculationTime: json_['latestCalculationTime'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
+          score: json_.containsKey('score')
+              ? decodeDouble(json_['score'] as core.Object)
+              : null,
           state: json_['state'] as core.String?,
         );
 
@@ -10276,7 +10282,7 @@ class AttackExposure {
           'exposedMediumValueResourcesCount': exposedMediumValueResourcesCount!,
         if (latestCalculationTime != null)
           'latestCalculationTime': latestCalculationTime!,
-        if (score != null) 'score': score!,
+        if (score != null) 'score': encodeDouble(score!),
         if (state != null) 'state': state!,
       };
 }
@@ -11851,7 +11857,9 @@ class Cvssv3 {
           attackComplexity: json_['attackComplexity'] as core.String?,
           attackVector: json_['attackVector'] as core.String?,
           availabilityImpact: json_['availabilityImpact'] as core.String?,
-          baseScore: (json_['baseScore'] as core.num?)?.toDouble(),
+          baseScore: json_.containsKey('baseScore')
+              ? decodeDouble(json_['baseScore'] as core.Object)
+              : null,
           confidentialityImpact: json_['confidentialityImpact'] as core.String?,
           integrityImpact: json_['integrityImpact'] as core.String?,
           privilegesRequired: json_['privilegesRequired'] as core.String?,
@@ -11864,7 +11872,7 @@ class Cvssv3 {
         if (attackVector != null) 'attackVector': attackVector!,
         if (availabilityImpact != null)
           'availabilityImpact': availabilityImpact!,
-        if (baseScore != null) 'baseScore': baseScore!,
+        if (baseScore != null) 'baseScore': encodeDouble(baseScore!),
         if (confidentialityImpact != null)
           'confidentialityImpact': confidentialityImpact!,
         if (integrityImpact != null) 'integrityImpact': integrityImpact!,
@@ -12150,14 +12158,15 @@ class Detection {
   Detection.fromJson(core.Map json_)
       : this(
           binary: json_['binary'] as core.String?,
-          percentPagesMatched:
-              (json_['percentPagesMatched'] as core.num?)?.toDouble(),
+          percentPagesMatched: json_.containsKey('percentPagesMatched')
+              ? decodeDouble(json_['percentPagesMatched'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (binary != null) 'binary': binary!,
         if (percentPagesMatched != null)
-          'percentPagesMatched': percentPagesMatched!,
+          'percentPagesMatched': encodeDouble(percentPagesMatched!),
       };
 }
 
@@ -16878,14 +16887,16 @@ class Requests {
       : this(
           longTermAllowed: json_['longTermAllowed'] as core.int?,
           longTermDenied: json_['longTermDenied'] as core.int?,
-          ratio: (json_['ratio'] as core.num?)?.toDouble(),
+          ratio: json_.containsKey('ratio')
+              ? decodeDouble(json_['ratio'] as core.Object)
+              : null,
           shortTermAllowed: json_['shortTermAllowed'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (longTermAllowed != null) 'longTermAllowed': longTermAllowed!,
         if (longTermDenied != null) 'longTermDenied': longTermDenied!,
-        if (ratio != null) 'ratio': ratio!,
+        if (ratio != null) 'ratio': encodeDouble(ratio!),
         if (shortTermAllowed != null) 'shortTermAllowed': shortTermAllowed!,
       };
 }
@@ -18060,8 +18071,9 @@ class ToxicCombination {
 
   ToxicCombination.fromJson(core.Map json_)
       : this(
-          attackExposureScore:
-              (json_['attackExposureScore'] as core.num?)?.toDouble(),
+          attackExposureScore: json_.containsKey('attackExposureScore')
+              ? decodeDouble(json_['attackExposureScore'] as core.Object)
+              : null,
           relatedFindings: (json_['relatedFindings'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -18069,7 +18081,7 @@ class ToxicCombination {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attackExposureScore != null)
-          'attackExposureScore': attackExposureScore!,
+          'attackExposureScore': encodeDouble(attackExposureScore!),
         if (relatedFindings != null) 'relatedFindings': relatedFindings!,
       };
 }
@@ -18180,7 +18192,9 @@ class ValuedResource {
   ValuedResource.fromJson(core.Map json_)
       : this(
           displayName: json_['displayName'] as core.String?,
-          exposedScore: (json_['exposedScore'] as core.num?)?.toDouble(),
+          exposedScore: json_.containsKey('exposedScore')
+              ? decodeDouble(json_['exposedScore'] as core.Object)
+              : null,
           name: json_['name'] as core.String?,
           resource: json_['resource'] as core.String?,
           resourceType: json_['resourceType'] as core.String?,
@@ -18194,7 +18208,7 @@ class ValuedResource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
-        if (exposedScore != null) 'exposedScore': exposedScore!,
+        if (exposedScore != null) 'exposedScore': encodeDouble(exposedScore!),
         if (name != null) 'name': name!,
         if (resource != null) 'resource': resource!,
         if (resourceType != null) 'resourceType': resourceType!,

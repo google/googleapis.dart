@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// YouTube Data API v3 - v3
 ///
@@ -64,6 +65,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -10194,15 +10196,21 @@ class GeoPoint {
 
   GeoPoint.fromJson(core.Map json_)
       : this(
-          altitude: (json_['altitude'] as core.num?)?.toDouble(),
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+          altitude: json_.containsKey('altitude')
+              ? decodeDouble(json_['altitude'] as core.Object)
+              : null,
+          latitude: json_.containsKey('latitude')
+              ? decodeDouble(json_['latitude'] as core.Object)
+              : null,
+          longitude: json_.containsKey('longitude')
+              ? decodeDouble(json_['longitude'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (altitude != null) 'altitude': altitude!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
+        if (altitude != null) 'altitude': encodeDouble(altitude!),
+        if (latitude != null) 'latitude': encodeDouble(latitude!),
+        if (longitude != null) 'longitude': encodeDouble(longitude!),
       };
 }
 
@@ -16692,10 +16700,14 @@ class VideoFileDetailsVideoStream {
 
   VideoFileDetailsVideoStream.fromJson(core.Map json_)
       : this(
-          aspectRatio: (json_['aspectRatio'] as core.num?)?.toDouble(),
+          aspectRatio: json_.containsKey('aspectRatio')
+              ? decodeDouble(json_['aspectRatio'] as core.Object)
+              : null,
           bitrateBps: json_['bitrateBps'] as core.String?,
           codec: json_['codec'] as core.String?,
-          frameRateFps: (json_['frameRateFps'] as core.num?)?.toDouble(),
+          frameRateFps: json_.containsKey('frameRateFps')
+              ? decodeDouble(json_['frameRateFps'] as core.Object)
+              : null,
           heightPixels: json_['heightPixels'] as core.int?,
           rotation: json_['rotation'] as core.String?,
           vendor: json_['vendor'] as core.String?,
@@ -16703,10 +16715,10 @@ class VideoFileDetailsVideoStream {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aspectRatio != null) 'aspectRatio': aspectRatio!,
+        if (aspectRatio != null) 'aspectRatio': encodeDouble(aspectRatio!),
         if (bitrateBps != null) 'bitrateBps': bitrateBps!,
         if (codec != null) 'codec': codec!,
-        if (frameRateFps != null) 'frameRateFps': frameRateFps!,
+        if (frameRateFps != null) 'frameRateFps': encodeDouble(frameRateFps!),
         if (heightPixels != null) 'heightPixels': heightPixels!,
         if (rotation != null) 'rotation': rotation!,
         if (vendor != null) 'vendor': vendor!,

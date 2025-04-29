@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Service Control API - v1
 ///
@@ -32,6 +33,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -848,11 +850,18 @@ class Distribution {
               ? LinearBuckets.fromJson(
                   json_['linearBuckets'] as core.Map<core.String, core.dynamic>)
               : null,
-          maximum: (json_['maximum'] as core.num?)?.toDouble(),
-          mean: (json_['mean'] as core.num?)?.toDouble(),
-          minimum: (json_['minimum'] as core.num?)?.toDouble(),
-          sumOfSquaredDeviation:
-              (json_['sumOfSquaredDeviation'] as core.num?)?.toDouble(),
+          maximum: json_.containsKey('maximum')
+              ? decodeDouble(json_['maximum'] as core.Object)
+              : null,
+          mean: json_.containsKey('mean')
+              ? decodeDouble(json_['mean'] as core.Object)
+              : null,
+          minimum: json_.containsKey('minimum')
+              ? decodeDouble(json_['minimum'] as core.Object)
+              : null,
+          sumOfSquaredDeviation: json_.containsKey('sumOfSquaredDeviation')
+              ? decodeDouble(json_['sumOfSquaredDeviation'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -863,11 +872,11 @@ class Distribution {
         if (exponentialBuckets != null)
           'exponentialBuckets': exponentialBuckets!,
         if (linearBuckets != null) 'linearBuckets': linearBuckets!,
-        if (maximum != null) 'maximum': maximum!,
-        if (mean != null) 'mean': mean!,
-        if (minimum != null) 'minimum': minimum!,
+        if (maximum != null) 'maximum': encodeDouble(maximum!),
+        if (mean != null) 'mean': encodeDouble(mean!),
+        if (minimum != null) 'minimum': encodeDouble(minimum!),
         if (sumOfSquaredDeviation != null)
-          'sumOfSquaredDeviation': sumOfSquaredDeviation!,
+          'sumOfSquaredDeviation': encodeDouble(sumOfSquaredDeviation!),
       };
 }
 
@@ -912,13 +921,15 @@ class Exemplar {
               ?.map((value) => value as core.Map<core.String, core.dynamic>)
               .toList(),
           timestamp: json_['timestamp'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attachments != null) 'attachments': attachments!,
         if (timestamp != null) 'timestamp': timestamp!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -944,12 +955,13 @@ class ExplicitBuckets {
   ExplicitBuckets.fromJson(core.Map json_)
       : this(
           bounds: (json_['bounds'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bounds != null) 'bounds': bounds!,
+        if (bounds != null)
+          'bounds': bounds!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -983,15 +995,19 @@ class ExponentialBuckets {
 
   ExponentialBuckets.fromJson(core.Map json_)
       : this(
-          growthFactor: (json_['growthFactor'] as core.num?)?.toDouble(),
+          growthFactor: json_.containsKey('growthFactor')
+              ? decodeDouble(json_['growthFactor'] as core.Object)
+              : null,
           numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
-          scale: (json_['scale'] as core.num?)?.toDouble(),
+          scale: json_.containsKey('scale')
+              ? decodeDouble(json_['scale'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (growthFactor != null) 'growthFactor': growthFactor!,
+        if (growthFactor != null) 'growthFactor': encodeDouble(growthFactor!),
         if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
-        if (scale != null) 'scale': scale!,
+        if (scale != null) 'scale': encodeDouble(scale!),
       };
 }
 
@@ -1157,14 +1173,18 @@ class LinearBuckets {
   LinearBuckets.fromJson(core.Map json_)
       : this(
           numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
-          offset: (json_['offset'] as core.num?)?.toDouble(),
-          width: (json_['width'] as core.num?)?.toDouble(),
+          offset: json_.containsKey('offset')
+              ? decodeDouble(json_['offset'] as core.Object)
+              : null,
+          width: json_.containsKey('width')
+              ? decodeDouble(json_['width'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
-        if (offset != null) 'offset': offset!,
-        if (width != null) 'width': width!,
+        if (offset != null) 'offset': encodeDouble(offset!),
+        if (width != null) 'width': encodeDouble(width!),
       };
 }
 
@@ -1484,7 +1504,9 @@ class MetricValue {
               ? Distribution.fromJson(json_['distributionValue']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          doubleValue: json_.containsKey('doubleValue')
+              ? decodeDouble(json_['doubleValue'] as core.Object)
+              : null,
           endTime: json_['endTime'] as core.String?,
           int64Value: json_['int64Value'] as core.String?,
           labels:
@@ -1505,7 +1527,7 @@ class MetricValue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (distributionValue != null) 'distributionValue': distributionValue!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (doubleValue != null) 'doubleValue': encodeDouble(doubleValue!),
         if (endTime != null) 'endTime': endTime!,
         if (int64Value != null) 'int64Value': int64Value!,
         if (labels != null) 'labels': labels!,

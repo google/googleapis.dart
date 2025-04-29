@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Migration Center API - v1
 ///
@@ -45,6 +46,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3573,12 +3575,14 @@ class AggregationHistogram {
   AggregationHistogram.fromJson(core.Map json_)
       : this(
           lowerBounds: (json_['lowerBounds'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lowerBounds != null) 'lowerBounds': lowerBounds!,
+        if (lowerBounds != null)
+          'lowerBounds':
+              lowerBounds!.map((value) => encodeDouble(value)).toList(),
       };
 }
 
@@ -3721,14 +3725,18 @@ class AggregationResultHistogramBucket {
   AggregationResultHistogramBucket.fromJson(core.Map json_)
       : this(
           count: json_['count'] as core.String?,
-          lowerBound: (json_['lowerBound'] as core.num?)?.toDouble(),
-          upperBound: (json_['upperBound'] as core.num?)?.toDouble(),
+          lowerBound: json_.containsKey('lowerBound')
+              ? decodeDouble(json_['lowerBound'] as core.Object)
+              : null,
+          upperBound: json_.containsKey('upperBound')
+              ? decodeDouble(json_['upperBound'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
-        if (lowerBound != null) 'lowerBound': lowerBound!,
-        if (upperBound != null) 'upperBound': upperBound!,
+        if (lowerBound != null) 'lowerBound': encodeDouble(lowerBound!),
+        if (upperBound != null) 'upperBound': encodeDouble(upperBound!),
       };
 }
 
@@ -3742,11 +3750,13 @@ class AggregationResultSum {
 
   AggregationResultSum.fromJson(core.Map json_)
       : this(
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -4486,13 +4496,14 @@ class CpuUsageSample {
 
   CpuUsageSample.fromJson(core.Map json_)
       : this(
-          utilizedPercentage:
-              (json_['utilizedPercentage'] as core.num?)?.toDouble(),
+          utilizedPercentage: json_.containsKey('utilizedPercentage')
+              ? decodeDouble(json_['utilizedPercentage'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (utilizedPercentage != null)
-          'utilizedPercentage': utilizedPercentage!,
+          'utilizedPercentage': encodeDouble(utilizedPercentage!),
       };
 }
 
@@ -4704,19 +4715,26 @@ class DailyResourceUsageAggregationStats {
 
   DailyResourceUsageAggregationStats.fromJson(core.Map json_)
       : this(
-          average: (json_['average'] as core.num?)?.toDouble(),
-          median: (json_['median'] as core.num?)?.toDouble(),
-          ninteyFifthPercentile:
-              (json_['ninteyFifthPercentile'] as core.num?)?.toDouble(),
-          peak: (json_['peak'] as core.num?)?.toDouble(),
+          average: json_.containsKey('average')
+              ? decodeDouble(json_['average'] as core.Object)
+              : null,
+          median: json_.containsKey('median')
+              ? decodeDouble(json_['median'] as core.Object)
+              : null,
+          ninteyFifthPercentile: json_.containsKey('ninteyFifthPercentile')
+              ? decodeDouble(json_['ninteyFifthPercentile'] as core.Object)
+              : null,
+          peak: json_.containsKey('peak')
+              ? decodeDouble(json_['peak'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (average != null) 'average': average!,
-        if (median != null) 'median': median!,
+        if (average != null) 'average': encodeDouble(average!),
+        if (median != null) 'median': encodeDouble(median!),
         if (ninteyFifthPercentile != null)
-          'ninteyFifthPercentile': ninteyFifthPercentile!,
-        if (peak != null) 'peak': peak!,
+          'ninteyFifthPercentile': encodeDouble(ninteyFifthPercentile!),
+        if (peak != null) 'peak': encodeDouble(peak!),
       };
 }
 
@@ -5655,16 +5673,23 @@ class DiskUsageSample {
 
   DiskUsageSample.fromJson(core.Map json_)
       : this(
-          averageIops: (json_['averageIops'] as core.num?)?.toDouble(),
-          averageReadIops: (json_['averageReadIops'] as core.num?)?.toDouble(),
-          averageWriteIops:
-              (json_['averageWriteIops'] as core.num?)?.toDouble(),
+          averageIops: json_.containsKey('averageIops')
+              ? decodeDouble(json_['averageIops'] as core.Object)
+              : null,
+          averageReadIops: json_.containsKey('averageReadIops')
+              ? decodeDouble(json_['averageReadIops'] as core.Object)
+              : null,
+          averageWriteIops: json_.containsKey('averageWriteIops')
+              ? decodeDouble(json_['averageWriteIops'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (averageIops != null) 'averageIops': averageIops!,
-        if (averageReadIops != null) 'averageReadIops': averageReadIops!,
-        if (averageWriteIops != null) 'averageWriteIops': averageWriteIops!,
+        if (averageIops != null) 'averageIops': encodeDouble(averageIops!),
+        if (averageReadIops != null)
+          'averageReadIops': encodeDouble(averageReadIops!),
+        if (averageWriteIops != null)
+          'averageWriteIops': encodeDouble(averageWriteIops!),
       };
 }
 
@@ -7662,13 +7687,14 @@ class MemoryUsageSample {
 
   MemoryUsageSample.fromJson(core.Map json_)
       : this(
-          utilizedPercentage:
-              (json_['utilizedPercentage'] as core.num?)?.toDouble(),
+          utilizedPercentage: json_.containsKey('utilizedPercentage')
+              ? decodeDouble(json_['utilizedPercentage'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (utilizedPercentage != null)
-          'utilizedPercentage': utilizedPercentage!,
+          'utilizedPercentage': encodeDouble(utilizedPercentage!),
       };
 }
 
@@ -8155,15 +8181,19 @@ class NetworkUsageSample {
 
   NetworkUsageSample.fromJson(core.Map json_)
       : this(
-          averageEgressBps:
-              (json_['averageEgressBps'] as core.num?)?.toDouble(),
-          averageIngressBps:
-              (json_['averageIngressBps'] as core.num?)?.toDouble(),
+          averageEgressBps: json_.containsKey('averageEgressBps')
+              ? decodeDouble(json_['averageEgressBps'] as core.Object)
+              : null,
+          averageIngressBps: json_.containsKey('averageIngressBps')
+              ? decodeDouble(json_['averageIngressBps'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (averageEgressBps != null) 'averageEgressBps': averageEgressBps!,
-        if (averageIngressBps != null) 'averageIngressBps': averageIngressBps!,
+        if (averageEgressBps != null)
+          'averageEgressBps': encodeDouble(averageEgressBps!),
+        if (averageIngressBps != null)
+          'averageIngressBps': encodeDouble(averageIngressBps!),
       };
 }
 
@@ -8655,7 +8685,9 @@ class PostgreSqlSetting {
       : this(
           boolValue: json_['boolValue'] as core.bool?,
           intValue: json_['intValue'] as core.String?,
-          realValue: (json_['realValue'] as core.num?)?.toDouble(),
+          realValue: json_.containsKey('realValue')
+              ? decodeDouble(json_['realValue'] as core.Object)
+              : null,
           setting: json_['setting'] as core.String?,
           source: json_['source'] as core.String?,
           stringValue: json_['stringValue'] as core.String?,
@@ -8665,7 +8697,7 @@ class PostgreSqlSetting {
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (intValue != null) 'intValue': intValue!,
-        if (realValue != null) 'realValue': realValue!,
+        if (realValue != null) 'realValue': encodeDouble(realValue!),
         if (setting != null) 'setting': setting!,
         if (source != null) 'source': source!,
         if (stringValue != null) 'stringValue': stringValue!,
@@ -9234,12 +9266,14 @@ class ReportSummaryChartDataDataPoint {
   ReportSummaryChartDataDataPoint.fromJson(core.Map json_)
       : this(
           label: json_['label'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
+          value: json_.containsKey('value')
+              ? decodeDouble(json_['value'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (label != null) 'label': label!,
-        if (value != null) 'value': value!,
+        if (value != null) 'value': encodeDouble(value!),
       };
 }
 
@@ -10059,8 +10093,9 @@ class SoleTenancyPreferences {
   SoleTenancyPreferences.fromJson(core.Map json_)
       : this(
           commitmentPlan: json_['commitmentPlan'] as core.String?,
-          cpuOvercommitRatio:
-              (json_['cpuOvercommitRatio'] as core.num?)?.toDouble(),
+          cpuOvercommitRatio: json_.containsKey('cpuOvercommitRatio')
+              ? decodeDouble(json_['cpuOvercommitRatio'] as core.Object)
+              : null,
           hostMaintenancePolicy: json_['hostMaintenancePolicy'] as core.String?,
           nodeTypes: (json_['nodeTypes'] as core.List?)
               ?.map((value) => SoleTenantNodeType.fromJson(
@@ -10071,7 +10106,7 @@ class SoleTenancyPreferences {
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitmentPlan != null) 'commitmentPlan': commitmentPlan!,
         if (cpuOvercommitRatio != null)
-          'cpuOvercommitRatio': cpuOvercommitRatio!,
+          'cpuOvercommitRatio': encodeDouble(cpuOvercommitRatio!),
         if (hostMaintenancePolicy != null)
           'hostMaintenancePolicy': hostMaintenancePolicy!,
         if (nodeTypes != null) 'nodeTypes': nodeTypes!,
@@ -10752,24 +10787,28 @@ class VmwareEnginePreferences {
   VmwareEnginePreferences.fromJson(core.Map json_)
       : this(
           commitmentPlan: json_['commitmentPlan'] as core.String?,
-          cpuOvercommitRatio:
-              (json_['cpuOvercommitRatio'] as core.num?)?.toDouble(),
-          memoryOvercommitRatio:
-              (json_['memoryOvercommitRatio'] as core.num?)?.toDouble(),
-          storageDeduplicationCompressionRatio:
-              (json_['storageDeduplicationCompressionRatio'] as core.num?)
-                  ?.toDouble(),
+          cpuOvercommitRatio: json_.containsKey('cpuOvercommitRatio')
+              ? decodeDouble(json_['cpuOvercommitRatio'] as core.Object)
+              : null,
+          memoryOvercommitRatio: json_.containsKey('memoryOvercommitRatio')
+              ? decodeDouble(json_['memoryOvercommitRatio'] as core.Object)
+              : null,
+          storageDeduplicationCompressionRatio: json_
+                  .containsKey('storageDeduplicationCompressionRatio')
+              ? decodeDouble(
+                  json_['storageDeduplicationCompressionRatio'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitmentPlan != null) 'commitmentPlan': commitmentPlan!,
         if (cpuOvercommitRatio != null)
-          'cpuOvercommitRatio': cpuOvercommitRatio!,
+          'cpuOvercommitRatio': encodeDouble(cpuOvercommitRatio!),
         if (memoryOvercommitRatio != null)
-          'memoryOvercommitRatio': memoryOvercommitRatio!,
+          'memoryOvercommitRatio': encodeDouble(memoryOvercommitRatio!),
         if (storageDeduplicationCompressionRatio != null)
           'storageDeduplicationCompressionRatio':
-              storageDeduplicationCompressionRatio!,
+              encodeDouble(storageDeduplicationCompressionRatio!),
       };
 }
 

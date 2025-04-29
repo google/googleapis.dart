@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Cloud Talent Solution API - v3
 ///
@@ -36,6 +37,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -949,13 +951,17 @@ class BucketRange {
 
   BucketRange.fromJson(core.Map json_)
       : this(
-          from: (json_['from'] as core.num?)?.toDouble(),
-          to: (json_['to'] as core.num?)?.toDouble(),
+          from: json_.containsKey('from')
+              ? decodeDouble(json_['from'] as core.Object)
+              : null,
+          to: json_.containsKey('to')
+              ? decodeDouble(json_['to'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (from != null) 'from': from!,
-        if (to != null) 'to': to!,
+        if (from != null) 'from': encodeDouble(from!),
+        if (to != null) 'to': encodeDouble(to!),
       };
 }
 
@@ -1489,8 +1495,9 @@ class CompensationEntry {
                   json_['amount'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
-          expectedUnitsPerYear:
-              (json_['expectedUnitsPerYear'] as core.num?)?.toDouble(),
+          expectedUnitsPerYear: json_.containsKey('expectedUnitsPerYear')
+              ? decodeDouble(json_['expectedUnitsPerYear'] as core.Object)
+              : null,
           range: json_.containsKey('range')
               ? CompensationRange.fromJson(
                   json_['range'] as core.Map<core.String, core.dynamic>)
@@ -1503,7 +1510,7 @@ class CompensationEntry {
         if (amount != null) 'amount': amount!,
         if (description != null) 'description': description!,
         if (expectedUnitsPerYear != null)
-          'expectedUnitsPerYear': expectedUnitsPerYear!,
+          'expectedUnitsPerYear': encodeDouble(expectedUnitsPerYear!),
         if (range != null) 'range': range!,
         if (type != null) 'type': type!,
         if (unit != null) 'unit': unit!,
@@ -3285,14 +3292,17 @@ class Location {
               ? PostalAddress.fromJson(
                   json_['postalAddress'] as core.Map<core.String, core.dynamic>)
               : null,
-          radiusInMiles: (json_['radiusInMiles'] as core.num?)?.toDouble(),
+          radiusInMiles: json_.containsKey('radiusInMiles')
+              ? decodeDouble(json_['radiusInMiles'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (latLng != null) 'latLng': latLng!,
         if (locationType != null) 'locationType': locationType!,
         if (postalAddress != null) 'postalAddress': postalAddress!,
-        if (radiusInMiles != null) 'radiusInMiles': radiusInMiles!,
+        if (radiusInMiles != null)
+          'radiusInMiles': encodeDouble(radiusInMiles!),
       };
 }
 
@@ -3376,7 +3386,9 @@ class LocationFilter {
   LocationFilter.fromJson(core.Map json_)
       : this(
           address: json_['address'] as core.String?,
-          distanceInMiles: (json_['distanceInMiles'] as core.num?)?.toDouble(),
+          distanceInMiles: json_.containsKey('distanceInMiles')
+              ? decodeDouble(json_['distanceInMiles'] as core.Object)
+              : null,
           latLng: json_.containsKey('latLng')
               ? LatLng.fromJson(
                   json_['latLng'] as core.Map<core.String, core.dynamic>)
@@ -3387,7 +3399,8 @@ class LocationFilter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
-        if (distanceInMiles != null) 'distanceInMiles': distanceInMiles!,
+        if (distanceInMiles != null)
+          'distanceInMiles': encodeDouble(distanceInMiles!),
         if (latLng != null) 'latLng': latLng!,
         if (regionCode != null) 'regionCode': regionCode!,
         if (telecommutePreference != null)
@@ -3485,13 +3498,15 @@ class NumericBucketingOption {
   NumericBucketingOption.fromJson(core.Map json_)
       : this(
           bucketBounds: (json_['bucketBounds'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
+              ?.map((value) => decodeDouble(value))
               .toList(),
           requiresMinMax: json_['requiresMinMax'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucketBounds != null) 'bucketBounds': bucketBounds!,
+        if (bucketBounds != null)
+          'bucketBounds':
+              bucketBounds!.map((value) => encodeDouble(value)).toList(),
         if (requiresMinMax != null) 'requiresMinMax': requiresMinMax!,
       };
 }
@@ -3529,14 +3544,18 @@ class NumericBucketingResult {
               ?.map((value) => BucketizedCount.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
+          maxValue: json_.containsKey('maxValue')
+              ? decodeDouble(json_['maxValue'] as core.Object)
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? decodeDouble(json_['minValue'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (counts != null) 'counts': counts!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
+        if (maxValue != null) 'maxValue': encodeDouble(maxValue!),
+        if (minValue != null) 'minValue': encodeDouble(minValue!),
       };
 }
 

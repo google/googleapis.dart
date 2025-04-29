@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Street View Publish API - v1
 ///
@@ -37,6 +38,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1166,12 +1168,14 @@ class Level {
   Level.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
-          number: (json_['number'] as core.num?)?.toDouble(),
+          number: json_.containsKey('number')
+              ? decodeDouble(json_['number'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (number != null) 'number': number!,
+        if (number != null) 'number': encodeDouble(number!),
       };
 }
 
@@ -1267,16 +1271,22 @@ class Measurement3d {
   Measurement3d.fromJson(core.Map json_)
       : this(
           captureTime: json_['captureTime'] as core.String?,
-          x: (json_['x'] as core.num?)?.toDouble(),
-          y: (json_['y'] as core.num?)?.toDouble(),
-          z: (json_['z'] as core.num?)?.toDouble(),
+          x: json_.containsKey('x')
+              ? decodeDouble(json_['x'] as core.Object)
+              : null,
+          y: json_.containsKey('y')
+              ? decodeDouble(json_['y'] as core.Object)
+              : null,
+          z: json_.containsKey('z')
+              ? decodeDouble(json_['z'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (captureTime != null) 'captureTime': captureTime!,
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-        if (z != null) 'z': z!,
+        if (x != null) 'x': encodeDouble(x!),
+        if (y != null) 'y': encodeDouble(y!),
+        if (z != null) 'z': encodeDouble(z!),
       };
 }
 
@@ -1802,7 +1812,9 @@ class PhotoSequence {
   PhotoSequence.fromJson(core.Map json_)
       : this(
           captureTimeOverride: json_['captureTimeOverride'] as core.String?,
-          distanceMeters: (json_['distanceMeters'] as core.num?)?.toDouble(),
+          distanceMeters: json_.containsKey('distanceMeters')
+              ? decodeDouble(json_['distanceMeters'] as core.Object)
+              : null,
           failureDetails: json_.containsKey('failureDetails')
               ? ProcessingFailureDetails.fromJson(json_['failureDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -1839,7 +1851,8 @@ class PhotoSequence {
   core.Map<core.String, core.dynamic> toJson() => {
         if (captureTimeOverride != null)
           'captureTimeOverride': captureTimeOverride!,
-        if (distanceMeters != null) 'distanceMeters': distanceMeters!,
+        if (distanceMeters != null)
+          'distanceMeters': encodeDouble(distanceMeters!),
         if (failureDetails != null) 'failureDetails': failureDetails!,
         if (failureReason != null) 'failureReason': failureReason!,
         if (filename != null) 'filename': filename!,
@@ -1960,11 +1973,17 @@ class Pose {
 
   Pose.fromJson(core.Map json_)
       : this(
-          accuracyMeters: (json_['accuracyMeters'] as core.num?)?.toDouble(),
-          altitude: (json_['altitude'] as core.num?)?.toDouble(),
+          accuracyMeters: json_.containsKey('accuracyMeters')
+              ? decodeDouble(json_['accuracyMeters'] as core.Object)
+              : null,
+          altitude: json_.containsKey('altitude')
+              ? decodeDouble(json_['altitude'] as core.Object)
+              : null,
           gpsRecordTimestampUnixEpoch:
               json_['gpsRecordTimestampUnixEpoch'] as core.String?,
-          heading: (json_['heading'] as core.num?)?.toDouble(),
+          heading: json_.containsKey('heading')
+              ? decodeDouble(json_['heading'] as core.Object)
+              : null,
           latLngPair: json_.containsKey('latLngPair')
               ? LatLng.fromJson(
                   json_['latLngPair'] as core.Map<core.String, core.dynamic>)
@@ -1973,20 +1992,25 @@ class Pose {
               ? Level.fromJson(
                   json_['level'] as core.Map<core.String, core.dynamic>)
               : null,
-          pitch: (json_['pitch'] as core.num?)?.toDouble(),
-          roll: (json_['roll'] as core.num?)?.toDouble(),
+          pitch: json_.containsKey('pitch')
+              ? decodeDouble(json_['pitch'] as core.Object)
+              : null,
+          roll: json_.containsKey('roll')
+              ? decodeDouble(json_['roll'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accuracyMeters != null) 'accuracyMeters': accuracyMeters!,
-        if (altitude != null) 'altitude': altitude!,
+        if (accuracyMeters != null)
+          'accuracyMeters': encodeDouble(accuracyMeters!),
+        if (altitude != null) 'altitude': encodeDouble(altitude!),
         if (gpsRecordTimestampUnixEpoch != null)
           'gpsRecordTimestampUnixEpoch': gpsRecordTimestampUnixEpoch!,
-        if (heading != null) 'heading': heading!,
+        if (heading != null) 'heading': encodeDouble(heading!),
         if (latLngPair != null) 'latLngPair': latLngPair!,
         if (level != null) 'level': level!,
-        if (pitch != null) 'pitch': pitch!,
-        if (roll != null) 'roll': roll!,
+        if (pitch != null) 'pitch': encodeDouble(pitch!),
+        if (roll != null) 'roll': encodeDouble(roll!),
       };
 }
 

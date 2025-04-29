@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// BigQuery Data Transfer API - v1
 ///
@@ -41,6 +42,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2193,8 +2195,12 @@ class DataSourceParameter {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           immutable: json_['immutable'] as core.bool?,
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
+          maxValue: json_.containsKey('maxValue')
+              ? decodeDouble(json_['maxValue'] as core.Object)
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? decodeDouble(json_['minValue'] as core.Object)
+              : null,
           paramId: json_['paramId'] as core.String?,
           recurse: json_['recurse'] as core.bool?,
           repeated: json_['repeated'] as core.bool?,
@@ -2212,8 +2218,8 @@ class DataSourceParameter {
         if (displayName != null) 'displayName': displayName!,
         if (fields != null) 'fields': fields!,
         if (immutable != null) 'immutable': immutable!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
+        if (maxValue != null) 'maxValue': encodeDouble(maxValue!),
+        if (minValue != null) 'minValue': encodeDouble(minValue!),
         if (paramId != null) 'paramId': paramId!,
         if (recurse != null) 'recurse': recurse!,
         if (repeated != null) 'repeated': repeated!,

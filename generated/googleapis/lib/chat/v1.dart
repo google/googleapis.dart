@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Google Chat API - v1
 ///
@@ -42,6 +43,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -5255,12 +5257,14 @@ class GoogleAppsCardV1ImageCropStyle {
 
   GoogleAppsCardV1ImageCropStyle.fromJson(core.Map json_)
       : this(
-          aspectRatio: (json_['aspectRatio'] as core.num?)?.toDouble(),
+          aspectRatio: json_.containsKey('aspectRatio')
+              ? decodeDouble(json_['aspectRatio'] as core.Object)
+              : null,
           type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aspectRatio != null) 'aspectRatio': aspectRatio!,
+        if (aspectRatio != null) 'aspectRatio': encodeDouble(aspectRatio!),
         if (type != null) 'type': type!,
       };
 }
@@ -6662,7 +6666,9 @@ class Image {
 
   Image.fromJson(core.Map json_)
       : this(
-          aspectRatio: (json_['aspectRatio'] as core.num?)?.toDouble(),
+          aspectRatio: json_.containsKey('aspectRatio')
+              ? decodeDouble(json_['aspectRatio'] as core.Object)
+              : null,
           imageUrl: json_['imageUrl'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? OnClick.fromJson(
@@ -6671,7 +6677,7 @@ class Image {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aspectRatio != null) 'aspectRatio': aspectRatio!,
+        if (aspectRatio != null) 'aspectRatio': encodeDouble(aspectRatio!),
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (onClick != null) 'onClick': onClick!,
       };

@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Firebase Cloud Messaging Data API - v1beta1
 ///
@@ -33,6 +34,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 import '../shared.dart';
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -319,27 +321,34 @@ class GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents {
   GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents.fromJson(
       core.Map json_)
       : this(
-          delayedDeviceDoze:
-              (json_['delayedDeviceDoze'] as core.num?)?.toDouble(),
-          delayedDeviceOffline:
-              (json_['delayedDeviceOffline'] as core.num?)?.toDouble(),
-          delayedMessageThrottled:
-              (json_['delayedMessageThrottled'] as core.num?)?.toDouble(),
-          delayedUserStopped:
-              (json_['delayedUserStopped'] as core.num?)?.toDouble(),
-          deliveredNoDelay:
-              (json_['deliveredNoDelay'] as core.num?)?.toDouble(),
+          delayedDeviceDoze: json_.containsKey('delayedDeviceDoze')
+              ? decodeDouble(json_['delayedDeviceDoze'] as core.Object)
+              : null,
+          delayedDeviceOffline: json_.containsKey('delayedDeviceOffline')
+              ? decodeDouble(json_['delayedDeviceOffline'] as core.Object)
+              : null,
+          delayedMessageThrottled: json_.containsKey('delayedMessageThrottled')
+              ? decodeDouble(json_['delayedMessageThrottled'] as core.Object)
+              : null,
+          delayedUserStopped: json_.containsKey('delayedUserStopped')
+              ? decodeDouble(json_['delayedUserStopped'] as core.Object)
+              : null,
+          deliveredNoDelay: json_.containsKey('deliveredNoDelay')
+              ? decodeDouble(json_['deliveredNoDelay'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delayedDeviceDoze != null) 'delayedDeviceDoze': delayedDeviceDoze!,
+        if (delayedDeviceDoze != null)
+          'delayedDeviceDoze': encodeDouble(delayedDeviceDoze!),
         if (delayedDeviceOffline != null)
-          'delayedDeviceOffline': delayedDeviceOffline!,
+          'delayedDeviceOffline': encodeDouble(delayedDeviceOffline!),
         if (delayedMessageThrottled != null)
-          'delayedMessageThrottled': delayedMessageThrottled!,
+          'delayedMessageThrottled': encodeDouble(delayedMessageThrottled!),
         if (delayedUserStopped != null)
-          'delayedUserStopped': delayedUserStopped!,
-        if (deliveredNoDelay != null) 'deliveredNoDelay': deliveredNoDelay!,
+          'delayedUserStopped': encodeDouble(delayedUserStopped!),
+        if (deliveredNoDelay != null)
+          'deliveredNoDelay': encodeDouble(deliveredNoDelay!),
       };
 }
 
@@ -397,11 +406,14 @@ class GoogleFirebaseFcmDataV1beta1MessageInsightPercents {
 
   GoogleFirebaseFcmDataV1beta1MessageInsightPercents.fromJson(core.Map json_)
       : this(
-          priorityLowered: (json_['priorityLowered'] as core.num?)?.toDouble(),
+          priorityLowered: json_.containsKey('priorityLowered')
+              ? decodeDouble(json_['priorityLowered'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (priorityLowered != null) 'priorityLowered': priorityLowered!,
+        if (priorityLowered != null)
+          'priorityLowered': encodeDouble(priorityLowered!),
       };
 }
 
@@ -472,30 +484,44 @@ class GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
 
   GoogleFirebaseFcmDataV1beta1MessageOutcomePercents.fromJson(core.Map json_)
       : this(
-          collapsed: (json_['collapsed'] as core.num?)?.toDouble(),
-          delivered: (json_['delivered'] as core.num?)?.toDouble(),
-          droppedAppForceStopped:
-              (json_['droppedAppForceStopped'] as core.num?)?.toDouble(),
-          droppedDeviceInactive:
-              (json_['droppedDeviceInactive'] as core.num?)?.toDouble(),
+          collapsed: json_.containsKey('collapsed')
+              ? decodeDouble(json_['collapsed'] as core.Object)
+              : null,
+          delivered: json_.containsKey('delivered')
+              ? decodeDouble(json_['delivered'] as core.Object)
+              : null,
+          droppedAppForceStopped: json_.containsKey('droppedAppForceStopped')
+              ? decodeDouble(json_['droppedAppForceStopped'] as core.Object)
+              : null,
+          droppedDeviceInactive: json_.containsKey('droppedDeviceInactive')
+              ? decodeDouble(json_['droppedDeviceInactive'] as core.Object)
+              : null,
           droppedTooManyPendingMessages:
-              (json_['droppedTooManyPendingMessages'] as core.num?)?.toDouble(),
-          droppedTtlExpired:
-              (json_['droppedTtlExpired'] as core.num?)?.toDouble(),
-          pending: (json_['pending'] as core.num?)?.toDouble(),
+              json_.containsKey('droppedTooManyPendingMessages')
+                  ? decodeDouble(
+                      json_['droppedTooManyPendingMessages'] as core.Object)
+                  : null,
+          droppedTtlExpired: json_.containsKey('droppedTtlExpired')
+              ? decodeDouble(json_['droppedTtlExpired'] as core.Object)
+              : null,
+          pending: json_.containsKey('pending')
+              ? decodeDouble(json_['pending'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (collapsed != null) 'collapsed': collapsed!,
-        if (delivered != null) 'delivered': delivered!,
+        if (collapsed != null) 'collapsed': encodeDouble(collapsed!),
+        if (delivered != null) 'delivered': encodeDouble(delivered!),
         if (droppedAppForceStopped != null)
-          'droppedAppForceStopped': droppedAppForceStopped!,
+          'droppedAppForceStopped': encodeDouble(droppedAppForceStopped!),
         if (droppedDeviceInactive != null)
-          'droppedDeviceInactive': droppedDeviceInactive!,
+          'droppedDeviceInactive': encodeDouble(droppedDeviceInactive!),
         if (droppedTooManyPendingMessages != null)
-          'droppedTooManyPendingMessages': droppedTooManyPendingMessages!,
-        if (droppedTtlExpired != null) 'droppedTtlExpired': droppedTtlExpired!,
-        if (pending != null) 'pending': pending!,
+          'droppedTooManyPendingMessages':
+              encodeDouble(droppedTooManyPendingMessages!),
+        if (droppedTtlExpired != null)
+          'droppedTtlExpired': encodeDouble(droppedTtlExpired!),
+        if (pending != null) 'pending': encodeDouble(pending!),
       };
 }
 
@@ -544,27 +570,37 @@ class GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents {
   GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents.fromJson(
       core.Map json_)
       : this(
-          failed: (json_['failed'] as core.num?)?.toDouble(),
-          proxied: (json_['proxied'] as core.num?)?.toDouble(),
-          skippedNotThrottled:
-              (json_['skippedNotThrottled'] as core.num?)?.toDouble(),
-          skippedOptedOut: (json_['skippedOptedOut'] as core.num?)?.toDouble(),
-          skippedUnconfigured:
-              (json_['skippedUnconfigured'] as core.num?)?.toDouble(),
-          skippedUnsupported:
-              (json_['skippedUnsupported'] as core.num?)?.toDouble(),
+          failed: json_.containsKey('failed')
+              ? decodeDouble(json_['failed'] as core.Object)
+              : null,
+          proxied: json_.containsKey('proxied')
+              ? decodeDouble(json_['proxied'] as core.Object)
+              : null,
+          skippedNotThrottled: json_.containsKey('skippedNotThrottled')
+              ? decodeDouble(json_['skippedNotThrottled'] as core.Object)
+              : null,
+          skippedOptedOut: json_.containsKey('skippedOptedOut')
+              ? decodeDouble(json_['skippedOptedOut'] as core.Object)
+              : null,
+          skippedUnconfigured: json_.containsKey('skippedUnconfigured')
+              ? decodeDouble(json_['skippedUnconfigured'] as core.Object)
+              : null,
+          skippedUnsupported: json_.containsKey('skippedUnsupported')
+              ? decodeDouble(json_['skippedUnsupported'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failed != null) 'failed': failed!,
-        if (proxied != null) 'proxied': proxied!,
+        if (failed != null) 'failed': encodeDouble(failed!),
+        if (proxied != null) 'proxied': encodeDouble(proxied!),
         if (skippedNotThrottled != null)
-          'skippedNotThrottled': skippedNotThrottled!,
-        if (skippedOptedOut != null) 'skippedOptedOut': skippedOptedOut!,
+          'skippedNotThrottled': encodeDouble(skippedNotThrottled!),
+        if (skippedOptedOut != null)
+          'skippedOptedOut': encodeDouble(skippedOptedOut!),
         if (skippedUnconfigured != null)
-          'skippedUnconfigured': skippedUnconfigured!,
+          'skippedUnconfigured': encodeDouble(skippedUnconfigured!),
         if (skippedUnsupported != null)
-          'skippedUnsupported': skippedUnsupported!,
+          'skippedUnsupported': encodeDouble(skippedUnsupported!),
       };
 }
 

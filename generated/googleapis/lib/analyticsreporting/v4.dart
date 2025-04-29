@@ -11,6 +11,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_import
 
 /// Analytics Reporting API - v4
 ///
@@ -32,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/convert.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -997,7 +999,9 @@ class GoalData {
           goalPreviousStep1: json_['goalPreviousStep1'] as core.String?,
           goalPreviousStep2: json_['goalPreviousStep2'] as core.String?,
           goalPreviousStep3: json_['goalPreviousStep3'] as core.String?,
-          goalValue: (json_['goalValue'] as core.num?)?.toDouble(),
+          goalValue: json_.containsKey('goalValue')
+              ? decodeDouble(json_['goalValue'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1009,7 +1013,7 @@ class GoalData {
         if (goalPreviousStep1 != null) 'goalPreviousStep1': goalPreviousStep1!,
         if (goalPreviousStep2 != null) 'goalPreviousStep2': goalPreviousStep2!,
         if (goalPreviousStep3 != null) 'goalPreviousStep3': goalPreviousStep3!,
-        if (goalValue != null) 'goalValue': goalValue!,
+        if (goalValue != null) 'goalValue': encodeDouble(goalValue!),
       };
 }
 
@@ -1560,14 +1564,16 @@ class ProductData {
 
   ProductData.fromJson(core.Map json_)
       : this(
-          itemRevenue: (json_['itemRevenue'] as core.num?)?.toDouble(),
+          itemRevenue: json_.containsKey('itemRevenue')
+              ? decodeDouble(json_['itemRevenue'] as core.Object)
+              : null,
           productName: json_['productName'] as core.String?,
           productQuantity: json_['productQuantity'] as core.String?,
           productSku: json_['productSku'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (itemRevenue != null) 'itemRevenue': itemRevenue!,
+        if (itemRevenue != null) 'itemRevenue': encodeDouble(itemRevenue!),
         if (productName != null) 'productName': productName!,
         if (productQuantity != null) 'productQuantity': productQuantity!,
         if (productSku != null) 'productSku': productSku!,
@@ -2182,7 +2188,9 @@ class SearchUserActivityResponse {
   SearchUserActivityResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          sampleRate: (json_['sampleRate'] as core.num?)?.toDouble(),
+          sampleRate: json_.containsKey('sampleRate')
+              ? decodeDouble(json_['sampleRate'] as core.Object)
+              : null,
           sessions: (json_['sessions'] as core.List?)
               ?.map((value) => UserActivitySession.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -2192,7 +2200,7 @@ class SearchUserActivityResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (sampleRate != null) 'sampleRate': sampleRate!,
+        if (sampleRate != null) 'sampleRate': encodeDouble(sampleRate!),
         if (sessions != null) 'sessions': sessions!,
         if (totalRows != null) 'totalRows': totalRows!,
       };
@@ -2619,20 +2627,25 @@ class TransactionData {
   TransactionData.fromJson(core.Map json_)
       : this(
           transactionId: json_['transactionId'] as core.String?,
-          transactionRevenue:
-              (json_['transactionRevenue'] as core.num?)?.toDouble(),
-          transactionShipping:
-              (json_['transactionShipping'] as core.num?)?.toDouble(),
-          transactionTax: (json_['transactionTax'] as core.num?)?.toDouble(),
+          transactionRevenue: json_.containsKey('transactionRevenue')
+              ? decodeDouble(json_['transactionRevenue'] as core.Object)
+              : null,
+          transactionShipping: json_.containsKey('transactionShipping')
+              ? decodeDouble(json_['transactionShipping'] as core.Object)
+              : null,
+          transactionTax: json_.containsKey('transactionTax')
+              ? decodeDouble(json_['transactionTax'] as core.Object)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (transactionId != null) 'transactionId': transactionId!,
         if (transactionRevenue != null)
-          'transactionRevenue': transactionRevenue!,
+          'transactionRevenue': encodeDouble(transactionRevenue!),
         if (transactionShipping != null)
-          'transactionShipping': transactionShipping!,
-        if (transactionTax != null) 'transactionTax': transactionTax!,
+          'transactionShipping': encodeDouble(transactionShipping!),
+        if (transactionTax != null)
+          'transactionTax': encodeDouble(transactionTax!),
       };
 }
 

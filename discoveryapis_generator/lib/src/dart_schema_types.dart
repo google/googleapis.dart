@@ -405,13 +405,18 @@ class DoubleType extends PrimitiveDartSchemaType {
   String get declaration => '${imports.core.ref()}double';
 
   @override
-  String jsonDecode(String json, {String? importName}) =>
-      '($json as ${imports.core.ref()}num).toDouble()';
+  String jsonEncode(String value) => 'encodeDouble($value)';
 
   @override
-  String decodeFromMap(String jsonName) =>
-      '(json_[${escapeDartString(jsonName)}] as ${imports.core.ref()}num?)'
-      '?.toDouble()';
+  String jsonDecode(String json, {String? importName}) => 'decodeDouble($json)';
+
+  @override
+  String decodeFromMap(String jsonName) {
+    final key = escapeDartString(jsonName);
+    return 'json_.containsKey($key) '
+        '? decodeDouble(json_[$key] as ${imports.core.ref()}Object) '
+        ': null';
+  }
 }
 
 class StringType extends PrimitiveDartSchemaType {
