@@ -7,6 +7,8 @@
 - Added `Function` to the set of reserved names.
 - Remove extra parenthesis from date encoding.
 - Generate much smaller code for trivial types: `String`, `bool`, `int`, `double`.
+- Update JSON encoding and decoding of doubles; handle `Nan`, `Infinity`, and
+  `-Infinity`.
 - Require Dart 3.6 or later.
 
 ## 1.0.0
