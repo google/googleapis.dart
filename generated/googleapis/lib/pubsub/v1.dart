@@ -58,11 +58,16 @@ class PubsubApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  PubsubApi(http.Client client,
-      {core.String rootUrl = 'https://pubsub.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  PubsubApi(
+    http.Client client, {
+    core.String rootUrl = 'https://pubsub.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -190,10 +195,7 @@ class ProjectsSchemasResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -411,7 +413,8 @@ class ProjectsSchemasResource {
       queryParams: queryParams_,
     );
     return ListSchemasResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all schema revisions for the named schema.
@@ -468,7 +471,8 @@ class ProjectsSchemasResource {
       queryParams: queryParams_,
     );
     return ListSchemaRevisionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new schema revision that is a copy of the provided revision_id.
@@ -604,7 +608,8 @@ class ProjectsSchemasResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Validates a schema.
@@ -646,7 +651,8 @@ class ProjectsSchemasResource {
       queryParams: queryParams_,
     );
     return ValidateSchemaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Validates a message against a schema.
@@ -689,7 +695,8 @@ class ProjectsSchemasResource {
       queryParams: queryParams_,
     );
     return ValidateMessageResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -954,7 +961,8 @@ class ProjectsSnapshotsResource {
       queryParams: queryParams_,
     );
     return ListSnapshotsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing snapshot by updating the fields specified in the
@@ -1097,7 +1105,8 @@ class ProjectsSnapshotsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1105,7 +1114,7 @@ class ProjectsSubscriptionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsSubscriptionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Acknowledges the messages associated with the `ack_ids` in the
   /// `AcknowledgeRequest`.
@@ -1207,7 +1216,8 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an existing subscription.
@@ -1290,7 +1300,8 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return DetachSubscriptionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the configuration details of a subscription.
@@ -1327,7 +1338,8 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -1431,7 +1443,8 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return ListSubscriptionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Modifies the ack deadline for a specific message.
@@ -1575,7 +1588,8 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Pulls messages from the server.
@@ -1617,7 +1631,8 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return PullResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Seeks an existing subscription to a point in time or to a given snapshot,
@@ -1666,7 +1681,8 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return SeekResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1762,7 +1778,8 @@ class ProjectsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1848,10 +1865,7 @@ class ProjectsTopicsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String topic, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String topic, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1884,10 +1898,7 @@ class ProjectsTopicsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Topic> get(
-    core.String topic, {
-    core.String? $fields,
-  }) async {
+  async.Future<Topic> get(core.String topic, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2003,7 +2014,8 @@ class ProjectsTopicsResource {
       queryParams: queryParams_,
     );
     return ListTopicsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing topic by updating the fields specified in the update
@@ -2095,7 +2107,8 @@ class ProjectsTopicsResource {
       queryParams: queryParams_,
     );
     return PublishResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2191,7 +2204,8 @@ class ProjectsTopicsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2199,7 +2213,7 @@ class ProjectsTopicsSnapshotsResource {
   final commons.ApiRequester _requester;
 
   ProjectsTopicsSnapshotsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the names of the snapshots on this topic.
   ///
@@ -2252,7 +2266,8 @@ class ProjectsTopicsSnapshotsResource {
       queryParams: queryParams_,
     );
     return ListTopicSnapshotsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2260,7 +2275,7 @@ class ProjectsTopicsSubscriptionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsTopicsSubscriptionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the names of the attached subscriptions on this topic.
   ///
@@ -2307,7 +2322,8 @@ class ProjectsTopicsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return ListTopicSubscriptionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2321,20 +2337,19 @@ class AcknowledgeRequest {
   /// Required.
   core.List<core.String>? ackIds;
 
-  AcknowledgeRequest({
-    this.ackIds,
-  });
+  AcknowledgeRequest({this.ackIds});
 
   AcknowledgeRequest.fromJson(core.Map json_)
-      : this(
-          ackIds: (json_['ackIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        ackIds:
+            (json_['ackIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ackIds != null) 'ackIds': ackIds!,
-      };
+    if (ackIds != null) 'ackIds': ackIds!,
+  };
 }
 
 /// Information about an associated
@@ -2356,21 +2371,18 @@ class AnalyticsHubSubscriptionInfo {
   /// Optional.
   core.String? subscription;
 
-  AnalyticsHubSubscriptionInfo({
-    this.listing,
-    this.subscription,
-  });
+  AnalyticsHubSubscriptionInfo({this.listing, this.subscription});
 
   AnalyticsHubSubscriptionInfo.fromJson(core.Map json_)
-      : this(
-          listing: json_['listing'] as core.String?,
-          subscription: json_['subscription'] as core.String?,
-        );
+    : this(
+        listing: json_['listing'] as core.String?,
+        subscription: json_['subscription'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (listing != null) 'listing': listing!,
-        if (subscription != null) 'subscription': subscription!,
-      };
+    if (listing != null) 'listing': listing!,
+    if (subscription != null) 'subscription': subscription!,
+  };
 }
 
 /// Configuration for writing message data in Avro format.
@@ -2448,21 +2460,21 @@ class AwsKinesis {
   });
 
   AwsKinesis.fromJson(core.Map json_)
-      : this(
-          awsRoleArn: json_['awsRoleArn'] as core.String?,
-          consumerArn: json_['consumerArn'] as core.String?,
-          gcpServiceAccount: json_['gcpServiceAccount'] as core.String?,
-          state: json_['state'] as core.String?,
-          streamArn: json_['streamArn'] as core.String?,
-        );
+    : this(
+        awsRoleArn: json_['awsRoleArn'] as core.String?,
+        consumerArn: json_['consumerArn'] as core.String?,
+        gcpServiceAccount: json_['gcpServiceAccount'] as core.String?,
+        state: json_['state'] as core.String?,
+        streamArn: json_['streamArn'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (awsRoleArn != null) 'awsRoleArn': awsRoleArn!,
-        if (consumerArn != null) 'consumerArn': consumerArn!,
-        if (gcpServiceAccount != null) 'gcpServiceAccount': gcpServiceAccount!,
-        if (state != null) 'state': state!,
-        if (streamArn != null) 'streamArn': streamArn!,
-      };
+    if (awsRoleArn != null) 'awsRoleArn': awsRoleArn!,
+    if (consumerArn != null) 'consumerArn': consumerArn!,
+    if (gcpServiceAccount != null) 'gcpServiceAccount': gcpServiceAccount!,
+    if (state != null) 'state': state!,
+    if (streamArn != null) 'streamArn': streamArn!,
+  };
 }
 
 /// Ingestion settings for Amazon MSK.
@@ -2521,21 +2533,21 @@ class AwsMsk {
   });
 
   AwsMsk.fromJson(core.Map json_)
-      : this(
-          awsRoleArn: json_['awsRoleArn'] as core.String?,
-          clusterArn: json_['clusterArn'] as core.String?,
-          gcpServiceAccount: json_['gcpServiceAccount'] as core.String?,
-          state: json_['state'] as core.String?,
-          topic: json_['topic'] as core.String?,
-        );
+    : this(
+        awsRoleArn: json_['awsRoleArn'] as core.String?,
+        clusterArn: json_['clusterArn'] as core.String?,
+        gcpServiceAccount: json_['gcpServiceAccount'] as core.String?,
+        state: json_['state'] as core.String?,
+        topic: json_['topic'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (awsRoleArn != null) 'awsRoleArn': awsRoleArn!,
-        if (clusterArn != null) 'clusterArn': clusterArn!,
-        if (gcpServiceAccount != null) 'gcpServiceAccount': gcpServiceAccount!,
-        if (state != null) 'state': state!,
-        if (topic != null) 'topic': topic!,
-      };
+    if (awsRoleArn != null) 'awsRoleArn': awsRoleArn!,
+    if (clusterArn != null) 'clusterArn': clusterArn!,
+    if (gcpServiceAccount != null) 'gcpServiceAccount': gcpServiceAccount!,
+    if (state != null) 'state': state!,
+    if (topic != null) 'topic': topic!,
+  };
 }
 
 /// Ingestion settings for Azure Event Hubs.
@@ -2610,27 +2622,27 @@ class AzureEventHubs {
   });
 
   AzureEventHubs.fromJson(core.Map json_)
-      : this(
-          clientId: json_['clientId'] as core.String?,
-          eventHub: json_['eventHub'] as core.String?,
-          gcpServiceAccount: json_['gcpServiceAccount'] as core.String?,
-          namespace: json_['namespace'] as core.String?,
-          resourceGroup: json_['resourceGroup'] as core.String?,
-          state: json_['state'] as core.String?,
-          subscriptionId: json_['subscriptionId'] as core.String?,
-          tenantId: json_['tenantId'] as core.String?,
-        );
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        eventHub: json_['eventHub'] as core.String?,
+        gcpServiceAccount: json_['gcpServiceAccount'] as core.String?,
+        namespace: json_['namespace'] as core.String?,
+        resourceGroup: json_['resourceGroup'] as core.String?,
+        state: json_['state'] as core.String?,
+        subscriptionId: json_['subscriptionId'] as core.String?,
+        tenantId: json_['tenantId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientId != null) 'clientId': clientId!,
-        if (eventHub != null) 'eventHub': eventHub!,
-        if (gcpServiceAccount != null) 'gcpServiceAccount': gcpServiceAccount!,
-        if (namespace != null) 'namespace': namespace!,
-        if (resourceGroup != null) 'resourceGroup': resourceGroup!,
-        if (state != null) 'state': state!,
-        if (subscriptionId != null) 'subscriptionId': subscriptionId!,
-        if (tenantId != null) 'tenantId': tenantId!,
-      };
+    if (clientId != null) 'clientId': clientId!,
+    if (eventHub != null) 'eventHub': eventHub!,
+    if (gcpServiceAccount != null) 'gcpServiceAccount': gcpServiceAccount!,
+    if (namespace != null) 'namespace': namespace!,
+    if (resourceGroup != null) 'resourceGroup': resourceGroup!,
+    if (state != null) 'state': state!,
+    if (subscriptionId != null) 'subscriptionId': subscriptionId!,
+    if (tenantId != null) 'tenantId': tenantId!,
+  };
 }
 
 /// Configuration for a BigQuery subscription.
@@ -2723,26 +2735,26 @@ class BigQueryConfig {
   });
 
   BigQueryConfig.fromJson(core.Map json_)
-      : this(
-          dropUnknownFields: json_['dropUnknownFields'] as core.bool?,
-          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-          state: json_['state'] as core.String?,
-          table: json_['table'] as core.String?,
-          useTableSchema: json_['useTableSchema'] as core.bool?,
-          useTopicSchema: json_['useTopicSchema'] as core.bool?,
-          writeMetadata: json_['writeMetadata'] as core.bool?,
-        );
+    : this(
+        dropUnknownFields: json_['dropUnknownFields'] as core.bool?,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+        state: json_['state'] as core.String?,
+        table: json_['table'] as core.String?,
+        useTableSchema: json_['useTableSchema'] as core.bool?,
+        useTopicSchema: json_['useTopicSchema'] as core.bool?,
+        writeMetadata: json_['writeMetadata'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dropUnknownFields != null) 'dropUnknownFields': dropUnknownFields!,
-        if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail!,
-        if (state != null) 'state': state!,
-        if (table != null) 'table': table!,
-        if (useTableSchema != null) 'useTableSchema': useTableSchema!,
-        if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
-        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
-      };
+    if (dropUnknownFields != null) 'dropUnknownFields': dropUnknownFields!,
+    if (serviceAccountEmail != null)
+      'serviceAccountEmail': serviceAccountEmail!,
+    if (state != null) 'state': state!,
+    if (table != null) 'table': table!,
+    if (useTableSchema != null) 'useTableSchema': useTableSchema!,
+    if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
+    if (writeMetadata != null) 'writeMetadata': writeMetadata!,
+  };
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -2825,29 +2837,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// Ingestion settings for Cloud Storage.
@@ -2923,36 +2934,43 @@ class CloudStorage {
   });
 
   CloudStorage.fromJson(core.Map json_)
-      : this(
-          avroFormat: json_.containsKey('avroFormat')
-              ? AvroFormat.fromJson(
-                  json_['avroFormat'] as core.Map<core.String, core.dynamic>)
-              : null,
-          bucket: json_['bucket'] as core.String?,
-          matchGlob: json_['matchGlob'] as core.String?,
-          minimumObjectCreateTime:
-              json_['minimumObjectCreateTime'] as core.String?,
-          pubsubAvroFormat: json_.containsKey('pubsubAvroFormat')
-              ? PubSubAvroFormat.fromJson(json_['pubsubAvroFormat']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          textFormat: json_.containsKey('textFormat')
-              ? TextFormat.fromJson(
-                  json_['textFormat'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        avroFormat:
+            json_.containsKey('avroFormat')
+                ? AvroFormat.fromJson(
+                  json_['avroFormat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bucket: json_['bucket'] as core.String?,
+        matchGlob: json_['matchGlob'] as core.String?,
+        minimumObjectCreateTime:
+            json_['minimumObjectCreateTime'] as core.String?,
+        pubsubAvroFormat:
+            json_.containsKey('pubsubAvroFormat')
+                ? PubSubAvroFormat.fromJson(
+                  json_['pubsubAvroFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        textFormat:
+            json_.containsKey('textFormat')
+                ? TextFormat.fromJson(
+                  json_['textFormat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (avroFormat != null) 'avroFormat': avroFormat!,
-        if (bucket != null) 'bucket': bucket!,
-        if (matchGlob != null) 'matchGlob': matchGlob!,
-        if (minimumObjectCreateTime != null)
-          'minimumObjectCreateTime': minimumObjectCreateTime!,
-        if (pubsubAvroFormat != null) 'pubsubAvroFormat': pubsubAvroFormat!,
-        if (state != null) 'state': state!,
-        if (textFormat != null) 'textFormat': textFormat!,
-      };
+    if (avroFormat != null) 'avroFormat': avroFormat!,
+    if (bucket != null) 'bucket': bucket!,
+    if (matchGlob != null) 'matchGlob': matchGlob!,
+    if (minimumObjectCreateTime != null)
+      'minimumObjectCreateTime': minimumObjectCreateTime!,
+    if (pubsubAvroFormat != null) 'pubsubAvroFormat': pubsubAvroFormat!,
+    if (state != null) 'state': state!,
+    if (textFormat != null) 'textFormat': textFormat!,
+  };
 }
 
 /// Configuration for a Cloud Storage subscription.
@@ -3072,42 +3090,45 @@ class CloudStorageConfig {
   });
 
   CloudStorageConfig.fromJson(core.Map json_)
-      : this(
-          avroConfig: json_.containsKey('avroConfig')
-              ? AvroConfig.fromJson(
-                  json_['avroConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          bucket: json_['bucket'] as core.String?,
-          filenameDatetimeFormat:
-              json_['filenameDatetimeFormat'] as core.String?,
-          filenamePrefix: json_['filenamePrefix'] as core.String?,
-          filenameSuffix: json_['filenameSuffix'] as core.String?,
-          maxBytes: json_['maxBytes'] as core.String?,
-          maxDuration: json_['maxDuration'] as core.String?,
-          maxMessages: json_['maxMessages'] as core.String?,
-          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-          state: json_['state'] as core.String?,
-          textConfig: json_.containsKey('textConfig')
-              ? TextConfig.fromJson(
-                  json_['textConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        avroConfig:
+            json_.containsKey('avroConfig')
+                ? AvroConfig.fromJson(
+                  json_['avroConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bucket: json_['bucket'] as core.String?,
+        filenameDatetimeFormat: json_['filenameDatetimeFormat'] as core.String?,
+        filenamePrefix: json_['filenamePrefix'] as core.String?,
+        filenameSuffix: json_['filenameSuffix'] as core.String?,
+        maxBytes: json_['maxBytes'] as core.String?,
+        maxDuration: json_['maxDuration'] as core.String?,
+        maxMessages: json_['maxMessages'] as core.String?,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+        state: json_['state'] as core.String?,
+        textConfig:
+            json_.containsKey('textConfig')
+                ? TextConfig.fromJson(
+                  json_['textConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (avroConfig != null) 'avroConfig': avroConfig!,
-        if (bucket != null) 'bucket': bucket!,
-        if (filenameDatetimeFormat != null)
-          'filenameDatetimeFormat': filenameDatetimeFormat!,
-        if (filenamePrefix != null) 'filenamePrefix': filenamePrefix!,
-        if (filenameSuffix != null) 'filenameSuffix': filenameSuffix!,
-        if (maxBytes != null) 'maxBytes': maxBytes!,
-        if (maxDuration != null) 'maxDuration': maxDuration!,
-        if (maxMessages != null) 'maxMessages': maxMessages!,
-        if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail!,
-        if (state != null) 'state': state!,
-        if (textConfig != null) 'textConfig': textConfig!,
-      };
+    if (avroConfig != null) 'avroConfig': avroConfig!,
+    if (bucket != null) 'bucket': bucket!,
+    if (filenameDatetimeFormat != null)
+      'filenameDatetimeFormat': filenameDatetimeFormat!,
+    if (filenamePrefix != null) 'filenamePrefix': filenamePrefix!,
+    if (filenameSuffix != null) 'filenameSuffix': filenameSuffix!,
+    if (maxBytes != null) 'maxBytes': maxBytes!,
+    if (maxDuration != null) 'maxDuration': maxDuration!,
+    if (maxMessages != null) 'maxMessages': maxMessages!,
+    if (serviceAccountEmail != null)
+      'serviceAccountEmail': serviceAccountEmail!,
+    if (state != null) 'state': state!,
+    if (textConfig != null) 'textConfig': textConfig!,
+  };
 }
 
 /// Request for CommitSchema method.
@@ -3117,21 +3138,21 @@ class CommitSchemaRequest {
   /// Required.
   Schema? schema;
 
-  CommitSchemaRequest({
-    this.schema,
-  });
+  CommitSchemaRequest({this.schema});
 
   CommitSchemaRequest.fromJson(core.Map json_)
-      : this(
-          schema: json_.containsKey('schema')
-              ? Schema.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        schema:
+            json_.containsKey('schema')
+                ? Schema.fromJson(
+                  json_['schema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (schema != null) 'schema': schema!,
-      };
+    if (schema != null) 'schema': schema!,
+  };
 }
 
 /// Ingestion settings for Confluent Cloud.
@@ -3196,23 +3217,23 @@ class ConfluentCloud {
   });
 
   ConfluentCloud.fromJson(core.Map json_)
-      : this(
-          bootstrapServer: json_['bootstrapServer'] as core.String?,
-          clusterId: json_['clusterId'] as core.String?,
-          gcpServiceAccount: json_['gcpServiceAccount'] as core.String?,
-          identityPoolId: json_['identityPoolId'] as core.String?,
-          state: json_['state'] as core.String?,
-          topic: json_['topic'] as core.String?,
-        );
+    : this(
+        bootstrapServer: json_['bootstrapServer'] as core.String?,
+        clusterId: json_['clusterId'] as core.String?,
+        gcpServiceAccount: json_['gcpServiceAccount'] as core.String?,
+        identityPoolId: json_['identityPoolId'] as core.String?,
+        state: json_['state'] as core.String?,
+        topic: json_['topic'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bootstrapServer != null) 'bootstrapServer': bootstrapServer!,
-        if (clusterId != null) 'clusterId': clusterId!,
-        if (gcpServiceAccount != null) 'gcpServiceAccount': gcpServiceAccount!,
-        if (identityPoolId != null) 'identityPoolId': identityPoolId!,
-        if (state != null) 'state': state!,
-        if (topic != null) 'topic': topic!,
-      };
+    if (bootstrapServer != null) 'bootstrapServer': bootstrapServer!,
+    if (clusterId != null) 'clusterId': clusterId!,
+    if (gcpServiceAccount != null) 'gcpServiceAccount': gcpServiceAccount!,
+    if (identityPoolId != null) 'identityPoolId': identityPoolId!,
+    if (state != null) 'state': state!,
+    if (topic != null) 'topic': topic!,
+  };
 }
 
 /// Request for the `CreateSnapshot` method.
@@ -3236,27 +3257,20 @@ class CreateSnapshotRequest {
   /// Required.
   core.String? subscription;
 
-  CreateSnapshotRequest({
-    this.labels,
-    this.subscription,
-  });
+  CreateSnapshotRequest({this.labels, this.subscription});
 
   CreateSnapshotRequest.fromJson(core.Map json_)
-      : this(
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          subscription: json_['subscription'] as core.String?,
-        );
+    : this(
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        subscription: json_['subscription'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-        if (subscription != null) 'subscription': subscription!,
-      };
+    if (labels != null) 'labels': labels!,
+    if (subscription != null) 'subscription': subscription!,
+  };
 }
 
 /// Dead lettering is done on a best effort basis.
@@ -3290,22 +3304,19 @@ class DeadLetterPolicy {
   /// Optional.
   core.int? maxDeliveryAttempts;
 
-  DeadLetterPolicy({
-    this.deadLetterTopic,
-    this.maxDeliveryAttempts,
-  });
+  DeadLetterPolicy({this.deadLetterTopic, this.maxDeliveryAttempts});
 
   DeadLetterPolicy.fromJson(core.Map json_)
-      : this(
-          deadLetterTopic: json_['deadLetterTopic'] as core.String?,
-          maxDeliveryAttempts: json_['maxDeliveryAttempts'] as core.int?,
-        );
+    : this(
+        deadLetterTopic: json_['deadLetterTopic'] as core.String?,
+        maxDeliveryAttempts: json_['maxDeliveryAttempts'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic!,
-        if (maxDeliveryAttempts != null)
-          'maxDeliveryAttempts': maxDeliveryAttempts!,
-      };
+    if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic!,
+    if (maxDeliveryAttempts != null)
+      'maxDeliveryAttempts': maxDeliveryAttempts!,
+  };
 }
 
 /// Response for the DetachSubscription method.
@@ -3389,42 +3400,57 @@ class IngestionDataSourceSettings {
   });
 
   IngestionDataSourceSettings.fromJson(core.Map json_)
-      : this(
-          awsKinesis: json_.containsKey('awsKinesis')
-              ? AwsKinesis.fromJson(
-                  json_['awsKinesis'] as core.Map<core.String, core.dynamic>)
-              : null,
-          awsMsk: json_.containsKey('awsMsk')
-              ? AwsMsk.fromJson(
-                  json_['awsMsk'] as core.Map<core.String, core.dynamic>)
-              : null,
-          azureEventHubs: json_.containsKey('azureEventHubs')
-              ? AzureEventHubs.fromJson(json_['azureEventHubs']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          cloudStorage: json_.containsKey('cloudStorage')
-              ? CloudStorage.fromJson(
-                  json_['cloudStorage'] as core.Map<core.String, core.dynamic>)
-              : null,
-          confluentCloud: json_.containsKey('confluentCloud')
-              ? ConfluentCloud.fromJson(json_['confluentCloud']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          platformLogsSettings: json_.containsKey('platformLogsSettings')
-              ? PlatformLogsSettings.fromJson(json_['platformLogsSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        awsKinesis:
+            json_.containsKey('awsKinesis')
+                ? AwsKinesis.fromJson(
+                  json_['awsKinesis'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        awsMsk:
+            json_.containsKey('awsMsk')
+                ? AwsMsk.fromJson(
+                  json_['awsMsk'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        azureEventHubs:
+            json_.containsKey('azureEventHubs')
+                ? AzureEventHubs.fromJson(
+                  json_['azureEventHubs']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cloudStorage:
+            json_.containsKey('cloudStorage')
+                ? CloudStorage.fromJson(
+                  json_['cloudStorage'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        confluentCloud:
+            json_.containsKey('confluentCloud')
+                ? ConfluentCloud.fromJson(
+                  json_['confluentCloud']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        platformLogsSettings:
+            json_.containsKey('platformLogsSettings')
+                ? PlatformLogsSettings.fromJson(
+                  json_['platformLogsSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (awsKinesis != null) 'awsKinesis': awsKinesis!,
-        if (awsMsk != null) 'awsMsk': awsMsk!,
-        if (azureEventHubs != null) 'azureEventHubs': azureEventHubs!,
-        if (cloudStorage != null) 'cloudStorage': cloudStorage!,
-        if (confluentCloud != null) 'confluentCloud': confluentCloud!,
-        if (platformLogsSettings != null)
-          'platformLogsSettings': platformLogsSettings!,
-      };
+    if (awsKinesis != null) 'awsKinesis': awsKinesis!,
+    if (awsMsk != null) 'awsMsk': awsMsk!,
+    if (azureEventHubs != null) 'azureEventHubs': azureEventHubs!,
+    if (cloudStorage != null) 'cloudStorage': cloudStorage!,
+    if (confluentCloud != null) 'confluentCloud': confluentCloud!,
+    if (platformLogsSettings != null)
+      'platformLogsSettings': platformLogsSettings!,
+  };
 }
 
 /// User-defined JavaScript function that can transform or filter a Pub/Sub
@@ -3452,21 +3478,18 @@ class JavaScriptUDF {
   /// Required.
   core.String? functionName;
 
-  JavaScriptUDF({
-    this.code,
-    this.functionName,
-  });
+  JavaScriptUDF({this.code, this.functionName});
 
   JavaScriptUDF.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          functionName: json_['functionName'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        functionName: json_['functionName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (functionName != null) 'functionName': functionName!,
-      };
+    if (code != null) 'code': code!,
+    if (functionName != null) 'functionName': functionName!,
+  };
 }
 
 /// Response for the `ListSchemaRevisions` method.
@@ -3479,24 +3502,25 @@ class ListSchemaRevisionsResponse {
   /// The revisions of the schema.
   core.List<Schema>? schemas;
 
-  ListSchemaRevisionsResponse({
-    this.nextPageToken,
-    this.schemas,
-  });
+  ListSchemaRevisionsResponse({this.nextPageToken, this.schemas});
 
   ListSchemaRevisionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          schemas: (json_['schemas'] as core.List?)
-              ?.map((value) =>
-                  Schema.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        schemas:
+            (json_['schemas'] as core.List?)
+                ?.map(
+                  (value) => Schema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (schemas != null) 'schemas': schemas!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (schemas != null) 'schemas': schemas!,
+  };
 }
 
 /// Response for the `ListSchemas` method.
@@ -3508,24 +3532,25 @@ class ListSchemasResponse {
   /// The resulting schemas.
   core.List<Schema>? schemas;
 
-  ListSchemasResponse({
-    this.nextPageToken,
-    this.schemas,
-  });
+  ListSchemasResponse({this.nextPageToken, this.schemas});
 
   ListSchemasResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          schemas: (json_['schemas'] as core.List?)
-              ?.map((value) =>
-                  Schema.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        schemas:
+            (json_['schemas'] as core.List?)
+                ?.map(
+                  (value) => Schema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (schemas != null) 'schemas': schemas!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (schemas != null) 'schemas': schemas!,
+  };
 }
 
 /// Response for the `ListSnapshots` method.
@@ -3541,24 +3566,25 @@ class ListSnapshotsResponse {
   /// Optional.
   core.List<Snapshot>? snapshots;
 
-  ListSnapshotsResponse({
-    this.nextPageToken,
-    this.snapshots,
-  });
+  ListSnapshotsResponse({this.nextPageToken, this.snapshots});
 
   ListSnapshotsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          snapshots: (json_['snapshots'] as core.List?)
-              ?.map((value) => Snapshot.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        snapshots:
+            (json_['snapshots'] as core.List?)
+                ?.map(
+                  (value) => Snapshot.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (snapshots != null) 'snapshots': snapshots!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (snapshots != null) 'snapshots': snapshots!,
+  };
 }
 
 /// Response for the `ListSubscriptions` method.
@@ -3575,24 +3601,25 @@ class ListSubscriptionsResponse {
   /// Optional.
   core.List<Subscription>? subscriptions;
 
-  ListSubscriptionsResponse({
-    this.nextPageToken,
-    this.subscriptions,
-  });
+  ListSubscriptionsResponse({this.nextPageToken, this.subscriptions});
 
   ListSubscriptionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          subscriptions: (json_['subscriptions'] as core.List?)
-              ?.map((value) => Subscription.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        subscriptions:
+            (json_['subscriptions'] as core.List?)
+                ?.map(
+                  (value) => Subscription.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (subscriptions != null) 'subscriptions': subscriptions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (subscriptions != null) 'subscriptions': subscriptions!,
+  };
 }
 
 /// Response for the `ListTopicSnapshots` method.
@@ -3609,23 +3636,21 @@ class ListTopicSnapshotsResponse {
   /// Optional.
   core.List<core.String>? snapshots;
 
-  ListTopicSnapshotsResponse({
-    this.nextPageToken,
-    this.snapshots,
-  });
+  ListTopicSnapshotsResponse({this.nextPageToken, this.snapshots});
 
   ListTopicSnapshotsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          snapshots: (json_['snapshots'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        snapshots:
+            (json_['snapshots'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (snapshots != null) 'snapshots': snapshots!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (snapshots != null) 'snapshots': snapshots!,
+  };
 }
 
 /// Response for the `ListTopicSubscriptions` method.
@@ -3642,23 +3667,21 @@ class ListTopicSubscriptionsResponse {
   /// Optional.
   core.List<core.String>? subscriptions;
 
-  ListTopicSubscriptionsResponse({
-    this.nextPageToken,
-    this.subscriptions,
-  });
+  ListTopicSubscriptionsResponse({this.nextPageToken, this.subscriptions});
 
   ListTopicSubscriptionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          subscriptions: (json_['subscriptions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        subscriptions:
+            (json_['subscriptions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (subscriptions != null) 'subscriptions': subscriptions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (subscriptions != null) 'subscriptions': subscriptions!,
+  };
 }
 
 /// Response for the `ListTopics` method.
@@ -3674,24 +3697,25 @@ class ListTopicsResponse {
   /// Optional.
   core.List<Topic>? topics;
 
-  ListTopicsResponse({
-    this.nextPageToken,
-    this.topics,
-  });
+  ListTopicsResponse({this.nextPageToken, this.topics});
 
   ListTopicsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          topics: (json_['topics'] as core.List?)
-              ?.map((value) =>
-                  Topic.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        topics:
+            (json_['topics'] as core.List?)
+                ?.map(
+                  (value) => Topic.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (topics != null) 'topics': topics!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (topics != null) 'topics': topics!,
+  };
 }
 
 /// A policy constraining the storage of messages published to the topic.
@@ -3717,25 +3741,22 @@ class MessageStoragePolicy {
   /// Optional.
   core.bool? enforceInTransit;
 
-  MessageStoragePolicy({
-    this.allowedPersistenceRegions,
-    this.enforceInTransit,
-  });
+  MessageStoragePolicy({this.allowedPersistenceRegions, this.enforceInTransit});
 
   MessageStoragePolicy.fromJson(core.Map json_)
-      : this(
-          allowedPersistenceRegions:
-              (json_['allowedPersistenceRegions'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          enforceInTransit: json_['enforceInTransit'] as core.bool?,
-        );
+    : this(
+        allowedPersistenceRegions:
+            (json_['allowedPersistenceRegions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        enforceInTransit: json_['enforceInTransit'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedPersistenceRegions != null)
-          'allowedPersistenceRegions': allowedPersistenceRegions!,
-        if (enforceInTransit != null) 'enforceInTransit': enforceInTransit!,
-      };
+    if (allowedPersistenceRegions != null)
+      'allowedPersistenceRegions': allowedPersistenceRegions!,
+    if (enforceInTransit != null) 'enforceInTransit': enforceInTransit!,
+  };
 }
 
 /// All supported message transforms types.
@@ -3763,27 +3784,25 @@ class MessageTransform {
   /// Optional.
   JavaScriptUDF? javascriptUdf;
 
-  MessageTransform({
-    this.disabled,
-    this.enabled,
-    this.javascriptUdf,
-  });
+  MessageTransform({this.disabled, this.enabled, this.javascriptUdf});
 
   MessageTransform.fromJson(core.Map json_)
-      : this(
-          disabled: json_['disabled'] as core.bool?,
-          enabled: json_['enabled'] as core.bool?,
-          javascriptUdf: json_.containsKey('javascriptUdf')
-              ? JavaScriptUDF.fromJson(
-                  json_['javascriptUdf'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        disabled: json_['disabled'] as core.bool?,
+        enabled: json_['enabled'] as core.bool?,
+        javascriptUdf:
+            json_.containsKey('javascriptUdf')
+                ? JavaScriptUDF.fromJson(
+                  json_['javascriptUdf'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disabled != null) 'disabled': disabled!,
-        if (enabled != null) 'enabled': enabled!,
-        if (javascriptUdf != null) 'javascriptUdf': javascriptUdf!,
-      };
+    if (disabled != null) 'disabled': disabled!,
+    if (enabled != null) 'enabled': enabled!,
+    if (javascriptUdf != null) 'javascriptUdf': javascriptUdf!,
+  };
 }
 
 /// Request for the ModifyAckDeadline method.
@@ -3807,24 +3826,21 @@ class ModifyAckDeadlineRequest {
   /// Required.
   core.List<core.String>? ackIds;
 
-  ModifyAckDeadlineRequest({
-    this.ackDeadlineSeconds,
-    this.ackIds,
-  });
+  ModifyAckDeadlineRequest({this.ackDeadlineSeconds, this.ackIds});
 
   ModifyAckDeadlineRequest.fromJson(core.Map json_)
-      : this(
-          ackDeadlineSeconds: json_['ackDeadlineSeconds'] as core.int?,
-          ackIds: (json_['ackIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        ackDeadlineSeconds: json_['ackDeadlineSeconds'] as core.int?,
+        ackIds:
+            (json_['ackIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ackDeadlineSeconds != null)
-          'ackDeadlineSeconds': ackDeadlineSeconds!,
-        if (ackIds != null) 'ackIds': ackIds!,
-      };
+    if (ackDeadlineSeconds != null) 'ackDeadlineSeconds': ackDeadlineSeconds!,
+    if (ackIds != null) 'ackIds': ackIds!,
+  };
 }
 
 /// Request for the ModifyPushConfig method.
@@ -3839,21 +3855,21 @@ class ModifyPushConfigRequest {
   /// Required.
   PushConfig? pushConfig;
 
-  ModifyPushConfigRequest({
-    this.pushConfig,
-  });
+  ModifyPushConfigRequest({this.pushConfig});
 
   ModifyPushConfigRequest.fromJson(core.Map json_)
-      : this(
-          pushConfig: json_.containsKey('pushConfig')
-              ? PushConfig.fromJson(
-                  json_['pushConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        pushConfig:
+            json_.containsKey('pushConfig')
+                ? PushConfig.fromJson(
+                  json_['pushConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pushConfig != null) 'pushConfig': pushConfig!,
-      };
+    if (pushConfig != null) 'pushConfig': pushConfig!,
+  };
 }
 
 /// Sets the `data` field as the HTTP body for delivery.
@@ -3878,18 +3894,14 @@ class PlatformLogsSettings {
   /// - "ERROR" : Only error logs will be written.
   core.String? severity;
 
-  PlatformLogsSettings({
-    this.severity,
-  });
+  PlatformLogsSettings({this.severity});
 
   PlatformLogsSettings.fromJson(core.Map json_)
-      : this(
-          severity: json_['severity'] as core.String?,
-        );
+    : this(severity: json_['severity'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (severity != null) 'severity': severity!,
-      };
+    if (severity != null) 'severity': severity!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3952,8 +3964,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -3975,27 +3989,27 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Configuration for reading Cloud Storage data written via
@@ -4012,21 +4026,23 @@ class PublishRequest {
   /// Required.
   core.List<PubsubMessage>? messages;
 
-  PublishRequest({
-    this.messages,
-  });
+  PublishRequest({this.messages});
 
   PublishRequest.fromJson(core.Map json_)
-      : this(
-          messages: (json_['messages'] as core.List?)
-              ?.map((value) => PubsubMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        messages:
+            (json_['messages'] as core.List?)
+                ?.map(
+                  (value) => PubsubMessage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (messages != null) 'messages': messages!,
-      };
+    if (messages != null) 'messages': messages!,
+  };
 }
 
 /// Response for the `Publish` method.
@@ -4039,20 +4055,19 @@ class PublishResponse {
   /// Optional.
   core.List<core.String>? messageIds;
 
-  PublishResponse({
-    this.messageIds,
-  });
+  PublishResponse({this.messageIds});
 
   PublishResponse.fromJson(core.Map json_)
-      : this(
-          messageIds: (json_['messageIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        messageIds:
+            (json_['messageIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (messageIds != null) 'messageIds': messageIds!,
-      };
+    if (messageIds != null) 'messageIds': messageIds!,
+  };
 }
 
 /// A message that is published by publishers and consumed by subscribers.
@@ -4096,21 +4111,18 @@ class PullRequest {
   )
   core.bool? returnImmediately;
 
-  PullRequest({
-    this.maxMessages,
-    this.returnImmediately,
-  });
+  PullRequest({this.maxMessages, this.returnImmediately});
 
   PullRequest.fromJson(core.Map json_)
-      : this(
-          maxMessages: json_['maxMessages'] as core.int?,
-          returnImmediately: json_['returnImmediately'] as core.bool?,
-        );
+    : this(
+        maxMessages: json_['maxMessages'] as core.int?,
+        returnImmediately: json_['returnImmediately'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxMessages != null) 'maxMessages': maxMessages!,
-        if (returnImmediately != null) 'returnImmediately': returnImmediately!,
-      };
+    if (maxMessages != null) 'maxMessages': maxMessages!,
+    if (returnImmediately != null) 'returnImmediately': returnImmediately!,
+  };
 }
 
 /// Response for the `Pull` method.
@@ -4126,21 +4138,23 @@ class PullResponse {
   /// Optional.
   core.List<ReceivedMessage>? receivedMessages;
 
-  PullResponse({
-    this.receivedMessages,
-  });
+  PullResponse({this.receivedMessages});
 
   PullResponse.fromJson(core.Map json_)
-      : this(
-          receivedMessages: (json_['receivedMessages'] as core.List?)
-              ?.map((value) => ReceivedMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        receivedMessages:
+            (json_['receivedMessages'] as core.List?)
+                ?.map(
+                  (value) => ReceivedMessage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (receivedMessages != null) 'receivedMessages': receivedMessages!,
-      };
+    if (receivedMessages != null) 'receivedMessages': receivedMessages!,
+  };
 }
 
 /// Configuration for a push delivery endpoint.
@@ -4199,37 +4213,38 @@ class PushConfig {
   });
 
   PushConfig.fromJson(core.Map json_)
-      : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          noWrapper: json_.containsKey('noWrapper')
-              ? NoWrapper.fromJson(
-                  json_['noWrapper'] as core.Map<core.String, core.dynamic>)
-              : null,
-          oidcToken: json_.containsKey('oidcToken')
-              ? OidcToken.fromJson(
-                  json_['oidcToken'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pubsubWrapper: json_.containsKey('pubsubWrapper')
-              ? PubsubWrapper.fromJson(
-                  json_['pubsubWrapper'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pushEndpoint: json_['pushEndpoint'] as core.String?,
-        );
+    : this(
+        attributes: (json_['attributes']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        noWrapper:
+            json_.containsKey('noWrapper')
+                ? NoWrapper.fromJson(
+                  json_['noWrapper'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oidcToken:
+            json_.containsKey('oidcToken')
+                ? OidcToken.fromJson(
+                  json_['oidcToken'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pubsubWrapper:
+            json_.containsKey('pubsubWrapper')
+                ? PubsubWrapper.fromJson(
+                  json_['pubsubWrapper'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pushEndpoint: json_['pushEndpoint'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (noWrapper != null) 'noWrapper': noWrapper!,
-        if (oidcToken != null) 'oidcToken': oidcToken!,
-        if (pubsubWrapper != null) 'pubsubWrapper': pubsubWrapper!,
-        if (pushEndpoint != null) 'pushEndpoint': pushEndpoint!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (noWrapper != null) 'noWrapper': noWrapper!,
+    if (oidcToken != null) 'oidcToken': oidcToken!,
+    if (pubsubWrapper != null) 'pubsubWrapper': pubsubWrapper!,
+    if (pushEndpoint != null) 'pushEndpoint': pushEndpoint!,
+  };
 }
 
 /// A message and its corresponding acknowledgment ID.
@@ -4260,27 +4275,25 @@ class ReceivedMessage {
   /// Optional.
   PubsubMessage? message;
 
-  ReceivedMessage({
-    this.ackId,
-    this.deliveryAttempt,
-    this.message,
-  });
+  ReceivedMessage({this.ackId, this.deliveryAttempt, this.message});
 
   ReceivedMessage.fromJson(core.Map json_)
-      : this(
-          ackId: json_['ackId'] as core.String?,
-          deliveryAttempt: json_['deliveryAttempt'] as core.int?,
-          message: json_.containsKey('message')
-              ? PubsubMessage.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        ackId: json_['ackId'] as core.String?,
+        deliveryAttempt: json_['deliveryAttempt'] as core.int?,
+        message:
+            json_.containsKey('message')
+                ? PubsubMessage.fromJson(
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ackId != null) 'ackId': ackId!,
-        if (deliveryAttempt != null) 'deliveryAttempt': deliveryAttempt!,
-        if (message != null) 'message': message!,
-      };
+    if (ackId != null) 'ackId': ackId!,
+    if (deliveryAttempt != null) 'deliveryAttempt': deliveryAttempt!,
+    if (message != null) 'message': message!,
+  };
 }
 
 /// A policy that specifies how Pub/Sub retries message delivery.
@@ -4302,18 +4315,14 @@ class RollbackSchemaRequest {
   /// Required.
   core.String? revisionId;
 
-  RollbackSchemaRequest({
-    this.revisionId,
-  });
+  RollbackSchemaRequest({this.revisionId});
 
   RollbackSchemaRequest.fromJson(core.Map json_)
-      : this(
-          revisionId: json_['revisionId'] as core.String?,
-        );
+    : this(revisionId: json_['revisionId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (revisionId != null) 'revisionId': revisionId!,
-      };
+    if (revisionId != null) 'revisionId': revisionId!,
+  };
 }
 
 /// A schema resource.
@@ -4357,22 +4366,21 @@ class Schema {
   });
 
   Schema.fromJson(core.Map json_)
-      : this(
-          definition: json_['definition'] as core.String?,
-          name: json_['name'] as core.String?,
-          revisionCreateTime: json_['revisionCreateTime'] as core.String?,
-          revisionId: json_['revisionId'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        definition: json_['definition'] as core.String?,
+        name: json_['name'] as core.String?,
+        revisionCreateTime: json_['revisionCreateTime'] as core.String?,
+        revisionId: json_['revisionId'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (definition != null) 'definition': definition!,
-        if (name != null) 'name': name!,
-        if (revisionCreateTime != null)
-          'revisionCreateTime': revisionCreateTime!,
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (type != null) 'type': type!,
-      };
+    if (definition != null) 'definition': definition!,
+    if (name != null) 'name': name!,
+    if (revisionCreateTime != null) 'revisionCreateTime': revisionCreateTime!,
+    if (revisionId != null) 'revisionId': revisionId!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Settings for validating messages published against a schema.
@@ -4420,19 +4428,19 @@ class SchemaSettings {
   });
 
   SchemaSettings.fromJson(core.Map json_)
-      : this(
-          encoding: json_['encoding'] as core.String?,
-          firstRevisionId: json_['firstRevisionId'] as core.String?,
-          lastRevisionId: json_['lastRevisionId'] as core.String?,
-          schema: json_['schema'] as core.String?,
-        );
+    : this(
+        encoding: json_['encoding'] as core.String?,
+        firstRevisionId: json_['firstRevisionId'] as core.String?,
+        lastRevisionId: json_['lastRevisionId'] as core.String?,
+        schema: json_['schema'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encoding != null) 'encoding': encoding!,
-        if (firstRevisionId != null) 'firstRevisionId': firstRevisionId!,
-        if (lastRevisionId != null) 'lastRevisionId': lastRevisionId!,
-        if (schema != null) 'schema': schema!,
-      };
+    if (encoding != null) 'encoding': encoding!,
+    if (firstRevisionId != null) 'firstRevisionId': firstRevisionId!,
+    if (lastRevisionId != null) 'lastRevisionId': lastRevisionId!,
+    if (schema != null) 'schema': schema!,
+  };
 }
 
 /// Request for the `Seek` method.
@@ -4461,21 +4469,18 @@ class SeekRequest {
   /// Optional.
   core.String? time;
 
-  SeekRequest({
-    this.snapshot,
-    this.time,
-  });
+  SeekRequest({this.snapshot, this.time});
 
   SeekRequest.fromJson(core.Map json_)
-      : this(
-          snapshot: json_['snapshot'] as core.String?,
-          time: json_['time'] as core.String?,
-        );
+    : this(
+        snapshot: json_['snapshot'] as core.String?,
+        time: json_['time'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (snapshot != null) 'snapshot': snapshot!,
-        if (time != null) 'time': time!,
-      };
+    if (snapshot != null) 'snapshot': snapshot!,
+    if (time != null) 'time': time!,
+  };
 }
 
 /// Response for the `Seek` method (this response is empty).
@@ -4490,21 +4495,21 @@ class SetIamPolicyRequest {
   /// reject them.
   Policy? policy;
 
-  SetIamPolicyRequest({
-    this.policy,
-  });
+  SetIamPolicyRequest({this.policy});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-      };
+    if (policy != null) 'policy': policy!,
+  };
 }
 
 /// A snapshot resource.
@@ -4546,33 +4551,24 @@ class Snapshot {
   /// Optional.
   core.String? topic;
 
-  Snapshot({
-    this.expireTime,
-    this.labels,
-    this.name,
-    this.topic,
-  });
+  Snapshot({this.expireTime, this.labels, this.name, this.topic});
 
   Snapshot.fromJson(core.Map json_)
-      : this(
-          expireTime: json_['expireTime'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          topic: json_['topic'] as core.String?,
-        );
+    : this(
+        expireTime: json_['expireTime'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        topic: json_['topic'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (topic != null) 'topic': topic!,
-      };
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (topic != null) 'topic': topic!,
+  };
 }
 
 /// A subscription resource.
@@ -4808,94 +4804,109 @@ class Subscription {
   });
 
   Subscription.fromJson(core.Map json_)
-      : this(
-          ackDeadlineSeconds: json_['ackDeadlineSeconds'] as core.int?,
-          analyticsHubSubscriptionInfo:
-              json_.containsKey('analyticsHubSubscriptionInfo')
-                  ? AnalyticsHubSubscriptionInfo.fromJson(
-                      json_['analyticsHubSubscriptionInfo']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          bigqueryConfig: json_.containsKey('bigqueryConfig')
-              ? BigQueryConfig.fromJson(json_['bigqueryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          cloudStorageConfig: json_.containsKey('cloudStorageConfig')
-              ? CloudStorageConfig.fromJson(json_['cloudStorageConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deadLetterPolicy: json_.containsKey('deadLetterPolicy')
-              ? DeadLetterPolicy.fromJson(json_['deadLetterPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          detached: json_['detached'] as core.bool?,
-          enableExactlyOnceDelivery:
-              json_['enableExactlyOnceDelivery'] as core.bool?,
-          enableMessageOrdering: json_['enableMessageOrdering'] as core.bool?,
-          expirationPolicy: json_.containsKey('expirationPolicy')
-              ? ExpirationPolicy.fromJson(json_['expirationPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          filter: json_['filter'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          messageRetentionDuration:
-              json_['messageRetentionDuration'] as core.String?,
-          messageTransforms: (json_['messageTransforms'] as core.List?)
-              ?.map((value) => MessageTransform.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          pushConfig: json_.containsKey('pushConfig')
-              ? PushConfig.fromJson(
-                  json_['pushConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          retainAckedMessages: json_['retainAckedMessages'] as core.bool?,
-          retryPolicy: json_.containsKey('retryPolicy')
-              ? RetryPolicy.fromJson(
-                  json_['retryPolicy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          topic: json_['topic'] as core.String?,
-          topicMessageRetentionDuration:
-              json_['topicMessageRetentionDuration'] as core.String?,
-        );
+    : this(
+        ackDeadlineSeconds: json_['ackDeadlineSeconds'] as core.int?,
+        analyticsHubSubscriptionInfo:
+            json_.containsKey('analyticsHubSubscriptionInfo')
+                ? AnalyticsHubSubscriptionInfo.fromJson(
+                  json_['analyticsHubSubscriptionInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bigqueryConfig:
+            json_.containsKey('bigqueryConfig')
+                ? BigQueryConfig.fromJson(
+                  json_['bigqueryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cloudStorageConfig:
+            json_.containsKey('cloudStorageConfig')
+                ? CloudStorageConfig.fromJson(
+                  json_['cloudStorageConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deadLetterPolicy:
+            json_.containsKey('deadLetterPolicy')
+                ? DeadLetterPolicy.fromJson(
+                  json_['deadLetterPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        detached: json_['detached'] as core.bool?,
+        enableExactlyOnceDelivery:
+            json_['enableExactlyOnceDelivery'] as core.bool?,
+        enableMessageOrdering: json_['enableMessageOrdering'] as core.bool?,
+        expirationPolicy:
+            json_.containsKey('expirationPolicy')
+                ? ExpirationPolicy.fromJson(
+                  json_['expirationPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filter: json_['filter'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        messageRetentionDuration:
+            json_['messageRetentionDuration'] as core.String?,
+        messageTransforms:
+            (json_['messageTransforms'] as core.List?)
+                ?.map(
+                  (value) => MessageTransform.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        pushConfig:
+            json_.containsKey('pushConfig')
+                ? PushConfig.fromJson(
+                  json_['pushConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        retainAckedMessages: json_['retainAckedMessages'] as core.bool?,
+        retryPolicy:
+            json_.containsKey('retryPolicy')
+                ? RetryPolicy.fromJson(
+                  json_['retryPolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        topic: json_['topic'] as core.String?,
+        topicMessageRetentionDuration:
+            json_['topicMessageRetentionDuration'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ackDeadlineSeconds != null)
-          'ackDeadlineSeconds': ackDeadlineSeconds!,
-        if (analyticsHubSubscriptionInfo != null)
-          'analyticsHubSubscriptionInfo': analyticsHubSubscriptionInfo!,
-        if (bigqueryConfig != null) 'bigqueryConfig': bigqueryConfig!,
-        if (cloudStorageConfig != null)
-          'cloudStorageConfig': cloudStorageConfig!,
-        if (deadLetterPolicy != null) 'deadLetterPolicy': deadLetterPolicy!,
-        if (detached != null) 'detached': detached!,
-        if (enableExactlyOnceDelivery != null)
-          'enableExactlyOnceDelivery': enableExactlyOnceDelivery!,
-        if (enableMessageOrdering != null)
-          'enableMessageOrdering': enableMessageOrdering!,
-        if (expirationPolicy != null) 'expirationPolicy': expirationPolicy!,
-        if (filter != null) 'filter': filter!,
-        if (labels != null) 'labels': labels!,
-        if (messageRetentionDuration != null)
-          'messageRetentionDuration': messageRetentionDuration!,
-        if (messageTransforms != null) 'messageTransforms': messageTransforms!,
-        if (name != null) 'name': name!,
-        if (pushConfig != null) 'pushConfig': pushConfig!,
-        if (retainAckedMessages != null)
-          'retainAckedMessages': retainAckedMessages!,
-        if (retryPolicy != null) 'retryPolicy': retryPolicy!,
-        if (state != null) 'state': state!,
-        if (topic != null) 'topic': topic!,
-        if (topicMessageRetentionDuration != null)
-          'topicMessageRetentionDuration': topicMessageRetentionDuration!,
-      };
+    if (ackDeadlineSeconds != null) 'ackDeadlineSeconds': ackDeadlineSeconds!,
+    if (analyticsHubSubscriptionInfo != null)
+      'analyticsHubSubscriptionInfo': analyticsHubSubscriptionInfo!,
+    if (bigqueryConfig != null) 'bigqueryConfig': bigqueryConfig!,
+    if (cloudStorageConfig != null) 'cloudStorageConfig': cloudStorageConfig!,
+    if (deadLetterPolicy != null) 'deadLetterPolicy': deadLetterPolicy!,
+    if (detached != null) 'detached': detached!,
+    if (enableExactlyOnceDelivery != null)
+      'enableExactlyOnceDelivery': enableExactlyOnceDelivery!,
+    if (enableMessageOrdering != null)
+      'enableMessageOrdering': enableMessageOrdering!,
+    if (expirationPolicy != null) 'expirationPolicy': expirationPolicy!,
+    if (filter != null) 'filter': filter!,
+    if (labels != null) 'labels': labels!,
+    if (messageRetentionDuration != null)
+      'messageRetentionDuration': messageRetentionDuration!,
+    if (messageTransforms != null) 'messageTransforms': messageTransforms!,
+    if (name != null) 'name': name!,
+    if (pushConfig != null) 'pushConfig': pushConfig!,
+    if (retainAckedMessages != null)
+      'retainAckedMessages': retainAckedMessages!,
+    if (retryPolicy != null) 'retryPolicy': retryPolicy!,
+    if (state != null) 'state': state!,
+    if (topic != null) 'topic': topic!,
+    if (topicMessageRetentionDuration != null)
+      'topicMessageRetentionDuration': topicMessageRetentionDuration!,
+  };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -4920,18 +4931,14 @@ class TextFormat {
   /// Optional.
   core.String? delimiter;
 
-  TextFormat({
-    this.delimiter,
-  });
+  TextFormat({this.delimiter});
 
   TextFormat.fromJson(core.Map json_)
-      : this(
-          delimiter: json_['delimiter'] as core.String?,
-        );
+    : this(delimiter: json_['delimiter'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delimiter != null) 'delimiter': delimiter!,
-      };
+    if (delimiter != null) 'delimiter': delimiter!,
+  };
 }
 
 /// A topic resource.
@@ -5034,55 +5041,62 @@ class Topic {
   });
 
   Topic.fromJson(core.Map json_)
-      : this(
-          ingestionDataSourceSettings:
-              json_.containsKey('ingestionDataSourceSettings')
-                  ? IngestionDataSourceSettings.fromJson(
-                      json_['ingestionDataSourceSettings']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          messageRetentionDuration:
-              json_['messageRetentionDuration'] as core.String?,
-          messageStoragePolicy: json_.containsKey('messageStoragePolicy')
-              ? MessageStoragePolicy.fromJson(json_['messageStoragePolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          messageTransforms: (json_['messageTransforms'] as core.List?)
-              ?.map((value) => MessageTransform.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-          schemaSettings: json_.containsKey('schemaSettings')
-              ? SchemaSettings.fromJson(json_['schemaSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        ingestionDataSourceSettings:
+            json_.containsKey('ingestionDataSourceSettings')
+                ? IngestionDataSourceSettings.fromJson(
+                  json_['ingestionDataSourceSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        messageRetentionDuration:
+            json_['messageRetentionDuration'] as core.String?,
+        messageStoragePolicy:
+            json_.containsKey('messageStoragePolicy')
+                ? MessageStoragePolicy.fromJson(
+                  json_['messageStoragePolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        messageTransforms:
+            (json_['messageTransforms'] as core.List?)
+                ?.map(
+                  (value) => MessageTransform.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        schemaSettings:
+            json_.containsKey('schemaSettings')
+                ? SchemaSettings.fromJson(
+                  json_['schemaSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ingestionDataSourceSettings != null)
-          'ingestionDataSourceSettings': ingestionDataSourceSettings!,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-        if (labels != null) 'labels': labels!,
-        if (messageRetentionDuration != null)
-          'messageRetentionDuration': messageRetentionDuration!,
-        if (messageStoragePolicy != null)
-          'messageStoragePolicy': messageStoragePolicy!,
-        if (messageTransforms != null) 'messageTransforms': messageTransforms!,
-        if (name != null) 'name': name!,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-        if (schemaSettings != null) 'schemaSettings': schemaSettings!,
-        if (state != null) 'state': state!,
-      };
+    if (ingestionDataSourceSettings != null)
+      'ingestionDataSourceSettings': ingestionDataSourceSettings!,
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+    if (labels != null) 'labels': labels!,
+    if (messageRetentionDuration != null)
+      'messageRetentionDuration': messageRetentionDuration!,
+    if (messageStoragePolicy != null)
+      'messageStoragePolicy': messageStoragePolicy!,
+    if (messageTransforms != null) 'messageTransforms': messageTransforms!,
+    if (name != null) 'name': name!,
+    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (schemaSettings != null) 'schemaSettings': schemaSettings!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Request for the UpdateSnapshot method.
@@ -5099,24 +5113,23 @@ class UpdateSnapshotRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdateSnapshotRequest({
-    this.snapshot,
-    this.updateMask,
-  });
+  UpdateSnapshotRequest({this.snapshot, this.updateMask});
 
   UpdateSnapshotRequest.fromJson(core.Map json_)
-      : this(
-          snapshot: json_.containsKey('snapshot')
-              ? Snapshot.fromJson(
-                  json_['snapshot'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        snapshot:
+            json_.containsKey('snapshot')
+                ? Snapshot.fromJson(
+                  json_['snapshot'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (snapshot != null) 'snapshot': snapshot!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (snapshot != null) 'snapshot': snapshot!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Request for the UpdateSubscription method.
@@ -5133,24 +5146,23 @@ class UpdateSubscriptionRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdateSubscriptionRequest({
-    this.subscription,
-    this.updateMask,
-  });
+  UpdateSubscriptionRequest({this.subscription, this.updateMask});
 
   UpdateSubscriptionRequest.fromJson(core.Map json_)
-      : this(
-          subscription: json_.containsKey('subscription')
-              ? Subscription.fromJson(
-                  json_['subscription'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        subscription:
+            json_.containsKey('subscription')
+                ? Subscription.fromJson(
+                  json_['subscription'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (subscription != null) 'subscription': subscription!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (subscription != null) 'subscription': subscription!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Request for the UpdateTopic method.
@@ -5170,24 +5182,23 @@ class UpdateTopicRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdateTopicRequest({
-    this.topic,
-    this.updateMask,
-  });
+  UpdateTopicRequest({this.topic, this.updateMask});
 
   UpdateTopicRequest.fromJson(core.Map json_)
-      : this(
-          topic: json_.containsKey('topic')
-              ? Topic.fromJson(
-                  json_['topic'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        topic:
+            json_.containsKey('topic')
+                ? Topic.fromJson(
+                  json_['topic'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (topic != null) 'topic': topic!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (topic != null) 'topic': topic!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Request for the `ValidateMessage` method.
@@ -5205,8 +5216,10 @@ class ValidateMessageRequest {
   core.List<core.int> get messageAsBytes => convert.base64.decode(message!);
 
   set messageAsBytes(core.List<core.int> bytes_) {
-    message =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    message = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Name of the schema against which to validate.
@@ -5217,30 +5230,27 @@ class ValidateMessageRequest {
   /// Ad-hoc schema against which to validate
   Schema? schema;
 
-  ValidateMessageRequest({
-    this.encoding,
-    this.message,
-    this.name,
-    this.schema,
-  });
+  ValidateMessageRequest({this.encoding, this.message, this.name, this.schema});
 
   ValidateMessageRequest.fromJson(core.Map json_)
-      : this(
-          encoding: json_['encoding'] as core.String?,
-          message: json_['message'] as core.String?,
-          name: json_['name'] as core.String?,
-          schema: json_.containsKey('schema')
-              ? Schema.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        encoding: json_['encoding'] as core.String?,
+        message: json_['message'] as core.String?,
+        name: json_['name'] as core.String?,
+        schema:
+            json_.containsKey('schema')
+                ? Schema.fromJson(
+                  json_['schema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encoding != null) 'encoding': encoding!,
-        if (message != null) 'message': message!,
-        if (name != null) 'name': name!,
-        if (schema != null) 'schema': schema!,
-      };
+    if (encoding != null) 'encoding': encoding!,
+    if (message != null) 'message': message!,
+    if (name != null) 'name': name!,
+    if (schema != null) 'schema': schema!,
+  };
 }
 
 /// Response for the `ValidateMessage` method.
@@ -5255,21 +5265,21 @@ class ValidateSchemaRequest {
   /// Required.
   Schema? schema;
 
-  ValidateSchemaRequest({
-    this.schema,
-  });
+  ValidateSchemaRequest({this.schema});
 
   ValidateSchemaRequest.fromJson(core.Map json_)
-      : this(
-          schema: json_.containsKey('schema')
-              ? Schema.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        schema:
+            json_.containsKey('schema')
+                ? Schema.fromJson(
+                  json_['schema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (schema != null) 'schema': schema!,
-      };
+    if (schema != null) 'schema': schema!,
+  };
 }
 
 /// Response for the `ValidateSchema` method.

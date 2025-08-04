@@ -31,10 +31,7 @@ import 'utils.dart';
 /// {@template googleapis_auth_not_close_the_baseClient}
 /// Closing the returned [Client] will not close [baseClient].
 /// {@endtemplate}
-Client clientViaApiKey(
-  String apiKey, {
-  Client? baseClient,
-}) {
+Client clientViaApiKey(String apiKey, {Client? baseClient}) {
   if (baseClient == null) {
     baseClient = Client();
   } else {
@@ -117,17 +114,14 @@ Future<AccessCredentials> refreshCredentials(
   }
 
   // https://developers.google.com/identity/protocols/oauth2/native-app#offline
-  final jsonMap = await client.oauthTokenRequest(
-    {
-      'client_id': clientId.identifier,
-      // Not all providers require a client secret,
-      // e.g. https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow#refresh-the-access-token
-      if (clientId.secret != null) 'client_secret': clientId.secret!,
-      'refresh_token': refreshToken,
-      'grant_type': 'refresh_token',
-    },
-    authEndpoints: authEndpoints,
-  );
+  final jsonMap = await client.oauthTokenRequest({
+    'client_id': clientId.identifier,
+    // Not all providers require a client secret,
+    // e.g. https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow#refresh-the-access-token
+    if (clientId.secret != null) 'client_secret': clientId.secret!,
+    'refresh_token': refreshToken,
+    'grant_type': 'refresh_token',
+  }, authEndpoints: authEndpoints);
 
   final accessToken = parseAccessToken(jsonMap);
 

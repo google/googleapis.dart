@@ -54,66 +54,40 @@ core.List<api.GoogleMapsAddressvalidationV1AddressComponent> buildUnnamed0() =>
     ];
 
 void checkUnnamed0(
-    core.List<api.GoogleMapsAddressvalidationV1AddressComponent> o) {
+  core.List<api.GoogleMapsAddressvalidationV1AddressComponent> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleMapsAddressvalidationV1AddressComponent(o[0]);
   checkGoogleMapsAddressvalidationV1AddressComponent(o[1]);
 }
 
-core.List<core.String> buildUnnamed1() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
 
 void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed2() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
 
 void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed3() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
 
 void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleMapsAddressvalidationV1Address = 0;
 api.GoogleMapsAddressvalidationV1Address
-    buildGoogleMapsAddressvalidationV1Address() {
+buildGoogleMapsAddressvalidationV1Address() {
   final o = api.GoogleMapsAddressvalidationV1Address();
   buildCounterGoogleMapsAddressvalidationV1Address++;
   if (buildCounterGoogleMapsAddressvalidationV1Address < 3) {
@@ -129,14 +103,12 @@ api.GoogleMapsAddressvalidationV1Address
 }
 
 void checkGoogleMapsAddressvalidationV1Address(
-    api.GoogleMapsAddressvalidationV1Address o) {
+  api.GoogleMapsAddressvalidationV1Address o,
+) {
   buildCounterGoogleMapsAddressvalidationV1Address++;
   if (buildCounterGoogleMapsAddressvalidationV1Address < 3) {
     checkUnnamed0(o.addressComponents!);
-    unittest.expect(
-      o.formattedAddress!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.formattedAddress!, unittest.equals('foo'));
     checkUnnamed1(o.missingComponentTypes!);
     checkGoogleTypePostalAddress(o.postalAddress!);
     checkUnnamed2(o.unconfirmedComponentTypes!);
@@ -147,7 +119,7 @@ void checkGoogleMapsAddressvalidationV1Address(
 
 core.int buildCounterGoogleMapsAddressvalidationV1AddressComponent = 0;
 api.GoogleMapsAddressvalidationV1AddressComponent
-    buildGoogleMapsAddressvalidationV1AddressComponent() {
+buildGoogleMapsAddressvalidationV1AddressComponent() {
   final o = api.GoogleMapsAddressvalidationV1AddressComponent();
   buildCounterGoogleMapsAddressvalidationV1AddressComponent++;
   if (buildCounterGoogleMapsAddressvalidationV1AddressComponent < 3) {
@@ -164,18 +136,13 @@ api.GoogleMapsAddressvalidationV1AddressComponent
 }
 
 void checkGoogleMapsAddressvalidationV1AddressComponent(
-    api.GoogleMapsAddressvalidationV1AddressComponent o) {
+  api.GoogleMapsAddressvalidationV1AddressComponent o,
+) {
   buildCounterGoogleMapsAddressvalidationV1AddressComponent++;
   if (buildCounterGoogleMapsAddressvalidationV1AddressComponent < 3) {
     checkGoogleMapsAddressvalidationV1ComponentName(o.componentName!);
-    unittest.expect(
-      o.componentType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.confirmationLevel!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.componentType!, unittest.equals('foo'));
+    unittest.expect(o.confirmationLevel!, unittest.equals('foo'));
     unittest.expect(o.inferred!, unittest.isTrue);
     unittest.expect(o.replaced!, unittest.isTrue);
     unittest.expect(o.spellCorrected!, unittest.isTrue);
@@ -186,7 +153,7 @@ void checkGoogleMapsAddressvalidationV1AddressComponent(
 
 core.int buildCounterGoogleMapsAddressvalidationV1AddressMetadata = 0;
 api.GoogleMapsAddressvalidationV1AddressMetadata
-    buildGoogleMapsAddressvalidationV1AddressMetadata() {
+buildGoogleMapsAddressvalidationV1AddressMetadata() {
   final o = api.GoogleMapsAddressvalidationV1AddressMetadata();
   buildCounterGoogleMapsAddressvalidationV1AddressMetadata++;
   if (buildCounterGoogleMapsAddressvalidationV1AddressMetadata < 3) {
@@ -199,7 +166,8 @@ api.GoogleMapsAddressvalidationV1AddressMetadata
 }
 
 void checkGoogleMapsAddressvalidationV1AddressMetadata(
-    api.GoogleMapsAddressvalidationV1AddressMetadata o) {
+  api.GoogleMapsAddressvalidationV1AddressMetadata o,
+) {
   buildCounterGoogleMapsAddressvalidationV1AddressMetadata++;
   if (buildCounterGoogleMapsAddressvalidationV1AddressMetadata < 3) {
     unittest.expect(o.business!, unittest.isTrue);
@@ -211,7 +179,7 @@ void checkGoogleMapsAddressvalidationV1AddressMetadata(
 
 core.int buildCounterGoogleMapsAddressvalidationV1ComponentName = 0;
 api.GoogleMapsAddressvalidationV1ComponentName
-    buildGoogleMapsAddressvalidationV1ComponentName() {
+buildGoogleMapsAddressvalidationV1ComponentName() {
   final o = api.GoogleMapsAddressvalidationV1ComponentName();
   buildCounterGoogleMapsAddressvalidationV1ComponentName++;
   if (buildCounterGoogleMapsAddressvalidationV1ComponentName < 3) {
@@ -223,41 +191,27 @@ api.GoogleMapsAddressvalidationV1ComponentName
 }
 
 void checkGoogleMapsAddressvalidationV1ComponentName(
-    api.GoogleMapsAddressvalidationV1ComponentName o) {
+  api.GoogleMapsAddressvalidationV1ComponentName o,
+) {
   buildCounterGoogleMapsAddressvalidationV1ComponentName++;
   if (buildCounterGoogleMapsAddressvalidationV1ComponentName < 3) {
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.text!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
+    unittest.expect(o.text!, unittest.equals('foo'));
   }
   buildCounterGoogleMapsAddressvalidationV1ComponentName--;
 }
 
-core.List<core.String> buildUnnamed4() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
 
 void checkUnnamed4(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleMapsAddressvalidationV1Geocode = 0;
 api.GoogleMapsAddressvalidationV1Geocode
-    buildGoogleMapsAddressvalidationV1Geocode() {
+buildGoogleMapsAddressvalidationV1Geocode() {
   final o = api.GoogleMapsAddressvalidationV1Geocode();
   buildCounterGoogleMapsAddressvalidationV1Geocode++;
   if (buildCounterGoogleMapsAddressvalidationV1Geocode < 3) {
@@ -273,19 +227,14 @@ api.GoogleMapsAddressvalidationV1Geocode
 }
 
 void checkGoogleMapsAddressvalidationV1Geocode(
-    api.GoogleMapsAddressvalidationV1Geocode o) {
+  api.GoogleMapsAddressvalidationV1Geocode o,
+) {
   buildCounterGoogleMapsAddressvalidationV1Geocode++;
   if (buildCounterGoogleMapsAddressvalidationV1Geocode < 3) {
     checkGoogleGeoTypeViewport(o.bounds!);
-    unittest.expect(
-      o.featureSizeMeters!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.featureSizeMeters!, unittest.equals(42.0));
     checkGoogleTypeLatLng(o.location!);
-    unittest.expect(
-      o.placeId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.placeId!, unittest.equals('foo'));
     checkUnnamed4(o.placeTypes!);
     checkGoogleMapsAddressvalidationV1PlusCode(o.plusCode!);
   }
@@ -294,7 +243,7 @@ void checkGoogleMapsAddressvalidationV1Geocode(
 
 core.int buildCounterGoogleMapsAddressvalidationV1LanguageOptions = 0;
 api.GoogleMapsAddressvalidationV1LanguageOptions
-    buildGoogleMapsAddressvalidationV1LanguageOptions() {
+buildGoogleMapsAddressvalidationV1LanguageOptions() {
   final o = api.GoogleMapsAddressvalidationV1LanguageOptions();
   buildCounterGoogleMapsAddressvalidationV1LanguageOptions++;
   if (buildCounterGoogleMapsAddressvalidationV1LanguageOptions < 3) {
@@ -305,7 +254,8 @@ api.GoogleMapsAddressvalidationV1LanguageOptions
 }
 
 void checkGoogleMapsAddressvalidationV1LanguageOptions(
-    api.GoogleMapsAddressvalidationV1LanguageOptions o) {
+  api.GoogleMapsAddressvalidationV1LanguageOptions o,
+) {
   buildCounterGoogleMapsAddressvalidationV1LanguageOptions++;
   if (buildCounterGoogleMapsAddressvalidationV1LanguageOptions < 3) {
     unittest.expect(o.returnEnglishLatinAddress!, unittest.isTrue);
@@ -315,7 +265,7 @@ void checkGoogleMapsAddressvalidationV1LanguageOptions(
 
 core.int buildCounterGoogleMapsAddressvalidationV1PlusCode = 0;
 api.GoogleMapsAddressvalidationV1PlusCode
-    buildGoogleMapsAddressvalidationV1PlusCode() {
+buildGoogleMapsAddressvalidationV1PlusCode() {
   final o = api.GoogleMapsAddressvalidationV1PlusCode();
   buildCounterGoogleMapsAddressvalidationV1PlusCode++;
   if (buildCounterGoogleMapsAddressvalidationV1PlusCode < 3) {
@@ -327,26 +277,20 @@ api.GoogleMapsAddressvalidationV1PlusCode
 }
 
 void checkGoogleMapsAddressvalidationV1PlusCode(
-    api.GoogleMapsAddressvalidationV1PlusCode o) {
+  api.GoogleMapsAddressvalidationV1PlusCode o,
+) {
   buildCounterGoogleMapsAddressvalidationV1PlusCode++;
   if (buildCounterGoogleMapsAddressvalidationV1PlusCode < 3) {
-    unittest.expect(
-      o.compoundCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.globalCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.compoundCode!, unittest.equals('foo'));
+    unittest.expect(o.globalCode!, unittest.equals('foo'));
   }
   buildCounterGoogleMapsAddressvalidationV1PlusCode--;
 }
 
 core.int
-    buildCounterGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest =
-    0;
+buildCounterGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest = 0;
 api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest
-    buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest() {
+buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest() {
   final o = api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest();
   buildCounterGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest++;
   if (buildCounterGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest <
@@ -359,27 +303,21 @@ api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest
 }
 
 void checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest(
-    api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest o) {
+  api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest o,
+) {
   buildCounterGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest++;
   if (buildCounterGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest <
       3) {
-    unittest.expect(
-      o.conclusion!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.responseId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.conclusion!, unittest.equals('foo'));
+    unittest.expect(o.responseId!, unittest.equals('foo'));
   }
   buildCounterGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest--;
 }
 
 core.int
-    buildCounterGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse =
-    0;
+buildCounterGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse = 0;
 api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse
-    buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse() {
+buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse() {
   final o =
       api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse();
   buildCounterGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse++;
@@ -390,7 +328,8 @@ api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse
 }
 
 void checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse(
-    api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse o) {
+  api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse o,
+) {
   buildCounterGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse++;
   if (buildCounterGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse <
       3) {}
@@ -399,7 +338,7 @@ void checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse(
 
 core.int buildCounterGoogleMapsAddressvalidationV1UspsAddress = 0;
 api.GoogleMapsAddressvalidationV1UspsAddress
-    buildGoogleMapsAddressvalidationV1UspsAddress() {
+buildGoogleMapsAddressvalidationV1UspsAddress() {
   final o = api.GoogleMapsAddressvalidationV1UspsAddress();
   buildCounterGoogleMapsAddressvalidationV1UspsAddress++;
   if (buildCounterGoogleMapsAddressvalidationV1UspsAddress < 3) {
@@ -418,52 +357,26 @@ api.GoogleMapsAddressvalidationV1UspsAddress
 }
 
 void checkGoogleMapsAddressvalidationV1UspsAddress(
-    api.GoogleMapsAddressvalidationV1UspsAddress o) {
+  api.GoogleMapsAddressvalidationV1UspsAddress o,
+) {
   buildCounterGoogleMapsAddressvalidationV1UspsAddress++;
   if (buildCounterGoogleMapsAddressvalidationV1UspsAddress < 3) {
-    unittest.expect(
-      o.city!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.cityStateZipAddressLine!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.firm!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.firstAddressLine!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.secondAddressLine!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.urbanization!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.zipCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.zipCodeExtension!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.city!, unittest.equals('foo'));
+    unittest.expect(o.cityStateZipAddressLine!, unittest.equals('foo'));
+    unittest.expect(o.firm!, unittest.equals('foo'));
+    unittest.expect(o.firstAddressLine!, unittest.equals('foo'));
+    unittest.expect(o.secondAddressLine!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.urbanization!, unittest.equals('foo'));
+    unittest.expect(o.zipCode!, unittest.equals('foo'));
+    unittest.expect(o.zipCodeExtension!, unittest.equals('foo'));
   }
   buildCounterGoogleMapsAddressvalidationV1UspsAddress--;
 }
 
 core.int buildCounterGoogleMapsAddressvalidationV1UspsData = 0;
 api.GoogleMapsAddressvalidationV1UspsData
-    buildGoogleMapsAddressvalidationV1UspsData() {
+buildGoogleMapsAddressvalidationV1UspsData() {
   final o = api.GoogleMapsAddressvalidationV1UspsData();
   buildCounterGoogleMapsAddressvalidationV1UspsData++;
   if (buildCounterGoogleMapsAddressvalidationV1UspsData < 3) {
@@ -510,149 +423,54 @@ api.GoogleMapsAddressvalidationV1UspsData
 }
 
 void checkGoogleMapsAddressvalidationV1UspsData(
-    api.GoogleMapsAddressvalidationV1UspsData o) {
+  api.GoogleMapsAddressvalidationV1UspsData o,
+) {
   buildCounterGoogleMapsAddressvalidationV1UspsData++;
   if (buildCounterGoogleMapsAddressvalidationV1UspsData < 3) {
-    unittest.expect(
-      o.abbreviatedCity!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.addressRecordType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.carrierRoute!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.carrierRouteIndicator!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.abbreviatedCity!, unittest.equals('foo'));
+    unittest.expect(o.addressRecordType!, unittest.equals('foo'));
+    unittest.expect(o.carrierRoute!, unittest.equals('foo'));
+    unittest.expect(o.carrierRouteIndicator!, unittest.equals('foo'));
     unittest.expect(o.cassProcessed!, unittest.isTrue);
-    unittest.expect(
-      o.county!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.county!, unittest.equals('foo'));
     unittest.expect(o.defaultAddress!, unittest.isTrue);
-    unittest.expect(
-      o.deliveryPointCheckDigit!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.deliveryPointCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dpvCmra!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dpvConfirmation!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dpvDoorNotAccessible!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dpvDrop!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dpvEnhancedDeliveryCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dpvFootnote!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dpvNoSecureLocation!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dpvNoStat!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dpvNoStatReasonCode!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.dpvNonDeliveryDays!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dpvNonDeliveryDaysValues!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.dpvPbsa!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dpvThrowback!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dpvVacant!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.elotFlag!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.elotNumber!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.errorMessage!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.deliveryPointCheckDigit!, unittest.equals('foo'));
+    unittest.expect(o.deliveryPointCode!, unittest.equals('foo'));
+    unittest.expect(o.dpvCmra!, unittest.equals('foo'));
+    unittest.expect(o.dpvConfirmation!, unittest.equals('foo'));
+    unittest.expect(o.dpvDoorNotAccessible!, unittest.equals('foo'));
+    unittest.expect(o.dpvDrop!, unittest.equals('foo'));
+    unittest.expect(o.dpvEnhancedDeliveryCode!, unittest.equals('foo'));
+    unittest.expect(o.dpvFootnote!, unittest.equals('foo'));
+    unittest.expect(o.dpvNoSecureLocation!, unittest.equals('foo'));
+    unittest.expect(o.dpvNoStat!, unittest.equals('foo'));
+    unittest.expect(o.dpvNoStatReasonCode!, unittest.equals(42));
+    unittest.expect(o.dpvNonDeliveryDays!, unittest.equals('foo'));
+    unittest.expect(o.dpvNonDeliveryDaysValues!, unittest.equals(42));
+    unittest.expect(o.dpvPbsa!, unittest.equals('foo'));
+    unittest.expect(o.dpvThrowback!, unittest.equals('foo'));
+    unittest.expect(o.dpvVacant!, unittest.equals('foo'));
+    unittest.expect(o.elotFlag!, unittest.equals('foo'));
+    unittest.expect(o.elotNumber!, unittest.equals('foo'));
+    unittest.expect(o.errorMessage!, unittest.equals('foo'));
     unittest.expect(o.ewsNoMatch!, unittest.isTrue);
-    unittest.expect(
-      o.fipsCountyCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.lacsLinkIndicator!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.lacsLinkReturnCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.pmbDesignator!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.pmbNumber!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fipsCountyCode!, unittest.equals('foo'));
+    unittest.expect(o.lacsLinkIndicator!, unittest.equals('foo'));
+    unittest.expect(o.lacsLinkReturnCode!, unittest.equals('foo'));
+    unittest.expect(o.pmbDesignator!, unittest.equals('foo'));
+    unittest.expect(o.pmbNumber!, unittest.equals('foo'));
     unittest.expect(o.poBoxOnlyPostalCode!, unittest.isTrue);
-    unittest.expect(
-      o.postOfficeCity!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.postOfficeState!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.postOfficeCity!, unittest.equals('foo'));
+    unittest.expect(o.postOfficeState!, unittest.equals('foo'));
     checkGoogleMapsAddressvalidationV1UspsAddress(o.standardizedAddress!);
-    unittest.expect(
-      o.suitelinkFootnote!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.suitelinkFootnote!, unittest.equals('foo'));
   }
   buildCounterGoogleMapsAddressvalidationV1UspsData--;
 }
 
 core.int buildCounterGoogleMapsAddressvalidationV1ValidateAddressRequest = 0;
 api.GoogleMapsAddressvalidationV1ValidateAddressRequest
-    buildGoogleMapsAddressvalidationV1ValidateAddressRequest() {
+buildGoogleMapsAddressvalidationV1ValidateAddressRequest() {
   final o = api.GoogleMapsAddressvalidationV1ValidateAddressRequest();
   buildCounterGoogleMapsAddressvalidationV1ValidateAddressRequest++;
   if (buildCounterGoogleMapsAddressvalidationV1ValidateAddressRequest < 3) {
@@ -667,27 +485,22 @@ api.GoogleMapsAddressvalidationV1ValidateAddressRequest
 }
 
 void checkGoogleMapsAddressvalidationV1ValidateAddressRequest(
-    api.GoogleMapsAddressvalidationV1ValidateAddressRequest o) {
+  api.GoogleMapsAddressvalidationV1ValidateAddressRequest o,
+) {
   buildCounterGoogleMapsAddressvalidationV1ValidateAddressRequest++;
   if (buildCounterGoogleMapsAddressvalidationV1ValidateAddressRequest < 3) {
     checkGoogleTypePostalAddress(o.address!);
     unittest.expect(o.enableUspsCass!, unittest.isTrue);
     checkGoogleMapsAddressvalidationV1LanguageOptions(o.languageOptions!);
-    unittest.expect(
-      o.previousResponseId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sessionToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.previousResponseId!, unittest.equals('foo'));
+    unittest.expect(o.sessionToken!, unittest.equals('foo'));
   }
   buildCounterGoogleMapsAddressvalidationV1ValidateAddressRequest--;
 }
 
 core.int buildCounterGoogleMapsAddressvalidationV1ValidateAddressResponse = 0;
 api.GoogleMapsAddressvalidationV1ValidateAddressResponse
-    buildGoogleMapsAddressvalidationV1ValidateAddressResponse() {
+buildGoogleMapsAddressvalidationV1ValidateAddressResponse() {
   final o = api.GoogleMapsAddressvalidationV1ValidateAddressResponse();
   buildCounterGoogleMapsAddressvalidationV1ValidateAddressResponse++;
   if (buildCounterGoogleMapsAddressvalidationV1ValidateAddressResponse < 3) {
@@ -699,13 +512,11 @@ api.GoogleMapsAddressvalidationV1ValidateAddressResponse
 }
 
 void checkGoogleMapsAddressvalidationV1ValidateAddressResponse(
-    api.GoogleMapsAddressvalidationV1ValidateAddressResponse o) {
+  api.GoogleMapsAddressvalidationV1ValidateAddressResponse o,
+) {
   buildCounterGoogleMapsAddressvalidationV1ValidateAddressResponse++;
   if (buildCounterGoogleMapsAddressvalidationV1ValidateAddressResponse < 3) {
-    unittest.expect(
-      o.responseId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.responseId!, unittest.equals('foo'));
     checkGoogleMapsAddressvalidationV1ValidationResult(o.result!);
   }
   buildCounterGoogleMapsAddressvalidationV1ValidateAddressResponse--;
@@ -713,7 +524,7 @@ void checkGoogleMapsAddressvalidationV1ValidateAddressResponse(
 
 core.int buildCounterGoogleMapsAddressvalidationV1ValidationResult = 0;
 api.GoogleMapsAddressvalidationV1ValidationResult
-    buildGoogleMapsAddressvalidationV1ValidationResult() {
+buildGoogleMapsAddressvalidationV1ValidationResult() {
   final o = api.GoogleMapsAddressvalidationV1ValidationResult();
   buildCounterGoogleMapsAddressvalidationV1ValidationResult++;
   if (buildCounterGoogleMapsAddressvalidationV1ValidationResult < 3) {
@@ -729,7 +540,8 @@ api.GoogleMapsAddressvalidationV1ValidationResult
 }
 
 void checkGoogleMapsAddressvalidationV1ValidationResult(
-    api.GoogleMapsAddressvalidationV1ValidationResult o) {
+  api.GoogleMapsAddressvalidationV1ValidationResult o,
+) {
   buildCounterGoogleMapsAddressvalidationV1ValidationResult++;
   if (buildCounterGoogleMapsAddressvalidationV1ValidationResult < 3) {
     checkGoogleMapsAddressvalidationV1Address(o.address!);
@@ -744,7 +556,7 @@ void checkGoogleMapsAddressvalidationV1ValidationResult(
 
 core.int buildCounterGoogleMapsAddressvalidationV1Verdict = 0;
 api.GoogleMapsAddressvalidationV1Verdict
-    buildGoogleMapsAddressvalidationV1Verdict() {
+buildGoogleMapsAddressvalidationV1Verdict() {
   final o = api.GoogleMapsAddressvalidationV1Verdict();
   buildCounterGoogleMapsAddressvalidationV1Verdict++;
   if (buildCounterGoogleMapsAddressvalidationV1Verdict < 3) {
@@ -763,30 +575,19 @@ api.GoogleMapsAddressvalidationV1Verdict
 }
 
 void checkGoogleMapsAddressvalidationV1Verdict(
-    api.GoogleMapsAddressvalidationV1Verdict o) {
+  api.GoogleMapsAddressvalidationV1Verdict o,
+) {
   buildCounterGoogleMapsAddressvalidationV1Verdict++;
   if (buildCounterGoogleMapsAddressvalidationV1Verdict < 3) {
     unittest.expect(o.addressComplete!, unittest.isTrue);
-    unittest.expect(
-      o.geocodeGranularity!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.geocodeGranularity!, unittest.equals('foo'));
     unittest.expect(o.hasInferredComponents!, unittest.isTrue);
     unittest.expect(o.hasReplacedComponents!, unittest.isTrue);
     unittest.expect(o.hasSpellCorrectedComponents!, unittest.isTrue);
     unittest.expect(o.hasUnconfirmedComponents!, unittest.isTrue);
-    unittest.expect(
-      o.inputGranularity!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.possibleNextAction!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.validationGranularity!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.inputGranularity!, unittest.equals('foo'));
+    unittest.expect(o.possibleNextAction!, unittest.equals('foo'));
+    unittest.expect(o.validationGranularity!, unittest.equals('foo'));
   }
   buildCounterGoogleMapsAddressvalidationV1Verdict--;
 }
@@ -806,50 +607,26 @@ api.GoogleTypeLatLng buildGoogleTypeLatLng() {
 void checkGoogleTypeLatLng(api.GoogleTypeLatLng o) {
   buildCounterGoogleTypeLatLng++;
   if (buildCounterGoogleTypeLatLng < 3) {
-    unittest.expect(
-      o.latitude!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.longitude!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.latitude!, unittest.equals(42.0));
+    unittest.expect(o.longitude!, unittest.equals(42.0));
   }
   buildCounterGoogleTypeLatLng--;
 }
 
-core.List<core.String> buildUnnamed5() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
 
 void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed6() => ['foo', 'foo'];
 
 void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleTypePostalAddress = 0;
@@ -877,43 +654,16 @@ void checkGoogleTypePostalAddress(api.GoogleTypePostalAddress o) {
   buildCounterGoogleTypePostalAddress++;
   if (buildCounterGoogleTypePostalAddress < 3) {
     checkUnnamed5(o.addressLines!);
-    unittest.expect(
-      o.administrativeArea!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.locality!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.organization!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.postalCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.administrativeArea!, unittest.equals('foo'));
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
+    unittest.expect(o.locality!, unittest.equals('foo'));
+    unittest.expect(o.organization!, unittest.equals('foo'));
+    unittest.expect(o.postalCode!, unittest.equals('foo'));
     checkUnnamed6(o.recipients!);
-    unittest.expect(
-      o.regionCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.revision!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sortingCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sublocality!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.regionCode!, unittest.equals('foo'));
+    unittest.expect(o.revision!, unittest.equals(42));
+    unittest.expect(o.sortingCode!, unittest.equals('foo'));
+    unittest.expect(o.sublocality!, unittest.equals('foo'));
   }
   buildCounterGoogleTypePostalAddress--;
 }
@@ -924,7 +674,8 @@ void main() {
       final o = buildGoogleGeoTypeViewport();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleGeoTypeViewport.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleGeoTypeViewport(od);
     });
   });
@@ -934,28 +685,33 @@ void main() {
       final o = buildGoogleMapsAddressvalidationV1Address();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleMapsAddressvalidationV1Address.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleMapsAddressvalidationV1Address(od);
     });
   });
 
-  unittest.group('obj-schema-GoogleMapsAddressvalidationV1AddressComponent',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleMapsAddressvalidationV1AddressComponent();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleMapsAddressvalidationV1AddressComponent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsAddressvalidationV1AddressComponent(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleMapsAddressvalidationV1AddressComponent',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleMapsAddressvalidationV1AddressComponent();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleMapsAddressvalidationV1AddressComponent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleMapsAddressvalidationV1AddressComponent(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleMapsAddressvalidationV1AddressMetadata', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleMapsAddressvalidationV1AddressMetadata();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleMapsAddressvalidationV1AddressMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleMapsAddressvalidationV1AddressMetadata(od);
     });
   });
@@ -965,7 +721,8 @@ void main() {
       final o = buildGoogleMapsAddressvalidationV1ComponentName();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleMapsAddressvalidationV1ComponentName.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleMapsAddressvalidationV1ComponentName(od);
     });
   });
@@ -975,7 +732,8 @@ void main() {
       final o = buildGoogleMapsAddressvalidationV1Geocode();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleMapsAddressvalidationV1Geocode.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleMapsAddressvalidationV1Geocode(od);
     });
   });
@@ -985,7 +743,8 @@ void main() {
       final o = buildGoogleMapsAddressvalidationV1LanguageOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleMapsAddressvalidationV1LanguageOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleMapsAddressvalidationV1LanguageOptions(od);
     });
   });
@@ -995,45 +754,51 @@ void main() {
       final o = buildGoogleMapsAddressvalidationV1PlusCode();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleMapsAddressvalidationV1PlusCode.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleMapsAddressvalidationV1PlusCode(od);
     });
   });
 
   unittest.group(
-      'obj-schema-GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest(od);
-    });
-  });
+    'obj-schema-GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse(od);
-    });
-  });
+    'obj-schema-GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleMapsAddressvalidationV1UspsAddress', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleMapsAddressvalidationV1UspsAddress();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleMapsAddressvalidationV1UspsAddress.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleMapsAddressvalidationV1UspsAddress(od);
     });
   });
@@ -1043,52 +808,63 @@ void main() {
       final o = buildGoogleMapsAddressvalidationV1UspsData();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleMapsAddressvalidationV1UspsData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleMapsAddressvalidationV1UspsData(od);
     });
   });
 
   unittest.group(
-      'obj-schema-GoogleMapsAddressvalidationV1ValidateAddressRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleMapsAddressvalidationV1ValidateAddressRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleMapsAddressvalidationV1ValidateAddressRequest.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsAddressvalidationV1ValidateAddressRequest(od);
-    });
-  });
+    'obj-schema-GoogleMapsAddressvalidationV1ValidateAddressRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleMapsAddressvalidationV1ValidateAddressRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleMapsAddressvalidationV1ValidateAddressRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleMapsAddressvalidationV1ValidateAddressRequest(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleMapsAddressvalidationV1ValidateAddressResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleMapsAddressvalidationV1ValidateAddressResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleMapsAddressvalidationV1ValidateAddressResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsAddressvalidationV1ValidateAddressResponse(od);
-    });
-  });
+    'obj-schema-GoogleMapsAddressvalidationV1ValidateAddressResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleMapsAddressvalidationV1ValidateAddressResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleMapsAddressvalidationV1ValidateAddressResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleMapsAddressvalidationV1ValidateAddressResponse(od);
+      });
+    },
+  );
 
-  unittest.group('obj-schema-GoogleMapsAddressvalidationV1ValidationResult',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleMapsAddressvalidationV1ValidationResult();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleMapsAddressvalidationV1ValidationResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsAddressvalidationV1ValidationResult(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleMapsAddressvalidationV1ValidationResult',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleMapsAddressvalidationV1ValidationResult();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleMapsAddressvalidationV1ValidationResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleMapsAddressvalidationV1ValidationResult(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleMapsAddressvalidationV1Verdict', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleMapsAddressvalidationV1Verdict();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleMapsAddressvalidationV1Verdict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleMapsAddressvalidationV1Verdict(od);
     });
   });
@@ -1098,7 +874,8 @@ void main() {
       final o = buildGoogleTypeLatLng();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleTypeLatLng.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleTypeLatLng(od);
     });
   });
@@ -1108,7 +885,8 @@ void main() {
       final o = buildGoogleTypePostalAddress();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleTypePostalAddress.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleTypePostalAddress(od);
     });
   });
@@ -1120,59 +898,67 @@ void main() {
       final arg_request =
           buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api
+              .GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest(
+            obj,
+          );
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 28),
-          unittest.equals('v1:provideValidationFeedback'),
-        );
-        pathOffset += 28;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 28),
+            unittest.equals('v1:provideValidationFeedback'),
+          );
+          pathOffset += 28;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.provideValidationFeedback(arg_request,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.provideValidationFeedback(
+        arg_request,
+        $fields: arg_$fields,
+      );
       checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse(
-          response as api
-              .GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse);
+        response
+            as api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse,
+      );
     });
 
     unittest.test('method--validateAddress', () async {
@@ -1181,58 +967,64 @@ void main() {
       final arg_request =
           buildGoogleMapsAddressvalidationV1ValidateAddressRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleMapsAddressvalidationV1ValidateAddressRequest.fromJson(
-                json as core.Map<core.String, core.dynamic>);
-        checkGoogleMapsAddressvalidationV1ValidateAddressRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api
+              .GoogleMapsAddressvalidationV1ValidateAddressRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleMapsAddressvalidationV1ValidateAddressRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('v1:validateAddress'),
-        );
-        pathOffset += 18;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 18),
+            unittest.equals('v1:validateAddress'),
+          );
+          pathOffset += 18;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleMapsAddressvalidationV1ValidateAddressResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.validateAddress(arg_request, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleMapsAddressvalidationV1ValidateAddressResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.validateAddress(
+        arg_request,
+        $fields: arg_$fields,
+      );
       checkGoogleMapsAddressvalidationV1ValidateAddressResponse(
-          response as api.GoogleMapsAddressvalidationV1ValidateAddressResponse);
+        response as api.GoogleMapsAddressvalidationV1ValidateAddressResponse,
+      );
     });
   });
 }

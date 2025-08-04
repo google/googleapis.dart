@@ -20,10 +20,12 @@ void main() {
     // We are not asserting what comes after '&assertion=' because this is
     // time dependent.
     expect(
-        request.body,
-        startsWith(
-            'grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer'
-            '&assertion='));
+      request.body,
+      startsWith(
+        'grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer'
+        '&assertion=',
+      ),
+    );
     final body = jsonEncode({
       'access_token': 'atok',
       'expires_in': 3600,
@@ -62,8 +64,13 @@ void main() {
     });
 
     test('successfull-with-user', () async {
-      final flow = JwtFlow(clientEmail, testPrivateKey, 'x@y.com', scopes,
-          mockClient(expectAsync1(successfulSignRequest), expectClose: false));
+      final flow = JwtFlow(
+        clientEmail,
+        testPrivateKey,
+        'x@y.com',
+        scopes,
+        mockClient(expectAsync1(successfulSignRequest), expectClose: false),
+      );
 
       final credentials = await flow.run();
       expect(credentials.accessToken.data, equals('atok'));
@@ -85,8 +92,13 @@ void main() {
     });
 
     test('transport-failure', () {
-      final flow =
-          JwtFlow(clientEmail, testPrivateKey, null, scopes, transportFailure);
+      final flow = JwtFlow(
+        clientEmail,
+        testPrivateKey,
+        null,
+        scopes,
+        transportFailure,
+      );
 
       expect(flow.run(), throwsA(isTransportException));
     });

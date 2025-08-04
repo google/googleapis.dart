@@ -115,13 +115,11 @@ api.AddConditionalFormatRuleRequest buildAddConditionalFormatRuleRequest() {
 }
 
 void checkAddConditionalFormatRuleRequest(
-    api.AddConditionalFormatRuleRequest o) {
+  api.AddConditionalFormatRuleRequest o,
+) {
   buildCounterAddConditionalFormatRuleRequest++;
   if (buildCounterAddConditionalFormatRuleRequest < 3) {
-    unittest.expect(
-      o.index!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.index!, unittest.equals(42));
     checkConditionalFormatRule(o.rule!);
   }
   buildCounterAddConditionalFormatRuleRequest--;
@@ -187,9 +185,9 @@ void checkAddDimensionGroupRequest(api.AddDimensionGroupRequest o) {
 }
 
 core.List<api.DimensionGroup> buildUnnamed0() => [
-      buildDimensionGroup(),
-      buildDimensionGroup(),
-    ];
+  buildDimensionGroup(),
+  buildDimensionGroup(),
+];
 
 void checkUnnamed0(core.List<api.DimensionGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -444,10 +442,7 @@ void checkAddTableResponse(api.AddTableResponse o) {
   buildCounterAddTableResponse--;
 }
 
-core.List<api.RowData> buildUnnamed1() => [
-      buildRowData(),
-      buildRowData(),
-    ];
+core.List<api.RowData> buildUnnamed1() => [buildRowData(), buildRowData()];
 
 void checkUnnamed1(core.List<api.RowData> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -472,19 +467,10 @@ api.AppendCellsRequest buildAppendCellsRequest() {
 void checkAppendCellsRequest(api.AppendCellsRequest o) {
   buildCounterAppendCellsRequest++;
   if (buildCounterAppendCellsRequest < 3) {
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
     checkUnnamed1(o.rows!);
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.tableId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sheetId!, unittest.equals(42));
+    unittest.expect(o.tableId!, unittest.equals('foo'));
   }
   buildCounterAppendCellsRequest--;
 }
@@ -505,18 +491,9 @@ api.AppendDimensionRequest buildAppendDimensionRequest() {
 void checkAppendDimensionRequest(api.AppendDimensionRequest o) {
   buildCounterAppendDimensionRequest++;
   if (buildCounterAppendDimensionRequest < 3) {
-    unittest.expect(
-      o.dimension!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.length!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.dimension!, unittest.equals('foo'));
+    unittest.expect(o.length!, unittest.equals(42));
+    unittest.expect(o.sheetId!, unittest.equals(42));
   }
   buildCounterAppendDimensionRequest--;
 }
@@ -537,14 +514,8 @@ api.AppendValuesResponse buildAppendValuesResponse() {
 void checkAppendValuesResponse(api.AppendValuesResponse o) {
   buildCounterAppendValuesResponse++;
   if (buildCounterAppendValuesResponse < 3) {
-    unittest.expect(
-      o.spreadsheetId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tableRange!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.spreadsheetId!, unittest.equals('foo'));
+    unittest.expect(o.tableRange!, unittest.equals('foo'));
     checkUpdateValuesResponse(o.updates!);
   }
   buildCounterAppendValuesResponse--;
@@ -612,14 +583,8 @@ api.BandedRange buildBandedRange() {
 void checkBandedRange(api.BandedRange o) {
   buildCounterBandedRange++;
   if (buildCounterBandedRange < 3) {
-    unittest.expect(
-      o.bandedRangeId!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.bandedRangeReference!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.bandedRangeId!, unittest.equals(42));
+    unittest.expect(o.bandedRangeReference!, unittest.equals('foo'));
     checkBandingProperties(o.columnProperties!);
     checkGridRange(o.range!);
     checkBandingProperties(o.rowProperties!);
@@ -681,14 +646,8 @@ api.BaselineValueFormat buildBaselineValueFormat() {
 void checkBaselineValueFormat(api.BaselineValueFormat o) {
   buildCounterBaselineValueFormat++;
   if (buildCounterBaselineValueFormat < 3) {
-    unittest.expect(
-      o.comparisonType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.comparisonType!, unittest.equals('foo'));
+    unittest.expect(o.description!, unittest.equals('foo'));
     checkColor(o.negativeColor!);
     checkColorStyle(o.negativeColorStyle!);
     checkTextPosition(o.position!);
@@ -718,14 +677,8 @@ void checkBasicChartAxis(api.BasicChartAxis o) {
   buildCounterBasicChartAxis++;
   if (buildCounterBasicChartAxis < 3) {
     checkTextFormat(o.format!);
-    unittest.expect(
-      o.position!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.position!, unittest.equals('foo'));
+    unittest.expect(o.title!, unittest.equals('foo'));
     checkTextPosition(o.titleTextPosition!);
     checkChartAxisViewWindowOptions(o.viewWindowOptions!);
   }
@@ -754,9 +707,9 @@ void checkBasicChartDomain(api.BasicChartDomain o) {
 }
 
 core.List<api.BasicSeriesDataPointStyleOverride> buildUnnamed2() => [
-      buildBasicSeriesDataPointStyleOverride(),
-      buildBasicSeriesDataPointStyleOverride(),
-    ];
+  buildBasicSeriesDataPointStyleOverride(),
+  buildBasicSeriesDataPointStyleOverride(),
+];
 
 void checkUnnamed2(core.List<api.BasicSeriesDataPointStyleOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -793,22 +746,16 @@ void checkBasicChartSeries(api.BasicChartSeries o) {
     checkPointStyle(o.pointStyle!);
     checkChartData(o.series!);
     checkUnnamed2(o.styleOverrides!);
-    unittest.expect(
-      o.targetAxis!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.targetAxis!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterBasicChartSeries--;
 }
 
 core.List<api.BasicChartAxis> buildUnnamed3() => [
-      buildBasicChartAxis(),
-      buildBasicChartAxis(),
-    ];
+  buildBasicChartAxis(),
+  buildBasicChartAxis(),
+];
 
 void checkUnnamed3(core.List<api.BasicChartAxis> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -817,9 +764,9 @@ void checkUnnamed3(core.List<api.BasicChartAxis> o) {
 }
 
 core.List<api.BasicChartDomain> buildUnnamed4() => [
-      buildBasicChartDomain(),
-      buildBasicChartDomain(),
-    ];
+  buildBasicChartDomain(),
+  buildBasicChartDomain(),
+];
 
 void checkUnnamed4(core.List<api.BasicChartDomain> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -828,9 +775,9 @@ void checkUnnamed4(core.List<api.BasicChartDomain> o) {
 }
 
 core.List<api.BasicChartSeries> buildUnnamed5() => [
-      buildBasicChartSeries(),
-      buildBasicChartSeries(),
-    ];
+  buildBasicChartSeries(),
+  buildBasicChartSeries(),
+];
 
 void checkUnnamed5(core.List<api.BasicChartSeries> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -864,30 +811,15 @@ void checkBasicChartSpec(api.BasicChartSpec o) {
   buildCounterBasicChartSpec++;
   if (buildCounterBasicChartSpec < 3) {
     checkUnnamed3(o.axis!);
-    unittest.expect(
-      o.chartType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.compareMode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.chartType!, unittest.equals('foo'));
+    unittest.expect(o.compareMode!, unittest.equals('foo'));
     checkUnnamed4(o.domains!);
-    unittest.expect(
-      o.headerCount!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.headerCount!, unittest.equals(42));
     unittest.expect(o.interpolateNulls!, unittest.isTrue);
-    unittest.expect(
-      o.legendPosition!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.legendPosition!, unittest.equals('foo'));
     unittest.expect(o.lineSmoothing!, unittest.isTrue);
     checkUnnamed5(o.series!);
-    unittest.expect(
-      o.stackedType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.stackedType!, unittest.equals('foo'));
     unittest.expect(o.threeDimensional!, unittest.isTrue);
     checkDataLabel(o.totalDataLabel!);
   }
@@ -895,9 +827,9 @@ void checkBasicChartSpec(api.BasicChartSpec o) {
 }
 
 core.Map<core.String, api.FilterCriteria> buildUnnamed6() => {
-      'x': buildFilterCriteria(),
-      'y': buildFilterCriteria(),
-    };
+  'x': buildFilterCriteria(),
+  'y': buildFilterCriteria(),
+};
 
 void checkUnnamed6(core.Map<core.String, api.FilterCriteria> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -906,9 +838,9 @@ void checkUnnamed6(core.Map<core.String, api.FilterCriteria> o) {
 }
 
 core.List<api.FilterSpec> buildUnnamed7() => [
-      buildFilterSpec(),
-      buildFilterSpec(),
-    ];
+  buildFilterSpec(),
+  buildFilterSpec(),
+];
 
 void checkUnnamed7(core.List<api.FilterSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -916,10 +848,7 @@ void checkUnnamed7(core.List<api.FilterSpec> o) {
   checkFilterSpec(o[1]);
 }
 
-core.List<api.SortSpec> buildUnnamed8() => [
-      buildSortSpec(),
-      buildSortSpec(),
-    ];
+core.List<api.SortSpec> buildUnnamed8() => [buildSortSpec(), buildSortSpec()];
 
 void checkUnnamed8(core.List<api.SortSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -949,10 +878,7 @@ void checkBasicFilter(api.BasicFilter o) {
     checkUnnamed7(o.filterSpecs!);
     checkGridRange(o.range!);
     checkUnnamed8(o.sortSpecs!);
-    unittest.expect(
-      o.tableId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.tableId!, unittest.equals('foo'));
   }
   buildCounterBasicFilter--;
 }
@@ -972,24 +898,22 @@ api.BasicSeriesDataPointStyleOverride buildBasicSeriesDataPointStyleOverride() {
 }
 
 void checkBasicSeriesDataPointStyleOverride(
-    api.BasicSeriesDataPointStyleOverride o) {
+  api.BasicSeriesDataPointStyleOverride o,
+) {
   buildCounterBasicSeriesDataPointStyleOverride++;
   if (buildCounterBasicSeriesDataPointStyleOverride < 3) {
     checkColor(o.color!);
     checkColorStyle(o.colorStyle!);
-    unittest.expect(
-      o.index!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.index!, unittest.equals(42));
     checkPointStyle(o.pointStyle!);
   }
   buildCounterBasicSeriesDataPointStyleOverride--;
 }
 
 core.List<api.DataFilter> buildUnnamed9() => [
-      buildDataFilter(),
-      buildDataFilter(),
-    ];
+  buildDataFilter(),
+  buildDataFilter(),
+];
 
 void checkUnnamed9(core.List<api.DataFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -999,7 +923,7 @@ void checkUnnamed9(core.List<api.DataFilter> o) {
 
 core.int buildCounterBatchClearValuesByDataFilterRequest = 0;
 api.BatchClearValuesByDataFilterRequest
-    buildBatchClearValuesByDataFilterRequest() {
+buildBatchClearValuesByDataFilterRequest() {
   final o = api.BatchClearValuesByDataFilterRequest();
   buildCounterBatchClearValuesByDataFilterRequest++;
   if (buildCounterBatchClearValuesByDataFilterRequest < 3) {
@@ -1010,7 +934,8 @@ api.BatchClearValuesByDataFilterRequest
 }
 
 void checkBatchClearValuesByDataFilterRequest(
-    api.BatchClearValuesByDataFilterRequest o) {
+  api.BatchClearValuesByDataFilterRequest o,
+) {
   buildCounterBatchClearValuesByDataFilterRequest++;
   if (buildCounterBatchClearValuesByDataFilterRequest < 3) {
     checkUnnamed9(o.dataFilters!);
@@ -1018,26 +943,17 @@ void checkBatchClearValuesByDataFilterRequest(
   buildCounterBatchClearValuesByDataFilterRequest--;
 }
 
-core.List<core.String> buildUnnamed10() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed10() => ['foo', 'foo'];
 
 void checkUnnamed10(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterBatchClearValuesByDataFilterResponse = 0;
 api.BatchClearValuesByDataFilterResponse
-    buildBatchClearValuesByDataFilterResponse() {
+buildBatchClearValuesByDataFilterResponse() {
   final o = api.BatchClearValuesByDataFilterResponse();
   buildCounterBatchClearValuesByDataFilterResponse++;
   if (buildCounterBatchClearValuesByDataFilterResponse < 3) {
@@ -1049,33 +965,22 @@ api.BatchClearValuesByDataFilterResponse
 }
 
 void checkBatchClearValuesByDataFilterResponse(
-    api.BatchClearValuesByDataFilterResponse o) {
+  api.BatchClearValuesByDataFilterResponse o,
+) {
   buildCounterBatchClearValuesByDataFilterResponse++;
   if (buildCounterBatchClearValuesByDataFilterResponse < 3) {
     checkUnnamed10(o.clearedRanges!);
-    unittest.expect(
-      o.spreadsheetId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.spreadsheetId!, unittest.equals('foo'));
   }
   buildCounterBatchClearValuesByDataFilterResponse--;
 }
 
-core.List<core.String> buildUnnamed11() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed11() => ['foo', 'foo'];
 
 void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterBatchClearValuesRequest = 0;
@@ -1097,21 +1002,12 @@ void checkBatchClearValuesRequest(api.BatchClearValuesRequest o) {
   buildCounterBatchClearValuesRequest--;
 }
 
-core.List<core.String> buildUnnamed12() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed12() => ['foo', 'foo'];
 
 void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterBatchClearValuesResponse = 0;
@@ -1130,18 +1026,15 @@ void checkBatchClearValuesResponse(api.BatchClearValuesResponse o) {
   buildCounterBatchClearValuesResponse++;
   if (buildCounterBatchClearValuesResponse < 3) {
     checkUnnamed12(o.clearedRanges!);
-    unittest.expect(
-      o.spreadsheetId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.spreadsheetId!, unittest.equals('foo'));
   }
   buildCounterBatchClearValuesResponse--;
 }
 
 core.List<api.DataFilter> buildUnnamed13() => [
-      buildDataFilter(),
-      buildDataFilter(),
-    ];
+  buildDataFilter(),
+  buildDataFilter(),
+];
 
 void checkUnnamed13(core.List<api.DataFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1164,30 +1057,22 @@ api.BatchGetValuesByDataFilterRequest buildBatchGetValuesByDataFilterRequest() {
 }
 
 void checkBatchGetValuesByDataFilterRequest(
-    api.BatchGetValuesByDataFilterRequest o) {
+  api.BatchGetValuesByDataFilterRequest o,
+) {
   buildCounterBatchGetValuesByDataFilterRequest++;
   if (buildCounterBatchGetValuesByDataFilterRequest < 3) {
     checkUnnamed13(o.dataFilters!);
-    unittest.expect(
-      o.dateTimeRenderOption!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.majorDimension!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.valueRenderOption!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dateTimeRenderOption!, unittest.equals('foo'));
+    unittest.expect(o.majorDimension!, unittest.equals('foo'));
+    unittest.expect(o.valueRenderOption!, unittest.equals('foo'));
   }
   buildCounterBatchGetValuesByDataFilterRequest--;
 }
 
 core.List<api.MatchedValueRange> buildUnnamed14() => [
-      buildMatchedValueRange(),
-      buildMatchedValueRange(),
-    ];
+  buildMatchedValueRange(),
+  buildMatchedValueRange(),
+];
 
 void checkUnnamed14(core.List<api.MatchedValueRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1197,7 +1082,7 @@ void checkUnnamed14(core.List<api.MatchedValueRange> o) {
 
 core.int buildCounterBatchGetValuesByDataFilterResponse = 0;
 api.BatchGetValuesByDataFilterResponse
-    buildBatchGetValuesByDataFilterResponse() {
+buildBatchGetValuesByDataFilterResponse() {
   final o = api.BatchGetValuesByDataFilterResponse();
   buildCounterBatchGetValuesByDataFilterResponse++;
   if (buildCounterBatchGetValuesByDataFilterResponse < 3) {
@@ -1209,22 +1094,20 @@ api.BatchGetValuesByDataFilterResponse
 }
 
 void checkBatchGetValuesByDataFilterResponse(
-    api.BatchGetValuesByDataFilterResponse o) {
+  api.BatchGetValuesByDataFilterResponse o,
+) {
   buildCounterBatchGetValuesByDataFilterResponse++;
   if (buildCounterBatchGetValuesByDataFilterResponse < 3) {
-    unittest.expect(
-      o.spreadsheetId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.spreadsheetId!, unittest.equals('foo'));
     checkUnnamed14(o.valueRanges!);
   }
   buildCounterBatchGetValuesByDataFilterResponse--;
 }
 
 core.List<api.ValueRange> buildUnnamed15() => [
-      buildValueRange(),
-      buildValueRange(),
-    ];
+  buildValueRange(),
+  buildValueRange(),
+];
 
 void checkUnnamed15(core.List<api.ValueRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1247,19 +1130,13 @@ api.BatchGetValuesResponse buildBatchGetValuesResponse() {
 void checkBatchGetValuesResponse(api.BatchGetValuesResponse o) {
   buildCounterBatchGetValuesResponse++;
   if (buildCounterBatchGetValuesResponse < 3) {
-    unittest.expect(
-      o.spreadsheetId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.spreadsheetId!, unittest.equals('foo'));
     checkUnnamed15(o.valueRanges!);
   }
   buildCounterBatchGetValuesResponse--;
 }
 
-core.List<api.Request> buildUnnamed16() => [
-      buildRequest(),
-      buildRequest(),
-    ];
+core.List<api.Request> buildUnnamed16() => [buildRequest(), buildRequest()];
 
 void checkUnnamed16(core.List<api.Request> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1267,21 +1144,12 @@ void checkUnnamed16(core.List<api.Request> o) {
   checkRequest(o[1]);
 }
 
-core.List<core.String> buildUnnamed17() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed17() => ['foo', 'foo'];
 
 void checkUnnamed17(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterBatchUpdateSpreadsheetRequest = 0;
@@ -1309,10 +1177,7 @@ void checkBatchUpdateSpreadsheetRequest(api.BatchUpdateSpreadsheetRequest o) {
   buildCounterBatchUpdateSpreadsheetRequest--;
 }
 
-core.List<api.Response> buildUnnamed18() => [
-      buildResponse(),
-      buildResponse(),
-    ];
+core.List<api.Response> buildUnnamed18() => [buildResponse(), buildResponse()];
 
 void checkUnnamed18(core.List<api.Response> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1337,19 +1202,16 @@ void checkBatchUpdateSpreadsheetResponse(api.BatchUpdateSpreadsheetResponse o) {
   buildCounterBatchUpdateSpreadsheetResponse++;
   if (buildCounterBatchUpdateSpreadsheetResponse < 3) {
     checkUnnamed18(o.replies!);
-    unittest.expect(
-      o.spreadsheetId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.spreadsheetId!, unittest.equals('foo'));
     checkSpreadsheet(o.updatedSpreadsheet!);
   }
   buildCounterBatchUpdateSpreadsheetResponse--;
 }
 
 core.List<api.DataFilterValueRange> buildUnnamed19() => [
-      buildDataFilterValueRange(),
-      buildDataFilterValueRange(),
-    ];
+  buildDataFilterValueRange(),
+  buildDataFilterValueRange(),
+];
 
 void checkUnnamed19(core.List<api.DataFilterValueRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1359,7 +1221,7 @@ void checkUnnamed19(core.List<api.DataFilterValueRange> o) {
 
 core.int buildCounterBatchUpdateValuesByDataFilterRequest = 0;
 api.BatchUpdateValuesByDataFilterRequest
-    buildBatchUpdateValuesByDataFilterRequest() {
+buildBatchUpdateValuesByDataFilterRequest() {
   final o = api.BatchUpdateValuesByDataFilterRequest();
   buildCounterBatchUpdateValuesByDataFilterRequest++;
   if (buildCounterBatchUpdateValuesByDataFilterRequest < 3) {
@@ -1374,31 +1236,23 @@ api.BatchUpdateValuesByDataFilterRequest
 }
 
 void checkBatchUpdateValuesByDataFilterRequest(
-    api.BatchUpdateValuesByDataFilterRequest o) {
+  api.BatchUpdateValuesByDataFilterRequest o,
+) {
   buildCounterBatchUpdateValuesByDataFilterRequest++;
   if (buildCounterBatchUpdateValuesByDataFilterRequest < 3) {
     checkUnnamed19(o.data!);
     unittest.expect(o.includeValuesInResponse!, unittest.isTrue);
-    unittest.expect(
-      o.responseDateTimeRenderOption!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.responseValueRenderOption!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.valueInputOption!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.responseDateTimeRenderOption!, unittest.equals('foo'));
+    unittest.expect(o.responseValueRenderOption!, unittest.equals('foo'));
+    unittest.expect(o.valueInputOption!, unittest.equals('foo'));
   }
   buildCounterBatchUpdateValuesByDataFilterRequest--;
 }
 
 core.List<api.UpdateValuesByDataFilterResponse> buildUnnamed20() => [
-      buildUpdateValuesByDataFilterResponse(),
-      buildUpdateValuesByDataFilterResponse(),
-    ];
+  buildUpdateValuesByDataFilterResponse(),
+  buildUpdateValuesByDataFilterResponse(),
+];
 
 void checkUnnamed20(core.List<api.UpdateValuesByDataFilterResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1408,7 +1262,7 @@ void checkUnnamed20(core.List<api.UpdateValuesByDataFilterResponse> o) {
 
 core.int buildCounterBatchUpdateValuesByDataFilterResponse = 0;
 api.BatchUpdateValuesByDataFilterResponse
-    buildBatchUpdateValuesByDataFilterResponse() {
+buildBatchUpdateValuesByDataFilterResponse() {
   final o = api.BatchUpdateValuesByDataFilterResponse();
   buildCounterBatchUpdateValuesByDataFilterResponse++;
   if (buildCounterBatchUpdateValuesByDataFilterResponse < 3) {
@@ -1424,38 +1278,24 @@ api.BatchUpdateValuesByDataFilterResponse
 }
 
 void checkBatchUpdateValuesByDataFilterResponse(
-    api.BatchUpdateValuesByDataFilterResponse o) {
+  api.BatchUpdateValuesByDataFilterResponse o,
+) {
   buildCounterBatchUpdateValuesByDataFilterResponse++;
   if (buildCounterBatchUpdateValuesByDataFilterResponse < 3) {
     checkUnnamed20(o.responses!);
-    unittest.expect(
-      o.spreadsheetId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.totalUpdatedCells!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.totalUpdatedColumns!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.totalUpdatedRows!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.totalUpdatedSheets!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.spreadsheetId!, unittest.equals('foo'));
+    unittest.expect(o.totalUpdatedCells!, unittest.equals(42));
+    unittest.expect(o.totalUpdatedColumns!, unittest.equals(42));
+    unittest.expect(o.totalUpdatedRows!, unittest.equals(42));
+    unittest.expect(o.totalUpdatedSheets!, unittest.equals(42));
   }
   buildCounterBatchUpdateValuesByDataFilterResponse--;
 }
 
 core.List<api.ValueRange> buildUnnamed21() => [
-      buildValueRange(),
-      buildValueRange(),
-    ];
+  buildValueRange(),
+  buildValueRange(),
+];
 
 void checkUnnamed21(core.List<api.ValueRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1483,26 +1323,17 @@ void checkBatchUpdateValuesRequest(api.BatchUpdateValuesRequest o) {
   if (buildCounterBatchUpdateValuesRequest < 3) {
     checkUnnamed21(o.data!);
     unittest.expect(o.includeValuesInResponse!, unittest.isTrue);
-    unittest.expect(
-      o.responseDateTimeRenderOption!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.responseValueRenderOption!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.valueInputOption!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.responseDateTimeRenderOption!, unittest.equals('foo'));
+    unittest.expect(o.responseValueRenderOption!, unittest.equals('foo'));
+    unittest.expect(o.valueInputOption!, unittest.equals('foo'));
   }
   buildCounterBatchUpdateValuesRequest--;
 }
 
 core.List<api.UpdateValuesResponse> buildUnnamed22() => [
-      buildUpdateValuesResponse(),
-      buildUpdateValuesResponse(),
-    ];
+  buildUpdateValuesResponse(),
+  buildUpdateValuesResponse(),
+];
 
 void checkUnnamed22(core.List<api.UpdateValuesResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1530,26 +1361,11 @@ void checkBatchUpdateValuesResponse(api.BatchUpdateValuesResponse o) {
   buildCounterBatchUpdateValuesResponse++;
   if (buildCounterBatchUpdateValuesResponse < 3) {
     checkUnnamed22(o.responses!);
-    unittest.expect(
-      o.spreadsheetId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.totalUpdatedCells!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.totalUpdatedColumns!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.totalUpdatedRows!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.totalUpdatedSheets!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.spreadsheetId!, unittest.equals('foo'));
+    unittest.expect(o.totalUpdatedCells!, unittest.equals(42));
+    unittest.expect(o.totalUpdatedColumns!, unittest.equals(42));
+    unittest.expect(o.totalUpdatedRows!, unittest.equals(42));
+    unittest.expect(o.totalUpdatedSheets!, unittest.equals(42));
   }
   buildCounterBatchUpdateValuesResponse--;
 }
@@ -1570,10 +1386,7 @@ api.BigQueryDataSourceSpec buildBigQueryDataSourceSpec() {
 void checkBigQueryDataSourceSpec(api.BigQueryDataSourceSpec o) {
   buildCounterBigQueryDataSourceSpec++;
   if (buildCounterBigQueryDataSourceSpec < 3) {
-    unittest.expect(
-      o.projectId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.projectId!, unittest.equals('foo'));
     checkBigQueryQuerySpec(o.querySpec!);
     checkBigQueryTableSpec(o.tableSpec!);
   }
@@ -1594,10 +1407,7 @@ api.BigQueryQuerySpec buildBigQueryQuerySpec() {
 void checkBigQueryQuerySpec(api.BigQueryQuerySpec o) {
   buildCounterBigQueryQuerySpec++;
   if (buildCounterBigQueryQuerySpec < 3) {
-    unittest.expect(
-      o.rawQuery!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.rawQuery!, unittest.equals('foo'));
   }
   buildCounterBigQueryQuerySpec--;
 }
@@ -1618,26 +1428,17 @@ api.BigQueryTableSpec buildBigQueryTableSpec() {
 void checkBigQueryTableSpec(api.BigQueryTableSpec o) {
   buildCounterBigQueryTableSpec++;
   if (buildCounterBigQueryTableSpec < 3) {
-    unittest.expect(
-      o.datasetId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tableId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tableProjectId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.datasetId!, unittest.equals('foo'));
+    unittest.expect(o.tableId!, unittest.equals('foo'));
+    unittest.expect(o.tableProjectId!, unittest.equals('foo'));
   }
   buildCounterBigQueryTableSpec--;
 }
 
 core.List<api.ConditionValue> buildUnnamed23() => [
-      buildConditionValue(),
-      buildConditionValue(),
-    ];
+  buildConditionValue(),
+  buildConditionValue(),
+];
 
 void checkUnnamed23(core.List<api.ConditionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1660,10 +1461,7 @@ api.BooleanCondition buildBooleanCondition() {
 void checkBooleanCondition(api.BooleanCondition o) {
   buildCounterBooleanCondition++;
   if (buildCounterBooleanCondition < 3) {
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
     checkUnnamed23(o.values!);
   }
   buildCounterBooleanCondition--;
@@ -1709,14 +1507,8 @@ void checkBorder(api.Border o) {
   if (buildCounterBorder < 3) {
     checkColor(o.color!);
     checkColorStyle(o.colorStyle!);
-    unittest.expect(
-      o.style!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.width!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.style!, unittest.equals('foo'));
+    unittest.expect(o.width!, unittest.equals(42));
   }
   buildCounterBorder--;
 }
@@ -1774,26 +1566,14 @@ void checkBubbleChartSpec(api.BubbleChartSpec o) {
     checkColor(o.bubbleBorderColor!);
     checkColorStyle(o.bubbleBorderColorStyle!);
     checkChartData(o.bubbleLabels!);
-    unittest.expect(
-      o.bubbleMaxRadiusSize!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.bubbleMinRadiusSize!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.bubbleOpacity!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.bubbleMaxRadiusSize!, unittest.equals(42));
+    unittest.expect(o.bubbleMinRadiusSize!, unittest.equals(42));
+    unittest.expect(o.bubbleOpacity!, unittest.equals(42.0));
     checkChartData(o.bubbleSizes!);
     checkTextFormat(o.bubbleTextStyle!);
     checkChartData(o.domain!);
     checkChartData(o.groupIds!);
-    unittest.expect(
-      o.legendPosition!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.legendPosition!, unittest.equals('foo'));
     checkChartData(o.series!);
   }
   buildCounterBubbleChartSpec--;
@@ -1815,10 +1595,7 @@ api.CancelDataSourceRefreshRequest buildCancelDataSourceRefreshRequest() {
 void checkCancelDataSourceRefreshRequest(api.CancelDataSourceRefreshRequest o) {
   buildCounterCancelDataSourceRefreshRequest++;
   if (buildCounterCancelDataSourceRefreshRequest < 3) {
-    unittest.expect(
-      o.dataSourceId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dataSourceId!, unittest.equals('foo'));
     unittest.expect(o.isAll!, unittest.isTrue);
     checkDataSourceObjectReferences(o.references!);
   }
@@ -1826,9 +1603,9 @@ void checkCancelDataSourceRefreshRequest(api.CancelDataSourceRefreshRequest o) {
 }
 
 core.List<api.CancelDataSourceRefreshStatus> buildUnnamed24() => [
-      buildCancelDataSourceRefreshStatus(),
-      buildCancelDataSourceRefreshStatus(),
-    ];
+  buildCancelDataSourceRefreshStatus(),
+  buildCancelDataSourceRefreshStatus(),
+];
 
 void checkUnnamed24(core.List<api.CancelDataSourceRefreshStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1848,7 +1625,8 @@ api.CancelDataSourceRefreshResponse buildCancelDataSourceRefreshResponse() {
 }
 
 void checkCancelDataSourceRefreshResponse(
-    api.CancelDataSourceRefreshResponse o) {
+  api.CancelDataSourceRefreshResponse o,
+) {
   buildCounterCancelDataSourceRefreshResponse++;
   if (buildCounterCancelDataSourceRefreshResponse < 3) {
     checkUnnamed24(o.statuses!);
@@ -1878,9 +1656,9 @@ void checkCancelDataSourceRefreshStatus(api.CancelDataSourceRefreshStatus o) {
 }
 
 core.List<api.CandlestickData> buildUnnamed25() => [
-      buildCandlestickData(),
-      buildCandlestickData(),
-    ];
+  buildCandlestickData(),
+  buildCandlestickData(),
+];
 
 void checkUnnamed25(core.List<api.CandlestickData> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1974,10 +1752,7 @@ void checkCandlestickSeries(api.CandlestickSeries o) {
   buildCounterCandlestickSeries--;
 }
 
-core.List<api.ChipRun> buildUnnamed26() => [
-      buildChipRun(),
-      buildChipRun(),
-    ];
+core.List<api.ChipRun> buildUnnamed26() => [buildChipRun(), buildChipRun()];
 
 void checkUnnamed26(core.List<api.ChipRun> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1986,9 +1761,9 @@ void checkUnnamed26(core.List<api.ChipRun> o) {
 }
 
 core.List<api.TextFormatRun> buildUnnamed27() => [
-      buildTextFormatRun(),
-      buildTextFormatRun(),
-    ];
+  buildTextFormatRun(),
+  buildTextFormatRun(),
+];
 
 void checkUnnamed27(core.List<api.TextFormatRun> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2028,18 +1803,9 @@ void checkCellData(api.CellData o) {
     checkDataValidationRule(o.dataValidation!);
     checkCellFormat(o.effectiveFormat!);
     checkExtendedValue(o.effectiveValue!);
-    unittest.expect(
-      o.formattedValue!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.hyperlink!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.note!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.formattedValue!, unittest.equals('foo'));
+    unittest.expect(o.hyperlink!, unittest.equals('foo'));
+    unittest.expect(o.note!, unittest.equals('foo'));
     checkPivotTable(o.pivotTable!);
     checkUnnamed27(o.textFormatRuns!);
     checkCellFormat(o.userEnteredFormat!);
@@ -2076,30 +1842,15 @@ void checkCellFormat(api.CellFormat o) {
     checkColor(o.backgroundColor!);
     checkColorStyle(o.backgroundColorStyle!);
     checkBorders(o.borders!);
-    unittest.expect(
-      o.horizontalAlignment!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.hyperlinkDisplayType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.horizontalAlignment!, unittest.equals('foo'));
+    unittest.expect(o.hyperlinkDisplayType!, unittest.equals('foo'));
     checkNumberFormat(o.numberFormat!);
     checkPadding(o.padding!);
-    unittest.expect(
-      o.textDirection!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.textDirection!, unittest.equals('foo'));
     checkTextFormat(o.textFormat!);
     checkTextRotation(o.textRotation!);
-    unittest.expect(
-      o.verticalAlignment!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.wrapStrategy!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.verticalAlignment!, unittest.equals('foo'));
+    unittest.expect(o.wrapStrategy!, unittest.equals('foo'));
   }
   buildCounterCellFormat--;
 }
@@ -2120,18 +1871,9 @@ api.ChartAxisViewWindowOptions buildChartAxisViewWindowOptions() {
 void checkChartAxisViewWindowOptions(api.ChartAxisViewWindowOptions o) {
   buildCounterChartAxisViewWindowOptions++;
   if (buildCounterChartAxisViewWindowOptions < 3) {
-    unittest.expect(
-      o.viewWindowMax!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.viewWindowMin!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.viewWindowMode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.viewWindowMax!, unittest.equals(42.0));
+    unittest.expect(o.viewWindowMin!, unittest.equals(42.0));
+    unittest.expect(o.viewWindowMode!, unittest.equals('foo'));
   }
   buildCounterChartAxisViewWindowOptions--;
 }
@@ -2151,14 +1893,8 @@ api.ChartCustomNumberFormatOptions buildChartCustomNumberFormatOptions() {
 void checkChartCustomNumberFormatOptions(api.ChartCustomNumberFormatOptions o) {
   buildCounterChartCustomNumberFormatOptions++;
   if (buildCounterChartCustomNumberFormatOptions < 3) {
-    unittest.expect(
-      o.prefix!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.suffix!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.prefix!, unittest.equals('foo'));
+    unittest.expect(o.suffix!, unittest.equals('foo'));
   }
   buildCounterChartCustomNumberFormatOptions--;
 }
@@ -2180,10 +1916,7 @@ api.ChartData buildChartData() {
 void checkChartData(api.ChartData o) {
   buildCounterChartData++;
   if (buildCounterChartData < 3) {
-    unittest.expect(
-      o.aggregateType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.aggregateType!, unittest.equals('foo'));
     checkDataSourceColumnReference(o.columnReference!);
     checkChartGroupRule(o.groupRule!);
     checkChartSourceRange(o.sourceRange!);
@@ -2205,10 +1938,7 @@ api.ChartDateTimeRule buildChartDateTimeRule() {
 void checkChartDateTimeRule(api.ChartDateTimeRule o) {
   buildCounterChartDateTimeRule++;
   if (buildCounterChartDateTimeRule < 3) {
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterChartDateTimeRule--;
 }
@@ -2250,26 +1980,17 @@ api.ChartHistogramRule buildChartHistogramRule() {
 void checkChartHistogramRule(api.ChartHistogramRule o) {
   buildCounterChartHistogramRule++;
   if (buildCounterChartHistogramRule < 3) {
-    unittest.expect(
-      o.intervalSize!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.maxValue!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.minValue!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.intervalSize!, unittest.equals(42.0));
+    unittest.expect(o.maxValue!, unittest.equals(42.0));
+    unittest.expect(o.minValue!, unittest.equals(42.0));
   }
   buildCounterChartHistogramRule--;
 }
 
 core.List<api.GridRange> buildUnnamed28() => [
-      buildGridRange(),
-      buildGridRange(),
-    ];
+  buildGridRange(),
+  buildGridRange(),
+];
 
 void checkUnnamed28(core.List<api.GridRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2297,9 +2018,9 @@ void checkChartSourceRange(api.ChartSourceRange o) {
 }
 
 core.List<api.FilterSpec> buildUnnamed29() => [
-      buildFilterSpec(),
-      buildFilterSpec(),
-    ];
+  buildFilterSpec(),
+  buildFilterSpec(),
+];
 
 void checkUnnamed29(core.List<api.FilterSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2307,10 +2028,7 @@ void checkUnnamed29(core.List<api.FilterSpec> o) {
   checkFilterSpec(o[1]);
 }
 
-core.List<api.SortSpec> buildUnnamed30() => [
-      buildSortSpec(),
-      buildSortSpec(),
-    ];
+core.List<api.SortSpec> buildUnnamed30() => [buildSortSpec(), buildSortSpec()];
 
 void checkUnnamed30(core.List<api.SortSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2355,10 +2073,7 @@ api.ChartSpec buildChartSpec() {
 void checkChartSpec(api.ChartSpec o) {
   buildCounterChartSpec++;
   if (buildCounterChartSpec < 3) {
-    unittest.expect(
-      o.altText!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.altText!, unittest.equals('foo'));
     checkColor(o.backgroundColor!);
     checkColorStyle(o.backgroundColorStyle!);
     checkBasicChartSpec(o.basicChart!);
@@ -2366,30 +2081,18 @@ void checkChartSpec(api.ChartSpec o) {
     checkCandlestickChartSpec(o.candlestickChart!);
     checkDataSourceChartProperties(o.dataSourceChartProperties!);
     checkUnnamed29(o.filterSpecs!);
-    unittest.expect(
-      o.fontName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.hiddenDimensionStrategy!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fontName!, unittest.equals('foo'));
+    unittest.expect(o.hiddenDimensionStrategy!, unittest.equals('foo'));
     checkHistogramChartSpec(o.histogramChart!);
     unittest.expect(o.maximized!, unittest.isTrue);
     checkOrgChartSpec(o.orgChart!);
     checkPieChartSpec(o.pieChart!);
     checkScorecardChartSpec(o.scorecardChart!);
     checkUnnamed30(o.sortSpecs!);
-    unittest.expect(
-      o.subtitle!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.subtitle!, unittest.equals('foo'));
     checkTextFormat(o.subtitleTextFormat!);
     checkTextPosition(o.subtitleTextPosition!);
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.title!, unittest.equals('foo'));
     checkTextFormat(o.titleTextFormat!);
     checkTextPosition(o.titleTextPosition!);
     checkTreemapChartSpec(o.treemapChart!);
@@ -2435,10 +2138,7 @@ void checkChipRun(api.ChipRun o) {
   buildCounterChipRun++;
   if (buildCounterChipRun < 3) {
     checkChip(o.chip!);
-    unittest.expect(
-      o.startIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.startIndex!, unittest.equals(42));
   }
   buildCounterChipRun--;
 }
@@ -2457,10 +2157,7 @@ api.ClearBasicFilterRequest buildClearBasicFilterRequest() {
 void checkClearBasicFilterRequest(api.ClearBasicFilterRequest o) {
   buildCounterClearBasicFilterRequest++;
   if (buildCounterClearBasicFilterRequest < 3) {
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.sheetId!, unittest.equals(42));
   }
   buildCounterClearBasicFilterRequest--;
 }
@@ -2495,14 +2192,8 @@ api.ClearValuesResponse buildClearValuesResponse() {
 void checkClearValuesResponse(api.ClearValuesResponse o) {
   buildCounterClearValuesResponse++;
   if (buildCounterClearValuesResponse < 3) {
-    unittest.expect(
-      o.clearedRange!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.spreadsheetId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.clearedRange!, unittest.equals('foo'));
+    unittest.expect(o.spreadsheetId!, unittest.equals('foo'));
   }
   buildCounterClearValuesResponse--;
 }
@@ -2524,22 +2215,10 @@ api.Color buildColor() {
 void checkColor(api.Color o) {
   buildCounterColor++;
   if (buildCounterColor < 3) {
-    unittest.expect(
-      o.alpha!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.blue!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.green!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.red!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.alpha!, unittest.equals(42.0));
+    unittest.expect(o.blue!, unittest.equals(42.0));
+    unittest.expect(o.green!, unittest.equals(42.0));
+    unittest.expect(o.red!, unittest.equals(42.0));
   }
   buildCounterColor--;
 }
@@ -2560,10 +2239,7 @@ void checkColorStyle(api.ColorStyle o) {
   buildCounterColorStyle++;
   if (buildCounterColorStyle < 3) {
     checkColor(o.rgbColor!);
-    unittest.expect(
-      o.themeColor!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.themeColor!, unittest.equals('foo'));
   }
   buildCounterColorStyle--;
 }
@@ -2583,22 +2259,16 @@ api.ConditionValue buildConditionValue() {
 void checkConditionValue(api.ConditionValue o) {
   buildCounterConditionValue++;
   if (buildCounterConditionValue < 3) {
-    unittest.expect(
-      o.relativeDate!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.userEnteredValue!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.relativeDate!, unittest.equals('foo'));
+    unittest.expect(o.userEnteredValue!, unittest.equals('foo'));
   }
   buildCounterConditionValue--;
 }
 
 core.List<api.GridRange> buildUnnamed31() => [
-      buildGridRange(),
-      buildGridRange(),
-    ];
+  buildGridRange(),
+  buildGridRange(),
+];
 
 void checkUnnamed31(core.List<api.GridRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2647,14 +2317,8 @@ void checkCopyPasteRequest(api.CopyPasteRequest o) {
   buildCounterCopyPasteRequest++;
   if (buildCounterCopyPasteRequest < 3) {
     checkGridRange(o.destination!);
-    unittest.expect(
-      o.pasteOrientation!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.pasteType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.pasteOrientation!, unittest.equals('foo'));
+    unittest.expect(o.pasteType!, unittest.equals('foo'));
     checkGridRange(o.source!);
   }
   buildCounterCopyPasteRequest--;
@@ -2662,7 +2326,7 @@ void checkCopyPasteRequest(api.CopyPasteRequest o) {
 
 core.int buildCounterCopySheetToAnotherSpreadsheetRequest = 0;
 api.CopySheetToAnotherSpreadsheetRequest
-    buildCopySheetToAnotherSpreadsheetRequest() {
+buildCopySheetToAnotherSpreadsheetRequest() {
   final o = api.CopySheetToAnotherSpreadsheetRequest();
   buildCounterCopySheetToAnotherSpreadsheetRequest++;
   if (buildCounterCopySheetToAnotherSpreadsheetRequest < 3) {
@@ -2673,13 +2337,11 @@ api.CopySheetToAnotherSpreadsheetRequest
 }
 
 void checkCopySheetToAnotherSpreadsheetRequest(
-    api.CopySheetToAnotherSpreadsheetRequest o) {
+  api.CopySheetToAnotherSpreadsheetRequest o,
+) {
   buildCounterCopySheetToAnotherSpreadsheetRequest++;
   if (buildCounterCopySheetToAnotherSpreadsheetRequest < 3) {
-    unittest.expect(
-      o.destinationSpreadsheetId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.destinationSpreadsheetId!, unittest.equals('foo'));
   }
   buildCounterCopySheetToAnotherSpreadsheetRequest--;
 }
@@ -2715,7 +2377,8 @@ api.CreateDeveloperMetadataResponse buildCreateDeveloperMetadataResponse() {
 }
 
 void checkCreateDeveloperMetadataResponse(
-    api.CreateDeveloperMetadataResponse o) {
+  api.CreateDeveloperMetadataResponse o,
+) {
   buildCounterCreateDeveloperMetadataResponse++;
   if (buildCounterCreateDeveloperMetadataResponse < 3) {
     checkDeveloperMetadata(o.developerMetadata!);
@@ -2740,10 +2403,7 @@ void checkCutPasteRequest(api.CutPasteRequest o) {
   buildCounterCutPasteRequest++;
   if (buildCounterCutPasteRequest < 3) {
     checkGridCoordinate(o.destination!);
-    unittest.expect(
-      o.pasteType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.pasteType!, unittest.equals('foo'));
     checkGridRange(o.source!);
   }
   buildCounterCutPasteRequest--;
@@ -2766,22 +2426,10 @@ api.DataExecutionStatus buildDataExecutionStatus() {
 void checkDataExecutionStatus(api.DataExecutionStatus o) {
   buildCounterDataExecutionStatus++;
   if (buildCounterDataExecutionStatus < 3) {
-    unittest.expect(
-      o.errorCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.errorMessage!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.lastRefreshTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.errorCode!, unittest.equals('foo'));
+    unittest.expect(o.errorMessage!, unittest.equals('foo'));
+    unittest.expect(o.lastRefreshTime!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
   }
   buildCounterDataExecutionStatus--;
 }
@@ -2802,10 +2450,7 @@ api.DataFilter buildDataFilter() {
 void checkDataFilter(api.DataFilter o) {
   buildCounterDataFilter++;
   if (buildCounterDataFilter < 3) {
-    unittest.expect(
-      o.a1Range!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.a1Range!, unittest.equals('foo'));
     checkDeveloperMetadataLookup(o.developerMetadataLookup!);
     checkGridRange(o.gridRange!);
   }
@@ -2813,54 +2458,36 @@ void checkDataFilter(api.DataFilter o) {
 }
 
 core.List<core.Object?> buildUnnamed32() => [
-      {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    ];
+  {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+];
 
 void checkUnnamed32(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(
-    casted1['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted1['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted1['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
   var casted2 = (o[1]) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(
-    casted2['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted2['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted2['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.List<core.List<core.Object?>> buildUnnamed33() => [
-      buildUnnamed32(),
-      buildUnnamed32(),
-    ];
+  buildUnnamed32(),
+  buildUnnamed32(),
+];
 
 void checkUnnamed33(core.List<core.List<core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2885,10 +2512,7 @@ void checkDataFilterValueRange(api.DataFilterValueRange o) {
   buildCounterDataFilterValueRange++;
   if (buildCounterDataFilterValueRange < 3) {
     checkDataFilter(o.dataFilter!);
-    unittest.expect(
-      o.majorDimension!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.majorDimension!, unittest.equals('foo'));
     checkUnnamed33(o.values!);
   }
   buildCounterDataFilterValueRange--;
@@ -2912,23 +2536,17 @@ void checkDataLabel(api.DataLabel o) {
   buildCounterDataLabel++;
   if (buildCounterDataLabel < 3) {
     checkChartData(o.customLabelData!);
-    unittest.expect(
-      o.placement!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.placement!, unittest.equals('foo'));
     checkTextFormat(o.textFormat!);
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterDataLabel--;
 }
 
 core.List<api.DataSourceColumn> buildUnnamed34() => [
-      buildDataSourceColumn(),
-      buildDataSourceColumn(),
-    ];
+  buildDataSourceColumn(),
+  buildDataSourceColumn(),
+];
 
 void checkUnnamed34(core.List<api.DataSourceColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2954,14 +2572,8 @@ void checkDataSource(api.DataSource o) {
   buildCounterDataSource++;
   if (buildCounterDataSource < 3) {
     checkUnnamed34(o.calculatedColumns!);
-    unittest.expect(
-      o.dataSourceId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.dataSourceId!, unittest.equals('foo'));
+    unittest.expect(o.sheetId!, unittest.equals(42));
     checkDataSourceSpec(o.spec!);
   }
   buildCounterDataSource--;
@@ -2983,10 +2595,7 @@ void checkDataSourceChartProperties(api.DataSourceChartProperties o) {
   buildCounterDataSourceChartProperties++;
   if (buildCounterDataSourceChartProperties < 3) {
     checkDataExecutionStatus(o.dataExecutionStatus!);
-    unittest.expect(
-      o.dataSourceId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dataSourceId!, unittest.equals('foo'));
   }
   buildCounterDataSourceChartProperties--;
 }
@@ -3006,10 +2615,7 @@ api.DataSourceColumn buildDataSourceColumn() {
 void checkDataSourceColumn(api.DataSourceColumn o) {
   buildCounterDataSourceColumn++;
   if (buildCounterDataSourceColumn < 3) {
-    unittest.expect(
-      o.formula!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.formula!, unittest.equals('foo'));
     checkDataSourceColumnReference(o.reference!);
   }
   buildCounterDataSourceColumn--;
@@ -3029,10 +2635,7 @@ api.DataSourceColumnReference buildDataSourceColumnReference() {
 void checkDataSourceColumnReference(api.DataSourceColumnReference o) {
   buildCounterDataSourceColumnReference++;
   if (buildCounterDataSourceColumnReference < 3) {
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterDataSourceColumnReference--;
 }
@@ -3053,10 +2656,7 @@ void checkDataSourceFormula(api.DataSourceFormula o) {
   buildCounterDataSourceFormula++;
   if (buildCounterDataSourceFormula < 3) {
     checkDataExecutionStatus(o.dataExecutionStatus!);
-    unittest.expect(
-      o.dataSourceId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dataSourceId!, unittest.equals('foo'));
   }
   buildCounterDataSourceFormula--;
 }
@@ -3079,25 +2679,19 @@ api.DataSourceObjectReference buildDataSourceObjectReference() {
 void checkDataSourceObjectReference(api.DataSourceObjectReference o) {
   buildCounterDataSourceObjectReference++;
   if (buildCounterDataSourceObjectReference < 3) {
-    unittest.expect(
-      o.chartId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.chartId!, unittest.equals(42));
     checkGridCoordinate(o.dataSourceFormulaCell!);
     checkGridCoordinate(o.dataSourcePivotTableAnchorCell!);
     checkGridCoordinate(o.dataSourceTableAnchorCell!);
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sheetId!, unittest.equals('foo'));
   }
   buildCounterDataSourceObjectReference--;
 }
 
 core.List<api.DataSourceObjectReference> buildUnnamed35() => [
-      buildDataSourceObjectReference(),
-      buildDataSourceObjectReference(),
-    ];
+  buildDataSourceObjectReference(),
+  buildDataSourceObjectReference(),
+];
 
 void checkUnnamed35(core.List<api.DataSourceObjectReference> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3140,14 +2734,8 @@ api.DataSourceParameter buildDataSourceParameter() {
 void checkDataSourceParameter(api.DataSourceParameter o) {
   buildCounterDataSourceParameter++;
   if (buildCounterDataSourceParameter < 3) {
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.namedRangeId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.namedRangeId!, unittest.equals('foo'));
     checkGridRange(o.range!);
   }
   buildCounterDataSourceParameter--;
@@ -3172,21 +2760,12 @@ void checkDataSourceRefreshDailySchedule(api.DataSourceRefreshDailySchedule o) {
   buildCounterDataSourceRefreshDailySchedule--;
 }
 
-core.List<core.int> buildUnnamed36() => [
-      42,
-      42,
-    ];
+core.List<core.int> buildUnnamed36() => [42, 42];
 
 void checkUnnamed36(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42),
-  );
+  unittest.expect(o[0], unittest.equals(42));
+  unittest.expect(o[1], unittest.equals(42));
 }
 
 core.int buildCounterDataSourceRefreshMonthlySchedule = 0;
@@ -3202,7 +2781,8 @@ api.DataSourceRefreshMonthlySchedule buildDataSourceRefreshMonthlySchedule() {
 }
 
 void checkDataSourceRefreshMonthlySchedule(
-    api.DataSourceRefreshMonthlySchedule o) {
+  api.DataSourceRefreshMonthlySchedule o,
+) {
   buildCounterDataSourceRefreshMonthlySchedule++;
   if (buildCounterDataSourceRefreshMonthlySchedule < 3) {
     checkUnnamed36(o.daysOfMonth!);
@@ -3234,30 +2814,18 @@ void checkDataSourceRefreshSchedule(api.DataSourceRefreshSchedule o) {
     unittest.expect(o.enabled!, unittest.isTrue);
     checkDataSourceRefreshMonthlySchedule(o.monthlySchedule!);
     checkInterval(o.nextRun!);
-    unittest.expect(
-      o.refreshScope!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.refreshScope!, unittest.equals('foo'));
     checkDataSourceRefreshWeeklySchedule(o.weeklySchedule!);
   }
   buildCounterDataSourceRefreshSchedule--;
 }
 
-core.List<core.String> buildUnnamed37() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed37() => ['foo', 'foo'];
 
 void checkUnnamed37(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterDataSourceRefreshWeeklySchedule = 0;
@@ -3273,7 +2841,8 @@ api.DataSourceRefreshWeeklySchedule buildDataSourceRefreshWeeklySchedule() {
 }
 
 void checkDataSourceRefreshWeeklySchedule(
-    api.DataSourceRefreshWeeklySchedule o) {
+  api.DataSourceRefreshWeeklySchedule o,
+) {
   buildCounterDataSourceRefreshWeeklySchedule++;
   if (buildCounterDataSourceRefreshWeeklySchedule < 3) {
     checkUnnamed37(o.daysOfWeek!);
@@ -3283,9 +2852,9 @@ void checkDataSourceRefreshWeeklySchedule(
 }
 
 core.List<api.DataSourceColumnReference> buildUnnamed38() => [
-      buildDataSourceColumnReference(),
-      buildDataSourceColumnReference(),
-    ];
+  buildDataSourceColumnReference(),
+  buildDataSourceColumnReference(),
+];
 
 void checkUnnamed38(core.List<api.DataSourceColumnReference> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3309,18 +2878,15 @@ void checkDataSourceSheetDimensionRange(api.DataSourceSheetDimensionRange o) {
   buildCounterDataSourceSheetDimensionRange++;
   if (buildCounterDataSourceSheetDimensionRange < 3) {
     checkUnnamed38(o.columnReferences!);
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.sheetId!, unittest.equals(42));
   }
   buildCounterDataSourceSheetDimensionRange--;
 }
 
 core.List<api.DataSourceColumn> buildUnnamed39() => [
-      buildDataSourceColumn(),
-      buildDataSourceColumn(),
-    ];
+  buildDataSourceColumn(),
+  buildDataSourceColumn(),
+];
 
 void checkUnnamed39(core.List<api.DataSourceColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3346,18 +2912,15 @@ void checkDataSourceSheetProperties(api.DataSourceSheetProperties o) {
   if (buildCounterDataSourceSheetProperties < 3) {
     checkUnnamed39(o.columns!);
     checkDataExecutionStatus(o.dataExecutionStatus!);
-    unittest.expect(
-      o.dataSourceId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dataSourceId!, unittest.equals('foo'));
   }
   buildCounterDataSourceSheetProperties--;
 }
 
 core.List<api.DataSourceParameter> buildUnnamed40() => [
-      buildDataSourceParameter(),
-      buildDataSourceParameter(),
-    ];
+  buildDataSourceParameter(),
+  buildDataSourceParameter(),
+];
 
 void checkUnnamed40(core.List<api.DataSourceParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3389,9 +2952,9 @@ void checkDataSourceSpec(api.DataSourceSpec o) {
 }
 
 core.List<api.DataSourceColumnReference> buildUnnamed41() => [
-      buildDataSourceColumnReference(),
-      buildDataSourceColumnReference(),
-    ];
+  buildDataSourceColumnReference(),
+  buildDataSourceColumnReference(),
+];
 
 void checkUnnamed41(core.List<api.DataSourceColumnReference> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3400,9 +2963,9 @@ void checkUnnamed41(core.List<api.DataSourceColumnReference> o) {
 }
 
 core.List<api.FilterSpec> buildUnnamed42() => [
-      buildFilterSpec(),
-      buildFilterSpec(),
-    ];
+  buildFilterSpec(),
+  buildFilterSpec(),
+];
 
 void checkUnnamed42(core.List<api.FilterSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3410,10 +2973,7 @@ void checkUnnamed42(core.List<api.FilterSpec> o) {
   checkFilterSpec(o[1]);
 }
 
-core.List<api.SortSpec> buildUnnamed43() => [
-      buildSortSpec(),
-      buildSortSpec(),
-    ];
+core.List<api.SortSpec> buildUnnamed43() => [buildSortSpec(), buildSortSpec()];
 
 void checkUnnamed43(core.List<api.SortSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3441,21 +3001,12 @@ api.DataSourceTable buildDataSourceTable() {
 void checkDataSourceTable(api.DataSourceTable o) {
   buildCounterDataSourceTable++;
   if (buildCounterDataSourceTable < 3) {
-    unittest.expect(
-      o.columnSelectionType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.columnSelectionType!, unittest.equals('foo'));
     checkUnnamed41(o.columns!);
     checkDataExecutionStatus(o.dataExecutionStatus!);
-    unittest.expect(
-      o.dataSourceId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dataSourceId!, unittest.equals('foo'));
     checkUnnamed42(o.filterSpecs!);
-    unittest.expect(
-      o.rowLimit!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.rowLimit!, unittest.equals(42));
     checkUnnamed43(o.sortSpecs!);
   }
   buildCounterDataSourceTable--;
@@ -3479,10 +3030,7 @@ void checkDataValidationRule(api.DataValidationRule o) {
   buildCounterDataValidationRule++;
   if (buildCounterDataValidationRule < 3) {
     checkBooleanCondition(o.condition!);
-    unittest.expect(
-      o.inputMessage!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.inputMessage!, unittest.equals('foo'));
     unittest.expect(o.showCustomUi!, unittest.isTrue);
     unittest.expect(o.strict!, unittest.isTrue);
   }
@@ -3503,10 +3051,7 @@ api.DateTimeRule buildDateTimeRule() {
 void checkDateTimeRule(api.DateTimeRule o) {
   buildCounterDateTimeRule++;
   if (buildCounterDateTimeRule < 3) {
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterDateTimeRule--;
 }
@@ -3525,17 +3070,14 @@ api.DeleteBandingRequest buildDeleteBandingRequest() {
 void checkDeleteBandingRequest(api.DeleteBandingRequest o) {
   buildCounterDeleteBandingRequest++;
   if (buildCounterDeleteBandingRequest < 3) {
-    unittest.expect(
-      o.bandedRangeId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.bandedRangeId!, unittest.equals(42));
   }
   buildCounterDeleteBandingRequest--;
 }
 
 core.int buildCounterDeleteConditionalFormatRuleRequest = 0;
 api.DeleteConditionalFormatRuleRequest
-    buildDeleteConditionalFormatRuleRequest() {
+buildDeleteConditionalFormatRuleRequest() {
   final o = api.DeleteConditionalFormatRuleRequest();
   buildCounterDeleteConditionalFormatRuleRequest++;
   if (buildCounterDeleteConditionalFormatRuleRequest < 3) {
@@ -3547,24 +3089,19 @@ api.DeleteConditionalFormatRuleRequest
 }
 
 void checkDeleteConditionalFormatRuleRequest(
-    api.DeleteConditionalFormatRuleRequest o) {
+  api.DeleteConditionalFormatRuleRequest o,
+) {
   buildCounterDeleteConditionalFormatRuleRequest++;
   if (buildCounterDeleteConditionalFormatRuleRequest < 3) {
-    unittest.expect(
-      o.index!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.index!, unittest.equals(42));
+    unittest.expect(o.sheetId!, unittest.equals(42));
   }
   buildCounterDeleteConditionalFormatRuleRequest--;
 }
 
 core.int buildCounterDeleteConditionalFormatRuleResponse = 0;
 api.DeleteConditionalFormatRuleResponse
-    buildDeleteConditionalFormatRuleResponse() {
+buildDeleteConditionalFormatRuleResponse() {
   final o = api.DeleteConditionalFormatRuleResponse();
   buildCounterDeleteConditionalFormatRuleResponse++;
   if (buildCounterDeleteConditionalFormatRuleResponse < 3) {
@@ -3575,7 +3112,8 @@ api.DeleteConditionalFormatRuleResponse
 }
 
 void checkDeleteConditionalFormatRuleResponse(
-    api.DeleteConditionalFormatRuleResponse o) {
+  api.DeleteConditionalFormatRuleResponse o,
+) {
   buildCounterDeleteConditionalFormatRuleResponse++;
   if (buildCounterDeleteConditionalFormatRuleResponse < 3) {
     checkConditionalFormatRule(o.rule!);
@@ -3597,10 +3135,7 @@ api.DeleteDataSourceRequest buildDeleteDataSourceRequest() {
 void checkDeleteDataSourceRequest(api.DeleteDataSourceRequest o) {
   buildCounterDeleteDataSourceRequest++;
   if (buildCounterDeleteDataSourceRequest < 3) {
-    unittest.expect(
-      o.dataSourceId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dataSourceId!, unittest.equals('foo'));
   }
   buildCounterDeleteDataSourceRequest--;
 }
@@ -3625,9 +3160,9 @@ void checkDeleteDeveloperMetadataRequest(api.DeleteDeveloperMetadataRequest o) {
 }
 
 core.List<api.DeveloperMetadata> buildUnnamed44() => [
-      buildDeveloperMetadata(),
-      buildDeveloperMetadata(),
-    ];
+  buildDeveloperMetadata(),
+  buildDeveloperMetadata(),
+];
 
 void checkUnnamed44(core.List<api.DeveloperMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3647,7 +3182,8 @@ api.DeleteDeveloperMetadataResponse buildDeleteDeveloperMetadataResponse() {
 }
 
 void checkDeleteDeveloperMetadataResponse(
-    api.DeleteDeveloperMetadataResponse o) {
+  api.DeleteDeveloperMetadataResponse o,
+) {
   buildCounterDeleteDeveloperMetadataResponse++;
   if (buildCounterDeleteDeveloperMetadataResponse < 3) {
     checkUnnamed44(o.deletedDeveloperMetadata!);
@@ -3675,9 +3211,9 @@ void checkDeleteDimensionGroupRequest(api.DeleteDimensionGroupRequest o) {
 }
 
 core.List<api.DimensionGroup> buildUnnamed45() => [
-      buildDimensionGroup(),
-      buildDimensionGroup(),
-    ];
+  buildDimensionGroup(),
+  buildDimensionGroup(),
+];
 
 void checkUnnamed45(core.List<api.DimensionGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3724,9 +3260,9 @@ void checkDeleteDimensionRequest(api.DeleteDimensionRequest o) {
 }
 
 core.List<api.DimensionRange> buildUnnamed46() => [
-      buildDimensionRange(),
-      buildDimensionRange(),
-    ];
+  buildDimensionRange(),
+  buildDimensionRange(),
+];
 
 void checkUnnamed46(core.List<api.DimensionRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3769,10 +3305,7 @@ api.DeleteDuplicatesResponse buildDeleteDuplicatesResponse() {
 void checkDeleteDuplicatesResponse(api.DeleteDuplicatesResponse o) {
   buildCounterDeleteDuplicatesResponse++;
   if (buildCounterDeleteDuplicatesResponse < 3) {
-    unittest.expect(
-      o.duplicatesRemovedCount!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.duplicatesRemovedCount!, unittest.equals(42));
   }
   buildCounterDeleteDuplicatesResponse--;
 }
@@ -3791,10 +3324,7 @@ api.DeleteEmbeddedObjectRequest buildDeleteEmbeddedObjectRequest() {
 void checkDeleteEmbeddedObjectRequest(api.DeleteEmbeddedObjectRequest o) {
   buildCounterDeleteEmbeddedObjectRequest++;
   if (buildCounterDeleteEmbeddedObjectRequest < 3) {
-    unittest.expect(
-      o.objectId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.objectId!, unittest.equals(42));
   }
   buildCounterDeleteEmbeddedObjectRequest--;
 }
@@ -3813,10 +3343,7 @@ api.DeleteFilterViewRequest buildDeleteFilterViewRequest() {
 void checkDeleteFilterViewRequest(api.DeleteFilterViewRequest o) {
   buildCounterDeleteFilterViewRequest++;
   if (buildCounterDeleteFilterViewRequest < 3) {
-    unittest.expect(
-      o.filterId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.filterId!, unittest.equals(42));
   }
   buildCounterDeleteFilterViewRequest--;
 }
@@ -3835,10 +3362,7 @@ api.DeleteNamedRangeRequest buildDeleteNamedRangeRequest() {
 void checkDeleteNamedRangeRequest(api.DeleteNamedRangeRequest o) {
   buildCounterDeleteNamedRangeRequest++;
   if (buildCounterDeleteNamedRangeRequest < 3) {
-    unittest.expect(
-      o.namedRangeId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.namedRangeId!, unittest.equals('foo'));
   }
   buildCounterDeleteNamedRangeRequest--;
 }
@@ -3857,10 +3381,7 @@ api.DeleteProtectedRangeRequest buildDeleteProtectedRangeRequest() {
 void checkDeleteProtectedRangeRequest(api.DeleteProtectedRangeRequest o) {
   buildCounterDeleteProtectedRangeRequest++;
   if (buildCounterDeleteProtectedRangeRequest < 3) {
-    unittest.expect(
-      o.protectedRangeId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.protectedRangeId!, unittest.equals(42));
   }
   buildCounterDeleteProtectedRangeRequest--;
 }
@@ -3881,10 +3402,7 @@ void checkDeleteRangeRequest(api.DeleteRangeRequest o) {
   buildCounterDeleteRangeRequest++;
   if (buildCounterDeleteRangeRequest < 3) {
     checkGridRange(o.range!);
-    unittest.expect(
-      o.shiftDimension!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.shiftDimension!, unittest.equals('foo'));
   }
   buildCounterDeleteRangeRequest--;
 }
@@ -3903,10 +3421,7 @@ api.DeleteSheetRequest buildDeleteSheetRequest() {
 void checkDeleteSheetRequest(api.DeleteSheetRequest o) {
   buildCounterDeleteSheetRequest++;
   if (buildCounterDeleteSheetRequest < 3) {
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.sheetId!, unittest.equals(42));
   }
   buildCounterDeleteSheetRequest--;
 }
@@ -3925,10 +3440,7 @@ api.DeleteTableRequest buildDeleteTableRequest() {
 void checkDeleteTableRequest(api.DeleteTableRequest o) {
   buildCounterDeleteTableRequest++;
   if (buildCounterDeleteTableRequest < 3) {
-    unittest.expect(
-      o.tableId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.tableId!, unittest.equals('foo'));
   }
   buildCounterDeleteTableRequest--;
 }
@@ -3952,22 +3464,10 @@ void checkDeveloperMetadata(api.DeveloperMetadata o) {
   buildCounterDeveloperMetadata++;
   if (buildCounterDeveloperMetadata < 3) {
     checkDeveloperMetadataLocation(o.location!);
-    unittest.expect(
-      o.metadataId!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.metadataKey!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.metadataValue!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.visibility!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.metadataId!, unittest.equals(42));
+    unittest.expect(o.metadataKey!, unittest.equals('foo'));
+    unittest.expect(o.metadataValue!, unittest.equals('foo'));
+    unittest.expect(o.visibility!, unittest.equals('foo'));
   }
   buildCounterDeveloperMetadata--;
 }
@@ -3990,14 +3490,8 @@ void checkDeveloperMetadataLocation(api.DeveloperMetadataLocation o) {
   buildCounterDeveloperMetadataLocation++;
   if (buildCounterDeveloperMetadataLocation < 3) {
     checkDimensionRange(o.dimensionRange!);
-    unittest.expect(
-      o.locationType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.locationType!, unittest.equals('foo'));
+    unittest.expect(o.sheetId!, unittest.equals(42));
     unittest.expect(o.spreadsheet!, unittest.isTrue);
   }
   buildCounterDeveloperMetadataLocation--;
@@ -4023,31 +3517,13 @@ api.DeveloperMetadataLookup buildDeveloperMetadataLookup() {
 void checkDeveloperMetadataLookup(api.DeveloperMetadataLookup o) {
   buildCounterDeveloperMetadataLookup++;
   if (buildCounterDeveloperMetadataLookup < 3) {
-    unittest.expect(
-      o.locationMatchingStrategy!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.locationType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.metadataId!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.metadataKey!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.locationMatchingStrategy!, unittest.equals('foo'));
+    unittest.expect(o.locationType!, unittest.equals('foo'));
+    unittest.expect(o.metadataId!, unittest.equals(42));
+    unittest.expect(o.metadataKey!, unittest.equals('foo'));
     checkDeveloperMetadataLocation(o.metadataLocation!);
-    unittest.expect(
-      o.metadataValue!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.visibility!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.metadataValue!, unittest.equals('foo'));
+    unittest.expect(o.visibility!, unittest.equals('foo'));
   }
   buildCounterDeveloperMetadataLookup--;
 }
@@ -4069,19 +3545,16 @@ void checkDimensionGroup(api.DimensionGroup o) {
   buildCounterDimensionGroup++;
   if (buildCounterDimensionGroup < 3) {
     unittest.expect(o.collapsed!, unittest.isTrue);
-    unittest.expect(
-      o.depth!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.depth!, unittest.equals(42));
     checkDimensionRange(o.range!);
   }
   buildCounterDimensionGroup--;
 }
 
 core.List<api.DeveloperMetadata> buildUnnamed47() => [
-      buildDeveloperMetadata(),
-      buildDeveloperMetadata(),
-    ];
+  buildDeveloperMetadata(),
+  buildDeveloperMetadata(),
+];
 
 void checkUnnamed47(core.List<api.DeveloperMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4111,10 +3584,7 @@ void checkDimensionProperties(api.DimensionProperties o) {
     checkUnnamed47(o.developerMetadata!);
     unittest.expect(o.hiddenByFilter!, unittest.isTrue);
     unittest.expect(o.hiddenByUser!, unittest.isTrue);
-    unittest.expect(
-      o.pixelSize!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.pixelSize!, unittest.equals(42));
   }
   buildCounterDimensionProperties--;
 }
@@ -4136,22 +3606,10 @@ api.DimensionRange buildDimensionRange() {
 void checkDimensionRange(api.DimensionRange o) {
   buildCounterDimensionRange++;
   if (buildCounterDimensionRange < 3) {
-    unittest.expect(
-      o.dimension!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.endIndex!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.startIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.dimension!, unittest.equals('foo'));
+    unittest.expect(o.endIndex!, unittest.equals(42));
+    unittest.expect(o.sheetId!, unittest.equals(42));
+    unittest.expect(o.startIndex!, unittest.equals(42));
   }
   buildCounterDimensionRange--;
 }
@@ -4170,10 +3628,7 @@ api.DuplicateFilterViewRequest buildDuplicateFilterViewRequest() {
 void checkDuplicateFilterViewRequest(api.DuplicateFilterViewRequest o) {
   buildCounterDuplicateFilterViewRequest++;
   if (buildCounterDuplicateFilterViewRequest < 3) {
-    unittest.expect(
-      o.filterId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.filterId!, unittest.equals(42));
   }
   buildCounterDuplicateFilterViewRequest--;
 }
@@ -4214,22 +3669,10 @@ api.DuplicateSheetRequest buildDuplicateSheetRequest() {
 void checkDuplicateSheetRequest(api.DuplicateSheetRequest o) {
   buildCounterDuplicateSheetRequest++;
   if (buildCounterDuplicateSheetRequest < 3) {
-    unittest.expect(
-      o.insertSheetIndex!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.newSheetId!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.newSheetName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sourceSheetId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.insertSheetIndex!, unittest.equals(42));
+    unittest.expect(o.newSheetId!, unittest.equals(42));
+    unittest.expect(o.newSheetName!, unittest.equals('foo'));
+    unittest.expect(o.sourceSheetId!, unittest.equals(42));
   }
   buildCounterDuplicateSheetRequest--;
 }
@@ -4253,38 +3696,20 @@ void checkDuplicateSheetResponse(api.DuplicateSheetResponse o) {
   buildCounterDuplicateSheetResponse--;
 }
 
-core.List<core.String> buildUnnamed48() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed48() => ['foo', 'foo'];
 
 void checkUnnamed48(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed49() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed49() => ['foo', 'foo'];
 
 void checkUnnamed49(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterEditors = 0;
@@ -4328,10 +3753,7 @@ void checkEmbeddedChart(api.EmbeddedChart o) {
   buildCounterEmbeddedChart++;
   if (buildCounterEmbeddedChart < 3) {
     checkEmbeddedObjectBorder(o.border!);
-    unittest.expect(
-      o.chartId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.chartId!, unittest.equals(42));
     checkEmbeddedObjectPosition(o.position!);
     checkChartSpec(o.spec!);
   }
@@ -4377,10 +3799,7 @@ void checkEmbeddedObjectPosition(api.EmbeddedObjectPosition o) {
   if (buildCounterEmbeddedObjectPosition < 3) {
     unittest.expect(o.newSheet!, unittest.isTrue);
     checkOverlayPosition(o.overlayPosition!);
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.sheetId!, unittest.equals(42));
   }
   buildCounterEmbeddedObjectPosition--;
 }
@@ -4400,14 +3819,8 @@ api.ErrorValue buildErrorValue() {
 void checkErrorValue(api.ErrorValue o) {
   buildCounterErrorValue++;
   if (buildCounterErrorValue < 3) {
-    unittest.expect(
-      o.message!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.message!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterErrorValue--;
 }
@@ -4432,37 +3845,19 @@ void checkExtendedValue(api.ExtendedValue o) {
   if (buildCounterExtendedValue < 3) {
     unittest.expect(o.boolValue!, unittest.isTrue);
     checkErrorValue(o.errorValue!);
-    unittest.expect(
-      o.formulaValue!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.numberValue!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.stringValue!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.formulaValue!, unittest.equals('foo'));
+    unittest.expect(o.numberValue!, unittest.equals(42.0));
+    unittest.expect(o.stringValue!, unittest.equals('foo'));
   }
   buildCounterExtendedValue--;
 }
 
-core.List<core.String> buildUnnamed50() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed50() => ['foo', 'foo'];
 
 void checkUnnamed50(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterFilterCriteria = 0;
@@ -4510,10 +3905,7 @@ api.FilterSpec buildFilterSpec() {
 void checkFilterSpec(api.FilterSpec o) {
   buildCounterFilterSpec++;
   if (buildCounterFilterSpec < 3) {
-    unittest.expect(
-      o.columnIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.columnIndex!, unittest.equals(42));
     checkDataSourceColumnReference(o.dataSourceColumnReference!);
     checkFilterCriteria(o.filterCriteria!);
   }
@@ -4521,9 +3913,9 @@ void checkFilterSpec(api.FilterSpec o) {
 }
 
 core.Map<core.String, api.FilterCriteria> buildUnnamed51() => {
-      'x': buildFilterCriteria(),
-      'y': buildFilterCriteria(),
-    };
+  'x': buildFilterCriteria(),
+  'y': buildFilterCriteria(),
+};
 
 void checkUnnamed51(core.Map<core.String, api.FilterCriteria> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4532,9 +3924,9 @@ void checkUnnamed51(core.Map<core.String, api.FilterCriteria> o) {
 }
 
 core.List<api.FilterSpec> buildUnnamed52() => [
-      buildFilterSpec(),
-      buildFilterSpec(),
-    ];
+  buildFilterSpec(),
+  buildFilterSpec(),
+];
 
 void checkUnnamed52(core.List<api.FilterSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4542,10 +3934,7 @@ void checkUnnamed52(core.List<api.FilterSpec> o) {
   checkFilterSpec(o[1]);
 }
 
-core.List<api.SortSpec> buildUnnamed53() => [
-      buildSortSpec(),
-      buildSortSpec(),
-    ];
+core.List<api.SortSpec> buildUnnamed53() => [buildSortSpec(), buildSortSpec()];
 
 void checkUnnamed53(core.List<api.SortSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4576,24 +3965,12 @@ void checkFilterView(api.FilterView o) {
   if (buildCounterFilterView < 3) {
     checkUnnamed51(o.criteria!);
     checkUnnamed52(o.filterSpecs!);
-    unittest.expect(
-      o.filterViewId!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.namedRangeId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.filterViewId!, unittest.equals(42));
+    unittest.expect(o.namedRangeId!, unittest.equals('foo'));
     checkGridRange(o.range!);
     checkUnnamed53(o.sortSpecs!);
-    unittest.expect(
-      o.tableId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.tableId!, unittest.equals('foo'));
+    unittest.expect(o.title!, unittest.equals('foo'));
   }
   buildCounterFilterView--;
 }
@@ -4621,23 +3998,14 @@ void checkFindReplaceRequest(api.FindReplaceRequest o) {
   buildCounterFindReplaceRequest++;
   if (buildCounterFindReplaceRequest < 3) {
     unittest.expect(o.allSheets!, unittest.isTrue);
-    unittest.expect(
-      o.find!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.find!, unittest.equals('foo'));
     unittest.expect(o.includeFormulas!, unittest.isTrue);
     unittest.expect(o.matchCase!, unittest.isTrue);
     unittest.expect(o.matchEntireCell!, unittest.isTrue);
     checkGridRange(o.range!);
-    unittest.expect(
-      o.replacement!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.replacement!, unittest.equals('foo'));
     unittest.expect(o.searchByRegex!, unittest.isTrue);
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.sheetId!, unittest.equals(42));
   }
   buildCounterFindReplaceRequest--;
 }
@@ -4660,34 +4028,19 @@ api.FindReplaceResponse buildFindReplaceResponse() {
 void checkFindReplaceResponse(api.FindReplaceResponse o) {
   buildCounterFindReplaceResponse++;
   if (buildCounterFindReplaceResponse < 3) {
-    unittest.expect(
-      o.formulasChanged!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.occurrencesChanged!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.rowsChanged!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sheetsChanged!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.valuesChanged!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.formulasChanged!, unittest.equals(42));
+    unittest.expect(o.occurrencesChanged!, unittest.equals(42));
+    unittest.expect(o.rowsChanged!, unittest.equals(42));
+    unittest.expect(o.sheetsChanged!, unittest.equals(42));
+    unittest.expect(o.valuesChanged!, unittest.equals(42));
   }
   buildCounterFindReplaceResponse--;
 }
 
 core.List<api.DataFilter> buildUnnamed54() => [
-      buildDataFilter(),
-      buildDataFilter(),
-    ];
+  buildDataFilter(),
+  buildDataFilter(),
+];
 
 void checkUnnamed54(core.List<api.DataFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4709,7 +4062,8 @@ api.GetSpreadsheetByDataFilterRequest buildGetSpreadsheetByDataFilterRequest() {
 }
 
 void checkGetSpreadsheetByDataFilterRequest(
-    api.GetSpreadsheetByDataFilterRequest o) {
+  api.GetSpreadsheetByDataFilterRequest o,
+) {
   buildCounterGetSpreadsheetByDataFilterRequest++;
   if (buildCounterGetSpreadsheetByDataFilterRequest < 3) {
     checkUnnamed54(o.dataFilters!);
@@ -4758,26 +4112,17 @@ api.GridCoordinate buildGridCoordinate() {
 void checkGridCoordinate(api.GridCoordinate o) {
   buildCounterGridCoordinate++;
   if (buildCounterGridCoordinate < 3) {
-    unittest.expect(
-      o.columnIndex!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.rowIndex!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.columnIndex!, unittest.equals(42));
+    unittest.expect(o.rowIndex!, unittest.equals(42));
+    unittest.expect(o.sheetId!, unittest.equals(42));
   }
   buildCounterGridCoordinate--;
 }
 
 core.List<api.DimensionProperties> buildUnnamed55() => [
-      buildDimensionProperties(),
-      buildDimensionProperties(),
-    ];
+  buildDimensionProperties(),
+  buildDimensionProperties(),
+];
 
 void checkUnnamed55(core.List<api.DimensionProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4785,10 +4130,7 @@ void checkUnnamed55(core.List<api.DimensionProperties> o) {
   checkDimensionProperties(o[1]);
 }
 
-core.List<api.RowData> buildUnnamed56() => [
-      buildRowData(),
-      buildRowData(),
-    ];
+core.List<api.RowData> buildUnnamed56() => [buildRowData(), buildRowData()];
 
 void checkUnnamed56(core.List<api.RowData> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4797,9 +4139,9 @@ void checkUnnamed56(core.List<api.RowData> o) {
 }
 
 core.List<api.DimensionProperties> buildUnnamed57() => [
-      buildDimensionProperties(),
-      buildDimensionProperties(),
-    ];
+  buildDimensionProperties(),
+  buildDimensionProperties(),
+];
 
 void checkUnnamed57(core.List<api.DimensionProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4828,14 +4170,8 @@ void checkGridData(api.GridData o) {
     checkUnnamed55(o.columnMetadata!);
     checkUnnamed56(o.rowData!);
     checkUnnamed57(o.rowMetadata!);
-    unittest.expect(
-      o.startColumn!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.startRow!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.startColumn!, unittest.equals(42));
+    unittest.expect(o.startRow!, unittest.equals(42));
   }
   buildCounterGridData--;
 }
@@ -4860,24 +4196,12 @@ api.GridProperties buildGridProperties() {
 void checkGridProperties(api.GridProperties o) {
   buildCounterGridProperties++;
   if (buildCounterGridProperties < 3) {
-    unittest.expect(
-      o.columnCount!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.columnCount!, unittest.equals(42));
     unittest.expect(o.columnGroupControlAfter!, unittest.isTrue);
-    unittest.expect(
-      o.frozenColumnCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.frozenRowCount!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.frozenColumnCount!, unittest.equals(42));
+    unittest.expect(o.frozenRowCount!, unittest.equals(42));
     unittest.expect(o.hideGridlines!, unittest.isTrue);
-    unittest.expect(
-      o.rowCount!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.rowCount!, unittest.equals(42));
     unittest.expect(o.rowGroupControlAfter!, unittest.isTrue);
   }
   buildCounterGridProperties--;
@@ -4901,34 +4225,19 @@ api.GridRange buildGridRange() {
 void checkGridRange(api.GridRange o) {
   buildCounterGridRange++;
   if (buildCounterGridRange < 3) {
-    unittest.expect(
-      o.endColumnIndex!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.endRowIndex!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.startColumnIndex!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.startRowIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.endColumnIndex!, unittest.equals(42));
+    unittest.expect(o.endRowIndex!, unittest.equals(42));
+    unittest.expect(o.sheetId!, unittest.equals(42));
+    unittest.expect(o.startColumnIndex!, unittest.equals(42));
+    unittest.expect(o.startRowIndex!, unittest.equals(42));
   }
   buildCounterGridRange--;
 }
 
 core.List<api.HistogramSeries> buildUnnamed58() => [
-      buildHistogramSeries(),
-      buildHistogramSeries(),
-    ];
+  buildHistogramSeries(),
+  buildHistogramSeries(),
+];
 
 void checkUnnamed58(core.List<api.HistogramSeries> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4954,18 +4263,9 @@ api.HistogramChartSpec buildHistogramChartSpec() {
 void checkHistogramChartSpec(api.HistogramChartSpec o) {
   buildCounterHistogramChartSpec++;
   if (buildCounterHistogramChartSpec < 3) {
-    unittest.expect(
-      o.bucketSize!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.legendPosition!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.outlierPercentile!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.bucketSize!, unittest.equals(42.0));
+    unittest.expect(o.legendPosition!, unittest.equals('foo'));
+    unittest.expect(o.outlierPercentile!, unittest.equals(42.0));
     checkUnnamed58(o.series!);
     unittest.expect(o.showItemDividers!, unittest.isTrue);
   }
@@ -4988,18 +4288,9 @@ api.HistogramRule buildHistogramRule() {
 void checkHistogramRule(api.HistogramRule o) {
   buildCounterHistogramRule++;
   if (buildCounterHistogramRule < 3) {
-    unittest.expect(
-      o.end!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.interval!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.start!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.end!, unittest.equals(42.0));
+    unittest.expect(o.interval!, unittest.equals(42.0));
+    unittest.expect(o.start!, unittest.equals(42.0));
   }
   buildCounterHistogramRule--;
 }
@@ -5064,10 +4355,7 @@ void checkInsertRangeRequest(api.InsertRangeRequest o) {
   buildCounterInsertRangeRequest++;
   if (buildCounterInsertRangeRequest < 3) {
     checkGridRange(o.range!);
-    unittest.expect(
-      o.shiftDimension!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.shiftDimension!, unittest.equals('foo'));
   }
   buildCounterInsertRangeRequest--;
 }
@@ -5091,14 +4379,8 @@ void checkInterpolationPoint(api.InterpolationPoint o) {
   if (buildCounterInterpolationPoint < 3) {
     checkColor(o.color!);
     checkColorStyle(o.colorStyle!);
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.value!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
+    unittest.expect(o.value!, unittest.equals('foo'));
   }
   buildCounterInterpolationPoint--;
 }
@@ -5118,14 +4400,8 @@ api.Interval buildInterval() {
 void checkInterval(api.Interval o) {
   buildCounterInterval++;
   if (buildCounterInterval < 3) {
-    unittest.expect(
-      o.endTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.startTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.endTime!, unittest.equals('foo'));
+    unittest.expect(o.startTime!, unittest.equals('foo'));
   }
   buildCounterInterval--;
 }
@@ -5145,14 +4421,8 @@ api.IterativeCalculationSettings buildIterativeCalculationSettings() {
 void checkIterativeCalculationSettings(api.IterativeCalculationSettings o) {
   buildCounterIterativeCalculationSettings++;
   if (buildCounterIterativeCalculationSettings < 3) {
-    unittest.expect(
-      o.convergenceThreshold!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.maxIterations!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.convergenceThreshold!, unittest.equals(42.0));
+    unittest.expect(o.maxIterations!, unittest.equals(42));
   }
   buildCounterIterativeCalculationSettings--;
 }
@@ -5193,14 +4463,8 @@ api.LineStyle buildLineStyle() {
 void checkLineStyle(api.LineStyle o) {
   buildCounterLineStyle++;
   if (buildCounterLineStyle < 3) {
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.width!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
+    unittest.expect(o.width!, unittest.equals(42));
   }
   buildCounterLineStyle--;
 }
@@ -5219,10 +4483,7 @@ api.Link buildLink() {
 void checkLink(api.Link o) {
   buildCounterLink++;
   if (buildCounterLink < 3) {
-    unittest.expect(
-      o.uri!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.uri!, unittest.equals('foo'));
   }
   buildCounterLink--;
 }
@@ -5243,26 +4504,17 @@ api.LookerDataSourceSpec buildLookerDataSourceSpec() {
 void checkLookerDataSourceSpec(api.LookerDataSourceSpec o) {
   buildCounterLookerDataSourceSpec++;
   if (buildCounterLookerDataSourceSpec < 3) {
-    unittest.expect(
-      o.explore!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.instanceUri!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.model!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.explore!, unittest.equals('foo'));
+    unittest.expect(o.instanceUri!, unittest.equals('foo'));
+    unittest.expect(o.model!, unittest.equals('foo'));
   }
   buildCounterLookerDataSourceSpec--;
 }
 
 core.List<api.ManualRuleGroup> buildUnnamed59() => [
-      buildManualRuleGroup(),
-      buildManualRuleGroup(),
-    ];
+  buildManualRuleGroup(),
+  buildManualRuleGroup(),
+];
 
 void checkUnnamed59(core.List<api.ManualRuleGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5290,9 +4542,9 @@ void checkManualRule(api.ManualRule o) {
 }
 
 core.List<api.ExtendedValue> buildUnnamed60() => [
-      buildExtendedValue(),
-      buildExtendedValue(),
-    ];
+  buildExtendedValue(),
+  buildExtendedValue(),
+];
 
 void checkUnnamed60(core.List<api.ExtendedValue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5322,9 +4574,9 @@ void checkManualRuleGroup(api.ManualRuleGroup o) {
 }
 
 core.List<api.DataFilter> buildUnnamed61() => [
-      buildDataFilter(),
-      buildDataFilter(),
-    ];
+  buildDataFilter(),
+  buildDataFilter(),
+];
 
 void checkUnnamed61(core.List<api.DataFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5354,9 +4606,9 @@ void checkMatchedDeveloperMetadata(api.MatchedDeveloperMetadata o) {
 }
 
 core.List<api.DataFilter> buildUnnamed62() => [
-      buildDataFilter(),
-      buildDataFilter(),
-    ];
+  buildDataFilter(),
+  buildDataFilter(),
+];
 
 void checkUnnamed62(core.List<api.DataFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5400,10 +4652,7 @@ api.MergeCellsRequest buildMergeCellsRequest() {
 void checkMergeCellsRequest(api.MergeCellsRequest o) {
   buildCounterMergeCellsRequest++;
   if (buildCounterMergeCellsRequest < 3) {
-    unittest.expect(
-      o.mergeType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.mergeType!, unittest.equals('foo'));
     checkGridRange(o.range!);
   }
   buildCounterMergeCellsRequest--;
@@ -5424,10 +4673,7 @@ api.MoveDimensionRequest buildMoveDimensionRequest() {
 void checkMoveDimensionRequest(api.MoveDimensionRequest o) {
   buildCounterMoveDimensionRequest++;
   if (buildCounterMoveDimensionRequest < 3) {
-    unittest.expect(
-      o.destinationIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.destinationIndex!, unittest.equals(42));
     checkDimensionRange(o.source!);
   }
   buildCounterMoveDimensionRequest--;
@@ -5449,14 +4695,8 @@ api.NamedRange buildNamedRange() {
 void checkNamedRange(api.NamedRange o) {
   buildCounterNamedRange++;
   if (buildCounterNamedRange < 3) {
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.namedRangeId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.namedRangeId!, unittest.equals('foo'));
     checkGridRange(o.range!);
   }
   buildCounterNamedRange--;
@@ -5477,14 +4717,8 @@ api.NumberFormat buildNumberFormat() {
 void checkNumberFormat(api.NumberFormat o) {
   buildCounterNumberFormat++;
   if (buildCounterNumberFormat < 3) {
-    unittest.expect(
-      o.pattern!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.pattern!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterNumberFormat--;
 }
@@ -5513,10 +4747,7 @@ void checkOrgChartSpec(api.OrgChartSpec o) {
     checkChartData(o.labels!);
     checkColor(o.nodeColor!);
     checkColorStyle(o.nodeColorStyle!);
-    unittest.expect(
-      o.nodeSize!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nodeSize!, unittest.equals('foo'));
     checkChartData(o.parentLabels!);
     checkColor(o.selectedNodeColor!);
     checkColorStyle(o.selectedNodeColorStyle!);
@@ -5544,22 +4775,10 @@ void checkOverlayPosition(api.OverlayPosition o) {
   buildCounterOverlayPosition++;
   if (buildCounterOverlayPosition < 3) {
     checkGridCoordinate(o.anchorCell!);
-    unittest.expect(
-      o.heightPixels!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.offsetXPixels!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.offsetYPixels!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.widthPixels!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.heightPixels!, unittest.equals(42));
+    unittest.expect(o.offsetXPixels!, unittest.equals(42));
+    unittest.expect(o.offsetYPixels!, unittest.equals(42));
+    unittest.expect(o.widthPixels!, unittest.equals(42));
   }
   buildCounterOverlayPosition--;
 }
@@ -5581,22 +4800,10 @@ api.Padding buildPadding() {
 void checkPadding(api.Padding o) {
   buildCounterPadding++;
   if (buildCounterPadding < 3) {
-    unittest.expect(
-      o.bottom!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.left!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.right!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.top!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.bottom!, unittest.equals(42));
+    unittest.expect(o.left!, unittest.equals(42));
+    unittest.expect(o.right!, unittest.equals(42));
+    unittest.expect(o.top!, unittest.equals(42));
   }
   buildCounterPadding--;
 }
@@ -5620,19 +4827,10 @@ void checkPasteDataRequest(api.PasteDataRequest o) {
   buildCounterPasteDataRequest++;
   if (buildCounterPasteDataRequest < 3) {
     checkGridCoordinate(o.coordinate!);
-    unittest.expect(
-      o.data!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.delimiter!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.data!, unittest.equals('foo'));
+    unittest.expect(o.delimiter!, unittest.equals('foo'));
     unittest.expect(o.html!, unittest.isTrue);
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterPasteDataRequest--;
 }
@@ -5652,14 +4850,8 @@ api.PersonProperties buildPersonProperties() {
 void checkPersonProperties(api.PersonProperties o) {
   buildCounterPersonProperties++;
   if (buildCounterPersonProperties < 3) {
-    unittest.expect(
-      o.displayFormat!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.email!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.displayFormat!, unittest.equals('foo'));
+    unittest.expect(o.email!, unittest.equals('foo'));
   }
   buildCounterPersonProperties--;
 }
@@ -5683,35 +4875,20 @@ void checkPieChartSpec(api.PieChartSpec o) {
   buildCounterPieChartSpec++;
   if (buildCounterPieChartSpec < 3) {
     checkChartData(o.domain!);
-    unittest.expect(
-      o.legendPosition!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.pieHole!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.legendPosition!, unittest.equals('foo'));
+    unittest.expect(o.pieHole!, unittest.equals(42.0));
     checkChartData(o.series!);
     unittest.expect(o.threeDimensional!, unittest.isTrue);
   }
   buildCounterPieChartSpec--;
 }
 
-core.List<core.String> buildUnnamed63() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed63() => ['foo', 'foo'];
 
 void checkUnnamed63(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterPivotFilterCriteria = 0;
@@ -5753,10 +4930,7 @@ api.PivotFilterSpec buildPivotFilterSpec() {
 void checkPivotFilterSpec(api.PivotFilterSpec o) {
   buildCounterPivotFilterSpec++;
   if (buildCounterPivotFilterSpec < 3) {
-    unittest.expect(
-      o.columnOffsetIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.columnOffsetIndex!, unittest.equals(42));
     checkDataSourceColumnReference(o.dataSourceColumnReference!);
     checkPivotFilterCriteria(o.filterCriteria!);
   }
@@ -5764,9 +4938,9 @@ void checkPivotFilterSpec(api.PivotFilterSpec o) {
 }
 
 core.List<api.PivotGroupValueMetadata> buildUnnamed64() => [
-      buildPivotGroupValueMetadata(),
-      buildPivotGroupValueMetadata(),
-    ];
+  buildPivotGroupValueMetadata(),
+  buildPivotGroupValueMetadata(),
+];
 
 void checkUnnamed64(core.List<api.PivotGroupValueMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5800,20 +4974,11 @@ void checkPivotGroup(api.PivotGroup o) {
     checkDataSourceColumnReference(o.dataSourceColumnReference!);
     checkPivotGroupLimit(o.groupLimit!);
     checkPivotGroupRule(o.groupRule!);
-    unittest.expect(
-      o.label!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.label!, unittest.equals('foo'));
     unittest.expect(o.repeatHeadings!, unittest.isTrue);
     unittest.expect(o.showTotals!, unittest.isTrue);
-    unittest.expect(
-      o.sortOrder!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sourceColumnOffset!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.sortOrder!, unittest.equals('foo'));
+    unittest.expect(o.sourceColumnOffset!, unittest.equals(42));
     checkPivotGroupSortValueBucket(o.valueBucket!);
     checkUnnamed64(o.valueMetadata!);
   }
@@ -5835,14 +5000,8 @@ api.PivotGroupLimit buildPivotGroupLimit() {
 void checkPivotGroupLimit(api.PivotGroupLimit o) {
   buildCounterPivotGroupLimit++;
   if (buildCounterPivotGroupLimit < 3) {
-    unittest.expect(
-      o.applyOrder!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.countLimit!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.applyOrder!, unittest.equals(42));
+    unittest.expect(o.countLimit!, unittest.equals(42));
   }
   buildCounterPivotGroupLimit--;
 }
@@ -5871,9 +5030,9 @@ void checkPivotGroupRule(api.PivotGroupRule o) {
 }
 
 core.List<api.ExtendedValue> buildUnnamed65() => [
-      buildExtendedValue(),
-      buildExtendedValue(),
-    ];
+  buildExtendedValue(),
+  buildExtendedValue(),
+];
 
 void checkUnnamed65(core.List<api.ExtendedValue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5897,10 +5056,7 @@ void checkPivotGroupSortValueBucket(api.PivotGroupSortValueBucket o) {
   buildCounterPivotGroupSortValueBucket++;
   if (buildCounterPivotGroupSortValueBucket < 3) {
     checkUnnamed65(o.buckets!);
-    unittest.expect(
-      o.valuesIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.valuesIndex!, unittest.equals(42));
   }
   buildCounterPivotGroupSortValueBucket--;
 }
@@ -5927,9 +5083,9 @@ void checkPivotGroupValueMetadata(api.PivotGroupValueMetadata o) {
 }
 
 core.List<api.PivotGroup> buildUnnamed66() => [
-      buildPivotGroup(),
-      buildPivotGroup(),
-    ];
+  buildPivotGroup(),
+  buildPivotGroup(),
+];
 
 void checkUnnamed66(core.List<api.PivotGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5938,9 +5094,9 @@ void checkUnnamed66(core.List<api.PivotGroup> o) {
 }
 
 core.Map<core.String, api.PivotFilterCriteria> buildUnnamed67() => {
-      'x': buildPivotFilterCriteria(),
-      'y': buildPivotFilterCriteria(),
-    };
+  'x': buildPivotFilterCriteria(),
+  'y': buildPivotFilterCriteria(),
+};
 
 void checkUnnamed67(core.Map<core.String, api.PivotFilterCriteria> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5949,9 +5105,9 @@ void checkUnnamed67(core.Map<core.String, api.PivotFilterCriteria> o) {
 }
 
 core.List<api.PivotFilterSpec> buildUnnamed68() => [
-      buildPivotFilterSpec(),
-      buildPivotFilterSpec(),
-    ];
+  buildPivotFilterSpec(),
+  buildPivotFilterSpec(),
+];
 
 void checkUnnamed68(core.List<api.PivotFilterSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5960,9 +5116,9 @@ void checkUnnamed68(core.List<api.PivotFilterSpec> o) {
 }
 
 core.List<api.PivotGroup> buildUnnamed69() => [
-      buildPivotGroup(),
-      buildPivotGroup(),
-    ];
+  buildPivotGroup(),
+  buildPivotGroup(),
+];
 
 void checkUnnamed69(core.List<api.PivotGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5971,9 +5127,9 @@ void checkUnnamed69(core.List<api.PivotGroup> o) {
 }
 
 core.List<api.PivotValue> buildUnnamed70() => [
-      buildPivotValue(),
-      buildPivotValue(),
-    ];
+  buildPivotValue(),
+  buildPivotValue(),
+];
 
 void checkUnnamed70(core.List<api.PivotValue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6006,17 +5162,11 @@ void checkPivotTable(api.PivotTable o) {
     checkUnnamed66(o.columns!);
     checkUnnamed67(o.criteria!);
     checkDataExecutionStatus(o.dataExecutionStatus!);
-    unittest.expect(
-      o.dataSourceId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dataSourceId!, unittest.equals('foo'));
     checkUnnamed68(o.filterSpecs!);
     checkUnnamed69(o.rows!);
     checkGridRange(o.source!);
-    unittest.expect(
-      o.valueLayout!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.valueLayout!, unittest.equals('foo'));
     checkUnnamed70(o.values!);
   }
   buildCounterPivotTable--;
@@ -6041,27 +5191,12 @@ api.PivotValue buildPivotValue() {
 void checkPivotValue(api.PivotValue o) {
   buildCounterPivotValue++;
   if (buildCounterPivotValue < 3) {
-    unittest.expect(
-      o.calculatedDisplayType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.calculatedDisplayType!, unittest.equals('foo'));
     checkDataSourceColumnReference(o.dataSourceColumnReference!);
-    unittest.expect(
-      o.formula!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sourceColumnOffset!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.summarizeFunction!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.formula!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.sourceColumnOffset!, unittest.equals(42));
+    unittest.expect(o.summarizeFunction!, unittest.equals('foo'));
   }
   buildCounterPivotValue--;
 }
@@ -6081,22 +5216,16 @@ api.PointStyle buildPointStyle() {
 void checkPointStyle(api.PointStyle o) {
   buildCounterPointStyle++;
   if (buildCounterPointStyle < 3) {
-    unittest.expect(
-      o.shape!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.size!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.shape!, unittest.equals('foo'));
+    unittest.expect(o.size!, unittest.equals(42.0));
   }
   buildCounterPointStyle--;
 }
 
 core.List<api.GridRange> buildUnnamed71() => [
-      buildGridRange(),
-      buildGridRange(),
-    ];
+  buildGridRange(),
+  buildGridRange(),
+];
 
 void checkUnnamed71(core.List<api.GridRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6126,25 +5255,13 @@ api.ProtectedRange buildProtectedRange() {
 void checkProtectedRange(api.ProtectedRange o) {
   buildCounterProtectedRange++;
   if (buildCounterProtectedRange < 3) {
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.description!, unittest.equals('foo'));
     checkEditors(o.editors!);
-    unittest.expect(
-      o.namedRangeId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.protectedRangeId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.namedRangeId!, unittest.equals('foo'));
+    unittest.expect(o.protectedRangeId!, unittest.equals(42));
     checkGridRange(o.range!);
     unittest.expect(o.requestingUserCanEdit!, unittest.isTrue);
-    unittest.expect(
-      o.tableId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.tableId!, unittest.equals('foo'));
     checkUnnamed71(o.unprotectedRanges!);
     unittest.expect(o.warningOnly!, unittest.isTrue);
   }
@@ -6185,21 +5302,15 @@ api.RefreshCancellationStatus buildRefreshCancellationStatus() {
 void checkRefreshCancellationStatus(api.RefreshCancellationStatus o) {
   buildCounterRefreshCancellationStatus++;
   if (buildCounterRefreshCancellationStatus < 3) {
-    unittest.expect(
-      o.errorCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.errorCode!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
   }
   buildCounterRefreshCancellationStatus--;
 }
 
 core.int buildCounterRefreshDataSourceObjectExecutionStatus = 0;
 api.RefreshDataSourceObjectExecutionStatus
-    buildRefreshDataSourceObjectExecutionStatus() {
+buildRefreshDataSourceObjectExecutionStatus() {
   final o = api.RefreshDataSourceObjectExecutionStatus();
   buildCounterRefreshDataSourceObjectExecutionStatus++;
   if (buildCounterRefreshDataSourceObjectExecutionStatus < 3) {
@@ -6211,7 +5322,8 @@ api.RefreshDataSourceObjectExecutionStatus
 }
 
 void checkRefreshDataSourceObjectExecutionStatus(
-    api.RefreshDataSourceObjectExecutionStatus o) {
+  api.RefreshDataSourceObjectExecutionStatus o,
+) {
   buildCounterRefreshDataSourceObjectExecutionStatus++;
   if (buildCounterRefreshDataSourceObjectExecutionStatus < 3) {
     checkDataExecutionStatus(o.dataExecutionStatus!);
@@ -6237,10 +5349,7 @@ api.RefreshDataSourceRequest buildRefreshDataSourceRequest() {
 void checkRefreshDataSourceRequest(api.RefreshDataSourceRequest o) {
   buildCounterRefreshDataSourceRequest++;
   if (buildCounterRefreshDataSourceRequest < 3) {
-    unittest.expect(
-      o.dataSourceId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dataSourceId!, unittest.equals('foo'));
     unittest.expect(o.force!, unittest.isTrue);
     unittest.expect(o.isAll!, unittest.isTrue);
     checkDataSourceObjectReferences(o.references!);
@@ -6249,9 +5358,9 @@ void checkRefreshDataSourceRequest(api.RefreshDataSourceRequest o) {
 }
 
 core.List<api.RefreshDataSourceObjectExecutionStatus> buildUnnamed72() => [
-      buildRefreshDataSourceObjectExecutionStatus(),
-      buildRefreshDataSourceObjectExecutionStatus(),
-    ];
+  buildRefreshDataSourceObjectExecutionStatus(),
+  buildRefreshDataSourceObjectExecutionStatus(),
+];
 
 void checkUnnamed72(core.List<api.RefreshDataSourceObjectExecutionStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6295,10 +5404,7 @@ void checkRepeatCellRequest(api.RepeatCellRequest o) {
   buildCounterRepeatCellRequest++;
   if (buildCounterRepeatCellRequest < 3) {
     checkCellData(o.cell!);
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
     checkGridRange(o.range!);
   }
   buildCounterRepeatCellRequest--;
@@ -6542,22 +5648,13 @@ api.RichLinkProperties buildRichLinkProperties() {
 void checkRichLinkProperties(api.RichLinkProperties o) {
   buildCounterRichLinkProperties++;
   if (buildCounterRichLinkProperties < 3) {
-    unittest.expect(
-      o.mimeType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.uri!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.mimeType!, unittest.equals('foo'));
+    unittest.expect(o.uri!, unittest.equals('foo'));
   }
   buildCounterRichLinkProperties--;
 }
 
-core.List<api.CellData> buildUnnamed73() => [
-      buildCellData(),
-      buildCellData(),
-    ];
+core.List<api.CellData> buildUnnamed73() => [buildCellData(), buildCellData()];
 
 void checkUnnamed73(core.List<api.CellData> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6605,31 +5702,22 @@ api.ScorecardChartSpec buildScorecardChartSpec() {
 void checkScorecardChartSpec(api.ScorecardChartSpec o) {
   buildCounterScorecardChartSpec++;
   if (buildCounterScorecardChartSpec < 3) {
-    unittest.expect(
-      o.aggregateType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.aggregateType!, unittest.equals('foo'));
     checkChartData(o.baselineValueData!);
     checkBaselineValueFormat(o.baselineValueFormat!);
     checkChartCustomNumberFormatOptions(o.customFormatOptions!);
     checkChartData(o.keyValueData!);
     checkKeyValueFormat(o.keyValueFormat!);
-    unittest.expect(
-      o.numberFormatSource!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.scaleFactor!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.numberFormatSource!, unittest.equals('foo'));
+    unittest.expect(o.scaleFactor!, unittest.equals(42.0));
   }
   buildCounterScorecardChartSpec--;
 }
 
 core.List<api.DataFilter> buildUnnamed74() => [
-      buildDataFilter(),
-      buildDataFilter(),
-    ];
+  buildDataFilter(),
+  buildDataFilter(),
+];
 
 void checkUnnamed74(core.List<api.DataFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6657,9 +5745,9 @@ void checkSearchDeveloperMetadataRequest(api.SearchDeveloperMetadataRequest o) {
 }
 
 core.List<api.MatchedDeveloperMetadata> buildUnnamed75() => [
-      buildMatchedDeveloperMetadata(),
-      buildMatchedDeveloperMetadata(),
-    ];
+  buildMatchedDeveloperMetadata(),
+  buildMatchedDeveloperMetadata(),
+];
 
 void checkUnnamed75(core.List<api.MatchedDeveloperMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6679,7 +5767,8 @@ api.SearchDeveloperMetadataResponse buildSearchDeveloperMetadataResponse() {
 }
 
 void checkSearchDeveloperMetadataResponse(
-    api.SearchDeveloperMetadataResponse o) {
+  api.SearchDeveloperMetadataResponse o,
+) {
   buildCounterSearchDeveloperMetadataResponse++;
   if (buildCounterSearchDeveloperMetadataResponse < 3) {
     checkUnnamed75(o.matchedDeveloperMetadata!);
@@ -6730,9 +5819,9 @@ void checkSetDataValidationRequest(api.SetDataValidationRequest o) {
 }
 
 core.List<api.BandedRange> buildUnnamed76() => [
-      buildBandedRange(),
-      buildBandedRange(),
-    ];
+  buildBandedRange(),
+  buildBandedRange(),
+];
 
 void checkUnnamed76(core.List<api.BandedRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6741,9 +5830,9 @@ void checkUnnamed76(core.List<api.BandedRange> o) {
 }
 
 core.List<api.EmbeddedChart> buildUnnamed77() => [
-      buildEmbeddedChart(),
-      buildEmbeddedChart(),
-    ];
+  buildEmbeddedChart(),
+  buildEmbeddedChart(),
+];
 
 void checkUnnamed77(core.List<api.EmbeddedChart> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6752,9 +5841,9 @@ void checkUnnamed77(core.List<api.EmbeddedChart> o) {
 }
 
 core.List<api.DimensionGroup> buildUnnamed78() => [
-      buildDimensionGroup(),
-      buildDimensionGroup(),
-    ];
+  buildDimensionGroup(),
+  buildDimensionGroup(),
+];
 
 void checkUnnamed78(core.List<api.DimensionGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6763,9 +5852,9 @@ void checkUnnamed78(core.List<api.DimensionGroup> o) {
 }
 
 core.List<api.ConditionalFormatRule> buildUnnamed79() => [
-      buildConditionalFormatRule(),
-      buildConditionalFormatRule(),
-    ];
+  buildConditionalFormatRule(),
+  buildConditionalFormatRule(),
+];
 
 void checkUnnamed79(core.List<api.ConditionalFormatRule> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6773,10 +5862,7 @@ void checkUnnamed79(core.List<api.ConditionalFormatRule> o) {
   checkConditionalFormatRule(o[1]);
 }
 
-core.List<api.GridData> buildUnnamed80() => [
-      buildGridData(),
-      buildGridData(),
-    ];
+core.List<api.GridData> buildUnnamed80() => [buildGridData(), buildGridData()];
 
 void checkUnnamed80(core.List<api.GridData> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6785,9 +5871,9 @@ void checkUnnamed80(core.List<api.GridData> o) {
 }
 
 core.List<api.DeveloperMetadata> buildUnnamed81() => [
-      buildDeveloperMetadata(),
-      buildDeveloperMetadata(),
-    ];
+  buildDeveloperMetadata(),
+  buildDeveloperMetadata(),
+];
 
 void checkUnnamed81(core.List<api.DeveloperMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6796,9 +5882,9 @@ void checkUnnamed81(core.List<api.DeveloperMetadata> o) {
 }
 
 core.List<api.FilterView> buildUnnamed82() => [
-      buildFilterView(),
-      buildFilterView(),
-    ];
+  buildFilterView(),
+  buildFilterView(),
+];
 
 void checkUnnamed82(core.List<api.FilterView> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6807,9 +5893,9 @@ void checkUnnamed82(core.List<api.FilterView> o) {
 }
 
 core.List<api.GridRange> buildUnnamed83() => [
-      buildGridRange(),
-      buildGridRange(),
-    ];
+  buildGridRange(),
+  buildGridRange(),
+];
 
 void checkUnnamed83(core.List<api.GridRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6818,9 +5904,9 @@ void checkUnnamed83(core.List<api.GridRange> o) {
 }
 
 core.List<api.ProtectedRange> buildUnnamed84() => [
-      buildProtectedRange(),
-      buildProtectedRange(),
-    ];
+  buildProtectedRange(),
+  buildProtectedRange(),
+];
 
 void checkUnnamed84(core.List<api.ProtectedRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6829,9 +5915,9 @@ void checkUnnamed84(core.List<api.ProtectedRange> o) {
 }
 
 core.List<api.DimensionGroup> buildUnnamed85() => [
-      buildDimensionGroup(),
-      buildDimensionGroup(),
-    ];
+  buildDimensionGroup(),
+  buildDimensionGroup(),
+];
 
 void checkUnnamed85(core.List<api.DimensionGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6839,10 +5925,7 @@ void checkUnnamed85(core.List<api.DimensionGroup> o) {
   checkDimensionGroup(o[1]);
 }
 
-core.List<api.Slicer> buildUnnamed86() => [
-      buildSlicer(),
-      buildSlicer(),
-    ];
+core.List<api.Slicer> buildUnnamed86() => [buildSlicer(), buildSlicer()];
 
 void checkUnnamed86(core.List<api.Slicer> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6850,10 +5933,7 @@ void checkUnnamed86(core.List<api.Slicer> o) {
   checkSlicer(o[1]);
 }
 
-core.List<api.Table> buildUnnamed87() => [
-      buildTable(),
-      buildTable(),
-    ];
+core.List<api.Table> buildUnnamed87() => [buildTable(), buildTable()];
 
 void checkUnnamed87(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6932,25 +6012,13 @@ void checkSheetProperties(api.SheetProperties o) {
     checkDataSourceSheetProperties(o.dataSourceSheetProperties!);
     checkGridProperties(o.gridProperties!);
     unittest.expect(o.hidden!, unittest.isTrue);
-    unittest.expect(
-      o.index!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.index!, unittest.equals(42));
     unittest.expect(o.rightToLeft!, unittest.isTrue);
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sheetType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sheetId!, unittest.equals(42));
+    unittest.expect(o.sheetType!, unittest.equals('foo'));
     checkColor(o.tabColor!);
     checkColorStyle(o.tabColorStyle!);
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.title!, unittest.equals('foo'));
   }
   buildCounterSheetProperties--;
 }
@@ -6972,10 +6040,7 @@ void checkSlicer(api.Slicer o) {
   buildCounterSlicer++;
   if (buildCounterSlicer < 3) {
     checkEmbeddedObjectPosition(o.position!);
-    unittest.expect(
-      o.slicerId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.slicerId!, unittest.equals(42));
     checkSlicerSpec(o.spec!);
   }
   buildCounterSlicer--;
@@ -7006,29 +6071,17 @@ void checkSlicerSpec(api.SlicerSpec o) {
     unittest.expect(o.applyToPivotTables!, unittest.isTrue);
     checkColor(o.backgroundColor!);
     checkColorStyle(o.backgroundColorStyle!);
-    unittest.expect(
-      o.columnIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.columnIndex!, unittest.equals(42));
     checkGridRange(o.dataRange!);
     checkFilterCriteria(o.filterCriteria!);
-    unittest.expect(
-      o.horizontalAlignment!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.horizontalAlignment!, unittest.equals('foo'));
     checkTextFormat(o.textFormat!);
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.title!, unittest.equals('foo'));
   }
   buildCounterSlicerSpec--;
 }
 
-core.List<api.SortSpec> buildUnnamed88() => [
-      buildSortSpec(),
-      buildSortSpec(),
-    ];
+core.List<api.SortSpec> buildUnnamed88() => [buildSortSpec(), buildSortSpec()];
 
 void checkUnnamed88(core.List<api.SortSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7080,16 +6133,10 @@ void checkSortSpec(api.SortSpec o) {
     checkColor(o.backgroundColor!);
     checkColorStyle(o.backgroundColorStyle!);
     checkDataSourceColumnReference(o.dataSourceColumnReference!);
-    unittest.expect(
-      o.dimensionIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.dimensionIndex!, unittest.equals(42));
     checkColor(o.foregroundColor!);
     checkColorStyle(o.foregroundColorStyle!);
-    unittest.expect(
-      o.sortOrder!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sortOrder!, unittest.equals('foo'));
   }
   buildCounterSortSpec--;
 }
@@ -7110,23 +6157,17 @@ api.SourceAndDestination buildSourceAndDestination() {
 void checkSourceAndDestination(api.SourceAndDestination o) {
   buildCounterSourceAndDestination++;
   if (buildCounterSourceAndDestination < 3) {
-    unittest.expect(
-      o.dimension!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.fillLength!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.dimension!, unittest.equals('foo'));
+    unittest.expect(o.fillLength!, unittest.equals(42));
     checkGridRange(o.source!);
   }
   buildCounterSourceAndDestination--;
 }
 
 core.List<api.DataSourceRefreshSchedule> buildUnnamed89() => [
-      buildDataSourceRefreshSchedule(),
-      buildDataSourceRefreshSchedule(),
-    ];
+  buildDataSourceRefreshSchedule(),
+  buildDataSourceRefreshSchedule(),
+];
 
 void checkUnnamed89(core.List<api.DataSourceRefreshSchedule> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7135,9 +6176,9 @@ void checkUnnamed89(core.List<api.DataSourceRefreshSchedule> o) {
 }
 
 core.List<api.DataSource> buildUnnamed90() => [
-      buildDataSource(),
-      buildDataSource(),
-    ];
+  buildDataSource(),
+  buildDataSource(),
+];
 
 void checkUnnamed90(core.List<api.DataSource> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7146,9 +6187,9 @@ void checkUnnamed90(core.List<api.DataSource> o) {
 }
 
 core.List<api.DeveloperMetadata> buildUnnamed91() => [
-      buildDeveloperMetadata(),
-      buildDeveloperMetadata(),
-    ];
+  buildDeveloperMetadata(),
+  buildDeveloperMetadata(),
+];
 
 void checkUnnamed91(core.List<api.DeveloperMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7157,9 +6198,9 @@ void checkUnnamed91(core.List<api.DeveloperMetadata> o) {
 }
 
 core.List<api.NamedRange> buildUnnamed92() => [
-      buildNamedRange(),
-      buildNamedRange(),
-    ];
+  buildNamedRange(),
+  buildNamedRange(),
+];
 
 void checkUnnamed92(core.List<api.NamedRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7167,10 +6208,7 @@ void checkUnnamed92(core.List<api.NamedRange> o) {
   checkNamedRange(o[1]);
 }
 
-core.List<api.Sheet> buildUnnamed93() => [
-      buildSheet(),
-      buildSheet(),
-    ];
+core.List<api.Sheet> buildUnnamed93() => [buildSheet(), buildSheet()];
 
 void checkUnnamed93(core.List<api.Sheet> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7205,14 +6243,8 @@ void checkSpreadsheet(api.Spreadsheet o) {
     checkUnnamed92(o.namedRanges!);
     checkSpreadsheetProperties(o.properties!);
     checkUnnamed93(o.sheets!);
-    unittest.expect(
-      o.spreadsheetId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.spreadsheetUrl!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.spreadsheetId!, unittest.equals('foo'));
+    unittest.expect(o.spreadsheetUrl!, unittest.equals('foo'));
   }
   buildCounterSpreadsheet--;
 }
@@ -7238,35 +6270,25 @@ api.SpreadsheetProperties buildSpreadsheetProperties() {
 void checkSpreadsheetProperties(api.SpreadsheetProperties o) {
   buildCounterSpreadsheetProperties++;
   if (buildCounterSpreadsheetProperties < 3) {
-    unittest.expect(
-      o.autoRecalc!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.autoRecalc!, unittest.equals('foo'));
     checkCellFormat(o.defaultFormat!);
     unittest.expect(
-        o.importFunctionsExternalUrlAccessAllowed!, unittest.isTrue);
+      o.importFunctionsExternalUrlAccessAllowed!,
+      unittest.isTrue,
+    );
     checkIterativeCalculationSettings(o.iterativeCalculationSettings!);
-    unittest.expect(
-      o.locale!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.locale!, unittest.equals('foo'));
     checkSpreadsheetTheme(o.spreadsheetTheme!);
-    unittest.expect(
-      o.timeZone!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.timeZone!, unittest.equals('foo'));
+    unittest.expect(o.title!, unittest.equals('foo'));
   }
   buildCounterSpreadsheetProperties--;
 }
 
 core.List<api.ThemeColorPair> buildUnnamed94() => [
-      buildThemeColorPair(),
-      buildThemeColorPair(),
-    ];
+  buildThemeColorPair(),
+  buildThemeColorPair(),
+];
 
 void checkUnnamed94(core.List<api.ThemeColorPair> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7289,19 +6311,16 @@ api.SpreadsheetTheme buildSpreadsheetTheme() {
 void checkSpreadsheetTheme(api.SpreadsheetTheme o) {
   buildCounterSpreadsheetTheme++;
   if (buildCounterSpreadsheetTheme < 3) {
-    unittest.expect(
-      o.primaryFontFamily!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.primaryFontFamily!, unittest.equals('foo'));
     checkUnnamed94(o.themeColors!);
   }
   buildCounterSpreadsheetTheme--;
 }
 
 core.List<api.TableColumnProperties> buildUnnamed95() => [
-      buildTableColumnProperties(),
-      buildTableColumnProperties(),
-    ];
+  buildTableColumnProperties(),
+  buildTableColumnProperties(),
+];
 
 void checkUnnamed95(core.List<api.TableColumnProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7328,16 +6347,10 @@ void checkTable(api.Table o) {
   buildCounterTable++;
   if (buildCounterTable < 3) {
     checkUnnamed95(o.columnProperties!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkGridRange(o.range!);
     checkTableRowsProperties(o.rowsProperties!);
-    unittest.expect(
-      o.tableId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.tableId!, unittest.equals('foo'));
   }
   buildCounterTable--;
 }
@@ -7378,18 +6391,9 @@ api.TableColumnProperties buildTableColumnProperties() {
 void checkTableColumnProperties(api.TableColumnProperties o) {
   buildCounterTableColumnProperties++;
   if (buildCounterTableColumnProperties < 3) {
-    unittest.expect(
-      o.columnIndex!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.columnName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.columnType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.columnIndex!, unittest.equals(42));
+    unittest.expect(o.columnName!, unittest.equals('foo'));
+    unittest.expect(o.columnType!, unittest.equals('foo'));
     checkTableColumnDataValidationRule(o.dataValidationRule!);
   }
   buildCounterTableColumnProperties--;
@@ -7443,14 +6447,8 @@ void checkTextFormat(api.TextFormat o) {
   buildCounterTextFormat++;
   if (buildCounterTextFormat < 3) {
     unittest.expect(o.bold!, unittest.isTrue);
-    unittest.expect(
-      o.fontFamily!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.fontSize!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.fontFamily!, unittest.equals('foo'));
+    unittest.expect(o.fontSize!, unittest.equals(42));
     checkColor(o.foregroundColor!);
     checkColorStyle(o.foregroundColorStyle!);
     unittest.expect(o.italic!, unittest.isTrue);
@@ -7477,10 +6475,7 @@ void checkTextFormatRun(api.TextFormatRun o) {
   buildCounterTextFormatRun++;
   if (buildCounterTextFormatRun < 3) {
     checkTextFormat(o.format!);
-    unittest.expect(
-      o.startIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.startIndex!, unittest.equals(42));
   }
   buildCounterTextFormatRun--;
 }
@@ -7499,10 +6494,7 @@ api.TextPosition buildTextPosition() {
 void checkTextPosition(api.TextPosition o) {
   buildCounterTextPosition++;
   if (buildCounterTextPosition < 3) {
-    unittest.expect(
-      o.horizontalAlignment!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.horizontalAlignment!, unittest.equals('foo'));
   }
   buildCounterTextPosition--;
 }
@@ -7522,10 +6514,7 @@ api.TextRotation buildTextRotation() {
 void checkTextRotation(api.TextRotation o) {
   buildCounterTextRotation++;
   if (buildCounterTextRotation < 3) {
-    unittest.expect(
-      o.angle!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.angle!, unittest.equals(42));
     unittest.expect(o.vertical!, unittest.isTrue);
   }
   buildCounterTextRotation--;
@@ -7547,14 +6536,8 @@ api.TextToColumnsRequest buildTextToColumnsRequest() {
 void checkTextToColumnsRequest(api.TextToColumnsRequest o) {
   buildCounterTextToColumnsRequest++;
   if (buildCounterTextToColumnsRequest < 3) {
-    unittest.expect(
-      o.delimiter!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.delimiterType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.delimiter!, unittest.equals('foo'));
+    unittest.expect(o.delimiterType!, unittest.equals('foo'));
     checkGridRange(o.source!);
   }
   buildCounterTextToColumnsRequest--;
@@ -7576,10 +6559,7 @@ void checkThemeColorPair(api.ThemeColorPair o) {
   buildCounterThemeColorPair++;
   if (buildCounterThemeColorPair < 3) {
     checkColorStyle(o.color!);
-    unittest.expect(
-      o.colorType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.colorType!, unittest.equals('foo'));
   }
   buildCounterThemeColorPair--;
 }
@@ -7601,22 +6581,10 @@ api.TimeOfDay buildTimeOfDay() {
 void checkTimeOfDay(api.TimeOfDay o) {
   buildCounterTimeOfDay++;
   if (buildCounterTimeOfDay < 3) {
-    unittest.expect(
-      o.hours!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.minutes!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.nanos!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.seconds!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.hours!, unittest.equals(42));
+    unittest.expect(o.minutes!, unittest.equals(42));
+    unittest.expect(o.nanos!, unittest.equals(42));
+    unittest.expect(o.seconds!, unittest.equals(42));
   }
   buildCounterTimeOfDay--;
 }
@@ -7685,23 +6653,11 @@ void checkTreemapChartSpec(api.TreemapChartSpec o) {
     checkColor(o.headerColor!);
     checkColorStyle(o.headerColorStyle!);
     unittest.expect(o.hideTooltips!, unittest.isTrue);
-    unittest.expect(
-      o.hintedLevels!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.hintedLevels!, unittest.equals(42));
     checkChartData(o.labels!);
-    unittest.expect(
-      o.levels!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxValue!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.minValue!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.levels!, unittest.equals(42));
+    unittest.expect(o.maxValue!, unittest.equals(42.0));
+    unittest.expect(o.minValue!, unittest.equals(42.0));
     checkChartData(o.parentLabels!);
     checkChartData(o.sizeData!);
     checkTextFormat(o.textFormat!);
@@ -7742,10 +6698,7 @@ api.TrimWhitespaceResponse buildTrimWhitespaceResponse() {
 void checkTrimWhitespaceResponse(api.TrimWhitespaceResponse o) {
   buildCounterTrimWhitespaceResponse++;
   if (buildCounterTrimWhitespaceResponse < 3) {
-    unittest.expect(
-      o.cellsChangedCount!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.cellsChangedCount!, unittest.equals(42));
   }
   buildCounterTrimWhitespaceResponse--;
 }
@@ -7785,10 +6738,7 @@ void checkUpdateBandingRequest(api.UpdateBandingRequest o) {
   buildCounterUpdateBandingRequest++;
   if (buildCounterUpdateBandingRequest < 3) {
     checkBandedRange(o.bandedRange!);
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
   }
   buildCounterUpdateBandingRequest--;
 }
@@ -7824,10 +6774,7 @@ void checkUpdateBordersRequest(api.UpdateBordersRequest o) {
   buildCounterUpdateBordersRequest--;
 }
 
-core.List<api.RowData> buildUnnamed96() => [
-      buildRowData(),
-      buildRowData(),
-    ];
+core.List<api.RowData> buildUnnamed96() => [buildRowData(), buildRowData()];
 
 void checkUnnamed96(core.List<api.RowData> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7852,10 +6799,7 @@ api.UpdateCellsRequest buildUpdateCellsRequest() {
 void checkUpdateCellsRequest(api.UpdateCellsRequest o) {
   buildCounterUpdateCellsRequest++;
   if (buildCounterUpdateCellsRequest < 3) {
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
     checkGridRange(o.range!);
     checkUnnamed96(o.rows!);
     checkGridCoordinate(o.start!);
@@ -7878,10 +6822,7 @@ api.UpdateChartSpecRequest buildUpdateChartSpecRequest() {
 void checkUpdateChartSpecRequest(api.UpdateChartSpecRequest o) {
   buildCounterUpdateChartSpecRequest++;
   if (buildCounterUpdateChartSpecRequest < 3) {
-    unittest.expect(
-      o.chartId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.chartId!, unittest.equals(42));
     checkChartSpec(o.spec!);
   }
   buildCounterUpdateChartSpecRequest--;
@@ -7889,7 +6830,7 @@ void checkUpdateChartSpecRequest(api.UpdateChartSpecRequest o) {
 
 core.int buildCounterUpdateConditionalFormatRuleRequest = 0;
 api.UpdateConditionalFormatRuleRequest
-    buildUpdateConditionalFormatRuleRequest() {
+buildUpdateConditionalFormatRuleRequest() {
   final o = api.UpdateConditionalFormatRuleRequest();
   buildCounterUpdateConditionalFormatRuleRequest++;
   if (buildCounterUpdateConditionalFormatRuleRequest < 3) {
@@ -7903,29 +6844,21 @@ api.UpdateConditionalFormatRuleRequest
 }
 
 void checkUpdateConditionalFormatRuleRequest(
-    api.UpdateConditionalFormatRuleRequest o) {
+  api.UpdateConditionalFormatRuleRequest o,
+) {
   buildCounterUpdateConditionalFormatRuleRequest++;
   if (buildCounterUpdateConditionalFormatRuleRequest < 3) {
-    unittest.expect(
-      o.index!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.newIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.index!, unittest.equals(42));
+    unittest.expect(o.newIndex!, unittest.equals(42));
     checkConditionalFormatRule(o.rule!);
-    unittest.expect(
-      o.sheetId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.sheetId!, unittest.equals(42));
   }
   buildCounterUpdateConditionalFormatRuleRequest--;
 }
 
 core.int buildCounterUpdateConditionalFormatRuleResponse = 0;
 api.UpdateConditionalFormatRuleResponse
-    buildUpdateConditionalFormatRuleResponse() {
+buildUpdateConditionalFormatRuleResponse() {
   final o = api.UpdateConditionalFormatRuleResponse();
   buildCounterUpdateConditionalFormatRuleResponse++;
   if (buildCounterUpdateConditionalFormatRuleResponse < 3) {
@@ -7939,18 +6872,13 @@ api.UpdateConditionalFormatRuleResponse
 }
 
 void checkUpdateConditionalFormatRuleResponse(
-    api.UpdateConditionalFormatRuleResponse o) {
+  api.UpdateConditionalFormatRuleResponse o,
+) {
   buildCounterUpdateConditionalFormatRuleResponse++;
   if (buildCounterUpdateConditionalFormatRuleResponse < 3) {
-    unittest.expect(
-      o.newIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.newIndex!, unittest.equals(42));
     checkConditionalFormatRule(o.newRule!);
-    unittest.expect(
-      o.oldIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.oldIndex!, unittest.equals(42));
     checkConditionalFormatRule(o.oldRule!);
   }
   buildCounterUpdateConditionalFormatRuleResponse--;
@@ -7972,10 +6900,7 @@ void checkUpdateDataSourceRequest(api.UpdateDataSourceRequest o) {
   buildCounterUpdateDataSourceRequest++;
   if (buildCounterUpdateDataSourceRequest < 3) {
     checkDataSource(o.dataSource!);
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
   }
   buildCounterUpdateDataSourceRequest--;
 }
@@ -8002,9 +6927,9 @@ void checkUpdateDataSourceResponse(api.UpdateDataSourceResponse o) {
 }
 
 core.List<api.DataFilter> buildUnnamed97() => [
-      buildDataFilter(),
-      buildDataFilter(),
-    ];
+  buildDataFilter(),
+  buildDataFilter(),
+];
 
 void checkUnnamed97(core.List<api.DataFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -8030,18 +6955,15 @@ void checkUpdateDeveloperMetadataRequest(api.UpdateDeveloperMetadataRequest o) {
   if (buildCounterUpdateDeveloperMetadataRequest < 3) {
     checkUnnamed97(o.dataFilters!);
     checkDeveloperMetadata(o.developerMetadata!);
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
   }
   buildCounterUpdateDeveloperMetadataRequest--;
 }
 
 core.List<api.DeveloperMetadata> buildUnnamed98() => [
-      buildDeveloperMetadata(),
-      buildDeveloperMetadata(),
-    ];
+  buildDeveloperMetadata(),
+  buildDeveloperMetadata(),
+];
 
 void checkUnnamed98(core.List<api.DeveloperMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -8061,7 +6983,8 @@ api.UpdateDeveloperMetadataResponse buildUpdateDeveloperMetadataResponse() {
 }
 
 void checkUpdateDeveloperMetadataResponse(
-    api.UpdateDeveloperMetadataResponse o) {
+  api.UpdateDeveloperMetadataResponse o,
+) {
   buildCounterUpdateDeveloperMetadataResponse++;
   if (buildCounterUpdateDeveloperMetadataResponse < 3) {
     checkUnnamed98(o.developerMetadata!);
@@ -8085,10 +7008,7 @@ void checkUpdateDimensionGroupRequest(api.UpdateDimensionGroupRequest o) {
   buildCounterUpdateDimensionGroupRequest++;
   if (buildCounterUpdateDimensionGroupRequest < 3) {
     checkDimensionGroup(o.dimensionGroup!);
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
   }
   buildCounterUpdateDimensionGroupRequest--;
 }
@@ -8108,14 +7028,12 @@ api.UpdateDimensionPropertiesRequest buildUpdateDimensionPropertiesRequest() {
 }
 
 void checkUpdateDimensionPropertiesRequest(
-    api.UpdateDimensionPropertiesRequest o) {
+  api.UpdateDimensionPropertiesRequest o,
+) {
   buildCounterUpdateDimensionPropertiesRequest++;
   if (buildCounterUpdateDimensionPropertiesRequest < 3) {
     checkDataSourceSheetDimensionRange(o.dataSourceSheetRange!);
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
     checkDimensionProperties(o.properties!);
     checkDimensionRange(o.range!);
   }
@@ -8136,25 +7054,20 @@ api.UpdateEmbeddedObjectBorderRequest buildUpdateEmbeddedObjectBorderRequest() {
 }
 
 void checkUpdateEmbeddedObjectBorderRequest(
-    api.UpdateEmbeddedObjectBorderRequest o) {
+  api.UpdateEmbeddedObjectBorderRequest o,
+) {
   buildCounterUpdateEmbeddedObjectBorderRequest++;
   if (buildCounterUpdateEmbeddedObjectBorderRequest < 3) {
     checkEmbeddedObjectBorder(o.border!);
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.objectId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
+    unittest.expect(o.objectId!, unittest.equals(42));
   }
   buildCounterUpdateEmbeddedObjectBorderRequest--;
 }
 
 core.int buildCounterUpdateEmbeddedObjectPositionRequest = 0;
 api.UpdateEmbeddedObjectPositionRequest
-    buildUpdateEmbeddedObjectPositionRequest() {
+buildUpdateEmbeddedObjectPositionRequest() {
   final o = api.UpdateEmbeddedObjectPositionRequest();
   buildCounterUpdateEmbeddedObjectPositionRequest++;
   if (buildCounterUpdateEmbeddedObjectPositionRequest < 3) {
@@ -8167,25 +7080,20 @@ api.UpdateEmbeddedObjectPositionRequest
 }
 
 void checkUpdateEmbeddedObjectPositionRequest(
-    api.UpdateEmbeddedObjectPositionRequest o) {
+  api.UpdateEmbeddedObjectPositionRequest o,
+) {
   buildCounterUpdateEmbeddedObjectPositionRequest++;
   if (buildCounterUpdateEmbeddedObjectPositionRequest < 3) {
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
     checkEmbeddedObjectPosition(o.newPosition!);
-    unittest.expect(
-      o.objectId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.objectId!, unittest.equals(42));
   }
   buildCounterUpdateEmbeddedObjectPositionRequest--;
 }
 
 core.int buildCounterUpdateEmbeddedObjectPositionResponse = 0;
 api.UpdateEmbeddedObjectPositionResponse
-    buildUpdateEmbeddedObjectPositionResponse() {
+buildUpdateEmbeddedObjectPositionResponse() {
   final o = api.UpdateEmbeddedObjectPositionResponse();
   buildCounterUpdateEmbeddedObjectPositionResponse++;
   if (buildCounterUpdateEmbeddedObjectPositionResponse < 3) {
@@ -8196,7 +7104,8 @@ api.UpdateEmbeddedObjectPositionResponse
 }
 
 void checkUpdateEmbeddedObjectPositionResponse(
-    api.UpdateEmbeddedObjectPositionResponse o) {
+  api.UpdateEmbeddedObjectPositionResponse o,
+) {
   buildCounterUpdateEmbeddedObjectPositionResponse++;
   if (buildCounterUpdateEmbeddedObjectPositionResponse < 3) {
     checkEmbeddedObjectPosition(o.position!);
@@ -8219,10 +7128,7 @@ api.UpdateFilterViewRequest buildUpdateFilterViewRequest() {
 void checkUpdateFilterViewRequest(api.UpdateFilterViewRequest o) {
   buildCounterUpdateFilterViewRequest++;
   if (buildCounterUpdateFilterViewRequest < 3) {
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
     checkFilterView(o.filter!);
   }
   buildCounterUpdateFilterViewRequest--;
@@ -8243,10 +7149,7 @@ api.UpdateNamedRangeRequest buildUpdateNamedRangeRequest() {
 void checkUpdateNamedRangeRequest(api.UpdateNamedRangeRequest o) {
   buildCounterUpdateNamedRangeRequest++;
   if (buildCounterUpdateNamedRangeRequest < 3) {
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
     checkNamedRange(o.namedRange!);
   }
   buildCounterUpdateNamedRangeRequest--;
@@ -8267,10 +7170,7 @@ api.UpdateProtectedRangeRequest buildUpdateProtectedRangeRequest() {
 void checkUpdateProtectedRangeRequest(api.UpdateProtectedRangeRequest o) {
   buildCounterUpdateProtectedRangeRequest++;
   if (buildCounterUpdateProtectedRangeRequest < 3) {
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
     checkProtectedRange(o.protectedRange!);
   }
   buildCounterUpdateProtectedRangeRequest--;
@@ -8291,10 +7191,7 @@ api.UpdateSheetPropertiesRequest buildUpdateSheetPropertiesRequest() {
 void checkUpdateSheetPropertiesRequest(api.UpdateSheetPropertiesRequest o) {
   buildCounterUpdateSheetPropertiesRequest++;
   if (buildCounterUpdateSheetPropertiesRequest < 3) {
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
     checkSheetProperties(o.properties!);
   }
   buildCounterUpdateSheetPropertiesRequest--;
@@ -8316,14 +7213,8 @@ api.UpdateSlicerSpecRequest buildUpdateSlicerSpecRequest() {
 void checkUpdateSlicerSpecRequest(api.UpdateSlicerSpecRequest o) {
   buildCounterUpdateSlicerSpecRequest++;
   if (buildCounterUpdateSlicerSpecRequest < 3) {
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.slicerId!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
+    unittest.expect(o.slicerId!, unittest.equals(42));
     checkSlicerSpec(o.spec!);
   }
   buildCounterUpdateSlicerSpecRequest--;
@@ -8331,7 +7222,7 @@ void checkUpdateSlicerSpecRequest(api.UpdateSlicerSpecRequest o) {
 
 core.int buildCounterUpdateSpreadsheetPropertiesRequest = 0;
 api.UpdateSpreadsheetPropertiesRequest
-    buildUpdateSpreadsheetPropertiesRequest() {
+buildUpdateSpreadsheetPropertiesRequest() {
   final o = api.UpdateSpreadsheetPropertiesRequest();
   buildCounterUpdateSpreadsheetPropertiesRequest++;
   if (buildCounterUpdateSpreadsheetPropertiesRequest < 3) {
@@ -8343,13 +7234,11 @@ api.UpdateSpreadsheetPropertiesRequest
 }
 
 void checkUpdateSpreadsheetPropertiesRequest(
-    api.UpdateSpreadsheetPropertiesRequest o) {
+  api.UpdateSpreadsheetPropertiesRequest o,
+) {
   buildCounterUpdateSpreadsheetPropertiesRequest++;
   if (buildCounterUpdateSpreadsheetPropertiesRequest < 3) {
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
     checkSpreadsheetProperties(o.properties!);
   }
   buildCounterUpdateSpreadsheetPropertiesRequest--;
@@ -8370,10 +7259,7 @@ api.UpdateTableRequest buildUpdateTableRequest() {
 void checkUpdateTableRequest(api.UpdateTableRequest o) {
   buildCounterUpdateTableRequest++;
   if (buildCounterUpdateTableRequest < 3) {
-    unittest.expect(
-      o.fields!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fields!, unittest.equals('foo'));
     checkTable(o.table!);
   }
   buildCounterUpdateTableRequest--;
@@ -8396,27 +7282,16 @@ api.UpdateValuesByDataFilterResponse buildUpdateValuesByDataFilterResponse() {
 }
 
 void checkUpdateValuesByDataFilterResponse(
-    api.UpdateValuesByDataFilterResponse o) {
+  api.UpdateValuesByDataFilterResponse o,
+) {
   buildCounterUpdateValuesByDataFilterResponse++;
   if (buildCounterUpdateValuesByDataFilterResponse < 3) {
     checkDataFilter(o.dataFilter!);
-    unittest.expect(
-      o.updatedCells!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.updatedColumns!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.updatedCells!, unittest.equals(42));
+    unittest.expect(o.updatedColumns!, unittest.equals(42));
     checkValueRange(o.updatedData!);
-    unittest.expect(
-      o.updatedRange!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updatedRows!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.updatedRange!, unittest.equals('foo'));
+    unittest.expect(o.updatedRows!, unittest.equals(42));
   }
   buildCounterUpdateValuesByDataFilterResponse--;
 }
@@ -8440,80 +7315,47 @@ api.UpdateValuesResponse buildUpdateValuesResponse() {
 void checkUpdateValuesResponse(api.UpdateValuesResponse o) {
   buildCounterUpdateValuesResponse++;
   if (buildCounterUpdateValuesResponse < 3) {
-    unittest.expect(
-      o.spreadsheetId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updatedCells!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.updatedColumns!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.spreadsheetId!, unittest.equals('foo'));
+    unittest.expect(o.updatedCells!, unittest.equals(42));
+    unittest.expect(o.updatedColumns!, unittest.equals(42));
     checkValueRange(o.updatedData!);
-    unittest.expect(
-      o.updatedRange!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updatedRows!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.updatedRange!, unittest.equals('foo'));
+    unittest.expect(o.updatedRows!, unittest.equals(42));
   }
   buildCounterUpdateValuesResponse--;
 }
 
 core.List<core.Object?> buildUnnamed99() => [
-      {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    ];
+  {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+];
 
 void checkUnnamed99(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o[0]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(
-    casted3['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted3['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted3['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
   var casted4 = (o[1]) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(
-    casted4['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted4['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted4['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.List<core.List<core.Object?>> buildUnnamed100() => [
-      buildUnnamed99(),
-      buildUnnamed99(),
-    ];
+  buildUnnamed99(),
+  buildUnnamed99(),
+];
 
 void checkUnnamed100(core.List<core.List<core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -8537,14 +7379,8 @@ api.ValueRange buildValueRange() {
 void checkValueRange(api.ValueRange o) {
   buildCounterValueRange++;
   if (buildCounterValueRange < 3) {
-    unittest.expect(
-      o.majorDimension!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.range!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.majorDimension!, unittest.equals('foo'));
+    unittest.expect(o.range!, unittest.equals('foo'));
     checkUnnamed100(o.values!);
   }
   buildCounterValueRange--;
@@ -8568,10 +7404,7 @@ void checkWaterfallChartColumnStyle(api.WaterfallChartColumnStyle o) {
   if (buildCounterWaterfallChartColumnStyle < 3) {
     checkColor(o.color!);
     checkColorStyle(o.colorStyle!);
-    unittest.expect(
-      o.label!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.label!, unittest.equals('foo'));
   }
   buildCounterWaterfallChartColumnStyle--;
 }
@@ -8593,14 +7426,8 @@ void checkWaterfallChartCustomSubtotal(api.WaterfallChartCustomSubtotal o) {
   buildCounterWaterfallChartCustomSubtotal++;
   if (buildCounterWaterfallChartCustomSubtotal < 3) {
     unittest.expect(o.dataIsSubtotal!, unittest.isTrue);
-    unittest.expect(
-      o.label!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.subtotalIndex!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.label!, unittest.equals('foo'));
+    unittest.expect(o.subtotalIndex!, unittest.equals(42));
   }
   buildCounterWaterfallChartCustomSubtotal--;
 }
@@ -8627,9 +7454,9 @@ void checkWaterfallChartDomain(api.WaterfallChartDomain o) {
 }
 
 core.List<api.WaterfallChartCustomSubtotal> buildUnnamed101() => [
-      buildWaterfallChartCustomSubtotal(),
-      buildWaterfallChartCustomSubtotal(),
-    ];
+  buildWaterfallChartCustomSubtotal(),
+  buildWaterfallChartCustomSubtotal(),
+];
 
 void checkUnnamed101(core.List<api.WaterfallChartCustomSubtotal> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -8669,9 +7496,9 @@ void checkWaterfallChartSeries(api.WaterfallChartSeries o) {
 }
 
 core.List<api.WaterfallChartSeries> buildUnnamed102() => [
-      buildWaterfallChartSeries(),
-      buildWaterfallChartSeries(),
-    ];
+  buildWaterfallChartSeries(),
+  buildWaterfallChartSeries(),
+];
 
 void checkUnnamed102(core.List<api.WaterfallChartSeries> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -8704,47 +7531,26 @@ void checkWaterfallChartSpec(api.WaterfallChartSpec o) {
     unittest.expect(o.firstValueIsTotal!, unittest.isTrue);
     unittest.expect(o.hideConnectorLines!, unittest.isTrue);
     checkUnnamed102(o.series!);
-    unittest.expect(
-      o.stackedType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.stackedType!, unittest.equals('foo'));
     checkDataLabel(o.totalDataLabel!);
   }
   buildCounterWaterfallChartSpec--;
 }
 
-core.List<core.String> buildUnnamed103() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed103() => ['foo', 'foo'];
 
 void checkUnnamed103(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed104() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed104() => ['foo', 'foo'];
 
 void checkUnnamed104(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 void main() {
@@ -8753,7 +7559,8 @@ void main() {
       final o = buildAddBandingRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddBandingRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddBandingRequest(od);
     });
   });
@@ -8763,7 +7570,8 @@ void main() {
       final o = buildAddBandingResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddBandingResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddBandingResponse(od);
     });
   });
@@ -8773,7 +7581,8 @@ void main() {
       final o = buildAddChartRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddChartRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddChartRequest(od);
     });
   });
@@ -8783,7 +7592,8 @@ void main() {
       final o = buildAddChartResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddChartResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddChartResponse(od);
     });
   });
@@ -8793,7 +7603,8 @@ void main() {
       final o = buildAddConditionalFormatRuleRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddConditionalFormatRuleRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddConditionalFormatRuleRequest(od);
     });
   });
@@ -8803,7 +7614,8 @@ void main() {
       final o = buildAddDataSourceRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddDataSourceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddDataSourceRequest(od);
     });
   });
@@ -8813,7 +7625,8 @@ void main() {
       final o = buildAddDataSourceResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddDataSourceResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddDataSourceResponse(od);
     });
   });
@@ -8823,7 +7636,8 @@ void main() {
       final o = buildAddDimensionGroupRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddDimensionGroupRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddDimensionGroupRequest(od);
     });
   });
@@ -8833,7 +7647,8 @@ void main() {
       final o = buildAddDimensionGroupResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddDimensionGroupResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddDimensionGroupResponse(od);
     });
   });
@@ -8843,7 +7658,8 @@ void main() {
       final o = buildAddFilterViewRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddFilterViewRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddFilterViewRequest(od);
     });
   });
@@ -8853,7 +7669,8 @@ void main() {
       final o = buildAddFilterViewResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddFilterViewResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddFilterViewResponse(od);
     });
   });
@@ -8863,7 +7680,8 @@ void main() {
       final o = buildAddNamedRangeRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddNamedRangeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddNamedRangeRequest(od);
     });
   });
@@ -8873,7 +7691,8 @@ void main() {
       final o = buildAddNamedRangeResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddNamedRangeResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddNamedRangeResponse(od);
     });
   });
@@ -8883,7 +7702,8 @@ void main() {
       final o = buildAddProtectedRangeRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddProtectedRangeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddProtectedRangeRequest(od);
     });
   });
@@ -8893,7 +7713,8 @@ void main() {
       final o = buildAddProtectedRangeResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddProtectedRangeResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddProtectedRangeResponse(od);
     });
   });
@@ -8903,7 +7724,8 @@ void main() {
       final o = buildAddSheetRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddSheetRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddSheetRequest(od);
     });
   });
@@ -8913,7 +7735,8 @@ void main() {
       final o = buildAddSheetResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddSheetResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddSheetResponse(od);
     });
   });
@@ -8923,7 +7746,8 @@ void main() {
       final o = buildAddSlicerRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddSlicerRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddSlicerRequest(od);
     });
   });
@@ -8933,7 +7757,8 @@ void main() {
       final o = buildAddSlicerResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddSlicerResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddSlicerResponse(od);
     });
   });
@@ -8943,7 +7768,8 @@ void main() {
       final o = buildAddTableRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddTableRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddTableRequest(od);
     });
   });
@@ -8953,7 +7779,8 @@ void main() {
       final o = buildAddTableResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AddTableResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAddTableResponse(od);
     });
   });
@@ -8963,7 +7790,8 @@ void main() {
       final o = buildAppendCellsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AppendCellsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAppendCellsRequest(od);
     });
   });
@@ -8973,7 +7801,8 @@ void main() {
       final o = buildAppendDimensionRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AppendDimensionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAppendDimensionRequest(od);
     });
   });
@@ -8983,7 +7812,8 @@ void main() {
       final o = buildAppendValuesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AppendValuesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAppendValuesResponse(od);
     });
   });
@@ -8993,7 +7823,8 @@ void main() {
       final o = buildAutoFillRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AutoFillRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAutoFillRequest(od);
     });
   });
@@ -9003,7 +7834,8 @@ void main() {
       final o = buildAutoResizeDimensionsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AutoResizeDimensionsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAutoResizeDimensionsRequest(od);
     });
   });
@@ -9013,7 +7845,8 @@ void main() {
       final o = buildBandedRange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BandedRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBandedRange(od);
     });
   });
@@ -9023,7 +7856,8 @@ void main() {
       final o = buildBandingProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BandingProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBandingProperties(od);
     });
   });
@@ -9033,7 +7867,8 @@ void main() {
       final o = buildBaselineValueFormat();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BaselineValueFormat.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBaselineValueFormat(od);
     });
   });
@@ -9043,7 +7878,8 @@ void main() {
       final o = buildBasicChartAxis();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BasicChartAxis.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBasicChartAxis(od);
     });
   });
@@ -9053,7 +7889,8 @@ void main() {
       final o = buildBasicChartDomain();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BasicChartDomain.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBasicChartDomain(od);
     });
   });
@@ -9063,7 +7900,8 @@ void main() {
       final o = buildBasicChartSeries();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BasicChartSeries.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBasicChartSeries(od);
     });
   });
@@ -9073,7 +7911,8 @@ void main() {
       final o = buildBasicChartSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BasicChartSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBasicChartSpec(od);
     });
   });
@@ -9083,7 +7922,8 @@ void main() {
       final o = buildBasicFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BasicFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBasicFilter(od);
     });
   });
@@ -9093,7 +7933,8 @@ void main() {
       final o = buildBasicSeriesDataPointStyleOverride();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BasicSeriesDataPointStyleOverride.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBasicSeriesDataPointStyleOverride(od);
     });
   });
@@ -9103,7 +7944,8 @@ void main() {
       final o = buildBatchClearValuesByDataFilterRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchClearValuesByDataFilterRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchClearValuesByDataFilterRequest(od);
     });
   });
@@ -9113,7 +7955,8 @@ void main() {
       final o = buildBatchClearValuesByDataFilterResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchClearValuesByDataFilterResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchClearValuesByDataFilterResponse(od);
     });
   });
@@ -9123,7 +7966,8 @@ void main() {
       final o = buildBatchClearValuesRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchClearValuesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchClearValuesRequest(od);
     });
   });
@@ -9133,7 +7977,8 @@ void main() {
       final o = buildBatchClearValuesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchClearValuesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchClearValuesResponse(od);
     });
   });
@@ -9143,7 +7988,8 @@ void main() {
       final o = buildBatchGetValuesByDataFilterRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchGetValuesByDataFilterRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchGetValuesByDataFilterRequest(od);
     });
   });
@@ -9153,7 +7999,8 @@ void main() {
       final o = buildBatchGetValuesByDataFilterResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchGetValuesByDataFilterResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchGetValuesByDataFilterResponse(od);
     });
   });
@@ -9163,7 +8010,8 @@ void main() {
       final o = buildBatchGetValuesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchGetValuesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchGetValuesResponse(od);
     });
   });
@@ -9173,7 +8021,8 @@ void main() {
       final o = buildBatchUpdateSpreadsheetRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchUpdateSpreadsheetRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchUpdateSpreadsheetRequest(od);
     });
   });
@@ -9183,7 +8032,8 @@ void main() {
       final o = buildBatchUpdateSpreadsheetResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchUpdateSpreadsheetResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchUpdateSpreadsheetResponse(od);
     });
   });
@@ -9193,7 +8043,8 @@ void main() {
       final o = buildBatchUpdateValuesByDataFilterRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchUpdateValuesByDataFilterRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchUpdateValuesByDataFilterRequest(od);
     });
   });
@@ -9203,7 +8054,8 @@ void main() {
       final o = buildBatchUpdateValuesByDataFilterResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchUpdateValuesByDataFilterResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchUpdateValuesByDataFilterResponse(od);
     });
   });
@@ -9213,7 +8065,8 @@ void main() {
       final o = buildBatchUpdateValuesRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchUpdateValuesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchUpdateValuesRequest(od);
     });
   });
@@ -9223,7 +8076,8 @@ void main() {
       final o = buildBatchUpdateValuesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BatchUpdateValuesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBatchUpdateValuesResponse(od);
     });
   });
@@ -9233,7 +8087,8 @@ void main() {
       final o = buildBigQueryDataSourceSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BigQueryDataSourceSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBigQueryDataSourceSpec(od);
     });
   });
@@ -9243,7 +8098,8 @@ void main() {
       final o = buildBigQueryQuerySpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BigQueryQuerySpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBigQueryQuerySpec(od);
     });
   });
@@ -9253,7 +8109,8 @@ void main() {
       final o = buildBigQueryTableSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BigQueryTableSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBigQueryTableSpec(od);
     });
   });
@@ -9263,7 +8120,8 @@ void main() {
       final o = buildBooleanCondition();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BooleanCondition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBooleanCondition(od);
     });
   });
@@ -9273,7 +8131,8 @@ void main() {
       final o = buildBooleanRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BooleanRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBooleanRule(od);
     });
   });
@@ -9282,8 +8141,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildBorder();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Border.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Border.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBorder(od);
     });
   });
@@ -9292,8 +8152,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildBorders();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Borders.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Borders.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBorders(od);
     });
   });
@@ -9303,7 +8164,8 @@ void main() {
       final o = buildBubbleChartSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BubbleChartSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBubbleChartSpec(od);
     });
   });
@@ -9313,7 +8175,8 @@ void main() {
       final o = buildCancelDataSourceRefreshRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CancelDataSourceRefreshRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCancelDataSourceRefreshRequest(od);
     });
   });
@@ -9323,7 +8186,8 @@ void main() {
       final o = buildCancelDataSourceRefreshResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CancelDataSourceRefreshResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCancelDataSourceRefreshResponse(od);
     });
   });
@@ -9333,7 +8197,8 @@ void main() {
       final o = buildCancelDataSourceRefreshStatus();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CancelDataSourceRefreshStatus.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCancelDataSourceRefreshStatus(od);
     });
   });
@@ -9343,7 +8208,8 @@ void main() {
       final o = buildCandlestickChartSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CandlestickChartSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCandlestickChartSpec(od);
     });
   });
@@ -9353,7 +8219,8 @@ void main() {
       final o = buildCandlestickData();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CandlestickData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCandlestickData(od);
     });
   });
@@ -9363,7 +8230,8 @@ void main() {
       final o = buildCandlestickDomain();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CandlestickDomain.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCandlestickDomain(od);
     });
   });
@@ -9373,7 +8241,8 @@ void main() {
       final o = buildCandlestickSeries();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CandlestickSeries.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCandlestickSeries(od);
     });
   });
@@ -9382,8 +8251,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildCellData();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.CellData.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.CellData.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCellData(od);
     });
   });
@@ -9392,8 +8262,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildCellFormat();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.CellFormat.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.CellFormat.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCellFormat(od);
     });
   });
@@ -9403,7 +8274,8 @@ void main() {
       final o = buildChartAxisViewWindowOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ChartAxisViewWindowOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkChartAxisViewWindowOptions(od);
     });
   });
@@ -9413,7 +8285,8 @@ void main() {
       final o = buildChartCustomNumberFormatOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ChartCustomNumberFormatOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkChartCustomNumberFormatOptions(od);
     });
   });
@@ -9422,8 +8295,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildChartData();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ChartData.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.ChartData.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkChartData(od);
     });
   });
@@ -9433,7 +8307,8 @@ void main() {
       final o = buildChartDateTimeRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ChartDateTimeRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkChartDateTimeRule(od);
     });
   });
@@ -9443,7 +8318,8 @@ void main() {
       final o = buildChartGroupRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ChartGroupRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkChartGroupRule(od);
     });
   });
@@ -9453,7 +8329,8 @@ void main() {
       final o = buildChartHistogramRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ChartHistogramRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkChartHistogramRule(od);
     });
   });
@@ -9463,7 +8340,8 @@ void main() {
       final o = buildChartSourceRange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ChartSourceRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkChartSourceRange(od);
     });
   });
@@ -9472,8 +8350,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildChartSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ChartSpec.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.ChartSpec.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkChartSpec(od);
     });
   });
@@ -9482,8 +8361,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildChip();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Chip.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Chip.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkChip(od);
     });
   });
@@ -9492,8 +8372,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildChipRun();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ChipRun.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.ChipRun.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkChipRun(od);
     });
   });
@@ -9503,7 +8384,8 @@ void main() {
       final o = buildClearBasicFilterRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ClearBasicFilterRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkClearBasicFilterRequest(od);
     });
   });
@@ -9513,7 +8395,8 @@ void main() {
       final o = buildClearValuesRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ClearValuesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkClearValuesRequest(od);
     });
   });
@@ -9523,7 +8406,8 @@ void main() {
       final o = buildClearValuesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ClearValuesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkClearValuesResponse(od);
     });
   });
@@ -9532,8 +8416,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildColor();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Color.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Color.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkColor(od);
     });
   });
@@ -9542,8 +8427,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildColorStyle();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ColorStyle.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.ColorStyle.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkColorStyle(od);
     });
   });
@@ -9553,7 +8439,8 @@ void main() {
       final o = buildConditionValue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ConditionValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConditionValue(od);
     });
   });
@@ -9563,7 +8450,8 @@ void main() {
       final o = buildConditionalFormatRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ConditionalFormatRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConditionalFormatRule(od);
     });
   });
@@ -9573,7 +8461,8 @@ void main() {
       final o = buildCopyPasteRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CopyPasteRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCopyPasteRequest(od);
     });
   });
@@ -9583,7 +8472,8 @@ void main() {
       final o = buildCopySheetToAnotherSpreadsheetRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CopySheetToAnotherSpreadsheetRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCopySheetToAnotherSpreadsheetRequest(od);
     });
   });
@@ -9593,7 +8483,8 @@ void main() {
       final o = buildCreateDeveloperMetadataRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CreateDeveloperMetadataRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCreateDeveloperMetadataRequest(od);
     });
   });
@@ -9603,7 +8494,8 @@ void main() {
       final o = buildCreateDeveloperMetadataResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CreateDeveloperMetadataResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCreateDeveloperMetadataResponse(od);
     });
   });
@@ -9613,7 +8505,8 @@ void main() {
       final o = buildCutPasteRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CutPasteRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCutPasteRequest(od);
     });
   });
@@ -9623,7 +8516,8 @@ void main() {
       final o = buildDataExecutionStatus();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataExecutionStatus.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataExecutionStatus(od);
     });
   });
@@ -9632,8 +8526,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDataFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.DataFilter.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.DataFilter.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataFilter(od);
     });
   });
@@ -9643,7 +8538,8 @@ void main() {
       final o = buildDataFilterValueRange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataFilterValueRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataFilterValueRange(od);
     });
   });
@@ -9652,8 +8548,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDataLabel();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.DataLabel.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.DataLabel.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataLabel(od);
     });
   });
@@ -9662,8 +8559,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDataSource();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.DataSource.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.DataSource.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSource(od);
     });
   });
@@ -9673,7 +8571,8 @@ void main() {
       final o = buildDataSourceChartProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceChartProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceChartProperties(od);
     });
   });
@@ -9683,7 +8582,8 @@ void main() {
       final o = buildDataSourceColumn();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceColumn.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceColumn(od);
     });
   });
@@ -9693,7 +8593,8 @@ void main() {
       final o = buildDataSourceColumnReference();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceColumnReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceColumnReference(od);
     });
   });
@@ -9703,7 +8604,8 @@ void main() {
       final o = buildDataSourceFormula();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceFormula.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceFormula(od);
     });
   });
@@ -9713,7 +8615,8 @@ void main() {
       final o = buildDataSourceObjectReference();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceObjectReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceObjectReference(od);
     });
   });
@@ -9723,7 +8626,8 @@ void main() {
       final o = buildDataSourceObjectReferences();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceObjectReferences.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceObjectReferences(od);
     });
   });
@@ -9733,7 +8637,8 @@ void main() {
       final o = buildDataSourceParameter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceParameter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceParameter(od);
     });
   });
@@ -9743,7 +8648,8 @@ void main() {
       final o = buildDataSourceRefreshDailySchedule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceRefreshDailySchedule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceRefreshDailySchedule(od);
     });
   });
@@ -9753,7 +8659,8 @@ void main() {
       final o = buildDataSourceRefreshMonthlySchedule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceRefreshMonthlySchedule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceRefreshMonthlySchedule(od);
     });
   });
@@ -9763,7 +8670,8 @@ void main() {
       final o = buildDataSourceRefreshSchedule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceRefreshSchedule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceRefreshSchedule(od);
     });
   });
@@ -9773,7 +8681,8 @@ void main() {
       final o = buildDataSourceRefreshWeeklySchedule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceRefreshWeeklySchedule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceRefreshWeeklySchedule(od);
     });
   });
@@ -9783,7 +8692,8 @@ void main() {
       final o = buildDataSourceSheetDimensionRange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceSheetDimensionRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceSheetDimensionRange(od);
     });
   });
@@ -9793,7 +8703,8 @@ void main() {
       final o = buildDataSourceSheetProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceSheetProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceSheetProperties(od);
     });
   });
@@ -9803,7 +8714,8 @@ void main() {
       final o = buildDataSourceSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceSpec(od);
     });
   });
@@ -9813,7 +8725,8 @@ void main() {
       final o = buildDataSourceTable();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataSourceTable.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataSourceTable(od);
     });
   });
@@ -9823,7 +8736,8 @@ void main() {
       final o = buildDataValidationRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataValidationRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataValidationRule(od);
     });
   });
@@ -9833,7 +8747,8 @@ void main() {
       final o = buildDateTimeRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DateTimeRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDateTimeRule(od);
     });
   });
@@ -9843,7 +8758,8 @@ void main() {
       final o = buildDeleteBandingRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteBandingRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteBandingRequest(od);
     });
   });
@@ -9853,7 +8769,8 @@ void main() {
       final o = buildDeleteConditionalFormatRuleRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteConditionalFormatRuleRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteConditionalFormatRuleRequest(od);
     });
   });
@@ -9863,7 +8780,8 @@ void main() {
       final o = buildDeleteConditionalFormatRuleResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteConditionalFormatRuleResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteConditionalFormatRuleResponse(od);
     });
   });
@@ -9873,7 +8791,8 @@ void main() {
       final o = buildDeleteDataSourceRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteDataSourceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteDataSourceRequest(od);
     });
   });
@@ -9883,7 +8802,8 @@ void main() {
       final o = buildDeleteDeveloperMetadataRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteDeveloperMetadataRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteDeveloperMetadataRequest(od);
     });
   });
@@ -9893,7 +8813,8 @@ void main() {
       final o = buildDeleteDeveloperMetadataResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteDeveloperMetadataResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteDeveloperMetadataResponse(od);
     });
   });
@@ -9903,7 +8824,8 @@ void main() {
       final o = buildDeleteDimensionGroupRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteDimensionGroupRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteDimensionGroupRequest(od);
     });
   });
@@ -9913,7 +8835,8 @@ void main() {
       final o = buildDeleteDimensionGroupResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteDimensionGroupResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteDimensionGroupResponse(od);
     });
   });
@@ -9923,7 +8846,8 @@ void main() {
       final o = buildDeleteDimensionRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteDimensionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteDimensionRequest(od);
     });
   });
@@ -9933,7 +8857,8 @@ void main() {
       final o = buildDeleteDuplicatesRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteDuplicatesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteDuplicatesRequest(od);
     });
   });
@@ -9943,7 +8868,8 @@ void main() {
       final o = buildDeleteDuplicatesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteDuplicatesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteDuplicatesResponse(od);
     });
   });
@@ -9953,7 +8879,8 @@ void main() {
       final o = buildDeleteEmbeddedObjectRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteEmbeddedObjectRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteEmbeddedObjectRequest(od);
     });
   });
@@ -9963,7 +8890,8 @@ void main() {
       final o = buildDeleteFilterViewRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteFilterViewRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteFilterViewRequest(od);
     });
   });
@@ -9973,7 +8901,8 @@ void main() {
       final o = buildDeleteNamedRangeRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteNamedRangeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteNamedRangeRequest(od);
     });
   });
@@ -9983,7 +8912,8 @@ void main() {
       final o = buildDeleteProtectedRangeRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteProtectedRangeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteProtectedRangeRequest(od);
     });
   });
@@ -9993,7 +8923,8 @@ void main() {
       final o = buildDeleteRangeRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteRangeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteRangeRequest(od);
     });
   });
@@ -10003,7 +8934,8 @@ void main() {
       final o = buildDeleteSheetRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteSheetRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteSheetRequest(od);
     });
   });
@@ -10013,7 +8945,8 @@ void main() {
       final o = buildDeleteTableRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeleteTableRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeleteTableRequest(od);
     });
   });
@@ -10023,7 +8956,8 @@ void main() {
       final o = buildDeveloperMetadata();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeveloperMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeveloperMetadata(od);
     });
   });
@@ -10033,7 +8967,8 @@ void main() {
       final o = buildDeveloperMetadataLocation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeveloperMetadataLocation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeveloperMetadataLocation(od);
     });
   });
@@ -10043,7 +8978,8 @@ void main() {
       final o = buildDeveloperMetadataLookup();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DeveloperMetadataLookup.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDeveloperMetadataLookup(od);
     });
   });
@@ -10053,7 +8989,8 @@ void main() {
       final o = buildDimensionGroup();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DimensionGroup.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDimensionGroup(od);
     });
   });
@@ -10063,7 +9000,8 @@ void main() {
       final o = buildDimensionProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DimensionProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDimensionProperties(od);
     });
   });
@@ -10073,7 +9011,8 @@ void main() {
       final o = buildDimensionRange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DimensionRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDimensionRange(od);
     });
   });
@@ -10083,7 +9022,8 @@ void main() {
       final o = buildDuplicateFilterViewRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DuplicateFilterViewRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDuplicateFilterViewRequest(od);
     });
   });
@@ -10093,7 +9033,8 @@ void main() {
       final o = buildDuplicateFilterViewResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DuplicateFilterViewResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDuplicateFilterViewResponse(od);
     });
   });
@@ -10103,7 +9044,8 @@ void main() {
       final o = buildDuplicateSheetRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DuplicateSheetRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDuplicateSheetRequest(od);
     });
   });
@@ -10113,7 +9055,8 @@ void main() {
       final o = buildDuplicateSheetResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DuplicateSheetResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDuplicateSheetResponse(od);
     });
   });
@@ -10122,8 +9065,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildEditors();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Editors.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Editors.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEditors(od);
     });
   });
@@ -10133,7 +9077,8 @@ void main() {
       final o = buildEmbeddedChart();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EmbeddedChart.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEmbeddedChart(od);
     });
   });
@@ -10143,7 +9088,8 @@ void main() {
       final o = buildEmbeddedObjectBorder();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EmbeddedObjectBorder.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEmbeddedObjectBorder(od);
     });
   });
@@ -10153,7 +9099,8 @@ void main() {
       final o = buildEmbeddedObjectPosition();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EmbeddedObjectPosition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEmbeddedObjectPosition(od);
     });
   });
@@ -10162,8 +9109,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildErrorValue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ErrorValue.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.ErrorValue.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkErrorValue(od);
     });
   });
@@ -10173,7 +9121,8 @@ void main() {
       final o = buildExtendedValue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ExtendedValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkExtendedValue(od);
     });
   });
@@ -10183,7 +9132,8 @@ void main() {
       final o = buildFilterCriteria();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FilterCriteria.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFilterCriteria(od);
     });
   });
@@ -10192,8 +9142,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildFilterSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.FilterSpec.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.FilterSpec.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFilterSpec(od);
     });
   });
@@ -10202,8 +9153,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildFilterView();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.FilterView.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.FilterView.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFilterView(od);
     });
   });
@@ -10213,7 +9165,8 @@ void main() {
       final o = buildFindReplaceRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FindReplaceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFindReplaceRequest(od);
     });
   });
@@ -10223,7 +9176,8 @@ void main() {
       final o = buildFindReplaceResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FindReplaceResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFindReplaceResponse(od);
     });
   });
@@ -10233,7 +9187,8 @@ void main() {
       final o = buildGetSpreadsheetByDataFilterRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GetSpreadsheetByDataFilterRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGetSpreadsheetByDataFilterRequest(od);
     });
   });
@@ -10243,7 +9198,8 @@ void main() {
       final o = buildGradientRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GradientRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGradientRule(od);
     });
   });
@@ -10253,7 +9209,8 @@ void main() {
       final o = buildGridCoordinate();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GridCoordinate.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGridCoordinate(od);
     });
   });
@@ -10262,8 +9219,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildGridData();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GridData.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.GridData.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGridData(od);
     });
   });
@@ -10273,7 +9231,8 @@ void main() {
       final o = buildGridProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GridProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGridProperties(od);
     });
   });
@@ -10282,8 +9241,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildGridRange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GridRange.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.GridRange.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGridRange(od);
     });
   });
@@ -10293,7 +9253,8 @@ void main() {
       final o = buildHistogramChartSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.HistogramChartSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkHistogramChartSpec(od);
     });
   });
@@ -10303,7 +9264,8 @@ void main() {
       final o = buildHistogramRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.HistogramRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkHistogramRule(od);
     });
   });
@@ -10313,7 +9275,8 @@ void main() {
       final o = buildHistogramSeries();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.HistogramSeries.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkHistogramSeries(od);
     });
   });
@@ -10323,7 +9286,8 @@ void main() {
       final o = buildInsertDimensionRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.InsertDimensionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkInsertDimensionRequest(od);
     });
   });
@@ -10333,7 +9297,8 @@ void main() {
       final o = buildInsertRangeRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.InsertRangeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkInsertRangeRequest(od);
     });
   });
@@ -10343,7 +9308,8 @@ void main() {
       final o = buildInterpolationPoint();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.InterpolationPoint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkInterpolationPoint(od);
     });
   });
@@ -10352,8 +9318,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildInterval();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Interval.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Interval.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkInterval(od);
     });
   });
@@ -10363,7 +9330,8 @@ void main() {
       final o = buildIterativeCalculationSettings();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.IterativeCalculationSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkIterativeCalculationSettings(od);
     });
   });
@@ -10373,7 +9341,8 @@ void main() {
       final o = buildKeyValueFormat();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.KeyValueFormat.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkKeyValueFormat(od);
     });
   });
@@ -10382,8 +9351,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildLineStyle();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.LineStyle.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.LineStyle.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLineStyle(od);
     });
   });
@@ -10392,8 +9362,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildLink();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Link.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Link.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLink(od);
     });
   });
@@ -10403,7 +9374,8 @@ void main() {
       final o = buildLookerDataSourceSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LookerDataSourceSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLookerDataSourceSpec(od);
     });
   });
@@ -10412,8 +9384,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildManualRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ManualRule.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.ManualRule.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkManualRule(od);
     });
   });
@@ -10423,7 +9396,8 @@ void main() {
       final o = buildManualRuleGroup();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ManualRuleGroup.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkManualRuleGroup(od);
     });
   });
@@ -10433,7 +9407,8 @@ void main() {
       final o = buildMatchedDeveloperMetadata();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MatchedDeveloperMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMatchedDeveloperMetadata(od);
     });
   });
@@ -10443,7 +9418,8 @@ void main() {
       final o = buildMatchedValueRange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MatchedValueRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMatchedValueRange(od);
     });
   });
@@ -10453,7 +9429,8 @@ void main() {
       final o = buildMergeCellsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MergeCellsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMergeCellsRequest(od);
     });
   });
@@ -10463,7 +9440,8 @@ void main() {
       final o = buildMoveDimensionRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MoveDimensionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMoveDimensionRequest(od);
     });
   });
@@ -10472,8 +9450,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildNamedRange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.NamedRange.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.NamedRange.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkNamedRange(od);
     });
   });
@@ -10483,7 +9462,8 @@ void main() {
       final o = buildNumberFormat();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.NumberFormat.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkNumberFormat(od);
     });
   });
@@ -10493,7 +9473,8 @@ void main() {
       final o = buildOrgChartSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.OrgChartSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkOrgChartSpec(od);
     });
   });
@@ -10503,7 +9484,8 @@ void main() {
       final o = buildOverlayPosition();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.OverlayPosition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkOverlayPosition(od);
     });
   });
@@ -10512,8 +9494,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPadding();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Padding.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Padding.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPadding(od);
     });
   });
@@ -10523,7 +9506,8 @@ void main() {
       final o = buildPasteDataRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PasteDataRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPasteDataRequest(od);
     });
   });
@@ -10533,7 +9517,8 @@ void main() {
       final o = buildPersonProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PersonProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPersonProperties(od);
     });
   });
@@ -10543,7 +9528,8 @@ void main() {
       final o = buildPieChartSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PieChartSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPieChartSpec(od);
     });
   });
@@ -10553,7 +9539,8 @@ void main() {
       final o = buildPivotFilterCriteria();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PivotFilterCriteria.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPivotFilterCriteria(od);
     });
   });
@@ -10563,7 +9550,8 @@ void main() {
       final o = buildPivotFilterSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PivotFilterSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPivotFilterSpec(od);
     });
   });
@@ -10572,8 +9560,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPivotGroup();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.PivotGroup.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.PivotGroup.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPivotGroup(od);
     });
   });
@@ -10583,7 +9572,8 @@ void main() {
       final o = buildPivotGroupLimit();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PivotGroupLimit.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPivotGroupLimit(od);
     });
   });
@@ -10593,7 +9583,8 @@ void main() {
       final o = buildPivotGroupRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PivotGroupRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPivotGroupRule(od);
     });
   });
@@ -10603,7 +9594,8 @@ void main() {
       final o = buildPivotGroupSortValueBucket();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PivotGroupSortValueBucket.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPivotGroupSortValueBucket(od);
     });
   });
@@ -10613,7 +9605,8 @@ void main() {
       final o = buildPivotGroupValueMetadata();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PivotGroupValueMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPivotGroupValueMetadata(od);
     });
   });
@@ -10622,8 +9615,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPivotTable();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.PivotTable.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.PivotTable.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPivotTable(od);
     });
   });
@@ -10632,8 +9626,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPivotValue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.PivotValue.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.PivotValue.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPivotValue(od);
     });
   });
@@ -10642,8 +9637,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPointStyle();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.PointStyle.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.PointStyle.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPointStyle(od);
     });
   });
@@ -10653,7 +9649,8 @@ void main() {
       final o = buildProtectedRange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ProtectedRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkProtectedRange(od);
     });
   });
@@ -10663,7 +9660,8 @@ void main() {
       final o = buildRandomizeRangeRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RandomizeRangeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRandomizeRangeRequest(od);
     });
   });
@@ -10673,7 +9671,8 @@ void main() {
       final o = buildRefreshCancellationStatus();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RefreshCancellationStatus.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRefreshCancellationStatus(od);
     });
   });
@@ -10683,7 +9682,8 @@ void main() {
       final o = buildRefreshDataSourceObjectExecutionStatus();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RefreshDataSourceObjectExecutionStatus.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRefreshDataSourceObjectExecutionStatus(od);
     });
   });
@@ -10693,7 +9693,8 @@ void main() {
       final o = buildRefreshDataSourceRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RefreshDataSourceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRefreshDataSourceRequest(od);
     });
   });
@@ -10703,7 +9704,8 @@ void main() {
       final o = buildRefreshDataSourceResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RefreshDataSourceResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRefreshDataSourceResponse(od);
     });
   });
@@ -10713,7 +9715,8 @@ void main() {
       final o = buildRepeatCellRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RepeatCellRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRepeatCellRequest(od);
     });
   });
@@ -10722,8 +9725,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Request.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Request.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRequest(od);
     });
   });
@@ -10732,8 +9736,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Response.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Response.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkResponse(od);
     });
   });
@@ -10743,7 +9748,8 @@ void main() {
       final o = buildRichLinkProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RichLinkProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRichLinkProperties(od);
     });
   });
@@ -10752,8 +9758,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildRowData();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.RowData.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.RowData.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRowData(od);
     });
   });
@@ -10763,7 +9770,8 @@ void main() {
       final o = buildScorecardChartSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ScorecardChartSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkScorecardChartSpec(od);
     });
   });
@@ -10773,7 +9781,8 @@ void main() {
       final o = buildSearchDeveloperMetadataRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SearchDeveloperMetadataRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSearchDeveloperMetadataRequest(od);
     });
   });
@@ -10783,7 +9792,8 @@ void main() {
       final o = buildSearchDeveloperMetadataResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SearchDeveloperMetadataResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSearchDeveloperMetadataResponse(od);
     });
   });
@@ -10793,7 +9803,8 @@ void main() {
       final o = buildSetBasicFilterRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SetBasicFilterRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSetBasicFilterRequest(od);
     });
   });
@@ -10803,7 +9814,8 @@ void main() {
       final o = buildSetDataValidationRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SetDataValidationRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSetDataValidationRequest(od);
     });
   });
@@ -10812,8 +9824,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildSheet();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Sheet.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Sheet.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSheet(od);
     });
   });
@@ -10823,7 +9836,8 @@ void main() {
       final o = buildSheetProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SheetProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSheetProperties(od);
     });
   });
@@ -10832,8 +9846,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildSlicer();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Slicer.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Slicer.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSlicer(od);
     });
   });
@@ -10842,8 +9857,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildSlicerSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.SlicerSpec.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.SlicerSpec.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSlicerSpec(od);
     });
   });
@@ -10853,7 +9869,8 @@ void main() {
       final o = buildSortRangeRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SortRangeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSortRangeRequest(od);
     });
   });
@@ -10862,8 +9879,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildSortSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.SortSpec.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.SortSpec.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSortSpec(od);
     });
   });
@@ -10873,7 +9891,8 @@ void main() {
       final o = buildSourceAndDestination();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SourceAndDestination.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSourceAndDestination(od);
     });
   });
@@ -10883,7 +9902,8 @@ void main() {
       final o = buildSpreadsheet();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Spreadsheet.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSpreadsheet(od);
     });
   });
@@ -10893,7 +9913,8 @@ void main() {
       final o = buildSpreadsheetProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SpreadsheetProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSpreadsheetProperties(od);
     });
   });
@@ -10903,7 +9924,8 @@ void main() {
       final o = buildSpreadsheetTheme();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SpreadsheetTheme.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSpreadsheetTheme(od);
     });
   });
@@ -10912,8 +9934,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildTable();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Table.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Table.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTable(od);
     });
   });
@@ -10923,7 +9946,8 @@ void main() {
       final o = buildTableColumnDataValidationRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TableColumnDataValidationRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTableColumnDataValidationRule(od);
     });
   });
@@ -10933,7 +9957,8 @@ void main() {
       final o = buildTableColumnProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TableColumnProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTableColumnProperties(od);
     });
   });
@@ -10943,7 +9968,8 @@ void main() {
       final o = buildTableRowsProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TableRowsProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTableRowsProperties(od);
     });
   });
@@ -10952,8 +9978,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildTextFormat();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.TextFormat.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.TextFormat.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTextFormat(od);
     });
   });
@@ -10963,7 +9990,8 @@ void main() {
       final o = buildTextFormatRun();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TextFormatRun.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTextFormatRun(od);
     });
   });
@@ -10973,7 +10001,8 @@ void main() {
       final o = buildTextPosition();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TextPosition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTextPosition(od);
     });
   });
@@ -10983,7 +10012,8 @@ void main() {
       final o = buildTextRotation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TextRotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTextRotation(od);
     });
   });
@@ -10993,7 +10023,8 @@ void main() {
       final o = buildTextToColumnsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TextToColumnsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTextToColumnsRequest(od);
     });
   });
@@ -11003,7 +10034,8 @@ void main() {
       final o = buildThemeColorPair();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ThemeColorPair.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkThemeColorPair(od);
     });
   });
@@ -11012,8 +10044,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildTimeOfDay();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.TimeOfDay.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.TimeOfDay.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTimeOfDay(od);
     });
   });
@@ -11023,7 +10056,8 @@ void main() {
       final o = buildTreemapChartColorScale();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TreemapChartColorScale.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTreemapChartColorScale(od);
     });
   });
@@ -11033,7 +10067,8 @@ void main() {
       final o = buildTreemapChartSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TreemapChartSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTreemapChartSpec(od);
     });
   });
@@ -11043,7 +10078,8 @@ void main() {
       final o = buildTrimWhitespaceRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TrimWhitespaceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTrimWhitespaceRequest(od);
     });
   });
@@ -11053,7 +10089,8 @@ void main() {
       final o = buildTrimWhitespaceResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TrimWhitespaceResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTrimWhitespaceResponse(od);
     });
   });
@@ -11063,7 +10100,8 @@ void main() {
       final o = buildUnmergeCellsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UnmergeCellsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUnmergeCellsRequest(od);
     });
   });
@@ -11073,7 +10111,8 @@ void main() {
       final o = buildUpdateBandingRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateBandingRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateBandingRequest(od);
     });
   });
@@ -11083,7 +10122,8 @@ void main() {
       final o = buildUpdateBordersRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateBordersRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateBordersRequest(od);
     });
   });
@@ -11093,7 +10133,8 @@ void main() {
       final o = buildUpdateCellsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateCellsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateCellsRequest(od);
     });
   });
@@ -11103,7 +10144,8 @@ void main() {
       final o = buildUpdateChartSpecRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateChartSpecRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateChartSpecRequest(od);
     });
   });
@@ -11113,7 +10155,8 @@ void main() {
       final o = buildUpdateConditionalFormatRuleRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateConditionalFormatRuleRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateConditionalFormatRuleRequest(od);
     });
   });
@@ -11123,7 +10166,8 @@ void main() {
       final o = buildUpdateConditionalFormatRuleResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateConditionalFormatRuleResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateConditionalFormatRuleResponse(od);
     });
   });
@@ -11133,7 +10177,8 @@ void main() {
       final o = buildUpdateDataSourceRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateDataSourceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateDataSourceRequest(od);
     });
   });
@@ -11143,7 +10188,8 @@ void main() {
       final o = buildUpdateDataSourceResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateDataSourceResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateDataSourceResponse(od);
     });
   });
@@ -11153,7 +10199,8 @@ void main() {
       final o = buildUpdateDeveloperMetadataRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateDeveloperMetadataRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateDeveloperMetadataRequest(od);
     });
   });
@@ -11163,7 +10210,8 @@ void main() {
       final o = buildUpdateDeveloperMetadataResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateDeveloperMetadataResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateDeveloperMetadataResponse(od);
     });
   });
@@ -11173,7 +10221,8 @@ void main() {
       final o = buildUpdateDimensionGroupRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateDimensionGroupRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateDimensionGroupRequest(od);
     });
   });
@@ -11183,7 +10232,8 @@ void main() {
       final o = buildUpdateDimensionPropertiesRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateDimensionPropertiesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateDimensionPropertiesRequest(od);
     });
   });
@@ -11193,7 +10243,8 @@ void main() {
       final o = buildUpdateEmbeddedObjectBorderRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateEmbeddedObjectBorderRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateEmbeddedObjectBorderRequest(od);
     });
   });
@@ -11203,7 +10254,8 @@ void main() {
       final o = buildUpdateEmbeddedObjectPositionRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateEmbeddedObjectPositionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateEmbeddedObjectPositionRequest(od);
     });
   });
@@ -11213,7 +10265,8 @@ void main() {
       final o = buildUpdateEmbeddedObjectPositionResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateEmbeddedObjectPositionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateEmbeddedObjectPositionResponse(od);
     });
   });
@@ -11223,7 +10276,8 @@ void main() {
       final o = buildUpdateFilterViewRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateFilterViewRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateFilterViewRequest(od);
     });
   });
@@ -11233,7 +10287,8 @@ void main() {
       final o = buildUpdateNamedRangeRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateNamedRangeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateNamedRangeRequest(od);
     });
   });
@@ -11243,7 +10298,8 @@ void main() {
       final o = buildUpdateProtectedRangeRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateProtectedRangeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateProtectedRangeRequest(od);
     });
   });
@@ -11253,7 +10309,8 @@ void main() {
       final o = buildUpdateSheetPropertiesRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateSheetPropertiesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateSheetPropertiesRequest(od);
     });
   });
@@ -11263,7 +10320,8 @@ void main() {
       final o = buildUpdateSlicerSpecRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateSlicerSpecRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateSlicerSpecRequest(od);
     });
   });
@@ -11273,7 +10331,8 @@ void main() {
       final o = buildUpdateSpreadsheetPropertiesRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateSpreadsheetPropertiesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateSpreadsheetPropertiesRequest(od);
     });
   });
@@ -11283,7 +10342,8 @@ void main() {
       final o = buildUpdateTableRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateTableRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateTableRequest(od);
     });
   });
@@ -11293,7 +10353,8 @@ void main() {
       final o = buildUpdateValuesByDataFilterResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateValuesByDataFilterResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateValuesByDataFilterResponse(od);
     });
   });
@@ -11303,7 +10364,8 @@ void main() {
       final o = buildUpdateValuesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UpdateValuesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUpdateValuesResponse(od);
     });
   });
@@ -11312,8 +10374,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildValueRange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ValueRange.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.ValueRange.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkValueRange(od);
     });
   });
@@ -11323,7 +10386,8 @@ void main() {
       final o = buildWaterfallChartColumnStyle();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.WaterfallChartColumnStyle.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWaterfallChartColumnStyle(od);
     });
   });
@@ -11333,7 +10397,8 @@ void main() {
       final o = buildWaterfallChartCustomSubtotal();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.WaterfallChartCustomSubtotal.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWaterfallChartCustomSubtotal(od);
     });
   });
@@ -11343,7 +10408,8 @@ void main() {
       final o = buildWaterfallChartDomain();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.WaterfallChartDomain.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWaterfallChartDomain(od);
     });
   });
@@ -11353,7 +10419,8 @@ void main() {
       final o = buildWaterfallChartSeries();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.WaterfallChartSeries.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWaterfallChartSeries(od);
     });
   });
@@ -11363,7 +10430,8 @@ void main() {
       final o = buildWaterfallChartSpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.WaterfallChartSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkWaterfallChartSpec(od);
     });
   });
@@ -11375,70 +10443,76 @@ void main() {
       final arg_request = buildBatchUpdateSpreadsheetRequest();
       final arg_spreadsheetId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.BatchUpdateSpreadsheetRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkBatchUpdateSpreadsheetRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.BatchUpdateSpreadsheetRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkBatchUpdateSpreadsheetRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf(':batchUpdate', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals(':batchUpdate'),
-        );
-        pathOffset += 12;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf(':batchUpdate', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals(':batchUpdate'),
+          );
+          pathOffset += 12;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildBatchUpdateSpreadsheetResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.batchUpdate(arg_request, arg_spreadsheetId,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildBatchUpdateSpreadsheetResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.batchUpdate(
+        arg_request,
+        arg_spreadsheetId,
+        $fields: arg_$fields,
+      );
       checkBatchUpdateSpreadsheetResponse(
-          response as api.BatchUpdateSpreadsheetResponse);
+        response as api.BatchUpdateSpreadsheetResponse,
+      );
     });
 
     unittest.test('method--create', () async {
@@ -11446,52 +10520,54 @@ void main() {
       final res = api.SheetsApi(mock).spreadsheets;
       final arg_request = buildSpreadsheet();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.Spreadsheet.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSpreadsheet(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Spreadsheet.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSpreadsheet(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('v4/spreadsheets'),
-        );
-        pathOffset += 15;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 15),
+            unittest.equals('v4/spreadsheets'),
+          );
+          pathOffset += 15;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildSpreadsheet());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSpreadsheet());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.create(arg_request, $fields: arg_$fields);
       checkSpreadsheet(response as api.Spreadsheet);
     });
@@ -11504,71 +10580,68 @@ void main() {
       final arg_includeGridData = true;
       final arg_ranges = buildUnnamed103();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['excludeTablesInBandedRanges']!.first,
-          unittest.equals('$arg_excludeTablesInBandedRanges'),
-        );
-        unittest.expect(
-          queryMap['includeGridData']!.first,
-          unittest.equals('$arg_includeGridData'),
-        );
-        unittest.expect(
-          queryMap['ranges']!,
-          unittest.equals(arg_ranges),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['excludeTablesInBandedRanges']!.first,
+            unittest.equals('$arg_excludeTablesInBandedRanges'),
+          );
+          unittest.expect(
+            queryMap['includeGridData']!.first,
+            unittest.equals('$arg_includeGridData'),
+          );
+          unittest.expect(queryMap['ranges']!, unittest.equals(arg_ranges));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildSpreadsheet());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.get(arg_spreadsheetId,
-          excludeTablesInBandedRanges: arg_excludeTablesInBandedRanges,
-          includeGridData: arg_includeGridData,
-          ranges: arg_ranges,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSpreadsheet());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(
+        arg_spreadsheetId,
+        excludeTablesInBandedRanges: arg_excludeTablesInBandedRanges,
+        includeGridData: arg_includeGridData,
+        ranges: arg_ranges,
+        $fields: arg_$fields,
+      );
       checkSpreadsheet(response as api.Spreadsheet);
     });
 
@@ -11578,68 +10651,71 @@ void main() {
       final arg_request = buildGetSpreadsheetByDataFilterRequest();
       final arg_spreadsheetId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GetSpreadsheetByDataFilterRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGetSpreadsheetByDataFilterRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GetSpreadsheetByDataFilterRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGetSpreadsheetByDataFilterRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf(':getByDataFilter', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals(':getByDataFilter'),
-        );
-        pathOffset += 16;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf(':getByDataFilter', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals(':getByDataFilter'),
+          );
+          pathOffset += 16;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildSpreadsheet());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.getByDataFilter(arg_request, arg_spreadsheetId,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSpreadsheet());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getByDataFilter(
+        arg_request,
+        arg_spreadsheetId,
+        $fields: arg_$fields,
+      );
       checkSpreadsheet(response as api.Spreadsheet);
     });
   });
@@ -11651,70 +10727,69 @@ void main() {
       final arg_spreadsheetId = 'foo';
       final arg_metadataId = 42;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/developerMetadata/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('/developerMetadata/'),
-        );
-        pathOffset += 19;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_metadataId'),
-        );
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/developerMetadata/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 19),
+            unittest.equals('/developerMetadata/'),
+          );
+          pathOffset += 19;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_metadataId'));
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildDeveloperMetadata());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.get(arg_spreadsheetId, arg_metadataId,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildDeveloperMetadata());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(
+        arg_spreadsheetId,
+        arg_metadataId,
+        $fields: arg_$fields,
+      );
       checkDeveloperMetadata(response as api.DeveloperMetadata);
     });
 
@@ -11724,71 +10799,76 @@ void main() {
       final arg_request = buildSearchDeveloperMetadataRequest();
       final arg_spreadsheetId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.SearchDeveloperMetadataRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSearchDeveloperMetadataRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SearchDeveloperMetadataRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSearchDeveloperMetadataRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/developerMetadata:search', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('/developerMetadata:search'),
-        );
-        pathOffset += 25;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/developerMetadata:search', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 25),
+            unittest.equals('/developerMetadata:search'),
+          );
+          pathOffset += 25;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildSearchDeveloperMetadataResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.search(arg_request, arg_spreadsheetId,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildSearchDeveloperMetadataResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.search(
+        arg_request,
+        arg_spreadsheetId,
+        $fields: arg_$fields,
+      );
       checkSearchDeveloperMetadataResponse(
-          response as api.SearchDeveloperMetadataResponse);
+        response as api.SearchDeveloperMetadataResponse,
+      );
     });
   });
 
@@ -11800,83 +10880,84 @@ void main() {
       final arg_spreadsheetId = 'foo';
       final arg_sheetId = 42;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.CopySheetToAnotherSpreadsheetRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkCopySheetToAnotherSpreadsheetRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.CopySheetToAnotherSpreadsheetRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkCopySheetToAnotherSpreadsheetRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/sheets/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('/sheets/'),
-        );
-        pathOffset += 8;
-        index = path.indexOf(':copyTo', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_sheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 7),
-          unittest.equals(':copyTo'),
-        );
-        pathOffset += 7;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/sheets/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('/sheets/'),
+          );
+          pathOffset += 8;
+          index = path.indexOf(':copyTo', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_sheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals(':copyTo'),
+          );
+          pathOffset += 7;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildSheetProperties());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSheetProperties());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.copyTo(
-          arg_request, arg_spreadsheetId, arg_sheetId,
-          $fields: arg_$fields);
+        arg_request,
+        arg_spreadsheetId,
+        arg_sheetId,
+        $fields: arg_$fields,
+      );
       checkSheetProperties(response as api.SheetProperties);
     });
   });
@@ -11894,108 +10975,109 @@ void main() {
       final arg_responseValueRenderOption = 'foo';
       final arg_valueInputOption = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ValueRange.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkValueRange(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ValueRange.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkValueRange(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/values/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('/values/'),
-        );
-        pathOffset += 8;
-        index = path.indexOf(':append', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_range'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 7),
-          unittest.equals(':append'),
-        );
-        pathOffset += 7;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/values/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('/values/'),
+          );
+          pathOffset += 8;
+          index = path.indexOf(':append', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_range'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals(':append'),
+          );
+          pathOffset += 7;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['includeValuesInResponse']!.first,
-          unittest.equals('$arg_includeValuesInResponse'),
-        );
-        unittest.expect(
-          queryMap['insertDataOption']!.first,
-          unittest.equals(arg_insertDataOption),
-        );
-        unittest.expect(
-          queryMap['responseDateTimeRenderOption']!.first,
-          unittest.equals(arg_responseDateTimeRenderOption),
-        );
-        unittest.expect(
-          queryMap['responseValueRenderOption']!.first,
-          unittest.equals(arg_responseValueRenderOption),
-        );
-        unittest.expect(
-          queryMap['valueInputOption']!.first,
-          unittest.equals(arg_valueInputOption),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['includeValuesInResponse']!.first,
+            unittest.equals('$arg_includeValuesInResponse'),
+          );
+          unittest.expect(
+            queryMap['insertDataOption']!.first,
+            unittest.equals(arg_insertDataOption),
+          );
+          unittest.expect(
+            queryMap['responseDateTimeRenderOption']!.first,
+            unittest.equals(arg_responseDateTimeRenderOption),
+          );
+          unittest.expect(
+            queryMap['responseValueRenderOption']!.first,
+            unittest.equals(arg_responseValueRenderOption),
+          );
+          unittest.expect(
+            queryMap['valueInputOption']!.first,
+            unittest.equals(arg_valueInputOption),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildAppendValuesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildAppendValuesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.append(
-          arg_request, arg_spreadsheetId, arg_range,
-          includeValuesInResponse: arg_includeValuesInResponse,
-          insertDataOption: arg_insertDataOption,
-          responseDateTimeRenderOption: arg_responseDateTimeRenderOption,
-          responseValueRenderOption: arg_responseValueRenderOption,
-          valueInputOption: arg_valueInputOption,
-          $fields: arg_$fields);
+        arg_request,
+        arg_spreadsheetId,
+        arg_range,
+        includeValuesInResponse: arg_includeValuesInResponse,
+        insertDataOption: arg_insertDataOption,
+        responseDateTimeRenderOption: arg_responseDateTimeRenderOption,
+        responseValueRenderOption: arg_responseValueRenderOption,
+        valueInputOption: arg_valueInputOption,
+        $fields: arg_$fields,
+      );
       checkAppendValuesResponse(response as api.AppendValuesResponse);
     });
 
@@ -12005,68 +11087,71 @@ void main() {
       final arg_request = buildBatchClearValuesRequest();
       final arg_spreadsheetId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.BatchClearValuesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkBatchClearValuesRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.BatchClearValuesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkBatchClearValuesRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/values:batchClear', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('/values:batchClear'),
-        );
-        pathOffset += 18;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/values:batchClear', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 18),
+            unittest.equals('/values:batchClear'),
+          );
+          pathOffset += 18;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildBatchClearValuesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.batchClear(arg_request, arg_spreadsheetId,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildBatchClearValuesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.batchClear(
+        arg_request,
+        arg_spreadsheetId,
+        $fields: arg_$fields,
+      );
       checkBatchClearValuesResponse(response as api.BatchClearValuesResponse);
     });
 
@@ -12076,72 +11161,76 @@ void main() {
       final arg_request = buildBatchClearValuesByDataFilterRequest();
       final arg_spreadsheetId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.BatchClearValuesByDataFilterRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkBatchClearValuesByDataFilterRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.BatchClearValuesByDataFilterRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkBatchClearValuesByDataFilterRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/values:batchClearByDataFilter', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 30),
-          unittest.equals('/values:batchClearByDataFilter'),
-        );
-        pathOffset += 30;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/values:batchClearByDataFilter', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 30),
+            unittest.equals('/values:batchClearByDataFilter'),
+          );
+          pathOffset += 30;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildBatchClearValuesByDataFilterResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildBatchClearValuesByDataFilterResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.batchClearByDataFilter(
-          arg_request, arg_spreadsheetId,
-          $fields: arg_$fields);
+        arg_request,
+        arg_spreadsheetId,
+        $fields: arg_$fields,
+      );
       checkBatchClearValuesByDataFilterResponse(
-          response as api.BatchClearValuesByDataFilterResponse);
+        response as api.BatchClearValuesByDataFilterResponse,
+      );
     });
 
     unittest.test('method--batchGet', () async {
@@ -12153,84 +11242,82 @@ void main() {
       final arg_ranges = buildUnnamed104();
       final arg_valueRenderOption = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/values:batchGet', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/values:batchGet'),
-        );
-        pathOffset += 16;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/values:batchGet', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('/values:batchGet'),
+          );
+          pathOffset += 16;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['dateTimeRenderOption']!.first,
-          unittest.equals(arg_dateTimeRenderOption),
-        );
-        unittest.expect(
-          queryMap['majorDimension']!.first,
-          unittest.equals(arg_majorDimension),
-        );
-        unittest.expect(
-          queryMap['ranges']!,
-          unittest.equals(arg_ranges),
-        );
-        unittest.expect(
-          queryMap['valueRenderOption']!.first,
-          unittest.equals(arg_valueRenderOption),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['dateTimeRenderOption']!.first,
+            unittest.equals(arg_dateTimeRenderOption),
+          );
+          unittest.expect(
+            queryMap['majorDimension']!.first,
+            unittest.equals(arg_majorDimension),
+          );
+          unittest.expect(queryMap['ranges']!, unittest.equals(arg_ranges));
+          unittest.expect(
+            queryMap['valueRenderOption']!.first,
+            unittest.equals(arg_valueRenderOption),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildBatchGetValuesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.batchGet(arg_spreadsheetId,
-          dateTimeRenderOption: arg_dateTimeRenderOption,
-          majorDimension: arg_majorDimension,
-          ranges: arg_ranges,
-          valueRenderOption: arg_valueRenderOption,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildBatchGetValuesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.batchGet(
+        arg_spreadsheetId,
+        dateTimeRenderOption: arg_dateTimeRenderOption,
+        majorDimension: arg_majorDimension,
+        ranges: arg_ranges,
+        valueRenderOption: arg_valueRenderOption,
+        $fields: arg_$fields,
+      );
       checkBatchGetValuesResponse(response as api.BatchGetValuesResponse);
     });
 
@@ -12240,72 +11327,76 @@ void main() {
       final arg_request = buildBatchGetValuesByDataFilterRequest();
       final arg_spreadsheetId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.BatchGetValuesByDataFilterRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkBatchGetValuesByDataFilterRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.BatchGetValuesByDataFilterRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkBatchGetValuesByDataFilterRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/values:batchGetByDataFilter', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 28),
-          unittest.equals('/values:batchGetByDataFilter'),
-        );
-        pathOffset += 28;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/values:batchGetByDataFilter', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 28),
+            unittest.equals('/values:batchGetByDataFilter'),
+          );
+          pathOffset += 28;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildBatchGetValuesByDataFilterResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildBatchGetValuesByDataFilterResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.batchGetByDataFilter(
-          arg_request, arg_spreadsheetId,
-          $fields: arg_$fields);
+        arg_request,
+        arg_spreadsheetId,
+        $fields: arg_$fields,
+      );
       checkBatchGetValuesByDataFilterResponse(
-          response as api.BatchGetValuesByDataFilterResponse);
+        response as api.BatchGetValuesByDataFilterResponse,
+      );
     });
 
     unittest.test('method--batchUpdate', () async {
@@ -12314,68 +11405,71 @@ void main() {
       final arg_request = buildBatchUpdateValuesRequest();
       final arg_spreadsheetId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.BatchUpdateValuesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkBatchUpdateValuesRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.BatchUpdateValuesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkBatchUpdateValuesRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/values:batchUpdate', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('/values:batchUpdate'),
-        );
-        pathOffset += 19;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/values:batchUpdate', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 19),
+            unittest.equals('/values:batchUpdate'),
+          );
+          pathOffset += 19;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildBatchUpdateValuesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.batchUpdate(arg_request, arg_spreadsheetId,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildBatchUpdateValuesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.batchUpdate(
+        arg_request,
+        arg_spreadsheetId,
+        $fields: arg_$fields,
+      );
       checkBatchUpdateValuesResponse(response as api.BatchUpdateValuesResponse);
     });
 
@@ -12385,72 +11479,76 @@ void main() {
       final arg_request = buildBatchUpdateValuesByDataFilterRequest();
       final arg_spreadsheetId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.BatchUpdateValuesByDataFilterRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkBatchUpdateValuesByDataFilterRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.BatchUpdateValuesByDataFilterRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkBatchUpdateValuesByDataFilterRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/values:batchUpdateByDataFilter', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 31),
-          unittest.equals('/values:batchUpdateByDataFilter'),
-        );
-        pathOffset += 31;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/values:batchUpdateByDataFilter', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 31),
+            unittest.equals('/values:batchUpdateByDataFilter'),
+          );
+          pathOffset += 31;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildBatchUpdateValuesByDataFilterResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildBatchUpdateValuesByDataFilterResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.batchUpdateByDataFilter(
-          arg_request, arg_spreadsheetId,
-          $fields: arg_$fields);
+        arg_request,
+        arg_spreadsheetId,
+        $fields: arg_$fields,
+      );
       checkBatchUpdateValuesByDataFilterResponse(
-          response as api.BatchUpdateValuesByDataFilterResponse);
+        response as api.BatchUpdateValuesByDataFilterResponse,
+      );
     });
 
     unittest.test('method--clear', () async {
@@ -12460,83 +11558,84 @@ void main() {
       final arg_spreadsheetId = 'foo';
       final arg_range = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ClearValuesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkClearValuesRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ClearValuesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkClearValuesRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/values/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('/values/'),
-        );
-        pathOffset += 8;
-        index = path.indexOf(':clear', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_range'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 6),
-          unittest.equals(':clear'),
-        );
-        pathOffset += 6;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/values/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('/values/'),
+          );
+          pathOffset += 8;
+          index = path.indexOf(':clear', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_range'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 6),
+            unittest.equals(':clear'),
+          );
+          pathOffset += 6;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildClearValuesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildClearValuesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.clear(
-          arg_request, arg_spreadsheetId, arg_range,
-          $fields: arg_$fields);
+        arg_request,
+        arg_spreadsheetId,
+        arg_range,
+        $fields: arg_$fields,
+      );
       checkClearValuesResponse(response as api.ClearValuesResponse);
     });
 
@@ -12549,85 +11648,84 @@ void main() {
       final arg_majorDimension = 'foo';
       final arg_valueRenderOption = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/values/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('/values/'),
-        );
-        pathOffset += 8;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_range'),
-        );
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/values/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('/values/'),
+          );
+          pathOffset += 8;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_range'));
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['dateTimeRenderOption']!.first,
-          unittest.equals(arg_dateTimeRenderOption),
-        );
-        unittest.expect(
-          queryMap['majorDimension']!.first,
-          unittest.equals(arg_majorDimension),
-        );
-        unittest.expect(
-          queryMap['valueRenderOption']!.first,
-          unittest.equals(arg_valueRenderOption),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['dateTimeRenderOption']!.first,
+            unittest.equals(arg_dateTimeRenderOption),
+          );
+          unittest.expect(
+            queryMap['majorDimension']!.first,
+            unittest.equals(arg_majorDimension),
+          );
+          unittest.expect(
+            queryMap['valueRenderOption']!.first,
+            unittest.equals(arg_valueRenderOption),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildValueRange());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.get(arg_spreadsheetId, arg_range,
-          dateTimeRenderOption: arg_dateTimeRenderOption,
-          majorDimension: arg_majorDimension,
-          valueRenderOption: arg_valueRenderOption,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildValueRange());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(
+        arg_spreadsheetId,
+        arg_range,
+        dateTimeRenderOption: arg_dateTimeRenderOption,
+        majorDimension: arg_majorDimension,
+        valueRenderOption: arg_valueRenderOption,
+        $fields: arg_$fields,
+      );
       checkValueRange(response as api.ValueRange);
     });
 
@@ -12642,95 +11740,95 @@ void main() {
       final arg_responseValueRenderOption = 'foo';
       final arg_valueInputOption = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ValueRange.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkValueRange(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ValueRange.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkValueRange(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('v4/spreadsheets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/values/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_spreadsheetId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('/values/'),
-        );
-        pathOffset += 8;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_range'),
-        );
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('v4/spreadsheets/'),
+          );
+          pathOffset += 16;
+          index = path.indexOf('/values/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_spreadsheetId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('/values/'),
+          );
+          pathOffset += 8;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_range'));
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['includeValuesInResponse']!.first,
-          unittest.equals('$arg_includeValuesInResponse'),
-        );
-        unittest.expect(
-          queryMap['responseDateTimeRenderOption']!.first,
-          unittest.equals(arg_responseDateTimeRenderOption),
-        );
-        unittest.expect(
-          queryMap['responseValueRenderOption']!.first,
-          unittest.equals(arg_responseValueRenderOption),
-        );
-        unittest.expect(
-          queryMap['valueInputOption']!.first,
-          unittest.equals(arg_valueInputOption),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['includeValuesInResponse']!.first,
+            unittest.equals('$arg_includeValuesInResponse'),
+          );
+          unittest.expect(
+            queryMap['responseDateTimeRenderOption']!.first,
+            unittest.equals(arg_responseDateTimeRenderOption),
+          );
+          unittest.expect(
+            queryMap['responseValueRenderOption']!.first,
+            unittest.equals(arg_responseValueRenderOption),
+          );
+          unittest.expect(
+            queryMap['valueInputOption']!.first,
+            unittest.equals(arg_valueInputOption),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildUpdateValuesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildUpdateValuesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.update(
-          arg_request, arg_spreadsheetId, arg_range,
-          includeValuesInResponse: arg_includeValuesInResponse,
-          responseDateTimeRenderOption: arg_responseDateTimeRenderOption,
-          responseValueRenderOption: arg_responseValueRenderOption,
-          valueInputOption: arg_valueInputOption,
-          $fields: arg_$fields);
+        arg_request,
+        arg_spreadsheetId,
+        arg_range,
+        includeValuesInResponse: arg_includeValuesInResponse,
+        responseDateTimeRenderOption: arg_responseDateTimeRenderOption,
+        responseValueRenderOption: arg_responseValueRenderOption,
+        valueInputOption: arg_valueInputOption,
+        $fields: arg_$fields,
+      );
       checkUpdateValuesResponse(response as api.UpdateValuesResponse);
     });
   });

@@ -25,9 +25,7 @@ const reservedMethodParameterNames = {
   'callOptions',
 };
 
-const _whitelistedGlobalParameterNames = {
-  'fields',
-};
+const _whitelistedGlobalParameterNames = {'fields'};
 
 /// Represents a oauth2 authentication scope.
 class OAuth2Scope {
@@ -126,32 +124,38 @@ class DartResourceMethod {
     // Normal positional parameters are following.
     if (parameters.isNotEmpty) {
       if (parameterString.isNotEmpty) parameterString.write(', ');
-      parameterString
-          .write(parameters.map((param) => param.declaration).join(', '));
+      parameterString.write(
+        parameters.map((param) => param.declaration).join(', '),
+      );
     }
 
     // Optional parameters come last (including the media parameters).
     if (namedParameters.isNotEmpty || mediaUpload || mediaDownload) {
       if (parameterString.isNotEmpty) parameterString.write(', ');
 
-      final namedString = StringBuffer()
-        ..write(namedParameters.map((param) => param.declaration).join(', '));
+      final namedString =
+          StringBuffer()..write(
+            namedParameters.map((param) => param.declaration).join(', '),
+          );
 
       if (mediaUpload) {
         if (namedString.isNotEmpty) namedString.write(', ');
         if (mediaUploadResumable) {
           // only take options if resume is supported
-          namedString.write('${imports.commons}.UploadOptions uploadOptions = '
-              '${imports.commons}.UploadOptions.defaultOptions, ');
+          namedString.write(
+            '${imports.commons}.UploadOptions uploadOptions = '
+            '${imports.commons}.UploadOptions.defaultOptions, ',
+          );
         }
         namedString.write('${imports.commons}.Media? uploadMedia');
       }
 
       if (mediaDownload) {
         if (namedString.isNotEmpty) namedString.write(', ');
-        namedString
-            .write('${imports.commons.ref()}DownloadOptions downloadOptions = '
-                '${imports.commons}.DownloadOptions.metadata');
+        namedString.write(
+          '${imports.commons.ref()}DownloadOptions downloadOptions = '
+          '${imports.commons}.DownloadOptions.metadata',
+        );
       }
 
       parameterString.write('{$namedString,}');
@@ -182,8 +186,10 @@ class DartResourceMethod {
     }
 
     if (requestParameter != null) {
-      commentBuilder.writeln('[${requestParameter!.name.name}] - '
-          '${requestParameter!.comment.rawComment}\n');
+      commentBuilder.writeln(
+        '[${requestParameter!.name.name}] - '
+        '${requestParameter!.comment.rawComment}\n',
+      );
     }
 
     commentBuilder.writeln('Request parameters:\n');
@@ -199,45 +205,59 @@ class DartResourceMethod {
       commentBuilder.writeln('[uploadMedia] - The media to upload.\n');
     }
     if (mediaUploadResumable) {
-      commentBuilder.writeln('[uploadOptions] - Options for the media upload. '
-          'Streaming Media without the length being known '
-          'ahead of time is only supported via resumable '
-          'uploads.\n');
+      commentBuilder.writeln(
+        '[uploadOptions] - Options for the media upload. '
+        'Streaming Media without the length being known '
+        'ahead of time is only supported via resumable '
+        'uploads.\n',
+      );
     }
 
     if (mediaDownload) {
-      commentBuilder.writeln('[downloadOptions] - Options for downloading. '
-          'A download can be either a Metadata (default) '
-          'or Media download. Partial Media downloads '
-          'are possible as well.\n');
+      commentBuilder.writeln(
+        '[downloadOptions] - Options for downloading. '
+        'A download can be either a Metadata (default) '
+        'or Media download. Partial Media downloads '
+        'are possible as well.\n',
+      );
     }
 
     if (returnType != null) {
       if (mediaDownload) {
         commentBuilder.writeln('Completes with a\n');
-        commentBuilder.writeln('- [${returnType!.declaration}] for Metadata '
-            'downloads (see [downloadOptions]).\n');
-        commentBuilder.writeln('- [${imports.commons}.Media] for Media '
-            'downloads (see [downloadOptions]).\n');
+        commentBuilder.writeln(
+          '- [${returnType!.declaration}] for Metadata '
+          'downloads (see [downloadOptions]).\n',
+        );
+        commentBuilder.writeln(
+          '- [${imports.commons}.Media] for Media '
+          'downloads (see [downloadOptions]).\n',
+        );
       } else {
-        commentBuilder
-            .writeln('Completes with a [${returnType!.declaration}].\n');
+        commentBuilder.writeln(
+          'Completes with a [${returnType!.declaration}].\n',
+        );
       }
     }
-    commentBuilder.writeln('Completes with a '
-        '[${imports.commons}.ApiRequestError] '
-        'if the API endpoint returned an error.\n');
-    commentBuilder.writeln('If the used [${imports.http}.Client] '
-        'completes with an error when making a REST call, '
-        'this method will complete with the same error.\n');
+    commentBuilder.writeln(
+      'Completes with a '
+      '[${imports.commons}.ApiRequestError] '
+      'if the API endpoint returned an error.\n',
+    );
+    commentBuilder.writeln(
+      'If the used [${imports.http}.Client] '
+      'completes with an error when making a REST call, '
+      'this method will complete with the same error.\n',
+    );
 
     final methodComment = Comment('$commentBuilder');
 
     final core = imports.core.ref();
 
     if (requestParameter != null) {
-      final parameterEncode =
-          requestParameter!.type.jsonEncode('${requestParameter!.name}');
+      final parameterEncode = requestParameter!.type.jsonEncode(
+        '${requestParameter!.name}',
+      );
       params.write(
         'final body_ = ${imports.convert.ref()}json.encode($parameterEncode);',
       );
@@ -253,8 +273,10 @@ class DartResourceMethod {
         // Still check for empty arrays that should not be empty.
         if (param.type is UnnamedArrayType) {
           params.writeln('    if (${param.name}.isEmpty) {');
-          params.writeln('      throw ${imports.core.ref()}ArgumentError'
-              "('Parameter ${param.name} is required.');");
+          params.writeln(
+            '      throw ${imports.core.ref()}ArgumentError'
+            "('Parameter ${param.name} is required.');",
+          );
           params.writeln('    }');
         }
       } else {
@@ -272,7 +294,8 @@ class DartResourceMethod {
         final innerType = (param.type as HasInnertype).innerType!;
         String? expr;
         if (innerType.needsPrimitiveEncoding) {
-          expr = '${param.name}.map('
+          expr =
+              '${param.name}.map('
               '(item) => ${innerType.primitiveEncoding('item')}).toList()';
         } else {
           expr = param.name.name;
@@ -316,12 +339,10 @@ class DartResourceMethod {
     }
 
     if (queryParams.isNotEmpty) {
-      params.writeln(
-        '''
+      params.writeln('''
 final queryParams_ = <${core}String, ${core}List<${core}String>>{
   ${queryParams.join('\n')}
-};''',
-      );
+};''');
     }
 
     final urlPatternCode = StringBuffer();
@@ -356,9 +377,10 @@ final queryParams_ = <${core}String, ${core}List<${core}String>>{
     final responseVar =
         (returnType == null && !mediaDownload) ? '' : 'final response_ = ';
 
-    final downloadOptions = mediaDownload
-        ? 'downloadOptions: downloadOptions,'
-        : returnType == null
+    final downloadOptions =
+        mediaDownload
+            ? 'downloadOptions: downloadOptions,'
+            : returnType == null
             ? 'downloadOptions: null,'
             : '';
 
@@ -366,9 +388,10 @@ final queryParams_ = <${core}String, ${core}List<${core}String>>{
     final queryParamsArg =
         queryParams.isNotEmpty ? 'queryParams: queryParams_,' : '';
     final mediaUploadArg = mediaUpload ? 'uploadMedia: uploadMedia,' : '';
-    final mediaResumableArg = mediaUploadResumable
-        ? 'uploadOptions: uploadOptions,'
-        : mediaUpload
+    final mediaResumableArg =
+        mediaUploadResumable
+            ? 'uploadOptions: uploadOptions,'
+            : mediaUpload
             ? 'uploadOptions: ${imports.commons}.UploadOptions.defaultOptions,'
             : '';
 
@@ -379,19 +402,14 @@ final queryParams_ = <${core}String, ${core}List<${core}String>>{
 $urlPatternCode
 
     $responseVar await _requester.request(
-      url_,
-      '$httpMethod',
-      $bodyOption
-      $queryParamsArg
-      $mediaUploadArg
-      $mediaResumableArg
-      $downloadOptions
+      url_, '$httpMethod', $bodyOption $queryParamsArg $mediaUploadArg $mediaResumableArg $downloadOptions
     );
 ''');
 
-    final data = enableDataWrapper
-        ? "(response_ as ${imports.core.ref()}Map)['data']"
-        : 'response_';
+    final data =
+        enableDataWrapper
+            ? "(response_ as ${imports.core.ref()}Map)['data']"
+            : 'response_';
     final plainResponse =
         returnType != null ? returnType!.jsonDecode(data) : 'null';
     if (mediaDownload) {
@@ -415,10 +433,8 @@ $urlPatternCode
     }
     methodString.writeln('  $_signature async {');
 
-    methodString.write(
-      '''
-$params$requestCode''',
-    );
+    methodString.write('''
+$params$requestCode''');
 
     methodString.writeln('  }');
 
@@ -454,8 +470,10 @@ class DartResourceClass {
     for (var i = 0; i < subResourceIdentifiers.length; i++) {
       final identifier = subResourceIdentifiers[i];
       final resource = subResources[i];
-      str.writeln('  ${resource.className} get ${identifier.name} '
-          '=> ${resource.className}(_requester);');
+      str.writeln(
+        '  ${resource.className} get ${identifier.name} '
+        '=> ${resource.className}(_requester);',
+      );
     }
     if (str.isNotEmpty) str.writeln();
     return '$str';
@@ -516,8 +534,10 @@ class DartApiClass extends DartResourceClass {
     final sb = StringBuffer();
     for (var scope in scopes) {
       final doc = scope.comment.asDartDoc(2);
-      sb.writeln('$doc  static const ${scope.identifier} = '
-          '${escapeDartString(scope.url)};');
+      sb.writeln(
+        '$doc  static const ${scope.identifier} = '
+        '${escapeDartString(scope.url)};',
+      );
       sb.writeln();
     }
     sb.writeln();
@@ -535,8 +555,10 @@ class DartApiClass extends DartResourceClass {
     ].join(', ');
 
     str.writeln('  $className(${imports.http}.Client client, {$parameters}) :');
-    str.write('      _requester = ${imports.commons}.ApiRequester'
-        '(client, rootUrl, servicePath, requestHeaders)');
+    str.write(
+      '      _requester = ${imports.commons}.ApiRequester'
+      '(client, rootUrl, servicePath, requestHeaders)',
+    );
     str.writeln(';');
     return '$str';
   }
@@ -579,11 +601,15 @@ DartResourceMethod _parseMethod(
 
   // This set will be reduced to all optional parameters.
   final pendingParameterNames = SplayTreeSet.of(
-      method.parameters != null ? method.parameters!.keys.toSet() : <String>{});
+    method.parameters != null ? method.parameters!.keys.toSet() : <String>{},
+  );
 
   final positionalParameters = <MethodParameter>[];
   void tryEnqueuePositionalParameter(
-      String jsonName, Comment comment, JsonSchema? schema) {
+    String jsonName,
+    Comment comment,
+    JsonSchema? schema,
+  ) {
     if (!pendingParameterNames.contains(jsonName)) return;
 
     final parameter = method.parameters![jsonName]!;
@@ -593,8 +619,16 @@ DartResourceMethod _parseMethod(
       final type = _parseResolved(imports, db, parameter);
       comment = extendEnumComment(comment, type);
       comment = extendAnyTypeComment(comment, type);
-      positionalParameters.add(MethodParameter(
-          name, comment, true, type, jsonName, parameter.location != 'query'));
+      positionalParameters.add(
+        MethodParameter(
+          name,
+          comment,
+          true,
+          type,
+          jsonName,
+          parameter.location != 'query',
+        ),
+      );
     }
   }
 
@@ -609,14 +643,16 @@ DartResourceMethod _parseMethod(
     final type = _parseResolved(imports, db, schema);
     comment = extendEnumComment(comment, type);
     comment = extendAnyTypeComment(comment, type);
-    optionalParameters.add(MethodParameter(
-      name,
-      comment,
-      false,
-      type,
-      jsonName,
-      schema.location != 'query',
-    ));
+    optionalParameters.add(
+      MethodParameter(
+        name,
+        comment,
+        false,
+        type,
+        jsonName,
+        schema.location != 'query',
+      ),
+    );
   }
 
   Comment parameterComment(JsonSchema parameter) {
@@ -644,13 +680,19 @@ DartResourceMethod _parseMethod(
     for (var jsonName in method.parameterOrder!) {
       if (method.parameters == null ||
           !method.parameters!.keys.contains(jsonName)) {
-        throw GeneratorError(description.name, description.version,
-            'Parameters for method $jsonName does not have a type!');
+        throw GeneratorError(
+          description.name,
+          description.version,
+          'Parameters for method $jsonName does not have a type!',
+        );
       }
       final comment = parameterComment(method.parameters![jsonName]!);
 
       tryEnqueuePositionalParameter(
-          jsonName, comment, method.parameters![jsonName]);
+        jsonName,
+        comment,
+        method.parameters![jsonName],
+      );
     }
   }
 
@@ -660,7 +702,10 @@ DartResourceMethod _parseMethod(
     method.parameters!.forEach((String jsonName, JsonSchema parameter) {
       final comment = parameterComment(parameter);
       tryEnqueuePositionalParameter(
-          jsonName, comment, method.parameters![jsonName]);
+        jsonName,
+        comment,
+        method.parameters![jsonName],
+      );
     });
   }
 
@@ -687,8 +732,14 @@ DartResourceMethod _parseMethod(
     final type = getValidReference(method.request!.P_ref!);
     final requestName = parameterScope.newIdentifier('request');
     final comment = Comment('The metadata request object.');
-    dartRequestParameter =
-        MethodParameter(requestName, comment, true, type, null, null);
+    dartRequestParameter = MethodParameter(
+      requestName,
+      comment,
+      true,
+      type,
+      null,
+      null,
+    );
   }
 
   DartSchemaType? dartResponseType;
@@ -706,11 +757,15 @@ DartResourceMethod _parseMethod(
   if (method.supportsMediaUpload == true) {
     mediaUploadPatterns = <String, UriTemplate>{
       'simple': UriTemplate.parse(
-          imports, method.mediaUpload!.protocols!.simple!.path!),
+        imports,
+        method.mediaUpload!.protocols!.simple!.path!,
+      ),
     };
     if (method.mediaUpload!.protocols!.simple!.multipart != true) {
-      throw ArgumentError('We always require simple upload '
-          'protocol with multipart support.');
+      throw ArgumentError(
+        'We always require simple upload '
+        'protocol with multipart support.',
+      );
     }
     mediaUploadResumable = method.mediaUpload?.protocols?.resumable != null;
     if (mediaUploadResumable) {
@@ -719,8 +774,10 @@ DartResourceMethod _parseMethod(
         method.mediaUpload!.protocols!.resumable!.path!,
       );
       if (method.mediaUpload!.protocols!.resumable!.multipart != true) {
-        throw ArgumentError('We always require resumable upload '
-            'protocol with multipart support.');
+        throw ArgumentError(
+          'We always require resumable upload '
+          'protocol with multipart support.',
+        );
       }
     }
   }
@@ -817,12 +874,15 @@ DartResourceClass _parseResource(
     final scopes = <OAuth2Scope>[];
 
     if (description.auth != null && description.auth!.oauth2 != null) {
-      orderedForEach(description.auth!.oauth2!.scopes!,
-          (String scope, RestDescriptionAuthOauth2ScopesValue? description) {
+      orderedForEach(description.auth!.oauth2!.scopes!, (
+        String scope,
+        RestDescriptionAuthOauth2ScopesValue? description,
+      ) {
         final scopeId = classScope.newIdentifier(Scope.toValidScopeName(scope));
 
         scopes.add(
-            OAuth2Scope(scope, scopeId, Comment(description!.description)));
+          OAuth2Scope(scope, scopeId, Comment(description!.description)),
+        );
       });
     }
 
@@ -858,9 +918,11 @@ DartResourceClass _parseResource(
     assert(description.rootUrl != null);
     assert(description.rootUrl!.endsWith('/'));
     assert(description.servicePath != null);
-    assert(description.servicePath == '' ||
-        (!description.servicePath!.startsWith('/') &&
-            description.servicePath!.endsWith('/')));
+    assert(
+      description.servicePath == '' ||
+          (!description.servicePath!.startsWith('/') &&
+              description.servicePath!.endsWith('/')),
+    );
     if (description.baseUrl != null) {
       final expectedBaseUrl =
           '${description.rootUrl}${description.servicePath}';
@@ -905,27 +967,28 @@ DartApiClass parseResources(
   DartSchemaTypeDB db,
   RestDescription description,
 ) {
-  var resourceName =
-      (description.canonicalName ?? description.name)!.replaceAllMapped(
-    _spaceCapitalRegExp,
-    (match) => match.group(1)!.toUpperCase(),
-  );
+  var resourceName = (description.canonicalName ?? description.name)!
+      .replaceAllMapped(
+        _spaceCapitalRegExp,
+        (match) => match.group(1)!.toUpperCase(),
+      );
 
   if (resourceName.toLowerCase().endsWith('api')) {
     resourceName = resourceName.substring(0, resourceName.length - 3);
   }
 
   return _parseResource(
-    imports,
-    db,
-    description,
-    resourceName,
-    description.description,
-    description.methods,
-    description.resources,
-    '',
-    deprecated: false,
-  ) as DartApiClass;
+        imports,
+        db,
+        description,
+        resourceName,
+        description.description,
+        description.methods,
+        description.resources,
+        '',
+        deprecated: false,
+      )
+      as DartApiClass;
 }
 
 final _spaceCapitalRegExp = RegExp(' ([a-zA-Z])');
@@ -946,7 +1009,10 @@ String generateResources(DartApiClass apiClass) {
 
 // NOTE: This will be called for resolving parameter types in methods.
 DartSchemaType _parseResolved(
-    DartApiImports imports, DartSchemaTypeDB db, JsonSchema schema) {
+  DartApiImports imports,
+  DartSchemaTypeDB db,
+  JsonSchema schema,
+) {
   if (schema.repeated != null && schema.repeated!) {
     final innerType = parsePrimitive(imports, db, schema);
     return UnnamedArrayType(imports, innerType);

@@ -51,11 +51,16 @@ class EssentialcontactsApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  EssentialcontactsApi(http.Client client,
-      {core.String rootUrl = 'https://essentialcontacts.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  EssentialcontactsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://essentialcontacts.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class FoldersResource {
@@ -129,7 +134,8 @@ class FoldersContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds a new contact for a resource.
@@ -172,7 +178,8 @@ class FoldersContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a contact.
@@ -211,7 +218,8 @@ class FoldersContactsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a single contact.
@@ -250,7 +258,8 @@ class FoldersContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the contacts that have been set on a resource.
@@ -302,7 +311,8 @@ class FoldersContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a contact.
@@ -352,7 +362,8 @@ class FoldersContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Allows a contact admin to send a test message to contact to verify that it
@@ -399,7 +410,8 @@ class FoldersContactsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -416,7 +428,7 @@ class OrganizationsContactsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsContactsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists all contacts for the resource that are subscribed to the specified
   /// notification categories, including contacts inherited from any parent
@@ -476,7 +488,8 @@ class OrganizationsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds a new contact for a resource.
@@ -519,7 +532,8 @@ class OrganizationsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a contact.
@@ -558,7 +572,8 @@ class OrganizationsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a single contact.
@@ -597,7 +612,8 @@ class OrganizationsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the contacts that have been set on a resource.
@@ -649,7 +665,8 @@ class OrganizationsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a contact.
@@ -699,7 +716,8 @@ class OrganizationsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Allows a contact admin to send a test message to contact to verify that it
@@ -746,7 +764,8 @@ class OrganizationsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -821,7 +840,8 @@ class ProjectsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds a new contact for a resource.
@@ -864,7 +884,8 @@ class ProjectsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a contact.
@@ -903,7 +924,8 @@ class ProjectsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a single contact.
@@ -942,7 +964,8 @@ class ProjectsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the contacts that have been set on a resource.
@@ -994,7 +1017,8 @@ class ProjectsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a contact.
@@ -1044,7 +1068,8 @@ class ProjectsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Allows a contact admin to send a test message to contact to verify that it
@@ -1091,7 +1116,8 @@ class ProjectsContactsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1116,18 +1142,22 @@ class GoogleCloudEssentialcontactsV1ComputeContactsResponse {
   });
 
   GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(core.Map json_)
-      : this(
-          contacts: (json_['contacts'] as core.List?)
-              ?.map((value) => GoogleCloudEssentialcontactsV1Contact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        contacts:
+            (json_['contacts'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudEssentialcontactsV1Contact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contacts != null) 'contacts': contacts!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (contacts != null) 'contacts': contacts!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// A contact that will receive notifications from Google Cloud.
@@ -1195,28 +1225,27 @@ class GoogleCloudEssentialcontactsV1Contact {
   });
 
   GoogleCloudEssentialcontactsV1Contact.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-          languageTag: json_['languageTag'] as core.String?,
-          name: json_['name'] as core.String?,
-          notificationCategorySubscriptions:
-              (json_['notificationCategorySubscriptions'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          validateTime: json_['validateTime'] as core.String?,
-          validationState: json_['validationState'] as core.String?,
-        );
+    : this(
+        email: json_['email'] as core.String?,
+        languageTag: json_['languageTag'] as core.String?,
+        name: json_['name'] as core.String?,
+        notificationCategorySubscriptions:
+            (json_['notificationCategorySubscriptions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        validateTime: json_['validateTime'] as core.String?,
+        validationState: json_['validationState'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (languageTag != null) 'languageTag': languageTag!,
-        if (name != null) 'name': name!,
-        if (notificationCategorySubscriptions != null)
-          'notificationCategorySubscriptions':
-              notificationCategorySubscriptions!,
-        if (validateTime != null) 'validateTime': validateTime!,
-        if (validationState != null) 'validationState': validationState!,
-      };
+    if (email != null) 'email': email!,
+    if (languageTag != null) 'languageTag': languageTag!,
+    if (name != null) 'name': name!,
+    if (notificationCategorySubscriptions != null)
+      'notificationCategorySubscriptions': notificationCategorySubscriptions!,
+    if (validateTime != null) 'validateTime': validateTime!,
+    if (validationState != null) 'validationState': validationState!,
+  };
 }
 
 /// Response message for the ListContacts method.
@@ -1238,18 +1267,22 @@ class GoogleCloudEssentialcontactsV1ListContactsResponse {
   });
 
   GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(core.Map json_)
-      : this(
-          contacts: (json_['contacts'] as core.List?)
-              ?.map((value) => GoogleCloudEssentialcontactsV1Contact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        contacts:
+            (json_['contacts'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudEssentialcontactsV1Contact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contacts != null) 'contacts': contacts!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (contacts != null) 'contacts': contacts!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Request message for the SendTestMessage method.
@@ -1295,18 +1328,19 @@ class GoogleCloudEssentialcontactsV1SendTestMessageRequest {
   });
 
   GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(core.Map json_)
-      : this(
-          contacts: (json_['contacts'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          notificationCategory: json_['notificationCategory'] as core.String?,
-        );
+    : this(
+        contacts:
+            (json_['contacts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        notificationCategory: json_['notificationCategory'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contacts != null) 'contacts': contacts!,
-        if (notificationCategory != null)
-          'notificationCategory': notificationCategory!,
-      };
+    if (contacts != null) 'contacts': contacts!,
+    if (notificationCategory != null)
+      'notificationCategory': notificationCategory!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

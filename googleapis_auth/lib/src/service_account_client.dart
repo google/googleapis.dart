@@ -44,14 +44,13 @@ Future<AutoRefreshingAuthClient> clientViaServiceAccount(
   ServiceAccountCredentials clientCredentials,
   List<String> scopes, {
   Client? baseClient,
-}) async =>
-    await clientFromFlow(
-      (c) => JwtFlow(
-        clientCredentials.email,
-        clientCredentials.privateRSAKey,
-        clientCredentials.impersonatedUser,
-        scopes,
-        c,
-      ),
-      baseClient: baseClient,
-    );
+}) async => await clientFromFlow(
+  (c) => JwtFlow(
+    clientCredentials.email,
+    clientCredentials.privateRSAKey,
+    clientCredentials.impersonatedUser,
+    scopes,
+    c,
+  ),
+  baseClient: baseClient,
+);

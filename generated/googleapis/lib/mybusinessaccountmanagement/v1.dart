@@ -54,12 +54,16 @@ class MyBusinessAccountManagementApi {
   AccountsResource get accounts => AccountsResource(_requester);
   LocationsResource get locations => LocationsResource(_requester);
 
-  MyBusinessAccountManagementApi(http.Client client,
-      {core.String rootUrl =
-          'https://mybusinessaccountmanagement.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  MyBusinessAccountManagementApi(
+    http.Client client, {
+    core.String rootUrl = 'https://mybusinessaccountmanagement.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class AccountsResource {
@@ -94,10 +98,7 @@ class AccountsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> create(
-    Account request, {
-    core.String? $fields,
-  }) async {
+  async.Future<Account> create(Account request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -134,10 +135,7 @@ class AccountsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Account> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -211,7 +209,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return ListAccountsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified business account.
@@ -337,10 +336,7 @@ class AccountsAdminsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -389,7 +385,8 @@ class AccountsAdminsResource {
       queryParams: queryParams_,
     );
     return ListAccountAdminsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the Admin for the specified Account Admin.
@@ -445,7 +442,7 @@ class AccountsInvitationsResource {
   final commons.ApiRequester _requester;
 
   AccountsInvitationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Accepts the specified invitation.
   ///
@@ -568,7 +565,8 @@ class AccountsInvitationsResource {
       queryParams: queryParams_,
     );
     return ListInvitationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -695,10 +693,7 @@ class LocationsAdminsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -747,7 +742,8 @@ class LocationsAdminsResource {
       queryParams: queryParams_,
     );
     return ListLocationAdminsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the Admin for the specified location.
@@ -928,34 +924,37 @@ class Account {
   });
 
   Account.fromJson(core.Map json_)
-      : this(
-          accountName: json_['accountName'] as core.String?,
-          accountNumber: json_['accountNumber'] as core.String?,
-          name: json_['name'] as core.String?,
-          organizationInfo: json_.containsKey('organizationInfo')
-              ? OrganizationInfo.fromJson(json_['organizationInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          permissionLevel: json_['permissionLevel'] as core.String?,
-          primaryOwner: json_['primaryOwner'] as core.String?,
-          role: json_['role'] as core.String?,
-          type: json_['type'] as core.String?,
-          verificationState: json_['verificationState'] as core.String?,
-          vettedState: json_['vettedState'] as core.String?,
-        );
+    : this(
+        accountName: json_['accountName'] as core.String?,
+        accountNumber: json_['accountNumber'] as core.String?,
+        name: json_['name'] as core.String?,
+        organizationInfo:
+            json_.containsKey('organizationInfo')
+                ? OrganizationInfo.fromJson(
+                  json_['organizationInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        permissionLevel: json_['permissionLevel'] as core.String?,
+        primaryOwner: json_['primaryOwner'] as core.String?,
+        role: json_['role'] as core.String?,
+        type: json_['type'] as core.String?,
+        verificationState: json_['verificationState'] as core.String?,
+        vettedState: json_['vettedState'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountName != null) 'accountName': accountName!,
-        if (accountNumber != null) 'accountNumber': accountNumber!,
-        if (name != null) 'name': name!,
-        if (organizationInfo != null) 'organizationInfo': organizationInfo!,
-        if (permissionLevel != null) 'permissionLevel': permissionLevel!,
-        if (primaryOwner != null) 'primaryOwner': primaryOwner!,
-        if (role != null) 'role': role!,
-        if (type != null) 'type': type!,
-        if (verificationState != null) 'verificationState': verificationState!,
-        if (vettedState != null) 'vettedState': vettedState!,
-      };
+    if (accountName != null) 'accountName': accountName!,
+    if (accountNumber != null) 'accountNumber': accountNumber!,
+    if (name != null) 'name': name!,
+    if (organizationInfo != null) 'organizationInfo': organizationInfo!,
+    if (permissionLevel != null) 'permissionLevel': permissionLevel!,
+    if (primaryOwner != null) 'primaryOwner': primaryOwner!,
+    if (role != null) 'role': role!,
+    if (type != null) 'type': type!,
+    if (verificationState != null) 'verificationState': verificationState!,
+    if (vettedState != null) 'vettedState': vettedState!,
+  };
 }
 
 /// An administrator of an Account or a location.
@@ -1020,21 +1019,21 @@ class Admin {
   });
 
   Admin.fromJson(core.Map json_)
-      : this(
-          account: json_['account'] as core.String?,
-          admin: json_['admin'] as core.String?,
-          name: json_['name'] as core.String?,
-          pendingInvitation: json_['pendingInvitation'] as core.bool?,
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        account: json_['account'] as core.String?,
+        admin: json_['admin'] as core.String?,
+        name: json_['name'] as core.String?,
+        pendingInvitation: json_['pendingInvitation'] as core.bool?,
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!,
-        if (admin != null) 'admin': admin!,
-        if (name != null) 'name': name!,
-        if (pendingInvitation != null) 'pendingInvitation': pendingInvitation!,
-        if (role != null) 'role': role!,
-      };
+    if (account != null) 'account': account!,
+    if (admin != null) 'admin': admin!,
+    if (name != null) 'name': name!,
+    if (pendingInvitation != null) 'pendingInvitation': pendingInvitation!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// Request message for AccessControl.DeclineInvitation.
@@ -1095,27 +1094,32 @@ class Invitation {
   });
 
   Invitation.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          role: json_['role'] as core.String?,
-          targetAccount: json_.containsKey('targetAccount')
-              ? Account.fromJson(
-                  json_['targetAccount'] as core.Map<core.String, core.dynamic>)
-              : null,
-          targetLocation: json_.containsKey('targetLocation')
-              ? TargetLocation.fromJson(json_['targetLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          targetType: json_['targetType'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        role: json_['role'] as core.String?,
+        targetAccount:
+            json_.containsKey('targetAccount')
+                ? Account.fromJson(
+                  json_['targetAccount'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        targetLocation:
+            json_.containsKey('targetLocation')
+                ? TargetLocation.fromJson(
+                  json_['targetLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        targetType: json_['targetType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (role != null) 'role': role!,
-        if (targetAccount != null) 'targetAccount': targetAccount!,
-        if (targetLocation != null) 'targetLocation': targetLocation!,
-        if (targetType != null) 'targetType': targetType!,
-      };
+    if (name != null) 'name': name!,
+    if (role != null) 'role': role!,
+    if (targetAccount != null) 'targetAccount': targetAccount!,
+    if (targetLocation != null) 'targetLocation': targetLocation!,
+    if (targetType != null) 'targetType': targetType!,
+  };
 }
 
 /// Response message for AccessControl.ListAccountAdmins.
@@ -1123,21 +1127,23 @@ class ListAccountAdminsResponse {
   /// A collection of Admin instances.
   core.List<Admin>? accountAdmins;
 
-  ListAccountAdminsResponse({
-    this.accountAdmins,
-  });
+  ListAccountAdminsResponse({this.accountAdmins});
 
   ListAccountAdminsResponse.fromJson(core.Map json_)
-      : this(
-          accountAdmins: (json_['accountAdmins'] as core.List?)
-              ?.map((value) =>
-                  Admin.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        accountAdmins:
+            (json_['accountAdmins'] as core.List?)
+                ?.map(
+                  (value) => Admin.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountAdmins != null) 'accountAdmins': accountAdmins!,
-      };
+    if (accountAdmins != null) 'accountAdmins': accountAdmins!,
+  };
 }
 
 /// Response message for Accounts.ListAccounts.
@@ -1155,24 +1161,25 @@ class ListAccountsResponse {
   /// If there are no more accounts, this field is not present in the response.
   core.String? nextPageToken;
 
-  ListAccountsResponse({
-    this.accounts,
-    this.nextPageToken,
-  });
+  ListAccountsResponse({this.accounts, this.nextPageToken});
 
   ListAccountsResponse.fromJson(core.Map json_)
-      : this(
-          accounts: (json_['accounts'] as core.List?)
-              ?.map((value) => Account.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        accounts:
+            (json_['accounts'] as core.List?)
+                ?.map(
+                  (value) => Account.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accounts != null) 'accounts': accounts!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (accounts != null) 'accounts': accounts!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for AccessControl.ListInvitations.
@@ -1182,21 +1189,23 @@ class ListInvitationsResponse {
   /// The number of invitations listed here cannot exceed 1000.
   core.List<Invitation>? invitations;
 
-  ListInvitationsResponse({
-    this.invitations,
-  });
+  ListInvitationsResponse({this.invitations});
 
   ListInvitationsResponse.fromJson(core.Map json_)
-      : this(
-          invitations: (json_['invitations'] as core.List?)
-              ?.map((value) => Invitation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        invitations:
+            (json_['invitations'] as core.List?)
+                ?.map(
+                  (value) => Invitation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (invitations != null) 'invitations': invitations!,
-      };
+    if (invitations != null) 'invitations': invitations!,
+  };
 }
 
 /// Response message for AccessControl.ListLocationAdmins.
@@ -1204,21 +1213,23 @@ class ListLocationAdminsResponse {
   /// A collection of Admins.
   core.List<Admin>? admins;
 
-  ListLocationAdminsResponse({
-    this.admins,
-  });
+  ListLocationAdminsResponse({this.admins});
 
   ListLocationAdminsResponse.fromJson(core.Map json_)
-      : this(
-          admins: (json_['admins'] as core.List?)
-              ?.map((value) =>
-                  Admin.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        admins:
+            (json_['admins'] as core.List?)
+                ?.map(
+                  (value) => Admin.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (admins != null) 'admins': admins!,
-      };
+    if (admins != null) 'admins': admins!,
+  };
 }
 
 /// Additional information stored for an organization.
@@ -1238,27 +1249,25 @@ class OrganizationInfo {
   /// Output only.
   core.String? registeredDomain;
 
-  OrganizationInfo({
-    this.address,
-    this.phoneNumber,
-    this.registeredDomain,
-  });
+  OrganizationInfo({this.address, this.phoneNumber, this.registeredDomain});
 
   OrganizationInfo.fromJson(core.Map json_)
-      : this(
-          address: json_.containsKey('address')
-              ? PostalAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>)
-              : null,
-          phoneNumber: json_['phoneNumber'] as core.String?,
-          registeredDomain: json_['registeredDomain'] as core.String?,
-        );
+    : this(
+        address:
+            json_.containsKey('address')
+                ? PostalAddress.fromJson(
+                  json_['address'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        registeredDomain: json_['registeredDomain'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-        if (registeredDomain != null) 'registeredDomain': registeredDomain!,
-      };
+    if (address != null) 'address': address!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+    if (registeredDomain != null) 'registeredDomain': registeredDomain!,
+  };
 }
 
 /// Represents a postal address, such as for postal delivery or payments
@@ -1284,21 +1293,18 @@ class TargetLocation {
   /// The name of the location to which the user is invited.
   core.String? locationName;
 
-  TargetLocation({
-    this.address,
-    this.locationName,
-  });
+  TargetLocation({this.address, this.locationName});
 
   TargetLocation.fromJson(core.Map json_)
-      : this(
-          address: json_['address'] as core.String?,
-          locationName: json_['locationName'] as core.String?,
-        );
+    : this(
+        address: json_['address'] as core.String?,
+        locationName: json_['locationName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (locationName != null) 'locationName': locationName!,
-      };
+    if (address != null) 'address': address!,
+    if (locationName != null) 'locationName': locationName!,
+  };
 }
 
 /// Request message for AccessControl.TransferLocation.
@@ -1309,17 +1315,12 @@ class TransferLocationRequest {
   /// Required.
   core.String? destinationAccount;
 
-  TransferLocationRequest({
-    this.destinationAccount,
-  });
+  TransferLocationRequest({this.destinationAccount});
 
   TransferLocationRequest.fromJson(core.Map json_)
-      : this(
-          destinationAccount: json_['destinationAccount'] as core.String?,
-        );
+    : this(destinationAccount: json_['destinationAccount'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationAccount != null)
-          'destinationAccount': destinationAccount!,
-      };
+    if (destinationAccount != null) 'destinationAccount': destinationAccount!,
+  };
 }

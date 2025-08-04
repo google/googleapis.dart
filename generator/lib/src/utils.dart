@@ -13,12 +13,11 @@ extension RestDescriptionExtension on RestDescription {
             ? '2-$key'
             : '1-$key';
 
-    final pairs = output.entries.toList()
-      ..sort((a, b) => betterKey(a.key).compareTo(betterKey(b.key)));
+    final pairs =
+        output.entries.toList()
+          ..sort((a, b) => betterKey(a.key).compareTo(betterKey(b.key)));
 
-    return {
-      for (var p in pairs) p.key: p.value,
-    };
+    return {for (var p in pairs) p.key: p.value};
   }
 
   void sort() {

@@ -34,10 +34,7 @@ Future<void> _login() async {
     logLevel: 'debug',
   );
 
-  logToTextArea([
-    response.accessToken.toJson(),
-    response.scopes,
-  ].join('\n'));
+  logToTextArea([response.accessToken.toJson(), response.scopes].join('\n'));
 
   _accessToken = response.accessToken.data;
 
@@ -52,8 +49,5 @@ Future<void> _loginCode() async {
     logLevel: 'debug',
   );
 
-  logToTextArea([
-    response.code,
-    response.scope,
-  ].join('\n'));
+  logToTextArea([response.code, response.scope].join('\n'));
 }

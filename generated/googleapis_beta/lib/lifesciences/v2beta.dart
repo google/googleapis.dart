@@ -52,11 +52,16 @@ class CloudLifeSciencesApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudLifeSciencesApi(http.Client client,
-      {core.String rootUrl = 'https://lifesciences.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudLifeSciencesApi(
+    http.Client client, {
+    core.String rootUrl = 'https://lifesciences.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -95,10 +100,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -168,7 +170,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -176,7 +179,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -249,10 +252,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -325,7 +325,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -333,7 +334,7 @@ class ProjectsLocationsPipelinesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPipelinesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Runs a pipeline.
   ///
@@ -405,21 +406,18 @@ class Accelerator {
   /// startup time by a few minutes.
   core.String? type;
 
-  Accelerator({
-    this.count,
-    this.type,
-  });
+  Accelerator({this.count, this.type});
 
   Accelerator.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (type != null) 'type': type!,
-      };
+    if (count != null) 'count': count!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Specifies a single action that runs a Docker container.
@@ -612,88 +610,84 @@ class Action {
   });
 
   Action.fromJson(core.Map json_)
-      : this(
-          alwaysRun: json_['alwaysRun'] as core.bool?,
-          blockExternalNetwork: json_['blockExternalNetwork'] as core.bool?,
-          commands: (json_['commands'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          containerName: json_['containerName'] as core.String?,
-          credentials: json_.containsKey('credentials')
-              ? Secret.fromJson(
-                  json_['credentials'] as core.Map<core.String, core.dynamic>)
-              : null,
-          disableImagePrefetch: json_['disableImagePrefetch'] as core.bool?,
-          disableStandardErrorCapture:
-              json_['disableStandardErrorCapture'] as core.bool?,
-          enableFuse: json_['enableFuse'] as core.bool?,
-          encryptedEnvironment: json_.containsKey('encryptedEnvironment')
-              ? Secret.fromJson(json_['encryptedEnvironment']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          entrypoint: json_['entrypoint'] as core.String?,
-          environment:
-              (json_['environment'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          ignoreExitStatus: json_['ignoreExitStatus'] as core.bool?,
-          imageUri: json_['imageUri'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          mounts: (json_['mounts'] as core.List?)
-              ?.map((value) =>
-                  Mount.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          pidNamespace: json_['pidNamespace'] as core.String?,
-          portMappings:
-              (json_['portMappings'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.int,
-            ),
-          ),
-          publishExposedPorts: json_['publishExposedPorts'] as core.bool?,
-          runInBackground: json_['runInBackground'] as core.bool?,
-          timeout: json_['timeout'] as core.String?,
-        );
+    : this(
+        alwaysRun: json_['alwaysRun'] as core.bool?,
+        blockExternalNetwork: json_['blockExternalNetwork'] as core.bool?,
+        commands:
+            (json_['commands'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        containerName: json_['containerName'] as core.String?,
+        credentials:
+            json_.containsKey('credentials')
+                ? Secret.fromJson(
+                  json_['credentials'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        disableImagePrefetch: json_['disableImagePrefetch'] as core.bool?,
+        disableStandardErrorCapture:
+            json_['disableStandardErrorCapture'] as core.bool?,
+        enableFuse: json_['enableFuse'] as core.bool?,
+        encryptedEnvironment:
+            json_.containsKey('encryptedEnvironment')
+                ? Secret.fromJson(
+                  json_['encryptedEnvironment']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        entrypoint: json_['entrypoint'] as core.String?,
+        environment: (json_['environment']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        ignoreExitStatus: json_['ignoreExitStatus'] as core.bool?,
+        imageUri: json_['imageUri'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        mounts:
+            (json_['mounts'] as core.List?)
+                ?.map(
+                  (value) => Mount.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        pidNamespace: json_['pidNamespace'] as core.String?,
+        portMappings: (json_['portMappings']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.int)),
+        publishExposedPorts: json_['publishExposedPorts'] as core.bool?,
+        runInBackground: json_['runInBackground'] as core.bool?,
+        timeout: json_['timeout'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alwaysRun != null) 'alwaysRun': alwaysRun!,
-        if (blockExternalNetwork != null)
-          'blockExternalNetwork': blockExternalNetwork!,
-        if (commands != null) 'commands': commands!,
-        if (containerName != null) 'containerName': containerName!,
-        if (credentials != null) 'credentials': credentials!,
-        if (disableImagePrefetch != null)
-          'disableImagePrefetch': disableImagePrefetch!,
-        if (disableStandardErrorCapture != null)
-          'disableStandardErrorCapture': disableStandardErrorCapture!,
-        if (enableFuse != null) 'enableFuse': enableFuse!,
-        if (encryptedEnvironment != null)
-          'encryptedEnvironment': encryptedEnvironment!,
-        if (entrypoint != null) 'entrypoint': entrypoint!,
-        if (environment != null) 'environment': environment!,
-        if (ignoreExitStatus != null) 'ignoreExitStatus': ignoreExitStatus!,
-        if (imageUri != null) 'imageUri': imageUri!,
-        if (labels != null) 'labels': labels!,
-        if (mounts != null) 'mounts': mounts!,
-        if (pidNamespace != null) 'pidNamespace': pidNamespace!,
-        if (portMappings != null) 'portMappings': portMappings!,
-        if (publishExposedPorts != null)
-          'publishExposedPorts': publishExposedPorts!,
-        if (runInBackground != null) 'runInBackground': runInBackground!,
-        if (timeout != null) 'timeout': timeout!,
-      };
+    if (alwaysRun != null) 'alwaysRun': alwaysRun!,
+    if (blockExternalNetwork != null)
+      'blockExternalNetwork': blockExternalNetwork!,
+    if (commands != null) 'commands': commands!,
+    if (containerName != null) 'containerName': containerName!,
+    if (credentials != null) 'credentials': credentials!,
+    if (disableImagePrefetch != null)
+      'disableImagePrefetch': disableImagePrefetch!,
+    if (disableStandardErrorCapture != null)
+      'disableStandardErrorCapture': disableStandardErrorCapture!,
+    if (enableFuse != null) 'enableFuse': enableFuse!,
+    if (encryptedEnvironment != null)
+      'encryptedEnvironment': encryptedEnvironment!,
+    if (entrypoint != null) 'entrypoint': entrypoint!,
+    if (environment != null) 'environment': environment!,
+    if (ignoreExitStatus != null) 'ignoreExitStatus': ignoreExitStatus!,
+    if (imageUri != null) 'imageUri': imageUri!,
+    if (labels != null) 'labels': labels!,
+    if (mounts != null) 'mounts': mounts!,
+    if (pidNamespace != null) 'pidNamespace': pidNamespace!,
+    if (portMappings != null) 'portMappings': portMappings!,
+    if (publishExposedPorts != null)
+      'publishExposedPorts': publishExposedPorts!,
+    if (runInBackground != null) 'runInBackground': runInBackground!,
+    if (timeout != null) 'timeout': timeout!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -729,27 +723,22 @@ class Disk {
   /// If unspecified, `pd-standard` is used.
   core.String? type;
 
-  Disk({
-    this.name,
-    this.sizeGb,
-    this.sourceImage,
-    this.type,
-  });
+  Disk({this.name, this.sizeGb, this.sourceImage, this.type});
 
   Disk.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          sizeGb: json_['sizeGb'] as core.int?,
-          sourceImage: json_['sourceImage'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        sizeGb: json_['sizeGb'] as core.int?,
+        sourceImage: json_['sourceImage'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (sizeGb != null) 'sizeGb': sizeGb!,
-        if (sourceImage != null) 'sourceImage': sourceImage!,
-        if (type != null) 'type': type!,
-      };
+    if (name != null) 'name': name!,
+    if (sizeGb != null) 'sizeGb': sizeGb!,
+    if (sourceImage != null) 'sourceImage': sourceImage!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -774,18 +763,14 @@ class ExistingDisk {
   /// disk will be available for writing but cannot be shared.
   core.String? disk;
 
-  ExistingDisk({
-    this.disk,
-  });
+  ExistingDisk({this.disk});
 
   ExistingDisk.fromJson(core.Map json_)
-      : this(
-          disk: json_['disk'] as core.String?,
-        );
+    : this(disk: json_['disk'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disk != null) 'disk': disk!,
-      };
+    if (disk != null) 'disk': disk!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -796,24 +781,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -824,24 +810,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -858,24 +845,20 @@ class Mount {
   /// If true, the disk is mounted read-only inside the container.
   core.bool? readOnly;
 
-  Mount({
-    this.disk,
-    this.path,
-    this.readOnly,
-  });
+  Mount({this.disk, this.path, this.readOnly});
 
   Mount.fromJson(core.Map json_)
-      : this(
-          disk: json_['disk'] as core.String?,
-          path: json_['path'] as core.String?,
-          readOnly: json_['readOnly'] as core.bool?,
-        );
+    : this(
+        disk: json_['disk'] as core.String?,
+        path: json_['path'] as core.String?,
+        readOnly: json_['readOnly'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disk != null) 'disk': disk!,
-        if (path != null) 'path': path!,
-        if (readOnly != null) 'readOnly': readOnly!,
-      };
+    if (disk != null) 'disk': disk!,
+    if (path != null) 'path': path!,
+    if (readOnly != null) 'readOnly': readOnly!,
+  };
 }
 
 /// Configuration for an `NFSMount` to be attached to the VM.
@@ -885,18 +868,14 @@ class NFSMount {
   /// The target must be specified as \`address:/mount".
   core.String? target;
 
-  NFSMount({
-    this.target,
-  });
+  NFSMount({this.target});
 
   NFSMount.fromJson(core.Map json_)
-      : this(
-          target: json_['target'] as core.String?,
-        );
+    : this(target: json_['target'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (target != null) 'target': target!,
-      };
+    if (target != null) 'target': target!,
+  };
 }
 
 /// VM networking options.
@@ -925,24 +904,20 @@ class Network {
   /// information.
   core.bool? usePrivateAddress;
 
-  Network({
-    this.network,
-    this.subnetwork,
-    this.usePrivateAddress,
-  });
+  Network({this.network, this.subnetwork, this.usePrivateAddress});
 
   Network.fromJson(core.Map json_)
-      : this(
-          network: json_['network'] as core.String?,
-          subnetwork: json_['subnetwork'] as core.String?,
-          usePrivateAddress: json_['usePrivateAddress'] as core.bool?,
-        );
+    : this(
+        network: json_['network'] as core.String?,
+        subnetwork: json_['subnetwork'] as core.String?,
+        usePrivateAddress: json_['usePrivateAddress'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (network != null) 'network': network!,
-        if (subnetwork != null) 'subnetwork': subnetwork!,
-        if (usePrivateAddress != null) 'usePrivateAddress': usePrivateAddress!,
-      };
+    if (network != null) 'network': network!,
+    if (subnetwork != null) 'subnetwork': subnetwork!,
+    if (usePrivateAddress != null) 'usePrivateAddress': usePrivateAddress!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -977,37 +952,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Configuration for a persistent disk to be attached to the VM.
@@ -1032,24 +1005,20 @@ class PersistentDisk {
   /// If unspecified, `pd-standard` is used.
   core.String? type;
 
-  PersistentDisk({
-    this.sizeGb,
-    this.sourceImage,
-    this.type,
-  });
+  PersistentDisk({this.sizeGb, this.sourceImage, this.type});
 
   PersistentDisk.fromJson(core.Map json_)
-      : this(
-          sizeGb: json_['sizeGb'] as core.int?,
-          sourceImage: json_['sourceImage'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        sizeGb: json_['sizeGb'] as core.int?,
+        sourceImage: json_['sourceImage'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sizeGb != null) 'sizeGb': sizeGb!,
-        if (sourceImage != null) 'sourceImage': sourceImage!,
-        if (type != null) 'type': type!,
-      };
+    if (sizeGb != null) 'sizeGb': sizeGb!,
+    if (sourceImage != null) 'sourceImage': sourceImage!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Specifies a series of actions to execute, expressed as Docker containers.
@@ -1092,38 +1061,42 @@ class Pipeline {
   });
 
   Pipeline.fromJson(core.Map json_)
-      : this(
-          actions: (json_['actions'] as core.List?)
-              ?.map((value) =>
-                  Action.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          encryptedEnvironment: json_.containsKey('encryptedEnvironment')
-              ? Secret.fromJson(json_['encryptedEnvironment']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          environment:
-              (json_['environment'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          resources: json_.containsKey('resources')
-              ? Resources.fromJson(
-                  json_['resources'] as core.Map<core.String, core.dynamic>)
-              : null,
-          timeout: json_['timeout'] as core.String?,
-        );
+    : this(
+        actions:
+            (json_['actions'] as core.List?)
+                ?.map(
+                  (value) => Action.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        encryptedEnvironment:
+            json_.containsKey('encryptedEnvironment')
+                ? Secret.fromJson(
+                  json_['encryptedEnvironment']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        environment: (json_['environment']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        resources:
+            json_.containsKey('resources')
+                ? Resources.fromJson(
+                  json_['resources'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        timeout: json_['timeout'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actions != null) 'actions': actions!,
-        if (encryptedEnvironment != null)
-          'encryptedEnvironment': encryptedEnvironment!,
-        if (environment != null) 'environment': environment!,
-        if (resources != null) 'resources': resources!,
-        if (timeout != null) 'timeout': timeout!,
-      };
+    if (actions != null) 'actions': actions!,
+    if (encryptedEnvironment != null)
+      'encryptedEnvironment': encryptedEnvironment!,
+    if (environment != null) 'environment': environment!,
+    if (resources != null) 'resources': resources!,
+    if (timeout != null) 'timeout': timeout!,
+  };
 }
 
 /// The system resources for the pipeline run.
@@ -1143,31 +1116,32 @@ class Resources {
   /// If set, the `regions` field must not be set.
   core.List<core.String>? zones;
 
-  Resources({
-    this.regions,
-    this.virtualMachine,
-    this.zones,
-  });
+  Resources({this.regions, this.virtualMachine, this.zones});
 
   Resources.fromJson(core.Map json_)
-      : this(
-          regions: (json_['regions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          virtualMachine: json_.containsKey('virtualMachine')
-              ? VirtualMachine.fromJson(json_['virtualMachine']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          zones: (json_['zones'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        regions:
+            (json_['regions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        virtualMachine:
+            json_.containsKey('virtualMachine')
+                ? VirtualMachine.fromJson(
+                  json_['virtualMachine']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        zones:
+            (json_['zones'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (regions != null) 'regions': regions!,
-        if (virtualMachine != null) 'virtualMachine': virtualMachine!,
-        if (zones != null) 'zones': zones!,
-      };
+    if (regions != null) 'regions': regions!,
+    if (virtualMachine != null) 'virtualMachine': virtualMachine!,
+    if (zones != null) 'zones': zones!,
+  };
 }
 
 /// The arguments to the `RunPipeline` method.
@@ -1196,33 +1170,27 @@ class RunPipelineRequest {
   /// sent.
   core.String? pubSubTopic;
 
-  RunPipelineRequest({
-    this.labels,
-    this.pipeline,
-    this.pubSubTopic,
-  });
+  RunPipelineRequest({this.labels, this.pipeline, this.pubSubTopic});
 
   RunPipelineRequest.fromJson(core.Map json_)
-      : this(
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          pipeline: json_.containsKey('pipeline')
-              ? Pipeline.fromJson(
-                  json_['pipeline'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pubSubTopic: json_['pubSubTopic'] as core.String?,
-        );
+    : this(
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        pipeline:
+            json_.containsKey('pipeline')
+                ? Pipeline.fromJson(
+                  json_['pipeline'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pubSubTopic: json_['pubSubTopic'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-        if (pipeline != null) 'pipeline': pipeline!,
-        if (pubSubTopic != null) 'pubSubTopic': pubSubTopic!,
-      };
+    if (labels != null) 'labels': labels!,
+    if (pipeline != null) 'pipeline': pipeline!,
+    if (pubSubTopic != null) 'pubSubTopic': pubSubTopic!,
+  };
 }
 
 /// Holds encrypted information that is only decrypted and stored in RAM by the
@@ -1240,21 +1208,18 @@ class Secret {
   /// authentication scopes to invoke the `decrypt` method on the specified key.
   core.String? keyName;
 
-  Secret({
-    this.cipherText,
-    this.keyName,
-  });
+  Secret({this.cipherText, this.keyName});
 
   Secret.fromJson(core.Map json_)
-      : this(
-          cipherText: json_['cipherText'] as core.String?,
-          keyName: json_['keyName'] as core.String?,
-        );
+    : this(
+        cipherText: json_['cipherText'] as core.String?,
+        keyName: json_['keyName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cipherText != null) 'cipherText': cipherText!,
-        if (keyName != null) 'keyName': keyName!,
-      };
+    if (cipherText != null) 'cipherText': cipherText!,
+    if (keyName != null) 'keyName': keyName!,
+  };
 }
 
 /// Carries information about a Google Cloud service account.
@@ -1269,23 +1234,21 @@ class ServiceAccount {
   /// addition to the cloud-platform API scope that will be added by default.
   core.List<core.String>? scopes;
 
-  ServiceAccount({
-    this.email,
-    this.scopes,
-  });
+  ServiceAccount({this.email, this.scopes});
 
   ServiceAccount.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-          scopes: (json_['scopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        email: json_['email'] as core.String?,
+        scopes:
+            (json_['scopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (scopes != null) 'scopes': scopes!,
-      };
+    if (email != null) 'email': email!,
+    if (scopes != null) 'scopes': scopes!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1426,67 +1389,81 @@ class VirtualMachine {
   });
 
   VirtualMachine.fromJson(core.Map json_)
-      : this(
-          accelerators: (json_['accelerators'] as core.List?)
-              ?.map((value) => Accelerator.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
-          bootImage: json_['bootImage'] as core.String?,
-          cpuPlatform: json_['cpuPlatform'] as core.String?,
-          disks: (json_['disks'] as core.List?)
-              ?.map((value) =>
-                  Disk.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dockerCacheImages: (json_['dockerCacheImages'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          enableStackdriverMonitoring:
-              json_['enableStackdriverMonitoring'] as core.bool?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          machineType: json_['machineType'] as core.String?,
-          network: json_.containsKey('network')
-              ? Network.fromJson(
-                  json_['network'] as core.Map<core.String, core.dynamic>)
-              : null,
-          nvidiaDriverVersion: json_['nvidiaDriverVersion'] as core.String?,
-          preemptible: json_['preemptible'] as core.bool?,
-          reservation: json_['reservation'] as core.String?,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? ServiceAccount.fromJson(json_['serviceAccount']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          volumes: (json_['volumes'] as core.List?)
-              ?.map((value) =>
-                  Volume.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        accelerators:
+            (json_['accelerators'] as core.List?)
+                ?.map(
+                  (value) => Accelerator.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
+        bootImage: json_['bootImage'] as core.String?,
+        cpuPlatform: json_['cpuPlatform'] as core.String?,
+        disks:
+            (json_['disks'] as core.List?)
+                ?.map(
+                  (value) => Disk.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dockerCacheImages:
+            (json_['dockerCacheImages'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        enableStackdriverMonitoring:
+            json_['enableStackdriverMonitoring'] as core.bool?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        machineType: json_['machineType'] as core.String?,
+        network:
+            json_.containsKey('network')
+                ? Network.fromJson(
+                  json_['network'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nvidiaDriverVersion: json_['nvidiaDriverVersion'] as core.String?,
+        preemptible: json_['preemptible'] as core.bool?,
+        reservation: json_['reservation'] as core.String?,
+        serviceAccount:
+            json_.containsKey('serviceAccount')
+                ? ServiceAccount.fromJson(
+                  json_['serviceAccount']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        volumes:
+            (json_['volumes'] as core.List?)
+                ?.map(
+                  (value) => Volume.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accelerators != null) 'accelerators': accelerators!,
-        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
-        if (bootImage != null) 'bootImage': bootImage!,
-        if (cpuPlatform != null) 'cpuPlatform': cpuPlatform!,
-        if (disks != null) 'disks': disks!,
-        if (dockerCacheImages != null) 'dockerCacheImages': dockerCacheImages!,
-        if (enableStackdriverMonitoring != null)
-          'enableStackdriverMonitoring': enableStackdriverMonitoring!,
-        if (labels != null) 'labels': labels!,
-        if (machineType != null) 'machineType': machineType!,
-        if (network != null) 'network': network!,
-        if (nvidiaDriverVersion != null)
-          'nvidiaDriverVersion': nvidiaDriverVersion!,
-        if (preemptible != null) 'preemptible': preemptible!,
-        if (reservation != null) 'reservation': reservation!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (volumes != null) 'volumes': volumes!,
-      };
+    if (accelerators != null) 'accelerators': accelerators!,
+    if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
+    if (bootImage != null) 'bootImage': bootImage!,
+    if (cpuPlatform != null) 'cpuPlatform': cpuPlatform!,
+    if (disks != null) 'disks': disks!,
+    if (dockerCacheImages != null) 'dockerCacheImages': dockerCacheImages!,
+    if (enableStackdriverMonitoring != null)
+      'enableStackdriverMonitoring': enableStackdriverMonitoring!,
+    if (labels != null) 'labels': labels!,
+    if (machineType != null) 'machineType': machineType!,
+    if (network != null) 'network': network!,
+    if (nvidiaDriverVersion != null)
+      'nvidiaDriverVersion': nvidiaDriverVersion!,
+    if (preemptible != null) 'preemptible': preemptible!,
+    if (reservation != null) 'reservation': reservation!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (volumes != null) 'volumes': volumes!,
+  };
 }
 
 /// Carries information about storage that can be attached to a VM.
@@ -1509,34 +1486,36 @@ class Volume {
   /// with a hyphen.
   core.String? volume;
 
-  Volume({
-    this.existingDisk,
-    this.nfsMount,
-    this.persistentDisk,
-    this.volume,
-  });
+  Volume({this.existingDisk, this.nfsMount, this.persistentDisk, this.volume});
 
   Volume.fromJson(core.Map json_)
-      : this(
-          existingDisk: json_.containsKey('existingDisk')
-              ? ExistingDisk.fromJson(
-                  json_['existingDisk'] as core.Map<core.String, core.dynamic>)
-              : null,
-          nfsMount: json_.containsKey('nfsMount')
-              ? NFSMount.fromJson(
-                  json_['nfsMount'] as core.Map<core.String, core.dynamic>)
-              : null,
-          persistentDisk: json_.containsKey('persistentDisk')
-              ? PersistentDisk.fromJson(json_['persistentDisk']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          volume: json_['volume'] as core.String?,
-        );
+    : this(
+        existingDisk:
+            json_.containsKey('existingDisk')
+                ? ExistingDisk.fromJson(
+                  json_['existingDisk'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nfsMount:
+            json_.containsKey('nfsMount')
+                ? NFSMount.fromJson(
+                  json_['nfsMount'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        persistentDisk:
+            json_.containsKey('persistentDisk')
+                ? PersistentDisk.fromJson(
+                  json_['persistentDisk']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        volume: json_['volume'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (existingDisk != null) 'existingDisk': existingDisk!,
-        if (nfsMount != null) 'nfsMount': nfsMount!,
-        if (persistentDisk != null) 'persistentDisk': persistentDisk!,
-        if (volume != null) 'volume': volume!,
-      };
+    if (existingDisk != null) 'existingDisk': existingDisk!,
+    if (nfsMount != null) 'nfsMount': nfsMount!,
+    if (persistentDisk != null) 'persistentDisk': persistentDisk!,
+    if (volume != null) 'volume': volume!,
+  };
 }

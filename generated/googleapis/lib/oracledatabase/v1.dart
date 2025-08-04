@@ -64,11 +64,16 @@ class OracleDatabaseApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  OracleDatabaseApi(http.Client client,
-      {core.String rootUrl = 'https://oracledatabase.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  OracleDatabaseApi(
+    http.Client client, {
+    core.String rootUrl = 'https://oracledatabase.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -84,18 +89,18 @@ class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAutonomousDatabaseBackupsResource
-      get autonomousDatabaseBackups =>
-          ProjectsLocationsAutonomousDatabaseBackupsResource(_requester);
+  get autonomousDatabaseBackups =>
+      ProjectsLocationsAutonomousDatabaseBackupsResource(_requester);
   ProjectsLocationsAutonomousDatabaseCharacterSetsResource
-      get autonomousDatabaseCharacterSets =>
-          ProjectsLocationsAutonomousDatabaseCharacterSetsResource(_requester);
+  get autonomousDatabaseCharacterSets =>
+      ProjectsLocationsAutonomousDatabaseCharacterSetsResource(_requester);
   ProjectsLocationsAutonomousDatabasesResource get autonomousDatabases =>
       ProjectsLocationsAutonomousDatabasesResource(_requester);
   ProjectsLocationsAutonomousDbVersionsResource get autonomousDbVersions =>
       ProjectsLocationsAutonomousDbVersionsResource(_requester);
   ProjectsLocationsCloudExadataInfrastructuresResource
-      get cloudExadataInfrastructures =>
-          ProjectsLocationsCloudExadataInfrastructuresResource(_requester);
+  get cloudExadataInfrastructures =>
+      ProjectsLocationsCloudExadataInfrastructuresResource(_requester);
   ProjectsLocationsCloudVmClustersResource get cloudVmClusters =>
       ProjectsLocationsCloudVmClustersResource(_requester);
   ProjectsLocationsDbSystemShapesResource get dbSystemShapes =>
@@ -128,10 +133,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -201,7 +203,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -209,8 +212,8 @@ class ProjectsLocationsAutonomousDatabaseBackupsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAutonomousDatabaseBackupsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Lists the long-term and automatic backups of an Autonomous Database.
   ///
@@ -268,7 +271,8 @@ class ProjectsLocationsAutonomousDatabaseBackupsResource {
       queryParams: queryParams_,
     );
     return ListAutonomousDatabaseBackupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -276,8 +280,8 @@ class ProjectsLocationsAutonomousDatabaseCharacterSetsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAutonomousDatabaseCharacterSetsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Lists Autonomous Database Character Sets in a given project and location.
   ///
@@ -323,7 +327,8 @@ class ProjectsLocationsAutonomousDatabaseCharacterSetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/autonomousDatabaseCharacterSets';
 
@@ -333,7 +338,8 @@ class ProjectsLocationsAutonomousDatabaseCharacterSetsResource {
       queryParams: queryParams_,
     );
     return ListAutonomousDatabaseCharacterSetsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -341,7 +347,7 @@ class ProjectsLocationsAutonomousDatabasesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAutonomousDatabasesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new Autonomous Database in a given project and location.
   ///
@@ -492,7 +498,8 @@ class ProjectsLocationsAutonomousDatabasesResource {
       queryParams: queryParams_,
     );
     return GenerateAutonomousDatabaseWalletResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the details of a single Autonomous Database.
@@ -531,7 +538,8 @@ class ProjectsLocationsAutonomousDatabasesResource {
       queryParams: queryParams_,
     );
     return AutonomousDatabase.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the Autonomous Databases in a given project and location.
@@ -590,7 +598,8 @@ class ProjectsLocationsAutonomousDatabasesResource {
       queryParams: queryParams_,
     );
     return ListAutonomousDatabasesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Restarts an Autonomous Database.
@@ -814,7 +823,7 @@ class ProjectsLocationsAutonomousDbVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAutonomousDbVersionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists all the available Autonomous Database versions for a project and
   /// location.
@@ -863,7 +872,8 @@ class ProjectsLocationsAutonomousDbVersionsResource {
       queryParams: queryParams_,
     );
     return ListAutonomousDbVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -874,8 +884,8 @@ class ProjectsLocationsCloudExadataInfrastructuresResource {
       ProjectsLocationsCloudExadataInfrastructuresDbServersResource(_requester);
 
   ProjectsLocationsCloudExadataInfrastructuresResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a new Exadata Infrastructure in a given project and location.
   ///
@@ -1028,7 +1038,8 @@ class ProjectsLocationsCloudExadataInfrastructuresResource {
       queryParams: queryParams_,
     );
     return CloudExadataInfrastructure.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists Exadata Infrastructures in a given project and location.
@@ -1077,7 +1088,8 @@ class ProjectsLocationsCloudExadataInfrastructuresResource {
       queryParams: queryParams_,
     );
     return ListCloudExadataInfrastructuresResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1085,8 +1097,8 @@ class ProjectsLocationsCloudExadataInfrastructuresDbServersResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCloudExadataInfrastructuresDbServersResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Lists the database servers of an Exadata Infrastructure instance.
   ///
@@ -1135,7 +1147,8 @@ class ProjectsLocationsCloudExadataInfrastructuresDbServersResource {
       queryParams: queryParams_,
     );
     return ListDbServersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1146,7 +1159,7 @@ class ProjectsLocationsCloudVmClustersResource {
       ProjectsLocationsCloudVmClustersDbNodesResource(_requester);
 
   ProjectsLocationsCloudVmClustersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new VM Cluster in a given project and location.
   ///
@@ -1296,7 +1309,8 @@ class ProjectsLocationsCloudVmClustersResource {
       queryParams: queryParams_,
     );
     return CloudVmCluster.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the VM Clusters in a given project and location.
@@ -1349,7 +1363,8 @@ class ProjectsLocationsCloudVmClustersResource {
       queryParams: queryParams_,
     );
     return ListCloudVmClustersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1357,7 +1372,7 @@ class ProjectsLocationsCloudVmClustersDbNodesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCloudVmClustersDbNodesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the database nodes of a VM Cluster.
   ///
@@ -1407,7 +1422,8 @@ class ProjectsLocationsCloudVmClustersDbNodesResource {
       queryParams: queryParams_,
     );
     return ListDbNodesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1415,7 +1431,7 @@ class ProjectsLocationsDbSystemShapesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDbSystemShapesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the database system shapes available for the project and location.
   ///
@@ -1462,7 +1478,8 @@ class ProjectsLocationsDbSystemShapesResource {
       queryParams: queryParams_,
     );
     return ListDbSystemShapesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1470,7 +1487,7 @@ class ProjectsLocationsEntitlementsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsEntitlementsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the entitlements in a given project.
   ///
@@ -1517,7 +1534,8 @@ class ProjectsLocationsEntitlementsResource {
       queryParams: queryParams_,
     );
     return ListEntitlementsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1525,7 +1543,7 @@ class ProjectsLocationsGiVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGiVersionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists all the valid Oracle Grid Infrastructure (GI) versions for the given
   /// project and location.
@@ -1580,7 +1598,8 @@ class ProjectsLocationsGiVersionsResource {
       queryParams: queryParams_,
     );
     return ListGiVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1591,7 +1610,7 @@ class ProjectsLocationsOdbNetworksResource {
       ProjectsLocationsOdbNetworksOdbSubnetsResource(_requester);
 
   ProjectsLocationsOdbNetworksResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new ODB Network in a given project and location.
   ///
@@ -1717,10 +1736,7 @@ class ProjectsLocationsOdbNetworksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OdbNetwork> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<OdbNetwork> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1733,7 +1749,8 @@ class ProjectsLocationsOdbNetworksResource {
       queryParams: queryParams_,
     );
     return OdbNetwork.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the ODB Networks in a given project and location.
@@ -1791,7 +1808,8 @@ class ProjectsLocationsOdbNetworksResource {
       queryParams: queryParams_,
     );
     return ListOdbNetworksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1799,7 +1817,7 @@ class ProjectsLocationsOdbNetworksOdbSubnetsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOdbNetworksOdbSubnetsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new ODB Subnet in a given ODB Network.
   ///
@@ -1926,10 +1944,7 @@ class ProjectsLocationsOdbNetworksOdbSubnetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OdbSubnet> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<OdbSubnet> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2000,7 +2015,8 @@ class ProjectsLocationsOdbNetworksOdbSubnetsResource {
       queryParams: queryParams_,
     );
     return ListOdbSubnetsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2008,7 +2024,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -2082,10 +2098,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2121,10 +2134,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2186,7 +2196,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2211,24 +2222,20 @@ class AllConnectionStrings {
   /// Output only.
   core.String? medium;
 
-  AllConnectionStrings({
-    this.high,
-    this.low,
-    this.medium,
-  });
+  AllConnectionStrings({this.high, this.low, this.medium});
 
   AllConnectionStrings.fromJson(core.Map json_)
-      : this(
-          high: json_['high'] as core.String?,
-          low: json_['low'] as core.String?,
-          medium: json_['medium'] as core.String?,
-        );
+    : this(
+        high: json_['high'] as core.String?,
+        low: json_['low'] as core.String?,
+        medium: json_['medium'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (high != null) 'high': high!,
-        if (low != null) 'low': low!,
-        if (medium != null) 'medium': medium!,
-      };
+    if (high != null) 'high': high!,
+    if (low != null) 'low': low!,
+    if (medium != null) 'medium': medium!,
+  };
 }
 
 /// Details of the Autonomous Database resource.
@@ -2351,62 +2358,61 @@ class AutonomousDatabase {
   });
 
   AutonomousDatabase.fromJson(core.Map json_)
-      : this(
-          adminPassword: json_['adminPassword'] as core.String?,
-          cidr: json_['cidr'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          database: json_['database'] as core.String?,
-          disasterRecoverySupportedLocations:
-              (json_['disasterRecoverySupportedLocations'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          displayName: json_['displayName'] as core.String?,
-          entitlementId: json_['entitlementId'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          odbNetwork: json_['odbNetwork'] as core.String?,
-          odbSubnet: json_['odbSubnet'] as core.String?,
-          peerAutonomousDatabases:
-              (json_['peerAutonomousDatabases'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          properties: json_.containsKey('properties')
-              ? AutonomousDatabaseProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceConfig: json_.containsKey('sourceConfig')
-              ? SourceConfig.fromJson(
-                  json_['sourceConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        adminPassword: json_['adminPassword'] as core.String?,
+        cidr: json_['cidr'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        database: json_['database'] as core.String?,
+        disasterRecoverySupportedLocations:
+            (json_['disasterRecoverySupportedLocations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        displayName: json_['displayName'] as core.String?,
+        entitlementId: json_['entitlementId'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        odbNetwork: json_['odbNetwork'] as core.String?,
+        odbSubnet: json_['odbSubnet'] as core.String?,
+        peerAutonomousDatabases:
+            (json_['peerAutonomousDatabases'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        properties:
+            json_.containsKey('properties')
+                ? AutonomousDatabaseProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceConfig:
+            json_.containsKey('sourceConfig')
+                ? SourceConfig.fromJson(
+                  json_['sourceConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adminPassword != null) 'adminPassword': adminPassword!,
-        if (cidr != null) 'cidr': cidr!,
-        if (createTime != null) 'createTime': createTime!,
-        if (database != null) 'database': database!,
-        if (disasterRecoverySupportedLocations != null)
-          'disasterRecoverySupportedLocations':
-              disasterRecoverySupportedLocations!,
-        if (displayName != null) 'displayName': displayName!,
-        if (entitlementId != null) 'entitlementId': entitlementId!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (odbNetwork != null) 'odbNetwork': odbNetwork!,
-        if (odbSubnet != null) 'odbSubnet': odbSubnet!,
-        if (peerAutonomousDatabases != null)
-          'peerAutonomousDatabases': peerAutonomousDatabases!,
-        if (properties != null) 'properties': properties!,
-        if (sourceConfig != null) 'sourceConfig': sourceConfig!,
-      };
+    if (adminPassword != null) 'adminPassword': adminPassword!,
+    if (cidr != null) 'cidr': cidr!,
+    if (createTime != null) 'createTime': createTime!,
+    if (database != null) 'database': database!,
+    if (disasterRecoverySupportedLocations != null)
+      'disasterRecoverySupportedLocations': disasterRecoverySupportedLocations!,
+    if (displayName != null) 'displayName': displayName!,
+    if (entitlementId != null) 'entitlementId': entitlementId!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (odbNetwork != null) 'odbNetwork': odbNetwork!,
+    if (odbSubnet != null) 'odbSubnet': odbSubnet!,
+    if (peerAutonomousDatabases != null)
+      'peerAutonomousDatabases': peerAutonomousDatabases!,
+    if (properties != null) 'properties': properties!,
+    if (sourceConfig != null) 'sourceConfig': sourceConfig!,
+  };
 }
 
 /// Oracle APEX Application Development.
@@ -2423,21 +2429,18 @@ class AutonomousDatabaseApex {
   /// Output only.
   core.String? ordsVersion;
 
-  AutonomousDatabaseApex({
-    this.apexVersion,
-    this.ordsVersion,
-  });
+  AutonomousDatabaseApex({this.apexVersion, this.ordsVersion});
 
   AutonomousDatabaseApex.fromJson(core.Map json_)
-      : this(
-          apexVersion: json_['apexVersion'] as core.String?,
-          ordsVersion: json_['ordsVersion'] as core.String?,
-        );
+    : this(
+        apexVersion: json_['apexVersion'] as core.String?,
+        ordsVersion: json_['ordsVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apexVersion != null) 'apexVersion': apexVersion!,
-        if (ordsVersion != null) 'ordsVersion': ordsVersion!,
-      };
+    if (apexVersion != null) 'apexVersion': apexVersion!,
+    if (ordsVersion != null) 'ordsVersion': ordsVersion!,
+  };
 }
 
 /// Details of the Autonomous Database Backup resource.
@@ -2485,31 +2488,28 @@ class AutonomousDatabaseBackup {
   });
 
   AutonomousDatabaseBackup.fromJson(core.Map json_)
-      : this(
-          autonomousDatabase: json_['autonomousDatabase'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          properties: json_.containsKey('properties')
-              ? AutonomousDatabaseBackupProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        autonomousDatabase: json_['autonomousDatabase'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? AutonomousDatabaseBackupProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autonomousDatabase != null)
-          'autonomousDatabase': autonomousDatabase!,
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (properties != null) 'properties': properties!,
-      };
+    if (autonomousDatabase != null) 'autonomousDatabase': autonomousDatabase!,
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (properties != null) 'properties': properties!,
+  };
 }
 
 /// Properties of the Autonomous Database Backup resource.
@@ -2660,52 +2660,52 @@ class AutonomousDatabaseBackupProperties {
   });
 
   AutonomousDatabaseBackupProperties.fromJson(core.Map json_)
-      : this(
-          availableTillTime: json_['availableTillTime'] as core.String?,
-          compartmentId: json_['compartmentId'] as core.String?,
-          databaseSizeTb: (json_['databaseSizeTb'] as core.num?)?.toDouble(),
-          dbVersion: json_['dbVersion'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          isAutomaticBackup: json_['isAutomaticBackup'] as core.bool?,
-          isLongTermBackup: json_['isLongTermBackup'] as core.bool?,
-          isRestorable: json_['isRestorable'] as core.bool?,
-          keyStoreId: json_['keyStoreId'] as core.String?,
-          keyStoreWallet: json_['keyStoreWallet'] as core.String?,
-          kmsKeyId: json_['kmsKeyId'] as core.String?,
-          kmsKeyVersionId: json_['kmsKeyVersionId'] as core.String?,
-          lifecycleDetails: json_['lifecycleDetails'] as core.String?,
-          lifecycleState: json_['lifecycleState'] as core.String?,
-          ocid: json_['ocid'] as core.String?,
-          retentionPeriodDays: json_['retentionPeriodDays'] as core.int?,
-          sizeTb: (json_['sizeTb'] as core.num?)?.toDouble(),
-          startTime: json_['startTime'] as core.String?,
-          type: json_['type'] as core.String?,
-          vaultId: json_['vaultId'] as core.String?,
-        );
+    : this(
+        availableTillTime: json_['availableTillTime'] as core.String?,
+        compartmentId: json_['compartmentId'] as core.String?,
+        databaseSizeTb: (json_['databaseSizeTb'] as core.num?)?.toDouble(),
+        dbVersion: json_['dbVersion'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        isAutomaticBackup: json_['isAutomaticBackup'] as core.bool?,
+        isLongTermBackup: json_['isLongTermBackup'] as core.bool?,
+        isRestorable: json_['isRestorable'] as core.bool?,
+        keyStoreId: json_['keyStoreId'] as core.String?,
+        keyStoreWallet: json_['keyStoreWallet'] as core.String?,
+        kmsKeyId: json_['kmsKeyId'] as core.String?,
+        kmsKeyVersionId: json_['kmsKeyVersionId'] as core.String?,
+        lifecycleDetails: json_['lifecycleDetails'] as core.String?,
+        lifecycleState: json_['lifecycleState'] as core.String?,
+        ocid: json_['ocid'] as core.String?,
+        retentionPeriodDays: json_['retentionPeriodDays'] as core.int?,
+        sizeTb: (json_['sizeTb'] as core.num?)?.toDouble(),
+        startTime: json_['startTime'] as core.String?,
+        type: json_['type'] as core.String?,
+        vaultId: json_['vaultId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availableTillTime != null) 'availableTillTime': availableTillTime!,
-        if (compartmentId != null) 'compartmentId': compartmentId!,
-        if (databaseSizeTb != null) 'databaseSizeTb': databaseSizeTb!,
-        if (dbVersion != null) 'dbVersion': dbVersion!,
-        if (endTime != null) 'endTime': endTime!,
-        if (isAutomaticBackup != null) 'isAutomaticBackup': isAutomaticBackup!,
-        if (isLongTermBackup != null) 'isLongTermBackup': isLongTermBackup!,
-        if (isRestorable != null) 'isRestorable': isRestorable!,
-        if (keyStoreId != null) 'keyStoreId': keyStoreId!,
-        if (keyStoreWallet != null) 'keyStoreWallet': keyStoreWallet!,
-        if (kmsKeyId != null) 'kmsKeyId': kmsKeyId!,
-        if (kmsKeyVersionId != null) 'kmsKeyVersionId': kmsKeyVersionId!,
-        if (lifecycleDetails != null) 'lifecycleDetails': lifecycleDetails!,
-        if (lifecycleState != null) 'lifecycleState': lifecycleState!,
-        if (ocid != null) 'ocid': ocid!,
-        if (retentionPeriodDays != null)
-          'retentionPeriodDays': retentionPeriodDays!,
-        if (sizeTb != null) 'sizeTb': sizeTb!,
-        if (startTime != null) 'startTime': startTime!,
-        if (type != null) 'type': type!,
-        if (vaultId != null) 'vaultId': vaultId!,
-      };
+    if (availableTillTime != null) 'availableTillTime': availableTillTime!,
+    if (compartmentId != null) 'compartmentId': compartmentId!,
+    if (databaseSizeTb != null) 'databaseSizeTb': databaseSizeTb!,
+    if (dbVersion != null) 'dbVersion': dbVersion!,
+    if (endTime != null) 'endTime': endTime!,
+    if (isAutomaticBackup != null) 'isAutomaticBackup': isAutomaticBackup!,
+    if (isLongTermBackup != null) 'isLongTermBackup': isLongTermBackup!,
+    if (isRestorable != null) 'isRestorable': isRestorable!,
+    if (keyStoreId != null) 'keyStoreId': keyStoreId!,
+    if (keyStoreWallet != null) 'keyStoreWallet': keyStoreWallet!,
+    if (kmsKeyId != null) 'kmsKeyId': kmsKeyId!,
+    if (kmsKeyVersionId != null) 'kmsKeyVersionId': kmsKeyVersionId!,
+    if (lifecycleDetails != null) 'lifecycleDetails': lifecycleDetails!,
+    if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+    if (ocid != null) 'ocid': ocid!,
+    if (retentionPeriodDays != null)
+      'retentionPeriodDays': retentionPeriodDays!,
+    if (sizeTb != null) 'sizeTb': sizeTb!,
+    if (startTime != null) 'startTime': startTime!,
+    if (type != null) 'type': type!,
+    if (vaultId != null) 'vaultId': vaultId!,
+  };
 }
 
 /// Details of the Autonomous Database character set resource.
@@ -2741,17 +2741,17 @@ class AutonomousDatabaseCharacterSet {
   });
 
   AutonomousDatabaseCharacterSet.fromJson(core.Map json_)
-      : this(
-          characterSet: json_['characterSet'] as core.String?,
-          characterSetType: json_['characterSetType'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        characterSet: json_['characterSet'] as core.String?,
+        characterSetType: json_['characterSetType'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (characterSet != null) 'characterSet': characterSet!,
-        if (characterSetType != null) 'characterSetType': characterSetType!,
-        if (name != null) 'name': name!,
-      };
+    if (characterSet != null) 'characterSet': characterSet!,
+    if (characterSetType != null) 'characterSetType': characterSetType!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The connection string used to connect to the Autonomous Database.
@@ -2804,30 +2804,37 @@ class AutonomousDatabaseConnectionStrings {
   });
 
   AutonomousDatabaseConnectionStrings.fromJson(core.Map json_)
-      : this(
-          allConnectionStrings: json_.containsKey('allConnectionStrings')
-              ? AllConnectionStrings.fromJson(json_['allConnectionStrings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dedicated: json_['dedicated'] as core.String?,
-          high: json_['high'] as core.String?,
-          low: json_['low'] as core.String?,
-          medium: json_['medium'] as core.String?,
-          profiles: (json_['profiles'] as core.List?)
-              ?.map((value) => DatabaseConnectionStringProfile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        allConnectionStrings:
+            json_.containsKey('allConnectionStrings')
+                ? AllConnectionStrings.fromJson(
+                  json_['allConnectionStrings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dedicated: json_['dedicated'] as core.String?,
+        high: json_['high'] as core.String?,
+        low: json_['low'] as core.String?,
+        medium: json_['medium'] as core.String?,
+        profiles:
+            (json_['profiles'] as core.List?)
+                ?.map(
+                  (value) => DatabaseConnectionStringProfile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allConnectionStrings != null)
-          'allConnectionStrings': allConnectionStrings!,
-        if (dedicated != null) 'dedicated': dedicated!,
-        if (high != null) 'high': high!,
-        if (low != null) 'low': low!,
-        if (medium != null) 'medium': medium!,
-        if (profiles != null) 'profiles': profiles!,
-      };
+    if (allConnectionStrings != null)
+      'allConnectionStrings': allConnectionStrings!,
+    if (dedicated != null) 'dedicated': dedicated!,
+    if (high != null) 'high': high!,
+    if (low != null) 'low': low!,
+    if (medium != null) 'medium': medium!,
+    if (profiles != null) 'profiles': profiles!,
+  };
 }
 
 /// The URLs for accessing Oracle Application Express (APEX) and SQL Developer
@@ -2889,32 +2896,32 @@ class AutonomousDatabaseConnectionUrls {
   });
 
   AutonomousDatabaseConnectionUrls.fromJson(core.Map json_)
-      : this(
-          apexUri: json_['apexUri'] as core.String?,
-          databaseTransformsUri: json_['databaseTransformsUri'] as core.String?,
-          graphStudioUri: json_['graphStudioUri'] as core.String?,
-          machineLearningNotebookUri:
-              json_['machineLearningNotebookUri'] as core.String?,
-          machineLearningUserManagementUri:
-              json_['machineLearningUserManagementUri'] as core.String?,
-          mongoDbUri: json_['mongoDbUri'] as core.String?,
-          ordsUri: json_['ordsUri'] as core.String?,
-          sqlDevWebUri: json_['sqlDevWebUri'] as core.String?,
-        );
+    : this(
+        apexUri: json_['apexUri'] as core.String?,
+        databaseTransformsUri: json_['databaseTransformsUri'] as core.String?,
+        graphStudioUri: json_['graphStudioUri'] as core.String?,
+        machineLearningNotebookUri:
+            json_['machineLearningNotebookUri'] as core.String?,
+        machineLearningUserManagementUri:
+            json_['machineLearningUserManagementUri'] as core.String?,
+        mongoDbUri: json_['mongoDbUri'] as core.String?,
+        ordsUri: json_['ordsUri'] as core.String?,
+        sqlDevWebUri: json_['sqlDevWebUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apexUri != null) 'apexUri': apexUri!,
-        if (databaseTransformsUri != null)
-          'databaseTransformsUri': databaseTransformsUri!,
-        if (graphStudioUri != null) 'graphStudioUri': graphStudioUri!,
-        if (machineLearningNotebookUri != null)
-          'machineLearningNotebookUri': machineLearningNotebookUri!,
-        if (machineLearningUserManagementUri != null)
-          'machineLearningUserManagementUri': machineLearningUserManagementUri!,
-        if (mongoDbUri != null) 'mongoDbUri': mongoDbUri!,
-        if (ordsUri != null) 'ordsUri': ordsUri!,
-        if (sqlDevWebUri != null) 'sqlDevWebUri': sqlDevWebUri!,
-      };
+    if (apexUri != null) 'apexUri': apexUri!,
+    if (databaseTransformsUri != null)
+      'databaseTransformsUri': databaseTransformsUri!,
+    if (graphStudioUri != null) 'graphStudioUri': graphStudioUri!,
+    if (machineLearningNotebookUri != null)
+      'machineLearningNotebookUri': machineLearningNotebookUri!,
+    if (machineLearningUserManagementUri != null)
+      'machineLearningUserManagementUri': machineLearningUserManagementUri!,
+    if (mongoDbUri != null) 'mongoDbUri': mongoDbUri!,
+    if (ordsUri != null) 'ordsUri': ordsUri!,
+    if (sqlDevWebUri != null) 'sqlDevWebUri': sqlDevWebUri!,
+  };
 }
 
 /// The properties of an Autonomous Database.
@@ -3432,209 +3439,223 @@ class AutonomousDatabaseProperties {
   });
 
   AutonomousDatabaseProperties.fromJson(core.Map json_)
-      : this(
-          actualUsedDataStorageSizeTb:
-              (json_['actualUsedDataStorageSizeTb'] as core.num?)?.toDouble(),
-          allocatedStorageSizeTb:
-              (json_['allocatedStorageSizeTb'] as core.num?)?.toDouble(),
-          allowlistedIps: (json_['allowlistedIps'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          apexDetails: json_.containsKey('apexDetails')
-              ? AutonomousDatabaseApex.fromJson(
-                  json_['apexDetails'] as core.Map<core.String, core.dynamic>)
-              : null,
-          arePrimaryAllowlistedIpsUsed:
-              json_['arePrimaryAllowlistedIpsUsed'] as core.bool?,
-          autonomousContainerDatabaseId:
-              json_['autonomousContainerDatabaseId'] as core.String?,
-          availableUpgradeVersions:
-              (json_['availableUpgradeVersions'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          backupRetentionPeriodDays:
-              json_['backupRetentionPeriodDays'] as core.int?,
-          characterSet: json_['characterSet'] as core.String?,
-          computeCount: (json_['computeCount'] as core.num?)?.toDouble(),
-          connectionStrings: json_.containsKey('connectionStrings')
-              ? AutonomousDatabaseConnectionStrings.fromJson(
+    : this(
+        actualUsedDataStorageSizeTb:
+            (json_['actualUsedDataStorageSizeTb'] as core.num?)?.toDouble(),
+        allocatedStorageSizeTb:
+            (json_['allocatedStorageSizeTb'] as core.num?)?.toDouble(),
+        allowlistedIps:
+            (json_['allowlistedIps'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        apexDetails:
+            json_.containsKey('apexDetails')
+                ? AutonomousDatabaseApex.fromJson(
+                  json_['apexDetails'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        arePrimaryAllowlistedIpsUsed:
+            json_['arePrimaryAllowlistedIpsUsed'] as core.bool?,
+        autonomousContainerDatabaseId:
+            json_['autonomousContainerDatabaseId'] as core.String?,
+        availableUpgradeVersions:
+            (json_['availableUpgradeVersions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        backupRetentionPeriodDays:
+            json_['backupRetentionPeriodDays'] as core.int?,
+        characterSet: json_['characterSet'] as core.String?,
+        computeCount: (json_['computeCount'] as core.num?)?.toDouble(),
+        connectionStrings:
+            json_.containsKey('connectionStrings')
+                ? AutonomousDatabaseConnectionStrings.fromJson(
                   json_['connectionStrings']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          connectionUrls: json_.containsKey('connectionUrls')
-              ? AutonomousDatabaseConnectionUrls.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        connectionUrls:
+            json_.containsKey('connectionUrls')
+                ? AutonomousDatabaseConnectionUrls.fromJson(
                   json_['connectionUrls']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          cpuCoreCount: json_['cpuCoreCount'] as core.int?,
-          customerContacts: (json_['customerContacts'] as core.List?)
-              ?.map((value) => CustomerContact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dataGuardRoleChangedTime:
-              json_['dataGuardRoleChangedTime'] as core.String?,
-          dataSafeState: json_['dataSafeState'] as core.String?,
-          dataStorageSizeGb: json_['dataStorageSizeGb'] as core.int?,
-          dataStorageSizeTb: json_['dataStorageSizeTb'] as core.int?,
-          databaseManagementState:
-              json_['databaseManagementState'] as core.String?,
-          dbEdition: json_['dbEdition'] as core.String?,
-          dbVersion: json_['dbVersion'] as core.String?,
-          dbWorkload: json_['dbWorkload'] as core.String?,
-          disasterRecoveryRoleChangedTime:
-              json_['disasterRecoveryRoleChangedTime'] as core.String?,
-          failedDataRecoveryDuration:
-              json_['failedDataRecoveryDuration'] as core.String?,
-          isAutoScalingEnabled: json_['isAutoScalingEnabled'] as core.bool?,
-          isLocalDataGuardEnabled:
-              json_['isLocalDataGuardEnabled'] as core.bool?,
-          isStorageAutoScalingEnabled:
-              json_['isStorageAutoScalingEnabled'] as core.bool?,
-          licenseType: json_['licenseType'] as core.String?,
-          lifecycleDetails: json_['lifecycleDetails'] as core.String?,
-          localAdgAutoFailoverMaxDataLossLimit:
-              json_['localAdgAutoFailoverMaxDataLossLimit'] as core.int?,
-          localDisasterRecoveryType:
-              json_['localDisasterRecoveryType'] as core.String?,
-          localStandbyDb: json_.containsKey('localStandbyDb')
-              ? AutonomousDatabaseStandbySummary.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cpuCoreCount: json_['cpuCoreCount'] as core.int?,
+        customerContacts:
+            (json_['customerContacts'] as core.List?)
+                ?.map(
+                  (value) => CustomerContact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dataGuardRoleChangedTime:
+            json_['dataGuardRoleChangedTime'] as core.String?,
+        dataSafeState: json_['dataSafeState'] as core.String?,
+        dataStorageSizeGb: json_['dataStorageSizeGb'] as core.int?,
+        dataStorageSizeTb: json_['dataStorageSizeTb'] as core.int?,
+        databaseManagementState:
+            json_['databaseManagementState'] as core.String?,
+        dbEdition: json_['dbEdition'] as core.String?,
+        dbVersion: json_['dbVersion'] as core.String?,
+        dbWorkload: json_['dbWorkload'] as core.String?,
+        disasterRecoveryRoleChangedTime:
+            json_['disasterRecoveryRoleChangedTime'] as core.String?,
+        failedDataRecoveryDuration:
+            json_['failedDataRecoveryDuration'] as core.String?,
+        isAutoScalingEnabled: json_['isAutoScalingEnabled'] as core.bool?,
+        isLocalDataGuardEnabled: json_['isLocalDataGuardEnabled'] as core.bool?,
+        isStorageAutoScalingEnabled:
+            json_['isStorageAutoScalingEnabled'] as core.bool?,
+        licenseType: json_['licenseType'] as core.String?,
+        lifecycleDetails: json_['lifecycleDetails'] as core.String?,
+        localAdgAutoFailoverMaxDataLossLimit:
+            json_['localAdgAutoFailoverMaxDataLossLimit'] as core.int?,
+        localDisasterRecoveryType:
+            json_['localDisasterRecoveryType'] as core.String?,
+        localStandbyDb:
+            json_.containsKey('localStandbyDb')
+                ? AutonomousDatabaseStandbySummary.fromJson(
                   json_['localStandbyDb']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          maintenanceBeginTime: json_['maintenanceBeginTime'] as core.String?,
-          maintenanceEndTime: json_['maintenanceEndTime'] as core.String?,
-          maintenanceScheduleType:
-              json_['maintenanceScheduleType'] as core.String?,
-          memoryPerOracleComputeUnitGbs:
-              json_['memoryPerOracleComputeUnitGbs'] as core.int?,
-          memoryTableGbs: json_['memoryTableGbs'] as core.int?,
-          mtlsConnectionRequired: json_['mtlsConnectionRequired'] as core.bool?,
-          nCharacterSet: json_['nCharacterSet'] as core.String?,
-          nextLongTermBackupTime:
-              json_['nextLongTermBackupTime'] as core.String?,
-          ociUrl: json_['ociUrl'] as core.String?,
-          ocid: json_['ocid'] as core.String?,
-          openMode: json_['openMode'] as core.String?,
-          operationsInsightsState:
-              json_['operationsInsightsState'] as core.String?,
-          peerDbIds: (json_['peerDbIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          permissionLevel: json_['permissionLevel'] as core.String?,
-          privateEndpoint: json_['privateEndpoint'] as core.String?,
-          privateEndpointIp: json_['privateEndpointIp'] as core.String?,
-          privateEndpointLabel: json_['privateEndpointLabel'] as core.String?,
-          refreshableMode: json_['refreshableMode'] as core.String?,
-          refreshableState: json_['refreshableState'] as core.String?,
-          role: json_['role'] as core.String?,
-          scheduledOperationDetails:
-              (json_['scheduledOperationDetails'] as core.List?)
-                  ?.map((value) => ScheduledOperationDetails.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          secretId: json_['secretId'] as core.String?,
-          sqlWebDeveloperUrl: json_['sqlWebDeveloperUrl'] as core.String?,
-          state: json_['state'] as core.String?,
-          supportedCloneRegions: (json_['supportedCloneRegions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          totalAutoBackupStorageSizeGbs:
-              (json_['totalAutoBackupStorageSizeGbs'] as core.num?)?.toDouble(),
-          usedDataStorageSizeTbs: json_['usedDataStorageSizeTbs'] as core.int?,
-          vaultId: json_['vaultId'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maintenanceBeginTime: json_['maintenanceBeginTime'] as core.String?,
+        maintenanceEndTime: json_['maintenanceEndTime'] as core.String?,
+        maintenanceScheduleType:
+            json_['maintenanceScheduleType'] as core.String?,
+        memoryPerOracleComputeUnitGbs:
+            json_['memoryPerOracleComputeUnitGbs'] as core.int?,
+        memoryTableGbs: json_['memoryTableGbs'] as core.int?,
+        mtlsConnectionRequired: json_['mtlsConnectionRequired'] as core.bool?,
+        nCharacterSet: json_['nCharacterSet'] as core.String?,
+        nextLongTermBackupTime: json_['nextLongTermBackupTime'] as core.String?,
+        ociUrl: json_['ociUrl'] as core.String?,
+        ocid: json_['ocid'] as core.String?,
+        openMode: json_['openMode'] as core.String?,
+        operationsInsightsState:
+            json_['operationsInsightsState'] as core.String?,
+        peerDbIds:
+            (json_['peerDbIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        permissionLevel: json_['permissionLevel'] as core.String?,
+        privateEndpoint: json_['privateEndpoint'] as core.String?,
+        privateEndpointIp: json_['privateEndpointIp'] as core.String?,
+        privateEndpointLabel: json_['privateEndpointLabel'] as core.String?,
+        refreshableMode: json_['refreshableMode'] as core.String?,
+        refreshableState: json_['refreshableState'] as core.String?,
+        role: json_['role'] as core.String?,
+        scheduledOperationDetails:
+            (json_['scheduledOperationDetails'] as core.List?)
+                ?.map(
+                  (value) => ScheduledOperationDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        secretId: json_['secretId'] as core.String?,
+        sqlWebDeveloperUrl: json_['sqlWebDeveloperUrl'] as core.String?,
+        state: json_['state'] as core.String?,
+        supportedCloneRegions:
+            (json_['supportedCloneRegions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        totalAutoBackupStorageSizeGbs:
+            (json_['totalAutoBackupStorageSizeGbs'] as core.num?)?.toDouble(),
+        usedDataStorageSizeTbs: json_['usedDataStorageSizeTbs'] as core.int?,
+        vaultId: json_['vaultId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actualUsedDataStorageSizeTb != null)
-          'actualUsedDataStorageSizeTb': actualUsedDataStorageSizeTb!,
-        if (allocatedStorageSizeTb != null)
-          'allocatedStorageSizeTb': allocatedStorageSizeTb!,
-        if (allowlistedIps != null) 'allowlistedIps': allowlistedIps!,
-        if (apexDetails != null) 'apexDetails': apexDetails!,
-        if (arePrimaryAllowlistedIpsUsed != null)
-          'arePrimaryAllowlistedIpsUsed': arePrimaryAllowlistedIpsUsed!,
-        if (autonomousContainerDatabaseId != null)
-          'autonomousContainerDatabaseId': autonomousContainerDatabaseId!,
-        if (availableUpgradeVersions != null)
-          'availableUpgradeVersions': availableUpgradeVersions!,
-        if (backupRetentionPeriodDays != null)
-          'backupRetentionPeriodDays': backupRetentionPeriodDays!,
-        if (characterSet != null) 'characterSet': characterSet!,
-        if (computeCount != null) 'computeCount': computeCount!,
-        if (connectionStrings != null) 'connectionStrings': connectionStrings!,
-        if (connectionUrls != null) 'connectionUrls': connectionUrls!,
-        if (cpuCoreCount != null) 'cpuCoreCount': cpuCoreCount!,
-        if (customerContacts != null) 'customerContacts': customerContacts!,
-        if (dataGuardRoleChangedTime != null)
-          'dataGuardRoleChangedTime': dataGuardRoleChangedTime!,
-        if (dataSafeState != null) 'dataSafeState': dataSafeState!,
-        if (dataStorageSizeGb != null) 'dataStorageSizeGb': dataStorageSizeGb!,
-        if (dataStorageSizeTb != null) 'dataStorageSizeTb': dataStorageSizeTb!,
-        if (databaseManagementState != null)
-          'databaseManagementState': databaseManagementState!,
-        if (dbEdition != null) 'dbEdition': dbEdition!,
-        if (dbVersion != null) 'dbVersion': dbVersion!,
-        if (dbWorkload != null) 'dbWorkload': dbWorkload!,
-        if (disasterRecoveryRoleChangedTime != null)
-          'disasterRecoveryRoleChangedTime': disasterRecoveryRoleChangedTime!,
-        if (failedDataRecoveryDuration != null)
-          'failedDataRecoveryDuration': failedDataRecoveryDuration!,
-        if (isAutoScalingEnabled != null)
-          'isAutoScalingEnabled': isAutoScalingEnabled!,
-        if (isLocalDataGuardEnabled != null)
-          'isLocalDataGuardEnabled': isLocalDataGuardEnabled!,
-        if (isStorageAutoScalingEnabled != null)
-          'isStorageAutoScalingEnabled': isStorageAutoScalingEnabled!,
-        if (licenseType != null) 'licenseType': licenseType!,
-        if (lifecycleDetails != null) 'lifecycleDetails': lifecycleDetails!,
-        if (localAdgAutoFailoverMaxDataLossLimit != null)
-          'localAdgAutoFailoverMaxDataLossLimit':
-              localAdgAutoFailoverMaxDataLossLimit!,
-        if (localDisasterRecoveryType != null)
-          'localDisasterRecoveryType': localDisasterRecoveryType!,
-        if (localStandbyDb != null) 'localStandbyDb': localStandbyDb!,
-        if (maintenanceBeginTime != null)
-          'maintenanceBeginTime': maintenanceBeginTime!,
-        if (maintenanceEndTime != null)
-          'maintenanceEndTime': maintenanceEndTime!,
-        if (maintenanceScheduleType != null)
-          'maintenanceScheduleType': maintenanceScheduleType!,
-        if (memoryPerOracleComputeUnitGbs != null)
-          'memoryPerOracleComputeUnitGbs': memoryPerOracleComputeUnitGbs!,
-        if (memoryTableGbs != null) 'memoryTableGbs': memoryTableGbs!,
-        if (mtlsConnectionRequired != null)
-          'mtlsConnectionRequired': mtlsConnectionRequired!,
-        if (nCharacterSet != null) 'nCharacterSet': nCharacterSet!,
-        if (nextLongTermBackupTime != null)
-          'nextLongTermBackupTime': nextLongTermBackupTime!,
-        if (ociUrl != null) 'ociUrl': ociUrl!,
-        if (ocid != null) 'ocid': ocid!,
-        if (openMode != null) 'openMode': openMode!,
-        if (operationsInsightsState != null)
-          'operationsInsightsState': operationsInsightsState!,
-        if (peerDbIds != null) 'peerDbIds': peerDbIds!,
-        if (permissionLevel != null) 'permissionLevel': permissionLevel!,
-        if (privateEndpoint != null) 'privateEndpoint': privateEndpoint!,
-        if (privateEndpointIp != null) 'privateEndpointIp': privateEndpointIp!,
-        if (privateEndpointLabel != null)
-          'privateEndpointLabel': privateEndpointLabel!,
-        if (refreshableMode != null) 'refreshableMode': refreshableMode!,
-        if (refreshableState != null) 'refreshableState': refreshableState!,
-        if (role != null) 'role': role!,
-        if (scheduledOperationDetails != null)
-          'scheduledOperationDetails': scheduledOperationDetails!,
-        if (secretId != null) 'secretId': secretId!,
-        if (sqlWebDeveloperUrl != null)
-          'sqlWebDeveloperUrl': sqlWebDeveloperUrl!,
-        if (state != null) 'state': state!,
-        if (supportedCloneRegions != null)
-          'supportedCloneRegions': supportedCloneRegions!,
-        if (totalAutoBackupStorageSizeGbs != null)
-          'totalAutoBackupStorageSizeGbs': totalAutoBackupStorageSizeGbs!,
-        if (usedDataStorageSizeTbs != null)
-          'usedDataStorageSizeTbs': usedDataStorageSizeTbs!,
-        if (vaultId != null) 'vaultId': vaultId!,
-      };
+    if (actualUsedDataStorageSizeTb != null)
+      'actualUsedDataStorageSizeTb': actualUsedDataStorageSizeTb!,
+    if (allocatedStorageSizeTb != null)
+      'allocatedStorageSizeTb': allocatedStorageSizeTb!,
+    if (allowlistedIps != null) 'allowlistedIps': allowlistedIps!,
+    if (apexDetails != null) 'apexDetails': apexDetails!,
+    if (arePrimaryAllowlistedIpsUsed != null)
+      'arePrimaryAllowlistedIpsUsed': arePrimaryAllowlistedIpsUsed!,
+    if (autonomousContainerDatabaseId != null)
+      'autonomousContainerDatabaseId': autonomousContainerDatabaseId!,
+    if (availableUpgradeVersions != null)
+      'availableUpgradeVersions': availableUpgradeVersions!,
+    if (backupRetentionPeriodDays != null)
+      'backupRetentionPeriodDays': backupRetentionPeriodDays!,
+    if (characterSet != null) 'characterSet': characterSet!,
+    if (computeCount != null) 'computeCount': computeCount!,
+    if (connectionStrings != null) 'connectionStrings': connectionStrings!,
+    if (connectionUrls != null) 'connectionUrls': connectionUrls!,
+    if (cpuCoreCount != null) 'cpuCoreCount': cpuCoreCount!,
+    if (customerContacts != null) 'customerContacts': customerContacts!,
+    if (dataGuardRoleChangedTime != null)
+      'dataGuardRoleChangedTime': dataGuardRoleChangedTime!,
+    if (dataSafeState != null) 'dataSafeState': dataSafeState!,
+    if (dataStorageSizeGb != null) 'dataStorageSizeGb': dataStorageSizeGb!,
+    if (dataStorageSizeTb != null) 'dataStorageSizeTb': dataStorageSizeTb!,
+    if (databaseManagementState != null)
+      'databaseManagementState': databaseManagementState!,
+    if (dbEdition != null) 'dbEdition': dbEdition!,
+    if (dbVersion != null) 'dbVersion': dbVersion!,
+    if (dbWorkload != null) 'dbWorkload': dbWorkload!,
+    if (disasterRecoveryRoleChangedTime != null)
+      'disasterRecoveryRoleChangedTime': disasterRecoveryRoleChangedTime!,
+    if (failedDataRecoveryDuration != null)
+      'failedDataRecoveryDuration': failedDataRecoveryDuration!,
+    if (isAutoScalingEnabled != null)
+      'isAutoScalingEnabled': isAutoScalingEnabled!,
+    if (isLocalDataGuardEnabled != null)
+      'isLocalDataGuardEnabled': isLocalDataGuardEnabled!,
+    if (isStorageAutoScalingEnabled != null)
+      'isStorageAutoScalingEnabled': isStorageAutoScalingEnabled!,
+    if (licenseType != null) 'licenseType': licenseType!,
+    if (lifecycleDetails != null) 'lifecycleDetails': lifecycleDetails!,
+    if (localAdgAutoFailoverMaxDataLossLimit != null)
+      'localAdgAutoFailoverMaxDataLossLimit':
+          localAdgAutoFailoverMaxDataLossLimit!,
+    if (localDisasterRecoveryType != null)
+      'localDisasterRecoveryType': localDisasterRecoveryType!,
+    if (localStandbyDb != null) 'localStandbyDb': localStandbyDb!,
+    if (maintenanceBeginTime != null)
+      'maintenanceBeginTime': maintenanceBeginTime!,
+    if (maintenanceEndTime != null) 'maintenanceEndTime': maintenanceEndTime!,
+    if (maintenanceScheduleType != null)
+      'maintenanceScheduleType': maintenanceScheduleType!,
+    if (memoryPerOracleComputeUnitGbs != null)
+      'memoryPerOracleComputeUnitGbs': memoryPerOracleComputeUnitGbs!,
+    if (memoryTableGbs != null) 'memoryTableGbs': memoryTableGbs!,
+    if (mtlsConnectionRequired != null)
+      'mtlsConnectionRequired': mtlsConnectionRequired!,
+    if (nCharacterSet != null) 'nCharacterSet': nCharacterSet!,
+    if (nextLongTermBackupTime != null)
+      'nextLongTermBackupTime': nextLongTermBackupTime!,
+    if (ociUrl != null) 'ociUrl': ociUrl!,
+    if (ocid != null) 'ocid': ocid!,
+    if (openMode != null) 'openMode': openMode!,
+    if (operationsInsightsState != null)
+      'operationsInsightsState': operationsInsightsState!,
+    if (peerDbIds != null) 'peerDbIds': peerDbIds!,
+    if (permissionLevel != null) 'permissionLevel': permissionLevel!,
+    if (privateEndpoint != null) 'privateEndpoint': privateEndpoint!,
+    if (privateEndpointIp != null) 'privateEndpointIp': privateEndpointIp!,
+    if (privateEndpointLabel != null)
+      'privateEndpointLabel': privateEndpointLabel!,
+    if (refreshableMode != null) 'refreshableMode': refreshableMode!,
+    if (refreshableState != null) 'refreshableState': refreshableState!,
+    if (role != null) 'role': role!,
+    if (scheduledOperationDetails != null)
+      'scheduledOperationDetails': scheduledOperationDetails!,
+    if (secretId != null) 'secretId': secretId!,
+    if (sqlWebDeveloperUrl != null) 'sqlWebDeveloperUrl': sqlWebDeveloperUrl!,
+    if (state != null) 'state': state!,
+    if (supportedCloneRegions != null)
+      'supportedCloneRegions': supportedCloneRegions!,
+    if (totalAutoBackupStorageSizeGbs != null)
+      'totalAutoBackupStorageSizeGbs': totalAutoBackupStorageSizeGbs!,
+    if (usedDataStorageSizeTbs != null)
+      'usedDataStorageSizeTbs': usedDataStorageSizeTbs!,
+    if (vaultId != null) 'vaultId': vaultId!,
+  };
 }
 
 /// Autonomous Data Guard standby database details.
@@ -3721,25 +3742,25 @@ class AutonomousDatabaseStandbySummary {
   });
 
   AutonomousDatabaseStandbySummary.fromJson(core.Map json_)
-      : this(
-          dataGuardRoleChangedTime:
-              json_['dataGuardRoleChangedTime'] as core.String?,
-          disasterRecoveryRoleChangedTime:
-              json_['disasterRecoveryRoleChangedTime'] as core.String?,
-          lagTimeDuration: json_['lagTimeDuration'] as core.String?,
-          lifecycleDetails: json_['lifecycleDetails'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        dataGuardRoleChangedTime:
+            json_['dataGuardRoleChangedTime'] as core.String?,
+        disasterRecoveryRoleChangedTime:
+            json_['disasterRecoveryRoleChangedTime'] as core.String?,
+        lagTimeDuration: json_['lagTimeDuration'] as core.String?,
+        lifecycleDetails: json_['lifecycleDetails'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataGuardRoleChangedTime != null)
-          'dataGuardRoleChangedTime': dataGuardRoleChangedTime!,
-        if (disasterRecoveryRoleChangedTime != null)
-          'disasterRecoveryRoleChangedTime': disasterRecoveryRoleChangedTime!,
-        if (lagTimeDuration != null) 'lagTimeDuration': lagTimeDuration!,
-        if (lifecycleDetails != null) 'lifecycleDetails': lifecycleDetails!,
-        if (state != null) 'state': state!,
-      };
+    if (dataGuardRoleChangedTime != null)
+      'dataGuardRoleChangedTime': dataGuardRoleChangedTime!,
+    if (disasterRecoveryRoleChangedTime != null)
+      'disasterRecoveryRoleChangedTime': disasterRecoveryRoleChangedTime!,
+    if (lagTimeDuration != null) 'lagTimeDuration': lagTimeDuration!,
+    if (lifecycleDetails != null) 'lifecycleDetails': lifecycleDetails!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Details of the Autonomous Database version.
@@ -3783,19 +3804,19 @@ class AutonomousDbVersion {
   });
 
   AutonomousDbVersion.fromJson(core.Map json_)
-      : this(
-          dbWorkload: json_['dbWorkload'] as core.String?,
-          name: json_['name'] as core.String?,
-          version: json_['version'] as core.String?,
-          workloadUri: json_['workloadUri'] as core.String?,
-        );
+    : this(
+        dbWorkload: json_['dbWorkload'] as core.String?,
+        name: json_['name'] as core.String?,
+        version: json_['version'] as core.String?,
+        workloadUri: json_['workloadUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dbWorkload != null) 'dbWorkload': dbWorkload!,
-        if (name != null) 'name': name!,
-        if (version != null) 'version': version!,
-        if (workloadUri != null) 'workloadUri': workloadUri!,
-      };
+    if (dbWorkload != null) 'dbWorkload': dbWorkload!,
+    if (name != null) 'name': name!,
+    if (version != null) 'version': version!,
+    if (workloadUri != null) 'workloadUri': workloadUri!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -3831,24 +3852,21 @@ class CloudAccountDetails {
   });
 
   CloudAccountDetails.fromJson(core.Map json_)
-      : this(
-          accountCreationUri: json_['accountCreationUri'] as core.String?,
-          cloudAccount: json_['cloudAccount'] as core.String?,
-          cloudAccountHomeRegion:
-              json_['cloudAccountHomeRegion'] as core.String?,
-          linkExistingAccountUri:
-              json_['linkExistingAccountUri'] as core.String?,
-        );
+    : this(
+        accountCreationUri: json_['accountCreationUri'] as core.String?,
+        cloudAccount: json_['cloudAccount'] as core.String?,
+        cloudAccountHomeRegion: json_['cloudAccountHomeRegion'] as core.String?,
+        linkExistingAccountUri: json_['linkExistingAccountUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountCreationUri != null)
-          'accountCreationUri': accountCreationUri!,
-        if (cloudAccount != null) 'cloudAccount': cloudAccount!,
-        if (cloudAccountHomeRegion != null)
-          'cloudAccountHomeRegion': cloudAccountHomeRegion!,
-        if (linkExistingAccountUri != null)
-          'linkExistingAccountUri': linkExistingAccountUri!,
-      };
+    if (accountCreationUri != null) 'accountCreationUri': accountCreationUri!,
+    if (cloudAccount != null) 'cloudAccount': cloudAccount!,
+    if (cloudAccountHomeRegion != null)
+      'cloudAccountHomeRegion': cloudAccountHomeRegion!,
+    if (linkExistingAccountUri != null)
+      'linkExistingAccountUri': linkExistingAccountUri!,
+  };
 }
 
 /// Represents CloudExadataInfrastructure resource.
@@ -3903,34 +3921,32 @@ class CloudExadataInfrastructure {
   });
 
   CloudExadataInfrastructure.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          entitlementId: json_['entitlementId'] as core.String?,
-          gcpOracleZone: json_['gcpOracleZone'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          properties: json_.containsKey('properties')
-              ? CloudExadataInfrastructureProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        entitlementId: json_['entitlementId'] as core.String?,
+        gcpOracleZone: json_['gcpOracleZone'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? CloudExadataInfrastructureProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (entitlementId != null) 'entitlementId': entitlementId!,
-        if (gcpOracleZone != null) 'gcpOracleZone': gcpOracleZone!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (properties != null) 'properties': properties!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (entitlementId != null) 'entitlementId': entitlementId!,
+    if (gcpOracleZone != null) 'gcpOracleZone': gcpOracleZone!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (properties != null) 'properties': properties!,
+  };
 }
 
 /// Various properties of Exadata Infrastructure.
@@ -4154,96 +4170,98 @@ class CloudExadataInfrastructureProperties {
   });
 
   CloudExadataInfrastructureProperties.fromJson(core.Map json_)
-      : this(
-          activatedStorageCount: json_['activatedStorageCount'] as core.int?,
-          additionalStorageCount: json_['additionalStorageCount'] as core.int?,
-          availableStorageSizeGb: json_['availableStorageSizeGb'] as core.int?,
-          computeCount: json_['computeCount'] as core.int?,
-          computeModel: json_['computeModel'] as core.String?,
-          cpuCount: json_['cpuCount'] as core.int?,
-          customerContacts: (json_['customerContacts'] as core.List?)
-              ?.map((value) => CustomerContact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dataStorageSizeTb:
-              (json_['dataStorageSizeTb'] as core.num?)?.toDouble(),
-          databaseServerType: json_['databaseServerType'] as core.String?,
-          dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
-          dbServerVersion: json_['dbServerVersion'] as core.String?,
-          maintenanceWindow: json_.containsKey('maintenanceWindow')
-              ? MaintenanceWindow.fromJson(json_['maintenanceWindow']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          maxCpuCount: json_['maxCpuCount'] as core.int?,
-          maxDataStorageTb:
-              (json_['maxDataStorageTb'] as core.num?)?.toDouble(),
-          maxDbNodeStorageSizeGb: json_['maxDbNodeStorageSizeGb'] as core.int?,
-          maxMemoryGb: json_['maxMemoryGb'] as core.int?,
-          memorySizeGb: json_['memorySizeGb'] as core.int?,
-          monthlyDbServerVersion:
-              json_['monthlyDbServerVersion'] as core.String?,
-          monthlyStorageServerVersion:
-              json_['monthlyStorageServerVersion'] as core.String?,
-          nextMaintenanceRunId: json_['nextMaintenanceRunId'] as core.String?,
-          nextMaintenanceRunTime:
-              json_['nextMaintenanceRunTime'] as core.String?,
-          nextSecurityMaintenanceRunTime:
-              json_['nextSecurityMaintenanceRunTime'] as core.String?,
-          ociUrl: json_['ociUrl'] as core.String?,
-          ocid: json_['ocid'] as core.String?,
-          shape: json_['shape'] as core.String?,
-          state: json_['state'] as core.String?,
-          storageCount: json_['storageCount'] as core.int?,
-          storageServerType: json_['storageServerType'] as core.String?,
-          storageServerVersion: json_['storageServerVersion'] as core.String?,
-          totalStorageSizeGb: json_['totalStorageSizeGb'] as core.int?,
-        );
+    : this(
+        activatedStorageCount: json_['activatedStorageCount'] as core.int?,
+        additionalStorageCount: json_['additionalStorageCount'] as core.int?,
+        availableStorageSizeGb: json_['availableStorageSizeGb'] as core.int?,
+        computeCount: json_['computeCount'] as core.int?,
+        computeModel: json_['computeModel'] as core.String?,
+        cpuCount: json_['cpuCount'] as core.int?,
+        customerContacts:
+            (json_['customerContacts'] as core.List?)
+                ?.map(
+                  (value) => CustomerContact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dataStorageSizeTb:
+            (json_['dataStorageSizeTb'] as core.num?)?.toDouble(),
+        databaseServerType: json_['databaseServerType'] as core.String?,
+        dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
+        dbServerVersion: json_['dbServerVersion'] as core.String?,
+        maintenanceWindow:
+            json_.containsKey('maintenanceWindow')
+                ? MaintenanceWindow.fromJson(
+                  json_['maintenanceWindow']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxCpuCount: json_['maxCpuCount'] as core.int?,
+        maxDataStorageTb: (json_['maxDataStorageTb'] as core.num?)?.toDouble(),
+        maxDbNodeStorageSizeGb: json_['maxDbNodeStorageSizeGb'] as core.int?,
+        maxMemoryGb: json_['maxMemoryGb'] as core.int?,
+        memorySizeGb: json_['memorySizeGb'] as core.int?,
+        monthlyDbServerVersion: json_['monthlyDbServerVersion'] as core.String?,
+        monthlyStorageServerVersion:
+            json_['monthlyStorageServerVersion'] as core.String?,
+        nextMaintenanceRunId: json_['nextMaintenanceRunId'] as core.String?,
+        nextMaintenanceRunTime: json_['nextMaintenanceRunTime'] as core.String?,
+        nextSecurityMaintenanceRunTime:
+            json_['nextSecurityMaintenanceRunTime'] as core.String?,
+        ociUrl: json_['ociUrl'] as core.String?,
+        ocid: json_['ocid'] as core.String?,
+        shape: json_['shape'] as core.String?,
+        state: json_['state'] as core.String?,
+        storageCount: json_['storageCount'] as core.int?,
+        storageServerType: json_['storageServerType'] as core.String?,
+        storageServerVersion: json_['storageServerVersion'] as core.String?,
+        totalStorageSizeGb: json_['totalStorageSizeGb'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activatedStorageCount != null)
-          'activatedStorageCount': activatedStorageCount!,
-        if (additionalStorageCount != null)
-          'additionalStorageCount': additionalStorageCount!,
-        if (availableStorageSizeGb != null)
-          'availableStorageSizeGb': availableStorageSizeGb!,
-        if (computeCount != null) 'computeCount': computeCount!,
-        if (computeModel != null) 'computeModel': computeModel!,
-        if (cpuCount != null) 'cpuCount': cpuCount!,
-        if (customerContacts != null) 'customerContacts': customerContacts!,
-        if (dataStorageSizeTb != null) 'dataStorageSizeTb': dataStorageSizeTb!,
-        if (databaseServerType != null)
-          'databaseServerType': databaseServerType!,
-        if (dbNodeStorageSizeGb != null)
-          'dbNodeStorageSizeGb': dbNodeStorageSizeGb!,
-        if (dbServerVersion != null) 'dbServerVersion': dbServerVersion!,
-        if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
-        if (maxCpuCount != null) 'maxCpuCount': maxCpuCount!,
-        if (maxDataStorageTb != null) 'maxDataStorageTb': maxDataStorageTb!,
-        if (maxDbNodeStorageSizeGb != null)
-          'maxDbNodeStorageSizeGb': maxDbNodeStorageSizeGb!,
-        if (maxMemoryGb != null) 'maxMemoryGb': maxMemoryGb!,
-        if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
-        if (monthlyDbServerVersion != null)
-          'monthlyDbServerVersion': monthlyDbServerVersion!,
-        if (monthlyStorageServerVersion != null)
-          'monthlyStorageServerVersion': monthlyStorageServerVersion!,
-        if (nextMaintenanceRunId != null)
-          'nextMaintenanceRunId': nextMaintenanceRunId!,
-        if (nextMaintenanceRunTime != null)
-          'nextMaintenanceRunTime': nextMaintenanceRunTime!,
-        if (nextSecurityMaintenanceRunTime != null)
-          'nextSecurityMaintenanceRunTime': nextSecurityMaintenanceRunTime!,
-        if (ociUrl != null) 'ociUrl': ociUrl!,
-        if (ocid != null) 'ocid': ocid!,
-        if (shape != null) 'shape': shape!,
-        if (state != null) 'state': state!,
-        if (storageCount != null) 'storageCount': storageCount!,
-        if (storageServerType != null) 'storageServerType': storageServerType!,
-        if (storageServerVersion != null)
-          'storageServerVersion': storageServerVersion!,
-        if (totalStorageSizeGb != null)
-          'totalStorageSizeGb': totalStorageSizeGb!,
-      };
+    if (activatedStorageCount != null)
+      'activatedStorageCount': activatedStorageCount!,
+    if (additionalStorageCount != null)
+      'additionalStorageCount': additionalStorageCount!,
+    if (availableStorageSizeGb != null)
+      'availableStorageSizeGb': availableStorageSizeGb!,
+    if (computeCount != null) 'computeCount': computeCount!,
+    if (computeModel != null) 'computeModel': computeModel!,
+    if (cpuCount != null) 'cpuCount': cpuCount!,
+    if (customerContacts != null) 'customerContacts': customerContacts!,
+    if (dataStorageSizeTb != null) 'dataStorageSizeTb': dataStorageSizeTb!,
+    if (databaseServerType != null) 'databaseServerType': databaseServerType!,
+    if (dbNodeStorageSizeGb != null)
+      'dbNodeStorageSizeGb': dbNodeStorageSizeGb!,
+    if (dbServerVersion != null) 'dbServerVersion': dbServerVersion!,
+    if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
+    if (maxCpuCount != null) 'maxCpuCount': maxCpuCount!,
+    if (maxDataStorageTb != null) 'maxDataStorageTb': maxDataStorageTb!,
+    if (maxDbNodeStorageSizeGb != null)
+      'maxDbNodeStorageSizeGb': maxDbNodeStorageSizeGb!,
+    if (maxMemoryGb != null) 'maxMemoryGb': maxMemoryGb!,
+    if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
+    if (monthlyDbServerVersion != null)
+      'monthlyDbServerVersion': monthlyDbServerVersion!,
+    if (monthlyStorageServerVersion != null)
+      'monthlyStorageServerVersion': monthlyStorageServerVersion!,
+    if (nextMaintenanceRunId != null)
+      'nextMaintenanceRunId': nextMaintenanceRunId!,
+    if (nextMaintenanceRunTime != null)
+      'nextMaintenanceRunTime': nextMaintenanceRunTime!,
+    if (nextSecurityMaintenanceRunTime != null)
+      'nextSecurityMaintenanceRunTime': nextSecurityMaintenanceRunTime!,
+    if (ociUrl != null) 'ociUrl': ociUrl!,
+    if (ocid != null) 'ocid': ocid!,
+    if (shape != null) 'shape': shape!,
+    if (state != null) 'state': state!,
+    if (storageCount != null) 'storageCount': storageCount!,
+    if (storageServerType != null) 'storageServerType': storageServerType!,
+    if (storageServerVersion != null)
+      'storageServerVersion': storageServerVersion!,
+    if (totalStorageSizeGb != null) 'totalStorageSizeGb': totalStorageSizeGb!,
+  };
 }
 
 /// Details of the Cloud VM Cluster resource.
@@ -4352,47 +4370,45 @@ class CloudVmCluster {
   });
 
   CloudVmCluster.fromJson(core.Map json_)
-      : this(
-          backupOdbSubnet: json_['backupOdbSubnet'] as core.String?,
-          backupSubnetCidr: json_['backupSubnetCidr'] as core.String?,
-          cidr: json_['cidr'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          exadataInfrastructure: json_['exadataInfrastructure'] as core.String?,
-          gcpOracleZone: json_['gcpOracleZone'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          odbNetwork: json_['odbNetwork'] as core.String?,
-          odbSubnet: json_['odbSubnet'] as core.String?,
-          properties: json_.containsKey('properties')
-              ? CloudVmClusterProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        backupOdbSubnet: json_['backupOdbSubnet'] as core.String?,
+        backupSubnetCidr: json_['backupSubnetCidr'] as core.String?,
+        cidr: json_['cidr'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        exadataInfrastructure: json_['exadataInfrastructure'] as core.String?,
+        gcpOracleZone: json_['gcpOracleZone'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        odbNetwork: json_['odbNetwork'] as core.String?,
+        odbSubnet: json_['odbSubnet'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? CloudVmClusterProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupOdbSubnet != null) 'backupOdbSubnet': backupOdbSubnet!,
-        if (backupSubnetCidr != null) 'backupSubnetCidr': backupSubnetCidr!,
-        if (cidr != null) 'cidr': cidr!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (exadataInfrastructure != null)
-          'exadataInfrastructure': exadataInfrastructure!,
-        if (gcpOracleZone != null) 'gcpOracleZone': gcpOracleZone!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (odbNetwork != null) 'odbNetwork': odbNetwork!,
-        if (odbSubnet != null) 'odbSubnet': odbSubnet!,
-        if (properties != null) 'properties': properties!,
-      };
+    if (backupOdbSubnet != null) 'backupOdbSubnet': backupOdbSubnet!,
+    if (backupSubnetCidr != null) 'backupSubnetCidr': backupSubnetCidr!,
+    if (cidr != null) 'cidr': cidr!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (exadataInfrastructure != null)
+      'exadataInfrastructure': exadataInfrastructure!,
+    if (gcpOracleZone != null) 'gcpOracleZone': gcpOracleZone!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (odbNetwork != null) 'odbNetwork': odbNetwork!,
+    if (odbSubnet != null) 'odbSubnet': odbSubnet!,
+    if (properties != null) 'properties': properties!,
+  };
 }
 
 /// Various properties and settings associated with Exadata VM cluster.
@@ -4635,98 +4651,103 @@ class CloudVmClusterProperties {
   });
 
   CloudVmClusterProperties.fromJson(core.Map json_)
-      : this(
-          clusterName: json_['clusterName'] as core.String?,
-          compartmentId: json_['compartmentId'] as core.String?,
-          computeModel: json_['computeModel'] as core.String?,
-          cpuCoreCount: json_['cpuCoreCount'] as core.int?,
-          dataStorageSizeTb:
-              (json_['dataStorageSizeTb'] as core.num?)?.toDouble(),
-          dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
-          dbServerOcids: (json_['dbServerOcids'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          diagnosticsDataCollectionOptions:
-              json_.containsKey('diagnosticsDataCollectionOptions')
-                  ? DataCollectionOptions.fromJson(
-                      json_['diagnosticsDataCollectionOptions']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          diskRedundancy: json_['diskRedundancy'] as core.String?,
-          dnsListenerIp: json_['dnsListenerIp'] as core.String?,
-          domain: json_['domain'] as core.String?,
-          giVersion: json_['giVersion'] as core.String?,
-          hostname: json_['hostname'] as core.String?,
-          hostnamePrefix: json_['hostnamePrefix'] as core.String?,
-          licenseType: json_['licenseType'] as core.String?,
-          localBackupEnabled: json_['localBackupEnabled'] as core.bool?,
-          memorySizeGb: json_['memorySizeGb'] as core.int?,
-          nodeCount: json_['nodeCount'] as core.int?,
-          ociUrl: json_['ociUrl'] as core.String?,
-          ocid: json_['ocid'] as core.String?,
-          ocpuCount: (json_['ocpuCount'] as core.num?)?.toDouble(),
-          scanDns: json_['scanDns'] as core.String?,
-          scanDnsRecordId: json_['scanDnsRecordId'] as core.String?,
-          scanIpIds: (json_['scanIpIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          scanListenerPortTcp: json_['scanListenerPortTcp'] as core.int?,
-          scanListenerPortTcpSsl: json_['scanListenerPortTcpSsl'] as core.int?,
-          shape: json_['shape'] as core.String?,
-          sparseDiskgroupEnabled: json_['sparseDiskgroupEnabled'] as core.bool?,
-          sshPublicKeys: (json_['sshPublicKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          state: json_['state'] as core.String?,
-          storageSizeGb: json_['storageSizeGb'] as core.int?,
-          systemVersion: json_['systemVersion'] as core.String?,
-          timeZone: json_.containsKey('timeZone')
-              ? TimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        clusterName: json_['clusterName'] as core.String?,
+        compartmentId: json_['compartmentId'] as core.String?,
+        computeModel: json_['computeModel'] as core.String?,
+        cpuCoreCount: json_['cpuCoreCount'] as core.int?,
+        dataStorageSizeTb:
+            (json_['dataStorageSizeTb'] as core.num?)?.toDouble(),
+        dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
+        dbServerOcids:
+            (json_['dbServerOcids'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        diagnosticsDataCollectionOptions:
+            json_.containsKey('diagnosticsDataCollectionOptions')
+                ? DataCollectionOptions.fromJson(
+                  json_['diagnosticsDataCollectionOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        diskRedundancy: json_['diskRedundancy'] as core.String?,
+        dnsListenerIp: json_['dnsListenerIp'] as core.String?,
+        domain: json_['domain'] as core.String?,
+        giVersion: json_['giVersion'] as core.String?,
+        hostname: json_['hostname'] as core.String?,
+        hostnamePrefix: json_['hostnamePrefix'] as core.String?,
+        licenseType: json_['licenseType'] as core.String?,
+        localBackupEnabled: json_['localBackupEnabled'] as core.bool?,
+        memorySizeGb: json_['memorySizeGb'] as core.int?,
+        nodeCount: json_['nodeCount'] as core.int?,
+        ociUrl: json_['ociUrl'] as core.String?,
+        ocid: json_['ocid'] as core.String?,
+        ocpuCount: (json_['ocpuCount'] as core.num?)?.toDouble(),
+        scanDns: json_['scanDns'] as core.String?,
+        scanDnsRecordId: json_['scanDnsRecordId'] as core.String?,
+        scanIpIds:
+            (json_['scanIpIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        scanListenerPortTcp: json_['scanListenerPortTcp'] as core.int?,
+        scanListenerPortTcpSsl: json_['scanListenerPortTcpSsl'] as core.int?,
+        shape: json_['shape'] as core.String?,
+        sparseDiskgroupEnabled: json_['sparseDiskgroupEnabled'] as core.bool?,
+        sshPublicKeys:
+            (json_['sshPublicKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        state: json_['state'] as core.String?,
+        storageSizeGb: json_['storageSizeGb'] as core.int?,
+        systemVersion: json_['systemVersion'] as core.String?,
+        timeZone:
+            json_.containsKey('timeZone')
+                ? TimeZone.fromJson(
+                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterName != null) 'clusterName': clusterName!,
-        if (compartmentId != null) 'compartmentId': compartmentId!,
-        if (computeModel != null) 'computeModel': computeModel!,
-        if (cpuCoreCount != null) 'cpuCoreCount': cpuCoreCount!,
-        if (dataStorageSizeTb != null) 'dataStorageSizeTb': dataStorageSizeTb!,
-        if (dbNodeStorageSizeGb != null)
-          'dbNodeStorageSizeGb': dbNodeStorageSizeGb!,
-        if (dbServerOcids != null) 'dbServerOcids': dbServerOcids!,
-        if (diagnosticsDataCollectionOptions != null)
-          'diagnosticsDataCollectionOptions': diagnosticsDataCollectionOptions!,
-        if (diskRedundancy != null) 'diskRedundancy': diskRedundancy!,
-        if (dnsListenerIp != null) 'dnsListenerIp': dnsListenerIp!,
-        if (domain != null) 'domain': domain!,
-        if (giVersion != null) 'giVersion': giVersion!,
-        if (hostname != null) 'hostname': hostname!,
-        if (hostnamePrefix != null) 'hostnamePrefix': hostnamePrefix!,
-        if (licenseType != null) 'licenseType': licenseType!,
-        if (localBackupEnabled != null)
-          'localBackupEnabled': localBackupEnabled!,
-        if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
-        if (nodeCount != null) 'nodeCount': nodeCount!,
-        if (ociUrl != null) 'ociUrl': ociUrl!,
-        if (ocid != null) 'ocid': ocid!,
-        if (ocpuCount != null) 'ocpuCount': ocpuCount!,
-        if (scanDns != null) 'scanDns': scanDns!,
-        if (scanDnsRecordId != null) 'scanDnsRecordId': scanDnsRecordId!,
-        if (scanIpIds != null) 'scanIpIds': scanIpIds!,
-        if (scanListenerPortTcp != null)
-          'scanListenerPortTcp': scanListenerPortTcp!,
-        if (scanListenerPortTcpSsl != null)
-          'scanListenerPortTcpSsl': scanListenerPortTcpSsl!,
-        if (shape != null) 'shape': shape!,
-        if (sparseDiskgroupEnabled != null)
-          'sparseDiskgroupEnabled': sparseDiskgroupEnabled!,
-        if (sshPublicKeys != null) 'sshPublicKeys': sshPublicKeys!,
-        if (state != null) 'state': state!,
-        if (storageSizeGb != null) 'storageSizeGb': storageSizeGb!,
-        if (systemVersion != null) 'systemVersion': systemVersion!,
-        if (timeZone != null) 'timeZone': timeZone!,
-      };
+    if (clusterName != null) 'clusterName': clusterName!,
+    if (compartmentId != null) 'compartmentId': compartmentId!,
+    if (computeModel != null) 'computeModel': computeModel!,
+    if (cpuCoreCount != null) 'cpuCoreCount': cpuCoreCount!,
+    if (dataStorageSizeTb != null) 'dataStorageSizeTb': dataStorageSizeTb!,
+    if (dbNodeStorageSizeGb != null)
+      'dbNodeStorageSizeGb': dbNodeStorageSizeGb!,
+    if (dbServerOcids != null) 'dbServerOcids': dbServerOcids!,
+    if (diagnosticsDataCollectionOptions != null)
+      'diagnosticsDataCollectionOptions': diagnosticsDataCollectionOptions!,
+    if (diskRedundancy != null) 'diskRedundancy': diskRedundancy!,
+    if (dnsListenerIp != null) 'dnsListenerIp': dnsListenerIp!,
+    if (domain != null) 'domain': domain!,
+    if (giVersion != null) 'giVersion': giVersion!,
+    if (hostname != null) 'hostname': hostname!,
+    if (hostnamePrefix != null) 'hostnamePrefix': hostnamePrefix!,
+    if (licenseType != null) 'licenseType': licenseType!,
+    if (localBackupEnabled != null) 'localBackupEnabled': localBackupEnabled!,
+    if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
+    if (nodeCount != null) 'nodeCount': nodeCount!,
+    if (ociUrl != null) 'ociUrl': ociUrl!,
+    if (ocid != null) 'ocid': ocid!,
+    if (ocpuCount != null) 'ocpuCount': ocpuCount!,
+    if (scanDns != null) 'scanDns': scanDns!,
+    if (scanDnsRecordId != null) 'scanDnsRecordId': scanDnsRecordId!,
+    if (scanIpIds != null) 'scanIpIds': scanIpIds!,
+    if (scanListenerPortTcp != null)
+      'scanListenerPortTcp': scanListenerPortTcp!,
+    if (scanListenerPortTcpSsl != null)
+      'scanListenerPortTcpSsl': scanListenerPortTcpSsl!,
+    if (shape != null) 'shape': shape!,
+    if (sparseDiskgroupEnabled != null)
+      'sparseDiskgroupEnabled': sparseDiskgroupEnabled!,
+    if (sshPublicKeys != null) 'sshPublicKeys': sshPublicKeys!,
+    if (state != null) 'state': state!,
+    if (storageSizeGb != null) 'storageSizeGb': storageSizeGb!,
+    if (systemVersion != null) 'systemVersion': systemVersion!,
+    if (timeZone != null) 'timeZone': timeZone!,
+  };
 }
 
 /// The CustomerContact reference as defined by Oracle.
@@ -4739,18 +4760,14 @@ class CustomerContact {
   /// Required.
   core.String? email;
 
-  CustomerContact({
-    this.email,
-  });
+  CustomerContact({this.email});
 
   CustomerContact.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-        );
+    : this(email: json_['email'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-      };
+    if (email != null) 'email': email!,
+  };
 }
 
 /// Data collection options for diagnostics.
@@ -4778,22 +4795,21 @@ class DataCollectionOptions {
   });
 
   DataCollectionOptions.fromJson(core.Map json_)
-      : this(
-          diagnosticsEventsEnabled:
-              json_['diagnosticsEventsEnabled'] as core.bool?,
-          healthMonitoringEnabled:
-              json_['healthMonitoringEnabled'] as core.bool?,
-          incidentLogsEnabled: json_['incidentLogsEnabled'] as core.bool?,
-        );
+    : this(
+        diagnosticsEventsEnabled:
+            json_['diagnosticsEventsEnabled'] as core.bool?,
+        healthMonitoringEnabled: json_['healthMonitoringEnabled'] as core.bool?,
+        incidentLogsEnabled: json_['incidentLogsEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (diagnosticsEventsEnabled != null)
-          'diagnosticsEventsEnabled': diagnosticsEventsEnabled!,
-        if (healthMonitoringEnabled != null)
-          'healthMonitoringEnabled': healthMonitoringEnabled!,
-        if (incidentLogsEnabled != null)
-          'incidentLogsEnabled': incidentLogsEnabled!,
-      };
+    if (diagnosticsEventsEnabled != null)
+      'diagnosticsEventsEnabled': diagnosticsEventsEnabled!,
+    if (healthMonitoringEnabled != null)
+      'healthMonitoringEnabled': healthMonitoringEnabled!,
+    if (incidentLogsEnabled != null)
+      'incidentLogsEnabled': incidentLogsEnabled!,
+  };
 }
 
 /// The connection string profile to allow clients to group.
@@ -4887,29 +4903,29 @@ class DatabaseConnectionStringProfile {
   });
 
   DatabaseConnectionStringProfile.fromJson(core.Map json_)
-      : this(
-          consumerGroup: json_['consumerGroup'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          hostFormat: json_['hostFormat'] as core.String?,
-          isRegional: json_['isRegional'] as core.bool?,
-          protocol: json_['protocol'] as core.String?,
-          sessionMode: json_['sessionMode'] as core.String?,
-          syntaxFormat: json_['syntaxFormat'] as core.String?,
-          tlsAuthentication: json_['tlsAuthentication'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        consumerGroup: json_['consumerGroup'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        hostFormat: json_['hostFormat'] as core.String?,
+        isRegional: json_['isRegional'] as core.bool?,
+        protocol: json_['protocol'] as core.String?,
+        sessionMode: json_['sessionMode'] as core.String?,
+        syntaxFormat: json_['syntaxFormat'] as core.String?,
+        tlsAuthentication: json_['tlsAuthentication'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerGroup != null) 'consumerGroup': consumerGroup!,
-        if (displayName != null) 'displayName': displayName!,
-        if (hostFormat != null) 'hostFormat': hostFormat!,
-        if (isRegional != null) 'isRegional': isRegional!,
-        if (protocol != null) 'protocol': protocol!,
-        if (sessionMode != null) 'sessionMode': sessionMode!,
-        if (syntaxFormat != null) 'syntaxFormat': syntaxFormat!,
-        if (tlsAuthentication != null) 'tlsAuthentication': tlsAuthentication!,
-        if (value != null) 'value': value!,
-      };
+    if (consumerGroup != null) 'consumerGroup': consumerGroup!,
+    if (displayName != null) 'displayName': displayName!,
+    if (hostFormat != null) 'hostFormat': hostFormat!,
+    if (isRegional != null) 'isRegional': isRegional!,
+    if (protocol != null) 'protocol': protocol!,
+    if (sessionMode != null) 'sessionMode': sessionMode!,
+    if (syntaxFormat != null) 'syntaxFormat': syntaxFormat!,
+    if (tlsAuthentication != null) 'tlsAuthentication': tlsAuthentication!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Details of the database node resource.
@@ -4927,24 +4943,23 @@ class DbNode {
   /// Optional.
   DbNodeProperties? properties;
 
-  DbNode({
-    this.name,
-    this.properties,
-  });
+  DbNode({this.name, this.properties});
 
   DbNode.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          properties: json_.containsKey('properties')
-              ? DbNodeProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? DbNodeProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (properties != null) 'properties': properties!,
-      };
+    if (name != null) 'name': name!,
+    if (properties != null) 'properties': properties!,
+  };
 }
 
 /// Various properties and settings associated with Db node.
@@ -5014,30 +5029,30 @@ class DbNodeProperties {
   });
 
   DbNodeProperties.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
-          dbServerOcid: json_['dbServerOcid'] as core.String?,
-          hostname: json_['hostname'] as core.String?,
-          memorySizeGb: json_['memorySizeGb'] as core.int?,
-          ocid: json_['ocid'] as core.String?,
-          ocpuCount: json_['ocpuCount'] as core.int?,
-          state: json_['state'] as core.String?,
-          totalCpuCoreCount: json_['totalCpuCoreCount'] as core.int?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
+        dbServerOcid: json_['dbServerOcid'] as core.String?,
+        hostname: json_['hostname'] as core.String?,
+        memorySizeGb: json_['memorySizeGb'] as core.int?,
+        ocid: json_['ocid'] as core.String?,
+        ocpuCount: json_['ocpuCount'] as core.int?,
+        state: json_['state'] as core.String?,
+        totalCpuCoreCount: json_['totalCpuCoreCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (dbNodeStorageSizeGb != null)
-          'dbNodeStorageSizeGb': dbNodeStorageSizeGb!,
-        if (dbServerOcid != null) 'dbServerOcid': dbServerOcid!,
-        if (hostname != null) 'hostname': hostname!,
-        if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
-        if (ocid != null) 'ocid': ocid!,
-        if (ocpuCount != null) 'ocpuCount': ocpuCount!,
-        if (state != null) 'state': state!,
-        if (totalCpuCoreCount != null) 'totalCpuCoreCount': totalCpuCoreCount!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (dbNodeStorageSizeGb != null)
+      'dbNodeStorageSizeGb': dbNodeStorageSizeGb!,
+    if (dbServerOcid != null) 'dbServerOcid': dbServerOcid!,
+    if (hostname != null) 'hostname': hostname!,
+    if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
+    if (ocid != null) 'ocid': ocid!,
+    if (ocpuCount != null) 'ocpuCount': ocpuCount!,
+    if (state != null) 'state': state!,
+    if (totalCpuCoreCount != null) 'totalCpuCoreCount': totalCpuCoreCount!,
+  };
 }
 
 /// Details of the database server resource.
@@ -5060,27 +5075,25 @@ class DbServer {
   /// Optional.
   DbServerProperties? properties;
 
-  DbServer({
-    this.displayName,
-    this.name,
-    this.properties,
-  });
+  DbServer({this.displayName, this.name, this.properties});
 
   DbServer.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          properties: json_.containsKey('properties')
-              ? DbServerProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? DbServerProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (properties != null) 'properties': properties!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (properties != null) 'properties': properties!,
+  };
 }
 
 /// Various properties and settings associated with Exadata database server.
@@ -5156,35 +5169,36 @@ class DbServerProperties {
   });
 
   DbServerProperties.fromJson(core.Map json_)
-      : this(
-          dbNodeIds: (json_['dbNodeIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
-          maxDbNodeStorageSizeGb: json_['maxDbNodeStorageSizeGb'] as core.int?,
-          maxMemorySizeGb: json_['maxMemorySizeGb'] as core.int?,
-          maxOcpuCount: json_['maxOcpuCount'] as core.int?,
-          memorySizeGb: json_['memorySizeGb'] as core.int?,
-          ocid: json_['ocid'] as core.String?,
-          ocpuCount: json_['ocpuCount'] as core.int?,
-          state: json_['state'] as core.String?,
-          vmCount: json_['vmCount'] as core.int?,
-        );
+    : this(
+        dbNodeIds:
+            (json_['dbNodeIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
+        maxDbNodeStorageSizeGb: json_['maxDbNodeStorageSizeGb'] as core.int?,
+        maxMemorySizeGb: json_['maxMemorySizeGb'] as core.int?,
+        maxOcpuCount: json_['maxOcpuCount'] as core.int?,
+        memorySizeGb: json_['memorySizeGb'] as core.int?,
+        ocid: json_['ocid'] as core.String?,
+        ocpuCount: json_['ocpuCount'] as core.int?,
+        state: json_['state'] as core.String?,
+        vmCount: json_['vmCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dbNodeIds != null) 'dbNodeIds': dbNodeIds!,
-        if (dbNodeStorageSizeGb != null)
-          'dbNodeStorageSizeGb': dbNodeStorageSizeGb!,
-        if (maxDbNodeStorageSizeGb != null)
-          'maxDbNodeStorageSizeGb': maxDbNodeStorageSizeGb!,
-        if (maxMemorySizeGb != null) 'maxMemorySizeGb': maxMemorySizeGb!,
-        if (maxOcpuCount != null) 'maxOcpuCount': maxOcpuCount!,
-        if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
-        if (ocid != null) 'ocid': ocid!,
-        if (ocpuCount != null) 'ocpuCount': ocpuCount!,
-        if (state != null) 'state': state!,
-        if (vmCount != null) 'vmCount': vmCount!,
-      };
+    if (dbNodeIds != null) 'dbNodeIds': dbNodeIds!,
+    if (dbNodeStorageSizeGb != null)
+      'dbNodeStorageSizeGb': dbNodeStorageSizeGb!,
+    if (maxDbNodeStorageSizeGb != null)
+      'maxDbNodeStorageSizeGb': maxDbNodeStorageSizeGb!,
+    if (maxMemorySizeGb != null) 'maxMemorySizeGb': maxMemorySizeGb!,
+    if (maxOcpuCount != null) 'maxOcpuCount': maxOcpuCount!,
+    if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
+    if (ocid != null) 'ocid': ocid!,
+    if (ocpuCount != null) 'ocpuCount': ocpuCount!,
+    if (state != null) 'state': state!,
+    if (vmCount != null) 'vmCount': vmCount!,
+  };
 }
 
 /// Details of the Database System Shapes resource.
@@ -5268,44 +5282,43 @@ class DbSystemShape {
   });
 
   DbSystemShape.fromJson(core.Map json_)
-      : this(
-          availableCoreCountPerNode:
-              json_['availableCoreCountPerNode'] as core.int?,
-          availableDataStorageTb: json_['availableDataStorageTb'] as core.int?,
-          availableMemoryPerNodeGb:
-              json_['availableMemoryPerNodeGb'] as core.int?,
-          maxNodeCount: json_['maxNodeCount'] as core.int?,
-          maxStorageCount: json_['maxStorageCount'] as core.int?,
-          minCoreCountPerNode: json_['minCoreCountPerNode'] as core.int?,
-          minDbNodeStoragePerNodeGb:
-              json_['minDbNodeStoragePerNodeGb'] as core.int?,
-          minMemoryPerNodeGb: json_['minMemoryPerNodeGb'] as core.int?,
-          minNodeCount: json_['minNodeCount'] as core.int?,
-          minStorageCount: json_['minStorageCount'] as core.int?,
-          name: json_['name'] as core.String?,
-          shape: json_['shape'] as core.String?,
-        );
+    : this(
+        availableCoreCountPerNode:
+            json_['availableCoreCountPerNode'] as core.int?,
+        availableDataStorageTb: json_['availableDataStorageTb'] as core.int?,
+        availableMemoryPerNodeGb:
+            json_['availableMemoryPerNodeGb'] as core.int?,
+        maxNodeCount: json_['maxNodeCount'] as core.int?,
+        maxStorageCount: json_['maxStorageCount'] as core.int?,
+        minCoreCountPerNode: json_['minCoreCountPerNode'] as core.int?,
+        minDbNodeStoragePerNodeGb:
+            json_['minDbNodeStoragePerNodeGb'] as core.int?,
+        minMemoryPerNodeGb: json_['minMemoryPerNodeGb'] as core.int?,
+        minNodeCount: json_['minNodeCount'] as core.int?,
+        minStorageCount: json_['minStorageCount'] as core.int?,
+        name: json_['name'] as core.String?,
+        shape: json_['shape'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availableCoreCountPerNode != null)
-          'availableCoreCountPerNode': availableCoreCountPerNode!,
-        if (availableDataStorageTb != null)
-          'availableDataStorageTb': availableDataStorageTb!,
-        if (availableMemoryPerNodeGb != null)
-          'availableMemoryPerNodeGb': availableMemoryPerNodeGb!,
-        if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
-        if (maxStorageCount != null) 'maxStorageCount': maxStorageCount!,
-        if (minCoreCountPerNode != null)
-          'minCoreCountPerNode': minCoreCountPerNode!,
-        if (minDbNodeStoragePerNodeGb != null)
-          'minDbNodeStoragePerNodeGb': minDbNodeStoragePerNodeGb!,
-        if (minMemoryPerNodeGb != null)
-          'minMemoryPerNodeGb': minMemoryPerNodeGb!,
-        if (minNodeCount != null) 'minNodeCount': minNodeCount!,
-        if (minStorageCount != null) 'minStorageCount': minStorageCount!,
-        if (name != null) 'name': name!,
-        if (shape != null) 'shape': shape!,
-      };
+    if (availableCoreCountPerNode != null)
+      'availableCoreCountPerNode': availableCoreCountPerNode!,
+    if (availableDataStorageTb != null)
+      'availableDataStorageTb': availableDataStorageTb!,
+    if (availableMemoryPerNodeGb != null)
+      'availableMemoryPerNodeGb': availableMemoryPerNodeGb!,
+    if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
+    if (maxStorageCount != null) 'maxStorageCount': maxStorageCount!,
+    if (minCoreCountPerNode != null)
+      'minCoreCountPerNode': minCoreCountPerNode!,
+    if (minDbNodeStoragePerNodeGb != null)
+      'minDbNodeStoragePerNodeGb': minDbNodeStoragePerNodeGb!,
+    if (minMemoryPerNodeGb != null) 'minMemoryPerNodeGb': minMemoryPerNodeGb!,
+    if (minNodeCount != null) 'minNodeCount': minNodeCount!,
+    if (minStorageCount != null) 'minStorageCount': minStorageCount!,
+    if (name != null) 'name': name!,
+    if (shape != null) 'shape': shape!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -5353,23 +5366,26 @@ class Entitlement {
   });
 
   Entitlement.fromJson(core.Map json_)
-      : this(
-          cloudAccountDetails: json_.containsKey('cloudAccountDetails')
-              ? CloudAccountDetails.fromJson(json_['cloudAccountDetails']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          entitlementId: json_['entitlementId'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        cloudAccountDetails:
+            json_.containsKey('cloudAccountDetails')
+                ? CloudAccountDetails.fromJson(
+                  json_['cloudAccountDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        entitlementId: json_['entitlementId'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudAccountDetails != null)
-          'cloudAccountDetails': cloudAccountDetails!,
-        if (entitlementId != null) 'entitlementId': entitlementId!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-      };
+    if (cloudAccountDetails != null)
+      'cloudAccountDetails': cloudAccountDetails!,
+    if (entitlementId != null) 'entitlementId': entitlementId!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// The request for `AutonomousDatabase.GenerateWallet`.
@@ -5405,17 +5421,17 @@ class GenerateAutonomousDatabaseWalletRequest {
   });
 
   GenerateAutonomousDatabaseWalletRequest.fromJson(core.Map json_)
-      : this(
-          isRegional: json_['isRegional'] as core.bool?,
-          password: json_['password'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        isRegional: json_['isRegional'] as core.bool?,
+        password: json_['password'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (isRegional != null) 'isRegional': isRegional!,
-        if (password != null) 'password': password!,
-        if (type != null) 'type': type!,
-      };
+    if (isRegional != null) 'isRegional': isRegional!,
+    if (password != null) 'password': password!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// The response for `AutonomousDatabase.GenerateWallet`.
@@ -5428,22 +5444,20 @@ class GenerateAutonomousDatabaseWalletResponse {
       convert.base64.decode(archiveContent!);
 
   set archiveContentAsBytes(core.List<core.int> bytes_) {
-    archiveContent =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    archiveContent = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  GenerateAutonomousDatabaseWalletResponse({
-    this.archiveContent,
-  });
+  GenerateAutonomousDatabaseWalletResponse({this.archiveContent});
 
   GenerateAutonomousDatabaseWalletResponse.fromJson(core.Map json_)
-      : this(
-          archiveContent: json_['archiveContent'] as core.String?,
-        );
+    : this(archiveContent: json_['archiveContent'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (archiveContent != null) 'archiveContent': archiveContent!,
-      };
+    if (archiveContent != null) 'archiveContent': archiveContent!,
+  };
 }
 
 /// Details of the Oracle Grid Infrastructure (GI) version resource.
@@ -5461,21 +5475,18 @@ class GiVersion {
   /// Optional.
   core.String? version;
 
-  GiVersion({
-    this.name,
-    this.version,
-  });
+  GiVersion({this.name, this.version});
 
   GiVersion.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (version != null) 'version': version!,
-      };
+    if (name != null) 'name': name!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// The response for `AutonomousDatabaseBackup.List`.
@@ -5492,20 +5503,23 @@ class ListAutonomousDatabaseBackupsResponse {
   });
 
   ListAutonomousDatabaseBackupsResponse.fromJson(core.Map json_)
-      : this(
-          autonomousDatabaseBackups:
-              (json_['autonomousDatabaseBackups'] as core.List?)
-                  ?.map((value) => AutonomousDatabaseBackup.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        autonomousDatabaseBackups:
+            (json_['autonomousDatabaseBackups'] as core.List?)
+                ?.map(
+                  (value) => AutonomousDatabaseBackup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autonomousDatabaseBackups != null)
-          'autonomousDatabaseBackups': autonomousDatabaseBackups!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (autonomousDatabaseBackups != null)
+      'autonomousDatabaseBackups': autonomousDatabaseBackups!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for `AutonomousDatabaseCharacterSet.List`.
@@ -5522,20 +5536,23 @@ class ListAutonomousDatabaseCharacterSetsResponse {
   });
 
   ListAutonomousDatabaseCharacterSetsResponse.fromJson(core.Map json_)
-      : this(
-          autonomousDatabaseCharacterSets:
-              (json_['autonomousDatabaseCharacterSets'] as core.List?)
-                  ?.map((value) => AutonomousDatabaseCharacterSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        autonomousDatabaseCharacterSets:
+            (json_['autonomousDatabaseCharacterSets'] as core.List?)
+                ?.map(
+                  (value) => AutonomousDatabaseCharacterSet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autonomousDatabaseCharacterSets != null)
-          'autonomousDatabaseCharacterSets': autonomousDatabaseCharacterSets!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (autonomousDatabaseCharacterSets != null)
+      'autonomousDatabaseCharacterSets': autonomousDatabaseCharacterSets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for `AutonomousDatabase.List`.
@@ -5552,19 +5569,23 @@ class ListAutonomousDatabasesResponse {
   });
 
   ListAutonomousDatabasesResponse.fromJson(core.Map json_)
-      : this(
-          autonomousDatabases: (json_['autonomousDatabases'] as core.List?)
-              ?.map((value) => AutonomousDatabase.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        autonomousDatabases:
+            (json_['autonomousDatabases'] as core.List?)
+                ?.map(
+                  (value) => AutonomousDatabase.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autonomousDatabases != null)
-          'autonomousDatabases': autonomousDatabases!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (autonomousDatabases != null)
+      'autonomousDatabases': autonomousDatabases!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for `AutonomousDbVersion.List`.
@@ -5581,19 +5602,23 @@ class ListAutonomousDbVersionsResponse {
   });
 
   ListAutonomousDbVersionsResponse.fromJson(core.Map json_)
-      : this(
-          autonomousDbVersions: (json_['autonomousDbVersions'] as core.List?)
-              ?.map((value) => AutonomousDbVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        autonomousDbVersions:
+            (json_['autonomousDbVersions'] as core.List?)
+                ?.map(
+                  (value) => AutonomousDbVersion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autonomousDbVersions != null)
-          'autonomousDbVersions': autonomousDbVersions!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (autonomousDbVersions != null)
+      'autonomousDbVersions': autonomousDbVersions!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for `CloudExadataInfrastructures.list`.
@@ -5610,20 +5635,23 @@ class ListCloudExadataInfrastructuresResponse {
   });
 
   ListCloudExadataInfrastructuresResponse.fromJson(core.Map json_)
-      : this(
-          cloudExadataInfrastructures:
-              (json_['cloudExadataInfrastructures'] as core.List?)
-                  ?.map((value) => CloudExadataInfrastructure.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        cloudExadataInfrastructures:
+            (json_['cloudExadataInfrastructures'] as core.List?)
+                ?.map(
+                  (value) => CloudExadataInfrastructure.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudExadataInfrastructures != null)
-          'cloudExadataInfrastructures': cloudExadataInfrastructures!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (cloudExadataInfrastructures != null)
+      'cloudExadataInfrastructures': cloudExadataInfrastructures!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for `CloudVmCluster.List`.
@@ -5634,24 +5662,25 @@ class ListCloudVmClustersResponse {
   /// A token to fetch the next page of results.
   core.String? nextPageToken;
 
-  ListCloudVmClustersResponse({
-    this.cloudVmClusters,
-    this.nextPageToken,
-  });
+  ListCloudVmClustersResponse({this.cloudVmClusters, this.nextPageToken});
 
   ListCloudVmClustersResponse.fromJson(core.Map json_)
-      : this(
-          cloudVmClusters: (json_['cloudVmClusters'] as core.List?)
-              ?.map((value) => CloudVmCluster.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        cloudVmClusters:
+            (json_['cloudVmClusters'] as core.List?)
+                ?.map(
+                  (value) => CloudVmCluster.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudVmClusters != null) 'cloudVmClusters': cloudVmClusters!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (cloudVmClusters != null) 'cloudVmClusters': cloudVmClusters!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for `DbNode.List`.
@@ -5662,24 +5691,25 @@ class ListDbNodesResponse {
   /// A token identifying a page of results the node should return.
   core.String? nextPageToken;
 
-  ListDbNodesResponse({
-    this.dbNodes,
-    this.nextPageToken,
-  });
+  ListDbNodesResponse({this.dbNodes, this.nextPageToken});
 
   ListDbNodesResponse.fromJson(core.Map json_)
-      : this(
-          dbNodes: (json_['dbNodes'] as core.List?)
-              ?.map((value) =>
-                  DbNode.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        dbNodes:
+            (json_['dbNodes'] as core.List?)
+                ?.map(
+                  (value) => DbNode.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dbNodes != null) 'dbNodes': dbNodes!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (dbNodes != null) 'dbNodes': dbNodes!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for `DbServer.List`.
@@ -5690,24 +5720,25 @@ class ListDbServersResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListDbServersResponse({
-    this.dbServers,
-    this.nextPageToken,
-  });
+  ListDbServersResponse({this.dbServers, this.nextPageToken});
 
   ListDbServersResponse.fromJson(core.Map json_)
-      : this(
-          dbServers: (json_['dbServers'] as core.List?)
-              ?.map((value) => DbServer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        dbServers:
+            (json_['dbServers'] as core.List?)
+                ?.map(
+                  (value) => DbServer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dbServers != null) 'dbServers': dbServers!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (dbServers != null) 'dbServers': dbServers!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for `DbSystemShape.List`.
@@ -5718,24 +5749,25 @@ class ListDbSystemShapesResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListDbSystemShapesResponse({
-    this.dbSystemShapes,
-    this.nextPageToken,
-  });
+  ListDbSystemShapesResponse({this.dbSystemShapes, this.nextPageToken});
 
   ListDbSystemShapesResponse.fromJson(core.Map json_)
-      : this(
-          dbSystemShapes: (json_['dbSystemShapes'] as core.List?)
-              ?.map((value) => DbSystemShape.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        dbSystemShapes:
+            (json_['dbSystemShapes'] as core.List?)
+                ?.map(
+                  (value) => DbSystemShape.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dbSystemShapes != null) 'dbSystemShapes': dbSystemShapes!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (dbSystemShapes != null) 'dbSystemShapes': dbSystemShapes!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for `Entitlement.List`.
@@ -5746,24 +5778,25 @@ class ListEntitlementsResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListEntitlementsResponse({
-    this.entitlements,
-    this.nextPageToken,
-  });
+  ListEntitlementsResponse({this.entitlements, this.nextPageToken});
 
   ListEntitlementsResponse.fromJson(core.Map json_)
-      : this(
-          entitlements: (json_['entitlements'] as core.List?)
-              ?.map((value) => Entitlement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        entitlements:
+            (json_['entitlements'] as core.List?)
+                ?.map(
+                  (value) => Entitlement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entitlements != null) 'entitlements': entitlements!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (entitlements != null) 'entitlements': entitlements!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for `GiVersion.List`.
@@ -5774,24 +5807,25 @@ class ListGiVersionsResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListGiVersionsResponse({
-    this.giVersions,
-    this.nextPageToken,
-  });
+  ListGiVersionsResponse({this.giVersions, this.nextPageToken});
 
   ListGiVersionsResponse.fromJson(core.Map json_)
-      : this(
-          giVersions: (json_['giVersions'] as core.List?)
-              ?.map((value) => GiVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        giVersions:
+            (json_['giVersions'] as core.List?)
+                ?.map(
+                  (value) => GiVersion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (giVersions != null) 'giVersions': giVersions!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (giVersions != null) 'giVersions': giVersions!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -5802,24 +5836,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for `OdbNetwork.List`.
@@ -5841,22 +5876,27 @@ class ListOdbNetworksResponse {
   });
 
   ListOdbNetworksResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          odbNetworks: (json_['odbNetworks'] as core.List?)
-              ?.map((value) => OdbNetwork.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        odbNetworks:
+            (json_['odbNetworks'] as core.List?)
+                ?.map(
+                  (value) => OdbNetwork.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (odbNetworks != null) 'odbNetworks': odbNetworks!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (odbNetworks != null) 'odbNetworks': odbNetworks!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response for `OdbSubnet.List`.
@@ -5878,22 +5918,27 @@ class ListOdbSubnetsResponse {
   });
 
   ListOdbSubnetsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          odbSubnets: (json_['odbSubnets'] as core.List?)
-              ?.map((value) => OdbSubnet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        odbSubnets:
+            (json_['odbSubnets'] as core.List?)
+                ?.map(
+                  (value) => OdbSubnet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (odbSubnets != null) 'odbSubnets': odbSubnets!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (odbSubnets != null) 'odbSubnets': odbSubnets!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -5904,24 +5949,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -6021,41 +6067,44 @@ class MaintenanceWindow {
   });
 
   MaintenanceWindow.fromJson(core.Map json_)
-      : this(
-          customActionTimeoutMins:
-              json_['customActionTimeoutMins'] as core.int?,
-          daysOfWeek: (json_['daysOfWeek'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          hoursOfDay: (json_['hoursOfDay'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-          isCustomActionTimeoutEnabled:
-              json_['isCustomActionTimeoutEnabled'] as core.bool?,
-          leadTimeWeek: json_['leadTimeWeek'] as core.int?,
-          months: (json_['months'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          patchingMode: json_['patchingMode'] as core.String?,
-          preference: json_['preference'] as core.String?,
-          weeksOfMonth: (json_['weeksOfMonth'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-        );
+    : this(
+        customActionTimeoutMins: json_['customActionTimeoutMins'] as core.int?,
+        daysOfWeek:
+            (json_['daysOfWeek'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        hoursOfDay:
+            (json_['hoursOfDay'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        isCustomActionTimeoutEnabled:
+            json_['isCustomActionTimeoutEnabled'] as core.bool?,
+        leadTimeWeek: json_['leadTimeWeek'] as core.int?,
+        months:
+            (json_['months'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        patchingMode: json_['patchingMode'] as core.String?,
+        preference: json_['preference'] as core.String?,
+        weeksOfMonth:
+            (json_['weeksOfMonth'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customActionTimeoutMins != null)
-          'customActionTimeoutMins': customActionTimeoutMins!,
-        if (daysOfWeek != null) 'daysOfWeek': daysOfWeek!,
-        if (hoursOfDay != null) 'hoursOfDay': hoursOfDay!,
-        if (isCustomActionTimeoutEnabled != null)
-          'isCustomActionTimeoutEnabled': isCustomActionTimeoutEnabled!,
-        if (leadTimeWeek != null) 'leadTimeWeek': leadTimeWeek!,
-        if (months != null) 'months': months!,
-        if (patchingMode != null) 'patchingMode': patchingMode!,
-        if (preference != null) 'preference': preference!,
-        if (weeksOfMonth != null) 'weeksOfMonth': weeksOfMonth!,
-      };
+    if (customActionTimeoutMins != null)
+      'customActionTimeoutMins': customActionTimeoutMins!,
+    if (daysOfWeek != null) 'daysOfWeek': daysOfWeek!,
+    if (hoursOfDay != null) 'hoursOfDay': hoursOfDay!,
+    if (isCustomActionTimeoutEnabled != null)
+      'isCustomActionTimeoutEnabled': isCustomActionTimeoutEnabled!,
+    if (leadTimeWeek != null) 'leadTimeWeek': leadTimeWeek!,
+    if (months != null) 'months': months!,
+    if (patchingMode != null) 'patchingMode': patchingMode!,
+    if (preference != null) 'preference': preference!,
+    if (weeksOfMonth != null) 'weeksOfMonth': weeksOfMonth!,
+  };
 }
 
 /// Represents OdbNetwork resource.
@@ -6108,29 +6157,25 @@ class OdbNetwork {
   });
 
   OdbNetwork.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          entitlementId: json_['entitlementId'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        entitlementId: json_['entitlementId'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (entitlementId != null) 'entitlementId': entitlementId!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (state != null) 'state': state!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (entitlementId != null) 'entitlementId': entitlementId!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Represents OdbSubnet resource.
@@ -6186,29 +6231,25 @@ class OdbSubnet {
   });
 
   OdbSubnet.fromJson(core.Map json_)
-      : this(
-          cidrRange: json_['cidrRange'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          purpose: json_['purpose'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        cidrRange: json_['cidrRange'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        purpose: json_['purpose'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cidrRange != null) 'cidrRange': cidrRange!,
-        if (createTime != null) 'createTime': createTime!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (purpose != null) 'purpose': purpose!,
-        if (state != null) 'state': state!,
-      };
+    if (cidrRange != null) 'cidrRange': cidrRange!,
+    if (createTime != null) 'createTime': createTime!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (purpose != null) 'purpose': purpose!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -6254,37 +6295,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// The request for `AutonomousDatabase.Restart`.
@@ -6297,18 +6336,14 @@ class RestoreAutonomousDatabaseRequest {
   /// Required.
   core.String? restoreTime;
 
-  RestoreAutonomousDatabaseRequest({
-    this.restoreTime,
-  });
+  RestoreAutonomousDatabaseRequest({this.restoreTime});
 
   RestoreAutonomousDatabaseRequest.fromJson(core.Map json_)
-      : this(
-          restoreTime: json_['restoreTime'] as core.String?,
-        );
+    : this(restoreTime: json_['restoreTime'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (restoreTime != null) 'restoreTime': restoreTime!,
-      };
+    if (restoreTime != null) 'restoreTime': restoreTime!,
+  };
 }
 
 /// Details of scheduled operation.
@@ -6339,30 +6374,30 @@ class ScheduledOperationDetails {
   /// Output only.
   TimeOfDay? stopTime;
 
-  ScheduledOperationDetails({
-    this.dayOfWeek,
-    this.startTime,
-    this.stopTime,
-  });
+  ScheduledOperationDetails({this.dayOfWeek, this.startTime, this.stopTime});
 
   ScheduledOperationDetails.fromJson(core.Map json_)
-      : this(
-          dayOfWeek: json_['dayOfWeek'] as core.String?,
-          startTime: json_.containsKey('startTime')
-              ? TimeOfDay.fromJson(
-                  json_['startTime'] as core.Map<core.String, core.dynamic>)
-              : null,
-          stopTime: json_.containsKey('stopTime')
-              ? TimeOfDay.fromJson(
-                  json_['stopTime'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dayOfWeek: json_['dayOfWeek'] as core.String?,
+        startTime:
+            json_.containsKey('startTime')
+                ? TimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stopTime:
+            json_.containsKey('stopTime')
+                ? TimeOfDay.fromJson(
+                  json_['stopTime'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
-        if (startTime != null) 'startTime': startTime!,
-        if (stopTime != null) 'stopTime': stopTime!,
-      };
+    if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
+    if (startTime != null) 'startTime': startTime!,
+    if (stopTime != null) 'stopTime': stopTime!,
+  };
 }
 
 /// The source configuration for the standby Autonomous Database.
@@ -6385,19 +6420,17 @@ class SourceConfig {
   });
 
   SourceConfig.fromJson(core.Map json_)
-      : this(
-          automaticBackupsReplicationEnabled:
-              json_['automaticBackupsReplicationEnabled'] as core.bool?,
-          autonomousDatabase: json_['autonomousDatabase'] as core.String?,
-        );
+    : this(
+        automaticBackupsReplicationEnabled:
+            json_['automaticBackupsReplicationEnabled'] as core.bool?,
+        autonomousDatabase: json_['autonomousDatabase'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (automaticBackupsReplicationEnabled != null)
-          'automaticBackupsReplicationEnabled':
-              automaticBackupsReplicationEnabled!,
-        if (autonomousDatabase != null)
-          'autonomousDatabase': autonomousDatabase!,
-      };
+    if (automaticBackupsReplicationEnabled != null)
+      'automaticBackupsReplicationEnabled': automaticBackupsReplicationEnabled!,
+    if (autonomousDatabase != null) 'autonomousDatabase': autonomousDatabase!,
+  };
 }
 
 /// The request for `AutonomousDatabase.Start`.
@@ -6422,20 +6455,17 @@ class SwitchoverAutonomousDatabaseRequest {
   /// Required.
   core.String? peerAutonomousDatabase;
 
-  SwitchoverAutonomousDatabaseRequest({
-    this.peerAutonomousDatabase,
-  });
+  SwitchoverAutonomousDatabaseRequest({this.peerAutonomousDatabase});
 
   SwitchoverAutonomousDatabaseRequest.fromJson(core.Map json_)
-      : this(
-          peerAutonomousDatabase:
-              json_['peerAutonomousDatabase'] as core.String?,
-        );
+    : this(
+        peerAutonomousDatabase: json_['peerAutonomousDatabase'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (peerAutonomousDatabase != null)
-          'peerAutonomousDatabase': peerAutonomousDatabase!,
-      };
+    if (peerAutonomousDatabase != null)
+      'peerAutonomousDatabase': peerAutonomousDatabase!,
+  };
 }
 
 /// Represents a time of day.

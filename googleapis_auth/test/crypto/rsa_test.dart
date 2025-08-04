@@ -14,18 +14,26 @@ void main() {
   group('rsa-algorithm', () {
     test('integer-to-bytes', () {
       expect(RSAAlgorithm.integer2Bytes(BigInt.one, 1), equals([1]));
-      expect(RSAAlgorithm.integer2Bytes(_bigNumber, 9),
-          equals([2, 0, 0, 0, 0, 0, 0, 0, 0]));
-      expect(RSAAlgorithm.integer2Bytes(_bigNumber, 12),
-          equals([0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0]));
-      expect(() => RSAAlgorithm.integer2Bytes(BigInt.zero, 1),
-          throwsA(isArgumentError));
+      expect(
+        RSAAlgorithm.integer2Bytes(_bigNumber, 9),
+        equals([2, 0, 0, 0, 0, 0, 0, 0, 0]),
+      );
+      expect(
+        RSAAlgorithm.integer2Bytes(_bigNumber, 12),
+        equals([0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0]),
+      );
+      expect(
+        () => RSAAlgorithm.integer2Bytes(BigInt.zero, 1),
+        throwsA(isArgumentError),
+      );
     });
 
     test('bytes-to-integer', () {
       expect(RSAAlgorithm.bytes2BigInt([1]), equals(BigInt.one));
       expect(
-          RSAAlgorithm.bytes2BigInt([2, 0, 0, 0, 0, 0, 0, 0, 0]), _bigNumber);
+        RSAAlgorithm.bytes2BigInt([2, 0, 0, 0, 0, 0, 0, 0, 0]),
+        _bigNumber,
+      );
     });
 
     test('encrypt', () {
@@ -46,12 +54,23 @@ void main() {
         19, 87, 162, 148, 169, 93, 22, 135, 125, 134, 187, 48, 93, 52, 20, 182,
         56, 93, 0, 175, 193, 213, 144, 29, 44, 240, 226, 91, 54, 178, 241, 240,
         85, 53, 148, 172, 138, 107, 131, 14, 157, 183, 137, 46, 130, 51, 233,
-        26, 217, 230, 133, 217, 76
+        26, 217, 230, 133, 217, 76,
       ];
       expect(
-          RSAAlgorithm.encrypt(
-              testPrivateKey, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 256),
-          equals(encryptedData));
+        RSAAlgorithm.encrypt(testPrivateKey, [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+        ], 256),
+        equals(encryptedData),
+      );
     });
   });
 }

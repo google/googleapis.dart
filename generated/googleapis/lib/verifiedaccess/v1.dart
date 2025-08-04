@@ -49,11 +49,16 @@ class VerifiedaccessApi {
 
   ChallengeResource get challenge => ChallengeResource(_requester);
 
-  VerifiedaccessApi(http.Client client,
-      {core.String rootUrl = 'https://verifiedaccess.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  VerifiedaccessApi(
+    http.Client client, {
+    core.String rootUrl = 'https://verifiedaccess.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ChallengeResource {
@@ -77,10 +82,7 @@ class ChallengeResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Challenge> create(
-    Empty request, {
-    core.String? $fields,
-  }) async {
+  async.Future<Challenge> create(Empty request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -131,7 +133,8 @@ class ChallengeResource {
       queryParams: queryParams_,
     );
     return VerifyChallengeResponseResult.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -144,28 +147,30 @@ class Challenge {
   /// Generated challenge
   SignedData? challenge;
 
-  Challenge({
-    this.alternativeChallenge,
-    this.challenge,
-  });
+  Challenge({this.alternativeChallenge, this.challenge});
 
   Challenge.fromJson(core.Map json_)
-      : this(
-          alternativeChallenge: json_.containsKey('alternativeChallenge')
-              ? SignedData.fromJson(json_['alternativeChallenge']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          challenge: json_.containsKey('challenge')
-              ? SignedData.fromJson(
-                  json_['challenge'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        alternativeChallenge:
+            json_.containsKey('alternativeChallenge')
+                ? SignedData.fromJson(
+                  json_['alternativeChallenge']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        challenge:
+            json_.containsKey('challenge')
+                ? SignedData.fromJson(
+                  json_['challenge'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternativeChallenge != null)
-          'alternativeChallenge': alternativeChallenge!,
-        if (challenge != null) 'challenge': challenge!,
-      };
+    if (alternativeChallenge != null)
+      'alternativeChallenge': alternativeChallenge!,
+    if (challenge != null) 'challenge': challenge!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -183,8 +188,10 @@ class SignedData {
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> bytes_) {
-    data =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The signature of the data field.
@@ -192,25 +199,24 @@ class SignedData {
   core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
 
   set signatureAsBytes(core.List<core.int> bytes_) {
-    signature =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    signature = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  SignedData({
-    this.data,
-    this.signature,
-  });
+  SignedData({this.data, this.signature});
 
   SignedData.fromJson(core.Map json_)
-      : this(
-          data: json_['data'] as core.String?,
-          signature: json_['signature'] as core.String?,
-        );
+    : this(
+        data: json_['data'] as core.String?,
+        signature: json_['signature'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (signature != null) 'signature': signature!,
-      };
+    if (data != null) 'data': data!,
+    if (signature != null) 'signature': signature!,
+  };
 }
 
 /// signed ChallengeResponse
@@ -232,18 +238,21 @@ class VerifyChallengeResponseRequest {
   });
 
   VerifyChallengeResponseRequest.fromJson(core.Map json_)
-      : this(
-          challengeResponse: json_.containsKey('challengeResponse')
-              ? SignedData.fromJson(json_['challengeResponse']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          expectedIdentity: json_['expectedIdentity'] as core.String?,
-        );
+    : this(
+        challengeResponse:
+            json_.containsKey('challengeResponse')
+                ? SignedData.fromJson(
+                  json_['challengeResponse']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        expectedIdentity: json_['expectedIdentity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (challengeResponse != null) 'challengeResponse': challengeResponse!,
-        if (expectedIdentity != null) 'expectedIdentity': expectedIdentity!,
-      };
+    if (challengeResponse != null) 'challengeResponse': challengeResponse!,
+    if (expectedIdentity != null) 'expectedIdentity': expectedIdentity!,
+  };
 }
 
 /// Result message for VerifiedAccess.VerifyChallengeResponse.
@@ -287,23 +296,21 @@ class VerifyChallengeResponseResult {
   });
 
   VerifyChallengeResponseResult.fromJson(core.Map json_)
-      : this(
-          attestedDeviceId: json_['attestedDeviceId'] as core.String?,
-          deviceEnrollmentId: json_['deviceEnrollmentId'] as core.String?,
-          devicePermanentId: json_['devicePermanentId'] as core.String?,
-          signedPublicKeyAndChallenge:
-              json_['signedPublicKeyAndChallenge'] as core.String?,
-          verificationOutput: json_['verificationOutput'] as core.String?,
-        );
+    : this(
+        attestedDeviceId: json_['attestedDeviceId'] as core.String?,
+        deviceEnrollmentId: json_['deviceEnrollmentId'] as core.String?,
+        devicePermanentId: json_['devicePermanentId'] as core.String?,
+        signedPublicKeyAndChallenge:
+            json_['signedPublicKeyAndChallenge'] as core.String?,
+        verificationOutput: json_['verificationOutput'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attestedDeviceId != null) 'attestedDeviceId': attestedDeviceId!,
-        if (deviceEnrollmentId != null)
-          'deviceEnrollmentId': deviceEnrollmentId!,
-        if (devicePermanentId != null) 'devicePermanentId': devicePermanentId!,
-        if (signedPublicKeyAndChallenge != null)
-          'signedPublicKeyAndChallenge': signedPublicKeyAndChallenge!,
-        if (verificationOutput != null)
-          'verificationOutput': verificationOutput!,
-      };
+    if (attestedDeviceId != null) 'attestedDeviceId': attestedDeviceId!,
+    if (deviceEnrollmentId != null) 'deviceEnrollmentId': deviceEnrollmentId!,
+    if (devicePermanentId != null) 'devicePermanentId': devicePermanentId!,
+    if (signedPublicKeyAndChallenge != null)
+      'signedPublicKeyAndChallenge': signedPublicKeyAndChallenge!,
+    if (verificationOutput != null) 'verificationOutput': verificationOutput!,
+  };
 }

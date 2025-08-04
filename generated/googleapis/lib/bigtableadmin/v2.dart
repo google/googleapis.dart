@@ -95,11 +95,16 @@ class BigtableAdminApi {
   OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  BigtableAdminApi(http.Client client,
-      {core.String rootUrl = 'https://bigtableadmin.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  BigtableAdminApi(
+    http.Client client, {
+    core.String rootUrl = 'https://bigtableadmin.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class OperationsResource {
@@ -136,10 +141,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> cancel(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -175,10 +177,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -213,10 +212,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -245,7 +241,7 @@ class OperationsProjectsOperationsResource {
   final commons.ApiRequester _requester;
 
   OperationsProjectsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists operations that match the specified filter in the request.
   ///
@@ -294,7 +290,8 @@ class OperationsProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -390,10 +387,7 @@ class ProjectsInstancesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -426,10 +420,7 @@ class ProjectsInstancesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Instance> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Instance> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -528,7 +519,8 @@ class ProjectsInstancesResource {
       queryParams: queryParams_,
     );
     return ListInstancesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Partially updates an instance within a project.
@@ -668,7 +660,8 @@ class ProjectsInstancesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an instance within a project.
@@ -721,7 +714,7 @@ class ProjectsInstancesAppProfilesResource {
   final commons.ApiRequester _requester;
 
   ProjectsInstancesAppProfilesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an app profile within an instance.
   ///
@@ -774,7 +767,8 @@ class ProjectsInstancesAppProfilesResource {
       queryParams: queryParams_,
     );
     return AppProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an app profile from an instance.
@@ -840,10 +834,7 @@ class ProjectsInstancesAppProfilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AppProfile> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<AppProfile> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -856,7 +847,8 @@ class ProjectsInstancesAppProfilesResource {
       queryParams: queryParams_,
     );
     return AppProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists information about app profiles in an instance.
@@ -910,7 +902,8 @@ class ProjectsInstancesAppProfilesResource {
       queryParams: queryParams_,
     );
     return ListAppProfilesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an app profile within an instance.
@@ -976,7 +969,7 @@ class ProjectsInstancesClustersResource {
       ProjectsInstancesClustersHotTabletsResource(_requester);
 
   ProjectsInstancesClustersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a cluster within an instance.
   ///
@@ -1052,10 +1045,7 @@ class ProjectsInstancesClustersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1089,10 +1079,7 @@ class ProjectsInstancesClustersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Cluster> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Cluster> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1148,7 +1135,8 @@ class ProjectsInstancesClustersResource {
       queryParams: queryParams_,
     );
     return ListClustersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Partially updates a cluster within a project.
@@ -1259,7 +1247,7 @@ class ProjectsInstancesClustersBackupsResource {
   final commons.ApiRequester _requester;
 
   ProjectsInstancesClustersBackupsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Copy a Cloud Bigtable backup to a new backup in the destination cluster
   /// located in the destination instance and project.
@@ -1382,10 +1370,7 @@ class ProjectsInstancesClustersBackupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1419,10 +1404,7 @@ class ProjectsInstancesClustersBackupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Backup> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Backup> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1572,7 +1554,8 @@ class ProjectsInstancesClustersBackupsResource {
       queryParams: queryParams_,
     );
     return ListBackupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a pending or completed Cloud Bigtable Backup.
@@ -1720,7 +1703,8 @@ class ProjectsInstancesClustersBackupsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1728,7 +1712,7 @@ class ProjectsInstancesClustersHotTabletsResource {
   final commons.ApiRequester _requester;
 
   ProjectsInstancesClustersHotTabletsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists hot tablets in a cluster, within the time range provided.
   ///
@@ -1795,7 +1779,8 @@ class ProjectsInstancesClustersHotTabletsResource {
       queryParams: queryParams_,
     );
     return ListHotTabletsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1803,7 +1788,7 @@ class ProjectsInstancesLogicalViewsResource {
   final commons.ApiRequester _requester;
 
   ProjectsInstancesLogicalViewsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a logical view within an instance.
   ///
@@ -1931,7 +1916,8 @@ class ProjectsInstancesLogicalViewsResource {
       queryParams: queryParams_,
     );
     return LogicalView.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for an instance resource.
@@ -2028,7 +2014,8 @@ class ProjectsInstancesLogicalViewsResource {
       queryParams: queryParams_,
     );
     return ListLogicalViewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a logical view within an instance.
@@ -2167,7 +2154,8 @@ class ProjectsInstancesLogicalViewsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2175,7 +2163,7 @@ class ProjectsInstancesMaterializedViewsResource {
   final commons.ApiRequester _requester;
 
   ProjectsInstancesMaterializedViewsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a materialized view within an instance.
   ///
@@ -2305,7 +2293,8 @@ class ProjectsInstancesMaterializedViewsResource {
       queryParams: queryParams_,
     );
     return MaterializedView.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for an instance resource.
@@ -2402,7 +2391,8 @@ class ProjectsInstancesMaterializedViewsResource {
       queryParams: queryParams_,
     );
     return ListMaterializedViewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a materialized view within an instance.
@@ -2541,7 +2531,8 @@ class ProjectsInstancesMaterializedViewsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2554,7 +2545,7 @@ class ProjectsInstancesTablesResource {
       ProjectsInstancesTablesSchemaBundlesResource(_requester);
 
   ProjectsInstancesTablesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Checks replication consistency based on a consistency token, that is, if
   /// replication has caught up based on the conditions specified in the token
@@ -2599,7 +2590,8 @@ class ProjectsInstancesTablesResource {
       queryParams: queryParams_,
     );
     return CheckConsistencyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new table in the specified instance.
@@ -2666,10 +2658,7 @@ class ProjectsInstancesTablesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2779,7 +2768,8 @@ class ProjectsInstancesTablesResource {
       queryParams: queryParams_,
     );
     return GenerateConsistencyTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets metadata information about the specified table.
@@ -2954,7 +2944,8 @@ class ProjectsInstancesTablesResource {
       queryParams: queryParams_,
     );
     return ListTablesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Performs a series of column family modifications on the specified table.
@@ -3201,7 +3192,8 @@ class ProjectsInstancesTablesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Restores a specified table which was accidentally deleted.
@@ -3251,7 +3243,7 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
   final commons.ApiRequester _requester;
 
   ProjectsInstancesTablesAuthorizedViewsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new AuthorizedView in a table.
   ///
@@ -3395,7 +3387,8 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
       queryParams: queryParams_,
     );
     return AuthorizedView.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a Bigtable resource.
@@ -3508,7 +3501,8 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
       queryParams: queryParams_,
     );
     return ListAuthorizedViewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an AuthorizedView in a table.
@@ -3658,7 +3652,8 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3666,7 +3661,7 @@ class ProjectsInstancesTablesSchemaBundlesResource {
   final commons.ApiRequester _requester;
 
   ProjectsInstancesTablesSchemaBundlesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new schema bundle in the specified table.
   ///
@@ -3797,7 +3792,8 @@ class ProjectsInstancesTablesSchemaBundlesResource {
       queryParams: queryParams_,
     );
     return SchemaBundle.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a Bigtable resource.
@@ -3908,7 +3904,8 @@ class ProjectsInstancesTablesSchemaBundlesResource {
       queryParams: queryParams_,
     );
     return ListSchemaBundlesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a schema bundle in the specified table.
@@ -4054,7 +4051,8 @@ class ProjectsInstancesTablesSchemaBundlesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4080,10 +4078,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4153,7 +4148,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4221,46 +4217,54 @@ class AppProfile {
   });
 
   AppProfile.fromJson(core.Map json_)
-      : this(
-          dataBoostIsolationReadOnly:
-              json_.containsKey('dataBoostIsolationReadOnly')
-                  ? DataBoostIsolationReadOnly.fromJson(
-                      json_['dataBoostIsolationReadOnly']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          multiClusterRoutingUseAny:
-              json_.containsKey('multiClusterRoutingUseAny')
-                  ? MultiClusterRoutingUseAny.fromJson(
-                      json_['multiClusterRoutingUseAny']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          name: json_['name'] as core.String?,
-          priority: json_['priority'] as core.String?,
-          singleClusterRouting: json_.containsKey('singleClusterRouting')
-              ? SingleClusterRouting.fromJson(json_['singleClusterRouting']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          standardIsolation: json_.containsKey('standardIsolation')
-              ? StandardIsolation.fromJson(json_['standardIsolation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataBoostIsolationReadOnly:
+            json_.containsKey('dataBoostIsolationReadOnly')
+                ? DataBoostIsolationReadOnly.fromJson(
+                  json_['dataBoostIsolationReadOnly']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        multiClusterRoutingUseAny:
+            json_.containsKey('multiClusterRoutingUseAny')
+                ? MultiClusterRoutingUseAny.fromJson(
+                  json_['multiClusterRoutingUseAny']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        priority: json_['priority'] as core.String?,
+        singleClusterRouting:
+            json_.containsKey('singleClusterRouting')
+                ? SingleClusterRouting.fromJson(
+                  json_['singleClusterRouting']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        standardIsolation:
+            json_.containsKey('standardIsolation')
+                ? StandardIsolation.fromJson(
+                  json_['standardIsolation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataBoostIsolationReadOnly != null)
-          'dataBoostIsolationReadOnly': dataBoostIsolationReadOnly!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (multiClusterRoutingUseAny != null)
-          'multiClusterRoutingUseAny': multiClusterRoutingUseAny!,
-        if (name != null) 'name': name!,
-        if (priority != null) 'priority': priority!,
-        if (singleClusterRouting != null)
-          'singleClusterRouting': singleClusterRouting!,
-        if (standardIsolation != null) 'standardIsolation': standardIsolation!,
-      };
+    if (dataBoostIsolationReadOnly != null)
+      'dataBoostIsolationReadOnly': dataBoostIsolationReadOnly!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (multiClusterRoutingUseAny != null)
+      'multiClusterRoutingUseAny': multiClusterRoutingUseAny!,
+    if (name != null) 'name': name!,
+    if (priority != null) 'priority': priority!,
+    if (singleClusterRouting != null)
+      'singleClusterRouting': singleClusterRouting!,
+    if (standardIsolation != null) 'standardIsolation': standardIsolation!,
+  };
 }
 
 /// Specifies the audit configuration for a service.
@@ -4290,24 +4294,25 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -4349,23 +4354,24 @@ class AuthorizedView {
   });
 
   AuthorizedView.fromJson(core.Map json_)
-      : this(
-          deletionProtection: json_['deletionProtection'] as core.bool?,
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          subsetView: json_.containsKey('subsetView')
-              ? GoogleBigtableAdminV2AuthorizedViewSubsetView.fromJson(
-                  json_['subsetView'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        deletionProtection: json_['deletionProtection'] as core.bool?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        subsetView:
+            json_.containsKey('subsetView')
+                ? GoogleBigtableAdminV2AuthorizedViewSubsetView.fromJson(
+                  json_['subsetView'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deletionProtection != null)
-          'deletionProtection': deletionProtection!,
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (subsetView != null) 'subsetView': subsetView!,
-      };
+    if (deletionProtection != null) 'deletionProtection': deletionProtection!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (subsetView != null) 'subsetView': subsetView!,
+  };
 }
 
 /// Defines an automated backup policy for a table
@@ -4383,21 +4389,18 @@ class AutomatedBackupPolicy {
   /// Required.
   core.String? retentionPeriod;
 
-  AutomatedBackupPolicy({
-    this.frequency,
-    this.retentionPeriod,
-  });
+  AutomatedBackupPolicy({this.frequency, this.retentionPeriod});
 
   AutomatedBackupPolicy.fromJson(core.Map json_)
-      : this(
-          frequency: json_['frequency'] as core.String?,
-          retentionPeriod: json_['retentionPeriod'] as core.String?,
-        );
+    : this(
+        frequency: json_['frequency'] as core.String?,
+        retentionPeriod: json_['retentionPeriod'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frequency != null) 'frequency': frequency!,
-        if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
-      };
+    if (frequency != null) 'frequency': frequency!,
+    if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
+  };
 }
 
 /// Limits for the number of nodes a Cluster can autoscale up/down to.
@@ -4412,21 +4415,18 @@ class AutoscalingLimits {
   /// Required.
   core.int? minServeNodes;
 
-  AutoscalingLimits({
-    this.maxServeNodes,
-    this.minServeNodes,
-  });
+  AutoscalingLimits({this.maxServeNodes, this.minServeNodes});
 
   AutoscalingLimits.fromJson(core.Map json_)
-      : this(
-          maxServeNodes: json_['maxServeNodes'] as core.int?,
-          minServeNodes: json_['minServeNodes'] as core.int?,
-        );
+    : this(
+        maxServeNodes: json_['maxServeNodes'] as core.int?,
+        minServeNodes: json_['minServeNodes'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxServeNodes != null) 'maxServeNodes': maxServeNodes!,
-        if (minServeNodes != null) 'minServeNodes': minServeNodes!,
-      };
+    if (maxServeNodes != null) 'maxServeNodes': maxServeNodes!,
+    if (minServeNodes != null) 'minServeNodes': minServeNodes!,
+  };
 }
 
 /// The Autoscaling targets for a Cluster.
@@ -4455,18 +4455,18 @@ class AutoscalingTargets {
   });
 
   AutoscalingTargets.fromJson(core.Map json_)
-      : this(
-          cpuUtilizationPercent: json_['cpuUtilizationPercent'] as core.int?,
-          storageUtilizationGibPerNode:
-              json_['storageUtilizationGibPerNode'] as core.int?,
-        );
+    : this(
+        cpuUtilizationPercent: json_['cpuUtilizationPercent'] as core.int?,
+        storageUtilizationGibPerNode:
+            json_['storageUtilizationGibPerNode'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cpuUtilizationPercent != null)
-          'cpuUtilizationPercent': cpuUtilizationPercent!,
-        if (storageUtilizationGibPerNode != null)
-          'storageUtilizationGibPerNode': storageUtilizationGibPerNode!,
-      };
+    if (cpuUtilizationPercent != null)
+      'cpuUtilizationPercent': cpuUtilizationPercent!,
+    if (storageUtilizationGibPerNode != null)
+      'storageUtilizationGibPerNode': storageUtilizationGibPerNode!,
+  };
 }
 
 /// A backup of a Cloud Bigtable table.
@@ -4578,36 +4578,39 @@ class Backup {
   });
 
   Backup.fromJson(core.Map json_)
-      : this(
-          backupType: json_['backupType'] as core.String?,
-          encryptionInfo: json_.containsKey('encryptionInfo')
-              ? EncryptionInfo.fromJson(json_['encryptionInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          endTime: json_['endTime'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          hotToStandardTime: json_['hotToStandardTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          sizeBytes: json_['sizeBytes'] as core.String?,
-          sourceBackup: json_['sourceBackup'] as core.String?,
-          sourceTable: json_['sourceTable'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        backupType: json_['backupType'] as core.String?,
+        encryptionInfo:
+            json_.containsKey('encryptionInfo')
+                ? EncryptionInfo.fromJson(
+                  json_['encryptionInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endTime: json_['endTime'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        hotToStandardTime: json_['hotToStandardTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        sizeBytes: json_['sizeBytes'] as core.String?,
+        sourceBackup: json_['sourceBackup'] as core.String?,
+        sourceTable: json_['sourceTable'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupType != null) 'backupType': backupType!,
-        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
-        if (endTime != null) 'endTime': endTime!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (hotToStandardTime != null) 'hotToStandardTime': hotToStandardTime!,
-        if (name != null) 'name': name!,
-        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-        if (sourceBackup != null) 'sourceBackup': sourceBackup!,
-        if (sourceTable != null) 'sourceTable': sourceTable!,
-        if (startTime != null) 'startTime': startTime!,
-        if (state != null) 'state': state!,
-      };
+    if (backupType != null) 'backupType': backupType!,
+    if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
+    if (endTime != null) 'endTime': endTime!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (hotToStandardTime != null) 'hotToStandardTime': hotToStandardTime!,
+    if (name != null) 'name': name!,
+    if (sizeBytes != null) 'sizeBytes': sizeBytes!,
+    if (sourceBackup != null) 'sourceBackup': sourceBackup!,
+    if (sourceTable != null) 'sourceTable': sourceTable!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Information about a backup.
@@ -4653,21 +4656,21 @@ class BackupInfo {
   });
 
   BackupInfo.fromJson(core.Map json_)
-      : this(
-          backup: json_['backup'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          sourceBackup: json_['sourceBackup'] as core.String?,
-          sourceTable: json_['sourceTable'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        backup: json_['backup'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        sourceBackup: json_['sourceBackup'] as core.String?,
+        sourceTable: json_['sourceTable'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backup != null) 'backup': backup!,
-        if (endTime != null) 'endTime': endTime!,
-        if (sourceBackup != null) 'sourceBackup': sourceBackup!,
-        if (sourceTable != null) 'sourceTable': sourceTable!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (backup != null) 'backup': backup!,
+    if (endTime != null) 'endTime': endTime!,
+    if (sourceBackup != null) 'sourceBackup': sourceBackup!,
+    if (sourceTable != null) 'sourceTable': sourceTable!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -4750,29 +4753,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// Change stream configuration.
@@ -4784,18 +4786,14 @@ class ChangeStreamConfig {
   /// day and at most 7 days, and will be truncated to microsecond granularity.
   core.String? retentionPeriod;
 
-  ChangeStreamConfig({
-    this.retentionPeriod,
-  });
+  ChangeStreamConfig({this.retentionPeriod});
 
   ChangeStreamConfig.fromJson(core.Map json_)
-      : this(
-          retentionPeriod: json_['retentionPeriod'] as core.String?,
-        );
+    : this(retentionPeriod: json_['retentionPeriod'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
-      };
+    if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
+  };
 }
 
 /// Request message for
@@ -4823,29 +4821,31 @@ class CheckConsistencyRequest {
   });
 
   CheckConsistencyRequest.fromJson(core.Map json_)
-      : this(
-          consistencyToken: json_['consistencyToken'] as core.String?,
-          dataBoostReadLocalWrites:
-              json_.containsKey('dataBoostReadLocalWrites')
-                  ? DataBoostReadLocalWrites.fromJson(
-                      json_['dataBoostReadLocalWrites']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          standardReadRemoteWrites:
-              json_.containsKey('standardReadRemoteWrites')
-                  ? StandardReadRemoteWrites.fromJson(
-                      json_['standardReadRemoteWrites']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        consistencyToken: json_['consistencyToken'] as core.String?,
+        dataBoostReadLocalWrites:
+            json_.containsKey('dataBoostReadLocalWrites')
+                ? DataBoostReadLocalWrites.fromJson(
+                  json_['dataBoostReadLocalWrites']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        standardReadRemoteWrites:
+            json_.containsKey('standardReadRemoteWrites')
+                ? StandardReadRemoteWrites.fromJson(
+                  json_['standardReadRemoteWrites']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consistencyToken != null) 'consistencyToken': consistencyToken!,
-        if (dataBoostReadLocalWrites != null)
-          'dataBoostReadLocalWrites': dataBoostReadLocalWrites!,
-        if (standardReadRemoteWrites != null)
-          'standardReadRemoteWrites': standardReadRemoteWrites!,
-      };
+    if (consistencyToken != null) 'consistencyToken': consistencyToken!,
+    if (dataBoostReadLocalWrites != null)
+      'dataBoostReadLocalWrites': dataBoostReadLocalWrites!,
+    if (standardReadRemoteWrites != null)
+      'standardReadRemoteWrites': standardReadRemoteWrites!,
+  };
 }
 
 /// Response message for
@@ -4857,18 +4857,14 @@ class CheckConsistencyResponse {
   /// specified in the request.
   core.bool? consistent;
 
-  CheckConsistencyResponse({
-    this.consistent,
-  });
+  CheckConsistencyResponse({this.consistent});
 
   CheckConsistencyResponse.fromJson(core.Map json_)
-      : this(
-          consistent: json_['consistent'] as core.bool?,
-        );
+    : this(consistent: json_['consistent'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consistent != null) 'consistent': consistent!,
-      };
+    if (consistent != null) 'consistent': consistent!,
+  };
 }
 
 /// A resizable group of nodes in a particular cloud location, capable of
@@ -4957,34 +4953,38 @@ class Cluster {
   });
 
   Cluster.fromJson(core.Map json_)
-      : this(
-          clusterConfig: json_.containsKey('clusterConfig')
-              ? ClusterConfig.fromJson(
-                  json_['clusterConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          defaultStorageType: json_['defaultStorageType'] as core.String?,
-          encryptionConfig: json_.containsKey('encryptionConfig')
-              ? EncryptionConfig.fromJson(json_['encryptionConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_['location'] as core.String?,
-          name: json_['name'] as core.String?,
-          nodeScalingFactor: json_['nodeScalingFactor'] as core.String?,
-          serveNodes: json_['serveNodes'] as core.int?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        clusterConfig:
+            json_.containsKey('clusterConfig')
+                ? ClusterConfig.fromJson(
+                  json_['clusterConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        defaultStorageType: json_['defaultStorageType'] as core.String?,
+        encryptionConfig:
+            json_.containsKey('encryptionConfig')
+                ? EncryptionConfig.fromJson(
+                  json_['encryptionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location: json_['location'] as core.String?,
+        name: json_['name'] as core.String?,
+        nodeScalingFactor: json_['nodeScalingFactor'] as core.String?,
+        serveNodes: json_['serveNodes'] as core.int?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterConfig != null) 'clusterConfig': clusterConfig!,
-        if (defaultStorageType != null)
-          'defaultStorageType': defaultStorageType!,
-        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
-        if (location != null) 'location': location!,
-        if (name != null) 'name': name!,
-        if (nodeScalingFactor != null) 'nodeScalingFactor': nodeScalingFactor!,
-        if (serveNodes != null) 'serveNodes': serveNodes!,
-        if (state != null) 'state': state!,
-      };
+    if (clusterConfig != null) 'clusterConfig': clusterConfig!,
+    if (defaultStorageType != null) 'defaultStorageType': defaultStorageType!,
+    if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+    if (location != null) 'location': location!,
+    if (name != null) 'name': name!,
+    if (nodeScalingFactor != null) 'nodeScalingFactor': nodeScalingFactor!,
+    if (serveNodes != null) 'serveNodes': serveNodes!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Autoscaling config for a cluster.
@@ -4999,28 +4999,30 @@ class ClusterAutoscalingConfig {
   /// Required.
   AutoscalingTargets? autoscalingTargets;
 
-  ClusterAutoscalingConfig({
-    this.autoscalingLimits,
-    this.autoscalingTargets,
-  });
+  ClusterAutoscalingConfig({this.autoscalingLimits, this.autoscalingTargets});
 
   ClusterAutoscalingConfig.fromJson(core.Map json_)
-      : this(
-          autoscalingLimits: json_.containsKey('autoscalingLimits')
-              ? AutoscalingLimits.fromJson(json_['autoscalingLimits']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          autoscalingTargets: json_.containsKey('autoscalingTargets')
-              ? AutoscalingTargets.fromJson(json_['autoscalingTargets']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        autoscalingLimits:
+            json_.containsKey('autoscalingLimits')
+                ? AutoscalingLimits.fromJson(
+                  json_['autoscalingLimits']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        autoscalingTargets:
+            json_.containsKey('autoscalingTargets')
+                ? AutoscalingTargets.fromJson(
+                  json_['autoscalingTargets']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoscalingLimits != null) 'autoscalingLimits': autoscalingLimits!,
-        if (autoscalingTargets != null)
-          'autoscalingTargets': autoscalingTargets!,
-      };
+    if (autoscalingLimits != null) 'autoscalingLimits': autoscalingLimits!,
+    if (autoscalingTargets != null) 'autoscalingTargets': autoscalingTargets!,
+  };
 }
 
 /// Configuration for a cluster.
@@ -5028,24 +5030,23 @@ class ClusterConfig {
   /// Autoscaling configuration for this cluster.
   ClusterAutoscalingConfig? clusterAutoscalingConfig;
 
-  ClusterConfig({
-    this.clusterAutoscalingConfig,
-  });
+  ClusterConfig({this.clusterAutoscalingConfig});
 
   ClusterConfig.fromJson(core.Map json_)
-      : this(
-          clusterAutoscalingConfig:
-              json_.containsKey('clusterAutoscalingConfig')
-                  ? ClusterAutoscalingConfig.fromJson(
-                      json_['clusterAutoscalingConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        clusterAutoscalingConfig:
+            json_.containsKey('clusterAutoscalingConfig')
+                ? ClusterAutoscalingConfig.fromJson(
+                  json_['clusterAutoscalingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterAutoscalingConfig != null)
-          'clusterAutoscalingConfig': clusterAutoscalingConfig!,
-      };
+    if (clusterAutoscalingConfig != null)
+      'clusterAutoscalingConfig': clusterAutoscalingConfig!,
+  };
 }
 
 /// The state of a table's data in a particular cluster.
@@ -5081,24 +5082,25 @@ class ClusterState {
   /// complete, the table will transition to `READY` state.
   core.String? replicationState;
 
-  ClusterState({
-    this.encryptionInfo,
-    this.replicationState,
-  });
+  ClusterState({this.encryptionInfo, this.replicationState});
 
   ClusterState.fromJson(core.Map json_)
-      : this(
-          encryptionInfo: (json_['encryptionInfo'] as core.List?)
-              ?.map((value) => EncryptionInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          replicationState: json_['replicationState'] as core.String?,
-        );
+    : this(
+        encryptionInfo:
+            (json_['encryptionInfo'] as core.List?)
+                ?.map(
+                  (value) => EncryptionInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        replicationState: json_['replicationState'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
-        if (replicationState != null) 'replicationState': replicationState!,
-      };
+    if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
+    if (replicationState != null) 'replicationState': replicationState!,
+  };
 }
 
 /// A set of columns within a table which share a common configuration.
@@ -5128,33 +5130,35 @@ class ColumnFamily {
   /// `AddInput` mutations
   Type? valueType;
 
-  ColumnFamily({
-    this.gcRule,
-    this.stats,
-    this.valueType,
-  });
+  ColumnFamily({this.gcRule, this.stats, this.valueType});
 
   ColumnFamily.fromJson(core.Map json_)
-      : this(
-          gcRule: json_.containsKey('gcRule')
-              ? GcRule.fromJson(
-                  json_['gcRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          stats: json_.containsKey('stats')
-              ? ColumnFamilyStats.fromJson(
-                  json_['stats'] as core.Map<core.String, core.dynamic>)
-              : null,
-          valueType: json_.containsKey('valueType')
-              ? Type.fromJson(
-                  json_['valueType'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gcRule:
+            json_.containsKey('gcRule')
+                ? GcRule.fromJson(
+                  json_['gcRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stats:
+            json_.containsKey('stats')
+                ? ColumnFamilyStats.fromJson(
+                  json_['stats'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        valueType:
+            json_.containsKey('valueType')
+                ? Type.fromJson(
+                  json_['valueType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcRule != null) 'gcRule': gcRule!,
-        if (stats != null) 'stats': stats!,
-        if (valueType != null) 'valueType': valueType!,
-      };
+    if (gcRule != null) 'gcRule': gcRule!,
+    if (stats != null) 'stats': stats!,
+    if (valueType != null) 'valueType': valueType!,
+  };
 }
 
 /// Approximate statistics related to a single column family within a table.
@@ -5198,21 +5202,21 @@ class ColumnFamilyStats {
   });
 
   ColumnFamilyStats.fromJson(core.Map json_)
-      : this(
-          averageCellsPerColumn:
-              (json_['averageCellsPerColumn'] as core.num?)?.toDouble(),
-          averageColumnsPerRow:
-              (json_['averageColumnsPerRow'] as core.num?)?.toDouble(),
-          logicalDataBytes: json_['logicalDataBytes'] as core.String?,
-        );
+    : this(
+        averageCellsPerColumn:
+            (json_['averageCellsPerColumn'] as core.num?)?.toDouble(),
+        averageColumnsPerRow:
+            (json_['averageColumnsPerRow'] as core.num?)?.toDouble(),
+        logicalDataBytes: json_['logicalDataBytes'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (averageCellsPerColumn != null)
-          'averageCellsPerColumn': averageCellsPerColumn!,
-        if (averageColumnsPerRow != null)
-          'averageColumnsPerRow': averageColumnsPerRow!,
-        if (logicalDataBytes != null) 'logicalDataBytes': logicalDataBytes!,
-      };
+    if (averageCellsPerColumn != null)
+      'averageCellsPerColumn': averageCellsPerColumn!,
+    if (averageColumnsPerRow != null)
+      'averageColumnsPerRow': averageColumnsPerRow!,
+    if (logicalDataBytes != null) 'logicalDataBytes': logicalDataBytes!,
+  };
 }
 
 /// The request for CopyBackup.
@@ -5249,24 +5253,20 @@ class CopyBackupRequest {
   /// Required.
   core.String? sourceBackup;
 
-  CopyBackupRequest({
-    this.backupId,
-    this.expireTime,
-    this.sourceBackup,
-  });
+  CopyBackupRequest({this.backupId, this.expireTime, this.sourceBackup});
 
   CopyBackupRequest.fromJson(core.Map json_)
-      : this(
-          backupId: json_['backupId'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          sourceBackup: json_['sourceBackup'] as core.String?,
-        );
+    : this(
+        backupId: json_['backupId'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        sourceBackup: json_['sourceBackup'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupId != null) 'backupId': backupId!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (sourceBackup != null) 'sourceBackup': sourceBackup!,
-      };
+    if (backupId != null) 'backupId': backupId!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (sourceBackup != null) 'sourceBackup': sourceBackup!,
+  };
 }
 
 /// Request message for BigtableInstanceAdmin.CreateInstance.
@@ -5309,28 +5309,30 @@ class CreateInstanceRequest {
   });
 
   CreateInstanceRequest.fromJson(core.Map json_)
-      : this(
-          clusters:
-              (json_['clusters'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              Cluster.fromJson(value as core.Map<core.String, core.dynamic>),
+    : this(
+        clusters: (json_['clusters'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                Cluster.fromJson(value as core.Map<core.String, core.dynamic>),
+              ),
             ),
-          ),
-          instance: json_.containsKey('instance')
-              ? Instance.fromJson(
-                  json_['instance'] as core.Map<core.String, core.dynamic>)
-              : null,
-          instanceId: json_['instanceId'] as core.String?,
-          parent: json_['parent'] as core.String?,
-        );
+        instance:
+            json_.containsKey('instance')
+                ? Instance.fromJson(
+                  json_['instance'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        instanceId: json_['instanceId'] as core.String?,
+        parent: json_['parent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusters != null) 'clusters': clusters!,
-        if (instance != null) 'instance': instance!,
-        if (instanceId != null) 'instanceId': instanceId!,
-        if (parent != null) 'parent': parent!,
-      };
+    if (clusters != null) 'clusters': clusters!,
+    if (instance != null) 'instance': instance!,
+    if (instanceId != null) 'instanceId': instanceId!,
+    if (parent != null) 'parent': parent!,
+  };
 }
 
 /// Request message for google.bigtable.admin.v2.BigtableTableAdmin.CreateTable
@@ -5361,30 +5363,32 @@ class CreateTableRequest {
   /// Required.
   core.String? tableId;
 
-  CreateTableRequest({
-    this.initialSplits,
-    this.table,
-    this.tableId,
-  });
+  CreateTableRequest({this.initialSplits, this.table, this.tableId});
 
   CreateTableRequest.fromJson(core.Map json_)
-      : this(
-          initialSplits: (json_['initialSplits'] as core.List?)
-              ?.map((value) =>
-                  Split.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          table: json_.containsKey('table')
-              ? Table.fromJson(
-                  json_['table'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tableId: json_['tableId'] as core.String?,
-        );
+    : this(
+        initialSplits:
+            (json_['initialSplits'] as core.List?)
+                ?.map(
+                  (value) => Split.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        table:
+            json_.containsKey('table')
+                ? Table.fromJson(
+                  json_['table'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tableId: json_['tableId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (initialSplits != null) 'initialSplits': initialSplits!,
-        if (table != null) 'table': table!,
-        if (tableId != null) 'tableId': tableId!,
-      };
+    if (initialSplits != null) 'initialSplits': initialSplits!,
+    if (table != null) 'table': table!,
+    if (tableId != null) 'tableId': tableId!,
+  };
 }
 
 /// Data Boost is a serverless compute capability that lets you run
@@ -5401,19 +5405,15 @@ class DataBoostIsolationReadOnly {
   /// Instance / Table pays for compute.
   core.String? computeBillingOwner;
 
-  DataBoostIsolationReadOnly({
-    this.computeBillingOwner,
-  });
+  DataBoostIsolationReadOnly({this.computeBillingOwner});
 
   DataBoostIsolationReadOnly.fromJson(core.Map json_)
-      : this(
-          computeBillingOwner: json_['computeBillingOwner'] as core.String?,
-        );
+    : this(computeBillingOwner: json_['computeBillingOwner'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (computeBillingOwner != null)
-          'computeBillingOwner': computeBillingOwner!,
-      };
+    if (computeBillingOwner != null)
+      'computeBillingOwner': computeBillingOwner!,
+  };
 }
 
 /// Checks that all writes before the consistency token was generated in the
@@ -5435,26 +5435,25 @@ class DropRowRangeRequest {
       convert.base64.decode(rowKeyPrefix!);
 
   set rowKeyPrefixAsBytes(core.List<core.int> bytes_) {
-    rowKeyPrefix =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    rowKeyPrefix = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  DropRowRangeRequest({
-    this.deleteAllDataFromTable,
-    this.rowKeyPrefix,
-  });
+  DropRowRangeRequest({this.deleteAllDataFromTable, this.rowKeyPrefix});
 
   DropRowRangeRequest.fromJson(core.Map json_)
-      : this(
-          deleteAllDataFromTable: json_['deleteAllDataFromTable'] as core.bool?,
-          rowKeyPrefix: json_['rowKeyPrefix'] as core.String?,
-        );
+    : this(
+        deleteAllDataFromTable: json_['deleteAllDataFromTable'] as core.bool?,
+        rowKeyPrefix: json_['rowKeyPrefix'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deleteAllDataFromTable != null)
-          'deleteAllDataFromTable': deleteAllDataFromTable!,
-        if (rowKeyPrefix != null) 'rowKeyPrefix': rowKeyPrefix!,
-      };
+    if (deleteAllDataFromTable != null)
+      'deleteAllDataFromTable': deleteAllDataFromTable!,
+    if (rowKeyPrefix != null) 'rowKeyPrefix': rowKeyPrefix!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -5479,18 +5478,14 @@ class EncryptionConfig {
   /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
   core.String? kmsKeyName;
 
-  EncryptionConfig({
-    this.kmsKeyName,
-  });
+  EncryptionConfig({this.kmsKeyName});
 
   EncryptionConfig.fromJson(core.Map json_)
-      : this(
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-        );
+    : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-      };
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+  };
 }
 
 /// Encryption information for a given resource.
@@ -5536,20 +5531,23 @@ class EncryptionInfo {
   });
 
   EncryptionInfo.fromJson(core.Map json_)
-      : this(
-          encryptionStatus: json_.containsKey('encryptionStatus')
-              ? Status.fromJson(json_['encryptionStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          encryptionType: json_['encryptionType'] as core.String?,
-          kmsKeyVersion: json_['kmsKeyVersion'] as core.String?,
-        );
+    : this(
+        encryptionStatus:
+            json_.containsKey('encryptionStatus')
+                ? Status.fromJson(
+                  json_['encryptionStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        encryptionType: json_['encryptionType'] as core.String?,
+        kmsKeyVersion: json_['kmsKeyVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
-        if (encryptionType != null) 'encryptionType': encryptionType!,
-        if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
-      };
+    if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
+    if (encryptionType != null) 'encryptionType': encryptionType!,
+    if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
+  };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -5589,33 +5587,32 @@ class GcRule {
   /// Delete cells that would be deleted by any nested rule.
   Union? union;
 
-  GcRule({
-    this.intersection,
-    this.maxAge,
-    this.maxNumVersions,
-    this.union,
-  });
+  GcRule({this.intersection, this.maxAge, this.maxNumVersions, this.union});
 
   GcRule.fromJson(core.Map json_)
-      : this(
-          intersection: json_.containsKey('intersection')
-              ? Intersection.fromJson(
-                  json_['intersection'] as core.Map<core.String, core.dynamic>)
-              : null,
-          maxAge: json_['maxAge'] as core.String?,
-          maxNumVersions: json_['maxNumVersions'] as core.int?,
-          union: json_.containsKey('union')
-              ? Union.fromJson(
-                  json_['union'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        intersection:
+            json_.containsKey('intersection')
+                ? Intersection.fromJson(
+                  json_['intersection'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxAge: json_['maxAge'] as core.String?,
+        maxNumVersions: json_['maxNumVersions'] as core.int?,
+        union:
+            json_.containsKey('union')
+                ? Union.fromJson(
+                  json_['union'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (intersection != null) 'intersection': intersection!,
-        if (maxAge != null) 'maxAge': maxAge!,
-        if (maxNumVersions != null) 'maxNumVersions': maxNumVersions!,
-        if (union != null) 'union': union!,
-      };
+    if (intersection != null) 'intersection': intersection!,
+    if (maxAge != null) 'maxAge': maxAge!,
+    if (maxNumVersions != null) 'maxNumVersions': maxNumVersions!,
+    if (union != null) 'union': union!,
+  };
 }
 
 /// Request message for
@@ -5628,18 +5625,14 @@ class GenerateConsistencyTokenResponse {
   /// The generated consistency token.
   core.String? consistencyToken;
 
-  GenerateConsistencyTokenResponse({
-    this.consistencyToken,
-  });
+  GenerateConsistencyTokenResponse({this.consistencyToken});
 
   GenerateConsistencyTokenResponse.fromJson(core.Map json_)
-      : this(
-          consistencyToken: json_['consistencyToken'] as core.String?,
-        );
+    : this(consistencyToken: json_['consistencyToken'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consistencyToken != null) 'consistencyToken': consistencyToken!,
-      };
+    if (consistencyToken != null) 'consistencyToken': consistencyToken!,
+  };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -5648,21 +5641,21 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest({
-    this.options,
-  });
+  GetIamPolicyRequest({this.options});
 
   GetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          options: json_.containsKey('options')
-              ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        options:
+            json_.containsKey('options')
+                ? GetPolicyOptions.fromJson(
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!,
-      };
+    if (options != null) 'options': options!,
+  };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -5686,19 +5679,21 @@ class GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
   });
 
   GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(core.Map json_)
-      : this(
-          qualifierPrefixes: (json_['qualifierPrefixes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          qualifiers: (json_['qualifiers'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        qualifierPrefixes:
+            (json_['qualifierPrefixes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        qualifiers:
+            (json_['qualifiers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (qualifierPrefixes != null) 'qualifierPrefixes': qualifierPrefixes!,
-        if (qualifiers != null) 'qualifiers': qualifiers!,
-      };
+    if (qualifierPrefixes != null) 'qualifierPrefixes': qualifierPrefixes!,
+    if (qualifiers != null) 'qualifiers': qualifiers!,
+  };
 }
 
 /// Defines a simple AuthorizedView that is a subset of the underlying Table.
@@ -5706,7 +5701,7 @@ class GoogleBigtableAdminV2AuthorizedViewSubsetView {
   /// Map from column family name to the columns in this family to be included
   /// in the AuthorizedView.
   core.Map<core.String, GoogleBigtableAdminV2AuthorizedViewFamilySubsets>?
-      familySubsets;
+  familySubsets;
 
   /// Row prefixes to be included in the AuthorizedView.
   ///
@@ -5719,25 +5714,27 @@ class GoogleBigtableAdminV2AuthorizedViewSubsetView {
   });
 
   GoogleBigtableAdminV2AuthorizedViewSubsetView.fromJson(core.Map json_)
-      : this(
-          familySubsets:
-              (json_['familySubsets'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        familySubsets: (json_['familySubsets']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          rowPrefixes: (json_['rowPrefixes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+        rowPrefixes:
+            (json_['rowPrefixes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (familySubsets != null) 'familySubsets': familySubsets!,
-        if (rowPrefixes != null) 'rowPrefixes': rowPrefixes!,
-      };
+    if (familySubsets != null) 'familySubsets': familySubsets!,
+    if (rowPrefixes != null) 'rowPrefixes': rowPrefixes!,
+  };
 }
 
 /// A value that combines incremental updates into a summarized value.
@@ -5748,7 +5745,7 @@ class GoogleBigtableAdminV2AuthorizedViewSubsetView {
 class GoogleBigtableAdminV2TypeAggregate {
   /// HyperLogLogPlusPlusUniqueCount aggregator.
   GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount?
-      hllppUniqueCount;
+  hllppUniqueCount;
 
   /// Type of the inputs that are accumulated by this `Aggregate`.
   ///
@@ -5781,42 +5778,54 @@ class GoogleBigtableAdminV2TypeAggregate {
   });
 
   GoogleBigtableAdminV2TypeAggregate.fromJson(core.Map json_)
-      : this(
-          hllppUniqueCount: json_.containsKey('hllppUniqueCount')
-              ? GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount
-                  .fromJson(json_['hllppUniqueCount']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          inputType: json_.containsKey('inputType')
-              ? Type.fromJson(
-                  json_['inputType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          max: json_.containsKey('max')
-              ? GoogleBigtableAdminV2TypeAggregateMax.fromJson(
-                  json_['max'] as core.Map<core.String, core.dynamic>)
-              : null,
-          min: json_.containsKey('min')
-              ? GoogleBigtableAdminV2TypeAggregateMin.fromJson(
-                  json_['min'] as core.Map<core.String, core.dynamic>)
-              : null,
-          stateType: json_.containsKey('stateType')
-              ? Type.fromJson(
-                  json_['stateType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sum: json_.containsKey('sum')
-              ? GoogleBigtableAdminV2TypeAggregateSum.fromJson(
-                  json_['sum'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        hllppUniqueCount:
+            json_.containsKey('hllppUniqueCount')
+                ? GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount.fromJson(
+                  json_['hllppUniqueCount']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        inputType:
+            json_.containsKey('inputType')
+                ? Type.fromJson(
+                  json_['inputType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        max:
+            json_.containsKey('max')
+                ? GoogleBigtableAdminV2TypeAggregateMax.fromJson(
+                  json_['max'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        min:
+            json_.containsKey('min')
+                ? GoogleBigtableAdminV2TypeAggregateMin.fromJson(
+                  json_['min'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stateType:
+            json_.containsKey('stateType')
+                ? Type.fromJson(
+                  json_['stateType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sum:
+            json_.containsKey('sum')
+                ? GoogleBigtableAdminV2TypeAggregateSum.fromJson(
+                  json_['sum'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hllppUniqueCount != null) 'hllppUniqueCount': hllppUniqueCount!,
-        if (inputType != null) 'inputType': inputType!,
-        if (max != null) 'max': max!,
-        if (min != null) 'min': min!,
-        if (stateType != null) 'stateType': stateType!,
-        if (sum != null) 'sum': sum!,
-      };
+    if (hllppUniqueCount != null) 'hllppUniqueCount': hllppUniqueCount!,
+    if (inputType != null) 'inputType': inputType!,
+    if (max != null) 'max': max!,
+    if (min != null) 'min': min!,
+    if (stateType != null) 'stateType': stateType!,
+    if (sum != null) 'sum': sum!,
+  };
 }
 
 /// Computes an approximate unique count over the input values.
@@ -5825,8 +5834,8 @@ class GoogleBigtableAdminV2TypeAggregate {
 /// Otherwise the same value encoded differently could count more than once, or
 /// two distinct values could count as identical. Input: Any, or omit for Raw
 /// State: TBD Special state conversions: `Int64` (the unique count estimate)
-typedef GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount
-    = $Empty;
+typedef GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount =
+    $Empty;
 
 /// Computes the max of the input values.
 ///
@@ -5852,21 +5861,21 @@ class GoogleBigtableAdminV2TypeArray {
   /// This must not be `Array`.
   Type? elementType;
 
-  GoogleBigtableAdminV2TypeArray({
-    this.elementType,
-  });
+  GoogleBigtableAdminV2TypeArray({this.elementType});
 
   GoogleBigtableAdminV2TypeArray.fromJson(core.Map json_)
-      : this(
-          elementType: json_.containsKey('elementType')
-              ? Type.fromJson(
-                  json_['elementType'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        elementType:
+            json_.containsKey('elementType')
+                ? Type.fromJson(
+                  json_['elementType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (elementType != null) 'elementType': elementType!,
-      };
+    if (elementType != null) 'elementType': elementType!,
+  };
 }
 
 /// bool Values of type `Bool` are stored in `Value.bool_value`.
@@ -5877,21 +5886,21 @@ class GoogleBigtableAdminV2TypeBytes {
   /// The encoding to use when converting to or from lower level types.
   GoogleBigtableAdminV2TypeBytesEncoding? encoding;
 
-  GoogleBigtableAdminV2TypeBytes({
-    this.encoding,
-  });
+  GoogleBigtableAdminV2TypeBytes({this.encoding});
 
   GoogleBigtableAdminV2TypeBytes.fromJson(core.Map json_)
-      : this(
-          encoding: json_.containsKey('encoding')
-              ? GoogleBigtableAdminV2TypeBytesEncoding.fromJson(
-                  json_['encoding'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        encoding:
+            json_.containsKey('encoding')
+                ? GoogleBigtableAdminV2TypeBytesEncoding.fromJson(
+                  json_['encoding'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encoding != null) 'encoding': encoding!,
-      };
+    if (encoding != null) 'encoding': encoding!,
+  };
 }
 
 /// Rules used to convert to or from lower level types.
@@ -5899,21 +5908,21 @@ class GoogleBigtableAdminV2TypeBytesEncoding {
   /// Use `Raw` encoding.
   GoogleBigtableAdminV2TypeBytesEncodingRaw? raw;
 
-  GoogleBigtableAdminV2TypeBytesEncoding({
-    this.raw,
-  });
+  GoogleBigtableAdminV2TypeBytesEncoding({this.raw});
 
   GoogleBigtableAdminV2TypeBytesEncoding.fromJson(core.Map json_)
-      : this(
-          raw: json_.containsKey('raw')
-              ? GoogleBigtableAdminV2TypeBytesEncodingRaw.fromJson(
-                  json_['raw'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        raw:
+            json_.containsKey('raw')
+                ? GoogleBigtableAdminV2TypeBytesEncodingRaw.fromJson(
+                  json_['raw'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (raw != null) 'raw': raw!,
-      };
+    if (raw != null) 'raw': raw!,
+  };
 }
 
 /// Leaves the value as-is.
@@ -5927,18 +5936,14 @@ class GoogleBigtableAdminV2TypeBytesEncodingRaw {
   /// 0x00, has one more null byte appended.
   core.bool? escapeNulls;
 
-  GoogleBigtableAdminV2TypeBytesEncodingRaw({
-    this.escapeNulls,
-  });
+  GoogleBigtableAdminV2TypeBytesEncodingRaw({this.escapeNulls});
 
   GoogleBigtableAdminV2TypeBytesEncodingRaw.fromJson(core.Map json_)
-      : this(
-          escapeNulls: json_['escapeNulls'] as core.bool?,
-        );
+    : this(escapeNulls: json_['escapeNulls'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (escapeNulls != null) 'escapeNulls': escapeNulls!,
-      };
+    if (escapeNulls != null) 'escapeNulls': escapeNulls!,
+  };
 }
 
 /// Date Values of type `Date` are stored in `Value.date_value`.
@@ -5956,21 +5961,18 @@ class GoogleBigtableAdminV2TypeEnum {
   /// The ID of the schema bundle that this enum is defined in.
   core.String? schemaBundleId;
 
-  GoogleBigtableAdminV2TypeEnum({
-    this.enumName,
-    this.schemaBundleId,
-  });
+  GoogleBigtableAdminV2TypeEnum({this.enumName, this.schemaBundleId});
 
   GoogleBigtableAdminV2TypeEnum.fromJson(core.Map json_)
-      : this(
-          enumName: json_['enumName'] as core.String?,
-          schemaBundleId: json_['schemaBundleId'] as core.String?,
-        );
+    : this(
+        enumName: json_['enumName'] as core.String?,
+        schemaBundleId: json_['schemaBundleId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enumName != null) 'enumName': enumName!,
-        if (schemaBundleId != null) 'schemaBundleId': schemaBundleId!,
-      };
+    if (enumName != null) 'enumName': enumName!,
+    if (schemaBundleId != null) 'schemaBundleId': schemaBundleId!,
+  };
 }
 
 /// Float32 Values of type `Float32` are stored in `Value.float_value`.
@@ -5984,21 +5986,21 @@ class GoogleBigtableAdminV2TypeInt64 {
   /// The encoding to use when converting to or from lower level types.
   GoogleBigtableAdminV2TypeInt64Encoding? encoding;
 
-  GoogleBigtableAdminV2TypeInt64({
-    this.encoding,
-  });
+  GoogleBigtableAdminV2TypeInt64({this.encoding});
 
   GoogleBigtableAdminV2TypeInt64.fromJson(core.Map json_)
-      : this(
-          encoding: json_.containsKey('encoding')
-              ? GoogleBigtableAdminV2TypeInt64Encoding.fromJson(
-                  json_['encoding'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        encoding:
+            json_.containsKey('encoding')
+                ? GoogleBigtableAdminV2TypeInt64Encoding.fromJson(
+                  json_['encoding'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encoding != null) 'encoding': encoding!,
-      };
+    if (encoding != null) 'encoding': encoding!,
+  };
 }
 
 /// Rules used to convert to or from lower level types.
@@ -6015,23 +6017,27 @@ class GoogleBigtableAdminV2TypeInt64Encoding {
   });
 
   GoogleBigtableAdminV2TypeInt64Encoding.fromJson(core.Map json_)
-      : this(
-          bigEndianBytes: json_.containsKey('bigEndianBytes')
-              ? GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes.fromJson(
+    : this(
+        bigEndianBytes:
+            json_.containsKey('bigEndianBytes')
+                ? GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes.fromJson(
                   json_['bigEndianBytes']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          orderedCodeBytes: json_.containsKey('orderedCodeBytes')
-              ? GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        orderedCodeBytes:
+            json_.containsKey('orderedCodeBytes')
+                ? GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes.fromJson(
                   json_['orderedCodeBytes']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigEndianBytes != null) 'bigEndianBytes': bigEndianBytes!,
-        if (orderedCodeBytes != null) 'orderedCodeBytes': orderedCodeBytes!,
-      };
+    if (bigEndianBytes != null) 'bigEndianBytes': bigEndianBytes!,
+    if (orderedCodeBytes != null) 'orderedCodeBytes': orderedCodeBytes!,
+  };
 }
 
 /// Encodes the value as an 8-byte big-endian two's complement value.
@@ -6046,21 +6052,21 @@ class GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes {
   )
   GoogleBigtableAdminV2TypeBytes? bytesType;
 
-  GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes({
-    this.bytesType,
-  });
+  GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes({this.bytesType});
 
   GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes.fromJson(core.Map json_)
-      : this(
-          bytesType: json_.containsKey('bytesType')
-              ? GoogleBigtableAdminV2TypeBytes.fromJson(
-                  json_['bytesType'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bytesType:
+            json_.containsKey('bytesType')
+                ? GoogleBigtableAdminV2TypeBytes.fromJson(
+                  json_['bytesType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bytesType != null) 'bytesType': bytesType!,
-      };
+    if (bytesType != null) 'bytesType': bytesType!,
+  };
 }
 
 /// Encodes the value in a variable length binary format of up to 10 bytes.
@@ -6085,27 +6091,28 @@ class GoogleBigtableAdminV2TypeMap {
   /// The type of the values in a map.
   Type? valueType;
 
-  GoogleBigtableAdminV2TypeMap({
-    this.keyType,
-    this.valueType,
-  });
+  GoogleBigtableAdminV2TypeMap({this.keyType, this.valueType});
 
   GoogleBigtableAdminV2TypeMap.fromJson(core.Map json_)
-      : this(
-          keyType: json_.containsKey('keyType')
-              ? Type.fromJson(
-                  json_['keyType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          valueType: json_.containsKey('valueType')
-              ? Type.fromJson(
-                  json_['valueType'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        keyType:
+            json_.containsKey('keyType')
+                ? Type.fromJson(
+                  json_['keyType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        valueType:
+            json_.containsKey('valueType')
+                ? Type.fromJson(
+                  json_['valueType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keyType != null) 'keyType': keyType!,
-        if (valueType != null) 'valueType': valueType!,
-      };
+    if (keyType != null) 'keyType': keyType!,
+    if (valueType != null) 'valueType': valueType!,
+  };
 }
 
 /// A protobuf message type.
@@ -6120,21 +6127,18 @@ class GoogleBigtableAdminV2TypeProto {
   /// The ID of the schema bundle that this proto is defined in.
   core.String? schemaBundleId;
 
-  GoogleBigtableAdminV2TypeProto({
-    this.messageName,
-    this.schemaBundleId,
-  });
+  GoogleBigtableAdminV2TypeProto({this.messageName, this.schemaBundleId});
 
   GoogleBigtableAdminV2TypeProto.fromJson(core.Map json_)
-      : this(
-          messageName: json_['messageName'] as core.String?,
-          schemaBundleId: json_['schemaBundleId'] as core.String?,
-        );
+    : this(
+        messageName: json_['messageName'] as core.String?,
+        schemaBundleId: json_['schemaBundleId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (messageName != null) 'messageName': messageName!,
-        if (schemaBundleId != null) 'schemaBundleId': schemaBundleId!,
-      };
+    if (messageName != null) 'messageName': messageName!,
+    if (schemaBundleId != null) 'schemaBundleId': schemaBundleId!,
+  };
 }
 
 /// String Values of type `String` are stored in `Value.string_value`.
@@ -6142,21 +6146,21 @@ class GoogleBigtableAdminV2TypeString {
   /// The encoding to use when converting to or from lower level types.
   GoogleBigtableAdminV2TypeStringEncoding? encoding;
 
-  GoogleBigtableAdminV2TypeString({
-    this.encoding,
-  });
+  GoogleBigtableAdminV2TypeString({this.encoding});
 
   GoogleBigtableAdminV2TypeString.fromJson(core.Map json_)
-      : this(
-          encoding: json_.containsKey('encoding')
-              ? GoogleBigtableAdminV2TypeStringEncoding.fromJson(
-                  json_['encoding'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        encoding:
+            json_.containsKey('encoding')
+                ? GoogleBigtableAdminV2TypeStringEncoding.fromJson(
+                  json_['encoding'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encoding != null) 'encoding': encoding!,
-      };
+    if (encoding != null) 'encoding': encoding!,
+  };
 }
 
 /// Rules used to convert to or from lower level types.
@@ -6170,27 +6174,28 @@ class GoogleBigtableAdminV2TypeStringEncoding {
   )
   GoogleBigtableAdminV2TypeStringEncodingUtf8Raw? utf8Raw;
 
-  GoogleBigtableAdminV2TypeStringEncoding({
-    this.utf8Bytes,
-    this.utf8Raw,
-  });
+  GoogleBigtableAdminV2TypeStringEncoding({this.utf8Bytes, this.utf8Raw});
 
   GoogleBigtableAdminV2TypeStringEncoding.fromJson(core.Map json_)
-      : this(
-          utf8Bytes: json_.containsKey('utf8Bytes')
-              ? GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes.fromJson(
-                  json_['utf8Bytes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          utf8Raw: json_.containsKey('utf8Raw')
-              ? GoogleBigtableAdminV2TypeStringEncodingUtf8Raw.fromJson(
-                  json_['utf8Raw'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        utf8Bytes:
+            json_.containsKey('utf8Bytes')
+                ? GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes.fromJson(
+                  json_['utf8Bytes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        utf8Raw:
+            json_.containsKey('utf8Raw')
+                ? GoogleBigtableAdminV2TypeStringEncodingUtf8Raw.fromJson(
+                  json_['utf8Raw'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (utf8Bytes != null) 'utf8Bytes': utf8Bytes!,
-        if (utf8Raw != null) 'utf8Raw': utf8Raw!,
-      };
+    if (utf8Bytes != null) 'utf8Bytes': utf8Bytes!,
+    if (utf8Raw != null) 'utf8Raw': utf8Raw!,
+  };
 }
 
 /// UTF-8 encoding.
@@ -6209,18 +6214,14 @@ class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes {
   /// 0x00, then the encoding will not support sorted mode. .
   core.String? nullEscapeChar;
 
-  GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes({
-    this.nullEscapeChar,
-  });
+  GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes({this.nullEscapeChar});
 
   GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes.fromJson(core.Map json_)
-      : this(
-          nullEscapeChar: json_['nullEscapeChar'] as core.String?,
-        );
+    : this(nullEscapeChar: json_['nullEscapeChar'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nullEscapeChar != null) 'nullEscapeChar': nullEscapeChar!,
-      };
+    if (nullEscapeChar != null) 'nullEscapeChar': nullEscapeChar!,
+  };
 }
 
 /// Deprecated: prefer the equivalent `Utf8Bytes`.
@@ -6238,27 +6239,30 @@ class GoogleBigtableAdminV2TypeStruct {
   /// The names and types of the fields in this struct.
   core.List<GoogleBigtableAdminV2TypeStructField>? fields;
 
-  GoogleBigtableAdminV2TypeStruct({
-    this.encoding,
-    this.fields,
-  });
+  GoogleBigtableAdminV2TypeStruct({this.encoding, this.fields});
 
   GoogleBigtableAdminV2TypeStruct.fromJson(core.Map json_)
-      : this(
-          encoding: json_.containsKey('encoding')
-              ? GoogleBigtableAdminV2TypeStructEncoding.fromJson(
-                  json_['encoding'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fields: (json_['fields'] as core.List?)
-              ?.map((value) => GoogleBigtableAdminV2TypeStructField.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        encoding:
+            json_.containsKey('encoding')
+                ? GoogleBigtableAdminV2TypeStructEncoding.fromJson(
+                  json_['encoding'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fields:
+            (json_['fields'] as core.List?)
+                ?.map(
+                  (value) => GoogleBigtableAdminV2TypeStructField.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encoding != null) 'encoding': encoding!,
-        if (fields != null) 'fields': fields!,
-      };
+    if (encoding != null) 'encoding': encoding!,
+    if (fields != null) 'fields': fields!,
+  };
 }
 
 /// Rules used to convert to or from lower level types.
@@ -6279,28 +6283,34 @@ class GoogleBigtableAdminV2TypeStructEncoding {
   });
 
   GoogleBigtableAdminV2TypeStructEncoding.fromJson(core.Map json_)
-      : this(
-          delimitedBytes: json_.containsKey('delimitedBytes')
-              ? GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes.fromJson(
+    : this(
+        delimitedBytes:
+            json_.containsKey('delimitedBytes')
+                ? GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes.fromJson(
                   json_['delimitedBytes']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          orderedCodeBytes: json_.containsKey('orderedCodeBytes')
-              ? GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes
-                  .fromJson(json_['orderedCodeBytes']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          singleton: json_.containsKey('singleton')
-              ? GoogleBigtableAdminV2TypeStructEncodingSingleton.fromJson(
-                  json_['singleton'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        orderedCodeBytes:
+            json_.containsKey('orderedCodeBytes')
+                ? GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes.fromJson(
+                  json_['orderedCodeBytes']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        singleton:
+            json_.containsKey('singleton')
+                ? GoogleBigtableAdminV2TypeStructEncodingSingleton.fromJson(
+                  json_['singleton'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delimitedBytes != null) 'delimitedBytes': delimitedBytes!,
-        if (orderedCodeBytes != null) 'orderedCodeBytes': orderedCodeBytes!,
-        if (singleton != null) 'singleton': singleton!,
-      };
+    if (delimitedBytes != null) 'delimitedBytes': delimitedBytes!,
+    if (orderedCodeBytes != null) 'orderedCodeBytes': orderedCodeBytes!,
+    if (singleton != null) 'singleton': singleton!,
+  };
 }
 
 /// Fields are encoded independently and concatenated with a configurable
@@ -6320,22 +6330,20 @@ class GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes {
   core.List<core.int> get delimiterAsBytes => convert.base64.decode(delimiter!);
 
   set delimiterAsBytes(core.List<core.int> bytes_) {
-    delimiter =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    delimiter = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes({
-    this.delimiter,
-  });
+  GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes({this.delimiter});
 
   GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes.fromJson(core.Map json_)
-      : this(
-          delimiter: json_['delimiter'] as core.String?,
-        );
+    : this(delimiter: json_['delimiter'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delimiter != null) 'delimiter': delimiter!,
-      };
+    if (delimiter != null) 'delimiter': delimiter!,
+  };
 }
 
 /// Fields are encoded independently and concatenated with the fixed byte pair
@@ -6377,24 +6385,23 @@ class GoogleBigtableAdminV2TypeStructField {
   /// The type of values in this field.
   Type? type;
 
-  GoogleBigtableAdminV2TypeStructField({
-    this.fieldName,
-    this.type,
-  });
+  GoogleBigtableAdminV2TypeStructField({this.fieldName, this.type});
 
   GoogleBigtableAdminV2TypeStructField.fromJson(core.Map json_)
-      : this(
-          fieldName: json_['fieldName'] as core.String?,
-          type: json_.containsKey('type')
-              ? Type.fromJson(
-                  json_['type'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fieldName: json_['fieldName'] as core.String?,
+        type:
+            json_.containsKey('type')
+                ? Type.fromJson(
+                  json_['type'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fieldName != null) 'fieldName': fieldName!,
-        if (type != null) 'type': type!,
-      };
+    if (fieldName != null) 'fieldName': fieldName!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Timestamp Values of type `Timestamp` are stored in `Value.timestamp_value`.
@@ -6402,21 +6409,21 @@ class GoogleBigtableAdminV2TypeTimestamp {
   /// The encoding to use when converting to or from lower level types.
   GoogleBigtableAdminV2TypeTimestampEncoding? encoding;
 
-  GoogleBigtableAdminV2TypeTimestamp({
-    this.encoding,
-  });
+  GoogleBigtableAdminV2TypeTimestamp({this.encoding});
 
   GoogleBigtableAdminV2TypeTimestamp.fromJson(core.Map json_)
-      : this(
-          encoding: json_.containsKey('encoding')
-              ? GoogleBigtableAdminV2TypeTimestampEncoding.fromJson(
-                  json_['encoding'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        encoding:
+            json_.containsKey('encoding')
+                ? GoogleBigtableAdminV2TypeTimestampEncoding.fromJson(
+                  json_['encoding'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encoding != null) 'encoding': encoding!,
-      };
+    if (encoding != null) 'encoding': encoding!,
+  };
 }
 
 /// Rules used to convert to or from lower level types.
@@ -6428,22 +6435,22 @@ class GoogleBigtableAdminV2TypeTimestampEncoding {
   /// `Instant.truncatedTo()` with `ChronoUnit.MICROS`
   GoogleBigtableAdminV2TypeInt64Encoding? unixMicrosInt64;
 
-  GoogleBigtableAdminV2TypeTimestampEncoding({
-    this.unixMicrosInt64,
-  });
+  GoogleBigtableAdminV2TypeTimestampEncoding({this.unixMicrosInt64});
 
   GoogleBigtableAdminV2TypeTimestampEncoding.fromJson(core.Map json_)
-      : this(
-          unixMicrosInt64: json_.containsKey('unixMicrosInt64')
-              ? GoogleBigtableAdminV2TypeInt64Encoding.fromJson(
+    : this(
+        unixMicrosInt64:
+            json_.containsKey('unixMicrosInt64')
+                ? GoogleBigtableAdminV2TypeInt64Encoding.fromJson(
                   json_['unixMicrosInt64']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (unixMicrosInt64 != null) 'unixMicrosInt64': unixMicrosInt64!,
-      };
+    if (unixMicrosInt64 != null) 'unixMicrosInt64': unixMicrosInt64!,
+  };
 }
 
 /// A tablet is a defined by a start and end key and is explained in
@@ -6502,27 +6509,27 @@ class HotTablet {
   });
 
   HotTablet.fromJson(core.Map json_)
-      : this(
-          endKey: json_['endKey'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          nodeCpuUsagePercent:
-              (json_['nodeCpuUsagePercent'] as core.num?)?.toDouble(),
-          startKey: json_['startKey'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          tableName: json_['tableName'] as core.String?,
-        );
+    : this(
+        endKey: json_['endKey'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        nodeCpuUsagePercent:
+            (json_['nodeCpuUsagePercent'] as core.num?)?.toDouble(),
+        startKey: json_['startKey'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        tableName: json_['tableName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endKey != null) 'endKey': endKey!,
-        if (endTime != null) 'endTime': endTime!,
-        if (name != null) 'name': name!,
-        if (nodeCpuUsagePercent != null)
-          'nodeCpuUsagePercent': nodeCpuUsagePercent!,
-        if (startKey != null) 'startKey': startKey!,
-        if (startTime != null) 'startTime': startTime!,
-        if (tableName != null) 'tableName': tableName!,
-      };
+    if (endKey != null) 'endKey': endKey!,
+    if (endTime != null) 'endTime': endTime!,
+    if (name != null) 'name': name!,
+    if (nodeCpuUsagePercent != null)
+      'nodeCpuUsagePercent': nodeCpuUsagePercent!,
+    if (startKey != null) 'startKey': startKey!,
+    if (startTime != null) 'startTime': startTime!,
+    if (tableName != null) 'tableName': tableName!,
+  };
 }
 
 /// A collection of Bigtable Tables and the resources that serve them.
@@ -6608,33 +6615,29 @@ class Instance {
   });
 
   Instance.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
-          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-          state: json_['state'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        state: json_['state'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-        if (state != null) 'state': state!,
-        if (type != null) 'type': type!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (state != null) 'state': state!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A GcRule which deletes cells matching all of the given rules.
@@ -6642,21 +6645,23 @@ class Intersection {
   /// Only delete cells which would be deleted by every element of `rules`.
   core.List<GcRule>? rules;
 
-  Intersection({
-    this.rules,
-  });
+  Intersection({this.rules});
 
   Intersection.fromJson(core.Map json_)
-      : this(
-          rules: (json_['rules'] as core.List?)
-              ?.map((value) =>
-                  GcRule.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        rules:
+            (json_['rules'] as core.List?)
+                ?.map(
+                  (value) => GcRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rules != null) 'rules': rules!,
-      };
+    if (rules != null) 'rules': rules!,
+  };
 }
 
 /// Response message for BigtableInstanceAdmin.ListAppProfiles.
@@ -6684,22 +6689,27 @@ class ListAppProfilesResponse {
   });
 
   ListAppProfilesResponse.fromJson(core.Map json_)
-      : this(
-          appProfiles: (json_['appProfiles'] as core.List?)
-              ?.map((value) => AppProfile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          failedLocations: (json_['failedLocations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        appProfiles:
+            (json_['appProfiles'] as core.List?)
+                ?.map(
+                  (value) => AppProfile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        failedLocations:
+            (json_['failedLocations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appProfiles != null) 'appProfiles': appProfiles!,
-        if (failedLocations != null) 'failedLocations': failedLocations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (appProfiles != null) 'appProfiles': appProfiles!,
+    if (failedLocations != null) 'failedLocations': failedLocations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for
@@ -6714,24 +6724,25 @@ class ListAuthorizedViewsResponse {
   /// results.
   core.String? nextPageToken;
 
-  ListAuthorizedViewsResponse({
-    this.authorizedViews,
-    this.nextPageToken,
-  });
+  ListAuthorizedViewsResponse({this.authorizedViews, this.nextPageToken});
 
   ListAuthorizedViewsResponse.fromJson(core.Map json_)
-      : this(
-          authorizedViews: (json_['authorizedViews'] as core.List?)
-              ?.map((value) => AuthorizedView.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        authorizedViews:
+            (json_['authorizedViews'] as core.List?)
+                ?.map(
+                  (value) => AuthorizedView.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizedViews != null) 'authorizedViews': authorizedViews!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (authorizedViews != null) 'authorizedViews': authorizedViews!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for ListBackups.
@@ -6743,24 +6754,25 @@ class ListBackupsResponse {
   /// more of the matching backups.
   core.String? nextPageToken;
 
-  ListBackupsResponse({
-    this.backups,
-    this.nextPageToken,
-  });
+  ListBackupsResponse({this.backups, this.nextPageToken});
 
   ListBackupsResponse.fromJson(core.Map json_)
-      : this(
-          backups: (json_['backups'] as core.List?)
-              ?.map((value) =>
-                  Backup.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        backups:
+            (json_['backups'] as core.List?)
+                ?.map(
+                  (value) => Backup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backups != null) 'backups': backups!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (backups != null) 'backups': backups!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for BigtableInstanceAdmin.ListClusters.
@@ -6786,22 +6798,27 @@ class ListClustersResponse {
   });
 
   ListClustersResponse.fromJson(core.Map json_)
-      : this(
-          clusters: (json_['clusters'] as core.List?)
-              ?.map((value) => Cluster.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          failedLocations: (json_['failedLocations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        clusters:
+            (json_['clusters'] as core.List?)
+                ?.map(
+                  (value) => Cluster.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        failedLocations:
+            (json_['failedLocations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusters != null) 'clusters': clusters!,
-        if (failedLocations != null) 'failedLocations': failedLocations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (clusters != null) 'clusters': clusters!,
+    if (failedLocations != null) 'failedLocations': failedLocations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for BigtableInstanceAdmin.ListHotTablets.
@@ -6821,24 +6838,25 @@ class ListHotTabletsResponse {
   /// results.
   core.String? nextPageToken;
 
-  ListHotTabletsResponse({
-    this.hotTablets,
-    this.nextPageToken,
-  });
+  ListHotTabletsResponse({this.hotTablets, this.nextPageToken});
 
   ListHotTabletsResponse.fromJson(core.Map json_)
-      : this(
-          hotTablets: (json_['hotTablets'] as core.List?)
-              ?.map((value) => HotTablet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        hotTablets:
+            (json_['hotTablets'] as core.List?)
+                ?.map(
+                  (value) => HotTablet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hotTablets != null) 'hotTablets': hotTablets!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (hotTablets != null) 'hotTablets': hotTablets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for BigtableInstanceAdmin.ListInstances.
@@ -6865,22 +6883,27 @@ class ListInstancesResponse {
   });
 
   ListInstancesResponse.fromJson(core.Map json_)
-      : this(
-          failedLocations: (json_['failedLocations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => Instance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        failedLocations:
+            (json_['failedLocations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        instances:
+            (json_['instances'] as core.List?)
+                ?.map(
+                  (value) => Instance.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failedLocations != null) 'failedLocations': failedLocations!,
-        if (instances != null) 'instances': instances!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (failedLocations != null) 'failedLocations': failedLocations!,
+    if (instances != null) 'instances': instances!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -6891,24 +6914,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for BigtableInstanceAdmin.ListLogicalViews.
@@ -6921,24 +6945,25 @@ class ListLogicalViewsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListLogicalViewsResponse({
-    this.logicalViews,
-    this.nextPageToken,
-  });
+  ListLogicalViewsResponse({this.logicalViews, this.nextPageToken});
 
   ListLogicalViewsResponse.fromJson(core.Map json_)
-      : this(
-          logicalViews: (json_['logicalViews'] as core.List?)
-              ?.map((value) => LogicalView.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        logicalViews:
+            (json_['logicalViews'] as core.List?)
+                ?.map(
+                  (value) => LogicalView.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (logicalViews != null) 'logicalViews': logicalViews!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (logicalViews != null) 'logicalViews': logicalViews!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for BigtableInstanceAdmin.ListMaterializedViews.
@@ -6951,24 +6976,25 @@ class ListMaterializedViewsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListMaterializedViewsResponse({
-    this.materializedViews,
-    this.nextPageToken,
-  });
+  ListMaterializedViewsResponse({this.materializedViews, this.nextPageToken});
 
   ListMaterializedViewsResponse.fromJson(core.Map json_)
-      : this(
-          materializedViews: (json_['materializedViews'] as core.List?)
-              ?.map((value) => MaterializedView.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        materializedViews:
+            (json_['materializedViews'] as core.List?)
+                ?.map(
+                  (value) => MaterializedView.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (materializedViews != null) 'materializedViews': materializedViews!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (materializedViews != null) 'materializedViews': materializedViews!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -6979,24 +7005,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// The response for ListSchemaBundles.
@@ -7009,24 +7036,25 @@ class ListSchemaBundlesResponse {
   /// The schema bundles from the specified table.
   core.List<SchemaBundle>? schemaBundles;
 
-  ListSchemaBundlesResponse({
-    this.nextPageToken,
-    this.schemaBundles,
-  });
+  ListSchemaBundlesResponse({this.nextPageToken, this.schemaBundles});
 
   ListSchemaBundlesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          schemaBundles: (json_['schemaBundles'] as core.List?)
-              ?.map((value) => SchemaBundle.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        schemaBundles:
+            (json_['schemaBundles'] as core.List?)
+                ?.map(
+                  (value) => SchemaBundle.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (schemaBundles != null) 'schemaBundles': schemaBundles!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (schemaBundles != null) 'schemaBundles': schemaBundles!,
+  };
 }
 
 /// Response message for google.bigtable.admin.v2.BigtableTableAdmin.ListTables
@@ -7040,24 +7068,25 @@ class ListTablesResponse {
   /// The tables present in the requested instance.
   core.List<Table>? tables;
 
-  ListTablesResponse({
-    this.nextPageToken,
-    this.tables,
-  });
+  ListTablesResponse({this.nextPageToken, this.tables});
 
   ListTablesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          tables: (json_['tables'] as core.List?)
-              ?.map((value) =>
-                  Table.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        tables:
+            (json_['tables'] as core.List?)
+                ?.map(
+                  (value) => Table.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tables != null) 'tables': tables!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (tables != null) 'tables': tables!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -7090,28 +7119,22 @@ class LogicalView {
   /// Required.
   core.String? query;
 
-  LogicalView({
-    this.deletionProtection,
-    this.etag,
-    this.name,
-    this.query,
-  });
+  LogicalView({this.deletionProtection, this.etag, this.name, this.query});
 
   LogicalView.fromJson(core.Map json_)
-      : this(
-          deletionProtection: json_['deletionProtection'] as core.bool?,
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          query: json_['query'] as core.String?,
-        );
+    : this(
+        deletionProtection: json_['deletionProtection'] as core.bool?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        query: json_['query'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deletionProtection != null)
-          'deletionProtection': deletionProtection!,
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (query != null) 'query': query!,
-      };
+    if (deletionProtection != null) 'deletionProtection': deletionProtection!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (query != null) 'query': query!,
+  };
 }
 
 /// A materialized view object that can be referenced in SQL queries.
@@ -7139,28 +7162,22 @@ class MaterializedView {
   /// Required. Immutable.
   core.String? query;
 
-  MaterializedView({
-    this.deletionProtection,
-    this.etag,
-    this.name,
-    this.query,
-  });
+  MaterializedView({this.deletionProtection, this.etag, this.name, this.query});
 
   MaterializedView.fromJson(core.Map json_)
-      : this(
-          deletionProtection: json_['deletionProtection'] as core.bool?,
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          query: json_['query'] as core.String?,
-        );
+    : this(
+        deletionProtection: json_['deletionProtection'] as core.bool?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        query: json_['query'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deletionProtection != null)
-          'deletionProtection': deletionProtection!,
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (query != null) 'query': query!,
-      };
+    if (deletionProtection != null) 'deletionProtection': deletionProtection!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (query != null) 'query': query!,
+  };
 }
 
 /// A create, update, or delete of a particular column family.
@@ -7189,36 +7206,34 @@ class Modification {
   /// Optional.
   core.String? updateMask;
 
-  Modification({
-    this.create,
-    this.drop,
-    this.id,
-    this.update,
-    this.updateMask,
-  });
+  Modification({this.create, this.drop, this.id, this.update, this.updateMask});
 
   Modification.fromJson(core.Map json_)
-      : this(
-          create: json_.containsKey('create')
-              ? ColumnFamily.fromJson(
-                  json_['create'] as core.Map<core.String, core.dynamic>)
-              : null,
-          drop: json_['drop'] as core.bool?,
-          id: json_['id'] as core.String?,
-          update: json_.containsKey('update')
-              ? ColumnFamily.fromJson(
-                  json_['update'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        create:
+            json_.containsKey('create')
+                ? ColumnFamily.fromJson(
+                  json_['create'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        drop: json_['drop'] as core.bool?,
+        id: json_['id'] as core.String?,
+        update:
+            json_.containsKey('update')
+                ? ColumnFamily.fromJson(
+                  json_['update'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (create != null) 'create': create!,
-        if (drop != null) 'drop': drop!,
-        if (id != null) 'id': id!,
-        if (update != null) 'update': update!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (create != null) 'create': create!,
+    if (drop != null) 'drop': drop!,
+    if (id != null) 'id': id!,
+    if (update != null) 'update': update!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Request message for
@@ -7238,24 +7253,25 @@ class ModifyColumnFamiliesRequest {
   /// Required.
   core.List<Modification>? modifications;
 
-  ModifyColumnFamiliesRequest({
-    this.ignoreWarnings,
-    this.modifications,
-  });
+  ModifyColumnFamiliesRequest({this.ignoreWarnings, this.modifications});
 
   ModifyColumnFamiliesRequest.fromJson(core.Map json_)
-      : this(
-          ignoreWarnings: json_['ignoreWarnings'] as core.bool?,
-          modifications: (json_['modifications'] as core.List?)
-              ?.map((value) => Modification.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        ignoreWarnings: json_['ignoreWarnings'] as core.bool?,
+        modifications:
+            (json_['modifications'] as core.List?)
+                ?.map(
+                  (value) => Modification.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ignoreWarnings != null) 'ignoreWarnings': ignoreWarnings!,
-        if (modifications != null) 'modifications': modifications!,
-      };
+    if (ignoreWarnings != null) 'ignoreWarnings': ignoreWarnings!,
+    if (modifications != null) 'modifications': modifications!,
+  };
 }
 
 /// Read/write requests are routed to the nearest cluster in the instance, and
@@ -7276,26 +7292,26 @@ class MultiClusterRoutingUseAny {
   /// Requests that span multiple rows are routed non-deterministically.
   RowAffinity? rowAffinity;
 
-  MultiClusterRoutingUseAny({
-    this.clusterIds,
-    this.rowAffinity,
-  });
+  MultiClusterRoutingUseAny({this.clusterIds, this.rowAffinity});
 
   MultiClusterRoutingUseAny.fromJson(core.Map json_)
-      : this(
-          clusterIds: (json_['clusterIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          rowAffinity: json_.containsKey('rowAffinity')
-              ? RowAffinity.fromJson(
-                  json_['rowAffinity'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        clusterIds:
+            (json_['clusterIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        rowAffinity:
+            json_.containsKey('rowAffinity')
+                ? RowAffinity.fromJson(
+                  json_['rowAffinity'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterIds != null) 'clusterIds': clusterIds!,
-        if (rowAffinity != null) 'rowAffinity': rowAffinity!,
-      };
+    if (clusterIds != null) 'clusterIds': clusterIds!,
+    if (rowAffinity != null) 'rowAffinity': rowAffinity!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -7341,37 +7357,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -7437,8 +7451,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -7460,33 +7476,36 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Represents a protobuf schema.
@@ -7509,22 +7528,20 @@ class ProtoSchema {
       convert.base64.decode(protoDescriptors!);
 
   set protoDescriptorsAsBytes(core.List<core.int> bytes_) {
-    protoDescriptors =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    protoDescriptors = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  ProtoSchema({
-    this.protoDescriptors,
-  });
+  ProtoSchema({this.protoDescriptors});
 
   ProtoSchema.fromJson(core.Map json_)
-      : this(
-          protoDescriptors: json_['protoDescriptors'] as core.String?,
-        );
+    : this(protoDescriptors: json_['protoDescriptors'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (protoDescriptors != null) 'protoDescriptors': protoDescriptors!,
-      };
+    if (protoDescriptors != null) 'protoDescriptors': protoDescriptors!,
+  };
 }
 
 /// Information about a table restore.
@@ -7540,24 +7557,23 @@ class RestoreInfo {
   /// - "BACKUP" : A backup was used as the source of the restore.
   core.String? sourceType;
 
-  RestoreInfo({
-    this.backupInfo,
-    this.sourceType,
-  });
+  RestoreInfo({this.backupInfo, this.sourceType});
 
   RestoreInfo.fromJson(core.Map json_)
-      : this(
-          backupInfo: json_.containsKey('backupInfo')
-              ? BackupInfo.fromJson(
-                  json_['backupInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceType: json_['sourceType'] as core.String?,
-        );
+    : this(
+        backupInfo:
+            json_.containsKey('backupInfo')
+                ? BackupInfo.fromJson(
+                  json_['backupInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceType: json_['sourceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupInfo != null) 'backupInfo': backupInfo!,
-        if (sourceType != null) 'sourceType': sourceType!,
-      };
+    if (backupInfo != null) 'backupInfo': backupInfo!,
+    if (sourceType != null) 'sourceType': sourceType!,
+  };
 }
 
 /// The request for RestoreTable.
@@ -7575,21 +7591,18 @@ class RestoreTableRequest {
   /// Required.
   core.String? tableId;
 
-  RestoreTableRequest({
-    this.backup,
-    this.tableId,
-  });
+  RestoreTableRequest({this.backup, this.tableId});
 
   RestoreTableRequest.fromJson(core.Map json_)
-      : this(
-          backup: json_['backup'] as core.String?,
-          tableId: json_['tableId'] as core.String?,
-        );
+    : this(
+        backup: json_['backup'] as core.String?,
+        tableId: json_['tableId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backup != null) 'backup': backup!,
-        if (tableId != null) 'tableId': tableId!,
-      };
+    if (backup != null) 'backup': backup!,
+    if (tableId != null) 'tableId': tableId!,
+  };
 }
 
 /// If enabled, Bigtable will route the request based on the row key of the
@@ -7624,27 +7637,25 @@ class SchemaBundle {
   /// Schema for Protobufs.
   ProtoSchema? protoSchema;
 
-  SchemaBundle({
-    this.etag,
-    this.name,
-    this.protoSchema,
-  });
+  SchemaBundle({this.etag, this.name, this.protoSchema});
 
   SchemaBundle.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          protoSchema: json_.containsKey('protoSchema')
-              ? ProtoSchema.fromJson(
-                  json_['protoSchema'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        protoSchema:
+            json_.containsKey('protoSchema')
+                ? ProtoSchema.fromJson(
+                  json_['protoSchema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (protoSchema != null) 'protoSchema': protoSchema!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (protoSchema != null) 'protoSchema': protoSchema!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -7662,24 +7673,23 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Unconditionally routes all read/write requests to a specific cluster.
@@ -7697,23 +7707,20 @@ class SingleClusterRouting {
   /// The cluster to which read/write requests should be routed.
   core.String? clusterId;
 
-  SingleClusterRouting({
-    this.allowTransactionalWrites,
-    this.clusterId,
-  });
+  SingleClusterRouting({this.allowTransactionalWrites, this.clusterId});
 
   SingleClusterRouting.fromJson(core.Map json_)
-      : this(
-          allowTransactionalWrites:
-              json_['allowTransactionalWrites'] as core.bool?,
-          clusterId: json_['clusterId'] as core.String?,
-        );
+    : this(
+        allowTransactionalWrites:
+            json_['allowTransactionalWrites'] as core.bool?,
+        clusterId: json_['clusterId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowTransactionalWrites != null)
-          'allowTransactionalWrites': allowTransactionalWrites!,
-        if (clusterId != null) 'clusterId': clusterId!,
-      };
+    if (allowTransactionalWrites != null)
+      'allowTransactionalWrites': allowTransactionalWrites!,
+    if (clusterId != null) 'clusterId': clusterId!,
+  };
 }
 
 /// An initial split point for a newly created table.
@@ -7723,22 +7730,19 @@ class Split {
   core.List<core.int> get keyAsBytes => convert.base64.decode(key!);
 
   set keyAsBytes(core.List<core.int> bytes_) {
-    key =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    key = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  Split({
-    this.key,
-  });
+  Split({this.key});
 
-  Split.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-        );
+  Split.fromJson(core.Map json_) : this(key: json_['key'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-      };
+    if (key != null) 'key': key!,
+  };
 }
 
 /// Standard options for isolating this app profile's traffic from other use
@@ -7753,18 +7757,14 @@ class StandardIsolation {
   /// - "PRIORITY_HIGH"
   core.String? priority;
 
-  StandardIsolation({
-    this.priority,
-  });
+  StandardIsolation({this.priority});
 
   StandardIsolation.fromJson(core.Map json_)
-      : this(
-          priority: json_['priority'] as core.String?,
-        );
+    : this(priority: json_['priority'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (priority != null) 'priority': priority!,
-      };
+    if (priority != null) 'priority': priority!,
+  };
 }
 
 /// Checks that all writes before the consistency token was generated are
@@ -7916,71 +7916,86 @@ class Table {
   });
 
   Table.fromJson(core.Map json_)
-      : this(
-          automatedBackupPolicy: json_.containsKey('automatedBackupPolicy')
-              ? AutomatedBackupPolicy.fromJson(json_['automatedBackupPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          changeStreamConfig: json_.containsKey('changeStreamConfig')
-              ? ChangeStreamConfig.fromJson(json_['changeStreamConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          clusterStates:
-              (json_['clusterStates'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              ClusterState.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        automatedBackupPolicy:
+            json_.containsKey('automatedBackupPolicy')
+                ? AutomatedBackupPolicy.fromJson(
+                  json_['automatedBackupPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        changeStreamConfig:
+            json_.containsKey('changeStreamConfig')
+                ? ChangeStreamConfig.fromJson(
+                  json_['changeStreamConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        clusterStates: (json_['clusterStates']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                ClusterState.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          columnFamilies:
-              (json_['columnFamilies'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              ColumnFamily.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        columnFamilies: (json_['columnFamilies']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                ColumnFamily.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          deletionProtection: json_['deletionProtection'] as core.bool?,
-          granularity: json_['granularity'] as core.String?,
-          name: json_['name'] as core.String?,
-          restoreInfo: json_.containsKey('restoreInfo')
-              ? RestoreInfo.fromJson(
-                  json_['restoreInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rowKeySchema: json_.containsKey('rowKeySchema')
-              ? GoogleBigtableAdminV2TypeStruct.fromJson(
-                  json_['rowKeySchema'] as core.Map<core.String, core.dynamic>)
-              : null,
-          stats: json_.containsKey('stats')
-              ? TableStats.fromJson(
-                  json_['stats'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tieredStorageConfig: json_.containsKey('tieredStorageConfig')
-              ? TieredStorageConfig.fromJson(json_['tieredStorageConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        deletionProtection: json_['deletionProtection'] as core.bool?,
+        granularity: json_['granularity'] as core.String?,
+        name: json_['name'] as core.String?,
+        restoreInfo:
+            json_.containsKey('restoreInfo')
+                ? RestoreInfo.fromJson(
+                  json_['restoreInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rowKeySchema:
+            json_.containsKey('rowKeySchema')
+                ? GoogleBigtableAdminV2TypeStruct.fromJson(
+                  json_['rowKeySchema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stats:
+            json_.containsKey('stats')
+                ? TableStats.fromJson(
+                  json_['stats'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tieredStorageConfig:
+            json_.containsKey('tieredStorageConfig')
+                ? TieredStorageConfig.fromJson(
+                  json_['tieredStorageConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (automatedBackupPolicy != null)
-          'automatedBackupPolicy': automatedBackupPolicy!,
-        if (changeStreamConfig != null)
-          'changeStreamConfig': changeStreamConfig!,
-        if (clusterStates != null) 'clusterStates': clusterStates!,
-        if (columnFamilies != null) 'columnFamilies': columnFamilies!,
-        if (deletionProtection != null)
-          'deletionProtection': deletionProtection!,
-        if (granularity != null) 'granularity': granularity!,
-        if (name != null) 'name': name!,
-        if (restoreInfo != null) 'restoreInfo': restoreInfo!,
-        if (rowKeySchema != null) 'rowKeySchema': rowKeySchema!,
-        if (stats != null) 'stats': stats!,
-        if (tieredStorageConfig != null)
-          'tieredStorageConfig': tieredStorageConfig!,
-      };
+    if (automatedBackupPolicy != null)
+      'automatedBackupPolicy': automatedBackupPolicy!,
+    if (changeStreamConfig != null) 'changeStreamConfig': changeStreamConfig!,
+    if (clusterStates != null) 'clusterStates': clusterStates!,
+    if (columnFamilies != null) 'columnFamilies': columnFamilies!,
+    if (deletionProtection != null) 'deletionProtection': deletionProtection!,
+    if (granularity != null) 'granularity': granularity!,
+    if (name != null) 'name': name!,
+    if (restoreInfo != null) 'restoreInfo': restoreInfo!,
+    if (rowKeySchema != null) 'rowKeySchema': rowKeySchema!,
+    if (stats != null) 'stats': stats!,
+    if (tieredStorageConfig != null)
+      'tieredStorageConfig': tieredStorageConfig!,
+  };
 }
 
 /// Approximate statistics related to a table.
@@ -8024,23 +8039,23 @@ class TableStats {
   });
 
   TableStats.fromJson(core.Map json_)
-      : this(
-          averageCellsPerColumn:
-              (json_['averageCellsPerColumn'] as core.num?)?.toDouble(),
-          averageColumnsPerRow:
-              (json_['averageColumnsPerRow'] as core.num?)?.toDouble(),
-          logicalDataBytes: json_['logicalDataBytes'] as core.String?,
-          rowCount: json_['rowCount'] as core.String?,
-        );
+    : this(
+        averageCellsPerColumn:
+            (json_['averageCellsPerColumn'] as core.num?)?.toDouble(),
+        averageColumnsPerRow:
+            (json_['averageColumnsPerRow'] as core.num?)?.toDouble(),
+        logicalDataBytes: json_['logicalDataBytes'] as core.String?,
+        rowCount: json_['rowCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (averageCellsPerColumn != null)
-          'averageCellsPerColumn': averageCellsPerColumn!,
-        if (averageColumnsPerRow != null)
-          'averageColumnsPerRow': averageColumnsPerRow!,
-        if (logicalDataBytes != null) 'logicalDataBytes': logicalDataBytes!,
-        if (rowCount != null) 'rowCount': rowCount!,
-      };
+    if (averageCellsPerColumn != null)
+      'averageCellsPerColumn': averageCellsPerColumn!,
+    if (averageColumnsPerRow != null)
+      'averageColumnsPerRow': averageColumnsPerRow!,
+    if (logicalDataBytes != null) 'logicalDataBytes': logicalDataBytes!,
+    if (rowCount != null) 'rowCount': rowCount!,
+  };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -8060,21 +8075,22 @@ class TieredStorageConfig {
   /// The IA tier allows storing more data per node with reduced performance.
   TieredStorageRule? infrequentAccess;
 
-  TieredStorageConfig({
-    this.infrequentAccess,
-  });
+  TieredStorageConfig({this.infrequentAccess});
 
   TieredStorageConfig.fromJson(core.Map json_)
-      : this(
-          infrequentAccess: json_.containsKey('infrequentAccess')
-              ? TieredStorageRule.fromJson(json_['infrequentAccess']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        infrequentAccess:
+            json_.containsKey('infrequentAccess')
+                ? TieredStorageRule.fromJson(
+                  json_['infrequentAccess']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (infrequentAccess != null) 'infrequentAccess': infrequentAccess!,
-      };
+    if (infrequentAccess != null) 'infrequentAccess': infrequentAccess!,
+  };
 }
 
 /// Rule to specify what data is stored in a storage tier.
@@ -8084,19 +8100,14 @@ class TieredStorageRule {
   /// For the infrequent access tier, this value must be at least 30 days.
   core.String? includeIfOlderThan;
 
-  TieredStorageRule({
-    this.includeIfOlderThan,
-  });
+  TieredStorageRule({this.includeIfOlderThan});
 
   TieredStorageRule.fromJson(core.Map json_)
-      : this(
-          includeIfOlderThan: json_['includeIfOlderThan'] as core.String?,
-        );
+    : this(includeIfOlderThan: json_['includeIfOlderThan'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includeIfOlderThan != null)
-          'includeIfOlderThan': includeIfOlderThan!,
-      };
+    if (includeIfOlderThan != null) 'includeIfOlderThan': includeIfOlderThan!,
+  };
 }
 
 /// `Type` represents the type of data that is written to, read from, or stored
@@ -8178,81 +8189,109 @@ class Type {
   });
 
   Type.fromJson(core.Map json_)
-      : this(
-          aggregateType: json_.containsKey('aggregateType')
-              ? GoogleBigtableAdminV2TypeAggregate.fromJson(
-                  json_['aggregateType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          arrayType: json_.containsKey('arrayType')
-              ? GoogleBigtableAdminV2TypeArray.fromJson(
-                  json_['arrayType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          boolType: json_.containsKey('boolType')
-              ? GoogleBigtableAdminV2TypeBool.fromJson(
-                  json_['boolType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          bytesType: json_.containsKey('bytesType')
-              ? GoogleBigtableAdminV2TypeBytes.fromJson(
-                  json_['bytesType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dateType: json_.containsKey('dateType')
-              ? GoogleBigtableAdminV2TypeDate.fromJson(
-                  json_['dateType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          enumType: json_.containsKey('enumType')
-              ? GoogleBigtableAdminV2TypeEnum.fromJson(
-                  json_['enumType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          float32Type: json_.containsKey('float32Type')
-              ? GoogleBigtableAdminV2TypeFloat32.fromJson(
-                  json_['float32Type'] as core.Map<core.String, core.dynamic>)
-              : null,
-          float64Type: json_.containsKey('float64Type')
-              ? GoogleBigtableAdminV2TypeFloat64.fromJson(
-                  json_['float64Type'] as core.Map<core.String, core.dynamic>)
-              : null,
-          int64Type: json_.containsKey('int64Type')
-              ? GoogleBigtableAdminV2TypeInt64.fromJson(
-                  json_['int64Type'] as core.Map<core.String, core.dynamic>)
-              : null,
-          mapType: json_.containsKey('mapType')
-              ? GoogleBigtableAdminV2TypeMap.fromJson(
-                  json_['mapType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          protoType: json_.containsKey('protoType')
-              ? GoogleBigtableAdminV2TypeProto.fromJson(
-                  json_['protoType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          stringType: json_.containsKey('stringType')
-              ? GoogleBigtableAdminV2TypeString.fromJson(
-                  json_['stringType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          structType: json_.containsKey('structType')
-              ? GoogleBigtableAdminV2TypeStruct.fromJson(
-                  json_['structType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          timestampType: json_.containsKey('timestampType')
-              ? GoogleBigtableAdminV2TypeTimestamp.fromJson(
-                  json_['timestampType'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        aggregateType:
+            json_.containsKey('aggregateType')
+                ? GoogleBigtableAdminV2TypeAggregate.fromJson(
+                  json_['aggregateType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        arrayType:
+            json_.containsKey('arrayType')
+                ? GoogleBigtableAdminV2TypeArray.fromJson(
+                  json_['arrayType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        boolType:
+            json_.containsKey('boolType')
+                ? GoogleBigtableAdminV2TypeBool.fromJson(
+                  json_['boolType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bytesType:
+            json_.containsKey('bytesType')
+                ? GoogleBigtableAdminV2TypeBytes.fromJson(
+                  json_['bytesType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dateType:
+            json_.containsKey('dateType')
+                ? GoogleBigtableAdminV2TypeDate.fromJson(
+                  json_['dateType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enumType:
+            json_.containsKey('enumType')
+                ? GoogleBigtableAdminV2TypeEnum.fromJson(
+                  json_['enumType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        float32Type:
+            json_.containsKey('float32Type')
+                ? GoogleBigtableAdminV2TypeFloat32.fromJson(
+                  json_['float32Type'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        float64Type:
+            json_.containsKey('float64Type')
+                ? GoogleBigtableAdminV2TypeFloat64.fromJson(
+                  json_['float64Type'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        int64Type:
+            json_.containsKey('int64Type')
+                ? GoogleBigtableAdminV2TypeInt64.fromJson(
+                  json_['int64Type'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mapType:
+            json_.containsKey('mapType')
+                ? GoogleBigtableAdminV2TypeMap.fromJson(
+                  json_['mapType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        protoType:
+            json_.containsKey('protoType')
+                ? GoogleBigtableAdminV2TypeProto.fromJson(
+                  json_['protoType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stringType:
+            json_.containsKey('stringType')
+                ? GoogleBigtableAdminV2TypeString.fromJson(
+                  json_['stringType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        structType:
+            json_.containsKey('structType')
+                ? GoogleBigtableAdminV2TypeStruct.fromJson(
+                  json_['structType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        timestampType:
+            json_.containsKey('timestampType')
+                ? GoogleBigtableAdminV2TypeTimestamp.fromJson(
+                  json_['timestampType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aggregateType != null) 'aggregateType': aggregateType!,
-        if (arrayType != null) 'arrayType': arrayType!,
-        if (boolType != null) 'boolType': boolType!,
-        if (bytesType != null) 'bytesType': bytesType!,
-        if (dateType != null) 'dateType': dateType!,
-        if (enumType != null) 'enumType': enumType!,
-        if (float32Type != null) 'float32Type': float32Type!,
-        if (float64Type != null) 'float64Type': float64Type!,
-        if (int64Type != null) 'int64Type': int64Type!,
-        if (mapType != null) 'mapType': mapType!,
-        if (protoType != null) 'protoType': protoType!,
-        if (stringType != null) 'stringType': stringType!,
-        if (structType != null) 'structType': structType!,
-        if (timestampType != null) 'timestampType': timestampType!,
-      };
+    if (aggregateType != null) 'aggregateType': aggregateType!,
+    if (arrayType != null) 'arrayType': arrayType!,
+    if (boolType != null) 'boolType': boolType!,
+    if (bytesType != null) 'bytesType': bytesType!,
+    if (dateType != null) 'dateType': dateType!,
+    if (enumType != null) 'enumType': enumType!,
+    if (float32Type != null) 'float32Type': float32Type!,
+    if (float64Type != null) 'float64Type': float64Type!,
+    if (int64Type != null) 'int64Type': int64Type!,
+    if (mapType != null) 'mapType': mapType!,
+    if (protoType != null) 'protoType': protoType!,
+    if (stringType != null) 'stringType': stringType!,
+    if (structType != null) 'structType': structType!,
+    if (timestampType != null) 'timestampType': timestampType!,
+  };
 }
 
 /// Request message for
@@ -8264,19 +8303,21 @@ class Union {
   /// Delete cells which would be deleted by any element of `rules`.
   core.List<GcRule>? rules;
 
-  Union({
-    this.rules,
-  });
+  Union({this.rules});
 
   Union.fromJson(core.Map json_)
-      : this(
-          rules: (json_['rules'] as core.List?)
-              ?.map((value) =>
-                  GcRule.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        rules:
+            (json_['rules'] as core.List?)
+                ?.map(
+                  (value) => GcRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rules != null) 'rules': rules!,
-      };
+    if (rules != null) 'rules': rules!,
+  };
 }

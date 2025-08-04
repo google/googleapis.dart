@@ -67,11 +67,16 @@ class BigQueryDataTransferApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  BigQueryDataTransferApi(http.Client client,
-      {core.String rootUrl = 'https://bigquerydatatransfer.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  BigQueryDataTransferApi(
+    http.Client client, {
+    core.String rootUrl = 'https://bigquerydatatransfer.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -140,7 +145,7 @@ class ProjectsDataSourcesResource {
   final commons.ApiRequester _requester;
 
   ProjectsDataSourcesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Returns true if valid credentials exist for the given data source and
   /// requesting user.
@@ -186,7 +191,8 @@ class ProjectsDataSourcesResource {
       queryParams: queryParams_,
     );
     return CheckValidCredsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a supported data source and returns its settings.
@@ -211,10 +217,7 @@ class ProjectsDataSourcesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataSource> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<DataSource> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -227,7 +230,8 @@ class ProjectsDataSourcesResource {
       queryParams: queryParams_,
     );
     return DataSource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists supported data sources and returns their settings.
@@ -277,7 +281,8 @@ class ProjectsDataSourcesResource {
       queryParams: queryParams_,
     );
     return ListDataSourcesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -357,10 +362,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -430,7 +432,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Unenroll data sources in a user project.
@@ -485,7 +488,7 @@ class ProjectsLocationsDataSourcesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDataSourcesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Returns true if valid credentials exist for the given data source and
   /// requesting user.
@@ -532,7 +535,8 @@ class ProjectsLocationsDataSourcesResource {
       queryParams: queryParams_,
     );
     return CheckValidCredsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a supported data source and returns its settings.
@@ -558,10 +562,7 @@ class ProjectsLocationsDataSourcesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataSource> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<DataSource> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -574,7 +575,8 @@ class ProjectsLocationsDataSourcesResource {
       queryParams: queryParams_,
     );
     return DataSource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists supported data sources and returns their settings.
@@ -624,7 +626,8 @@ class ProjectsLocationsDataSourcesResource {
       queryParams: queryParams_,
     );
     return ListDataSourcesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -635,7 +638,7 @@ class ProjectsLocationsTransferConfigsResource {
       ProjectsLocationsTransferConfigsRunsResource(_requester);
 
   ProjectsLocationsTransferConfigsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new data transfer configuration.
   ///
@@ -718,7 +721,8 @@ class ProjectsLocationsTransferConfigsResource {
       queryParams: queryParams_,
     );
     return TransferConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a data transfer configuration, including any associated transfer
@@ -745,10 +749,7 @@ class ProjectsLocationsTransferConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -802,7 +803,8 @@ class ProjectsLocationsTransferConfigsResource {
       queryParams: queryParams_,
     );
     return TransferConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns information about all transfer configs owned by a project in the
@@ -861,7 +863,8 @@ class ProjectsLocationsTransferConfigsResource {
       queryParams: queryParams_,
     );
     return ListTransferConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a data transfer configuration.
@@ -954,7 +957,8 @@ class ProjectsLocationsTransferConfigsResource {
       queryParams: queryParams_,
     );
     return TransferConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates transfer runs for a time range \[start_time, end_time\].
@@ -1008,7 +1012,8 @@ class ProjectsLocationsTransferConfigsResource {
       queryParams: queryParams_,
     );
     return ScheduleTransferRunsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Manually initiates transfer runs.
@@ -1062,7 +1067,8 @@ class ProjectsLocationsTransferConfigsResource {
       queryParams: queryParams_,
     );
     return StartManualTransferRunsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1073,7 +1079,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
       ProjectsLocationsTransferConfigsRunsTransferLogsResource(_requester);
 
   ProjectsLocationsTransferConfigsRunsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes the specified transfer run.
   ///
@@ -1099,10 +1105,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1157,7 +1160,8 @@ class ProjectsLocationsTransferConfigsRunsResource {
       queryParams: queryParams_,
     );
     return TransferRun.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns information about running and completed transfer runs.
@@ -1223,7 +1227,8 @@ class ProjectsLocationsTransferConfigsRunsResource {
       queryParams: queryParams_,
     );
     return ListTransferRunsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1231,8 +1236,8 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsTransferConfigsRunsTransferLogsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Returns log messages for the transfer run.
   ///
@@ -1290,7 +1295,8 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
       queryParams: queryParams_,
     );
     return ListTransferLogsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1301,7 +1307,7 @@ class ProjectsTransferConfigsResource {
       ProjectsTransferConfigsRunsResource(_requester);
 
   ProjectsTransferConfigsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new data transfer configuration.
   ///
@@ -1384,7 +1390,8 @@ class ProjectsTransferConfigsResource {
       queryParams: queryParams_,
     );
     return TransferConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a data transfer configuration, including any associated transfer
@@ -1410,10 +1417,7 @@ class ProjectsTransferConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1466,7 +1470,8 @@ class ProjectsTransferConfigsResource {
       queryParams: queryParams_,
     );
     return TransferConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns information about all transfer configs owned by a project in the
@@ -1525,7 +1530,8 @@ class ProjectsTransferConfigsResource {
       queryParams: queryParams_,
     );
     return ListTransferConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a data transfer configuration.
@@ -1617,7 +1623,8 @@ class ProjectsTransferConfigsResource {
       queryParams: queryParams_,
     );
     return TransferConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates transfer runs for a time range \[start_time, end_time\].
@@ -1670,7 +1677,8 @@ class ProjectsTransferConfigsResource {
       queryParams: queryParams_,
     );
     return ScheduleTransferRunsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Manually initiates transfer runs.
@@ -1723,7 +1731,8 @@ class ProjectsTransferConfigsResource {
       queryParams: queryParams_,
     );
     return StartManualTransferRunsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1734,7 +1743,7 @@ class ProjectsTransferConfigsRunsResource {
       ProjectsTransferConfigsRunsTransferLogsResource(_requester);
 
   ProjectsTransferConfigsRunsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes the specified transfer run.
   ///
@@ -1760,10 +1769,7 @@ class ProjectsTransferConfigsRunsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1818,7 +1824,8 @@ class ProjectsTransferConfigsRunsResource {
       queryParams: queryParams_,
     );
     return TransferRun.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns information about running and completed transfer runs.
@@ -1883,7 +1890,8 @@ class ProjectsTransferConfigsRunsResource {
       queryParams: queryParams_,
     );
     return ListTransferRunsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1891,7 +1899,7 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
   final commons.ApiRequester _requester;
 
   ProjectsTransferConfigsRunsTransferLogsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Returns log messages for the transfer run.
   ///
@@ -1949,7 +1957,8 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
       queryParams: queryParams_,
     );
     return ListTransferLogsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1967,18 +1976,14 @@ class CheckValidCredsResponse {
   /// If set to `true`, the credentials exist and are valid.
   core.bool? hasValidCreds;
 
-  CheckValidCredsResponse({
-    this.hasValidCreds,
-  });
+  CheckValidCredsResponse({this.hasValidCreds});
 
   CheckValidCredsResponse.fromJson(core.Map json_)
-      : this(
-          hasValidCreds: json_['hasValidCreds'] as core.bool?,
-        );
+    : this(hasValidCreds: json_['hasValidCreds'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hasValidCreds != null) 'hasValidCreds': hasValidCreds!,
-      };
+    if (hasValidCreds != null) 'hasValidCreds': hasValidCreds!,
+  };
 }
 
 /// Defines the properties and custom parameters for a data source.
@@ -2110,61 +2115,65 @@ class DataSource {
   });
 
   DataSource.fromJson(core.Map json_)
-      : this(
-          authorizationType: json_['authorizationType'] as core.String?,
-          clientId: json_['clientId'] as core.String?,
-          dataRefreshType: json_['dataRefreshType'] as core.String?,
-          dataSourceId: json_['dataSourceId'] as core.String?,
-          defaultDataRefreshWindowDays:
-              json_['defaultDataRefreshWindowDays'] as core.int?,
-          defaultSchedule: json_['defaultSchedule'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          helpUrl: json_['helpUrl'] as core.String?,
-          manualRunsDisabled: json_['manualRunsDisabled'] as core.bool?,
-          minimumScheduleInterval:
-              json_['minimumScheduleInterval'] as core.String?,
-          name: json_['name'] as core.String?,
-          parameters: (json_['parameters'] as core.List?)
-              ?.map((value) => DataSourceParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          scopes: (json_['scopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          supportsCustomSchedule: json_['supportsCustomSchedule'] as core.bool?,
-          supportsMultipleTransfers:
-              json_['supportsMultipleTransfers'] as core.bool?,
-          transferType: json_['transferType'] as core.String?,
-          updateDeadlineSeconds: json_['updateDeadlineSeconds'] as core.int?,
-        );
+    : this(
+        authorizationType: json_['authorizationType'] as core.String?,
+        clientId: json_['clientId'] as core.String?,
+        dataRefreshType: json_['dataRefreshType'] as core.String?,
+        dataSourceId: json_['dataSourceId'] as core.String?,
+        defaultDataRefreshWindowDays:
+            json_['defaultDataRefreshWindowDays'] as core.int?,
+        defaultSchedule: json_['defaultSchedule'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        helpUrl: json_['helpUrl'] as core.String?,
+        manualRunsDisabled: json_['manualRunsDisabled'] as core.bool?,
+        minimumScheduleInterval:
+            json_['minimumScheduleInterval'] as core.String?,
+        name: json_['name'] as core.String?,
+        parameters:
+            (json_['parameters'] as core.List?)
+                ?.map(
+                  (value) => DataSourceParameter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        scopes:
+            (json_['scopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        supportsCustomSchedule: json_['supportsCustomSchedule'] as core.bool?,
+        supportsMultipleTransfers:
+            json_['supportsMultipleTransfers'] as core.bool?,
+        transferType: json_['transferType'] as core.String?,
+        updateDeadlineSeconds: json_['updateDeadlineSeconds'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizationType != null) 'authorizationType': authorizationType!,
-        if (clientId != null) 'clientId': clientId!,
-        if (dataRefreshType != null) 'dataRefreshType': dataRefreshType!,
-        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-        if (defaultDataRefreshWindowDays != null)
-          'defaultDataRefreshWindowDays': defaultDataRefreshWindowDays!,
-        if (defaultSchedule != null) 'defaultSchedule': defaultSchedule!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (helpUrl != null) 'helpUrl': helpUrl!,
-        if (manualRunsDisabled != null)
-          'manualRunsDisabled': manualRunsDisabled!,
-        if (minimumScheduleInterval != null)
-          'minimumScheduleInterval': minimumScheduleInterval!,
-        if (name != null) 'name': name!,
-        if (parameters != null) 'parameters': parameters!,
-        if (scopes != null) 'scopes': scopes!,
-        if (supportsCustomSchedule != null)
-          'supportsCustomSchedule': supportsCustomSchedule!,
-        if (supportsMultipleTransfers != null)
-          'supportsMultipleTransfers': supportsMultipleTransfers!,
-        if (transferType != null) 'transferType': transferType!,
-        if (updateDeadlineSeconds != null)
-          'updateDeadlineSeconds': updateDeadlineSeconds!,
-      };
+    if (authorizationType != null) 'authorizationType': authorizationType!,
+    if (clientId != null) 'clientId': clientId!,
+    if (dataRefreshType != null) 'dataRefreshType': dataRefreshType!,
+    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+    if (defaultDataRefreshWindowDays != null)
+      'defaultDataRefreshWindowDays': defaultDataRefreshWindowDays!,
+    if (defaultSchedule != null) 'defaultSchedule': defaultSchedule!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (helpUrl != null) 'helpUrl': helpUrl!,
+    if (manualRunsDisabled != null) 'manualRunsDisabled': manualRunsDisabled!,
+    if (minimumScheduleInterval != null)
+      'minimumScheduleInterval': minimumScheduleInterval!,
+    if (name != null) 'name': name!,
+    if (parameters != null) 'parameters': parameters!,
+    if (scopes != null) 'scopes': scopes!,
+    if (supportsCustomSchedule != null)
+      'supportsCustomSchedule': supportsCustomSchedule!,
+    if (supportsMultipleTransfers != null)
+      'supportsMultipleTransfers': supportsMultipleTransfers!,
+    if (transferType != null) 'transferType': transferType!,
+    if (updateDeadlineSeconds != null)
+      'updateDeadlineSeconds': updateDeadlineSeconds!,
+  };
 }
 
 /// A parameter used to define custom fields in a data source definition.
@@ -2255,49 +2264,54 @@ class DataSourceParameter {
   });
 
   DataSourceParameter.fromJson(core.Map json_)
-      : this(
-          allowedValues: (json_['allowedValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          deprecated: json_['deprecated'] as core.bool?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          fields: (json_['fields'] as core.List?)
-              ?.map((value) => DataSourceParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          immutable: json_['immutable'] as core.bool?,
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
-          paramId: json_['paramId'] as core.String?,
-          recurse: json_['recurse'] as core.bool?,
-          repeated: json_['repeated'] as core.bool?,
-          required: json_['required'] as core.bool?,
-          type: json_['type'] as core.String?,
-          validationDescription: json_['validationDescription'] as core.String?,
-          validationHelpUrl: json_['validationHelpUrl'] as core.String?,
-          validationRegex: json_['validationRegex'] as core.String?,
-        );
+    : this(
+        allowedValues:
+            (json_['allowedValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        deprecated: json_['deprecated'] as core.bool?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        fields:
+            (json_['fields'] as core.List?)
+                ?.map(
+                  (value) => DataSourceParameter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        immutable: json_['immutable'] as core.bool?,
+        maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
+        minValue: (json_['minValue'] as core.num?)?.toDouble(),
+        paramId: json_['paramId'] as core.String?,
+        recurse: json_['recurse'] as core.bool?,
+        repeated: json_['repeated'] as core.bool?,
+        required: json_['required'] as core.bool?,
+        type: json_['type'] as core.String?,
+        validationDescription: json_['validationDescription'] as core.String?,
+        validationHelpUrl: json_['validationHelpUrl'] as core.String?,
+        validationRegex: json_['validationRegex'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedValues != null) 'allowedValues': allowedValues!,
-        if (deprecated != null) 'deprecated': deprecated!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (fields != null) 'fields': fields!,
-        if (immutable != null) 'immutable': immutable!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
-        if (paramId != null) 'paramId': paramId!,
-        if (recurse != null) 'recurse': recurse!,
-        if (repeated != null) 'repeated': repeated!,
-        if (required != null) 'required': required!,
-        if (type != null) 'type': type!,
-        if (validationDescription != null)
-          'validationDescription': validationDescription!,
-        if (validationHelpUrl != null) 'validationHelpUrl': validationHelpUrl!,
-        if (validationRegex != null) 'validationRegex': validationRegex!,
-      };
+    if (allowedValues != null) 'allowedValues': allowedValues!,
+    if (deprecated != null) 'deprecated': deprecated!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (fields != null) 'fields': fields!,
+    if (immutable != null) 'immutable': immutable!,
+    if (maxValue != null) 'maxValue': maxValue!,
+    if (minValue != null) 'minValue': minValue!,
+    if (paramId != null) 'paramId': paramId!,
+    if (recurse != null) 'recurse': recurse!,
+    if (repeated != null) 'repeated': repeated!,
+    if (required != null) 'required': required!,
+    if (type != null) 'type': type!,
+    if (validationDescription != null)
+      'validationDescription': validationDescription!,
+    if (validationHelpUrl != null) 'validationHelpUrl': validationHelpUrl!,
+    if (validationRegex != null) 'validationRegex': validationRegex!,
+  };
 }
 
 /// Represents preferences for sending email notifications for transfer run
@@ -2306,19 +2320,14 @@ class EmailPreferences {
   /// If true, email notifications will be sent on transfer run failures.
   core.bool? enableFailureEmail;
 
-  EmailPreferences({
-    this.enableFailureEmail,
-  });
+  EmailPreferences({this.enableFailureEmail});
 
   EmailPreferences.fromJson(core.Map json_)
-      : this(
-          enableFailureEmail: json_['enableFailureEmail'] as core.bool?,
-        );
+    : this(enableFailureEmail: json_['enableFailureEmail'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enableFailureEmail != null)
-          'enableFailureEmail': enableFailureEmail!,
-      };
+    if (enableFailureEmail != null) 'enableFailureEmail': enableFailureEmail!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2334,18 +2343,14 @@ class EncryptionConfiguration {
   /// The name of the KMS key used for encrypting BigQuery data.
   core.String? kmsKeyName;
 
-  EncryptionConfiguration({
-    this.kmsKeyName,
-  });
+  EncryptionConfiguration({this.kmsKeyName});
 
   EncryptionConfiguration.fromJson(core.Map json_)
-      : this(
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-        );
+    : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-      };
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+  };
 }
 
 /// A request to enroll a set of data sources so they are visible in the
@@ -2356,20 +2361,19 @@ class EnrollDataSourcesRequest {
   /// It is required to provide at least one data source id.
   core.List<core.String>? dataSourceIds;
 
-  EnrollDataSourcesRequest({
-    this.dataSourceIds,
-  });
+  EnrollDataSourcesRequest({this.dataSourceIds});
 
   EnrollDataSourcesRequest.fromJson(core.Map json_)
-      : this(
-          dataSourceIds: (json_['dataSourceIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        dataSourceIds:
+            (json_['dataSourceIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceIds != null) 'dataSourceIds': dataSourceIds!,
-      };
+    if (dataSourceIds != null) 'dataSourceIds': dataSourceIds!,
+  };
 }
 
 /// Options customizing EventDriven transfers schedule.
@@ -2380,19 +2384,14 @@ class EventDrivenSchedule {
   /// projects/{project}/subscriptions/{subscription}
   core.String? pubsubSubscription;
 
-  EventDrivenSchedule({
-    this.pubsubSubscription,
-  });
+  EventDrivenSchedule({this.pubsubSubscription});
 
   EventDrivenSchedule.fromJson(core.Map json_)
-      : this(
-          pubsubSubscription: json_['pubsubSubscription'] as core.String?,
-        );
+    : this(pubsubSubscription: json_['pubsubSubscription'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pubsubSubscription != null)
-          'pubsubSubscription': pubsubSubscription!,
-      };
+    if (pubsubSubscription != null) 'pubsubSubscription': pubsubSubscription!,
+  };
 }
 
 /// Returns list of supported data sources and their metadata.
@@ -2409,24 +2408,25 @@ class ListDataSourcesResponse {
   /// Output only.
   core.String? nextPageToken;
 
-  ListDataSourcesResponse({
-    this.dataSources,
-    this.nextPageToken,
-  });
+  ListDataSourcesResponse({this.dataSources, this.nextPageToken});
 
   ListDataSourcesResponse.fromJson(core.Map json_)
-      : this(
-          dataSources: (json_['dataSources'] as core.List?)
-              ?.map((value) => DataSource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        dataSources:
+            (json_['dataSources'] as core.List?)
+                ?.map(
+                  (value) => DataSource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSources != null) 'dataSources': dataSources!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (dataSources != null) 'dataSources': dataSources!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -2437,24 +2437,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The returned list of pipelines in the project.
@@ -2473,24 +2474,25 @@ class ListTransferConfigsResponse {
   /// Output only.
   core.List<TransferConfig>? transferConfigs;
 
-  ListTransferConfigsResponse({
-    this.nextPageToken,
-    this.transferConfigs,
-  });
+  ListTransferConfigsResponse({this.nextPageToken, this.transferConfigs});
 
   ListTransferConfigsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          transferConfigs: (json_['transferConfigs'] as core.List?)
-              ?.map((value) => TransferConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        transferConfigs:
+            (json_['transferConfigs'] as core.List?)
+                ?.map(
+                  (value) => TransferConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (transferConfigs != null) 'transferConfigs': transferConfigs!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (transferConfigs != null) 'transferConfigs': transferConfigs!,
+  };
 }
 
 /// The returned list transfer run messages.
@@ -2509,24 +2511,25 @@ class ListTransferLogsResponse {
   /// Output only.
   core.List<TransferMessage>? transferMessages;
 
-  ListTransferLogsResponse({
-    this.nextPageToken,
-    this.transferMessages,
-  });
+  ListTransferLogsResponse({this.nextPageToken, this.transferMessages});
 
   ListTransferLogsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          transferMessages: (json_['transferMessages'] as core.List?)
-              ?.map((value) => TransferMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        transferMessages:
+            (json_['transferMessages'] as core.List?)
+                ?.map(
+                  (value) => TransferMessage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (transferMessages != null) 'transferMessages': transferMessages!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (transferMessages != null) 'transferMessages': transferMessages!,
+  };
 }
 
 /// The returned list of pipelines in the project.
@@ -2545,24 +2548,25 @@ class ListTransferRunsResponse {
   /// Output only.
   core.List<TransferRun>? transferRuns;
 
-  ListTransferRunsResponse({
-    this.nextPageToken,
-    this.transferRuns,
-  });
+  ListTransferRunsResponse({this.nextPageToken, this.transferRuns});
 
   ListTransferRunsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          transferRuns: (json_['transferRuns'] as core.List?)
-              ?.map((value) => TransferRun.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        transferRuns:
+            (json_['transferRuns'] as core.List?)
+                ?.map(
+                  (value) => TransferRun.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (transferRuns != null) 'transferRuns': transferRuns!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (transferRuns != null) 'transferRuns': transferRuns!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -2596,25 +2600,21 @@ class ScheduleOptions {
   /// manually is not limited by this option.
   core.String? startTime;
 
-  ScheduleOptions({
-    this.disableAutoScheduling,
-    this.endTime,
-    this.startTime,
-  });
+  ScheduleOptions({this.disableAutoScheduling, this.endTime, this.startTime});
 
   ScheduleOptions.fromJson(core.Map json_)
-      : this(
-          disableAutoScheduling: json_['disableAutoScheduling'] as core.bool?,
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        disableAutoScheduling: json_['disableAutoScheduling'] as core.bool?,
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disableAutoScheduling != null)
-          'disableAutoScheduling': disableAutoScheduling!,
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (disableAutoScheduling != null)
+      'disableAutoScheduling': disableAutoScheduling!,
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// V2 options customizing different types of data transfer schedule.
@@ -2647,27 +2647,36 @@ class ScheduleOptionsV2 {
   });
 
   ScheduleOptionsV2.fromJson(core.Map json_)
-      : this(
-          eventDrivenSchedule: json_.containsKey('eventDrivenSchedule')
-              ? EventDrivenSchedule.fromJson(json_['eventDrivenSchedule']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          manualSchedule: json_.containsKey('manualSchedule')
-              ? ManualSchedule.fromJson(json_['manualSchedule']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          timeBasedSchedule: json_.containsKey('timeBasedSchedule')
-              ? TimeBasedSchedule.fromJson(json_['timeBasedSchedule']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        eventDrivenSchedule:
+            json_.containsKey('eventDrivenSchedule')
+                ? EventDrivenSchedule.fromJson(
+                  json_['eventDrivenSchedule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        manualSchedule:
+            json_.containsKey('manualSchedule')
+                ? ManualSchedule.fromJson(
+                  json_['manualSchedule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        timeBasedSchedule:
+            json_.containsKey('timeBasedSchedule')
+                ? TimeBasedSchedule.fromJson(
+                  json_['timeBasedSchedule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eventDrivenSchedule != null)
-          'eventDrivenSchedule': eventDrivenSchedule!,
-        if (manualSchedule != null) 'manualSchedule': manualSchedule!,
-        if (timeBasedSchedule != null) 'timeBasedSchedule': timeBasedSchedule!,
-      };
+    if (eventDrivenSchedule != null)
+      'eventDrivenSchedule': eventDrivenSchedule!,
+    if (manualSchedule != null) 'manualSchedule': manualSchedule!,
+    if (timeBasedSchedule != null) 'timeBasedSchedule': timeBasedSchedule!,
+  };
 }
 
 /// A request to schedule transfer runs for a time range.
@@ -2686,21 +2695,18 @@ class ScheduleTransferRunsRequest {
   /// Required.
   core.String? startTime;
 
-  ScheduleTransferRunsRequest({
-    this.endTime,
-    this.startTime,
-  });
+  ScheduleTransferRunsRequest({this.endTime, this.startTime});
 
   ScheduleTransferRunsRequest.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// A response to schedule transfer runs for a time range.
@@ -2708,21 +2714,23 @@ class ScheduleTransferRunsResponse {
   /// The transfer runs that were scheduled.
   core.List<TransferRun>? runs;
 
-  ScheduleTransferRunsResponse({
-    this.runs,
-  });
+  ScheduleTransferRunsResponse({this.runs});
 
   ScheduleTransferRunsResponse.fromJson(core.Map json_)
-      : this(
-          runs: (json_['runs'] as core.List?)
-              ?.map((value) => TransferRun.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        runs:
+            (json_['runs'] as core.List?)
+                ?.map(
+                  (value) => TransferRun.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (runs != null) 'runs': runs!,
-      };
+    if (runs != null) 'runs': runs!,
+  };
 }
 
 /// A request to start manual transfer runs.
@@ -2747,19 +2755,21 @@ class StartManualTransferRunsRequest {
   });
 
   StartManualTransferRunsRequest.fromJson(core.Map json_)
-      : this(
-          requestedRunTime: json_['requestedRunTime'] as core.String?,
-          requestedTimeRange: json_.containsKey('requestedTimeRange')
-              ? TimeRange.fromJson(json_['requestedTimeRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        requestedRunTime: json_['requestedRunTime'] as core.String?,
+        requestedTimeRange:
+            json_.containsKey('requestedTimeRange')
+                ? TimeRange.fromJson(
+                  json_['requestedTimeRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestedRunTime != null) 'requestedRunTime': requestedRunTime!,
-        if (requestedTimeRange != null)
-          'requestedTimeRange': requestedTimeRange!,
-      };
+    if (requestedRunTime != null) 'requestedRunTime': requestedRunTime!,
+    if (requestedTimeRange != null) 'requestedTimeRange': requestedTimeRange!,
+  };
 }
 
 /// A response to start manual transfer runs.
@@ -2767,21 +2777,23 @@ class StartManualTransferRunsResponse {
   /// The transfer runs that were created.
   core.List<TransferRun>? runs;
 
-  StartManualTransferRunsResponse({
-    this.runs,
-  });
+  StartManualTransferRunsResponse({this.runs});
 
   StartManualTransferRunsResponse.fromJson(core.Map json_)
-      : this(
-          runs: (json_['runs'] as core.List?)
-              ?.map((value) => TransferRun.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        runs:
+            (json_['runs'] as core.List?)
+                ?.map(
+                  (value) => TransferRun.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (runs != null) 'runs': runs!,
-      };
+    if (runs != null) 'runs': runs!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2822,24 +2834,20 @@ class TimeBasedSchedule {
   /// changed at any moment.
   core.String? startTime;
 
-  TimeBasedSchedule({
-    this.endTime,
-    this.schedule,
-    this.startTime,
-  });
+  TimeBasedSchedule({this.endTime, this.schedule, this.startTime});
 
   TimeBasedSchedule.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          schedule: json_['schedule'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        schedule: json_['schedule'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (schedule != null) 'schedule': schedule!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (schedule != null) 'schedule': schedule!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// A specification for a time range, this will request transfer runs with
@@ -2859,21 +2867,18 @@ class TimeRange {
   /// in the range between start_time (inclusive) and end_time (exclusive).
   core.String? startTime;
 
-  TimeRange({
-    this.endTime,
-    this.startTime,
-  });
+  TimeRange({this.endTime, this.startTime});
 
   TimeRange.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// Represents a data transfer configuration.
@@ -3045,77 +3050,93 @@ class TransferConfig {
   });
 
   TransferConfig.fromJson(core.Map json_)
-      : this(
-          dataRefreshWindowDays: json_['dataRefreshWindowDays'] as core.int?,
-          dataSourceId: json_['dataSourceId'] as core.String?,
-          datasetRegion: json_['datasetRegion'] as core.String?,
-          destinationDatasetId: json_['destinationDatasetId'] as core.String?,
-          disabled: json_['disabled'] as core.bool?,
-          displayName: json_['displayName'] as core.String?,
-          emailPreferences: json_.containsKey('emailPreferences')
-              ? EmailPreferences.fromJson(json_['emailPreferences']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          encryptionConfiguration: json_.containsKey('encryptionConfiguration')
-              ? EncryptionConfiguration.fromJson(
+    : this(
+        dataRefreshWindowDays: json_['dataRefreshWindowDays'] as core.int?,
+        dataSourceId: json_['dataSourceId'] as core.String?,
+        datasetRegion: json_['datasetRegion'] as core.String?,
+        destinationDatasetId: json_['destinationDatasetId'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        displayName: json_['displayName'] as core.String?,
+        emailPreferences:
+            json_.containsKey('emailPreferences')
+                ? EmailPreferences.fromJson(
+                  json_['emailPreferences']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        encryptionConfiguration:
+            json_.containsKey('encryptionConfiguration')
+                ? EncryptionConfiguration.fromJson(
                   json_['encryptionConfiguration']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          nextRunTime: json_['nextRunTime'] as core.String?,
-          notificationPubsubTopic:
-              json_['notificationPubsubTopic'] as core.String?,
-          ownerInfo: json_.containsKey('ownerInfo')
-              ? UserInfo.fromJson(
-                  json_['ownerInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          params: json_.containsKey('params')
-              ? json_['params'] as core.Map<core.String, core.dynamic>
-              : null,
-          schedule: json_['schedule'] as core.String?,
-          scheduleOptions: json_.containsKey('scheduleOptions')
-              ? ScheduleOptions.fromJson(json_['scheduleOptions']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          scheduleOptionsV2: json_.containsKey('scheduleOptionsV2')
-              ? ScheduleOptionsV2.fromJson(json_['scheduleOptionsV2']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          userId: json_['userId'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        nextRunTime: json_['nextRunTime'] as core.String?,
+        notificationPubsubTopic:
+            json_['notificationPubsubTopic'] as core.String?,
+        ownerInfo:
+            json_.containsKey('ownerInfo')
+                ? UserInfo.fromJson(
+                  json_['ownerInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        params:
+            json_.containsKey('params')
+                ? json_['params'] as core.Map<core.String, core.dynamic>
+                : null,
+        schedule: json_['schedule'] as core.String?,
+        scheduleOptions:
+            json_.containsKey('scheduleOptions')
+                ? ScheduleOptions.fromJson(
+                  json_['scheduleOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scheduleOptionsV2:
+            json_.containsKey('scheduleOptionsV2')
+                ? ScheduleOptionsV2.fromJson(
+                  json_['scheduleOptionsV2']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataRefreshWindowDays != null)
-          'dataRefreshWindowDays': dataRefreshWindowDays!,
-        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-        if (datasetRegion != null) 'datasetRegion': datasetRegion!,
-        if (destinationDatasetId != null)
-          'destinationDatasetId': destinationDatasetId!,
-        if (disabled != null) 'disabled': disabled!,
-        if (displayName != null) 'displayName': displayName!,
-        if (emailPreferences != null) 'emailPreferences': emailPreferences!,
-        if (encryptionConfiguration != null)
-          'encryptionConfiguration': encryptionConfiguration!,
-        if (error != null) 'error': error!,
-        if (name != null) 'name': name!,
-        if (nextRunTime != null) 'nextRunTime': nextRunTime!,
-        if (notificationPubsubTopic != null)
-          'notificationPubsubTopic': notificationPubsubTopic!,
-        if (ownerInfo != null) 'ownerInfo': ownerInfo!,
-        if (params != null) 'params': params!,
-        if (schedule != null) 'schedule': schedule!,
-        if (scheduleOptions != null) 'scheduleOptions': scheduleOptions!,
-        if (scheduleOptionsV2 != null) 'scheduleOptionsV2': scheduleOptionsV2!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (dataRefreshWindowDays != null)
+      'dataRefreshWindowDays': dataRefreshWindowDays!,
+    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+    if (datasetRegion != null) 'datasetRegion': datasetRegion!,
+    if (destinationDatasetId != null)
+      'destinationDatasetId': destinationDatasetId!,
+    if (disabled != null) 'disabled': disabled!,
+    if (displayName != null) 'displayName': displayName!,
+    if (emailPreferences != null) 'emailPreferences': emailPreferences!,
+    if (encryptionConfiguration != null)
+      'encryptionConfiguration': encryptionConfiguration!,
+    if (error != null) 'error': error!,
+    if (name != null) 'name': name!,
+    if (nextRunTime != null) 'nextRunTime': nextRunTime!,
+    if (notificationPubsubTopic != null)
+      'notificationPubsubTopic': notificationPubsubTopic!,
+    if (ownerInfo != null) 'ownerInfo': ownerInfo!,
+    if (params != null) 'params': params!,
+    if (schedule != null) 'schedule': schedule!,
+    if (scheduleOptions != null) 'scheduleOptions': scheduleOptions!,
+    if (scheduleOptionsV2 != null) 'scheduleOptionsV2': scheduleOptionsV2!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// Represents a user facing message for a particular data transfer run.
@@ -3134,24 +3155,20 @@ class TransferMessage {
   /// - "ERROR" : Error message.
   core.String? severity;
 
-  TransferMessage({
-    this.messageText,
-    this.messageTime,
-    this.severity,
-  });
+  TransferMessage({this.messageText, this.messageTime, this.severity});
 
   TransferMessage.fromJson(core.Map json_)
-      : this(
-          messageText: json_['messageText'] as core.String?,
-          messageTime: json_['messageTime'] as core.String?,
-          severity: json_['severity'] as core.String?,
-        );
+    : this(
+        messageText: json_['messageText'] as core.String?,
+        messageTime: json_['messageTime'] as core.String?,
+        severity: json_['severity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (messageText != null) 'messageText': messageText!,
-        if (messageTime != null) 'messageTime': messageTime!,
-        if (severity != null) 'severity': severity!,
-      };
+    if (messageText != null) 'messageText': messageText!,
+    if (messageTime != null) 'messageTime': messageTime!,
+    if (severity != null) 'severity': severity!,
+  };
 }
 
 /// Represents a data transfer run.
@@ -3278,52 +3295,58 @@ class TransferRun {
   });
 
   TransferRun.fromJson(core.Map json_)
-      : this(
-          dataSourceId: json_['dataSourceId'] as core.String?,
-          destinationDatasetId: json_['destinationDatasetId'] as core.String?,
-          emailPreferences: json_.containsKey('emailPreferences')
-              ? EmailPreferences.fromJson(json_['emailPreferences']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          endTime: json_['endTime'] as core.String?,
-          errorStatus: json_.containsKey('errorStatus')
-              ? Status.fromJson(
-                  json_['errorStatus'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          notificationPubsubTopic:
-              json_['notificationPubsubTopic'] as core.String?,
-          params: json_.containsKey('params')
-              ? json_['params'] as core.Map<core.String, core.dynamic>
-              : null,
-          runTime: json_['runTime'] as core.String?,
-          schedule: json_['schedule'] as core.String?,
-          scheduleTime: json_['scheduleTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          userId: json_['userId'] as core.String?,
-        );
+    : this(
+        dataSourceId: json_['dataSourceId'] as core.String?,
+        destinationDatasetId: json_['destinationDatasetId'] as core.String?,
+        emailPreferences:
+            json_.containsKey('emailPreferences')
+                ? EmailPreferences.fromJson(
+                  json_['emailPreferences']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endTime: json_['endTime'] as core.String?,
+        errorStatus:
+            json_.containsKey('errorStatus')
+                ? Status.fromJson(
+                  json_['errorStatus'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        notificationPubsubTopic:
+            json_['notificationPubsubTopic'] as core.String?,
+        params:
+            json_.containsKey('params')
+                ? json_['params'] as core.Map<core.String, core.dynamic>
+                : null,
+        runTime: json_['runTime'] as core.String?,
+        schedule: json_['schedule'] as core.String?,
+        scheduleTime: json_['scheduleTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-        if (destinationDatasetId != null)
-          'destinationDatasetId': destinationDatasetId!,
-        if (emailPreferences != null) 'emailPreferences': emailPreferences!,
-        if (endTime != null) 'endTime': endTime!,
-        if (errorStatus != null) 'errorStatus': errorStatus!,
-        if (name != null) 'name': name!,
-        if (notificationPubsubTopic != null)
-          'notificationPubsubTopic': notificationPubsubTopic!,
-        if (params != null) 'params': params!,
-        if (runTime != null) 'runTime': runTime!,
-        if (schedule != null) 'schedule': schedule!,
-        if (scheduleTime != null) 'scheduleTime': scheduleTime!,
-        if (startTime != null) 'startTime': startTime!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+    if (destinationDatasetId != null)
+      'destinationDatasetId': destinationDatasetId!,
+    if (emailPreferences != null) 'emailPreferences': emailPreferences!,
+    if (endTime != null) 'endTime': endTime!,
+    if (errorStatus != null) 'errorStatus': errorStatus!,
+    if (name != null) 'name': name!,
+    if (notificationPubsubTopic != null)
+      'notificationPubsubTopic': notificationPubsubTopic!,
+    if (params != null) 'params': params!,
+    if (runTime != null) 'runTime': runTime!,
+    if (schedule != null) 'schedule': schedule!,
+    if (scheduleTime != null) 'scheduleTime': scheduleTime!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// A request to unenroll a set of data sources so they are no longer visible in
@@ -3334,20 +3357,19 @@ class UnenrollDataSourcesRequest {
   /// It is required to provide at least one data source id.
   core.List<core.String>? dataSourceIds;
 
-  UnenrollDataSourcesRequest({
-    this.dataSourceIds,
-  });
+  UnenrollDataSourcesRequest({this.dataSourceIds});
 
   UnenrollDataSourcesRequest.fromJson(core.Map json_)
-      : this(
-          dataSourceIds: (json_['dataSourceIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        dataSourceIds:
+            (json_['dataSourceIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceIds != null) 'dataSourceIds': dataSourceIds!,
-      };
+    if (dataSourceIds != null) 'dataSourceIds': dataSourceIds!,
+  };
 }
 
 /// Information about a user.
@@ -3355,16 +3377,12 @@ class UserInfo {
   /// E-mail address of the user.
   core.String? email;
 
-  UserInfo({
-    this.email,
-  });
+  UserInfo({this.email});
 
   UserInfo.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-        );
+    : this(email: json_['email'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-      };
+    if (email != null) 'email': email!,
+  };
 }

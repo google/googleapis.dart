@@ -52,12 +52,16 @@ class ServiceConsumerManagementApi {
   OperationsResource get operations => OperationsResource(_requester);
   ServicesResource get services => ServicesResource(_requester);
 
-  ServiceConsumerManagementApi(http.Client client,
-      {core.String rootUrl =
-          'https://serviceconsumermanagement.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ServiceConsumerManagementApi(
+    http.Client client, {
+    core.String rootUrl = 'https://serviceconsumermanagement.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class OperationsResource {
@@ -135,10 +139,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -173,10 +174,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -238,7 +236,8 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -313,7 +312,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return SearchTenancyUnitsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -321,7 +321,7 @@ class ServicesTenancyUnitsResource {
   final commons.ApiRequester _requester;
 
   ServicesTenancyUnitsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Add a new tenant project to the tenancy unit.
   ///
@@ -527,7 +527,8 @@ class ServicesTenancyUnitsResource {
       queryParams: queryParams_,
     );
     return TenancyUnit.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a tenancy unit.
@@ -679,7 +680,8 @@ class ServicesTenancyUnitsResource {
       queryParams: queryParams_,
     );
     return ListTenancyUnitsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Removes the specified project resource identified by a tenant resource
@@ -794,24 +796,23 @@ class AddTenantProjectRequest {
   /// Required.
   core.String? tag;
 
-  AddTenantProjectRequest({
-    this.projectConfig,
-    this.tag,
-  });
+  AddTenantProjectRequest({this.projectConfig, this.tag});
 
   AddTenantProjectRequest.fromJson(core.Map json_)
-      : this(
-          projectConfig: json_.containsKey('projectConfig')
-              ? TenantProjectConfig.fromJson(
-                  json_['projectConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tag: json_['tag'] as core.String?,
-        );
+    : this(
+        projectConfig:
+            json_.containsKey('projectConfig')
+                ? TenantProjectConfig.fromJson(
+                  json_['projectConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tag: json_['tag'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (projectConfig != null) 'projectConfig': projectConfig!,
-        if (tag != null) 'tag': tag!,
-      };
+    if (projectConfig != null) 'projectConfig': projectConfig!,
+    if (tag != null) 'tag': tag!,
+  };
 }
 
 /// Request to apply configuration to an existing tenant project.
@@ -826,24 +827,23 @@ class ApplyTenantProjectConfigRequest {
   /// Required.
   core.String? tag;
 
-  ApplyTenantProjectConfigRequest({
-    this.projectConfig,
-    this.tag,
-  });
+  ApplyTenantProjectConfigRequest({this.projectConfig, this.tag});
 
   ApplyTenantProjectConfigRequest.fromJson(core.Map json_)
-      : this(
-          projectConfig: json_.containsKey('projectConfig')
-              ? TenantProjectConfig.fromJson(
-                  json_['projectConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tag: json_['tag'] as core.String?,
-        );
+    : this(
+        projectConfig:
+            json_.containsKey('projectConfig')
+                ? TenantProjectConfig.fromJson(
+                  json_['projectConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tag: json_['tag'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (projectConfig != null) 'projectConfig': projectConfig!,
-        if (tag != null) 'tag': tag!,
-      };
+    if (projectConfig != null) 'projectConfig': projectConfig!,
+    if (tag != null) 'tag': tag!,
+  };
 }
 
 /// Request to attach an existing project to the tenancy unit as a new tenant
@@ -874,17 +874,17 @@ class AttachTenantProjectRequest {
   });
 
   AttachTenantProjectRequest.fromJson(core.Map json_)
-      : this(
-          externalResource: json_['externalResource'] as core.String?,
-          reservedResource: json_['reservedResource'] as core.String?,
-          tag: json_['tag'] as core.String?,
-        );
+    : this(
+        externalResource: json_['externalResource'] as core.String?,
+        reservedResource: json_['reservedResource'] as core.String?,
+        tag: json_['tag'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (externalResource != null) 'externalResource': externalResource!,
-        if (reservedResource != null) 'reservedResource': reservedResource!,
-        if (tag != null) 'tag': tag!,
-      };
+    if (externalResource != null) 'externalResource': externalResource!,
+    if (reservedResource != null) 'reservedResource': reservedResource!,
+    if (tag != null) 'tag': tag!,
+  };
 }
 
 /// Describes the billing configuration for a new tenant project.
@@ -894,18 +894,14 @@ class BillingConfig {
   /// For example `billingAccounts/012345-567890-ABCDEF`.
   core.String? billingAccount;
 
-  BillingConfig({
-    this.billingAccount,
-  });
+  BillingConfig({this.billingAccount});
 
   BillingConfig.fromJson(core.Map json_)
-      : this(
-          billingAccount: json_['billingAccount'] as core.String?,
-        );
+    : this(billingAccount: json_['billingAccount'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (billingAccount != null) 'billingAccount': billingAccount!,
-      };
+    if (billingAccount != null) 'billingAccount': billingAccount!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -926,18 +922,14 @@ class CreateTenancyUnitRequest {
   /// Optional.
   core.String? tenancyUnitId;
 
-  CreateTenancyUnitRequest({
-    this.tenancyUnitId,
-  });
+  CreateTenancyUnitRequest({this.tenancyUnitId});
 
   CreateTenancyUnitRequest.fromJson(core.Map json_)
-      : this(
-          tenancyUnitId: json_['tenancyUnitId'] as core.String?,
-        );
+    : this(tenancyUnitId: json_['tenancyUnitId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tenancyUnitId != null) 'tenancyUnitId': tenancyUnitId!,
-      };
+    if (tenancyUnitId != null) 'tenancyUnitId': tenancyUnitId!,
+  };
 }
 
 /// Request message to delete tenant project resource from the tenancy unit.
@@ -959,24 +951,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// Response for the list request.
@@ -987,24 +980,25 @@ class ListTenancyUnitsResponse {
   /// Tenancy units matching the request.
   core.List<TenancyUnit>? tenancyUnits;
 
-  ListTenancyUnitsResponse({
-    this.nextPageToken,
-    this.tenancyUnits,
-  });
+  ListTenancyUnitsResponse({this.nextPageToken, this.tenancyUnits});
 
   ListTenancyUnitsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          tenancyUnits: (json_['tenancyUnits'] as core.List?)
-              ?.map((value) => TenancyUnit.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        tenancyUnits:
+            (json_['tenancyUnits'] as core.List?)
+                ?.map(
+                  (value) => TenancyUnit.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tenancyUnits != null) 'tenancyUnits': tenancyUnits!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (tenancyUnits != null) 'tenancyUnits': tenancyUnits!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1050,37 +1044,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Translates to IAM Policy bindings (without auditing at this level)
@@ -1097,23 +1089,21 @@ class PolicyBinding {
   /// `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
 
-  PolicyBinding({
-    this.members,
-    this.role,
-  });
+  PolicyBinding({this.members, this.role});
 
   PolicyBinding.fromJson(core.Map json_)
-      : this(
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// Request message to remove a tenant project resource from the tenancy unit.
@@ -1127,24 +1117,25 @@ class SearchTenancyUnitsResponse {
   /// Tenancy Units matching the request.
   core.List<TenancyUnit>? tenancyUnits;
 
-  SearchTenancyUnitsResponse({
-    this.nextPageToken,
-    this.tenancyUnits,
-  });
+  SearchTenancyUnitsResponse({this.nextPageToken, this.tenancyUnits});
 
   SearchTenancyUnitsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          tenancyUnits: (json_['tenancyUnits'] as core.List?)
-              ?.map((value) => TenancyUnit.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        tenancyUnits:
+            (json_['tenancyUnits'] as core.List?)
+                ?.map(
+                  (value) => TenancyUnit.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tenancyUnits != null) 'tenancyUnits': tenancyUnits!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (tenancyUnits != null) 'tenancyUnits': tenancyUnits!,
+  };
 }
 
 /// Describes the service account configuration for the tenant project.
@@ -1160,24 +1151,21 @@ class ServiceAccountConfig {
   /// Roles for the associated service account for the tenant project.
   core.List<core.String>? tenantProjectRoles;
 
-  ServiceAccountConfig({
-    this.accountId,
-    this.tenantProjectRoles,
-  });
+  ServiceAccountConfig({this.accountId, this.tenantProjectRoles});
 
   ServiceAccountConfig.fromJson(core.Map json_)
-      : this(
-          accountId: json_['accountId'] as core.String?,
-          tenantProjectRoles: (json_['tenantProjectRoles'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        tenantProjectRoles:
+            (json_['tenantProjectRoles'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountId != null) 'accountId': accountId!,
-        if (tenantProjectRoles != null)
-          'tenantProjectRoles': tenantProjectRoles!,
-      };
+    if (accountId != null) 'accountId': accountId!,
+    if (tenantProjectRoles != null) 'tenantProjectRoles': tenantProjectRoles!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1228,24 +1216,28 @@ class TenancyUnit {
   });
 
   TenancyUnit.fromJson(core.Map json_)
-      : this(
-          consumer: json_['consumer'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          service: json_['service'] as core.String?,
-          tenantResources: (json_['tenantResources'] as core.List?)
-              ?.map((value) => TenantResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        consumer: json_['consumer'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        service: json_['service'] as core.String?,
+        tenantResources:
+            (json_['tenantResources'] as core.List?)
+                ?.map(
+                  (value) => TenantResource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumer != null) 'consumer': consumer!,
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (service != null) 'service': service!,
-        if (tenantResources != null) 'tenantResources': tenantResources!,
-      };
+    if (consumer != null) 'consumer': consumer!,
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (service != null) 'service': service!,
+    if (tenantResources != null) 'tenantResources': tenantResources!,
+  };
 }
 
 /// This structure defines a tenant project to be added to the specified tenancy
@@ -1294,42 +1286,47 @@ class TenantProjectConfig {
   });
 
   TenantProjectConfig.fromJson(core.Map json_)
-      : this(
-          billingConfig: json_.containsKey('billingConfig')
-              ? BillingConfig.fromJson(
-                  json_['billingConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          folder: json_['folder'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          serviceAccountConfig: json_.containsKey('serviceAccountConfig')
-              ? ServiceAccountConfig.fromJson(json_['serviceAccountConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          services: (json_['services'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          tenantProjectPolicy: json_.containsKey('tenantProjectPolicy')
-              ? TenantProjectPolicy.fromJson(json_['tenantProjectPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        billingConfig:
+            json_.containsKey('billingConfig')
+                ? BillingConfig.fromJson(
+                  json_['billingConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        folder: json_['folder'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        serviceAccountConfig:
+            json_.containsKey('serviceAccountConfig')
+                ? ServiceAccountConfig.fromJson(
+                  json_['serviceAccountConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        services:
+            (json_['services'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        tenantProjectPolicy:
+            json_.containsKey('tenantProjectPolicy')
+                ? TenantProjectPolicy.fromJson(
+                  json_['tenantProjectPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (billingConfig != null) 'billingConfig': billingConfig!,
-        if (folder != null) 'folder': folder!,
-        if (labels != null) 'labels': labels!,
-        if (serviceAccountConfig != null)
-          'serviceAccountConfig': serviceAccountConfig!,
-        if (services != null) 'services': services!,
-        if (tenantProjectPolicy != null)
-          'tenantProjectPolicy': tenantProjectPolicy!,
-      };
+    if (billingConfig != null) 'billingConfig': billingConfig!,
+    if (folder != null) 'folder': folder!,
+    if (labels != null) 'labels': labels!,
+    if (serviceAccountConfig != null)
+      'serviceAccountConfig': serviceAccountConfig!,
+    if (services != null) 'services': services!,
+    if (tenantProjectPolicy != null)
+      'tenantProjectPolicy': tenantProjectPolicy!,
+  };
 }
 
 /// Describes policy settings that can be applied to a newly created tenant
@@ -1340,21 +1337,23 @@ class TenantProjectPolicy {
   /// account.
   core.List<PolicyBinding>? policyBindings;
 
-  TenantProjectPolicy({
-    this.policyBindings,
-  });
+  TenantProjectPolicy({this.policyBindings});
 
   TenantProjectPolicy.fromJson(core.Map json_)
-      : this(
-          policyBindings: (json_['policyBindings'] as core.List?)
-              ?.map((value) => PolicyBinding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        policyBindings:
+            (json_['policyBindings'] as core.List?)
+                ?.map(
+                  (value) => PolicyBinding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policyBindings != null) 'policyBindings': policyBindings!,
-      };
+    if (policyBindings != null) 'policyBindings': policyBindings!,
+  };
 }
 
 /// Resource constituting the TenancyUnit.
@@ -1380,24 +1379,20 @@ class TenantResource {
   /// Unique per single tenancy unit.
   core.String? tag;
 
-  TenantResource({
-    this.resource,
-    this.status,
-    this.tag,
-  });
+  TenantResource({this.resource, this.status, this.tag});
 
   TenantResource.fromJson(core.Map json_)
-      : this(
-          resource: json_['resource'] as core.String?,
-          status: json_['status'] as core.String?,
-          tag: json_['tag'] as core.String?,
-        );
+    : this(
+        resource: json_['resource'] as core.String?,
+        status: json_['status'] as core.String?,
+        tag: json_['tag'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resource != null) 'resource': resource!,
-        if (status != null) 'status': status!,
-        if (tag != null) 'tag': tag!,
-      };
+    if (resource != null) 'resource': resource!,
+    if (status != null) 'status': status!,
+    if (tag != null) 'tag': tag!,
+  };
 }
 
 /// Request message to undelete tenant project resource previously deleted from

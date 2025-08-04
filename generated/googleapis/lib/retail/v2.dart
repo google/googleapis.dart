@@ -72,11 +72,16 @@ class CloudRetailApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudRetailApi(http.Client client,
-      {core.String rootUrl = 'https://retail.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudRetailApi(
+    http.Client client, {
+    core.String rootUrl = 'https://retail.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -115,8 +120,8 @@ class ProjectsLocationsCatalogsResource {
   ProjectsLocationsCatalogsGenerativeQuestionResource get generativeQuestion =>
       ProjectsLocationsCatalogsGenerativeQuestionResource(_requester);
   ProjectsLocationsCatalogsGenerativeQuestionsResource
-      get generativeQuestions =>
-          ProjectsLocationsCatalogsGenerativeQuestionsResource(_requester);
+  get generativeQuestions =>
+      ProjectsLocationsCatalogsGenerativeQuestionsResource(_requester);
   ProjectsLocationsCatalogsModelsResource get models =>
       ProjectsLocationsCatalogsModelsResource(_requester);
   ProjectsLocationsCatalogsOperationsResource get operations =>
@@ -129,7 +134,7 @@ class ProjectsLocationsCatalogsResource {
       ProjectsLocationsCatalogsUserEventsResource(_requester);
 
   ProjectsLocationsCatalogsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Completes the specified prefix with keyword suggestions.
   ///
@@ -241,7 +246,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2CompleteQueryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Exports analytics metrics.
@@ -288,7 +294,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an AttributesConfig.
@@ -326,7 +333,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2AttributesConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a CompletionConfig.
@@ -364,7 +372,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2CompletionConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the conversational search customization config for a given
@@ -389,7 +398,7 @@ class ProjectsLocationsCatalogsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudRetailV2ConversationalSearchCustomizationConfig>
-      getConversationalSearchCustomizationConfig(
+  getConversationalSearchCustomizationConfig(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -397,7 +406,8 @@ class ProjectsLocationsCatalogsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v2/' +
+    final url_ =
+        'v2/' +
         core.Uri.encodeFull('$name') +
         '/conversationalSearchCustomizationConfig';
 
@@ -407,7 +417,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ConversationalSearchCustomizationConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get which branch is currently default branch set by
@@ -446,7 +457,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2GetDefaultBranchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Manages overal generative question feature state -- enables toggling
@@ -470,7 +482,7 @@ class ProjectsLocationsCatalogsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudRetailV2GenerativeQuestionsFeatureConfig>
-      getGenerativeQuestionFeature(
+  getGenerativeQuestionFeature(
     core.String catalog, {
     core.String? $fields,
   }) async {
@@ -487,7 +499,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2GenerativeQuestionsFeatureConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the Catalogs associated with the project.
@@ -541,7 +554,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ListCatalogsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the Catalogs.
@@ -590,7 +604,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2Catalog.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Set a specified branch id as default branch.
@@ -653,7 +668,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the AttributesConfig.
@@ -711,7 +727,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2AttributesConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the CompletionConfigs.
@@ -762,7 +779,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2CompletionConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the conversational search customization config for a given
@@ -793,7 +811,7 @@ class ProjectsLocationsCatalogsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudRetailV2ConversationalSearchCustomizationConfig>
-      updateConversationalSearchCustomizationConfig(
+  updateConversationalSearchCustomizationConfig(
     GoogleCloudRetailV2ConversationalSearchCustomizationConfig request,
     core.String catalog, {
     core.String? updateMask,
@@ -805,7 +823,8 @@ class ProjectsLocationsCatalogsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v2/' +
+    final url_ =
+        'v2/' +
         core.Uri.encodeFull('$catalog') +
         '/conversationalSearchCustomizationConfig';
 
@@ -816,7 +835,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ConversationalSearchCustomizationConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Allows management of individual questions.
@@ -846,7 +866,7 @@ class ProjectsLocationsCatalogsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudRetailV2GenerativeQuestionConfig>
-      updateGenerativeQuestion(
+  updateGenerativeQuestion(
     GoogleCloudRetailV2GenerativeQuestionConfig request,
     core.String catalog, {
     core.String? updateMask,
@@ -868,7 +888,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2GenerativeQuestionConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Manages overal generative question feature state -- enables toggling
@@ -898,7 +919,7 @@ class ProjectsLocationsCatalogsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudRetailV2GenerativeQuestionsFeatureConfig>
-      updateGenerativeQuestionFeature(
+  updateGenerativeQuestionFeature(
     GoogleCloudRetailV2GenerativeQuestionsFeatureConfig request,
     core.String catalog, {
     core.String? updateMask,
@@ -920,7 +941,8 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2GenerativeQuestionsFeatureConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -928,7 +950,7 @@ class ProjectsLocationsCatalogsAttributesConfigResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCatalogsAttributesConfigResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Adds the specified CatalogAttribute to the AttributesConfig.
   ///
@@ -965,7 +987,8 @@ class ProjectsLocationsCatalogsAttributesConfigResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v2/' +
+    final url_ =
+        'v2/' +
         core.Uri.encodeFull('$attributesConfig') +
         ':addCatalogAttribute';
 
@@ -976,7 +999,8 @@ class ProjectsLocationsCatalogsAttributesConfigResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2AttributesConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Removes the specified CatalogAttribute from the AttributesConfig.
@@ -1014,7 +1038,8 @@ class ProjectsLocationsCatalogsAttributesConfigResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v2/' +
+    final url_ =
+        'v2/' +
         core.Uri.encodeFull('$attributesConfig') +
         ':removeCatalogAttribute';
 
@@ -1025,7 +1050,8 @@ class ProjectsLocationsCatalogsAttributesConfigResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2AttributesConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Replaces the specified CatalogAttribute in the AttributesConfig by
@@ -1064,7 +1090,8 @@ class ProjectsLocationsCatalogsAttributesConfigResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v2/' +
+    final url_ =
+        'v2/' +
         core.Uri.encodeFull('$attributesConfig') +
         ':replaceCatalogAttribute';
 
@@ -1075,7 +1102,8 @@ class ProjectsLocationsCatalogsAttributesConfigResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2AttributesConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1088,15 +1116,15 @@ class ProjectsLocationsCatalogsBranchesResource {
       ProjectsLocationsCatalogsBranchesProductsResource(_requester);
 
   ProjectsLocationsCatalogsBranchesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class ProjectsLocationsCatalogsBranchesOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCatalogsBranchesOperationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -1135,7 +1163,8 @@ class ProjectsLocationsCatalogsBranchesOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1143,7 +1172,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCatalogsBranchesProductsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// We recommend that you use the ProductService.AddLocalInventories method
   /// instead of the ProductService.AddFulfillmentPlaces method.
@@ -1202,7 +1231,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates local inventory information for a Product at a list of places,
@@ -1262,7 +1292,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a Product.
@@ -1315,7 +1346,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2Product.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a Product.
@@ -1360,7 +1392,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a Product.
@@ -1401,7 +1434,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2Product.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Bulk import of multiple Products.
@@ -1450,7 +1484,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a list of Products.
@@ -1530,7 +1565,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ListProductsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a Product.
@@ -1590,7 +1626,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2Product.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Permanently deletes all selected Products under a branch.
@@ -1642,7 +1679,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// We recommend that you use the ProductService.RemoveLocalInventories method
@@ -1702,7 +1740,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Remove local inventory information for a Product at a list of places at a
@@ -1760,7 +1799,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates inventory information for a Product while respecting the last
@@ -1827,7 +1867,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1835,7 +1876,7 @@ class ProjectsLocationsCatalogsCompletionDataResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCatalogsCompletionDataResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Bulk import of processed completion dataset.
   ///
@@ -1884,7 +1925,8 @@ class ProjectsLocationsCatalogsCompletionDataResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1892,7 +1934,7 @@ class ProjectsLocationsCatalogsControlsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCatalogsControlsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Control.
   ///
@@ -1943,7 +1985,8 @@ class ProjectsLocationsCatalogsControlsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2Control.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a Control.
@@ -1983,7 +2026,8 @@ class ProjectsLocationsCatalogsControlsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a Control.
@@ -2021,7 +2065,8 @@ class ProjectsLocationsCatalogsControlsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2Control.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all Controls by their parent Catalog.
@@ -2076,7 +2121,8 @@ class ProjectsLocationsCatalogsControlsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ListControlsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a Control.
@@ -2129,7 +2175,8 @@ class ProjectsLocationsCatalogsControlsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2Control.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2137,8 +2184,8 @@ class ProjectsLocationsCatalogsGenerativeQuestionResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCatalogsGenerativeQuestionResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Allows management of multiple questions.
   ///
@@ -2163,7 +2210,7 @@ class ProjectsLocationsCatalogsGenerativeQuestionResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse>
-      batchUpdate(
+  batchUpdate(
     GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest request,
     core.String parent, {
     core.String? $fields,
@@ -2173,7 +2220,8 @@ class ProjectsLocationsCatalogsGenerativeQuestionResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v2/' +
+    final url_ =
+        'v2/' +
         core.Uri.encodeFull('$parent') +
         '/generativeQuestion:batchUpdate';
 
@@ -2183,8 +2231,9 @@ class ProjectsLocationsCatalogsGenerativeQuestionResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2192,8 +2241,8 @@ class ProjectsLocationsCatalogsGenerativeQuestionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCatalogsGenerativeQuestionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Returns all questions for a given catalog.
   ///
@@ -2232,7 +2281,8 @@ class ProjectsLocationsCatalogsGenerativeQuestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2240,7 +2290,7 @@ class ProjectsLocationsCatalogsModelsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCatalogsModelsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new model.
   ///
@@ -2288,7 +2338,8 @@ class ProjectsLocationsCatalogsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an existing model.
@@ -2326,7 +2377,8 @@ class ProjectsLocationsCatalogsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a model.
@@ -2364,7 +2416,8 @@ class ProjectsLocationsCatalogsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2Model.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the models linked to this event store.
@@ -2412,7 +2465,8 @@ class ProjectsLocationsCatalogsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ListModelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update of model metadata.
@@ -2466,7 +2520,8 @@ class ProjectsLocationsCatalogsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2Model.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Pauses the training of an existing model.
@@ -2509,7 +2564,8 @@ class ProjectsLocationsCatalogsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2Model.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Resumes the training of an existing model.
@@ -2552,7 +2608,8 @@ class ProjectsLocationsCatalogsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2Model.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Tunes an existing model.
@@ -2595,7 +2652,8 @@ class ProjectsLocationsCatalogsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2603,7 +2661,7 @@ class ProjectsLocationsCatalogsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCatalogsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -2642,7 +2700,8 @@ class ProjectsLocationsCatalogsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -2693,7 +2752,8 @@ class ProjectsLocationsCatalogsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2701,7 +2761,7 @@ class ProjectsLocationsCatalogsPlacementsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCatalogsPlacementsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Makes a recommendation prediction.
   ///
@@ -2753,7 +2813,8 @@ class ProjectsLocationsCatalogsPlacementsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2PredictResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Performs a search.
@@ -2804,7 +2865,8 @@ class ProjectsLocationsCatalogsPlacementsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2SearchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2812,7 +2874,7 @@ class ProjectsLocationsCatalogsServingConfigsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCatalogsServingConfigsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Enables a Control on the specified ServingConfig.
   ///
@@ -2862,7 +2924,8 @@ class ProjectsLocationsCatalogsServingConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ServingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a ServingConfig.
@@ -2914,7 +2977,8 @@ class ProjectsLocationsCatalogsServingConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ServingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a ServingConfig.
@@ -2955,7 +3019,8 @@ class ProjectsLocationsCatalogsServingConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a ServingConfig.
@@ -2995,7 +3060,8 @@ class ProjectsLocationsCatalogsServingConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ServingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all ServingConfigs linked to this catalog.
@@ -3044,7 +3110,8 @@ class ProjectsLocationsCatalogsServingConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ListServingConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a ServingConfig.
@@ -3093,7 +3160,8 @@ class ProjectsLocationsCatalogsServingConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ServingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Makes a recommendation prediction.
@@ -3146,7 +3214,8 @@ class ProjectsLocationsCatalogsServingConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2PredictResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Disables a Control on the specified ServingConfig.
@@ -3194,7 +3263,8 @@ class ProjectsLocationsCatalogsServingConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ServingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Performs a search.
@@ -3245,7 +3315,8 @@ class ProjectsLocationsCatalogsServingConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2SearchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3253,7 +3324,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCatalogsUserEventsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Writes a single user event from the browser.
   ///
@@ -3300,7 +3371,8 @@ class ProjectsLocationsCatalogsUserEventsResource {
       queryParams: queryParams_,
     );
     return GoogleApiHttpBody.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Bulk import of User events.
@@ -3349,7 +3421,8 @@ class ProjectsLocationsCatalogsUserEventsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes permanently all user events specified by the filter provided.
@@ -3397,7 +3470,8 @@ class ProjectsLocationsCatalogsUserEventsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Starts a user-event rejoin operation with latest product catalog.
@@ -3448,7 +3522,8 @@ class ProjectsLocationsCatalogsUserEventsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Writes a single user event.
@@ -3499,7 +3574,8 @@ class ProjectsLocationsCatalogsUserEventsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2UserEvent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3507,7 +3583,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -3546,7 +3622,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -3596,7 +3673,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3641,7 +3719,8 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -3691,7 +3770,8 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3722,22 +3802,22 @@ class GoogleCloudRetailV2AddCatalogAttributeRequest {
   /// Required.
   GoogleCloudRetailV2CatalogAttribute? catalogAttribute;
 
-  GoogleCloudRetailV2AddCatalogAttributeRequest({
-    this.catalogAttribute,
-  });
+  GoogleCloudRetailV2AddCatalogAttributeRequest({this.catalogAttribute});
 
   GoogleCloudRetailV2AddCatalogAttributeRequest.fromJson(core.Map json_)
-      : this(
-          catalogAttribute: json_.containsKey('catalogAttribute')
-              ? GoogleCloudRetailV2CatalogAttribute.fromJson(
+    : this(
+        catalogAttribute:
+            json_.containsKey('catalogAttribute')
+                ? GoogleCloudRetailV2CatalogAttribute.fromJson(
                   json_['catalogAttribute']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (catalogAttribute != null) 'catalogAttribute': catalogAttribute!,
-      };
+    if (catalogAttribute != null) 'catalogAttribute': catalogAttribute!,
+  };
 }
 
 /// Request for AddControl method.
@@ -3750,18 +3830,14 @@ class GoogleCloudRetailV2AddControlRequest {
   /// Required.
   core.String? controlId;
 
-  GoogleCloudRetailV2AddControlRequest({
-    this.controlId,
-  });
+  GoogleCloudRetailV2AddControlRequest({this.controlId});
 
   GoogleCloudRetailV2AddControlRequest.fromJson(core.Map json_)
-      : this(
-          controlId: json_['controlId'] as core.String?,
-        );
+    : this(controlId: json_['controlId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (controlId != null) 'controlId': controlId!,
-      };
+    if (controlId != null) 'controlId': controlId!,
+  };
 }
 
 /// Request message for ProductService.AddFulfillmentPlaces method.
@@ -3814,21 +3890,22 @@ class GoogleCloudRetailV2AddFulfillmentPlacesRequest {
   });
 
   GoogleCloudRetailV2AddFulfillmentPlacesRequest.fromJson(core.Map json_)
-      : this(
-          addTime: json_['addTime'] as core.String?,
-          allowMissing: json_['allowMissing'] as core.bool?,
-          placeIds: (json_['placeIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        addTime: json_['addTime'] as core.String?,
+        allowMissing: json_['allowMissing'] as core.bool?,
+        placeIds:
+            (json_['placeIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addTime != null) 'addTime': addTime!,
-        if (allowMissing != null) 'allowMissing': allowMissing!,
-        if (placeIds != null) 'placeIds': placeIds!,
-        if (type != null) 'type': type!,
-      };
+    if (addTime != null) 'addTime': addTime!,
+    if (allowMissing != null) 'allowMissing': allowMissing!,
+    if (placeIds != null) 'placeIds': placeIds!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Request message for ProductService.AddLocalInventories method.
@@ -3875,22 +3952,26 @@ class GoogleCloudRetailV2AddLocalInventoriesRequest {
   });
 
   GoogleCloudRetailV2AddLocalInventoriesRequest.fromJson(core.Map json_)
-      : this(
-          addMask: json_['addMask'] as core.String?,
-          addTime: json_['addTime'] as core.String?,
-          allowMissing: json_['allowMissing'] as core.bool?,
-          localInventories: (json_['localInventories'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2LocalInventory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        addMask: json_['addMask'] as core.String?,
+        addTime: json_['addTime'] as core.String?,
+        allowMissing: json_['allowMissing'] as core.bool?,
+        localInventories:
+            (json_['localInventories'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2LocalInventory.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addMask != null) 'addMask': addMask!,
-        if (addTime != null) 'addTime': addTime!,
-        if (allowMissing != null) 'allowMissing': allowMissing!,
-        if (localInventories != null) 'localInventories': localInventories!,
-      };
+    if (addMask != null) 'addMask': addMask!,
+    if (addTime != null) 'addTime': addTime!,
+    if (allowMissing != null) 'allowMissing': allowMissing!,
+    if (localInventories != null) 'localInventories': localInventories!,
+  };
 }
 
 /// Catalog level attribute config.
@@ -3929,26 +4010,27 @@ class GoogleCloudRetailV2AttributesConfig {
   });
 
   GoogleCloudRetailV2AttributesConfig.fromJson(core.Map json_)
-      : this(
-          attributeConfigLevel: json_['attributeConfigLevel'] as core.String?,
-          catalogAttributes: (json_['catalogAttributes']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudRetailV2CatalogAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        attributeConfigLevel: json_['attributeConfigLevel'] as core.String?,
+        catalogAttributes: (json_['catalogAttributes']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudRetailV2CatalogAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          name: json_['name'] as core.String?,
-        );
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeConfigLevel != null)
-          'attributeConfigLevel': attributeConfigLevel!,
-        if (catalogAttributes != null) 'catalogAttributes': catalogAttributes!,
-        if (name != null) 'name': name!,
-      };
+    if (attributeConfigLevel != null)
+      'attributeConfigLevel': attributeConfigLevel!,
+    if (catalogAttributes != null) 'catalogAttributes': catalogAttributes!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// An intended audience of the Product for whom it's sold.
@@ -3978,25 +4060,24 @@ class GoogleCloudRetailV2Audience {
   /// [Product.audience.suggestedGender](https://schema.org/suggestedGender).
   core.List<core.String>? genders;
 
-  GoogleCloudRetailV2Audience({
-    this.ageGroups,
-    this.genders,
-  });
+  GoogleCloudRetailV2Audience({this.ageGroups, this.genders});
 
   GoogleCloudRetailV2Audience.fromJson(core.Map json_)
-      : this(
-          ageGroups: (json_['ageGroups'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          genders: (json_['genders'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        ageGroups:
+            (json_['ageGroups'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        genders:
+            (json_['genders'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ageGroups != null) 'ageGroups': ageGroups!,
-        if (genders != null) 'genders': genders!,
-      };
+    if (ageGroups != null) 'ageGroups': ageGroups!,
+    if (genders != null) 'genders': genders!,
+  };
 }
 
 /// Request for BatchUpdateGenerativeQuestionConfig method.
@@ -4011,18 +4092,22 @@ class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest {
   });
 
   GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest.fromJson(
-      core.Map json_)
-      : this(
-          requests: (json_['requests'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        requests:
+            (json_['requests'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null) 'requests': requests!,
-      };
+    if (requests != null) 'requests': requests!,
+  };
 }
 
 /// Aggregated response for UpdateGenerativeQuestionConfig method.
@@ -4031,27 +4116,30 @@ class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse {
   ///
   /// Optional.
   core.List<GoogleCloudRetailV2GenerativeQuestionConfig>?
-      generativeQuestionConfigs;
+  generativeQuestionConfigs;
 
   GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse({
     this.generativeQuestionConfigs,
   });
 
   GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse.fromJson(
-      core.Map json_)
-      : this(
-          generativeQuestionConfigs:
-              (json_['generativeQuestionConfigs'] as core.List?)
-                  ?.map((value) =>
+    core.Map json_,
+  ) : this(
+        generativeQuestionConfigs:
+            (json_['generativeQuestionConfigs'] as core.List?)
+                ?.map(
+                  (value) =>
                       GoogleCloudRetailV2GenerativeQuestionConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (generativeQuestionConfigs != null)
-          'generativeQuestionConfigs': generativeQuestionConfigs!,
-      };
+    if (generativeQuestionConfigs != null)
+      'generativeQuestionConfigs': generativeQuestionConfigs!,
+  };
 }
 
 /// BigQuery source import data from.
@@ -4110,26 +4198,28 @@ class GoogleCloudRetailV2BigQuerySource {
   });
 
   GoogleCloudRetailV2BigQuerySource.fromJson(core.Map json_)
-      : this(
-          dataSchema: json_['dataSchema'] as core.String?,
-          datasetId: json_['datasetId'] as core.String?,
-          gcsStagingDir: json_['gcsStagingDir'] as core.String?,
-          partitionDate: json_.containsKey('partitionDate')
-              ? GoogleTypeDate.fromJson(
-                  json_['partitionDate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          projectId: json_['projectId'] as core.String?,
-          tableId: json_['tableId'] as core.String?,
-        );
+    : this(
+        dataSchema: json_['dataSchema'] as core.String?,
+        datasetId: json_['datasetId'] as core.String?,
+        gcsStagingDir: json_['gcsStagingDir'] as core.String?,
+        partitionDate:
+            json_.containsKey('partitionDate')
+                ? GoogleTypeDate.fromJson(
+                  json_['partitionDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        projectId: json_['projectId'] as core.String?,
+        tableId: json_['tableId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSchema != null) 'dataSchema': dataSchema!,
-        if (datasetId != null) 'datasetId': datasetId!,
-        if (gcsStagingDir != null) 'gcsStagingDir': gcsStagingDir!,
-        if (partitionDate != null) 'partitionDate': partitionDate!,
-        if (projectId != null) 'projectId': projectId!,
-        if (tableId != null) 'tableId': tableId!,
-      };
+    if (dataSchema != null) 'dataSchema': dataSchema!,
+    if (datasetId != null) 'datasetId': datasetId!,
+    if (gcsStagingDir != null) 'gcsStagingDir': gcsStagingDir!,
+    if (partitionDate != null) 'partitionDate': partitionDate!,
+    if (projectId != null) 'projectId': projectId!,
+    if (tableId != null) 'tableId': tableId!,
+  };
 }
 
 /// The catalog configuration.
@@ -4159,22 +4249,23 @@ class GoogleCloudRetailV2Catalog {
   });
 
   GoogleCloudRetailV2Catalog.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          productLevelConfig: json_.containsKey('productLevelConfig')
-              ? GoogleCloudRetailV2ProductLevelConfig.fromJson(
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        productLevelConfig:
+            json_.containsKey('productLevelConfig')
+                ? GoogleCloudRetailV2ProductLevelConfig.fromJson(
                   json_['productLevelConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (productLevelConfig != null)
-          'productLevelConfig': productLevelConfig!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (productLevelConfig != null) 'productLevelConfig': productLevelConfig!,
+  };
 }
 
 /// Catalog level attribute config for an attribute.
@@ -4306,35 +4397,36 @@ class GoogleCloudRetailV2CatalogAttribute {
   });
 
   GoogleCloudRetailV2CatalogAttribute.fromJson(core.Map json_)
-      : this(
-          dynamicFacetableOption:
-              json_['dynamicFacetableOption'] as core.String?,
-          exactSearchableOption: json_['exactSearchableOption'] as core.String?,
-          facetConfig: json_.containsKey('facetConfig')
-              ? GoogleCloudRetailV2CatalogAttributeFacetConfig.fromJson(
-                  json_['facetConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          inUse: json_['inUse'] as core.bool?,
-          indexableOption: json_['indexableOption'] as core.String?,
-          key: json_['key'] as core.String?,
-          retrievableOption: json_['retrievableOption'] as core.String?,
-          searchableOption: json_['searchableOption'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        dynamicFacetableOption: json_['dynamicFacetableOption'] as core.String?,
+        exactSearchableOption: json_['exactSearchableOption'] as core.String?,
+        facetConfig:
+            json_.containsKey('facetConfig')
+                ? GoogleCloudRetailV2CatalogAttributeFacetConfig.fromJson(
+                  json_['facetConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        inUse: json_['inUse'] as core.bool?,
+        indexableOption: json_['indexableOption'] as core.String?,
+        key: json_['key'] as core.String?,
+        retrievableOption: json_['retrievableOption'] as core.String?,
+        searchableOption: json_['searchableOption'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dynamicFacetableOption != null)
-          'dynamicFacetableOption': dynamicFacetableOption!,
-        if (exactSearchableOption != null)
-          'exactSearchableOption': exactSearchableOption!,
-        if (facetConfig != null) 'facetConfig': facetConfig!,
-        if (inUse != null) 'inUse': inUse!,
-        if (indexableOption != null) 'indexableOption': indexableOption!,
-        if (key != null) 'key': key!,
-        if (retrievableOption != null) 'retrievableOption': retrievableOption!,
-        if (searchableOption != null) 'searchableOption': searchableOption!,
-        if (type != null) 'type': type!,
-      };
+    if (dynamicFacetableOption != null)
+      'dynamicFacetableOption': dynamicFacetableOption!,
+    if (exactSearchableOption != null)
+      'exactSearchableOption': exactSearchableOption!,
+    if (facetConfig != null) 'facetConfig': facetConfig!,
+    if (inUse != null) 'inUse': inUse!,
+    if (indexableOption != null) 'indexableOption': indexableOption!,
+    if (key != null) 'key': key!,
+    if (retrievableOption != null) 'retrievableOption': retrievableOption!,
+    if (searchableOption != null) 'searchableOption': searchableOption!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Possible options for the facet that corresponds to the current attribute
@@ -4357,7 +4449,7 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfig {
   ///
   /// The maximum number of instances per CatalogAttribute is 25.
   core.List<GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues>?
-      ignoredFacetValues;
+  ignoredFacetValues;
 
   /// Use this field only if you want to merge a facet key into another facet
   /// key.
@@ -4372,7 +4464,7 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfig {
   /// instances of MergedFacetValue per CatalogAttribute is 100. This feature is
   /// available only for textual custom attributes.
   core.List<GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue>?
-      mergedFacetValues;
+  mergedFacetValues;
 
   /// Set this field only if you want to rerank based on facet values engaged by
   /// the user for the current key.
@@ -4389,41 +4481,54 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfig {
   });
 
   GoogleCloudRetailV2CatalogAttributeFacetConfig.fromJson(core.Map json_)
-      : this(
-          facetIntervals: (json_['facetIntervals'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2Interval.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          ignoredFacetValues: (json_['ignoredFacetValues'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          mergedFacet: json_.containsKey('mergedFacet')
-              ? GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet
-                  .fromJson(json_['mergedFacet']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          mergedFacetValues: (json_['mergedFacetValues'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          rerankConfig: json_.containsKey('rerankConfig')
-              ? GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig
-                  .fromJson(json_['rerankConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        facetIntervals:
+            (json_['facetIntervals'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2Interval.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        ignoredFacetValues:
+            (json_['ignoredFacetValues'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        mergedFacet:
+            json_.containsKey('mergedFacet')
+                ? GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet.fromJson(
+                  json_['mergedFacet'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mergedFacetValues:
+            (json_['mergedFacetValues'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        rerankConfig:
+            json_.containsKey('rerankConfig')
+                ? GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig.fromJson(
+                  json_['rerankConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (facetIntervals != null) 'facetIntervals': facetIntervals!,
-        if (ignoredFacetValues != null)
-          'ignoredFacetValues': ignoredFacetValues!,
-        if (mergedFacet != null) 'mergedFacet': mergedFacet!,
-        if (mergedFacetValues != null) 'mergedFacetValues': mergedFacetValues!,
-        if (rerankConfig != null) 'rerankConfig': rerankConfig!,
-      };
+    if (facetIntervals != null) 'facetIntervals': facetIntervals!,
+    if (ignoredFacetValues != null) 'ignoredFacetValues': ignoredFacetValues!,
+    if (mergedFacet != null) 'mergedFacet': mergedFacet!,
+    if (mergedFacetValues != null) 'mergedFacetValues': mergedFacetValues!,
+    if (rerankConfig != null) 'rerankConfig': rerankConfig!,
+  };
 }
 
 /// Facet values to ignore on facets during the specified time range for the
@@ -4456,20 +4561,21 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues {
   });
 
   GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues.fromJson(
-      core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-        if (values != null) 'values': values!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// The current facet key (i.e. attribute config) maps into the
@@ -4493,14 +4599,12 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet {
   });
 
   GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet.fromJson(
-      core.Map json_)
-      : this(
-          mergedFacetKey: json_['mergedFacetKey'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(mergedFacetKey: json_['mergedFacetKey'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mergedFacetKey != null) 'mergedFacetKey': mergedFacetKey!,
-      };
+    if (mergedFacetKey != null) 'mergedFacetKey': mergedFacetKey!,
+  };
 }
 
 /// Replaces a set of textual facet values by the same (possibly different)
@@ -4527,18 +4631,19 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue {
   });
 
   GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue.fromJson(
-      core.Map json_)
-      : this(
-          mergedValue: json_['mergedValue'] as core.String?,
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        mergedValue: json_['mergedValue'] as core.String?,
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mergedValue != null) 'mergedValue': mergedValue!,
-        if (values != null) 'values': values!,
-      };
+    if (mergedValue != null) 'mergedValue': mergedValue!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Options to rerank based on facet values engaged by the user for the current
@@ -4567,18 +4672,19 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig {
   });
 
   GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig.fromJson(
-      core.Map json_)
-      : this(
-          facetValues: (json_['facetValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          rerankFacet: json_['rerankFacet'] as core.bool?,
-        );
+    core.Map json_,
+  ) : this(
+        facetValues:
+            (json_['facetValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        rerankFacet: json_['rerankFacet'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (facetValues != null) 'facetValues': facetValues!,
-        if (rerankFacet != null) 'rerankFacet': rerankFacet!,
-      };
+    if (facetValues != null) 'facetValues': facetValues!,
+    if (rerankFacet != null) 'rerankFacet': rerankFacet!,
+  };
 }
 
 /// Request message for CollectUserEvent method.
@@ -4622,21 +4728,21 @@ class GoogleCloudRetailV2CollectUserEventRequest {
   });
 
   GoogleCloudRetailV2CollectUserEventRequest.fromJson(core.Map json_)
-      : this(
-          ets: json_['ets'] as core.String?,
-          prebuiltRule: json_['prebuiltRule'] as core.String?,
-          rawJson: json_['rawJson'] as core.String?,
-          uri: json_['uri'] as core.String?,
-          userEvent: json_['userEvent'] as core.String?,
-        );
+    : this(
+        ets: json_['ets'] as core.String?,
+        prebuiltRule: json_['prebuiltRule'] as core.String?,
+        rawJson: json_['rawJson'] as core.String?,
+        uri: json_['uri'] as core.String?,
+        userEvent: json_['userEvent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ets != null) 'ets': ets!,
-        if (prebuiltRule != null) 'prebuiltRule': prebuiltRule!,
-        if (rawJson != null) 'rawJson': rawJson!,
-        if (uri != null) 'uri': uri!,
-        if (userEvent != null) 'userEvent': userEvent!,
-      };
+    if (ets != null) 'ets': ets!,
+    if (prebuiltRule != null) 'prebuiltRule': prebuiltRule!,
+    if (rawJson != null) 'rawJson': rawJson!,
+    if (uri != null) 'uri': uri!,
+    if (userEvent != null) 'userEvent': userEvent!,
+  };
 }
 
 /// The color information of a Product.
@@ -4669,25 +4775,24 @@ class GoogleCloudRetailV2ColorInfo {
   /// property [Product.color](https://schema.org/color).
   core.List<core.String>? colors;
 
-  GoogleCloudRetailV2ColorInfo({
-    this.colorFamilies,
-    this.colors,
-  });
+  GoogleCloudRetailV2ColorInfo({this.colorFamilies, this.colors});
 
   GoogleCloudRetailV2ColorInfo.fromJson(core.Map json_)
-      : this(
-          colorFamilies: (json_['colorFamilies'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          colors: (json_['colors'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        colorFamilies:
+            (json_['colorFamilies'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        colors:
+            (json_['colors'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (colorFamilies != null) 'colorFamilies': colorFamilies!,
-        if (colors != null) 'colors': colors!,
-      };
+    if (colorFamilies != null) 'colorFamilies': colorFamilies!,
+    if (colors != null) 'colors': colors!,
+  };
 }
 
 /// Response of the autocomplete query.
@@ -4696,9 +4801,11 @@ class GoogleCloudRetailV2CompleteQueryResponse {
   ///
   /// This field is only available for `cloud-retail` dataset. Current supported
   /// keys: * `brands` * `categories`
-  core.Map<core.String,
-          GoogleCloudRetailV2CompleteQueryResponseAttributeResult>?
-      attributeResults;
+  core.Map<
+    core.String,
+    GoogleCloudRetailV2CompleteQueryResponseAttributeResult
+  >?
+  attributeResults;
 
   /// A unique complete token.
   ///
@@ -4711,7 +4818,7 @@ class GoogleCloudRetailV2CompleteQueryResponse {
   ///
   /// The result list is ordered and the first result is top suggestion.
   core.List<GoogleCloudRetailV2CompleteQueryResponseCompletionResult>?
-      completionResults;
+  completionResults;
 
   /// Matched recent searches of this user.
   ///
@@ -4729,7 +4836,7 @@ class GoogleCloudRetailV2CompleteQueryResponse {
     'Not supported. Member documentation may have more information.',
   )
   core.List<GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult>?
-      recentSearchResults;
+  recentSearchResults;
 
   GoogleCloudRetailV2CompleteQueryResponse({
     this.attributeResults,
@@ -4739,36 +4846,45 @@ class GoogleCloudRetailV2CompleteQueryResponse {
   });
 
   GoogleCloudRetailV2CompleteQueryResponse.fromJson(core.Map json_)
-      : this(
-          attributeResults: (json_['attributeResults']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudRetailV2CompleteQueryResponseAttributeResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        attributeResults: (json_['attributeResults']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudRetailV2CompleteQueryResponseAttributeResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          attributionToken: json_['attributionToken'] as core.String?,
-          completionResults: (json_['completionResults'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2CompleteQueryResponseCompletionResult
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          recentSearchResults: (json_['recentSearchResults'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+        attributionToken: json_['attributionToken'] as core.String?,
+        completionResults:
+            (json_['completionResults'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2CompleteQueryResponseCompletionResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        recentSearchResults:
+            (json_['recentSearchResults'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeResults != null) 'attributeResults': attributeResults!,
-        if (attributionToken != null) 'attributionToken': attributionToken!,
-        if (completionResults != null) 'completionResults': completionResults!,
-        if (recentSearchResults != null)
-          'recentSearchResults': recentSearchResults!,
-      };
+    if (attributeResults != null) 'attributeResults': attributeResults!,
+    if (attributionToken != null) 'attributionToken': attributionToken!,
+    if (completionResults != null) 'completionResults': completionResults!,
+    if (recentSearchResults != null)
+      'recentSearchResults': recentSearchResults!,
+  };
 }
 
 /// Resource that represents attribute results.
@@ -4776,21 +4892,20 @@ class GoogleCloudRetailV2CompleteQueryResponseAttributeResult {
   /// The list of suggestions for the attribute.
   core.List<core.String>? suggestions;
 
-  GoogleCloudRetailV2CompleteQueryResponseAttributeResult({
-    this.suggestions,
-  });
+  GoogleCloudRetailV2CompleteQueryResponseAttributeResult({this.suggestions});
 
   GoogleCloudRetailV2CompleteQueryResponseAttributeResult.fromJson(
-      core.Map json_)
-      : this(
-          suggestions: (json_['suggestions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        suggestions:
+            (json_['suggestions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (suggestions != null) 'suggestions': suggestions!,
-      };
+    if (suggestions != null) 'suggestions': suggestions!,
+  };
 }
 
 /// Resource that represents completion results.
@@ -4812,24 +4927,24 @@ class GoogleCloudRetailV2CompleteQueryResponseCompletionResult {
   });
 
   GoogleCloudRetailV2CompleteQueryResponseCompletionResult.fromJson(
-      core.Map json_)
-      : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudRetailV2CustomAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    core.Map json_,
+  ) : this(
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudRetailV2CustomAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          suggestion: json_['suggestion'] as core.String?,
-        );
+        suggestion: json_['suggestion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (suggestion != null) 'suggestion': suggestion!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (suggestion != null) 'suggestion': suggestion!,
+  };
 }
 
 /// Deprecated: Recent search of this user.
@@ -4842,14 +4957,12 @@ class GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult {
   });
 
   GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult.fromJson(
-      core.Map json_)
-      : this(
-          recentSearch: json_['recentSearch'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(recentSearch: json_['recentSearch'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (recentSearch != null) 'recentSearch': recentSearch!,
-      };
+    if (recentSearch != null) 'recentSearch': recentSearch!,
+  };
 }
 
 /// Catalog level autocomplete config for customers to customize autocomplete
@@ -4947,54 +5060,60 @@ class GoogleCloudRetailV2CompletionConfig {
   });
 
   GoogleCloudRetailV2CompletionConfig.fromJson(core.Map json_)
-      : this(
-          allowlistInputConfig: json_.containsKey('allowlistInputConfig')
-              ? GoogleCloudRetailV2CompletionDataInputConfig.fromJson(
+    : this(
+        allowlistInputConfig:
+            json_.containsKey('allowlistInputConfig')
+                ? GoogleCloudRetailV2CompletionDataInputConfig.fromJson(
                   json_['allowlistInputConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          autoLearning: json_['autoLearning'] as core.bool?,
-          denylistInputConfig: json_.containsKey('denylistInputConfig')
-              ? GoogleCloudRetailV2CompletionDataInputConfig.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        autoLearning: json_['autoLearning'] as core.bool?,
+        denylistInputConfig:
+            json_.containsKey('denylistInputConfig')
+                ? GoogleCloudRetailV2CompletionDataInputConfig.fromJson(
                   json_['denylistInputConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          lastAllowlistImportOperation:
-              json_['lastAllowlistImportOperation'] as core.String?,
-          lastDenylistImportOperation:
-              json_['lastDenylistImportOperation'] as core.String?,
-          lastSuggestionsImportOperation:
-              json_['lastSuggestionsImportOperation'] as core.String?,
-          matchingOrder: json_['matchingOrder'] as core.String?,
-          maxSuggestions: json_['maxSuggestions'] as core.int?,
-          minPrefixLength: json_['minPrefixLength'] as core.int?,
-          name: json_['name'] as core.String?,
-          suggestionsInputConfig: json_.containsKey('suggestionsInputConfig')
-              ? GoogleCloudRetailV2CompletionDataInputConfig.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lastAllowlistImportOperation:
+            json_['lastAllowlistImportOperation'] as core.String?,
+        lastDenylistImportOperation:
+            json_['lastDenylistImportOperation'] as core.String?,
+        lastSuggestionsImportOperation:
+            json_['lastSuggestionsImportOperation'] as core.String?,
+        matchingOrder: json_['matchingOrder'] as core.String?,
+        maxSuggestions: json_['maxSuggestions'] as core.int?,
+        minPrefixLength: json_['minPrefixLength'] as core.int?,
+        name: json_['name'] as core.String?,
+        suggestionsInputConfig:
+            json_.containsKey('suggestionsInputConfig')
+                ? GoogleCloudRetailV2CompletionDataInputConfig.fromJson(
                   json_['suggestionsInputConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowlistInputConfig != null)
-          'allowlistInputConfig': allowlistInputConfig!,
-        if (autoLearning != null) 'autoLearning': autoLearning!,
-        if (denylistInputConfig != null)
-          'denylistInputConfig': denylistInputConfig!,
-        if (lastAllowlistImportOperation != null)
-          'lastAllowlistImportOperation': lastAllowlistImportOperation!,
-        if (lastDenylistImportOperation != null)
-          'lastDenylistImportOperation': lastDenylistImportOperation!,
-        if (lastSuggestionsImportOperation != null)
-          'lastSuggestionsImportOperation': lastSuggestionsImportOperation!,
-        if (matchingOrder != null) 'matchingOrder': matchingOrder!,
-        if (maxSuggestions != null) 'maxSuggestions': maxSuggestions!,
-        if (minPrefixLength != null) 'minPrefixLength': minPrefixLength!,
-        if (name != null) 'name': name!,
-        if (suggestionsInputConfig != null)
-          'suggestionsInputConfig': suggestionsInputConfig!,
-      };
+    if (allowlistInputConfig != null)
+      'allowlistInputConfig': allowlistInputConfig!,
+    if (autoLearning != null) 'autoLearning': autoLearning!,
+    if (denylistInputConfig != null)
+      'denylistInputConfig': denylistInputConfig!,
+    if (lastAllowlistImportOperation != null)
+      'lastAllowlistImportOperation': lastAllowlistImportOperation!,
+    if (lastDenylistImportOperation != null)
+      'lastDenylistImportOperation': lastDenylistImportOperation!,
+    if (lastSuggestionsImportOperation != null)
+      'lastSuggestionsImportOperation': lastSuggestionsImportOperation!,
+    if (matchingOrder != null) 'matchingOrder': matchingOrder!,
+    if (maxSuggestions != null) 'maxSuggestions': maxSuggestions!,
+    if (minPrefixLength != null) 'minPrefixLength': minPrefixLength!,
+    if (name != null) 'name': name!,
+    if (suggestionsInputConfig != null)
+      'suggestionsInputConfig': suggestionsInputConfig!,
+  };
 }
 
 /// The input config source for completion data.
@@ -5008,22 +5127,22 @@ class GoogleCloudRetailV2CompletionDataInputConfig {
   /// Required.
   GoogleCloudRetailV2BigQuerySource? bigQuerySource;
 
-  GoogleCloudRetailV2CompletionDataInputConfig({
-    this.bigQuerySource,
-  });
+  GoogleCloudRetailV2CompletionDataInputConfig({this.bigQuerySource});
 
   GoogleCloudRetailV2CompletionDataInputConfig.fromJson(core.Map json_)
-      : this(
-          bigQuerySource: json_.containsKey('bigQuerySource')
-              ? GoogleCloudRetailV2BigQuerySource.fromJson(
+    : this(
+        bigQuerySource:
+            json_.containsKey('bigQuerySource')
+                ? GoogleCloudRetailV2BigQuerySource.fromJson(
                   json_['bigQuerySource']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!,
-      };
+    if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!,
+  };
 }
 
 /// Detailed completion information including completion attribution token and
@@ -5046,20 +5165,19 @@ class GoogleCloudRetailV2CompletionDetail {
   });
 
   GoogleCloudRetailV2CompletionDetail.fromJson(core.Map json_)
-      : this(
-          completionAttributionToken:
-              json_['completionAttributionToken'] as core.String?,
-          selectedPosition: json_['selectedPosition'] as core.int?,
-          selectedSuggestion: json_['selectedSuggestion'] as core.String?,
-        );
+    : this(
+        completionAttributionToken:
+            json_['completionAttributionToken'] as core.String?,
+        selectedPosition: json_['selectedPosition'] as core.int?,
+        selectedSuggestion: json_['selectedSuggestion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (completionAttributionToken != null)
-          'completionAttributionToken': completionAttributionToken!,
-        if (selectedPosition != null) 'selectedPosition': selectedPosition!,
-        if (selectedSuggestion != null)
-          'selectedSuggestion': selectedSuggestion!,
-      };
+    if (completionAttributionToken != null)
+      'completionAttributionToken': completionAttributionToken!,
+    if (selectedPosition != null) 'selectedPosition': selectedPosition!,
+    if (selectedSuggestion != null) 'selectedSuggestion': selectedSuggestion!,
+  };
 }
 
 /// Metadata that is used to define a condition that triggers an action.
@@ -5095,25 +5213,34 @@ class GoogleCloudRetailV2Condition {
   });
 
   GoogleCloudRetailV2Condition.fromJson(core.Map json_)
-      : this(
-          activeTimeRange: (json_['activeTimeRange'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2ConditionTimeRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          pageCategories: (json_['pageCategories'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          queryTerms: (json_['queryTerms'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2ConditionQueryTerm.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        activeTimeRange:
+            (json_['activeTimeRange'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2ConditionTimeRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        pageCategories:
+            (json_['pageCategories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        queryTerms:
+            (json_['queryTerms'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2ConditionQueryTerm.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeTimeRange != null) 'activeTimeRange': activeTimeRange!,
-        if (pageCategories != null) 'pageCategories': pageCategories!,
-        if (queryTerms != null) 'queryTerms': queryTerms!,
-      };
+    if (activeTimeRange != null) 'activeTimeRange': activeTimeRange!,
+    if (pageCategories != null) 'pageCategories': pageCategories!,
+    if (queryTerms != null) 'queryTerms': queryTerms!,
+  };
 }
 
 /// Query terms that we want to match on.
@@ -5129,21 +5256,18 @@ class GoogleCloudRetailV2ConditionQueryTerm {
   /// allowed for a partial match.
   core.String? value;
 
-  GoogleCloudRetailV2ConditionQueryTerm({
-    this.fullMatch,
-    this.value,
-  });
+  GoogleCloudRetailV2ConditionQueryTerm({this.fullMatch, this.value});
 
   GoogleCloudRetailV2ConditionQueryTerm.fromJson(core.Map json_)
-      : this(
-          fullMatch: json_['fullMatch'] as core.bool?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        fullMatch: json_['fullMatch'] as core.bool?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fullMatch != null) 'fullMatch': fullMatch!,
-        if (value != null) 'value': value!,
-      };
+    if (fullMatch != null) 'fullMatch': fullMatch!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used for time-dependent conditions.
@@ -5160,21 +5284,18 @@ class GoogleCloudRetailV2ConditionTimeRange {
   /// Range is inclusive.
   core.String? startTime;
 
-  GoogleCloudRetailV2ConditionTimeRange({
-    this.endTime,
-    this.startTime,
-  });
+  GoogleCloudRetailV2ConditionTimeRange({this.endTime, this.startTime});
 
   GoogleCloudRetailV2ConditionTimeRange.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// Configures dynamic metadata that can be linked to a ServingConfig and affect
@@ -5236,35 +5357,39 @@ class GoogleCloudRetailV2Control {
   });
 
   GoogleCloudRetailV2Control.fromJson(core.Map json_)
-      : this(
-          associatedServingConfigIds:
-              (json_['associatedServingConfigIds'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          rule: json_.containsKey('rule')
-              ? GoogleCloudRetailV2Rule.fromJson(
-                  json_['rule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          searchSolutionUseCase: (json_['searchSolutionUseCase'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          solutionTypes: (json_['solutionTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        associatedServingConfigIds:
+            (json_['associatedServingConfigIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        rule:
+            json_.containsKey('rule')
+                ? GoogleCloudRetailV2Rule.fromJson(
+                  json_['rule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        searchSolutionUseCase:
+            (json_['searchSolutionUseCase'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        solutionTypes:
+            (json_['solutionTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (associatedServingConfigIds != null)
-          'associatedServingConfigIds': associatedServingConfigIds!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (rule != null) 'rule': rule!,
-        if (searchSolutionUseCase != null)
-          'searchSolutionUseCase': searchSolutionUseCase!,
-        if (solutionTypes != null) 'solutionTypes': solutionTypes!,
-      };
+    if (associatedServingConfigIds != null)
+      'associatedServingConfigIds': associatedServingConfigIds!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (rule != null) 'rule': rule!,
+    if (searchSolutionUseCase != null)
+      'searchSolutionUseCase': searchSolutionUseCase!,
+    if (solutionTypes != null) 'solutionTypes': solutionTypes!,
+  };
 }
 
 /// The public proto to represent the conversational search customization
@@ -5298,25 +5423,26 @@ class GoogleCloudRetailV2ConversationalSearchCustomizationConfig {
   });
 
   GoogleCloudRetailV2ConversationalSearchCustomizationConfig.fromJson(
-      core.Map json_)
-      : this(
-          catalog: json_['catalog'] as core.String?,
-          intentClassificationConfig:
-              json_.containsKey('intentClassificationConfig')
-                  ? GoogleCloudRetailV2IntentClassificationConfig.fromJson(
-                      json_['intentClassificationConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          retailerDisplayName: json_['retailerDisplayName'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        catalog: json_['catalog'] as core.String?,
+        intentClassificationConfig:
+            json_.containsKey('intentClassificationConfig')
+                ? GoogleCloudRetailV2IntentClassificationConfig.fromJson(
+                  json_['intentClassificationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        retailerDisplayName: json_['retailerDisplayName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (catalog != null) 'catalog': catalog!,
-        if (intentClassificationConfig != null)
-          'intentClassificationConfig': intentClassificationConfig!,
-        if (retailerDisplayName != null)
-          'retailerDisplayName': retailerDisplayName!,
-      };
+    if (catalog != null) 'catalog': catalog!,
+    if (intentClassificationConfig != null)
+      'intentClassificationConfig': intentClassificationConfig!,
+    if (retailerDisplayName != null)
+      'retailerDisplayName': retailerDisplayName!,
+  };
 }
 
 /// A custom attribute that is not explicitly modeled in Product.
@@ -5373,23 +5499,25 @@ class GoogleCloudRetailV2CustomAttribute {
   });
 
   GoogleCloudRetailV2CustomAttribute.fromJson(core.Map json_)
-      : this(
-          indexable: json_['indexable'] as core.bool?,
-          numbers: (json_['numbers'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-          searchable: json_['searchable'] as core.bool?,
-          text: (json_['text'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        indexable: json_['indexable'] as core.bool?,
+        numbers:
+            (json_['numbers'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        searchable: json_['searchable'] as core.bool?,
+        text:
+            (json_['text'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (indexable != null) 'indexable': indexable!,
-        if (numbers != null) 'numbers': numbers!,
-        if (searchable != null) 'searchable': searchable!,
-        if (text != null) 'text': text!,
-      };
+    if (indexable != null) 'indexable': indexable!,
+    if (numbers != null) 'numbers': numbers!,
+    if (searchable != null) 'searchable': searchable!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// A message with a list of double values.
@@ -5397,20 +5525,19 @@ class GoogleCloudRetailV2DoubleList {
   /// The list of double values.
   core.List<core.double>? values;
 
-  GoogleCloudRetailV2DoubleList({
-    this.values,
-  });
+  GoogleCloudRetailV2DoubleList({this.values});
 
   GoogleCloudRetailV2DoubleList.fromJson(core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-        );
+    : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Metadata for active A/B testing experiment.
@@ -5424,7 +5551,7 @@ class GoogleCloudRetailV2ExperimentInfo {
 
   /// A/B test between existing Cloud Retail Search ServingConfigs.
   GoogleCloudRetailV2ExperimentInfoServingConfigExperiment?
-      servingConfigExperiment;
+  servingConfigExperiment;
 
   GoogleCloudRetailV2ExperimentInfo({
     this.experiment,
@@ -5432,20 +5559,22 @@ class GoogleCloudRetailV2ExperimentInfo {
   });
 
   GoogleCloudRetailV2ExperimentInfo.fromJson(core.Map json_)
-      : this(
-          experiment: json_['experiment'] as core.String?,
-          servingConfigExperiment: json_.containsKey('servingConfigExperiment')
-              ? GoogleCloudRetailV2ExperimentInfoServingConfigExperiment
-                  .fromJson(json_['servingConfigExperiment']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        experiment: json_['experiment'] as core.String?,
+        servingConfigExperiment:
+            json_.containsKey('servingConfigExperiment')
+                ? GoogleCloudRetailV2ExperimentInfoServingConfigExperiment.fromJson(
+                  json_['servingConfigExperiment']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (experiment != null) 'experiment': experiment!,
-        if (servingConfigExperiment != null)
-          'servingConfigExperiment': servingConfigExperiment!,
-      };
+    if (experiment != null) 'experiment': experiment!,
+    if (servingConfigExperiment != null)
+      'servingConfigExperiment': servingConfigExperiment!,
+  };
 }
 
 /// Metadata for active serving config A/B tests.
@@ -5471,19 +5600,19 @@ class GoogleCloudRetailV2ExperimentInfoServingConfigExperiment {
   });
 
   GoogleCloudRetailV2ExperimentInfoServingConfigExperiment.fromJson(
-      core.Map json_)
-      : this(
-          experimentServingConfig:
-              json_['experimentServingConfig'] as core.String?,
-          originalServingConfig: json_['originalServingConfig'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        experimentServingConfig:
+            json_['experimentServingConfig'] as core.String?,
+        originalServingConfig: json_['originalServingConfig'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (experimentServingConfig != null)
-          'experimentServingConfig': experimentServingConfig!,
-        if (originalServingConfig != null)
-          'originalServingConfig': originalServingConfig!,
-      };
+    if (experimentServingConfig != null)
+      'experimentServingConfig': experimentServingConfig!,
+    if (originalServingConfig != null)
+      'originalServingConfig': originalServingConfig!,
+  };
 }
 
 /// Request message for the `ExportAnalyticsMetrics` method.
@@ -5512,18 +5641,20 @@ class GoogleCloudRetailV2ExportAnalyticsMetricsRequest {
   });
 
   GoogleCloudRetailV2ExportAnalyticsMetricsRequest.fromJson(core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          outputConfig: json_.containsKey('outputConfig')
-              ? GoogleCloudRetailV2OutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        filter: json_['filter'] as core.String?,
+        outputConfig:
+            json_.containsKey('outputConfig')
+                ? GoogleCloudRetailV2OutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (outputConfig != null) 'outputConfig': outputConfig!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (outputConfig != null) 'outputConfig': outputConfig!,
+  };
 }
 
 /// Fulfillment information, such as the store IDs for in-store pickup or region
@@ -5550,23 +5681,21 @@ class GoogleCloudRetailV2FulfillmentInfo {
   /// INVALID_ARGUMENT error is returned.
   core.String? type;
 
-  GoogleCloudRetailV2FulfillmentInfo({
-    this.placeIds,
-    this.type,
-  });
+  GoogleCloudRetailV2FulfillmentInfo({this.placeIds, this.type});
 
   GoogleCloudRetailV2FulfillmentInfo.fromJson(core.Map json_)
-      : this(
-          placeIds: (json_['placeIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        placeIds:
+            (json_['placeIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (placeIds != null) 'placeIds': placeIds!,
-        if (type != null) 'type': type!,
-      };
+    if (placeIds != null) 'placeIds': placeIds!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Google Cloud Storage location for input content.
@@ -5597,23 +5726,21 @@ class GoogleCloudRetailV2GcsSource {
   /// Required.
   core.List<core.String>? inputUris;
 
-  GoogleCloudRetailV2GcsSource({
-    this.dataSchema,
-    this.inputUris,
-  });
+  GoogleCloudRetailV2GcsSource({this.dataSchema, this.inputUris});
 
   GoogleCloudRetailV2GcsSource.fromJson(core.Map json_)
-      : this(
-          dataSchema: json_['dataSchema'] as core.String?,
-          inputUris: (json_['inputUris'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        dataSchema: json_['dataSchema'] as core.String?,
+        inputUris:
+            (json_['inputUris'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSchema != null) 'dataSchema': dataSchema!,
-        if (inputUris != null) 'inputUris': inputUris!,
-      };
+    if (dataSchema != null) 'dataSchema': dataSchema!,
+    if (inputUris != null) 'inputUris': inputUris!,
+  };
 }
 
 /// Configuration for a single generated question.
@@ -5669,28 +5796,29 @@ class GoogleCloudRetailV2GenerativeQuestionConfig {
   });
 
   GoogleCloudRetailV2GenerativeQuestionConfig.fromJson(core.Map json_)
-      : this(
-          allowedInConversation: json_['allowedInConversation'] as core.bool?,
-          catalog: json_['catalog'] as core.String?,
-          exampleValues: (json_['exampleValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          facet: json_['facet'] as core.String?,
-          finalQuestion: json_['finalQuestion'] as core.String?,
-          frequency: (json_['frequency'] as core.num?)?.toDouble(),
-          generatedQuestion: json_['generatedQuestion'] as core.String?,
-        );
+    : this(
+        allowedInConversation: json_['allowedInConversation'] as core.bool?,
+        catalog: json_['catalog'] as core.String?,
+        exampleValues:
+            (json_['exampleValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        facet: json_['facet'] as core.String?,
+        finalQuestion: json_['finalQuestion'] as core.String?,
+        frequency: (json_['frequency'] as core.num?)?.toDouble(),
+        generatedQuestion: json_['generatedQuestion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedInConversation != null)
-          'allowedInConversation': allowedInConversation!,
-        if (catalog != null) 'catalog': catalog!,
-        if (exampleValues != null) 'exampleValues': exampleValues!,
-        if (facet != null) 'facet': facet!,
-        if (finalQuestion != null) 'finalQuestion': finalQuestion!,
-        if (frequency != null) 'frequency': frequency!,
-        if (generatedQuestion != null) 'generatedQuestion': generatedQuestion!,
-      };
+    if (allowedInConversation != null)
+      'allowedInConversation': allowedInConversation!,
+    if (catalog != null) 'catalog': catalog!,
+    if (exampleValues != null) 'exampleValues': exampleValues!,
+    if (facet != null) 'facet': facet!,
+    if (finalQuestion != null) 'finalQuestion': finalQuestion!,
+    if (frequency != null) 'frequency': frequency!,
+    if (generatedQuestion != null) 'generatedQuestion': generatedQuestion!,
+  };
 }
 
 /// Configuration for overall generative question feature state.
@@ -5724,17 +5852,17 @@ class GoogleCloudRetailV2GenerativeQuestionsFeatureConfig {
   });
 
   GoogleCloudRetailV2GenerativeQuestionsFeatureConfig.fromJson(core.Map json_)
-      : this(
-          catalog: json_['catalog'] as core.String?,
-          featureEnabled: json_['featureEnabled'] as core.bool?,
-          minimumProducts: json_['minimumProducts'] as core.int?,
-        );
+    : this(
+        catalog: json_['catalog'] as core.String?,
+        featureEnabled: json_['featureEnabled'] as core.bool?,
+        minimumProducts: json_['minimumProducts'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (catalog != null) 'catalog': catalog!,
-        if (featureEnabled != null) 'featureEnabled': featureEnabled!,
-        if (minimumProducts != null) 'minimumProducts': minimumProducts!,
-      };
+    if (catalog != null) 'catalog': catalog!,
+    if (featureEnabled != null) 'featureEnabled': featureEnabled!,
+    if (minimumProducts != null) 'minimumProducts': minimumProducts!,
+  };
 }
 
 /// Response message of CatalogService.GetDefaultBranch.
@@ -5756,17 +5884,17 @@ class GoogleCloudRetailV2GetDefaultBranchResponse {
   });
 
   GoogleCloudRetailV2GetDefaultBranchResponse.fromJson(core.Map json_)
-      : this(
-          branch: json_['branch'] as core.String?,
-          note: json_['note'] as core.String?,
-          setTime: json_['setTime'] as core.String?,
-        );
+    : this(
+        branch: json_['branch'] as core.String?,
+        note: json_['note'] as core.String?,
+        setTime: json_['setTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (branch != null) 'branch': branch!,
-        if (note != null) 'note': note!,
-        if (setTime != null) 'setTime': setTime!,
-      };
+    if (branch != null) 'branch': branch!,
+    if (note != null) 'note': note!,
+    if (setTime != null) 'setTime': setTime!,
+  };
 }
 
 /// Product image.
@@ -5799,24 +5927,20 @@ class GoogleCloudRetailV2Image {
   /// returned.
   core.int? width;
 
-  GoogleCloudRetailV2Image({
-    this.height,
-    this.uri,
-    this.width,
-  });
+  GoogleCloudRetailV2Image({this.height, this.uri, this.width});
 
   GoogleCloudRetailV2Image.fromJson(core.Map json_)
-      : this(
-          height: json_['height'] as core.int?,
-          uri: json_['uri'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        height: json_['height'] as core.int?,
+        uri: json_['uri'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (uri != null) 'uri': uri!,
-        if (width != null) 'width': width!,
-      };
+    if (height != null) 'height': height!,
+    if (uri != null) 'uri': uri!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// Request message for ImportCompletionData methods.
@@ -5840,20 +5964,22 @@ class GoogleCloudRetailV2ImportCompletionDataRequest {
   });
 
   GoogleCloudRetailV2ImportCompletionDataRequest.fromJson(core.Map json_)
-      : this(
-          inputConfig: json_.containsKey('inputConfig')
-              ? GoogleCloudRetailV2CompletionDataInputConfig.fromJson(
-                  json_['inputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          notificationPubsubTopic:
-              json_['notificationPubsubTopic'] as core.String?,
-        );
+    : this(
+        inputConfig:
+            json_.containsKey('inputConfig')
+                ? GoogleCloudRetailV2CompletionDataInputConfig.fromJson(
+                  json_['inputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        notificationPubsubTopic:
+            json_['notificationPubsubTopic'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inputConfig != null) 'inputConfig': inputConfig!,
-        if (notificationPubsubTopic != null)
-          'notificationPubsubTopic': notificationPubsubTopic!,
-      };
+    if (inputConfig != null) 'inputConfig': inputConfig!,
+    if (notificationPubsubTopic != null)
+      'notificationPubsubTopic': notificationPubsubTopic!,
+  };
 }
 
 /// Configuration of destination for Import related errors.
@@ -5865,18 +5991,14 @@ class GoogleCloudRetailV2ImportErrorsConfig {
   /// JSON-encoded `google.rpc.Status` message.
   core.String? gcsPrefix;
 
-  GoogleCloudRetailV2ImportErrorsConfig({
-    this.gcsPrefix,
-  });
+  GoogleCloudRetailV2ImportErrorsConfig({this.gcsPrefix});
 
   GoogleCloudRetailV2ImportErrorsConfig.fromJson(core.Map json_)
-      : this(
-          gcsPrefix: json_['gcsPrefix'] as core.String?,
-        );
+    : this(gcsPrefix: json_['gcsPrefix'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
-      };
+    if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
+  };
 }
 
 /// Request message for Import methods.
@@ -5938,32 +6060,35 @@ class GoogleCloudRetailV2ImportProductsRequest {
   });
 
   GoogleCloudRetailV2ImportProductsRequest.fromJson(core.Map json_)
-      : this(
-          errorsConfig: json_.containsKey('errorsConfig')
-              ? GoogleCloudRetailV2ImportErrorsConfig.fromJson(
-                  json_['errorsConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          inputConfig: json_.containsKey('inputConfig')
-              ? GoogleCloudRetailV2ProductInputConfig.fromJson(
-                  json_['inputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          notificationPubsubTopic:
-              json_['notificationPubsubTopic'] as core.String?,
-          reconciliationMode: json_['reconciliationMode'] as core.String?,
-          requestId: json_['requestId'] as core.String?,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        errorsConfig:
+            json_.containsKey('errorsConfig')
+                ? GoogleCloudRetailV2ImportErrorsConfig.fromJson(
+                  json_['errorsConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        inputConfig:
+            json_.containsKey('inputConfig')
+                ? GoogleCloudRetailV2ProductInputConfig.fromJson(
+                  json_['inputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        notificationPubsubTopic:
+            json_['notificationPubsubTopic'] as core.String?,
+        reconciliationMode: json_['reconciliationMode'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
-        if (inputConfig != null) 'inputConfig': inputConfig!,
-        if (notificationPubsubTopic != null)
-          'notificationPubsubTopic': notificationPubsubTopic!,
-        if (reconciliationMode != null)
-          'reconciliationMode': reconciliationMode!,
-        if (requestId != null) 'requestId': requestId!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (errorsConfig != null) 'errorsConfig': errorsConfig!,
+    if (inputConfig != null) 'inputConfig': inputConfig!,
+    if (notificationPubsubTopic != null)
+      'notificationPubsubTopic': notificationPubsubTopic!,
+    if (reconciliationMode != null) 'reconciliationMode': reconciliationMode!,
+    if (requestId != null) 'requestId': requestId!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Request message for the ImportUserEvents request.
@@ -5984,21 +6109,25 @@ class GoogleCloudRetailV2ImportUserEventsRequest {
   });
 
   GoogleCloudRetailV2ImportUserEventsRequest.fromJson(core.Map json_)
-      : this(
-          errorsConfig: json_.containsKey('errorsConfig')
-              ? GoogleCloudRetailV2ImportErrorsConfig.fromJson(
-                  json_['errorsConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          inputConfig: json_.containsKey('inputConfig')
-              ? GoogleCloudRetailV2UserEventInputConfig.fromJson(
-                  json_['inputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        errorsConfig:
+            json_.containsKey('errorsConfig')
+                ? GoogleCloudRetailV2ImportErrorsConfig.fromJson(
+                  json_['errorsConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        inputConfig:
+            json_.containsKey('inputConfig')
+                ? GoogleCloudRetailV2UserEventInputConfig.fromJson(
+                  json_['inputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
-        if (inputConfig != null) 'inputConfig': inputConfig!,
-      };
+    if (errorsConfig != null) 'errorsConfig': errorsConfig!,
+    if (inputConfig != null) 'inputConfig': inputConfig!,
+  };
 }
 
 /// The public proto to represent the intent classification config.
@@ -6049,34 +6178,41 @@ class GoogleCloudRetailV2IntentClassificationConfig {
   });
 
   GoogleCloudRetailV2IntentClassificationConfig.fromJson(core.Map json_)
-      : this(
-          blocklistKeywords: (json_['blocklistKeywords'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          disabledIntentTypes: (json_['disabledIntentTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          example: (json_['example'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2IntentClassificationConfigExample.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          inlineSource: json_.containsKey('inlineSource')
-              ? GoogleCloudRetailV2IntentClassificationConfigInlineSource
-                  .fromJson(json_['inlineSource']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          modelPreamble: json_['modelPreamble'] as core.String?,
-        );
+    : this(
+        blocklistKeywords:
+            (json_['blocklistKeywords'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        disabledIntentTypes:
+            (json_['disabledIntentTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        example:
+            (json_['example'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2IntentClassificationConfigExample.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        inlineSource:
+            json_.containsKey('inlineSource')
+                ? GoogleCloudRetailV2IntentClassificationConfigInlineSource.fromJson(
+                  json_['inlineSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        modelPreamble: json_['modelPreamble'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blocklistKeywords != null) 'blocklistKeywords': blocklistKeywords!,
-        if (disabledIntentTypes != null)
-          'disabledIntentTypes': disabledIntentTypes!,
-        if (example != null) 'example': example!,
-        if (inlineSource != null) 'inlineSource': inlineSource!,
-        if (modelPreamble != null) 'modelPreamble': modelPreamble!,
-      };
+    if (blocklistKeywords != null) 'blocklistKeywords': blocklistKeywords!,
+    if (disabledIntentTypes != null)
+      'disabledIntentTypes': disabledIntentTypes!,
+    if (example != null) 'example': example!,
+    if (inlineSource != null) 'inlineSource': inlineSource!,
+    if (modelPreamble != null) 'modelPreamble': modelPreamble!,
+  };
 }
 
 /// An example for intent classification.
@@ -6112,20 +6248,19 @@ class GoogleCloudRetailV2IntentClassificationConfigExample {
   });
 
   GoogleCloudRetailV2IntentClassificationConfigExample.fromJson(core.Map json_)
-      : this(
-          classifiedPositive: json_['classifiedPositive'] as core.bool?,
-          intentType: json_['intentType'] as core.String?,
-          query: json_['query'] as core.String?,
-          reason: json_['reason'] as core.String?,
-        );
+    : this(
+        classifiedPositive: json_['classifiedPositive'] as core.bool?,
+        intentType: json_['intentType'] as core.String?,
+        query: json_['query'] as core.String?,
+        reason: json_['reason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (classifiedPositive != null)
-          'classifiedPositive': classifiedPositive!,
-        if (intentType != null) 'intentType': intentType!,
-        if (query != null) 'query': query!,
-        if (reason != null) 'reason': reason!,
-      };
+    if (classifiedPositive != null) 'classifiedPositive': classifiedPositive!,
+    if (intentType != null) 'intentType': intentType!,
+    if (query != null) 'query': query!,
+    if (reason != null) 'reason': reason!,
+  };
 }
 
 /// An inline force intent classification configuration.
@@ -6157,18 +6292,18 @@ class GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent {
   });
 
   GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent.fromJson(
-      core.Map json_)
-      : this(
-          intentType: json_['intentType'] as core.String?,
-          operation: json_['operation'] as core.String?,
-          query: json_['query'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        intentType: json_['intentType'] as core.String?,
+        operation: json_['operation'] as core.String?,
+        query: json_['query'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (intentType != null) 'intentType': intentType!,
-        if (operation != null) 'operation': operation!,
-        if (query != null) 'query': query!,
-      };
+    if (intentType != null) 'intentType': intentType!,
+    if (operation != null) 'operation': operation!,
+    if (query != null) 'query': query!,
+  };
 }
 
 /// Inline source for intent classifications.
@@ -6177,26 +6312,29 @@ class GoogleCloudRetailV2IntentClassificationConfigInlineSource {
   ///
   /// Optional.
   core.List<GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent>?
-      inlineForceIntents;
+  inlineForceIntents;
 
   GoogleCloudRetailV2IntentClassificationConfigInlineSource({
     this.inlineForceIntents,
   });
 
   GoogleCloudRetailV2IntentClassificationConfigInlineSource.fromJson(
-      core.Map json_)
-      : this(
-          inlineForceIntents: (json_['inlineForceIntents'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        inlineForceIntents:
+            (json_['inlineForceIntents'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inlineForceIntents != null)
-          'inlineForceIntents': inlineForceIntents!,
-      };
+    if (inlineForceIntents != null) 'inlineForceIntents': inlineForceIntents!,
+  };
 }
 
 /// A floating point interval.
@@ -6221,21 +6359,19 @@ class GoogleCloudRetailV2Interval {
   });
 
   GoogleCloudRetailV2Interval.fromJson(core.Map json_)
-      : this(
-          exclusiveMaximum:
-              (json_['exclusiveMaximum'] as core.num?)?.toDouble(),
-          exclusiveMinimum:
-              (json_['exclusiveMinimum'] as core.num?)?.toDouble(),
-          maximum: (json_['maximum'] as core.num?)?.toDouble(),
-          minimum: (json_['minimum'] as core.num?)?.toDouble(),
-        );
+    : this(
+        exclusiveMaximum: (json_['exclusiveMaximum'] as core.num?)?.toDouble(),
+        exclusiveMinimum: (json_['exclusiveMinimum'] as core.num?)?.toDouble(),
+        maximum: (json_['maximum'] as core.num?)?.toDouble(),
+        minimum: (json_['minimum'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exclusiveMaximum != null) 'exclusiveMaximum': exclusiveMaximum!,
-        if (exclusiveMinimum != null) 'exclusiveMinimum': exclusiveMinimum!,
-        if (maximum != null) 'maximum': maximum!,
-        if (minimum != null) 'minimum': minimum!,
-      };
+    if (exclusiveMaximum != null) 'exclusiveMaximum': exclusiveMaximum!,
+    if (exclusiveMinimum != null) 'exclusiveMinimum': exclusiveMinimum!,
+    if (maximum != null) 'maximum': maximum!,
+    if (minimum != null) 'minimum': minimum!,
+  };
 }
 
 /// Response for CatalogService.ListCatalogs method.
@@ -6249,24 +6385,25 @@ class GoogleCloudRetailV2ListCatalogsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleCloudRetailV2ListCatalogsResponse({
-    this.catalogs,
-    this.nextPageToken,
-  });
+  GoogleCloudRetailV2ListCatalogsResponse({this.catalogs, this.nextPageToken});
 
   GoogleCloudRetailV2ListCatalogsResponse.fromJson(core.Map json_)
-      : this(
-          catalogs: (json_['catalogs'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2Catalog.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        catalogs:
+            (json_['catalogs'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2Catalog.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (catalogs != null) 'catalogs': catalogs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (catalogs != null) 'catalogs': catalogs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response for ListControls method.
@@ -6277,51 +6414,55 @@ class GoogleCloudRetailV2ListControlsResponse {
   /// Pagination token, if not returned indicates the last page.
   core.String? nextPageToken;
 
-  GoogleCloudRetailV2ListControlsResponse({
-    this.controls,
-    this.nextPageToken,
-  });
+  GoogleCloudRetailV2ListControlsResponse({this.controls, this.nextPageToken});
 
   GoogleCloudRetailV2ListControlsResponse.fromJson(core.Map json_)
-      : this(
-          controls: (json_['controls'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2Control.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        controls:
+            (json_['controls'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2Control.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (controls != null) 'controls': controls!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (controls != null) 'controls': controls!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response for ListQuestions method.
 class GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse {
   /// All the questions for a given catalog.
   core.List<GoogleCloudRetailV2GenerativeQuestionConfig>?
-      generativeQuestionConfigs;
+  generativeQuestionConfigs;
 
   GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse({
     this.generativeQuestionConfigs,
   });
 
   GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse.fromJson(
-      core.Map json_)
-      : this(
-          generativeQuestionConfigs:
-              (json_['generativeQuestionConfigs'] as core.List?)
-                  ?.map((value) =>
+    core.Map json_,
+  ) : this(
+        generativeQuestionConfigs:
+            (json_['generativeQuestionConfigs'] as core.List?)
+                ?.map(
+                  (value) =>
                       GoogleCloudRetailV2GenerativeQuestionConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (generativeQuestionConfigs != null)
-          'generativeQuestionConfigs': generativeQuestionConfigs!,
-      };
+    if (generativeQuestionConfigs != null)
+      'generativeQuestionConfigs': generativeQuestionConfigs!,
+  };
 }
 
 /// Response to a ListModelRequest.
@@ -6332,24 +6473,25 @@ class GoogleCloudRetailV2ListModelsResponse {
   /// Pagination token, if not returned indicates the last page.
   core.String? nextPageToken;
 
-  GoogleCloudRetailV2ListModelsResponse({
-    this.models,
-    this.nextPageToken,
-  });
+  GoogleCloudRetailV2ListModelsResponse({this.models, this.nextPageToken});
 
   GoogleCloudRetailV2ListModelsResponse.fromJson(core.Map json_)
-      : this(
-          models: (json_['models'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2Model.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        models:
+            (json_['models'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2Model.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (models != null) 'models': models!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (models != null) 'models': models!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ProductService.ListProducts method.
@@ -6363,24 +6505,25 @@ class GoogleCloudRetailV2ListProductsResponse {
   /// The Products.
   core.List<GoogleCloudRetailV2Product>? products;
 
-  GoogleCloudRetailV2ListProductsResponse({
-    this.nextPageToken,
-    this.products,
-  });
+  GoogleCloudRetailV2ListProductsResponse({this.nextPageToken, this.products});
 
   GoogleCloudRetailV2ListProductsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          products: (json_['products'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2Product.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        products:
+            (json_['products'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2Product.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (products != null) 'products': products!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (products != null) 'products': products!,
+  };
 }
 
 /// Response for ListServingConfigs method.
@@ -6397,18 +6540,22 @@ class GoogleCloudRetailV2ListServingConfigsResponse {
   });
 
   GoogleCloudRetailV2ListServingConfigsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          servingConfigs: (json_['servingConfigs'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2ServingConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        servingConfigs:
+            (json_['servingConfigs'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2ServingConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (servingConfigs != null) 'servingConfigs': servingConfigs!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (servingConfigs != null) 'servingConfigs': servingConfigs!,
+  };
 }
 
 /// The inventory information at a place (e.g. a store) identified by a place
@@ -6467,32 +6614,35 @@ class GoogleCloudRetailV2LocalInventory {
   });
 
   GoogleCloudRetailV2LocalInventory.fromJson(core.Map json_)
-      : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudRetailV2CustomAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudRetailV2CustomAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          fulfillmentTypes: (json_['fulfillmentTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          placeId: json_['placeId'] as core.String?,
-          priceInfo: json_.containsKey('priceInfo')
-              ? GoogleCloudRetailV2PriceInfo.fromJson(
-                  json_['priceInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        fulfillmentTypes:
+            (json_['fulfillmentTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        placeId: json_['placeId'] as core.String?,
+        priceInfo:
+            json_.containsKey('priceInfo')
+                ? GoogleCloudRetailV2PriceInfo.fromJson(
+                  json_['priceInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (fulfillmentTypes != null) 'fulfillmentTypes': fulfillmentTypes!,
-        if (placeId != null) 'placeId': placeId!,
-        if (priceInfo != null) 'priceInfo': priceInfo!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (fulfillmentTypes != null) 'fulfillmentTypes': fulfillmentTypes!,
+    if (placeId != null) 'placeId': placeId!,
+    if (priceInfo != null) 'priceInfo': priceInfo!,
+  };
 }
 
 /// Metadata that describes the training and serving parameters of a Model.
@@ -6685,53 +6835,57 @@ class GoogleCloudRetailV2Model {
   });
 
   GoogleCloudRetailV2Model.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          dataState: json_['dataState'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          filteringOption: json_['filteringOption'] as core.String?,
-          lastTuneTime: json_['lastTuneTime'] as core.String?,
-          modelFeaturesConfig: json_.containsKey('modelFeaturesConfig')
-              ? GoogleCloudRetailV2ModelModelFeaturesConfig.fromJson(
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        dataState: json_['dataState'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        filteringOption: json_['filteringOption'] as core.String?,
+        lastTuneTime: json_['lastTuneTime'] as core.String?,
+        modelFeaturesConfig:
+            json_.containsKey('modelFeaturesConfig')
+                ? GoogleCloudRetailV2ModelModelFeaturesConfig.fromJson(
                   json_['modelFeaturesConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          optimizationObjective: json_['optimizationObjective'] as core.String?,
-          periodicTuningState: json_['periodicTuningState'] as core.String?,
-          servingConfigLists: (json_['servingConfigLists'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2ModelServingConfigList.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          servingState: json_['servingState'] as core.String?,
-          trainingState: json_['trainingState'] as core.String?,
-          tuningOperation: json_['tuningOperation'] as core.String?,
-          type: json_['type'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        optimizationObjective: json_['optimizationObjective'] as core.String?,
+        periodicTuningState: json_['periodicTuningState'] as core.String?,
+        servingConfigLists:
+            (json_['servingConfigLists'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2ModelServingConfigList.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        servingState: json_['servingState'] as core.String?,
+        trainingState: json_['trainingState'] as core.String?,
+        tuningOperation: json_['tuningOperation'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (dataState != null) 'dataState': dataState!,
-        if (displayName != null) 'displayName': displayName!,
-        if (filteringOption != null) 'filteringOption': filteringOption!,
-        if (lastTuneTime != null) 'lastTuneTime': lastTuneTime!,
-        if (modelFeaturesConfig != null)
-          'modelFeaturesConfig': modelFeaturesConfig!,
-        if (name != null) 'name': name!,
-        if (optimizationObjective != null)
-          'optimizationObjective': optimizationObjective!,
-        if (periodicTuningState != null)
-          'periodicTuningState': periodicTuningState!,
-        if (servingConfigLists != null)
-          'servingConfigLists': servingConfigLists!,
-        if (servingState != null) 'servingState': servingState!,
-        if (trainingState != null) 'trainingState': trainingState!,
-        if (tuningOperation != null) 'tuningOperation': tuningOperation!,
-        if (type != null) 'type': type!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (dataState != null) 'dataState': dataState!,
+    if (displayName != null) 'displayName': displayName!,
+    if (filteringOption != null) 'filteringOption': filteringOption!,
+    if (lastTuneTime != null) 'lastTuneTime': lastTuneTime!,
+    if (modelFeaturesConfig != null)
+      'modelFeaturesConfig': modelFeaturesConfig!,
+    if (name != null) 'name': name!,
+    if (optimizationObjective != null)
+      'optimizationObjective': optimizationObjective!,
+    if (periodicTuningState != null)
+      'periodicTuningState': periodicTuningState!,
+    if (servingConfigLists != null) 'servingConfigLists': servingConfigLists!,
+    if (servingState != null) 'servingState': servingState!,
+    if (trainingState != null) 'trainingState': trainingState!,
+    if (tuningOperation != null) 'tuningOperation': tuningOperation!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Additional configs for the frequently-bought-together model type.
@@ -6757,41 +6911,40 @@ class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig {
   });
 
   GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig.fromJson(
-      core.Map json_)
-      : this(
-          contextProductsType: json_['contextProductsType'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(contextProductsType: json_['contextProductsType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contextProductsType != null)
-          'contextProductsType': contextProductsType!,
-      };
+    if (contextProductsType != null)
+      'contextProductsType': contextProductsType!,
+  };
 }
 
 /// Additional model features config.
 class GoogleCloudRetailV2ModelModelFeaturesConfig {
   /// Additional configs for frequently-bought-together models.
   GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig?
-      frequentlyBoughtTogetherConfig;
+  frequentlyBoughtTogetherConfig;
 
   GoogleCloudRetailV2ModelModelFeaturesConfig({
     this.frequentlyBoughtTogetherConfig,
   });
 
   GoogleCloudRetailV2ModelModelFeaturesConfig.fromJson(core.Map json_)
-      : this(
-          frequentlyBoughtTogetherConfig: json_
-                  .containsKey('frequentlyBoughtTogetherConfig')
-              ? GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig
-                  .fromJson(json_['frequentlyBoughtTogetherConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        frequentlyBoughtTogetherConfig:
+            json_.containsKey('frequentlyBoughtTogetherConfig')
+                ? GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig.fromJson(
+                  json_['frequentlyBoughtTogetherConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frequentlyBoughtTogetherConfig != null)
-          'frequentlyBoughtTogetherConfig': frequentlyBoughtTogetherConfig!,
-      };
+    if (frequentlyBoughtTogetherConfig != null)
+      'frequentlyBoughtTogetherConfig': frequentlyBoughtTogetherConfig!,
+  };
 }
 
 /// Represents an ordered combination of valid serving configs, which can be
@@ -6802,20 +6955,19 @@ class GoogleCloudRetailV2ModelServingConfigList {
   /// Optional.
   core.List<core.String>? servingConfigIds;
 
-  GoogleCloudRetailV2ModelServingConfigList({
-    this.servingConfigIds,
-  });
+  GoogleCloudRetailV2ModelServingConfigList({this.servingConfigIds});
 
   GoogleCloudRetailV2ModelServingConfigList.fromJson(core.Map json_)
-      : this(
-          servingConfigIds: (json_['servingConfigIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        servingConfigIds:
+            (json_['servingConfigIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (servingConfigIds != null) 'servingConfigIds': servingConfigIds!,
-      };
+    if (servingConfigIds != null) 'servingConfigIds': servingConfigIds!,
+  };
 }
 
 /// The output configuration setting.
@@ -6832,24 +6984,28 @@ class GoogleCloudRetailV2OutputConfig {
   });
 
   GoogleCloudRetailV2OutputConfig.fromJson(core.Map json_)
-      : this(
-          bigqueryDestination: json_.containsKey('bigqueryDestination')
-              ? GoogleCloudRetailV2OutputConfigBigQueryDestination.fromJson(
+    : this(
+        bigqueryDestination:
+            json_.containsKey('bigqueryDestination')
+                ? GoogleCloudRetailV2OutputConfigBigQueryDestination.fromJson(
                   json_['bigqueryDestination']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          gcsDestination: json_.containsKey('gcsDestination')
-              ? GoogleCloudRetailV2OutputConfigGcsDestination.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gcsDestination:
+            json_.containsKey('gcsDestination')
+                ? GoogleCloudRetailV2OutputConfigGcsDestination.fromJson(
                   json_['gcsDestination']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination!,
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
-      };
+    if (bigqueryDestination != null)
+      'bigqueryDestination': bigqueryDestination!,
+    if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+  };
 }
 
 /// The BigQuery output destination configuration.
@@ -6879,17 +7035,17 @@ class GoogleCloudRetailV2OutputConfigBigQueryDestination {
   });
 
   GoogleCloudRetailV2OutputConfigBigQueryDestination.fromJson(core.Map json_)
-      : this(
-          datasetId: json_['datasetId'] as core.String?,
-          tableIdPrefix: json_['tableIdPrefix'] as core.String?,
-          tableType: json_['tableType'] as core.String?,
-        );
+    : this(
+        datasetId: json_['datasetId'] as core.String?,
+        tableIdPrefix: json_['tableIdPrefix'] as core.String?,
+        tableType: json_['tableType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (datasetId != null) 'datasetId': datasetId!,
-        if (tableIdPrefix != null) 'tableIdPrefix': tableIdPrefix!,
-        if (tableType != null) 'tableType': tableType!,
-      };
+    if (datasetId != null) 'datasetId': datasetId!,
+    if (tableIdPrefix != null) 'tableIdPrefix': tableIdPrefix!,
+    if (tableType != null) 'tableType': tableType!,
+  };
 }
 
 /// The Google Cloud Storage output destination configuration.
@@ -6905,18 +7061,14 @@ class GoogleCloudRetailV2OutputConfigGcsDestination {
   /// Required.
   core.String? outputUriPrefix;
 
-  GoogleCloudRetailV2OutputConfigGcsDestination({
-    this.outputUriPrefix,
-  });
+  GoogleCloudRetailV2OutputConfigGcsDestination({this.outputUriPrefix});
 
   GoogleCloudRetailV2OutputConfigGcsDestination.fromJson(core.Map json_)
-      : this(
-          outputUriPrefix: json_['outputUriPrefix'] as core.String?,
-        );
+    : this(outputUriPrefix: json_['outputUriPrefix'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
-      };
+    if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
+  };
 }
 
 /// Detailed panel information associated with a user event.
@@ -6965,26 +7117,30 @@ class GoogleCloudRetailV2PanelInfo {
   });
 
   GoogleCloudRetailV2PanelInfo.fromJson(core.Map json_)
-      : this(
-          attributionToken: json_['attributionToken'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          panelId: json_['panelId'] as core.String?,
-          panelPosition: json_['panelPosition'] as core.int?,
-          productDetails: (json_['productDetails'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2ProductDetail.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          totalPanels: json_['totalPanels'] as core.int?,
-        );
+    : this(
+        attributionToken: json_['attributionToken'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        panelId: json_['panelId'] as core.String?,
+        panelPosition: json_['panelPosition'] as core.int?,
+        productDetails:
+            (json_['productDetails'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2ProductDetail.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        totalPanels: json_['totalPanels'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributionToken != null) 'attributionToken': attributionToken!,
-        if (displayName != null) 'displayName': displayName!,
-        if (panelId != null) 'panelId': panelId!,
-        if (panelPosition != null) 'panelPosition': panelPosition!,
-        if (productDetails != null) 'productDetails': productDetails!,
-        if (totalPanels != null) 'totalPanels': totalPanels!,
-      };
+    if (attributionToken != null) 'attributionToken': attributionToken!,
+    if (displayName != null) 'displayName': displayName!,
+    if (panelId != null) 'panelId': panelId!,
+    if (panelPosition != null) 'panelPosition': panelPosition!,
+    if (productDetails != null) 'productDetails': productDetails!,
+    if (totalPanels != null) 'totalPanels': totalPanels!,
+  };
 }
 
 /// Request for pausing training of a model.
@@ -6996,12 +7152,12 @@ typedef GoogleCloudRetailV2PauseModelRequest = $Empty;
 class GoogleCloudRetailV2PinControlMetadata {
   /// Map of all matched pins, keyed by pin position.
   core.Map<core.String, GoogleCloudRetailV2PinControlMetadataProductPins>?
-      allMatchedPins;
+  allMatchedPins;
 
   /// Map of pins that were dropped due to overlap with other matching pins,
   /// keyed by pin position.
   core.Map<core.String, GoogleCloudRetailV2PinControlMetadataProductPins>?
-      droppedPins;
+  droppedPins;
 
   GoogleCloudRetailV2PinControlMetadata({
     this.allMatchedPins,
@@ -7009,31 +7165,32 @@ class GoogleCloudRetailV2PinControlMetadata {
   });
 
   GoogleCloudRetailV2PinControlMetadata.fromJson(core.Map json_)
-      : this(
-          allMatchedPins:
-              (json_['allMatchedPins'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        allMatchedPins: (json_['allMatchedPins']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          droppedPins:
-              (json_['droppedPins'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        droppedPins:
+            (json_['droppedPins'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allMatchedPins != null) 'allMatchedPins': allMatchedPins!,
-        if (droppedPins != null) 'droppedPins': droppedPins!,
-      };
+    if (allMatchedPins != null) 'allMatchedPins': allMatchedPins!,
+    if (droppedPins != null) 'droppedPins': droppedPins!,
+  };
 }
 
 /// List of product ids which have associated pins.
@@ -7041,20 +7198,19 @@ class GoogleCloudRetailV2PinControlMetadataProductPins {
   /// List of product ids which have associated pins.
   core.List<core.String>? productId;
 
-  GoogleCloudRetailV2PinControlMetadataProductPins({
-    this.productId,
-  });
+  GoogleCloudRetailV2PinControlMetadataProductPins({this.productId});
 
   GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(core.Map json_)
-      : this(
-          productId: (json_['productId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        productId:
+            (json_['productId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (productId != null) 'productId': productId!,
-      };
+    if (productId != null) 'productId': productId!,
+  };
 }
 
 /// Request message for Predict method.
@@ -7173,36 +7329,35 @@ class GoogleCloudRetailV2PredictRequest {
   });
 
   GoogleCloudRetailV2PredictRequest.fromJson(core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          pageSize: json_['pageSize'] as core.int?,
-          pageToken: json_['pageToken'] as core.String?,
-          params: json_.containsKey('params')
-              ? json_['params'] as core.Map<core.String, core.dynamic>
-              : null,
-          userEvent: json_.containsKey('userEvent')
-              ? GoogleCloudRetailV2UserEvent.fromJson(
-                  json_['userEvent'] as core.Map<core.String, core.dynamic>)
-              : null,
-          validateOnly: json_['validateOnly'] as core.bool?,
-        );
+    : this(
+        filter: json_['filter'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+        params:
+            json_.containsKey('params')
+                ? json_['params'] as core.Map<core.String, core.dynamic>
+                : null,
+        userEvent:
+            json_.containsKey('userEvent')
+                ? GoogleCloudRetailV2UserEvent.fromJson(
+                  json_['userEvent'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (labels != null) 'labels': labels!,
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-        if (params != null) 'params': params!,
-        if (userEvent != null) 'userEvent': userEvent!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (labels != null) 'labels': labels!,
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (pageToken != null) 'pageToken': pageToken!,
+    if (params != null) 'params': params!,
+    if (userEvent != null) 'userEvent': userEvent!,
+    if (validateOnly != null) 'validateOnly': validateOnly!,
+  };
 }
 
 /// Response message for predict method.
@@ -7234,25 +7389,30 @@ class GoogleCloudRetailV2PredictResponse {
   });
 
   GoogleCloudRetailV2PredictResponse.fromJson(core.Map json_)
-      : this(
-          attributionToken: json_['attributionToken'] as core.String?,
-          missingIds: (json_['missingIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          results: (json_['results'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2PredictResponsePredictionResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          validateOnly: json_['validateOnly'] as core.bool?,
-        );
+    : this(
+        attributionToken: json_['attributionToken'] as core.String?,
+        missingIds:
+            (json_['missingIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        results:
+            (json_['results'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2PredictResponsePredictionResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributionToken != null) 'attributionToken': attributionToken!,
-        if (missingIds != null) 'missingIds': missingIds!,
-        if (results != null) 'results': results!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
+    if (attributionToken != null) 'attributionToken': attributionToken!,
+    if (missingIds != null) 'missingIds': missingIds!,
+    if (results != null) 'results': results!,
+    if (validateOnly != null) 'validateOnly': validateOnly!,
+  };
 }
 
 /// PredictionResult represents the recommendation prediction results.
@@ -7271,23 +7431,21 @@ class GoogleCloudRetailV2PredictResponsePredictionResult {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? metadata;
 
-  GoogleCloudRetailV2PredictResponsePredictionResult({
-    this.id,
-    this.metadata,
-  });
+  GoogleCloudRetailV2PredictResponsePredictionResult({this.id, this.metadata});
 
   GoogleCloudRetailV2PredictResponsePredictionResult.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (metadata != null) 'metadata': metadata!,
-      };
+    if (id != null) 'id': id!,
+    if (metadata != null) 'metadata': metadata!,
+  };
 }
 
 /// The price information of a Product.
@@ -7360,29 +7518,30 @@ class GoogleCloudRetailV2PriceInfo {
   });
 
   GoogleCloudRetailV2PriceInfo.fromJson(core.Map json_)
-      : this(
-          cost: (json_['cost'] as core.num?)?.toDouble(),
-          currencyCode: json_['currencyCode'] as core.String?,
-          originalPrice: (json_['originalPrice'] as core.num?)?.toDouble(),
-          price: (json_['price'] as core.num?)?.toDouble(),
-          priceEffectiveTime: json_['priceEffectiveTime'] as core.String?,
-          priceExpireTime: json_['priceExpireTime'] as core.String?,
-          priceRange: json_.containsKey('priceRange')
-              ? GoogleCloudRetailV2PriceInfoPriceRange.fromJson(
-                  json_['priceRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        cost: (json_['cost'] as core.num?)?.toDouble(),
+        currencyCode: json_['currencyCode'] as core.String?,
+        originalPrice: (json_['originalPrice'] as core.num?)?.toDouble(),
+        price: (json_['price'] as core.num?)?.toDouble(),
+        priceEffectiveTime: json_['priceEffectiveTime'] as core.String?,
+        priceExpireTime: json_['priceExpireTime'] as core.String?,
+        priceRange:
+            json_.containsKey('priceRange')
+                ? GoogleCloudRetailV2PriceInfoPriceRange.fromJson(
+                  json_['priceRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cost != null) 'cost': cost!,
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (originalPrice != null) 'originalPrice': originalPrice!,
-        if (price != null) 'price': price!,
-        if (priceEffectiveTime != null)
-          'priceEffectiveTime': priceEffectiveTime!,
-        if (priceExpireTime != null) 'priceExpireTime': priceExpireTime!,
-        if (priceRange != null) 'priceRange': priceRange!,
-      };
+    if (cost != null) 'cost': cost!,
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+    if (originalPrice != null) 'originalPrice': originalPrice!,
+    if (price != null) 'price': price!,
+    if (priceEffectiveTime != null) 'priceEffectiveTime': priceEffectiveTime!,
+    if (priceExpireTime != null) 'priceExpireTime': priceExpireTime!,
+    if (priceRange != null) 'priceRange': priceRange!,
+  };
 }
 
 /// The price range of all variant Product having the same
@@ -7396,27 +7555,28 @@ class GoogleCloudRetailV2PriceInfoPriceRange {
   /// having the same Product.primary_product_id.
   GoogleCloudRetailV2Interval? price;
 
-  GoogleCloudRetailV2PriceInfoPriceRange({
-    this.originalPrice,
-    this.price,
-  });
+  GoogleCloudRetailV2PriceInfoPriceRange({this.originalPrice, this.price});
 
   GoogleCloudRetailV2PriceInfoPriceRange.fromJson(core.Map json_)
-      : this(
-          originalPrice: json_.containsKey('originalPrice')
-              ? GoogleCloudRetailV2Interval.fromJson(
-                  json_['originalPrice'] as core.Map<core.String, core.dynamic>)
-              : null,
-          price: json_.containsKey('price')
-              ? GoogleCloudRetailV2Interval.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        originalPrice:
+            json_.containsKey('originalPrice')
+                ? GoogleCloudRetailV2Interval.fromJson(
+                  json_['originalPrice'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        price:
+            json_.containsKey('price')
+                ? GoogleCloudRetailV2Interval.fromJson(
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (originalPrice != null) 'originalPrice': originalPrice!,
-        if (price != null) 'price': price!,
-      };
+    if (originalPrice != null) 'originalPrice': originalPrice!,
+    if (price != null) 'price': price!,
+  };
 }
 
 /// Product captures all metadata information of items to be recommended or
@@ -7838,131 +7998,167 @@ class GoogleCloudRetailV2Product {
   });
 
   GoogleCloudRetailV2Product.fromJson(core.Map json_)
-      : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudRetailV2CustomAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudRetailV2CustomAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          audience: json_.containsKey('audience')
-              ? GoogleCloudRetailV2Audience.fromJson(
-                  json_['audience'] as core.Map<core.String, core.dynamic>)
-              : null,
-          availability: json_['availability'] as core.String?,
-          availableQuantity: json_['availableQuantity'] as core.int?,
-          availableTime: json_['availableTime'] as core.String?,
-          brands: (json_['brands'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          categories: (json_['categories'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          collectionMemberIds: (json_['collectionMemberIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          colorInfo: json_.containsKey('colorInfo')
-              ? GoogleCloudRetailV2ColorInfo.fromJson(
-                  json_['colorInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          conditions: (json_['conditions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          description: json_['description'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          fulfillmentInfo: (json_['fulfillmentInfo'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2FulfillmentInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          gtin: json_['gtin'] as core.String?,
-          id: json_['id'] as core.String?,
-          images: (json_['images'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2Image.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          languageCode: json_['languageCode'] as core.String?,
-          localInventories: (json_['localInventories'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2LocalInventory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          materials: (json_['materials'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          patterns: (json_['patterns'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          priceInfo: json_.containsKey('priceInfo')
-              ? GoogleCloudRetailV2PriceInfo.fromJson(
-                  json_['priceInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          primaryProductId: json_['primaryProductId'] as core.String?,
-          promotions: (json_['promotions'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2Promotion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          publishTime: json_['publishTime'] as core.String?,
-          rating: json_.containsKey('rating')
-              ? GoogleCloudRetailV2Rating.fromJson(
-                  json_['rating'] as core.Map<core.String, core.dynamic>)
-              : null,
-          retrievableFields: json_['retrievableFields'] as core.String?,
-          sizes: (json_['sizes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          tags: (json_['tags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          title: json_['title'] as core.String?,
-          ttl: json_['ttl'] as core.String?,
-          type: json_['type'] as core.String?,
-          uri: json_['uri'] as core.String?,
-          variants: (json_['variants'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2Product.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+        audience:
+            json_.containsKey('audience')
+                ? GoogleCloudRetailV2Audience.fromJson(
+                  json_['audience'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        availability: json_['availability'] as core.String?,
+        availableQuantity: json_['availableQuantity'] as core.int?,
+        availableTime: json_['availableTime'] as core.String?,
+        brands:
+            (json_['brands'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        categories:
+            (json_['categories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        collectionMemberIds:
+            (json_['collectionMemberIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        colorInfo:
+            json_.containsKey('colorInfo')
+                ? GoogleCloudRetailV2ColorInfo.fromJson(
+                  json_['colorInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conditions:
+            (json_['conditions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        description: json_['description'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        fulfillmentInfo:
+            (json_['fulfillmentInfo'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2FulfillmentInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        gtin: json_['gtin'] as core.String?,
+        id: json_['id'] as core.String?,
+        images:
+            (json_['images'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2Image.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        languageCode: json_['languageCode'] as core.String?,
+        localInventories:
+            (json_['localInventories'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2LocalInventory.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        materials:
+            (json_['materials'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        patterns:
+            (json_['patterns'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        priceInfo:
+            json_.containsKey('priceInfo')
+                ? GoogleCloudRetailV2PriceInfo.fromJson(
+                  json_['priceInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        primaryProductId: json_['primaryProductId'] as core.String?,
+        promotions:
+            (json_['promotions'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2Promotion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        publishTime: json_['publishTime'] as core.String?,
+        rating:
+            json_.containsKey('rating')
+                ? GoogleCloudRetailV2Rating.fromJson(
+                  json_['rating'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        retrievableFields: json_['retrievableFields'] as core.String?,
+        sizes:
+            (json_['sizes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        tags:
+            (json_['tags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        title: json_['title'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+        type: json_['type'] as core.String?,
+        uri: json_['uri'] as core.String?,
+        variants:
+            (json_['variants'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2Product.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (audience != null) 'audience': audience!,
-        if (availability != null) 'availability': availability!,
-        if (availableQuantity != null) 'availableQuantity': availableQuantity!,
-        if (availableTime != null) 'availableTime': availableTime!,
-        if (brands != null) 'brands': brands!,
-        if (categories != null) 'categories': categories!,
-        if (collectionMemberIds != null)
-          'collectionMemberIds': collectionMemberIds!,
-        if (colorInfo != null) 'colorInfo': colorInfo!,
-        if (conditions != null) 'conditions': conditions!,
-        if (description != null) 'description': description!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (fulfillmentInfo != null) 'fulfillmentInfo': fulfillmentInfo!,
-        if (gtin != null) 'gtin': gtin!,
-        if (id != null) 'id': id!,
-        if (images != null) 'images': images!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (localInventories != null) 'localInventories': localInventories!,
-        if (materials != null) 'materials': materials!,
-        if (name != null) 'name': name!,
-        if (patterns != null) 'patterns': patterns!,
-        if (priceInfo != null) 'priceInfo': priceInfo!,
-        if (primaryProductId != null) 'primaryProductId': primaryProductId!,
-        if (promotions != null) 'promotions': promotions!,
-        if (publishTime != null) 'publishTime': publishTime!,
-        if (rating != null) 'rating': rating!,
-        if (retrievableFields != null) 'retrievableFields': retrievableFields!,
-        if (sizes != null) 'sizes': sizes!,
-        if (tags != null) 'tags': tags!,
-        if (title != null) 'title': title!,
-        if (ttl != null) 'ttl': ttl!,
-        if (type != null) 'type': type!,
-        if (uri != null) 'uri': uri!,
-        if (variants != null) 'variants': variants!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (audience != null) 'audience': audience!,
+    if (availability != null) 'availability': availability!,
+    if (availableQuantity != null) 'availableQuantity': availableQuantity!,
+    if (availableTime != null) 'availableTime': availableTime!,
+    if (brands != null) 'brands': brands!,
+    if (categories != null) 'categories': categories!,
+    if (collectionMemberIds != null)
+      'collectionMemberIds': collectionMemberIds!,
+    if (colorInfo != null) 'colorInfo': colorInfo!,
+    if (conditions != null) 'conditions': conditions!,
+    if (description != null) 'description': description!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (fulfillmentInfo != null) 'fulfillmentInfo': fulfillmentInfo!,
+    if (gtin != null) 'gtin': gtin!,
+    if (id != null) 'id': id!,
+    if (images != null) 'images': images!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (localInventories != null) 'localInventories': localInventories!,
+    if (materials != null) 'materials': materials!,
+    if (name != null) 'name': name!,
+    if (patterns != null) 'patterns': patterns!,
+    if (priceInfo != null) 'priceInfo': priceInfo!,
+    if (primaryProductId != null) 'primaryProductId': primaryProductId!,
+    if (promotions != null) 'promotions': promotions!,
+    if (publishTime != null) 'publishTime': publishTime!,
+    if (rating != null) 'rating': rating!,
+    if (retrievableFields != null) 'retrievableFields': retrievableFields!,
+    if (sizes != null) 'sizes': sizes!,
+    if (tags != null) 'tags': tags!,
+    if (title != null) 'title': title!,
+    if (ttl != null) 'ttl': ttl!,
+    if (type != null) 'type': type!,
+    if (uri != null) 'uri': uri!,
+    if (variants != null) 'variants': variants!,
+  };
 }
 
 /// Product attribute name and numeric interval.
@@ -7973,24 +8169,23 @@ class GoogleCloudRetailV2ProductAttributeInterval {
   /// The attribute name (e.g. "length")
   core.String? name;
 
-  GoogleCloudRetailV2ProductAttributeInterval({
-    this.interval,
-    this.name,
-  });
+  GoogleCloudRetailV2ProductAttributeInterval({this.interval, this.name});
 
   GoogleCloudRetailV2ProductAttributeInterval.fromJson(core.Map json_)
-      : this(
-          interval: json_.containsKey('interval')
-              ? GoogleCloudRetailV2Interval.fromJson(
-                  json_['interval'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        interval:
+            json_.containsKey('interval')
+                ? GoogleCloudRetailV2Interval.fromJson(
+                  json_['interval'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (interval != null) 'interval': interval!,
-        if (name != null) 'name': name!,
-      };
+    if (interval != null) 'interval': interval!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Product attribute which structured by an attribute name and value.
@@ -8005,21 +8200,18 @@ class GoogleCloudRetailV2ProductAttributeValue {
   /// The attribute value.
   core.String? value;
 
-  GoogleCloudRetailV2ProductAttributeValue({
-    this.name,
-    this.value,
-  });
+  GoogleCloudRetailV2ProductAttributeValue({this.name, this.value});
 
   GoogleCloudRetailV2ProductAttributeValue.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
+    if (name != null) 'name': name!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Detailed product information associated with a user event.
@@ -8043,24 +8235,23 @@ class GoogleCloudRetailV2ProductDetail {
   /// and `purchase-complete` event types.
   core.int? quantity;
 
-  GoogleCloudRetailV2ProductDetail({
-    this.product,
-    this.quantity,
-  });
+  GoogleCloudRetailV2ProductDetail({this.product, this.quantity});
 
   GoogleCloudRetailV2ProductDetail.fromJson(core.Map json_)
-      : this(
-          product: json_.containsKey('product')
-              ? GoogleCloudRetailV2Product.fromJson(
-                  json_['product'] as core.Map<core.String, core.dynamic>)
-              : null,
-          quantity: json_['quantity'] as core.int?,
-        );
+    : this(
+        product:
+            json_.containsKey('product')
+                ? GoogleCloudRetailV2Product.fromJson(
+                  json_['product'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        quantity: json_['quantity'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (product != null) 'product': product!,
-        if (quantity != null) 'quantity': quantity!,
-      };
+    if (product != null) 'product': product!,
+    if (quantity != null) 'quantity': quantity!,
+  };
 }
 
 /// The inline source for the input config for ImportProducts method.
@@ -8072,21 +8263,23 @@ class GoogleCloudRetailV2ProductInlineSource {
   /// Required.
   core.List<GoogleCloudRetailV2Product>? products;
 
-  GoogleCloudRetailV2ProductInlineSource({
-    this.products,
-  });
+  GoogleCloudRetailV2ProductInlineSource({this.products});
 
   GoogleCloudRetailV2ProductInlineSource.fromJson(core.Map json_)
-      : this(
-          products: (json_['products'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2Product.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        products:
+            (json_['products'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2Product.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (products != null) 'products': products!,
-      };
+    if (products != null) 'products': products!,
+  };
 }
 
 /// The input config source for products.
@@ -8107,29 +8300,35 @@ class GoogleCloudRetailV2ProductInputConfig {
   });
 
   GoogleCloudRetailV2ProductInputConfig.fromJson(core.Map json_)
-      : this(
-          bigQuerySource: json_.containsKey('bigQuerySource')
-              ? GoogleCloudRetailV2BigQuerySource.fromJson(
+    : this(
+        bigQuerySource:
+            json_.containsKey('bigQuerySource')
+                ? GoogleCloudRetailV2BigQuerySource.fromJson(
                   json_['bigQuerySource']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          gcsSource: json_.containsKey('gcsSource')
-              ? GoogleCloudRetailV2GcsSource.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          productInlineSource: json_.containsKey('productInlineSource')
-              ? GoogleCloudRetailV2ProductInlineSource.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? GoogleCloudRetailV2GcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        productInlineSource:
+            json_.containsKey('productInlineSource')
+                ? GoogleCloudRetailV2ProductInlineSource.fromJson(
                   json_['productInlineSource']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!,
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-        if (productInlineSource != null)
-          'productInlineSource': productInlineSource!,
-      };
+    if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!,
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+    if (productInlineSource != null)
+      'productInlineSource': productInlineSource!,
+  };
 }
 
 /// Configures what level the product should be uploaded with regards to how
@@ -8170,18 +8369,18 @@ class GoogleCloudRetailV2ProductLevelConfig {
   });
 
   GoogleCloudRetailV2ProductLevelConfig.fromJson(core.Map json_)
-      : this(
-          ingestionProductType: json_['ingestionProductType'] as core.String?,
-          merchantCenterProductIdField:
-              json_['merchantCenterProductIdField'] as core.String?,
-        );
+    : this(
+        ingestionProductType: json_['ingestionProductType'] as core.String?,
+        merchantCenterProductIdField:
+            json_['merchantCenterProductIdField'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ingestionProductType != null)
-          'ingestionProductType': ingestionProductType!,
-        if (merchantCenterProductIdField != null)
-          'merchantCenterProductIdField': merchantCenterProductIdField!,
-      };
+    if (ingestionProductType != null)
+      'ingestionProductType': ingestionProductType!,
+    if (merchantCenterProductIdField != null)
+      'merchantCenterProductIdField': merchantCenterProductIdField!,
+  };
 }
 
 /// Promotion specification.
@@ -8197,18 +8396,14 @@ class GoogleCloudRetailV2Promotion {
   /// [promotion_id](https://support.google.com/merchants/answer/7050148).
   core.String? promotionId;
 
-  GoogleCloudRetailV2Promotion({
-    this.promotionId,
-  });
+  GoogleCloudRetailV2Promotion({this.promotionId});
 
   GoogleCloudRetailV2Promotion.fromJson(core.Map json_)
-      : this(
-          promotionId: json_['promotionId'] as core.String?,
-        );
+    : this(promotionId: json_['promotionId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (promotionId != null) 'promotionId': promotionId!,
-      };
+    if (promotionId != null) 'promotionId': promotionId!,
+  };
 }
 
 /// A transaction represents the entire purchase transaction.
@@ -8249,21 +8444,21 @@ class GoogleCloudRetailV2PurchaseTransaction {
   });
 
   GoogleCloudRetailV2PurchaseTransaction.fromJson(core.Map json_)
-      : this(
-          cost: (json_['cost'] as core.num?)?.toDouble(),
-          currencyCode: json_['currencyCode'] as core.String?,
-          id: json_['id'] as core.String?,
-          revenue: (json_['revenue'] as core.num?)?.toDouble(),
-          tax: (json_['tax'] as core.num?)?.toDouble(),
-        );
+    : this(
+        cost: (json_['cost'] as core.num?)?.toDouble(),
+        currencyCode: json_['currencyCode'] as core.String?,
+        id: json_['id'] as core.String?,
+        revenue: (json_['revenue'] as core.num?)?.toDouble(),
+        tax: (json_['tax'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cost != null) 'cost': cost!,
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (id != null) 'id': id!,
-        if (revenue != null) 'revenue': revenue!,
-        if (tax != null) 'tax': tax!,
-      };
+    if (cost != null) 'cost': cost!,
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+    if (id != null) 'id': id!,
+    if (revenue != null) 'revenue': revenue!,
+    if (tax != null) 'tax': tax!,
+  };
 }
 
 /// Request message for PurgeProducts method.
@@ -8296,21 +8491,18 @@ class GoogleCloudRetailV2PurgeProductsRequest {
   /// count without deleting any products.
   core.bool? force;
 
-  GoogleCloudRetailV2PurgeProductsRequest({
-    this.filter,
-    this.force,
-  });
+  GoogleCloudRetailV2PurgeProductsRequest({this.filter, this.force});
 
   GoogleCloudRetailV2PurgeProductsRequest.fromJson(core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          force: json_['force'] as core.bool?,
-        );
+    : this(
+        filter: json_['filter'] as core.String?,
+        force: json_['force'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (force != null) 'force': force!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (force != null) 'force': force!,
+  };
 }
 
 /// Request message for PurgeUserEvents method.
@@ -8339,21 +8531,18 @@ class GoogleCloudRetailV2PurgeUserEventsRequest {
   /// count without deleting any user events.
   core.bool? force;
 
-  GoogleCloudRetailV2PurgeUserEventsRequest({
-    this.filter,
-    this.force,
-  });
+  GoogleCloudRetailV2PurgeUserEventsRequest({this.filter, this.force});
 
   GoogleCloudRetailV2PurgeUserEventsRequest.fromJson(core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          force: json_['force'] as core.bool?,
-        );
+    : this(
+        filter: json_['filter'] as core.String?,
+        force: json_['force'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (force != null) 'force': force!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (force != null) 'force': force!,
+  };
 }
 
 /// The rating of a Product.
@@ -8385,19 +8574,20 @@ class GoogleCloudRetailV2Rating {
   });
 
   GoogleCloudRetailV2Rating.fromJson(core.Map json_)
-      : this(
-          averageRating: (json_['averageRating'] as core.num?)?.toDouble(),
-          ratingCount: json_['ratingCount'] as core.int?,
-          ratingHistogram: (json_['ratingHistogram'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-        );
+    : this(
+        averageRating: (json_['averageRating'] as core.num?)?.toDouble(),
+        ratingCount: json_['ratingCount'] as core.int?,
+        ratingHistogram:
+            (json_['ratingHistogram'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (averageRating != null) 'averageRating': averageRating!,
-        if (ratingCount != null) 'ratingCount': ratingCount!,
-        if (ratingHistogram != null) 'ratingHistogram': ratingHistogram!,
-      };
+    if (averageRating != null) 'averageRating': averageRating!,
+    if (ratingCount != null) 'ratingCount': ratingCount!,
+    if (ratingHistogram != null) 'ratingHistogram': ratingHistogram!,
+  };
 }
 
 /// Request message for RejoinUserEvents method.
@@ -8416,19 +8606,15 @@ class GoogleCloudRetailV2RejoinUserEventsRequest {
   /// catalog.
   core.String? userEventRejoinScope;
 
-  GoogleCloudRetailV2RejoinUserEventsRequest({
-    this.userEventRejoinScope,
-  });
+  GoogleCloudRetailV2RejoinUserEventsRequest({this.userEventRejoinScope});
 
   GoogleCloudRetailV2RejoinUserEventsRequest.fromJson(core.Map json_)
-      : this(
-          userEventRejoinScope: json_['userEventRejoinScope'] as core.String?,
-        );
+    : this(userEventRejoinScope: json_['userEventRejoinScope'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userEventRejoinScope != null)
-          'userEventRejoinScope': userEventRejoinScope!,
-      };
+    if (userEventRejoinScope != null)
+      'userEventRejoinScope': userEventRejoinScope!,
+  };
 }
 
 /// Request for CatalogService.RemoveCatalogAttribute method.
@@ -8438,18 +8624,14 @@ class GoogleCloudRetailV2RemoveCatalogAttributeRequest {
   /// Required.
   core.String? key;
 
-  GoogleCloudRetailV2RemoveCatalogAttributeRequest({
-    this.key,
-  });
+  GoogleCloudRetailV2RemoveCatalogAttributeRequest({this.key});
 
   GoogleCloudRetailV2RemoveCatalogAttributeRequest.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-        );
+    : this(key: json_['key'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-      };
+    if (key != null) 'key': key!,
+  };
 }
 
 /// Request for RemoveControl method.
@@ -8461,18 +8643,14 @@ class GoogleCloudRetailV2RemoveControlRequest {
   /// Required.
   core.String? controlId;
 
-  GoogleCloudRetailV2RemoveControlRequest({
-    this.controlId,
-  });
+  GoogleCloudRetailV2RemoveControlRequest({this.controlId});
 
   GoogleCloudRetailV2RemoveControlRequest.fromJson(core.Map json_)
-      : this(
-          controlId: json_['controlId'] as core.String?,
-        );
+    : this(controlId: json_['controlId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (controlId != null) 'controlId': controlId!,
-      };
+    if (controlId != null) 'controlId': controlId!,
+  };
 }
 
 /// Request message for ProductService.RemoveFulfillmentPlaces method.
@@ -8523,21 +8701,22 @@ class GoogleCloudRetailV2RemoveFulfillmentPlacesRequest {
   });
 
   GoogleCloudRetailV2RemoveFulfillmentPlacesRequest.fromJson(core.Map json_)
-      : this(
-          allowMissing: json_['allowMissing'] as core.bool?,
-          placeIds: (json_['placeIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          removeTime: json_['removeTime'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        allowMissing: json_['allowMissing'] as core.bool?,
+        placeIds:
+            (json_['placeIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        removeTime: json_['removeTime'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowMissing != null) 'allowMissing': allowMissing!,
-        if (placeIds != null) 'placeIds': placeIds!,
-        if (removeTime != null) 'removeTime': removeTime!,
-        if (type != null) 'type': type!,
-      };
+    if (allowMissing != null) 'allowMissing': allowMissing!,
+    if (placeIds != null) 'placeIds': placeIds!,
+    if (removeTime != null) 'removeTime': removeTime!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Request message for ProductService.RemoveLocalInventories method.
@@ -8570,19 +8749,20 @@ class GoogleCloudRetailV2RemoveLocalInventoriesRequest {
   });
 
   GoogleCloudRetailV2RemoveLocalInventoriesRequest.fromJson(core.Map json_)
-      : this(
-          allowMissing: json_['allowMissing'] as core.bool?,
-          placeIds: (json_['placeIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          removeTime: json_['removeTime'] as core.String?,
-        );
+    : this(
+        allowMissing: json_['allowMissing'] as core.bool?,
+        placeIds:
+            (json_['placeIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        removeTime: json_['removeTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowMissing != null) 'allowMissing': allowMissing!,
-        if (placeIds != null) 'placeIds': placeIds!,
-        if (removeTime != null) 'removeTime': removeTime!,
-      };
+    if (allowMissing != null) 'allowMissing': allowMissing!,
+    if (placeIds != null) 'placeIds': placeIds!,
+    if (removeTime != null) 'removeTime': removeTime!,
+  };
 }
 
 /// Request for CatalogService.ReplaceCatalogAttribute method.
@@ -8604,19 +8784,21 @@ class GoogleCloudRetailV2ReplaceCatalogAttributeRequest {
   });
 
   GoogleCloudRetailV2ReplaceCatalogAttributeRequest.fromJson(core.Map json_)
-      : this(
-          catalogAttribute: json_.containsKey('catalogAttribute')
-              ? GoogleCloudRetailV2CatalogAttribute.fromJson(
+    : this(
+        catalogAttribute:
+            json_.containsKey('catalogAttribute')
+                ? GoogleCloudRetailV2CatalogAttribute.fromJson(
                   json_['catalogAttribute']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (catalogAttribute != null) 'catalogAttribute': catalogAttribute!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (catalogAttribute != null) 'catalogAttribute': catalogAttribute!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Request for resuming training of a model.
@@ -8686,82 +8868,106 @@ class GoogleCloudRetailV2Rule {
   });
 
   GoogleCloudRetailV2Rule.fromJson(core.Map json_)
-      : this(
-          boostAction: json_.containsKey('boostAction')
-              ? GoogleCloudRetailV2RuleBoostAction.fromJson(
-                  json_['boostAction'] as core.Map<core.String, core.dynamic>)
-              : null,
-          condition: json_.containsKey('condition')
-              ? GoogleCloudRetailV2Condition.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          doNotAssociateAction: json_.containsKey('doNotAssociateAction')
-              ? GoogleCloudRetailV2RuleDoNotAssociateAction.fromJson(
+    : this(
+        boostAction:
+            json_.containsKey('boostAction')
+                ? GoogleCloudRetailV2RuleBoostAction.fromJson(
+                  json_['boostAction'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        condition:
+            json_.containsKey('condition')
+                ? GoogleCloudRetailV2Condition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        doNotAssociateAction:
+            json_.containsKey('doNotAssociateAction')
+                ? GoogleCloudRetailV2RuleDoNotAssociateAction.fromJson(
                   json_['doNotAssociateAction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          filterAction: json_.containsKey('filterAction')
-              ? GoogleCloudRetailV2RuleFilterAction.fromJson(
-                  json_['filterAction'] as core.Map<core.String, core.dynamic>)
-              : null,
-          forceReturnFacetAction: json_.containsKey('forceReturnFacetAction')
-              ? GoogleCloudRetailV2RuleForceReturnFacetAction.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filterAction:
+            json_.containsKey('filterAction')
+                ? GoogleCloudRetailV2RuleFilterAction.fromJson(
+                  json_['filterAction'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        forceReturnFacetAction:
+            json_.containsKey('forceReturnFacetAction')
+                ? GoogleCloudRetailV2RuleForceReturnFacetAction.fromJson(
                   json_['forceReturnFacetAction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          ignoreAction: json_.containsKey('ignoreAction')
-              ? GoogleCloudRetailV2RuleIgnoreAction.fromJson(
-                  json_['ignoreAction'] as core.Map<core.String, core.dynamic>)
-              : null,
-          onewaySynonymsAction: json_.containsKey('onewaySynonymsAction')
-              ? GoogleCloudRetailV2RuleOnewaySynonymsAction.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        ignoreAction:
+            json_.containsKey('ignoreAction')
+                ? GoogleCloudRetailV2RuleIgnoreAction.fromJson(
+                  json_['ignoreAction'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        onewaySynonymsAction:
+            json_.containsKey('onewaySynonymsAction')
+                ? GoogleCloudRetailV2RuleOnewaySynonymsAction.fromJson(
                   json_['onewaySynonymsAction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          pinAction: json_.containsKey('pinAction')
-              ? GoogleCloudRetailV2RulePinAction.fromJson(
-                  json_['pinAction'] as core.Map<core.String, core.dynamic>)
-              : null,
-          redirectAction: json_.containsKey('redirectAction')
-              ? GoogleCloudRetailV2RuleRedirectAction.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pinAction:
+            json_.containsKey('pinAction')
+                ? GoogleCloudRetailV2RulePinAction.fromJson(
+                  json_['pinAction'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        redirectAction:
+            json_.containsKey('redirectAction')
+                ? GoogleCloudRetailV2RuleRedirectAction.fromJson(
                   json_['redirectAction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          removeFacetAction: json_.containsKey('removeFacetAction')
-              ? GoogleCloudRetailV2RuleRemoveFacetAction.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        removeFacetAction:
+            json_.containsKey('removeFacetAction')
+                ? GoogleCloudRetailV2RuleRemoveFacetAction.fromJson(
                   json_['removeFacetAction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          replacementAction: json_.containsKey('replacementAction')
-              ? GoogleCloudRetailV2RuleReplacementAction.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        replacementAction:
+            json_.containsKey('replacementAction')
+                ? GoogleCloudRetailV2RuleReplacementAction.fromJson(
                   json_['replacementAction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          twowaySynonymsAction: json_.containsKey('twowaySynonymsAction')
-              ? GoogleCloudRetailV2RuleTwowaySynonymsAction.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        twowaySynonymsAction:
+            json_.containsKey('twowaySynonymsAction')
+                ? GoogleCloudRetailV2RuleTwowaySynonymsAction.fromJson(
                   json_['twowaySynonymsAction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boostAction != null) 'boostAction': boostAction!,
-        if (condition != null) 'condition': condition!,
-        if (doNotAssociateAction != null)
-          'doNotAssociateAction': doNotAssociateAction!,
-        if (filterAction != null) 'filterAction': filterAction!,
-        if (forceReturnFacetAction != null)
-          'forceReturnFacetAction': forceReturnFacetAction!,
-        if (ignoreAction != null) 'ignoreAction': ignoreAction!,
-        if (onewaySynonymsAction != null)
-          'onewaySynonymsAction': onewaySynonymsAction!,
-        if (pinAction != null) 'pinAction': pinAction!,
-        if (redirectAction != null) 'redirectAction': redirectAction!,
-        if (removeFacetAction != null) 'removeFacetAction': removeFacetAction!,
-        if (replacementAction != null) 'replacementAction': replacementAction!,
-        if (twowaySynonymsAction != null)
-          'twowaySynonymsAction': twowaySynonymsAction!,
-      };
+    if (boostAction != null) 'boostAction': boostAction!,
+    if (condition != null) 'condition': condition!,
+    if (doNotAssociateAction != null)
+      'doNotAssociateAction': doNotAssociateAction!,
+    if (filterAction != null) 'filterAction': filterAction!,
+    if (forceReturnFacetAction != null)
+      'forceReturnFacetAction': forceReturnFacetAction!,
+    if (ignoreAction != null) 'ignoreAction': ignoreAction!,
+    if (onewaySynonymsAction != null)
+      'onewaySynonymsAction': onewaySynonymsAction!,
+    if (pinAction != null) 'pinAction': pinAction!,
+    if (redirectAction != null) 'redirectAction': redirectAction!,
+    if (removeFacetAction != null) 'removeFacetAction': removeFacetAction!,
+    if (replacementAction != null) 'replacementAction': replacementAction!,
+    if (twowaySynonymsAction != null)
+      'twowaySynonymsAction': twowaySynonymsAction!,
+  };
 }
 
 /// A boost action to apply to results matching condition specified above.
@@ -8791,21 +8997,18 @@ class GoogleCloudRetailV2RuleBoostAction {
   /// ANY("Red", "Blue")) *
   core.String? productsFilter;
 
-  GoogleCloudRetailV2RuleBoostAction({
-    this.boost,
-    this.productsFilter,
-  });
+  GoogleCloudRetailV2RuleBoostAction({this.boost, this.productsFilter});
 
   GoogleCloudRetailV2RuleBoostAction.fromJson(core.Map json_)
-      : this(
-          boost: (json_['boost'] as core.num?)?.toDouble(),
-          productsFilter: json_['productsFilter'] as core.String?,
-        );
+    : this(
+        boost: (json_['boost'] as core.num?)?.toDouble(),
+        productsFilter: json_['productsFilter'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boost != null) 'boost': boost!,
-        if (productsFilter != null) 'productsFilter': productsFilter!,
-      };
+    if (boost != null) 'boost': boost!,
+    if (productsFilter != null) 'productsFilter': productsFilter!,
+  };
 }
 
 /// Prevents `query_term` from being associated with specified terms during
@@ -8834,24 +9037,27 @@ class GoogleCloudRetailV2RuleDoNotAssociateAction {
   });
 
   GoogleCloudRetailV2RuleDoNotAssociateAction.fromJson(core.Map json_)
-      : this(
-          doNotAssociateTerms: (json_['doNotAssociateTerms'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          queryTerms: (json_['queryTerms'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          terms: (json_['terms'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        doNotAssociateTerms:
+            (json_['doNotAssociateTerms'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        queryTerms:
+            (json_['queryTerms'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        terms:
+            (json_['terms'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (doNotAssociateTerms != null)
-          'doNotAssociateTerms': doNotAssociateTerms!,
-        if (queryTerms != null) 'queryTerms': queryTerms!,
-        if (terms != null) 'terms': terms!,
-      };
+    if (doNotAssociateTerms != null)
+      'doNotAssociateTerms': doNotAssociateTerms!,
+    if (queryTerms != null) 'queryTerms': queryTerms!,
+    if (terms != null) 'terms': terms!,
+  };
 }
 
 /// * Rule Condition: - No Condition.query_terms provided is a global match.
@@ -8874,18 +9080,14 @@ class GoogleCloudRetailV2RuleFilterAction {
   /// "Blue")) *
   core.String? filter;
 
-  GoogleCloudRetailV2RuleFilterAction({
-    this.filter,
-  });
+  GoogleCloudRetailV2RuleFilterAction({this.filter});
 
   GoogleCloudRetailV2RuleFilterAction.fromJson(core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-        );
+    : this(filter: json_['filter'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-      };
+    if (filter != null) 'filter': filter!,
+  };
 }
 
 /// Force returns an attribute/facet in the request around a certain position or
@@ -8909,27 +9111,31 @@ class GoogleCloudRetailV2RuleForceReturnFacetAction {
   ///
   /// There can't be more 15 instances here.
   core.List<
-          GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment>?
-      facetPositionAdjustments;
+    GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment
+  >?
+  facetPositionAdjustments;
 
   GoogleCloudRetailV2RuleForceReturnFacetAction({
     this.facetPositionAdjustments,
   });
 
   GoogleCloudRetailV2RuleForceReturnFacetAction.fromJson(core.Map json_)
-      : this(
-          facetPositionAdjustments: (json_['facetPositionAdjustments']
-                  as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        facetPositionAdjustments:
+            (json_['facetPositionAdjustments'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (facetPositionAdjustments != null)
-          'facetPositionAdjustments': facetPositionAdjustments!,
-      };
+    if (facetPositionAdjustments != null)
+      'facetPositionAdjustments': facetPositionAdjustments!,
+  };
 }
 
 /// Each facet position adjustment consists of a single attribute name (i.e.
@@ -8952,16 +9158,16 @@ class GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment {
   });
 
   GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment.fromJson(
-      core.Map json_)
-      : this(
-          attributeName: json_['attributeName'] as core.String?,
-          position: json_['position'] as core.int?,
-        );
+    core.Map json_,
+  ) : this(
+        attributeName: json_['attributeName'] as core.String?,
+        position: json_['position'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeName != null) 'attributeName': attributeName!,
-        if (position != null) 'position': position!,
-      };
+    if (attributeName != null) 'attributeName': attributeName!,
+    if (position != null) 'position': position!,
+  };
 }
 
 /// Prevents a term in the query from being used in search.
@@ -8971,20 +9177,19 @@ class GoogleCloudRetailV2RuleIgnoreAction {
   /// Terms to ignore in the search query.
   core.List<core.String>? ignoreTerms;
 
-  GoogleCloudRetailV2RuleIgnoreAction({
-    this.ignoreTerms,
-  });
+  GoogleCloudRetailV2RuleIgnoreAction({this.ignoreTerms});
 
   GoogleCloudRetailV2RuleIgnoreAction.fromJson(core.Map json_)
-      : this(
-          ignoreTerms: (json_['ignoreTerms'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        ignoreTerms:
+            (json_['ignoreTerms'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ignoreTerms != null) 'ignoreTerms': ignoreTerms!,
-      };
+    if (ignoreTerms != null) 'ignoreTerms': ignoreTerms!,
+  };
 }
 
 /// Maps a set of terms to a set of synonyms.
@@ -9015,23 +9220,26 @@ class GoogleCloudRetailV2RuleOnewaySynonymsAction {
   });
 
   GoogleCloudRetailV2RuleOnewaySynonymsAction.fromJson(core.Map json_)
-      : this(
-          onewayTerms: (json_['onewayTerms'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          queryTerms: (json_['queryTerms'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          synonyms: (json_['synonyms'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        onewayTerms:
+            (json_['onewayTerms'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        queryTerms:
+            (json_['queryTerms'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        synonyms:
+            (json_['synonyms'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (onewayTerms != null) 'onewayTerms': onewayTerms!,
-        if (queryTerms != null) 'queryTerms': queryTerms!,
-        if (synonyms != null) 'synonyms': synonyms!,
-      };
+    if (onewayTerms != null) 'onewayTerms': onewayTerms!,
+    if (queryTerms != null) 'queryTerms': queryTerms!,
+    if (synonyms != null) 'synonyms': synonyms!,
+  };
 }
 
 /// Pins one or more specified products to a specific position in the results.
@@ -9062,24 +9270,18 @@ class GoogleCloudRetailV2RulePinAction {
   /// Required.
   core.Map<core.String, core.String>? pinMap;
 
-  GoogleCloudRetailV2RulePinAction({
-    this.pinMap,
-  });
+  GoogleCloudRetailV2RulePinAction({this.pinMap});
 
   GoogleCloudRetailV2RulePinAction.fromJson(core.Map json_)
-      : this(
-          pinMap:
-              (json_['pinMap'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        pinMap: (json_['pinMap'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pinMap != null) 'pinMap': pinMap!,
-      };
+    if (pinMap != null) 'pinMap': pinMap!,
+  };
 }
 
 /// Redirects a shopper to a specific page.
@@ -9090,18 +9292,14 @@ class GoogleCloudRetailV2RuleRedirectAction {
   /// URL must have length equal or less than 2000 characters.
   core.String? redirectUri;
 
-  GoogleCloudRetailV2RuleRedirectAction({
-    this.redirectUri,
-  });
+  GoogleCloudRetailV2RuleRedirectAction({this.redirectUri});
 
   GoogleCloudRetailV2RuleRedirectAction.fromJson(core.Map json_)
-      : this(
-          redirectUri: json_['redirectUri'] as core.String?,
-        );
+    : this(redirectUri: json_['redirectUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (redirectUri != null) 'redirectUri': redirectUri!,
-      };
+    if (redirectUri != null) 'redirectUri': redirectUri!,
+  };
 }
 
 /// Removes an attribute/facet in the request if is present.
@@ -9121,20 +9319,19 @@ class GoogleCloudRetailV2RuleRemoveFacetAction {
   /// valid attribute name, be non-empty and contain at most 80 characters.
   core.List<core.String>? attributeNames;
 
-  GoogleCloudRetailV2RuleRemoveFacetAction({
-    this.attributeNames,
-  });
+  GoogleCloudRetailV2RuleRemoveFacetAction({this.attributeNames});
 
   GoogleCloudRetailV2RuleRemoveFacetAction.fromJson(core.Map json_)
-      : this(
-          attributeNames: (json_['attributeNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        attributeNames:
+            (json_['attributeNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeNames != null) 'attributeNames': attributeNames!,
-      };
+    if (attributeNames != null) 'attributeNames': attributeNames!,
+  };
 }
 
 /// Replaces a term in the query.
@@ -9161,19 +9358,20 @@ class GoogleCloudRetailV2RuleReplacementAction {
   });
 
   GoogleCloudRetailV2RuleReplacementAction.fromJson(core.Map json_)
-      : this(
-          queryTerms: (json_['queryTerms'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          replacementTerm: json_['replacementTerm'] as core.String?,
-          term: json_['term'] as core.String?,
-        );
+    : this(
+        queryTerms:
+            (json_['queryTerms'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        replacementTerm: json_['replacementTerm'] as core.String?,
+        term: json_['term'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (queryTerms != null) 'queryTerms': queryTerms!,
-        if (replacementTerm != null) 'replacementTerm': replacementTerm!,
-        if (term != null) 'term': term!,
-      };
+    if (queryTerms != null) 'queryTerms': queryTerms!,
+    if (replacementTerm != null) 'replacementTerm': replacementTerm!,
+    if (term != null) 'term': term!,
+  };
 }
 
 /// Creates a set of terms that will be treated as synonyms of each other.
@@ -9186,20 +9384,19 @@ class GoogleCloudRetailV2RuleTwowaySynonymsAction {
   /// Can specify up to 100 synonyms. Must specify at least 2 synonyms.
   core.List<core.String>? synonyms;
 
-  GoogleCloudRetailV2RuleTwowaySynonymsAction({
-    this.synonyms,
-  });
+  GoogleCloudRetailV2RuleTwowaySynonymsAction({this.synonyms});
 
   GoogleCloudRetailV2RuleTwowaySynonymsAction.fromJson(core.Map json_)
-      : this(
-          synonyms: (json_['synonyms'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        synonyms:
+            (json_['synonyms'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (synonyms != null) 'synonyms': synonyms!,
-      };
+    if (synonyms != null) 'synonyms': synonyms!,
+  };
 }
 
 /// Request message for SearchService.Search method.
@@ -9238,7 +9435,7 @@ class GoogleCloudRetailV2SearchRequest {
   ///
   /// Optional.
   GoogleCloudRetailV2SearchRequestConversationalSearchSpec?
-      conversationalSearchSpec;
+  conversationalSearchSpec;
 
   /// Refer to https://cloud.google.com/retail/docs/configs#dynamic to enable
   /// dynamic facets.
@@ -9501,123 +9698,138 @@ class GoogleCloudRetailV2SearchRequest {
   });
 
   GoogleCloudRetailV2SearchRequest.fromJson(core.Map json_)
-      : this(
-          boostSpec: json_.containsKey('boostSpec')
-              ? GoogleCloudRetailV2SearchRequestBoostSpec.fromJson(
-                  json_['boostSpec'] as core.Map<core.String, core.dynamic>)
-              : null,
-          branch: json_['branch'] as core.String?,
-          canonicalFilter: json_['canonicalFilter'] as core.String?,
-          conversationalSearchSpec:
-              json_.containsKey('conversationalSearchSpec')
-                  ? GoogleCloudRetailV2SearchRequestConversationalSearchSpec
-                      .fromJson(json_['conversationalSearchSpec']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          dynamicFacetSpec: json_.containsKey('dynamicFacetSpec')
-              ? GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromJson(
+    : this(
+        boostSpec:
+            json_.containsKey('boostSpec')
+                ? GoogleCloudRetailV2SearchRequestBoostSpec.fromJson(
+                  json_['boostSpec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        branch: json_['branch'] as core.String?,
+        canonicalFilter: json_['canonicalFilter'] as core.String?,
+        conversationalSearchSpec:
+            json_.containsKey('conversationalSearchSpec')
+                ? GoogleCloudRetailV2SearchRequestConversationalSearchSpec.fromJson(
+                  json_['conversationalSearchSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dynamicFacetSpec:
+            json_.containsKey('dynamicFacetSpec')
+                ? GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromJson(
                   json_['dynamicFacetSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          entity: json_['entity'] as core.String?,
-          facetSpecs: (json_['facetSpecs'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2SearchRequestFacetSpec.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          filter: json_['filter'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          languageCode: json_['languageCode'] as core.String?,
-          offset: json_['offset'] as core.int?,
-          orderBy: json_['orderBy'] as core.String?,
-          pageCategories: (json_['pageCategories'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          pageSize: json_['pageSize'] as core.int?,
-          pageToken: json_['pageToken'] as core.String?,
-          personalizationSpec: json_.containsKey('personalizationSpec')
-              ? GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        entity: json_['entity'] as core.String?,
+        facetSpecs:
+            (json_['facetSpecs'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2SearchRequestFacetSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        filter: json_['filter'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        languageCode: json_['languageCode'] as core.String?,
+        offset: json_['offset'] as core.int?,
+        orderBy: json_['orderBy'] as core.String?,
+        pageCategories:
+            (json_['pageCategories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+        personalizationSpec:
+            json_.containsKey('personalizationSpec')
+                ? GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromJson(
                   json_['personalizationSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          placeId: json_['placeId'] as core.String?,
-          query: json_['query'] as core.String?,
-          queryExpansionSpec: json_.containsKey('queryExpansionSpec')
-              ? GoogleCloudRetailV2SearchRequestQueryExpansionSpec.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        placeId: json_['placeId'] as core.String?,
+        query: json_['query'] as core.String?,
+        queryExpansionSpec:
+            json_.containsKey('queryExpansionSpec')
+                ? GoogleCloudRetailV2SearchRequestQueryExpansionSpec.fromJson(
                   json_['queryExpansionSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          regionCode: json_['regionCode'] as core.String?,
-          searchMode: json_['searchMode'] as core.String?,
-          spellCorrectionSpec: json_.containsKey('spellCorrectionSpec')
-              ? GoogleCloudRetailV2SearchRequestSpellCorrectionSpec.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        regionCode: json_['regionCode'] as core.String?,
+        searchMode: json_['searchMode'] as core.String?,
+        spellCorrectionSpec:
+            json_.containsKey('spellCorrectionSpec')
+                ? GoogleCloudRetailV2SearchRequestSpellCorrectionSpec.fromJson(
                   json_['spellCorrectionSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          tileNavigationSpec: json_.containsKey('tileNavigationSpec')
-              ? GoogleCloudRetailV2SearchRequestTileNavigationSpec.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tileNavigationSpec:
+            json_.containsKey('tileNavigationSpec')
+                ? GoogleCloudRetailV2SearchRequestTileNavigationSpec.fromJson(
                   json_['tileNavigationSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          userAttributes:
-              (json_['userAttributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudRetailV2StringList.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userAttributes: (json_['userAttributes']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudRetailV2StringList.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          userInfo: json_.containsKey('userInfo')
-              ? GoogleCloudRetailV2UserInfo.fromJson(
-                  json_['userInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          variantRollupKeys: (json_['variantRollupKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          visitorId: json_['visitorId'] as core.String?,
-        );
+        userInfo:
+            json_.containsKey('userInfo')
+                ? GoogleCloudRetailV2UserInfo.fromJson(
+                  json_['userInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        variantRollupKeys:
+            (json_['variantRollupKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        visitorId: json_['visitorId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boostSpec != null) 'boostSpec': boostSpec!,
-        if (branch != null) 'branch': branch!,
-        if (canonicalFilter != null) 'canonicalFilter': canonicalFilter!,
-        if (conversationalSearchSpec != null)
-          'conversationalSearchSpec': conversationalSearchSpec!,
-        if (dynamicFacetSpec != null) 'dynamicFacetSpec': dynamicFacetSpec!,
-        if (entity != null) 'entity': entity!,
-        if (facetSpecs != null) 'facetSpecs': facetSpecs!,
-        if (filter != null) 'filter': filter!,
-        if (labels != null) 'labels': labels!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (offset != null) 'offset': offset!,
-        if (orderBy != null) 'orderBy': orderBy!,
-        if (pageCategories != null) 'pageCategories': pageCategories!,
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-        if (personalizationSpec != null)
-          'personalizationSpec': personalizationSpec!,
-        if (placeId != null) 'placeId': placeId!,
-        if (query != null) 'query': query!,
-        if (queryExpansionSpec != null)
-          'queryExpansionSpec': queryExpansionSpec!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (searchMode != null) 'searchMode': searchMode!,
-        if (spellCorrectionSpec != null)
-          'spellCorrectionSpec': spellCorrectionSpec!,
-        if (tileNavigationSpec != null)
-          'tileNavigationSpec': tileNavigationSpec!,
-        if (userAttributes != null) 'userAttributes': userAttributes!,
-        if (userInfo != null) 'userInfo': userInfo!,
-        if (variantRollupKeys != null) 'variantRollupKeys': variantRollupKeys!,
-        if (visitorId != null) 'visitorId': visitorId!,
-      };
+    if (boostSpec != null) 'boostSpec': boostSpec!,
+    if (branch != null) 'branch': branch!,
+    if (canonicalFilter != null) 'canonicalFilter': canonicalFilter!,
+    if (conversationalSearchSpec != null)
+      'conversationalSearchSpec': conversationalSearchSpec!,
+    if (dynamicFacetSpec != null) 'dynamicFacetSpec': dynamicFacetSpec!,
+    if (entity != null) 'entity': entity!,
+    if (facetSpecs != null) 'facetSpecs': facetSpecs!,
+    if (filter != null) 'filter': filter!,
+    if (labels != null) 'labels': labels!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (offset != null) 'offset': offset!,
+    if (orderBy != null) 'orderBy': orderBy!,
+    if (pageCategories != null) 'pageCategories': pageCategories!,
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (pageToken != null) 'pageToken': pageToken!,
+    if (personalizationSpec != null)
+      'personalizationSpec': personalizationSpec!,
+    if (placeId != null) 'placeId': placeId!,
+    if (query != null) 'query': query!,
+    if (queryExpansionSpec != null) 'queryExpansionSpec': queryExpansionSpec!,
+    if (regionCode != null) 'regionCode': regionCode!,
+    if (searchMode != null) 'searchMode': searchMode!,
+    if (spellCorrectionSpec != null)
+      'spellCorrectionSpec': spellCorrectionSpec!,
+    if (tileNavigationSpec != null) 'tileNavigationSpec': tileNavigationSpec!,
+    if (userAttributes != null) 'userAttributes': userAttributes!,
+    if (userInfo != null) 'userInfo': userInfo!,
+    if (variantRollupKeys != null) 'variantRollupKeys': variantRollupKeys!,
+    if (visitorId != null) 'visitorId': visitorId!,
+  };
 }
 
 /// Boost specification to boost certain items.
@@ -9628,7 +9840,7 @@ class GoogleCloudRetailV2SearchRequestBoostSpec {
   /// scores from these specifications are all applied and combined in a
   /// non-linear way. Maximum number of specifications is 20.
   core.List<GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec>?
-      conditionBoostSpecs;
+  conditionBoostSpecs;
 
   /// Whether to skip boostspec validation.
   ///
@@ -9643,22 +9855,25 @@ class GoogleCloudRetailV2SearchRequestBoostSpec {
   });
 
   GoogleCloudRetailV2SearchRequestBoostSpec.fromJson(core.Map json_)
-      : this(
-          conditionBoostSpecs: (json_['conditionBoostSpecs'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          skipBoostSpecValidation:
-              json_['skipBoostSpecValidation'] as core.bool?,
-        );
+    : this(
+        conditionBoostSpecs:
+            (json_['conditionBoostSpecs'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        skipBoostSpecValidation: json_['skipBoostSpecValidation'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conditionBoostSpecs != null)
-          'conditionBoostSpecs': conditionBoostSpecs!,
-        if (skipBoostSpecValidation != null)
-          'skipBoostSpecValidation': skipBoostSpecValidation!,
-      };
+    if (conditionBoostSpecs != null)
+      'conditionBoostSpecs': conditionBoostSpecs!,
+    if (skipBoostSpecValidation != null)
+      'skipBoostSpecValidation': skipBoostSpecValidation!,
+  };
 }
 
 /// Boost applies to products which match a condition.
@@ -9693,16 +9908,16 @@ class GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec {
   });
 
   GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec.fromJson(
-      core.Map json_)
-      : this(
-          boost: (json_['boost'] as core.num?)?.toDouble(),
-          condition: json_['condition'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        boost: (json_['boost'] as core.num?)?.toDouble(),
+        condition: json_['condition'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boost != null) 'boost': boost!,
-        if (condition != null) 'condition': condition!,
-      };
+    if (boost != null) 'boost': boost!,
+    if (condition != null) 'condition': condition!,
+  };
 }
 
 /// This field specifies all conversational related parameters addition to
@@ -9730,7 +9945,7 @@ class GoogleCloudRetailV2SearchRequestConversationalSearchSpec {
   /// This can be either user selected from suggested answers or user input
   /// plain text.
   GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer?
-      userAnswer;
+  userAnswer;
 
   GoogleCloudRetailV2SearchRequestConversationalSearchSpec({
     this.conversationId,
@@ -9739,24 +9954,25 @@ class GoogleCloudRetailV2SearchRequestConversationalSearchSpec {
   });
 
   GoogleCloudRetailV2SearchRequestConversationalSearchSpec.fromJson(
-      core.Map json_)
-      : this(
-          conversationId: json_['conversationId'] as core.String?,
-          followupConversationRequested:
-              json_['followupConversationRequested'] as core.bool?,
-          userAnswer: json_.containsKey('userAnswer')
-              ? GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer
-                  .fromJson(json_['userAnswer']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        conversationId: json_['conversationId'] as core.String?,
+        followupConversationRequested:
+            json_['followupConversationRequested'] as core.bool?,
+        userAnswer:
+            json_.containsKey('userAnswer')
+                ? GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer.fromJson(
+                  json_['userAnswer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversationId != null) 'conversationId': conversationId!,
-        if (followupConversationRequested != null)
-          'followupConversationRequested': followupConversationRequested!,
-        if (userAnswer != null) 'userAnswer': userAnswer!,
-      };
+    if (conversationId != null) 'conversationId': conversationId!,
+    if (followupConversationRequested != null)
+      'followupConversationRequested': followupConversationRequested!,
+    if (userAnswer != null) 'userAnswer': userAnswer!,
+  };
 }
 
 /// This field specifies the current user answer during the conversational
@@ -9770,7 +9986,7 @@ class GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer {
   ///
   /// This should be a subset of ConversationalSearchResult.suggested_answers.
   GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer?
-      selectedAnswer;
+  selectedAnswer;
 
   /// This field specifies the incremental input text from the user during the
   /// conversational search.
@@ -9782,20 +9998,22 @@ class GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer {
   });
 
   GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer.fromJson(
-      core.Map json_)
-      : this(
-          selectedAnswer: json_.containsKey('selectedAnswer')
-              ? GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer
-                  .fromJson(json_['selectedAnswer']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          textAnswer: json_['textAnswer'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        selectedAnswer:
+            json_.containsKey('selectedAnswer')
+                ? GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer.fromJson(
+                  json_['selectedAnswer']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textAnswer: json_['textAnswer'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (selectedAnswer != null) 'selectedAnswer': selectedAnswer!,
-        if (textAnswer != null) 'textAnswer': textAnswer!,
-      };
+    if (selectedAnswer != null) 'selectedAnswer': selectedAnswer!,
+    if (textAnswer != null) 'textAnswer': textAnswer!,
+  };
 }
 
 /// This field specifies the selected answers during the conversational search.
@@ -9815,27 +10033,31 @@ class GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelected
   });
 
   GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer.fromJson(
-      core.Map json_)
-      : this(
-          productAttributeValue: json_.containsKey('productAttributeValue')
-              ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
+    core.Map json_,
+  ) : this(
+        productAttributeValue:
+            json_.containsKey('productAttributeValue')
+                ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
                   json_['productAttributeValue']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          productAttributeValues:
-              (json_['productAttributeValues'] as core.List?)
-                  ?.map((value) =>
-                      GoogleCloudRetailV2ProductAttributeValue.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        productAttributeValues:
+            (json_['productAttributeValues'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2ProductAttributeValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (productAttributeValue != null)
-          'productAttributeValue': productAttributeValue!,
-        if (productAttributeValues != null)
-          'productAttributeValues': productAttributeValues!,
-      };
+    if (productAttributeValue != null)
+      'productAttributeValue': productAttributeValue!,
+    if (productAttributeValues != null)
+      'productAttributeValues': productAttributeValues!,
+  };
 }
 
 /// The specifications of dynamically generated facets.
@@ -9849,18 +10071,14 @@ class GoogleCloudRetailV2SearchRequestDynamicFacetSpec {
   /// - "ENABLED" : Automatic mode built by Google Retail Search.
   core.String? mode;
 
-  GoogleCloudRetailV2SearchRequestDynamicFacetSpec({
-    this.mode,
-  });
+  GoogleCloudRetailV2SearchRequestDynamicFacetSpec({this.mode});
 
   GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromJson(core.Map json_)
-      : this(
-          mode: json_['mode'] as core.String?,
-        );
+    : this(mode: json_['mode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-      };
+    if (mode != null) 'mode': mode!,
+  };
 }
 
 /// A facet specification to perform faceted search.
@@ -9929,26 +10147,28 @@ class GoogleCloudRetailV2SearchRequestFacetSpec {
   });
 
   GoogleCloudRetailV2SearchRequestFacetSpec.fromJson(core.Map json_)
-      : this(
-          enableDynamicPosition: json_['enableDynamicPosition'] as core.bool?,
-          excludedFilterKeys: (json_['excludedFilterKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          facetKey: json_.containsKey('facetKey')
-              ? GoogleCloudRetailV2SearchRequestFacetSpecFacetKey.fromJson(
-                  json_['facetKey'] as core.Map<core.String, core.dynamic>)
-              : null,
-          limit: json_['limit'] as core.int?,
-        );
+    : this(
+        enableDynamicPosition: json_['enableDynamicPosition'] as core.bool?,
+        excludedFilterKeys:
+            (json_['excludedFilterKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        facetKey:
+            json_.containsKey('facetKey')
+                ? GoogleCloudRetailV2SearchRequestFacetSpecFacetKey.fromJson(
+                  json_['facetKey'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        limit: json_['limit'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enableDynamicPosition != null)
-          'enableDynamicPosition': enableDynamicPosition!,
-        if (excludedFilterKeys != null)
-          'excludedFilterKeys': excludedFilterKeys!,
-        if (facetKey != null) 'facetKey': facetKey!,
-        if (limit != null) 'limit': limit!,
-      };
+    if (enableDynamicPosition != null)
+      'enableDynamicPosition': enableDynamicPosition!,
+    if (excludedFilterKeys != null) 'excludedFilterKeys': excludedFilterKeys!,
+    if (facetKey != null) 'facetKey': facetKey!,
+    if (limit != null) 'limit': limit!,
+  };
 }
 
 /// Specifies how a facet is computed.
@@ -10059,38 +10279,45 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
   });
 
   GoogleCloudRetailV2SearchRequestFacetSpecFacetKey.fromJson(core.Map json_)
-      : this(
-          caseInsensitive: json_['caseInsensitive'] as core.bool?,
-          contains: (json_['contains'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          intervals: (json_['intervals'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2Interval.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          key: json_['key'] as core.String?,
-          orderBy: json_['orderBy'] as core.String?,
-          prefixes: (json_['prefixes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          query: json_['query'] as core.String?,
-          restrictedValues: (json_['restrictedValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          returnMinMax: json_['returnMinMax'] as core.bool?,
-        );
+    : this(
+        caseInsensitive: json_['caseInsensitive'] as core.bool?,
+        contains:
+            (json_['contains'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        intervals:
+            (json_['intervals'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2Interval.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        key: json_['key'] as core.String?,
+        orderBy: json_['orderBy'] as core.String?,
+        prefixes:
+            (json_['prefixes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        query: json_['query'] as core.String?,
+        restrictedValues:
+            (json_['restrictedValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        returnMinMax: json_['returnMinMax'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caseInsensitive != null) 'caseInsensitive': caseInsensitive!,
-        if (contains != null) 'contains': contains!,
-        if (intervals != null) 'intervals': intervals!,
-        if (key != null) 'key': key!,
-        if (orderBy != null) 'orderBy': orderBy!,
-        if (prefixes != null) 'prefixes': prefixes!,
-        if (query != null) 'query': query!,
-        if (restrictedValues != null) 'restrictedValues': restrictedValues!,
-        if (returnMinMax != null) 'returnMinMax': returnMinMax!,
-      };
+    if (caseInsensitive != null) 'caseInsensitive': caseInsensitive!,
+    if (contains != null) 'contains': contains!,
+    if (intervals != null) 'intervals': intervals!,
+    if (key != null) 'key': key!,
+    if (orderBy != null) 'orderBy': orderBy!,
+    if (prefixes != null) 'prefixes': prefixes!,
+    if (query != null) 'query': query!,
+    if (restrictedValues != null) 'restrictedValues': restrictedValues!,
+    if (returnMinMax != null) 'returnMinMax': returnMinMax!,
+  };
 }
 
 /// The specification for personalization.
@@ -10104,18 +10331,14 @@ class GoogleCloudRetailV2SearchRequestPersonalizationSpec {
   /// - "DISABLED" : Disable personalization.
   core.String? mode;
 
-  GoogleCloudRetailV2SearchRequestPersonalizationSpec({
-    this.mode,
-  });
+  GoogleCloudRetailV2SearchRequestPersonalizationSpec({this.mode});
 
   GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromJson(core.Map json_)
-      : this(
-          mode: json_['mode'] as core.String?,
-        );
+    : this(mode: json_['mode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-      };
+    if (mode != null) 'mode': mode!,
+  };
 }
 
 /// Specification to determine under which conditions query expansion should
@@ -10145,16 +10368,16 @@ class GoogleCloudRetailV2SearchRequestQueryExpansionSpec {
   });
 
   GoogleCloudRetailV2SearchRequestQueryExpansionSpec.fromJson(core.Map json_)
-      : this(
-          condition: json_['condition'] as core.String?,
-          pinUnexpandedResults: json_['pinUnexpandedResults'] as core.bool?,
-        );
+    : this(
+        condition: json_['condition'] as core.String?,
+        pinUnexpandedResults: json_['pinUnexpandedResults'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (pinUnexpandedResults != null)
-          'pinUnexpandedResults': pinUnexpandedResults!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (pinUnexpandedResults != null)
+      'pinUnexpandedResults': pinUnexpandedResults!,
+  };
 }
 
 /// The specification for query spell correction.
@@ -10173,18 +10396,14 @@ class GoogleCloudRetailV2SearchRequestSpellCorrectionSpec {
   /// Search will be based on the corrected query if found.
   core.String? mode;
 
-  GoogleCloudRetailV2SearchRequestSpellCorrectionSpec({
-    this.mode,
-  });
+  GoogleCloudRetailV2SearchRequestSpellCorrectionSpec({this.mode});
 
   GoogleCloudRetailV2SearchRequestSpellCorrectionSpec.fromJson(core.Map json_)
-      : this(
-          mode: json_['mode'] as core.String?,
-        );
+    : this(mode: json_['mode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-      };
+    if (mode != null) 'mode': mode!,
+  };
 }
 
 /// This field specifies tile navigation related parameters.
@@ -10209,20 +10428,23 @@ class GoogleCloudRetailV2SearchRequestTileNavigationSpec {
   });
 
   GoogleCloudRetailV2SearchRequestTileNavigationSpec.fromJson(core.Map json_)
-      : this(
-          appliedTiles: (json_['appliedTiles'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2Tile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          tileNavigationRequested:
-              json_['tileNavigationRequested'] as core.bool?,
-        );
+    : this(
+        appliedTiles:
+            (json_['appliedTiles'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2Tile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        tileNavigationRequested: json_['tileNavigationRequested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appliedTiles != null) 'appliedTiles': appliedTiles!,
-        if (tileNavigationRequested != null)
-          'tileNavigationRequested': tileNavigationRequested!,
-      };
+    if (appliedTiles != null) 'appliedTiles': appliedTiles!,
+    if (tileNavigationRequested != null)
+      'tileNavigationRequested': tileNavigationRequested!,
+  };
 }
 
 /// Response message for SearchService.Search method.
@@ -10240,7 +10462,7 @@ class GoogleCloudRetailV2SearchResponse {
   /// This field specifies all related information that is needed on client side
   /// for UI rendering of conversational retail search.
   GoogleCloudRetailV2SearchResponseConversationalSearchResult?
-      conversationalSearchResult;
+  conversationalSearchResult;
 
   /// Contains the spell corrected query, if found.
   ///
@@ -10259,7 +10481,7 @@ class GoogleCloudRetailV2SearchResponse {
   /// The invalid SearchRequest.BoostSpec.condition_boost_specs that are not
   /// applied during serving.
   core.List<GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec>?
-      invalidConditionBoostSpecs;
+  invalidConditionBoostSpecs;
 
   /// A token that can be sent as SearchRequest.page_token to retrieve the next
   /// page.
@@ -10317,78 +10539,99 @@ class GoogleCloudRetailV2SearchResponse {
   });
 
   GoogleCloudRetailV2SearchResponse.fromJson(core.Map json_)
-      : this(
-          appliedControls: (json_['appliedControls'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          attributionToken: json_['attributionToken'] as core.String?,
-          conversationalSearchResult:
-              json_.containsKey('conversationalSearchResult')
-                  ? GoogleCloudRetailV2SearchResponseConversationalSearchResult
-                      .fromJson(json_['conversationalSearchResult']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          correctedQuery: json_['correctedQuery'] as core.String?,
-          experimentInfo: (json_['experimentInfo'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2ExperimentInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          facets: (json_['facets'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2SearchResponseFacet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          invalidConditionBoostSpecs: (json_['invalidConditionBoostSpecs']
-                  as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          pinControlMetadata: json_.containsKey('pinControlMetadata')
-              ? GoogleCloudRetailV2PinControlMetadata.fromJson(
+    : this(
+        appliedControls:
+            (json_['appliedControls'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        attributionToken: json_['attributionToken'] as core.String?,
+        conversationalSearchResult:
+            json_.containsKey('conversationalSearchResult')
+                ? GoogleCloudRetailV2SearchResponseConversationalSearchResult.fromJson(
+                  json_['conversationalSearchResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        correctedQuery: json_['correctedQuery'] as core.String?,
+        experimentInfo:
+            (json_['experimentInfo'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2ExperimentInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        facets:
+            (json_['facets'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2SearchResponseFacet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        invalidConditionBoostSpecs:
+            (json_['invalidConditionBoostSpecs'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        pinControlMetadata:
+            json_.containsKey('pinControlMetadata')
+                ? GoogleCloudRetailV2PinControlMetadata.fromJson(
                   json_['pinControlMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          queryExpansionInfo: json_.containsKey('queryExpansionInfo')
-              ? GoogleCloudRetailV2SearchResponseQueryExpansionInfo.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        queryExpansionInfo:
+            json_.containsKey('queryExpansionInfo')
+                ? GoogleCloudRetailV2SearchResponseQueryExpansionInfo.fromJson(
                   json_['queryExpansionInfo']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          redirectUri: json_['redirectUri'] as core.String?,
-          results: (json_['results'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2SearchResponseSearchResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          tileNavigationResult: json_.containsKey('tileNavigationResult')
-              ? GoogleCloudRetailV2SearchResponseTileNavigationResult.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        redirectUri: json_['redirectUri'] as core.String?,
+        results:
+            (json_['results'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2SearchResponseSearchResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        tileNavigationResult:
+            json_.containsKey('tileNavigationResult')
+                ? GoogleCloudRetailV2SearchResponseTileNavigationResult.fromJson(
                   json_['tileNavigationResult']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          totalSize: json_['totalSize'] as core.int?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        totalSize: json_['totalSize'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appliedControls != null) 'appliedControls': appliedControls!,
-        if (attributionToken != null) 'attributionToken': attributionToken!,
-        if (conversationalSearchResult != null)
-          'conversationalSearchResult': conversationalSearchResult!,
-        if (correctedQuery != null) 'correctedQuery': correctedQuery!,
-        if (experimentInfo != null) 'experimentInfo': experimentInfo!,
-        if (facets != null) 'facets': facets!,
-        if (invalidConditionBoostSpecs != null)
-          'invalidConditionBoostSpecs': invalidConditionBoostSpecs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (pinControlMetadata != null)
-          'pinControlMetadata': pinControlMetadata!,
-        if (queryExpansionInfo != null)
-          'queryExpansionInfo': queryExpansionInfo!,
-        if (redirectUri != null) 'redirectUri': redirectUri!,
-        if (results != null) 'results': results!,
-        if (tileNavigationResult != null)
-          'tileNavigationResult': tileNavigationResult!,
-        if (totalSize != null) 'totalSize': totalSize!,
-      };
+    if (appliedControls != null) 'appliedControls': appliedControls!,
+    if (attributionToken != null) 'attributionToken': attributionToken!,
+    if (conversationalSearchResult != null)
+      'conversationalSearchResult': conversationalSearchResult!,
+    if (correctedQuery != null) 'correctedQuery': correctedQuery!,
+    if (experimentInfo != null) 'experimentInfo': experimentInfo!,
+    if (facets != null) 'facets': facets!,
+    if (invalidConditionBoostSpecs != null)
+      'invalidConditionBoostSpecs': invalidConditionBoostSpecs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (pinControlMetadata != null) 'pinControlMetadata': pinControlMetadata!,
+    if (queryExpansionInfo != null) 'queryExpansionInfo': queryExpansionInfo!,
+    if (redirectUri != null) 'redirectUri': redirectUri!,
+    if (results != null) 'results': results!,
+    if (tileNavigationResult != null)
+      'tileNavigationResult': tileNavigationResult!,
+    if (totalSize != null) 'totalSize': totalSize!,
+  };
 }
 
 /// This field specifies all related information that is needed on client side
@@ -10401,7 +10644,7 @@ class GoogleCloudRetailV2SearchResponseConversationalSearchResult {
   /// SearchRequest.filter, and use the merged filter in the follow up search
   /// request.
   GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter?
-      additionalFilter;
+  additionalFilter;
 
   /// This field is deprecated but will be kept for backward compatibility.
   ///
@@ -10411,8 +10654,9 @@ class GoogleCloudRetailV2SearchResponseConversationalSearchResult {
     'Not supported. Member documentation may have more information.',
   )
   core.List<
-          GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter>?
-      additionalFilters;
+    GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter
+  >?
+  additionalFilters;
 
   /// Conversation UUID.
   ///
@@ -10439,8 +10683,9 @@ class GoogleCloudRetailV2SearchResponseConversationalSearchResult {
 
   /// The answer options provided to client for the follow-up question.
   core.List<
-          GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer>?
-      suggestedAnswers;
+    GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer
+  >?
+  suggestedAnswers;
 
   GoogleCloudRetailV2SearchResponseConversationalSearchResult({
     this.additionalFilter,
@@ -10452,36 +10697,46 @@ class GoogleCloudRetailV2SearchResponseConversationalSearchResult {
   });
 
   GoogleCloudRetailV2SearchResponseConversationalSearchResult.fromJson(
-      core.Map json_)
-      : this(
-          additionalFilter: json_.containsKey('additionalFilter')
-              ? GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter
-                  .fromJson(json_['additionalFilter']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          additionalFilters: (json_['additionalFilters'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          conversationId: json_['conversationId'] as core.String?,
-          followupQuestion: json_['followupQuestion'] as core.String?,
-          refinedQuery: json_['refinedQuery'] as core.String?,
-          suggestedAnswers: (json_['suggestedAnswers'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        additionalFilter:
+            json_.containsKey('additionalFilter')
+                ? GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter.fromJson(
+                  json_['additionalFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        additionalFilters:
+            (json_['additionalFilters'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        conversationId: json_['conversationId'] as core.String?,
+        followupQuestion: json_['followupQuestion'] as core.String?,
+        refinedQuery: json_['refinedQuery'] as core.String?,
+        suggestedAnswers:
+            (json_['suggestedAnswers'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalFilter != null) 'additionalFilter': additionalFilter!,
-        if (additionalFilters != null) 'additionalFilters': additionalFilters!,
-        if (conversationId != null) 'conversationId': conversationId!,
-        if (followupQuestion != null) 'followupQuestion': followupQuestion!,
-        if (refinedQuery != null) 'refinedQuery': refinedQuery!,
-        if (suggestedAnswers != null) 'suggestedAnswers': suggestedAnswers!,
-      };
+    if (additionalFilter != null) 'additionalFilter': additionalFilter!,
+    if (additionalFilters != null) 'additionalFilters': additionalFilters!,
+    if (conversationId != null) 'conversationId': conversationId!,
+    if (followupQuestion != null) 'followupQuestion': followupQuestion!,
+    if (refinedQuery != null) 'refinedQuery': refinedQuery!,
+    if (suggestedAnswers != null) 'suggestedAnswers': suggestedAnswers!,
+  };
 }
 
 /// Additional filter that client side need to apply.
@@ -10497,19 +10752,21 @@ class GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilte
   });
 
   GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter.fromJson(
-      core.Map json_)
-      : this(
-          productAttributeValue: json_.containsKey('productAttributeValue')
-              ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
+    core.Map json_,
+  ) : this(
+        productAttributeValue:
+            json_.containsKey('productAttributeValue')
+                ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
                   json_['productAttributeValue']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (productAttributeValue != null)
-          'productAttributeValue': productAttributeValue!,
-      };
+    if (productAttributeValue != null)
+      'productAttributeValue': productAttributeValue!,
+  };
 }
 
 /// Suggested answers to the follow-up question.
@@ -10525,19 +10782,21 @@ class GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer
   });
 
   GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer.fromJson(
-      core.Map json_)
-      : this(
-          productAttributeValue: json_.containsKey('productAttributeValue')
-              ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
+    core.Map json_,
+  ) : this(
+        productAttributeValue:
+            json_.containsKey('productAttributeValue')
+                ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
                   json_['productAttributeValue']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (productAttributeValue != null)
-          'productAttributeValue': productAttributeValue!,
-      };
+    if (productAttributeValue != null)
+      'productAttributeValue': productAttributeValue!,
+  };
 }
 
 /// A facet result.
@@ -10560,21 +10819,25 @@ class GoogleCloudRetailV2SearchResponseFacet {
   });
 
   GoogleCloudRetailV2SearchResponseFacet.fromJson(core.Map json_)
-      : this(
-          dynamicFacet: json_['dynamicFacet'] as core.bool?,
-          key: json_['key'] as core.String?,
-          values: (json_['values'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2SearchResponseFacetFacetValue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        dynamicFacet: json_['dynamicFacet'] as core.bool?,
+        key: json_['key'] as core.String?,
+        values:
+            (json_['values'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2SearchResponseFacetFacetValue.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dynamicFacet != null) 'dynamicFacet': dynamicFacet!,
-        if (key != null) 'key': key!,
-        if (values != null) 'values': values!,
-      };
+    if (dynamicFacet != null) 'dynamicFacet': dynamicFacet!,
+    if (key != null) 'key': key!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// A facet value which contains value names and their count.
@@ -10609,24 +10872,26 @@ class GoogleCloudRetailV2SearchResponseFacetFacetValue {
   });
 
   GoogleCloudRetailV2SearchResponseFacetFacetValue.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.String?,
-          interval: json_.containsKey('interval')
-              ? GoogleCloudRetailV2Interval.fromJson(
-                  json_['interval'] as core.Map<core.String, core.dynamic>)
-              : null,
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.String?,
+        interval:
+            json_.containsKey('interval')
+                ? GoogleCloudRetailV2Interval.fromJson(
+                  json_['interval'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
+        minValue: (json_['minValue'] as core.num?)?.toDouble(),
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (interval != null) 'interval': interval!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
-        if (value != null) 'value': value!,
-      };
+    if (count != null) 'count': count!,
+    if (interval != null) 'interval': interval!,
+    if (maxValue != null) 'maxValue': maxValue!,
+    if (minValue != null) 'minValue': minValue!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Information describing query expansion including whether expansion has
@@ -10647,15 +10912,15 @@ class GoogleCloudRetailV2SearchResponseQueryExpansionInfo {
   });
 
   GoogleCloudRetailV2SearchResponseQueryExpansionInfo.fromJson(core.Map json_)
-      : this(
-          expandedQuery: json_['expandedQuery'] as core.bool?,
-          pinnedResultCount: json_['pinnedResultCount'] as core.String?,
-        );
+    : this(
+        expandedQuery: json_['expandedQuery'] as core.bool?,
+        pinnedResultCount: json_['pinnedResultCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expandedQuery != null) 'expandedQuery': expandedQuery!,
-        if (pinnedResultCount != null) 'pinnedResultCount': pinnedResultCount!,
-      };
+    if (expandedQuery != null) 'expandedQuery': expandedQuery!,
+    if (pinnedResultCount != null) 'pinnedResultCount': pinnedResultCount!,
+  };
 }
 
 /// Represents the search results.
@@ -10729,51 +10994,50 @@ class GoogleCloudRetailV2SearchResponseSearchResult {
   });
 
   GoogleCloudRetailV2SearchResponseSearchResult.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          matchingVariantCount: json_['matchingVariantCount'] as core.int?,
-          matchingVariantFields: (json_['matchingVariantFields']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
+    : this(
+        id: json_['id'] as core.String?,
+        matchingVariantCount: json_['matchingVariantCount'] as core.int?,
+        matchingVariantFields: (json_['matchingVariantFields']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        modelScores:
+            (json_['modelScores'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudRetailV2DoubleList.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          modelScores:
-              (json_['modelScores'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudRetailV2DoubleList.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
-            ),
-          ),
-          personalLabels: (json_['personalLabels'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          product: json_.containsKey('product')
-              ? GoogleCloudRetailV2Product.fromJson(
-                  json_['product'] as core.Map<core.String, core.dynamic>)
-              : null,
-          variantRollupValues: json_.containsKey('variantRollupValues')
-              ? json_['variantRollupValues']
-                  as core.Map<core.String, core.dynamic>
-              : null,
-        );
+        personalLabels:
+            (json_['personalLabels'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        product:
+            json_.containsKey('product')
+                ? GoogleCloudRetailV2Product.fromJson(
+                  json_['product'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        variantRollupValues:
+            json_.containsKey('variantRollupValues')
+                ? json_['variantRollupValues']
+                    as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (matchingVariantCount != null)
-          'matchingVariantCount': matchingVariantCount!,
-        if (matchingVariantFields != null)
-          'matchingVariantFields': matchingVariantFields!,
-        if (modelScores != null) 'modelScores': modelScores!,
-        if (personalLabels != null) 'personalLabels': personalLabels!,
-        if (product != null) 'product': product!,
-        if (variantRollupValues != null)
-          'variantRollupValues': variantRollupValues!,
-      };
+    if (id != null) 'id': id!,
+    if (matchingVariantCount != null)
+      'matchingVariantCount': matchingVariantCount!,
+    if (matchingVariantFields != null)
+      'matchingVariantFields': matchingVariantFields!,
+    if (modelScores != null) 'modelScores': modelScores!,
+    if (personalLabels != null) 'personalLabels': personalLabels!,
+    if (product != null) 'product': product!,
+    if (variantRollupValues != null)
+      'variantRollupValues': variantRollupValues!,
+  };
 }
 
 /// This field specifies all related information for tile navigation that will
@@ -10782,21 +11046,23 @@ class GoogleCloudRetailV2SearchResponseTileNavigationResult {
   /// The current tiles that are used for tile navigation, sorted by engagement.
   core.List<GoogleCloudRetailV2Tile>? tiles;
 
-  GoogleCloudRetailV2SearchResponseTileNavigationResult({
-    this.tiles,
-  });
+  GoogleCloudRetailV2SearchResponseTileNavigationResult({this.tiles});
 
   GoogleCloudRetailV2SearchResponseTileNavigationResult.fromJson(core.Map json_)
-      : this(
-          tiles: (json_['tiles'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2Tile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        tiles:
+            (json_['tiles'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2Tile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tiles != null) 'tiles': tiles!,
-      };
+    if (tiles != null) 'tiles': tiles!,
+  };
 }
 
 /// Configures metadata that is used to generate serving time results (e.g.
@@ -10992,92 +11258,101 @@ class GoogleCloudRetailV2ServingConfig {
   });
 
   GoogleCloudRetailV2ServingConfig.fromJson(core.Map json_)
-      : this(
-          boostControlIds: (json_['boostControlIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          displayName: json_['displayName'] as core.String?,
-          diversityLevel: json_['diversityLevel'] as core.String?,
-          diversityType: json_['diversityType'] as core.String?,
-          doNotAssociateControlIds:
-              (json_['doNotAssociateControlIds'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          dynamicFacetSpec: json_.containsKey('dynamicFacetSpec')
-              ? GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromJson(
+    : this(
+        boostControlIds:
+            (json_['boostControlIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        displayName: json_['displayName'] as core.String?,
+        diversityLevel: json_['diversityLevel'] as core.String?,
+        diversityType: json_['diversityType'] as core.String?,
+        doNotAssociateControlIds:
+            (json_['doNotAssociateControlIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        dynamicFacetSpec:
+            json_.containsKey('dynamicFacetSpec')
+                ? GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromJson(
                   json_['dynamicFacetSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          enableCategoryFilterLevel:
-              json_['enableCategoryFilterLevel'] as core.String?,
-          facetControlIds: (json_['facetControlIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          filterControlIds: (json_['filterControlIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          ignoreControlIds: (json_['ignoreControlIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          ignoreRecsDenylist: json_['ignoreRecsDenylist'] as core.bool?,
-          modelId: json_['modelId'] as core.String?,
-          name: json_['name'] as core.String?,
-          onewaySynonymsControlIds:
-              (json_['onewaySynonymsControlIds'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          personalizationSpec: json_.containsKey('personalizationSpec')
-              ? GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enableCategoryFilterLevel:
+            json_['enableCategoryFilterLevel'] as core.String?,
+        facetControlIds:
+            (json_['facetControlIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        filterControlIds:
+            (json_['filterControlIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        ignoreControlIds:
+            (json_['ignoreControlIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        ignoreRecsDenylist: json_['ignoreRecsDenylist'] as core.bool?,
+        modelId: json_['modelId'] as core.String?,
+        name: json_['name'] as core.String?,
+        onewaySynonymsControlIds:
+            (json_['onewaySynonymsControlIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        personalizationSpec:
+            json_.containsKey('personalizationSpec')
+                ? GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromJson(
                   json_['personalizationSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          priceRerankingLevel: json_['priceRerankingLevel'] as core.String?,
-          redirectControlIds: (json_['redirectControlIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          replacementControlIds: (json_['replacementControlIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          solutionTypes: (json_['solutionTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          twowaySynonymsControlIds:
-              (json_['twowaySynonymsControlIds'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        priceRerankingLevel: json_['priceRerankingLevel'] as core.String?,
+        redirectControlIds:
+            (json_['redirectControlIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        replacementControlIds:
+            (json_['replacementControlIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        solutionTypes:
+            (json_['solutionTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        twowaySynonymsControlIds:
+            (json_['twowaySynonymsControlIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boostControlIds != null) 'boostControlIds': boostControlIds!,
-        if (displayName != null) 'displayName': displayName!,
-        if (diversityLevel != null) 'diversityLevel': diversityLevel!,
-        if (diversityType != null) 'diversityType': diversityType!,
-        if (doNotAssociateControlIds != null)
-          'doNotAssociateControlIds': doNotAssociateControlIds!,
-        if (dynamicFacetSpec != null) 'dynamicFacetSpec': dynamicFacetSpec!,
-        if (enableCategoryFilterLevel != null)
-          'enableCategoryFilterLevel': enableCategoryFilterLevel!,
-        if (facetControlIds != null) 'facetControlIds': facetControlIds!,
-        if (filterControlIds != null) 'filterControlIds': filterControlIds!,
-        if (ignoreControlIds != null) 'ignoreControlIds': ignoreControlIds!,
-        if (ignoreRecsDenylist != null)
-          'ignoreRecsDenylist': ignoreRecsDenylist!,
-        if (modelId != null) 'modelId': modelId!,
-        if (name != null) 'name': name!,
-        if (onewaySynonymsControlIds != null)
-          'onewaySynonymsControlIds': onewaySynonymsControlIds!,
-        if (personalizationSpec != null)
-          'personalizationSpec': personalizationSpec!,
-        if (priceRerankingLevel != null)
-          'priceRerankingLevel': priceRerankingLevel!,
-        if (redirectControlIds != null)
-          'redirectControlIds': redirectControlIds!,
-        if (replacementControlIds != null)
-          'replacementControlIds': replacementControlIds!,
-        if (solutionTypes != null) 'solutionTypes': solutionTypes!,
-        if (twowaySynonymsControlIds != null)
-          'twowaySynonymsControlIds': twowaySynonymsControlIds!,
-      };
+    if (boostControlIds != null) 'boostControlIds': boostControlIds!,
+    if (displayName != null) 'displayName': displayName!,
+    if (diversityLevel != null) 'diversityLevel': diversityLevel!,
+    if (diversityType != null) 'diversityType': diversityType!,
+    if (doNotAssociateControlIds != null)
+      'doNotAssociateControlIds': doNotAssociateControlIds!,
+    if (dynamicFacetSpec != null) 'dynamicFacetSpec': dynamicFacetSpec!,
+    if (enableCategoryFilterLevel != null)
+      'enableCategoryFilterLevel': enableCategoryFilterLevel!,
+    if (facetControlIds != null) 'facetControlIds': facetControlIds!,
+    if (filterControlIds != null) 'filterControlIds': filterControlIds!,
+    if (ignoreControlIds != null) 'ignoreControlIds': ignoreControlIds!,
+    if (ignoreRecsDenylist != null) 'ignoreRecsDenylist': ignoreRecsDenylist!,
+    if (modelId != null) 'modelId': modelId!,
+    if (name != null) 'name': name!,
+    if (onewaySynonymsControlIds != null)
+      'onewaySynonymsControlIds': onewaySynonymsControlIds!,
+    if (personalizationSpec != null)
+      'personalizationSpec': personalizationSpec!,
+    if (priceRerankingLevel != null)
+      'priceRerankingLevel': priceRerankingLevel!,
+    if (redirectControlIds != null) 'redirectControlIds': redirectControlIds!,
+    if (replacementControlIds != null)
+      'replacementControlIds': replacementControlIds!,
+    if (solutionTypes != null) 'solutionTypes': solutionTypes!,
+    if (twowaySynonymsControlIds != null)
+      'twowaySynonymsControlIds': twowaySynonymsControlIds!,
+  };
 }
 
 /// Request message to set a specified branch as new default_branch.
@@ -11109,17 +11384,17 @@ class GoogleCloudRetailV2SetDefaultBranchRequest {
   });
 
   GoogleCloudRetailV2SetDefaultBranchRequest.fromJson(core.Map json_)
-      : this(
-          branchId: json_['branchId'] as core.String?,
-          force: json_['force'] as core.bool?,
-          note: json_['note'] as core.String?,
-        );
+    : this(
+        branchId: json_['branchId'] as core.String?,
+        force: json_['force'] as core.bool?,
+        note: json_['note'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (branchId != null) 'branchId': branchId!,
-        if (force != null) 'force': force!,
-        if (note != null) 'note': note!,
-      };
+    if (branchId != null) 'branchId': branchId!,
+    if (force != null) 'force': force!,
+    if (note != null) 'note': note!,
+  };
 }
 
 /// Request message for ProductService.SetInventory method.
@@ -11187,22 +11462,24 @@ class GoogleCloudRetailV2SetInventoryRequest {
   });
 
   GoogleCloudRetailV2SetInventoryRequest.fromJson(core.Map json_)
-      : this(
-          allowMissing: json_['allowMissing'] as core.bool?,
-          inventory: json_.containsKey('inventory')
-              ? GoogleCloudRetailV2Product.fromJson(
-                  json_['inventory'] as core.Map<core.String, core.dynamic>)
-              : null,
-          setMask: json_['setMask'] as core.String?,
-          setTime: json_['setTime'] as core.String?,
-        );
+    : this(
+        allowMissing: json_['allowMissing'] as core.bool?,
+        inventory:
+            json_.containsKey('inventory')
+                ? GoogleCloudRetailV2Product.fromJson(
+                  json_['inventory'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        setMask: json_['setMask'] as core.String?,
+        setTime: json_['setTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowMissing != null) 'allowMissing': allowMissing!,
-        if (inventory != null) 'inventory': inventory!,
-        if (setMask != null) 'setMask': setMask!,
-        if (setTime != null) 'setTime': setTime!,
-      };
+    if (allowMissing != null) 'allowMissing': allowMissing!,
+    if (inventory != null) 'inventory': inventory!,
+    if (setMask != null) 'setMask': setMask!,
+    if (setTime != null) 'setTime': setTime!,
+  };
 }
 
 /// A list of string values.
@@ -11210,20 +11487,19 @@ class GoogleCloudRetailV2StringList {
   /// String values.
   core.List<core.String>? values;
 
-  GoogleCloudRetailV2StringList({
-    this.values,
-  });
+  GoogleCloudRetailV2StringList({this.values});
 
   GoogleCloudRetailV2StringList.fromJson(core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// This field specifies the tile information including an attribute key,
@@ -11248,30 +11524,33 @@ class GoogleCloudRetailV2Tile {
   });
 
   GoogleCloudRetailV2Tile.fromJson(core.Map json_)
-      : this(
-          productAttributeInterval:
-              json_.containsKey('productAttributeInterval')
-                  ? GoogleCloudRetailV2ProductAttributeInterval.fromJson(
-                      json_['productAttributeInterval']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          productAttributeValue: json_.containsKey('productAttributeValue')
-              ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
+    : this(
+        productAttributeInterval:
+            json_.containsKey('productAttributeInterval')
+                ? GoogleCloudRetailV2ProductAttributeInterval.fromJson(
+                  json_['productAttributeInterval']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        productAttributeValue:
+            json_.containsKey('productAttributeValue')
+                ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
                   json_['productAttributeValue']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          representativeProductId:
-              json_['representativeProductId'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        representativeProductId:
+            json_['representativeProductId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (productAttributeInterval != null)
-          'productAttributeInterval': productAttributeInterval!,
-        if (productAttributeValue != null)
-          'productAttributeValue': productAttributeValue!,
-        if (representativeProductId != null)
-          'representativeProductId': representativeProductId!,
-      };
+    if (productAttributeInterval != null)
+      'productAttributeInterval': productAttributeInterval!,
+    if (productAttributeValue != null)
+      'productAttributeValue': productAttributeValue!,
+    if (representativeProductId != null)
+      'representativeProductId': representativeProductId!,
+  };
 }
 
 /// Request to manually start a tuning process now (instead of waiting for the
@@ -11299,22 +11578,23 @@ class GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest {
   });
 
   GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest.fromJson(
-      core.Map json_)
-      : this(
-          generativeQuestionConfig:
-              json_.containsKey('generativeQuestionConfig')
-                  ? GoogleCloudRetailV2GenerativeQuestionConfig.fromJson(
-                      json_['generativeQuestionConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        generativeQuestionConfig:
+            json_.containsKey('generativeQuestionConfig')
+                ? GoogleCloudRetailV2GenerativeQuestionConfig.fromJson(
+                  json_['generativeQuestionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (generativeQuestionConfig != null)
-          'generativeQuestionConfig': generativeQuestionConfig!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (generativeQuestionConfig != null)
+      'generativeQuestionConfig': generativeQuestionConfig!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// UserEvent captures all metadata information Retail API needs to know about
@@ -11552,85 +11832,101 @@ class GoogleCloudRetailV2UserEvent {
   });
 
   GoogleCloudRetailV2UserEvent.fromJson(core.Map json_)
-      : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudRetailV2CustomAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudRetailV2CustomAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          attributionToken: json_['attributionToken'] as core.String?,
-          cartId: json_['cartId'] as core.String?,
-          completionDetail: json_.containsKey('completionDetail')
-              ? GoogleCloudRetailV2CompletionDetail.fromJson(
+        attributionToken: json_['attributionToken'] as core.String?,
+        cartId: json_['cartId'] as core.String?,
+        completionDetail:
+            json_.containsKey('completionDetail')
+                ? GoogleCloudRetailV2CompletionDetail.fromJson(
                   json_['completionDetail']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          entity: json_['entity'] as core.String?,
-          eventTime: json_['eventTime'] as core.String?,
-          eventType: json_['eventType'] as core.String?,
-          experimentIds: (json_['experimentIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          filter: json_['filter'] as core.String?,
-          offset: json_['offset'] as core.int?,
-          orderBy: json_['orderBy'] as core.String?,
-          pageCategories: (json_['pageCategories'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          pageViewId: json_['pageViewId'] as core.String?,
-          panels: (json_['panels'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2PanelInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          productDetails: (json_['productDetails'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2ProductDetail.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          purchaseTransaction: json_.containsKey('purchaseTransaction')
-              ? GoogleCloudRetailV2PurchaseTransaction.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        entity: json_['entity'] as core.String?,
+        eventTime: json_['eventTime'] as core.String?,
+        eventType: json_['eventType'] as core.String?,
+        experimentIds:
+            (json_['experimentIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        filter: json_['filter'] as core.String?,
+        offset: json_['offset'] as core.int?,
+        orderBy: json_['orderBy'] as core.String?,
+        pageCategories:
+            (json_['pageCategories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        pageViewId: json_['pageViewId'] as core.String?,
+        panels:
+            (json_['panels'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2PanelInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        productDetails:
+            (json_['productDetails'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2ProductDetail.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        purchaseTransaction:
+            json_.containsKey('purchaseTransaction')
+                ? GoogleCloudRetailV2PurchaseTransaction.fromJson(
                   json_['purchaseTransaction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          referrerUri: json_['referrerUri'] as core.String?,
-          searchQuery: json_['searchQuery'] as core.String?,
-          sessionId: json_['sessionId'] as core.String?,
-          uri: json_['uri'] as core.String?,
-          userInfo: json_.containsKey('userInfo')
-              ? GoogleCloudRetailV2UserInfo.fromJson(
-                  json_['userInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          visitorId: json_['visitorId'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        referrerUri: json_['referrerUri'] as core.String?,
+        searchQuery: json_['searchQuery'] as core.String?,
+        sessionId: json_['sessionId'] as core.String?,
+        uri: json_['uri'] as core.String?,
+        userInfo:
+            json_.containsKey('userInfo')
+                ? GoogleCloudRetailV2UserInfo.fromJson(
+                  json_['userInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        visitorId: json_['visitorId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (attributionToken != null) 'attributionToken': attributionToken!,
-        if (cartId != null) 'cartId': cartId!,
-        if (completionDetail != null) 'completionDetail': completionDetail!,
-        if (entity != null) 'entity': entity!,
-        if (eventTime != null) 'eventTime': eventTime!,
-        if (eventType != null) 'eventType': eventType!,
-        if (experimentIds != null) 'experimentIds': experimentIds!,
-        if (filter != null) 'filter': filter!,
-        if (offset != null) 'offset': offset!,
-        if (orderBy != null) 'orderBy': orderBy!,
-        if (pageCategories != null) 'pageCategories': pageCategories!,
-        if (pageViewId != null) 'pageViewId': pageViewId!,
-        if (panels != null) 'panels': panels!,
-        if (productDetails != null) 'productDetails': productDetails!,
-        if (purchaseTransaction != null)
-          'purchaseTransaction': purchaseTransaction!,
-        if (referrerUri != null) 'referrerUri': referrerUri!,
-        if (searchQuery != null) 'searchQuery': searchQuery!,
-        if (sessionId != null) 'sessionId': sessionId!,
-        if (uri != null) 'uri': uri!,
-        if (userInfo != null) 'userInfo': userInfo!,
-        if (visitorId != null) 'visitorId': visitorId!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (attributionToken != null) 'attributionToken': attributionToken!,
+    if (cartId != null) 'cartId': cartId!,
+    if (completionDetail != null) 'completionDetail': completionDetail!,
+    if (entity != null) 'entity': entity!,
+    if (eventTime != null) 'eventTime': eventTime!,
+    if (eventType != null) 'eventType': eventType!,
+    if (experimentIds != null) 'experimentIds': experimentIds!,
+    if (filter != null) 'filter': filter!,
+    if (offset != null) 'offset': offset!,
+    if (orderBy != null) 'orderBy': orderBy!,
+    if (pageCategories != null) 'pageCategories': pageCategories!,
+    if (pageViewId != null) 'pageViewId': pageViewId!,
+    if (panels != null) 'panels': panels!,
+    if (productDetails != null) 'productDetails': productDetails!,
+    if (purchaseTransaction != null)
+      'purchaseTransaction': purchaseTransaction!,
+    if (referrerUri != null) 'referrerUri': referrerUri!,
+    if (searchQuery != null) 'searchQuery': searchQuery!,
+    if (sessionId != null) 'sessionId': sessionId!,
+    if (uri != null) 'uri': uri!,
+    if (userInfo != null) 'userInfo': userInfo!,
+    if (visitorId != null) 'visitorId': visitorId!,
+  };
 }
 
 /// The inline source for the input config for ImportUserEvents method.
@@ -11642,21 +11938,23 @@ class GoogleCloudRetailV2UserEventInlineSource {
   /// Required.
   core.List<GoogleCloudRetailV2UserEvent>? userEvents;
 
-  GoogleCloudRetailV2UserEventInlineSource({
-    this.userEvents,
-  });
+  GoogleCloudRetailV2UserEventInlineSource({this.userEvents});
 
   GoogleCloudRetailV2UserEventInlineSource.fromJson(core.Map json_)
-      : this(
-          userEvents: (json_['userEvents'] as core.List?)
-              ?.map((value) => GoogleCloudRetailV2UserEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        userEvents:
+            (json_['userEvents'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2UserEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userEvents != null) 'userEvents': userEvents!,
-      };
+    if (userEvents != null) 'userEvents': userEvents!,
+  };
 }
 
 /// The input config source for user events.
@@ -11683,29 +11981,35 @@ class GoogleCloudRetailV2UserEventInputConfig {
   });
 
   GoogleCloudRetailV2UserEventInputConfig.fromJson(core.Map json_)
-      : this(
-          bigQuerySource: json_.containsKey('bigQuerySource')
-              ? GoogleCloudRetailV2BigQuerySource.fromJson(
+    : this(
+        bigQuerySource:
+            json_.containsKey('bigQuerySource')
+                ? GoogleCloudRetailV2BigQuerySource.fromJson(
                   json_['bigQuerySource']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          gcsSource: json_.containsKey('gcsSource')
-              ? GoogleCloudRetailV2GcsSource.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          userEventInlineSource: json_.containsKey('userEventInlineSource')
-              ? GoogleCloudRetailV2UserEventInlineSource.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? GoogleCloudRetailV2GcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userEventInlineSource:
+            json_.containsKey('userEventInlineSource')
+                ? GoogleCloudRetailV2UserEventInlineSource.fromJson(
                   json_['userEventInlineSource']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!,
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-        if (userEventInlineSource != null)
-          'userEventInlineSource': userEventInlineSource!,
-      };
+    if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!,
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+    if (userEventInlineSource != null)
+      'userEventInlineSource': userEventInlineSource!,
+  };
 }
 
 /// Information of an end user.
@@ -11756,19 +12060,19 @@ class GoogleCloudRetailV2UserInfo {
   });
 
   GoogleCloudRetailV2UserInfo.fromJson(core.Map json_)
-      : this(
-          directUserRequest: json_['directUserRequest'] as core.bool?,
-          ipAddress: json_['ipAddress'] as core.String?,
-          userAgent: json_['userAgent'] as core.String?,
-          userId: json_['userId'] as core.String?,
-        );
+    : this(
+        directUserRequest: json_['directUserRequest'] as core.bool?,
+        ipAddress: json_['ipAddress'] as core.String?,
+        userAgent: json_['userAgent'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (directUserRequest != null) 'directUserRequest': directUserRequest!,
-        if (ipAddress != null) 'ipAddress': ipAddress!,
-        if (userAgent != null) 'userAgent': userAgent!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (directUserRequest != null) 'directUserRequest': directUserRequest!,
+    if (ipAddress != null) 'ipAddress': ipAddress!,
+    if (userAgent != null) 'userAgent': userAgent!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -11785,18 +12089,22 @@ class GoogleLongrunningListOperationsResponse {
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => GoogleLongrunningOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -11851,28 +12159,32 @@ class GoogleLongrunningOperation {
   });
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

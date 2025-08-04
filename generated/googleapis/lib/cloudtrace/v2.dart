@@ -63,11 +63,16 @@ class CloudTraceApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudTraceApi(http.Client client,
-      {core.String rootUrl = 'https://cloudtrace.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudTraceApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudtrace.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -135,7 +140,7 @@ class ProjectsTracesSpansResource {
   final commons.ApiRequester _requester;
 
   ProjectsTracesSpansResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new span.
   ///
@@ -199,27 +204,28 @@ class Annotation {
   /// The maximum length for the description is 256 bytes.
   TruncatableString? description;
 
-  Annotation({
-    this.attributes,
-    this.description,
-  });
+  Annotation({this.attributes, this.description});
 
   Annotation.fromJson(core.Map json_)
-      : this(
-          attributes: json_.containsKey('attributes')
-              ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_.containsKey('description')
-              ? TruncatableString.fromJson(
-                  json_['description'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        attributes:
+            json_.containsKey('attributes')
+                ? Attributes.fromJson(
+                  json_['attributes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description:
+            json_.containsKey('description')
+                ? TruncatableString.fromJson(
+                  json_['description'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (description != null) 'description': description!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (description != null) 'description': description!,
+  };
 }
 
 /// The allowed types for `[VALUE]` in a `[KEY]:[VALUE]` attribute.
@@ -233,27 +239,25 @@ class AttributeValue {
   /// A string up to 256 bytes long.
   TruncatableString? stringValue;
 
-  AttributeValue({
-    this.boolValue,
-    this.intValue,
-    this.stringValue,
-  });
+  AttributeValue({this.boolValue, this.intValue, this.stringValue});
 
   AttributeValue.fromJson(core.Map json_)
-      : this(
-          boolValue: json_['boolValue'] as core.bool?,
-          intValue: json_['intValue'] as core.String?,
-          stringValue: json_.containsKey('stringValue')
-              ? TruncatableString.fromJson(
-                  json_['stringValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        intValue: json_['intValue'] as core.String?,
+        stringValue:
+            json_.containsKey('stringValue')
+                ? TruncatableString.fromJson(
+                  json_['stringValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (intValue != null) 'intValue': intValue!,
-        if (stringValue != null) 'stringValue': stringValue!,
-      };
+    if (boolValue != null) 'boolValue': boolValue!,
+    if (intValue != null) 'intValue': intValue!,
+    if (stringValue != null) 'stringValue': stringValue!,
+  };
 }
 
 /// A set of attributes as key-value pairs.
@@ -274,30 +278,28 @@ class Attributes {
   /// valid.
   core.int? droppedAttributesCount;
 
-  Attributes({
-    this.attributeMap,
-    this.droppedAttributesCount,
-  });
+  Attributes({this.attributeMap, this.droppedAttributesCount});
 
   Attributes.fromJson(core.Map json_)
-      : this(
-          attributeMap:
-              (json_['attributeMap'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              AttributeValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        attributeMap: (json_['attributeMap']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                AttributeValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          droppedAttributesCount: json_['droppedAttributesCount'] as core.int?,
-        );
+        droppedAttributesCount: json_['droppedAttributesCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeMap != null) 'attributeMap': attributeMap!,
-        if (droppedAttributesCount != null)
-          'droppedAttributesCount': droppedAttributesCount!,
-      };
+    if (attributeMap != null) 'attributeMap': attributeMap!,
+    if (droppedAttributesCount != null)
+      'droppedAttributesCount': droppedAttributesCount!,
+  };
 }
 
 /// The request message for the `BatchWriteSpans` method.
@@ -310,21 +312,23 @@ class BatchWriteSpansRequest {
   /// Required.
   core.List<Span>? spans;
 
-  BatchWriteSpansRequest({
-    this.spans,
-  });
+  BatchWriteSpansRequest({this.spans});
 
   BatchWriteSpansRequest.fromJson(core.Map json_)
-      : this(
-          spans: (json_['spans'] as core.List?)
-              ?.map((value) =>
-                  Span.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        spans:
+            (json_['spans'] as core.List?)
+                ?.map(
+                  (value) => Span.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (spans != null) 'spans': spans!,
-      };
+    if (spans != null) 'spans': spans!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -360,30 +364,27 @@ class Link {
   /// - "PARENT_LINKED_SPAN" : The linked span is a parent of the current span.
   core.String? type;
 
-  Link({
-    this.attributes,
-    this.spanId,
-    this.traceId,
-    this.type,
-  });
+  Link({this.attributes, this.spanId, this.traceId, this.type});
 
   Link.fromJson(core.Map json_)
-      : this(
-          attributes: json_.containsKey('attributes')
-              ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          spanId: json_['spanId'] as core.String?,
-          traceId: json_['traceId'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        attributes:
+            json_.containsKey('attributes')
+                ? Attributes.fromJson(
+                  json_['attributes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spanId: json_['spanId'] as core.String?,
+        traceId: json_['traceId'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (spanId != null) 'spanId': spanId!,
-        if (traceId != null) 'traceId': traceId!,
-        if (type != null) 'type': type!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (spanId != null) 'spanId': spanId!,
+    if (traceId != null) 'traceId': traceId!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A collection of links, which are references from this span to a span in the
@@ -397,24 +398,25 @@ class Links {
   /// A collection of links.
   core.List<Link>? link;
 
-  Links({
-    this.droppedLinksCount,
-    this.link,
-  });
+  Links({this.droppedLinksCount, this.link});
 
   Links.fromJson(core.Map json_)
-      : this(
-          droppedLinksCount: json_['droppedLinksCount'] as core.int?,
-          link: (json_['link'] as core.List?)
-              ?.map((value) =>
-                  Link.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        droppedLinksCount: json_['droppedLinksCount'] as core.int?,
+        link:
+            (json_['link'] as core.List?)
+                ?.map(
+                  (value) => Link.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (droppedLinksCount != null) 'droppedLinksCount': droppedLinksCount!,
-        if (link != null) 'link': link!,
-      };
+    if (droppedLinksCount != null) 'droppedLinksCount': droppedLinksCount!,
+    if (link != null) 'link': link!,
+  };
 }
 
 /// An event describing a message sent/received between Spans.
@@ -449,21 +451,21 @@ class MessageEvent {
   });
 
   MessageEvent.fromJson(core.Map json_)
-      : this(
-          compressedSizeBytes: json_['compressedSizeBytes'] as core.String?,
-          id: json_['id'] as core.String?,
-          type: json_['type'] as core.String?,
-          uncompressedSizeBytes: json_['uncompressedSizeBytes'] as core.String?,
-        );
+    : this(
+        compressedSizeBytes: json_['compressedSizeBytes'] as core.String?,
+        id: json_['id'] as core.String?,
+        type: json_['type'] as core.String?,
+        uncompressedSizeBytes: json_['uncompressedSizeBytes'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (compressedSizeBytes != null)
-          'compressedSizeBytes': compressedSizeBytes!,
-        if (id != null) 'id': id!,
-        if (type != null) 'type': type!,
-        if (uncompressedSizeBytes != null)
-          'uncompressedSizeBytes': uncompressedSizeBytes!,
-      };
+    if (compressedSizeBytes != null)
+      'compressedSizeBytes': compressedSizeBytes!,
+    if (id != null) 'id': id!,
+    if (type != null) 'type': type!,
+    if (uncompressedSizeBytes != null)
+      'uncompressedSizeBytes': uncompressedSizeBytes!,
+  };
 }
 
 /// Binary module.
@@ -476,27 +478,28 @@ class Module {
   /// libc.so, sharedlib.so (up to 256 bytes).
   TruncatableString? module;
 
-  Module({
-    this.buildId,
-    this.module,
-  });
+  Module({this.buildId, this.module});
 
   Module.fromJson(core.Map json_)
-      : this(
-          buildId: json_.containsKey('buildId')
-              ? TruncatableString.fromJson(
-                  json_['buildId'] as core.Map<core.String, core.dynamic>)
-              : null,
-          module: json_.containsKey('module')
-              ? TruncatableString.fromJson(
-                  json_['module'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        buildId:
+            json_.containsKey('buildId')
+                ? TruncatableString.fromJson(
+                  json_['buildId'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        module:
+            json_.containsKey('module')
+                ? TruncatableString.fromJson(
+                  json_['module'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buildId != null) 'buildId': buildId!,
-        if (module != null) 'module': module!,
-      };
+    if (buildId != null) 'buildId': buildId!,
+    if (module != null) 'module': module!,
+  };
 }
 
 /// A span represents a single operation within a trace.
@@ -639,59 +642,70 @@ class Span {
   });
 
   Span.fromJson(core.Map json_)
-      : this(
-          attributes: json_.containsKey('attributes')
-              ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          childSpanCount: json_['childSpanCount'] as core.int?,
-          displayName: json_.containsKey('displayName')
-              ? TruncatableString.fromJson(
-                  json_['displayName'] as core.Map<core.String, core.dynamic>)
-              : null,
-          endTime: json_['endTime'] as core.String?,
-          links: json_.containsKey('links')
-              ? Links.fromJson(
-                  json_['links'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          parentSpanId: json_['parentSpanId'] as core.String?,
-          sameProcessAsParentSpan:
-              json_['sameProcessAsParentSpan'] as core.bool?,
-          spanId: json_['spanId'] as core.String?,
-          spanKind: json_['spanKind'] as core.String?,
-          stackTrace: json_.containsKey('stackTrace')
-              ? StackTrace.fromJson(
-                  json_['stackTrace'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startTime: json_['startTime'] as core.String?,
-          status: json_.containsKey('status')
-              ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-          timeEvents: json_.containsKey('timeEvents')
-              ? TimeEvents.fromJson(
-                  json_['timeEvents'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        attributes:
+            json_.containsKey('attributes')
+                ? Attributes.fromJson(
+                  json_['attributes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        childSpanCount: json_['childSpanCount'] as core.int?,
+        displayName:
+            json_.containsKey('displayName')
+                ? TruncatableString.fromJson(
+                  json_['displayName'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endTime: json_['endTime'] as core.String?,
+        links:
+            json_.containsKey('links')
+                ? Links.fromJson(
+                  json_['links'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        parentSpanId: json_['parentSpanId'] as core.String?,
+        sameProcessAsParentSpan: json_['sameProcessAsParentSpan'] as core.bool?,
+        spanId: json_['spanId'] as core.String?,
+        spanKind: json_['spanKind'] as core.String?,
+        stackTrace:
+            json_.containsKey('stackTrace')
+                ? StackTrace.fromJson(
+                  json_['stackTrace'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startTime: json_['startTime'] as core.String?,
+        status:
+            json_.containsKey('status')
+                ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        timeEvents:
+            json_.containsKey('timeEvents')
+                ? TimeEvents.fromJson(
+                  json_['timeEvents'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (childSpanCount != null) 'childSpanCount': childSpanCount!,
-        if (displayName != null) 'displayName': displayName!,
-        if (endTime != null) 'endTime': endTime!,
-        if (links != null) 'links': links!,
-        if (name != null) 'name': name!,
-        if (parentSpanId != null) 'parentSpanId': parentSpanId!,
-        if (sameProcessAsParentSpan != null)
-          'sameProcessAsParentSpan': sameProcessAsParentSpan!,
-        if (spanId != null) 'spanId': spanId!,
-        if (spanKind != null) 'spanKind': spanKind!,
-        if (stackTrace != null) 'stackTrace': stackTrace!,
-        if (startTime != null) 'startTime': startTime!,
-        if (status != null) 'status': status!,
-        if (timeEvents != null) 'timeEvents': timeEvents!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (childSpanCount != null) 'childSpanCount': childSpanCount!,
+    if (displayName != null) 'displayName': displayName!,
+    if (endTime != null) 'endTime': endTime!,
+    if (links != null) 'links': links!,
+    if (name != null) 'name': name!,
+    if (parentSpanId != null) 'parentSpanId': parentSpanId!,
+    if (sameProcessAsParentSpan != null)
+      'sameProcessAsParentSpan': sameProcessAsParentSpan!,
+    if (spanId != null) 'spanId': spanId!,
+    if (spanKind != null) 'spanKind': spanKind!,
+    if (stackTrace != null) 'stackTrace': stackTrace!,
+    if (startTime != null) 'startTime': startTime!,
+    if (status != null) 'status': status!,
+    if (timeEvents != null) 'timeEvents': timeEvents!,
+  };
 }
 
 /// Represents a single stack frame in a stack trace.
@@ -736,41 +750,52 @@ class StackFrame {
   });
 
   StackFrame.fromJson(core.Map json_)
-      : this(
-          columnNumber: json_['columnNumber'] as core.String?,
-          fileName: json_.containsKey('fileName')
-              ? TruncatableString.fromJson(
-                  json_['fileName'] as core.Map<core.String, core.dynamic>)
-              : null,
-          functionName: json_.containsKey('functionName')
-              ? TruncatableString.fromJson(
-                  json_['functionName'] as core.Map<core.String, core.dynamic>)
-              : null,
-          lineNumber: json_['lineNumber'] as core.String?,
-          loadModule: json_.containsKey('loadModule')
-              ? Module.fromJson(
-                  json_['loadModule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          originalFunctionName: json_.containsKey('originalFunctionName')
-              ? TruncatableString.fromJson(json_['originalFunctionName']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceVersion: json_.containsKey('sourceVersion')
-              ? TruncatableString.fromJson(
-                  json_['sourceVersion'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        columnNumber: json_['columnNumber'] as core.String?,
+        fileName:
+            json_.containsKey('fileName')
+                ? TruncatableString.fromJson(
+                  json_['fileName'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        functionName:
+            json_.containsKey('functionName')
+                ? TruncatableString.fromJson(
+                  json_['functionName'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lineNumber: json_['lineNumber'] as core.String?,
+        loadModule:
+            json_.containsKey('loadModule')
+                ? Module.fromJson(
+                  json_['loadModule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        originalFunctionName:
+            json_.containsKey('originalFunctionName')
+                ? TruncatableString.fromJson(
+                  json_['originalFunctionName']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceVersion:
+            json_.containsKey('sourceVersion')
+                ? TruncatableString.fromJson(
+                  json_['sourceVersion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnNumber != null) 'columnNumber': columnNumber!,
-        if (fileName != null) 'fileName': fileName!,
-        if (functionName != null) 'functionName': functionName!,
-        if (lineNumber != null) 'lineNumber': lineNumber!,
-        if (loadModule != null) 'loadModule': loadModule!,
-        if (originalFunctionName != null)
-          'originalFunctionName': originalFunctionName!,
-        if (sourceVersion != null) 'sourceVersion': sourceVersion!,
-      };
+    if (columnNumber != null) 'columnNumber': columnNumber!,
+    if (fileName != null) 'fileName': fileName!,
+    if (functionName != null) 'functionName': functionName!,
+    if (lineNumber != null) 'lineNumber': lineNumber!,
+    if (loadModule != null) 'loadModule': loadModule!,
+    if (originalFunctionName != null)
+      'originalFunctionName': originalFunctionName!,
+    if (sourceVersion != null) 'sourceVersion': sourceVersion!,
+  };
 }
 
 /// A collection of stack frames, which can be truncated.
@@ -784,25 +809,25 @@ class StackFrames {
   /// Stack frames in this call stack.
   core.List<StackFrame>? frame;
 
-  StackFrames({
-    this.droppedFramesCount,
-    this.frame,
-  });
+  StackFrames({this.droppedFramesCount, this.frame});
 
   StackFrames.fromJson(core.Map json_)
-      : this(
-          droppedFramesCount: json_['droppedFramesCount'] as core.int?,
-          frame: (json_['frame'] as core.List?)
-              ?.map((value) => StackFrame.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        droppedFramesCount: json_['droppedFramesCount'] as core.int?,
+        frame:
+            (json_['frame'] as core.List?)
+                ?.map(
+                  (value) => StackFrame.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (droppedFramesCount != null)
-          'droppedFramesCount': droppedFramesCount!,
-        if (frame != null) 'frame': frame!,
-      };
+    if (droppedFramesCount != null) 'droppedFramesCount': droppedFramesCount!,
+    if (frame != null) 'frame': frame!,
+  };
 }
 
 /// A call stack appearing in a trace.
@@ -821,24 +846,23 @@ class StackTrace {
   /// request can refer to that stack trace by only setting `stackTraceHashId`.
   core.String? stackTraceHashId;
 
-  StackTrace({
-    this.stackFrames,
-    this.stackTraceHashId,
-  });
+  StackTrace({this.stackFrames, this.stackTraceHashId});
 
   StackTrace.fromJson(core.Map json_)
-      : this(
-          stackFrames: json_.containsKey('stackFrames')
-              ? StackFrames.fromJson(
-                  json_['stackFrames'] as core.Map<core.String, core.dynamic>)
-              : null,
-          stackTraceHashId: json_['stackTraceHashId'] as core.String?,
-        );
+    : this(
+        stackFrames:
+            json_.containsKey('stackFrames')
+                ? StackFrames.fromJson(
+                  json_['stackFrames'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stackTraceHashId: json_['stackTraceHashId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (stackFrames != null) 'stackFrames': stackFrames!,
-        if (stackTraceHashId != null) 'stackTraceHashId': stackTraceHashId!,
-      };
+    if (stackFrames != null) 'stackFrames': stackFrames!,
+    if (stackTraceHashId != null) 'stackTraceHashId': stackTraceHashId!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -861,30 +885,30 @@ class TimeEvent {
   /// The timestamp indicating the time the event occurred.
   core.String? time;
 
-  TimeEvent({
-    this.annotation,
-    this.messageEvent,
-    this.time,
-  });
+  TimeEvent({this.annotation, this.messageEvent, this.time});
 
   TimeEvent.fromJson(core.Map json_)
-      : this(
-          annotation: json_.containsKey('annotation')
-              ? Annotation.fromJson(
-                  json_['annotation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          messageEvent: json_.containsKey('messageEvent')
-              ? MessageEvent.fromJson(
-                  json_['messageEvent'] as core.Map<core.String, core.dynamic>)
-              : null,
-          time: json_['time'] as core.String?,
-        );
+    : this(
+        annotation:
+            json_.containsKey('annotation')
+                ? Annotation.fromJson(
+                  json_['annotation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        messageEvent:
+            json_.containsKey('messageEvent')
+                ? MessageEvent.fromJson(
+                  json_['messageEvent'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        time: json_['time'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotation != null) 'annotation': annotation!,
-        if (messageEvent != null) 'messageEvent': messageEvent!,
-        if (time != null) 'time': time!,
-      };
+    if (annotation != null) 'annotation': annotation!,
+    if (messageEvent != null) 'messageEvent': messageEvent!,
+    if (time != null) 'time': time!,
+  };
 }
 
 /// A collection of `TimeEvent`s.
@@ -913,24 +937,27 @@ class TimeEvents {
   });
 
   TimeEvents.fromJson(core.Map json_)
-      : this(
-          droppedAnnotationsCount:
-              json_['droppedAnnotationsCount'] as core.int?,
-          droppedMessageEventsCount:
-              json_['droppedMessageEventsCount'] as core.int?,
-          timeEvent: (json_['timeEvent'] as core.List?)
-              ?.map((value) => TimeEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        droppedAnnotationsCount: json_['droppedAnnotationsCount'] as core.int?,
+        droppedMessageEventsCount:
+            json_['droppedMessageEventsCount'] as core.int?,
+        timeEvent:
+            (json_['timeEvent'] as core.List?)
+                ?.map(
+                  (value) => TimeEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (droppedAnnotationsCount != null)
-          'droppedAnnotationsCount': droppedAnnotationsCount!,
-        if (droppedMessageEventsCount != null)
-          'droppedMessageEventsCount': droppedMessageEventsCount!,
-        if (timeEvent != null) 'timeEvent': timeEvent!,
-      };
+    if (droppedAnnotationsCount != null)
+      'droppedAnnotationsCount': droppedAnnotationsCount!,
+    if (droppedMessageEventsCount != null)
+      'droppedMessageEventsCount': droppedMessageEventsCount!,
+    if (timeEvent != null) 'timeEvent': timeEvent!,
+  };
 }
 
 /// Represents a string that might be shortened to a specified length.

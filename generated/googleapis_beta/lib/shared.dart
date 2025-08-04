@@ -39,21 +39,18 @@ class $AccessDateRange {
   /// current time in the request's time zone.
   core.String? startDate;
 
-  $AccessDateRange({
-    this.endDate,
-    this.startDate,
-  });
+  $AccessDateRange({this.endDate, this.startDate});
 
   $AccessDateRange.fromJson(core.Map json_)
-      : this(
-          endDate: json_['endDate'] as core.String?,
-          startDate: json_['startDate'] as core.String?,
-        );
+    : this(
+        endDate: json_['endDate'] as core.String?,
+        startDate: json_['startDate'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!,
-        if (startDate != null) 'startDate': startDate!,
-      };
+    if (endDate != null) 'endDate': endDate!,
+    if (startDate != null) 'startDate': startDate!,
+  };
 }
 
 /// Used by:
@@ -69,18 +66,14 @@ class $AccessDimension {
   /// referenced by name in `dimensionFilter` and `orderBys`.
   core.String? dimensionName;
 
-  $AccessDimension({
-    this.dimensionName,
-  });
+  $AccessDimension({this.dimensionName});
 
   $AccessDimension.fromJson(core.Map json_)
-      : this(
-          dimensionName: json_['dimensionName'] as core.String?,
-        );
+    : this(dimensionName: json_['dimensionName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName!,
-      };
+    if (dimensionName != null) 'dimensionName': dimensionName!,
+  };
 }
 
 /// Used by:
@@ -91,18 +84,14 @@ class $AccessDimensionHeader {
   /// The dimension's name; for example 'userEmail'.
   core.String? dimensionName;
 
-  $AccessDimensionHeader({
-    this.dimensionName,
-  });
+  $AccessDimensionHeader({this.dimensionName});
 
   $AccessDimensionHeader.fromJson(core.Map json_)
-      : this(
-          dimensionName: json_['dimensionName'] as core.String?,
-        );
+    : this(dimensionName: json_['dimensionName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName!,
-      };
+    if (dimensionName != null) 'dimensionName': dimensionName!,
+  };
 }
 
 /// Used by:
@@ -115,18 +104,14 @@ class $AccessDimensionValue {
   /// For example, this value may be 'France' for the 'country' dimension.
   core.String? value;
 
-  $AccessDimensionValue({
-    this.value,
-  });
+  $AccessDimensionValue({this.value});
 
   $AccessDimensionValue.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+    : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -142,18 +127,14 @@ class $AccessMetric {
   /// name in `metricFilter` & `orderBys`.
   core.String? metricName;
 
-  $AccessMetric({
-    this.metricName,
-  });
+  $AccessMetric({this.metricName});
 
   $AccessMetric.fromJson(core.Map json_)
-      : this(
-          metricName: json_['metricName'] as core.String?,
-        );
+    : this(metricName: json_['metricName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metricName != null) 'metricName': metricName!,
-      };
+    if (metricName != null) 'metricName': metricName!,
+  };
 }
 
 /// Used by:
@@ -164,18 +145,14 @@ class $AccessMetricHeader {
   /// The metric's name; for example 'accessCount'.
   core.String? metricName;
 
-  $AccessMetricHeader({
-    this.metricName,
-  });
+  $AccessMetricHeader({this.metricName});
 
   $AccessMetricHeader.fromJson(core.Map json_)
-      : this(
-          metricName: json_['metricName'] as core.String?,
-        );
+    : this(metricName: json_['metricName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metricName != null) 'metricName': metricName!,
-      };
+    if (metricName != null) 'metricName': metricName!,
+  };
 }
 
 /// Used by:
@@ -188,18 +165,14 @@ class $AccessMetricValue {
   /// For example, this value may be '13'.
   core.String? value;
 
-  $AccessMetricValue({
-    this.value,
-  });
+  $AccessMetricValue({this.value});
 
   $AccessMetricValue.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+    : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -261,25 +234,25 @@ class $Account {
   });
 
   $Account.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          deleted: json_['deleted'] as core.bool?,
-          displayName: json_['displayName'] as core.String?,
-          gmpOrganization: json_['gmpOrganization'] as core.String?,
-          name: json_['name'] as core.String?,
-          regionCode: json_['regionCode'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        deleted: json_['deleted'] as core.bool?,
+        displayName: json_['displayName'] as core.String?,
+        gmpOrganization: json_['gmpOrganization'] as core.String?,
+        name: json_['name'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (deleted != null) 'deleted': deleted!,
-        if (displayName != null) 'displayName': displayName!,
-        if (gmpOrganization != null) 'gmpOrganization': gmpOrganization!,
-        if (name != null) 'name': name!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (deleted != null) 'deleted': deleted!,
+    if (displayName != null) 'displayName': displayName!,
+    if (gmpOrganization != null) 'gmpOrganization': gmpOrganization!,
+    if (name != null) 'name': name!,
+    if (regionCode != null) 'regionCode': regionCode!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Used by:
@@ -299,18 +272,14 @@ class $AcknowledgeUserDataCollectionRequest {
   /// Required.
   core.String? acknowledgement;
 
-  $AcknowledgeUserDataCollectionRequest({
-    this.acknowledgement,
-  });
+  $AcknowledgeUserDataCollectionRequest({this.acknowledgement});
 
   $AcknowledgeUserDataCollectionRequest.fromJson(core.Map json_)
-      : this(
-          acknowledgement: json_['acknowledgement'] as core.String?,
-        );
+    : this(acknowledgement: json_['acknowledgement'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acknowledgement != null) 'acknowledgement': acknowledgement!,
-      };
+    if (acknowledgement != null) 'acknowledgement': acknowledgement!,
+  };
 }
 
 /// Used by:
@@ -328,22 +297,18 @@ class $Config {
   /// Optional.
   core.String? instructionMessage;
 
-  $Config({
-    this.annotationSpecSet,
-    this.instructionMessage,
-  });
+  $Config({this.annotationSpecSet, this.instructionMessage});
 
   $Config.fromJson(core.Map json_)
-      : this(
-          annotationSpecSet: json_['annotationSpecSet'] as core.String?,
-          instructionMessage: json_['instructionMessage'] as core.String?,
-        );
+    : this(
+        annotationSpecSet: json_['annotationSpecSet'] as core.String?,
+        instructionMessage: json_['instructionMessage'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
-        if (instructionMessage != null)
-          'instructionMessage': instructionMessage!,
-      };
+    if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
+    if (instructionMessage != null) 'instructionMessage': instructionMessage!,
+  };
 }
 
 /// Used by:
@@ -362,21 +327,18 @@ class $ConversionEventDefaultConversionValue {
   /// specified event_name where the event "value" parameter is unset.
   core.double? value;
 
-  $ConversionEventDefaultConversionValue({
-    this.currencyCode,
-    this.value,
-  });
+  $ConversionEventDefaultConversionValue({this.currencyCode, this.value});
 
   $ConversionEventDefaultConversionValue.fromJson(core.Map json_)
-      : this(
-          currencyCode: json_['currencyCode'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
-        );
+    : this(
+        currencyCode: json_['currencyCode'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (value != null) 'value': value!,
-      };
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -448,25 +410,25 @@ class $CustomDimension {
   });
 
   $CustomDimension.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          disallowAdsPersonalization:
-              json_['disallowAdsPersonalization'] as core.bool?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          parameterName: json_['parameterName'] as core.String?,
-          scope: json_['scope'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        disallowAdsPersonalization:
+            json_['disallowAdsPersonalization'] as core.bool?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        parameterName: json_['parameterName'] as core.String?,
+        scope: json_['scope'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (disallowAdsPersonalization != null)
-          'disallowAdsPersonalization': disallowAdsPersonalization!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (parameterName != null) 'parameterName': parameterName!,
-        if (scope != null) 'scope': scope!,
-      };
+    if (description != null) 'description': description!,
+    if (disallowAdsPersonalization != null)
+      'disallowAdsPersonalization': disallowAdsPersonalization!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (parameterName != null) 'parameterName': parameterName!,
+    if (scope != null) 'scope': scope!,
+  };
 }
 
 /// Used by:
@@ -551,28 +513,29 @@ class $CustomMetric {
   });
 
   $CustomMetric.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          measurementUnit: json_['measurementUnit'] as core.String?,
-          name: json_['name'] as core.String?,
-          parameterName: json_['parameterName'] as core.String?,
-          restrictedMetricType: (json_['restrictedMetricType'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          scope: json_['scope'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        measurementUnit: json_['measurementUnit'] as core.String?,
+        name: json_['name'] as core.String?,
+        parameterName: json_['parameterName'] as core.String?,
+        restrictedMetricType:
+            (json_['restrictedMetricType'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        scope: json_['scope'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (measurementUnit != null) 'measurementUnit': measurementUnit!,
-        if (name != null) 'name': name!,
-        if (parameterName != null) 'parameterName': parameterName!,
-        if (restrictedMetricType != null)
-          'restrictedMetricType': restrictedMetricType!,
-        if (scope != null) 'scope': scope!,
-      };
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (measurementUnit != null) 'measurementUnit': measurementUnit!,
+    if (name != null) 'name': name!,
+    if (parameterName != null) 'parameterName': parameterName!,
+    if (restrictedMetricType != null)
+      'restrictedMetricType': restrictedMetricType!,
+    if (scope != null) 'scope': scope!,
+  };
 }
 
 /// Used by:
@@ -631,22 +594,21 @@ class $DataRetentionSettings {
   });
 
   $DataRetentionSettings.fromJson(core.Map json_)
-      : this(
-          eventDataRetention: json_['eventDataRetention'] as core.String?,
-          name: json_['name'] as core.String?,
-          resetUserDataOnNewActivity:
-              json_['resetUserDataOnNewActivity'] as core.bool?,
-          userDataRetention: json_['userDataRetention'] as core.String?,
-        );
+    : this(
+        eventDataRetention: json_['eventDataRetention'] as core.String?,
+        name: json_['name'] as core.String?,
+        resetUserDataOnNewActivity:
+            json_['resetUserDataOnNewActivity'] as core.bool?,
+        userDataRetention: json_['userDataRetention'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eventDataRetention != null)
-          'eventDataRetention': eventDataRetention!,
-        if (name != null) 'name': name!,
-        if (resetUserDataOnNewActivity != null)
-          'resetUserDataOnNewActivity': resetUserDataOnNewActivity!,
-        if (userDataRetention != null) 'userDataRetention': userDataRetention!,
-      };
+    if (eventDataRetention != null) 'eventDataRetention': eventDataRetention!,
+    if (name != null) 'name': name!,
+    if (resetUserDataOnNewActivity != null)
+      'resetUserDataOnNewActivity': resetUserDataOnNewActivity!,
+    if (userDataRetention != null) 'userDataRetention': userDataRetention!,
+  };
 }
 
 /// Used by:
@@ -716,34 +678,34 @@ class $DataSharingSettings {
   });
 
   $DataSharingSettings.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          sharingWithGoogleAnySalesEnabled:
-              json_['sharingWithGoogleAnySalesEnabled'] as core.bool?,
-          sharingWithGoogleAssignedSalesEnabled:
-              json_['sharingWithGoogleAssignedSalesEnabled'] as core.bool?,
-          sharingWithGoogleProductsEnabled:
-              json_['sharingWithGoogleProductsEnabled'] as core.bool?,
-          sharingWithGoogleSupportEnabled:
-              json_['sharingWithGoogleSupportEnabled'] as core.bool?,
-          sharingWithOthersEnabled:
-              json_['sharingWithOthersEnabled'] as core.bool?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        sharingWithGoogleAnySalesEnabled:
+            json_['sharingWithGoogleAnySalesEnabled'] as core.bool?,
+        sharingWithGoogleAssignedSalesEnabled:
+            json_['sharingWithGoogleAssignedSalesEnabled'] as core.bool?,
+        sharingWithGoogleProductsEnabled:
+            json_['sharingWithGoogleProductsEnabled'] as core.bool?,
+        sharingWithGoogleSupportEnabled:
+            json_['sharingWithGoogleSupportEnabled'] as core.bool?,
+        sharingWithOthersEnabled:
+            json_['sharingWithOthersEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (sharingWithGoogleAnySalesEnabled != null)
-          'sharingWithGoogleAnySalesEnabled': sharingWithGoogleAnySalesEnabled!,
-        if (sharingWithGoogleAssignedSalesEnabled != null)
-          'sharingWithGoogleAssignedSalesEnabled':
-              sharingWithGoogleAssignedSalesEnabled!,
-        if (sharingWithGoogleProductsEnabled != null)
-          'sharingWithGoogleProductsEnabled': sharingWithGoogleProductsEnabled!,
-        if (sharingWithGoogleSupportEnabled != null)
-          'sharingWithGoogleSupportEnabled': sharingWithGoogleSupportEnabled!,
-        if (sharingWithOthersEnabled != null)
-          'sharingWithOthersEnabled': sharingWithOthersEnabled!,
-      };
+    if (name != null) 'name': name!,
+    if (sharingWithGoogleAnySalesEnabled != null)
+      'sharingWithGoogleAnySalesEnabled': sharingWithGoogleAnySalesEnabled!,
+    if (sharingWithGoogleAssignedSalesEnabled != null)
+      'sharingWithGoogleAssignedSalesEnabled':
+          sharingWithGoogleAssignedSalesEnabled!,
+    if (sharingWithGoogleProductsEnabled != null)
+      'sharingWithGoogleProductsEnabled': sharingWithGoogleProductsEnabled!,
+    if (sharingWithGoogleSupportEnabled != null)
+      'sharingWithGoogleSupportEnabled': sharingWithGoogleSupportEnabled!,
+    if (sharingWithOthersEnabled != null)
+      'sharingWithOthersEnabled': sharingWithOthersEnabled!,
+  };
 }
 
 /// Used by:
@@ -765,21 +727,18 @@ class $DataStreamAndroidAppStreamData {
   /// Immutable.
   core.String? packageName;
 
-  $DataStreamAndroidAppStreamData({
-    this.firebaseAppId,
-    this.packageName,
-  });
+  $DataStreamAndroidAppStreamData({this.firebaseAppId, this.packageName});
 
   $DataStreamAndroidAppStreamData.fromJson(core.Map json_)
-      : this(
-          firebaseAppId: json_['firebaseAppId'] as core.String?,
-          packageName: json_['packageName'] as core.String?,
-        );
+    : this(
+        firebaseAppId: json_['firebaseAppId'] as core.String?,
+        packageName: json_['packageName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
-        if (packageName != null) 'packageName': packageName!,
-      };
+    if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
+    if (packageName != null) 'packageName': packageName!,
+  };
 }
 
 /// Used by:
@@ -799,21 +758,18 @@ class $DataStreamIosAppStreamData {
   /// Output only.
   core.String? firebaseAppId;
 
-  $DataStreamIosAppStreamData({
-    this.bundleId,
-    this.firebaseAppId,
-  });
+  $DataStreamIosAppStreamData({this.bundleId, this.firebaseAppId});
 
   $DataStreamIosAppStreamData.fromJson(core.Map json_)
-      : this(
-          bundleId: json_['bundleId'] as core.String?,
-          firebaseAppId: json_['firebaseAppId'] as core.String?,
-        );
+    : this(
+        bundleId: json_['bundleId'] as core.String?,
+        firebaseAppId: json_['firebaseAppId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bundleId != null) 'bundleId': bundleId!,
-        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
-      };
+    if (bundleId != null) 'bundleId': bundleId!,
+    if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
+  };
 }
 
 /// Used by:
@@ -847,17 +803,17 @@ class $DataStreamWebStreamData {
   });
 
   $DataStreamWebStreamData.fromJson(core.Map json_)
-      : this(
-          defaultUri: json_['defaultUri'] as core.String?,
-          firebaseAppId: json_['firebaseAppId'] as core.String?,
-          measurementId: json_['measurementId'] as core.String?,
-        );
+    : this(
+        defaultUri: json_['defaultUri'] as core.String?,
+        firebaseAppId: json_['firebaseAppId'] as core.String?,
+        measurementId: json_['measurementId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultUri != null) 'defaultUri': defaultUri!,
-        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
-        if (measurementId != null) 'measurementId': measurementId!,
-      };
+    if (defaultUri != null) 'defaultUri': defaultUri!,
+    if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
+    if (measurementId != null) 'measurementId': measurementId!,
+  };
 }
 
 /// Used by:
@@ -882,24 +838,20 @@ class $Date {
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int? year;
 
-  $Date({
-    this.day,
-    this.month,
-    this.year,
-  });
+  $Date({this.day, this.month, this.year});
 
   $Date.fromJson(core.Map json_)
-      : this(
-          day: json_['day'] as core.int?,
-          month: json_['month'] as core.int?,
-          year: json_['year'] as core.int?,
-        );
+    : this(
+        day: json_['day'] as core.int?,
+        month: json_['month'] as core.int?,
+        year: json_['year'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
+    if (day != null) 'day': day!,
+    if (month != null) 'month': month!,
+    if (year != null) 'year': year!,
+  };
 }
 
 /// Used by:
@@ -925,21 +877,18 @@ class $DimensionOrderBy {
   /// below all numeric values.
   core.String? orderType;
 
-  $DimensionOrderBy({
-    this.dimensionName,
-    this.orderType,
-  });
+  $DimensionOrderBy({this.dimensionName, this.orderType});
 
   $DimensionOrderBy.fromJson(core.Map json_)
-      : this(
-          dimensionName: json_['dimensionName'] as core.String?,
-          orderType: json_['orderType'] as core.String?,
-        );
+    : this(
+        dimensionName: json_['dimensionName'] as core.String?,
+        orderType: json_['orderType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName!,
-        if (orderType != null) 'orderType': orderType!,
-      };
+    if (dimensionName != null) 'dimensionName': dimensionName!,
+    if (orderType != null) 'orderType': orderType!,
+  };
 }
 
 /// Used by:
@@ -950,18 +899,14 @@ class $DimensionValue {
   /// Value as a string if the dimension type is a string.
   core.String? value;
 
-  $DimensionValue({
-    this.value,
-  });
+  $DimensionValue({this.value});
 
   $DimensionValue.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+    : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -1039,8 +984,9 @@ class $Empty {
   $Empty();
 
   $Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map json_);
+    // ignore: avoid_unused_constructor_parameters
+    core.Map json_,
+  );
 
   core.Map<core.String, core.dynamic> toJson() => {};
 }
@@ -1054,21 +1000,18 @@ class $Entry {
   core.String? key;
   core.String? value;
 
-  $Entry({
-    this.key,
-    this.value,
-  });
+  $Entry({this.key, this.value});
 
   $Entry.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
+    if (key != null) 'key': key!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -1097,24 +1040,20 @@ class $FirebaseLink {
   /// Immutable.
   core.String? project;
 
-  $FirebaseLink({
-    this.createTime,
-    this.name,
-    this.project,
-  });
+  $FirebaseLink({this.createTime, this.name, this.project});
 
   $FirebaseLink.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          project: json_['project'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        project: json_['project'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (project != null) 'project': project!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (project != null) 'project': project!,
+  };
 }
 
 /// Used by:
@@ -1173,28 +1112,28 @@ class $GoogleAdsLink {
   });
 
   $GoogleAdsLink.fromJson(core.Map json_)
-      : this(
-          adsPersonalizationEnabled:
-              json_['adsPersonalizationEnabled'] as core.bool?,
-          canManageClients: json_['canManageClients'] as core.bool?,
-          createTime: json_['createTime'] as core.String?,
-          creatorEmailAddress: json_['creatorEmailAddress'] as core.String?,
-          customerId: json_['customerId'] as core.String?,
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        adsPersonalizationEnabled:
+            json_['adsPersonalizationEnabled'] as core.bool?,
+        canManageClients: json_['canManageClients'] as core.bool?,
+        createTime: json_['createTime'] as core.String?,
+        creatorEmailAddress: json_['creatorEmailAddress'] as core.String?,
+        customerId: json_['customerId'] as core.String?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adsPersonalizationEnabled != null)
-          'adsPersonalizationEnabled': adsPersonalizationEnabled!,
-        if (canManageClients != null) 'canManageClients': canManageClients!,
-        if (createTime != null) 'createTime': createTime!,
-        if (creatorEmailAddress != null)
-          'creatorEmailAddress': creatorEmailAddress!,
-        if (customerId != null) 'customerId': customerId!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (adsPersonalizationEnabled != null)
+      'adsPersonalizationEnabled': adsPersonalizationEnabled!,
+    if (canManageClients != null) 'canManageClients': canManageClients!,
+    if (createTime != null) 'createTime': createTime!,
+    if (creatorEmailAddress != null)
+      'creatorEmailAddress': creatorEmailAddress!,
+    if (customerId != null) 'customerId': customerId!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Used by:
@@ -1211,23 +1150,21 @@ class $InListFilter {
   /// Must be non-empty.
   core.List<core.String>? values;
 
-  $InListFilter({
-    this.caseSensitive,
-    this.values,
-  });
+  $InListFilter({this.caseSensitive, this.values});
 
   $InListFilter.fromJson(core.Map json_)
-      : this(
-          caseSensitive: json_['caseSensitive'] as core.bool?,
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        caseSensitive: json_['caseSensitive'] as core.bool?,
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
-        if (values != null) 'values': values!,
-      };
+    if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Used by:
@@ -1250,21 +1187,18 @@ class $KeyEventDefaultValue {
   /// Required.
   core.double? numericValue;
 
-  $KeyEventDefaultValue({
-    this.currencyCode,
-    this.numericValue,
-  });
+  $KeyEventDefaultValue({this.currencyCode, this.numericValue});
 
   $KeyEventDefaultValue.fromJson(core.Map json_)
-      : this(
-          currencyCode: json_['currencyCode'] as core.String?,
-          numericValue: (json_['numericValue'] as core.num?)?.toDouble(),
-        );
+    : this(
+        currencyCode: json_['currencyCode'] as core.String?,
+        numericValue: (json_['numericValue'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (numericValue != null) 'numericValue': numericValue!,
-      };
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+    if (numericValue != null) 'numericValue': numericValue!,
+  };
 }
 
 /// Used by:
@@ -1310,29 +1244,26 @@ class $Location {
   });
 
   $Location.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          locationId: json_['locationId'] as core.String?,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        locationId: json_['locationId'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (locationId != null) 'locationId': locationId!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (locationId != null) 'locationId': locationId!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -1361,24 +1292,20 @@ class $MeasurementProtocolSecret {
   /// Output only.
   core.String? secretValue;
 
-  $MeasurementProtocolSecret({
-    this.displayName,
-    this.name,
-    this.secretValue,
-  });
+  $MeasurementProtocolSecret({this.displayName, this.name, this.secretValue});
 
   $MeasurementProtocolSecret.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          secretValue: json_['secretValue'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        secretValue: json_['secretValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (secretValue != null) 'secretValue': secretValue!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (secretValue != null) 'secretValue': secretValue!,
+  };
 }
 
 /// Used by:
@@ -1390,18 +1317,14 @@ class $MetricOrderBy {
   /// A metric name in the request to order by.
   core.String? metricName;
 
-  $MetricOrderBy({
-    this.metricName,
-  });
+  $MetricOrderBy({this.metricName});
 
   $MetricOrderBy.fromJson(core.Map json_)
-      : this(
-          metricName: json_['metricName'] as core.String?,
-        );
+    : this(metricName: json_['metricName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metricName != null) 'metricName': metricName!,
-      };
+    if (metricName != null) 'metricName': metricName!,
+  };
 }
 
 /// Used by:
@@ -1416,21 +1339,18 @@ class $NumericValue {
   /// Integer value
   core.String? int64Value;
 
-  $NumericValue({
-    this.doubleValue,
-    this.int64Value,
-  });
+  $NumericValue({this.doubleValue, this.int64Value});
 
   $NumericValue.fromJson(core.Map json_)
-      : this(
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
-          int64Value: json_['int64Value'] as core.String?,
-        );
+    : this(
+        doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+        int64Value: json_['int64Value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (doubleValue != null) 'doubleValue': doubleValue!,
-        if (int64Value != null) 'int64Value': int64Value!,
-      };
+    if (doubleValue != null) 'doubleValue': doubleValue!,
+    if (int64Value != null) 'int64Value': int64Value!,
+  };
 }
 
 /// Used by:
@@ -1580,37 +1500,37 @@ class $Property {
   });
 
   $Property.fromJson(core.Map json_)
-      : this(
-          account: json_['account'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          currencyCode: json_['currencyCode'] as core.String?,
-          deleteTime: json_['deleteTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          industryCategory: json_['industryCategory'] as core.String?,
-          name: json_['name'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          propertyType: json_['propertyType'] as core.String?,
-          serviceLevel: json_['serviceLevel'] as core.String?,
-          timeZone: json_['timeZone'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        account: json_['account'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        currencyCode: json_['currencyCode'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        industryCategory: json_['industryCategory'] as core.String?,
+        name: json_['name'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        propertyType: json_['propertyType'] as core.String?,
+        serviceLevel: json_['serviceLevel'] as core.String?,
+        timeZone: json_['timeZone'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!,
-        if (createTime != null) 'createTime': createTime!,
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (industryCategory != null) 'industryCategory': industryCategory!,
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (propertyType != null) 'propertyType': propertyType!,
-        if (serviceLevel != null) 'serviceLevel': serviceLevel!,
-        if (timeZone != null) 'timeZone': timeZone!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (account != null) 'account': account!,
+    if (createTime != null) 'createTime': createTime!,
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (industryCategory != null) 'industryCategory': industryCategory!,
+    if (name != null) 'name': name!,
+    if (parent != null) 'parent': parent!,
+    if (propertyType != null) 'propertyType': propertyType!,
+    if (serviceLevel != null) 'serviceLevel': serviceLevel!,
+    if (timeZone != null) 'timeZone': timeZone!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Used by:
@@ -1648,19 +1568,19 @@ class $PropertySummary {
   });
 
   $PropertySummary.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          property: json_['property'] as core.String?,
-          propertyType: json_['propertyType'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        property: json_['property'] as core.String?,
+        propertyType: json_['propertyType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (parent != null) 'parent': parent!,
-        if (property != null) 'property': property!,
-        if (propertyType != null) 'propertyType': propertyType!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (parent != null) 'parent': parent!,
+    if (property != null) 'property': property!,
+    if (propertyType != null) 'propertyType': propertyType!,
+  };
 }
 
 /// Used by:
@@ -1671,18 +1591,14 @@ class $ProvisionAccountTicketResponse {
   /// The param to be passed in the ToS link.
   core.String? accountTicketId;
 
-  $ProvisionAccountTicketResponse({
-    this.accountTicketId,
-  });
+  $ProvisionAccountTicketResponse({this.accountTicketId});
 
   $ProvisionAccountTicketResponse.fromJson(core.Map json_)
-      : this(
-          accountTicketId: json_['accountTicketId'] as core.String?,
-        );
+    : this(accountTicketId: json_['accountTicketId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountTicketId != null) 'accountTicketId': accountTicketId!,
-      };
+    if (accountTicketId != null) 'accountTicketId': accountTicketId!,
+  };
 }
 
 /// Used by:
@@ -1697,21 +1613,18 @@ class $QuotaStatus {
   /// Quota remaining after this request.
   core.int? remaining;
 
-  $QuotaStatus({
-    this.consumed,
-    this.remaining,
-  });
+  $QuotaStatus({this.consumed, this.remaining});
 
   $QuotaStatus.fromJson(core.Map json_)
-      : this(
-          consumed: json_['consumed'] as core.int?,
-          remaining: json_['remaining'] as core.int?,
-        );
+    : this(
+        consumed: json_['consumed'] as core.int?,
+        remaining: json_['remaining'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumed != null) 'consumed': consumed!,
-        if (remaining != null) 'remaining': remaining!,
-      };
+    if (consumed != null) 'consumed': consumed!,
+    if (remaining != null) 'remaining': remaining!,
+  };
 }
 
 /// Used by:
@@ -1732,23 +1645,21 @@ class $SasPortalAssignment {
   /// Required.
   core.String? role;
 
-  $SasPortalAssignment({
-    this.members,
-    this.role,
-  });
+  $SasPortalAssignment({this.members, this.role});
 
   $SasPortalAssignment.fromJson(core.Map json_)
-      : this(
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// Used by:
@@ -1767,8 +1678,10 @@ class $SasPortalCreateSignedDeviceRequest {
       convert.base64.decode(encodedDevice!);
 
   set encodedDeviceAsBytes(core.List<core.int> bytes_) {
-    encodedDevice =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    encodedDevice = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Unique installer id (CPI ID) from the Certified Professional Installers
@@ -1777,21 +1690,18 @@ class $SasPortalCreateSignedDeviceRequest {
   /// Required.
   core.String? installerId;
 
-  $SasPortalCreateSignedDeviceRequest({
-    this.encodedDevice,
-    this.installerId,
-  });
+  $SasPortalCreateSignedDeviceRequest({this.encodedDevice, this.installerId});
 
   $SasPortalCreateSignedDeviceRequest.fromJson(core.Map json_)
-      : this(
-          encodedDevice: json_['encodedDevice'] as core.String?,
-          installerId: json_['installerId'] as core.String?,
-        );
+    : this(
+        encodedDevice: json_['encodedDevice'] as core.String?,
+        installerId: json_['installerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedDevice != null) 'encodedDevice': encodedDevice!,
-        if (installerId != null) 'installerId': installerId!,
-      };
+    if (encodedDevice != null) 'encodedDevice': encodedDevice!,
+    if (installerId != null) 'installerId': installerId!,
+  };
 }
 
 /// Used by:
@@ -1812,26 +1722,23 @@ class $SasPortalCustomer {
   /// User IDs used by the devices belonging to this customer.
   core.List<core.String>? sasUserIds;
 
-  $SasPortalCustomer({
-    this.displayName,
-    this.name,
-    this.sasUserIds,
-  });
+  $SasPortalCustomer({this.displayName, this.name, this.sasUserIds});
 
   $SasPortalCustomer.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          sasUserIds: (json_['sasUserIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        sasUserIds:
+            (json_['sasUserIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (sasUserIds != null) 'sasUserIds': sasUserIds!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (sasUserIds != null) 'sasUserIds': sasUserIds!,
+  };
 }
 
 /// Used by:
@@ -1865,23 +1772,25 @@ class $SasPortalDeployment {
   });
 
   $SasPortalDeployment.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          frns: (json_['frns'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          sasUserIds: (json_['sasUserIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        frns:
+            (json_['frns'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        sasUserIds:
+            (json_['sasUserIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (frns != null) 'frns': frns!,
-        if (name != null) 'name': name!,
-        if (sasUserIds != null) 'sasUserIds': sasUserIds!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (frns != null) 'frns': frns!,
+    if (name != null) 'name': name!,
+    if (sasUserIds != null) 'sasUserIds': sasUserIds!,
+  };
 }
 
 /// Used by:
@@ -1913,21 +1822,18 @@ class $SasPortalDeviceAirInterface {
   /// Optional.
   core.String? supportedSpec;
 
-  $SasPortalDeviceAirInterface({
-    this.radioTechnology,
-    this.supportedSpec,
-  });
+  $SasPortalDeviceAirInterface({this.radioTechnology, this.supportedSpec});
 
   $SasPortalDeviceAirInterface.fromJson(core.Map json_)
-      : this(
-          radioTechnology: json_['radioTechnology'] as core.String?,
-          supportedSpec: json_['supportedSpec'] as core.String?,
-        );
+    : this(
+        radioTechnology: json_['radioTechnology'] as core.String?,
+        supportedSpec: json_['supportedSpec'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (radioTechnology != null) 'radioTechnology': radioTechnology!,
-        if (supportedSpec != null) 'supportedSpec': supportedSpec!,
-      };
+    if (radioTechnology != null) 'radioTechnology': radioTechnology!,
+    if (supportedSpec != null) 'supportedSpec': supportedSpec!,
+  };
 }
 
 /// Used by:
@@ -1959,21 +1865,21 @@ class $SasPortalDeviceModel {
   });
 
   $SasPortalDeviceModel.fromJson(core.Map json_)
-      : this(
-          firmwareVersion: json_['firmwareVersion'] as core.String?,
-          hardwareVersion: json_['hardwareVersion'] as core.String?,
-          name: json_['name'] as core.String?,
-          softwareVersion: json_['softwareVersion'] as core.String?,
-          vendor: json_['vendor'] as core.String?,
-        );
+    : this(
+        firmwareVersion: json_['firmwareVersion'] as core.String?,
+        hardwareVersion: json_['hardwareVersion'] as core.String?,
+        name: json_['name'] as core.String?,
+        softwareVersion: json_['softwareVersion'] as core.String?,
+        vendor: json_['vendor'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
-        if (hardwareVersion != null) 'hardwareVersion': hardwareVersion!,
-        if (name != null) 'name': name!,
-        if (softwareVersion != null) 'softwareVersion': softwareVersion!,
-        if (vendor != null) 'vendor': vendor!,
-      };
+    if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
+    if (hardwareVersion != null) 'hardwareVersion': hardwareVersion!,
+    if (name != null) 'name': name!,
+    if (softwareVersion != null) 'softwareVersion': softwareVersion!,
+    if (vendor != null) 'vendor': vendor!,
+  };
 }
 
 /// Used by:
@@ -1987,22 +1893,18 @@ class $SasPortalFrequencyRange {
   /// The lowest frequency of the frequency range in MHz.
   core.double? lowFrequencyMhz;
 
-  $SasPortalFrequencyRange({
-    this.highFrequencyMhz,
-    this.lowFrequencyMhz,
-  });
+  $SasPortalFrequencyRange({this.highFrequencyMhz, this.lowFrequencyMhz});
 
   $SasPortalFrequencyRange.fromJson(core.Map json_)
-      : this(
-          highFrequencyMhz:
-              (json_['highFrequencyMhz'] as core.num?)?.toDouble(),
-          lowFrequencyMhz: (json_['lowFrequencyMhz'] as core.num?)?.toDouble(),
-        );
+    : this(
+        highFrequencyMhz: (json_['highFrequencyMhz'] as core.num?)?.toDouble(),
+        lowFrequencyMhz: (json_['lowFrequencyMhz'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (highFrequencyMhz != null) 'highFrequencyMhz': highFrequencyMhz!,
-        if (lowFrequencyMhz != null) 'lowFrequencyMhz': lowFrequencyMhz!,
-      };
+    if (highFrequencyMhz != null) 'highFrequencyMhz': highFrequencyMhz!,
+    if (lowFrequencyMhz != null) 'lowFrequencyMhz': lowFrequencyMhz!,
+  };
 }
 
 /// Used by:
@@ -2013,18 +1915,14 @@ class $SasPortalGenerateSecretResponse {
   /// The secret generated by the string and used by ValidateInstaller.
   core.String? secret;
 
-  $SasPortalGenerateSecretResponse({
-    this.secret,
-  });
+  $SasPortalGenerateSecretResponse({this.secret});
 
   $SasPortalGenerateSecretResponse.fromJson(core.Map json_)
-      : this(
-          secret: json_['secret'] as core.String?,
-        );
+    : this(secret: json_['secret'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (secret != null) 'secret': secret!,
-      };
+    if (secret != null) 'secret': secret!,
+  };
 }
 
 /// Used by:
@@ -2037,18 +1935,14 @@ class $SasPortalGetPolicyRequest {
   /// Required.
   core.String? resource;
 
-  $SasPortalGetPolicyRequest({
-    this.resource,
-  });
+  $SasPortalGetPolicyRequest({this.resource});
 
   $SasPortalGetPolicyRequest.fromJson(core.Map json_)
-      : this(
-          resource: json_['resource'] as core.String?,
-        );
+    : this(resource: json_['resource'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resource != null) 'resource': resource!,
-      };
+    if (resource != null) 'resource': resource!,
+  };
 }
 
 /// Used by:
@@ -2171,42 +2065,40 @@ class $SasPortalInstallationParams {
   });
 
   $SasPortalInstallationParams.fromJson(core.Map json_)
-      : this(
-          antennaAzimuth: json_['antennaAzimuth'] as core.int?,
-          antennaBeamwidth: json_['antennaBeamwidth'] as core.int?,
-          antennaDowntilt: json_['antennaDowntilt'] as core.int?,
-          antennaGain: (json_['antennaGain'] as core.num?)?.toDouble(),
-          antennaModel: json_['antennaModel'] as core.String?,
-          cpeCbsdIndication: json_['cpeCbsdIndication'] as core.bool?,
-          eirpCapability: json_['eirpCapability'] as core.int?,
-          height: (json_['height'] as core.num?)?.toDouble(),
-          heightType: json_['heightType'] as core.String?,
-          horizontalAccuracy:
-              (json_['horizontalAccuracy'] as core.num?)?.toDouble(),
-          indoorDeployment: json_['indoorDeployment'] as core.bool?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
-          verticalAccuracy:
-              (json_['verticalAccuracy'] as core.num?)?.toDouble(),
-        );
+    : this(
+        antennaAzimuth: json_['antennaAzimuth'] as core.int?,
+        antennaBeamwidth: json_['antennaBeamwidth'] as core.int?,
+        antennaDowntilt: json_['antennaDowntilt'] as core.int?,
+        antennaGain: (json_['antennaGain'] as core.num?)?.toDouble(),
+        antennaModel: json_['antennaModel'] as core.String?,
+        cpeCbsdIndication: json_['cpeCbsdIndication'] as core.bool?,
+        eirpCapability: json_['eirpCapability'] as core.int?,
+        height: (json_['height'] as core.num?)?.toDouble(),
+        heightType: json_['heightType'] as core.String?,
+        horizontalAccuracy:
+            (json_['horizontalAccuracy'] as core.num?)?.toDouble(),
+        indoorDeployment: json_['indoorDeployment'] as core.bool?,
+        latitude: (json_['latitude'] as core.num?)?.toDouble(),
+        longitude: (json_['longitude'] as core.num?)?.toDouble(),
+        verticalAccuracy: (json_['verticalAccuracy'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (antennaAzimuth != null) 'antennaAzimuth': antennaAzimuth!,
-        if (antennaBeamwidth != null) 'antennaBeamwidth': antennaBeamwidth!,
-        if (antennaDowntilt != null) 'antennaDowntilt': antennaDowntilt!,
-        if (antennaGain != null) 'antennaGain': antennaGain!,
-        if (antennaModel != null) 'antennaModel': antennaModel!,
-        if (cpeCbsdIndication != null) 'cpeCbsdIndication': cpeCbsdIndication!,
-        if (eirpCapability != null) 'eirpCapability': eirpCapability!,
-        if (height != null) 'height': height!,
-        if (heightType != null) 'heightType': heightType!,
-        if (horizontalAccuracy != null)
-          'horizontalAccuracy': horizontalAccuracy!,
-        if (indoorDeployment != null) 'indoorDeployment': indoorDeployment!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-        if (verticalAccuracy != null) 'verticalAccuracy': verticalAccuracy!,
-      };
+    if (antennaAzimuth != null) 'antennaAzimuth': antennaAzimuth!,
+    if (antennaBeamwidth != null) 'antennaBeamwidth': antennaBeamwidth!,
+    if (antennaDowntilt != null) 'antennaDowntilt': antennaDowntilt!,
+    if (antennaGain != null) 'antennaGain': antennaGain!,
+    if (antennaModel != null) 'antennaModel': antennaModel!,
+    if (cpeCbsdIndication != null) 'cpeCbsdIndication': cpeCbsdIndication!,
+    if (eirpCapability != null) 'eirpCapability': eirpCapability!,
+    if (height != null) 'height': height!,
+    if (heightType != null) 'heightType': heightType!,
+    if (horizontalAccuracy != null) 'horizontalAccuracy': horizontalAccuracy!,
+    if (indoorDeployment != null) 'indoorDeployment': indoorDeployment!,
+    if (latitude != null) 'latitude': latitude!,
+    if (longitude != null) 'longitude': longitude!,
+    if (verticalAccuracy != null) 'verticalAccuracy': verticalAccuracy!,
+  };
 }
 
 /// Used by:
@@ -2219,18 +2111,14 @@ class $SasPortalMigrateOrganizationRequest {
   /// Required.
   core.String? organizationId;
 
-  $SasPortalMigrateOrganizationRequest({
-    this.organizationId,
-  });
+  $SasPortalMigrateOrganizationRequest({this.organizationId});
 
   $SasPortalMigrateOrganizationRequest.fromJson(core.Map json_)
-      : this(
-          organizationId: json_['organizationId'] as core.String?,
-        );
+    : this(organizationId: json_['organizationId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (organizationId != null) 'organizationId': organizationId!,
-      };
+    if (organizationId != null) 'organizationId': organizationId!,
+  };
 }
 
 /// Used by:
@@ -2244,18 +2132,14 @@ class $SasPortalMoveDeploymentRequest {
   /// Required.
   core.String? destination;
 
-  $SasPortalMoveDeploymentRequest({
-    this.destination,
-  });
+  $SasPortalMoveDeploymentRequest({this.destination});
 
   $SasPortalMoveDeploymentRequest.fromJson(core.Map json_)
-      : this(
-          destination: json_['destination'] as core.String?,
-        );
+    : this(destination: json_['destination'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destination != null) 'destination': destination!,
-      };
+    if (destination != null) 'destination': destination!,
+  };
 }
 
 /// Used by:
@@ -2269,18 +2153,14 @@ class $SasPortalMoveDeviceRequest {
   /// Required.
   core.String? destination;
 
-  $SasPortalMoveDeviceRequest({
-    this.destination,
-  });
+  $SasPortalMoveDeviceRequest({this.destination});
 
   $SasPortalMoveDeviceRequest.fromJson(core.Map json_)
-      : this(
-          destination: json_['destination'] as core.String?,
-        );
+    : this(destination: json_['destination'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destination != null) 'destination': destination!,
-      };
+    if (destination != null) 'destination': destination!,
+  };
 }
 
 /// Used by:
@@ -2294,18 +2174,14 @@ class $SasPortalMoveNodeRequest {
   /// Required.
   core.String? destination;
 
-  $SasPortalMoveNodeRequest({
-    this.destination,
-  });
+  $SasPortalMoveNodeRequest({this.destination});
 
   $SasPortalMoveNodeRequest.fromJson(core.Map json_)
-      : this(
-          destination: json_['destination'] as core.String?,
-        );
+    : this(destination: json_['destination'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destination != null) 'destination': destination!,
-      };
+    if (destination != null) 'destination': destination!,
+  };
 }
 
 /// Used by:
@@ -2324,26 +2200,23 @@ class $SasPortalNode {
   /// User ids used by the devices belonging to this node.
   core.List<core.String>? sasUserIds;
 
-  $SasPortalNode({
-    this.displayName,
-    this.name,
-    this.sasUserIds,
-  });
+  $SasPortalNode({this.displayName, this.name, this.sasUserIds});
 
   $SasPortalNode.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          sasUserIds: (json_['sasUserIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        sasUserIds:
+            (json_['sasUserIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (sasUserIds != null) 'sasUserIds': sasUserIds!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (sasUserIds != null) 'sasUserIds': sasUserIds!,
+  };
 }
 
 /// Used by:
@@ -2379,21 +2252,21 @@ class $SasPortalNrqzValidation {
   });
 
   $SasPortalNrqzValidation.fromJson(core.Map json_)
-      : this(
-          caseId: json_['caseId'] as core.String?,
-          cpiId: json_['cpiId'] as core.String?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        caseId: json_['caseId'] as core.String?,
+        cpiId: json_['cpiId'] as core.String?,
+        latitude: (json_['latitude'] as core.num?)?.toDouble(),
+        longitude: (json_['longitude'] as core.num?)?.toDouble(),
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caseId != null) 'caseId': caseId!,
-        if (cpiId != null) 'cpiId': cpiId!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-        if (state != null) 'state': state!,
-      };
+    if (caseId != null) 'caseId': caseId!,
+    if (cpiId != null) 'cpiId': cpiId!,
+    if (latitude != null) 'latitude': latitude!,
+    if (longitude != null) 'longitude': longitude!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Used by:
@@ -2407,21 +2280,18 @@ class $SasPortalOrganization {
   /// Id of organization
   core.String? id;
 
-  $SasPortalOrganization({
-    this.displayName,
-    this.id,
-  });
+  $SasPortalOrganization({this.displayName, this.id});
 
   $SasPortalOrganization.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          id: json_['id'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (id != null) 'id': id!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (id != null) 'id': id!,
+  };
 }
 
 /// Used by:
@@ -2454,21 +2324,21 @@ class $SasPortalProvisionDeploymentRequest {
   });
 
   $SasPortalProvisionDeploymentRequest.fromJson(core.Map json_)
-      : this(
-          newDeploymentDisplayName:
-              json_['newDeploymentDisplayName'] as core.String?,
-          newOrganizationDisplayName:
-              json_['newOrganizationDisplayName'] as core.String?,
-          organizationId: json_['organizationId'] as core.String?,
-        );
+    : this(
+        newDeploymentDisplayName:
+            json_['newDeploymentDisplayName'] as core.String?,
+        newOrganizationDisplayName:
+            json_['newOrganizationDisplayName'] as core.String?,
+        organizationId: json_['organizationId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (newDeploymentDisplayName != null)
-          'newDeploymentDisplayName': newDeploymentDisplayName!,
-        if (newOrganizationDisplayName != null)
-          'newOrganizationDisplayName': newOrganizationDisplayName!,
-        if (organizationId != null) 'organizationId': organizationId!,
-      };
+    if (newDeploymentDisplayName != null)
+      'newDeploymentDisplayName': newDeploymentDisplayName!,
+    if (newOrganizationDisplayName != null)
+      'newOrganizationDisplayName': newOrganizationDisplayName!,
+    if (organizationId != null) 'organizationId': organizationId!,
+  };
 }
 
 /// Used by:
@@ -2481,18 +2351,14 @@ class $SasPortalProvisionDeploymentResponse {
   /// Optional.
   core.String? errorMessage;
 
-  $SasPortalProvisionDeploymentResponse({
-    this.errorMessage,
-  });
+  $SasPortalProvisionDeploymentResponse({this.errorMessage});
 
   $SasPortalProvisionDeploymentResponse.fromJson(core.Map json_)
-      : this(
-          errorMessage: json_['errorMessage'] as core.String?,
-        );
+    : this(errorMessage: json_['errorMessage'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-      };
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+  };
 }
 
 /// Used by:
@@ -2508,18 +2374,14 @@ class $SasPortalSetupSasAnalyticsRequest {
   /// Optional.
   core.String? userId;
 
-  $SasPortalSetupSasAnalyticsRequest({
-    this.userId,
-  });
+  $SasPortalSetupSasAnalyticsRequest({this.userId});
 
   $SasPortalSetupSasAnalyticsRequest.fromJson(core.Map json_)
-      : this(
-          userId: json_['userId'] as core.String?,
-        );
+    : this(userId: json_['userId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userId != null) 'userId': userId!,
-      };
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// Used by:
@@ -2535,23 +2397,21 @@ class $SasPortalTestPermissionsRequest {
   /// Required.
   core.String? resource;
 
-  $SasPortalTestPermissionsRequest({
-    this.permissions,
-    this.resource,
-  });
+  $SasPortalTestPermissionsRequest({this.permissions, this.resource});
 
   $SasPortalTestPermissionsRequest.fromJson(core.Map json_)
-      : this(
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          resource: json_['resource'] as core.String?,
-        );
+    : this(
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        resource: json_['resource'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-        if (resource != null) 'resource': resource!,
-      };
+    if (permissions != null) 'permissions': permissions!,
+    if (resource != null) 'resource': resource!,
+  };
 }
 
 /// Used by:
@@ -2562,20 +2422,19 @@ class $SasPortalTestPermissionsResponse {
   /// A set of permissions that the caller is allowed.
   core.List<core.String>? permissions;
 
-  $SasPortalTestPermissionsResponse({
-    this.permissions,
-  });
+  $SasPortalTestPermissionsResponse({this.permissions});
 
   $SasPortalTestPermissionsResponse.fromJson(core.Map json_)
-      : this(
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
+    if (permissions != null) 'permissions': permissions!,
+  };
 }
 
 /// Used by:
@@ -2594,8 +2453,10 @@ class $SasPortalUpdateSignedDeviceRequest {
       convert.base64.decode(encodedDevice!);
 
   set encodedDeviceAsBytes(core.List<core.int> bytes_) {
-    encodedDevice =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    encodedDevice = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Unique installer ID (CPI ID) from the Certified Professional Installers
@@ -2604,21 +2465,18 @@ class $SasPortalUpdateSignedDeviceRequest {
   /// Required.
   core.String? installerId;
 
-  $SasPortalUpdateSignedDeviceRequest({
-    this.encodedDevice,
-    this.installerId,
-  });
+  $SasPortalUpdateSignedDeviceRequest({this.encodedDevice, this.installerId});
 
   $SasPortalUpdateSignedDeviceRequest.fromJson(core.Map json_)
-      : this(
-          encodedDevice: json_['encodedDevice'] as core.String?,
-          installerId: json_['installerId'] as core.String?,
-        );
+    : this(
+        encodedDevice: json_['encodedDevice'] as core.String?,
+        installerId: json_['installerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedDevice != null) 'encodedDevice': encodedDevice!,
-        if (installerId != null) 'installerId': installerId!,
-      };
+    if (encodedDevice != null) 'encodedDevice': encodedDevice!,
+    if (installerId != null) 'installerId': installerId!,
+  };
 }
 
 /// Used by:
@@ -2651,17 +2509,17 @@ class $SasPortalValidateInstallerRequest {
   });
 
   $SasPortalValidateInstallerRequest.fromJson(core.Map json_)
-      : this(
-          encodedSecret: json_['encodedSecret'] as core.String?,
-          installerId: json_['installerId'] as core.String?,
-          secret: json_['secret'] as core.String?,
-        );
+    : this(
+        encodedSecret: json_['encodedSecret'] as core.String?,
+        installerId: json_['installerId'] as core.String?,
+        secret: json_['secret'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedSecret != null) 'encodedSecret': encodedSecret!,
-        if (installerId != null) 'installerId': installerId!,
-        if (secret != null) 'secret': secret!,
-      };
+    if (encodedSecret != null) 'encodedSecret': encodedSecret!,
+    if (installerId != null) 'installerId': installerId!,
+    if (secret != null) 'secret': secret!,
+  };
 }
 
 /// Used by:
@@ -2674,20 +2532,19 @@ class $Shared {
   /// An empty list would effectively disable metrics export.
   core.List<core.String>? backends;
 
-  $Shared({
-    this.backends,
-  });
+  $Shared({this.backends});
 
   $Shared.fromJson(core.Map json_)
-      : this(
-          backends: (json_['backends'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        backends:
+            (json_['backends'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backends != null) 'backends': backends!,
-      };
+    if (backends != null) 'backends': backends!,
+  };
 }
 
 /// Used by:
@@ -2722,26 +2579,23 @@ class $Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  $Status({
-    this.code,
-    this.details,
-    this.message,
-  });
+  $Status({this.code, this.details, this.message});
 
   $Status.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.int?,
-          details: (json_['details'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-          message: json_['message'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.int?,
+        details:
+            (json_['details'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+        message: json_['message'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
+    if (code != null) 'code': code!,
+    if (details != null) 'details': details!,
+    if (message != null) 'message': message!,
+  };
 }
 
 /// Used by:
@@ -2769,22 +2623,18 @@ class $StringFilter {
   /// The string value used for the matching.
   core.String? value;
 
-  $StringFilter({
-    this.caseSensitive,
-    this.matchType,
-    this.value,
-  });
+  $StringFilter({this.caseSensitive, this.matchType, this.value});
 
   $StringFilter.fromJson(core.Map json_)
-      : this(
-          caseSensitive: json_['caseSensitive'] as core.bool?,
-          matchType: json_['matchType'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        caseSensitive: json_['caseSensitive'] as core.bool?,
+        matchType: json_['matchType'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
-        if (matchType != null) 'matchType': matchType!,
-        if (value != null) 'value': value!,
-      };
+    if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+    if (matchType != null) 'matchType': matchType!,
+    if (value != null) 'value': value!,
+  };
 }

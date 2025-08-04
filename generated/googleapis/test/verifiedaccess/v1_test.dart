@@ -77,14 +77,8 @@ api.SignedData buildSignedData() {
 void checkSignedData(api.SignedData o) {
   buildCounterSignedData++;
   if (buildCounterSignedData < 3) {
-    unittest.expect(
-      o.data!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.signature!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.data!, unittest.equals('foo'));
+    unittest.expect(o.signature!, unittest.equals('foo'));
   }
   buildCounterSignedData--;
 }
@@ -105,10 +99,7 @@ void checkVerifyChallengeResponseRequest(api.VerifyChallengeResponseRequest o) {
   buildCounterVerifyChallengeResponseRequest++;
   if (buildCounterVerifyChallengeResponseRequest < 3) {
     checkSignedData(o.challengeResponse!);
-    unittest.expect(
-      o.expectedIdentity!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.expectedIdentity!, unittest.equals('foo'));
   }
   buildCounterVerifyChallengeResponseRequest--;
 }
@@ -131,26 +122,11 @@ api.VerifyChallengeResponseResult buildVerifyChallengeResponseResult() {
 void checkVerifyChallengeResponseResult(api.VerifyChallengeResponseResult o) {
   buildCounterVerifyChallengeResponseResult++;
   if (buildCounterVerifyChallengeResponseResult < 3) {
-    unittest.expect(
-      o.attestedDeviceId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.deviceEnrollmentId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.devicePermanentId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.signedPublicKeyAndChallenge!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.verificationOutput!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.attestedDeviceId!, unittest.equals('foo'));
+    unittest.expect(o.deviceEnrollmentId!, unittest.equals('foo'));
+    unittest.expect(o.devicePermanentId!, unittest.equals('foo'));
+    unittest.expect(o.signedPublicKeyAndChallenge!, unittest.equals('foo'));
+    unittest.expect(o.verificationOutput!, unittest.equals('foo'));
   }
   buildCounterVerifyChallengeResponseResult--;
 }
@@ -160,8 +136,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildChallenge();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Challenge.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Challenge.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkChallenge(od);
     });
   });
@@ -170,8 +147,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildEmpty();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Empty.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEmpty(od);
     });
   });
@@ -180,8 +158,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildSignedData();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.SignedData.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.SignedData.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSignedData(od);
     });
   });
@@ -191,7 +170,8 @@ void main() {
       final o = buildVerifyChallengeResponseRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VerifyChallengeResponseRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkVerifyChallengeResponseRequest(od);
     });
   });
@@ -201,7 +181,8 @@ void main() {
       final o = buildVerifyChallengeResponseResult();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VerifyChallengeResponseResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkVerifyChallengeResponseResult(od);
     });
   });
@@ -212,52 +193,54 @@ void main() {
       final res = api.VerifiedaccessApi(mock).challenge;
       final arg_request = buildEmpty();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.Empty.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkEmpty(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Empty.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkEmpty(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('v1/challenge'),
-        );
-        pathOffset += 12;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('v1/challenge'),
+          );
+          pathOffset += 12;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildChallenge());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildChallenge());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.create(arg_request, $fields: arg_$fields);
       checkChallenge(response as api.Challenge);
     });
@@ -267,55 +250,60 @@ void main() {
       final res = api.VerifiedaccessApi(mock).challenge;
       final arg_request = buildVerifyChallengeResponseRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.VerifyChallengeResponseRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkVerifyChallengeResponseRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.VerifyChallengeResponseRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkVerifyChallengeResponseRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('v1/challenge:verify'),
-        );
-        pathOffset += 19;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 19),
+            unittest.equals('v1/challenge:verify'),
+          );
+          pathOffset += 19;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildVerifyChallengeResponseResult());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildVerifyChallengeResponseResult(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.verify(arg_request, $fields: arg_$fields);
       checkVerifyChallengeResponseResult(
-          response as api.VerifyChallengeResponseResult);
+        response as api.VerifyChallengeResponseResult,
+      );
     });
   });
 }

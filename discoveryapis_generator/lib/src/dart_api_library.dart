@@ -44,18 +44,19 @@ class DartApiImports {
   final Identifier commons;
 
   DartApiImports.fromNamer(this.namer, {bool useCorePrefixes = true})
-      : core = useCorePrefixes ? namer.import('core') : namer.noPrefix(),
-        collection = namer.import('collection'),
-        async = useCorePrefixes ? namer.import('async') : namer.noPrefix(),
-        convert = namer.import('convert'),
-        http = namer.import('http'),
-        commons = namer.import('commons');
+    : core = useCorePrefixes ? namer.import('core') : namer.noPrefix(),
+      collection = namer.import('collection'),
+      async = useCorePrefixes ? namer.import('async') : namer.noPrefix(),
+      convert = namer.import('convert'),
+      http = namer.import('http'),
+      commons = namer.import('commons');
 
   String get coreJsonTypeArgs => '<${core.ref()}String, ${core.ref()}dynamic>';
 
   String get coreJsonMap => '${core.ref()}Map$coreJsonTypeArgs';
 
-  String get deprecatedMsg => "@${core.ref()}Deprecated('Not supported. "
+  String get deprecatedMsg =>
+      "@${core.ref()}Deprecated('Not supported. "
       "Member documentation may have more information.',)";
 }
 
@@ -86,8 +87,10 @@ class DartApiLibrary extends BaseApiLibrary {
     required this.isPackage,
     bool useCorePrefixes = true,
   }) : super(description, 'Api', useCorePrefixes: useCorePrefixes) {
-    libraryName =
-        ApiLibraryNamer.libraryName(description.name, description.version);
+    libraryName = ApiLibraryNamer.libraryName(
+      description.name,
+      description.version,
+    );
     schemaDB = parseSchemas(imports, description);
     apiClass = parseResources(imports, schemaDB, description);
     exposeMedia = parseMediaUse(apiClass);
@@ -148,9 +151,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports
       'ApiRequestError',
       'DetailedApiRequestError',
       ...exportedClasses,
-    }.toList(growable: false)
-          ..sort())
-        .join(', ');
+    }.toList(growable: false)..sort()).join(', ');
 
     yield "\nexport 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show $exports;";
     if (!isPackage) {
@@ -169,7 +170,7 @@ Comment _commentFromRestDescription(
     _descriptionTitle(description),
     if (description.description != null) description.description,
     if (description.documentationLink != null)
-      'For more information, see <${description.documentationLink}>'
+      'For more information, see <${description.documentationLink}>',
   ];
 
   final hierarchy = <String>[];
@@ -184,9 +185,7 @@ Comment _commentFromRestDescription(
         '',
       ]);
     } else {
-      hierarchy.add(
-        '${'  ' * (depth - 1)}- [${resourceClass.className.name}]',
-      );
+      hierarchy.add('${'  ' * (depth - 1)}- [${resourceClass.className.name}]');
     }
     for (var child in resourceClass.subResources) {
       addLines(child, depth + 1);
@@ -198,9 +197,11 @@ Comment _commentFromRestDescription(
     lines.add(hierarchy.join('\n'));
   }
 
-  return Comment(lines
-      .where((element) => element != null && element.isNotEmpty)
-      .join('\n\n'));
+  return Comment(
+    lines
+        .where((element) => element != null && element.isNotEmpty)
+        .join('\n\n'),
+  );
 }
 
 String? _descriptionTitle(RestDescription description) {

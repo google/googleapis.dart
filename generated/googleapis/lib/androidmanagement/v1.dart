@@ -61,11 +61,16 @@ class AndroidManagementApi {
       ProvisioningInfoResource(_requester);
   SignupUrlsResource get signupUrls => SignupUrlsResource(_requester);
 
-  AndroidManagementApi(http.Client client,
-      {core.String rootUrl = 'https://androidmanagement.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AndroidManagementApi(
+    http.Client client, {
+    core.String rootUrl = 'https://androidmanagement.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class EnterprisesResource {
@@ -157,7 +162,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return Enterprise.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Permanently deletes an enterprise and all accounts and data associated
@@ -183,10 +189,7 @@ class EnterprisesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -227,7 +230,7 @@ class EnterprisesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GenerateEnterpriseUpgradeUrlResponse>
-      generateEnterpriseUpgradeUrl(
+  generateEnterpriseUpgradeUrl(
     GenerateEnterpriseUpgradeUrlRequest request,
     core.String name, {
     core.String? $fields,
@@ -247,7 +250,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return GenerateEnterpriseUpgradeUrlResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an enterprise.
@@ -268,10 +272,7 @@ class EnterprisesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Enterprise> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Enterprise> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -284,7 +285,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return Enterprise.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists EMM-managed enterprises.
@@ -342,7 +344,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return ListEnterprisesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an enterprise.
@@ -391,7 +394,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return Enterprise.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -399,7 +403,7 @@ class EnterprisesApplicationsResource {
   final commons.ApiRequester _requester;
 
   EnterprisesApplicationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets info about an application.
   ///
@@ -441,7 +445,8 @@ class EnterprisesApplicationsResource {
       queryParams: queryParams_,
     );
     return Application.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -524,10 +529,7 @@ class EnterprisesDevicesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Device> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Device> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -632,7 +634,8 @@ class EnterprisesDevicesResource {
       queryParams: queryParams_,
     );
     return ListDevicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a device.
@@ -686,7 +689,7 @@ class EnterprisesDevicesOperationsResource {
   final commons.ApiRequester _requester;
 
   EnterprisesDevicesOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -715,10 +718,7 @@ class EnterprisesDevicesOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> cancel(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -754,10 +754,7 @@ class EnterprisesDevicesOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -820,7 +817,8 @@ class EnterprisesDevicesOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -828,7 +826,7 @@ class EnterprisesEnrollmentTokensResource {
   final commons.ApiRequester _requester;
 
   EnterprisesEnrollmentTokensResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an enrollment token for a given enterprise.
   ///
@@ -873,7 +871,8 @@ class EnterprisesEnrollmentTokensResource {
       queryParams: queryParams_,
     );
     return EnrollmentToken.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an enrollment token.
@@ -896,10 +895,7 @@ class EnterprisesEnrollmentTokensResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -954,7 +950,8 @@ class EnterprisesEnrollmentTokensResource {
       queryParams: queryParams_,
     );
     return EnrollmentToken.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists active, unexpired enrollment tokens for a given enterprise.
@@ -1009,7 +1006,8 @@ class EnterprisesEnrollmentTokensResource {
       queryParams: queryParams_,
     );
     return ListEnrollmentTokensResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1017,7 +1015,7 @@ class EnterprisesMigrationTokensResource {
   final commons.ApiRequester _requester;
 
   EnterprisesMigrationTokensResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a migration token, to migrate an existing device from being
   /// managed by the EMM's Device Policy Controller (DPC) to being managed by
@@ -1065,7 +1063,8 @@ class EnterprisesMigrationTokensResource {
       queryParams: queryParams_,
     );
     return MigrationToken.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a migration token.
@@ -1102,7 +1101,8 @@ class EnterprisesMigrationTokensResource {
       queryParams: queryParams_,
     );
     return MigrationToken.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists migration tokens.
@@ -1153,7 +1153,8 @@ class EnterprisesMigrationTokensResource {
       queryParams: queryParams_,
     );
     return ListMigrationTokensResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1161,7 +1162,7 @@ class EnterprisesPoliciesResource {
   final commons.ApiRequester _requester;
 
   EnterprisesPoliciesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes a policy.
   ///
@@ -1184,10 +1185,7 @@ class EnterprisesPoliciesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1220,10 +1218,7 @@ class EnterprisesPoliciesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Policy> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1282,7 +1277,8 @@ class EnterprisesPoliciesResource {
       queryParams: queryParams_,
     );
     return ListPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates or creates applications in a policy.
@@ -1326,7 +1322,8 @@ class EnterprisesPoliciesResource {
       queryParams: queryParams_,
     );
     return ModifyPolicyApplicationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates or creates a policy.
@@ -1416,7 +1413,8 @@ class EnterprisesPoliciesResource {
       queryParams: queryParams_,
     );
     return RemovePolicyApplicationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1484,10 +1482,7 @@ class EnterprisesWebAppsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1520,10 +1515,7 @@ class EnterprisesWebAppsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WebApp> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<WebApp> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1582,7 +1574,8 @@ class EnterprisesWebAppsResource {
       queryParams: queryParams_,
     );
     return ListWebAppsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a web app.
@@ -1636,7 +1629,7 @@ class EnterprisesWebTokensResource {
   final commons.ApiRequester _requester;
 
   EnterprisesWebTokensResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a web token to access an embeddable managed Google Play web UI for
   /// a given enterprise.
@@ -1721,7 +1714,8 @@ class ProvisioningInfoResource {
       queryParams: queryParams_,
     );
     return ProvisioningInfo.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1816,21 +1810,18 @@ class AddEsimParams {
   /// this case, the user will need to activate the eSIM manually on the device.
   core.String? activationState;
 
-  AddEsimParams({
-    this.activationCode,
-    this.activationState,
-  });
+  AddEsimParams({this.activationCode, this.activationState});
 
   AddEsimParams.fromJson(core.Map json_)
-      : this(
-          activationCode: json_['activationCode'] as core.String?,
-          activationState: json_['activationState'] as core.String?,
-        );
+    : this(
+        activationCode: json_['activationCode'] as core.String?,
+        activationState: json_['activationState'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activationCode != null) 'activationCode': activationCode!,
-        if (activationState != null) 'activationState': activationState!,
-      };
+    if (activationCode != null) 'activationCode': activationCode!,
+    if (activationState != null) 'activationState': activationState!,
+  };
 }
 
 /// Advanced security settings.
@@ -1967,36 +1958,35 @@ class AdvancedSecurityOverrides {
   });
 
   AdvancedSecurityOverrides.fromJson(core.Map json_)
-      : this(
-          commonCriteriaMode: json_['commonCriteriaMode'] as core.String?,
-          contentProtectionPolicy:
-              json_['contentProtectionPolicy'] as core.String?,
-          developerSettings: json_['developerSettings'] as core.String?,
-          googlePlayProtectVerifyApps:
-              json_['googlePlayProtectVerifyApps'] as core.String?,
-          mtePolicy: json_['mtePolicy'] as core.String?,
-          personalAppsThatCanReadWorkNotifications:
-              (json_['personalAppsThatCanReadWorkNotifications'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          untrustedAppsPolicy: json_['untrustedAppsPolicy'] as core.String?,
-        );
+    : this(
+        commonCriteriaMode: json_['commonCriteriaMode'] as core.String?,
+        contentProtectionPolicy:
+            json_['contentProtectionPolicy'] as core.String?,
+        developerSettings: json_['developerSettings'] as core.String?,
+        googlePlayProtectVerifyApps:
+            json_['googlePlayProtectVerifyApps'] as core.String?,
+        mtePolicy: json_['mtePolicy'] as core.String?,
+        personalAppsThatCanReadWorkNotifications:
+            (json_['personalAppsThatCanReadWorkNotifications'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        untrustedAppsPolicy: json_['untrustedAppsPolicy'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonCriteriaMode != null)
-          'commonCriteriaMode': commonCriteriaMode!,
-        if (contentProtectionPolicy != null)
-          'contentProtectionPolicy': contentProtectionPolicy!,
-        if (developerSettings != null) 'developerSettings': developerSettings!,
-        if (googlePlayProtectVerifyApps != null)
-          'googlePlayProtectVerifyApps': googlePlayProtectVerifyApps!,
-        if (mtePolicy != null) 'mtePolicy': mtePolicy!,
-        if (personalAppsThatCanReadWorkNotifications != null)
-          'personalAppsThatCanReadWorkNotifications':
-              personalAppsThatCanReadWorkNotifications!,
-        if (untrustedAppsPolicy != null)
-          'untrustedAppsPolicy': untrustedAppsPolicy!,
-      };
+    if (commonCriteriaMode != null) 'commonCriteriaMode': commonCriteriaMode!,
+    if (contentProtectionPolicy != null)
+      'contentProtectionPolicy': contentProtectionPolicy!,
+    if (developerSettings != null) 'developerSettings': developerSettings!,
+    if (googlePlayProtectVerifyApps != null)
+      'googlePlayProtectVerifyApps': googlePlayProtectVerifyApps!,
+    if (mtePolicy != null) 'mtePolicy': mtePolicy!,
+    if (personalAppsThatCanReadWorkNotifications != null)
+      'personalAppsThatCanReadWorkNotifications':
+          personalAppsThatCanReadWorkNotifications!,
+    if (untrustedAppsPolicy != null)
+      'untrustedAppsPolicy': untrustedAppsPolicy!,
+  };
 }
 
 /// Configuration for an always-on VPN connection.
@@ -2007,21 +1997,18 @@ class AlwaysOnVpnPackage {
   /// The package name of the VPN app.
   core.String? packageName;
 
-  AlwaysOnVpnPackage({
-    this.lockdownEnabled,
-    this.packageName,
-  });
+  AlwaysOnVpnPackage({this.lockdownEnabled, this.packageName});
 
   AlwaysOnVpnPackage.fromJson(core.Map json_)
-      : this(
-          lockdownEnabled: json_['lockdownEnabled'] as core.bool?,
-          packageName: json_['packageName'] as core.String?,
-        );
+    : this(
+        lockdownEnabled: json_['lockdownEnabled'] as core.bool?,
+        packageName: json_['packageName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lockdownEnabled != null) 'lockdownEnabled': lockdownEnabled!,
-        if (packageName != null) 'packageName': packageName!,
-      };
+    if (lockdownEnabled != null) 'lockdownEnabled': lockdownEnabled!,
+    if (packageName != null) 'packageName': packageName!,
+  };
 }
 
 /// A compliance rule condition which is satisfied if the Android Framework API
@@ -2035,18 +2022,14 @@ class ApiLevelCondition {
   /// satisfied. Must be greater than zero.
   core.int? minApiLevel;
 
-  ApiLevelCondition({
-    this.minApiLevel,
-  });
+  ApiLevelCondition({this.minApiLevel});
 
   ApiLevelCondition.fromJson(core.Map json_)
-      : this(
-          minApiLevel: json_['minApiLevel'] as core.int?,
-        );
+    : this(minApiLevel: json_['minApiLevel'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (minApiLevel != null) 'minApiLevel': minApiLevel!,
-      };
+    if (minApiLevel != null) 'minApiLevel': minApiLevel!,
+  };
 }
 
 /// Access Point Name (APN) policy.
@@ -2094,24 +2077,25 @@ class ApnPolicy {
   /// reported for work profiles.
   core.String? overrideApns;
 
-  ApnPolicy({
-    this.apnSettings,
-    this.overrideApns,
-  });
+  ApnPolicy({this.apnSettings, this.overrideApns});
 
   ApnPolicy.fromJson(core.Map json_)
-      : this(
-          apnSettings: (json_['apnSettings'] as core.List?)
-              ?.map((value) => ApnSetting.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          overrideApns: json_['overrideApns'] as core.String?,
-        );
+    : this(
+        apnSettings:
+            (json_['apnSettings'] as core.List?)
+                ?.map(
+                  (value) => ApnSetting.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        overrideApns: json_['overrideApns'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apnSettings != null) 'apnSettings': apnSettings!,
-        if (overrideApns != null) 'overrideApns': overrideApns!,
-      };
+    if (apnSettings != null) 'apnSettings': apnSettings!,
+    if (overrideApns != null) 'overrideApns': overrideApns!,
+  };
 }
 
 /// An Access Point Name (APN) configuration for a carrier data connection.
@@ -2326,55 +2310,57 @@ class ApnSetting {
   });
 
   ApnSetting.fromJson(core.Map json_)
-      : this(
-          alwaysOnSetting: json_['alwaysOnSetting'] as core.String?,
-          apn: json_['apn'] as core.String?,
-          apnTypes: (json_['apnTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          authType: json_['authType'] as core.String?,
-          carrierId: json_['carrierId'] as core.int?,
-          displayName: json_['displayName'] as core.String?,
-          mmsProxyAddress: json_['mmsProxyAddress'] as core.String?,
-          mmsProxyPort: json_['mmsProxyPort'] as core.int?,
-          mmsc: json_['mmsc'] as core.String?,
-          mtuV4: json_['mtuV4'] as core.int?,
-          mtuV6: json_['mtuV6'] as core.int?,
-          mvnoType: json_['mvnoType'] as core.String?,
-          networkTypes: (json_['networkTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          numericOperatorId: json_['numericOperatorId'] as core.String?,
-          password: json_['password'] as core.String?,
-          protocol: json_['protocol'] as core.String?,
-          proxyAddress: json_['proxyAddress'] as core.String?,
-          proxyPort: json_['proxyPort'] as core.int?,
-          roamingProtocol: json_['roamingProtocol'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        alwaysOnSetting: json_['alwaysOnSetting'] as core.String?,
+        apn: json_['apn'] as core.String?,
+        apnTypes:
+            (json_['apnTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        authType: json_['authType'] as core.String?,
+        carrierId: json_['carrierId'] as core.int?,
+        displayName: json_['displayName'] as core.String?,
+        mmsProxyAddress: json_['mmsProxyAddress'] as core.String?,
+        mmsProxyPort: json_['mmsProxyPort'] as core.int?,
+        mmsc: json_['mmsc'] as core.String?,
+        mtuV4: json_['mtuV4'] as core.int?,
+        mtuV6: json_['mtuV6'] as core.int?,
+        mvnoType: json_['mvnoType'] as core.String?,
+        networkTypes:
+            (json_['networkTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        numericOperatorId: json_['numericOperatorId'] as core.String?,
+        password: json_['password'] as core.String?,
+        protocol: json_['protocol'] as core.String?,
+        proxyAddress: json_['proxyAddress'] as core.String?,
+        proxyPort: json_['proxyPort'] as core.int?,
+        roamingProtocol: json_['roamingProtocol'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alwaysOnSetting != null) 'alwaysOnSetting': alwaysOnSetting!,
-        if (apn != null) 'apn': apn!,
-        if (apnTypes != null) 'apnTypes': apnTypes!,
-        if (authType != null) 'authType': authType!,
-        if (carrierId != null) 'carrierId': carrierId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (mmsProxyAddress != null) 'mmsProxyAddress': mmsProxyAddress!,
-        if (mmsProxyPort != null) 'mmsProxyPort': mmsProxyPort!,
-        if (mmsc != null) 'mmsc': mmsc!,
-        if (mtuV4 != null) 'mtuV4': mtuV4!,
-        if (mtuV6 != null) 'mtuV6': mtuV6!,
-        if (mvnoType != null) 'mvnoType': mvnoType!,
-        if (networkTypes != null) 'networkTypes': networkTypes!,
-        if (numericOperatorId != null) 'numericOperatorId': numericOperatorId!,
-        if (password != null) 'password': password!,
-        if (protocol != null) 'protocol': protocol!,
-        if (proxyAddress != null) 'proxyAddress': proxyAddress!,
-        if (proxyPort != null) 'proxyPort': proxyPort!,
-        if (roamingProtocol != null) 'roamingProtocol': roamingProtocol!,
-        if (username != null) 'username': username!,
-      };
+    if (alwaysOnSetting != null) 'alwaysOnSetting': alwaysOnSetting!,
+    if (apn != null) 'apn': apn!,
+    if (apnTypes != null) 'apnTypes': apnTypes!,
+    if (authType != null) 'authType': authType!,
+    if (carrierId != null) 'carrierId': carrierId!,
+    if (displayName != null) 'displayName': displayName!,
+    if (mmsProxyAddress != null) 'mmsProxyAddress': mmsProxyAddress!,
+    if (mmsProxyPort != null) 'mmsProxyPort': mmsProxyPort!,
+    if (mmsc != null) 'mmsc': mmsc!,
+    if (mtuV4 != null) 'mtuV4': mtuV4!,
+    if (mtuV6 != null) 'mtuV6': mtuV6!,
+    if (mvnoType != null) 'mvnoType': mvnoType!,
+    if (networkTypes != null) 'networkTypes': networkTypes!,
+    if (numericOperatorId != null) 'numericOperatorId': numericOperatorId!,
+    if (password != null) 'password': password!,
+    if (protocol != null) 'protocol': protocol!,
+    if (proxyAddress != null) 'proxyAddress': proxyAddress!,
+    if (proxyPort != null) 'proxyPort': proxyPort!,
+    if (roamingProtocol != null) 'roamingProtocol': roamingProtocol!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// Id to name association of a app track.
@@ -2389,21 +2375,18 @@ class AppTrackInfo {
   /// information.
   core.String? trackId;
 
-  AppTrackInfo({
-    this.trackAlias,
-    this.trackId,
-  });
+  AppTrackInfo({this.trackAlias, this.trackId});
 
   AppTrackInfo.fromJson(core.Map json_)
-      : this(
-          trackAlias: json_['trackAlias'] as core.String?,
-          trackId: json_['trackId'] as core.String?,
-        );
+    : this(
+        trackAlias: json_['trackAlias'] as core.String?,
+        trackId: json_['trackId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (trackAlias != null) 'trackAlias': trackAlias!,
-        if (trackId != null) 'trackId': trackId!,
-      };
+    if (trackAlias != null) 'trackAlias': trackAlias!,
+    if (trackId != null) 'trackId': trackId!,
+  };
 }
 
 /// This represents a single version of the app.
@@ -2435,21 +2418,22 @@ class AppVersion {
   });
 
   AppVersion.fromJson(core.Map json_)
-      : this(
-          production: json_['production'] as core.bool?,
-          trackIds: (json_['trackIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          versionCode: json_['versionCode'] as core.int?,
-          versionString: json_['versionString'] as core.String?,
-        );
+    : this(
+        production: json_['production'] as core.bool?,
+        trackIds:
+            (json_['trackIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        versionCode: json_['versionCode'] as core.int?,
+        versionString: json_['versionString'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (production != null) 'production': production!,
-        if (trackIds != null) 'trackIds': trackIds!,
-        if (versionCode != null) 'versionCode': versionCode!,
-        if (versionString != null) 'versionString': versionString!,
-      };
+    if (production != null) 'production': production!,
+    if (trackIds != null) 'trackIds': trackIds!,
+    if (versionCode != null) 'versionCode': versionCode!,
+    if (versionString != null) 'versionString': versionString!,
+  };
 }
 
 /// Information about an app.
@@ -2581,76 +2565,94 @@ class Application {
   });
 
   Application.fromJson(core.Map json_)
-      : this(
-          appPricing: json_['appPricing'] as core.String?,
-          appTracks: (json_['appTracks'] as core.List?)
-              ?.map((value) => AppTrackInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          appVersions: (json_['appVersions'] as core.List?)
-              ?.map((value) => AppVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          author: json_['author'] as core.String?,
-          availableCountries: (json_['availableCountries'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          category: json_['category'] as core.String?,
-          contentRating: json_['contentRating'] as core.String?,
-          description: json_['description'] as core.String?,
-          distributionChannel: json_['distributionChannel'] as core.String?,
-          features: (json_['features'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          fullDescription: json_['fullDescription'] as core.String?,
-          iconUrl: json_['iconUrl'] as core.String?,
-          managedProperties: (json_['managedProperties'] as core.List?)
-              ?.map((value) => ManagedProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          minAndroidSdkVersion: json_['minAndroidSdkVersion'] as core.int?,
-          name: json_['name'] as core.String?,
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => ApplicationPermission.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          playStoreUrl: json_['playStoreUrl'] as core.String?,
-          recentChanges: json_['recentChanges'] as core.String?,
-          screenshotUrls: (json_['screenshotUrls'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          smallIconUrl: json_['smallIconUrl'] as core.String?,
-          title: json_['title'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        appPricing: json_['appPricing'] as core.String?,
+        appTracks:
+            (json_['appTracks'] as core.List?)
+                ?.map(
+                  (value) => AppTrackInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        appVersions:
+            (json_['appVersions'] as core.List?)
+                ?.map(
+                  (value) => AppVersion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        author: json_['author'] as core.String?,
+        availableCountries:
+            (json_['availableCountries'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        category: json_['category'] as core.String?,
+        contentRating: json_['contentRating'] as core.String?,
+        description: json_['description'] as core.String?,
+        distributionChannel: json_['distributionChannel'] as core.String?,
+        features:
+            (json_['features'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        fullDescription: json_['fullDescription'] as core.String?,
+        iconUrl: json_['iconUrl'] as core.String?,
+        managedProperties:
+            (json_['managedProperties'] as core.List?)
+                ?.map(
+                  (value) => ManagedProperty.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        minAndroidSdkVersion: json_['minAndroidSdkVersion'] as core.int?,
+        name: json_['name'] as core.String?,
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map(
+                  (value) => ApplicationPermission.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        playStoreUrl: json_['playStoreUrl'] as core.String?,
+        recentChanges: json_['recentChanges'] as core.String?,
+        screenshotUrls:
+            (json_['screenshotUrls'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        smallIconUrl: json_['smallIconUrl'] as core.String?,
+        title: json_['title'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appPricing != null) 'appPricing': appPricing!,
-        if (appTracks != null) 'appTracks': appTracks!,
-        if (appVersions != null) 'appVersions': appVersions!,
-        if (author != null) 'author': author!,
-        if (availableCountries != null)
-          'availableCountries': availableCountries!,
-        if (category != null) 'category': category!,
-        if (contentRating != null) 'contentRating': contentRating!,
-        if (description != null) 'description': description!,
-        if (distributionChannel != null)
-          'distributionChannel': distributionChannel!,
-        if (features != null) 'features': features!,
-        if (fullDescription != null) 'fullDescription': fullDescription!,
-        if (iconUrl != null) 'iconUrl': iconUrl!,
-        if (managedProperties != null) 'managedProperties': managedProperties!,
-        if (minAndroidSdkVersion != null)
-          'minAndroidSdkVersion': minAndroidSdkVersion!,
-        if (name != null) 'name': name!,
-        if (permissions != null) 'permissions': permissions!,
-        if (playStoreUrl != null) 'playStoreUrl': playStoreUrl!,
-        if (recentChanges != null) 'recentChanges': recentChanges!,
-        if (screenshotUrls != null) 'screenshotUrls': screenshotUrls!,
-        if (smallIconUrl != null) 'smallIconUrl': smallIconUrl!,
-        if (title != null) 'title': title!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (appPricing != null) 'appPricing': appPricing!,
+    if (appTracks != null) 'appTracks': appTracks!,
+    if (appVersions != null) 'appVersions': appVersions!,
+    if (author != null) 'author': author!,
+    if (availableCountries != null) 'availableCountries': availableCountries!,
+    if (category != null) 'category': category!,
+    if (contentRating != null) 'contentRating': contentRating!,
+    if (description != null) 'description': description!,
+    if (distributionChannel != null)
+      'distributionChannel': distributionChannel!,
+    if (features != null) 'features': features!,
+    if (fullDescription != null) 'fullDescription': fullDescription!,
+    if (iconUrl != null) 'iconUrl': iconUrl!,
+    if (managedProperties != null) 'managedProperties': managedProperties!,
+    if (minAndroidSdkVersion != null)
+      'minAndroidSdkVersion': minAndroidSdkVersion!,
+    if (name != null) 'name': name!,
+    if (permissions != null) 'permissions': permissions!,
+    if (playStoreUrl != null) 'playStoreUrl': playStoreUrl!,
+    if (recentChanges != null) 'recentChanges': recentChanges!,
+    if (screenshotUrls != null) 'screenshotUrls': screenshotUrls!,
+    if (smallIconUrl != null) 'smallIconUrl': smallIconUrl!,
+    if (title != null) 'title': title!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// An app-related event.
@@ -2673,21 +2675,18 @@ class ApplicationEvent {
   /// - "UNPINNED" : The app was unpinned.
   core.String? eventType;
 
-  ApplicationEvent({
-    this.createTime,
-    this.eventType,
-  });
+  ApplicationEvent({this.createTime, this.eventType});
 
   ApplicationEvent.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          eventType: json_['eventType'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        eventType: json_['eventType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (eventType != null) 'eventType': eventType!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (eventType != null) 'eventType': eventType!,
+  };
 }
 
 /// A permission required by the app.
@@ -2708,24 +2707,20 @@ class ApplicationPermission {
   /// Not localized.
   core.String? permissionId;
 
-  ApplicationPermission({
-    this.description,
-    this.name,
-    this.permissionId,
-  });
+  ApplicationPermission({this.description, this.name, this.permissionId});
 
   ApplicationPermission.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          name: json_['name'] as core.String?,
-          permissionId: json_['permissionId'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        name: json_['name'] as core.String?,
+        permissionId: json_['permissionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (name != null) 'name': name!,
-        if (permissionId != null) 'permissionId': permissionId!,
-      };
+    if (description != null) 'description': description!,
+    if (name != null) 'name': name!,
+    if (permissionId != null) 'permissionId': permissionId!,
+  };
 }
 
 /// Policy for an individual app.
@@ -3038,89 +3033,101 @@ class ApplicationPolicy {
   });
 
   ApplicationPolicy.fromJson(core.Map json_)
-      : this(
-          accessibleTrackIds: (json_['accessibleTrackIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          alwaysOnVpnLockdownExemption:
-              json_['alwaysOnVpnLockdownExemption'] as core.String?,
-          autoUpdateMode: json_['autoUpdateMode'] as core.String?,
-          connectedWorkAndPersonalApp:
-              json_['connectedWorkAndPersonalApp'] as core.String?,
-          credentialProviderPolicy:
-              json_['credentialProviderPolicy'] as core.String?,
-          defaultPermissionPolicy:
-              json_['defaultPermissionPolicy'] as core.String?,
-          delegatedScopes: (json_['delegatedScopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          disabled: json_['disabled'] as core.bool?,
-          extensionConfig: json_.containsKey('extensionConfig')
-              ? ExtensionConfig.fromJson(json_['extensionConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          installConstraint: (json_['installConstraint'] as core.List?)
-              ?.map((value) => InstallConstraint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          installPriority: json_['installPriority'] as core.int?,
-          installType: json_['installType'] as core.String?,
-          lockTaskAllowed: json_['lockTaskAllowed'] as core.bool?,
-          managedConfiguration: json_.containsKey('managedConfiguration')
-              ? json_['managedConfiguration']
-                  as core.Map<core.String, core.dynamic>
-              : null,
-          managedConfigurationTemplate:
-              json_.containsKey('managedConfigurationTemplate')
-                  ? ManagedConfigurationTemplate.fromJson(
-                      json_['managedConfigurationTemplate']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          minimumVersionCode: json_['minimumVersionCode'] as core.int?,
-          packageName: json_['packageName'] as core.String?,
-          permissionGrants: (json_['permissionGrants'] as core.List?)
-              ?.map((value) => PermissionGrant.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          preferentialNetworkId: json_['preferentialNetworkId'] as core.String?,
-          userControlSettings: json_['userControlSettings'] as core.String?,
-          workProfileWidgets: json_['workProfileWidgets'] as core.String?,
-        );
+    : this(
+        accessibleTrackIds:
+            (json_['accessibleTrackIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        alwaysOnVpnLockdownExemption:
+            json_['alwaysOnVpnLockdownExemption'] as core.String?,
+        autoUpdateMode: json_['autoUpdateMode'] as core.String?,
+        connectedWorkAndPersonalApp:
+            json_['connectedWorkAndPersonalApp'] as core.String?,
+        credentialProviderPolicy:
+            json_['credentialProviderPolicy'] as core.String?,
+        defaultPermissionPolicy:
+            json_['defaultPermissionPolicy'] as core.String?,
+        delegatedScopes:
+            (json_['delegatedScopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        disabled: json_['disabled'] as core.bool?,
+        extensionConfig:
+            json_.containsKey('extensionConfig')
+                ? ExtensionConfig.fromJson(
+                  json_['extensionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        installConstraint:
+            (json_['installConstraint'] as core.List?)
+                ?.map(
+                  (value) => InstallConstraint.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        installPriority: json_['installPriority'] as core.int?,
+        installType: json_['installType'] as core.String?,
+        lockTaskAllowed: json_['lockTaskAllowed'] as core.bool?,
+        managedConfiguration:
+            json_.containsKey('managedConfiguration')
+                ? json_['managedConfiguration']
+                    as core.Map<core.String, core.dynamic>
+                : null,
+        managedConfigurationTemplate:
+            json_.containsKey('managedConfigurationTemplate')
+                ? ManagedConfigurationTemplate.fromJson(
+                  json_['managedConfigurationTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        minimumVersionCode: json_['minimumVersionCode'] as core.int?,
+        packageName: json_['packageName'] as core.String?,
+        permissionGrants:
+            (json_['permissionGrants'] as core.List?)
+                ?.map(
+                  (value) => PermissionGrant.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        preferentialNetworkId: json_['preferentialNetworkId'] as core.String?,
+        userControlSettings: json_['userControlSettings'] as core.String?,
+        workProfileWidgets: json_['workProfileWidgets'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessibleTrackIds != null)
-          'accessibleTrackIds': accessibleTrackIds!,
-        if (alwaysOnVpnLockdownExemption != null)
-          'alwaysOnVpnLockdownExemption': alwaysOnVpnLockdownExemption!,
-        if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode!,
-        if (connectedWorkAndPersonalApp != null)
-          'connectedWorkAndPersonalApp': connectedWorkAndPersonalApp!,
-        if (credentialProviderPolicy != null)
-          'credentialProviderPolicy': credentialProviderPolicy!,
-        if (defaultPermissionPolicy != null)
-          'defaultPermissionPolicy': defaultPermissionPolicy!,
-        if (delegatedScopes != null) 'delegatedScopes': delegatedScopes!,
-        if (disabled != null) 'disabled': disabled!,
-        if (extensionConfig != null) 'extensionConfig': extensionConfig!,
-        if (installConstraint != null) 'installConstraint': installConstraint!,
-        if (installPriority != null) 'installPriority': installPriority!,
-        if (installType != null) 'installType': installType!,
-        if (lockTaskAllowed != null) 'lockTaskAllowed': lockTaskAllowed!,
-        if (managedConfiguration != null)
-          'managedConfiguration': managedConfiguration!,
-        if (managedConfigurationTemplate != null)
-          'managedConfigurationTemplate': managedConfigurationTemplate!,
-        if (minimumVersionCode != null)
-          'minimumVersionCode': minimumVersionCode!,
-        if (packageName != null) 'packageName': packageName!,
-        if (permissionGrants != null) 'permissionGrants': permissionGrants!,
-        if (preferentialNetworkId != null)
-          'preferentialNetworkId': preferentialNetworkId!,
-        if (userControlSettings != null)
-          'userControlSettings': userControlSettings!,
-        if (workProfileWidgets != null)
-          'workProfileWidgets': workProfileWidgets!,
-      };
+    if (accessibleTrackIds != null) 'accessibleTrackIds': accessibleTrackIds!,
+    if (alwaysOnVpnLockdownExemption != null)
+      'alwaysOnVpnLockdownExemption': alwaysOnVpnLockdownExemption!,
+    if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode!,
+    if (connectedWorkAndPersonalApp != null)
+      'connectedWorkAndPersonalApp': connectedWorkAndPersonalApp!,
+    if (credentialProviderPolicy != null)
+      'credentialProviderPolicy': credentialProviderPolicy!,
+    if (defaultPermissionPolicy != null)
+      'defaultPermissionPolicy': defaultPermissionPolicy!,
+    if (delegatedScopes != null) 'delegatedScopes': delegatedScopes!,
+    if (disabled != null) 'disabled': disabled!,
+    if (extensionConfig != null) 'extensionConfig': extensionConfig!,
+    if (installConstraint != null) 'installConstraint': installConstraint!,
+    if (installPriority != null) 'installPriority': installPriority!,
+    if (installType != null) 'installType': installType!,
+    if (lockTaskAllowed != null) 'lockTaskAllowed': lockTaskAllowed!,
+    if (managedConfiguration != null)
+      'managedConfiguration': managedConfiguration!,
+    if (managedConfigurationTemplate != null)
+      'managedConfigurationTemplate': managedConfigurationTemplate!,
+    if (minimumVersionCode != null) 'minimumVersionCode': minimumVersionCode!,
+    if (packageName != null) 'packageName': packageName!,
+    if (permissionGrants != null) 'permissionGrants': permissionGrants!,
+    if (preferentialNetworkId != null)
+      'preferentialNetworkId': preferentialNetworkId!,
+    if (userControlSettings != null)
+      'userControlSettings': userControlSettings!,
+    if (workProfileWidgets != null) 'workProfileWidgets': workProfileWidgets!,
+  };
 }
 
 /// A change to be made to a single ApplicationPolicy object.
@@ -3136,24 +3143,23 @@ class ApplicationPolicyChange {
   /// If omitted, all modifiable fields are updated.
   core.String? updateMask;
 
-  ApplicationPolicyChange({
-    this.application,
-    this.updateMask,
-  });
+  ApplicationPolicyChange({this.application, this.updateMask});
 
   ApplicationPolicyChange.fromJson(core.Map json_)
-      : this(
-          application: json_.containsKey('application')
-              ? ApplicationPolicy.fromJson(
-                  json_['application'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        application:
+            json_.containsKey('application')
+                ? ApplicationPolicy.fromJson(
+                  json_['application'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (application != null) 'application': application!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (application != null) 'application': application!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Information reported about an installed app.
@@ -3236,46 +3242,54 @@ class ApplicationReport {
   });
 
   ApplicationReport.fromJson(core.Map json_)
-      : this(
-          applicationSource: json_['applicationSource'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          events: (json_['events'] as core.List?)
-              ?.map((value) => ApplicationEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          installerPackageName: json_['installerPackageName'] as core.String?,
-          keyedAppStates: (json_['keyedAppStates'] as core.List?)
-              ?.map((value) => KeyedAppState.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          packageName: json_['packageName'] as core.String?,
-          packageSha256Hash: json_['packageSha256Hash'] as core.String?,
-          signingKeyCertFingerprints:
-              (json_['signingKeyCertFingerprints'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          state: json_['state'] as core.String?,
-          userFacingType: json_['userFacingType'] as core.String?,
-          versionCode: json_['versionCode'] as core.int?,
-          versionName: json_['versionName'] as core.String?,
-        );
+    : this(
+        applicationSource: json_['applicationSource'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        events:
+            (json_['events'] as core.List?)
+                ?.map(
+                  (value) => ApplicationEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        installerPackageName: json_['installerPackageName'] as core.String?,
+        keyedAppStates:
+            (json_['keyedAppStates'] as core.List?)
+                ?.map(
+                  (value) => KeyedAppState.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        packageName: json_['packageName'] as core.String?,
+        packageSha256Hash: json_['packageSha256Hash'] as core.String?,
+        signingKeyCertFingerprints:
+            (json_['signingKeyCertFingerprints'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        state: json_['state'] as core.String?,
+        userFacingType: json_['userFacingType'] as core.String?,
+        versionCode: json_['versionCode'] as core.int?,
+        versionName: json_['versionName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationSource != null) 'applicationSource': applicationSource!,
-        if (displayName != null) 'displayName': displayName!,
-        if (events != null) 'events': events!,
-        if (installerPackageName != null)
-          'installerPackageName': installerPackageName!,
-        if (keyedAppStates != null) 'keyedAppStates': keyedAppStates!,
-        if (packageName != null) 'packageName': packageName!,
-        if (packageSha256Hash != null) 'packageSha256Hash': packageSha256Hash!,
-        if (signingKeyCertFingerprints != null)
-          'signingKeyCertFingerprints': signingKeyCertFingerprints!,
-        if (state != null) 'state': state!,
-        if (userFacingType != null) 'userFacingType': userFacingType!,
-        if (versionCode != null) 'versionCode': versionCode!,
-        if (versionName != null) 'versionName': versionName!,
-      };
+    if (applicationSource != null) 'applicationSource': applicationSource!,
+    if (displayName != null) 'displayName': displayName!,
+    if (events != null) 'events': events!,
+    if (installerPackageName != null)
+      'installerPackageName': installerPackageName!,
+    if (keyedAppStates != null) 'keyedAppStates': keyedAppStates!,
+    if (packageName != null) 'packageName': packageName!,
+    if (packageSha256Hash != null) 'packageSha256Hash': packageSha256Hash!,
+    if (signingKeyCertFingerprints != null)
+      'signingKeyCertFingerprints': signingKeyCertFingerprints!,
+    if (state != null) 'state': state!,
+    if (userFacingType != null) 'userFacingType': userFacingType!,
+    if (versionCode != null) 'versionCode': versionCode!,
+    if (versionName != null) 'versionName': versionName!,
+  };
 }
 
 /// Settings controlling the behavior of application reports.
@@ -3283,19 +3297,14 @@ class ApplicationReportingSettings {
   /// Whether removed apps are included in application reports.
   core.bool? includeRemovedApps;
 
-  ApplicationReportingSettings({
-    this.includeRemovedApps,
-  });
+  ApplicationReportingSettings({this.includeRemovedApps});
 
   ApplicationReportingSettings.fromJson(core.Map json_)
-      : this(
-          includeRemovedApps: json_['includeRemovedApps'] as core.bool?,
-        );
+    : this(includeRemovedApps: json_['includeRemovedApps'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includeRemovedApps != null)
-          'includeRemovedApps': includeRemovedApps!,
-      };
+    if (includeRemovedApps != null) 'includeRemovedApps': includeRemovedApps!,
+  };
 }
 
 /// An action to block access to apps and data on a fully managed device or in a
@@ -3324,21 +3333,18 @@ class BlockAction {
   /// including apps in the personal profile.
   core.String? blockScope;
 
-  BlockAction({
-    this.blockAfterDays,
-    this.blockScope,
-  });
+  BlockAction({this.blockAfterDays, this.blockScope});
 
   BlockAction.fromJson(core.Map json_)
-      : this(
-          blockAfterDays: json_['blockAfterDays'] as core.int?,
-          blockScope: json_['blockScope'] as core.String?,
-        );
+    : this(
+        blockAfterDays: json_['blockAfterDays'] as core.int?,
+        blockScope: json_['blockScope'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blockAfterDays != null) 'blockAfterDays': blockAfterDays!,
-        if (blockScope != null) 'blockScope': blockScope!,
-      };
+    if (blockAfterDays != null) 'blockAfterDays': blockAfterDays!,
+    if (blockScope != null) 'blockScope': blockScope!,
+  };
 }
 
 /// Controls apps' access to private keys.
@@ -3384,19 +3390,20 @@ class ChoosePrivateKeyRule {
   });
 
   ChoosePrivateKeyRule.fromJson(core.Map json_)
-      : this(
-          packageNames: (json_['packageNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          privateKeyAlias: json_['privateKeyAlias'] as core.String?,
-          urlPattern: json_['urlPattern'] as core.String?,
-        );
+    : this(
+        packageNames:
+            (json_['packageNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        privateKeyAlias: json_['privateKeyAlias'] as core.String?,
+        urlPattern: json_['urlPattern'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (packageNames != null) 'packageNames': packageNames!,
-        if (privateKeyAlias != null) 'privateKeyAlias': privateKeyAlias!,
-        if (urlPattern != null) 'urlPattern': urlPattern!,
-      };
+    if (packageNames != null) 'packageNames': packageNames!,
+    if (privateKeyAlias != null) 'privateKeyAlias': privateKeyAlias!,
+    if (urlPattern != null) 'urlPattern': urlPattern!,
+  };
 }
 
 /// Parameters associated with the CLEAR_APP_DATA command to clear the data of
@@ -3406,20 +3413,19 @@ class ClearAppsDataParams {
   /// is executed.
   core.List<core.String>? packageNames;
 
-  ClearAppsDataParams({
-    this.packageNames,
-  });
+  ClearAppsDataParams({this.packageNames});
 
   ClearAppsDataParams.fromJson(core.Map json_)
-      : this(
-          packageNames: (json_['packageNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        packageNames:
+            (json_['packageNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (packageNames != null) 'packageNames': packageNames!,
-      };
+    if (packageNames != null) 'packageNames': packageNames!,
+  };
 }
 
 /// Status of the CLEAR_APP_DATA command to clear the data of specified apps
@@ -3429,25 +3435,24 @@ class ClearAppsDataStatus {
   /// clearing result.
   core.Map<core.String, PerAppResult>? results;
 
-  ClearAppsDataStatus({
-    this.results,
-  });
+  ClearAppsDataStatus({this.results});
 
   ClearAppsDataStatus.fromJson(core.Map json_)
-      : this(
-          results:
-              (json_['results'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              PerAppResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        results: (json_['results'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                PerAppResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (results != null) 'results': results!,
-      };
+    if (results != null) 'results': results!,
+  };
 }
 
 /// A command.
@@ -3658,98 +3663,127 @@ class Command {
   });
 
   Command.fromJson(core.Map json_)
-      : this(
-          addEsimParams: json_.containsKey('addEsimParams')
-              ? AddEsimParams.fromJson(
-                  json_['addEsimParams'] as core.Map<core.String, core.dynamic>)
-              : null,
-          clearAppsDataParams: json_.containsKey('clearAppsDataParams')
-              ? ClearAppsDataParams.fromJson(json_['clearAppsDataParams']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          clearAppsDataStatus: json_.containsKey('clearAppsDataStatus')
-              ? ClearAppsDataStatus.fromJson(json_['clearAppsDataStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          duration: json_['duration'] as core.String?,
-          errorCode: json_['errorCode'] as core.String?,
-          esimStatus: json_.containsKey('esimStatus')
-              ? EsimCommandStatus.fromJson(
-                  json_['esimStatus'] as core.Map<core.String, core.dynamic>)
-              : null,
-          newPassword: json_['newPassword'] as core.String?,
-          removeEsimParams: json_.containsKey('removeEsimParams')
-              ? RemoveEsimParams.fromJson(json_['removeEsimParams']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          requestDeviceInfoParams: json_.containsKey('requestDeviceInfoParams')
-              ? RequestDeviceInfoParams.fromJson(
+    : this(
+        addEsimParams:
+            json_.containsKey('addEsimParams')
+                ? AddEsimParams.fromJson(
+                  json_['addEsimParams'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        clearAppsDataParams:
+            json_.containsKey('clearAppsDataParams')
+                ? ClearAppsDataParams.fromJson(
+                  json_['clearAppsDataParams']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        clearAppsDataStatus:
+            json_.containsKey('clearAppsDataStatus')
+                ? ClearAppsDataStatus.fromJson(
+                  json_['clearAppsDataStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        duration: json_['duration'] as core.String?,
+        errorCode: json_['errorCode'] as core.String?,
+        esimStatus:
+            json_.containsKey('esimStatus')
+                ? EsimCommandStatus.fromJson(
+                  json_['esimStatus'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        newPassword: json_['newPassword'] as core.String?,
+        removeEsimParams:
+            json_.containsKey('removeEsimParams')
+                ? RemoveEsimParams.fromJson(
+                  json_['removeEsimParams']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestDeviceInfoParams:
+            json_.containsKey('requestDeviceInfoParams')
+                ? RequestDeviceInfoParams.fromJson(
                   json_['requestDeviceInfoParams']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          requestDeviceInfoStatus: json_.containsKey('requestDeviceInfoStatus')
-              ? RequestDeviceInfoStatus.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestDeviceInfoStatus:
+            json_.containsKey('requestDeviceInfoStatus')
+                ? RequestDeviceInfoStatus.fromJson(
                   json_['requestDeviceInfoStatus']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          resetPasswordFlags: (json_['resetPasswordFlags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          startLostModeParams: json_.containsKey('startLostModeParams')
-              ? StartLostModeParams.fromJson(json_['startLostModeParams']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          startLostModeStatus: json_.containsKey('startLostModeStatus')
-              ? StartLostModeStatus.fromJson(json_['startLostModeStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          stopLostModeParams: json_.containsKey('stopLostModeParams')
-              ? StopLostModeParams.fromJson(json_['stopLostModeParams']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          stopLostModeStatus: json_.containsKey('stopLostModeStatus')
-              ? StopLostModeStatus.fromJson(json_['stopLostModeStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-          userName: json_['userName'] as core.String?,
-          wipeParams: json_.containsKey('wipeParams')
-              ? WipeParams.fromJson(
-                  json_['wipeParams'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resetPasswordFlags:
+            (json_['resetPasswordFlags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        startLostModeParams:
+            json_.containsKey('startLostModeParams')
+                ? StartLostModeParams.fromJson(
+                  json_['startLostModeParams']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startLostModeStatus:
+            json_.containsKey('startLostModeStatus')
+                ? StartLostModeStatus.fromJson(
+                  json_['startLostModeStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stopLostModeParams:
+            json_.containsKey('stopLostModeParams')
+                ? StopLostModeParams.fromJson(
+                  json_['stopLostModeParams']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stopLostModeStatus:
+            json_.containsKey('stopLostModeStatus')
+                ? StopLostModeStatus.fromJson(
+                  json_['stopLostModeStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+        userName: json_['userName'] as core.String?,
+        wipeParams:
+            json_.containsKey('wipeParams')
+                ? WipeParams.fromJson(
+                  json_['wipeParams'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addEsimParams != null) 'addEsimParams': addEsimParams!,
-        if (clearAppsDataParams != null)
-          'clearAppsDataParams': clearAppsDataParams!,
-        if (clearAppsDataStatus != null)
-          'clearAppsDataStatus': clearAppsDataStatus!,
-        if (createTime != null) 'createTime': createTime!,
-        if (duration != null) 'duration': duration!,
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (esimStatus != null) 'esimStatus': esimStatus!,
-        if (newPassword != null) 'newPassword': newPassword!,
-        if (removeEsimParams != null) 'removeEsimParams': removeEsimParams!,
-        if (requestDeviceInfoParams != null)
-          'requestDeviceInfoParams': requestDeviceInfoParams!,
-        if (requestDeviceInfoStatus != null)
-          'requestDeviceInfoStatus': requestDeviceInfoStatus!,
-        if (resetPasswordFlags != null)
-          'resetPasswordFlags': resetPasswordFlags!,
-        if (startLostModeParams != null)
-          'startLostModeParams': startLostModeParams!,
-        if (startLostModeStatus != null)
-          'startLostModeStatus': startLostModeStatus!,
-        if (stopLostModeParams != null)
-          'stopLostModeParams': stopLostModeParams!,
-        if (stopLostModeStatus != null)
-          'stopLostModeStatus': stopLostModeStatus!,
-        if (type != null) 'type': type!,
-        if (userName != null) 'userName': userName!,
-        if (wipeParams != null) 'wipeParams': wipeParams!,
-      };
+    if (addEsimParams != null) 'addEsimParams': addEsimParams!,
+    if (clearAppsDataParams != null)
+      'clearAppsDataParams': clearAppsDataParams!,
+    if (clearAppsDataStatus != null)
+      'clearAppsDataStatus': clearAppsDataStatus!,
+    if (createTime != null) 'createTime': createTime!,
+    if (duration != null) 'duration': duration!,
+    if (errorCode != null) 'errorCode': errorCode!,
+    if (esimStatus != null) 'esimStatus': esimStatus!,
+    if (newPassword != null) 'newPassword': newPassword!,
+    if (removeEsimParams != null) 'removeEsimParams': removeEsimParams!,
+    if (requestDeviceInfoParams != null)
+      'requestDeviceInfoParams': requestDeviceInfoParams!,
+    if (requestDeviceInfoStatus != null)
+      'requestDeviceInfoStatus': requestDeviceInfoStatus!,
+    if (resetPasswordFlags != null) 'resetPasswordFlags': resetPasswordFlags!,
+    if (startLostModeParams != null)
+      'startLostModeParams': startLostModeParams!,
+    if (startLostModeStatus != null)
+      'startLostModeStatus': startLostModeStatus!,
+    if (stopLostModeParams != null) 'stopLostModeParams': stopLostModeParams!,
+    if (stopLostModeStatus != null) 'stopLostModeStatus': stopLostModeStatus!,
+    if (type != null) 'type': type!,
+    if (userName != null) 'userName': userName!,
+    if (wipeParams != null) 'wipeParams': wipeParams!,
+  };
 }
 
 /// Information about Common Criteria Mode—security standards defined in the
@@ -3792,20 +3826,19 @@ class CommonCriteriaModeInfo {
   });
 
   CommonCriteriaModeInfo.fromJson(core.Map json_)
-      : this(
-          commonCriteriaModeStatus:
-              json_['commonCriteriaModeStatus'] as core.String?,
-          policySignatureVerificationStatus:
-              json_['policySignatureVerificationStatus'] as core.String?,
-        );
+    : this(
+        commonCriteriaModeStatus:
+            json_['commonCriteriaModeStatus'] as core.String?,
+        policySignatureVerificationStatus:
+            json_['policySignatureVerificationStatus'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonCriteriaModeStatus != null)
-          'commonCriteriaModeStatus': commonCriteriaModeStatus!,
-        if (policySignatureVerificationStatus != null)
-          'policySignatureVerificationStatus':
-              policySignatureVerificationStatus!,
-      };
+    if (commonCriteriaModeStatus != null)
+      'commonCriteriaModeStatus': commonCriteriaModeStatus!,
+    if (policySignatureVerificationStatus != null)
+      'policySignatureVerificationStatus': policySignatureVerificationStatus!,
+  };
 }
 
 /// A rule declaring which mitigating actions to take when a device is not
@@ -3844,31 +3877,36 @@ class ComplianceRule {
   });
 
   ComplianceRule.fromJson(core.Map json_)
-      : this(
-          apiLevelCondition: json_.containsKey('apiLevelCondition')
-              ? ApiLevelCondition.fromJson(json_['apiLevelCondition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          disableApps: json_['disableApps'] as core.bool?,
-          nonComplianceDetailCondition:
-              json_.containsKey('nonComplianceDetailCondition')
-                  ? NonComplianceDetailCondition.fromJson(
-                      json_['nonComplianceDetailCondition']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          packageNamesToDisable: (json_['packageNamesToDisable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        apiLevelCondition:
+            json_.containsKey('apiLevelCondition')
+                ? ApiLevelCondition.fromJson(
+                  json_['apiLevelCondition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        disableApps: json_['disableApps'] as core.bool?,
+        nonComplianceDetailCondition:
+            json_.containsKey('nonComplianceDetailCondition')
+                ? NonComplianceDetailCondition.fromJson(
+                  json_['nonComplianceDetailCondition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        packageNamesToDisable:
+            (json_['packageNamesToDisable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiLevelCondition != null) 'apiLevelCondition': apiLevelCondition!,
-        if (disableApps != null) 'disableApps': disableApps!,
-        if (nonComplianceDetailCondition != null)
-          'nonComplianceDetailCondition': nonComplianceDetailCondition!,
-        if (packageNamesToDisable != null)
-          'packageNamesToDisable': packageNamesToDisable!,
-      };
+    if (apiLevelCondition != null) 'apiLevelCondition': apiLevelCondition!,
+    if (disableApps != null) 'disableApps': disableApps!,
+    if (nonComplianceDetailCondition != null)
+      'nonComplianceDetailCondition': nonComplianceDetailCondition!,
+    if (packageNamesToDisable != null)
+      'packageNamesToDisable': packageNamesToDisable!,
+  };
 }
 
 /// Contact details for managed Google Play enterprises.
@@ -3913,34 +3951,34 @@ class ContactInfo {
   });
 
   ContactInfo.fromJson(core.Map json_)
-      : this(
-          contactEmail: json_['contactEmail'] as core.String?,
-          dataProtectionOfficerEmail:
-              json_['dataProtectionOfficerEmail'] as core.String?,
-          dataProtectionOfficerName:
-              json_['dataProtectionOfficerName'] as core.String?,
-          dataProtectionOfficerPhone:
-              json_['dataProtectionOfficerPhone'] as core.String?,
-          euRepresentativeEmail: json_['euRepresentativeEmail'] as core.String?,
-          euRepresentativeName: json_['euRepresentativeName'] as core.String?,
-          euRepresentativePhone: json_['euRepresentativePhone'] as core.String?,
-        );
+    : this(
+        contactEmail: json_['contactEmail'] as core.String?,
+        dataProtectionOfficerEmail:
+            json_['dataProtectionOfficerEmail'] as core.String?,
+        dataProtectionOfficerName:
+            json_['dataProtectionOfficerName'] as core.String?,
+        dataProtectionOfficerPhone:
+            json_['dataProtectionOfficerPhone'] as core.String?,
+        euRepresentativeEmail: json_['euRepresentativeEmail'] as core.String?,
+        euRepresentativeName: json_['euRepresentativeName'] as core.String?,
+        euRepresentativePhone: json_['euRepresentativePhone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contactEmail != null) 'contactEmail': contactEmail!,
-        if (dataProtectionOfficerEmail != null)
-          'dataProtectionOfficerEmail': dataProtectionOfficerEmail!,
-        if (dataProtectionOfficerName != null)
-          'dataProtectionOfficerName': dataProtectionOfficerName!,
-        if (dataProtectionOfficerPhone != null)
-          'dataProtectionOfficerPhone': dataProtectionOfficerPhone!,
-        if (euRepresentativeEmail != null)
-          'euRepresentativeEmail': euRepresentativeEmail!,
-        if (euRepresentativeName != null)
-          'euRepresentativeName': euRepresentativeName!,
-        if (euRepresentativePhone != null)
-          'euRepresentativePhone': euRepresentativePhone!,
-      };
+    if (contactEmail != null) 'contactEmail': contactEmail!,
+    if (dataProtectionOfficerEmail != null)
+      'dataProtectionOfficerEmail': dataProtectionOfficerEmail!,
+    if (dataProtectionOfficerName != null)
+      'dataProtectionOfficerName': dataProtectionOfficerName!,
+    if (dataProtectionOfficerPhone != null)
+      'dataProtectionOfficerPhone': dataProtectionOfficerPhone!,
+    if (euRepresentativeEmail != null)
+      'euRepresentativeEmail': euRepresentativeEmail!,
+    if (euRepresentativeName != null)
+      'euRepresentativeName': euRepresentativeName!,
+    if (euRepresentativePhone != null)
+      'euRepresentativePhone': euRepresentativePhone!,
+  };
 }
 
 /// This feature is not generally available.
@@ -3963,20 +4001,20 @@ class ContentProviderEndpoint {
   });
 
   ContentProviderEndpoint.fromJson(core.Map json_)
-      : this(
-          packageName: json_['packageName'] as core.String?,
-          signingCertsSha256: (json_['signingCertsSha256'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        packageName: json_['packageName'] as core.String?,
+        signingCertsSha256:
+            (json_['signingCertsSha256'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (packageName != null) 'packageName': packageName!,
-        if (signingCertsSha256 != null)
-          'signingCertsSha256': signingCertsSha256!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (packageName != null) 'packageName': packageName!,
+    if (signingCertsSha256 != null) 'signingCertsSha256': signingCertsSha256!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Controls the data from the work profile that can be accessed from the
@@ -4110,40 +4148,40 @@ class CrossProfilePolicies {
   });
 
   CrossProfilePolicies.fromJson(core.Map json_)
-      : this(
-          crossProfileAppFunctions:
-              json_['crossProfileAppFunctions'] as core.String?,
-          crossProfileCopyPaste: json_['crossProfileCopyPaste'] as core.String?,
-          crossProfileDataSharing:
-              json_['crossProfileDataSharing'] as core.String?,
-          exemptionsToShowWorkContactsInPersonalProfile:
-              json_.containsKey('exemptionsToShowWorkContactsInPersonalProfile')
-                  ? PackageNameList.fromJson(
-                      json_['exemptionsToShowWorkContactsInPersonalProfile']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          showWorkContactsInPersonalProfile:
-              json_['showWorkContactsInPersonalProfile'] as core.String?,
-          workProfileWidgetsDefault:
-              json_['workProfileWidgetsDefault'] as core.String?,
-        );
+    : this(
+        crossProfileAppFunctions:
+            json_['crossProfileAppFunctions'] as core.String?,
+        crossProfileCopyPaste: json_['crossProfileCopyPaste'] as core.String?,
+        crossProfileDataSharing:
+            json_['crossProfileDataSharing'] as core.String?,
+        exemptionsToShowWorkContactsInPersonalProfile:
+            json_.containsKey('exemptionsToShowWorkContactsInPersonalProfile')
+                ? PackageNameList.fromJson(
+                  json_['exemptionsToShowWorkContactsInPersonalProfile']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        showWorkContactsInPersonalProfile:
+            json_['showWorkContactsInPersonalProfile'] as core.String?,
+        workProfileWidgetsDefault:
+            json_['workProfileWidgetsDefault'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (crossProfileAppFunctions != null)
-          'crossProfileAppFunctions': crossProfileAppFunctions!,
-        if (crossProfileCopyPaste != null)
-          'crossProfileCopyPaste': crossProfileCopyPaste!,
-        if (crossProfileDataSharing != null)
-          'crossProfileDataSharing': crossProfileDataSharing!,
-        if (exemptionsToShowWorkContactsInPersonalProfile != null)
-          'exemptionsToShowWorkContactsInPersonalProfile':
-              exemptionsToShowWorkContactsInPersonalProfile!,
-        if (showWorkContactsInPersonalProfile != null)
-          'showWorkContactsInPersonalProfile':
-              showWorkContactsInPersonalProfile!,
-        if (workProfileWidgetsDefault != null)
-          'workProfileWidgetsDefault': workProfileWidgetsDefault!,
-      };
+    if (crossProfileAppFunctions != null)
+      'crossProfileAppFunctions': crossProfileAppFunctions!,
+    if (crossProfileCopyPaste != null)
+      'crossProfileCopyPaste': crossProfileCopyPaste!,
+    if (crossProfileDataSharing != null)
+      'crossProfileDataSharing': crossProfileDataSharing!,
+    if (exemptionsToShowWorkContactsInPersonalProfile != null)
+      'exemptionsToShowWorkContactsInPersonalProfile':
+          exemptionsToShowWorkContactsInPersonalProfile!,
+    if (showWorkContactsInPersonalProfile != null)
+      'showWorkContactsInPersonalProfile': showWorkContactsInPersonalProfile!,
+    if (workProfileWidgetsDefault != null)
+      'workProfileWidgetsDefault': workProfileWidgetsDefault!,
+  };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -4433,158 +4471,204 @@ class Device {
   });
 
   Device.fromJson(core.Map json_)
-      : this(
-          apiLevel: json_['apiLevel'] as core.int?,
-          applicationReports: (json_['applicationReports'] as core.List?)
-              ?.map((value) => ApplicationReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          appliedPasswordPolicies:
-              (json_['appliedPasswordPolicies'] as core.List?)
-                  ?.map((value) => PasswordRequirements.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          appliedPolicyName: json_['appliedPolicyName'] as core.String?,
-          appliedPolicyVersion: json_['appliedPolicyVersion'] as core.String?,
-          appliedState: json_['appliedState'] as core.String?,
-          commonCriteriaModeInfo: json_.containsKey('commonCriteriaModeInfo')
-              ? CommonCriteriaModeInfo.fromJson(json_['commonCriteriaModeInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deviceSettings: json_.containsKey('deviceSettings')
-              ? DeviceSettings.fromJson(json_['deviceSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          disabledReason: json_.containsKey('disabledReason')
-              ? UserFacingMessage.fromJson(json_['disabledReason']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          displays: (json_['displays'] as core.List?)
-              ?.map((value) => Display.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dpcMigrationInfo: json_.containsKey('dpcMigrationInfo')
-              ? DpcMigrationInfo.fromJson(json_['dpcMigrationInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          enrollmentTime: json_['enrollmentTime'] as core.String?,
-          enrollmentTokenData: json_['enrollmentTokenData'] as core.String?,
-          enrollmentTokenName: json_['enrollmentTokenName'] as core.String?,
-          hardwareInfo: json_.containsKey('hardwareInfo')
-              ? HardwareInfo.fromJson(
-                  json_['hardwareInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          hardwareStatusSamples: (json_['hardwareStatusSamples'] as core.List?)
-              ?.map((value) => HardwareStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          lastPolicyComplianceReportTime:
-              json_['lastPolicyComplianceReportTime'] as core.String?,
-          lastPolicySyncTime: json_['lastPolicySyncTime'] as core.String?,
-          lastStatusReportTime: json_['lastStatusReportTime'] as core.String?,
-          managementMode: json_['managementMode'] as core.String?,
-          memoryEvents: (json_['memoryEvents'] as core.List?)
-              ?.map((value) => MemoryEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          memoryInfo: json_.containsKey('memoryInfo')
-              ? MemoryInfo.fromJson(
-                  json_['memoryInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          networkInfo: json_.containsKey('networkInfo')
-              ? NetworkInfo.fromJson(
-                  json_['networkInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          nonComplianceDetails: (json_['nonComplianceDetails'] as core.List?)
-              ?.map((value) => NonComplianceDetail.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          ownership: json_['ownership'] as core.String?,
-          policyCompliant: json_['policyCompliant'] as core.bool?,
-          policyName: json_['policyName'] as core.String?,
-          powerManagementEvents: (json_['powerManagementEvents'] as core.List?)
-              ?.map((value) => PowerManagementEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          previousDeviceNames: (json_['previousDeviceNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          securityPosture: json_.containsKey('securityPosture')
-              ? SecurityPosture.fromJson(json_['securityPosture']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          softwareInfo: json_.containsKey('softwareInfo')
-              ? SoftwareInfo.fromJson(
-                  json_['softwareInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          systemProperties: (json_['systemProperties']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          user: json_.containsKey('user')
-              ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>)
-              : null,
-          userName: json_['userName'] as core.String?,
-        );
+    : this(
+        apiLevel: json_['apiLevel'] as core.int?,
+        applicationReports:
+            (json_['applicationReports'] as core.List?)
+                ?.map(
+                  (value) => ApplicationReport.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        appliedPasswordPolicies:
+            (json_['appliedPasswordPolicies'] as core.List?)
+                ?.map(
+                  (value) => PasswordRequirements.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        appliedPolicyName: json_['appliedPolicyName'] as core.String?,
+        appliedPolicyVersion: json_['appliedPolicyVersion'] as core.String?,
+        appliedState: json_['appliedState'] as core.String?,
+        commonCriteriaModeInfo:
+            json_.containsKey('commonCriteriaModeInfo')
+                ? CommonCriteriaModeInfo.fromJson(
+                  json_['commonCriteriaModeInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deviceSettings:
+            json_.containsKey('deviceSettings')
+                ? DeviceSettings.fromJson(
+                  json_['deviceSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        disabledReason:
+            json_.containsKey('disabledReason')
+                ? UserFacingMessage.fromJson(
+                  json_['disabledReason']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        displays:
+            (json_['displays'] as core.List?)
+                ?.map(
+                  (value) => Display.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dpcMigrationInfo:
+            json_.containsKey('dpcMigrationInfo')
+                ? DpcMigrationInfo.fromJson(
+                  json_['dpcMigrationInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enrollmentTime: json_['enrollmentTime'] as core.String?,
+        enrollmentTokenData: json_['enrollmentTokenData'] as core.String?,
+        enrollmentTokenName: json_['enrollmentTokenName'] as core.String?,
+        hardwareInfo:
+            json_.containsKey('hardwareInfo')
+                ? HardwareInfo.fromJson(
+                  json_['hardwareInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hardwareStatusSamples:
+            (json_['hardwareStatusSamples'] as core.List?)
+                ?.map(
+                  (value) => HardwareStatus.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        lastPolicyComplianceReportTime:
+            json_['lastPolicyComplianceReportTime'] as core.String?,
+        lastPolicySyncTime: json_['lastPolicySyncTime'] as core.String?,
+        lastStatusReportTime: json_['lastStatusReportTime'] as core.String?,
+        managementMode: json_['managementMode'] as core.String?,
+        memoryEvents:
+            (json_['memoryEvents'] as core.List?)
+                ?.map(
+                  (value) => MemoryEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        memoryInfo:
+            json_.containsKey('memoryInfo')
+                ? MemoryInfo.fromJson(
+                  json_['memoryInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        networkInfo:
+            json_.containsKey('networkInfo')
+                ? NetworkInfo.fromJson(
+                  json_['networkInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nonComplianceDetails:
+            (json_['nonComplianceDetails'] as core.List?)
+                ?.map(
+                  (value) => NonComplianceDetail.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        ownership: json_['ownership'] as core.String?,
+        policyCompliant: json_['policyCompliant'] as core.bool?,
+        policyName: json_['policyName'] as core.String?,
+        powerManagementEvents:
+            (json_['powerManagementEvents'] as core.List?)
+                ?.map(
+                  (value) => PowerManagementEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        previousDeviceNames:
+            (json_['previousDeviceNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        securityPosture:
+            json_.containsKey('securityPosture')
+                ? SecurityPosture.fromJson(
+                  json_['securityPosture']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        softwareInfo:
+            json_.containsKey('softwareInfo')
+                ? SoftwareInfo.fromJson(
+                  json_['softwareInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        systemProperties: (json_['systemProperties']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        user:
+            json_.containsKey('user')
+                ? User.fromJson(
+                  json_['user'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userName: json_['userName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiLevel != null) 'apiLevel': apiLevel!,
-        if (applicationReports != null)
-          'applicationReports': applicationReports!,
-        if (appliedPasswordPolicies != null)
-          'appliedPasswordPolicies': appliedPasswordPolicies!,
-        if (appliedPolicyName != null) 'appliedPolicyName': appliedPolicyName!,
-        if (appliedPolicyVersion != null)
-          'appliedPolicyVersion': appliedPolicyVersion!,
-        if (appliedState != null) 'appliedState': appliedState!,
-        if (commonCriteriaModeInfo != null)
-          'commonCriteriaModeInfo': commonCriteriaModeInfo!,
-        if (deviceSettings != null) 'deviceSettings': deviceSettings!,
-        if (disabledReason != null) 'disabledReason': disabledReason!,
-        if (displays != null) 'displays': displays!,
-        if (dpcMigrationInfo != null) 'dpcMigrationInfo': dpcMigrationInfo!,
-        if (enrollmentTime != null) 'enrollmentTime': enrollmentTime!,
-        if (enrollmentTokenData != null)
-          'enrollmentTokenData': enrollmentTokenData!,
-        if (enrollmentTokenName != null)
-          'enrollmentTokenName': enrollmentTokenName!,
-        if (hardwareInfo != null) 'hardwareInfo': hardwareInfo!,
-        if (hardwareStatusSamples != null)
-          'hardwareStatusSamples': hardwareStatusSamples!,
-        if (lastPolicyComplianceReportTime != null)
-          'lastPolicyComplianceReportTime': lastPolicyComplianceReportTime!,
-        if (lastPolicySyncTime != null)
-          'lastPolicySyncTime': lastPolicySyncTime!,
-        if (lastStatusReportTime != null)
-          'lastStatusReportTime': lastStatusReportTime!,
-        if (managementMode != null) 'managementMode': managementMode!,
-        if (memoryEvents != null) 'memoryEvents': memoryEvents!,
-        if (memoryInfo != null) 'memoryInfo': memoryInfo!,
-        if (name != null) 'name': name!,
-        if (networkInfo != null) 'networkInfo': networkInfo!,
-        if (nonComplianceDetails != null)
-          'nonComplianceDetails': nonComplianceDetails!,
-        if (ownership != null) 'ownership': ownership!,
-        if (policyCompliant != null) 'policyCompliant': policyCompliant!,
-        if (policyName != null) 'policyName': policyName!,
-        if (powerManagementEvents != null)
-          'powerManagementEvents': powerManagementEvents!,
-        if (previousDeviceNames != null)
-          'previousDeviceNames': previousDeviceNames!,
-        if (securityPosture != null) 'securityPosture': securityPosture!,
-        if (softwareInfo != null) 'softwareInfo': softwareInfo!,
-        if (state != null) 'state': state!,
-        if (systemProperties != null) 'systemProperties': systemProperties!,
-        if (user != null) 'user': user!,
-        if (userName != null) 'userName': userName!,
-      };
+    if (apiLevel != null) 'apiLevel': apiLevel!,
+    if (applicationReports != null) 'applicationReports': applicationReports!,
+    if (appliedPasswordPolicies != null)
+      'appliedPasswordPolicies': appliedPasswordPolicies!,
+    if (appliedPolicyName != null) 'appliedPolicyName': appliedPolicyName!,
+    if (appliedPolicyVersion != null)
+      'appliedPolicyVersion': appliedPolicyVersion!,
+    if (appliedState != null) 'appliedState': appliedState!,
+    if (commonCriteriaModeInfo != null)
+      'commonCriteriaModeInfo': commonCriteriaModeInfo!,
+    if (deviceSettings != null) 'deviceSettings': deviceSettings!,
+    if (disabledReason != null) 'disabledReason': disabledReason!,
+    if (displays != null) 'displays': displays!,
+    if (dpcMigrationInfo != null) 'dpcMigrationInfo': dpcMigrationInfo!,
+    if (enrollmentTime != null) 'enrollmentTime': enrollmentTime!,
+    if (enrollmentTokenData != null)
+      'enrollmentTokenData': enrollmentTokenData!,
+    if (enrollmentTokenName != null)
+      'enrollmentTokenName': enrollmentTokenName!,
+    if (hardwareInfo != null) 'hardwareInfo': hardwareInfo!,
+    if (hardwareStatusSamples != null)
+      'hardwareStatusSamples': hardwareStatusSamples!,
+    if (lastPolicyComplianceReportTime != null)
+      'lastPolicyComplianceReportTime': lastPolicyComplianceReportTime!,
+    if (lastPolicySyncTime != null) 'lastPolicySyncTime': lastPolicySyncTime!,
+    if (lastStatusReportTime != null)
+      'lastStatusReportTime': lastStatusReportTime!,
+    if (managementMode != null) 'managementMode': managementMode!,
+    if (memoryEvents != null) 'memoryEvents': memoryEvents!,
+    if (memoryInfo != null) 'memoryInfo': memoryInfo!,
+    if (name != null) 'name': name!,
+    if (networkInfo != null) 'networkInfo': networkInfo!,
+    if (nonComplianceDetails != null)
+      'nonComplianceDetails': nonComplianceDetails!,
+    if (ownership != null) 'ownership': ownership!,
+    if (policyCompliant != null) 'policyCompliant': policyCompliant!,
+    if (policyName != null) 'policyName': policyName!,
+    if (powerManagementEvents != null)
+      'powerManagementEvents': powerManagementEvents!,
+    if (previousDeviceNames != null)
+      'previousDeviceNames': previousDeviceNames!,
+    if (securityPosture != null) 'securityPosture': securityPosture!,
+    if (softwareInfo != null) 'softwareInfo': softwareInfo!,
+    if (state != null) 'state': state!,
+    if (systemProperties != null) 'systemProperties': systemProperties!,
+    if (user != null) 'user': user!,
+    if (userName != null) 'userName': userName!,
+  };
 }
 
 /// Covers controls for device connectivity such as Wi-Fi, USB data access,
@@ -4735,46 +4819,53 @@ class DeviceConnectivityManagement {
   });
 
   DeviceConnectivityManagement.fromJson(core.Map json_)
-      : this(
-          apnPolicy: json_.containsKey('apnPolicy')
-              ? ApnPolicy.fromJson(
-                  json_['apnPolicy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          bluetoothSharing: json_['bluetoothSharing'] as core.String?,
-          configureWifi: json_['configureWifi'] as core.String?,
-          preferentialNetworkServiceSettings:
-              json_.containsKey('preferentialNetworkServiceSettings')
-                  ? PreferentialNetworkServiceSettings.fromJson(
-                      json_['preferentialNetworkServiceSettings']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          tetheringSettings: json_['tetheringSettings'] as core.String?,
-          usbDataAccess: json_['usbDataAccess'] as core.String?,
-          wifiDirectSettings: json_['wifiDirectSettings'] as core.String?,
-          wifiRoamingPolicy: json_.containsKey('wifiRoamingPolicy')
-              ? WifiRoamingPolicy.fromJson(json_['wifiRoamingPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          wifiSsidPolicy: json_.containsKey('wifiSsidPolicy')
-              ? WifiSsidPolicy.fromJson(json_['wifiSsidPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        apnPolicy:
+            json_.containsKey('apnPolicy')
+                ? ApnPolicy.fromJson(
+                  json_['apnPolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bluetoothSharing: json_['bluetoothSharing'] as core.String?,
+        configureWifi: json_['configureWifi'] as core.String?,
+        preferentialNetworkServiceSettings:
+            json_.containsKey('preferentialNetworkServiceSettings')
+                ? PreferentialNetworkServiceSettings.fromJson(
+                  json_['preferentialNetworkServiceSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tetheringSettings: json_['tetheringSettings'] as core.String?,
+        usbDataAccess: json_['usbDataAccess'] as core.String?,
+        wifiDirectSettings: json_['wifiDirectSettings'] as core.String?,
+        wifiRoamingPolicy:
+            json_.containsKey('wifiRoamingPolicy')
+                ? WifiRoamingPolicy.fromJson(
+                  json_['wifiRoamingPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        wifiSsidPolicy:
+            json_.containsKey('wifiSsidPolicy')
+                ? WifiSsidPolicy.fromJson(
+                  json_['wifiSsidPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apnPolicy != null) 'apnPolicy': apnPolicy!,
-        if (bluetoothSharing != null) 'bluetoothSharing': bluetoothSharing!,
-        if (configureWifi != null) 'configureWifi': configureWifi!,
-        if (preferentialNetworkServiceSettings != null)
-          'preferentialNetworkServiceSettings':
-              preferentialNetworkServiceSettings!,
-        if (tetheringSettings != null) 'tetheringSettings': tetheringSettings!,
-        if (usbDataAccess != null) 'usbDataAccess': usbDataAccess!,
-        if (wifiDirectSettings != null)
-          'wifiDirectSettings': wifiDirectSettings!,
-        if (wifiRoamingPolicy != null) 'wifiRoamingPolicy': wifiRoamingPolicy!,
-        if (wifiSsidPolicy != null) 'wifiSsidPolicy': wifiSsidPolicy!,
-      };
+    if (apnPolicy != null) 'apnPolicy': apnPolicy!,
+    if (bluetoothSharing != null) 'bluetoothSharing': bluetoothSharing!,
+    if (configureWifi != null) 'configureWifi': configureWifi!,
+    if (preferentialNetworkServiceSettings != null)
+      'preferentialNetworkServiceSettings': preferentialNetworkServiceSettings!,
+    if (tetheringSettings != null) 'tetheringSettings': tetheringSettings!,
+    if (usbDataAccess != null) 'usbDataAccess': usbDataAccess!,
+    if (wifiDirectSettings != null) 'wifiDirectSettings': wifiDirectSettings!,
+    if (wifiRoamingPolicy != null) 'wifiRoamingPolicy': wifiRoamingPolicy!,
+    if (wifiSsidPolicy != null) 'wifiSsidPolicy': wifiSsidPolicy!,
+  };
 }
 
 /// Controls for device radio settings.
@@ -4860,24 +4951,23 @@ class DeviceRadioState {
   });
 
   DeviceRadioState.fromJson(core.Map json_)
-      : this(
-          airplaneModeState: json_['airplaneModeState'] as core.String?,
-          cellularTwoGState: json_['cellularTwoGState'] as core.String?,
-          minimumWifiSecurityLevel:
-              json_['minimumWifiSecurityLevel'] as core.String?,
-          ultraWidebandState: json_['ultraWidebandState'] as core.String?,
-          wifiState: json_['wifiState'] as core.String?,
-        );
+    : this(
+        airplaneModeState: json_['airplaneModeState'] as core.String?,
+        cellularTwoGState: json_['cellularTwoGState'] as core.String?,
+        minimumWifiSecurityLevel:
+            json_['minimumWifiSecurityLevel'] as core.String?,
+        ultraWidebandState: json_['ultraWidebandState'] as core.String?,
+        wifiState: json_['wifiState'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (airplaneModeState != null) 'airplaneModeState': airplaneModeState!,
-        if (cellularTwoGState != null) 'cellularTwoGState': cellularTwoGState!,
-        if (minimumWifiSecurityLevel != null)
-          'minimumWifiSecurityLevel': minimumWifiSecurityLevel!,
-        if (ultraWidebandState != null)
-          'ultraWidebandState': ultraWidebandState!,
-        if (wifiState != null) 'wifiState': wifiState!,
-      };
+    if (airplaneModeState != null) 'airplaneModeState': airplaneModeState!,
+    if (cellularTwoGState != null) 'cellularTwoGState': cellularTwoGState!,
+    if (minimumWifiSecurityLevel != null)
+      'minimumWifiSecurityLevel': minimumWifiSecurityLevel!,
+    if (ultraWidebandState != null) 'ultraWidebandState': ultraWidebandState!,
+    if (wifiState != null) 'wifiState': wifiState!,
+  };
 }
 
 /// Information about security related device settings on device.
@@ -4930,28 +5020,28 @@ class DeviceSettings {
   });
 
   DeviceSettings.fromJson(core.Map json_)
-      : this(
-          adbEnabled: json_['adbEnabled'] as core.bool?,
-          developmentSettingsEnabled:
-              json_['developmentSettingsEnabled'] as core.bool?,
-          encryptionStatus: json_['encryptionStatus'] as core.String?,
-          isDeviceSecure: json_['isDeviceSecure'] as core.bool?,
-          isEncrypted: json_['isEncrypted'] as core.bool?,
-          unknownSourcesEnabled: json_['unknownSourcesEnabled'] as core.bool?,
-          verifyAppsEnabled: json_['verifyAppsEnabled'] as core.bool?,
-        );
+    : this(
+        adbEnabled: json_['adbEnabled'] as core.bool?,
+        developmentSettingsEnabled:
+            json_['developmentSettingsEnabled'] as core.bool?,
+        encryptionStatus: json_['encryptionStatus'] as core.String?,
+        isDeviceSecure: json_['isDeviceSecure'] as core.bool?,
+        isEncrypted: json_['isEncrypted'] as core.bool?,
+        unknownSourcesEnabled: json_['unknownSourcesEnabled'] as core.bool?,
+        verifyAppsEnabled: json_['verifyAppsEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adbEnabled != null) 'adbEnabled': adbEnabled!,
-        if (developmentSettingsEnabled != null)
-          'developmentSettingsEnabled': developmentSettingsEnabled!,
-        if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
-        if (isDeviceSecure != null) 'isDeviceSecure': isDeviceSecure!,
-        if (isEncrypted != null) 'isEncrypted': isEncrypted!,
-        if (unknownSourcesEnabled != null)
-          'unknownSourcesEnabled': unknownSourcesEnabled!,
-        if (verifyAppsEnabled != null) 'verifyAppsEnabled': verifyAppsEnabled!,
-      };
+    if (adbEnabled != null) 'adbEnabled': adbEnabled!,
+    if (developmentSettingsEnabled != null)
+      'developmentSettingsEnabled': developmentSettingsEnabled!,
+    if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
+    if (isDeviceSecure != null) 'isDeviceSecure': isDeviceSecure!,
+    if (isEncrypted != null) 'isEncrypted': isEncrypted!,
+    if (unknownSourcesEnabled != null)
+      'unknownSourcesEnabled': unknownSourcesEnabled!,
+    if (verifyAppsEnabled != null) 'verifyAppsEnabled': verifyAppsEnabled!,
+  };
 }
 
 /// Device display information.
@@ -4994,25 +5084,25 @@ class Display {
   });
 
   Display.fromJson(core.Map json_)
-      : this(
-          density: json_['density'] as core.int?,
-          displayId: json_['displayId'] as core.int?,
-          height: json_['height'] as core.int?,
-          name: json_['name'] as core.String?,
-          refreshRate: json_['refreshRate'] as core.int?,
-          state: json_['state'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        density: json_['density'] as core.int?,
+        displayId: json_['displayId'] as core.int?,
+        height: json_['height'] as core.int?,
+        name: json_['name'] as core.String?,
+        refreshRate: json_['refreshRate'] as core.int?,
+        state: json_['state'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (density != null) 'density': density!,
-        if (displayId != null) 'displayId': displayId!,
-        if (height != null) 'height': height!,
-        if (name != null) 'name': name!,
-        if (refreshRate != null) 'refreshRate': refreshRate!,
-        if (state != null) 'state': state!,
-        if (width != null) 'width': width!,
-      };
+    if (density != null) 'density': density!,
+    if (displayId != null) 'displayId': displayId!,
+    if (height != null) 'height': height!,
+    if (name != null) 'name': name!,
+    if (refreshRate != null) 'refreshRate': refreshRate!,
+    if (state != null) 'state': state!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// Controls for the display settings.
@@ -5027,31 +5117,32 @@ class DisplaySettings {
   /// Optional.
   ScreenTimeoutSettings? screenTimeoutSettings;
 
-  DisplaySettings({
-    this.screenBrightnessSettings,
-    this.screenTimeoutSettings,
-  });
+  DisplaySettings({this.screenBrightnessSettings, this.screenTimeoutSettings});
 
   DisplaySettings.fromJson(core.Map json_)
-      : this(
-          screenBrightnessSettings:
-              json_.containsKey('screenBrightnessSettings')
-                  ? ScreenBrightnessSettings.fromJson(
-                      json_['screenBrightnessSettings']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          screenTimeoutSettings: json_.containsKey('screenTimeoutSettings')
-              ? ScreenTimeoutSettings.fromJson(json_['screenTimeoutSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        screenBrightnessSettings:
+            json_.containsKey('screenBrightnessSettings')
+                ? ScreenBrightnessSettings.fromJson(
+                  json_['screenBrightnessSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        screenTimeoutSettings:
+            json_.containsKey('screenTimeoutSettings')
+                ? ScreenTimeoutSettings.fromJson(
+                  json_['screenTimeoutSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (screenBrightnessSettings != null)
-          'screenBrightnessSettings': screenBrightnessSettings!,
-        if (screenTimeoutSettings != null)
-          'screenTimeoutSettings': screenTimeoutSettings!,
-      };
+    if (screenBrightnessSettings != null)
+      'screenBrightnessSettings': screenBrightnessSettings!,
+    if (screenTimeoutSettings != null)
+      'screenTimeoutSettings': screenTimeoutSettings!,
+  };
 }
 
 /// Information related to whether this device was migrated from being managed
@@ -5070,21 +5161,18 @@ class DpcMigrationInfo {
   /// Output only.
   core.String? previousDpc;
 
-  DpcMigrationInfo({
-    this.additionalData,
-    this.previousDpc,
-  });
+  DpcMigrationInfo({this.additionalData, this.previousDpc});
 
   DpcMigrationInfo.fromJson(core.Map json_)
-      : this(
-          additionalData: json_['additionalData'] as core.String?,
-          previousDpc: json_['previousDpc'] as core.String?,
-        );
+    : this(
+        additionalData: json_['additionalData'] as core.String?,
+        previousDpc: json_['previousDpc'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalData != null) 'additionalData': additionalData!,
-        if (previousDpc != null) 'previousDpc': previousDpc!,
-      };
+    if (additionalData != null) 'additionalData': additionalData!,
+    if (previousDpc != null) 'previousDpc': previousDpc!,
+  };
 }
 
 /// EID information for each eUICC chip.
@@ -5094,18 +5182,13 @@ class Eid {
   /// Output only.
   core.String? eid;
 
-  Eid({
-    this.eid,
-  });
+  Eid({this.eid});
 
-  Eid.fromJson(core.Map json_)
-      : this(
-          eid: json_['eid'] as core.String?,
-        );
+  Eid.fromJson(core.Map json_) : this(eid: json_['eid'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eid != null) 'eid': eid!,
-      };
+    if (eid != null) 'eid': eid!,
+  };
 }
 
 /// Information related to the EIDs of the device.
@@ -5115,21 +5198,23 @@ class EidInfo {
   /// Output only.
   core.List<Eid>? eids;
 
-  EidInfo({
-    this.eids,
-  });
+  EidInfo({this.eids});
 
   EidInfo.fromJson(core.Map json_)
-      : this(
-          eids: (json_['eids'] as core.List?)
-              ?.map((value) =>
-                  Eid.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        eids:
+            (json_['eids'] as core.List?)
+                ?.map(
+                  (value) => Eid.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eids != null) 'eids': eids!,
-      };
+    if (eids != null) 'eids': eids!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -5245,36 +5330,37 @@ class EnrollmentToken {
   });
 
   EnrollmentToken.fromJson(core.Map json_)
-      : this(
-          additionalData: json_['additionalData'] as core.String?,
-          allowPersonalUsage: json_['allowPersonalUsage'] as core.String?,
-          duration: json_['duration'] as core.String?,
-          expirationTimestamp: json_['expirationTimestamp'] as core.String?,
-          name: json_['name'] as core.String?,
-          oneTimeOnly: json_['oneTimeOnly'] as core.bool?,
-          policyName: json_['policyName'] as core.String?,
-          qrCode: json_['qrCode'] as core.String?,
-          user: json_.containsKey('user')
-              ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>)
-              : null,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        additionalData: json_['additionalData'] as core.String?,
+        allowPersonalUsage: json_['allowPersonalUsage'] as core.String?,
+        duration: json_['duration'] as core.String?,
+        expirationTimestamp: json_['expirationTimestamp'] as core.String?,
+        name: json_['name'] as core.String?,
+        oneTimeOnly: json_['oneTimeOnly'] as core.bool?,
+        policyName: json_['policyName'] as core.String?,
+        qrCode: json_['qrCode'] as core.String?,
+        user:
+            json_.containsKey('user')
+                ? User.fromJson(
+                  json_['user'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalData != null) 'additionalData': additionalData!,
-        if (allowPersonalUsage != null)
-          'allowPersonalUsage': allowPersonalUsage!,
-        if (duration != null) 'duration': duration!,
-        if (expirationTimestamp != null)
-          'expirationTimestamp': expirationTimestamp!,
-        if (name != null) 'name': name!,
-        if (oneTimeOnly != null) 'oneTimeOnly': oneTimeOnly!,
-        if (policyName != null) 'policyName': policyName!,
-        if (qrCode != null) 'qrCode': qrCode!,
-        if (user != null) 'user': user!,
-        if (value != null) 'value': value!,
-      };
+    if (additionalData != null) 'additionalData': additionalData!,
+    if (allowPersonalUsage != null) 'allowPersonalUsage': allowPersonalUsage!,
+    if (duration != null) 'duration': duration!,
+    if (expirationTimestamp != null)
+      'expirationTimestamp': expirationTimestamp!,
+    if (name != null) 'name': name!,
+    if (oneTimeOnly != null) 'oneTimeOnly': oneTimeOnly!,
+    if (policyName != null) 'policyName': policyName!,
+    if (qrCode != null) 'qrCode': qrCode!,
+    if (user != null) 'user': user!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// The configuration applied to an enterprise.
@@ -5382,69 +5468,81 @@ class Enterprise {
   });
 
   Enterprise.fromJson(core.Map json_)
-      : this(
-          appAutoApprovalEnabled: json_['appAutoApprovalEnabled'] as core.bool?,
-          contactInfo: json_.containsKey('contactInfo')
-              ? ContactInfo.fromJson(
-                  json_['contactInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          enabledNotificationTypes:
-              (json_['enabledNotificationTypes'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          enterpriseDisplayName: json_['enterpriseDisplayName'] as core.String?,
-          enterpriseType: json_['enterpriseType'] as core.String?,
-          googleAuthenticationSettings:
-              json_.containsKey('googleAuthenticationSettings')
-                  ? GoogleAuthenticationSettings.fromJson(
-                      json_['googleAuthenticationSettings']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          logo: json_.containsKey('logo')
-              ? ExternalData.fromJson(
-                  json_['logo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          managedGoogleDomainType:
-              json_['managedGoogleDomainType'] as core.String?,
-          managedGooglePlayAccountsEnterpriseType:
-              json_['managedGooglePlayAccountsEnterpriseType'] as core.String?,
-          name: json_['name'] as core.String?,
-          primaryColor: json_['primaryColor'] as core.int?,
-          pubsubTopic: json_['pubsubTopic'] as core.String?,
-          signinDetails: (json_['signinDetails'] as core.List?)
-              ?.map((value) => SigninDetail.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          termsAndConditions: (json_['termsAndConditions'] as core.List?)
-              ?.map((value) => TermsAndConditions.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        appAutoApprovalEnabled: json_['appAutoApprovalEnabled'] as core.bool?,
+        contactInfo:
+            json_.containsKey('contactInfo')
+                ? ContactInfo.fromJson(
+                  json_['contactInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enabledNotificationTypes:
+            (json_['enabledNotificationTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        enterpriseDisplayName: json_['enterpriseDisplayName'] as core.String?,
+        enterpriseType: json_['enterpriseType'] as core.String?,
+        googleAuthenticationSettings:
+            json_.containsKey('googleAuthenticationSettings')
+                ? GoogleAuthenticationSettings.fromJson(
+                  json_['googleAuthenticationSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        logo:
+            json_.containsKey('logo')
+                ? ExternalData.fromJson(
+                  json_['logo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        managedGoogleDomainType:
+            json_['managedGoogleDomainType'] as core.String?,
+        managedGooglePlayAccountsEnterpriseType:
+            json_['managedGooglePlayAccountsEnterpriseType'] as core.String?,
+        name: json_['name'] as core.String?,
+        primaryColor: json_['primaryColor'] as core.int?,
+        pubsubTopic: json_['pubsubTopic'] as core.String?,
+        signinDetails:
+            (json_['signinDetails'] as core.List?)
+                ?.map(
+                  (value) => SigninDetail.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        termsAndConditions:
+            (json_['termsAndConditions'] as core.List?)
+                ?.map(
+                  (value) => TermsAndConditions.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appAutoApprovalEnabled != null)
-          'appAutoApprovalEnabled': appAutoApprovalEnabled!,
-        if (contactInfo != null) 'contactInfo': contactInfo!,
-        if (enabledNotificationTypes != null)
-          'enabledNotificationTypes': enabledNotificationTypes!,
-        if (enterpriseDisplayName != null)
-          'enterpriseDisplayName': enterpriseDisplayName!,
-        if (enterpriseType != null) 'enterpriseType': enterpriseType!,
-        if (googleAuthenticationSettings != null)
-          'googleAuthenticationSettings': googleAuthenticationSettings!,
-        if (logo != null) 'logo': logo!,
-        if (managedGoogleDomainType != null)
-          'managedGoogleDomainType': managedGoogleDomainType!,
-        if (managedGooglePlayAccountsEnterpriseType != null)
-          'managedGooglePlayAccountsEnterpriseType':
-              managedGooglePlayAccountsEnterpriseType!,
-        if (name != null) 'name': name!,
-        if (primaryColor != null) 'primaryColor': primaryColor!,
-        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
-        if (signinDetails != null) 'signinDetails': signinDetails!,
-        if (termsAndConditions != null)
-          'termsAndConditions': termsAndConditions!,
-      };
+    if (appAutoApprovalEnabled != null)
+      'appAutoApprovalEnabled': appAutoApprovalEnabled!,
+    if (contactInfo != null) 'contactInfo': contactInfo!,
+    if (enabledNotificationTypes != null)
+      'enabledNotificationTypes': enabledNotificationTypes!,
+    if (enterpriseDisplayName != null)
+      'enterpriseDisplayName': enterpriseDisplayName!,
+    if (enterpriseType != null) 'enterpriseType': enterpriseType!,
+    if (googleAuthenticationSettings != null)
+      'googleAuthenticationSettings': googleAuthenticationSettings!,
+    if (logo != null) 'logo': logo!,
+    if (managedGoogleDomainType != null)
+      'managedGoogleDomainType': managedGoogleDomainType!,
+    if (managedGooglePlayAccountsEnterpriseType != null)
+      'managedGooglePlayAccountsEnterpriseType':
+          managedGooglePlayAccountsEnterpriseType!,
+    if (name != null) 'name': name!,
+    if (primaryColor != null) 'primaryColor': primaryColor!,
+    if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
+    if (signinDetails != null) 'signinDetails': signinDetails!,
+    if (termsAndConditions != null) 'termsAndConditions': termsAndConditions!,
+  };
 }
 
 /// Status and error details (if present) of an ADD_ESIM or REMOVE_ESIM command.
@@ -5488,31 +5586,32 @@ class EsimCommandStatus {
   /// eSIM for the operation to proceed.
   core.String? status;
 
-  EsimCommandStatus({
-    this.esimInfo,
-    this.internalErrorDetails,
-    this.status,
-  });
+  EsimCommandStatus({this.esimInfo, this.internalErrorDetails, this.status});
 
   EsimCommandStatus.fromJson(core.Map json_)
-      : this(
-          esimInfo: json_.containsKey('esimInfo')
-              ? EsimInfo.fromJson(
-                  json_['esimInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          internalErrorDetails: json_.containsKey('internalErrorDetails')
-              ? InternalErrorDetails.fromJson(json_['internalErrorDetails']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          status: json_['status'] as core.String?,
-        );
+    : this(
+        esimInfo:
+            json_.containsKey('esimInfo')
+                ? EsimInfo.fromJson(
+                  json_['esimInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        internalErrorDetails:
+            json_.containsKey('internalErrorDetails')
+                ? InternalErrorDetails.fromJson(
+                  json_['internalErrorDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        status: json_['status'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (esimInfo != null) 'esimInfo': esimInfo!,
-        if (internalErrorDetails != null)
-          'internalErrorDetails': internalErrorDetails!,
-        if (status != null) 'status': status!,
-      };
+    if (esimInfo != null) 'esimInfo': esimInfo!,
+    if (internalErrorDetails != null)
+      'internalErrorDetails': internalErrorDetails!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// Details of the eSIM added or removed.
@@ -5522,18 +5621,14 @@ class EsimInfo {
   /// Output only.
   core.String? iccId;
 
-  EsimInfo({
-    this.iccId,
-  });
+  EsimInfo({this.iccId});
 
   EsimInfo.fromJson(core.Map json_)
-      : this(
-          iccId: json_['iccId'] as core.String?,
-        );
+    : this(iccId: json_['iccId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iccId != null) 'iccId': iccId!,
-      };
+    if (iccId != null) 'iccId': iccId!,
+  };
 }
 
 /// Information related to the eUICC chip.
@@ -5546,18 +5641,14 @@ class EuiccChipInfo {
   /// Output only.
   core.String? eid;
 
-  EuiccChipInfo({
-    this.eid,
-  });
+  EuiccChipInfo({this.eid});
 
   EuiccChipInfo.fromJson(core.Map json_)
-      : this(
-          eid: json_['eid'] as core.String?,
-        );
+    : this(eid: json_['eid'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eid != null) 'eid': eid!,
-      };
+    if (eid != null) 'eid': eid!,
+  };
 }
 
 /// Configuration to enable an app as an extension app, with the capability of
@@ -5604,20 +5695,20 @@ class ExtensionConfig {
   });
 
   ExtensionConfig.fromJson(core.Map json_)
-      : this(
-          notificationReceiver: json_['notificationReceiver'] as core.String?,
-          signingKeyFingerprintsSha256:
-              (json_['signingKeyFingerprintsSha256'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-        );
+    : this(
+        notificationReceiver: json_['notificationReceiver'] as core.String?,
+        signingKeyFingerprintsSha256:
+            (json_['signingKeyFingerprintsSha256'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (notificationReceiver != null)
-          'notificationReceiver': notificationReceiver!,
-        if (signingKeyFingerprintsSha256 != null)
-          'signingKeyFingerprintsSha256': signingKeyFingerprintsSha256!,
-      };
+    if (notificationReceiver != null)
+      'notificationReceiver': notificationReceiver!,
+    if (signingKeyFingerprintsSha256 != null)
+      'signingKeyFingerprintsSha256': signingKeyFingerprintsSha256!,
+  };
 }
 
 /// Data hosted at an external location.
@@ -5639,21 +5730,18 @@ class ExternalData {
   /// in the URL may be used to prevent attackers from discovering the URL.
   core.String? url;
 
-  ExternalData({
-    this.sha256Hash,
-    this.url,
-  });
+  ExternalData({this.sha256Hash, this.url});
 
   ExternalData.fromJson(core.Map json_)
-      : this(
-          sha256Hash: json_['sha256Hash'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        sha256Hash: json_['sha256Hash'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sha256Hash != null) 'sha256Hash': sha256Hash!,
-        if (url != null) 'url': url!,
-      };
+    if (sha256Hash != null) 'sha256Hash': sha256Hash!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// A system freeze period.
@@ -5685,27 +5773,28 @@ class FreezePeriod {
   /// For example, {"month": 1,"date": 30}.
   Date? startDate;
 
-  FreezePeriod({
-    this.endDate,
-    this.startDate,
-  });
+  FreezePeriod({this.endDate, this.startDate});
 
   FreezePeriod.fromJson(core.Map json_)
-      : this(
-          endDate: json_.containsKey('endDate')
-              ? Date.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startDate: json_.containsKey('startDate')
-              ? Date.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        endDate:
+            json_.containsKey('endDate')
+                ? Date.fromJson(
+                  json_['endDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startDate:
+            json_.containsKey('startDate')
+                ? Date.fromJson(
+                  json_['startDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!,
-        if (startDate != null) 'startDate': startDate!,
-      };
+    if (endDate != null) 'endDate': endDate!,
+    if (startDate != null) 'startDate': startDate!,
+  };
 }
 
 /// Request message for generating a URL to upgrade an existing managed Google
@@ -5734,30 +5823,28 @@ class GenerateEnterpriseUpgradeUrlRequest {
   /// Optional.
   core.List<core.String>? allowedDomains;
 
-  GenerateEnterpriseUpgradeUrlRequest({
-    this.adminEmail,
-    this.allowedDomains,
-  });
+  GenerateEnterpriseUpgradeUrlRequest({this.adminEmail, this.allowedDomains});
 
   GenerateEnterpriseUpgradeUrlRequest.fromJson(core.Map json_)
-      : this(
-          adminEmail: json_['adminEmail'] as core.String?,
-          allowedDomains: (json_['allowedDomains'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        adminEmail: json_['adminEmail'] as core.String?,
+        allowedDomains:
+            (json_['allowedDomains'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adminEmail != null) 'adminEmail': adminEmail!,
-        if (allowedDomains != null) 'allowedDomains': allowedDomains!,
-      };
+    if (adminEmail != null) 'adminEmail': adminEmail!,
+    if (allowedDomains != null) 'allowedDomains': allowedDomains!,
+  };
 }
 
 /// Response message for generating a URL to upgrade an existing managed Google
 /// Play Accounts enterprise to a managed Google domain.Note: This feature is
 /// not generally available.
-typedef GenerateEnterpriseUpgradeUrlResponse
-    = $GenerateEnterpriseUpgradeUrlResponse;
+typedef GenerateEnterpriseUpgradeUrlResponse =
+    $GenerateEnterpriseUpgradeUrlResponse;
 
 /// Contains settings for Google-provided user authentication.
 class GoogleAuthenticationSettings {
@@ -5779,20 +5866,18 @@ class GoogleAuthenticationSettings {
   /// Google.
   core.String? googleAuthenticationRequired;
 
-  GoogleAuthenticationSettings({
-    this.googleAuthenticationRequired,
-  });
+  GoogleAuthenticationSettings({this.googleAuthenticationRequired});
 
   GoogleAuthenticationSettings.fromJson(core.Map json_)
-      : this(
-          googleAuthenticationRequired:
-              json_['googleAuthenticationRequired'] as core.String?,
-        );
+    : this(
+        googleAuthenticationRequired:
+            json_['googleAuthenticationRequired'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (googleAuthenticationRequired != null)
-          'googleAuthenticationRequired': googleAuthenticationRequired!,
-      };
+    if (googleAuthenticationRequired != null)
+      'googleAuthenticationRequired': googleAuthenticationRequired!,
+  };
 }
 
 /// Information about device hardware.
@@ -5892,80 +5977,84 @@ class HardwareInfo {
   });
 
   HardwareInfo.fromJson(core.Map json_)
-      : this(
-          batteryShutdownTemperatures:
-              (json_['batteryShutdownTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
-                  .toList(),
-          batteryThrottlingTemperatures:
-              (json_['batteryThrottlingTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
-                  .toList(),
-          brand: json_['brand'] as core.String?,
-          cpuShutdownTemperatures:
-              (json_['cpuShutdownTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
-                  .toList(),
-          cpuThrottlingTemperatures:
-              (json_['cpuThrottlingTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
-                  .toList(),
-          deviceBasebandVersion: json_['deviceBasebandVersion'] as core.String?,
-          enterpriseSpecificId: json_['enterpriseSpecificId'] as core.String?,
-          euiccChipInfo: (json_['euiccChipInfo'] as core.List?)
-              ?.map((value) => EuiccChipInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          gpuShutdownTemperatures:
-              (json_['gpuShutdownTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
-                  .toList(),
-          gpuThrottlingTemperatures:
-              (json_['gpuThrottlingTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
-                  .toList(),
-          hardware: json_['hardware'] as core.String?,
-          manufacturer: json_['manufacturer'] as core.String?,
-          model: json_['model'] as core.String?,
-          serialNumber: json_['serialNumber'] as core.String?,
-          skinShutdownTemperatures:
-              (json_['skinShutdownTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
-                  .toList(),
-          skinThrottlingTemperatures:
-              (json_['skinThrottlingTemperatures'] as core.List?)
-                  ?.map((value) => (value as core.num).toDouble())
-                  .toList(),
-        );
+    : this(
+        batteryShutdownTemperatures:
+            (json_['batteryShutdownTemperatures'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        batteryThrottlingTemperatures:
+            (json_['batteryThrottlingTemperatures'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        brand: json_['brand'] as core.String?,
+        cpuShutdownTemperatures:
+            (json_['cpuShutdownTemperatures'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        cpuThrottlingTemperatures:
+            (json_['cpuThrottlingTemperatures'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        deviceBasebandVersion: json_['deviceBasebandVersion'] as core.String?,
+        enterpriseSpecificId: json_['enterpriseSpecificId'] as core.String?,
+        euiccChipInfo:
+            (json_['euiccChipInfo'] as core.List?)
+                ?.map(
+                  (value) => EuiccChipInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        gpuShutdownTemperatures:
+            (json_['gpuShutdownTemperatures'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        gpuThrottlingTemperatures:
+            (json_['gpuThrottlingTemperatures'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        hardware: json_['hardware'] as core.String?,
+        manufacturer: json_['manufacturer'] as core.String?,
+        model: json_['model'] as core.String?,
+        serialNumber: json_['serialNumber'] as core.String?,
+        skinShutdownTemperatures:
+            (json_['skinShutdownTemperatures'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        skinThrottlingTemperatures:
+            (json_['skinThrottlingTemperatures'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (batteryShutdownTemperatures != null)
-          'batteryShutdownTemperatures': batteryShutdownTemperatures!,
-        if (batteryThrottlingTemperatures != null)
-          'batteryThrottlingTemperatures': batteryThrottlingTemperatures!,
-        if (brand != null) 'brand': brand!,
-        if (cpuShutdownTemperatures != null)
-          'cpuShutdownTemperatures': cpuShutdownTemperatures!,
-        if (cpuThrottlingTemperatures != null)
-          'cpuThrottlingTemperatures': cpuThrottlingTemperatures!,
-        if (deviceBasebandVersion != null)
-          'deviceBasebandVersion': deviceBasebandVersion!,
-        if (enterpriseSpecificId != null)
-          'enterpriseSpecificId': enterpriseSpecificId!,
-        if (euiccChipInfo != null) 'euiccChipInfo': euiccChipInfo!,
-        if (gpuShutdownTemperatures != null)
-          'gpuShutdownTemperatures': gpuShutdownTemperatures!,
-        if (gpuThrottlingTemperatures != null)
-          'gpuThrottlingTemperatures': gpuThrottlingTemperatures!,
-        if (hardware != null) 'hardware': hardware!,
-        if (manufacturer != null) 'manufacturer': manufacturer!,
-        if (model != null) 'model': model!,
-        if (serialNumber != null) 'serialNumber': serialNumber!,
-        if (skinShutdownTemperatures != null)
-          'skinShutdownTemperatures': skinShutdownTemperatures!,
-        if (skinThrottlingTemperatures != null)
-          'skinThrottlingTemperatures': skinThrottlingTemperatures!,
-      };
+    if (batteryShutdownTemperatures != null)
+      'batteryShutdownTemperatures': batteryShutdownTemperatures!,
+    if (batteryThrottlingTemperatures != null)
+      'batteryThrottlingTemperatures': batteryThrottlingTemperatures!,
+    if (brand != null) 'brand': brand!,
+    if (cpuShutdownTemperatures != null)
+      'cpuShutdownTemperatures': cpuShutdownTemperatures!,
+    if (cpuThrottlingTemperatures != null)
+      'cpuThrottlingTemperatures': cpuThrottlingTemperatures!,
+    if (deviceBasebandVersion != null)
+      'deviceBasebandVersion': deviceBasebandVersion!,
+    if (enterpriseSpecificId != null)
+      'enterpriseSpecificId': enterpriseSpecificId!,
+    if (euiccChipInfo != null) 'euiccChipInfo': euiccChipInfo!,
+    if (gpuShutdownTemperatures != null)
+      'gpuShutdownTemperatures': gpuShutdownTemperatures!,
+    if (gpuThrottlingTemperatures != null)
+      'gpuThrottlingTemperatures': gpuThrottlingTemperatures!,
+    if (hardware != null) 'hardware': hardware!,
+    if (manufacturer != null) 'manufacturer': manufacturer!,
+    if (model != null) 'model': model!,
+    if (serialNumber != null) 'serialNumber': serialNumber!,
+    if (skinShutdownTemperatures != null)
+      'skinShutdownTemperatures': skinShutdownTemperatures!,
+    if (skinThrottlingTemperatures != null)
+      'skinThrottlingTemperatures': skinThrottlingTemperatures!,
+  };
 }
 
 /// Hardware status.
@@ -6011,38 +6100,44 @@ class HardwareStatus {
   });
 
   HardwareStatus.fromJson(core.Map json_)
-      : this(
-          batteryTemperatures: (json_['batteryTemperatures'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-          cpuTemperatures: (json_['cpuTemperatures'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-          cpuUsages: (json_['cpuUsages'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-          createTime: json_['createTime'] as core.String?,
-          fanSpeeds: (json_['fanSpeeds'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-          gpuTemperatures: (json_['gpuTemperatures'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-          skinTemperatures: (json_['skinTemperatures'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-        );
+    : this(
+        batteryTemperatures:
+            (json_['batteryTemperatures'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        cpuTemperatures:
+            (json_['cpuTemperatures'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        cpuUsages:
+            (json_['cpuUsages'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        fanSpeeds:
+            (json_['fanSpeeds'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        gpuTemperatures:
+            (json_['gpuTemperatures'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        skinTemperatures:
+            (json_['skinTemperatures'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (batteryTemperatures != null)
-          'batteryTemperatures': batteryTemperatures!,
-        if (cpuTemperatures != null) 'cpuTemperatures': cpuTemperatures!,
-        if (cpuUsages != null) 'cpuUsages': cpuUsages!,
-        if (createTime != null) 'createTime': createTime!,
-        if (fanSpeeds != null) 'fanSpeeds': fanSpeeds!,
-        if (gpuTemperatures != null) 'gpuTemperatures': gpuTemperatures!,
-        if (skinTemperatures != null) 'skinTemperatures': skinTemperatures!,
-      };
+    if (batteryTemperatures != null)
+      'batteryTemperatures': batteryTemperatures!,
+    if (cpuTemperatures != null) 'cpuTemperatures': cpuTemperatures!,
+    if (cpuUsages != null) 'cpuUsages': cpuUsages!,
+    if (createTime != null) 'createTime': createTime!,
+    if (fanSpeeds != null) 'fanSpeeds': fanSpeeds!,
+    if (gpuTemperatures != null) 'gpuTemperatures': gpuTemperatures!,
+    if (skinTemperatures != null) 'skinTemperatures': skinTemperatures!,
+  };
 }
 
 /// Amongst apps with InstallType set to: FORCE_INSTALLED PREINSTALLEDthis
@@ -6090,20 +6185,19 @@ class InstallConstraint {
   });
 
   InstallConstraint.fromJson(core.Map json_)
-      : this(
-          chargingConstraint: json_['chargingConstraint'] as core.String?,
-          deviceIdleConstraint: json_['deviceIdleConstraint'] as core.String?,
-          networkTypeConstraint: json_['networkTypeConstraint'] as core.String?,
-        );
+    : this(
+        chargingConstraint: json_['chargingConstraint'] as core.String?,
+        deviceIdleConstraint: json_['deviceIdleConstraint'] as core.String?,
+        networkTypeConstraint: json_['networkTypeConstraint'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chargingConstraint != null)
-          'chargingConstraint': chargingConstraint!,
-        if (deviceIdleConstraint != null)
-          'deviceIdleConstraint': deviceIdleConstraint!,
-        if (networkTypeConstraint != null)
-          'networkTypeConstraint': networkTypeConstraint!,
-      };
+    if (chargingConstraint != null) 'chargingConstraint': chargingConstraint!,
+    if (deviceIdleConstraint != null)
+      'deviceIdleConstraint': deviceIdleConstraint!,
+    if (networkTypeConstraint != null)
+      'networkTypeConstraint': networkTypeConstraint!,
+  };
 }
 
 /// Internal error details if present for the ADD_ESIM or REMOVE_ESIM command.
@@ -6252,20 +6346,20 @@ class InternalErrorDetails {
   });
 
   InternalErrorDetails.fromJson(core.Map json_)
-      : this(
-          errorCode: json_['errorCode'] as core.String?,
-          errorCodeDetail: json_['errorCodeDetail'] as core.String?,
-          operationCode: json_['operationCode'] as core.String?,
-          operationCodeDetail: json_['operationCodeDetail'] as core.String?,
-        );
+    : this(
+        errorCode: json_['errorCode'] as core.String?,
+        errorCodeDetail: json_['errorCodeDetail'] as core.String?,
+        operationCode: json_['operationCode'] as core.String?,
+        operationCodeDetail: json_['operationCodeDetail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (errorCodeDetail != null) 'errorCodeDetail': errorCodeDetail!,
-        if (operationCode != null) 'operationCode': operationCode!,
-        if (operationCodeDetail != null)
-          'operationCodeDetail': operationCodeDetail!,
-      };
+    if (errorCode != null) 'errorCode': errorCode!,
+    if (errorCodeDetail != null) 'errorCodeDetail': errorCodeDetail!,
+    if (operationCode != null) 'operationCode': operationCode!,
+    if (operationCodeDetail != null)
+      'operationCodeDetail': operationCodeDetail!,
+  };
 }
 
 /// Keyed app state reported by the app.
@@ -6314,23 +6408,23 @@ class KeyedAppState {
   });
 
   KeyedAppState.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          data: json_['data'] as core.String?,
-          key: json_['key'] as core.String?,
-          lastUpdateTime: json_['lastUpdateTime'] as core.String?,
-          message: json_['message'] as core.String?,
-          severity: json_['severity'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        data: json_['data'] as core.String?,
+        key: json_['key'] as core.String?,
+        lastUpdateTime: json_['lastUpdateTime'] as core.String?,
+        message: json_['message'] as core.String?,
+        severity: json_['severity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (data != null) 'data': data!,
-        if (key != null) 'key': key!,
-        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
-        if (message != null) 'message': message!,
-        if (severity != null) 'severity': severity!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (data != null) 'data': data!,
+    if (key != null) 'key': key!,
+    if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+    if (message != null) 'message': message!,
+    if (severity != null) 'severity': severity!,
+  };
 }
 
 /// Settings controlling the behavior of a device in kiosk mode.
@@ -6409,23 +6503,22 @@ class KioskCustomization {
   });
 
   KioskCustomization.fromJson(core.Map json_)
-      : this(
-          deviceSettings: json_['deviceSettings'] as core.String?,
-          powerButtonActions: json_['powerButtonActions'] as core.String?,
-          statusBar: json_['statusBar'] as core.String?,
-          systemErrorWarnings: json_['systemErrorWarnings'] as core.String?,
-          systemNavigation: json_['systemNavigation'] as core.String?,
-        );
+    : this(
+        deviceSettings: json_['deviceSettings'] as core.String?,
+        powerButtonActions: json_['powerButtonActions'] as core.String?,
+        statusBar: json_['statusBar'] as core.String?,
+        systemErrorWarnings: json_['systemErrorWarnings'] as core.String?,
+        systemNavigation: json_['systemNavigation'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceSettings != null) 'deviceSettings': deviceSettings!,
-        if (powerButtonActions != null)
-          'powerButtonActions': powerButtonActions!,
-        if (statusBar != null) 'statusBar': statusBar!,
-        if (systemErrorWarnings != null)
-          'systemErrorWarnings': systemErrorWarnings!,
-        if (systemNavigation != null) 'systemNavigation': systemNavigation!,
-      };
+    if (deviceSettings != null) 'deviceSettings': deviceSettings!,
+    if (powerButtonActions != null) 'powerButtonActions': powerButtonActions!,
+    if (statusBar != null) 'statusBar': statusBar!,
+    if (systemErrorWarnings != null)
+      'systemErrorWarnings': systemErrorWarnings!,
+    if (systemNavigation != null) 'systemNavigation': systemNavigation!,
+  };
 }
 
 /// An action to launch an app.
@@ -6433,18 +6526,14 @@ class LaunchAppAction {
   /// Package name of app to be launched
   core.String? packageName;
 
-  LaunchAppAction({
-    this.packageName,
-  });
+  LaunchAppAction({this.packageName});
 
   LaunchAppAction.fromJson(core.Map json_)
-      : this(
-          packageName: json_['packageName'] as core.String?,
-        );
+    : this(packageName: json_['packageName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (packageName != null) 'packageName': packageName!,
-      };
+    if (packageName != null) 'packageName': packageName!,
+  };
 }
 
 /// Response to a request to list devices for a given enterprise.
@@ -6455,24 +6544,25 @@ class ListDevicesResponse {
   /// If there are more results, a token to retrieve next page of results.
   core.String? nextPageToken;
 
-  ListDevicesResponse({
-    this.devices,
-    this.nextPageToken,
-  });
+  ListDevicesResponse({this.devices, this.nextPageToken});
 
   ListDevicesResponse.fromJson(core.Map json_)
-      : this(
-          devices: (json_['devices'] as core.List?)
-              ?.map((value) =>
-                  Device.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        devices:
+            (json_['devices'] as core.List?)
+                ?.map(
+                  (value) => Device.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devices != null) 'devices': devices!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (devices != null) 'devices': devices!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response to a request to list enrollment tokens for a given enterprise.
@@ -6483,24 +6573,25 @@ class ListEnrollmentTokensResponse {
   /// If there are more results, a token to retrieve next page of results.
   core.String? nextPageToken;
 
-  ListEnrollmentTokensResponse({
-    this.enrollmentTokens,
-    this.nextPageToken,
-  });
+  ListEnrollmentTokensResponse({this.enrollmentTokens, this.nextPageToken});
 
   ListEnrollmentTokensResponse.fromJson(core.Map json_)
-      : this(
-          enrollmentTokens: (json_['enrollmentTokens'] as core.List?)
-              ?.map((value) => EnrollmentToken.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        enrollmentTokens:
+            (json_['enrollmentTokens'] as core.List?)
+                ?.map(
+                  (value) => EnrollmentToken.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enrollmentTokens != null) 'enrollmentTokens': enrollmentTokens!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (enrollmentTokens != null) 'enrollmentTokens': enrollmentTokens!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response to a request to list enterprises.
@@ -6511,24 +6602,25 @@ class ListEnterprisesResponse {
   /// If there are more results, a token to retrieve next page of results.
   core.String? nextPageToken;
 
-  ListEnterprisesResponse({
-    this.enterprises,
-    this.nextPageToken,
-  });
+  ListEnterprisesResponse({this.enterprises, this.nextPageToken});
 
   ListEnterprisesResponse.fromJson(core.Map json_)
-      : this(
-          enterprises: (json_['enterprises'] as core.List?)
-              ?.map((value) => Enterprise.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        enterprises:
+            (json_['enterprises'] as core.List?)
+                ?.map(
+                  (value) => Enterprise.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enterprises != null) 'enterprises': enterprises!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (enterprises != null) 'enterprises': enterprises!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response to a request to list migration tokens for a given enterprise.
@@ -6541,24 +6633,25 @@ class ListMigrationTokensResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListMigrationTokensResponse({
-    this.migrationTokens,
-    this.nextPageToken,
-  });
+  ListMigrationTokensResponse({this.migrationTokens, this.nextPageToken});
 
   ListMigrationTokensResponse.fromJson(core.Map json_)
-      : this(
-          migrationTokens: (json_['migrationTokens'] as core.List?)
-              ?.map((value) => MigrationToken.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        migrationTokens:
+            (json_['migrationTokens'] as core.List?)
+                ?.map(
+                  (value) => MigrationToken.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (migrationTokens != null) 'migrationTokens': migrationTokens!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (migrationTokens != null) 'migrationTokens': migrationTokens!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -6569,24 +6662,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// Response to a request to list policies for a given enterprise.
@@ -6597,24 +6691,25 @@ class ListPoliciesResponse {
   /// The list of policies.
   core.List<Policy>? policies;
 
-  ListPoliciesResponse({
-    this.nextPageToken,
-    this.policies,
-  });
+  ListPoliciesResponse({this.nextPageToken, this.policies});
 
   ListPoliciesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          policies: (json_['policies'] as core.List?)
-              ?.map((value) =>
-                  Policy.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        policies:
+            (json_['policies'] as core.List?)
+                ?.map(
+                  (value) => Policy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (policies != null) 'policies': policies!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (policies != null) 'policies': policies!,
+  };
 }
 
 /// Response to a request to list web apps for a given enterprise.
@@ -6625,24 +6720,25 @@ class ListWebAppsResponse {
   /// The list of web apps.
   core.List<WebApp>? webApps;
 
-  ListWebAppsResponse({
-    this.nextPageToken,
-    this.webApps,
-  });
+  ListWebAppsResponse({this.nextPageToken, this.webApps});
 
   ListWebAppsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          webApps: (json_['webApps'] as core.List?)
-              ?.map((value) =>
-                  WebApp.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        webApps:
+            (json_['webApps'] as core.List?)
+                ?.map(
+                  (value) => WebApp.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (webApps != null) 'webApps': webApps!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (webApps != null) 'webApps': webApps!,
+  };
 }
 
 /// The managed configurations template for the app, saved from the managed
@@ -6655,29 +6751,21 @@ class ManagedConfigurationTemplate {
   /// The ID of the managed configurations template.
   core.String? templateId;
 
-  ManagedConfigurationTemplate({
-    this.configurationVariables,
-    this.templateId,
-  });
+  ManagedConfigurationTemplate({this.configurationVariables, this.templateId});
 
   ManagedConfigurationTemplate.fromJson(core.Map json_)
-      : this(
-          configurationVariables: (json_['configurationVariables']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          templateId: json_['templateId'] as core.String?,
-        );
+    : this(
+        configurationVariables: (json_['configurationVariables']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        templateId: json_['templateId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configurationVariables != null)
-          'configurationVariables': configurationVariables!,
-        if (templateId != null) 'templateId': templateId!,
-      };
+    if (configurationVariables != null)
+      'configurationVariables': configurationVariables!,
+    if (templateId != null) 'templateId': templateId!,
+  };
 }
 
 /// Managed property.
@@ -6739,31 +6827,39 @@ class ManagedProperty {
   });
 
   ManagedProperty.fromJson(core.Map json_)
-      : this(
-          defaultValue: json_['defaultValue'],
-          description: json_['description'] as core.String?,
-          entries: (json_['entries'] as core.List?)
-              ?.map((value) => ManagedPropertyEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          key: json_['key'] as core.String?,
-          nestedProperties: (json_['nestedProperties'] as core.List?)
-              ?.map((value) => ManagedProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          title: json_['title'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        defaultValue: json_['defaultValue'],
+        description: json_['description'] as core.String?,
+        entries:
+            (json_['entries'] as core.List?)
+                ?.map(
+                  (value) => ManagedPropertyEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        key: json_['key'] as core.String?,
+        nestedProperties:
+            (json_['nestedProperties'] as core.List?)
+                ?.map(
+                  (value) => ManagedProperty.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        title: json_['title'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultValue != null) 'defaultValue': defaultValue!,
-        if (description != null) 'description': description!,
-        if (entries != null) 'entries': entries!,
-        if (key != null) 'key': key!,
-        if (nestedProperties != null) 'nestedProperties': nestedProperties!,
-        if (title != null) 'title': title!,
-        if (type != null) 'type': type!,
-      };
+    if (defaultValue != null) 'defaultValue': defaultValue!,
+    if (description != null) 'description': description!,
+    if (entries != null) 'entries': entries!,
+    if (key != null) 'key': key!,
+    if (nestedProperties != null) 'nestedProperties': nestedProperties!,
+    if (title != null) 'title': title!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// An entry of a managed property.
@@ -6779,21 +6875,18 @@ class ManagedPropertyEntry {
   /// Not localized.
   core.String? value;
 
-  ManagedPropertyEntry({
-    this.name,
-    this.value,
-  });
+  ManagedPropertyEntry({this.name, this.value});
 
   ManagedPropertyEntry.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
+    if (name != null) 'name': name!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// An event related to memory and storage measurements.To distinguish between
@@ -6821,24 +6914,20 @@ class MemoryEvent {
   /// was measured.
   core.String? eventType;
 
-  MemoryEvent({
-    this.byteCount,
-    this.createTime,
-    this.eventType,
-  });
+  MemoryEvent({this.byteCount, this.createTime, this.eventType});
 
   MemoryEvent.fromJson(core.Map json_)
-      : this(
-          byteCount: json_['byteCount'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          eventType: json_['eventType'] as core.String?,
-        );
+    : this(
+        byteCount: json_['byteCount'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        eventType: json_['eventType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (byteCount != null) 'byteCount': byteCount!,
-        if (createTime != null) 'createTime': createTime!,
-        if (eventType != null) 'eventType': eventType!,
-      };
+    if (byteCount != null) 'byteCount': byteCount!,
+    if (createTime != null) 'createTime': createTime!,
+    if (eventType != null) 'eventType': eventType!,
+  };
 }
 
 /// Information about device memory and storage.
@@ -6849,22 +6938,19 @@ class MemoryInfo {
   /// Total RAM on device in bytes.
   core.String? totalRam;
 
-  MemoryInfo({
-    this.totalInternalStorage,
-    this.totalRam,
-  });
+  MemoryInfo({this.totalInternalStorage, this.totalRam});
 
   MemoryInfo.fromJson(core.Map json_)
-      : this(
-          totalInternalStorage: json_['totalInternalStorage'] as core.String?,
-          totalRam: json_['totalRam'] as core.String?,
-        );
+    : this(
+        totalInternalStorage: json_['totalInternalStorage'] as core.String?,
+        totalRam: json_['totalRam'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (totalInternalStorage != null)
-          'totalInternalStorage': totalInternalStorage!,
-        if (totalRam != null) 'totalRam': totalRam!,
-      };
+    if (totalInternalStorage != null)
+      'totalInternalStorage': totalInternalStorage!,
+    if (totalRam != null) 'totalRam': totalRam!,
+  };
 }
 
 /// A token to initiate the migration of a device from being managed by a
@@ -6975,33 +7061,33 @@ class MigrationToken {
   });
 
   MigrationToken.fromJson(core.Map json_)
-      : this(
-          additionalData: json_['additionalData'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          device: json_['device'] as core.String?,
-          deviceId: json_['deviceId'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          managementMode: json_['managementMode'] as core.String?,
-          name: json_['name'] as core.String?,
-          policy: json_['policy'] as core.String?,
-          ttl: json_['ttl'] as core.String?,
-          userId: json_['userId'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        additionalData: json_['additionalData'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        device: json_['device'] as core.String?,
+        deviceId: json_['deviceId'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        managementMode: json_['managementMode'] as core.String?,
+        name: json_['name'] as core.String?,
+        policy: json_['policy'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+        userId: json_['userId'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalData != null) 'additionalData': additionalData!,
-        if (createTime != null) 'createTime': createTime!,
-        if (device != null) 'device': device!,
-        if (deviceId != null) 'deviceId': deviceId!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (managementMode != null) 'managementMode': managementMode!,
-        if (name != null) 'name': name!,
-        if (policy != null) 'policy': policy!,
-        if (ttl != null) 'ttl': ttl!,
-        if (userId != null) 'userId': userId!,
-        if (value != null) 'value': value!,
-      };
+    if (additionalData != null) 'additionalData': additionalData!,
+    if (createTime != null) 'createTime': createTime!,
+    if (device != null) 'device': device!,
+    if (deviceId != null) 'deviceId': deviceId!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (managementMode != null) 'managementMode': managementMode!,
+    if (name != null) 'name': name!,
+    if (policy != null) 'policy': policy!,
+    if (ttl != null) 'ttl': ttl!,
+    if (userId != null) 'userId': userId!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Request to update or create ApplicationPolicy objects in the given Policy.
@@ -7013,21 +7099,23 @@ class ModifyPolicyApplicationsRequest {
   /// Required.
   core.List<ApplicationPolicyChange>? changes;
 
-  ModifyPolicyApplicationsRequest({
-    this.changes,
-  });
+  ModifyPolicyApplicationsRequest({this.changes});
 
   ModifyPolicyApplicationsRequest.fromJson(core.Map json_)
-      : this(
-          changes: (json_['changes'] as core.List?)
-              ?.map((value) => ApplicationPolicyChange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        changes:
+            (json_['changes'] as core.List?)
+                ?.map(
+                  (value) => ApplicationPolicyChange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (changes != null) 'changes': changes!,
-      };
+    if (changes != null) 'changes': changes!,
+  };
 }
 
 /// Response to a request to update or create ApplicationPolicy objects in the
@@ -7036,21 +7124,21 @@ class ModifyPolicyApplicationsResponse {
   /// The updated policy.
   Policy? policy;
 
-  ModifyPolicyApplicationsResponse({
-    this.policy,
-  });
+  ModifyPolicyApplicationsResponse({this.policy});
 
   ModifyPolicyApplicationsResponse.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-      };
+    if (policy != null) 'policy': policy!,
+  };
 }
 
 /// Device network info.
@@ -7094,25 +7182,29 @@ class NetworkInfo {
   });
 
   NetworkInfo.fromJson(core.Map json_)
-      : this(
-          imei: json_['imei'] as core.String?,
-          meid: json_['meid'] as core.String?,
-          networkOperatorName: json_['networkOperatorName'] as core.String?,
-          telephonyInfos: (json_['telephonyInfos'] as core.List?)
-              ?.map((value) => TelephonyInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          wifiMacAddress: json_['wifiMacAddress'] as core.String?,
-        );
+    : this(
+        imei: json_['imei'] as core.String?,
+        meid: json_['meid'] as core.String?,
+        networkOperatorName: json_['networkOperatorName'] as core.String?,
+        telephonyInfos:
+            (json_['telephonyInfos'] as core.List?)
+                ?.map(
+                  (value) => TelephonyInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        wifiMacAddress: json_['wifiMacAddress'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (imei != null) 'imei': imei!,
-        if (meid != null) 'meid': meid!,
-        if (networkOperatorName != null)
-          'networkOperatorName': networkOperatorName!,
-        if (telephonyInfos != null) 'telephonyInfos': telephonyInfos!,
-        if (wifiMacAddress != null) 'wifiMacAddress': wifiMacAddress!,
-      };
+    if (imei != null) 'imei': imei!,
+    if (meid != null) 'meid': meid!,
+    if (networkOperatorName != null)
+      'networkOperatorName': networkOperatorName!,
+    if (telephonyInfos != null) 'telephonyInfos': telephonyInfos!,
+    if (wifiMacAddress != null) 'wifiMacAddress': wifiMacAddress!,
+  };
 }
 
 /// Provides detail about non-compliance with a policy setting.
@@ -7274,38 +7366,39 @@ class NonComplianceDetail {
   });
 
   NonComplianceDetail.fromJson(core.Map json_)
-      : this(
-          currentValue: json_['currentValue'],
-          fieldPath: json_['fieldPath'] as core.String?,
-          installationFailureReason:
-              json_['installationFailureReason'] as core.String?,
-          nonComplianceReason: json_['nonComplianceReason'] as core.String?,
-          packageName: json_['packageName'] as core.String?,
-          settingName: json_['settingName'] as core.String?,
-          specificNonComplianceContext:
-              json_.containsKey('specificNonComplianceContext')
-                  ? SpecificNonComplianceContext.fromJson(
-                      json_['specificNonComplianceContext']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          specificNonComplianceReason:
-              json_['specificNonComplianceReason'] as core.String?,
-        );
+    : this(
+        currentValue: json_['currentValue'],
+        fieldPath: json_['fieldPath'] as core.String?,
+        installationFailureReason:
+            json_['installationFailureReason'] as core.String?,
+        nonComplianceReason: json_['nonComplianceReason'] as core.String?,
+        packageName: json_['packageName'] as core.String?,
+        settingName: json_['settingName'] as core.String?,
+        specificNonComplianceContext:
+            json_.containsKey('specificNonComplianceContext')
+                ? SpecificNonComplianceContext.fromJson(
+                  json_['specificNonComplianceContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        specificNonComplianceReason:
+            json_['specificNonComplianceReason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentValue != null) 'currentValue': currentValue!,
-        if (fieldPath != null) 'fieldPath': fieldPath!,
-        if (installationFailureReason != null)
-          'installationFailureReason': installationFailureReason!,
-        if (nonComplianceReason != null)
-          'nonComplianceReason': nonComplianceReason!,
-        if (packageName != null) 'packageName': packageName!,
-        if (settingName != null) 'settingName': settingName!,
-        if (specificNonComplianceContext != null)
-          'specificNonComplianceContext': specificNonComplianceContext!,
-        if (specificNonComplianceReason != null)
-          'specificNonComplianceReason': specificNonComplianceReason!,
-      };
+    if (currentValue != null) 'currentValue': currentValue!,
+    if (fieldPath != null) 'fieldPath': fieldPath!,
+    if (installationFailureReason != null)
+      'installationFailureReason': installationFailureReason!,
+    if (nonComplianceReason != null)
+      'nonComplianceReason': nonComplianceReason!,
+    if (packageName != null) 'packageName': packageName!,
+    if (settingName != null) 'settingName': settingName!,
+    if (specificNonComplianceContext != null)
+      'specificNonComplianceContext': specificNonComplianceContext!,
+    if (specificNonComplianceReason != null)
+      'specificNonComplianceReason': specificNonComplianceReason!,
+  };
 }
 
 /// A compliance rule condition which is satisfied if there exists any matching
@@ -7363,18 +7456,18 @@ class NonComplianceDetailCondition {
   });
 
   NonComplianceDetailCondition.fromJson(core.Map json_)
-      : this(
-          nonComplianceReason: json_['nonComplianceReason'] as core.String?,
-          packageName: json_['packageName'] as core.String?,
-          settingName: json_['settingName'] as core.String?,
-        );
+    : this(
+        nonComplianceReason: json_['nonComplianceReason'] as core.String?,
+        packageName: json_['packageName'] as core.String?,
+        settingName: json_['settingName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nonComplianceReason != null)
-          'nonComplianceReason': nonComplianceReason!,
-        if (packageName != null) 'packageName': packageName!,
-        if (settingName != null) 'settingName': settingName!,
-      };
+    if (nonComplianceReason != null)
+      'nonComplianceReason': nonComplianceReason!,
+    if (packageName != null) 'packageName': packageName!,
+    if (settingName != null) 'settingName': settingName!,
+  };
 }
 
 /// This feature is not generally available.
@@ -7391,23 +7484,26 @@ class OncCertificateProvider {
   });
 
   OncCertificateProvider.fromJson(core.Map json_)
-      : this(
-          certificateReferences: (json_['certificateReferences'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          contentProviderEndpoint: json_.containsKey('contentProviderEndpoint')
-              ? ContentProviderEndpoint.fromJson(
+    : this(
+        certificateReferences:
+            (json_['certificateReferences'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        contentProviderEndpoint:
+            json_.containsKey('contentProviderEndpoint')
+                ? ContentProviderEndpoint.fromJson(
                   json_['contentProviderEndpoint']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificateReferences != null)
-          'certificateReferences': certificateReferences!,
-        if (contentProviderEndpoint != null)
-          'contentProviderEndpoint': contentProviderEndpoint!,
-      };
+    if (certificateReferences != null)
+      'certificateReferences': certificateReferences!,
+    if (contentProviderEndpoint != null)
+      'contentProviderEndpoint': contentProviderEndpoint!,
+  };
 }
 
 /// Additional context for non-compliance related to Wi-Fi configuration.
@@ -7415,18 +7511,14 @@ class OncWifiContext {
   /// The GUID of non-compliant Wi-Fi configuration.
   core.String? wifiGuid;
 
-  OncWifiContext({
-    this.wifiGuid,
-  });
+  OncWifiContext({this.wifiGuid});
 
   OncWifiContext.fromJson(core.Map json_)
-      : this(
-          wifiGuid: json_['wifiGuid'] as core.String?,
-        );
+    : this(wifiGuid: json_['wifiGuid'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (wifiGuid != null) 'wifiGuid': wifiGuid!,
-      };
+    if (wifiGuid != null) 'wifiGuid': wifiGuid!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -7472,37 +7564,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// A list of package names.
@@ -7510,20 +7600,19 @@ class PackageNameList {
   /// A list of package names.
   core.List<core.String>? packageNames;
 
-  PackageNameList({
-    this.packageNames,
-  });
+  PackageNameList({this.packageNames});
 
   PackageNameList.fromJson(core.Map json_)
-      : this(
-          packageNames: (json_['packageNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        packageNames:
+            (json_['packageNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (packageNames != null) 'packageNames': packageNames!,
-      };
+    if (packageNames != null) 'packageNames': packageNames!,
+  };
 }
 
 /// Additional context for non-compliance related to password policies.
@@ -7539,19 +7628,15 @@ class PasswordPoliciesContext {
   /// profile.
   core.String? passwordPolicyScope;
 
-  PasswordPoliciesContext({
-    this.passwordPolicyScope,
-  });
+  PasswordPoliciesContext({this.passwordPolicyScope});
 
   PasswordPoliciesContext.fromJson(core.Map json_)
-      : this(
-          passwordPolicyScope: json_['passwordPolicyScope'] as core.String?,
-        );
+    : this(passwordPolicyScope: json_['passwordPolicyScope'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (passwordPolicyScope != null)
-          'passwordPolicyScope': passwordPolicyScope!,
-      };
+    if (passwordPolicyScope != null)
+      'passwordPolicyScope': passwordPolicyScope!,
+  };
 }
 
 /// Requirements for the password used to unlock a device.
@@ -7729,56 +7814,56 @@ class PasswordRequirements {
   });
 
   PasswordRequirements.fromJson(core.Map json_)
-      : this(
-          maximumFailedPasswordsForWipe:
-              json_['maximumFailedPasswordsForWipe'] as core.int?,
-          passwordExpirationTimeout:
-              json_['passwordExpirationTimeout'] as core.String?,
-          passwordHistoryLength: json_['passwordHistoryLength'] as core.int?,
-          passwordMinimumLength: json_['passwordMinimumLength'] as core.int?,
-          passwordMinimumLetters: json_['passwordMinimumLetters'] as core.int?,
-          passwordMinimumLowerCase:
-              json_['passwordMinimumLowerCase'] as core.int?,
-          passwordMinimumNonLetter:
-              json_['passwordMinimumNonLetter'] as core.int?,
-          passwordMinimumNumeric: json_['passwordMinimumNumeric'] as core.int?,
-          passwordMinimumSymbols: json_['passwordMinimumSymbols'] as core.int?,
-          passwordMinimumUpperCase:
-              json_['passwordMinimumUpperCase'] as core.int?,
-          passwordQuality: json_['passwordQuality'] as core.String?,
-          passwordScope: json_['passwordScope'] as core.String?,
-          requirePasswordUnlock: json_['requirePasswordUnlock'] as core.String?,
-          unifiedLockSettings: json_['unifiedLockSettings'] as core.String?,
-        );
+    : this(
+        maximumFailedPasswordsForWipe:
+            json_['maximumFailedPasswordsForWipe'] as core.int?,
+        passwordExpirationTimeout:
+            json_['passwordExpirationTimeout'] as core.String?,
+        passwordHistoryLength: json_['passwordHistoryLength'] as core.int?,
+        passwordMinimumLength: json_['passwordMinimumLength'] as core.int?,
+        passwordMinimumLetters: json_['passwordMinimumLetters'] as core.int?,
+        passwordMinimumLowerCase:
+            json_['passwordMinimumLowerCase'] as core.int?,
+        passwordMinimumNonLetter:
+            json_['passwordMinimumNonLetter'] as core.int?,
+        passwordMinimumNumeric: json_['passwordMinimumNumeric'] as core.int?,
+        passwordMinimumSymbols: json_['passwordMinimumSymbols'] as core.int?,
+        passwordMinimumUpperCase:
+            json_['passwordMinimumUpperCase'] as core.int?,
+        passwordQuality: json_['passwordQuality'] as core.String?,
+        passwordScope: json_['passwordScope'] as core.String?,
+        requirePasswordUnlock: json_['requirePasswordUnlock'] as core.String?,
+        unifiedLockSettings: json_['unifiedLockSettings'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maximumFailedPasswordsForWipe != null)
-          'maximumFailedPasswordsForWipe': maximumFailedPasswordsForWipe!,
-        if (passwordExpirationTimeout != null)
-          'passwordExpirationTimeout': passwordExpirationTimeout!,
-        if (passwordHistoryLength != null)
-          'passwordHistoryLength': passwordHistoryLength!,
-        if (passwordMinimumLength != null)
-          'passwordMinimumLength': passwordMinimumLength!,
-        if (passwordMinimumLetters != null)
-          'passwordMinimumLetters': passwordMinimumLetters!,
-        if (passwordMinimumLowerCase != null)
-          'passwordMinimumLowerCase': passwordMinimumLowerCase!,
-        if (passwordMinimumNonLetter != null)
-          'passwordMinimumNonLetter': passwordMinimumNonLetter!,
-        if (passwordMinimumNumeric != null)
-          'passwordMinimumNumeric': passwordMinimumNumeric!,
-        if (passwordMinimumSymbols != null)
-          'passwordMinimumSymbols': passwordMinimumSymbols!,
-        if (passwordMinimumUpperCase != null)
-          'passwordMinimumUpperCase': passwordMinimumUpperCase!,
-        if (passwordQuality != null) 'passwordQuality': passwordQuality!,
-        if (passwordScope != null) 'passwordScope': passwordScope!,
-        if (requirePasswordUnlock != null)
-          'requirePasswordUnlock': requirePasswordUnlock!,
-        if (unifiedLockSettings != null)
-          'unifiedLockSettings': unifiedLockSettings!,
-      };
+    if (maximumFailedPasswordsForWipe != null)
+      'maximumFailedPasswordsForWipe': maximumFailedPasswordsForWipe!,
+    if (passwordExpirationTimeout != null)
+      'passwordExpirationTimeout': passwordExpirationTimeout!,
+    if (passwordHistoryLength != null)
+      'passwordHistoryLength': passwordHistoryLength!,
+    if (passwordMinimumLength != null)
+      'passwordMinimumLength': passwordMinimumLength!,
+    if (passwordMinimumLetters != null)
+      'passwordMinimumLetters': passwordMinimumLetters!,
+    if (passwordMinimumLowerCase != null)
+      'passwordMinimumLowerCase': passwordMinimumLowerCase!,
+    if (passwordMinimumNonLetter != null)
+      'passwordMinimumNonLetter': passwordMinimumNonLetter!,
+    if (passwordMinimumNumeric != null)
+      'passwordMinimumNumeric': passwordMinimumNumeric!,
+    if (passwordMinimumSymbols != null)
+      'passwordMinimumSymbols': passwordMinimumSymbols!,
+    if (passwordMinimumUpperCase != null)
+      'passwordMinimumUpperCase': passwordMinimumUpperCase!,
+    if (passwordQuality != null) 'passwordQuality': passwordQuality!,
+    if (passwordScope != null) 'passwordScope': passwordScope!,
+    if (requirePasswordUnlock != null)
+      'requirePasswordUnlock': requirePasswordUnlock!,
+    if (unifiedLockSettings != null)
+      'unifiedLockSettings': unifiedLockSettings!,
+  };
 }
 
 /// The result of an attempt to clear the data of a single app.
@@ -7796,18 +7881,14 @@ class PerAppResult {
   /// API level does not support this command.
   core.String? clearingResult;
 
-  PerAppResult({
-    this.clearingResult,
-  });
+  PerAppResult({this.clearingResult});
 
   PerAppResult.fromJson(core.Map json_)
-      : this(
-          clearingResult: json_['clearingResult'] as core.String?,
-        );
+    : this(clearingResult: json_['clearingResult'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clearingResult != null) 'clearingResult': clearingResult!,
-      };
+    if (clearingResult != null) 'clearingResult': clearingResult!,
+  };
 }
 
 /// Configuration for an Android permission and its grant state.
@@ -7843,21 +7924,18 @@ class PermissionGrant {
   /// - "DENY" : Automatically deny a permission.
   core.String? policy;
 
-  PermissionGrant({
-    this.permission,
-    this.policy,
-  });
+  PermissionGrant({this.permission, this.policy});
 
   PermissionGrant.fromJson(core.Map json_)
-      : this(
-          permission: json_['permission'] as core.String?,
-          policy: json_['policy'] as core.String?,
-        );
+    : this(
+        permission: json_['permission'] as core.String?,
+        policy: json_['policy'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permission != null) 'permission': permission!,
-        if (policy != null) 'policy': policy!,
-      };
+    if (permission != null) 'permission': permission!,
+    if (policy != null) 'policy': policy!,
+  };
 }
 
 /// A default activity for handling intents that match a particular intent
@@ -7896,21 +7974,23 @@ class PersistentPreferredActivity {
   });
 
   PersistentPreferredActivity.fromJson(core.Map json_)
-      : this(
-          actions: (json_['actions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          categories: (json_['categories'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          receiverActivity: json_['receiverActivity'] as core.String?,
-        );
+    : this(
+        actions:
+            (json_['actions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        categories:
+            (json_['categories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        receiverActivity: json_['receiverActivity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actions != null) 'actions': actions!,
-        if (categories != null) 'categories': categories!,
-        if (receiverActivity != null) 'receiverActivity': receiverActivity!,
-      };
+    if (actions != null) 'actions': actions!,
+    if (categories != null) 'categories': categories!,
+    if (receiverActivity != null) 'receiverActivity': receiverActivity!,
+  };
 }
 
 /// Policies for apps in the personal profile of a company-owned device with a
@@ -7928,21 +8008,18 @@ class PersonalApplicationPolicy {
   /// The package name of the application.
   core.String? packageName;
 
-  PersonalApplicationPolicy({
-    this.installType,
-    this.packageName,
-  });
+  PersonalApplicationPolicy({this.installType, this.packageName});
 
   PersonalApplicationPolicy.fromJson(core.Map json_)
-      : this(
-          installType: json_['installType'] as core.String?,
-          packageName: json_['packageName'] as core.String?,
-        );
+    : this(
+        installType: json_['installType'] as core.String?,
+        packageName: json_['packageName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (installType != null) 'installType': installType!,
-        if (packageName != null) 'packageName': packageName!,
-      };
+    if (installType != null) 'installType': installType!,
+    if (packageName != null) 'packageName': packageName!,
+  };
 }
 
 /// Policies controlling personal usage on a company-owned device with a work
@@ -8025,40 +8102,41 @@ class PersonalUsagePolicies {
   });
 
   PersonalUsagePolicies.fromJson(core.Map json_)
-      : this(
-          accountTypesWithManagementDisabled:
-              (json_['accountTypesWithManagementDisabled'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          bluetoothSharing: json_['bluetoothSharing'] as core.String?,
-          cameraDisabled: json_['cameraDisabled'] as core.bool?,
-          maxDaysWithWorkOff: json_['maxDaysWithWorkOff'] as core.int?,
-          personalApplications: (json_['personalApplications'] as core.List?)
-              ?.map((value) => PersonalApplicationPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          personalPlayStoreMode: json_['personalPlayStoreMode'] as core.String?,
-          privateSpacePolicy: json_['privateSpacePolicy'] as core.String?,
-          screenCaptureDisabled: json_['screenCaptureDisabled'] as core.bool?,
-        );
+    : this(
+        accountTypesWithManagementDisabled:
+            (json_['accountTypesWithManagementDisabled'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        bluetoothSharing: json_['bluetoothSharing'] as core.String?,
+        cameraDisabled: json_['cameraDisabled'] as core.bool?,
+        maxDaysWithWorkOff: json_['maxDaysWithWorkOff'] as core.int?,
+        personalApplications:
+            (json_['personalApplications'] as core.List?)
+                ?.map(
+                  (value) => PersonalApplicationPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        personalPlayStoreMode: json_['personalPlayStoreMode'] as core.String?,
+        privateSpacePolicy: json_['privateSpacePolicy'] as core.String?,
+        screenCaptureDisabled: json_['screenCaptureDisabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountTypesWithManagementDisabled != null)
-          'accountTypesWithManagementDisabled':
-              accountTypesWithManagementDisabled!,
-        if (bluetoothSharing != null) 'bluetoothSharing': bluetoothSharing!,
-        if (cameraDisabled != null) 'cameraDisabled': cameraDisabled!,
-        if (maxDaysWithWorkOff != null)
-          'maxDaysWithWorkOff': maxDaysWithWorkOff!,
-        if (personalApplications != null)
-          'personalApplications': personalApplications!,
-        if (personalPlayStoreMode != null)
-          'personalPlayStoreMode': personalPlayStoreMode!,
-        if (privateSpacePolicy != null)
-          'privateSpacePolicy': privateSpacePolicy!,
-        if (screenCaptureDisabled != null)
-          'screenCaptureDisabled': screenCaptureDisabled!,
-      };
+    if (accountTypesWithManagementDisabled != null)
+      'accountTypesWithManagementDisabled': accountTypesWithManagementDisabled!,
+    if (bluetoothSharing != null) 'bluetoothSharing': bluetoothSharing!,
+    if (cameraDisabled != null) 'cameraDisabled': cameraDisabled!,
+    if (maxDaysWithWorkOff != null) 'maxDaysWithWorkOff': maxDaysWithWorkOff!,
+    if (personalApplications != null)
+      'personalApplications': personalApplications!,
+    if (personalPlayStoreMode != null)
+      'personalPlayStoreMode': personalPlayStoreMode!,
+    if (privateSpacePolicy != null) 'privateSpacePolicy': privateSpacePolicy!,
+    if (screenCaptureDisabled != null)
+      'screenCaptureDisabled': screenCaptureDisabled!,
+  };
 }
 
 /// A policy resource represents a group of settings that govern the behavior of
@@ -8913,409 +8991,482 @@ class Policy {
   });
 
   Policy.fromJson(core.Map json_)
-      : this(
-          accountTypesWithManagementDisabled:
-              (json_['accountTypesWithManagementDisabled'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          addUserDisabled: json_['addUserDisabled'] as core.bool?,
-          adjustVolumeDisabled: json_['adjustVolumeDisabled'] as core.bool?,
-          advancedSecurityOverrides:
-              json_.containsKey('advancedSecurityOverrides')
-                  ? AdvancedSecurityOverrides.fromJson(
-                      json_['advancedSecurityOverrides']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          alwaysOnVpnPackage: json_.containsKey('alwaysOnVpnPackage')
-              ? AlwaysOnVpnPackage.fromJson(json_['alwaysOnVpnPackage']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          androidDevicePolicyTracks:
-              (json_['androidDevicePolicyTracks'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          appAutoUpdatePolicy: json_['appAutoUpdatePolicy'] as core.String?,
-          appFunctions: json_['appFunctions'] as core.String?,
-          applications: (json_['applications'] as core.List?)
-              ?.map((value) => ApplicationPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          assistContentPolicy: json_['assistContentPolicy'] as core.String?,
-          autoDateAndTimeZone: json_['autoDateAndTimeZone'] as core.String?,
-          autoTimeRequired: json_['autoTimeRequired'] as core.bool?,
-          blockApplicationsEnabled:
-              json_['blockApplicationsEnabled'] as core.bool?,
-          bluetoothConfigDisabled:
-              json_['bluetoothConfigDisabled'] as core.bool?,
-          bluetoothContactSharingDisabled:
-              json_['bluetoothContactSharingDisabled'] as core.bool?,
-          bluetoothDisabled: json_['bluetoothDisabled'] as core.bool?,
-          cameraAccess: json_['cameraAccess'] as core.String?,
-          cameraDisabled: json_['cameraDisabled'] as core.bool?,
-          cellBroadcastsConfigDisabled:
-              json_['cellBroadcastsConfigDisabled'] as core.bool?,
-          choosePrivateKeyRules: (json_['choosePrivateKeyRules'] as core.List?)
-              ?.map((value) => ChoosePrivateKeyRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          complianceRules: (json_['complianceRules'] as core.List?)
-              ?.map((value) => ComplianceRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          createWindowsDisabled: json_['createWindowsDisabled'] as core.bool?,
-          credentialProviderPolicyDefault:
-              json_['credentialProviderPolicyDefault'] as core.String?,
-          credentialsConfigDisabled:
-              json_['credentialsConfigDisabled'] as core.bool?,
-          crossProfilePolicies: json_.containsKey('crossProfilePolicies')
-              ? CrossProfilePolicies.fromJson(json_['crossProfilePolicies']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataRoamingDisabled: json_['dataRoamingDisabled'] as core.bool?,
-          debuggingFeaturesAllowed:
-              json_['debuggingFeaturesAllowed'] as core.bool?,
-          defaultPermissionPolicy:
-              json_['defaultPermissionPolicy'] as core.String?,
-          deviceConnectivityManagement:
-              json_.containsKey('deviceConnectivityManagement')
-                  ? DeviceConnectivityManagement.fromJson(
-                      json_['deviceConnectivityManagement']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          deviceOwnerLockScreenInfo: json_
-                  .containsKey('deviceOwnerLockScreenInfo')
-              ? UserFacingMessage.fromJson(json_['deviceOwnerLockScreenInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deviceRadioState: json_.containsKey('deviceRadioState')
-              ? DeviceRadioState.fromJson(json_['deviceRadioState']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          displaySettings: json_.containsKey('displaySettings')
-              ? DisplaySettings.fromJson(json_['displaySettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          encryptionPolicy: json_['encryptionPolicy'] as core.String?,
-          ensureVerifyAppsEnabled:
-              json_['ensureVerifyAppsEnabled'] as core.bool?,
-          enterpriseDisplayNameVisibility:
-              json_['enterpriseDisplayNameVisibility'] as core.String?,
-          factoryResetDisabled: json_['factoryResetDisabled'] as core.bool?,
-          frpAdminEmails: (json_['frpAdminEmails'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          funDisabled: json_['funDisabled'] as core.bool?,
-          installAppsDisabled: json_['installAppsDisabled'] as core.bool?,
-          installUnknownSourcesAllowed:
-              json_['installUnknownSourcesAllowed'] as core.bool?,
-          keyguardDisabled: json_['keyguardDisabled'] as core.bool?,
-          keyguardDisabledFeatures:
-              (json_['keyguardDisabledFeatures'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          kioskCustomLauncherEnabled:
-              json_['kioskCustomLauncherEnabled'] as core.bool?,
-          kioskCustomization: json_.containsKey('kioskCustomization')
-              ? KioskCustomization.fromJson(json_['kioskCustomization']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          locationMode: json_['locationMode'] as core.String?,
-          longSupportMessage: json_.containsKey('longSupportMessage')
-              ? UserFacingMessage.fromJson(json_['longSupportMessage']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          maximumTimeToLock: json_['maximumTimeToLock'] as core.String?,
-          microphoneAccess: json_['microphoneAccess'] as core.String?,
-          minimumApiLevel: json_['minimumApiLevel'] as core.int?,
-          mobileNetworksConfigDisabled:
-              json_['mobileNetworksConfigDisabled'] as core.bool?,
-          modifyAccountsDisabled: json_['modifyAccountsDisabled'] as core.bool?,
-          mountPhysicalMediaDisabled:
-              json_['mountPhysicalMediaDisabled'] as core.bool?,
-          name: json_['name'] as core.String?,
-          networkEscapeHatchEnabled:
-              json_['networkEscapeHatchEnabled'] as core.bool?,
-          networkResetDisabled: json_['networkResetDisabled'] as core.bool?,
-          oncCertificateProviders:
-              (json_['oncCertificateProviders'] as core.List?)
-                  ?.map((value) => OncCertificateProvider.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          openNetworkConfiguration:
-              json_.containsKey('openNetworkConfiguration')
-                  ? json_['openNetworkConfiguration']
-                      as core.Map<core.String, core.dynamic>
-                  : null,
-          outgoingBeamDisabled: json_['outgoingBeamDisabled'] as core.bool?,
-          outgoingCallsDisabled: json_['outgoingCallsDisabled'] as core.bool?,
-          passwordPolicies: (json_['passwordPolicies'] as core.List?)
-              ?.map((value) => PasswordRequirements.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          passwordRequirements: json_.containsKey('passwordRequirements')
-              ? PasswordRequirements.fromJson(json_['passwordRequirements']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          permissionGrants: (json_['permissionGrants'] as core.List?)
-              ?.map((value) => PermissionGrant.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          permittedAccessibilityServices: json_
-                  .containsKey('permittedAccessibilityServices')
-              ? PackageNameList.fromJson(json_['permittedAccessibilityServices']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          permittedInputMethods: json_.containsKey('permittedInputMethods')
-              ? PackageNameList.fromJson(json_['permittedInputMethods']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          persistentPreferredActivities:
-              (json_['persistentPreferredActivities'] as core.List?)
-                  ?.map((value) => PersistentPreferredActivity.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          personalUsagePolicies: json_.containsKey('personalUsagePolicies')
-              ? PersonalUsagePolicies.fromJson(json_['personalUsagePolicies']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          playStoreMode: json_['playStoreMode'] as core.String?,
-          policyEnforcementRules:
-              (json_['policyEnforcementRules'] as core.List?)
-                  ?.map((value) => PolicyEnforcementRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          preferentialNetworkService:
-              json_['preferentialNetworkService'] as core.String?,
-          printingPolicy: json_['printingPolicy'] as core.String?,
-          privateKeySelectionEnabled:
-              json_['privateKeySelectionEnabled'] as core.bool?,
-          recommendedGlobalProxy: json_.containsKey('recommendedGlobalProxy')
-              ? ProxyInfo.fromJson(json_['recommendedGlobalProxy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          removeUserDisabled: json_['removeUserDisabled'] as core.bool?,
-          safeBootDisabled: json_['safeBootDisabled'] as core.bool?,
-          screenCaptureDisabled: json_['screenCaptureDisabled'] as core.bool?,
-          setUserIconDisabled: json_['setUserIconDisabled'] as core.bool?,
-          setWallpaperDisabled: json_['setWallpaperDisabled'] as core.bool?,
-          setupActions: (json_['setupActions'] as core.List?)
-              ?.map((value) => SetupAction.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          shareLocationDisabled: json_['shareLocationDisabled'] as core.bool?,
-          shortSupportMessage: json_.containsKey('shortSupportMessage')
-              ? UserFacingMessage.fromJson(json_['shortSupportMessage']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          skipFirstUseHintsEnabled:
-              json_['skipFirstUseHintsEnabled'] as core.bool?,
-          smsDisabled: json_['smsDisabled'] as core.bool?,
-          statusBarDisabled: json_['statusBarDisabled'] as core.bool?,
-          statusReportingSettings: json_.containsKey('statusReportingSettings')
-              ? StatusReportingSettings.fromJson(
+    : this(
+        accountTypesWithManagementDisabled:
+            (json_['accountTypesWithManagementDisabled'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        addUserDisabled: json_['addUserDisabled'] as core.bool?,
+        adjustVolumeDisabled: json_['adjustVolumeDisabled'] as core.bool?,
+        advancedSecurityOverrides:
+            json_.containsKey('advancedSecurityOverrides')
+                ? AdvancedSecurityOverrides.fromJson(
+                  json_['advancedSecurityOverrides']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        alwaysOnVpnPackage:
+            json_.containsKey('alwaysOnVpnPackage')
+                ? AlwaysOnVpnPackage.fromJson(
+                  json_['alwaysOnVpnPackage']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        androidDevicePolicyTracks:
+            (json_['androidDevicePolicyTracks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        appAutoUpdatePolicy: json_['appAutoUpdatePolicy'] as core.String?,
+        appFunctions: json_['appFunctions'] as core.String?,
+        applications:
+            (json_['applications'] as core.List?)
+                ?.map(
+                  (value) => ApplicationPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        assistContentPolicy: json_['assistContentPolicy'] as core.String?,
+        autoDateAndTimeZone: json_['autoDateAndTimeZone'] as core.String?,
+        autoTimeRequired: json_['autoTimeRequired'] as core.bool?,
+        blockApplicationsEnabled:
+            json_['blockApplicationsEnabled'] as core.bool?,
+        bluetoothConfigDisabled: json_['bluetoothConfigDisabled'] as core.bool?,
+        bluetoothContactSharingDisabled:
+            json_['bluetoothContactSharingDisabled'] as core.bool?,
+        bluetoothDisabled: json_['bluetoothDisabled'] as core.bool?,
+        cameraAccess: json_['cameraAccess'] as core.String?,
+        cameraDisabled: json_['cameraDisabled'] as core.bool?,
+        cellBroadcastsConfigDisabled:
+            json_['cellBroadcastsConfigDisabled'] as core.bool?,
+        choosePrivateKeyRules:
+            (json_['choosePrivateKeyRules'] as core.List?)
+                ?.map(
+                  (value) => ChoosePrivateKeyRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        complianceRules:
+            (json_['complianceRules'] as core.List?)
+                ?.map(
+                  (value) => ComplianceRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        createWindowsDisabled: json_['createWindowsDisabled'] as core.bool?,
+        credentialProviderPolicyDefault:
+            json_['credentialProviderPolicyDefault'] as core.String?,
+        credentialsConfigDisabled:
+            json_['credentialsConfigDisabled'] as core.bool?,
+        crossProfilePolicies:
+            json_.containsKey('crossProfilePolicies')
+                ? CrossProfilePolicies.fromJson(
+                  json_['crossProfilePolicies']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataRoamingDisabled: json_['dataRoamingDisabled'] as core.bool?,
+        debuggingFeaturesAllowed:
+            json_['debuggingFeaturesAllowed'] as core.bool?,
+        defaultPermissionPolicy:
+            json_['defaultPermissionPolicy'] as core.String?,
+        deviceConnectivityManagement:
+            json_.containsKey('deviceConnectivityManagement')
+                ? DeviceConnectivityManagement.fromJson(
+                  json_['deviceConnectivityManagement']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deviceOwnerLockScreenInfo:
+            json_.containsKey('deviceOwnerLockScreenInfo')
+                ? UserFacingMessage.fromJson(
+                  json_['deviceOwnerLockScreenInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deviceRadioState:
+            json_.containsKey('deviceRadioState')
+                ? DeviceRadioState.fromJson(
+                  json_['deviceRadioState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        displaySettings:
+            json_.containsKey('displaySettings')
+                ? DisplaySettings.fromJson(
+                  json_['displaySettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        encryptionPolicy: json_['encryptionPolicy'] as core.String?,
+        ensureVerifyAppsEnabled: json_['ensureVerifyAppsEnabled'] as core.bool?,
+        enterpriseDisplayNameVisibility:
+            json_['enterpriseDisplayNameVisibility'] as core.String?,
+        factoryResetDisabled: json_['factoryResetDisabled'] as core.bool?,
+        frpAdminEmails:
+            (json_['frpAdminEmails'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        funDisabled: json_['funDisabled'] as core.bool?,
+        installAppsDisabled: json_['installAppsDisabled'] as core.bool?,
+        installUnknownSourcesAllowed:
+            json_['installUnknownSourcesAllowed'] as core.bool?,
+        keyguardDisabled: json_['keyguardDisabled'] as core.bool?,
+        keyguardDisabledFeatures:
+            (json_['keyguardDisabledFeatures'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        kioskCustomLauncherEnabled:
+            json_['kioskCustomLauncherEnabled'] as core.bool?,
+        kioskCustomization:
+            json_.containsKey('kioskCustomization')
+                ? KioskCustomization.fromJson(
+                  json_['kioskCustomization']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        locationMode: json_['locationMode'] as core.String?,
+        longSupportMessage:
+            json_.containsKey('longSupportMessage')
+                ? UserFacingMessage.fromJson(
+                  json_['longSupportMessage']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maximumTimeToLock: json_['maximumTimeToLock'] as core.String?,
+        microphoneAccess: json_['microphoneAccess'] as core.String?,
+        minimumApiLevel: json_['minimumApiLevel'] as core.int?,
+        mobileNetworksConfigDisabled:
+            json_['mobileNetworksConfigDisabled'] as core.bool?,
+        modifyAccountsDisabled: json_['modifyAccountsDisabled'] as core.bool?,
+        mountPhysicalMediaDisabled:
+            json_['mountPhysicalMediaDisabled'] as core.bool?,
+        name: json_['name'] as core.String?,
+        networkEscapeHatchEnabled:
+            json_['networkEscapeHatchEnabled'] as core.bool?,
+        networkResetDisabled: json_['networkResetDisabled'] as core.bool?,
+        oncCertificateProviders:
+            (json_['oncCertificateProviders'] as core.List?)
+                ?.map(
+                  (value) => OncCertificateProvider.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        openNetworkConfiguration:
+            json_.containsKey('openNetworkConfiguration')
+                ? json_['openNetworkConfiguration']
+                    as core.Map<core.String, core.dynamic>
+                : null,
+        outgoingBeamDisabled: json_['outgoingBeamDisabled'] as core.bool?,
+        outgoingCallsDisabled: json_['outgoingCallsDisabled'] as core.bool?,
+        passwordPolicies:
+            (json_['passwordPolicies'] as core.List?)
+                ?.map(
+                  (value) => PasswordRequirements.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        passwordRequirements:
+            json_.containsKey('passwordRequirements')
+                ? PasswordRequirements.fromJson(
+                  json_['passwordRequirements']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        permissionGrants:
+            (json_['permissionGrants'] as core.List?)
+                ?.map(
+                  (value) => PermissionGrant.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        permittedAccessibilityServices:
+            json_.containsKey('permittedAccessibilityServices')
+                ? PackageNameList.fromJson(
+                  json_['permittedAccessibilityServices']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        permittedInputMethods:
+            json_.containsKey('permittedInputMethods')
+                ? PackageNameList.fromJson(
+                  json_['permittedInputMethods']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        persistentPreferredActivities:
+            (json_['persistentPreferredActivities'] as core.List?)
+                ?.map(
+                  (value) => PersistentPreferredActivity.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        personalUsagePolicies:
+            json_.containsKey('personalUsagePolicies')
+                ? PersonalUsagePolicies.fromJson(
+                  json_['personalUsagePolicies']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        playStoreMode: json_['playStoreMode'] as core.String?,
+        policyEnforcementRules:
+            (json_['policyEnforcementRules'] as core.List?)
+                ?.map(
+                  (value) => PolicyEnforcementRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        preferentialNetworkService:
+            json_['preferentialNetworkService'] as core.String?,
+        printingPolicy: json_['printingPolicy'] as core.String?,
+        privateKeySelectionEnabled:
+            json_['privateKeySelectionEnabled'] as core.bool?,
+        recommendedGlobalProxy:
+            json_.containsKey('recommendedGlobalProxy')
+                ? ProxyInfo.fromJson(
+                  json_['recommendedGlobalProxy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        removeUserDisabled: json_['removeUserDisabled'] as core.bool?,
+        safeBootDisabled: json_['safeBootDisabled'] as core.bool?,
+        screenCaptureDisabled: json_['screenCaptureDisabled'] as core.bool?,
+        setUserIconDisabled: json_['setUserIconDisabled'] as core.bool?,
+        setWallpaperDisabled: json_['setWallpaperDisabled'] as core.bool?,
+        setupActions:
+            (json_['setupActions'] as core.List?)
+                ?.map(
+                  (value) => SetupAction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        shareLocationDisabled: json_['shareLocationDisabled'] as core.bool?,
+        shortSupportMessage:
+            json_.containsKey('shortSupportMessage')
+                ? UserFacingMessage.fromJson(
+                  json_['shortSupportMessage']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        skipFirstUseHintsEnabled:
+            json_['skipFirstUseHintsEnabled'] as core.bool?,
+        smsDisabled: json_['smsDisabled'] as core.bool?,
+        statusBarDisabled: json_['statusBarDisabled'] as core.bool?,
+        statusReportingSettings:
+            json_.containsKey('statusReportingSettings')
+                ? StatusReportingSettings.fromJson(
                   json_['statusReportingSettings']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          stayOnPluggedModes: (json_['stayOnPluggedModes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          systemUpdate: json_.containsKey('systemUpdate')
-              ? SystemUpdate.fromJson(
-                  json_['systemUpdate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tetheringConfigDisabled:
-              json_['tetheringConfigDisabled'] as core.bool?,
-          uninstallAppsDisabled: json_['uninstallAppsDisabled'] as core.bool?,
-          unmuteMicrophoneDisabled:
-              json_['unmuteMicrophoneDisabled'] as core.bool?,
-          usageLog: json_.containsKey('usageLog')
-              ? UsageLog.fromJson(
-                  json_['usageLog'] as core.Map<core.String, core.dynamic>)
-              : null,
-          usbFileTransferDisabled:
-              json_['usbFileTransferDisabled'] as core.bool?,
-          usbMassStorageEnabled: json_['usbMassStorageEnabled'] as core.bool?,
-          version: json_['version'] as core.String?,
-          vpnConfigDisabled: json_['vpnConfigDisabled'] as core.bool?,
-          wifiConfigDisabled: json_['wifiConfigDisabled'] as core.bool?,
-          wifiConfigsLockdownEnabled:
-              json_['wifiConfigsLockdownEnabled'] as core.bool?,
-          wipeDataFlags: (json_['wipeDataFlags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          workAccountSetupConfig: json_.containsKey('workAccountSetupConfig')
-              ? WorkAccountSetupConfig.fromJson(json_['workAccountSetupConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stayOnPluggedModes:
+            (json_['stayOnPluggedModes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        systemUpdate:
+            json_.containsKey('systemUpdate')
+                ? SystemUpdate.fromJson(
+                  json_['systemUpdate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tetheringConfigDisabled: json_['tetheringConfigDisabled'] as core.bool?,
+        uninstallAppsDisabled: json_['uninstallAppsDisabled'] as core.bool?,
+        unmuteMicrophoneDisabled:
+            json_['unmuteMicrophoneDisabled'] as core.bool?,
+        usageLog:
+            json_.containsKey('usageLog')
+                ? UsageLog.fromJson(
+                  json_['usageLog'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        usbFileTransferDisabled: json_['usbFileTransferDisabled'] as core.bool?,
+        usbMassStorageEnabled: json_['usbMassStorageEnabled'] as core.bool?,
+        version: json_['version'] as core.String?,
+        vpnConfigDisabled: json_['vpnConfigDisabled'] as core.bool?,
+        wifiConfigDisabled: json_['wifiConfigDisabled'] as core.bool?,
+        wifiConfigsLockdownEnabled:
+            json_['wifiConfigsLockdownEnabled'] as core.bool?,
+        wipeDataFlags:
+            (json_['wipeDataFlags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        workAccountSetupConfig:
+            json_.containsKey('workAccountSetupConfig')
+                ? WorkAccountSetupConfig.fromJson(
+                  json_['workAccountSetupConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountTypesWithManagementDisabled != null)
-          'accountTypesWithManagementDisabled':
-              accountTypesWithManagementDisabled!,
-        if (addUserDisabled != null) 'addUserDisabled': addUserDisabled!,
-        if (adjustVolumeDisabled != null)
-          'adjustVolumeDisabled': adjustVolumeDisabled!,
-        if (advancedSecurityOverrides != null)
-          'advancedSecurityOverrides': advancedSecurityOverrides!,
-        if (alwaysOnVpnPackage != null)
-          'alwaysOnVpnPackage': alwaysOnVpnPackage!,
-        if (androidDevicePolicyTracks != null)
-          'androidDevicePolicyTracks': androidDevicePolicyTracks!,
-        if (appAutoUpdatePolicy != null)
-          'appAutoUpdatePolicy': appAutoUpdatePolicy!,
-        if (appFunctions != null) 'appFunctions': appFunctions!,
-        if (applications != null) 'applications': applications!,
-        if (assistContentPolicy != null)
-          'assistContentPolicy': assistContentPolicy!,
-        if (autoDateAndTimeZone != null)
-          'autoDateAndTimeZone': autoDateAndTimeZone!,
-        if (autoTimeRequired != null) 'autoTimeRequired': autoTimeRequired!,
-        if (blockApplicationsEnabled != null)
-          'blockApplicationsEnabled': blockApplicationsEnabled!,
-        if (bluetoothConfigDisabled != null)
-          'bluetoothConfigDisabled': bluetoothConfigDisabled!,
-        if (bluetoothContactSharingDisabled != null)
-          'bluetoothContactSharingDisabled': bluetoothContactSharingDisabled!,
-        if (bluetoothDisabled != null) 'bluetoothDisabled': bluetoothDisabled!,
-        if (cameraAccess != null) 'cameraAccess': cameraAccess!,
-        if (cameraDisabled != null) 'cameraDisabled': cameraDisabled!,
-        if (cellBroadcastsConfigDisabled != null)
-          'cellBroadcastsConfigDisabled': cellBroadcastsConfigDisabled!,
-        if (choosePrivateKeyRules != null)
-          'choosePrivateKeyRules': choosePrivateKeyRules!,
-        if (complianceRules != null) 'complianceRules': complianceRules!,
-        if (createWindowsDisabled != null)
-          'createWindowsDisabled': createWindowsDisabled!,
-        if (credentialProviderPolicyDefault != null)
-          'credentialProviderPolicyDefault': credentialProviderPolicyDefault!,
-        if (credentialsConfigDisabled != null)
-          'credentialsConfigDisabled': credentialsConfigDisabled!,
-        if (crossProfilePolicies != null)
-          'crossProfilePolicies': crossProfilePolicies!,
-        if (dataRoamingDisabled != null)
-          'dataRoamingDisabled': dataRoamingDisabled!,
-        if (debuggingFeaturesAllowed != null)
-          'debuggingFeaturesAllowed': debuggingFeaturesAllowed!,
-        if (defaultPermissionPolicy != null)
-          'defaultPermissionPolicy': defaultPermissionPolicy!,
-        if (deviceConnectivityManagement != null)
-          'deviceConnectivityManagement': deviceConnectivityManagement!,
-        if (deviceOwnerLockScreenInfo != null)
-          'deviceOwnerLockScreenInfo': deviceOwnerLockScreenInfo!,
-        if (deviceRadioState != null) 'deviceRadioState': deviceRadioState!,
-        if (displaySettings != null) 'displaySettings': displaySettings!,
-        if (encryptionPolicy != null) 'encryptionPolicy': encryptionPolicy!,
-        if (ensureVerifyAppsEnabled != null)
-          'ensureVerifyAppsEnabled': ensureVerifyAppsEnabled!,
-        if (enterpriseDisplayNameVisibility != null)
-          'enterpriseDisplayNameVisibility': enterpriseDisplayNameVisibility!,
-        if (factoryResetDisabled != null)
-          'factoryResetDisabled': factoryResetDisabled!,
-        if (frpAdminEmails != null) 'frpAdminEmails': frpAdminEmails!,
-        if (funDisabled != null) 'funDisabled': funDisabled!,
-        if (installAppsDisabled != null)
-          'installAppsDisabled': installAppsDisabled!,
-        if (installUnknownSourcesAllowed != null)
-          'installUnknownSourcesAllowed': installUnknownSourcesAllowed!,
-        if (keyguardDisabled != null) 'keyguardDisabled': keyguardDisabled!,
-        if (keyguardDisabledFeatures != null)
-          'keyguardDisabledFeatures': keyguardDisabledFeatures!,
-        if (kioskCustomLauncherEnabled != null)
-          'kioskCustomLauncherEnabled': kioskCustomLauncherEnabled!,
-        if (kioskCustomization != null)
-          'kioskCustomization': kioskCustomization!,
-        if (locationMode != null) 'locationMode': locationMode!,
-        if (longSupportMessage != null)
-          'longSupportMessage': longSupportMessage!,
-        if (maximumTimeToLock != null) 'maximumTimeToLock': maximumTimeToLock!,
-        if (microphoneAccess != null) 'microphoneAccess': microphoneAccess!,
-        if (minimumApiLevel != null) 'minimumApiLevel': minimumApiLevel!,
-        if (mobileNetworksConfigDisabled != null)
-          'mobileNetworksConfigDisabled': mobileNetworksConfigDisabled!,
-        if (modifyAccountsDisabled != null)
-          'modifyAccountsDisabled': modifyAccountsDisabled!,
-        if (mountPhysicalMediaDisabled != null)
-          'mountPhysicalMediaDisabled': mountPhysicalMediaDisabled!,
-        if (name != null) 'name': name!,
-        if (networkEscapeHatchEnabled != null)
-          'networkEscapeHatchEnabled': networkEscapeHatchEnabled!,
-        if (networkResetDisabled != null)
-          'networkResetDisabled': networkResetDisabled!,
-        if (oncCertificateProviders != null)
-          'oncCertificateProviders': oncCertificateProviders!,
-        if (openNetworkConfiguration != null)
-          'openNetworkConfiguration': openNetworkConfiguration!,
-        if (outgoingBeamDisabled != null)
-          'outgoingBeamDisabled': outgoingBeamDisabled!,
-        if (outgoingCallsDisabled != null)
-          'outgoingCallsDisabled': outgoingCallsDisabled!,
-        if (passwordPolicies != null) 'passwordPolicies': passwordPolicies!,
-        if (passwordRequirements != null)
-          'passwordRequirements': passwordRequirements!,
-        if (permissionGrants != null) 'permissionGrants': permissionGrants!,
-        if (permittedAccessibilityServices != null)
-          'permittedAccessibilityServices': permittedAccessibilityServices!,
-        if (permittedInputMethods != null)
-          'permittedInputMethods': permittedInputMethods!,
-        if (persistentPreferredActivities != null)
-          'persistentPreferredActivities': persistentPreferredActivities!,
-        if (personalUsagePolicies != null)
-          'personalUsagePolicies': personalUsagePolicies!,
-        if (playStoreMode != null) 'playStoreMode': playStoreMode!,
-        if (policyEnforcementRules != null)
-          'policyEnforcementRules': policyEnforcementRules!,
-        if (preferentialNetworkService != null)
-          'preferentialNetworkService': preferentialNetworkService!,
-        if (printingPolicy != null) 'printingPolicy': printingPolicy!,
-        if (privateKeySelectionEnabled != null)
-          'privateKeySelectionEnabled': privateKeySelectionEnabled!,
-        if (recommendedGlobalProxy != null)
-          'recommendedGlobalProxy': recommendedGlobalProxy!,
-        if (removeUserDisabled != null)
-          'removeUserDisabled': removeUserDisabled!,
-        if (safeBootDisabled != null) 'safeBootDisabled': safeBootDisabled!,
-        if (screenCaptureDisabled != null)
-          'screenCaptureDisabled': screenCaptureDisabled!,
-        if (setUserIconDisabled != null)
-          'setUserIconDisabled': setUserIconDisabled!,
-        if (setWallpaperDisabled != null)
-          'setWallpaperDisabled': setWallpaperDisabled!,
-        if (setupActions != null) 'setupActions': setupActions!,
-        if (shareLocationDisabled != null)
-          'shareLocationDisabled': shareLocationDisabled!,
-        if (shortSupportMessage != null)
-          'shortSupportMessage': shortSupportMessage!,
-        if (skipFirstUseHintsEnabled != null)
-          'skipFirstUseHintsEnabled': skipFirstUseHintsEnabled!,
-        if (smsDisabled != null) 'smsDisabled': smsDisabled!,
-        if (statusBarDisabled != null) 'statusBarDisabled': statusBarDisabled!,
-        if (statusReportingSettings != null)
-          'statusReportingSettings': statusReportingSettings!,
-        if (stayOnPluggedModes != null)
-          'stayOnPluggedModes': stayOnPluggedModes!,
-        if (systemUpdate != null) 'systemUpdate': systemUpdate!,
-        if (tetheringConfigDisabled != null)
-          'tetheringConfigDisabled': tetheringConfigDisabled!,
-        if (uninstallAppsDisabled != null)
-          'uninstallAppsDisabled': uninstallAppsDisabled!,
-        if (unmuteMicrophoneDisabled != null)
-          'unmuteMicrophoneDisabled': unmuteMicrophoneDisabled!,
-        if (usageLog != null) 'usageLog': usageLog!,
-        if (usbFileTransferDisabled != null)
-          'usbFileTransferDisabled': usbFileTransferDisabled!,
-        if (usbMassStorageEnabled != null)
-          'usbMassStorageEnabled': usbMassStorageEnabled!,
-        if (version != null) 'version': version!,
-        if (vpnConfigDisabled != null) 'vpnConfigDisabled': vpnConfigDisabled!,
-        if (wifiConfigDisabled != null)
-          'wifiConfigDisabled': wifiConfigDisabled!,
-        if (wifiConfigsLockdownEnabled != null)
-          'wifiConfigsLockdownEnabled': wifiConfigsLockdownEnabled!,
-        if (wipeDataFlags != null) 'wipeDataFlags': wipeDataFlags!,
-        if (workAccountSetupConfig != null)
-          'workAccountSetupConfig': workAccountSetupConfig!,
-      };
+    if (accountTypesWithManagementDisabled != null)
+      'accountTypesWithManagementDisabled': accountTypesWithManagementDisabled!,
+    if (addUserDisabled != null) 'addUserDisabled': addUserDisabled!,
+    if (adjustVolumeDisabled != null)
+      'adjustVolumeDisabled': adjustVolumeDisabled!,
+    if (advancedSecurityOverrides != null)
+      'advancedSecurityOverrides': advancedSecurityOverrides!,
+    if (alwaysOnVpnPackage != null) 'alwaysOnVpnPackage': alwaysOnVpnPackage!,
+    if (androidDevicePolicyTracks != null)
+      'androidDevicePolicyTracks': androidDevicePolicyTracks!,
+    if (appAutoUpdatePolicy != null)
+      'appAutoUpdatePolicy': appAutoUpdatePolicy!,
+    if (appFunctions != null) 'appFunctions': appFunctions!,
+    if (applications != null) 'applications': applications!,
+    if (assistContentPolicy != null)
+      'assistContentPolicy': assistContentPolicy!,
+    if (autoDateAndTimeZone != null)
+      'autoDateAndTimeZone': autoDateAndTimeZone!,
+    if (autoTimeRequired != null) 'autoTimeRequired': autoTimeRequired!,
+    if (blockApplicationsEnabled != null)
+      'blockApplicationsEnabled': blockApplicationsEnabled!,
+    if (bluetoothConfigDisabled != null)
+      'bluetoothConfigDisabled': bluetoothConfigDisabled!,
+    if (bluetoothContactSharingDisabled != null)
+      'bluetoothContactSharingDisabled': bluetoothContactSharingDisabled!,
+    if (bluetoothDisabled != null) 'bluetoothDisabled': bluetoothDisabled!,
+    if (cameraAccess != null) 'cameraAccess': cameraAccess!,
+    if (cameraDisabled != null) 'cameraDisabled': cameraDisabled!,
+    if (cellBroadcastsConfigDisabled != null)
+      'cellBroadcastsConfigDisabled': cellBroadcastsConfigDisabled!,
+    if (choosePrivateKeyRules != null)
+      'choosePrivateKeyRules': choosePrivateKeyRules!,
+    if (complianceRules != null) 'complianceRules': complianceRules!,
+    if (createWindowsDisabled != null)
+      'createWindowsDisabled': createWindowsDisabled!,
+    if (credentialProviderPolicyDefault != null)
+      'credentialProviderPolicyDefault': credentialProviderPolicyDefault!,
+    if (credentialsConfigDisabled != null)
+      'credentialsConfigDisabled': credentialsConfigDisabled!,
+    if (crossProfilePolicies != null)
+      'crossProfilePolicies': crossProfilePolicies!,
+    if (dataRoamingDisabled != null)
+      'dataRoamingDisabled': dataRoamingDisabled!,
+    if (debuggingFeaturesAllowed != null)
+      'debuggingFeaturesAllowed': debuggingFeaturesAllowed!,
+    if (defaultPermissionPolicy != null)
+      'defaultPermissionPolicy': defaultPermissionPolicy!,
+    if (deviceConnectivityManagement != null)
+      'deviceConnectivityManagement': deviceConnectivityManagement!,
+    if (deviceOwnerLockScreenInfo != null)
+      'deviceOwnerLockScreenInfo': deviceOwnerLockScreenInfo!,
+    if (deviceRadioState != null) 'deviceRadioState': deviceRadioState!,
+    if (displaySettings != null) 'displaySettings': displaySettings!,
+    if (encryptionPolicy != null) 'encryptionPolicy': encryptionPolicy!,
+    if (ensureVerifyAppsEnabled != null)
+      'ensureVerifyAppsEnabled': ensureVerifyAppsEnabled!,
+    if (enterpriseDisplayNameVisibility != null)
+      'enterpriseDisplayNameVisibility': enterpriseDisplayNameVisibility!,
+    if (factoryResetDisabled != null)
+      'factoryResetDisabled': factoryResetDisabled!,
+    if (frpAdminEmails != null) 'frpAdminEmails': frpAdminEmails!,
+    if (funDisabled != null) 'funDisabled': funDisabled!,
+    if (installAppsDisabled != null)
+      'installAppsDisabled': installAppsDisabled!,
+    if (installUnknownSourcesAllowed != null)
+      'installUnknownSourcesAllowed': installUnknownSourcesAllowed!,
+    if (keyguardDisabled != null) 'keyguardDisabled': keyguardDisabled!,
+    if (keyguardDisabledFeatures != null)
+      'keyguardDisabledFeatures': keyguardDisabledFeatures!,
+    if (kioskCustomLauncherEnabled != null)
+      'kioskCustomLauncherEnabled': kioskCustomLauncherEnabled!,
+    if (kioskCustomization != null) 'kioskCustomization': kioskCustomization!,
+    if (locationMode != null) 'locationMode': locationMode!,
+    if (longSupportMessage != null) 'longSupportMessage': longSupportMessage!,
+    if (maximumTimeToLock != null) 'maximumTimeToLock': maximumTimeToLock!,
+    if (microphoneAccess != null) 'microphoneAccess': microphoneAccess!,
+    if (minimumApiLevel != null) 'minimumApiLevel': minimumApiLevel!,
+    if (mobileNetworksConfigDisabled != null)
+      'mobileNetworksConfigDisabled': mobileNetworksConfigDisabled!,
+    if (modifyAccountsDisabled != null)
+      'modifyAccountsDisabled': modifyAccountsDisabled!,
+    if (mountPhysicalMediaDisabled != null)
+      'mountPhysicalMediaDisabled': mountPhysicalMediaDisabled!,
+    if (name != null) 'name': name!,
+    if (networkEscapeHatchEnabled != null)
+      'networkEscapeHatchEnabled': networkEscapeHatchEnabled!,
+    if (networkResetDisabled != null)
+      'networkResetDisabled': networkResetDisabled!,
+    if (oncCertificateProviders != null)
+      'oncCertificateProviders': oncCertificateProviders!,
+    if (openNetworkConfiguration != null)
+      'openNetworkConfiguration': openNetworkConfiguration!,
+    if (outgoingBeamDisabled != null)
+      'outgoingBeamDisabled': outgoingBeamDisabled!,
+    if (outgoingCallsDisabled != null)
+      'outgoingCallsDisabled': outgoingCallsDisabled!,
+    if (passwordPolicies != null) 'passwordPolicies': passwordPolicies!,
+    if (passwordRequirements != null)
+      'passwordRequirements': passwordRequirements!,
+    if (permissionGrants != null) 'permissionGrants': permissionGrants!,
+    if (permittedAccessibilityServices != null)
+      'permittedAccessibilityServices': permittedAccessibilityServices!,
+    if (permittedInputMethods != null)
+      'permittedInputMethods': permittedInputMethods!,
+    if (persistentPreferredActivities != null)
+      'persistentPreferredActivities': persistentPreferredActivities!,
+    if (personalUsagePolicies != null)
+      'personalUsagePolicies': personalUsagePolicies!,
+    if (playStoreMode != null) 'playStoreMode': playStoreMode!,
+    if (policyEnforcementRules != null)
+      'policyEnforcementRules': policyEnforcementRules!,
+    if (preferentialNetworkService != null)
+      'preferentialNetworkService': preferentialNetworkService!,
+    if (printingPolicy != null) 'printingPolicy': printingPolicy!,
+    if (privateKeySelectionEnabled != null)
+      'privateKeySelectionEnabled': privateKeySelectionEnabled!,
+    if (recommendedGlobalProxy != null)
+      'recommendedGlobalProxy': recommendedGlobalProxy!,
+    if (removeUserDisabled != null) 'removeUserDisabled': removeUserDisabled!,
+    if (safeBootDisabled != null) 'safeBootDisabled': safeBootDisabled!,
+    if (screenCaptureDisabled != null)
+      'screenCaptureDisabled': screenCaptureDisabled!,
+    if (setUserIconDisabled != null)
+      'setUserIconDisabled': setUserIconDisabled!,
+    if (setWallpaperDisabled != null)
+      'setWallpaperDisabled': setWallpaperDisabled!,
+    if (setupActions != null) 'setupActions': setupActions!,
+    if (shareLocationDisabled != null)
+      'shareLocationDisabled': shareLocationDisabled!,
+    if (shortSupportMessage != null)
+      'shortSupportMessage': shortSupportMessage!,
+    if (skipFirstUseHintsEnabled != null)
+      'skipFirstUseHintsEnabled': skipFirstUseHintsEnabled!,
+    if (smsDisabled != null) 'smsDisabled': smsDisabled!,
+    if (statusBarDisabled != null) 'statusBarDisabled': statusBarDisabled!,
+    if (statusReportingSettings != null)
+      'statusReportingSettings': statusReportingSettings!,
+    if (stayOnPluggedModes != null) 'stayOnPluggedModes': stayOnPluggedModes!,
+    if (systemUpdate != null) 'systemUpdate': systemUpdate!,
+    if (tetheringConfigDisabled != null)
+      'tetheringConfigDisabled': tetheringConfigDisabled!,
+    if (uninstallAppsDisabled != null)
+      'uninstallAppsDisabled': uninstallAppsDisabled!,
+    if (unmuteMicrophoneDisabled != null)
+      'unmuteMicrophoneDisabled': unmuteMicrophoneDisabled!,
+    if (usageLog != null) 'usageLog': usageLog!,
+    if (usbFileTransferDisabled != null)
+      'usbFileTransferDisabled': usbFileTransferDisabled!,
+    if (usbMassStorageEnabled != null)
+      'usbMassStorageEnabled': usbMassStorageEnabled!,
+    if (version != null) 'version': version!,
+    if (vpnConfigDisabled != null) 'vpnConfigDisabled': vpnConfigDisabled!,
+    if (wifiConfigDisabled != null) 'wifiConfigDisabled': wifiConfigDisabled!,
+    if (wifiConfigsLockdownEnabled != null)
+      'wifiConfigsLockdownEnabled': wifiConfigsLockdownEnabled!,
+    if (wipeDataFlags != null) 'wipeDataFlags': wipeDataFlags!,
+    if (workAccountSetupConfig != null)
+      'workAccountSetupConfig': workAccountSetupConfig!,
+  };
 }
 
 /// A rule that defines the actions to take if a device or work profile is not
@@ -9346,30 +9497,30 @@ class PolicyEnforcementRule {
   /// Note: blockAction must also be specified.
   WipeAction? wipeAction;
 
-  PolicyEnforcementRule({
-    this.blockAction,
-    this.settingName,
-    this.wipeAction,
-  });
+  PolicyEnforcementRule({this.blockAction, this.settingName, this.wipeAction});
 
   PolicyEnforcementRule.fromJson(core.Map json_)
-      : this(
-          blockAction: json_.containsKey('blockAction')
-              ? BlockAction.fromJson(
-                  json_['blockAction'] as core.Map<core.String, core.dynamic>)
-              : null,
-          settingName: json_['settingName'] as core.String?,
-          wipeAction: json_.containsKey('wipeAction')
-              ? WipeAction.fromJson(
-                  json_['wipeAction'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        blockAction:
+            json_.containsKey('blockAction')
+                ? BlockAction.fromJson(
+                  json_['blockAction'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        settingName: json_['settingName'] as core.String?,
+        wipeAction:
+            json_.containsKey('wipeAction')
+                ? WipeAction.fromJson(
+                  json_['wipeAction'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blockAction != null) 'blockAction': blockAction!,
-        if (settingName != null) 'settingName': settingName!,
-        if (wipeAction != null) 'wipeAction': wipeAction!,
-      };
+    if (blockAction != null) 'blockAction': blockAction!,
+    if (settingName != null) 'settingName': settingName!,
+    if (wipeAction != null) 'wipeAction': wipeAction!,
+  };
 }
 
 /// Additional details regarding the security posture of the device.
@@ -9392,24 +9543,25 @@ class PostureDetail {
   /// (https://developer.android.com/google/play/integrity/verdicts#device-integrity-field).
   core.String? securityRisk;
 
-  PostureDetail({
-    this.advice,
-    this.securityRisk,
-  });
+  PostureDetail({this.advice, this.securityRisk});
 
   PostureDetail.fromJson(core.Map json_)
-      : this(
-          advice: (json_['advice'] as core.List?)
-              ?.map((value) => UserFacingMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          securityRisk: json_['securityRisk'] as core.String?,
-        );
+    : this(
+        advice:
+            (json_['advice'] as core.List?)
+                ?.map(
+                  (value) => UserFacingMessage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        securityRisk: json_['securityRisk'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advice != null) 'advice': advice!,
-        if (securityRisk != null) 'securityRisk': securityRisk!,
-      };
+    if (advice != null) 'advice': advice!,
+    if (securityRisk != null) 'securityRisk': securityRisk!,
+  };
 }
 
 /// A power management event.
@@ -9433,24 +9585,20 @@ class PowerManagementEvent {
   /// - "SHUTDOWN" : The device shut down.
   core.String? eventType;
 
-  PowerManagementEvent({
-    this.batteryLevel,
-    this.createTime,
-    this.eventType,
-  });
+  PowerManagementEvent({this.batteryLevel, this.createTime, this.eventType});
 
   PowerManagementEvent.fromJson(core.Map json_)
-      : this(
-          batteryLevel: (json_['batteryLevel'] as core.num?)?.toDouble(),
-          createTime: json_['createTime'] as core.String?,
-          eventType: json_['eventType'] as core.String?,
-        );
+    : this(
+        batteryLevel: (json_['batteryLevel'] as core.num?)?.toDouble(),
+        createTime: json_['createTime'] as core.String?,
+        eventType: json_['eventType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (batteryLevel != null) 'batteryLevel': batteryLevel!,
-        if (createTime != null) 'createTime': createTime!,
-        if (eventType != null) 'eventType': eventType!,
-      };
+    if (batteryLevel != null) 'batteryLevel': batteryLevel!,
+    if (createTime != null) 'createTime': createTime!,
+    if (eventType != null) 'eventType': eventType!,
+  };
 }
 
 /// Individual preferential network service configuration.
@@ -9524,21 +9672,21 @@ class PreferentialNetworkServiceConfig {
   });
 
   PreferentialNetworkServiceConfig.fromJson(core.Map json_)
-      : this(
-          fallbackToDefaultConnection:
-              json_['fallbackToDefaultConnection'] as core.String?,
-          nonMatchingNetworks: json_['nonMatchingNetworks'] as core.String?,
-          preferentialNetworkId: json_['preferentialNetworkId'] as core.String?,
-        );
+    : this(
+        fallbackToDefaultConnection:
+            json_['fallbackToDefaultConnection'] as core.String?,
+        nonMatchingNetworks: json_['nonMatchingNetworks'] as core.String?,
+        preferentialNetworkId: json_['preferentialNetworkId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fallbackToDefaultConnection != null)
-          'fallbackToDefaultConnection': fallbackToDefaultConnection!,
-        if (nonMatchingNetworks != null)
-          'nonMatchingNetworks': nonMatchingNetworks!,
-        if (preferentialNetworkId != null)
-          'preferentialNetworkId': preferentialNetworkId!,
-      };
+    if (fallbackToDefaultConnection != null)
+      'fallbackToDefaultConnection': fallbackToDefaultConnection!,
+    if (nonMatchingNetworks != null)
+      'nonMatchingNetworks': nonMatchingNetworks!,
+    if (preferentialNetworkId != null)
+      'preferentialNetworkId': preferentialNetworkId!,
+  };
 }
 
 /// Preferential network service settings.
@@ -9585,7 +9733,7 @@ class PreferentialNetworkServiceSettings {
   ///
   /// Required.
   core.List<PreferentialNetworkServiceConfig>?
-      preferentialNetworkServiceConfigs;
+  preferentialNetworkServiceConfigs;
 
   PreferentialNetworkServiceSettings({
     this.defaultPreferentialNetworkId,
@@ -9593,23 +9741,25 @@ class PreferentialNetworkServiceSettings {
   });
 
   PreferentialNetworkServiceSettings.fromJson(core.Map json_)
-      : this(
-          defaultPreferentialNetworkId:
-              json_['defaultPreferentialNetworkId'] as core.String?,
-          preferentialNetworkServiceConfigs:
-              (json_['preferentialNetworkServiceConfigs'] as core.List?)
-                  ?.map((value) => PreferentialNetworkServiceConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        defaultPreferentialNetworkId:
+            json_['defaultPreferentialNetworkId'] as core.String?,
+        preferentialNetworkServiceConfigs:
+            (json_['preferentialNetworkServiceConfigs'] as core.List?)
+                ?.map(
+                  (value) => PreferentialNetworkServiceConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultPreferentialNetworkId != null)
-          'defaultPreferentialNetworkId': defaultPreferentialNetworkId!,
-        if (preferentialNetworkServiceConfigs != null)
-          'preferentialNetworkServiceConfigs':
-              preferentialNetworkServiceConfigs!,
-      };
+    if (defaultPreferentialNetworkId != null)
+      'defaultPreferentialNetworkId': defaultPreferentialNetworkId!,
+    if (preferentialNetworkServiceConfigs != null)
+      'preferentialNetworkServiceConfigs': preferentialNetworkServiceConfigs!,
+  };
 }
 
 /// Information about a device that is available during setup.
@@ -9682,35 +9832,34 @@ class ProvisioningInfo {
   });
 
   ProvisioningInfo.fromJson(core.Map json_)
-      : this(
-          apiLevel: json_['apiLevel'] as core.int?,
-          authenticatedUserEmail:
-              json_['authenticatedUserEmail'] as core.String?,
-          brand: json_['brand'] as core.String?,
-          enterprise: json_['enterprise'] as core.String?,
-          imei: json_['imei'] as core.String?,
-          managementMode: json_['managementMode'] as core.String?,
-          meid: json_['meid'] as core.String?,
-          model: json_['model'] as core.String?,
-          name: json_['name'] as core.String?,
-          ownership: json_['ownership'] as core.String?,
-          serialNumber: json_['serialNumber'] as core.String?,
-        );
+    : this(
+        apiLevel: json_['apiLevel'] as core.int?,
+        authenticatedUserEmail: json_['authenticatedUserEmail'] as core.String?,
+        brand: json_['brand'] as core.String?,
+        enterprise: json_['enterprise'] as core.String?,
+        imei: json_['imei'] as core.String?,
+        managementMode: json_['managementMode'] as core.String?,
+        meid: json_['meid'] as core.String?,
+        model: json_['model'] as core.String?,
+        name: json_['name'] as core.String?,
+        ownership: json_['ownership'] as core.String?,
+        serialNumber: json_['serialNumber'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiLevel != null) 'apiLevel': apiLevel!,
-        if (authenticatedUserEmail != null)
-          'authenticatedUserEmail': authenticatedUserEmail!,
-        if (brand != null) 'brand': brand!,
-        if (enterprise != null) 'enterprise': enterprise!,
-        if (imei != null) 'imei': imei!,
-        if (managementMode != null) 'managementMode': managementMode!,
-        if (meid != null) 'meid': meid!,
-        if (model != null) 'model': model!,
-        if (name != null) 'name': name!,
-        if (ownership != null) 'ownership': ownership!,
-        if (serialNumber != null) 'serialNumber': serialNumber!,
-      };
+    if (apiLevel != null) 'apiLevel': apiLevel!,
+    if (authenticatedUserEmail != null)
+      'authenticatedUserEmail': authenticatedUserEmail!,
+    if (brand != null) 'brand': brand!,
+    if (enterprise != null) 'enterprise': enterprise!,
+    if (imei != null) 'imei': imei!,
+    if (managementMode != null) 'managementMode': managementMode!,
+    if (meid != null) 'meid': meid!,
+    if (model != null) 'model': model!,
+    if (name != null) 'name': name!,
+    if (ownership != null) 'ownership': ownership!,
+    if (serialNumber != null) 'serialNumber': serialNumber!,
+  };
 }
 
 /// Configuration info for an HTTP proxy.
@@ -9732,29 +9881,25 @@ class ProxyInfo {
   /// The port of the direct proxy.
   core.int? port;
 
-  ProxyInfo({
-    this.excludedHosts,
-    this.host,
-    this.pacUri,
-    this.port,
-  });
+  ProxyInfo({this.excludedHosts, this.host, this.pacUri, this.port});
 
   ProxyInfo.fromJson(core.Map json_)
-      : this(
-          excludedHosts: (json_['excludedHosts'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          host: json_['host'] as core.String?,
-          pacUri: json_['pacUri'] as core.String?,
-          port: json_['port'] as core.int?,
-        );
+    : this(
+        excludedHosts:
+            (json_['excludedHosts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        host: json_['host'] as core.String?,
+        pacUri: json_['pacUri'] as core.String?,
+        port: json_['port'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludedHosts != null) 'excludedHosts': excludedHosts!,
-        if (host != null) 'host': host!,
-        if (pacUri != null) 'pacUri': pacUri!,
-        if (port != null) 'port': port!,
-      };
+    if (excludedHosts != null) 'excludedHosts': excludedHosts!,
+    if (host != null) 'host': host!,
+    if (pacUri != null) 'pacUri': pacUri!,
+    if (port != null) 'port': port!,
+  };
 }
 
 /// Parameters associated with the REMOVE_ESIM command to remove an eSIM profile
@@ -9765,18 +9910,14 @@ class RemoveEsimParams {
   /// Required.
   core.String? iccId;
 
-  RemoveEsimParams({
-    this.iccId,
-  });
+  RemoveEsimParams({this.iccId});
 
   RemoveEsimParams.fromJson(core.Map json_)
-      : this(
-          iccId: json_['iccId'] as core.String?,
-        );
+    : this(iccId: json_['iccId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iccId != null) 'iccId': iccId!,
-      };
+    if (iccId != null) 'iccId': iccId!,
+  };
 }
 
 /// Request to remove ApplicationPolicy objects in the given policy.
@@ -9789,20 +9930,19 @@ class RemovePolicyApplicationsRequest {
   /// Required.
   core.List<core.String>? packageNames;
 
-  RemovePolicyApplicationsRequest({
-    this.packageNames,
-  });
+  RemovePolicyApplicationsRequest({this.packageNames});
 
   RemovePolicyApplicationsRequest.fromJson(core.Map json_)
-      : this(
-          packageNames: (json_['packageNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        packageNames:
+            (json_['packageNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (packageNames != null) 'packageNames': packageNames!,
-      };
+    if (packageNames != null) 'packageNames': packageNames!,
+  };
 }
 
 /// Response to a request to remove ApplicationPolicy objects in the given
@@ -9811,21 +9951,21 @@ class RemovePolicyApplicationsResponse {
   /// The updated policy after ApplicationPolicy objects have been removed.
   Policy? policy;
 
-  RemovePolicyApplicationsResponse({
-    this.policy,
-  });
+  RemovePolicyApplicationsResponse({this.policy});
 
   RemovePolicyApplicationsResponse.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-      };
+    if (policy != null) 'policy': policy!,
+  };
 }
 
 /// Parameters associated with the REQUEST_DEVICE_INFO command to get device
@@ -9843,18 +9983,14 @@ class RequestDeviceInfoParams {
   /// profiles and Android versions 13 and above.
   core.String? deviceInfo;
 
-  RequestDeviceInfoParams({
-    this.deviceInfo,
-  });
+  RequestDeviceInfoParams({this.deviceInfo});
 
   RequestDeviceInfoParams.fromJson(core.Map json_)
-      : this(
-          deviceInfo: json_['deviceInfo'] as core.String?,
-        );
+    : this(deviceInfo: json_['deviceInfo'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceInfo != null) 'deviceInfo': deviceInfo!,
-      };
+    if (deviceInfo != null) 'deviceInfo': deviceInfo!,
+  };
 }
 
 /// Status of the REQUEST_DEVICE_INFO command.
@@ -9875,24 +10011,23 @@ class RequestDeviceInfoStatus {
   /// device, e.g. eSIM is not supported on the device.
   core.String? status;
 
-  RequestDeviceInfoStatus({
-    this.eidInfo,
-    this.status,
-  });
+  RequestDeviceInfoStatus({this.eidInfo, this.status});
 
   RequestDeviceInfoStatus.fromJson(core.Map json_)
-      : this(
-          eidInfo: json_.containsKey('eidInfo')
-              ? EidInfo.fromJson(
-                  json_['eidInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          status: json_['status'] as core.String?,
-        );
+    : this(
+        eidInfo:
+            json_.containsKey('eidInfo')
+                ? EidInfo.fromJson(
+                  json_['eidInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        status: json_['status'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eidInfo != null) 'eidInfo': eidInfo!,
-        if (status != null) 'status': status!,
-      };
+    if (eidInfo != null) 'eidInfo': eidInfo!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// Controls for the screen brightness settings.
@@ -9935,22 +10070,19 @@ class ScreenBrightnessSettings {
   /// above.
   core.String? screenBrightnessMode;
 
-  ScreenBrightnessSettings({
-    this.screenBrightness,
-    this.screenBrightnessMode,
-  });
+  ScreenBrightnessSettings({this.screenBrightness, this.screenBrightnessMode});
 
   ScreenBrightnessSettings.fromJson(core.Map json_)
-      : this(
-          screenBrightness: json_['screenBrightness'] as core.int?,
-          screenBrightnessMode: json_['screenBrightnessMode'] as core.String?,
-        );
+    : this(
+        screenBrightness: json_['screenBrightness'] as core.int?,
+        screenBrightnessMode: json_['screenBrightnessMode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (screenBrightness != null) 'screenBrightness': screenBrightness!,
-        if (screenBrightnessMode != null)
-          'screenBrightnessMode': screenBrightnessMode!,
-      };
+    if (screenBrightness != null) 'screenBrightness': screenBrightness!,
+    if (screenBrightnessMode != null)
+      'screenBrightnessMode': screenBrightnessMode!,
+  };
 }
 
 /// Controls the screen timeout settings.
@@ -9988,21 +10120,18 @@ class ScreenTimeoutSettings {
   /// Android 15 and above.
   core.String? screenTimeoutMode;
 
-  ScreenTimeoutSettings({
-    this.screenTimeout,
-    this.screenTimeoutMode,
-  });
+  ScreenTimeoutSettings({this.screenTimeout, this.screenTimeoutMode});
 
   ScreenTimeoutSettings.fromJson(core.Map json_)
-      : this(
-          screenTimeout: json_['screenTimeout'] as core.String?,
-          screenTimeoutMode: json_['screenTimeoutMode'] as core.String?,
-        );
+    : this(
+        screenTimeout: json_['screenTimeout'] as core.String?,
+        screenTimeoutMode: json_['screenTimeoutMode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (screenTimeout != null) 'screenTimeout': screenTimeout!,
-        if (screenTimeoutMode != null) 'screenTimeoutMode': screenTimeoutMode!,
-      };
+    if (screenTimeout != null) 'screenTimeout': screenTimeout!,
+    if (screenTimeoutMode != null) 'screenTimeoutMode': screenTimeoutMode!,
+  };
 }
 
 /// The security posture of the device, as determined by the current device
@@ -10022,24 +10151,25 @@ class SecurityPosture {
   /// Additional details regarding the security posture of the device.
   core.List<PostureDetail>? postureDetails;
 
-  SecurityPosture({
-    this.devicePosture,
-    this.postureDetails,
-  });
+  SecurityPosture({this.devicePosture, this.postureDetails});
 
   SecurityPosture.fromJson(core.Map json_)
-      : this(
-          devicePosture: json_['devicePosture'] as core.String?,
-          postureDetails: (json_['postureDetails'] as core.List?)
-              ?.map((value) => PostureDetail.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        devicePosture: json_['devicePosture'] as core.String?,
+        postureDetails:
+            (json_['postureDetails'] as core.List?)
+                ?.map(
+                  (value) => PostureDetail.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devicePosture != null) 'devicePosture': devicePosture!,
-        if (postureDetails != null) 'postureDetails': postureDetails!,
-      };
+    if (devicePosture != null) 'devicePosture': devicePosture!,
+    if (postureDetails != null) 'postureDetails': postureDetails!,
+  };
 }
 
 /// An action executed during setup.
@@ -10060,33 +10190,35 @@ class SetupAction {
   /// Title of this action.
   UserFacingMessage? title;
 
-  SetupAction({
-    this.description,
-    this.launchApp,
-    this.title,
-  });
+  SetupAction({this.description, this.launchApp, this.title});
 
   SetupAction.fromJson(core.Map json_)
-      : this(
-          description: json_.containsKey('description')
-              ? UserFacingMessage.fromJson(
-                  json_['description'] as core.Map<core.String, core.dynamic>)
-              : null,
-          launchApp: json_.containsKey('launchApp')
-              ? LaunchAppAction.fromJson(
-                  json_['launchApp'] as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_.containsKey('title')
-              ? UserFacingMessage.fromJson(
-                  json_['title'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        description:
+            json_.containsKey('description')
+                ? UserFacingMessage.fromJson(
+                  json_['description'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        launchApp:
+            json_.containsKey('launchApp')
+                ? LaunchAppAction.fromJson(
+                  json_['launchApp'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title:
+            json_.containsKey('title')
+                ? UserFacingMessage.fromJson(
+                  json_['title'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (launchApp != null) 'launchApp': launchApp!,
-        if (title != null) 'title': title!,
-      };
+    if (description != null) 'description': description!,
+    if (launchApp != null) 'launchApp': launchApp!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// A resource containing sign in details for an enterprise.
@@ -10188,25 +10320,24 @@ class SigninDetail {
   });
 
   SigninDetail.fromJson(core.Map json_)
-      : this(
-          allowPersonalUsage: json_['allowPersonalUsage'] as core.String?,
-          defaultStatus: json_['defaultStatus'] as core.String?,
-          qrCode: json_['qrCode'] as core.String?,
-          signinEnrollmentToken: json_['signinEnrollmentToken'] as core.String?,
-          signinUrl: json_['signinUrl'] as core.String?,
-          tokenTag: json_['tokenTag'] as core.String?,
-        );
+    : this(
+        allowPersonalUsage: json_['allowPersonalUsage'] as core.String?,
+        defaultStatus: json_['defaultStatus'] as core.String?,
+        qrCode: json_['qrCode'] as core.String?,
+        signinEnrollmentToken: json_['signinEnrollmentToken'] as core.String?,
+        signinUrl: json_['signinUrl'] as core.String?,
+        tokenTag: json_['tokenTag'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowPersonalUsage != null)
-          'allowPersonalUsage': allowPersonalUsage!,
-        if (defaultStatus != null) 'defaultStatus': defaultStatus!,
-        if (qrCode != null) 'qrCode': qrCode!,
-        if (signinEnrollmentToken != null)
-          'signinEnrollmentToken': signinEnrollmentToken!,
-        if (signinUrl != null) 'signinUrl': signinUrl!,
-        if (tokenTag != null) 'tokenTag': tokenTag!,
-      };
+    if (allowPersonalUsage != null) 'allowPersonalUsage': allowPersonalUsage!,
+    if (defaultStatus != null) 'defaultStatus': defaultStatus!,
+    if (qrCode != null) 'qrCode': qrCode!,
+    if (signinEnrollmentToken != null)
+      'signinEnrollmentToken': signinEnrollmentToken!,
+    if (signinUrl != null) 'signinUrl': signinUrl!,
+    if (tokenTag != null) 'tokenTag': tokenTag!,
+  };
 }
 
 /// An enterprise signup URL.
@@ -10222,21 +10353,18 @@ class SignupUrl {
   /// The page can't be rendered in an iframe.
   core.String? url;
 
-  SignupUrl({
-    this.name,
-    this.url,
-  });
+  SignupUrl({this.name, this.url});
 
   SignupUrl.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (url != null) 'url': url!,
-      };
+    if (name != null) 'name': name!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Information about device software.
@@ -10296,45 +10424,46 @@ class SoftwareInfo {
   });
 
   SoftwareInfo.fromJson(core.Map json_)
-      : this(
-          androidBuildNumber: json_['androidBuildNumber'] as core.String?,
-          androidBuildTime: json_['androidBuildTime'] as core.String?,
-          androidDevicePolicyVersionCode:
-              json_['androidDevicePolicyVersionCode'] as core.int?,
-          androidDevicePolicyVersionName:
-              json_['androidDevicePolicyVersionName'] as core.String?,
-          androidVersion: json_['androidVersion'] as core.String?,
-          bootloaderVersion: json_['bootloaderVersion'] as core.String?,
-          deviceBuildSignature: json_['deviceBuildSignature'] as core.String?,
-          deviceKernelVersion: json_['deviceKernelVersion'] as core.String?,
-          primaryLanguageCode: json_['primaryLanguageCode'] as core.String?,
-          securityPatchLevel: json_['securityPatchLevel'] as core.String?,
-          systemUpdateInfo: json_.containsKey('systemUpdateInfo')
-              ? SystemUpdateInfo.fromJson(json_['systemUpdateInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        androidBuildNumber: json_['androidBuildNumber'] as core.String?,
+        androidBuildTime: json_['androidBuildTime'] as core.String?,
+        androidDevicePolicyVersionCode:
+            json_['androidDevicePolicyVersionCode'] as core.int?,
+        androidDevicePolicyVersionName:
+            json_['androidDevicePolicyVersionName'] as core.String?,
+        androidVersion: json_['androidVersion'] as core.String?,
+        bootloaderVersion: json_['bootloaderVersion'] as core.String?,
+        deviceBuildSignature: json_['deviceBuildSignature'] as core.String?,
+        deviceKernelVersion: json_['deviceKernelVersion'] as core.String?,
+        primaryLanguageCode: json_['primaryLanguageCode'] as core.String?,
+        securityPatchLevel: json_['securityPatchLevel'] as core.String?,
+        systemUpdateInfo:
+            json_.containsKey('systemUpdateInfo')
+                ? SystemUpdateInfo.fromJson(
+                  json_['systemUpdateInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidBuildNumber != null)
-          'androidBuildNumber': androidBuildNumber!,
-        if (androidBuildTime != null) 'androidBuildTime': androidBuildTime!,
-        if (androidDevicePolicyVersionCode != null)
-          'androidDevicePolicyVersionCode': androidDevicePolicyVersionCode!,
-        if (androidDevicePolicyVersionName != null)
-          'androidDevicePolicyVersionName': androidDevicePolicyVersionName!,
-        if (androidVersion != null) 'androidVersion': androidVersion!,
-        if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion!,
-        if (deviceBuildSignature != null)
-          'deviceBuildSignature': deviceBuildSignature!,
-        if (deviceKernelVersion != null)
-          'deviceKernelVersion': deviceKernelVersion!,
-        if (primaryLanguageCode != null)
-          'primaryLanguageCode': primaryLanguageCode!,
-        if (securityPatchLevel != null)
-          'securityPatchLevel': securityPatchLevel!,
-        if (systemUpdateInfo != null) 'systemUpdateInfo': systemUpdateInfo!,
-      };
+    if (androidBuildNumber != null) 'androidBuildNumber': androidBuildNumber!,
+    if (androidBuildTime != null) 'androidBuildTime': androidBuildTime!,
+    if (androidDevicePolicyVersionCode != null)
+      'androidDevicePolicyVersionCode': androidDevicePolicyVersionCode!,
+    if (androidDevicePolicyVersionName != null)
+      'androidDevicePolicyVersionName': androidDevicePolicyVersionName!,
+    if (androidVersion != null) 'androidVersion': androidVersion!,
+    if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion!,
+    if (deviceBuildSignature != null)
+      'deviceBuildSignature': deviceBuildSignature!,
+    if (deviceKernelVersion != null)
+      'deviceKernelVersion': deviceKernelVersion!,
+    if (primaryLanguageCode != null)
+      'primaryLanguageCode': primaryLanguageCode!,
+    if (securityPatchLevel != null) 'securityPatchLevel': securityPatchLevel!,
+    if (systemUpdateInfo != null) 'systemUpdateInfo': systemUpdateInfo!,
+  };
 }
 
 /// Additional context for SpecificNonComplianceReason.
@@ -10356,23 +10485,28 @@ class SpecificNonComplianceContext {
   });
 
   SpecificNonComplianceContext.fromJson(core.Map json_)
-      : this(
-          oncWifiContext: json_.containsKey('oncWifiContext')
-              ? OncWifiContext.fromJson(json_['oncWifiContext']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          passwordPoliciesContext: json_.containsKey('passwordPoliciesContext')
-              ? PasswordPoliciesContext.fromJson(
+    : this(
+        oncWifiContext:
+            json_.containsKey('oncWifiContext')
+                ? OncWifiContext.fromJson(
+                  json_['oncWifiContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        passwordPoliciesContext:
+            json_.containsKey('passwordPoliciesContext')
+                ? PasswordPoliciesContext.fromJson(
                   json_['passwordPoliciesContext']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (oncWifiContext != null) 'oncWifiContext': oncWifiContext!,
-        if (passwordPoliciesContext != null)
-          'passwordPoliciesContext': passwordPoliciesContext!,
-      };
+    if (oncWifiContext != null) 'oncWifiContext': oncWifiContext!,
+    if (passwordPoliciesContext != null)
+      'passwordPoliciesContext': passwordPoliciesContext!,
+  };
 }
 
 /// Parameters associated with the START_LOST_MODE command to put the device
@@ -10407,33 +10541,44 @@ class StartLostModeParams {
   });
 
   StartLostModeParams.fromJson(core.Map json_)
-      : this(
-          lostEmailAddress: json_['lostEmailAddress'] as core.String?,
-          lostMessage: json_.containsKey('lostMessage')
-              ? UserFacingMessage.fromJson(
-                  json_['lostMessage'] as core.Map<core.String, core.dynamic>)
-              : null,
-          lostOrganization: json_.containsKey('lostOrganization')
-              ? UserFacingMessage.fromJson(json_['lostOrganization']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          lostPhoneNumber: json_.containsKey('lostPhoneNumber')
-              ? UserFacingMessage.fromJson(json_['lostPhoneNumber']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          lostStreetAddress: json_.containsKey('lostStreetAddress')
-              ? UserFacingMessage.fromJson(json_['lostStreetAddress']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        lostEmailAddress: json_['lostEmailAddress'] as core.String?,
+        lostMessage:
+            json_.containsKey('lostMessage')
+                ? UserFacingMessage.fromJson(
+                  json_['lostMessage'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lostOrganization:
+            json_.containsKey('lostOrganization')
+                ? UserFacingMessage.fromJson(
+                  json_['lostOrganization']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lostPhoneNumber:
+            json_.containsKey('lostPhoneNumber')
+                ? UserFacingMessage.fromJson(
+                  json_['lostPhoneNumber']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lostStreetAddress:
+            json_.containsKey('lostStreetAddress')
+                ? UserFacingMessage.fromJson(
+                  json_['lostStreetAddress']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lostEmailAddress != null) 'lostEmailAddress': lostEmailAddress!,
-        if (lostMessage != null) 'lostMessage': lostMessage!,
-        if (lostOrganization != null) 'lostOrganization': lostOrganization!,
-        if (lostPhoneNumber != null) 'lostPhoneNumber': lostPhoneNumber!,
-        if (lostStreetAddress != null) 'lostStreetAddress': lostStreetAddress!,
-      };
+    if (lostEmailAddress != null) 'lostEmailAddress': lostEmailAddress!,
+    if (lostMessage != null) 'lostMessage': lostMessage!,
+    if (lostOrganization != null) 'lostOrganization': lostOrganization!,
+    if (lostPhoneNumber != null) 'lostPhoneNumber': lostPhoneNumber!,
+    if (lostStreetAddress != null) 'lostStreetAddress': lostStreetAddress!,
+  };
 }
 
 /// Status of the START_LOST_MODE command to put the device into lost mode.
@@ -10451,18 +10596,14 @@ class StartLostModeStatus {
   /// - "ALREADY_IN_LOST_MODE" : The device is already in lost mode.
   core.String? status;
 
-  StartLostModeStatus({
-    this.status,
-  });
+  StartLostModeStatus({this.status});
 
   StartLostModeStatus.fromJson(core.Map json_)
-      : this(
-          status: json_['status'] as core.String?,
-        );
+    : this(status: json_['status'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null) 'status': status!,
-      };
+    if (status != null) 'status': status!,
+  };
 }
 
 /// The Status type defines a logical error model that is suitable for different
@@ -10537,52 +10678,50 @@ class StatusReportingSettings {
   });
 
   StatusReportingSettings.fromJson(core.Map json_)
-      : this(
-          applicationReportingSettings:
-              json_.containsKey('applicationReportingSettings')
-                  ? ApplicationReportingSettings.fromJson(
-                      json_['applicationReportingSettings']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          applicationReportsEnabled:
-              json_['applicationReportsEnabled'] as core.bool?,
-          commonCriteriaModeEnabled:
-              json_['commonCriteriaModeEnabled'] as core.bool?,
-          deviceSettingsEnabled: json_['deviceSettingsEnabled'] as core.bool?,
-          displayInfoEnabled: json_['displayInfoEnabled'] as core.bool?,
-          hardwareStatusEnabled: json_['hardwareStatusEnabled'] as core.bool?,
-          memoryInfoEnabled: json_['memoryInfoEnabled'] as core.bool?,
-          networkInfoEnabled: json_['networkInfoEnabled'] as core.bool?,
-          powerManagementEventsEnabled:
-              json_['powerManagementEventsEnabled'] as core.bool?,
-          softwareInfoEnabled: json_['softwareInfoEnabled'] as core.bool?,
-          systemPropertiesEnabled:
-              json_['systemPropertiesEnabled'] as core.bool?,
-        );
+    : this(
+        applicationReportingSettings:
+            json_.containsKey('applicationReportingSettings')
+                ? ApplicationReportingSettings.fromJson(
+                  json_['applicationReportingSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        applicationReportsEnabled:
+            json_['applicationReportsEnabled'] as core.bool?,
+        commonCriteriaModeEnabled:
+            json_['commonCriteriaModeEnabled'] as core.bool?,
+        deviceSettingsEnabled: json_['deviceSettingsEnabled'] as core.bool?,
+        displayInfoEnabled: json_['displayInfoEnabled'] as core.bool?,
+        hardwareStatusEnabled: json_['hardwareStatusEnabled'] as core.bool?,
+        memoryInfoEnabled: json_['memoryInfoEnabled'] as core.bool?,
+        networkInfoEnabled: json_['networkInfoEnabled'] as core.bool?,
+        powerManagementEventsEnabled:
+            json_['powerManagementEventsEnabled'] as core.bool?,
+        softwareInfoEnabled: json_['softwareInfoEnabled'] as core.bool?,
+        systemPropertiesEnabled: json_['systemPropertiesEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationReportingSettings != null)
-          'applicationReportingSettings': applicationReportingSettings!,
-        if (applicationReportsEnabled != null)
-          'applicationReportsEnabled': applicationReportsEnabled!,
-        if (commonCriteriaModeEnabled != null)
-          'commonCriteriaModeEnabled': commonCriteriaModeEnabled!,
-        if (deviceSettingsEnabled != null)
-          'deviceSettingsEnabled': deviceSettingsEnabled!,
-        if (displayInfoEnabled != null)
-          'displayInfoEnabled': displayInfoEnabled!,
-        if (hardwareStatusEnabled != null)
-          'hardwareStatusEnabled': hardwareStatusEnabled!,
-        if (memoryInfoEnabled != null) 'memoryInfoEnabled': memoryInfoEnabled!,
-        if (networkInfoEnabled != null)
-          'networkInfoEnabled': networkInfoEnabled!,
-        if (powerManagementEventsEnabled != null)
-          'powerManagementEventsEnabled': powerManagementEventsEnabled!,
-        if (softwareInfoEnabled != null)
-          'softwareInfoEnabled': softwareInfoEnabled!,
-        if (systemPropertiesEnabled != null)
-          'systemPropertiesEnabled': systemPropertiesEnabled!,
-      };
+    if (applicationReportingSettings != null)
+      'applicationReportingSettings': applicationReportingSettings!,
+    if (applicationReportsEnabled != null)
+      'applicationReportsEnabled': applicationReportsEnabled!,
+    if (commonCriteriaModeEnabled != null)
+      'commonCriteriaModeEnabled': commonCriteriaModeEnabled!,
+    if (deviceSettingsEnabled != null)
+      'deviceSettingsEnabled': deviceSettingsEnabled!,
+    if (displayInfoEnabled != null) 'displayInfoEnabled': displayInfoEnabled!,
+    if (hardwareStatusEnabled != null)
+      'hardwareStatusEnabled': hardwareStatusEnabled!,
+    if (memoryInfoEnabled != null) 'memoryInfoEnabled': memoryInfoEnabled!,
+    if (networkInfoEnabled != null) 'networkInfoEnabled': networkInfoEnabled!,
+    if (powerManagementEventsEnabled != null)
+      'powerManagementEventsEnabled': powerManagementEventsEnabled!,
+    if (softwareInfoEnabled != null)
+      'softwareInfoEnabled': softwareInfoEnabled!,
+    if (systemPropertiesEnabled != null)
+      'systemPropertiesEnabled': systemPropertiesEnabled!,
+  };
 }
 
 /// Parameters associated with the STOP_LOST_MODE command to take the device out
@@ -10600,18 +10739,14 @@ class StopLostModeStatus {
   /// - "NOT_IN_LOST_MODE" : The device is not in lost mode.
   core.String? status;
 
-  StopLostModeStatus({
-    this.status,
-  });
+  StopLostModeStatus({this.status});
 
   StopLostModeStatus.fromJson(core.Map json_)
-      : this(
-          status: json_['status'] as core.String?,
-        );
+    : this(status: json_['status'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null) 'status': status!,
-      };
+    if (status != null) 'status': status!,
+  };
 }
 
 /// Configuration for managing system updatesNote: Google Play system updates
@@ -10670,22 +10805,26 @@ class SystemUpdate {
   });
 
   SystemUpdate.fromJson(core.Map json_)
-      : this(
-          endMinutes: json_['endMinutes'] as core.int?,
-          freezePeriods: (json_['freezePeriods'] as core.List?)
-              ?.map((value) => FreezePeriod.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          startMinutes: json_['startMinutes'] as core.int?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        endMinutes: json_['endMinutes'] as core.int?,
+        freezePeriods:
+            (json_['freezePeriods'] as core.List?)
+                ?.map(
+                  (value) => FreezePeriod.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        startMinutes: json_['startMinutes'] as core.int?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endMinutes != null) 'endMinutes': endMinutes!,
-        if (freezePeriods != null) 'freezePeriods': freezePeriods!,
-        if (startMinutes != null) 'startMinutes': startMinutes!,
-        if (type != null) 'type': type!,
-      };
+    if (endMinutes != null) 'endMinutes': endMinutes!,
+    if (freezePeriods != null) 'freezePeriods': freezePeriods!,
+    if (startMinutes != null) 'startMinutes': startMinutes!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Information about a potential pending system update.
@@ -10711,22 +10850,18 @@ class SystemUpdateInfo {
   /// - "OS_UPDATE_AVAILABLE" : There is a pending OS update available.
   core.String? updateStatus;
 
-  SystemUpdateInfo({
-    this.updateReceivedTime,
-    this.updateStatus,
-  });
+  SystemUpdateInfo({this.updateReceivedTime, this.updateStatus});
 
   SystemUpdateInfo.fromJson(core.Map json_)
-      : this(
-          updateReceivedTime: json_['updateReceivedTime'] as core.String?,
-          updateStatus: json_['updateStatus'] as core.String?,
-        );
+    : this(
+        updateReceivedTime: json_['updateReceivedTime'] as core.String?,
+        updateStatus: json_['updateStatus'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (updateReceivedTime != null)
-          'updateReceivedTime': updateReceivedTime!,
-        if (updateStatus != null) 'updateStatus': updateStatus!,
-      };
+    if (updateReceivedTime != null) 'updateReceivedTime': updateReceivedTime!,
+    if (updateStatus != null) 'updateStatus': updateStatus!,
+  };
 }
 
 /// Telephony information associated with a given SIM card on the device.
@@ -10779,21 +10914,21 @@ class TelephonyInfo {
   });
 
   TelephonyInfo.fromJson(core.Map json_)
-      : this(
-          activationState: json_['activationState'] as core.String?,
-          carrierName: json_['carrierName'] as core.String?,
-          configMode: json_['configMode'] as core.String?,
-          iccId: json_['iccId'] as core.String?,
-          phoneNumber: json_['phoneNumber'] as core.String?,
-        );
+    : this(
+        activationState: json_['activationState'] as core.String?,
+        carrierName: json_['carrierName'] as core.String?,
+        configMode: json_['configMode'] as core.String?,
+        iccId: json_['iccId'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activationState != null) 'activationState': activationState!,
-        if (carrierName != null) 'carrierName': carrierName!,
-        if (configMode != null) 'configMode': configMode!,
-        if (iccId != null) 'iccId': iccId!,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-      };
+    if (activationState != null) 'activationState': activationState!,
+    if (carrierName != null) 'carrierName': carrierName!,
+    if (configMode != null) 'configMode': configMode!,
+    if (iccId != null) 'iccId': iccId!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+  };
 }
 
 /// A terms and conditions page to be accepted during provisioning.
@@ -10806,27 +10941,28 @@ class TermsAndConditions {
   /// A short header which appears above the HTML content.
   UserFacingMessage? header;
 
-  TermsAndConditions({
-    this.content,
-    this.header,
-  });
+  TermsAndConditions({this.content, this.header});
 
   TermsAndConditions.fromJson(core.Map json_)
-      : this(
-          content: json_.containsKey('content')
-              ? UserFacingMessage.fromJson(
-                  json_['content'] as core.Map<core.String, core.dynamic>)
-              : null,
-          header: json_.containsKey('header')
-              ? UserFacingMessage.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        content:
+            json_.containsKey('content')
+                ? UserFacingMessage.fromJson(
+                  json_['content'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        header:
+            json_.containsKey('header')
+                ? UserFacingMessage.fromJson(
+                  json_['header'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (header != null) 'header': header!,
-      };
+    if (content != null) 'content': content!,
+    if (header != null) 'header': header!,
+  };
 }
 
 /// Controls types of device activity logs collected from the device and
@@ -10844,27 +10980,25 @@ class UsageLog {
   /// By default logs are queued for upload when the device connects to WiFi.
   core.List<core.String>? uploadOnCellularAllowed;
 
-  UsageLog({
-    this.enabledLogTypes,
-    this.uploadOnCellularAllowed,
-  });
+  UsageLog({this.enabledLogTypes, this.uploadOnCellularAllowed});
 
   UsageLog.fromJson(core.Map json_)
-      : this(
-          enabledLogTypes: (json_['enabledLogTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          uploadOnCellularAllowed:
-              (json_['uploadOnCellularAllowed'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-        );
+    : this(
+        enabledLogTypes:
+            (json_['enabledLogTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        uploadOnCellularAllowed:
+            (json_['uploadOnCellularAllowed'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabledLogTypes != null) 'enabledLogTypes': enabledLogTypes!,
-        if (uploadOnCellularAllowed != null)
-          'uploadOnCellularAllowed': uploadOnCellularAllowed!,
-      };
+    if (enabledLogTypes != null) 'enabledLogTypes': enabledLogTypes!,
+    if (uploadOnCellularAllowed != null)
+      'uploadOnCellularAllowed': uploadOnCellularAllowed!,
+  };
 }
 
 /// A user belonging to an enterprise.
@@ -10878,18 +11012,14 @@ class User {
   /// request will fail.
   core.String? accountIdentifier;
 
-  User({
-    this.accountIdentifier,
-  });
+  User({this.accountIdentifier});
 
   User.fromJson(core.Map json_)
-      : this(
-          accountIdentifier: json_['accountIdentifier'] as core.String?,
-        );
+    : this(accountIdentifier: json_['accountIdentifier'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountIdentifier != null) 'accountIdentifier': accountIdentifier!,
-      };
+    if (accountIdentifier != null) 'accountIdentifier': accountIdentifier!,
+  };
 }
 
 /// Provides a user-facing message with locale info.
@@ -10907,28 +11037,20 @@ class UserFacingMessage {
   /// en-US, es-ES, or fr.
   core.Map<core.String, core.String>? localizedMessages;
 
-  UserFacingMessage({
-    this.defaultMessage,
-    this.localizedMessages,
-  });
+  UserFacingMessage({this.defaultMessage, this.localizedMessages});
 
   UserFacingMessage.fromJson(core.Map json_)
-      : this(
-          defaultMessage: json_['defaultMessage'] as core.String?,
-          localizedMessages: (json_['localizedMessages']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        defaultMessage: json_['defaultMessage'] as core.String?,
+        localizedMessages: (json_['localizedMessages']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultMessage != null) 'defaultMessage': defaultMessage!,
-        if (localizedMessages != null) 'localizedMessages': localizedMessages!,
-      };
+    if (defaultMessage != null) 'defaultMessage': defaultMessage!,
+    if (localizedMessages != null) 'localizedMessages': localizedMessages!,
+  };
 }
 
 /// A web app.
@@ -10979,26 +11101,30 @@ class WebApp {
   });
 
   WebApp.fromJson(core.Map json_)
-      : this(
-          displayMode: json_['displayMode'] as core.String?,
-          icons: (json_['icons'] as core.List?)
-              ?.map((value) => WebAppIcon.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          startUrl: json_['startUrl'] as core.String?,
-          title: json_['title'] as core.String?,
-          versionCode: json_['versionCode'] as core.String?,
-        );
+    : this(
+        displayMode: json_['displayMode'] as core.String?,
+        icons:
+            (json_['icons'] as core.List?)
+                ?.map(
+                  (value) => WebAppIcon.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        startUrl: json_['startUrl'] as core.String?,
+        title: json_['title'] as core.String?,
+        versionCode: json_['versionCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayMode != null) 'displayMode': displayMode!,
-        if (icons != null) 'icons': icons!,
-        if (name != null) 'name': name!,
-        if (startUrl != null) 'startUrl': startUrl!,
-        if (title != null) 'title': title!,
-        if (versionCode != null) 'versionCode': versionCode!,
-      };
+    if (displayMode != null) 'displayMode': displayMode!,
+    if (icons != null) 'icons': icons!,
+    if (name != null) 'name': name!,
+    if (startUrl != null) 'startUrl': startUrl!,
+    if (title != null) 'title': title!,
+    if (versionCode != null) 'versionCode': versionCode!,
+  };
 }
 
 /// An icon for a web app.
@@ -11052,25 +11178,27 @@ class WebToken {
   });
 
   WebToken.fromJson(core.Map json_)
-      : this(
-          enabledFeatures: (json_['enabledFeatures'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          parentFrameUrl: json_['parentFrameUrl'] as core.String?,
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        enabledFeatures:
+            (json_['enabledFeatures'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        parentFrameUrl: json_['parentFrameUrl'] as core.String?,
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabledFeatures != null) 'enabledFeatures': enabledFeatures!,
-        if (name != null) 'name': name!,
-        if (parentFrameUrl != null) 'parentFrameUrl': parentFrameUrl!,
-        if (permissions != null) 'permissions': permissions!,
-        if (value != null) 'value': value!,
-      };
+    if (enabledFeatures != null) 'enabledFeatures': enabledFeatures!,
+    if (name != null) 'name': name!,
+    if (parentFrameUrl != null) 'parentFrameUrl': parentFrameUrl!,
+    if (permissions != null) 'permissions': permissions!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Wi-Fi roaming policy.
@@ -11083,22 +11211,24 @@ class WifiRoamingPolicy {
   /// Optional.
   core.List<WifiRoamingSetting>? wifiRoamingSettings;
 
-  WifiRoamingPolicy({
-    this.wifiRoamingSettings,
-  });
+  WifiRoamingPolicy({this.wifiRoamingSettings});
 
   WifiRoamingPolicy.fromJson(core.Map json_)
-      : this(
-          wifiRoamingSettings: (json_['wifiRoamingSettings'] as core.List?)
-              ?.map((value) => WifiRoamingSetting.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        wifiRoamingSettings:
+            (json_['wifiRoamingSettings'] as core.List?)
+                ?.map(
+                  (value) => WifiRoamingSetting.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (wifiRoamingSettings != null)
-          'wifiRoamingSettings': wifiRoamingSettings!,
-      };
+    if (wifiRoamingSettings != null)
+      'wifiRoamingSettings': wifiRoamingSettings!,
+  };
 }
 
 /// Wi-Fi roaming setting.
@@ -11129,21 +11259,18 @@ class WifiRoamingSetting {
   /// Required.
   core.String? wifiSsid;
 
-  WifiRoamingSetting({
-    this.wifiRoamingMode,
-    this.wifiSsid,
-  });
+  WifiRoamingSetting({this.wifiRoamingMode, this.wifiSsid});
 
   WifiRoamingSetting.fromJson(core.Map json_)
-      : this(
-          wifiRoamingMode: json_['wifiRoamingMode'] as core.String?,
-          wifiSsid: json_['wifiSsid'] as core.String?,
-        );
+    : this(
+        wifiRoamingMode: json_['wifiRoamingMode'] as core.String?,
+        wifiSsid: json_['wifiSsid'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (wifiRoamingMode != null) 'wifiRoamingMode': wifiRoamingMode!,
-        if (wifiSsid != null) 'wifiSsid': wifiSsid!,
-      };
+    if (wifiRoamingMode != null) 'wifiRoamingMode': wifiRoamingMode!,
+    if (wifiSsid != null) 'wifiSsid': wifiSsid!,
+  };
 }
 
 /// Represents a Wi-Fi SSID.
@@ -11153,18 +11280,14 @@ class WifiSsid {
   /// Required.
   core.String? wifiSsid;
 
-  WifiSsid({
-    this.wifiSsid,
-  });
+  WifiSsid({this.wifiSsid});
 
   WifiSsid.fromJson(core.Map json_)
-      : this(
-          wifiSsid: json_['wifiSsid'] as core.String?,
-        );
+    : this(wifiSsid: json_['wifiSsid'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (wifiSsid != null) 'wifiSsid': wifiSsid!,
-      };
+    if (wifiSsid != null) 'wifiSsid': wifiSsid!,
+  };
 }
 
 /// Restrictions on which Wi-Fi SSIDs the device can connect to.
@@ -11195,25 +11318,25 @@ class WifiSsidPolicy {
   /// Optional.
   core.List<WifiSsid>? wifiSsids;
 
-  WifiSsidPolicy({
-    this.wifiSsidPolicyType,
-    this.wifiSsids,
-  });
+  WifiSsidPolicy({this.wifiSsidPolicyType, this.wifiSsids});
 
   WifiSsidPolicy.fromJson(core.Map json_)
-      : this(
-          wifiSsidPolicyType: json_['wifiSsidPolicyType'] as core.String?,
-          wifiSsids: (json_['wifiSsids'] as core.List?)
-              ?.map((value) => WifiSsid.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        wifiSsidPolicyType: json_['wifiSsidPolicyType'] as core.String?,
+        wifiSsids:
+            (json_['wifiSsids'] as core.List?)
+                ?.map(
+                  (value) => WifiSsid.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (wifiSsidPolicyType != null)
-          'wifiSsidPolicyType': wifiSsidPolicyType!,
-        if (wifiSsids != null) 'wifiSsids': wifiSsids!,
-      };
+    if (wifiSsidPolicyType != null) 'wifiSsidPolicyType': wifiSsidPolicyType!,
+    if (wifiSsids != null) 'wifiSsids': wifiSsids!,
+  };
 }
 
 /// An action to reset a company owned device or delete a work profile.
@@ -11231,21 +11354,18 @@ class WipeAction {
   /// wipeAfterDays must be greater than blockAfterDays.
   core.int? wipeAfterDays;
 
-  WipeAction({
-    this.preserveFrp,
-    this.wipeAfterDays,
-  });
+  WipeAction({this.preserveFrp, this.wipeAfterDays});
 
   WipeAction.fromJson(core.Map json_)
-      : this(
-          preserveFrp: json_['preserveFrp'] as core.bool?,
-          wipeAfterDays: json_['wipeAfterDays'] as core.int?,
-        );
+    : this(
+        preserveFrp: json_['preserveFrp'] as core.bool?,
+        wipeAfterDays: json_['wipeAfterDays'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (preserveFrp != null) 'preserveFrp': preserveFrp!,
-        if (wipeAfterDays != null) 'wipeAfterDays': wipeAfterDays!,
-      };
+    if (preserveFrp != null) 'preserveFrp': preserveFrp!,
+    if (wipeAfterDays != null) 'wipeAfterDays': wipeAfterDays!,
+  };
 }
 
 /// Parameters associated with the WIPE command to wipe the device.
@@ -11264,26 +11384,26 @@ class WipeParams {
   /// Optional.
   UserFacingMessage? wipeReason;
 
-  WipeParams({
-    this.wipeDataFlags,
-    this.wipeReason,
-  });
+  WipeParams({this.wipeDataFlags, this.wipeReason});
 
   WipeParams.fromJson(core.Map json_)
-      : this(
-          wipeDataFlags: (json_['wipeDataFlags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          wipeReason: json_.containsKey('wipeReason')
-              ? UserFacingMessage.fromJson(
-                  json_['wipeReason'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        wipeDataFlags:
+            (json_['wipeDataFlags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        wipeReason:
+            json_.containsKey('wipeReason')
+                ? UserFacingMessage.fromJson(
+                  json_['wipeReason'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (wipeDataFlags != null) 'wipeDataFlags': wipeDataFlags!,
-        if (wipeReason != null) 'wipeReason': wipeReason!,
-      };
+    if (wipeDataFlags != null) 'wipeDataFlags': wipeDataFlags!,
+    if (wipeReason != null) 'wipeReason': wipeReason!,
+  };
 }
 
 /// Controls the work account setup configuration, such as details of whether a
@@ -11311,21 +11431,17 @@ class WorkAccountSetupConfig {
   /// Optional.
   core.String? requiredAccountEmail;
 
-  WorkAccountSetupConfig({
-    this.authenticationType,
-    this.requiredAccountEmail,
-  });
+  WorkAccountSetupConfig({this.authenticationType, this.requiredAccountEmail});
 
   WorkAccountSetupConfig.fromJson(core.Map json_)
-      : this(
-          authenticationType: json_['authenticationType'] as core.String?,
-          requiredAccountEmail: json_['requiredAccountEmail'] as core.String?,
-        );
+    : this(
+        authenticationType: json_['authenticationType'] as core.String?,
+        requiredAccountEmail: json_['requiredAccountEmail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authenticationType != null)
-          'authenticationType': authenticationType!,
-        if (requiredAccountEmail != null)
-          'requiredAccountEmail': requiredAccountEmail!,
-      };
+    if (authenticationType != null) 'authenticationType': authenticationType!,
+    if (requiredAccountEmail != null)
+      'requiredAccountEmail': requiredAccountEmail!,
+  };
 }

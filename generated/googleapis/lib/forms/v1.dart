@@ -67,11 +67,16 @@ class FormsApi {
 
   FormsResource get forms => FormsResource(_requester);
 
-  FormsApi(http.Client client,
-      {core.String rootUrl = 'https://forms.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  FormsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://forms.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class FormsResource {
@@ -120,7 +125,8 @@ class FormsResource {
       queryParams: queryParams_,
     );
     return BatchUpdateFormResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Create a new form using the title given in the provided form message in
@@ -189,10 +195,7 @@ class FormsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Form> get(
-    core.String formId, {
-    core.String? $fields,
-  }) async {
+  async.Future<Form> get(core.String formId, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -249,7 +252,8 @@ class FormsResource {
       queryParams: queryParams_,
     );
     return SetPublishSettingsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -285,7 +289,8 @@ class FormsResponsesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/forms/' +
+    final url_ =
+        'v1/forms/' +
         commons.escapeVariable('$formId') +
         '/responses/' +
         commons.escapeVariable('$responseId');
@@ -296,7 +301,8 @@ class FormsResponsesResource {
       queryParams: queryParams_,
     );
     return FormResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List a form's responses.
@@ -353,7 +359,8 @@ class FormsResponsesResource {
       queryParams: queryParams_,
     );
     return ListFormResponsesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -432,7 +439,8 @@ class FormsWatchesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/forms/' +
+    final url_ =
+        'v1/forms/' +
         commons.escapeVariable('$formId') +
         '/watches/' +
         commons.escapeVariable('$watchId');
@@ -480,7 +488,8 @@ class FormsWatchesResource {
       queryParams: queryParams_,
     );
     return ListWatchesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Renew an existing watch for seven days.
@@ -519,7 +528,8 @@ class FormsWatchesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/forms/' +
+    final url_ =
+        'v1/forms/' +
         commons.escapeVariable('$formId') +
         '/watches/' +
         commons.escapeVariable('$watchId') +
@@ -567,28 +577,35 @@ class Answer {
   });
 
   Answer.fromJson(core.Map json_)
-      : this(
-          fileUploadAnswers: json_.containsKey('fileUploadAnswers')
-              ? FileUploadAnswers.fromJson(json_['fileUploadAnswers']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          grade: json_.containsKey('grade')
-              ? Grade.fromJson(
-                  json_['grade'] as core.Map<core.String, core.dynamic>)
-              : null,
-          questionId: json_['questionId'] as core.String?,
-          textAnswers: json_.containsKey('textAnswers')
-              ? TextAnswers.fromJson(
-                  json_['textAnswers'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fileUploadAnswers:
+            json_.containsKey('fileUploadAnswers')
+                ? FileUploadAnswers.fromJson(
+                  json_['fileUploadAnswers']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        grade:
+            json_.containsKey('grade')
+                ? Grade.fromJson(
+                  json_['grade'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        questionId: json_['questionId'] as core.String?,
+        textAnswers:
+            json_.containsKey('textAnswers')
+                ? TextAnswers.fromJson(
+                  json_['textAnswers'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileUploadAnswers != null) 'fileUploadAnswers': fileUploadAnswers!,
-        if (grade != null) 'grade': grade!,
-        if (questionId != null) 'questionId': questionId!,
-        if (textAnswers != null) 'textAnswers': textAnswers!,
-      };
+    if (fileUploadAnswers != null) 'fileUploadAnswers': fileUploadAnswers!,
+    if (grade != null) 'grade': grade!,
+    if (questionId != null) 'questionId': questionId!,
+    if (textAnswers != null) 'textAnswers': textAnswers!,
+  };
 }
 
 /// A batch of updates to perform on a form.
@@ -613,24 +630,30 @@ class BatchUpdateFormRequest {
   });
 
   BatchUpdateFormRequest.fromJson(core.Map json_)
-      : this(
-          includeFormInResponse: json_['includeFormInResponse'] as core.bool?,
-          requests: (json_['requests'] as core.List?)
-              ?.map((value) => Request.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          writeControl: json_.containsKey('writeControl')
-              ? WriteControl.fromJson(
-                  json_['writeControl'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        includeFormInResponse: json_['includeFormInResponse'] as core.bool?,
+        requests:
+            (json_['requests'] as core.List?)
+                ?.map(
+                  (value) => Request.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        writeControl:
+            json_.containsKey('writeControl')
+                ? WriteControl.fromJson(
+                  json_['writeControl'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includeFormInResponse != null)
-          'includeFormInResponse': includeFormInResponse!,
-        if (requests != null) 'requests': requests!,
-        if (writeControl != null) 'writeControl': writeControl!,
-      };
+    if (includeFormInResponse != null)
+      'includeFormInResponse': includeFormInResponse!,
+    if (requests != null) 'requests': requests!,
+    if (writeControl != null) 'writeControl': writeControl!,
+  };
 }
 
 /// Response to a BatchUpdateFormRequest.
@@ -650,33 +673,37 @@ class BatchUpdateFormResponse {
   /// The updated write control after applying the request.
   WriteControl? writeControl;
 
-  BatchUpdateFormResponse({
-    this.form,
-    this.replies,
-    this.writeControl,
-  });
+  BatchUpdateFormResponse({this.form, this.replies, this.writeControl});
 
   BatchUpdateFormResponse.fromJson(core.Map json_)
-      : this(
-          form: json_.containsKey('form')
-              ? Form.fromJson(
-                  json_['form'] as core.Map<core.String, core.dynamic>)
-              : null,
-          replies: (json_['replies'] as core.List?)
-              ?.map((value) => Response.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          writeControl: json_.containsKey('writeControl')
-              ? WriteControl.fromJson(
-                  json_['writeControl'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        form:
+            json_.containsKey('form')
+                ? Form.fromJson(
+                  json_['form'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        replies:
+            (json_['replies'] as core.List?)
+                ?.map(
+                  (value) => Response.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        writeControl:
+            json_.containsKey('writeControl')
+                ? WriteControl.fromJson(
+                  json_['writeControl'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (form != null) 'form': form!,
-        if (replies != null) 'replies': replies!,
-        if (writeControl != null) 'writeControl': writeControl!,
-      };
+    if (form != null) 'form': form!,
+    if (replies != null) 'replies': replies!,
+    if (writeControl != null) 'writeControl': writeControl!,
+  };
 }
 
 /// A radio/checkbox/dropdown question.
@@ -708,27 +735,27 @@ class ChoiceQuestion {
   /// chosen.
   core.String? type;
 
-  ChoiceQuestion({
-    this.options,
-    this.shuffle,
-    this.type,
-  });
+  ChoiceQuestion({this.options, this.shuffle, this.type});
 
   ChoiceQuestion.fromJson(core.Map json_)
-      : this(
-          options: (json_['options'] as core.List?)
-              ?.map((value) =>
-                  Option.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          shuffle: json_['shuffle'] as core.bool?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        options:
+            (json_['options'] as core.List?)
+                ?.map(
+                  (value) => Option.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        shuffle: json_['shuffle'] as core.bool?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!,
-        if (shuffle != null) 'shuffle': shuffle!,
-        if (type != null) 'type': type!,
-      };
+    if (options != null) 'options': options!,
+    if (shuffle != null) 'shuffle': shuffle!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A Pub/Sub topic.
@@ -741,18 +768,14 @@ class CloudPubsubTopic {
   /// Required.
   core.String? topicName;
 
-  CloudPubsubTopic({
-    this.topicName,
-  });
+  CloudPubsubTopic({this.topicName});
 
   CloudPubsubTopic.fromJson(core.Map json_)
-      : this(
-          topicName: json_['topicName'] as core.String?,
-        );
+    : this(topicName: json_['topicName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (topicName != null) 'topicName': topicName!,
-      };
+    if (topicName != null) 'topicName': topicName!,
+  };
 }
 
 /// A single correct answer for a question.
@@ -768,18 +791,14 @@ class CorrectAnswer {
   /// Required.
   core.String? value;
 
-  CorrectAnswer({
-    this.value,
-  });
+  CorrectAnswer({this.value});
 
   CorrectAnswer.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+    : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
+    if (value != null) 'value': value!,
+  };
 }
 
 /// The answer key for a question.
@@ -793,21 +812,23 @@ class CorrectAnswers {
   /// marked correct if it contains exactly the values in this list.
   core.List<CorrectAnswer>? answers;
 
-  CorrectAnswers({
-    this.answers,
-  });
+  CorrectAnswers({this.answers});
 
   CorrectAnswers.fromJson(core.Map json_)
-      : this(
-          answers: (json_['answers'] as core.List?)
-              ?.map((value) => CorrectAnswer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        answers:
+            (json_['answers'] as core.List?)
+                ?.map(
+                  (value) => CorrectAnswer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (answers != null) 'answers': answers!,
-      };
+    if (answers != null) 'answers': answers!,
+  };
 }
 
 /// Create an item in a form.
@@ -822,27 +843,28 @@ class CreateItemRequest {
   /// Required.
   Location? location;
 
-  CreateItemRequest({
-    this.item,
-    this.location,
-  });
+  CreateItemRequest({this.item, this.location});
 
   CreateItemRequest.fromJson(core.Map json_)
-      : this(
-          item: json_.containsKey('item')
-              ? Item.fromJson(
-                  json_['item'] as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_.containsKey('location')
-              ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        item:
+            json_.containsKey('item')
+                ? Item.fromJson(
+                  json_['item'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location:
+            json_.containsKey('location')
+                ? Location.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (item != null) 'item': item!,
-        if (location != null) 'location': location!,
-      };
+    if (item != null) 'item': item!,
+    if (location != null) 'location': location!,
+  };
 }
 
 /// The result of creating an item.
@@ -854,23 +876,21 @@ class CreateItemResponse {
   /// it lists IDs of all the questions created for this item.
   core.List<core.String>? questionId;
 
-  CreateItemResponse({
-    this.itemId,
-    this.questionId,
-  });
+  CreateItemResponse({this.itemId, this.questionId});
 
   CreateItemResponse.fromJson(core.Map json_)
-      : this(
-          itemId: json_['itemId'] as core.String?,
-          questionId: (json_['questionId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        itemId: json_['itemId'] as core.String?,
+        questionId:
+            (json_['questionId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (itemId != null) 'itemId': itemId!,
-        if (questionId != null) 'questionId': questionId!,
-      };
+    if (itemId != null) 'itemId': itemId!,
+    if (questionId != null) 'questionId': questionId!,
+  };
 }
 
 /// Create a new watch.
@@ -889,24 +909,23 @@ class CreateWatchRequest {
   /// are /a-z-/.
   core.String? watchId;
 
-  CreateWatchRequest({
-    this.watch,
-    this.watchId,
-  });
+  CreateWatchRequest({this.watch, this.watchId});
 
   CreateWatchRequest.fromJson(core.Map json_)
-      : this(
-          watch: json_.containsKey('watch')
-              ? Watch.fromJson(
-                  json_['watch'] as core.Map<core.String, core.dynamic>)
-              : null,
-          watchId: json_['watchId'] as core.String?,
-        );
+    : this(
+        watch:
+            json_.containsKey('watch')
+                ? Watch.fromJson(
+                  json_['watch'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        watchId: json_['watchId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (watch != null) 'watch': watch!,
-        if (watchId != null) 'watchId': watchId!,
-      };
+    if (watch != null) 'watch': watch!,
+    if (watchId != null) 'watchId': watchId!,
+  };
 }
 
 /// A date question.
@@ -919,21 +938,18 @@ class DateQuestion {
   /// Whether to include the year as part of the question.
   core.bool? includeYear;
 
-  DateQuestion({
-    this.includeTime,
-    this.includeYear,
-  });
+  DateQuestion({this.includeTime, this.includeYear});
 
   DateQuestion.fromJson(core.Map json_)
-      : this(
-          includeTime: json_['includeTime'] as core.bool?,
-          includeYear: json_['includeYear'] as core.bool?,
-        );
+    : this(
+        includeTime: json_['includeTime'] as core.bool?,
+        includeYear: json_['includeYear'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includeTime != null) 'includeTime': includeTime!,
-        if (includeYear != null) 'includeYear': includeYear!,
-      };
+    if (includeTime != null) 'includeTime': includeTime!,
+    if (includeYear != null) 'includeYear': includeYear!,
+  };
 }
 
 /// Delete an item in a form.
@@ -943,21 +959,21 @@ class DeleteItemRequest {
   /// Required.
   Location? location;
 
-  DeleteItemRequest({
-    this.location,
-  });
+  DeleteItemRequest({this.location});
 
   DeleteItemRequest.fromJson(core.Map json_)
-      : this(
-          location: json_.containsKey('location')
-              ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        location:
+            json_.containsKey('location')
+                ? Location.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!,
-      };
+    if (location != null) 'location': location!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -976,27 +992,28 @@ class ExtraMaterial {
   /// Video feedback.
   VideoLink? video;
 
-  ExtraMaterial({
-    this.link,
-    this.video,
-  });
+  ExtraMaterial({this.link, this.video});
 
   ExtraMaterial.fromJson(core.Map json_)
-      : this(
-          link: json_.containsKey('link')
-              ? TextLink.fromJson(
-                  json_['link'] as core.Map<core.String, core.dynamic>)
-              : null,
-          video: json_.containsKey('video')
-              ? VideoLink.fromJson(
-                  json_['video'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        link:
+            json_.containsKey('link')
+                ? TextLink.fromJson(
+                  json_['link'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        video:
+            json_.containsKey('video')
+                ? VideoLink.fromJson(
+                  json_['video'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (link != null) 'link': link!,
-        if (video != null) 'video': video!,
-      };
+    if (link != null) 'link': link!,
+    if (video != null) 'video': video!,
+  };
 }
 
 /// Feedback for a respondent about their response to a question.
@@ -1010,24 +1027,25 @@ class Feedback {
   /// Required.
   core.String? text;
 
-  Feedback({
-    this.material,
-    this.text,
-  });
+  Feedback({this.material, this.text});
 
   Feedback.fromJson(core.Map json_)
-      : this(
-          material: (json_['material'] as core.List?)
-              ?.map((value) => ExtraMaterial.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        material:
+            (json_['material'] as core.List?)
+                ?.map(
+                  (value) => ExtraMaterial.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (material != null) 'material': material!,
-        if (text != null) 'text': text!,
-      };
+    if (material != null) 'material': material!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Info for a single file submitted to a file upload question.
@@ -1047,24 +1065,20 @@ class FileUploadAnswer {
   /// Output only.
   core.String? mimeType;
 
-  FileUploadAnswer({
-    this.fileId,
-    this.fileName,
-    this.mimeType,
-  });
+  FileUploadAnswer({this.fileId, this.fileName, this.mimeType});
 
   FileUploadAnswer.fromJson(core.Map json_)
-      : this(
-          fileId: json_['fileId'] as core.String?,
-          fileName: json_['fileName'] as core.String?,
-          mimeType: json_['mimeType'] as core.String?,
-        );
+    : this(
+        fileId: json_['fileId'] as core.String?,
+        fileName: json_['fileName'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileId != null) 'fileId': fileId!,
-        if (fileName != null) 'fileName': fileName!,
-        if (mimeType != null) 'mimeType': mimeType!,
-      };
+    if (fileId != null) 'fileId': fileId!,
+    if (fileName != null) 'fileName': fileName!,
+    if (mimeType != null) 'mimeType': mimeType!,
+  };
 }
 
 /// All submitted files for a FileUpload question.
@@ -1074,21 +1088,23 @@ class FileUploadAnswers {
   /// Output only.
   core.List<FileUploadAnswer>? answers;
 
-  FileUploadAnswers({
-    this.answers,
-  });
+  FileUploadAnswers({this.answers});
 
   FileUploadAnswers.fromJson(core.Map json_)
-      : this(
-          answers: (json_['answers'] as core.List?)
-              ?.map((value) => FileUploadAnswer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        answers:
+            (json_['answers'] as core.List?)
+                ?.map(
+                  (value) => FileUploadAnswer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (answers != null) 'answers': answers!,
-      };
+    if (answers != null) 'answers': answers!,
+  };
 }
 
 /// A file upload question.
@@ -1119,21 +1135,22 @@ class FileUploadQuestion {
   });
 
   FileUploadQuestion.fromJson(core.Map json_)
-      : this(
-          folderId: json_['folderId'] as core.String?,
-          maxFileSize: json_['maxFileSize'] as core.String?,
-          maxFiles: json_['maxFiles'] as core.int?,
-          types: (json_['types'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        folderId: json_['folderId'] as core.String?,
+        maxFileSize: json_['maxFileSize'] as core.String?,
+        maxFiles: json_['maxFiles'] as core.int?,
+        types:
+            (json_['types'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (folderId != null) 'folderId': folderId!,
-        if (maxFileSize != null) 'maxFileSize': maxFileSize!,
-        if (maxFiles != null) 'maxFiles': maxFiles!,
-        if (types != null) 'types': types!,
-      };
+    if (folderId != null) 'folderId': folderId!,
+    if (maxFileSize != null) 'maxFileSize': maxFileSize!,
+    if (maxFiles != null) 'maxFiles': maxFiles!,
+    if (types != null) 'types': types!,
+  };
 }
 
 /// A Google Forms document.
@@ -1218,39 +1235,50 @@ class Form {
   });
 
   Form.fromJson(core.Map json_)
-      : this(
-          formId: json_['formId'] as core.String?,
-          info: json_.containsKey('info')
-              ? Info.fromJson(
-                  json_['info'] as core.Map<core.String, core.dynamic>)
-              : null,
-          items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Item.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          linkedSheetId: json_['linkedSheetId'] as core.String?,
-          publishSettings: json_.containsKey('publishSettings')
-              ? PublishSettings.fromJson(json_['publishSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          responderUri: json_['responderUri'] as core.String?,
-          revisionId: json_['revisionId'] as core.String?,
-          settings: json_.containsKey('settings')
-              ? FormSettings.fromJson(
-                  json_['settings'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        formId: json_['formId'] as core.String?,
+        info:
+            json_.containsKey('info')
+                ? Info.fromJson(
+                  json_['info'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Item.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        linkedSheetId: json_['linkedSheetId'] as core.String?,
+        publishSettings:
+            json_.containsKey('publishSettings')
+                ? PublishSettings.fromJson(
+                  json_['publishSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        responderUri: json_['responderUri'] as core.String?,
+        revisionId: json_['revisionId'] as core.String?,
+        settings:
+            json_.containsKey('settings')
+                ? FormSettings.fromJson(
+                  json_['settings'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (formId != null) 'formId': formId!,
-        if (info != null) 'info': info!,
-        if (items != null) 'items': items!,
-        if (linkedSheetId != null) 'linkedSheetId': linkedSheetId!,
-        if (publishSettings != null) 'publishSettings': publishSettings!,
-        if (responderUri != null) 'responderUri': responderUri!,
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (settings != null) 'settings': settings!,
-      };
+    if (formId != null) 'formId': formId!,
+    if (info != null) 'info': info!,
+    if (items != null) 'items': items!,
+    if (linkedSheetId != null) 'linkedSheetId': linkedSheetId!,
+    if (publishSettings != null) 'publishSettings': publishSettings!,
+    if (responderUri != null) 'responderUri': responderUri!,
+    if (revisionId != null) 'revisionId': revisionId!,
+    if (settings != null) 'settings': settings!,
+  };
 }
 
 /// A form response.
@@ -1307,31 +1335,31 @@ class FormResponse {
   });
 
   FormResponse.fromJson(core.Map json_)
-      : this(
-          answers:
-              (json_['answers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              Answer.fromJson(value as core.Map<core.String, core.dynamic>),
+    : this(
+        answers: (json_['answers'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                Answer.fromJson(value as core.Map<core.String, core.dynamic>),
+              ),
             ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          formId: json_['formId'] as core.String?,
-          lastSubmittedTime: json_['lastSubmittedTime'] as core.String?,
-          respondentEmail: json_['respondentEmail'] as core.String?,
-          responseId: json_['responseId'] as core.String?,
-          totalScore: (json_['totalScore'] as core.num?)?.toDouble(),
-        );
+        createTime: json_['createTime'] as core.String?,
+        formId: json_['formId'] as core.String?,
+        lastSubmittedTime: json_['lastSubmittedTime'] as core.String?,
+        respondentEmail: json_['respondentEmail'] as core.String?,
+        responseId: json_['responseId'] as core.String?,
+        totalScore: (json_['totalScore'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (answers != null) 'answers': answers!,
-        if (createTime != null) 'createTime': createTime!,
-        if (formId != null) 'formId': formId!,
-        if (lastSubmittedTime != null) 'lastSubmittedTime': lastSubmittedTime!,
-        if (respondentEmail != null) 'respondentEmail': respondentEmail!,
-        if (responseId != null) 'responseId': responseId!,
-        if (totalScore != null) 'totalScore': totalScore!,
-      };
+    if (answers != null) 'answers': answers!,
+    if (createTime != null) 'createTime': createTime!,
+    if (formId != null) 'formId': formId!,
+    if (lastSubmittedTime != null) 'lastSubmittedTime': lastSubmittedTime!,
+    if (respondentEmail != null) 'respondentEmail': respondentEmail!,
+    if (responseId != null) 'responseId': responseId!,
+    if (totalScore != null) 'totalScore': totalScore!,
+  };
 }
 
 /// A form's settings.
@@ -1354,25 +1382,24 @@ class FormSettings {
   /// Settings related to quiz forms and grading.
   QuizSettings? quizSettings;
 
-  FormSettings({
-    this.emailCollectionType,
-    this.quizSettings,
-  });
+  FormSettings({this.emailCollectionType, this.quizSettings});
 
   FormSettings.fromJson(core.Map json_)
-      : this(
-          emailCollectionType: json_['emailCollectionType'] as core.String?,
-          quizSettings: json_.containsKey('quizSettings')
-              ? QuizSettings.fromJson(
-                  json_['quizSettings'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        emailCollectionType: json_['emailCollectionType'] as core.String?,
+        quizSettings:
+            json_.containsKey('quizSettings')
+                ? QuizSettings.fromJson(
+                  json_['quizSettings'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emailCollectionType != null)
-          'emailCollectionType': emailCollectionType!,
-        if (quizSettings != null) 'quizSettings': quizSettings!,
-      };
+    if (emailCollectionType != null)
+      'emailCollectionType': emailCollectionType!,
+    if (quizSettings != null) 'quizSettings': quizSettings!,
+  };
 }
 
 /// Grade information associated with a respondent's answer to a question.
@@ -1395,27 +1422,25 @@ class Grade {
   /// Output only.
   core.double? score;
 
-  Grade({
-    this.correct,
-    this.feedback,
-    this.score,
-  });
+  Grade({this.correct, this.feedback, this.score});
 
   Grade.fromJson(core.Map json_)
-      : this(
-          correct: json_['correct'] as core.bool?,
-          feedback: json_.containsKey('feedback')
-              ? Feedback.fromJson(
-                  json_['feedback'] as core.Map<core.String, core.dynamic>)
-              : null,
-          score: (json_['score'] as core.num?)?.toDouble(),
-        );
+    : this(
+        correct: json_['correct'] as core.bool?,
+        feedback:
+            json_.containsKey('feedback')
+                ? Feedback.fromJson(
+                  json_['feedback'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        score: (json_['score'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (correct != null) 'correct': correct!,
-        if (feedback != null) 'feedback': feedback!,
-        if (score != null) 'score': score!,
-      };
+    if (correct != null) 'correct': correct!,
+    if (feedback != null) 'feedback': feedback!,
+    if (score != null) 'score': score!,
+  };
 }
 
 /// Grading for a single question
@@ -1465,33 +1490,43 @@ class Grading {
   });
 
   Grading.fromJson(core.Map json_)
-      : this(
-          correctAnswers: json_.containsKey('correctAnswers')
-              ? CorrectAnswers.fromJson(json_['correctAnswers']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          generalFeedback: json_.containsKey('generalFeedback')
-              ? Feedback.fromJson(json_['generalFeedback']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          pointValue: json_['pointValue'] as core.int?,
-          whenRight: json_.containsKey('whenRight')
-              ? Feedback.fromJson(
-                  json_['whenRight'] as core.Map<core.String, core.dynamic>)
-              : null,
-          whenWrong: json_.containsKey('whenWrong')
-              ? Feedback.fromJson(
-                  json_['whenWrong'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        correctAnswers:
+            json_.containsKey('correctAnswers')
+                ? CorrectAnswers.fromJson(
+                  json_['correctAnswers']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        generalFeedback:
+            json_.containsKey('generalFeedback')
+                ? Feedback.fromJson(
+                  json_['generalFeedback']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pointValue: json_['pointValue'] as core.int?,
+        whenRight:
+            json_.containsKey('whenRight')
+                ? Feedback.fromJson(
+                  json_['whenRight'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        whenWrong:
+            json_.containsKey('whenWrong')
+                ? Feedback.fromJson(
+                  json_['whenWrong'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (correctAnswers != null) 'correctAnswers': correctAnswers!,
-        if (generalFeedback != null) 'generalFeedback': generalFeedback!,
-        if (pointValue != null) 'pointValue': pointValue!,
-        if (whenRight != null) 'whenRight': whenRight!,
-        if (whenWrong != null) 'whenWrong': whenWrong!,
-      };
+    if (correctAnswers != null) 'correctAnswers': correctAnswers!,
+    if (generalFeedback != null) 'generalFeedback': generalFeedback!,
+    if (pointValue != null) 'pointValue': pointValue!,
+    if (whenRight != null) 'whenRight': whenRight!,
+    if (whenWrong != null) 'whenWrong': whenWrong!,
+  };
 }
 
 /// A grid of choices (radio or check boxes) with each row constituting a
@@ -1512,24 +1547,23 @@ class Grid {
   /// In other words, the rows appear in a different order for every respondent.
   core.bool? shuffleQuestions;
 
-  Grid({
-    this.columns,
-    this.shuffleQuestions,
-  });
+  Grid({this.columns, this.shuffleQuestions});
 
   Grid.fromJson(core.Map json_)
-      : this(
-          columns: json_.containsKey('columns')
-              ? ChoiceQuestion.fromJson(
-                  json_['columns'] as core.Map<core.String, core.dynamic>)
-              : null,
-          shuffleQuestions: json_['shuffleQuestions'] as core.bool?,
-        );
+    : this(
+        columns:
+            json_.containsKey('columns')
+                ? ChoiceQuestion.fromJson(
+                  json_['columns'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        shuffleQuestions: json_['shuffleQuestions'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columns != null) 'columns': columns!,
-        if (shuffleQuestions != null) 'shuffleQuestions': shuffleQuestions!,
-      };
+    if (columns != null) 'columns': columns!,
+    if (shuffleQuestions != null) 'shuffleQuestions': shuffleQuestions!,
+  };
 }
 
 /// Data representing an image.
@@ -1553,30 +1587,27 @@ class Image {
   /// empty when fetched.
   core.String? sourceUri;
 
-  Image({
-    this.altText,
-    this.contentUri,
-    this.properties,
-    this.sourceUri,
-  });
+  Image({this.altText, this.contentUri, this.properties, this.sourceUri});
 
   Image.fromJson(core.Map json_)
-      : this(
-          altText: json_['altText'] as core.String?,
-          contentUri: json_['contentUri'] as core.String?,
-          properties: json_.containsKey('properties')
-              ? MediaProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceUri: json_['sourceUri'] as core.String?,
-        );
+    : this(
+        altText: json_['altText'] as core.String?,
+        contentUri: json_['contentUri'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? MediaProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceUri: json_['sourceUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (altText != null) 'altText': altText!,
-        if (contentUri != null) 'contentUri': contentUri!,
-        if (properties != null) 'properties': properties!,
-        if (sourceUri != null) 'sourceUri': sourceUri!,
-      };
+    if (altText != null) 'altText': altText!,
+    if (contentUri != null) 'contentUri': contentUri!,
+    if (properties != null) 'properties': properties!,
+    if (sourceUri != null) 'sourceUri': sourceUri!,
+  };
 }
 
 /// An item containing an image.
@@ -1586,21 +1617,21 @@ class ImageItem {
   /// Required.
   Image? image;
 
-  ImageItem({
-    this.image,
-  });
+  ImageItem({this.image});
 
   ImageItem.fromJson(core.Map json_)
-      : this(
-          image: json_.containsKey('image')
-              ? Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        image:
+            json_.containsKey('image')
+                ? Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (image != null) 'image': image!,
-      };
+    if (image != null) 'image': image!,
+  };
 }
 
 /// The general information for a form.
@@ -1624,24 +1655,20 @@ class Info {
   /// Required.
   core.String? title;
 
-  Info({
-    this.description,
-    this.documentTitle,
-    this.title,
-  });
+  Info({this.description, this.documentTitle, this.title});
 
   Info.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          documentTitle: json_['documentTitle'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        documentTitle: json_['documentTitle'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (documentTitle != null) 'documentTitle': documentTitle!,
-        if (title != null) 'title': title!,
-      };
+    if (description != null) 'description': description!,
+    if (documentTitle != null) 'documentTitle': documentTitle!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// A single item of the form.
@@ -1691,47 +1718,60 @@ class Item {
   });
 
   Item.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          imageItem: json_.containsKey('imageItem')
-              ? ImageItem.fromJson(
-                  json_['imageItem'] as core.Map<core.String, core.dynamic>)
-              : null,
-          itemId: json_['itemId'] as core.String?,
-          pageBreakItem: json_.containsKey('pageBreakItem')
-              ? PageBreakItem.fromJson(
-                  json_['pageBreakItem'] as core.Map<core.String, core.dynamic>)
-              : null,
-          questionGroupItem: json_.containsKey('questionGroupItem')
-              ? QuestionGroupItem.fromJson(json_['questionGroupItem']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          questionItem: json_.containsKey('questionItem')
-              ? QuestionItem.fromJson(
-                  json_['questionItem'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textItem: json_.containsKey('textItem')
-              ? TextItem.fromJson(
-                  json_['textItem'] as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-          videoItem: json_.containsKey('videoItem')
-              ? VideoItem.fromJson(
-                  json_['videoItem'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        imageItem:
+            json_.containsKey('imageItem')
+                ? ImageItem.fromJson(
+                  json_['imageItem'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        itemId: json_['itemId'] as core.String?,
+        pageBreakItem:
+            json_.containsKey('pageBreakItem')
+                ? PageBreakItem.fromJson(
+                  json_['pageBreakItem'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        questionGroupItem:
+            json_.containsKey('questionGroupItem')
+                ? QuestionGroupItem.fromJson(
+                  json_['questionGroupItem']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        questionItem:
+            json_.containsKey('questionItem')
+                ? QuestionItem.fromJson(
+                  json_['questionItem'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textItem:
+            json_.containsKey('textItem')
+                ? TextItem.fromJson(
+                  json_['textItem'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+        videoItem:
+            json_.containsKey('videoItem')
+                ? VideoItem.fromJson(
+                  json_['videoItem'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (imageItem != null) 'imageItem': imageItem!,
-        if (itemId != null) 'itemId': itemId!,
-        if (pageBreakItem != null) 'pageBreakItem': pageBreakItem!,
-        if (questionGroupItem != null) 'questionGroupItem': questionGroupItem!,
-        if (questionItem != null) 'questionItem': questionItem!,
-        if (textItem != null) 'textItem': textItem!,
-        if (title != null) 'title': title!,
-        if (videoItem != null) 'videoItem': videoItem!,
-      };
+    if (description != null) 'description': description!,
+    if (imageItem != null) 'imageItem': imageItem!,
+    if (itemId != null) 'itemId': itemId!,
+    if (pageBreakItem != null) 'pageBreakItem': pageBreakItem!,
+    if (questionGroupItem != null) 'questionGroupItem': questionGroupItem!,
+    if (questionItem != null) 'questionItem': questionItem!,
+    if (textItem != null) 'textItem': textItem!,
+    if (title != null) 'title': title!,
+    if (videoItem != null) 'videoItem': videoItem!,
+  };
 }
 
 /// Response to a ListFormResponsesRequest.
@@ -1748,24 +1788,25 @@ class ListFormResponsesResponse {
   /// list requests.
   core.List<FormResponse>? responses;
 
-  ListFormResponsesResponse({
-    this.nextPageToken,
-    this.responses,
-  });
+  ListFormResponsesResponse({this.nextPageToken, this.responses});
 
   ListFormResponsesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          responses: (json_['responses'] as core.List?)
-              ?.map((value) => FormResponse.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        responses:
+            (json_['responses'] as core.List?)
+                ?.map(
+                  (value) => FormResponse.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (responses != null) 'responses': responses!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (responses != null) 'responses': responses!,
+  };
 }
 
 /// The response of a ListWatchesRequest.
@@ -1773,21 +1814,23 @@ class ListWatchesResponse {
   /// The returned watches.
   core.List<Watch>? watches;
 
-  ListWatchesResponse({
-    this.watches,
-  });
+  ListWatchesResponse({this.watches});
 
   ListWatchesResponse.fromJson(core.Map json_)
-      : this(
-          watches: (json_['watches'] as core.List?)
-              ?.map((value) =>
-                  Watch.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        watches:
+            (json_['watches'] as core.List?)
+                ?.map(
+                  (value) => Watch.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (watches != null) 'watches': watches!,
-      };
+    if (watches != null) 'watches': watches!,
+  };
 }
 
 /// A specific location in a form.
@@ -1798,18 +1841,13 @@ class Location {
   /// the form.
   core.int? index;
 
-  Location({
-    this.index,
-  });
+  Location({this.index});
 
-  Location.fromJson(core.Map json_)
-      : this(
-          index: json_['index'] as core.int?,
-        );
+  Location.fromJson(core.Map json_) : this(index: json_['index'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (index != null) 'index': index!,
-      };
+    if (index != null) 'index': index!,
+  };
 }
 
 /// Properties of the media.
@@ -1832,21 +1870,18 @@ class MediaProperties {
   /// when updating the media source.
   core.int? width;
 
-  MediaProperties({
-    this.alignment,
-    this.width,
-  });
+  MediaProperties({this.alignment, this.width});
 
   MediaProperties.fromJson(core.Map json_)
-      : this(
-          alignment: json_['alignment'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        alignment: json_['alignment'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alignment != null) 'alignment': alignment!,
-        if (width != null) 'width': width!,
-      };
+    if (alignment != null) 'alignment': alignment!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// Move an item in a form.
@@ -1861,27 +1896,29 @@ class MoveItemRequest {
   /// Required.
   Location? originalLocation;
 
-  MoveItemRequest({
-    this.newLocation,
-    this.originalLocation,
-  });
+  MoveItemRequest({this.newLocation, this.originalLocation});
 
   MoveItemRequest.fromJson(core.Map json_)
-      : this(
-          newLocation: json_.containsKey('newLocation')
-              ? Location.fromJson(
-                  json_['newLocation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          originalLocation: json_.containsKey('originalLocation')
-              ? Location.fromJson(json_['originalLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        newLocation:
+            json_.containsKey('newLocation')
+                ? Location.fromJson(
+                  json_['newLocation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        originalLocation:
+            json_.containsKey('originalLocation')
+                ? Location.fromJson(
+                  json_['originalLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (newLocation != null) 'newLocation': newLocation!,
-        if (originalLocation != null) 'originalLocation': originalLocation!,
-      };
+    if (newLocation != null) 'newLocation': newLocation!,
+    if (originalLocation != null) 'originalLocation': originalLocation!,
+  };
 }
 
 /// An option for a Choice question.
@@ -1920,24 +1957,26 @@ class Option {
   });
 
   Option.fromJson(core.Map json_)
-      : this(
-          goToAction: json_['goToAction'] as core.String?,
-          goToSectionId: json_['goToSectionId'] as core.String?,
-          image: json_.containsKey('image')
-              ? Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-          isOther: json_['isOther'] as core.bool?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        goToAction: json_['goToAction'] as core.String?,
+        goToSectionId: json_['goToSectionId'] as core.String?,
+        image:
+            json_.containsKey('image')
+                ? Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        isOther: json_['isOther'] as core.bool?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (goToAction != null) 'goToAction': goToAction!,
-        if (goToSectionId != null) 'goToSectionId': goToSectionId!,
-        if (image != null) 'image': image!,
-        if (isOther != null) 'isOther': isOther!,
-        if (value != null) 'value': value!,
-      };
+    if (goToAction != null) 'goToAction': goToAction!,
+    if (goToSectionId != null) 'goToSectionId': goToSectionId!,
+    if (image != null) 'image': image!,
+    if (isOther != null) 'isOther': isOther!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// A page break.
@@ -1957,21 +1996,21 @@ class PublishSettings {
   /// Optional.
   PublishState? publishState;
 
-  PublishSettings({
-    this.publishState,
-  });
+  PublishSettings({this.publishState});
 
   PublishSettings.fromJson(core.Map json_)
-      : this(
-          publishState: json_.containsKey('publishState')
-              ? PublishState.fromJson(
-                  json_['publishState'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        publishState:
+            json_.containsKey('publishState')
+                ? PublishState.fromJson(
+                  json_['publishState'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (publishState != null) 'publishState': publishState!,
-      };
+    if (publishState != null) 'publishState': publishState!,
+  };
 }
 
 /// The publishing state of a form.
@@ -1988,22 +2027,19 @@ class PublishState {
   /// Required.
   core.bool? isPublished;
 
-  PublishState({
-    this.isAcceptingResponses,
-    this.isPublished,
-  });
+  PublishState({this.isAcceptingResponses, this.isPublished});
 
   PublishState.fromJson(core.Map json_)
-      : this(
-          isAcceptingResponses: json_['isAcceptingResponses'] as core.bool?,
-          isPublished: json_['isPublished'] as core.bool?,
-        );
+    : this(
+        isAcceptingResponses: json_['isAcceptingResponses'] as core.bool?,
+        isPublished: json_['isPublished'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (isAcceptingResponses != null)
-          'isAcceptingResponses': isAcceptingResponses!,
-        if (isPublished != null) 'isPublished': isPublished!,
-      };
+    if (isAcceptingResponses != null)
+      'isAcceptingResponses': isAcceptingResponses!,
+    if (isPublished != null) 'isPublished': isPublished!,
+  };
 }
 
 /// Any question.
@@ -2062,61 +2098,81 @@ class Question {
   });
 
   Question.fromJson(core.Map json_)
-      : this(
-          choiceQuestion: json_.containsKey('choiceQuestion')
-              ? ChoiceQuestion.fromJson(json_['choiceQuestion']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dateQuestion: json_.containsKey('dateQuestion')
-              ? DateQuestion.fromJson(
-                  json_['dateQuestion'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fileUploadQuestion: json_.containsKey('fileUploadQuestion')
-              ? FileUploadQuestion.fromJson(json_['fileUploadQuestion']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          grading: json_.containsKey('grading')
-              ? Grading.fromJson(
-                  json_['grading'] as core.Map<core.String, core.dynamic>)
-              : null,
-          questionId: json_['questionId'] as core.String?,
-          ratingQuestion: json_.containsKey('ratingQuestion')
-              ? RatingQuestion.fromJson(json_['ratingQuestion']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          required: json_['required'] as core.bool?,
-          rowQuestion: json_.containsKey('rowQuestion')
-              ? RowQuestion.fromJson(
-                  json_['rowQuestion'] as core.Map<core.String, core.dynamic>)
-              : null,
-          scaleQuestion: json_.containsKey('scaleQuestion')
-              ? ScaleQuestion.fromJson(
-                  json_['scaleQuestion'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textQuestion: json_.containsKey('textQuestion')
-              ? TextQuestion.fromJson(
-                  json_['textQuestion'] as core.Map<core.String, core.dynamic>)
-              : null,
-          timeQuestion: json_.containsKey('timeQuestion')
-              ? TimeQuestion.fromJson(
-                  json_['timeQuestion'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        choiceQuestion:
+            json_.containsKey('choiceQuestion')
+                ? ChoiceQuestion.fromJson(
+                  json_['choiceQuestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dateQuestion:
+            json_.containsKey('dateQuestion')
+                ? DateQuestion.fromJson(
+                  json_['dateQuestion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fileUploadQuestion:
+            json_.containsKey('fileUploadQuestion')
+                ? FileUploadQuestion.fromJson(
+                  json_['fileUploadQuestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        grading:
+            json_.containsKey('grading')
+                ? Grading.fromJson(
+                  json_['grading'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        questionId: json_['questionId'] as core.String?,
+        ratingQuestion:
+            json_.containsKey('ratingQuestion')
+                ? RatingQuestion.fromJson(
+                  json_['ratingQuestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        required: json_['required'] as core.bool?,
+        rowQuestion:
+            json_.containsKey('rowQuestion')
+                ? RowQuestion.fromJson(
+                  json_['rowQuestion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scaleQuestion:
+            json_.containsKey('scaleQuestion')
+                ? ScaleQuestion.fromJson(
+                  json_['scaleQuestion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textQuestion:
+            json_.containsKey('textQuestion')
+                ? TextQuestion.fromJson(
+                  json_['textQuestion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        timeQuestion:
+            json_.containsKey('timeQuestion')
+                ? TimeQuestion.fromJson(
+                  json_['timeQuestion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (choiceQuestion != null) 'choiceQuestion': choiceQuestion!,
-        if (dateQuestion != null) 'dateQuestion': dateQuestion!,
-        if (fileUploadQuestion != null)
-          'fileUploadQuestion': fileUploadQuestion!,
-        if (grading != null) 'grading': grading!,
-        if (questionId != null) 'questionId': questionId!,
-        if (ratingQuestion != null) 'ratingQuestion': ratingQuestion!,
-        if (required != null) 'required': required!,
-        if (rowQuestion != null) 'rowQuestion': rowQuestion!,
-        if (scaleQuestion != null) 'scaleQuestion': scaleQuestion!,
-        if (textQuestion != null) 'textQuestion': textQuestion!,
-        if (timeQuestion != null) 'timeQuestion': timeQuestion!,
-      };
+    if (choiceQuestion != null) 'choiceQuestion': choiceQuestion!,
+    if (dateQuestion != null) 'dateQuestion': dateQuestion!,
+    if (fileUploadQuestion != null) 'fileUploadQuestion': fileUploadQuestion!,
+    if (grading != null) 'grading': grading!,
+    if (questionId != null) 'questionId': questionId!,
+    if (ratingQuestion != null) 'ratingQuestion': ratingQuestion!,
+    if (required != null) 'required': required!,
+    if (rowQuestion != null) 'rowQuestion': rowQuestion!,
+    if (scaleQuestion != null) 'scaleQuestion': scaleQuestion!,
+    if (textQuestion != null) 'textQuestion': textQuestion!,
+    if (timeQuestion != null) 'timeQuestion': timeQuestion!,
+  };
 }
 
 /// Defines a question that comprises multiple questions grouped together.
@@ -2139,33 +2195,37 @@ class QuestionGroupItem {
   /// Required.
   core.List<Question>? questions;
 
-  QuestionGroupItem({
-    this.grid,
-    this.image,
-    this.questions,
-  });
+  QuestionGroupItem({this.grid, this.image, this.questions});
 
   QuestionGroupItem.fromJson(core.Map json_)
-      : this(
-          grid: json_.containsKey('grid')
-              ? Grid.fromJson(
-                  json_['grid'] as core.Map<core.String, core.dynamic>)
-              : null,
-          image: json_.containsKey('image')
-              ? Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-          questions: (json_['questions'] as core.List?)
-              ?.map((value) => Question.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        grid:
+            json_.containsKey('grid')
+                ? Grid.fromJson(
+                  json_['grid'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        image:
+            json_.containsKey('image')
+                ? Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        questions:
+            (json_['questions'] as core.List?)
+                ?.map(
+                  (value) => Question.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (grid != null) 'grid': grid!,
-        if (image != null) 'image': image!,
-        if (questions != null) 'questions': questions!,
-      };
+    if (grid != null) 'grid': grid!,
+    if (image != null) 'image': image!,
+    if (questions != null) 'questions': questions!,
+  };
 }
 
 /// A form item containing a single question.
@@ -2178,27 +2238,28 @@ class QuestionItem {
   /// Required.
   Question? question;
 
-  QuestionItem({
-    this.image,
-    this.question,
-  });
+  QuestionItem({this.image, this.question});
 
   QuestionItem.fromJson(core.Map json_)
-      : this(
-          image: json_.containsKey('image')
-              ? Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-          question: json_.containsKey('question')
-              ? Question.fromJson(
-                  json_['question'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        image:
+            json_.containsKey('image')
+                ? Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        question:
+            json_.containsKey('question')
+                ? Question.fromJson(
+                  json_['question'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (image != null) 'image': image!,
-        if (question != null) 'question': question!,
-      };
+    if (image != null) 'image': image!,
+    if (question != null) 'question': question!,
+  };
 }
 
 /// Settings related to quiz forms and grading.
@@ -2211,18 +2272,14 @@ class QuizSettings {
   /// false, all question Grading is deleted.
   core.bool? isQuiz;
 
-  QuizSettings({
-    this.isQuiz,
-  });
+  QuizSettings({this.isQuiz});
 
   QuizSettings.fromJson(core.Map json_)
-      : this(
-          isQuiz: json_['isQuiz'] as core.bool?,
-        );
+    : this(isQuiz: json_['isQuiz'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (isQuiz != null) 'isQuiz': isQuiz!,
-      };
+    if (isQuiz != null) 'isQuiz': isQuiz!,
+  };
 }
 
 /// A rating question.
@@ -2244,21 +2301,18 @@ class RatingQuestion {
   /// Required.
   core.int? ratingScaleLevel;
 
-  RatingQuestion({
-    this.iconType,
-    this.ratingScaleLevel,
-  });
+  RatingQuestion({this.iconType, this.ratingScaleLevel});
 
   RatingQuestion.fromJson(core.Map json_)
-      : this(
-          iconType: json_['iconType'] as core.String?,
-          ratingScaleLevel: json_['ratingScaleLevel'] as core.int?,
-        );
+    : this(
+        iconType: json_['iconType'] as core.String?,
+        ratingScaleLevel: json_['ratingScaleLevel'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iconType != null) 'iconType': iconType!,
-        if (ratingScaleLevel != null) 'ratingScaleLevel': ratingScaleLevel!,
-      };
+    if (iconType != null) 'iconType': iconType!,
+    if (ratingScaleLevel != null) 'ratingScaleLevel': ratingScaleLevel!,
+  };
 }
 
 /// Renew an existing Watch for seven days.
@@ -2294,41 +2348,55 @@ class Request {
   });
 
   Request.fromJson(core.Map json_)
-      : this(
-          createItem: json_.containsKey('createItem')
-              ? CreateItemRequest.fromJson(
-                  json_['createItem'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteItem: json_.containsKey('deleteItem')
-              ? DeleteItemRequest.fromJson(
-                  json_['deleteItem'] as core.Map<core.String, core.dynamic>)
-              : null,
-          moveItem: json_.containsKey('moveItem')
-              ? MoveItemRequest.fromJson(
-                  json_['moveItem'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateFormInfo: json_.containsKey('updateFormInfo')
-              ? UpdateFormInfoRequest.fromJson(json_['updateFormInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateItem: json_.containsKey('updateItem')
-              ? UpdateItemRequest.fromJson(
-                  json_['updateItem'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateSettings: json_.containsKey('updateSettings')
-              ? UpdateSettingsRequest.fromJson(json_['updateSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        createItem:
+            json_.containsKey('createItem')
+                ? CreateItemRequest.fromJson(
+                  json_['createItem'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteItem:
+            json_.containsKey('deleteItem')
+                ? DeleteItemRequest.fromJson(
+                  json_['deleteItem'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        moveItem:
+            json_.containsKey('moveItem')
+                ? MoveItemRequest.fromJson(
+                  json_['moveItem'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateFormInfo:
+            json_.containsKey('updateFormInfo')
+                ? UpdateFormInfoRequest.fromJson(
+                  json_['updateFormInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateItem:
+            json_.containsKey('updateItem')
+                ? UpdateItemRequest.fromJson(
+                  json_['updateItem'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateSettings:
+            json_.containsKey('updateSettings')
+                ? UpdateSettingsRequest.fromJson(
+                  json_['updateSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createItem != null) 'createItem': createItem!,
-        if (deleteItem != null) 'deleteItem': deleteItem!,
-        if (moveItem != null) 'moveItem': moveItem!,
-        if (updateFormInfo != null) 'updateFormInfo': updateFormInfo!,
-        if (updateItem != null) 'updateItem': updateItem!,
-        if (updateSettings != null) 'updateSettings': updateSettings!,
-      };
+    if (createItem != null) 'createItem': createItem!,
+    if (deleteItem != null) 'deleteItem': deleteItem!,
+    if (moveItem != null) 'moveItem': moveItem!,
+    if (updateFormInfo != null) 'updateFormInfo': updateFormInfo!,
+    if (updateItem != null) 'updateItem': updateItem!,
+    if (updateSettings != null) 'updateSettings': updateSettings!,
+  };
 }
 
 /// A single response from an update.
@@ -2336,21 +2404,21 @@ class Response {
   /// The result of creating an item.
   CreateItemResponse? createItem;
 
-  Response({
-    this.createItem,
-  });
+  Response({this.createItem});
 
   Response.fromJson(core.Map json_)
-      : this(
-          createItem: json_.containsKey('createItem')
-              ? CreateItemResponse.fromJson(
-                  json_['createItem'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        createItem:
+            json_.containsKey('createItem')
+                ? CreateItemResponse.fromJson(
+                  json_['createItem'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createItem != null) 'createItem': createItem!,
-      };
+    if (createItem != null) 'createItem': createItem!,
+  };
 }
 
 /// Configuration for a question that is part of a question group.
@@ -2360,18 +2428,14 @@ class RowQuestion {
   /// Required.
   core.String? title;
 
-  RowQuestion({
-    this.title,
-  });
+  RowQuestion({this.title});
 
   RowQuestion.fromJson(core.Map json_)
-      : this(
-          title: json_['title'] as core.String?,
-        );
+    : this(title: json_['title'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (title != null) 'title': title!,
-      };
+    if (title != null) 'title': title!,
+  };
 }
 
 /// A scale question.
@@ -2394,27 +2458,22 @@ class ScaleQuestion {
   /// The label to display describing the lowest point on the scale.
   core.String? lowLabel;
 
-  ScaleQuestion({
-    this.high,
-    this.highLabel,
-    this.low,
-    this.lowLabel,
-  });
+  ScaleQuestion({this.high, this.highLabel, this.low, this.lowLabel});
 
   ScaleQuestion.fromJson(core.Map json_)
-      : this(
-          high: json_['high'] as core.int?,
-          highLabel: json_['highLabel'] as core.String?,
-          low: json_['low'] as core.int?,
-          lowLabel: json_['lowLabel'] as core.String?,
-        );
+    : this(
+        high: json_['high'] as core.int?,
+        highLabel: json_['highLabel'] as core.String?,
+        low: json_['low'] as core.int?,
+        lowLabel: json_['lowLabel'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (high != null) 'high': high!,
-        if (highLabel != null) 'highLabel': highLabel!,
-        if (low != null) 'low': low!,
-        if (lowLabel != null) 'lowLabel': lowLabel!,
-      };
+    if (high != null) 'high': high!,
+    if (highLabel != null) 'highLabel': highLabel!,
+    if (low != null) 'low': low!,
+    if (lowLabel != null) 'lowLabel': lowLabel!,
+  };
 }
 
 /// Updates the publish settings of a Form.
@@ -2433,24 +2492,24 @@ class SetPublishSettingsRequest {
   /// Optional.
   core.String? updateMask;
 
-  SetPublishSettingsRequest({
-    this.publishSettings,
-    this.updateMask,
-  });
+  SetPublishSettingsRequest({this.publishSettings, this.updateMask});
 
   SetPublishSettingsRequest.fromJson(core.Map json_)
-      : this(
-          publishSettings: json_.containsKey('publishSettings')
-              ? PublishSettings.fromJson(json_['publishSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        publishSettings:
+            json_.containsKey('publishSettings')
+                ? PublishSettings.fromJson(
+                  json_['publishSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (publishSettings != null) 'publishSettings': publishSettings!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (publishSettings != null) 'publishSettings': publishSettings!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// The response of a SetPublishSettings request.
@@ -2465,24 +2524,24 @@ class SetPublishSettingsResponse {
   /// The publish settings of the form.
   PublishSettings? publishSettings;
 
-  SetPublishSettingsResponse({
-    this.formId,
-    this.publishSettings,
-  });
+  SetPublishSettingsResponse({this.formId, this.publishSettings});
 
   SetPublishSettingsResponse.fromJson(core.Map json_)
-      : this(
-          formId: json_['formId'] as core.String?,
-          publishSettings: json_.containsKey('publishSettings')
-              ? PublishSettings.fromJson(json_['publishSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        formId: json_['formId'] as core.String?,
+        publishSettings:
+            json_.containsKey('publishSettings')
+                ? PublishSettings.fromJson(
+                  json_['publishSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (formId != null) 'formId': formId!,
-        if (publishSettings != null) 'publishSettings': publishSettings!,
-      };
+    if (formId != null) 'formId': formId!,
+    if (publishSettings != null) 'publishSettings': publishSettings!,
+  };
 }
 
 /// An answer to a question represented as text.
@@ -2506,18 +2565,14 @@ class TextAnswer {
   /// Output only.
   core.String? value;
 
-  TextAnswer({
-    this.value,
-  });
+  TextAnswer({this.value});
 
   TextAnswer.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+    : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
+    if (value != null) 'value': value!,
+  };
 }
 
 /// A question's answers as text.
@@ -2529,21 +2584,23 @@ class TextAnswers {
   /// Output only.
   core.List<TextAnswer>? answers;
 
-  TextAnswers({
-    this.answers,
-  });
+  TextAnswers({this.answers});
 
   TextAnswers.fromJson(core.Map json_)
-      : this(
-          answers: (json_['answers'] as core.List?)
-              ?.map((value) => TextAnswer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        answers:
+            (json_['answers'] as core.List?)
+                ?.map(
+                  (value) => TextAnswer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (answers != null) 'answers': answers!,
-      };
+    if (answers != null) 'answers': answers!,
+  };
 }
 
 /// A text item.
@@ -2561,21 +2618,18 @@ class TextLink {
   /// Required.
   core.String? uri;
 
-  TextLink({
-    this.displayText,
-    this.uri,
-  });
+  TextLink({this.displayText, this.uri});
 
   TextLink.fromJson(core.Map json_)
-      : this(
-          displayText: json_['displayText'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        displayText: json_['displayText'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayText != null) 'displayText': displayText!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (displayText != null) 'displayText': displayText!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// A text-based question.
@@ -2585,18 +2639,14 @@ class TextQuestion {
   /// If not, the question is a short text question.
   core.bool? paragraph;
 
-  TextQuestion({
-    this.paragraph,
-  });
+  TextQuestion({this.paragraph});
 
   TextQuestion.fromJson(core.Map json_)
-      : this(
-          paragraph: json_['paragraph'] as core.bool?,
-        );
+    : this(paragraph: json_['paragraph'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (paragraph != null) 'paragraph': paragraph!,
-      };
+    if (paragraph != null) 'paragraph': paragraph!,
+  };
 }
 
 /// A time question.
@@ -2606,18 +2656,14 @@ class TimeQuestion {
   /// Otherwise it is about a time of day.
   core.bool? duration;
 
-  TimeQuestion({
-    this.duration,
-  });
+  TimeQuestion({this.duration});
 
   TimeQuestion.fromJson(core.Map json_)
-      : this(
-          duration: json_['duration'] as core.bool?,
-        );
+    : this(duration: json_['duration'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-      };
+    if (duration != null) 'duration': duration!,
+  };
 }
 
 /// Update Form's Info.
@@ -2634,24 +2680,23 @@ class UpdateFormInfoRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdateFormInfoRequest({
-    this.info,
-    this.updateMask,
-  });
+  UpdateFormInfoRequest({this.info, this.updateMask});
 
   UpdateFormInfoRequest.fromJson(core.Map json_)
-      : this(
-          info: json_.containsKey('info')
-              ? Info.fromJson(
-                  json_['info'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        info:
+            json_.containsKey('info')
+                ? Info.fromJson(
+                  json_['info'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (info != null) 'info': info!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (info != null) 'info': info!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Update an item in a form.
@@ -2678,30 +2723,30 @@ class UpdateItemRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdateItemRequest({
-    this.item,
-    this.location,
-    this.updateMask,
-  });
+  UpdateItemRequest({this.item, this.location, this.updateMask});
 
   UpdateItemRequest.fromJson(core.Map json_)
-      : this(
-          item: json_.containsKey('item')
-              ? Item.fromJson(
-                  json_['item'] as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_.containsKey('location')
-              ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        item:
+            json_.containsKey('item')
+                ? Item.fromJson(
+                  json_['item'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location:
+            json_.containsKey('location')
+                ? Location.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (item != null) 'item': item!,
-        if (location != null) 'location': location!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (item != null) 'item': item!,
+    if (location != null) 'location': location!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Update Form's FormSettings.
@@ -2720,24 +2765,23 @@ class UpdateSettingsRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdateSettingsRequest({
-    this.settings,
-    this.updateMask,
-  });
+  UpdateSettingsRequest({this.settings, this.updateMask});
 
   UpdateSettingsRequest.fromJson(core.Map json_)
-      : this(
-          settings: json_.containsKey('settings')
-              ? FormSettings.fromJson(
-                  json_['settings'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        settings:
+            json_.containsKey('settings')
+                ? FormSettings.fromJson(
+                  json_['settings'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (settings != null) 'settings': settings!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (settings != null) 'settings': settings!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Data representing a video.
@@ -2750,24 +2794,23 @@ class Video {
   /// Required.
   core.String? youtubeUri;
 
-  Video({
-    this.properties,
-    this.youtubeUri,
-  });
+  Video({this.properties, this.youtubeUri});
 
   Video.fromJson(core.Map json_)
-      : this(
-          properties: json_.containsKey('properties')
-              ? MediaProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-          youtubeUri: json_['youtubeUri'] as core.String?,
-        );
+    : this(
+        properties:
+            json_.containsKey('properties')
+                ? MediaProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        youtubeUri: json_['youtubeUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (properties != null) 'properties': properties!,
-        if (youtubeUri != null) 'youtubeUri': youtubeUri!,
-      };
+    if (properties != null) 'properties': properties!,
+    if (youtubeUri != null) 'youtubeUri': youtubeUri!,
+  };
 }
 
 /// An item containing a video.
@@ -2780,24 +2823,23 @@ class VideoItem {
   /// Required.
   Video? video;
 
-  VideoItem({
-    this.caption,
-    this.video,
-  });
+  VideoItem({this.caption, this.video});
 
   VideoItem.fromJson(core.Map json_)
-      : this(
-          caption: json_['caption'] as core.String?,
-          video: json_.containsKey('video')
-              ? Video.fromJson(
-                  json_['video'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        caption: json_['caption'] as core.String?,
+        video:
+            json_.containsKey('video')
+                ? Video.fromJson(
+                  json_['video'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caption != null) 'caption': caption!,
-        if (video != null) 'video': video!,
-      };
+    if (caption != null) 'caption': caption!,
+    if (video != null) 'video': video!,
+  };
 }
 
 /// Link to a video.
@@ -2810,21 +2852,18 @@ class VideoLink {
   /// The URI of a YouTube video.
   core.String? youtubeUri;
 
-  VideoLink({
-    this.displayText,
-    this.youtubeUri,
-  });
+  VideoLink({this.displayText, this.youtubeUri});
 
   VideoLink.fromJson(core.Map json_)
-      : this(
-          displayText: json_['displayText'] as core.String?,
-          youtubeUri: json_['youtubeUri'] as core.String?,
-        );
+    : this(
+        displayText: json_['displayText'] as core.String?,
+        youtubeUri: json_['youtubeUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayText != null) 'displayText': displayText!,
-        if (youtubeUri != null) 'youtubeUri': youtubeUri!,
-      };
+    if (displayText != null) 'displayText': displayText!,
+    if (youtubeUri != null) 'youtubeUri': youtubeUri!,
+  };
 }
 
 /// A watch for events for a form.
@@ -2920,28 +2959,30 @@ class Watch {
   });
 
   Watch.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          errorType: json_['errorType'] as core.String?,
-          eventType: json_['eventType'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          id: json_['id'] as core.String?,
-          state: json_['state'] as core.String?,
-          target: json_.containsKey('target')
-              ? WatchTarget.fromJson(
-                  json_['target'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        errorType: json_['errorType'] as core.String?,
+        eventType: json_['eventType'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        id: json_['id'] as core.String?,
+        state: json_['state'] as core.String?,
+        target:
+            json_.containsKey('target')
+                ? WatchTarget.fromJson(
+                  json_['target'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (errorType != null) 'errorType': errorType!,
-        if (eventType != null) 'eventType': eventType!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (id != null) 'id': id!,
-        if (state != null) 'state': state!,
-        if (target != null) 'target': target!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (errorType != null) 'errorType': errorType!,
+    if (eventType != null) 'eventType': eventType!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (id != null) 'id': id!,
+    if (state != null) 'state': state!,
+    if (target != null) 'target': target!,
+  };
 }
 
 /// The target for notification delivery.
@@ -2955,21 +2996,21 @@ class WatchTarget {
   /// guarantees should be considered.
   CloudPubsubTopic? topic;
 
-  WatchTarget({
-    this.topic,
-  });
+  WatchTarget({this.topic});
 
   WatchTarget.fromJson(core.Map json_)
-      : this(
-          topic: json_.containsKey('topic')
-              ? CloudPubsubTopic.fromJson(
-                  json_['topic'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        topic:
+            json_.containsKey('topic')
+                ? CloudPubsubTopic.fromJson(
+                  json_['topic'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (topic != null) 'topic': topic!,
-      };
+    if (topic != null) 'topic': topic!,
+  };
 }
 
 /// Provides control over how write requests are executed.
@@ -2994,20 +3035,16 @@ class WriteControl {
   /// is read, but for frequently-edited forms this window may be shorter.
   core.String? targetRevisionId;
 
-  WriteControl({
-    this.requiredRevisionId,
-    this.targetRevisionId,
-  });
+  WriteControl({this.requiredRevisionId, this.targetRevisionId});
 
   WriteControl.fromJson(core.Map json_)
-      : this(
-          requiredRevisionId: json_['requiredRevisionId'] as core.String?,
-          targetRevisionId: json_['targetRevisionId'] as core.String?,
-        );
+    : this(
+        requiredRevisionId: json_['requiredRevisionId'] as core.String?,
+        targetRevisionId: json_['targetRevisionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requiredRevisionId != null)
-          'requiredRevisionId': requiredRevisionId!,
-        if (targetRevisionId != null) 'targetRevisionId': targetRevisionId!,
-      };
+    if (requiredRevisionId != null) 'requiredRevisionId': requiredRevisionId!,
+    if (targetRevisionId != null) 'targetRevisionId': targetRevisionId!,
+  };
 }

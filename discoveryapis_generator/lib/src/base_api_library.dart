@@ -14,9 +14,11 @@ abstract class BaseApiLibrary {
 
   late final DartApiImports imports;
 
-  BaseApiLibrary(this.description, String apiClassSuffix,
-      {bool useCorePrefixes = true})
-      : namer = ApiLibraryNamer(apiClassSuffix: apiClassSuffix) {
+  BaseApiLibrary(
+    this.description,
+    String apiClassSuffix, {
+    bool useCorePrefixes = true,
+  }) : namer = ApiLibraryNamer(apiClassSuffix: apiClassSuffix) {
     imports = DartApiImports.fromNamer(namer, useCorePrefixes: useCorePrefixes);
   }
   String libraryHeader();

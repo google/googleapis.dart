@@ -47,11 +47,16 @@ class AbusiveExperienceReportApi {
   ViolatingSitesResource get violatingSites =>
       ViolatingSitesResource(_requester);
 
-  AbusiveExperienceReportApi(http.Client client,
-      {core.String rootUrl = 'https://abusiveexperiencereport.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AbusiveExperienceReportApi(
+    http.Client client, {
+    core.String rootUrl = 'https://abusiveexperiencereport.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class SitesResource {
@@ -93,7 +98,8 @@ class SitesResource {
       queryParams: queryParams_,
     );
     return SiteSummaryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -116,9 +122,7 @@ class ViolatingSitesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ViolatingSitesResponse> list({
-    core.String? $fields,
-  }) async {
+  async.Future<ViolatingSitesResponse> list({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -131,7 +135,8 @@ class ViolatingSitesResource {
       queryParams: queryParams_,
     );
     return ViolatingSitesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -188,25 +193,25 @@ class SiteSummaryResponse {
   });
 
   SiteSummaryResponse.fromJson(core.Map json_)
-      : this(
-          abusiveStatus: json_['abusiveStatus'] as core.String?,
-          enforcementTime: json_['enforcementTime'] as core.String?,
-          filterStatus: json_['filterStatus'] as core.String?,
-          lastChangeTime: json_['lastChangeTime'] as core.String?,
-          reportUrl: json_['reportUrl'] as core.String?,
-          reviewedSite: json_['reviewedSite'] as core.String?,
-          underReview: json_['underReview'] as core.bool?,
-        );
+    : this(
+        abusiveStatus: json_['abusiveStatus'] as core.String?,
+        enforcementTime: json_['enforcementTime'] as core.String?,
+        filterStatus: json_['filterStatus'] as core.String?,
+        lastChangeTime: json_['lastChangeTime'] as core.String?,
+        reportUrl: json_['reportUrl'] as core.String?,
+        reviewedSite: json_['reviewedSite'] as core.String?,
+        underReview: json_['underReview'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (abusiveStatus != null) 'abusiveStatus': abusiveStatus!,
-        if (enforcementTime != null) 'enforcementTime': enforcementTime!,
-        if (filterStatus != null) 'filterStatus': filterStatus!,
-        if (lastChangeTime != null) 'lastChangeTime': lastChangeTime!,
-        if (reportUrl != null) 'reportUrl': reportUrl!,
-        if (reviewedSite != null) 'reviewedSite': reviewedSite!,
-        if (underReview != null) 'underReview': underReview!,
-      };
+    if (abusiveStatus != null) 'abusiveStatus': abusiveStatus!,
+    if (enforcementTime != null) 'enforcementTime': enforcementTime!,
+    if (filterStatus != null) 'filterStatus': filterStatus!,
+    if (lastChangeTime != null) 'lastChangeTime': lastChangeTime!,
+    if (reportUrl != null) 'reportUrl': reportUrl!,
+    if (reviewedSite != null) 'reviewedSite': reviewedSite!,
+    if (underReview != null) 'underReview': underReview!,
+  };
 }
 
 /// Response message for ListViolatingSites.
@@ -214,19 +219,21 @@ class ViolatingSitesResponse {
   /// The list of violating sites.
   core.List<SiteSummaryResponse>? violatingSites;
 
-  ViolatingSitesResponse({
-    this.violatingSites,
-  });
+  ViolatingSitesResponse({this.violatingSites});
 
   ViolatingSitesResponse.fromJson(core.Map json_)
-      : this(
-          violatingSites: (json_['violatingSites'] as core.List?)
-              ?.map((value) => SiteSummaryResponse.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        violatingSites:
+            (json_['violatingSites'] as core.List?)
+                ?.map(
+                  (value) => SiteSummaryResponse.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (violatingSites != null) 'violatingSites': violatingSites!,
-      };
+    if (violatingSites != null) 'violatingSites': violatingSites!,
+  };
 }

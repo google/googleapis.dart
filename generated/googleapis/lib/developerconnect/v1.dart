@@ -55,11 +55,16 @@ class DeveloperConnectApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  DeveloperConnectApi(http.Client client,
-      {core.String rootUrl = 'https://developerconnect.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DeveloperConnectApi(
+    http.Client client, {
+    core.String rootUrl = 'https://developerconnect.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -102,10 +107,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -175,7 +177,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -186,7 +189,7 @@ class ProjectsLocationsAccountConnectorsResource {
       ProjectsLocationsAccountConnectorsUsersResource(_requester);
 
   ProjectsLocationsAccountConnectorsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new AccountConnector in a given project and location.
   ///
@@ -358,7 +361,8 @@ class ProjectsLocationsAccountConnectorsResource {
       queryParams: queryParams_,
     );
     return AccountConnector.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists AccountConnectors in a given project and location.
@@ -412,7 +416,8 @@ class ProjectsLocationsAccountConnectorsResource {
       queryParams: queryParams_,
     );
     return ListAccountConnectorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single AccountConnector.
@@ -493,7 +498,7 @@ class ProjectsLocationsAccountConnectorsUsersResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAccountConnectorsUsersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes a single User.
   ///
@@ -623,7 +628,8 @@ class ProjectsLocationsAccountConnectorsUsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$accountConnector') +
         '/users:fetchAccessToken';
 
@@ -634,7 +640,8 @@ class ProjectsLocationsAccountConnectorsUsersResource {
       queryParams: queryParams_,
     );
     return FetchAccessTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Fetch the User based on the user credentials.
@@ -655,10 +662,7 @@ class ProjectsLocationsAccountConnectorsUsersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<User> fetchSelf(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<User> fetchSelf(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -725,7 +729,8 @@ class ProjectsLocationsAccountConnectorsUsersResource {
       queryParams: queryParams_,
     );
     return ListUsersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -733,11 +738,11 @@ class ProjectsLocationsConnectionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectionsGitRepositoryLinksResource
-      get gitRepositoryLinks =>
-          ProjectsLocationsConnectionsGitRepositoryLinksResource(_requester);
+  get gitRepositoryLinks =>
+      ProjectsLocationsConnectionsGitRepositoryLinksResource(_requester);
 
   ProjectsLocationsConnectionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new Connection in a given project and location.
   ///
@@ -896,7 +901,8 @@ class ProjectsLocationsConnectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$connection') +
         ':fetchGitHubInstallations';
 
@@ -906,7 +912,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return FetchGitHubInstallationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// FetchLinkableGitRepositories returns a list of git repositories from an
@@ -935,7 +942,7 @@ class ProjectsLocationsConnectionsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FetchLinkableGitRepositoriesResponse>
-      fetchLinkableGitRepositories(
+  fetchLinkableGitRepositories(
     core.String connection, {
     core.int? pageSize,
     core.String? pageToken,
@@ -947,7 +954,8 @@ class ProjectsLocationsConnectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$connection') +
         ':fetchLinkableGitRepositories';
 
@@ -957,7 +965,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return FetchLinkableGitRepositoriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single Connection.
@@ -978,10 +987,7 @@ class ProjectsLocationsConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Connection> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Connection> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -994,7 +1000,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return Connection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists Connections in a given project and location.
@@ -1048,7 +1055,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return ListConnectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Connection.
@@ -1159,7 +1167,8 @@ class ProjectsLocationsConnectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/connections:processGitHubEnterpriseWebhook';
 
@@ -1177,8 +1186,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectionsGitRepositoryLinksResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a GitRepositoryLink.
   ///
@@ -1368,7 +1377,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       queryParams: queryParams_,
     );
     return FetchGitRefsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Fetches read token of a given gitRepositoryLink.
@@ -1413,7 +1423,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       queryParams: queryParams_,
     );
     return FetchReadTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Fetches read/write token of a given gitRepositoryLink.
@@ -1448,7 +1459,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$gitRepositoryLink') +
         ':fetchReadWriteToken';
 
@@ -1459,7 +1471,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       queryParams: queryParams_,
     );
     return FetchReadWriteTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single GitRepositoryLink.
@@ -1496,7 +1509,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       queryParams: queryParams_,
     );
     return GitRepositoryLink.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists GitRepositoryLinks in a given project, location, and connection.
@@ -1551,7 +1565,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       queryParams: queryParams_,
     );
     return ListGitRepositoryLinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// ProcessBitbucketCloudWebhook is called by the external Bitbucket Cloud
@@ -1632,7 +1647,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$name') +
         ':processBitbucketDataCenterWebhook';
 
@@ -1678,7 +1694,8 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$name') +
         ':processGitLabEnterpriseWebhook';
 
@@ -1739,7 +1756,7 @@ class ProjectsLocationsInsightsConfigsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsInsightsConfigsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new InsightsConfig in a given project and location.
   ///
@@ -1885,7 +1902,8 @@ class ProjectsLocationsInsightsConfigsResource {
       queryParams: queryParams_,
     );
     return InsightsConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists InsightsConfigs in a given project and location.
@@ -1942,7 +1960,8 @@ class ProjectsLocationsInsightsConfigsResource {
       queryParams: queryParams_,
     );
     return ListInsightsConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single InsightsConfig.
@@ -2019,7 +2038,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -2093,10 +2112,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2132,10 +2148,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2197,7 +2210,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2259,44 +2273,38 @@ class AccountConnector {
   });
 
   AccountConnector.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          oauthStartUri: json_['oauthStartUri'] as core.String?,
-          providerOauthConfig: json_.containsKey('providerOauthConfig')
-              ? ProviderOAuthConfig.fromJson(json_['providerOauthConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        oauthStartUri: json_['oauthStartUri'] as core.String?,
+        providerOauthConfig:
+            json_.containsKey('providerOauthConfig')
+                ? ProviderOAuthConfig.fromJson(
+                  json_['providerOauthConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (createTime != null) 'createTime': createTime!,
-        if (etag != null) 'etag': etag!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (oauthStartUri != null) 'oauthStartUri': oauthStartUri!,
-        if (providerOauthConfig != null)
-          'providerOauthConfig': providerOauthConfig!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (etag != null) 'etag': etag!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (oauthStartUri != null) 'oauthStartUri': oauthStartUri!,
+    if (providerOauthConfig != null)
+      'providerOauthConfig': providerOauthConfig!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// AppHubWorkload represents the App Hub Workload.
@@ -2319,24 +2327,20 @@ class AppHubWorkload {
   /// Required. Output only. Immutable.
   core.String? workload;
 
-  AppHubWorkload({
-    this.criticality,
-    this.environment,
-    this.workload,
-  });
+  AppHubWorkload({this.criticality, this.environment, this.workload});
 
   AppHubWorkload.fromJson(core.Map json_)
-      : this(
-          criticality: json_['criticality'] as core.String?,
-          environment: json_['environment'] as core.String?,
-          workload: json_['workload'] as core.String?,
-        );
+    : this(
+        criticality: json_['criticality'] as core.String?,
+        environment: json_['environment'] as core.String?,
+        workload: json_['workload'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (criticality != null) 'criticality': criticality!,
-        if (environment != null) 'environment': environment!,
-        if (workload != null) 'workload': workload!,
-      };
+    if (criticality != null) 'criticality': criticality!,
+    if (environment != null) 'environment': environment!,
+    if (workload != null) 'workload': workload!,
+  };
 }
 
 /// The artifact config of the artifact that is deployed.
@@ -2366,25 +2370,31 @@ class ArtifactConfig {
   });
 
   ArtifactConfig.fromJson(core.Map json_)
-      : this(
-          googleArtifactAnalysis: json_.containsKey('googleArtifactAnalysis')
-              ? GoogleArtifactAnalysis.fromJson(json_['googleArtifactAnalysis']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          googleArtifactRegistry: json_.containsKey('googleArtifactRegistry')
-              ? GoogleArtifactRegistry.fromJson(json_['googleArtifactRegistry']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        googleArtifactAnalysis:
+            json_.containsKey('googleArtifactAnalysis')
+                ? GoogleArtifactAnalysis.fromJson(
+                  json_['googleArtifactAnalysis']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        googleArtifactRegistry:
+            json_.containsKey('googleArtifactRegistry')
+                ? GoogleArtifactRegistry.fromJson(
+                  json_['googleArtifactRegistry']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (googleArtifactAnalysis != null)
-          'googleArtifactAnalysis': googleArtifactAnalysis!,
-        if (googleArtifactRegistry != null)
-          'googleArtifactRegistry': googleArtifactRegistry!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (googleArtifactAnalysis != null)
+      'googleArtifactAnalysis': googleArtifactAnalysis!,
+    if (googleArtifactRegistry != null)
+      'googleArtifactRegistry': googleArtifactRegistry!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Configuration for connections to an instance of Bitbucket Cloud.
@@ -2428,30 +2438,35 @@ class BitbucketCloudConfig {
   });
 
   BitbucketCloudConfig.fromJson(core.Map json_)
-      : this(
-          authorizerCredential: json_.containsKey('authorizerCredential')
-              ? UserCredential.fromJson(json_['authorizerCredential']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          readAuthorizerCredential:
-              json_.containsKey('readAuthorizerCredential')
-                  ? UserCredential.fromJson(json_['readAuthorizerCredential']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-          webhookSecretSecretVersion:
-              json_['webhookSecretSecretVersion'] as core.String?,
-          workspace: json_['workspace'] as core.String?,
-        );
+    : this(
+        authorizerCredential:
+            json_.containsKey('authorizerCredential')
+                ? UserCredential.fromJson(
+                  json_['authorizerCredential']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        readAuthorizerCredential:
+            json_.containsKey('readAuthorizerCredential')
+                ? UserCredential.fromJson(
+                  json_['readAuthorizerCredential']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        webhookSecretSecretVersion:
+            json_['webhookSecretSecretVersion'] as core.String?,
+        workspace: json_['workspace'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizerCredential != null)
-          'authorizerCredential': authorizerCredential!,
-        if (readAuthorizerCredential != null)
-          'readAuthorizerCredential': readAuthorizerCredential!,
-        if (webhookSecretSecretVersion != null)
-          'webhookSecretSecretVersion': webhookSecretSecretVersion!,
-        if (workspace != null) 'workspace': workspace!,
-      };
+    if (authorizerCredential != null)
+      'authorizerCredential': authorizerCredential!,
+    if (readAuthorizerCredential != null)
+      'readAuthorizerCredential': readAuthorizerCredential!,
+    if (webhookSecretSecretVersion != null)
+      'webhookSecretSecretVersion': webhookSecretSecretVersion!,
+    if (workspace != null) 'workspace': workspace!,
+  };
 }
 
 /// Configuration for connections to an instance of Bitbucket Data Center.
@@ -2516,40 +2531,48 @@ class BitbucketDataCenterConfig {
   });
 
   BitbucketDataCenterConfig.fromJson(core.Map json_)
-      : this(
-          authorizerCredential: json_.containsKey('authorizerCredential')
-              ? UserCredential.fromJson(json_['authorizerCredential']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          hostUri: json_['hostUri'] as core.String?,
-          readAuthorizerCredential:
-              json_.containsKey('readAuthorizerCredential')
-                  ? UserCredential.fromJson(json_['readAuthorizerCredential']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-          serverVersion: json_['serverVersion'] as core.String?,
-          serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
-              ? ServiceDirectoryConfig.fromJson(json_['serviceDirectoryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sslCaCertificate: json_['sslCaCertificate'] as core.String?,
-          webhookSecretSecretVersion:
-              json_['webhookSecretSecretVersion'] as core.String?,
-        );
+    : this(
+        authorizerCredential:
+            json_.containsKey('authorizerCredential')
+                ? UserCredential.fromJson(
+                  json_['authorizerCredential']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hostUri: json_['hostUri'] as core.String?,
+        readAuthorizerCredential:
+            json_.containsKey('readAuthorizerCredential')
+                ? UserCredential.fromJson(
+                  json_['readAuthorizerCredential']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serverVersion: json_['serverVersion'] as core.String?,
+        serviceDirectoryConfig:
+            json_.containsKey('serviceDirectoryConfig')
+                ? ServiceDirectoryConfig.fromJson(
+                  json_['serviceDirectoryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sslCaCertificate: json_['sslCaCertificate'] as core.String?,
+        webhookSecretSecretVersion:
+            json_['webhookSecretSecretVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizerCredential != null)
-          'authorizerCredential': authorizerCredential!,
-        if (hostUri != null) 'hostUri': hostUri!,
-        if (readAuthorizerCredential != null)
-          'readAuthorizerCredential': readAuthorizerCredential!,
-        if (serverVersion != null) 'serverVersion': serverVersion!,
-        if (serviceDirectoryConfig != null)
-          'serviceDirectoryConfig': serviceDirectoryConfig!,
-        if (sslCaCertificate != null) 'sslCaCertificate': sslCaCertificate!,
-        if (webhookSecretSecretVersion != null)
-          'webhookSecretSecretVersion': webhookSecretSecretVersion!,
-      };
+    if (authorizerCredential != null)
+      'authorizerCredential': authorizerCredential!,
+    if (hostUri != null) 'hostUri': hostUri!,
+    if (readAuthorizerCredential != null)
+      'readAuthorizerCredential': readAuthorizerCredential!,
+    if (serverVersion != null) 'serverVersion': serverVersion!,
+    if (serviceDirectoryConfig != null)
+      'serviceDirectoryConfig': serviceDirectoryConfig!,
+    if (sslCaCertificate != null) 'sslCaCertificate': sslCaCertificate!,
+    if (webhookSecretSecretVersion != null)
+      'webhookSecretSecretVersion': webhookSecretSecretVersion!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2675,95 +2698,109 @@ class Connection {
   });
 
   Connection.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          bitbucketCloudConfig: json_.containsKey('bitbucketCloudConfig')
-              ? BitbucketCloudConfig.fromJson(json_['bitbucketCloudConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          bitbucketDataCenterConfig:
-              json_.containsKey('bitbucketDataCenterConfig')
-                  ? BitbucketDataCenterConfig.fromJson(
-                      json_['bitbucketDataCenterConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          createTime: json_['createTime'] as core.String?,
-          cryptoKeyConfig: json_.containsKey('cryptoKeyConfig')
-              ? CryptoKeyConfig.fromJson(json_['cryptoKeyConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteTime: json_['deleteTime'] as core.String?,
-          disabled: json_['disabled'] as core.bool?,
-          etag: json_['etag'] as core.String?,
-          gitProxyConfig: json_.containsKey('gitProxyConfig')
-              ? GitProxyConfig.fromJson(json_['gitProxyConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          githubConfig: json_.containsKey('githubConfig')
-              ? GitHubConfig.fromJson(
-                  json_['githubConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          githubEnterpriseConfig: json_.containsKey('githubEnterpriseConfig')
-              ? GitHubEnterpriseConfig.fromJson(json_['githubEnterpriseConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          gitlabConfig: json_.containsKey('gitlabConfig')
-              ? GitLabConfig.fromJson(
-                  json_['gitlabConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gitlabEnterpriseConfig: json_.containsKey('gitlabEnterpriseConfig')
-              ? GitLabEnterpriseConfig.fromJson(json_['gitlabEnterpriseConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          installationState: json_.containsKey('installationState')
-              ? InstallationState.fromJson(json_['installationState']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          reconciling: json_['reconciling'] as core.bool?,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        bitbucketCloudConfig:
+            json_.containsKey('bitbucketCloudConfig')
+                ? BitbucketCloudConfig.fromJson(
+                  json_['bitbucketCloudConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bitbucketDataCenterConfig:
+            json_.containsKey('bitbucketDataCenterConfig')
+                ? BitbucketDataCenterConfig.fromJson(
+                  json_['bitbucketDataCenterConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        cryptoKeyConfig:
+            json_.containsKey('cryptoKeyConfig')
+                ? CryptoKeyConfig.fromJson(
+                  json_['cryptoKeyConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteTime: json_['deleteTime'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        etag: json_['etag'] as core.String?,
+        gitProxyConfig:
+            json_.containsKey('gitProxyConfig')
+                ? GitProxyConfig.fromJson(
+                  json_['gitProxyConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        githubConfig:
+            json_.containsKey('githubConfig')
+                ? GitHubConfig.fromJson(
+                  json_['githubConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        githubEnterpriseConfig:
+            json_.containsKey('githubEnterpriseConfig')
+                ? GitHubEnterpriseConfig.fromJson(
+                  json_['githubEnterpriseConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gitlabConfig:
+            json_.containsKey('gitlabConfig')
+                ? GitLabConfig.fromJson(
+                  json_['gitlabConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gitlabEnterpriseConfig:
+            json_.containsKey('gitlabEnterpriseConfig')
+                ? GitLabEnterpriseConfig.fromJson(
+                  json_['gitlabEnterpriseConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        installationState:
+            json_.containsKey('installationState')
+                ? InstallationState.fromJson(
+                  json_['installationState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        reconciling: json_['reconciling'] as core.bool?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (bitbucketCloudConfig != null)
-          'bitbucketCloudConfig': bitbucketCloudConfig!,
-        if (bitbucketDataCenterConfig != null)
-          'bitbucketDataCenterConfig': bitbucketDataCenterConfig!,
-        if (createTime != null) 'createTime': createTime!,
-        if (cryptoKeyConfig != null) 'cryptoKeyConfig': cryptoKeyConfig!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (disabled != null) 'disabled': disabled!,
-        if (etag != null) 'etag': etag!,
-        if (gitProxyConfig != null) 'gitProxyConfig': gitProxyConfig!,
-        if (githubConfig != null) 'githubConfig': githubConfig!,
-        if (githubEnterpriseConfig != null)
-          'githubEnterpriseConfig': githubEnterpriseConfig!,
-        if (gitlabConfig != null) 'gitlabConfig': gitlabConfig!,
-        if (gitlabEnterpriseConfig != null)
-          'gitlabEnterpriseConfig': gitlabEnterpriseConfig!,
-        if (installationState != null) 'installationState': installationState!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (reconciling != null) 'reconciling': reconciling!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (bitbucketCloudConfig != null)
+      'bitbucketCloudConfig': bitbucketCloudConfig!,
+    if (bitbucketDataCenterConfig != null)
+      'bitbucketDataCenterConfig': bitbucketDataCenterConfig!,
+    if (createTime != null) 'createTime': createTime!,
+    if (cryptoKeyConfig != null) 'cryptoKeyConfig': cryptoKeyConfig!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (disabled != null) 'disabled': disabled!,
+    if (etag != null) 'etag': etag!,
+    if (gitProxyConfig != null) 'gitProxyConfig': gitProxyConfig!,
+    if (githubConfig != null) 'githubConfig': githubConfig!,
+    if (githubEnterpriseConfig != null)
+      'githubEnterpriseConfig': githubEnterpriseConfig!,
+    if (gitlabConfig != null) 'gitlabConfig': gitlabConfig!,
+    if (gitlabEnterpriseConfig != null)
+      'gitlabEnterpriseConfig': gitlabEnterpriseConfig!,
+    if (installationState != null) 'installationState': installationState!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The crypto key configuration.
@@ -2778,18 +2815,14 @@ class CryptoKeyConfig {
   /// Required.
   core.String? keyReference;
 
-  CryptoKeyConfig({
-    this.keyReference,
-  });
+  CryptoKeyConfig({this.keyReference});
 
   CryptoKeyConfig.fromJson(core.Map json_)
-      : this(
-          keyReference: json_['keyReference'] as core.String?,
-        );
+    : this(keyReference: json_['keyReference'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keyReference != null) 'keyReference': keyReference!,
-      };
+    if (keyReference != null) 'keyReference': keyReference!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2809,21 +2842,18 @@ class ExchangeError {
   /// error_description
   core.String? description;
 
-  ExchangeError({
-    this.code,
-    this.description,
-  });
+  ExchangeError({this.code, this.description});
 
   ExchangeError.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          description: json_['description'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        description: json_['description'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (description != null) 'description': description!,
-      };
+    if (code != null) 'code': code!,
+    if (description != null) 'description': description!,
+  };
 }
 
 /// Message for fetching an OAuth access token.
@@ -2853,24 +2883,27 @@ class FetchAccessTokenResponse {
   });
 
   FetchAccessTokenResponse.fromJson(core.Map json_)
-      : this(
-          exchangeError: json_.containsKey('exchangeError')
-              ? ExchangeError.fromJson(
-                  json_['exchangeError'] as core.Map<core.String, core.dynamic>)
-              : null,
-          expirationTime: json_['expirationTime'] as core.String?,
-          scopes: (json_['scopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          token: json_['token'] as core.String?,
-        );
+    : this(
+        exchangeError:
+            json_.containsKey('exchangeError')
+                ? ExchangeError.fromJson(
+                  json_['exchangeError'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        expirationTime: json_['expirationTime'] as core.String?,
+        scopes:
+            (json_['scopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        token: json_['token'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exchangeError != null) 'exchangeError': exchangeError!,
-        if (expirationTime != null) 'expirationTime': expirationTime!,
-        if (scopes != null) 'scopes': scopes!,
-        if (token != null) 'token': token!,
-      };
+    if (exchangeError != null) 'exchangeError': exchangeError!,
+    if (expirationTime != null) 'expirationTime': expirationTime!,
+    if (scopes != null) 'scopes': scopes!,
+    if (token != null) 'token': token!,
+  };
 }
 
 /// Response of fetching github installations.
@@ -2879,21 +2912,23 @@ class FetchGitHubInstallationsResponse {
   /// the installations (for GitHub enterprise).
   core.List<Installation>? installations;
 
-  FetchGitHubInstallationsResponse({
-    this.installations,
-  });
+  FetchGitHubInstallationsResponse({this.installations});
 
   FetchGitHubInstallationsResponse.fromJson(core.Map json_)
-      : this(
-          installations: (json_['installations'] as core.List?)
-              ?.map((value) => Installation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        installations:
+            (json_['installations'] as core.List?)
+                ?.map(
+                  (value) => Installation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (installations != null) 'installations': installations!,
-      };
+    if (installations != null) 'installations': installations!,
+  };
 }
 
 /// Response for fetching git refs.
@@ -2913,20 +2948,23 @@ class FetchLinkableGitRepositoriesResponse {
   });
 
   FetchLinkableGitRepositoriesResponse.fromJson(core.Map json_)
-      : this(
-          linkableGitRepositories:
-              (json_['linkableGitRepositories'] as core.List?)
-                  ?.map((value) => LinkableGitRepository.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        linkableGitRepositories:
+            (json_['linkableGitRepositories'] as core.List?)
+                ?.map(
+                  (value) => LinkableGitRepository.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (linkableGitRepositories != null)
-          'linkableGitRepositories': linkableGitRepositories!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (linkableGitRepositories != null)
+      'linkableGitRepositories': linkableGitRepositories!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Message for fetching SCM read token.
@@ -2958,21 +2996,18 @@ class GKEWorkload {
   /// Output only.
   core.String? deployment;
 
-  GKEWorkload({
-    this.cluster,
-    this.deployment,
-  });
+  GKEWorkload({this.cluster, this.deployment});
 
   GKEWorkload.fromJson(core.Map json_)
-      : this(
-          cluster: json_['cluster'] as core.String?,
-          deployment: json_['deployment'] as core.String?,
-        );
+    : this(
+        cluster: json_['cluster'] as core.String?,
+        deployment: json_['deployment'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cluster != null) 'cluster': cluster!,
-        if (deployment != null) 'deployment': deployment!,
-      };
+    if (cluster != null) 'cluster': cluster!,
+    if (deployment != null) 'deployment': deployment!,
+  };
 }
 
 /// Configuration for connections to github.com.
@@ -3014,23 +3049,26 @@ class GitHubConfig {
   });
 
   GitHubConfig.fromJson(core.Map json_)
-      : this(
-          appInstallationId: json_['appInstallationId'] as core.String?,
-          authorizerCredential: json_.containsKey('authorizerCredential')
-              ? OAuthCredential.fromJson(json_['authorizerCredential']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          githubApp: json_['githubApp'] as core.String?,
-          installationUri: json_['installationUri'] as core.String?,
-        );
+    : this(
+        appInstallationId: json_['appInstallationId'] as core.String?,
+        authorizerCredential:
+            json_.containsKey('authorizerCredential')
+                ? OAuthCredential.fromJson(
+                  json_['authorizerCredential']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        githubApp: json_['githubApp'] as core.String?,
+        installationUri: json_['installationUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appInstallationId != null) 'appInstallationId': appInstallationId!,
-        if (authorizerCredential != null)
-          'authorizerCredential': authorizerCredential!,
-        if (githubApp != null) 'githubApp': githubApp!,
-        if (installationUri != null) 'installationUri': installationUri!,
-      };
+    if (appInstallationId != null) 'appInstallationId': appInstallationId!,
+    if (authorizerCredential != null)
+      'authorizerCredential': authorizerCredential!,
+    if (githubApp != null) 'githubApp': githubApp!,
+    if (installationUri != null) 'installationUri': installationUri!,
+  };
 }
 
 /// Configuration for connections to an instance of GitHub Enterprise.
@@ -3108,39 +3146,42 @@ class GitHubEnterpriseConfig {
   });
 
   GitHubEnterpriseConfig.fromJson(core.Map json_)
-      : this(
-          appId: json_['appId'] as core.String?,
-          appInstallationId: json_['appInstallationId'] as core.String?,
-          appSlug: json_['appSlug'] as core.String?,
-          hostUri: json_['hostUri'] as core.String?,
-          installationUri: json_['installationUri'] as core.String?,
-          privateKeySecretVersion:
-              json_['privateKeySecretVersion'] as core.String?,
-          serverVersion: json_['serverVersion'] as core.String?,
-          serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
-              ? ServiceDirectoryConfig.fromJson(json_['serviceDirectoryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sslCaCertificate: json_['sslCaCertificate'] as core.String?,
-          webhookSecretSecretVersion:
-              json_['webhookSecretSecretVersion'] as core.String?,
-        );
+    : this(
+        appId: json_['appId'] as core.String?,
+        appInstallationId: json_['appInstallationId'] as core.String?,
+        appSlug: json_['appSlug'] as core.String?,
+        hostUri: json_['hostUri'] as core.String?,
+        installationUri: json_['installationUri'] as core.String?,
+        privateKeySecretVersion:
+            json_['privateKeySecretVersion'] as core.String?,
+        serverVersion: json_['serverVersion'] as core.String?,
+        serviceDirectoryConfig:
+            json_.containsKey('serviceDirectoryConfig')
+                ? ServiceDirectoryConfig.fromJson(
+                  json_['serviceDirectoryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sslCaCertificate: json_['sslCaCertificate'] as core.String?,
+        webhookSecretSecretVersion:
+            json_['webhookSecretSecretVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appId != null) 'appId': appId!,
-        if (appInstallationId != null) 'appInstallationId': appInstallationId!,
-        if (appSlug != null) 'appSlug': appSlug!,
-        if (hostUri != null) 'hostUri': hostUri!,
-        if (installationUri != null) 'installationUri': installationUri!,
-        if (privateKeySecretVersion != null)
-          'privateKeySecretVersion': privateKeySecretVersion!,
-        if (serverVersion != null) 'serverVersion': serverVersion!,
-        if (serviceDirectoryConfig != null)
-          'serviceDirectoryConfig': serviceDirectoryConfig!,
-        if (sslCaCertificate != null) 'sslCaCertificate': sslCaCertificate!,
-        if (webhookSecretSecretVersion != null)
-          'webhookSecretSecretVersion': webhookSecretSecretVersion!,
-      };
+    if (appId != null) 'appId': appId!,
+    if (appInstallationId != null) 'appInstallationId': appInstallationId!,
+    if (appSlug != null) 'appSlug': appSlug!,
+    if (hostUri != null) 'hostUri': hostUri!,
+    if (installationUri != null) 'installationUri': installationUri!,
+    if (privateKeySecretVersion != null)
+      'privateKeySecretVersion': privateKeySecretVersion!,
+    if (serverVersion != null) 'serverVersion': serverVersion!,
+    if (serviceDirectoryConfig != null)
+      'serviceDirectoryConfig': serviceDirectoryConfig!,
+    if (sslCaCertificate != null) 'sslCaCertificate': sslCaCertificate!,
+    if (webhookSecretSecretVersion != null)
+      'webhookSecretSecretVersion': webhookSecretSecretVersion!,
+  };
 }
 
 /// Configuration for connections to gitlab.com.
@@ -3178,28 +3219,33 @@ class GitLabConfig {
   });
 
   GitLabConfig.fromJson(core.Map json_)
-      : this(
-          authorizerCredential: json_.containsKey('authorizerCredential')
-              ? UserCredential.fromJson(json_['authorizerCredential']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          readAuthorizerCredential:
-              json_.containsKey('readAuthorizerCredential')
-                  ? UserCredential.fromJson(json_['readAuthorizerCredential']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-          webhookSecretSecretVersion:
-              json_['webhookSecretSecretVersion'] as core.String?,
-        );
+    : this(
+        authorizerCredential:
+            json_.containsKey('authorizerCredential')
+                ? UserCredential.fromJson(
+                  json_['authorizerCredential']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        readAuthorizerCredential:
+            json_.containsKey('readAuthorizerCredential')
+                ? UserCredential.fromJson(
+                  json_['readAuthorizerCredential']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        webhookSecretSecretVersion:
+            json_['webhookSecretSecretVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizerCredential != null)
-          'authorizerCredential': authorizerCredential!,
-        if (readAuthorizerCredential != null)
-          'readAuthorizerCredential': readAuthorizerCredential!,
-        if (webhookSecretSecretVersion != null)
-          'webhookSecretSecretVersion': webhookSecretSecretVersion!,
-      };
+    if (authorizerCredential != null)
+      'authorizerCredential': authorizerCredential!,
+    if (readAuthorizerCredential != null)
+      'readAuthorizerCredential': readAuthorizerCredential!,
+    if (webhookSecretSecretVersion != null)
+      'webhookSecretSecretVersion': webhookSecretSecretVersion!,
+  };
 }
 
 /// Configuration for connections to an instance of GitLab Enterprise.
@@ -3268,40 +3314,48 @@ class GitLabEnterpriseConfig {
   });
 
   GitLabEnterpriseConfig.fromJson(core.Map json_)
-      : this(
-          authorizerCredential: json_.containsKey('authorizerCredential')
-              ? UserCredential.fromJson(json_['authorizerCredential']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          hostUri: json_['hostUri'] as core.String?,
-          readAuthorizerCredential:
-              json_.containsKey('readAuthorizerCredential')
-                  ? UserCredential.fromJson(json_['readAuthorizerCredential']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-          serverVersion: json_['serverVersion'] as core.String?,
-          serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
-              ? ServiceDirectoryConfig.fromJson(json_['serviceDirectoryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sslCaCertificate: json_['sslCaCertificate'] as core.String?,
-          webhookSecretSecretVersion:
-              json_['webhookSecretSecretVersion'] as core.String?,
-        );
+    : this(
+        authorizerCredential:
+            json_.containsKey('authorizerCredential')
+                ? UserCredential.fromJson(
+                  json_['authorizerCredential']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hostUri: json_['hostUri'] as core.String?,
+        readAuthorizerCredential:
+            json_.containsKey('readAuthorizerCredential')
+                ? UserCredential.fromJson(
+                  json_['readAuthorizerCredential']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serverVersion: json_['serverVersion'] as core.String?,
+        serviceDirectoryConfig:
+            json_.containsKey('serviceDirectoryConfig')
+                ? ServiceDirectoryConfig.fromJson(
+                  json_['serviceDirectoryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sslCaCertificate: json_['sslCaCertificate'] as core.String?,
+        webhookSecretSecretVersion:
+            json_['webhookSecretSecretVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizerCredential != null)
-          'authorizerCredential': authorizerCredential!,
-        if (hostUri != null) 'hostUri': hostUri!,
-        if (readAuthorizerCredential != null)
-          'readAuthorizerCredential': readAuthorizerCredential!,
-        if (serverVersion != null) 'serverVersion': serverVersion!,
-        if (serviceDirectoryConfig != null)
-          'serviceDirectoryConfig': serviceDirectoryConfig!,
-        if (sslCaCertificate != null) 'sslCaCertificate': sslCaCertificate!,
-        if (webhookSecretSecretVersion != null)
-          'webhookSecretSecretVersion': webhookSecretSecretVersion!,
-      };
+    if (authorizerCredential != null)
+      'authorizerCredential': authorizerCredential!,
+    if (hostUri != null) 'hostUri': hostUri!,
+    if (readAuthorizerCredential != null)
+      'readAuthorizerCredential': readAuthorizerCredential!,
+    if (serverVersion != null) 'serverVersion': serverVersion!,
+    if (serviceDirectoryConfig != null)
+      'serviceDirectoryConfig': serviceDirectoryConfig!,
+    if (sslCaCertificate != null) 'sslCaCertificate': sslCaCertificate!,
+    if (webhookSecretSecretVersion != null)
+      'webhookSecretSecretVersion': webhookSecretSecretVersion!,
+  };
 }
 
 /// The git proxy configuration.
@@ -3312,18 +3366,14 @@ class GitProxyConfig {
   /// Optional.
   core.bool? enabled;
 
-  GitProxyConfig({
-    this.enabled,
-  });
+  GitProxyConfig({this.enabled});
 
   GitProxyConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 /// Message describing the GitRepositoryLink object
@@ -3411,48 +3461,39 @@ class GitRepositoryLink {
   });
 
   GitRepositoryLink.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          cloneUri: json_['cloneUri'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          deleteTime: json_['deleteTime'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          gitProxyUri: json_['gitProxyUri'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          reconciling: json_['reconciling'] as core.bool?,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          webhookId: json_['webhookId'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        cloneUri: json_['cloneUri'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        gitProxyUri: json_['gitProxyUri'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        reconciling: json_['reconciling'] as core.bool?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        webhookId: json_['webhookId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (cloneUri != null) 'cloneUri': cloneUri!,
-        if (createTime != null) 'createTime': createTime!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (etag != null) 'etag': etag!,
-        if (gitProxyUri != null) 'gitProxyUri': gitProxyUri!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (reconciling != null) 'reconciling': reconciling!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (webhookId != null) 'webhookId': webhookId!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (cloneUri != null) 'cloneUri': cloneUri!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (etag != null) 'etag': etag!,
+    if (gitProxyUri != null) 'gitProxyUri': gitProxyUri!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (webhookId != null) 'webhookId': webhookId!,
+  };
 }
 
 /// Google Artifact Analysis configurations.
@@ -3462,18 +3503,14 @@ class GoogleArtifactAnalysis {
   /// Required.
   core.String? projectId;
 
-  GoogleArtifactAnalysis({
-    this.projectId,
-  });
+  GoogleArtifactAnalysis({this.projectId});
 
   GoogleArtifactAnalysis.fromJson(core.Map json_)
-      : this(
-          projectId: json_['projectId'] as core.String?,
-        );
+    : this(projectId: json_['projectId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'projectId': projectId!,
-      };
+    if (projectId != null) 'projectId': projectId!,
+  };
 }
 
 /// Google Artifact Registry configurations.
@@ -3488,23 +3525,20 @@ class GoogleArtifactRegistry {
   /// Required.
   core.String? projectId;
 
-  GoogleArtifactRegistry({
-    this.artifactRegistryPackage,
-    this.projectId,
-  });
+  GoogleArtifactRegistry({this.artifactRegistryPackage, this.projectId});
 
   GoogleArtifactRegistry.fromJson(core.Map json_)
-      : this(
-          artifactRegistryPackage:
-              json_['artifactRegistryPackage'] as core.String?,
-          projectId: json_['projectId'] as core.String?,
-        );
+    : this(
+        artifactRegistryPackage:
+            json_['artifactRegistryPackage'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (artifactRegistryPackage != null)
-          'artifactRegistryPackage': artifactRegistryPackage!,
-        if (projectId != null) 'projectId': projectId!,
-      };
+    if (artifactRegistryPackage != null)
+      'artifactRegistryPackage': artifactRegistryPackage!,
+    if (projectId != null) 'projectId': projectId!,
+  };
 }
 
 /// Message that represents an arbitrary HTTP body.
@@ -3625,55 +3659,58 @@ class InsightsConfig {
   });
 
   InsightsConfig.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          appHubApplication: json_['appHubApplication'] as core.String?,
-          artifactConfigs: (json_['artifactConfigs'] as core.List?)
-              ?.map((value) => ArtifactConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          createTime: json_['createTime'] as core.String?,
-          errors: (json_['errors'] as core.List?)
-              ?.map((value) =>
-                  Status.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          reconciling: json_['reconciling'] as core.bool?,
-          runtimeConfigs: (json_['runtimeConfigs'] as core.List?)
-              ?.map((value) => RuntimeConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        appHubApplication: json_['appHubApplication'] as core.String?,
+        artifactConfigs:
+            (json_['artifactConfigs'] as core.List?)
+                ?.map(
+                  (value) => ArtifactConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => Status.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        reconciling: json_['reconciling'] as core.bool?,
+        runtimeConfigs:
+            (json_['runtimeConfigs'] as core.List?)
+                ?.map(
+                  (value) => RuntimeConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (appHubApplication != null) 'appHubApplication': appHubApplication!,
-        if (artifactConfigs != null) 'artifactConfigs': artifactConfigs!,
-        if (createTime != null) 'createTime': createTime!,
-        if (errors != null) 'errors': errors!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (reconciling != null) 'reconciling': reconciling!,
-        if (runtimeConfigs != null) 'runtimeConfigs': runtimeConfigs!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (appHubApplication != null) 'appHubApplication': appHubApplication!,
+    if (artifactConfigs != null) 'artifactConfigs': artifactConfigs!,
+    if (createTime != null) 'createTime': createTime!,
+    if (errors != null) 'errors': errors!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (runtimeConfigs != null) 'runtimeConfigs': runtimeConfigs!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Represents an installation of the GitHub App.
@@ -3687,24 +3724,20 @@ class Installation {
   /// Either "user" or "organization".
   core.String? type;
 
-  Installation({
-    this.id,
-    this.name,
-    this.type,
-  });
+  Installation({this.id, this.name, this.type});
 
   Installation.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Describes stage and necessary actions to be taken by the user to complete
@@ -3719,18 +3752,14 @@ class LinkableGitRepository {
   /// The clone uri of the repository.
   core.String? cloneUri;
 
-  LinkableGitRepository({
-    this.cloneUri,
-  });
+  LinkableGitRepository({this.cloneUri});
 
   LinkableGitRepository.fromJson(core.Map json_)
-      : this(
-          cloneUri: json_['cloneUri'] as core.String?,
-        );
+    : this(cloneUri: json_['cloneUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloneUri != null) 'cloneUri': cloneUri!,
-      };
+    if (cloneUri != null) 'cloneUri': cloneUri!,
+  };
 }
 
 /// Message for response to listing AccountConnectors
@@ -3751,22 +3780,27 @@ class ListAccountConnectorsResponse {
   });
 
   ListAccountConnectorsResponse.fromJson(core.Map json_)
-      : this(
-          accountConnectors: (json_['accountConnectors'] as core.List?)
-              ?.map((value) => AccountConnector.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        accountConnectors:
+            (json_['accountConnectors'] as core.List?)
+                ?.map(
+                  (value) => AccountConnector.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountConnectors != null) 'accountConnectors': accountConnectors!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (accountConnectors != null) 'accountConnectors': accountConnectors!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Message for response to listing Connections
@@ -3787,22 +3821,27 @@ class ListConnectionsResponse {
   });
 
   ListConnectionsResponse.fromJson(core.Map json_)
-      : this(
-          connections: (json_['connections'] as core.List?)
-              ?.map((value) => Connection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        connections:
+            (json_['connections'] as core.List?)
+                ?.map(
+                  (value) => Connection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connections != null) 'connections': connections!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (connections != null) 'connections': connections!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Message for response to listing GitRepositoryLinks
@@ -3823,23 +3862,27 @@ class ListGitRepositoryLinksResponse {
   });
 
   ListGitRepositoryLinksResponse.fromJson(core.Map json_)
-      : this(
-          gitRepositoryLinks: (json_['gitRepositoryLinks'] as core.List?)
-              ?.map((value) => GitRepositoryLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        gitRepositoryLinks:
+            (json_['gitRepositoryLinks'] as core.List?)
+                ?.map(
+                  (value) => GitRepositoryLink.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gitRepositoryLinks != null)
-          'gitRepositoryLinks': gitRepositoryLinks!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (gitRepositoryLinks != null) 'gitRepositoryLinks': gitRepositoryLinks!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Request for response to listing InsightsConfigs.
@@ -3860,22 +3903,27 @@ class ListInsightsConfigsResponse {
   });
 
   ListInsightsConfigsResponse.fromJson(core.Map json_)
-      : this(
-          insightsConfigs: (json_['insightsConfigs'] as core.List?)
-              ?.map((value) => InsightsConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        insightsConfigs:
+            (json_['insightsConfigs'] as core.List?)
+                ?.map(
+                  (value) => InsightsConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (insightsConfigs != null) 'insightsConfigs': insightsConfigs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (insightsConfigs != null) 'insightsConfigs': insightsConfigs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -3886,24 +3934,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -3914,24 +3963,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// Message for response to listing Users
@@ -3945,29 +3995,30 @@ class ListUsersResponse {
   /// The list of Users
   core.List<User>? users;
 
-  ListUsersResponse({
-    this.nextPageToken,
-    this.unreachable,
-    this.users,
-  });
+  ListUsersResponse({this.nextPageToken, this.unreachable, this.users});
 
   ListUsersResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          users: (json_['users'] as core.List?)
-              ?.map((value) =>
-                  User.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        users:
+            (json_['users'] as core.List?)
+                ?.map(
+                  (value) => User.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-        if (users != null) 'users': users!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+    if (users != null) 'users': users!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -3989,23 +4040,20 @@ class OAuthCredential {
   /// Output only.
   core.String? username;
 
-  OAuthCredential({
-    this.oauthTokenSecretVersion,
-    this.username,
-  });
+  OAuthCredential({this.oauthTokenSecretVersion, this.username});
 
   OAuthCredential.fromJson(core.Map json_)
-      : this(
-          oauthTokenSecretVersion:
-              json_['oauthTokenSecretVersion'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        oauthTokenSecretVersion:
+            json_['oauthTokenSecretVersion'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (oauthTokenSecretVersion != null)
-          'oauthTokenSecretVersion': oauthTokenSecretVersion!,
-        if (username != null) 'username': username!,
-      };
+    if (oauthTokenSecretVersion != null)
+      'oauthTokenSecretVersion': oauthTokenSecretVersion!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -4051,37 +4099,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// RPC request object accepted by the ProcessBitbucketCloudWebhook RPC method.
@@ -4091,21 +4137,21 @@ class ProcessBitbucketCloudWebhookRequest {
   /// Required.
   HttpBody? body;
 
-  ProcessBitbucketCloudWebhookRequest({
-    this.body,
-  });
+  ProcessBitbucketCloudWebhookRequest({this.body});
 
   ProcessBitbucketCloudWebhookRequest.fromJson(core.Map json_)
-      : this(
-          body: json_.containsKey('body')
-              ? HttpBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        body:
+            json_.containsKey('body')
+                ? HttpBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-      };
+    if (body != null) 'body': body!,
+  };
 }
 
 /// RPC request object accepted by the ProcessBitbucketDataCenterWebhook RPC
@@ -4116,21 +4162,21 @@ class ProcessBitbucketDataCenterWebhookRequest {
   /// Required.
   HttpBody? body;
 
-  ProcessBitbucketDataCenterWebhookRequest({
-    this.body,
-  });
+  ProcessBitbucketDataCenterWebhookRequest({this.body});
 
   ProcessBitbucketDataCenterWebhookRequest.fromJson(core.Map json_)
-      : this(
-          body: json_.containsKey('body')
-              ? HttpBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        body:
+            json_.containsKey('body')
+                ? HttpBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-      };
+    if (body != null) 'body': body!,
+  };
 }
 
 /// RPC request object accepted by the ProcessGitHubEnterpriseWebhook RPC
@@ -4141,21 +4187,21 @@ class ProcessGitHubEnterpriseWebhookRequest {
   /// Required.
   HttpBody? body;
 
-  ProcessGitHubEnterpriseWebhookRequest({
-    this.body,
-  });
+  ProcessGitHubEnterpriseWebhookRequest({this.body});
 
   ProcessGitHubEnterpriseWebhookRequest.fromJson(core.Map json_)
-      : this(
-          body: json_.containsKey('body')
-              ? HttpBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        body:
+            json_.containsKey('body')
+                ? HttpBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-      };
+    if (body != null) 'body': body!,
+  };
 }
 
 /// RPC request object accepted by the ProcessGitLabEnterpriseWebhook RPC
@@ -4166,21 +4212,21 @@ class ProcessGitLabEnterpriseWebhookRequest {
   /// Required.
   HttpBody? body;
 
-  ProcessGitLabEnterpriseWebhookRequest({
-    this.body,
-  });
+  ProcessGitLabEnterpriseWebhookRequest({this.body});
 
   ProcessGitLabEnterpriseWebhookRequest.fromJson(core.Map json_)
-      : this(
-          body: json_.containsKey('body')
-              ? HttpBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        body:
+            json_.containsKey('body')
+                ? HttpBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-      };
+    if (body != null) 'body': body!,
+  };
 }
 
 /// RPC request object accepted by the ProcessGitLabWebhook RPC method.
@@ -4190,21 +4236,21 @@ class ProcessGitLabWebhookRequest {
   /// Required.
   HttpBody? body;
 
-  ProcessGitLabWebhookRequest({
-    this.body,
-  });
+  ProcessGitLabWebhookRequest({this.body});
 
   ProcessGitLabWebhookRequest.fromJson(core.Map json_)
-      : this(
-          body: json_.containsKey('body')
-              ? HttpBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        body:
+            json_.containsKey('body')
+                ? HttpBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-      };
+    if (body != null) 'body': body!,
+  };
 }
 
 /// ProviderOAuthConfig is the OAuth config for a provider.
@@ -4236,23 +4282,21 @@ class ProviderOAuthConfig {
   /// - "DYNATRACE" : Dynatrace provider.
   core.String? systemProviderId;
 
-  ProviderOAuthConfig({
-    this.scopes,
-    this.systemProviderId,
-  });
+  ProviderOAuthConfig({this.scopes, this.systemProviderId});
 
   ProviderOAuthConfig.fromJson(core.Map json_)
-      : this(
-          scopes: (json_['scopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          systemProviderId: json_['systemProviderId'] as core.String?,
-        );
+    : this(
+        scopes:
+            (json_['scopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        systemProviderId: json_['systemProviderId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (scopes != null) 'scopes': scopes!,
-        if (systemProviderId != null) 'systemProviderId': systemProviderId!,
-      };
+    if (scopes != null) 'scopes': scopes!,
+    if (systemProviderId != null) 'systemProviderId': systemProviderId!,
+  };
 }
 
 /// RuntimeConfig represents the runtimes where the application is deployed.
@@ -4286,33 +4330,33 @@ class RuntimeConfig {
   /// Required. Immutable.
   core.String? uri;
 
-  RuntimeConfig({
-    this.appHubWorkload,
-    this.gkeWorkload,
-    this.state,
-    this.uri,
-  });
+  RuntimeConfig({this.appHubWorkload, this.gkeWorkload, this.state, this.uri});
 
   RuntimeConfig.fromJson(core.Map json_)
-      : this(
-          appHubWorkload: json_.containsKey('appHubWorkload')
-              ? AppHubWorkload.fromJson(json_['appHubWorkload']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          gkeWorkload: json_.containsKey('gkeWorkload')
-              ? GKEWorkload.fromJson(
-                  json_['gkeWorkload'] as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        appHubWorkload:
+            json_.containsKey('appHubWorkload')
+                ? AppHubWorkload.fromJson(
+                  json_['appHubWorkload']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gkeWorkload:
+            json_.containsKey('gkeWorkload')
+                ? GKEWorkload.fromJson(
+                  json_['gkeWorkload'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appHubWorkload != null) 'appHubWorkload': appHubWorkload!,
-        if (gkeWorkload != null) 'gkeWorkload': gkeWorkload!,
-        if (state != null) 'state': state!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (appHubWorkload != null) 'appHubWorkload': appHubWorkload!,
+    if (gkeWorkload != null) 'gkeWorkload': gkeWorkload!,
+    if (state != null) 'state': state!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// ServiceDirectoryConfig represents Service Directory configuration for a
@@ -4361,20 +4405,20 @@ class User {
   });
 
   User.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          lastTokenRequestTime: json_['lastTokenRequestTime'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        lastTokenRequestTime: json_['lastTokenRequestTime'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (lastTokenRequestTime != null)
-          'lastTokenRequestTime': lastTokenRequestTime!,
-        if (name != null) 'name': name!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (lastTokenRequestTime != null)
+      'lastTokenRequestTime': lastTokenRequestTime!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Represents a personal access token that authorized the Connection, and
@@ -4393,21 +4437,17 @@ class UserCredential {
   /// Output only.
   core.String? username;
 
-  UserCredential({
-    this.userTokenSecretVersion,
-    this.username,
-  });
+  UserCredential({this.userTokenSecretVersion, this.username});
 
   UserCredential.fromJson(core.Map json_)
-      : this(
-          userTokenSecretVersion:
-              json_['userTokenSecretVersion'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        userTokenSecretVersion: json_['userTokenSecretVersion'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userTokenSecretVersion != null)
-          'userTokenSecretVersion': userTokenSecretVersion!,
-        if (username != null) 'username': username!,
-      };
+    if (userTokenSecretVersion != null)
+      'userTokenSecretVersion': userTokenSecretVersion!,
+    if (username != null) 'username': username!,
+  };
 }

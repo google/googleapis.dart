@@ -31,8 +31,11 @@ void main() {
     expect(token.expiry, equals(expiryUtc));
     expect(token.hasExpired, isTrue);
 
-    final nonExpiredToken =
-        AccessToken('foo', 'bar', expiryUtc.add(const Duration(days: 1)));
+    final nonExpiredToken = AccessToken(
+      'foo',
+      'bar',
+      expiryUtc.add(const Duration(days: 1)),
+    );
     expect(nonExpiredToken.hasExpired, isFalse);
   });
 
@@ -60,12 +63,15 @@ void main() {
       'private_key': testPrivateKeyString,
       'client_email': 'a@b.com',
       'client_id': 'myid',
-      'type': 'service_account'
+      'type': 'service_account',
     };
 
     test('from-valid-individual-params', () {
-      final credentials =
-          ServiceAccountCredentials('email', clientId, testPrivateKeyString);
+      final credentials = ServiceAccountCredentials(
+        'email',
+        clientId,
+        testPrivateKeyString,
+      );
       expect(credentials.email, equals('email'));
       expect(credentials.clientId, equals(clientId));
       expect(credentials.privateKey, equals(testPrivateKeyString));
@@ -74,8 +80,11 @@ void main() {
 
     test('from-valid-individual-params-with-user', () {
       final credentials = ServiceAccountCredentials(
-          'email', clientId, testPrivateKeyString,
-          impersonatedUser: 'x@y.com');
+        'email',
+        clientId,
+        testPrivateKeyString,
+        impersonatedUser: 'x@y.com',
+      );
       expect(credentials.email, equals('email'));
       expect(credentials.clientId, equals(clientId));
       expect(credentials.privateKey, equals(testPrivateKeyString));
@@ -83,8 +92,9 @@ void main() {
     });
 
     test('from-json-string', () {
-      final credentialsFromJson =
-          ServiceAccountCredentials.fromJson(jsonEncode(credentials));
+      final credentialsFromJson = ServiceAccountCredentials.fromJson(
+        jsonEncode(credentials),
+      );
       expect(credentialsFromJson.email, equals('a@b.com'));
       expect(credentialsFromJson.clientId.identifier, equals('myid'));
       expect(credentialsFromJson.clientId.secret, isNull);
@@ -94,8 +104,9 @@ void main() {
 
     test('from-json-string-with-user', () {
       final credentialsFromJson = ServiceAccountCredentials.fromJson(
-          jsonEncode(credentials),
-          impersonatedUser: 'x@y.com');
+        jsonEncode(credentials),
+        impersonatedUser: 'x@y.com',
+      );
       expect(credentialsFromJson.email, equals('a@b.com'));
       expect(credentialsFromJson.clientId.identifier, equals('myid'));
       expect(credentialsFromJson.clientId.secret, isNull);
@@ -104,8 +115,9 @@ void main() {
     });
 
     test('from-json-map', () {
-      final credentialsFromJson =
-          ServiceAccountCredentials.fromJson(credentials);
+      final credentialsFromJson = ServiceAccountCredentials.fromJson(
+        credentials,
+      );
       expect(credentialsFromJson.email, equals('a@b.com'));
       expect(credentialsFromJson.clientId.identifier, equals('myid'));
       expect(credentialsFromJson.clientId.secret, isNull);
@@ -115,8 +127,9 @@ void main() {
 
     test('from-json-map-with-user', () {
       final credentialsFromJson = ServiceAccountCredentials.fromJson(
-          credentials,
-          impersonatedUser: 'x@y.com');
+        credentials,
+        impersonatedUser: 'x@y.com',
+      );
       expect(credentialsFromJson.email, equals('a@b.com'));
       expect(credentialsFromJson.clientId.identifier, equals('myid'));
       expect(credentialsFromJson.clientId.secret, isNull);
@@ -167,15 +180,17 @@ void main() {
         credentials,
         mockClient(expectAsync1(successfulRefresh), expectClose: false),
       );
-      final expectedResultUtc = DateTime.now()
-          .toUtc()
-          .add(const Duration(seconds: 3600 - maxExpectedTimeDiffInSeconds));
+      final expectedResultUtc = DateTime.now().toUtc().add(
+        const Duration(seconds: 3600 - maxExpectedTimeDiffInSeconds),
+      );
 
       final accessToken = newCredentials.accessToken;
       expect(accessToken.type, equals('Bearer'));
       expect(accessToken.data, equals('atoken'));
-      expect(accessToken.expiry.difference(expectedResultUtc).inSeconds,
-          equals(0));
+      expect(
+        accessToken.expiry.difference(expectedResultUtc).inSeconds,
+        equals(0),
+      );
 
       expect(newCredentials.refreshToken, equals('refresh'));
       expect(newCredentials.scopes, equals(['s1', 's2']));
@@ -214,14 +229,17 @@ void main() {
 
       test('successful', () async {
         final client = authenticatedClient(
-          mockClient(expectAsync1((request) async {
-            expect(request.method, equals('POST'));
-            expect(request.url, equals(url));
-            expect(request.headers.length, equals(1));
-            expect(request.headers['Authorization'], equals('Bearer bar'));
+          mockClient(
+            expectAsync1((request) async {
+              expect(request.method, equals('POST'));
+              expect(request.url, equals(url));
+              expect(request.headers.length, equals(1));
+              expect(request.headers['Authorization'], equals('Bearer bar'));
 
-            return Response('', 204);
-          }), expectClose: false),
+              return Response('', 204);
+            }),
+            expectClose: false,
+          ),
           credentials,
         );
         expect(client.credentials, equals(credentials));
@@ -232,29 +250,35 @@ void main() {
 
       test('access-denied', () {
         final client = authenticatedClient(
-          mockClient(expectAsync1((request) async {
-            expect(request.method, equals('POST'));
-            expect(request.url, equals(url));
-            expect(request.headers.length, equals(1));
-            expect(request.headers['Authorization'], equals('Bearer bar'));
+          mockClient(
+            expectAsync1((request) async {
+              expect(request.method, equals('POST'));
+              expect(request.url, equals(url));
+              expect(request.headers.length, equals(1));
+              expect(request.headers['Authorization'], equals('Bearer bar'));
 
-            const headers = {'www-authenticate': 'foobar'};
-            return Response('', 401, headers: headers);
-          }), expectClose: false),
+              const headers = {'www-authenticate': 'foobar'};
+              return Response('', 401, headers: headers);
+            }),
+            expectClose: false,
+          ),
           credentials,
         );
         expect(client.credentials, equals(credentials));
 
-        expect(client.send(RequestImpl('POST', url)),
-            throwsA(isAccessDeniedException));
+        expect(
+          client.send(RequestImpl('POST', url)),
+          throwsA(isAccessDeniedException),
+        );
       });
 
       test('non-bearer-token', () {
         final aToken = credentials.accessToken;
         final nonBearerCredentials = AccessCredentials(
-            AccessToken('foobar', aToken.data, aToken.expiry),
-            'refresh',
-            ['s1', 's2']);
+          AccessToken('foobar', aToken.data, aToken.expiry),
+          'refresh',
+          ['s1', 's2'],
+        );
 
         expect(
           () => authenticatedClient(
@@ -286,7 +310,10 @@ void main() {
 
       test('no-refresh-token', () {
         final credentials = AccessCredentials(
-            AccessToken('Bearer', 'bar', yesterday), null, ['s1', 's2']);
+          AccessToken('Bearer', 'bar', yesterday),
+          null,
+          ['s1', 's2'],
+        );
 
         expect(
           () => autoRefreshingClient(
@@ -300,16 +327,22 @@ void main() {
 
       test('refresh-failed', () {
         final credentials = AccessCredentials(
-            AccessToken('Bearer', 'bar', yesterday), 'refresh', ['s1', 's2']);
+          AccessToken('Bearer', 'bar', yesterday),
+          'refresh',
+          ['s1', 's2'],
+        );
 
         final client = autoRefreshingClient(
           clientId,
           credentials,
-          mockClient(expectAsync1((request) {
-            // This should be a refresh request.
-            expect(request.headers['foo'], isNull);
-            return refreshErrorResponse(request);
-          }), expectClose: false),
+          mockClient(
+            expectAsync1((request) {
+              // This should be a refresh request.
+              expect(request.headers['foo'], isNull);
+              return refreshErrorResponse(request);
+            }),
+            expectClose: false,
+          ),
         );
         expect(client.credentials, equals(credentials));
 
@@ -320,18 +353,24 @@ void main() {
 
       test('invalid-content-type', () {
         final credentials = AccessCredentials(
-            AccessToken('Bearer', 'bar', yesterday), 'refresh', ['s1', 's2']);
+          AccessToken('Bearer', 'bar', yesterday),
+          'refresh',
+          ['s1', 's2'],
+        );
 
         final client = autoRefreshingClient(
           clientId,
           credentials,
-          mockClient(expectAsync1((request) async {
-            // This should be a refresh request.
-            expect(request.headers['foo'], isNull);
-            final headers = {'content-type': 'image/png'};
+          mockClient(
+            expectAsync1((request) async {
+              // This should be a refresh request.
+              expect(request.headers['foo'], isNull);
+              final headers = {'content-type': 'image/png'};
 
-            return Response('', 200, headers: headers);
-          }), expectClose: false),
+              return Response('', 200, headers: headers);
+            }),
+            expectClose: false,
+          ),
         );
         expect(client.credentials, equals(credentials));
 
@@ -344,27 +383,28 @@ void main() {
         var serverInvocation = 0;
 
         final credentials = AccessCredentials(
-            AccessToken('Bearer', 'bar', yesterday), 'refresh', ['s1']);
+          AccessToken('Bearer', 'bar', yesterday),
+          'refresh',
+          ['s1'],
+        );
 
         final client = autoRefreshingClient(
-            clientId,
-            credentials,
-            mockClient(
-              expectAsync1(
-                (request) async {
-                  if (serverInvocation++ == 0) {
-                    // This should be a refresh request.
-                    expect(request.headers['foo'], isNull);
-                    return successfulRefresh(request);
-                  } else {
-                    // This is the real request.
-                    expect(request.headers['foo'], equals('bar'));
-                    return Response('', 200);
-                  }
-                },
-                count: 2,
-              ),
-            ));
+          clientId,
+          credentials,
+          mockClient(
+            expectAsync1((request) async {
+              if (serverInvocation++ == 0) {
+                // This should be a refresh request.
+                expect(request.headers['foo'], isNull);
+                return successfulRefresh(request);
+              } else {
+                // This is the real request.
+                expect(request.headers['foo'], equals('bar'));
+                return Response('', 200);
+              }
+            }, count: 2),
+          ),
+        );
         expect(client.credentials, equals(credentials));
 
         var executed = false;

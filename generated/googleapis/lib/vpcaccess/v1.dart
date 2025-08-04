@@ -51,11 +51,16 @@ class ServerlessVPCAccessApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ServerlessVPCAccessApi(http.Client client,
-      {core.String rootUrl = 'https://vpcaccess.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ServerlessVPCAccessApi(
+    http.Client client, {
+    core.String rootUrl = 'https://vpcaccess.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -132,7 +137,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -140,7 +146,7 @@ class ProjectsLocationsConnectorsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectorsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Serverless VPC Access connector, returns an operation.
   ///
@@ -246,10 +252,7 @@ class ProjectsLocationsConnectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Connector> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Connector> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -306,7 +309,8 @@ class ProjectsLocationsConnectorsResource {
       queryParams: queryParams_,
     );
     return ListConnectorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a Serverless VPC Access connector, returns an operation.
@@ -361,7 +365,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -384,10 +388,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -449,7 +450,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -545,38 +547,41 @@ class Connector {
   });
 
   Connector.fromJson(core.Map json_)
-      : this(
-          connectedProjects: (json_['connectedProjects'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          ipCidrRange: json_['ipCidrRange'] as core.String?,
-          machineType: json_['machineType'] as core.String?,
-          maxInstances: json_['maxInstances'] as core.int?,
-          maxThroughput: json_['maxThroughput'] as core.int?,
-          minInstances: json_['minInstances'] as core.int?,
-          minThroughput: json_['minThroughput'] as core.int?,
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          state: json_['state'] as core.String?,
-          subnet: json_.containsKey('subnet')
-              ? Subnet.fromJson(
-                  json_['subnet'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        connectedProjects:
+            (json_['connectedProjects'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        ipCidrRange: json_['ipCidrRange'] as core.String?,
+        machineType: json_['machineType'] as core.String?,
+        maxInstances: json_['maxInstances'] as core.int?,
+        maxThroughput: json_['maxThroughput'] as core.int?,
+        minInstances: json_['minInstances'] as core.int?,
+        minThroughput: json_['minThroughput'] as core.int?,
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        state: json_['state'] as core.String?,
+        subnet:
+            json_.containsKey('subnet')
+                ? Subnet.fromJson(
+                  json_['subnet'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectedProjects != null) 'connectedProjects': connectedProjects!,
-        if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
-        if (machineType != null) 'machineType': machineType!,
-        if (maxInstances != null) 'maxInstances': maxInstances!,
-        if (maxThroughput != null) 'maxThroughput': maxThroughput!,
-        if (minInstances != null) 'minInstances': minInstances!,
-        if (minThroughput != null) 'minThroughput': minThroughput!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (state != null) 'state': state!,
-        if (subnet != null) 'subnet': subnet!,
-      };
+    if (connectedProjects != null) 'connectedProjects': connectedProjects!,
+    if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
+    if (machineType != null) 'machineType': machineType!,
+    if (maxInstances != null) 'maxInstances': maxInstances!,
+    if (maxThroughput != null) 'maxThroughput': maxThroughput!,
+    if (minInstances != null) 'minInstances': minInstances!,
+    if (minThroughput != null) 'minThroughput': minThroughput!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (state != null) 'state': state!,
+    if (subnet != null) 'subnet': subnet!,
+  };
 }
 
 /// Response for listing Serverless VPC Access connectors.
@@ -587,24 +592,25 @@ class ListConnectorsResponse {
   /// Continuation token.
   core.String? nextPageToken;
 
-  ListConnectorsResponse({
-    this.connectors,
-    this.nextPageToken,
-  });
+  ListConnectorsResponse({this.connectors, this.nextPageToken});
 
   ListConnectorsResponse.fromJson(core.Map json_)
-      : this(
-          connectors: (json_['connectors'] as core.List?)
-              ?.map((value) => Connector.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        connectors:
+            (json_['connectors'] as core.List?)
+                ?.map(
+                  (value) => Connector.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectors != null) 'connectors': connectors!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (connectors != null) 'connectors': connectors!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -615,24 +621,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -643,24 +650,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -709,37 +717,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -770,19 +776,16 @@ class Subnet {
   /// Optional.
   core.String? projectId;
 
-  Subnet({
-    this.name,
-    this.projectId,
-  });
+  Subnet({this.name, this.projectId});
 
   Subnet.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          projectId: json_['projectId'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (projectId != null) 'projectId': projectId!,
-      };
+    if (name != null) 'name': name!,
+    if (projectId != null) 'projectId': projectId!,
+  };
 }

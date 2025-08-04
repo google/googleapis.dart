@@ -49,11 +49,16 @@ class SmartDeviceManagementApi {
 
   EnterprisesResource get enterprises => EnterprisesResource(_requester);
 
-  SmartDeviceManagementApi(http.Client client,
-      {core.String rootUrl = 'https://smartdevicemanagement.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  SmartDeviceManagementApi(
+    http.Client client, {
+    core.String rootUrl = 'https://smartdevicemanagement.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class EnterprisesResource {
@@ -93,7 +98,7 @@ class EnterprisesDevicesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse>
-      executeCommand(
+  executeCommand(
     GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest request,
     core.String name, {
     core.String? $fields,
@@ -112,7 +117,8 @@ class EnterprisesDevicesResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a device managed by the enterprise.
@@ -149,7 +155,8 @@ class EnterprisesDevicesResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1Device.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists devices managed by the enterprise.
@@ -191,7 +198,8 @@ class EnterprisesDevicesResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -202,7 +210,7 @@ class EnterprisesStructuresResource {
       EnterprisesStructuresRoomsResource(_requester);
 
   EnterprisesStructuresResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets a structure managed by the enterprise.
   ///
@@ -238,7 +246,8 @@ class EnterprisesStructuresResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1Structure.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists structures managed by the enterprise.
@@ -279,7 +288,8 @@ class EnterprisesStructuresResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -287,7 +297,7 @@ class EnterprisesStructuresRoomsResource {
   final commons.ApiRequester _requester;
 
   EnterprisesStructuresRoomsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets a room managed by the enterprise.
   ///
@@ -324,7 +334,8 @@ class EnterprisesStructuresRoomsResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1Room.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists rooms managed by the enterprise.
@@ -361,7 +372,8 @@ class EnterprisesStructuresRoomsResource {
       queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -403,24 +415,29 @@ class GoogleHomeEnterpriseSdmV1Device {
   });
 
   GoogleHomeEnterpriseSdmV1Device.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          parentRelations: (json_['parentRelations'] as core.List?)
-              ?.map((value) => GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          traits: json_.containsKey('traits')
-              ? json_['traits'] as core.Map<core.String, core.dynamic>
-              : null,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        parentRelations:
+            (json_['parentRelations'] as core.List?)
+                ?.map(
+                  (value) => GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        traits:
+            json_.containsKey('traits')
+                ? json_['traits'] as core.Map<core.String, core.dynamic>
+                : null,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (parentRelations != null) 'parentRelations': parentRelations!,
-        if (traits != null) 'traits': traits!,
-        if (type != null) 'type': type!,
-      };
+    if (name != null) 'name': name!,
+    if (parentRelations != null) 'parentRelations': parentRelations!,
+    if (traits != null) 'traits': traits!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Request message for SmartDeviceManagementService.ExecuteDeviceCommand
@@ -441,17 +458,18 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
   });
 
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.fromJson(core.Map json_)
-      : this(
-          command: json_['command'] as core.String?,
-          params: json_.containsKey('params')
-              ? json_['params'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        command: json_['command'] as core.String?,
+        params:
+            json_.containsKey('params')
+                ? json_['params'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (command != null) 'command': command!,
-        if (params != null) 'params': params!,
-      };
+    if (command != null) 'command': command!,
+    if (params != null) 'params': params!,
+  };
 }
 
 /// Response message for SmartDeviceManagementService.ExecuteDeviceCommand
@@ -462,20 +480,19 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? results;
 
-  GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse({
-    this.results,
-  });
+  GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse({this.results});
 
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(core.Map json_)
-      : this(
-          results: json_.containsKey('results')
-              ? json_['results'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        results:
+            json_.containsKey('results')
+                ? json_['results'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (results != null) 'results': results!,
-      };
+    if (results != null) 'results': results!,
+  };
 }
 
 /// Response message for SmartDeviceManagementService.ListDevices
@@ -483,21 +500,23 @@ class GoogleHomeEnterpriseSdmV1ListDevicesResponse {
   /// The list of devices.
   core.List<GoogleHomeEnterpriseSdmV1Device>? devices;
 
-  GoogleHomeEnterpriseSdmV1ListDevicesResponse({
-    this.devices,
-  });
+  GoogleHomeEnterpriseSdmV1ListDevicesResponse({this.devices});
 
   GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(core.Map json_)
-      : this(
-          devices: (json_['devices'] as core.List?)
-              ?.map((value) => GoogleHomeEnterpriseSdmV1Device.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        devices:
+            (json_['devices'] as core.List?)
+                ?.map(
+                  (value) => GoogleHomeEnterpriseSdmV1Device.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devices != null) 'devices': devices!,
-      };
+    if (devices != null) 'devices': devices!,
+  };
 }
 
 /// Response message for SmartDeviceManagementService.ListRooms
@@ -505,21 +524,23 @@ class GoogleHomeEnterpriseSdmV1ListRoomsResponse {
   /// The list of rooms.
   core.List<GoogleHomeEnterpriseSdmV1Room>? rooms;
 
-  GoogleHomeEnterpriseSdmV1ListRoomsResponse({
-    this.rooms,
-  });
+  GoogleHomeEnterpriseSdmV1ListRoomsResponse({this.rooms});
 
   GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(core.Map json_)
-      : this(
-          rooms: (json_['rooms'] as core.List?)
-              ?.map((value) => GoogleHomeEnterpriseSdmV1Room.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        rooms:
+            (json_['rooms'] as core.List?)
+                ?.map(
+                  (value) => GoogleHomeEnterpriseSdmV1Room.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rooms != null) 'rooms': rooms!,
-      };
+    if (rooms != null) 'rooms': rooms!,
+  };
 }
 
 /// Response message for SmartDeviceManagementService.ListStructures
@@ -527,21 +548,23 @@ class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
   /// The list of structures.
   core.List<GoogleHomeEnterpriseSdmV1Structure>? structures;
 
-  GoogleHomeEnterpriseSdmV1ListStructuresResponse({
-    this.structures,
-  });
+  GoogleHomeEnterpriseSdmV1ListStructuresResponse({this.structures});
 
   GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(core.Map json_)
-      : this(
-          structures: (json_['structures'] as core.List?)
-              ?.map((value) => GoogleHomeEnterpriseSdmV1Structure.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        structures:
+            (json_['structures'] as core.List?)
+                ?.map(
+                  (value) => GoogleHomeEnterpriseSdmV1Structure.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (structures != null) 'structures': structures!,
-      };
+    if (structures != null) 'structures': structures!,
+  };
 }
 
 /// Represents device relationships, for instance, structure/room to which the
@@ -562,21 +585,18 @@ class GoogleHomeEnterpriseSdmV1ParentRelation {
   /// Output only.
   core.String? parent;
 
-  GoogleHomeEnterpriseSdmV1ParentRelation({
-    this.displayName,
-    this.parent,
-  });
+  GoogleHomeEnterpriseSdmV1ParentRelation({this.displayName, this.parent});
 
   GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          parent: json_['parent'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        parent: json_['parent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (parent != null) 'parent': parent!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (parent != null) 'parent': parent!,
+  };
 }
 
 /// Room resource represents an instance of sub-space within a structure such as
@@ -595,23 +615,21 @@ class GoogleHomeEnterpriseSdmV1Room {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? traits;
 
-  GoogleHomeEnterpriseSdmV1Room({
-    this.name,
-    this.traits,
-  });
+  GoogleHomeEnterpriseSdmV1Room({this.name, this.traits});
 
   GoogleHomeEnterpriseSdmV1Room.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          traits: json_.containsKey('traits')
-              ? json_['traits'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        traits:
+            json_.containsKey('traits')
+                ? json_['traits'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (traits != null) 'traits': traits!,
-      };
+    if (name != null) 'name': name!,
+    if (traits != null) 'traits': traits!,
+  };
 }
 
 /// Structure resource represents an instance of enterprise managed home or
@@ -630,21 +648,19 @@ class GoogleHomeEnterpriseSdmV1Structure {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? traits;
 
-  GoogleHomeEnterpriseSdmV1Structure({
-    this.name,
-    this.traits,
-  });
+  GoogleHomeEnterpriseSdmV1Structure({this.name, this.traits});
 
   GoogleHomeEnterpriseSdmV1Structure.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          traits: json_.containsKey('traits')
-              ? json_['traits'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        traits:
+            json_.containsKey('traits')
+                ? json_['traits'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (traits != null) 'traits': traits!,
-      };
+    if (name != null) 'name': name!,
+    if (traits != null) 'traits': traits!,
+  };
 }

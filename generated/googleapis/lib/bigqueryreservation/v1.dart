@@ -56,11 +56,16 @@ class BigQueryReservationApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  BigQueryReservationApi(http.Client client,
-      {core.String rootUrl = 'https://bigqueryreservation.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  BigQueryReservationApi(
+    http.Client client, {
+    core.String rootUrl = 'https://bigqueryreservation.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -119,7 +124,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return BiReservation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Looks up assignments for a specified resource for a particular region.
@@ -184,7 +190,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return SearchAllAssignmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deprecated: Looks up assignments for a specified resource for a particular
@@ -253,7 +260,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return SearchAssignmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a BI reservation.
@@ -306,7 +314,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return BiReservation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -314,7 +323,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCapacityCommitmentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new capacity commitment resource.
   ///
@@ -359,7 +368,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
         'capacityCommitmentId': [capacityCommitmentId],
       if (enforceSingleAdminProjectPerOrg != null)
         'enforceSingleAdminProjectPerOrg': [
-          '${enforceSingleAdminProjectPerOrg}'
+          '${enforceSingleAdminProjectPerOrg}',
         ],
       if ($fields != null) 'fields': [$fields],
     };
@@ -374,7 +383,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
       queryParams: queryParams_,
     );
     return CapacityCommitment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a capacity commitment.
@@ -458,7 +468,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
       queryParams: queryParams_,
     );
     return CapacityCommitment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the capacity commitments for the admin project.
@@ -505,7 +516,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
       queryParams: queryParams_,
     );
     return ListCapacityCommitmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Merges capacity commitments of the same plan into a single commitment.
@@ -553,7 +565,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
       queryParams: queryParams_,
     );
     return CapacityCommitment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing capacity commitment.
@@ -608,7 +621,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
       queryParams: queryParams_,
     );
     return CapacityCommitment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Splits capacity commitment to two commitments of the same plan and
@@ -657,7 +671,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
       queryParams: queryParams_,
     );
     return SplitCapacityCommitmentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -665,7 +680,7 @@ class ProjectsLocationsReservationGroupsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsReservationGroupsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new reservation group.
   ///
@@ -713,7 +728,8 @@ class ProjectsLocationsReservationGroupsResource {
       queryParams: queryParams_,
     );
     return ReservationGroup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a reservation.
@@ -738,10 +754,7 @@ class ProjectsLocationsReservationGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -791,7 +804,8 @@ class ProjectsLocationsReservationGroupsResource {
       queryParams: queryParams_,
     );
     return ReservationGroup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the reservation groups for the project in the specified
@@ -838,7 +852,8 @@ class ProjectsLocationsReservationGroupsResource {
       queryParams: queryParams_,
     );
     return ListReservationGroupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -849,7 +864,7 @@ class ProjectsLocationsReservationsResource {
       ProjectsLocationsReservationsAssignmentsResource(_requester);
 
   ProjectsLocationsReservationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new reservation resource.
   ///
@@ -896,7 +911,8 @@ class ProjectsLocationsReservationsResource {
       queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a reservation.
@@ -921,10 +937,7 @@ class ProjectsLocationsReservationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -984,7 +997,8 @@ class ProjectsLocationsReservationsResource {
       queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns information about the reservation.
@@ -1022,7 +1036,8 @@ class ProjectsLocationsReservationsResource {
       queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -1130,7 +1145,8 @@ class ProjectsLocationsReservationsResource {
       queryParams: queryParams_,
     );
     return ListReservationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing reservation resource.
@@ -1179,7 +1195,8 @@ class ProjectsLocationsReservationsResource {
       queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets an access control policy for a resource.
@@ -1278,7 +1295,8 @@ class ProjectsLocationsReservationsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1286,7 +1304,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsReservationsAssignmentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an assignment object which allows the given project to submit jobs
   /// of a certain type using slots from the specified reservation.
@@ -1356,7 +1374,8 @@ class ProjectsLocationsReservationsAssignmentsResource {
       queryParams: queryParams_,
     );
     return Assignment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a assignment.
@@ -1386,10 +1405,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1522,7 +1538,8 @@ class ProjectsLocationsReservationsAssignmentsResource {
       queryParams: queryParams_,
     );
     return ListAssignmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves an assignment under a new reservation.
@@ -1569,7 +1586,8 @@ class ProjectsLocationsReservationsAssignmentsResource {
       queryParams: queryParams_,
     );
     return Assignment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing assignment.
@@ -1620,7 +1638,8 @@ class ProjectsLocationsReservationsAssignmentsResource {
       queryParams: queryParams_,
     );
     return Assignment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets an access control policy for a resource.
@@ -1719,7 +1738,8 @@ class ProjectsLocationsReservationsAssignmentsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1794,22 +1814,22 @@ class Assignment {
   });
 
   Assignment.fromJson(core.Map json_)
-      : this(
-          assignee: json_['assignee'] as core.String?,
-          enableGeminiInBigquery: json_['enableGeminiInBigquery'] as core.bool?,
-          jobType: json_['jobType'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        assignee: json_['assignee'] as core.String?,
+        enableGeminiInBigquery: json_['enableGeminiInBigquery'] as core.bool?,
+        jobType: json_['jobType'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignee != null) 'assignee': assignee!,
-        if (enableGeminiInBigquery != null)
-          'enableGeminiInBigquery': enableGeminiInBigquery!,
-        if (jobType != null) 'jobType': jobType!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-      };
+    if (assignee != null) 'assignee': assignee!,
+    if (enableGeminiInBigquery != null)
+      'enableGeminiInBigquery': enableGeminiInBigquery!,
+    if (jobType != null) 'jobType': jobType!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Specifies the audit configuration for a service.
@@ -1839,24 +1859,25 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1884,21 +1905,18 @@ class Autoscale {
   /// Optional.
   core.String? maxSlots;
 
-  Autoscale({
-    this.currentSlots,
-    this.maxSlots,
-  });
+  Autoscale({this.currentSlots, this.maxSlots});
 
   Autoscale.fromJson(core.Map json_)
-      : this(
-          currentSlots: json_['currentSlots'] as core.String?,
-          maxSlots: json_['maxSlots'] as core.String?,
-        );
+    : this(
+        currentSlots: json_['currentSlots'] as core.String?,
+        maxSlots: json_['maxSlots'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentSlots != null) 'currentSlots': currentSlots!,
-        if (maxSlots != null) 'maxSlots': maxSlots!,
-      };
+    if (currentSlots != null) 'currentSlots': currentSlots!,
+    if (maxSlots != null) 'maxSlots': maxSlots!,
+  };
 }
 
 /// Represents a BI Reservation.
@@ -1924,30 +1942,29 @@ class BiReservation {
   /// Output only.
   core.String? updateTime;
 
-  BiReservation({
-    this.name,
-    this.preferredTables,
-    this.size,
-    this.updateTime,
-  });
+  BiReservation({this.name, this.preferredTables, this.size, this.updateTime});
 
   BiReservation.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          preferredTables: (json_['preferredTables'] as core.List?)
-              ?.map((value) => TableReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          size: json_['size'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        preferredTables:
+            (json_['preferredTables'] as core.List?)
+                ?.map(
+                  (value) => TableReference.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        size: json_['size'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (preferredTables != null) 'preferredTables': preferredTables!,
-        if (size != null) 'size': size!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (name != null) 'name': name!,
+    if (preferredTables != null) 'preferredTables': preferredTables!,
+    if (size != null) 'size': size!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -2030,29 +2047,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// Capacity commitment is a way to purchase compute capacity for BigQuery jobs
@@ -2235,38 +2251,40 @@ class CapacityCommitment {
   });
 
   CapacityCommitment.fromJson(core.Map json_)
-      : this(
-          commitmentEndTime: json_['commitmentEndTime'] as core.String?,
-          commitmentStartTime: json_['commitmentStartTime'] as core.String?,
-          edition: json_['edition'] as core.String?,
-          failureStatus: json_.containsKey('failureStatus')
-              ? Status.fromJson(
-                  json_['failureStatus'] as core.Map<core.String, core.dynamic>)
-              : null,
-          isFlatRate: json_['isFlatRate'] as core.bool?,
-          multiRegionAuxiliary: json_['multiRegionAuxiliary'] as core.bool?,
-          name: json_['name'] as core.String?,
-          plan: json_['plan'] as core.String?,
-          renewalPlan: json_['renewalPlan'] as core.String?,
-          slotCount: json_['slotCount'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        commitmentEndTime: json_['commitmentEndTime'] as core.String?,
+        commitmentStartTime: json_['commitmentStartTime'] as core.String?,
+        edition: json_['edition'] as core.String?,
+        failureStatus:
+            json_.containsKey('failureStatus')
+                ? Status.fromJson(
+                  json_['failureStatus'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        isFlatRate: json_['isFlatRate'] as core.bool?,
+        multiRegionAuxiliary: json_['multiRegionAuxiliary'] as core.bool?,
+        name: json_['name'] as core.String?,
+        plan: json_['plan'] as core.String?,
+        renewalPlan: json_['renewalPlan'] as core.String?,
+        slotCount: json_['slotCount'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commitmentEndTime != null) 'commitmentEndTime': commitmentEndTime!,
-        if (commitmentStartTime != null)
-          'commitmentStartTime': commitmentStartTime!,
-        if (edition != null) 'edition': edition!,
-        if (failureStatus != null) 'failureStatus': failureStatus!,
-        if (isFlatRate != null) 'isFlatRate': isFlatRate!,
-        if (multiRegionAuxiliary != null)
-          'multiRegionAuxiliary': multiRegionAuxiliary!,
-        if (name != null) 'name': name!,
-        if (plan != null) 'plan': plan!,
-        if (renewalPlan != null) 'renewalPlan': renewalPlan!,
-        if (slotCount != null) 'slotCount': slotCount!,
-        if (state != null) 'state': state!,
-      };
+    if (commitmentEndTime != null) 'commitmentEndTime': commitmentEndTime!,
+    if (commitmentStartTime != null)
+      'commitmentStartTime': commitmentStartTime!,
+    if (edition != null) 'edition': edition!,
+    if (failureStatus != null) 'failureStatus': failureStatus!,
+    if (isFlatRate != null) 'isFlatRate': isFlatRate!,
+    if (multiRegionAuxiliary != null)
+      'multiRegionAuxiliary': multiRegionAuxiliary!,
+    if (name != null) 'name': name!,
+    if (plan != null) 'plan': plan!,
+    if (renewalPlan != null) 'renewalPlan': renewalPlan!,
+    if (slotCount != null) 'slotCount': slotCount!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2311,18 +2329,14 @@ class FailoverReservationRequest {
   /// data loss for hard failover.
   core.String? failoverMode;
 
-  FailoverReservationRequest({
-    this.failoverMode,
-  });
+  FailoverReservationRequest({this.failoverMode});
 
   FailoverReservationRequest.fromJson(core.Map json_)
-      : this(
-          failoverMode: json_['failoverMode'] as core.String?,
-        );
+    : this(failoverMode: json_['failoverMode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failoverMode != null) 'failoverMode': failoverMode!,
-      };
+    if (failoverMode != null) 'failoverMode': failoverMode!,
+  };
 }
 
 /// The response for ReservationService.ListAssignments.
@@ -2334,24 +2348,25 @@ class ListAssignmentsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  ListAssignmentsResponse({
-    this.assignments,
-    this.nextPageToken,
-  });
+  ListAssignmentsResponse({this.assignments, this.nextPageToken});
 
   ListAssignmentsResponse.fromJson(core.Map json_)
-      : this(
-          assignments: (json_['assignments'] as core.List?)
-              ?.map((value) => Assignment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        assignments:
+            (json_['assignments'] as core.List?)
+                ?.map(
+                  (value) => Assignment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignments != null) 'assignments': assignments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (assignments != null) 'assignments': assignments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for ReservationService.ListCapacityCommitments.
@@ -2369,19 +2384,23 @@ class ListCapacityCommitmentsResponse {
   });
 
   ListCapacityCommitmentsResponse.fromJson(core.Map json_)
-      : this(
-          capacityCommitments: (json_['capacityCommitments'] as core.List?)
-              ?.map((value) => CapacityCommitment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        capacityCommitments:
+            (json_['capacityCommitments'] as core.List?)
+                ?.map(
+                  (value) => CapacityCommitment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (capacityCommitments != null)
-          'capacityCommitments': capacityCommitments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (capacityCommitments != null)
+      'capacityCommitments': capacityCommitments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for ReservationService.ListReservationGroups.
@@ -2393,24 +2412,25 @@ class ListReservationGroupsResponse {
   /// List of reservations visible to the user.
   core.List<ReservationGroup>? reservationGroups;
 
-  ListReservationGroupsResponse({
-    this.nextPageToken,
-    this.reservationGroups,
-  });
+  ListReservationGroupsResponse({this.nextPageToken, this.reservationGroups});
 
   ListReservationGroupsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          reservationGroups: (json_['reservationGroups'] as core.List?)
-              ?.map((value) => ReservationGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        reservationGroups:
+            (json_['reservationGroups'] as core.List?)
+                ?.map(
+                  (value) => ReservationGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (reservationGroups != null) 'reservationGroups': reservationGroups!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (reservationGroups != null) 'reservationGroups': reservationGroups!,
+  };
 }
 
 /// The response for ReservationService.ListReservations.
@@ -2422,24 +2442,25 @@ class ListReservationsResponse {
   /// List of reservations visible to the user.
   core.List<Reservation>? reservations;
 
-  ListReservationsResponse({
-    this.nextPageToken,
-    this.reservations,
-  });
+  ListReservationsResponse({this.nextPageToken, this.reservations});
 
   ListReservationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          reservations: (json_['reservations'] as core.List?)
-              ?.map((value) => Reservation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        reservations:
+            (json_['reservations'] as core.List?)
+                ?.map(
+                  (value) => Reservation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (reservations != null) 'reservations': reservations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (reservations != null) 'reservations': reservations!,
+  };
 }
 
 /// The request for ReservationService.MergeCapacityCommitments.
@@ -2468,19 +2489,20 @@ class MergeCapacityCommitmentsRequest {
   });
 
   MergeCapacityCommitmentsRequest.fromJson(core.Map json_)
-      : this(
-          capacityCommitmentId: json_['capacityCommitmentId'] as core.String?,
-          capacityCommitmentIds: (json_['capacityCommitmentIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        capacityCommitmentId: json_['capacityCommitmentId'] as core.String?,
+        capacityCommitmentIds:
+            (json_['capacityCommitmentIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (capacityCommitmentId != null)
-          'capacityCommitmentId': capacityCommitmentId!,
-        if (capacityCommitmentIds != null)
-          'capacityCommitmentIds': capacityCommitmentIds!,
-      };
+    if (capacityCommitmentId != null)
+      'capacityCommitmentId': capacityCommitmentId!,
+    if (capacityCommitmentIds != null)
+      'capacityCommitmentIds': capacityCommitmentIds!,
+  };
 }
 
 /// The request for ReservationService.MoveAssignment.
@@ -2501,21 +2523,18 @@ class MoveAssignmentRequest {
   /// `projects/myotherproject/locations/US/reservations/team2-prod`
   core.String? destinationId;
 
-  MoveAssignmentRequest({
-    this.assignmentId,
-    this.destinationId,
-  });
+  MoveAssignmentRequest({this.assignmentId, this.destinationId});
 
   MoveAssignmentRequest.fromJson(core.Map json_)
-      : this(
-          assignmentId: json_['assignmentId'] as core.String?,
-          destinationId: json_['destinationId'] as core.String?,
-        );
+    : this(
+        assignmentId: json_['assignmentId'] as core.String?,
+        destinationId: json_['destinationId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignmentId != null) 'assignmentId': assignmentId!,
-        if (destinationId != null) 'destinationId': destinationId!,
-      };
+    if (assignmentId != null) 'assignmentId': assignmentId!,
+    if (destinationId != null) 'destinationId': destinationId!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2581,8 +2600,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -2604,33 +2625,36 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Disaster Recovery(DR) replication status of the reservation.
@@ -2675,24 +2699,26 @@ class ReplicationStatus {
   });
 
   ReplicationStatus.fromJson(core.Map json_)
-      : this(
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          lastErrorTime: json_['lastErrorTime'] as core.String?,
-          lastReplicationTime: json_['lastReplicationTime'] as core.String?,
-          softFailoverStartTime: json_['softFailoverStartTime'] as core.String?,
-        );
+    : this(
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lastErrorTime: json_['lastErrorTime'] as core.String?,
+        lastReplicationTime: json_['lastReplicationTime'] as core.String?,
+        softFailoverStartTime: json_['softFailoverStartTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!,
-        if (lastErrorTime != null) 'lastErrorTime': lastErrorTime!,
-        if (lastReplicationTime != null)
-          'lastReplicationTime': lastReplicationTime!,
-        if (softFailoverStartTime != null)
-          'softFailoverStartTime': softFailoverStartTime!,
-      };
+    if (error != null) 'error': error!,
+    if (lastErrorTime != null) 'lastErrorTime': lastErrorTime!,
+    if (lastReplicationTime != null)
+      'lastReplicationTime': lastReplicationTime!,
+    if (softFailoverStartTime != null)
+      'softFailoverStartTime': softFailoverStartTime!,
+  };
 }
 
 /// A reservation is a mechanism used to guarantee slots to users.
@@ -2948,60 +2974,61 @@ class Reservation {
   });
 
   Reservation.fromJson(core.Map json_)
-      : this(
-          autoscale: json_.containsKey('autoscale')
-              ? Autoscale.fromJson(
-                  json_['autoscale'] as core.Map<core.String, core.dynamic>)
-              : null,
-          concurrency: json_['concurrency'] as core.String?,
-          creationTime: json_['creationTime'] as core.String?,
-          edition: json_['edition'] as core.String?,
-          ignoreIdleSlots: json_['ignoreIdleSlots'] as core.bool?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          maxSlots: json_['maxSlots'] as core.String?,
-          multiRegionAuxiliary: json_['multiRegionAuxiliary'] as core.bool?,
-          name: json_['name'] as core.String?,
-          originalPrimaryLocation:
-              json_['originalPrimaryLocation'] as core.String?,
-          primaryLocation: json_['primaryLocation'] as core.String?,
-          replicationStatus: json_.containsKey('replicationStatus')
-              ? ReplicationStatus.fromJson(json_['replicationStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          reservationGroup: json_['reservationGroup'] as core.String?,
-          scalingMode: json_['scalingMode'] as core.String?,
-          secondaryLocation: json_['secondaryLocation'] as core.String?,
-          slotCapacity: json_['slotCapacity'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        autoscale:
+            json_.containsKey('autoscale')
+                ? Autoscale.fromJson(
+                  json_['autoscale'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        concurrency: json_['concurrency'] as core.String?,
+        creationTime: json_['creationTime'] as core.String?,
+        edition: json_['edition'] as core.String?,
+        ignoreIdleSlots: json_['ignoreIdleSlots'] as core.bool?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        maxSlots: json_['maxSlots'] as core.String?,
+        multiRegionAuxiliary: json_['multiRegionAuxiliary'] as core.bool?,
+        name: json_['name'] as core.String?,
+        originalPrimaryLocation:
+            json_['originalPrimaryLocation'] as core.String?,
+        primaryLocation: json_['primaryLocation'] as core.String?,
+        replicationStatus:
+            json_.containsKey('replicationStatus')
+                ? ReplicationStatus.fromJson(
+                  json_['replicationStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reservationGroup: json_['reservationGroup'] as core.String?,
+        scalingMode: json_['scalingMode'] as core.String?,
+        secondaryLocation: json_['secondaryLocation'] as core.String?,
+        slotCapacity: json_['slotCapacity'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoscale != null) 'autoscale': autoscale!,
-        if (concurrency != null) 'concurrency': concurrency!,
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (edition != null) 'edition': edition!,
-        if (ignoreIdleSlots != null) 'ignoreIdleSlots': ignoreIdleSlots!,
-        if (labels != null) 'labels': labels!,
-        if (maxSlots != null) 'maxSlots': maxSlots!,
-        if (multiRegionAuxiliary != null)
-          'multiRegionAuxiliary': multiRegionAuxiliary!,
-        if (name != null) 'name': name!,
-        if (originalPrimaryLocation != null)
-          'originalPrimaryLocation': originalPrimaryLocation!,
-        if (primaryLocation != null) 'primaryLocation': primaryLocation!,
-        if (replicationStatus != null) 'replicationStatus': replicationStatus!,
-        if (reservationGroup != null) 'reservationGroup': reservationGroup!,
-        if (scalingMode != null) 'scalingMode': scalingMode!,
-        if (secondaryLocation != null) 'secondaryLocation': secondaryLocation!,
-        if (slotCapacity != null) 'slotCapacity': slotCapacity!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (autoscale != null) 'autoscale': autoscale!,
+    if (concurrency != null) 'concurrency': concurrency!,
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (edition != null) 'edition': edition!,
+    if (ignoreIdleSlots != null) 'ignoreIdleSlots': ignoreIdleSlots!,
+    if (labels != null) 'labels': labels!,
+    if (maxSlots != null) 'maxSlots': maxSlots!,
+    if (multiRegionAuxiliary != null)
+      'multiRegionAuxiliary': multiRegionAuxiliary!,
+    if (name != null) 'name': name!,
+    if (originalPrimaryLocation != null)
+      'originalPrimaryLocation': originalPrimaryLocation!,
+    if (primaryLocation != null) 'primaryLocation': primaryLocation!,
+    if (replicationStatus != null) 'replicationStatus': replicationStatus!,
+    if (reservationGroup != null) 'reservationGroup': reservationGroup!,
+    if (scalingMode != null) 'scalingMode': scalingMode!,
+    if (secondaryLocation != null) 'secondaryLocation': secondaryLocation!,
+    if (slotCapacity != null) 'slotCapacity': slotCapacity!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A reservation group is a container for reservations.
@@ -3014,18 +3041,14 @@ class ReservationGroup {
   /// letter and must not end with a dash. Its maximum length is 64 characters.
   core.String? name;
 
-  ReservationGroup({
-    this.name,
-  });
+  ReservationGroup({this.name});
 
   ReservationGroup.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+    : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The response for ReservationService.SearchAllAssignments.
@@ -3037,24 +3060,25 @@ class SearchAllAssignmentsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  SearchAllAssignmentsResponse({
-    this.assignments,
-    this.nextPageToken,
-  });
+  SearchAllAssignmentsResponse({this.assignments, this.nextPageToken});
 
   SearchAllAssignmentsResponse.fromJson(core.Map json_)
-      : this(
-          assignments: (json_['assignments'] as core.List?)
-              ?.map((value) => Assignment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        assignments:
+            (json_['assignments'] as core.List?)
+                ?.map(
+                  (value) => Assignment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignments != null) 'assignments': assignments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (assignments != null) 'assignments': assignments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for ReservationService.SearchAssignments.
@@ -3066,24 +3090,25 @@ class SearchAssignmentsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  SearchAssignmentsResponse({
-    this.assignments,
-    this.nextPageToken,
-  });
+  SearchAssignmentsResponse({this.assignments, this.nextPageToken});
 
   SearchAssignmentsResponse.fromJson(core.Map json_)
-      : this(
-          assignments: (json_['assignments'] as core.List?)
-              ?.map((value) => Assignment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        assignments:
+            (json_['assignments'] as core.List?)
+                ?.map(
+                  (value) => Assignment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignments != null) 'assignments': assignments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (assignments != null) 'assignments': assignments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -3101,24 +3126,23 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// The request for ReservationService.SplitCapacityCommitment.
@@ -3126,18 +3150,14 @@ class SplitCapacityCommitmentRequest {
   /// Number of slots in the capacity commitment after the split.
   core.String? slotCount;
 
-  SplitCapacityCommitmentRequest({
-    this.slotCount,
-  });
+  SplitCapacityCommitmentRequest({this.slotCount});
 
   SplitCapacityCommitmentRequest.fromJson(core.Map json_)
-      : this(
-          slotCount: json_['slotCount'] as core.String?,
-        );
+    : this(slotCount: json_['slotCount'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (slotCount != null) 'slotCount': slotCount!,
-      };
+    if (slotCount != null) 'slotCount': slotCount!,
+  };
 }
 
 /// The response for ReservationService.SplitCapacityCommitment.
@@ -3148,27 +3168,28 @@ class SplitCapacityCommitmentResponse {
   /// Second capacity commitment, result of a split.
   CapacityCommitment? second;
 
-  SplitCapacityCommitmentResponse({
-    this.first,
-    this.second,
-  });
+  SplitCapacityCommitmentResponse({this.first, this.second});
 
   SplitCapacityCommitmentResponse.fromJson(core.Map json_)
-      : this(
-          first: json_.containsKey('first')
-              ? CapacityCommitment.fromJson(
-                  json_['first'] as core.Map<core.String, core.dynamic>)
-              : null,
-          second: json_.containsKey('second')
-              ? CapacityCommitment.fromJson(
-                  json_['second'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        first:
+            json_.containsKey('first')
+                ? CapacityCommitment.fromJson(
+                  json_['first'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        second:
+            json_.containsKey('second')
+                ? CapacityCommitment.fromJson(
+                  json_['second'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (first != null) 'first': first!,
-        if (second != null) 'second': second!,
-      };
+    if (first != null) 'first': first!,
+    if (second != null) 'second': second!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3199,24 +3220,20 @@ class TableReference {
   /// Optional.
   core.String? tableId;
 
-  TableReference({
-    this.datasetId,
-    this.projectId,
-    this.tableId,
-  });
+  TableReference({this.datasetId, this.projectId, this.tableId});
 
   TableReference.fromJson(core.Map json_)
-      : this(
-          datasetId: json_['datasetId'] as core.String?,
-          projectId: json_['projectId'] as core.String?,
-          tableId: json_['tableId'] as core.String?,
-        );
+    : this(
+        datasetId: json_['datasetId'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+        tableId: json_['tableId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (datasetId != null) 'datasetId': datasetId!,
-        if (projectId != null) 'projectId': projectId!,
-        if (tableId != null) 'tableId': tableId!,
-      };
+    if (datasetId != null) 'datasetId': datasetId!,
+    if (projectId != null) 'projectId': projectId!,
+    if (tableId != null) 'tableId': tableId!,
+  };
 }
 
 /// Request message for `TestIamPermissions` method.

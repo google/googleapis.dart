@@ -28,15 +28,15 @@ class DartSchemaTypeDB {
   final AnyType anyType;
 
   DartSchemaTypeDB(DartApiImports imports)
-      : stringType = StringType(imports),
-        nullableStringType = NullableStringType(imports),
-        integerType = IntegerType(imports),
-        stringIntegerType = StringIntegerType(imports),
-        doubleType = DoubleType(imports),
-        booleanType = BooleanType(imports),
-        dateType = DateType(imports),
-        dateTimeType = DateTimeType(imports),
-        anyType = AnyType(imports);
+    : stringType = StringType(imports),
+      nullableStringType = NullableStringType(imports),
+      integerType = IntegerType(imports),
+      stringIntegerType = StringIntegerType(imports),
+      doubleType = DoubleType(imports),
+      booleanType = BooleanType(imports),
+      dateType = DateType(imports),
+      dateTimeType = DateTimeType(imports),
+      anyType = AnyType(imports);
 
   // List of all [DartSchemaType]s.
   // TODO: This has to be in depth-first sorted traversal, right?
@@ -134,8 +134,12 @@ DartSchemaTypeDB parseSchemas(
    * If these types appear on the top level, i.e. in the {"schemas" { XXX }},
    * they are named, otherwise they are unnamed.
    */
-  DartSchemaType parse(String className, Scope classScope, JsonSchema schema,
-      {bool topLevel = false}) {
+  DartSchemaType parse(
+    String className,
+    Scope classScope,
+    JsonSchema schema, {
+    bool topLevel = false,
+  }) {
     if (schema.repeated != null) {
       throw ArgumentError('Only path/query parameters can be repeated.');
     }
@@ -145,8 +149,9 @@ DartSchemaTypeDB parseSchemas(
       if (schema.additionalProperties != null) {
         final anonValueClassName = namer.schemaClassName('${className}Value');
         final anonClassScope = namer.newClassScope();
-        final nullableValue = _forceNullableValueComments
-            .any((element) => comment.rawComment.contains(element));
+        final nullableValue = _forceNullableValueComments.any(
+          (element) => comment.rawComment.contains(element),
+        );
         var valueType = parse(
           anonValueClassName,
           anonClassScope,
@@ -183,36 +188,52 @@ DartSchemaTypeDB parseSchemas(
         final map = <String?, DartSchemaType>{};
         for (var mapItem in schema.variant!.map!) {
           if (mapItem.P_ref != null) {
-            map[mapItem.typeValue] =
-                DartSchemaForwardRef(imports, mapItem.P_ref!);
+            map[mapItem.typeValue] = DartSchemaForwardRef(
+              imports,
+              mapItem.P_ref!,
+            );
           }
         }
         final classId = namer.schemaClass(className);
-        return db.register(AbstractVariantType(
-            imports, classId, schema.variant!.discriminant, map));
+        return db.register(
+          AbstractVariantType(
+            imports,
+            classId,
+            schema.variant!.discriminant,
+            map,
+          ),
+        );
       } else {
         // This is a normal named schema class, we generate a normal
         // [ObjectType] for it with the defined properties.
         final classId = namer.schemaClass(className);
         final properties = <DartClassProperty>[];
         if (schema.properties != null) {
-          orderedForEach(schema.properties!,
-              (String jsonPName, JsonSchema? value) {
+          orderedForEach(schema.properties!, (
+            String jsonPName,
+            JsonSchema? value,
+          ) {
             final propertyName = classScope.newIdentifier(jsonPName);
-            final propertyClass =
-                namer.schemaClassName(jsonPName, parent: className);
+            final propertyClass = namer.schemaClassName(
+              jsonPName,
+              parent: className,
+            );
             final propertyClassScope = namer.newClassScope();
 
-            final propertyType =
-                parse(propertyClass, propertyClassScope, value!);
+            final propertyType = parse(
+              propertyClass,
+              propertyClassScope,
+              value!,
+            );
 
             var comment = Comment.header(value.description, true);
             comment = extendEnumComment(comment, propertyType);
             comment = extendAnyTypeComment(comment, propertyType);
             Identifier? byteArrayAccessor;
             if (value.format == 'byte' && value.type == 'string') {
-              byteArrayAccessor =
-                  classScope.newIdentifier('${jsonPName}AsBytes');
+              byteArrayAccessor = classScope.newIdentifier(
+                '${jsonPName}AsBytes',
+              );
             }
             final property = DartClassProperty(
               propertyName,
@@ -235,12 +256,21 @@ DartSchemaTypeDB parseSchemas(
       if (topLevel) {
         final elementClassName = namer.schemaClassName('${className}Element');
         final classId = namer.schemaClass(className);
-        return db.register(NamedArrayType(imports, classId,
+        return db.register(
+          NamedArrayType(
+            imports,
+            classId,
             parse(elementClassName, namer.newClassScope(), schema.items!),
-            comment: comment));
+            comment: comment,
+          ),
+        );
       } else {
-        return db.register(UnnamedArrayType(
-            imports, parse(className, namer.newClassScope(), schema.items!)));
+        return db.register(
+          UnnamedArrayType(
+            imports,
+            parse(className, namer.newClassScope(), schema.items!),
+          ),
+        );
       }
     } else if (schema.type == 'any') {
       return db.anyType;
@@ -258,7 +288,9 @@ DartSchemaTypeDB parseSchemas(
       final className = namer.schemaClassName(name);
       final classScope = namer.newClassScope();
       db.registerTopLevel(
-          name, parse(className, classScope, schema!, topLevel: true));
+        name,
+        parse(className, classScope, schema!, topLevel: true),
+      );
     });
 
     // Resolve all forward references and save list in [db.dartTypes].
@@ -266,9 +298,11 @@ DartSchemaTypeDB parseSchemas(
 
     // Build map of all top level dart schema classes which will be represented
     // as named dart classes.
-    db.dartClassTypes.addAll(db.dartTypes
-        .where((type) => type.className != null)
-        .cast<ComplexDartSchemaType>());
+    db.dartClassTypes.addAll(
+      db.dartTypes
+          .where((type) => type.className != null)
+          .cast<ComplexDartSchemaType>(),
+    );
   }
 
   return db;
@@ -307,7 +341,8 @@ DartSchemaType parsePrimitive(
     case 'number':
       if (!['float', 'double', null].contains(schema.format)) {
         throw ArgumentError(
-            'Only number types with float/double format are supported.');
+          'Only number types with float/double format are supported.',
+        );
       }
       return db.doubleType;
     case 'integer':
@@ -336,9 +371,10 @@ String generateSchemas(Iterable<ComplexDartSchemaType> classTypes) {
 
 Comment extendEnumComment(Comment baseComment, DartSchemaType type) {
   if (type is EnumType) {
-    final s = StringBuffer()
-      ..writeln(baseComment.rawComment)
-      ..writeln('Possible string values are:');
+    final s =
+        StringBuffer()
+          ..writeln(baseComment.rawComment)
+          ..writeln('Possible string values are:');
     for (var i = 0; i < type.enumValues.length; i++) {
       final description = type.enumDescriptions[i];
       if (description.trim().isNotEmpty) {
@@ -352,8 +388,11 @@ Comment extendEnumComment(Comment baseComment, DartSchemaType type) {
   return baseComment;
 }
 
-Comment extendAnyTypeComment(Comment baseComment, DartSchemaType type,
-    {bool includeNamedTypes = false}) {
+Comment extendAnyTypeComment(
+  Comment baseComment,
+  DartSchemaType type, {
+  bool includeNamedTypes = false,
+}) {
   const anyTypeComment =
       'The values for Object must be JSON objects. It can consist of `num`, '
       '`String`, `bool` and `null` as well as `Map` and `List` values.';

@@ -28,7 +28,8 @@ class CustomAuthEndpoints extends AuthEndpoints {
 final _browserFlowRedirectMatcher = predicate<String>((object) {
   if (object.startsWith('redirect_uri=')) {
     final url = Uri.parse(
-        Uri.decodeComponent(object.substring('redirect_uri='.length)));
+      Uri.decodeComponent(object.substring('redirect_uri='.length)),
+    );
     expect(url.scheme, equals('http'));
     expect(url.host, equals('localhost'));
     return true;
@@ -46,48 +47,43 @@ void main() {
   RequestHandler successFullResponse({
     required bool manual,
     AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
-  }) =>
-      (Request request) async {
-        expect(request.method, equals('POST'));
-        expect(request.url, authEndpoints.tokenEndpoint);
-        expect(
-          request.headers['content-type']!,
-          startsWith('application/x-www-form-urlencoded'),
-        );
+  }) => (Request request) async {
+    expect(request.method, equals('POST'));
+    expect(request.url, authEndpoints.tokenEndpoint);
+    expect(
+      request.headers['content-type']!,
+      startsWith('application/x-www-form-urlencoded'),
+    );
 
-        final pairs = request.body.split('&');
-        expect(pairs, hasLength(6));
+    final pairs = request.body.split('&');
+    expect(pairs, hasLength(6));
 
-        expect(
-          pairs,
-          containsAll([
-            'grant_type=authorization_code',
-            'code=mycode',
-            'client_id=id',
-            'client_secret=secret',
-            allOf(
-              startsWith('code_verifier='),
-              hasLength(142), // happens to be the output length as implemented!
-            ),
-            if (manual) 'redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob',
-            if (!manual) _browserFlowRedirectMatcher
-          ]),
-        );
+    expect(
+      pairs,
+      containsAll([
+        'grant_type=authorization_code',
+        'code=mycode',
+        'client_id=id',
+        'client_secret=secret',
+        allOf(
+          startsWith('code_verifier='),
+          hasLength(142), // happens to be the output length as implemented!
+        ),
+        if (manual) 'redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob',
+        if (!manual) _browserFlowRedirectMatcher,
+      ]),
+    );
 
-        final result = {
-          'token_type': 'Bearer',
-          'access_token': 'tokendata',
-          'expires_in': 3600,
-          'refresh_token': 'my-refresh-token',
-          'id_token': 'my-id-token',
-          'scope': 's1 s2',
-        };
-        return Response(
-          jsonEncode(result),
-          200,
-          headers: jsonContentType,
-        );
-      };
+    final result = {
+      'token_type': 'Bearer',
+      'access_token': 'tokendata',
+      'expires_in': 3600,
+      'refresh_token': 'my-refresh-token',
+      'id_token': 'my-id-token',
+      'scope': 's1 s2',
+    };
+    return Response(jsonEncode(result), 200, headers: jsonContentType);
+  };
 
   Future<Response> invalidResponse(Request request) async {
     // Missing expires_in field!
@@ -279,56 +275,57 @@ void main() {
       void userPrompt(String url) {
         final redirectUri = validateUserPromptUri(url);
         final authCodeCall = Uri(
-            scheme: redirectUri.scheme,
-            host: redirectUri.host,
-            port: redirectUri.port,
-            path: redirectUri.path,
-            queryParameters: {
-              'state': Uri.parse(url).queryParameters['state'],
-              'code': 'mycode',
-            });
+          scheme: redirectUri.scheme,
+          host: redirectUri.host,
+          port: redirectUri.port,
+          path: redirectUri.path,
+          queryParameters: {
+            'state': Uri.parse(url).queryParameters['state'],
+            'code': 'mycode',
+          },
+        );
         callRedirectionEndpoint(authCodeCall);
       }
 
       void userPromptInvalidHttpVerb(String url) {
         final redirectUri = validateUserPromptUri(url);
         final authCodeCall = Uri(
-            scheme: redirectUri.scheme,
-            host: redirectUri.host,
-            port: redirectUri.port,
-            path: redirectUri.path,
-            queryParameters: {
-              'state': Uri.parse(url).queryParameters['state'],
-              'code': 'mycode',
-            });
+          scheme: redirectUri.scheme,
+          host: redirectUri.host,
+          port: redirectUri.port,
+          path: redirectUri.path,
+          queryParameters: {
+            'state': Uri.parse(url).queryParameters['state'],
+            'code': 'mycode',
+          },
+        );
         postToRedirectionEndpoint(authCodeCall);
       }
 
       void userPromptNonMatchingState(String url) {
         final redirectUri = validateUserPromptUri(url);
         final authCodeCall = Uri(
-            scheme: redirectUri.scheme,
-            host: redirectUri.host,
-            port: redirectUri.port,
-            path: redirectUri.path,
-            queryParameters: {
-              'state': 'not-the-right-state',
-              'code': 'mycode',
-            });
+          scheme: redirectUri.scheme,
+          host: redirectUri.host,
+          port: redirectUri.port,
+          path: redirectUri.path,
+          queryParameters: {'state': 'not-the-right-state', 'code': 'mycode'},
+        );
         callRedirectionEndpoint(authCodeCall);
       }
 
       void userPromptInvalidAuthCodeCallback(String url) {
         final redirectUri = validateUserPromptUri(url);
         final authCodeCall = Uri(
-            scheme: redirectUri.scheme,
-            host: redirectUri.host,
-            port: redirectUri.port,
-            path: redirectUri.path,
-            queryParameters: {
-              'state': Uri.parse(url).queryParameters['state'],
-              'error': 'failed to authenticate',
-            });
+          scheme: redirectUri.scheme,
+          host: redirectUri.host,
+          port: redirectUri.port,
+          path: redirectUri.path,
+          queryParameters: {
+            'state': Uri.parse(url).queryParameters['state'],
+            'error': 'failed to authenticate',
+          },
+        );
         callRedirectionEndpoint(authCodeCall);
       }
 

@@ -62,11 +62,16 @@ class FirebaseAppDistributionApi {
   MediaResource get media => MediaResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  FirebaseAppDistributionApi(http.Client client,
-      {core.String rootUrl = 'https://firebaseappdistribution.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  FirebaseAppDistributionApi(
+    http.Client client, {
+    core.String rootUrl = 'https://firebaseappdistribution.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class MediaResource {
@@ -127,7 +132,8 @@ class MediaResource {
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -183,7 +189,8 @@ class ProjectsAppsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1AabInfo.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -196,7 +203,7 @@ class ProjectsAppsReleasesResource {
       ProjectsAppsReleasesOperationsResource(_requester);
 
   ProjectsAppsReleasesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes releases.
   ///
@@ -240,7 +247,8 @@ class ProjectsAppsReleasesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Distributes a release to testers.
@@ -289,7 +297,8 @@ class ProjectsAppsReleasesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1DistributeReleaseResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a release.
@@ -327,7 +336,8 @@ class ProjectsAppsReleasesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1Release.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists releases.
@@ -398,7 +408,8 @@ class ProjectsAppsReleasesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1ListReleasesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a release.
@@ -445,7 +456,8 @@ class ProjectsAppsReleasesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1Release.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -453,7 +465,7 @@ class ProjectsAppsReleasesFeedbackReportsResource {
   final commons.ApiRequester _requester;
 
   ProjectsAppsReleasesFeedbackReportsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes a feedback report.
   ///
@@ -490,7 +502,8 @@ class ProjectsAppsReleasesFeedbackReportsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a feedback report.
@@ -528,7 +541,8 @@ class ProjectsAppsReleasesFeedbackReportsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1FeedbackReport.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists feedback reports.
@@ -583,7 +597,8 @@ class ProjectsAppsReleasesFeedbackReportsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1ListFeedbackReportsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -591,7 +606,7 @@ class ProjectsAppsReleasesOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsAppsReleasesOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -641,7 +656,8 @@ class ProjectsAppsReleasesOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a long-running operation.
@@ -682,7 +698,8 @@ class ProjectsAppsReleasesOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -722,7 +739,8 @@ class ProjectsAppsReleasesOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -773,7 +791,8 @@ class ProjectsAppsReleasesOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Waits until the specified long-running operation is done or reaches at
@@ -824,7 +843,8 @@ class ProjectsAppsReleasesOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -875,7 +895,8 @@ class ProjectsGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Batch removed members from a group.
@@ -920,7 +941,8 @@ class ProjectsGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Create a group.
@@ -971,7 +993,8 @@ class ProjectsGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1Group.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a group.
@@ -1008,7 +1031,8 @@ class ProjectsGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get a group.
@@ -1045,7 +1069,8 @@ class ProjectsGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1Group.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List groups.
@@ -1096,7 +1121,8 @@ class ProjectsGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1ListGroupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a group.
@@ -1142,7 +1168,8 @@ class ProjectsGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1Group.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1194,7 +1221,8 @@ class ProjectsTestersResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1BatchAddTestersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Batch removes testers.
@@ -1240,7 +1268,8 @@ class ProjectsTestersResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1BatchRemoveTestersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists testers and their resource ids.
@@ -1299,7 +1328,8 @@ class ProjectsTestersResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1ListTestersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a tester.
@@ -1348,7 +1378,8 @@ class ProjectsTestersResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppdistroV1Tester.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1372,8 +1403,10 @@ class GdataCompositeMedia {
   core.List<core.int> get blobRefAsBytes => convert.base64.decode(blobRef!);
 
   set blobRefAsBytes(core.List<core.int> bytes_) {
-    blobRef =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    blobRef = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Blobstore v2 info, set if reference_type is BLOBSTORE_REF and it refers to
@@ -1392,8 +1425,10 @@ class GdataCompositeMedia {
       convert.base64.decode(cosmoBinaryReference!);
 
   set cosmoBinaryReferenceAsBytes(core.List<core.int> bytes_) {
-    cosmoBinaryReference =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    cosmoBinaryReference = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// crc32.c hash for the payload.
@@ -1404,8 +1439,10 @@ class GdataCompositeMedia {
   core.List<core.int> get inlineAsBytes => convert.base64.decode(inline!);
 
   set inlineAsBytes(core.List<core.int> bytes_) {
-    inline =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    inline = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Size of the data, in bytes
@@ -1416,8 +1453,10 @@ class GdataCompositeMedia {
   core.List<core.int> get md5HashAsBytes => convert.base64.decode(md5Hash!);
 
   set md5HashAsBytes(core.List<core.int> bytes_) {
-    md5Hash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    md5Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Reference to a TI Blob, set if reference_type is BIGSTORE_REF.
@@ -1443,8 +1482,10 @@ class GdataCompositeMedia {
   core.List<core.int> get sha1HashAsBytes => convert.base64.decode(sha1Hash!);
 
   set sha1HashAsBytes(core.List<core.int> bytes_) {
-    sha1Hash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    sha1Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   GdataCompositeMedia({
@@ -1462,40 +1503,45 @@ class GdataCompositeMedia {
   });
 
   GdataCompositeMedia.fromJson(core.Map json_)
-      : this(
-          blobRef: json_['blobRef'] as core.String?,
-          blobstore2Info: json_.containsKey('blobstore2Info')
-              ? GdataBlobstore2Info.fromJson(json_['blobstore2Info']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
-          crc32cHash: json_['crc32cHash'] as core.int?,
-          inline: json_['inline'] as core.String?,
-          length: json_['length'] as core.String?,
-          md5Hash: json_['md5Hash'] as core.String?,
-          objectId: json_.containsKey('objectId')
-              ? GdataObjectId.fromJson(
-                  json_['objectId'] as core.Map<core.String, core.dynamic>)
-              : null,
-          path: json_['path'] as core.String?,
-          referenceType: json_['referenceType'] as core.String?,
-          sha1Hash: json_['sha1Hash'] as core.String?,
-        );
+    : this(
+        blobRef: json_['blobRef'] as core.String?,
+        blobstore2Info:
+            json_.containsKey('blobstore2Info')
+                ? GdataBlobstore2Info.fromJson(
+                  json_['blobstore2Info']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
+        crc32cHash: json_['crc32cHash'] as core.int?,
+        inline: json_['inline'] as core.String?,
+        length: json_['length'] as core.String?,
+        md5Hash: json_['md5Hash'] as core.String?,
+        objectId:
+            json_.containsKey('objectId')
+                ? GdataObjectId.fromJson(
+                  json_['objectId'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        path: json_['path'] as core.String?,
+        referenceType: json_['referenceType'] as core.String?,
+        sha1Hash: json_['sha1Hash'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blobRef != null) 'blobRef': blobRef!,
-        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
-        if (cosmoBinaryReference != null)
-          'cosmoBinaryReference': cosmoBinaryReference!,
-        if (crc32cHash != null) 'crc32cHash': crc32cHash!,
-        if (inline != null) 'inline': inline!,
-        if (length != null) 'length': length!,
-        if (md5Hash != null) 'md5Hash': md5Hash!,
-        if (objectId != null) 'objectId': objectId!,
-        if (path != null) 'path': path!,
-        if (referenceType != null) 'referenceType': referenceType!,
-        if (sha1Hash != null) 'sha1Hash': sha1Hash!,
-      };
+    if (blobRef != null) 'blobRef': blobRef!,
+    if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
+    if (cosmoBinaryReference != null)
+      'cosmoBinaryReference': cosmoBinaryReference!,
+    if (crc32cHash != null) 'crc32cHash': crc32cHash!,
+    if (inline != null) 'inline': inline!,
+    if (length != null) 'length': length!,
+    if (md5Hash != null) 'md5Hash': md5Hash!,
+    if (objectId != null) 'objectId': objectId!,
+    if (path != null) 'path': path!,
+    if (referenceType != null) 'referenceType': referenceType!,
+    if (sha1Hash != null) 'sha1Hash': sha1Hash!,
+  };
 }
 
 /// Detailed Content-Type information from Scotty.
@@ -1544,27 +1590,33 @@ class GdataDiffChecksumsResponse {
   });
 
   GdataDiffChecksumsResponse.fromJson(core.Map json_)
-      : this(
-          checksumsLocation: json_.containsKey('checksumsLocation')
-              ? GdataCompositeMedia.fromJson(json_['checksumsLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          chunkSizeBytes: json_['chunkSizeBytes'] as core.String?,
-          objectLocation: json_.containsKey('objectLocation')
-              ? GdataCompositeMedia.fromJson(json_['objectLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          objectSizeBytes: json_['objectSizeBytes'] as core.String?,
-          objectVersion: json_['objectVersion'] as core.String?,
-        );
+    : this(
+        checksumsLocation:
+            json_.containsKey('checksumsLocation')
+                ? GdataCompositeMedia.fromJson(
+                  json_['checksumsLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        chunkSizeBytes: json_['chunkSizeBytes'] as core.String?,
+        objectLocation:
+            json_.containsKey('objectLocation')
+                ? GdataCompositeMedia.fromJson(
+                  json_['objectLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        objectSizeBytes: json_['objectSizeBytes'] as core.String?,
+        objectVersion: json_['objectVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (checksumsLocation != null) 'checksumsLocation': checksumsLocation!,
-        if (chunkSizeBytes != null) 'chunkSizeBytes': chunkSizeBytes!,
-        if (objectLocation != null) 'objectLocation': objectLocation!,
-        if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
-        if (objectVersion != null) 'objectVersion': objectVersion!,
-      };
+    if (checksumsLocation != null) 'checksumsLocation': checksumsLocation!,
+    if (chunkSizeBytes != null) 'chunkSizeBytes': chunkSizeBytes!,
+    if (objectLocation != null) 'objectLocation': objectLocation!,
+    if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
+    if (objectVersion != null) 'objectVersion': objectVersion!,
+  };
 }
 
 /// Backend response for a Diff download response.
@@ -1575,21 +1627,22 @@ class GdataDiffDownloadResponse {
   /// The original object location.
   GdataCompositeMedia? objectLocation;
 
-  GdataDiffDownloadResponse({
-    this.objectLocation,
-  });
+  GdataDiffDownloadResponse({this.objectLocation});
 
   GdataDiffDownloadResponse.fromJson(core.Map json_)
-      : this(
-          objectLocation: json_.containsKey('objectLocation')
-              ? GdataCompositeMedia.fromJson(json_['objectLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        objectLocation:
+            json_.containsKey('objectLocation')
+                ? GdataCompositeMedia.fromJson(
+                  json_['objectLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectLocation != null) 'objectLocation': objectLocation!,
-      };
+    if (objectLocation != null) 'objectLocation': objectLocation!,
+  };
 }
 
 /// A Diff upload request.
@@ -1623,23 +1676,27 @@ class GdataDiffUploadRequest {
   });
 
   GdataDiffUploadRequest.fromJson(core.Map json_)
-      : this(
-          checksumsInfo: json_.containsKey('checksumsInfo')
-              ? GdataCompositeMedia.fromJson(
-                  json_['checksumsInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          objectInfo: json_.containsKey('objectInfo')
-              ? GdataCompositeMedia.fromJson(
-                  json_['objectInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          objectVersion: json_['objectVersion'] as core.String?,
-        );
+    : this(
+        checksumsInfo:
+            json_.containsKey('checksumsInfo')
+                ? GdataCompositeMedia.fromJson(
+                  json_['checksumsInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        objectInfo:
+            json_.containsKey('objectInfo')
+                ? GdataCompositeMedia.fromJson(
+                  json_['objectInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        objectVersion: json_['objectVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (checksumsInfo != null) 'checksumsInfo': checksumsInfo!,
-        if (objectInfo != null) 'objectInfo': objectInfo!,
-        if (objectVersion != null) 'objectVersion': objectVersion!,
-      };
+    if (checksumsInfo != null) 'checksumsInfo': checksumsInfo!,
+    if (objectInfo != null) 'objectInfo': objectInfo!,
+    if (objectVersion != null) 'objectVersion': objectVersion!,
+  };
 }
 
 /// Backend response for a Diff upload request.
@@ -1659,24 +1716,24 @@ class GdataDiffUploadResponse {
   /// Must be filled in if responding to an upload start notification.
   GdataCompositeMedia? originalObject;
 
-  GdataDiffUploadResponse({
-    this.objectVersion,
-    this.originalObject,
-  });
+  GdataDiffUploadResponse({this.objectVersion, this.originalObject});
 
   GdataDiffUploadResponse.fromJson(core.Map json_)
-      : this(
-          objectVersion: json_['objectVersion'] as core.String?,
-          originalObject: json_.containsKey('originalObject')
-              ? GdataCompositeMedia.fromJson(json_['originalObject']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        objectVersion: json_['objectVersion'] as core.String?,
+        originalObject:
+            json_.containsKey('originalObject')
+                ? GdataCompositeMedia.fromJson(
+                  json_['originalObject']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectVersion != null) 'objectVersion': objectVersion!,
-        if (originalObject != null) 'originalObject': originalObject!,
-      };
+    if (objectVersion != null) 'objectVersion': objectVersion!,
+    if (originalObject != null) 'originalObject': originalObject!,
+  };
 }
 
 /// Backend response for a Diff get version response.
@@ -1708,8 +1765,10 @@ class GdataMedia {
       convert.base64.decode(bigstoreObjectRef!);
 
   set bigstoreObjectRefAsBytes(core.List<core.int> bytes_) {
-    bigstoreObjectRef =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    bigstoreObjectRef = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Blobstore v1 reference, set if reference_type is BLOBSTORE_REF This should
@@ -1724,8 +1783,10 @@ class GdataMedia {
   core.List<core.int> get blobRefAsBytes => convert.base64.decode(blobRef!);
 
   set blobRefAsBytes(core.List<core.int> bytes_) {
-    blobRef =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    blobRef = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Blobstore v2 info, set if reference_type is BLOBSTORE_REF and it refers to
@@ -1758,8 +1819,10 @@ class GdataMedia {
       convert.base64.decode(cosmoBinaryReference!);
 
   set cosmoBinaryReferenceAsBytes(core.List<core.int> bytes_) {
-    cosmoBinaryReference =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    cosmoBinaryReference = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// For Scotty Uploads: Scotty-provided hashes for uploads For Scotty
@@ -1817,8 +1880,10 @@ class GdataMedia {
   core.List<core.int> get inlineAsBytes => convert.base64.decode(inline!);
 
   set inlineAsBytes(core.List<core.int> bytes_) {
-    inline =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    inline = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// |is_potential_retry| is set false only when Scotty is certain that it has
@@ -1837,8 +1902,10 @@ class GdataMedia {
   core.List<core.int> get md5HashAsBytes => convert.base64.decode(md5Hash!);
 
   set md5HashAsBytes(core.List<core.int> bytes_) {
-    md5Hash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    md5Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Media id to forward to the operation GetMedia.
@@ -1848,8 +1915,10 @@ class GdataMedia {
   core.List<core.int> get mediaIdAsBytes => convert.base64.decode(mediaId!);
 
   set mediaIdAsBytes(core.List<core.int> bytes_) {
-    mediaId =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    mediaId = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Reference to a TI Blob, set if reference_type is BIGSTORE_REF.
@@ -1894,8 +1963,10 @@ class GdataMedia {
   core.List<core.int> get sha1HashAsBytes => convert.base64.decode(sha1Hash!);
 
   set sha1HashAsBytes(core.List<core.int> bytes_) {
-    sha1Hash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    sha1Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Scotty-provided SHA256 hash for an upload.
@@ -1904,8 +1975,10 @@ class GdataMedia {
       convert.base64.decode(sha256Hash!);
 
   set sha256HashAsBytes(core.List<core.int> bytes_) {
-    sha256Hash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    sha256Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Time at which the media data was last updated, in milliseconds since UNIX
@@ -1949,108 +2022,135 @@ class GdataMedia {
   });
 
   GdataMedia.fromJson(core.Map json_)
-      : this(
-          algorithm: json_['algorithm'] as core.String?,
-          bigstoreObjectRef: json_['bigstoreObjectRef'] as core.String?,
-          blobRef: json_['blobRef'] as core.String?,
-          blobstore2Info: json_.containsKey('blobstore2Info')
-              ? GdataBlobstore2Info.fromJson(json_['blobstore2Info']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          compositeMedia: (json_['compositeMedia'] as core.List?)
-              ?.map((value) => GdataCompositeMedia.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          contentType: json_['contentType'] as core.String?,
-          contentTypeInfo: json_.containsKey('contentTypeInfo')
-              ? GdataContentTypeInfo.fromJson(json_['contentTypeInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
-          crc32cHash: json_['crc32cHash'] as core.int?,
-          diffChecksumsResponse: json_.containsKey('diffChecksumsResponse')
-              ? GdataDiffChecksumsResponse.fromJson(
+    : this(
+        algorithm: json_['algorithm'] as core.String?,
+        bigstoreObjectRef: json_['bigstoreObjectRef'] as core.String?,
+        blobRef: json_['blobRef'] as core.String?,
+        blobstore2Info:
+            json_.containsKey('blobstore2Info')
+                ? GdataBlobstore2Info.fromJson(
+                  json_['blobstore2Info']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        compositeMedia:
+            (json_['compositeMedia'] as core.List?)
+                ?.map(
+                  (value) => GdataCompositeMedia.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        contentType: json_['contentType'] as core.String?,
+        contentTypeInfo:
+            json_.containsKey('contentTypeInfo')
+                ? GdataContentTypeInfo.fromJson(
+                  json_['contentTypeInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
+        crc32cHash: json_['crc32cHash'] as core.int?,
+        diffChecksumsResponse:
+            json_.containsKey('diffChecksumsResponse')
+                ? GdataDiffChecksumsResponse.fromJson(
                   json_['diffChecksumsResponse']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          diffDownloadResponse: json_.containsKey('diffDownloadResponse')
-              ? GdataDiffDownloadResponse.fromJson(json_['diffDownloadResponse']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          diffUploadRequest: json_.containsKey('diffUploadRequest')
-              ? GdataDiffUploadRequest.fromJson(json_['diffUploadRequest']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          diffUploadResponse: json_.containsKey('diffUploadResponse')
-              ? GdataDiffUploadResponse.fromJson(json_['diffUploadResponse']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          diffVersionResponse: json_.containsKey('diffVersionResponse')
-              ? GdataDiffVersionResponse.fromJson(json_['diffVersionResponse']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          downloadParameters: json_.containsKey('downloadParameters')
-              ? GdataDownloadParameters.fromJson(json_['downloadParameters']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          filename: json_['filename'] as core.String?,
-          hash: json_['hash'] as core.String?,
-          hashVerified: json_['hashVerified'] as core.bool?,
-          inline: json_['inline'] as core.String?,
-          isPotentialRetry: json_['isPotentialRetry'] as core.bool?,
-          length: json_['length'] as core.String?,
-          md5Hash: json_['md5Hash'] as core.String?,
-          mediaId: json_['mediaId'] as core.String?,
-          objectId: json_.containsKey('objectId')
-              ? GdataObjectId.fromJson(
-                  json_['objectId'] as core.Map<core.String, core.dynamic>)
-              : null,
-          path: json_['path'] as core.String?,
-          referenceType: json_['referenceType'] as core.String?,
-          sha1Hash: json_['sha1Hash'] as core.String?,
-          sha256Hash: json_['sha256Hash'] as core.String?,
-          timestamp: json_['timestamp'] as core.String?,
-          token: json_['token'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        diffDownloadResponse:
+            json_.containsKey('diffDownloadResponse')
+                ? GdataDiffDownloadResponse.fromJson(
+                  json_['diffDownloadResponse']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        diffUploadRequest:
+            json_.containsKey('diffUploadRequest')
+                ? GdataDiffUploadRequest.fromJson(
+                  json_['diffUploadRequest']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        diffUploadResponse:
+            json_.containsKey('diffUploadResponse')
+                ? GdataDiffUploadResponse.fromJson(
+                  json_['diffUploadResponse']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        diffVersionResponse:
+            json_.containsKey('diffVersionResponse')
+                ? GdataDiffVersionResponse.fromJson(
+                  json_['diffVersionResponse']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        downloadParameters:
+            json_.containsKey('downloadParameters')
+                ? GdataDownloadParameters.fromJson(
+                  json_['downloadParameters']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filename: json_['filename'] as core.String?,
+        hash: json_['hash'] as core.String?,
+        hashVerified: json_['hashVerified'] as core.bool?,
+        inline: json_['inline'] as core.String?,
+        isPotentialRetry: json_['isPotentialRetry'] as core.bool?,
+        length: json_['length'] as core.String?,
+        md5Hash: json_['md5Hash'] as core.String?,
+        mediaId: json_['mediaId'] as core.String?,
+        objectId:
+            json_.containsKey('objectId')
+                ? GdataObjectId.fromJson(
+                  json_['objectId'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        path: json_['path'] as core.String?,
+        referenceType: json_['referenceType'] as core.String?,
+        sha1Hash: json_['sha1Hash'] as core.String?,
+        sha256Hash: json_['sha256Hash'] as core.String?,
+        timestamp: json_['timestamp'] as core.String?,
+        token: json_['token'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm!,
-        if (bigstoreObjectRef != null) 'bigstoreObjectRef': bigstoreObjectRef!,
-        if (blobRef != null) 'blobRef': blobRef!,
-        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
-        if (compositeMedia != null) 'compositeMedia': compositeMedia!,
-        if (contentType != null) 'contentType': contentType!,
-        if (contentTypeInfo != null) 'contentTypeInfo': contentTypeInfo!,
-        if (cosmoBinaryReference != null)
-          'cosmoBinaryReference': cosmoBinaryReference!,
-        if (crc32cHash != null) 'crc32cHash': crc32cHash!,
-        if (diffChecksumsResponse != null)
-          'diffChecksumsResponse': diffChecksumsResponse!,
-        if (diffDownloadResponse != null)
-          'diffDownloadResponse': diffDownloadResponse!,
-        if (diffUploadRequest != null) 'diffUploadRequest': diffUploadRequest!,
-        if (diffUploadResponse != null)
-          'diffUploadResponse': diffUploadResponse!,
-        if (diffVersionResponse != null)
-          'diffVersionResponse': diffVersionResponse!,
-        if (downloadParameters != null)
-          'downloadParameters': downloadParameters!,
-        if (filename != null) 'filename': filename!,
-        if (hash != null) 'hash': hash!,
-        if (hashVerified != null) 'hashVerified': hashVerified!,
-        if (inline != null) 'inline': inline!,
-        if (isPotentialRetry != null) 'isPotentialRetry': isPotentialRetry!,
-        if (length != null) 'length': length!,
-        if (md5Hash != null) 'md5Hash': md5Hash!,
-        if (mediaId != null) 'mediaId': mediaId!,
-        if (objectId != null) 'objectId': objectId!,
-        if (path != null) 'path': path!,
-        if (referenceType != null) 'referenceType': referenceType!,
-        if (sha1Hash != null) 'sha1Hash': sha1Hash!,
-        if (sha256Hash != null) 'sha256Hash': sha256Hash!,
-        if (timestamp != null) 'timestamp': timestamp!,
-        if (token != null) 'token': token!,
-      };
+    if (algorithm != null) 'algorithm': algorithm!,
+    if (bigstoreObjectRef != null) 'bigstoreObjectRef': bigstoreObjectRef!,
+    if (blobRef != null) 'blobRef': blobRef!,
+    if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
+    if (compositeMedia != null) 'compositeMedia': compositeMedia!,
+    if (contentType != null) 'contentType': contentType!,
+    if (contentTypeInfo != null) 'contentTypeInfo': contentTypeInfo!,
+    if (cosmoBinaryReference != null)
+      'cosmoBinaryReference': cosmoBinaryReference!,
+    if (crc32cHash != null) 'crc32cHash': crc32cHash!,
+    if (diffChecksumsResponse != null)
+      'diffChecksumsResponse': diffChecksumsResponse!,
+    if (diffDownloadResponse != null)
+      'diffDownloadResponse': diffDownloadResponse!,
+    if (diffUploadRequest != null) 'diffUploadRequest': diffUploadRequest!,
+    if (diffUploadResponse != null) 'diffUploadResponse': diffUploadResponse!,
+    if (diffVersionResponse != null)
+      'diffVersionResponse': diffVersionResponse!,
+    if (downloadParameters != null) 'downloadParameters': downloadParameters!,
+    if (filename != null) 'filename': filename!,
+    if (hash != null) 'hash': hash!,
+    if (hashVerified != null) 'hashVerified': hashVerified!,
+    if (inline != null) 'inline': inline!,
+    if (isPotentialRetry != null) 'isPotentialRetry': isPotentialRetry!,
+    if (length != null) 'length': length!,
+    if (md5Hash != null) 'md5Hash': md5Hash!,
+    if (mediaId != null) 'mediaId': mediaId!,
+    if (objectId != null) 'objectId': objectId!,
+    if (path != null) 'path': path!,
+    if (referenceType != null) 'referenceType': referenceType!,
+    if (sha1Hash != null) 'sha1Hash': sha1Hash!,
+    if (sha256Hash != null) 'sha256Hash': sha256Hash!,
+    if (timestamp != null) 'timestamp': timestamp!,
+    if (token != null) 'token': token!,
+  };
 }
 
 /// This is a copy of the tech.blob.ObjectId proto, which could not be used
@@ -2093,21 +2193,23 @@ class GoogleFirebaseAppdistroV1AabInfo {
   });
 
   GoogleFirebaseAppdistroV1AabInfo.fromJson(core.Map json_)
-      : this(
-          integrationState: json_['integrationState'] as core.String?,
-          name: json_['name'] as core.String?,
-          testCertificate: json_.containsKey('testCertificate')
-              ? GoogleFirebaseAppdistroV1TestCertificate.fromJson(
+    : this(
+        integrationState: json_['integrationState'] as core.String?,
+        name: json_['name'] as core.String?,
+        testCertificate:
+            json_.containsKey('testCertificate')
+                ? GoogleFirebaseAppdistroV1TestCertificate.fromJson(
                   json_['testCertificate']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (integrationState != null) 'integrationState': integrationState!,
-        if (name != null) 'name': name!,
-        if (testCertificate != null) 'testCertificate': testCertificate!,
-      };
+    if (integrationState != null) 'integrationState': integrationState!,
+    if (name != null) 'name': name!,
+    if (testCertificate != null) 'testCertificate': testCertificate!,
+  };
 }
 
 /// The Request message for batch adding testers
@@ -2119,20 +2221,19 @@ class GoogleFirebaseAppdistroV1BatchAddTestersRequest {
   /// Required.
   core.List<core.String>? emails;
 
-  GoogleFirebaseAppdistroV1BatchAddTestersRequest({
-    this.emails,
-  });
+  GoogleFirebaseAppdistroV1BatchAddTestersRequest({this.emails});
 
   GoogleFirebaseAppdistroV1BatchAddTestersRequest.fromJson(core.Map json_)
-      : this(
-          emails: (json_['emails'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        emails:
+            (json_['emails'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emails != null) 'emails': emails!,
-      };
+    if (emails != null) 'emails': emails!,
+  };
 }
 
 /// The Response message for `BatchAddTesters`.
@@ -2140,21 +2241,23 @@ class GoogleFirebaseAppdistroV1BatchAddTestersResponse {
   /// The testers which are created and/or already exist
   core.List<GoogleFirebaseAppdistroV1Tester>? testers;
 
-  GoogleFirebaseAppdistroV1BatchAddTestersResponse({
-    this.testers,
-  });
+  GoogleFirebaseAppdistroV1BatchAddTestersResponse({this.testers});
 
   GoogleFirebaseAppdistroV1BatchAddTestersResponse.fromJson(core.Map json_)
-      : this(
-          testers: (json_['testers'] as core.List?)
-              ?.map((value) => GoogleFirebaseAppdistroV1Tester.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        testers:
+            (json_['testers'] as core.List?)
+                ?.map(
+                  (value) => GoogleFirebaseAppdistroV1Tester.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (testers != null) 'testers': testers!,
-      };
+    if (testers != null) 'testers': testers!,
+  };
 }
 
 /// The request message for `BatchDeleteReleases`.
@@ -2167,20 +2270,19 @@ class GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest {
   /// Required.
   core.List<core.String>? names;
 
-  GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest({
-    this.names,
-  });
+  GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest({this.names});
 
   GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest.fromJson(core.Map json_)
-      : this(
-          names: (json_['names'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        names:
+            (json_['names'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (names != null) 'names': names!,
-      };
+    if (names != null) 'names': names!,
+  };
 }
 
 /// The request message for `BatchJoinGroup`
@@ -2202,18 +2304,19 @@ class GoogleFirebaseAppdistroV1BatchJoinGroupRequest {
   });
 
   GoogleFirebaseAppdistroV1BatchJoinGroupRequest.fromJson(core.Map json_)
-      : this(
-          createMissingTesters: json_['createMissingTesters'] as core.bool?,
-          emails: (json_['emails'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        createMissingTesters: json_['createMissingTesters'] as core.bool?,
+        emails:
+            (json_['emails'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createMissingTesters != null)
-          'createMissingTesters': createMissingTesters!,
-        if (emails != null) 'emails': emails!,
-      };
+    if (createMissingTesters != null)
+      'createMissingTesters': createMissingTesters!,
+    if (emails != null) 'emails': emails!,
+  };
 }
 
 /// Request message for `BatchLeaveGroup`
@@ -2225,20 +2328,19 @@ class GoogleFirebaseAppdistroV1BatchLeaveGroupRequest {
   /// Required.
   core.List<core.String>? emails;
 
-  GoogleFirebaseAppdistroV1BatchLeaveGroupRequest({
-    this.emails,
-  });
+  GoogleFirebaseAppdistroV1BatchLeaveGroupRequest({this.emails});
 
   GoogleFirebaseAppdistroV1BatchLeaveGroupRequest.fromJson(core.Map json_)
-      : this(
-          emails: (json_['emails'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        emails:
+            (json_['emails'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emails != null) 'emails': emails!,
-      };
+    if (emails != null) 'emails': emails!,
+  };
 }
 
 /// The request message for `BatchRemoveTesters`.
@@ -2250,20 +2352,19 @@ class GoogleFirebaseAppdistroV1BatchRemoveTestersRequest {
   /// Required.
   core.List<core.String>? emails;
 
-  GoogleFirebaseAppdistroV1BatchRemoveTestersRequest({
-    this.emails,
-  });
+  GoogleFirebaseAppdistroV1BatchRemoveTestersRequest({this.emails});
 
   GoogleFirebaseAppdistroV1BatchRemoveTestersRequest.fromJson(core.Map json_)
-      : this(
-          emails: (json_['emails'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        emails:
+            (json_['emails'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emails != null) 'emails': emails!,
-      };
+    if (emails != null) 'emails': emails!,
+  };
 }
 
 /// The response message for `BatchRemoveTesters`
@@ -2271,20 +2372,19 @@ class GoogleFirebaseAppdistroV1BatchRemoveTestersResponse {
   /// List of deleted tester emails
   core.List<core.String>? emails;
 
-  GoogleFirebaseAppdistroV1BatchRemoveTestersResponse({
-    this.emails,
-  });
+  GoogleFirebaseAppdistroV1BatchRemoveTestersResponse({this.emails});
 
   GoogleFirebaseAppdistroV1BatchRemoveTestersResponse.fromJson(core.Map json_)
-      : this(
-          emails: (json_['emails'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        emails:
+            (json_['emails'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emails != null) 'emails': emails!,
-      };
+    if (emails != null) 'emails': emails!,
+  };
 }
 
 /// The request message for `DistributeRelease`.
@@ -2307,19 +2407,21 @@ class GoogleFirebaseAppdistroV1DistributeReleaseRequest {
   });
 
   GoogleFirebaseAppdistroV1DistributeReleaseRequest.fromJson(core.Map json_)
-      : this(
-          groupAliases: (json_['groupAliases'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          testerEmails: (json_['testerEmails'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        groupAliases:
+            (json_['groupAliases'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        testerEmails:
+            (json_['testerEmails'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groupAliases != null) 'groupAliases': groupAliases!,
-        if (testerEmails != null) 'testerEmails': testerEmails!,
-      };
+    if (groupAliases != null) 'groupAliases': groupAliases!,
+    if (testerEmails != null) 'testerEmails': testerEmails!,
+  };
 }
 
 /// The response message for `DistributeRelease`.
@@ -2369,24 +2471,23 @@ class GoogleFirebaseAppdistroV1FeedbackReport {
   });
 
   GoogleFirebaseAppdistroV1FeedbackReport.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          firebaseConsoleUri: json_['firebaseConsoleUri'] as core.String?,
-          name: json_['name'] as core.String?,
-          screenshotUri: json_['screenshotUri'] as core.String?,
-          tester: json_['tester'] as core.String?,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        firebaseConsoleUri: json_['firebaseConsoleUri'] as core.String?,
+        name: json_['name'] as core.String?,
+        screenshotUri: json_['screenshotUri'] as core.String?,
+        tester: json_['tester'] as core.String?,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (firebaseConsoleUri != null)
-          'firebaseConsoleUri': firebaseConsoleUri!,
-        if (name != null) 'name': name!,
-        if (screenshotUri != null) 'screenshotUri': screenshotUri!,
-        if (tester != null) 'tester': tester!,
-        if (text != null) 'text': text!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (firebaseConsoleUri != null) 'firebaseConsoleUri': firebaseConsoleUri!,
+    if (name != null) 'name': name!,
+    if (screenshotUri != null) 'screenshotUri': screenshotUri!,
+    if (tester != null) 'tester': tester!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// A group which can contain testers.
@@ -2427,21 +2528,21 @@ class GoogleFirebaseAppdistroV1Group {
   });
 
   GoogleFirebaseAppdistroV1Group.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          inviteLinkCount: json_['inviteLinkCount'] as core.int?,
-          name: json_['name'] as core.String?,
-          releaseCount: json_['releaseCount'] as core.int?,
-          testerCount: json_['testerCount'] as core.int?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        inviteLinkCount: json_['inviteLinkCount'] as core.int?,
+        name: json_['name'] as core.String?,
+        releaseCount: json_['releaseCount'] as core.int?,
+        testerCount: json_['testerCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (inviteLinkCount != null) 'inviteLinkCount': inviteLinkCount!,
-        if (name != null) 'name': name!,
-        if (releaseCount != null) 'releaseCount': releaseCount!,
-        if (testerCount != null) 'testerCount': testerCount!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (inviteLinkCount != null) 'inviteLinkCount': inviteLinkCount!,
+    if (name != null) 'name': name!,
+    if (releaseCount != null) 'releaseCount': releaseCount!,
+    if (testerCount != null) 'testerCount': testerCount!,
+  };
 }
 
 /// The response message for `ListFeedbackReports`.
@@ -2461,18 +2562,22 @@ class GoogleFirebaseAppdistroV1ListFeedbackReportsResponse {
   });
 
   GoogleFirebaseAppdistroV1ListFeedbackReportsResponse.fromJson(core.Map json_)
-      : this(
-          feedbackReports: (json_['feedbackReports'] as core.List?)
-              ?.map((value) => GoogleFirebaseAppdistroV1FeedbackReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        feedbackReports:
+            (json_['feedbackReports'] as core.List?)
+                ?.map(
+                  (value) => GoogleFirebaseAppdistroV1FeedbackReport.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (feedbackReports != null) 'feedbackReports': feedbackReports!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (feedbackReports != null) 'feedbackReports': feedbackReports!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for `ListGroups`.
@@ -2492,18 +2597,22 @@ class GoogleFirebaseAppdistroV1ListGroupsResponse {
   });
 
   GoogleFirebaseAppdistroV1ListGroupsResponse.fromJson(core.Map json_)
-      : this(
-          groups: (json_['groups'] as core.List?)
-              ?.map((value) => GoogleFirebaseAppdistroV1Group.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        groups:
+            (json_['groups'] as core.List?)
+                ?.map(
+                  (value) => GoogleFirebaseAppdistroV1Group.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groups != null) 'groups': groups!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (groups != null) 'groups': groups!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for `ListReleases`.
@@ -2523,18 +2632,22 @@ class GoogleFirebaseAppdistroV1ListReleasesResponse {
   });
 
   GoogleFirebaseAppdistroV1ListReleasesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          releases: (json_['releases'] as core.List?)
-              ?.map((value) => GoogleFirebaseAppdistroV1Release.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        releases:
+            (json_['releases'] as core.List?)
+                ?.map(
+                  (value) => GoogleFirebaseAppdistroV1Release.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (releases != null) 'releases': releases!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (releases != null) 'releases': releases!,
+  };
 }
 
 /// The response message for `ListTesters`.
@@ -2554,18 +2667,22 @@ class GoogleFirebaseAppdistroV1ListTestersResponse {
   });
 
   GoogleFirebaseAppdistroV1ListTestersResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          testers: (json_['testers'] as core.List?)
-              ?.map((value) => GoogleFirebaseAppdistroV1Tester.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        testers:
+            (json_['testers'] as core.List?)
+                ?.map(
+                  (value) => GoogleFirebaseAppdistroV1Tester.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (testers != null) 'testers': testers!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (testers != null) 'testers': testers!,
+  };
 }
 
 /// A release of a Firebase app.
@@ -2629,31 +2746,32 @@ class GoogleFirebaseAppdistroV1Release {
   });
 
   GoogleFirebaseAppdistroV1Release.fromJson(core.Map json_)
-      : this(
-          binaryDownloadUri: json_['binaryDownloadUri'] as core.String?,
-          buildVersion: json_['buildVersion'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          displayVersion: json_['displayVersion'] as core.String?,
-          firebaseConsoleUri: json_['firebaseConsoleUri'] as core.String?,
-          name: json_['name'] as core.String?,
-          releaseNotes: json_.containsKey('releaseNotes')
-              ? GoogleFirebaseAppdistroV1ReleaseNotes.fromJson(
-                  json_['releaseNotes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          testingUri: json_['testingUri'] as core.String?,
-        );
+    : this(
+        binaryDownloadUri: json_['binaryDownloadUri'] as core.String?,
+        buildVersion: json_['buildVersion'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        displayVersion: json_['displayVersion'] as core.String?,
+        firebaseConsoleUri: json_['firebaseConsoleUri'] as core.String?,
+        name: json_['name'] as core.String?,
+        releaseNotes:
+            json_.containsKey('releaseNotes')
+                ? GoogleFirebaseAppdistroV1ReleaseNotes.fromJson(
+                  json_['releaseNotes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        testingUri: json_['testingUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (binaryDownloadUri != null) 'binaryDownloadUri': binaryDownloadUri!,
-        if (buildVersion != null) 'buildVersion': buildVersion!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayVersion != null) 'displayVersion': displayVersion!,
-        if (firebaseConsoleUri != null)
-          'firebaseConsoleUri': firebaseConsoleUri!,
-        if (name != null) 'name': name!,
-        if (releaseNotes != null) 'releaseNotes': releaseNotes!,
-        if (testingUri != null) 'testingUri': testingUri!,
-      };
+    if (binaryDownloadUri != null) 'binaryDownloadUri': binaryDownloadUri!,
+    if (buildVersion != null) 'buildVersion': buildVersion!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayVersion != null) 'displayVersion': displayVersion!,
+    if (firebaseConsoleUri != null) 'firebaseConsoleUri': firebaseConsoleUri!,
+    if (name != null) 'name': name!,
+    if (releaseNotes != null) 'releaseNotes': releaseNotes!,
+    if (testingUri != null) 'testingUri': testingUri!,
+  };
 }
 
 /// Notes that belong to a release.
@@ -2661,18 +2779,14 @@ class GoogleFirebaseAppdistroV1ReleaseNotes {
   /// The text of the release notes.
   core.String? text;
 
-  GoogleFirebaseAppdistroV1ReleaseNotes({
-    this.text,
-  });
+  GoogleFirebaseAppdistroV1ReleaseNotes({this.text});
 
   GoogleFirebaseAppdistroV1ReleaseNotes.fromJson(core.Map json_)
-      : this(
-          text: json_['text'] as core.String?,
-        );
+    : this(text: json_['text'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (text != null) 'text': text!,
-      };
+    if (text != null) 'text': text!,
+  };
 }
 
 /// App bundle test certificate
@@ -2693,17 +2807,17 @@ class GoogleFirebaseAppdistroV1TestCertificate {
   });
 
   GoogleFirebaseAppdistroV1TestCertificate.fromJson(core.Map json_)
-      : this(
-          hashMd5: json_['hashMd5'] as core.String?,
-          hashSha1: json_['hashSha1'] as core.String?,
-          hashSha256: json_['hashSha256'] as core.String?,
-        );
+    : this(
+        hashMd5: json_['hashMd5'] as core.String?,
+        hashSha1: json_['hashSha1'] as core.String?,
+        hashSha256: json_['hashSha256'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hashMd5 != null) 'hashMd5': hashMd5!,
-        if (hashSha1 != null) 'hashSha1': hashSha1!,
-        if (hashSha256 != null) 'hashSha256': hashSha256!,
-      };
+    if (hashMd5 != null) 'hashMd5': hashMd5!,
+    if (hashSha1 != null) 'hashSha1': hashSha1!,
+    if (hashSha256 != null) 'hashSha256': hashSha256!,
+  };
 }
 
 /// A person that can be invited to test apps in a Firebase project.
@@ -2737,21 +2851,22 @@ class GoogleFirebaseAppdistroV1Tester {
   });
 
   GoogleFirebaseAppdistroV1Tester.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          groups: (json_['groups'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          lastActivityTime: json_['lastActivityTime'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        groups:
+            (json_['groups'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        lastActivityTime: json_['lastActivityTime'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (groups != null) 'groups': groups!,
-        if (lastActivityTime != null) 'lastActivityTime': lastActivityTime!,
-        if (name != null) 'name': name!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (groups != null) 'groups': groups!,
+    if (lastActivityTime != null) 'lastActivityTime': lastActivityTime!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Request message for `UploadRelease`.
@@ -2759,21 +2874,21 @@ class GoogleFirebaseAppdistroV1UploadReleaseRequest {
   /// Binary to upload
   GdataMedia? blob;
 
-  GoogleFirebaseAppdistroV1UploadReleaseRequest({
-    this.blob,
-  });
+  GoogleFirebaseAppdistroV1UploadReleaseRequest({this.blob});
 
   GoogleFirebaseAppdistroV1UploadReleaseRequest.fromJson(core.Map json_)
-      : this(
-          blob: json_.containsKey('blob')
-              ? GdataMedia.fromJson(
-                  json_['blob'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        blob:
+            json_.containsKey('blob')
+                ? GdataMedia.fromJson(
+                  json_['blob'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blob != null) 'blob': blob!,
-      };
+    if (blob != null) 'blob': blob!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2793,18 +2908,22 @@ class GoogleLongrunningListOperationsResponse {
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => GoogleLongrunningOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2859,28 +2978,32 @@ class GoogleLongrunningOperation {
   });
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// The request message for Operations.WaitOperation.

@@ -21,25 +21,26 @@ void main() {
     sampleContent = List.generate(1024 * 1024, (i) => random.nextInt(256));
   });
 
-  test(
-    'upload, download',
-    () async {
-      await withClientFromDefaultCredentials(
-          [StorageApi.devstorageReadOnlyScope], (client) async {
+  test('upload, download', () async {
+    await withClientFromDefaultCredentials(
+      [StorageApi.devstorageReadOnlyScope],
+      (client) async {
         final storageApi = StorageApi(client);
         await _upload(storageApi, sampleContent);
         await _verify(storageApi, sampleContent);
-      });
-    },
-  );
+      },
+    );
+  });
 
   test('upload chunked, download', () async {
-    await withClientFromDefaultCredentials([StorageApi.devstorageReadOnlyScope],
-        (client) async {
-      final storageApi = StorageApi(client);
-      await _uploadChunked(storageApi, sampleContent);
-      await _verify(storageApi, sampleContent);
-    });
+    await withClientFromDefaultCredentials(
+      [StorageApi.devstorageReadOnlyScope],
+      (client) async {
+        final storageApi = StorageApi(client);
+        await _uploadChunked(storageApi, sampleContent);
+        await _verify(storageApi, sampleContent);
+      },
+    );
   });
 }
 
@@ -53,10 +54,7 @@ Future<void> _upload(StorageApi storageApi, List<int> sampleContent) async {
   final result = await storageApi.objects.insert(
     uploadObject,
     _bucketName,
-    uploadMedia: Media(
-      Stream.value(sampleContent),
-      sampleContent.length,
-    ),
+    uploadMedia: Media(Stream.value(sampleContent), sampleContent.length),
   );
 
   expect(result.name, _fileName);
@@ -76,10 +74,7 @@ Future<void> _uploadChunked(
   final result = await storageApi.objects.insert(
     uploadObject,
     _bucketName,
-    uploadMedia: Media(
-      Stream.value(sampleContent),
-      sampleContent.length,
-    ),
+    uploadMedia: Media(Stream.value(sampleContent), sampleContent.length),
     uploadOptions: ResumableUploadOptions(chunkSize: 256 * 1024),
   );
 
@@ -94,11 +89,13 @@ Future<void> _verify(StorageApi storageApi, List<int> sampleContent) async {
   expect(metadata.name, _fileName);
   expect(metadata.size, sampleContent.length.toString());
 
-  final download = await storageApi.objects.get(
-    _bucketName,
-    _fileName,
-    downloadOptions: DownloadOptions.fullMedia,
-  ) as Media;
+  final download =
+      await storageApi.objects.get(
+            _bucketName,
+            _fileName,
+            downloadOptions: DownloadOptions.fullMedia,
+          )
+          as Media;
 
   expect(download.length, sampleContent.length);
 

@@ -63,11 +63,16 @@ class RealTimeBiddingApi {
   BiddersResource get bidders => BiddersResource(_requester);
   BuyersResource get buyers => BuyersResource(_requester);
 
-  RealTimeBiddingApi(http.Client client,
-      {core.String rootUrl = 'https://realtimebidding.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  RealTimeBiddingApi(
+    http.Client client, {
+    core.String rootUrl = 'https://realtimebidding.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class BiddersResource {
@@ -102,10 +107,7 @@ class BiddersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Bidder> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Bidder> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -161,7 +163,8 @@ class BiddersResource {
       queryParams: queryParams_,
     );
     return ListBiddersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -259,7 +262,8 @@ class BiddersCreativesResource {
       queryParams: queryParams_,
     );
     return ListCreativesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Watches all creatives pertaining to a bidder.
@@ -308,7 +312,8 @@ class BiddersCreativesResource {
       queryParams: queryParams_,
     );
     return WatchCreativesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -335,10 +340,7 @@ class BiddersEndpointsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Endpoint> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Endpoint> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -399,7 +401,8 @@ class BiddersEndpointsResource {
       queryParams: queryParams_,
     );
     return ListEndpointsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a bidder's endpoint.
@@ -454,7 +457,7 @@ class BiddersPretargetingConfigsResource {
   final commons.ApiRequester _requester;
 
   BiddersPretargetingConfigsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Activates a pretargeting configuration.
   ///
@@ -495,7 +498,8 @@ class BiddersPretargetingConfigsResource {
       queryParams: queryParams_,
     );
     return PretargetingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds targeted apps to the pretargeting configuration.
@@ -539,7 +543,8 @@ class BiddersPretargetingConfigsResource {
       queryParams: queryParams_,
     );
     return PretargetingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds targeted publishers to the pretargeting config.
@@ -573,7 +578,8 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$pretargetingConfig') +
         ':addTargetedPublishers';
 
@@ -584,7 +590,8 @@ class BiddersPretargetingConfigsResource {
       queryParams: queryParams_,
     );
     return PretargetingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds targeted sites to the pretargeting configuration.
@@ -618,7 +625,8 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$pretargetingConfig') +
         ':addTargetedSites';
 
@@ -629,7 +637,8 @@ class BiddersPretargetingConfigsResource {
       queryParams: queryParams_,
     );
     return PretargetingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a pretargeting configuration.
@@ -677,7 +686,8 @@ class BiddersPretargetingConfigsResource {
       queryParams: queryParams_,
     );
     return PretargetingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a pretargeting configuration.
@@ -698,10 +708,7 @@ class BiddersPretargetingConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -750,7 +757,8 @@ class BiddersPretargetingConfigsResource {
       queryParams: queryParams_,
     );
     return PretargetingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all pretargeting configurations for a single bidder.
@@ -800,7 +808,8 @@ class BiddersPretargetingConfigsResource {
       queryParams: queryParams_,
     );
     return ListPretargetingConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a pretargeting configuration.
@@ -847,7 +856,8 @@ class BiddersPretargetingConfigsResource {
       queryParams: queryParams_,
     );
     return PretargetingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Removes targeted apps from the pretargeting configuration.
@@ -881,7 +891,8 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$pretargetingConfig') +
         ':removeTargetedApps';
 
@@ -892,7 +903,8 @@ class BiddersPretargetingConfigsResource {
       queryParams: queryParams_,
     );
     return PretargetingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Removes targeted publishers from the pretargeting config.
@@ -926,7 +938,8 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$pretargetingConfig') +
         ':removeTargetedPublishers';
 
@@ -937,7 +950,8 @@ class BiddersPretargetingConfigsResource {
       queryParams: queryParams_,
     );
     return PretargetingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Removes targeted sites from the pretargeting configuration.
@@ -971,7 +985,8 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$pretargetingConfig') +
         ':removeTargetedSites';
 
@@ -982,7 +997,8 @@ class BiddersPretargetingConfigsResource {
       queryParams: queryParams_,
     );
     return PretargetingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Suspends a pretargeting configuration.
@@ -1024,7 +1040,8 @@ class BiddersPretargetingConfigsResource {
       queryParams: queryParams_,
     );
     return PretargetingConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1032,7 +1049,7 @@ class BiddersPublisherConnectionsResource {
   final commons.ApiRequester _requester;
 
   BiddersPublisherConnectionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Batch approves multiple publisher connections.
   ///
@@ -1065,7 +1082,8 @@ class BiddersPublisherConnectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/publisherConnections:batchApprove';
 
@@ -1076,7 +1094,8 @@ class BiddersPublisherConnectionsResource {
       queryParams: queryParams_,
     );
     return BatchApprovePublisherConnectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Batch rejects multiple publisher connections.
@@ -1110,7 +1129,8 @@ class BiddersPublisherConnectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/publisherConnections:batchReject';
 
@@ -1121,7 +1141,8 @@ class BiddersPublisherConnectionsResource {
       queryParams: queryParams_,
     );
     return BatchRejectPublisherConnectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a publisher connection.
@@ -1161,7 +1182,8 @@ class BiddersPublisherConnectionsResource {
       queryParams: queryParams_,
     );
     return PublisherConnection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists publisher connections for a given bidder.
@@ -1230,7 +1252,8 @@ class BiddersPublisherConnectionsResource {
       queryParams: queryParams_,
     );
     return ListPublisherConnectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1259,10 +1282,7 @@ class BuyersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Buyer> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Buyer> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1323,7 +1343,8 @@ class BuyersResource {
       queryParams: queryParams_,
     );
     return GetRemarketingTagResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all buyer account information the calling buyer user or service
@@ -1368,7 +1389,8 @@ class BuyersResource {
       queryParams: queryParams_,
     );
     return ListBuyersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1560,7 +1582,8 @@ class BuyersCreativesResource {
       queryParams: queryParams_,
     );
     return ListCreativesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a creative.
@@ -1722,10 +1745,7 @@ class BuyersUserListsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserList> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<UserList> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1786,7 +1806,8 @@ class BuyersUserListsResource {
       queryParams: queryParams_,
     );
     return GetRemarketingTagResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the user lists visible to the current user.
@@ -1836,7 +1857,8 @@ class BuyersUserListsResource {
       queryParams: queryParams_,
     );
     return ListUserListsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Changes the status of a user list to OPEN.
@@ -1981,26 +2003,28 @@ class AdTechnologyProviders {
   });
 
   AdTechnologyProviders.fromJson(core.Map json_)
-      : this(
-          detectedGvlIds: (json_['detectedGvlIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          detectedProviderIds: (json_['detectedProviderIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          unidentifiedProviderDomains:
-              (json_['unidentifiedProviderDomains'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-        );
+    : this(
+        detectedGvlIds:
+            (json_['detectedGvlIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        detectedProviderIds:
+            (json_['detectedProviderIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        unidentifiedProviderDomains:
+            (json_['unidentifiedProviderDomains'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedGvlIds != null) 'detectedGvlIds': detectedGvlIds!,
-        if (detectedProviderIds != null)
-          'detectedProviderIds': detectedProviderIds!,
-        if (unidentifiedProviderDomains != null)
-          'unidentifiedProviderDomains': unidentifiedProviderDomains!,
-      };
+    if (detectedGvlIds != null) 'detectedGvlIds': detectedGvlIds!,
+    if (detectedProviderIds != null)
+      'detectedProviderIds': detectedProviderIds!,
+    if (unidentifiedProviderDomains != null)
+      'unidentifiedProviderDomains': unidentifiedProviderDomains!,
+  };
 }
 
 /// A request to start targeting the provided app IDs in a specific pretargeting
@@ -2030,23 +2054,21 @@ class AddTargetedAppsRequest {
   /// in this list to be targeted.
   core.String? targetingMode;
 
-  AddTargetedAppsRequest({
-    this.appIds,
-    this.targetingMode,
-  });
+  AddTargetedAppsRequest({this.appIds, this.targetingMode});
 
   AddTargetedAppsRequest.fromJson(core.Map json_)
-      : this(
-          appIds: (json_['appIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          targetingMode: json_['targetingMode'] as core.String?,
-        );
+    : this(
+        appIds:
+            (json_['appIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        targetingMode: json_['targetingMode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appIds != null) 'appIds': appIds!,
-        if (targetingMode != null) 'targetingMode': targetingMode!,
-      };
+    if (appIds != null) 'appIds': appIds!,
+    if (targetingMode != null) 'targetingMode': targetingMode!,
+  };
 }
 
 /// A request to start targeting the provided publishers in a specific
@@ -2079,23 +2101,21 @@ class AddTargetedPublishersRequest {
   /// in this list to be targeted.
   core.String? targetingMode;
 
-  AddTargetedPublishersRequest({
-    this.publisherIds,
-    this.targetingMode,
-  });
+  AddTargetedPublishersRequest({this.publisherIds, this.targetingMode});
 
   AddTargetedPublishersRequest.fromJson(core.Map json_)
-      : this(
-          publisherIds: (json_['publisherIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          targetingMode: json_['targetingMode'] as core.String?,
-        );
+    : this(
+        publisherIds:
+            (json_['publisherIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        targetingMode: json_['targetingMode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (publisherIds != null) 'publisherIds': publisherIds!,
-        if (targetingMode != null) 'targetingMode': targetingMode!,
-      };
+    if (publisherIds != null) 'publisherIds': publisherIds!,
+    if (targetingMode != null) 'targetingMode': targetingMode!,
+  };
 }
 
 /// A request to start targeting the provided sites in a specific pretargeting
@@ -2125,23 +2145,21 @@ class AddTargetedSitesRequest {
   /// in this list to be targeted.
   core.String? targetingMode;
 
-  AddTargetedSitesRequest({
-    this.sites,
-    this.targetingMode,
-  });
+  AddTargetedSitesRequest({this.sites, this.targetingMode});
 
   AddTargetedSitesRequest.fromJson(core.Map json_)
-      : this(
-          sites: (json_['sites'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          targetingMode: json_['targetingMode'] as core.String?,
-        );
+    : this(
+        sites:
+            (json_['sites'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        targetingMode: json_['targetingMode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sites != null) 'sites': sites!,
-        if (targetingMode != null) 'targetingMode': targetingMode!,
-      };
+    if (sites != null) 'sites': sites!,
+    if (targetingMode != null) 'targetingMode': targetingMode!,
+  };
 }
 
 /// Detected advertiser and brand information.
@@ -2177,19 +2195,19 @@ class AdvertiserAndBrand {
   });
 
   AdvertiserAndBrand.fromJson(core.Map json_)
-      : this(
-          advertiserId: json_['advertiserId'] as core.String?,
-          advertiserName: json_['advertiserName'] as core.String?,
-          brandId: json_['brandId'] as core.String?,
-          brandName: json_['brandName'] as core.String?,
-        );
+    : this(
+        advertiserId: json_['advertiserId'] as core.String?,
+        advertiserName: json_['advertiserName'] as core.String?,
+        brandId: json_['brandId'] as core.String?,
+        brandName: json_['brandName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (advertiserName != null) 'advertiserName': advertiserName!,
-        if (brandId != null) 'brandId': brandId!,
-        if (brandName != null) 'brandName': brandName!,
-      };
+    if (advertiserId != null) 'advertiserId': advertiserId!,
+    if (advertiserName != null) 'advertiserName': advertiserName!,
+    if (brandId != null) 'brandId': brandId!,
+    if (brandName != null) 'brandName': brandName!,
+  };
 }
 
 /// A subset of app inventory to target.
@@ -2207,31 +2225,31 @@ class AppTargeting {
   /// published in an app store. A maximum of 30,000 app IDs can be targeted.
   StringTargetingDimension? mobileAppTargeting;
 
-  AppTargeting({
-    this.mobileAppCategoryTargeting,
-    this.mobileAppTargeting,
-  });
+  AppTargeting({this.mobileAppCategoryTargeting, this.mobileAppTargeting});
 
   AppTargeting.fromJson(core.Map json_)
-      : this(
-          mobileAppCategoryTargeting:
-              json_.containsKey('mobileAppCategoryTargeting')
-                  ? NumericTargetingDimension.fromJson(
-                      json_['mobileAppCategoryTargeting']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          mobileAppTargeting: json_.containsKey('mobileAppTargeting')
-              ? StringTargetingDimension.fromJson(json_['mobileAppTargeting']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        mobileAppCategoryTargeting:
+            json_.containsKey('mobileAppCategoryTargeting')
+                ? NumericTargetingDimension.fromJson(
+                  json_['mobileAppCategoryTargeting']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mobileAppTargeting:
+            json_.containsKey('mobileAppTargeting')
+                ? StringTargetingDimension.fromJson(
+                  json_['mobileAppTargeting']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mobileAppCategoryTargeting != null)
-          'mobileAppCategoryTargeting': mobileAppCategoryTargeting!,
-        if (mobileAppTargeting != null)
-          'mobileAppTargeting': mobileAppTargeting!,
-      };
+    if (mobileAppCategoryTargeting != null)
+      'mobileAppCategoryTargeting': mobileAppCategoryTargeting!,
+    if (mobileAppTargeting != null) 'mobileAppTargeting': mobileAppTargeting!,
+  };
 }
 
 /// A request to approve a batch of publisher connections.
@@ -2245,20 +2263,19 @@ class BatchApprovePublisherConnectionsRequest {
   /// Required.
   core.List<core.String>? names;
 
-  BatchApprovePublisherConnectionsRequest({
-    this.names,
-  });
+  BatchApprovePublisherConnectionsRequest({this.names});
 
   BatchApprovePublisherConnectionsRequest.fromJson(core.Map json_)
-      : this(
-          names: (json_['names'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        names:
+            (json_['names'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (names != null) 'names': names!,
-      };
+    if (names != null) 'names': names!,
+  };
 }
 
 /// A response for the request to approve a batch of publisher connections.
@@ -2266,22 +2283,24 @@ class BatchApprovePublisherConnectionsResponse {
   /// The publisher connections that have been approved.
   core.List<PublisherConnection>? publisherConnections;
 
-  BatchApprovePublisherConnectionsResponse({
-    this.publisherConnections,
-  });
+  BatchApprovePublisherConnectionsResponse({this.publisherConnections});
 
   BatchApprovePublisherConnectionsResponse.fromJson(core.Map json_)
-      : this(
-          publisherConnections: (json_['publisherConnections'] as core.List?)
-              ?.map((value) => PublisherConnection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        publisherConnections:
+            (json_['publisherConnections'] as core.List?)
+                ?.map(
+                  (value) => PublisherConnection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (publisherConnections != null)
-          'publisherConnections': publisherConnections!,
-      };
+    if (publisherConnections != null)
+      'publisherConnections': publisherConnections!,
+  };
 }
 
 /// A request to reject a batch of publisher connections.
@@ -2295,20 +2314,19 @@ class BatchRejectPublisherConnectionsRequest {
   /// Required.
   core.List<core.String>? names;
 
-  BatchRejectPublisherConnectionsRequest({
-    this.names,
-  });
+  BatchRejectPublisherConnectionsRequest({this.names});
 
   BatchRejectPublisherConnectionsRequest.fromJson(core.Map json_)
-      : this(
-          names: (json_['names'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        names:
+            (json_['names'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (names != null) 'names': names!,
-      };
+    if (names != null) 'names': names!,
+  };
 }
 
 /// A response for the request to reject a batch of publisher connections.
@@ -2316,22 +2334,24 @@ class BatchRejectPublisherConnectionsResponse {
   /// The publisher connections that have been rejected.
   core.List<PublisherConnection>? publisherConnections;
 
-  BatchRejectPublisherConnectionsResponse({
-    this.publisherConnections,
-  });
+  BatchRejectPublisherConnectionsResponse({this.publisherConnections});
 
   BatchRejectPublisherConnectionsResponse.fromJson(core.Map json_)
-      : this(
-          publisherConnections: (json_['publisherConnections'] as core.List?)
-              ?.map((value) => PublisherConnection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        publisherConnections:
+            (json_['publisherConnections'] as core.List?)
+                ?.map(
+                  (value) => PublisherConnection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (publisherConnections != null)
-          'publisherConnections': publisherConnections!,
-      };
+    if (publisherConnections != null)
+      'publisherConnections': publisherConnections!,
+  };
 }
 
 /// Bidder settings.
@@ -2393,26 +2413,26 @@ class Bidder {
   });
 
   Bidder.fromJson(core.Map json_)
-      : this(
-          bypassNonguaranteedDealsPretargeting:
-              json_['bypassNonguaranteedDealsPretargeting'] as core.bool?,
-          cookieMatchingNetworkId:
-              json_['cookieMatchingNetworkId'] as core.String?,
-          cookieMatchingUrl: json_['cookieMatchingUrl'] as core.String?,
-          dealsBillingId: json_['dealsBillingId'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        bypassNonguaranteedDealsPretargeting:
+            json_['bypassNonguaranteedDealsPretargeting'] as core.bool?,
+        cookieMatchingNetworkId:
+            json_['cookieMatchingNetworkId'] as core.String?,
+        cookieMatchingUrl: json_['cookieMatchingUrl'] as core.String?,
+        dealsBillingId: json_['dealsBillingId'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bypassNonguaranteedDealsPretargeting != null)
-          'bypassNonguaranteedDealsPretargeting':
-              bypassNonguaranteedDealsPretargeting!,
-        if (cookieMatchingNetworkId != null)
-          'cookieMatchingNetworkId': cookieMatchingNetworkId!,
-        if (cookieMatchingUrl != null) 'cookieMatchingUrl': cookieMatchingUrl!,
-        if (dealsBillingId != null) 'dealsBillingId': dealsBillingId!,
-        if (name != null) 'name': name!,
-      };
+    if (bypassNonguaranteedDealsPretargeting != null)
+      'bypassNonguaranteedDealsPretargeting':
+          bypassNonguaranteedDealsPretargeting!,
+    if (cookieMatchingNetworkId != null)
+      'cookieMatchingNetworkId': cookieMatchingNetworkId!,
+    if (cookieMatchingUrl != null) 'cookieMatchingUrl': cookieMatchingUrl!,
+    if (dealsBillingId != null) 'dealsBillingId': dealsBillingId!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// RTB Buyer account information.
@@ -2476,28 +2496,29 @@ class Buyer {
   });
 
   Buyer.fromJson(core.Map json_)
-      : this(
-          activeCreativeCount: json_['activeCreativeCount'] as core.String?,
-          bidder: json_['bidder'] as core.String?,
-          billingIds: (json_['billingIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          displayName: json_['displayName'] as core.String?,
-          maximumActiveCreativeCount:
-              json_['maximumActiveCreativeCount'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        activeCreativeCount: json_['activeCreativeCount'] as core.String?,
+        bidder: json_['bidder'] as core.String?,
+        billingIds:
+            (json_['billingIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        displayName: json_['displayName'] as core.String?,
+        maximumActiveCreativeCount:
+            json_['maximumActiveCreativeCount'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeCreativeCount != null)
-          'activeCreativeCount': activeCreativeCount!,
-        if (bidder != null) 'bidder': bidder!,
-        if (billingIds != null) 'billingIds': billingIds!,
-        if (displayName != null) 'displayName': displayName!,
-        if (maximumActiveCreativeCount != null)
-          'maximumActiveCreativeCount': maximumActiveCreativeCount!,
-        if (name != null) 'name': name!,
-      };
+    if (activeCreativeCount != null)
+      'activeCreativeCount': activeCreativeCount!,
+    if (bidder != null) 'bidder': bidder!,
+    if (billingIds != null) 'billingIds': billingIds!,
+    if (displayName != null) 'displayName': displayName!,
+    if (maximumActiveCreativeCount != null)
+      'maximumActiveCreativeCount': maximumActiveCreativeCount!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// A request to close a specified user list.
@@ -2671,91 +2692,102 @@ class Creative {
   });
 
   Creative.fromJson(core.Map json_)
-      : this(
-          accountId: json_['accountId'] as core.String?,
-          adChoicesDestinationUrl:
-              json_['adChoicesDestinationUrl'] as core.String?,
-          advertiserName: json_['advertiserName'] as core.String?,
-          agencyId: json_['agencyId'] as core.String?,
-          apiUpdateTime: json_['apiUpdateTime'] as core.String?,
-          creativeFormat: json_['creativeFormat'] as core.String?,
-          creativeId: json_['creativeId'] as core.String?,
-          creativeServingDecision: json_.containsKey('creativeServingDecision')
-              ? CreativeServingDecision.fromJson(
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        adChoicesDestinationUrl:
+            json_['adChoicesDestinationUrl'] as core.String?,
+        advertiserName: json_['advertiserName'] as core.String?,
+        agencyId: json_['agencyId'] as core.String?,
+        apiUpdateTime: json_['apiUpdateTime'] as core.String?,
+        creativeFormat: json_['creativeFormat'] as core.String?,
+        creativeId: json_['creativeId'] as core.String?,
+        creativeServingDecision:
+            json_.containsKey('creativeServingDecision')
+                ? CreativeServingDecision.fromJson(
                   json_['creativeServingDecision']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          dealIds: (json_['dealIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          declaredAttributes: (json_['declaredAttributes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          declaredClickThroughUrls:
-              (json_['declaredClickThroughUrls'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          declaredRestrictedCategories:
-              (json_['declaredRestrictedCategories'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          declaredVendorIds: (json_['declaredVendorIds'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-          html: json_.containsKey('html')
-              ? HtmlContent.fromJson(
-                  json_['html'] as core.Map<core.String, core.dynamic>)
-              : null,
-          impressionTrackingUrls:
-              (json_['impressionTrackingUrls'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          name: json_['name'] as core.String?,
-          native: json_.containsKey('native')
-              ? NativeContent.fromJson(
-                  json_['native'] as core.Map<core.String, core.dynamic>)
-              : null,
-          renderUrl: json_['renderUrl'] as core.String?,
-          restrictedCategories: (json_['restrictedCategories'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          version: json_['version'] as core.int?,
-          video: json_.containsKey('video')
-              ? VideoContent.fromJson(
-                  json_['video'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dealIds:
+            (json_['dealIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        declaredAttributes:
+            (json_['declaredAttributes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        declaredClickThroughUrls:
+            (json_['declaredClickThroughUrls'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        declaredRestrictedCategories:
+            (json_['declaredRestrictedCategories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        declaredVendorIds:
+            (json_['declaredVendorIds'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        html:
+            json_.containsKey('html')
+                ? HtmlContent.fromJson(
+                  json_['html'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        impressionTrackingUrls:
+            (json_['impressionTrackingUrls'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        native:
+            json_.containsKey('native')
+                ? NativeContent.fromJson(
+                  json_['native'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        renderUrl: json_['renderUrl'] as core.String?,
+        restrictedCategories:
+            (json_['restrictedCategories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        version: json_['version'] as core.int?,
+        video:
+            json_.containsKey('video')
+                ? VideoContent.fromJson(
+                  json_['video'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountId != null) 'accountId': accountId!,
-        if (adChoicesDestinationUrl != null)
-          'adChoicesDestinationUrl': adChoicesDestinationUrl!,
-        if (advertiserName != null) 'advertiserName': advertiserName!,
-        if (agencyId != null) 'agencyId': agencyId!,
-        if (apiUpdateTime != null) 'apiUpdateTime': apiUpdateTime!,
-        if (creativeFormat != null) 'creativeFormat': creativeFormat!,
-        if (creativeId != null) 'creativeId': creativeId!,
-        if (creativeServingDecision != null)
-          'creativeServingDecision': creativeServingDecision!,
-        if (dealIds != null) 'dealIds': dealIds!,
-        if (declaredAttributes != null)
-          'declaredAttributes': declaredAttributes!,
-        if (declaredClickThroughUrls != null)
-          'declaredClickThroughUrls': declaredClickThroughUrls!,
-        if (declaredRestrictedCategories != null)
-          'declaredRestrictedCategories': declaredRestrictedCategories!,
-        if (declaredVendorIds != null) 'declaredVendorIds': declaredVendorIds!,
-        if (html != null) 'html': html!,
-        if (impressionTrackingUrls != null)
-          'impressionTrackingUrls': impressionTrackingUrls!,
-        if (name != null) 'name': name!,
-        if (native != null) 'native': native!,
-        if (renderUrl != null) 'renderUrl': renderUrl!,
-        if (restrictedCategories != null)
-          'restrictedCategories': restrictedCategories!,
-        if (version != null) 'version': version!,
-        if (video != null) 'video': video!,
-      };
+    if (accountId != null) 'accountId': accountId!,
+    if (adChoicesDestinationUrl != null)
+      'adChoicesDestinationUrl': adChoicesDestinationUrl!,
+    if (advertiserName != null) 'advertiserName': advertiserName!,
+    if (agencyId != null) 'agencyId': agencyId!,
+    if (apiUpdateTime != null) 'apiUpdateTime': apiUpdateTime!,
+    if (creativeFormat != null) 'creativeFormat': creativeFormat!,
+    if (creativeId != null) 'creativeId': creativeId!,
+    if (creativeServingDecision != null)
+      'creativeServingDecision': creativeServingDecision!,
+    if (dealIds != null) 'dealIds': dealIds!,
+    if (declaredAttributes != null) 'declaredAttributes': declaredAttributes!,
+    if (declaredClickThroughUrls != null)
+      'declaredClickThroughUrls': declaredClickThroughUrls!,
+    if (declaredRestrictedCategories != null)
+      'declaredRestrictedCategories': declaredRestrictedCategories!,
+    if (declaredVendorIds != null) 'declaredVendorIds': declaredVendorIds!,
+    if (html != null) 'html': html!,
+    if (impressionTrackingUrls != null)
+      'impressionTrackingUrls': impressionTrackingUrls!,
+    if (name != null) 'name': name!,
+    if (native != null) 'native': native!,
+    if (renderUrl != null) 'renderUrl': renderUrl!,
+    if (restrictedCategories != null)
+      'restrictedCategories': restrictedCategories!,
+    if (version != null) 'version': version!,
+    if (video != null) 'video': video!,
+  };
 }
 
 /// The dimensions of a creative.
@@ -2768,21 +2800,18 @@ class CreativeDimensions {
   /// The width of the creative in pixels.
   core.String? width;
 
-  CreativeDimensions({
-    this.height,
-    this.width,
-  });
+  CreativeDimensions({this.height, this.width});
 
   CreativeDimensions.fromJson(core.Map json_)
-      : this(
-          height: json_['height'] as core.String?,
-          width: json_['width'] as core.String?,
-        );
+    : this(
+        height: json_['height'] as core.String?,
+        width: json_['width'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (width != null) 'width': width!,
-      };
+    if (height != null) 'height': height!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// Top level status and detected attributes of a creative.
@@ -2925,100 +2954,124 @@ class CreativeServingDecision {
   });
 
   CreativeServingDecision.fromJson(core.Map json_)
-      : this(
-          adTechnologyProviders: json_.containsKey('adTechnologyProviders')
-              ? AdTechnologyProviders.fromJson(json_['adTechnologyProviders']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          chinaPolicyCompliance: json_.containsKey('chinaPolicyCompliance')
-              ? PolicyCompliance.fromJson(json_['chinaPolicyCompliance']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dealsPolicyCompliance: json_.containsKey('dealsPolicyCompliance')
-              ? PolicyCompliance.fromJson(json_['dealsPolicyCompliance']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          detectedAdvertisers: (json_['detectedAdvertisers'] as core.List?)
-              ?.map((value) => AdvertiserAndBrand.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          detectedAttributes: (json_['detectedAttributes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          detectedCategories: (json_['detectedCategories'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          detectedCategoriesTaxonomy:
-              json_['detectedCategoriesTaxonomy'] as core.String?,
-          detectedClickThroughUrls:
-              (json_['detectedClickThroughUrls'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          detectedDomains: (json_['detectedDomains'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          detectedLanguages: (json_['detectedLanguages'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          detectedProductCategories:
-              (json_['detectedProductCategories'] as core.List?)
-                  ?.map((value) => value as core.int)
-                  .toList(),
-          detectedSensitiveCategories:
-              (json_['detectedSensitiveCategories'] as core.List?)
-                  ?.map((value) => value as core.int)
-                  .toList(),
-          detectedVendorIds: (json_['detectedVendorIds'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-          lastStatusUpdate: json_['lastStatusUpdate'] as core.String?,
-          networkPolicyCompliance: json_.containsKey('networkPolicyCompliance')
-              ? PolicyCompliance.fromJson(json_['networkPolicyCompliance']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          platformPolicyCompliance:
-              json_.containsKey('platformPolicyCompliance')
-                  ? PolicyCompliance.fromJson(json_['platformPolicyCompliance']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-          russiaPolicyCompliance: json_.containsKey('russiaPolicyCompliance')
-              ? PolicyCompliance.fromJson(json_['russiaPolicyCompliance']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        adTechnologyProviders:
+            json_.containsKey('adTechnologyProviders')
+                ? AdTechnologyProviders.fromJson(
+                  json_['adTechnologyProviders']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        chinaPolicyCompliance:
+            json_.containsKey('chinaPolicyCompliance')
+                ? PolicyCompliance.fromJson(
+                  json_['chinaPolicyCompliance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dealsPolicyCompliance:
+            json_.containsKey('dealsPolicyCompliance')
+                ? PolicyCompliance.fromJson(
+                  json_['dealsPolicyCompliance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        detectedAdvertisers:
+            (json_['detectedAdvertisers'] as core.List?)
+                ?.map(
+                  (value) => AdvertiserAndBrand.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        detectedAttributes:
+            (json_['detectedAttributes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        detectedCategories:
+            (json_['detectedCategories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        detectedCategoriesTaxonomy:
+            json_['detectedCategoriesTaxonomy'] as core.String?,
+        detectedClickThroughUrls:
+            (json_['detectedClickThroughUrls'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        detectedDomains:
+            (json_['detectedDomains'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        detectedLanguages:
+            (json_['detectedLanguages'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        detectedProductCategories:
+            (json_['detectedProductCategories'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        detectedSensitiveCategories:
+            (json_['detectedSensitiveCategories'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        detectedVendorIds:
+            (json_['detectedVendorIds'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        lastStatusUpdate: json_['lastStatusUpdate'] as core.String?,
+        networkPolicyCompliance:
+            json_.containsKey('networkPolicyCompliance')
+                ? PolicyCompliance.fromJson(
+                  json_['networkPolicyCompliance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        platformPolicyCompliance:
+            json_.containsKey('platformPolicyCompliance')
+                ? PolicyCompliance.fromJson(
+                  json_['platformPolicyCompliance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        russiaPolicyCompliance:
+            json_.containsKey('russiaPolicyCompliance')
+                ? PolicyCompliance.fromJson(
+                  json_['russiaPolicyCompliance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adTechnologyProviders != null)
-          'adTechnologyProviders': adTechnologyProviders!,
-        if (chinaPolicyCompliance != null)
-          'chinaPolicyCompliance': chinaPolicyCompliance!,
-        if (dealsPolicyCompliance != null)
-          'dealsPolicyCompliance': dealsPolicyCompliance!,
-        if (detectedAdvertisers != null)
-          'detectedAdvertisers': detectedAdvertisers!,
-        if (detectedAttributes != null)
-          'detectedAttributes': detectedAttributes!,
-        if (detectedCategories != null)
-          'detectedCategories': detectedCategories!,
-        if (detectedCategoriesTaxonomy != null)
-          'detectedCategoriesTaxonomy': detectedCategoriesTaxonomy!,
-        if (detectedClickThroughUrls != null)
-          'detectedClickThroughUrls': detectedClickThroughUrls!,
-        if (detectedDomains != null) 'detectedDomains': detectedDomains!,
-        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
-        if (detectedProductCategories != null)
-          'detectedProductCategories': detectedProductCategories!,
-        if (detectedSensitiveCategories != null)
-          'detectedSensitiveCategories': detectedSensitiveCategories!,
-        if (detectedVendorIds != null) 'detectedVendorIds': detectedVendorIds!,
-        if (lastStatusUpdate != null) 'lastStatusUpdate': lastStatusUpdate!,
-        if (networkPolicyCompliance != null)
-          'networkPolicyCompliance': networkPolicyCompliance!,
-        if (platformPolicyCompliance != null)
-          'platformPolicyCompliance': platformPolicyCompliance!,
-        if (russiaPolicyCompliance != null)
-          'russiaPolicyCompliance': russiaPolicyCompliance!,
-      };
+    if (adTechnologyProviders != null)
+      'adTechnologyProviders': adTechnologyProviders!,
+    if (chinaPolicyCompliance != null)
+      'chinaPolicyCompliance': chinaPolicyCompliance!,
+    if (dealsPolicyCompliance != null)
+      'dealsPolicyCompliance': dealsPolicyCompliance!,
+    if (detectedAdvertisers != null)
+      'detectedAdvertisers': detectedAdvertisers!,
+    if (detectedAttributes != null) 'detectedAttributes': detectedAttributes!,
+    if (detectedCategories != null) 'detectedCategories': detectedCategories!,
+    if (detectedCategoriesTaxonomy != null)
+      'detectedCategoriesTaxonomy': detectedCategoriesTaxonomy!,
+    if (detectedClickThroughUrls != null)
+      'detectedClickThroughUrls': detectedClickThroughUrls!,
+    if (detectedDomains != null) 'detectedDomains': detectedDomains!,
+    if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+    if (detectedProductCategories != null)
+      'detectedProductCategories': detectedProductCategories!,
+    if (detectedSensitiveCategories != null)
+      'detectedSensitiveCategories': detectedSensitiveCategories!,
+    if (detectedVendorIds != null) 'detectedVendorIds': detectedVendorIds!,
+    if (lastStatusUpdate != null) 'lastStatusUpdate': lastStatusUpdate!,
+    if (networkPolicyCompliance != null)
+      'networkPolicyCompliance': networkPolicyCompliance!,
+    if (platformPolicyCompliance != null)
+      'platformPolicyCompliance': platformPolicyCompliance!,
+    if (russiaPolicyCompliance != null)
+      'russiaPolicyCompliance': russiaPolicyCompliance!,
+  };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -3060,17 +3113,17 @@ class DestinationNotCrawlableEvidence {
   });
 
   DestinationNotCrawlableEvidence.fromJson(core.Map json_)
-      : this(
-          crawlTime: json_['crawlTime'] as core.String?,
-          crawledUrl: json_['crawledUrl'] as core.String?,
-          reason: json_['reason'] as core.String?,
-        );
+    : this(
+        crawlTime: json_['crawlTime'] as core.String?,
+        crawledUrl: json_['crawledUrl'] as core.String?,
+        reason: json_['reason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (crawlTime != null) 'crawlTime': crawlTime!,
-        if (crawledUrl != null) 'crawledUrl': crawledUrl!,
-        if (reason != null) 'reason': reason!,
-      };
+    if (crawlTime != null) 'crawlTime': crawlTime!,
+    if (crawledUrl != null) 'crawledUrl': crawledUrl!,
+    if (reason != null) 'reason': reason!,
+  };
 }
 
 /// Evidence of the creative's destination URL not functioning properly or
@@ -3139,27 +3192,27 @@ class DestinationNotWorkingEvidence {
   });
 
   DestinationNotWorkingEvidence.fromJson(core.Map json_)
-      : this(
-          dnsError: json_['dnsError'] as core.String?,
-          expandedUrl: json_['expandedUrl'] as core.String?,
-          httpError: json_['httpError'] as core.int?,
-          invalidPage: json_['invalidPage'] as core.String?,
-          lastCheckTime: json_['lastCheckTime'] as core.String?,
-          platform: json_['platform'] as core.String?,
-          redirectionError: json_['redirectionError'] as core.String?,
-          urlRejected: json_['urlRejected'] as core.String?,
-        );
+    : this(
+        dnsError: json_['dnsError'] as core.String?,
+        expandedUrl: json_['expandedUrl'] as core.String?,
+        httpError: json_['httpError'] as core.int?,
+        invalidPage: json_['invalidPage'] as core.String?,
+        lastCheckTime: json_['lastCheckTime'] as core.String?,
+        platform: json_['platform'] as core.String?,
+        redirectionError: json_['redirectionError'] as core.String?,
+        urlRejected: json_['urlRejected'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dnsError != null) 'dnsError': dnsError!,
-        if (expandedUrl != null) 'expandedUrl': expandedUrl!,
-        if (httpError != null) 'httpError': httpError!,
-        if (invalidPage != null) 'invalidPage': invalidPage!,
-        if (lastCheckTime != null) 'lastCheckTime': lastCheckTime!,
-        if (platform != null) 'platform': platform!,
-        if (redirectionError != null) 'redirectionError': redirectionError!,
-        if (urlRejected != null) 'urlRejected': urlRejected!,
-      };
+    if (dnsError != null) 'dnsError': dnsError!,
+    if (expandedUrl != null) 'expandedUrl': expandedUrl!,
+    if (httpError != null) 'httpError': httpError!,
+    if (invalidPage != null) 'invalidPage': invalidPage!,
+    if (lastCheckTime != null) 'lastCheckTime': lastCheckTime!,
+    if (platform != null) 'platform': platform!,
+    if (redirectionError != null) 'redirectionError': redirectionError!,
+    if (urlRejected != null) 'urlRejected': urlRejected!,
+  };
 }
 
 /// The full landing page URL of the destination.
@@ -3167,18 +3220,14 @@ class DestinationUrlEvidence {
   /// The full landing page URL of the destination.
   core.String? destinationUrl;
 
-  DestinationUrlEvidence({
-    this.destinationUrl,
-  });
+  DestinationUrlEvidence({this.destinationUrl});
 
   DestinationUrlEvidence.fromJson(core.Map json_)
-      : this(
-          destinationUrl: json_['destinationUrl'] as core.String?,
-        );
+    : this(destinationUrl: json_['destinationUrl'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationUrl != null) 'destinationUrl': destinationUrl!,
-      };
+    if (destinationUrl != null) 'destinationUrl': destinationUrl!,
+  };
 }
 
 /// Number of HTTP calls made by a creative, broken down by domain.
@@ -3191,26 +3240,25 @@ class DomainCallEvidence {
   /// limited to the number of calls in the top_http_call_domains.
   core.int? totalHttpCallCount;
 
-  DomainCallEvidence({
-    this.topHttpCallDomains,
-    this.totalHttpCallCount,
-  });
+  DomainCallEvidence({this.topHttpCallDomains, this.totalHttpCallCount});
 
   DomainCallEvidence.fromJson(core.Map json_)
-      : this(
-          topHttpCallDomains: (json_['topHttpCallDomains'] as core.List?)
-              ?.map((value) => DomainCalls.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          totalHttpCallCount: json_['totalHttpCallCount'] as core.int?,
-        );
+    : this(
+        topHttpCallDomains:
+            (json_['topHttpCallDomains'] as core.List?)
+                ?.map(
+                  (value) => DomainCalls.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        totalHttpCallCount: json_['totalHttpCallCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (topHttpCallDomains != null)
-          'topHttpCallDomains': topHttpCallDomains!,
-        if (totalHttpCallCount != null)
-          'totalHttpCallCount': totalHttpCallCount!,
-      };
+    if (topHttpCallDomains != null) 'topHttpCallDomains': topHttpCallDomains!,
+    if (totalHttpCallCount != null) 'totalHttpCallCount': totalHttpCallCount!,
+  };
 }
 
 /// The number of HTTP calls made to the given domain.
@@ -3221,21 +3269,18 @@ class DomainCalls {
   /// Number of HTTP calls made to the domain.
   core.int? httpCallCount;
 
-  DomainCalls({
-    this.domain,
-    this.httpCallCount,
-  });
+  DomainCalls({this.domain, this.httpCallCount});
 
   DomainCalls.fromJson(core.Map json_)
-      : this(
-          domain: json_['domain'] as core.String?,
-          httpCallCount: json_['httpCallCount'] as core.int?,
-        );
+    : this(
+        domain: json_['domain'] as core.String?,
+        httpCallCount: json_['httpCallCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domain != null) 'domain': domain!,
-        if (httpCallCount != null) 'httpCallCount': httpCallCount!,
-      };
+    if (domain != null) 'domain': domain!,
+    if (httpCallCount != null) 'httpCallCount': httpCallCount!,
+  };
 }
 
 /// Total download size and URL-level download size breakdown for resources in a
@@ -3253,21 +3298,24 @@ class DownloadSizeEvidence {
   });
 
   DownloadSizeEvidence.fromJson(core.Map json_)
-      : this(
-          topUrlDownloadSizeBreakdowns:
-              (json_['topUrlDownloadSizeBreakdowns'] as core.List?)
-                  ?.map((value) => UrlDownloadSize.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          totalDownloadSizeKb: json_['totalDownloadSizeKb'] as core.int?,
-        );
+    : this(
+        topUrlDownloadSizeBreakdowns:
+            (json_['topUrlDownloadSizeBreakdowns'] as core.List?)
+                ?.map(
+                  (value) => UrlDownloadSize.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        totalDownloadSizeKb: json_['totalDownloadSizeKb'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (topUrlDownloadSizeBreakdowns != null)
-          'topUrlDownloadSizeBreakdowns': topUrlDownloadSizeBreakdowns!,
-        if (totalDownloadSizeKb != null)
-          'totalDownloadSizeKb': totalDownloadSizeKb!,
-      };
+    if (topUrlDownloadSizeBreakdowns != null)
+      'topUrlDownloadSizeBreakdowns': topUrlDownloadSizeBreakdowns!,
+    if (totalDownloadSizeKb != null)
+      'totalDownloadSizeKb': totalDownloadSizeKb!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3329,21 +3377,21 @@ class Endpoint {
   });
 
   Endpoint.fromJson(core.Map json_)
-      : this(
-          bidProtocol: json_['bidProtocol'] as core.String?,
-          maximumQps: json_['maximumQps'] as core.String?,
-          name: json_['name'] as core.String?,
-          tradingLocation: json_['tradingLocation'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        bidProtocol: json_['bidProtocol'] as core.String?,
+        maximumQps: json_['maximumQps'] as core.String?,
+        name: json_['name'] as core.String?,
+        tradingLocation: json_['tradingLocation'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bidProtocol != null) 'bidProtocol': bidProtocol!,
-        if (maximumQps != null) 'maximumQps': maximumQps!,
-        if (name != null) 'name': name!,
-        if (tradingLocation != null) 'tradingLocation': tradingLocation!,
-        if (url != null) 'url': url!,
-      };
+    if (bidProtocol != null) 'bidProtocol': bidProtocol!,
+    if (maximumQps != null) 'maximumQps': maximumQps!,
+    if (name != null) 'name': name!,
+    if (tradingLocation != null) 'tradingLocation': tradingLocation!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// This has been sunset as of October 2023, and will return an error response
@@ -3361,18 +3409,14 @@ class GetRemarketingTagResponse {
   /// [Tag your site for remarketing](https://support.google.com/google-ads/answer/2476688).
   core.String? snippet;
 
-  GetRemarketingTagResponse({
-    this.snippet,
-  });
+  GetRemarketingTagResponse({this.snippet});
 
   GetRemarketingTagResponse.fromJson(core.Map json_)
-      : this(
-          snippet: json_['snippet'] as core.String?,
-        );
+    : this(snippet: json_['snippet'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (snippet != null) 'snippet': snippet!,
-      };
+    if (snippet != null) 'snippet': snippet!,
+  };
 }
 
 /// HTML content for a creative.
@@ -3390,24 +3434,20 @@ class HtmlContent {
   /// Can be used to filter the response of the creatives.list method.
   core.int? width;
 
-  HtmlContent({
-    this.height,
-    this.snippet,
-    this.width,
-  });
+  HtmlContent({this.height, this.snippet, this.width});
 
   HtmlContent.fromJson(core.Map json_)
-      : this(
-          height: json_['height'] as core.int?,
-          snippet: json_['snippet'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        height: json_['height'] as core.int?,
+        snippet: json_['snippet'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (snippet != null) 'snippet': snippet!,
-        if (width != null) 'width': width!,
-      };
+    if (height != null) 'height': height!,
+    if (snippet != null) 'snippet': snippet!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// HTTP calls made by a creative that resulted in policy violations.
@@ -3415,20 +3455,19 @@ class HttpCallEvidence {
   /// URLs of HTTP calls made by the creative.
   core.List<core.String>? urls;
 
-  HttpCallEvidence({
-    this.urls,
-  });
+  HttpCallEvidence({this.urls});
 
   HttpCallEvidence.fromJson(core.Map json_)
-      : this(
-          urls: (json_['urls'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        urls:
+            (json_['urls'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (urls != null) 'urls': urls!,
-      };
+    if (urls != null) 'urls': urls!,
+  };
 }
 
 /// Evidence for HTTP cookie-related policy violations.
@@ -3447,23 +3486,21 @@ class HttpCookieEvidence {
   /// set for TOO_MANY_COOKIES policy.
   core.int? maxCookieCount;
 
-  HttpCookieEvidence({
-    this.cookieNames,
-    this.maxCookieCount,
-  });
+  HttpCookieEvidence({this.cookieNames, this.maxCookieCount});
 
   HttpCookieEvidence.fromJson(core.Map json_)
-      : this(
-          cookieNames: (json_['cookieNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          maxCookieCount: json_['maxCookieCount'] as core.int?,
-        );
+    : this(
+        cookieNames:
+            (json_['cookieNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        maxCookieCount: json_['maxCookieCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cookieNames != null) 'cookieNames': cookieNames!,
-        if (maxCookieCount != null) 'maxCookieCount': maxCookieCount!,
-      };
+    if (cookieNames != null) 'cookieNames': cookieNames!,
+    if (maxCookieCount != null) 'maxCookieCount': maxCookieCount!,
+  };
 }
 
 /// An image resource.
@@ -3480,24 +3517,20 @@ class Image {
   /// Image width in pixels.
   core.int? width;
 
-  Image({
-    this.height,
-    this.url,
-    this.width,
-  });
+  Image({this.height, this.url, this.width});
 
   Image.fromJson(core.Map json_)
-      : this(
-          height: json_['height'] as core.int?,
-          url: json_['url'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        height: json_['height'] as core.int?,
+        url: json_['url'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (url != null) 'url': url!,
-        if (width != null) 'width': width!,
-      };
+    if (height != null) 'height': height!,
+    if (url != null) 'url': url!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// A response containing bidders.
@@ -3510,24 +3543,25 @@ class ListBiddersResponse {
   /// ListBiddersRequest.pageToken.
   core.String? nextPageToken;
 
-  ListBiddersResponse({
-    this.bidders,
-    this.nextPageToken,
-  });
+  ListBiddersResponse({this.bidders, this.nextPageToken});
 
   ListBiddersResponse.fromJson(core.Map json_)
-      : this(
-          bidders: (json_['bidders'] as core.List?)
-              ?.map((value) =>
-                  Bidder.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        bidders:
+            (json_['bidders'] as core.List?)
+                ?.map(
+                  (value) => Bidder.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bidders != null) 'bidders': bidders!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (bidders != null) 'bidders': bidders!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// A response containing buyer account information.
@@ -3540,24 +3574,25 @@ class ListBuyersResponse {
   /// ListBuyersRequest.pageToken.
   core.String? nextPageToken;
 
-  ListBuyersResponse({
-    this.buyers,
-    this.nextPageToken,
-  });
+  ListBuyersResponse({this.buyers, this.nextPageToken});
 
   ListBuyersResponse.fromJson(core.Map json_)
-      : this(
-          buyers: (json_['buyers'] as core.List?)
-              ?.map((value) =>
-                  Buyer.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        buyers:
+            (json_['buyers'] as core.List?)
+                ?.map(
+                  (value) => Buyer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buyers != null) 'buyers': buyers!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (buyers != null) 'buyers': buyers!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// A response for listing creatives.
@@ -3572,24 +3607,25 @@ class ListCreativesResponse {
   /// results.
   core.String? nextPageToken;
 
-  ListCreativesResponse({
-    this.creatives,
-    this.nextPageToken,
-  });
+  ListCreativesResponse({this.creatives, this.nextPageToken});
 
   ListCreativesResponse.fromJson(core.Map json_)
-      : this(
-          creatives: (json_['creatives'] as core.List?)
-              ?.map((value) => Creative.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        creatives:
+            (json_['creatives'] as core.List?)
+                ?.map(
+                  (value) => Creative.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (creatives != null) 'creatives': creatives!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (creatives != null) 'creatives': creatives!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// A response containing bidder endpoints.
@@ -3602,24 +3638,25 @@ class ListEndpointsResponse {
   /// ListEndpointsRequest.pageToken.
   core.String? nextPageToken;
 
-  ListEndpointsResponse({
-    this.endpoints,
-    this.nextPageToken,
-  });
+  ListEndpointsResponse({this.endpoints, this.nextPageToken});
 
   ListEndpointsResponse.fromJson(core.Map json_)
-      : this(
-          endpoints: (json_['endpoints'] as core.List?)
-              ?.map((value) => Endpoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        endpoints:
+            (json_['endpoints'] as core.List?)
+                ?.map(
+                  (value) => Endpoint.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endpoints != null) 'endpoints': endpoints!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (endpoints != null) 'endpoints': endpoints!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// A response containing pretargeting configurations.
@@ -3638,19 +3675,23 @@ class ListPretargetingConfigsResponse {
   });
 
   ListPretargetingConfigsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          pretargetingConfigs: (json_['pretargetingConfigs'] as core.List?)
-              ?.map((value) => PretargetingConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        pretargetingConfigs:
+            (json_['pretargetingConfigs'] as core.List?)
+                ?.map(
+                  (value) => PretargetingConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (pretargetingConfigs != null)
-          'pretargetingConfigs': pretargetingConfigs!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (pretargetingConfigs != null)
+      'pretargetingConfigs': pretargetingConfigs!,
+  };
 }
 
 /// A response to a request for listing publisher connections.
@@ -3671,19 +3712,23 @@ class ListPublisherConnectionsResponse {
   });
 
   ListPublisherConnectionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          publisherConnections: (json_['publisherConnections'] as core.List?)
-              ?.map((value) => PublisherConnection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        publisherConnections:
+            (json_['publisherConnections'] as core.List?)
+                ?.map(
+                  (value) => PublisherConnection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (publisherConnections != null)
-          'publisherConnections': publisherConnections!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (publisherConnections != null)
+      'publisherConnections': publisherConnections!,
+  };
 }
 
 /// The list user list response.
@@ -3699,24 +3744,25 @@ class ListUserListsResponse {
   /// List of user lists from the search.
   core.List<UserList>? userLists;
 
-  ListUserListsResponse({
-    this.nextPageToken,
-    this.userLists,
-  });
+  ListUserListsResponse({this.nextPageToken, this.userLists});
 
   ListUserListsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          userLists: (json_['userLists'] as core.List?)
-              ?.map((value) => UserList.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        userLists:
+            (json_['userLists'] as core.List?)
+                ?.map(
+                  (value) => UserList.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (userLists != null) 'userLists': userLists!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (userLists != null) 'userLists': userLists!,
+  };
 }
 
 /// Information about each media file in the VAST.
@@ -3751,21 +3797,18 @@ class MediaFile {
   /// - "MIME_AUDIO_OGG" : Ogg audio format
   core.String? mimeType;
 
-  MediaFile({
-    this.bitrate,
-    this.mimeType,
-  });
+  MediaFile({this.bitrate, this.mimeType});
 
   MediaFile.fromJson(core.Map json_)
-      : this(
-          bitrate: json_['bitrate'] as core.String?,
-          mimeType: json_['mimeType'] as core.String?,
-        );
+    : this(
+        bitrate: json_['bitrate'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bitrate != null) 'bitrate': bitrate!,
-        if (mimeType != null) 'mimeType': mimeType!,
-      };
+    if (bitrate != null) 'bitrate': bitrate!,
+    if (mimeType != null) 'mimeType': mimeType!,
+  };
 }
 
 /// Native content for a creative.
@@ -3828,46 +3871,52 @@ class NativeContent {
   });
 
   NativeContent.fromJson(core.Map json_)
-      : this(
-          advertiserName: json_['advertiserName'] as core.String?,
-          appIcon: json_.containsKey('appIcon')
-              ? Image.fromJson(
-                  json_['appIcon'] as core.Map<core.String, core.dynamic>)
-              : null,
-          body: json_['body'] as core.String?,
-          callToAction: json_['callToAction'] as core.String?,
-          clickLinkUrl: json_['clickLinkUrl'] as core.String?,
-          clickTrackingUrl: json_['clickTrackingUrl'] as core.String?,
-          headline: json_['headline'] as core.String?,
-          image: json_.containsKey('image')
-              ? Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-          logo: json_.containsKey('logo')
-              ? Image.fromJson(
-                  json_['logo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          priceDisplayText: json_['priceDisplayText'] as core.String?,
-          starRating: (json_['starRating'] as core.num?)?.toDouble(),
-          videoUrl: json_['videoUrl'] as core.String?,
-          videoVastXml: json_['videoVastXml'] as core.String?,
-        );
+    : this(
+        advertiserName: json_['advertiserName'] as core.String?,
+        appIcon:
+            json_.containsKey('appIcon')
+                ? Image.fromJson(
+                  json_['appIcon'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        body: json_['body'] as core.String?,
+        callToAction: json_['callToAction'] as core.String?,
+        clickLinkUrl: json_['clickLinkUrl'] as core.String?,
+        clickTrackingUrl: json_['clickTrackingUrl'] as core.String?,
+        headline: json_['headline'] as core.String?,
+        image:
+            json_.containsKey('image')
+                ? Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        logo:
+            json_.containsKey('logo')
+                ? Image.fromJson(
+                  json_['logo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        priceDisplayText: json_['priceDisplayText'] as core.String?,
+        starRating: (json_['starRating'] as core.num?)?.toDouble(),
+        videoUrl: json_['videoUrl'] as core.String?,
+        videoVastXml: json_['videoVastXml'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserName != null) 'advertiserName': advertiserName!,
-        if (appIcon != null) 'appIcon': appIcon!,
-        if (body != null) 'body': body!,
-        if (callToAction != null) 'callToAction': callToAction!,
-        if (clickLinkUrl != null) 'clickLinkUrl': clickLinkUrl!,
-        if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl!,
-        if (headline != null) 'headline': headline!,
-        if (image != null) 'image': image!,
-        if (logo != null) 'logo': logo!,
-        if (priceDisplayText != null) 'priceDisplayText': priceDisplayText!,
-        if (starRating != null) 'starRating': starRating!,
-        if (videoUrl != null) 'videoUrl': videoUrl!,
-        if (videoVastXml != null) 'videoVastXml': videoVastXml!,
-      };
+    if (advertiserName != null) 'advertiserName': advertiserName!,
+    if (appIcon != null) 'appIcon': appIcon!,
+    if (body != null) 'body': body!,
+    if (callToAction != null) 'callToAction': callToAction!,
+    if (clickLinkUrl != null) 'clickLinkUrl': clickLinkUrl!,
+    if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl!,
+    if (headline != null) 'headline': headline!,
+    if (image != null) 'image': image!,
+    if (logo != null) 'logo': logo!,
+    if (priceDisplayText != null) 'priceDisplayText': priceDisplayText!,
+    if (starRating != null) 'starRating': starRating!,
+    if (videoUrl != null) 'videoUrl': videoUrl!,
+    if (videoVastXml != null) 'videoVastXml': videoVastXml!,
+  };
 }
 
 /// Generic targeting used for targeting dimensions that contain a list of
@@ -3880,25 +3929,24 @@ class NumericTargetingDimension {
   /// The IDs included in a configuration.
   core.List<core.String>? includedIds;
 
-  NumericTargetingDimension({
-    this.excludedIds,
-    this.includedIds,
-  });
+  NumericTargetingDimension({this.excludedIds, this.includedIds});
 
   NumericTargetingDimension.fromJson(core.Map json_)
-      : this(
-          excludedIds: (json_['excludedIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includedIds: (json_['includedIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        excludedIds:
+            (json_['excludedIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includedIds:
+            (json_['includedIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludedIds != null) 'excludedIds': excludedIds!,
-        if (includedIds != null) 'includedIds': includedIds!,
-      };
+    if (excludedIds != null) 'excludedIds': excludedIds!,
+    if (includedIds != null) 'includedIds': includedIds!,
+  };
 }
 
 /// A request to open a specified user list.
@@ -3927,24 +3975,25 @@ class PolicyCompliance {
   /// Topics may be present only if status is DISAPPROVED.
   core.List<PolicyTopicEntry>? topics;
 
-  PolicyCompliance({
-    this.status,
-    this.topics,
-  });
+  PolicyCompliance({this.status, this.topics});
 
   PolicyCompliance.fromJson(core.Map json_)
-      : this(
-          status: json_['status'] as core.String?,
-          topics: (json_['topics'] as core.List?)
-              ?.map((value) => PolicyTopicEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        status: json_['status'] as core.String?,
+        topics:
+            (json_['topics'] as core.List?)
+                ?.map(
+                  (value) => PolicyTopicEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null) 'status': status!,
-        if (topics != null) 'topics': topics!,
-      };
+    if (status != null) 'status': status!,
+    if (topics != null) 'topics': topics!,
+  };
 }
 
 /// Each policy topic entry will represent a violation of a policy topic for a
@@ -3980,23 +4029,26 @@ class PolicyTopicEntry {
   });
 
   PolicyTopicEntry.fromJson(core.Map json_)
-      : this(
-          evidences: (json_['evidences'] as core.List?)
-              ?.map((value) => PolicyTopicEvidence.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          helpCenterUrl: json_['helpCenterUrl'] as core.String?,
-          missingCertificate: json_['missingCertificate'] as core.bool?,
-          policyTopic: json_['policyTopic'] as core.String?,
-        );
+    : this(
+        evidences:
+            (json_['evidences'] as core.List?)
+                ?.map(
+                  (value) => PolicyTopicEvidence.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        helpCenterUrl: json_['helpCenterUrl'] as core.String?,
+        missingCertificate: json_['missingCertificate'] as core.bool?,
+        policyTopic: json_['policyTopic'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (evidences != null) 'evidences': evidences!,
-        if (helpCenterUrl != null) 'helpCenterUrl': helpCenterUrl!,
-        if (missingCertificate != null)
-          'missingCertificate': missingCertificate!,
-        if (policyTopic != null) 'policyTopic': policyTopic!,
-      };
+    if (evidences != null) 'evidences': evidences!,
+    if (helpCenterUrl != null) 'helpCenterUrl': helpCenterUrl!,
+    if (missingCertificate != null) 'missingCertificate': missingCertificate!,
+    if (policyTopic != null) 'policyTopic': policyTopic!,
+  };
 }
 
 /// Evidence associated with a policy topic entry.
@@ -4035,50 +4087,65 @@ class PolicyTopicEvidence {
   });
 
   PolicyTopicEvidence.fromJson(core.Map json_)
-      : this(
-          destinationNotCrawlable: json_.containsKey('destinationNotCrawlable')
-              ? DestinationNotCrawlableEvidence.fromJson(
+    : this(
+        destinationNotCrawlable:
+            json_.containsKey('destinationNotCrawlable')
+                ? DestinationNotCrawlableEvidence.fromJson(
                   json_['destinationNotCrawlable']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          destinationNotWorking: json_.containsKey('destinationNotWorking')
-              ? DestinationNotWorkingEvidence.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        destinationNotWorking:
+            json_.containsKey('destinationNotWorking')
+                ? DestinationNotWorkingEvidence.fromJson(
                   json_['destinationNotWorking']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          destinationUrl: json_.containsKey('destinationUrl')
-              ? DestinationUrlEvidence.fromJson(json_['destinationUrl']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          domainCall: json_.containsKey('domainCall')
-              ? DomainCallEvidence.fromJson(
-                  json_['domainCall'] as core.Map<core.String, core.dynamic>)
-              : null,
-          downloadSize: json_.containsKey('downloadSize')
-              ? DownloadSizeEvidence.fromJson(
-                  json_['downloadSize'] as core.Map<core.String, core.dynamic>)
-              : null,
-          httpCall: json_.containsKey('httpCall')
-              ? HttpCallEvidence.fromJson(
-                  json_['httpCall'] as core.Map<core.String, core.dynamic>)
-              : null,
-          httpCookie: json_.containsKey('httpCookie')
-              ? HttpCookieEvidence.fromJson(
-                  json_['httpCookie'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        destinationUrl:
+            json_.containsKey('destinationUrl')
+                ? DestinationUrlEvidence.fromJson(
+                  json_['destinationUrl']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        domainCall:
+            json_.containsKey('domainCall')
+                ? DomainCallEvidence.fromJson(
+                  json_['domainCall'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        downloadSize:
+            json_.containsKey('downloadSize')
+                ? DownloadSizeEvidence.fromJson(
+                  json_['downloadSize'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        httpCall:
+            json_.containsKey('httpCall')
+                ? HttpCallEvidence.fromJson(
+                  json_['httpCall'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        httpCookie:
+            json_.containsKey('httpCookie')
+                ? HttpCookieEvidence.fromJson(
+                  json_['httpCookie'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationNotCrawlable != null)
-          'destinationNotCrawlable': destinationNotCrawlable!,
-        if (destinationNotWorking != null)
-          'destinationNotWorking': destinationNotWorking!,
-        if (destinationUrl != null) 'destinationUrl': destinationUrl!,
-        if (domainCall != null) 'domainCall': domainCall!,
-        if (downloadSize != null) 'downloadSize': downloadSize!,
-        if (httpCall != null) 'httpCall': httpCall!,
-        if (httpCookie != null) 'httpCookie': httpCookie!,
-      };
+    if (destinationNotCrawlable != null)
+      'destinationNotCrawlable': destinationNotCrawlable!,
+    if (destinationNotWorking != null)
+      'destinationNotWorking': destinationNotWorking!,
+    if (destinationUrl != null) 'destinationUrl': destinationUrl!,
+    if (domainCall != null) 'domainCall': domainCall!,
+    if (downloadSize != null) 'downloadSize': downloadSize!,
+    if (httpCall != null) 'httpCall': httpCall!,
+    if (httpCookie != null) 'httpCookie': httpCookie!,
+  };
 }
 
 /// Pretargeting configuration: a set of targeting dimensions applied at the
@@ -4291,110 +4358,133 @@ class PretargetingConfig {
   });
 
   PretargetingConfig.fromJson(core.Map json_)
-      : this(
-          allowedUserTargetingModes:
-              (json_['allowedUserTargetingModes'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          appTargeting: json_.containsKey('appTargeting')
-              ? AppTargeting.fromJson(
-                  json_['appTargeting'] as core.Map<core.String, core.dynamic>)
-              : null,
-          billingId: json_['billingId'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          excludedContentLabelIds:
-              (json_['excludedContentLabelIds'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          geoTargeting: json_.containsKey('geoTargeting')
-              ? NumericTargetingDimension.fromJson(
-                  json_['geoTargeting'] as core.Map<core.String, core.dynamic>)
-              : null,
-          includedCreativeDimensions:
-              (json_['includedCreativeDimensions'] as core.List?)
-                  ?.map((value) => CreativeDimensions.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          includedEnvironments: (json_['includedEnvironments'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includedFormats: (json_['includedFormats'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includedLanguages: (json_['includedLanguages'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includedMobileOperatingSystemIds:
-              (json_['includedMobileOperatingSystemIds'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          includedPlatforms: (json_['includedPlatforms'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includedUserIdTypes: (json_['includedUserIdTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          interstitialTargeting: json_['interstitialTargeting'] as core.String?,
-          invalidGeoIds: (json_['invalidGeoIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          maximumQps: json_['maximumQps'] as core.String?,
-          minimumViewabilityDecile:
-              json_['minimumViewabilityDecile'] as core.int?,
-          name: json_['name'] as core.String?,
-          publisherTargeting: json_.containsKey('publisherTargeting')
-              ? StringTargetingDimension.fromJson(json_['publisherTargeting']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          userListTargeting: json_.containsKey('userListTargeting')
-              ? NumericTargetingDimension.fromJson(json_['userListTargeting']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          verticalTargeting: json_.containsKey('verticalTargeting')
-              ? NumericTargetingDimension.fromJson(json_['verticalTargeting']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          webTargeting: json_.containsKey('webTargeting')
-              ? StringTargetingDimension.fromJson(
-                  json_['webTargeting'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        allowedUserTargetingModes:
+            (json_['allowedUserTargetingModes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        appTargeting:
+            json_.containsKey('appTargeting')
+                ? AppTargeting.fromJson(
+                  json_['appTargeting'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        billingId: json_['billingId'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        excludedContentLabelIds:
+            (json_['excludedContentLabelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        geoTargeting:
+            json_.containsKey('geoTargeting')
+                ? NumericTargetingDimension.fromJson(
+                  json_['geoTargeting'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        includedCreativeDimensions:
+            (json_['includedCreativeDimensions'] as core.List?)
+                ?.map(
+                  (value) => CreativeDimensions.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        includedEnvironments:
+            (json_['includedEnvironments'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includedFormats:
+            (json_['includedFormats'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includedLanguages:
+            (json_['includedLanguages'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includedMobileOperatingSystemIds:
+            (json_['includedMobileOperatingSystemIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includedPlatforms:
+            (json_['includedPlatforms'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includedUserIdTypes:
+            (json_['includedUserIdTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        interstitialTargeting: json_['interstitialTargeting'] as core.String?,
+        invalidGeoIds:
+            (json_['invalidGeoIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        maximumQps: json_['maximumQps'] as core.String?,
+        minimumViewabilityDecile:
+            json_['minimumViewabilityDecile'] as core.int?,
+        name: json_['name'] as core.String?,
+        publisherTargeting:
+            json_.containsKey('publisherTargeting')
+                ? StringTargetingDimension.fromJson(
+                  json_['publisherTargeting']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        userListTargeting:
+            json_.containsKey('userListTargeting')
+                ? NumericTargetingDimension.fromJson(
+                  json_['userListTargeting']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        verticalTargeting:
+            json_.containsKey('verticalTargeting')
+                ? NumericTargetingDimension.fromJson(
+                  json_['verticalTargeting']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        webTargeting:
+            json_.containsKey('webTargeting')
+                ? StringTargetingDimension.fromJson(
+                  json_['webTargeting'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedUserTargetingModes != null)
-          'allowedUserTargetingModes': allowedUserTargetingModes!,
-        if (appTargeting != null) 'appTargeting': appTargeting!,
-        if (billingId != null) 'billingId': billingId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (excludedContentLabelIds != null)
-          'excludedContentLabelIds': excludedContentLabelIds!,
-        if (geoTargeting != null) 'geoTargeting': geoTargeting!,
-        if (includedCreativeDimensions != null)
-          'includedCreativeDimensions': includedCreativeDimensions!,
-        if (includedEnvironments != null)
-          'includedEnvironments': includedEnvironments!,
-        if (includedFormats != null) 'includedFormats': includedFormats!,
-        if (includedLanguages != null) 'includedLanguages': includedLanguages!,
-        if (includedMobileOperatingSystemIds != null)
-          'includedMobileOperatingSystemIds': includedMobileOperatingSystemIds!,
-        if (includedPlatforms != null) 'includedPlatforms': includedPlatforms!,
-        if (includedUserIdTypes != null)
-          'includedUserIdTypes': includedUserIdTypes!,
-        if (interstitialTargeting != null)
-          'interstitialTargeting': interstitialTargeting!,
-        if (invalidGeoIds != null) 'invalidGeoIds': invalidGeoIds!,
-        if (maximumQps != null) 'maximumQps': maximumQps!,
-        if (minimumViewabilityDecile != null)
-          'minimumViewabilityDecile': minimumViewabilityDecile!,
-        if (name != null) 'name': name!,
-        if (publisherTargeting != null)
-          'publisherTargeting': publisherTargeting!,
-        if (state != null) 'state': state!,
-        if (userListTargeting != null) 'userListTargeting': userListTargeting!,
-        if (verticalTargeting != null) 'verticalTargeting': verticalTargeting!,
-        if (webTargeting != null) 'webTargeting': webTargeting!,
-      };
+    if (allowedUserTargetingModes != null)
+      'allowedUserTargetingModes': allowedUserTargetingModes!,
+    if (appTargeting != null) 'appTargeting': appTargeting!,
+    if (billingId != null) 'billingId': billingId!,
+    if (displayName != null) 'displayName': displayName!,
+    if (excludedContentLabelIds != null)
+      'excludedContentLabelIds': excludedContentLabelIds!,
+    if (geoTargeting != null) 'geoTargeting': geoTargeting!,
+    if (includedCreativeDimensions != null)
+      'includedCreativeDimensions': includedCreativeDimensions!,
+    if (includedEnvironments != null)
+      'includedEnvironments': includedEnvironments!,
+    if (includedFormats != null) 'includedFormats': includedFormats!,
+    if (includedLanguages != null) 'includedLanguages': includedLanguages!,
+    if (includedMobileOperatingSystemIds != null)
+      'includedMobileOperatingSystemIds': includedMobileOperatingSystemIds!,
+    if (includedPlatforms != null) 'includedPlatforms': includedPlatforms!,
+    if (includedUserIdTypes != null)
+      'includedUserIdTypes': includedUserIdTypes!,
+    if (interstitialTargeting != null)
+      'interstitialTargeting': interstitialTargeting!,
+    if (invalidGeoIds != null) 'invalidGeoIds': invalidGeoIds!,
+    if (maximumQps != null) 'maximumQps': maximumQps!,
+    if (minimumViewabilityDecile != null)
+      'minimumViewabilityDecile': minimumViewabilityDecile!,
+    if (name != null) 'name': name!,
+    if (publisherTargeting != null) 'publisherTargeting': publisherTargeting!,
+    if (state != null) 'state': state!,
+    if (userListTargeting != null) 'userListTargeting': userListTargeting!,
+    if (verticalTargeting != null) 'verticalTargeting': verticalTargeting!,
+    if (webTargeting != null) 'webTargeting': webTargeting!,
+  };
 }
 
 /// An Open Bidding exchange's connection to a publisher.
@@ -4454,21 +4544,21 @@ class PublisherConnection {
   });
 
   PublisherConnection.fromJson(core.Map json_)
-      : this(
-          biddingState: json_['biddingState'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          publisherPlatform: json_['publisherPlatform'] as core.String?,
-        );
+    : this(
+        biddingState: json_['biddingState'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        publisherPlatform: json_['publisherPlatform'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (biddingState != null) 'biddingState': biddingState!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (publisherPlatform != null) 'publisherPlatform': publisherPlatform!,
-      };
+    if (biddingState != null) 'biddingState': biddingState!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (publisherPlatform != null) 'publisherPlatform': publisherPlatform!,
+  };
 }
 
 /// A request to stop targeting the provided apps in a specific pretargeting
@@ -4483,20 +4573,19 @@ class RemoveTargetedAppsRequest {
   /// PretargetingConfig.appTargeting.mobileAppTargeting.values.
   core.List<core.String>? appIds;
 
-  RemoveTargetedAppsRequest({
-    this.appIds,
-  });
+  RemoveTargetedAppsRequest({this.appIds});
 
   RemoveTargetedAppsRequest.fromJson(core.Map json_)
-      : this(
-          appIds: (json_['appIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        appIds:
+            (json_['appIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appIds != null) 'appIds': appIds!,
-      };
+    if (appIds != null) 'appIds': appIds!,
+  };
 }
 
 /// A request to stop targeting publishers in a specific configuration.
@@ -4514,20 +4603,19 @@ class RemoveTargetedPublishersRequest {
   /// for more details.
   core.List<core.String>? publisherIds;
 
-  RemoveTargetedPublishersRequest({
-    this.publisherIds,
-  });
+  RemoveTargetedPublishersRequest({this.publisherIds});
 
   RemoveTargetedPublishersRequest.fromJson(core.Map json_)
-      : this(
-          publisherIds: (json_['publisherIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        publisherIds:
+            (json_['publisherIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (publisherIds != null) 'publisherIds': publisherIds!,
-      };
+    if (publisherIds != null) 'publisherIds': publisherIds!,
+  };
 }
 
 /// A request to stop targeting sites in a specific pretargeting configuration.
@@ -4541,20 +4629,19 @@ class RemoveTargetedSitesRequest {
   /// PretargetingConfig.webTargeting.values.
   core.List<core.String>? sites;
 
-  RemoveTargetedSitesRequest({
-    this.sites,
-  });
+  RemoveTargetedSitesRequest({this.sites});
 
   RemoveTargetedSitesRequest.fromJson(core.Map json_)
-      : this(
-          sites: (json_['sites'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        sites:
+            (json_['sites'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sites != null) 'sites': sites!,
-      };
+    if (sites != null) 'sites': sites!,
+  };
 }
 
 /// Generic targeting with string values used in app, website and publisher
@@ -4572,23 +4659,21 @@ class StringTargetingDimension {
   /// The values specified.
   core.List<core.String>? values;
 
-  StringTargetingDimension({
-    this.targetingMode,
-    this.values,
-  });
+  StringTargetingDimension({this.targetingMode, this.values});
 
   StringTargetingDimension.fromJson(core.Map json_)
-      : this(
-          targetingMode: json_['targetingMode'] as core.String?,
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        targetingMode: json_['targetingMode'] as core.String?,
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (targetingMode != null) 'targetingMode': targetingMode!,
-        if (values != null) 'values': values!,
-      };
+    if (targetingMode != null) 'targetingMode': targetingMode!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// A request to suspend a pretargeting configuration.
@@ -4604,21 +4689,18 @@ class UrlDownloadSize {
   /// The normalized URL with query parameters and fragment removed.
   core.String? normalizedUrl;
 
-  UrlDownloadSize({
-    this.downloadSizeKb,
-    this.normalizedUrl,
-  });
+  UrlDownloadSize({this.downloadSizeKb, this.normalizedUrl});
 
   UrlDownloadSize.fromJson(core.Map json_)
-      : this(
-          downloadSizeKb: json_['downloadSizeKb'] as core.int?,
-          normalizedUrl: json_['normalizedUrl'] as core.String?,
-        );
+    : this(
+        downloadSizeKb: json_['downloadSizeKb'] as core.int?,
+        normalizedUrl: json_['normalizedUrl'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (downloadSizeKb != null) 'downloadSizeKb': downloadSizeKb!,
-        if (normalizedUrl != null) 'normalizedUrl': normalizedUrl!,
-      };
+    if (downloadSizeKb != null) 'downloadSizeKb': downloadSizeKb!,
+    if (normalizedUrl != null) 'normalizedUrl': normalizedUrl!,
+  };
 }
 
 /// This will be removed in October 2023.
@@ -4674,25 +4756,29 @@ class UrlRestriction {
   });
 
   UrlRestriction.fromJson(core.Map json_)
-      : this(
-          endDate: json_.containsKey('endDate')
-              ? Date.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          restrictionType: json_['restrictionType'] as core.String?,
-          startDate: json_.containsKey('startDate')
-              ? Date.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        endDate:
+            json_.containsKey('endDate')
+                ? Date.fromJson(
+                  json_['endDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        restrictionType: json_['restrictionType'] as core.String?,
+        startDate:
+            json_.containsKey('startDate')
+                ? Date.fromJson(
+                  json_['startDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!,
-        if (restrictionType != null) 'restrictionType': restrictionType!,
-        if (startDate != null) 'startDate': startDate!,
-        if (url != null) 'url': url!,
-      };
+    if (endDate != null) 'endDate': endDate!,
+    if (restrictionType != null) 'restrictionType': restrictionType!,
+    if (startDate != null) 'startDate': startDate!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Represents an Authorized Buyers user list.
@@ -4761,28 +4847,30 @@ class UserList {
   });
 
   UserList.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          membershipDurationDays:
-              json_['membershipDurationDays'] as core.String?,
-          name: json_['name'] as core.String?,
-          status: json_['status'] as core.String?,
-          urlRestriction: json_.containsKey('urlRestriction')
-              ? UrlRestriction.fromJson(json_['urlRestriction']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        membershipDurationDays: json_['membershipDurationDays'] as core.String?,
+        name: json_['name'] as core.String?,
+        status: json_['status'] as core.String?,
+        urlRestriction:
+            json_.containsKey('urlRestriction')
+                ? UrlRestriction.fromJson(
+                  json_['urlRestriction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (membershipDurationDays != null)
-          'membershipDurationDays': membershipDurationDays!,
-        if (name != null) 'name': name!,
-        if (status != null) 'status': status!,
-        if (urlRestriction != null) 'urlRestriction': urlRestriction!,
-      };
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (membershipDurationDays != null)
+      'membershipDurationDays': membershipDurationDays!,
+    if (name != null) 'name': name!,
+    if (status != null) 'status': status!,
+    if (urlRestriction != null) 'urlRestriction': urlRestriction!,
+  };
 }
 
 /// Video content for a creative.
@@ -4803,27 +4891,25 @@ class VideoContent {
   /// This document should conform to the VAST 2.0, 3.0, or 4.x standard.
   core.String? videoVastXml;
 
-  VideoContent({
-    this.videoMetadata,
-    this.videoUrl,
-    this.videoVastXml,
-  });
+  VideoContent({this.videoMetadata, this.videoUrl, this.videoVastXml});
 
   VideoContent.fromJson(core.Map json_)
-      : this(
-          videoMetadata: json_.containsKey('videoMetadata')
-              ? VideoMetadata.fromJson(
-                  json_['videoMetadata'] as core.Map<core.String, core.dynamic>)
-              : null,
-          videoUrl: json_['videoUrl'] as core.String?,
-          videoVastXml: json_['videoVastXml'] as core.String?,
-        );
+    : this(
+        videoMetadata:
+            json_.containsKey('videoMetadata')
+                ? VideoMetadata.fromJson(
+                  json_['videoMetadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        videoUrl: json_['videoUrl'] as core.String?,
+        videoVastXml: json_['videoVastXml'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (videoMetadata != null) 'videoMetadata': videoMetadata!,
-        if (videoUrl != null) 'videoUrl': videoUrl!,
-        if (videoVastXml != null) 'videoVastXml': videoVastXml!,
-      };
+    if (videoMetadata != null) 'videoMetadata': videoMetadata!,
+    if (videoUrl != null) 'videoUrl': videoUrl!,
+    if (videoVastXml != null) 'videoVastXml': videoVastXml!,
+  };
 }
 
 /// Video metadata for a creative.
@@ -4876,26 +4962,30 @@ class VideoMetadata {
   });
 
   VideoMetadata.fromJson(core.Map json_)
-      : this(
-          duration: json_['duration'] as core.String?,
-          isValidVast: json_['isValidVast'] as core.bool?,
-          isVpaid: json_['isVpaid'] as core.bool?,
-          mediaFiles: (json_['mediaFiles'] as core.List?)
-              ?.map((value) => MediaFile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          skipOffset: json_['skipOffset'] as core.String?,
-          vastVersion: json_['vastVersion'] as core.String?,
-        );
+    : this(
+        duration: json_['duration'] as core.String?,
+        isValidVast: json_['isValidVast'] as core.bool?,
+        isVpaid: json_['isVpaid'] as core.bool?,
+        mediaFiles:
+            (json_['mediaFiles'] as core.List?)
+                ?.map(
+                  (value) => MediaFile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        skipOffset: json_['skipOffset'] as core.String?,
+        vastVersion: json_['vastVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (isValidVast != null) 'isValidVast': isValidVast!,
-        if (isVpaid != null) 'isVpaid': isVpaid!,
-        if (mediaFiles != null) 'mediaFiles': mediaFiles!,
-        if (skipOffset != null) 'skipOffset': skipOffset!,
-        if (vastVersion != null) 'vastVersion': vastVersion!,
-      };
+    if (duration != null) 'duration': duration!,
+    if (isValidVast != null) 'isValidVast': isValidVast!,
+    if (isVpaid != null) 'isVpaid': isVpaid!,
+    if (mediaFiles != null) 'mediaFiles': mediaFiles!,
+    if (skipOffset != null) 'skipOffset': skipOffset!,
+    if (vastVersion != null) 'vastVersion': vastVersion!,
+  };
 }
 
 /// A request to receive push notifications when any of the creatives belonging
@@ -4922,19 +5012,16 @@ class WatchCreativesResponse {
   /// This would be of the format `projects/{project_id}/topics/{topic_id}`.
   core.String? topic;
 
-  WatchCreativesResponse({
-    this.subscription,
-    this.topic,
-  });
+  WatchCreativesResponse({this.subscription, this.topic});
 
   WatchCreativesResponse.fromJson(core.Map json_)
-      : this(
-          subscription: json_['subscription'] as core.String?,
-          topic: json_['topic'] as core.String?,
-        );
+    : this(
+        subscription: json_['subscription'] as core.String?,
+        topic: json_['topic'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (subscription != null) 'subscription': subscription!,
-        if (topic != null) 'topic': topic!,
-      };
+    if (subscription != null) 'subscription': subscription!,
+    if (topic != null) 'topic': topic!,
+  };
 }

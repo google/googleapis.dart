@@ -57,7 +57,8 @@ final testPrivateKey = keyFromString(testPrivateKeyString);
 
 void expectExpiryOneHourFromNow(AccessToken accessToken) {
   final now = DateTime.now().toUtc();
-  final diff = accessToken.expiry.difference(now).inSeconds -
+  final diff =
+      accessToken.expiry.difference(now).inSeconds -
       (3600 - maxExpectedTimeDiffInSeconds);
   expect(-2 <= diff && diff <= 2, isTrue);
 }
@@ -65,17 +66,13 @@ void expectExpiryOneHourFromNow(AccessToken accessToken) {
 Client mockClient(
   MockClientHandler requestHandler, {
   bool expectClose = true,
-}) =>
-    ExpectCloseMockClient(requestHandler, expectClose ? 1 : 0);
+}) => ExpectCloseMockClient(requestHandler, expectClose ? 1 : 0);
 
 /// A client which will keep the VM alive until `close()` was called.
 class ExpectCloseMockClient extends MockClient {
   late void Function() _expectedToBeCalled;
 
-  ExpectCloseMockClient(
-    super.requestHandler,
-    int c,
-  ) {
+  ExpectCloseMockClient(super.requestHandler, int c) {
     _expectedToBeCalled = expectAsync0(() {}, count: c);
   }
 

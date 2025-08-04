@@ -39,10 +39,7 @@ Future<void> _login() async {
   _loginButton.disabled = _credentials != null;
   _uploadInput.disabled = _credentials == null;
 
-  logToTextArea([
-    'logged in!',
-    jsonEncode(_credentials),
-  ].join('\n'));
+  logToTextArea(['logged in!', jsonEncode(_credentials)].join('\n'));
 }
 
 Future<void> _upload() async {
@@ -78,10 +75,14 @@ Future<void> _upload() async {
 
     // regression check for https://github.com/google/googleapis.dart/issues/462
 
-    final partialRequest = await api.get(
-      newFile.id!,
-      downloadOptions: drive.PartialDownloadOptions(drive.ByteRange(0, 10)),
-    ) as drive.Media;
+    final partialRequest =
+        await api.get(
+              newFile.id!,
+              downloadOptions: drive.PartialDownloadOptions(
+                drive.ByteRange(0, 10),
+              ),
+            )
+            as drive.Media;
 
     logToTextArea('bytes received: ${partialRequest.length}');
   } finally {

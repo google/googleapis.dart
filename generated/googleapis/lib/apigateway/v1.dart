@@ -49,11 +49,16 @@ class ApigatewayApi_1 {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ApigatewayApi_1(http.Client client,
-      {core.String rootUrl = 'https://apigateway.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ApigatewayApi_1(
+    http.Client client, {
+    core.String rootUrl = 'https://apigateway.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -110,7 +115,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ApigatewayLocation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -168,7 +174,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ApigatewayListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -179,7 +186,7 @@ class ProjectsLocationsApisResource {
       ProjectsLocationsApisConfigsResource(_requester);
 
   ProjectsLocationsApisResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new Api in a given project and location.
   ///
@@ -225,7 +232,8 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single Api.
@@ -263,7 +271,8 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single Api.
@@ -301,7 +310,8 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return ApigatewayApi.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -359,7 +369,8 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return ApigatewayPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists Apis in a given project and location.
@@ -412,7 +423,8 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return ApigatewayListApisResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Api.
@@ -463,7 +475,8 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -511,7 +524,8 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return ApigatewayPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -562,7 +576,8 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return ApigatewayTestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -570,7 +585,7 @@ class ProjectsLocationsApisConfigsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsApisConfigsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new ApiConfig in a given project and location.
   ///
@@ -617,7 +632,8 @@ class ProjectsLocationsApisConfigsResource {
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single ApiConfig.
@@ -655,7 +671,8 @@ class ProjectsLocationsApisConfigsResource {
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single ApiConfig.
@@ -702,7 +719,8 @@ class ProjectsLocationsApisConfigsResource {
       queryParams: queryParams_,
     );
     return ApigatewayApiConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -760,7 +778,8 @@ class ProjectsLocationsApisConfigsResource {
       queryParams: queryParams_,
     );
     return ApigatewayPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists ApiConfigs in a given project and location.
@@ -814,7 +833,8 @@ class ProjectsLocationsApisConfigsResource {
       queryParams: queryParams_,
     );
     return ApigatewayListApiConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single ApiConfig.
@@ -865,7 +885,8 @@ class ProjectsLocationsApisConfigsResource {
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -913,7 +934,8 @@ class ProjectsLocationsApisConfigsResource {
       queryParams: queryParams_,
     );
     return ApigatewayPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -964,7 +986,8 @@ class ProjectsLocationsApisConfigsResource {
       queryParams: queryParams_,
     );
     return ApigatewayTestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -972,7 +995,7 @@ class ProjectsLocationsGatewaysResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGatewaysResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new Gateway in a given project and location.
   ///
@@ -1018,7 +1041,8 @@ class ProjectsLocationsGatewaysResource {
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single Gateway.
@@ -1056,7 +1080,8 @@ class ProjectsLocationsGatewaysResource {
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single Gateway.
@@ -1094,7 +1119,8 @@ class ProjectsLocationsGatewaysResource {
       queryParams: queryParams_,
     );
     return ApigatewayGateway.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -1152,7 +1178,8 @@ class ProjectsLocationsGatewaysResource {
       queryParams: queryParams_,
     );
     return ApigatewayPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists Gateways in a given project and location.
@@ -1205,7 +1232,8 @@ class ProjectsLocationsGatewaysResource {
       queryParams: queryParams_,
     );
     return ApigatewayListGatewaysResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Gateway.
@@ -1256,7 +1284,8 @@ class ProjectsLocationsGatewaysResource {
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1304,7 +1333,8 @@ class ProjectsLocationsGatewaysResource {
       queryParams: queryParams_,
     );
     return ApigatewayPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1355,7 +1385,8 @@ class ProjectsLocationsGatewaysResource {
       queryParams: queryParams_,
     );
     return ApigatewayTestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1363,7 +1394,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -1437,10 +1468,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1492,7 +1520,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1542,7 +1571,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ApigatewayListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1610,31 +1640,27 @@ class ApigatewayApi {
   });
 
   ApigatewayApi.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          managedService: json_['managedService'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        managedService: json_['managedService'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (managedService != null) 'managedService': managedService!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (managedService != null) 'managedService': managedService!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// An API Configuration is a combination of settings for both the Managed
@@ -1747,51 +1773,58 @@ class ApigatewayApiConfig {
   });
 
   ApigatewayApiConfig.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          gatewayServiceAccount: json_['gatewayServiceAccount'] as core.String?,
-          grpcServices: (json_['grpcServices'] as core.List?)
-              ?.map((value) =>
-                  ApigatewayApiConfigGrpcServiceDefinition.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          managedServiceConfigs: (json_['managedServiceConfigs'] as core.List?)
-              ?.map((value) => ApigatewayApiConfigFile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          openapiDocuments: (json_['openapiDocuments'] as core.List?)
-              ?.map((value) => ApigatewayApiConfigOpenApiDocument.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          serviceConfigId: json_['serviceConfigId'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        gatewayServiceAccount: json_['gatewayServiceAccount'] as core.String?,
+        grpcServices:
+            (json_['grpcServices'] as core.List?)
+                ?.map(
+                  (value) => ApigatewayApiConfigGrpcServiceDefinition.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        managedServiceConfigs:
+            (json_['managedServiceConfigs'] as core.List?)
+                ?.map(
+                  (value) => ApigatewayApiConfigFile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        openapiDocuments:
+            (json_['openapiDocuments'] as core.List?)
+                ?.map(
+                  (value) => ApigatewayApiConfigOpenApiDocument.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        serviceConfigId: json_['serviceConfigId'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (gatewayServiceAccount != null)
-          'gatewayServiceAccount': gatewayServiceAccount!,
-        if (grpcServices != null) 'grpcServices': grpcServices!,
-        if (labels != null) 'labels': labels!,
-        if (managedServiceConfigs != null)
-          'managedServiceConfigs': managedServiceConfigs!,
-        if (name != null) 'name': name!,
-        if (openapiDocuments != null) 'openapiDocuments': openapiDocuments!,
-        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (gatewayServiceAccount != null)
+      'gatewayServiceAccount': gatewayServiceAccount!,
+    if (grpcServices != null) 'grpcServices': grpcServices!,
+    if (labels != null) 'labels': labels!,
+    if (managedServiceConfigs != null)
+      'managedServiceConfigs': managedServiceConfigs!,
+    if (name != null) 'name': name!,
+    if (openapiDocuments != null) 'openapiDocuments': openapiDocuments!,
+    if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A lightweight description of a file.
@@ -1801,8 +1834,10 @@ class ApigatewayApiConfigFile {
   core.List<core.int> get contentsAsBytes => convert.base64.decode(contents!);
 
   set contentsAsBytes(core.List<core.int> bytes_) {
-    contents =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    contents = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The file path (full or relative path).
@@ -1810,21 +1845,18 @@ class ApigatewayApiConfigFile {
   /// This is typically the path of the file when it is uploaded.
   core.String? path;
 
-  ApigatewayApiConfigFile({
-    this.contents,
-    this.path,
-  });
+  ApigatewayApiConfigFile({this.contents, this.path});
 
   ApigatewayApiConfigFile.fromJson(core.Map json_)
-      : this(
-          contents: json_['contents'] as core.String?,
-          path: json_['path'] as core.String?,
-        );
+    : this(
+        contents: json_['contents'] as core.String?,
+        path: json_['path'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contents != null) 'contents': contents!,
-        if (path != null) 'path': path!,
-      };
+    if (contents != null) 'contents': contents!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// A gRPC service definition.
@@ -1852,21 +1884,28 @@ class ApigatewayApiConfigGrpcServiceDefinition {
   });
 
   ApigatewayApiConfigGrpcServiceDefinition.fromJson(core.Map json_)
-      : this(
-          fileDescriptorSet: json_.containsKey('fileDescriptorSet')
-              ? ApigatewayApiConfigFile.fromJson(json_['fileDescriptorSet']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          source: (json_['source'] as core.List?)
-              ?.map((value) => ApigatewayApiConfigFile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        fileDescriptorSet:
+            json_.containsKey('fileDescriptorSet')
+                ? ApigatewayApiConfigFile.fromJson(
+                  json_['fileDescriptorSet']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        source:
+            (json_['source'] as core.List?)
+                ?.map(
+                  (value) => ApigatewayApiConfigFile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileDescriptorSet != null) 'fileDescriptorSet': fileDescriptorSet!,
-        if (source != null) 'source': source!,
-      };
+    if (fileDescriptorSet != null) 'fileDescriptorSet': fileDescriptorSet!,
+    if (source != null) 'source': source!,
+  };
 }
 
 /// An OpenAPI Specification Document describing an API.
@@ -1874,21 +1913,21 @@ class ApigatewayApiConfigOpenApiDocument {
   /// The OpenAPI Specification document file.
   ApigatewayApiConfigFile? document;
 
-  ApigatewayApiConfigOpenApiDocument({
-    this.document,
-  });
+  ApigatewayApiConfigOpenApiDocument({this.document});
 
   ApigatewayApiConfigOpenApiDocument.fromJson(core.Map json_)
-      : this(
-          document: json_.containsKey('document')
-              ? ApigatewayApiConfigFile.fromJson(
-                  json_['document'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        document:
+            json_.containsKey('document')
+                ? ApigatewayApiConfigFile.fromJson(
+                  json_['document'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!,
-      };
+    if (document != null) 'document': document!,
+  };
 }
 
 /// Specifies the audit configuration for a service.
@@ -1918,24 +1957,25 @@ class ApigatewayAuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  ApigatewayAuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  ApigatewayAuditConfig({this.auditLogConfigs, this.service});
 
   ApigatewayAuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => ApigatewayAuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => ApigatewayAuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -2026,29 +2066,28 @@ class ApigatewayBinding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  ApigatewayBinding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  ApigatewayBinding({this.condition, this.members, this.role});
 
   ApigatewayBinding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? ApigatewayExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? ApigatewayExpr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2146,33 +2185,29 @@ class ApigatewayGateway {
   });
 
   ApigatewayGateway.fromJson(core.Map json_)
-      : this(
-          apiConfig: json_['apiConfig'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          defaultHostname: json_['defaultHostname'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        apiConfig: json_['apiConfig'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        defaultHostname: json_['defaultHostname'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiConfig != null) 'apiConfig': apiConfig!,
-        if (createTime != null) 'createTime': createTime!,
-        if (defaultHostname != null) 'defaultHostname': defaultHostname!,
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (apiConfig != null) 'apiConfig': apiConfig!,
+    if (createTime != null) 'createTime': createTime!,
+    if (defaultHostname != null) 'defaultHostname': defaultHostname!,
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Response message for ApiGatewayService.ListApiConfigs
@@ -2193,23 +2228,28 @@ class ApigatewayListApiConfigsResponse {
   });
 
   ApigatewayListApiConfigsResponse.fromJson(core.Map json_)
-      : this(
-          apiConfigs: (json_['apiConfigs'] as core.List?)
-              ?.map((value) => ApigatewayApiConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachableLocations: (json_['unreachableLocations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        apiConfigs:
+            (json_['apiConfigs'] as core.List?)
+                ?.map(
+                  (value) => ApigatewayApiConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachableLocations:
+            (json_['unreachableLocations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiConfigs != null) 'apiConfigs': apiConfigs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachableLocations != null)
-          'unreachableLocations': unreachableLocations!,
-      };
+    if (apiConfigs != null) 'apiConfigs': apiConfigs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachableLocations != null)
+      'unreachableLocations': unreachableLocations!,
+  };
 }
 
 /// Response message for ApiGatewayService.ListApis
@@ -2230,23 +2270,28 @@ class ApigatewayListApisResponse {
   });
 
   ApigatewayListApisResponse.fromJson(core.Map json_)
-      : this(
-          apis: (json_['apis'] as core.List?)
-              ?.map((value) => ApigatewayApi.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachableLocations: (json_['unreachableLocations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        apis:
+            (json_['apis'] as core.List?)
+                ?.map(
+                  (value) => ApigatewayApi.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachableLocations:
+            (json_['unreachableLocations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apis != null) 'apis': apis!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachableLocations != null)
-          'unreachableLocations': unreachableLocations!,
-      };
+    if (apis != null) 'apis': apis!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachableLocations != null)
+      'unreachableLocations': unreachableLocations!,
+  };
 }
 
 /// Response message for ApiGatewayService.ListGateways
@@ -2267,23 +2312,28 @@ class ApigatewayListGatewaysResponse {
   });
 
   ApigatewayListGatewaysResponse.fromJson(core.Map json_)
-      : this(
-          gateways: (json_['gateways'] as core.List?)
-              ?.map((value) => ApigatewayGateway.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachableLocations: (json_['unreachableLocations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        gateways:
+            (json_['gateways'] as core.List?)
+                ?.map(
+                  (value) => ApigatewayGateway.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachableLocations:
+            (json_['unreachableLocations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gateways != null) 'gateways': gateways!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachableLocations != null)
-          'unreachableLocations': unreachableLocations!,
-      };
+    if (gateways != null) 'gateways': gateways!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachableLocations != null)
+      'unreachableLocations': unreachableLocations!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -2294,24 +2344,25 @@ class ApigatewayListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ApigatewayListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ApigatewayListLocationsResponse({this.locations, this.nextPageToken});
 
   ApigatewayListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => ApigatewayLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => ApigatewayLocation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -2322,24 +2373,25 @@ class ApigatewayListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<ApigatewayOperation>? operations;
 
-  ApigatewayListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ApigatewayListOperationsResponse({this.nextPageToken, this.operations});
 
   ApigatewayListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => ApigatewayOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => ApigatewayOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -2397,28 +2449,32 @@ class ApigatewayOperation {
   });
 
   ApigatewayOperation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? ApigatewayStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? ApigatewayStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2484,8 +2540,10 @@ class ApigatewayPolicy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -2507,33 +2565,36 @@ class ApigatewayPolicy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  ApigatewayPolicy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  ApigatewayPolicy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   ApigatewayPolicy.fromJson(core.Map json_)
-      : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => ApigatewayAuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => ApigatewayBinding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => ApigatewayAuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => ApigatewayBinding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2551,24 +2612,23 @@ class ApigatewaySetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  ApigatewaySetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  ApigatewaySetIamPolicyRequest({this.policy, this.updateMask});
 
   ApigatewaySetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? ApigatewayPolicy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? ApigatewayPolicy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for

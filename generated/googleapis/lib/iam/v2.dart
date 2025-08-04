@@ -58,11 +58,16 @@ class IamApi {
 
   PoliciesResource get policies => PoliciesResource(_requester);
 
-  IamApi(http.Client client,
-      {core.String rootUrl = 'https://iam.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  IamApi(
+    http.Client client, {
+    core.String rootUrl = 'https://iam.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class PoliciesResource {
@@ -126,7 +131,8 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a policy.
@@ -177,7 +183,8 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a policy.
@@ -219,7 +226,8 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV2Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the policies of the specified kind that are attached to a
@@ -276,7 +284,8 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV2ListPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified policy.
@@ -331,7 +340,8 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -377,7 +387,8 @@ class PoliciesOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -489,34 +500,41 @@ class GoogleIamV2DenyRule {
   });
 
   GoogleIamV2DenyRule.fromJson(core.Map json_)
-      : this(
-          denialCondition: json_.containsKey('denialCondition')
-              ? GoogleTypeExpr.fromJson(json_['denialCondition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deniedPermissions: (json_['deniedPermissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          deniedPrincipals: (json_['deniedPrincipals'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          exceptionPermissions: (json_['exceptionPermissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          exceptionPrincipals: (json_['exceptionPrincipals'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        denialCondition:
+            json_.containsKey('denialCondition')
+                ? GoogleTypeExpr.fromJson(
+                  json_['denialCondition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deniedPermissions:
+            (json_['deniedPermissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        deniedPrincipals:
+            (json_['deniedPrincipals'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        exceptionPermissions:
+            (json_['exceptionPermissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        exceptionPrincipals:
+            (json_['exceptionPrincipals'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (denialCondition != null) 'denialCondition': denialCondition!,
-        if (deniedPermissions != null) 'deniedPermissions': deniedPermissions!,
-        if (deniedPrincipals != null) 'deniedPrincipals': deniedPrincipals!,
-        if (exceptionPermissions != null)
-          'exceptionPermissions': exceptionPermissions!,
-        if (exceptionPrincipals != null)
-          'exceptionPrincipals': exceptionPrincipals!,
-      };
+    if (denialCondition != null) 'denialCondition': denialCondition!,
+    if (deniedPermissions != null) 'deniedPermissions': deniedPermissions!,
+    if (deniedPrincipals != null) 'deniedPrincipals': deniedPrincipals!,
+    if (exceptionPermissions != null)
+      'exceptionPermissions': exceptionPermissions!,
+    if (exceptionPrincipals != null)
+      'exceptionPrincipals': exceptionPrincipals!,
+  };
 }
 
 /// Response message for `ListPolicies`.
@@ -530,24 +548,25 @@ class GoogleIamV2ListPoliciesResponse {
   /// Metadata for the policies that are attached to the resource.
   core.List<GoogleIamV2Policy>? policies;
 
-  GoogleIamV2ListPoliciesResponse({
-    this.nextPageToken,
-    this.policies,
-  });
+  GoogleIamV2ListPoliciesResponse({this.nextPageToken, this.policies});
 
   GoogleIamV2ListPoliciesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          policies: (json_['policies'] as core.List?)
-              ?.map((value) => GoogleIamV2Policy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        policies:
+            (json_['policies'] as core.List?)
+                ?.map(
+                  (value) => GoogleIamV2Policy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (policies != null) 'policies': policies!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (policies != null) 'policies': policies!,
+  };
 }
 
 /// Data for an IAM policy.
@@ -633,41 +652,40 @@ class GoogleIamV2Policy {
   });
 
   GoogleIamV2Policy.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          deleteTime: json_['deleteTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-          rules: (json_['rules'] as core.List?)
-              ?.map((value) => GoogleIamV2PolicyRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        rules:
+            (json_['rules'] as core.List?)
+                ?.map(
+                  (value) => GoogleIamV2PolicyRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (createTime != null) 'createTime': createTime!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (rules != null) 'rules': rules!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (rules != null) 'rules': rules!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A single rule in a `Policy`.
@@ -680,24 +698,23 @@ class GoogleIamV2PolicyRule {
   /// This value can be up to 256 characters.
   core.String? description;
 
-  GoogleIamV2PolicyRule({
-    this.denyRule,
-    this.description,
-  });
+  GoogleIamV2PolicyRule({this.denyRule, this.description});
 
   GoogleIamV2PolicyRule.fromJson(core.Map json_)
-      : this(
-          denyRule: json_.containsKey('denyRule')
-              ? GoogleIamV2DenyRule.fromJson(
-                  json_['denyRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-        );
+    : this(
+        denyRule:
+            json_.containsKey('denyRule')
+                ? GoogleIamV2DenyRule.fromJson(
+                  json_['denyRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (denyRule != null) 'denyRule': denyRule!,
-        if (description != null) 'description': description!,
-      };
+    if (denyRule != null) 'denyRule': denyRule!,
+    if (description != null) 'description': description!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -752,28 +769,32 @@ class GoogleLongrunningOperation {
   });
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for

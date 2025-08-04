@@ -66,11 +66,16 @@ class APIHubApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  APIHubApi(http.Client client,
-      {core.String rootUrl = 'https://apihub.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  APIHubApi(
+    http.Client client, {
+    core.String rootUrl = 'https://apihub.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -98,20 +103,20 @@ class ProjectsLocationsResource {
   ProjectsLocationsDeploymentsResource get deployments =>
       ProjectsLocationsDeploymentsResource(_requester);
   ProjectsLocationsDiscoveredApiObservationsResource
-      get discoveredApiObservations =>
-          ProjectsLocationsDiscoveredApiObservationsResource(_requester);
+  get discoveredApiObservations =>
+      ProjectsLocationsDiscoveredApiObservationsResource(_requester);
   ProjectsLocationsExternalApisResource get externalApis =>
       ProjectsLocationsExternalApisResource(_requester);
   ProjectsLocationsHostProjectRegistrationsResource
-      get hostProjectRegistrations =>
-          ProjectsLocationsHostProjectRegistrationsResource(_requester);
+  get hostProjectRegistrations =>
+      ProjectsLocationsHostProjectRegistrationsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsPluginsResource get plugins =>
       ProjectsLocationsPluginsResource(_requester);
   ProjectsLocationsRuntimeProjectAttachmentsResource
-      get runtimeProjectAttachments =>
-          ProjectsLocationsRuntimeProjectAttachmentsResource(_requester);
+  get runtimeProjectAttachments =>
+      ProjectsLocationsRuntimeProjectAttachmentsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -154,7 +159,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets information about a location.
@@ -190,7 +196,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudLocationLocation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -248,7 +255,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudLocationListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Look up a runtime project attachment.
@@ -274,7 +282,7 @@ class ProjectsLocationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse>
-      lookupRuntimeProjectAttachment(
+  lookupRuntimeProjectAttachment(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -282,7 +290,8 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$name') +
         ':lookupRuntimeProjectAttachment';
 
@@ -292,7 +301,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Search across API-Hub resources.
@@ -336,7 +346,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1SearchResourcesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -344,7 +355,7 @@ class ProjectsLocationsApiHubInstancesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsApiHubInstancesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Provisions instance resources for the API Hub.
   ///
@@ -392,7 +403,8 @@ class ProjectsLocationsApiHubInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the API hub instance.
@@ -430,7 +442,8 @@ class ProjectsLocationsApiHubInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single API Hub instance.
@@ -468,7 +481,8 @@ class ProjectsLocationsApiHubInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ApiHubInstance.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Looks up an Api Hub instance in a given GCP project.
@@ -510,7 +524,8 @@ class ProjectsLocationsApiHubInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1LookupApiHubInstanceResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -521,7 +536,7 @@ class ProjectsLocationsApisResource {
       ProjectsLocationsApisVersionsResource(_requester);
 
   ProjectsLocationsApisResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create an API resource in the API hub.
   ///
@@ -573,7 +588,8 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Api.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete an API resource in the API hub.
@@ -656,7 +672,8 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Api.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List API resources in the API hub.
@@ -803,7 +820,8 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListApisResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update an API resource in the API hub.
@@ -856,7 +874,8 @@ class ProjectsLocationsApisResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Api.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -871,7 +890,7 @@ class ProjectsLocationsApisVersionsResource {
       ProjectsLocationsApisVersionsSpecsResource(_requester);
 
   ProjectsLocationsApisVersionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create an API version for an API resource in the API hub.
   ///
@@ -926,7 +945,8 @@ class ProjectsLocationsApisVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Version.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete an API version.
@@ -1013,7 +1033,8 @@ class ProjectsLocationsApisVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Version.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List API versions of an API resource in the API hub.
@@ -1141,7 +1162,8 @@ class ProjectsLocationsApisVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update API version.
@@ -1193,7 +1215,8 @@ class ProjectsLocationsApisVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Version.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1201,7 +1224,7 @@ class ProjectsLocationsApisVersionsDefinitionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsApisVersionsDefinitionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Get details about a definition in an API version.
   ///
@@ -1238,7 +1261,8 @@ class ProjectsLocationsApisVersionsDefinitionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Definition.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1246,7 +1270,7 @@ class ProjectsLocationsApisVersionsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsApisVersionsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create an apiOperation in an API version.
   ///
@@ -1305,7 +1329,8 @@ class ProjectsLocationsApisVersionsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ApiOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete an operation in an API version and we can delete only the
@@ -1331,10 +1356,7 @@ class ProjectsLocationsApisVersionsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1384,7 +1406,8 @@ class ProjectsLocationsApisVersionsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ApiOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List operations in an API version.
@@ -1495,7 +1518,8 @@ class ProjectsLocationsApisVersionsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListApiOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update an operation in an API version.
@@ -1550,7 +1574,8 @@ class ProjectsLocationsApisVersionsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ApiOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1558,7 +1583,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsApisVersionsSpecsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Add a spec to an API version in the API hub.
   ///
@@ -1626,7 +1651,8 @@ class ProjectsLocationsApisVersionsSpecsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Spec.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a spec.
@@ -1651,10 +1677,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1707,7 +1730,8 @@ class ProjectsLocationsApisVersionsSpecsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Spec.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get spec contents.
@@ -1746,7 +1770,8 @@ class ProjectsLocationsApisVersionsSpecsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1SpecContents.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lints the requested spec and updates the corresponding API Spec with the
@@ -1913,7 +1938,8 @@ class ProjectsLocationsApisVersionsSpecsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListSpecsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update spec.
@@ -1970,7 +1996,8 @@ class ProjectsLocationsApisVersionsSpecsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Spec.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1978,7 +2005,7 @@ class ProjectsLocationsAttributesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAttributesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a user defined attribute.
   ///
@@ -2033,7 +2060,8 @@ class ProjectsLocationsAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Attribute.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete an attribute.
@@ -2058,10 +2086,7 @@ class ProjectsLocationsAttributesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2111,7 +2136,8 @@ class ProjectsLocationsAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Attribute.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all attributes.
@@ -2193,7 +2219,8 @@ class ProjectsLocationsAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListAttributesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update the attribute.
@@ -2255,7 +2282,8 @@ class ProjectsLocationsAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Attribute.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2263,7 +2291,7 @@ class ProjectsLocationsCurationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCurationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a curation resource in the API hub.
   ///
@@ -2316,7 +2344,8 @@ class ProjectsLocationsCurationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Curation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a curation resource in the API hub.
@@ -2341,10 +2370,7 @@ class ProjectsLocationsCurationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2394,7 +2420,8 @@ class ProjectsLocationsCurationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Curation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List curation resources in the API hub.
@@ -2468,7 +2495,8 @@ class ProjectsLocationsCurationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListCurationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a curation resource in the API hub.
@@ -2519,7 +2547,8 @@ class ProjectsLocationsCurationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Curation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2527,7 +2556,7 @@ class ProjectsLocationsDependenciesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDependenciesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a dependency between two entities in the API hub.
   ///
@@ -2577,7 +2606,8 @@ class ProjectsLocationsDependenciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Dependency.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete the dependency resource.
@@ -2599,10 +2629,7 @@ class ProjectsLocationsDependenciesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2653,7 +2680,8 @@ class ProjectsLocationsDependenciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Dependency.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List dependencies based on the provided filter and pagination parameters.
@@ -2733,7 +2761,8 @@ class ProjectsLocationsDependenciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListDependenciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a dependency based on the update_mask provided in the request.
@@ -2782,7 +2811,8 @@ class ProjectsLocationsDependenciesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Dependency.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2790,7 +2820,7 @@ class ProjectsLocationsDeploymentsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDeploymentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a deployment resource in the API hub.
   ///
@@ -2844,7 +2874,8 @@ class ProjectsLocationsDeploymentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Deployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a deployment resource in the API hub.
@@ -2866,10 +2897,7 @@ class ProjectsLocationsDeploymentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2919,7 +2947,8 @@ class ProjectsLocationsDeploymentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Deployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List deployment resources in the API hub.
@@ -3055,7 +3084,8 @@ class ProjectsLocationsDeploymentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListDeploymentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a deployment resource in the API hub.
@@ -3108,7 +3138,8 @@ class ProjectsLocationsDeploymentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Deployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3116,13 +3147,14 @@ class ProjectsLocationsDiscoveredApiObservationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsResource
-      get discoveredApiOperations =>
-          ProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsResource(
-              _requester);
+  get discoveredApiOperations =>
+      ProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsResource(
+        _requester,
+      );
 
   ProjectsLocationsDiscoveredApiObservationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets a DiscoveredAPIObservation in a given project, location and
   /// ApiObservation.
@@ -3161,7 +3193,8 @@ class ProjectsLocationsDiscoveredApiObservationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1DiscoveredApiObservation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the DiscoveredAPIObservations in a given project and location.
@@ -3214,7 +3247,8 @@ class ProjectsLocationsDiscoveredApiObservationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListDiscoveredApiObservationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3222,8 +3256,8 @@ class ProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsResource 
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets a DiscoveredAPIOperation in a given project, location, ApiObservation
   /// and ApiOperation.
@@ -3262,7 +3296,8 @@ class ProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsResource 
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1DiscoveredApiOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the DiscoveredAPIOperations in a given project, location and
@@ -3316,7 +3351,8 @@ class ProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsResource 
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListDiscoveredApiOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3324,7 +3360,7 @@ class ProjectsLocationsExternalApisResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsExternalApisResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create an External API resource in the API hub.
   ///
@@ -3375,7 +3411,8 @@ class ProjectsLocationsExternalApisResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ExternalApi.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete an External API resource in the API hub.
@@ -3398,10 +3435,7 @@ class ProjectsLocationsExternalApisResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3452,7 +3486,8 @@ class ProjectsLocationsExternalApisResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ExternalApi.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List External API resources in the API hub.
@@ -3503,7 +3538,8 @@ class ProjectsLocationsExternalApisResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListExternalApisResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update an External API resource in the API hub.
@@ -3554,7 +3590,8 @@ class ProjectsLocationsExternalApisResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ExternalApi.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3562,7 +3599,7 @@ class ProjectsLocationsHostProjectRegistrationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsHostProjectRegistrationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a host project registration.
   ///
@@ -3617,7 +3654,8 @@ class ProjectsLocationsHostProjectRegistrationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1HostProjectRegistration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get a host project registration.
@@ -3655,7 +3693,8 @@ class ProjectsLocationsHostProjectRegistrationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1HostProjectRegistration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists host project registrations.
@@ -3726,7 +3765,8 @@ class ProjectsLocationsHostProjectRegistrationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListHostProjectRegistrationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3734,7 +3774,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -3808,10 +3848,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3863,7 +3900,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -3913,7 +3951,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3926,7 +3965,7 @@ class ProjectsLocationsPluginsResource {
       ProjectsLocationsPluginsStyleGuideResource(_requester);
 
   ProjectsLocationsPluginsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create an API Hub plugin resource in the API hub.
   ///
@@ -3981,7 +4020,8 @@ class ProjectsLocationsPluginsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Plugin.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a Plugin in API hub.
@@ -4021,7 +4061,8 @@ class ProjectsLocationsPluginsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Disables a plugin.
@@ -4066,7 +4107,8 @@ class ProjectsLocationsPluginsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Plugin.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Enables a plugin.
@@ -4111,7 +4153,8 @@ class ProjectsLocationsPluginsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Plugin.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get an API Hub plugin.
@@ -4149,7 +4192,8 @@ class ProjectsLocationsPluginsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1Plugin.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get the style guide being used for linting.
@@ -4187,7 +4231,8 @@ class ProjectsLocationsPluginsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1StyleGuide.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all the plugins in a given project and location.
@@ -4255,7 +4300,8 @@ class ProjectsLocationsPluginsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListPluginsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update the styleGuide to be used for liniting in by API hub.
@@ -4302,7 +4348,8 @@ class ProjectsLocationsPluginsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1StyleGuide.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4310,7 +4357,7 @@ class ProjectsLocationsPluginsInstancesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPluginsInstancesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Plugin instance in the API hub.
   ///
@@ -4362,7 +4409,8 @@ class ProjectsLocationsPluginsInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a plugin instance in the API hub.
@@ -4400,7 +4448,8 @@ class ProjectsLocationsPluginsInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Disables a plugin instance in the API hub.
@@ -4443,7 +4492,8 @@ class ProjectsLocationsPluginsInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Enables a plugin instance in the API hub.
@@ -4486,7 +4536,8 @@ class ProjectsLocationsPluginsInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Executes a plugin instance in the API hub.
@@ -4529,7 +4580,8 @@ class ProjectsLocationsPluginsInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get an API Hub plugin instance.
@@ -4567,7 +4619,8 @@ class ProjectsLocationsPluginsInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1PluginInstance.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all the plugins in a given project and location.
@@ -4648,7 +4701,8 @@ class ProjectsLocationsPluginsInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListPluginInstancesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a plugin instance in the API hub.
@@ -4702,7 +4756,8 @@ class ProjectsLocationsPluginsInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1PluginInstance.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4710,7 +4765,7 @@ class ProjectsLocationsPluginsStyleGuideResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPluginsStyleGuideResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Get the contents of the style guide.
   ///
@@ -4749,7 +4804,8 @@ class ProjectsLocationsPluginsStyleGuideResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1StyleGuideContents.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4757,8 +4813,8 @@ class ProjectsLocationsRuntimeProjectAttachmentsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRuntimeProjectAttachmentsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Attaches a runtime project to the host project.
   ///
@@ -4809,7 +4865,8 @@ class ProjectsLocationsRuntimeProjectAttachmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1RuntimeProjectAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a runtime project attachment in the API Hub.
@@ -4834,10 +4891,7 @@ class ProjectsLocationsRuntimeProjectAttachmentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4887,7 +4941,8 @@ class ProjectsLocationsRuntimeProjectAttachmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1RuntimeProjectAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List runtime projects attached to the host project.
@@ -4959,7 +5014,8 @@ class ProjectsLocationsRuntimeProjectAttachmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5011,29 +5067,33 @@ class GoogleCloudApihubV1APIMetadata {
   });
 
   GoogleCloudApihubV1APIMetadata.fromJson(core.Map json_)
-      : this(
-          api: json_.containsKey('api')
-              ? GoogleCloudApihubV1Api.fromJson(
-                  json_['api'] as core.Map<core.String, core.dynamic>)
-              : null,
-          originalCreateTime: json_['originalCreateTime'] as core.String?,
-          originalId: json_['originalId'] as core.String?,
-          originalUpdateTime: json_['originalUpdateTime'] as core.String?,
-          versions: (json_['versions'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1VersionMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        api:
+            json_.containsKey('api')
+                ? GoogleCloudApihubV1Api.fromJson(
+                  json_['api'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        originalCreateTime: json_['originalCreateTime'] as core.String?,
+        originalId: json_['originalId'] as core.String?,
+        originalUpdateTime: json_['originalUpdateTime'] as core.String?,
+        versions:
+            (json_['versions'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1VersionMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (api != null) 'api': api!,
-        if (originalCreateTime != null)
-          'originalCreateTime': originalCreateTime!,
-        if (originalId != null) 'originalId': originalId!,
-        if (originalUpdateTime != null)
-          'originalUpdateTime': originalUpdateTime!,
-        if (versions != null) 'versions': versions!,
-      };
+    if (api != null) 'api': api!,
+    if (originalCreateTime != null) 'originalCreateTime': originalCreateTime!,
+    if (originalId != null) 'originalId': originalId!,
+    if (originalUpdateTime != null) 'originalUpdateTime': originalUpdateTime!,
+    if (versions != null) 'versions': versions!,
+  };
 }
 
 /// The details for the action to execute.
@@ -5043,18 +5103,14 @@ class GoogleCloudApihubV1ActionExecutionDetail {
   /// Required.
   core.String? actionId;
 
-  GoogleCloudApihubV1ActionExecutionDetail({
-    this.actionId,
-  });
+  GoogleCloudApihubV1ActionExecutionDetail({this.actionId});
 
   GoogleCloudApihubV1ActionExecutionDetail.fromJson(core.Map json_)
-      : this(
-          actionId: json_['actionId'] as core.String?,
-        );
+    : this(actionId: json_['actionId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionId != null) 'actionId': actionId!,
-      };
+    if (actionId != null) 'actionId': actionId!,
+  };
 }
 
 /// The value that can be assigned to the attribute when the data type is enum.
@@ -5098,19 +5154,19 @@ class GoogleCloudApihubV1AllowedValue {
   });
 
   GoogleCloudApihubV1AllowedValue.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          id: json_['id'] as core.String?,
-          immutable: json_['immutable'] as core.bool?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+        immutable: json_['immutable'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (id != null) 'id': id!,
-        if (immutable != null) 'immutable': immutable!,
-      };
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (id != null) 'id': id!,
+    if (immutable != null) 'immutable': immutable!,
+  };
 }
 
 /// An API resource in the API Hub.
@@ -5307,101 +5363,124 @@ class GoogleCloudApihubV1Api {
   });
 
   GoogleCloudApihubV1Api.fromJson(core.Map json_)
-      : this(
-          apiFunctionalRequirements:
-              json_.containsKey('apiFunctionalRequirements')
-                  ? GoogleCloudApihubV1AttributeValues.fromJson(
-                      json_['apiFunctionalRequirements']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          apiRequirements: json_.containsKey('apiRequirements')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
+    : this(
+        apiFunctionalRequirements:
+            json_.containsKey('apiFunctionalRequirements')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['apiFunctionalRequirements']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        apiRequirements:
+            json_.containsKey('apiRequirements')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
                   json_['apiRequirements']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          apiStyle: json_.containsKey('apiStyle')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['apiStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          apiTechnicalRequirements:
-              json_.containsKey('apiTechnicalRequirements')
-                  ? GoogleCloudApihubV1AttributeValues.fromJson(
-                      json_['apiTechnicalRequirements']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudApihubV1AttributeValues.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        apiStyle:
+            json_.containsKey('apiStyle')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['apiStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        apiTechnicalRequirements:
+            json_.containsKey('apiTechnicalRequirements')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['apiTechnicalRequirements']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1AttributeValues.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          businessUnit: json_.containsKey('businessUnit')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['businessUnit'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          documentation: json_.containsKey('documentation')
-              ? GoogleCloudApihubV1Documentation.fromJson(
-                  json_['documentation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fingerprint: json_['fingerprint'] as core.String?,
-          maturityLevel: json_.containsKey('maturityLevel')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['maturityLevel'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          owner: json_.containsKey('owner')
-              ? GoogleCloudApihubV1Owner.fromJson(
-                  json_['owner'] as core.Map<core.String, core.dynamic>)
-              : null,
-          selectedVersion: json_['selectedVersion'] as core.String?,
-          sourceMetadata: (json_['sourceMetadata'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1SourceMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          targetUser: json_.containsKey('targetUser')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['targetUser'] as core.Map<core.String, core.dynamic>)
-              : null,
-          team: json_.containsKey('team')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['team'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-          versions: (json_['versions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+        businessUnit:
+            json_.containsKey('businessUnit')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['businessUnit'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        documentation:
+            json_.containsKey('documentation')
+                ? GoogleCloudApihubV1Documentation.fromJson(
+                  json_['documentation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fingerprint: json_['fingerprint'] as core.String?,
+        maturityLevel:
+            json_.containsKey('maturityLevel')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['maturityLevel'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        owner:
+            json_.containsKey('owner')
+                ? GoogleCloudApihubV1Owner.fromJson(
+                  json_['owner'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        selectedVersion: json_['selectedVersion'] as core.String?,
+        sourceMetadata:
+            (json_['sourceMetadata'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1SourceMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        targetUser:
+            json_.containsKey('targetUser')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['targetUser'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        team:
+            json_.containsKey('team')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['team'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+        versions:
+            (json_['versions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiFunctionalRequirements != null)
-          'apiFunctionalRequirements': apiFunctionalRequirements!,
-        if (apiRequirements != null) 'apiRequirements': apiRequirements!,
-        if (apiStyle != null) 'apiStyle': apiStyle!,
-        if (apiTechnicalRequirements != null)
-          'apiTechnicalRequirements': apiTechnicalRequirements!,
-        if (attributes != null) 'attributes': attributes!,
-        if (businessUnit != null) 'businessUnit': businessUnit!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (documentation != null) 'documentation': documentation!,
-        if (fingerprint != null) 'fingerprint': fingerprint!,
-        if (maturityLevel != null) 'maturityLevel': maturityLevel!,
-        if (name != null) 'name': name!,
-        if (owner != null) 'owner': owner!,
-        if (selectedVersion != null) 'selectedVersion': selectedVersion!,
-        if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
-        if (targetUser != null) 'targetUser': targetUser!,
-        if (team != null) 'team': team!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (versions != null) 'versions': versions!,
-      };
+    if (apiFunctionalRequirements != null)
+      'apiFunctionalRequirements': apiFunctionalRequirements!,
+    if (apiRequirements != null) 'apiRequirements': apiRequirements!,
+    if (apiStyle != null) 'apiStyle': apiStyle!,
+    if (apiTechnicalRequirements != null)
+      'apiTechnicalRequirements': apiTechnicalRequirements!,
+    if (attributes != null) 'attributes': attributes!,
+    if (businessUnit != null) 'businessUnit': businessUnit!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (documentation != null) 'documentation': documentation!,
+    if (fingerprint != null) 'fingerprint': fingerprint!,
+    if (maturityLevel != null) 'maturityLevel': maturityLevel!,
+    if (name != null) 'name': name!,
+    if (owner != null) 'owner': owner!,
+    if (selectedVersion != null) 'selectedVersion': selectedVersion!,
+    if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
+    if (targetUser != null) 'targetUser': targetUser!,
+    if (team != null) 'team': team!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (versions != null) 'versions': versions!,
+  };
 }
 
 /// The API data to be collected.
@@ -5411,22 +5490,22 @@ class GoogleCloudApihubV1ApiData {
   /// Optional.
   GoogleCloudApihubV1ApiMetadataList? apiMetadataList;
 
-  GoogleCloudApihubV1ApiData({
-    this.apiMetadataList,
-  });
+  GoogleCloudApihubV1ApiData({this.apiMetadataList});
 
   GoogleCloudApihubV1ApiData.fromJson(core.Map json_)
-      : this(
-          apiMetadataList: json_.containsKey('apiMetadataList')
-              ? GoogleCloudApihubV1ApiMetadataList.fromJson(
+    : this(
+        apiMetadataList:
+            json_.containsKey('apiMetadataList')
+                ? GoogleCloudApihubV1ApiMetadataList.fromJson(
                   json_['apiMetadataList']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiMetadataList != null) 'apiMetadataList': apiMetadataList!,
-      };
+    if (apiMetadataList != null) 'apiMetadataList': apiMetadataList!,
+  };
 }
 
 /// An ApiHubInstance represents the instance resources of the API Hub.
@@ -5502,36 +5581,34 @@ class GoogleCloudApihubV1ApiHubInstance {
   });
 
   GoogleCloudApihubV1ApiHubInstance.fromJson(core.Map json_)
-      : this(
-          config: json_.containsKey('config')
-              ? GoogleCloudApihubV1Config.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateMessage: json_['stateMessage'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        config:
+            json_.containsKey('config')
+                ? GoogleCloudApihubV1Config.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateMessage: json_['stateMessage'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (stateMessage != null) 'stateMessage': stateMessage!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (config != null) 'config': config!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (stateMessage != null) 'stateMessage': stateMessage!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// ApiHubResource is one of the resources such as Api, Operation, Deployment,
@@ -5582,41 +5659,53 @@ class GoogleCloudApihubV1ApiHubResource {
   });
 
   GoogleCloudApihubV1ApiHubResource.fromJson(core.Map json_)
-      : this(
-          api: json_.containsKey('api')
-              ? GoogleCloudApihubV1Api.fromJson(
-                  json_['api'] as core.Map<core.String, core.dynamic>)
-              : null,
-          definition: json_.containsKey('definition')
-              ? GoogleCloudApihubV1Definition.fromJson(
-                  json_['definition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deployment: json_.containsKey('deployment')
-              ? GoogleCloudApihubV1Deployment.fromJson(
-                  json_['deployment'] as core.Map<core.String, core.dynamic>)
-              : null,
-          operation: json_.containsKey('operation')
-              ? GoogleCloudApihubV1ApiOperation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          spec: json_.containsKey('spec')
-              ? GoogleCloudApihubV1Spec.fromJson(
-                  json_['spec'] as core.Map<core.String, core.dynamic>)
-              : null,
-          version: json_.containsKey('version')
-              ? GoogleCloudApihubV1Version.fromJson(
-                  json_['version'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        api:
+            json_.containsKey('api')
+                ? GoogleCloudApihubV1Api.fromJson(
+                  json_['api'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        definition:
+            json_.containsKey('definition')
+                ? GoogleCloudApihubV1Definition.fromJson(
+                  json_['definition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deployment:
+            json_.containsKey('deployment')
+                ? GoogleCloudApihubV1Deployment.fromJson(
+                  json_['deployment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        operation:
+            json_.containsKey('operation')
+                ? GoogleCloudApihubV1ApiOperation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spec:
+            json_.containsKey('spec')
+                ? GoogleCloudApihubV1Spec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version:
+            json_.containsKey('version')
+                ? GoogleCloudApihubV1Version.fromJson(
+                  json_['version'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (api != null) 'api': api!,
-        if (definition != null) 'definition': definition!,
-        if (deployment != null) 'deployment': deployment!,
-        if (operation != null) 'operation': operation!,
-        if (spec != null) 'spec': spec!,
-        if (version != null) 'version': version!,
-      };
+    if (api != null) 'api': api!,
+    if (definition != null) 'definition': definition!,
+    if (deployment != null) 'deployment': deployment!,
+    if (operation != null) 'operation': operation!,
+    if (spec != null) 'spec': spec!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Config for authentication with API key.
@@ -5660,21 +5749,23 @@ class GoogleCloudApihubV1ApiKeyConfig {
   });
 
   GoogleCloudApihubV1ApiKeyConfig.fromJson(core.Map json_)
-      : this(
-          apiKey: json_.containsKey('apiKey')
-              ? GoogleCloudApihubV1Secret.fromJson(
-                  json_['apiKey'] as core.Map<core.String, core.dynamic>)
-              : null,
-          httpElementLocation: json_['httpElementLocation'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        apiKey:
+            json_.containsKey('apiKey')
+                ? GoogleCloudApihubV1Secret.fromJson(
+                  json_['apiKey'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        httpElementLocation: json_['httpElementLocation'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiKey != null) 'apiKey': apiKey!,
-        if (httpElementLocation != null)
-          'httpElementLocation': httpElementLocation!,
-        if (name != null) 'name': name!,
-      };
+    if (apiKey != null) 'apiKey': apiKey!,
+    if (httpElementLocation != null)
+      'httpElementLocation': httpElementLocation!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The message to hold repeated API metadata.
@@ -5684,21 +5775,23 @@ class GoogleCloudApihubV1ApiMetadataList {
   /// Required.
   core.List<GoogleCloudApihubV1APIMetadata>? apiMetadata;
 
-  GoogleCloudApihubV1ApiMetadataList({
-    this.apiMetadata,
-  });
+  GoogleCloudApihubV1ApiMetadataList({this.apiMetadata});
 
   GoogleCloudApihubV1ApiMetadataList.fromJson(core.Map json_)
-      : this(
-          apiMetadata: (json_['apiMetadata'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1APIMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        apiMetadata:
+            (json_['apiMetadata'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1APIMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiMetadata != null) 'apiMetadata': apiMetadata!,
-      };
+    if (apiMetadata != null) 'apiMetadata': apiMetadata!,
+  };
 }
 
 /// Represents an operation contained in an API version in the API Hub.
@@ -5769,39 +5862,45 @@ class GoogleCloudApihubV1ApiOperation {
   });
 
   GoogleCloudApihubV1ApiOperation.fromJson(core.Map json_)
-      : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudApihubV1AttributeValues.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1AttributeValues.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          details: json_.containsKey('details')
-              ? GoogleCloudApihubV1OperationDetails.fromJson(
-                  json_['details'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          sourceMetadata: (json_['sourceMetadata'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1SourceMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          spec: json_['spec'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+        createTime: json_['createTime'] as core.String?,
+        details:
+            json_.containsKey('details')
+                ? GoogleCloudApihubV1OperationDetails.fromJson(
+                  json_['details'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        sourceMetadata:
+            (json_['sourceMetadata'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1SourceMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        spec: json_['spec'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (createTime != null) 'createTime': createTime!,
-        if (details != null) 'details': details!,
-        if (name != null) 'name': name!,
-        if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
-        if (spec != null) 'spec': spec!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (createTime != null) 'createTime': createTime!,
+    if (details != null) 'details': details!,
+    if (name != null) 'name': name!,
+    if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
+    if (spec != null) 'spec': spec!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The details of the Application Integration endpoint to be triggered for
@@ -5829,16 +5928,16 @@ class GoogleCloudApihubV1ApplicationIntegrationEndpointDetails {
   });
 
   GoogleCloudApihubV1ApplicationIntegrationEndpointDetails.fromJson(
-      core.Map json_)
-      : this(
-          triggerId: json_['triggerId'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        triggerId: json_['triggerId'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (triggerId != null) 'triggerId': triggerId!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (triggerId != null) 'triggerId': triggerId!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// An attribute in the API Hub.
@@ -5955,36 +6054,40 @@ class GoogleCloudApihubV1Attribute {
   });
 
   GoogleCloudApihubV1Attribute.fromJson(core.Map json_)
-      : this(
-          allowedValues: (json_['allowedValues'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1AllowedValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          cardinality: json_['cardinality'] as core.int?,
-          createTime: json_['createTime'] as core.String?,
-          dataType: json_['dataType'] as core.String?,
-          definitionType: json_['definitionType'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          mandatory: json_['mandatory'] as core.bool?,
-          name: json_['name'] as core.String?,
-          scope: json_['scope'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        allowedValues:
+            (json_['allowedValues'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1AllowedValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        cardinality: json_['cardinality'] as core.int?,
+        createTime: json_['createTime'] as core.String?,
+        dataType: json_['dataType'] as core.String?,
+        definitionType: json_['definitionType'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        mandatory: json_['mandatory'] as core.bool?,
+        name: json_['name'] as core.String?,
+        scope: json_['scope'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedValues != null) 'allowedValues': allowedValues!,
-        if (cardinality != null) 'cardinality': cardinality!,
-        if (createTime != null) 'createTime': createTime!,
-        if (dataType != null) 'dataType': dataType!,
-        if (definitionType != null) 'definitionType': definitionType!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (mandatory != null) 'mandatory': mandatory!,
-        if (name != null) 'name': name!,
-        if (scope != null) 'scope': scope!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (allowedValues != null) 'allowedValues': allowedValues!,
+    if (cardinality != null) 'cardinality': cardinality!,
+    if (createTime != null) 'createTime': createTime!,
+    if (dataType != null) 'dataType': dataType!,
+    if (definitionType != null) 'definitionType': definitionType!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (mandatory != null) 'mandatory': mandatory!,
+    if (name != null) 'name': name!,
+    if (scope != null) 'scope': scope!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The attribute values associated with resource.
@@ -6021,33 +6124,41 @@ class GoogleCloudApihubV1AttributeValues {
   });
 
   GoogleCloudApihubV1AttributeValues.fromJson(core.Map json_)
-      : this(
-          attribute: json_['attribute'] as core.String?,
-          enumValues: json_.containsKey('enumValues')
-              ? GoogleCloudApihubV1EnumAttributeValues.fromJson(
-                  json_['enumValues'] as core.Map<core.String, core.dynamic>)
-              : null,
-          jsonValues: json_.containsKey('jsonValues')
-              ? GoogleCloudApihubV1StringAttributeValues.fromJson(
-                  json_['jsonValues'] as core.Map<core.String, core.dynamic>)
-              : null,
-          stringValues: json_.containsKey('stringValues')
-              ? GoogleCloudApihubV1StringAttributeValues.fromJson(
-                  json_['stringValues'] as core.Map<core.String, core.dynamic>)
-              : null,
-          uriValues: json_.containsKey('uriValues')
-              ? GoogleCloudApihubV1StringAttributeValues.fromJson(
-                  json_['uriValues'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        attribute: json_['attribute'] as core.String?,
+        enumValues:
+            json_.containsKey('enumValues')
+                ? GoogleCloudApihubV1EnumAttributeValues.fromJson(
+                  json_['enumValues'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        jsonValues:
+            json_.containsKey('jsonValues')
+                ? GoogleCloudApihubV1StringAttributeValues.fromJson(
+                  json_['jsonValues'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stringValues:
+            json_.containsKey('stringValues')
+                ? GoogleCloudApihubV1StringAttributeValues.fromJson(
+                  json_['stringValues'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uriValues:
+            json_.containsKey('uriValues')
+                ? GoogleCloudApihubV1StringAttributeValues.fromJson(
+                  json_['uriValues'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attribute != null) 'attribute': attribute!,
-        if (enumValues != null) 'enumValues': enumValues!,
-        if (jsonValues != null) 'jsonValues': jsonValues!,
-        if (stringValues != null) 'stringValues': stringValues!,
-        if (uriValues != null) 'uriValues': uriValues!,
-      };
+    if (attribute != null) 'attribute': attribute!,
+    if (enumValues != null) 'enumValues': enumValues!,
+    if (jsonValues != null) 'jsonValues': jsonValues!,
+    if (stringValues != null) 'stringValues': stringValues!,
+    if (uriValues != null) 'uriValues': uriValues!,
+  };
 }
 
 /// AuthConfig represents the authentication information.
@@ -6073,7 +6184,7 @@ class GoogleCloudApihubV1AuthConfig {
 
   /// Oauth2.0 Client Credentials.
   GoogleCloudApihubV1Oauth2ClientCredentialsConfig?
-      oauth2ClientCredentialsConfig;
+  oauth2ClientCredentialsConfig;
 
   /// User Password.
   GoogleCloudApihubV1UserPasswordConfig? userPasswordConfig;
@@ -6087,41 +6198,46 @@ class GoogleCloudApihubV1AuthConfig {
   });
 
   GoogleCloudApihubV1AuthConfig.fromJson(core.Map json_)
-      : this(
-          apiKeyConfig: json_.containsKey('apiKeyConfig')
-              ? GoogleCloudApihubV1ApiKeyConfig.fromJson(
-                  json_['apiKeyConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          authType: json_['authType'] as core.String?,
-          googleServiceAccountConfig:
-              json_.containsKey('googleServiceAccountConfig')
-                  ? GoogleCloudApihubV1GoogleServiceAccountConfig.fromJson(
-                      json_['googleServiceAccountConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          oauth2ClientCredentialsConfig:
-              json_.containsKey('oauth2ClientCredentialsConfig')
-                  ? GoogleCloudApihubV1Oauth2ClientCredentialsConfig.fromJson(
-                      json_['oauth2ClientCredentialsConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          userPasswordConfig: json_.containsKey('userPasswordConfig')
-              ? GoogleCloudApihubV1UserPasswordConfig.fromJson(
+    : this(
+        apiKeyConfig:
+            json_.containsKey('apiKeyConfig')
+                ? GoogleCloudApihubV1ApiKeyConfig.fromJson(
+                  json_['apiKeyConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        authType: json_['authType'] as core.String?,
+        googleServiceAccountConfig:
+            json_.containsKey('googleServiceAccountConfig')
+                ? GoogleCloudApihubV1GoogleServiceAccountConfig.fromJson(
+                  json_['googleServiceAccountConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oauth2ClientCredentialsConfig:
+            json_.containsKey('oauth2ClientCredentialsConfig')
+                ? GoogleCloudApihubV1Oauth2ClientCredentialsConfig.fromJson(
+                  json_['oauth2ClientCredentialsConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userPasswordConfig:
+            json_.containsKey('userPasswordConfig')
+                ? GoogleCloudApihubV1UserPasswordConfig.fromJson(
                   json_['userPasswordConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiKeyConfig != null) 'apiKeyConfig': apiKeyConfig!,
-        if (authType != null) 'authType': authType!,
-        if (googleServiceAccountConfig != null)
-          'googleServiceAccountConfig': googleServiceAccountConfig!,
-        if (oauth2ClientCredentialsConfig != null)
-          'oauth2ClientCredentialsConfig': oauth2ClientCredentialsConfig!,
-        if (userPasswordConfig != null)
-          'userPasswordConfig': userPasswordConfig!,
-      };
+    if (apiKeyConfig != null) 'apiKeyConfig': apiKeyConfig!,
+    if (authType != null) 'authType': authType!,
+    if (googleServiceAccountConfig != null)
+      'googleServiceAccountConfig': googleServiceAccountConfig!,
+    if (oauth2ClientCredentialsConfig != null)
+      'oauth2ClientCredentialsConfig': oauth2ClientCredentialsConfig!,
+    if (userPasswordConfig != null) 'userPasswordConfig': userPasswordConfig!,
+  };
 }
 
 /// AuthConfigTemplate represents the authentication template for a plugin.
@@ -6151,22 +6267,24 @@ class GoogleCloudApihubV1AuthConfigTemplate {
   });
 
   GoogleCloudApihubV1AuthConfigTemplate.fromJson(core.Map json_)
-      : this(
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? GoogleCloudApihubV1GoogleServiceAccountConfig.fromJson(
+    : this(
+        serviceAccount:
+            json_.containsKey('serviceAccount')
+                ? GoogleCloudApihubV1GoogleServiceAccountConfig.fromJson(
                   json_['serviceAccount']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          supportedAuthTypes: (json_['supportedAuthTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        supportedAuthTypes:
+            (json_['supportedAuthTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (supportedAuthTypes != null)
-          'supportedAuthTypes': supportedAuthTypes!,
-      };
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (supportedAuthTypes != null) 'supportedAuthTypes': supportedAuthTypes!,
+  };
 }
 
 /// The CollectApiData method's request.
@@ -6214,22 +6332,24 @@ class GoogleCloudApihubV1CollectApiDataRequest {
   });
 
   GoogleCloudApihubV1CollectApiDataRequest.fromJson(core.Map json_)
-      : this(
-          actionId: json_['actionId'] as core.String?,
-          apiData: json_.containsKey('apiData')
-              ? GoogleCloudApihubV1ApiData.fromJson(
-                  json_['apiData'] as core.Map<core.String, core.dynamic>)
-              : null,
-          collectionType: json_['collectionType'] as core.String?,
-          pluginInstance: json_['pluginInstance'] as core.String?,
-        );
+    : this(
+        actionId: json_['actionId'] as core.String?,
+        apiData:
+            json_.containsKey('apiData')
+                ? GoogleCloudApihubV1ApiData.fromJson(
+                  json_['apiData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        collectionType: json_['collectionType'] as core.String?,
+        pluginInstance: json_['pluginInstance'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionId != null) 'actionId': actionId!,
-        if (apiData != null) 'apiData': apiData!,
-        if (collectionType != null) 'collectionType': collectionType!,
-        if (pluginInstance != null) 'pluginInstance': pluginInstance!,
-      };
+    if (actionId != null) 'actionId': actionId!,
+    if (apiData != null) 'apiData': apiData!,
+    if (collectionType != null) 'collectionType': collectionType!,
+    if (pluginInstance != null) 'pluginInstance': pluginInstance!,
+  };
 }
 
 /// Available configurations to provision an ApiHub Instance.
@@ -6276,19 +6396,19 @@ class GoogleCloudApihubV1Config {
   });
 
   GoogleCloudApihubV1Config.fromJson(core.Map json_)
-      : this(
-          cmekKeyName: json_['cmekKeyName'] as core.String?,
-          disableSearch: json_['disableSearch'] as core.bool?,
-          encryptionType: json_['encryptionType'] as core.String?,
-          vertexLocation: json_['vertexLocation'] as core.String?,
-        );
+    : this(
+        cmekKeyName: json_['cmekKeyName'] as core.String?,
+        disableSearch: json_['disableSearch'] as core.bool?,
+        encryptionType: json_['encryptionType'] as core.String?,
+        vertexLocation: json_['vertexLocation'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cmekKeyName != null) 'cmekKeyName': cmekKeyName!,
-        if (disableSearch != null) 'disableSearch': disableSearch!,
-        if (encryptionType != null) 'encryptionType': encryptionType!,
-        if (vertexLocation != null) 'vertexLocation': vertexLocation!,
-      };
+    if (cmekKeyName != null) 'cmekKeyName': cmekKeyName!,
+    if (disableSearch != null) 'disableSearch': disableSearch!,
+    if (encryptionType != null) 'encryptionType': encryptionType!,
+    if (vertexLocation != null) 'vertexLocation': vertexLocation!,
+  };
 }
 
 /// ConfigTemplate represents the configuration template for a plugin.
@@ -6298,7 +6418,7 @@ class GoogleCloudApihubV1ConfigTemplate {
   ///
   /// Optional.
   core.List<GoogleCloudApihubV1ConfigVariableTemplate>?
-      additionalConfigTemplate;
+  additionalConfigTemplate;
 
   /// The authentication template for the plugin.
   ///
@@ -6311,26 +6431,29 @@ class GoogleCloudApihubV1ConfigTemplate {
   });
 
   GoogleCloudApihubV1ConfigTemplate.fromJson(core.Map json_)
-      : this(
-          additionalConfigTemplate:
-              (json_['additionalConfigTemplate'] as core.List?)
-                  ?.map((value) =>
-                      GoogleCloudApihubV1ConfigVariableTemplate.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          authConfigTemplate: json_.containsKey('authConfigTemplate')
-              ? GoogleCloudApihubV1AuthConfigTemplate.fromJson(
+    : this(
+        additionalConfigTemplate:
+            (json_['additionalConfigTemplate'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1ConfigVariableTemplate.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        authConfigTemplate:
+            json_.containsKey('authConfigTemplate')
+                ? GoogleCloudApihubV1AuthConfigTemplate.fromJson(
                   json_['authConfigTemplate']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalConfigTemplate != null)
-          'additionalConfigTemplate': additionalConfigTemplate!,
-        if (authConfigTemplate != null)
-          'authConfigTemplate': authConfigTemplate!,
-      };
+    if (additionalConfigTemplate != null)
+      'additionalConfigTemplate': additionalConfigTemplate!,
+    if (authConfigTemplate != null) 'authConfigTemplate': authConfigTemplate!,
+  };
 }
 
 /// ConfigValueOption represents an option for a config variable of type enum or
@@ -6358,17 +6481,17 @@ class GoogleCloudApihubV1ConfigValueOption {
   });
 
   GoogleCloudApihubV1ConfigValueOption.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          id: json_['id'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (id != null) 'id': id!,
-      };
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (id != null) 'id': id!,
+  };
 }
 
 /// ConfigVariable represents a additional configuration variable present in a
@@ -6433,47 +6556,57 @@ class GoogleCloudApihubV1ConfigVariable {
   });
 
   GoogleCloudApihubV1ConfigVariable.fromJson(core.Map json_)
-      : this(
-          boolValue: json_['boolValue'] as core.bool?,
-          enumValue: json_.containsKey('enumValue')
-              ? GoogleCloudApihubV1ConfigValueOption.fromJson(
-                  json_['enumValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          intValue: json_['intValue'] as core.String?,
-          key: json_['key'] as core.String?,
-          multiIntValues: json_.containsKey('multiIntValues')
-              ? GoogleCloudApihubV1MultiIntValues.fromJson(
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        enumValue:
+            json_.containsKey('enumValue')
+                ? GoogleCloudApihubV1ConfigValueOption.fromJson(
+                  json_['enumValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        intValue: json_['intValue'] as core.String?,
+        key: json_['key'] as core.String?,
+        multiIntValues:
+            json_.containsKey('multiIntValues')
+                ? GoogleCloudApihubV1MultiIntValues.fromJson(
                   json_['multiIntValues']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          multiSelectValues: json_.containsKey('multiSelectValues')
-              ? GoogleCloudApihubV1MultiSelectValues.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        multiSelectValues:
+            json_.containsKey('multiSelectValues')
+                ? GoogleCloudApihubV1MultiSelectValues.fromJson(
                   json_['multiSelectValues']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          multiStringValues: json_.containsKey('multiStringValues')
-              ? GoogleCloudApihubV1MultiStringValues.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        multiStringValues:
+            json_.containsKey('multiStringValues')
+                ? GoogleCloudApihubV1MultiStringValues.fromJson(
                   json_['multiStringValues']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          secretValue: json_.containsKey('secretValue')
-              ? GoogleCloudApihubV1Secret.fromJson(
-                  json_['secretValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          stringValue: json_['stringValue'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        secretValue:
+            json_.containsKey('secretValue')
+                ? GoogleCloudApihubV1Secret.fromJson(
+                  json_['secretValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stringValue: json_['stringValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (enumValue != null) 'enumValue': enumValue!,
-        if (intValue != null) 'intValue': intValue!,
-        if (key != null) 'key': key!,
-        if (multiIntValues != null) 'multiIntValues': multiIntValues!,
-        if (multiSelectValues != null) 'multiSelectValues': multiSelectValues!,
-        if (multiStringValues != null) 'multiStringValues': multiStringValues!,
-        if (secretValue != null) 'secretValue': secretValue!,
-        if (stringValue != null) 'stringValue': stringValue!,
-      };
+    if (boolValue != null) 'boolValue': boolValue!,
+    if (enumValue != null) 'enumValue': enumValue!,
+    if (intValue != null) 'intValue': intValue!,
+    if (key != null) 'key': key!,
+    if (multiIntValues != null) 'multiIntValues': multiIntValues!,
+    if (multiSelectValues != null) 'multiSelectValues': multiSelectValues!,
+    if (multiStringValues != null) 'multiStringValues': multiStringValues!,
+    if (secretValue != null) 'secretValue': secretValue!,
+    if (stringValue != null) 'stringValue': stringValue!,
+  };
 }
 
 /// ConfigVariableTemplate represents a configuration variable template present
@@ -6543,32 +6676,39 @@ class GoogleCloudApihubV1ConfigVariableTemplate {
   });
 
   GoogleCloudApihubV1ConfigVariableTemplate.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          enumOptions: (json_['enumOptions'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1ConfigValueOption.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          id: json_['id'] as core.String?,
-          multiSelectOptions: (json_['multiSelectOptions'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1ConfigValueOption.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          required: json_['required'] as core.bool?,
-          validationRegex: json_['validationRegex'] as core.String?,
-          valueType: json_['valueType'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        enumOptions:
+            (json_['enumOptions'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1ConfigValueOption.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        id: json_['id'] as core.String?,
+        multiSelectOptions:
+            (json_['multiSelectOptions'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1ConfigValueOption.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        required: json_['required'] as core.bool?,
+        validationRegex: json_['validationRegex'] as core.String?,
+        valueType: json_['valueType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (enumOptions != null) 'enumOptions': enumOptions!,
-        if (id != null) 'id': id!,
-        if (multiSelectOptions != null)
-          'multiSelectOptions': multiSelectOptions!,
-        if (required != null) 'required': required!,
-        if (validationRegex != null) 'validationRegex': validationRegex!,
-        if (valueType != null) 'valueType': valueType!,
-      };
+    if (description != null) 'description': description!,
+    if (enumOptions != null) 'enumOptions': enumOptions!,
+    if (id != null) 'id': id!,
+    if (multiSelectOptions != null) 'multiSelectOptions': multiSelectOptions!,
+    if (required != null) 'required': required!,
+    if (validationRegex != null) 'validationRegex': validationRegex!,
+    if (valueType != null) 'valueType': valueType!,
+  };
 }
 
 /// A curation resource in the API Hub.
@@ -6653,44 +6793,47 @@ class GoogleCloudApihubV1Curation {
   });
 
   GoogleCloudApihubV1Curation.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          endpoint: json_.containsKey('endpoint')
-              ? GoogleCloudApihubV1Endpoint.fromJson(
-                  json_['endpoint'] as core.Map<core.String, core.dynamic>)
-              : null,
-          lastExecutionErrorCode:
-              json_['lastExecutionErrorCode'] as core.String?,
-          lastExecutionErrorMessage:
-              json_['lastExecutionErrorMessage'] as core.String?,
-          lastExecutionState: json_['lastExecutionState'] as core.String?,
-          name: json_['name'] as core.String?,
-          pluginInstanceActions: (json_['pluginInstanceActions'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudApihubV1PluginInstanceActionID.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        endpoint:
+            json_.containsKey('endpoint')
+                ? GoogleCloudApihubV1Endpoint.fromJson(
+                  json_['endpoint'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lastExecutionErrorCode: json_['lastExecutionErrorCode'] as core.String?,
+        lastExecutionErrorMessage:
+            json_['lastExecutionErrorMessage'] as core.String?,
+        lastExecutionState: json_['lastExecutionState'] as core.String?,
+        name: json_['name'] as core.String?,
+        pluginInstanceActions:
+            (json_['pluginInstanceActions'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1PluginInstanceActionID.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (endpoint != null) 'endpoint': endpoint!,
-        if (lastExecutionErrorCode != null)
-          'lastExecutionErrorCode': lastExecutionErrorCode!,
-        if (lastExecutionErrorMessage != null)
-          'lastExecutionErrorMessage': lastExecutionErrorMessage!,
-        if (lastExecutionState != null)
-          'lastExecutionState': lastExecutionState!,
-        if (name != null) 'name': name!,
-        if (pluginInstanceActions != null)
-          'pluginInstanceActions': pluginInstanceActions!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (endpoint != null) 'endpoint': endpoint!,
+    if (lastExecutionErrorCode != null)
+      'lastExecutionErrorCode': lastExecutionErrorCode!,
+    if (lastExecutionErrorMessage != null)
+      'lastExecutionErrorMessage': lastExecutionErrorMessage!,
+    if (lastExecutionState != null) 'lastExecutionState': lastExecutionState!,
+    if (name != null) 'name': name!,
+    if (pluginInstanceActions != null)
+      'pluginInstanceActions': pluginInstanceActions!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The curation information for this plugin instance.
@@ -6711,25 +6854,24 @@ class GoogleCloudApihubV1CurationConfig {
   /// Optional.
   GoogleCloudApihubV1CustomCuration? customCuration;
 
-  GoogleCloudApihubV1CurationConfig({
-    this.curationType,
-    this.customCuration,
-  });
+  GoogleCloudApihubV1CurationConfig({this.curationType, this.customCuration});
 
   GoogleCloudApihubV1CurationConfig.fromJson(core.Map json_)
-      : this(
-          curationType: json_['curationType'] as core.String?,
-          customCuration: json_.containsKey('customCuration')
-              ? GoogleCloudApihubV1CustomCuration.fromJson(
+    : this(
+        curationType: json_['curationType'] as core.String?,
+        customCuration:
+            json_.containsKey('customCuration')
+                ? GoogleCloudApihubV1CustomCuration.fromJson(
                   json_['customCuration']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (curationType != null) 'curationType': curationType!,
-        if (customCuration != null) 'customCuration': customCuration!,
-      };
+    if (curationType != null) 'curationType': curationType!,
+    if (customCuration != null) 'customCuration': customCuration!,
+  };
 }
 
 /// Custom curation information for this plugin instance.
@@ -6742,18 +6884,14 @@ class GoogleCloudApihubV1CustomCuration {
   /// Required.
   core.String? curation;
 
-  GoogleCloudApihubV1CustomCuration({
-    this.curation,
-  });
+  GoogleCloudApihubV1CustomCuration({this.curation});
 
   GoogleCloudApihubV1CustomCuration.fromJson(core.Map json_)
-      : this(
-          curation: json_['curation'] as core.String?,
-        );
+    : this(curation: json_['curation'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (curation != null) 'curation': curation!,
-      };
+    if (curation != null) 'curation': curation!,
+  };
 }
 
 /// Represents a definition for example schema, request, response definitions
@@ -6823,36 +6961,38 @@ class GoogleCloudApihubV1Definition {
   });
 
   GoogleCloudApihubV1Definition.fromJson(core.Map json_)
-      : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudApihubV1AttributeValues.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1AttributeValues.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          schema: json_.containsKey('schema')
-              ? GoogleCloudApihubV1Schema.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>)
-              : null,
-          spec: json_['spec'] as core.String?,
-          type: json_['type'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        schema:
+            json_.containsKey('schema')
+                ? GoogleCloudApihubV1Schema.fromJson(
+                  json_['schema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spec: json_['spec'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (schema != null) 'schema': schema!,
-        if (spec != null) 'spec': spec!,
-        if (type != null) 'type': type!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (schema != null) 'schema': schema!,
+    if (spec != null) 'spec': spec!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A dependency resource defined in the API hub describes a dependency directed
@@ -6941,48 +7081,54 @@ class GoogleCloudApihubV1Dependency {
   });
 
   GoogleCloudApihubV1Dependency.fromJson(core.Map json_)
-      : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudApihubV1AttributeValues.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1AttributeValues.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          consumer: json_.containsKey('consumer')
-              ? GoogleCloudApihubV1DependencyEntityReference.fromJson(
-                  json_['consumer'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          discoveryMode: json_['discoveryMode'] as core.String?,
-          errorDetail: json_.containsKey('errorDetail')
-              ? GoogleCloudApihubV1DependencyErrorDetail.fromJson(
-                  json_['errorDetail'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          supplier: json_.containsKey('supplier')
-              ? GoogleCloudApihubV1DependencyEntityReference.fromJson(
-                  json_['supplier'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+        consumer:
+            json_.containsKey('consumer')
+                ? GoogleCloudApihubV1DependencyEntityReference.fromJson(
+                  json_['consumer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        discoveryMode: json_['discoveryMode'] as core.String?,
+        errorDetail:
+            json_.containsKey('errorDetail')
+                ? GoogleCloudApihubV1DependencyErrorDetail.fromJson(
+                  json_['errorDetail'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        supplier:
+            json_.containsKey('supplier')
+                ? GoogleCloudApihubV1DependencyEntityReference.fromJson(
+                  json_['supplier'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (consumer != null) 'consumer': consumer!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (discoveryMode != null) 'discoveryMode': discoveryMode!,
-        if (errorDetail != null) 'errorDetail': errorDetail!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (supplier != null) 'supplier': supplier!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (consumer != null) 'consumer': consumer!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (discoveryMode != null) 'discoveryMode': discoveryMode!,
+    if (errorDetail != null) 'errorDetail': errorDetail!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (supplier != null) 'supplier': supplier!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Reference to an entity participating in a dependency.
@@ -7011,20 +7157,20 @@ class GoogleCloudApihubV1DependencyEntityReference {
   });
 
   GoogleCloudApihubV1DependencyEntityReference.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          externalApiResourceName:
-              json_['externalApiResourceName'] as core.String?,
-          operationResourceName: json_['operationResourceName'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        externalApiResourceName:
+            json_['externalApiResourceName'] as core.String?,
+        operationResourceName: json_['operationResourceName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (externalApiResourceName != null)
-          'externalApiResourceName': externalApiResourceName!,
-        if (operationResourceName != null)
-          'operationResourceName': operationResourceName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (externalApiResourceName != null)
+      'externalApiResourceName': externalApiResourceName!,
+    if (operationResourceName != null)
+      'operationResourceName': operationResourceName!,
+  };
 }
 
 /// Details describing error condition of a dependency.
@@ -7043,21 +7189,18 @@ class GoogleCloudApihubV1DependencyErrorDetail {
   /// Optional.
   core.String? errorTime;
 
-  GoogleCloudApihubV1DependencyErrorDetail({
-    this.error,
-    this.errorTime,
-  });
+  GoogleCloudApihubV1DependencyErrorDetail({this.error, this.errorTime});
 
   GoogleCloudApihubV1DependencyErrorDetail.fromJson(core.Map json_)
-      : this(
-          error: json_['error'] as core.String?,
-          errorTime: json_['errorTime'] as core.String?,
-        );
+    : this(
+        error: json_['error'] as core.String?,
+        errorTime: json_['errorTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!,
-        if (errorTime != null) 'errorTime': errorTime!,
-      };
+    if (error != null) 'error': error!,
+    if (errorTime != null) 'errorTime': errorTime!,
+  };
 }
 
 /// Details of the deployment where APIs are hosted.
@@ -7236,81 +7379,99 @@ class GoogleCloudApihubV1Deployment {
   });
 
   GoogleCloudApihubV1Deployment.fromJson(core.Map json_)
-      : this(
-          apiVersions: (json_['apiVersions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudApihubV1AttributeValues.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        apiVersions:
+            (json_['apiVersions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1AttributeValues.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          deploymentType: json_.containsKey('deploymentType')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
+        createTime: json_['createTime'] as core.String?,
+        deploymentType:
+            json_.containsKey('deploymentType')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
                   json_['deploymentType']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          documentation: json_.containsKey('documentation')
-              ? GoogleCloudApihubV1Documentation.fromJson(
-                  json_['documentation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          endpoints: (json_['endpoints'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          environment: json_.containsKey('environment')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['environment'] as core.Map<core.String, core.dynamic>)
-              : null,
-          managementUrl: json_.containsKey('managementUrl')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['managementUrl'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          resourceUri: json_['resourceUri'] as core.String?,
-          slo: json_.containsKey('slo')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['slo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceEnvironment: json_['sourceEnvironment'] as core.String?,
-          sourceMetadata: (json_['sourceMetadata'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1SourceMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          sourceProject: json_['sourceProject'] as core.String?,
-          sourceUri: json_.containsKey('sourceUri')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['sourceUri'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        documentation:
+            json_.containsKey('documentation')
+                ? GoogleCloudApihubV1Documentation.fromJson(
+                  json_['documentation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endpoints:
+            (json_['endpoints'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        environment:
+            json_.containsKey('environment')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['environment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        managementUrl:
+            json_.containsKey('managementUrl')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['managementUrl'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        resourceUri: json_['resourceUri'] as core.String?,
+        slo:
+            json_.containsKey('slo')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['slo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceEnvironment: json_['sourceEnvironment'] as core.String?,
+        sourceMetadata:
+            (json_['sourceMetadata'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1SourceMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        sourceProject: json_['sourceProject'] as core.String?,
+        sourceUri:
+            json_.containsKey('sourceUri')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['sourceUri'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersions != null) 'apiVersions': apiVersions!,
-        if (attributes != null) 'attributes': attributes!,
-        if (createTime != null) 'createTime': createTime!,
-        if (deploymentType != null) 'deploymentType': deploymentType!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (documentation != null) 'documentation': documentation!,
-        if (endpoints != null) 'endpoints': endpoints!,
-        if (environment != null) 'environment': environment!,
-        if (managementUrl != null) 'managementUrl': managementUrl!,
-        if (name != null) 'name': name!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-        if (slo != null) 'slo': slo!,
-        if (sourceEnvironment != null) 'sourceEnvironment': sourceEnvironment!,
-        if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
-        if (sourceProject != null) 'sourceProject': sourceProject!,
-        if (sourceUri != null) 'sourceUri': sourceUri!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (apiVersions != null) 'apiVersions': apiVersions!,
+    if (attributes != null) 'attributes': attributes!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deploymentType != null) 'deploymentType': deploymentType!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (documentation != null) 'documentation': documentation!,
+    if (endpoints != null) 'endpoints': endpoints!,
+    if (environment != null) 'environment': environment!,
+    if (managementUrl != null) 'managementUrl': managementUrl!,
+    if (name != null) 'name': name!,
+    if (resourceUri != null) 'resourceUri': resourceUri!,
+    if (slo != null) 'slo': slo!,
+    if (sourceEnvironment != null) 'sourceEnvironment': sourceEnvironment!,
+    if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
+    if (sourceProject != null) 'sourceProject': sourceProject!,
+    if (sourceUri != null) 'sourceUri': sourceUri!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The metadata associated with a deployment.
@@ -7346,24 +7507,24 @@ class GoogleCloudApihubV1DeploymentMetadata {
   });
 
   GoogleCloudApihubV1DeploymentMetadata.fromJson(core.Map json_)
-      : this(
-          deployment: json_.containsKey('deployment')
-              ? GoogleCloudApihubV1Deployment.fromJson(
-                  json_['deployment'] as core.Map<core.String, core.dynamic>)
-              : null,
-          originalCreateTime: json_['originalCreateTime'] as core.String?,
-          originalId: json_['originalId'] as core.String?,
-          originalUpdateTime: json_['originalUpdateTime'] as core.String?,
-        );
+    : this(
+        deployment:
+            json_.containsKey('deployment')
+                ? GoogleCloudApihubV1Deployment.fromJson(
+                  json_['deployment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        originalCreateTime: json_['originalCreateTime'] as core.String?,
+        originalId: json_['originalId'] as core.String?,
+        originalUpdateTime: json_['originalUpdateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deployment != null) 'deployment': deployment!,
-        if (originalCreateTime != null)
-          'originalCreateTime': originalCreateTime!,
-        if (originalId != null) 'originalId': originalId!,
-        if (originalUpdateTime != null)
-          'originalUpdateTime': originalUpdateTime!,
-      };
+    if (deployment != null) 'deployment': deployment!,
+    if (originalCreateTime != null) 'originalCreateTime': originalCreateTime!,
+    if (originalId != null) 'originalId': originalId!,
+    if (originalUpdateTime != null) 'originalUpdateTime': originalUpdateTime!,
+  };
 }
 
 /// The DisablePluginInstanceAction method's request.
@@ -7373,18 +7534,14 @@ class GoogleCloudApihubV1DisablePluginInstanceActionRequest {
   /// Required.
   core.String? actionId;
 
-  GoogleCloudApihubV1DisablePluginInstanceActionRequest({
-    this.actionId,
-  });
+  GoogleCloudApihubV1DisablePluginInstanceActionRequest({this.actionId});
 
   GoogleCloudApihubV1DisablePluginInstanceActionRequest.fromJson(core.Map json_)
-      : this(
-          actionId: json_['actionId'] as core.String?,
-        );
+    : this(actionId: json_['actionId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionId != null) 'actionId': actionId!,
-      };
+    if (actionId != null) 'actionId': actionId!,
+  };
 }
 
 /// The DisablePlugin method's request.
@@ -7491,53 +7648,57 @@ class GoogleCloudApihubV1DiscoveredApiObservation {
   });
 
   GoogleCloudApihubV1DiscoveredApiObservation.fromJson(core.Map json_)
-      : this(
-          apiOperationCount: json_['apiOperationCount'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          hostname: json_['hostname'] as core.String?,
-          knownOperationsCount: json_['knownOperationsCount'] as core.String?,
-          lastEventDetectedTime: json_['lastEventDetectedTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          origin: json_['origin'] as core.String?,
-          serverIps: (json_['serverIps'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          sourceLocations: (json_['sourceLocations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          sourceMetadata: json_.containsKey('sourceMetadata')
-              ? GoogleCloudApihubV1SourceMetadata.fromJson(
+    : this(
+        apiOperationCount: json_['apiOperationCount'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        hostname: json_['hostname'] as core.String?,
+        knownOperationsCount: json_['knownOperationsCount'] as core.String?,
+        lastEventDetectedTime: json_['lastEventDetectedTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        origin: json_['origin'] as core.String?,
+        serverIps:
+            (json_['serverIps'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        sourceLocations:
+            (json_['sourceLocations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        sourceMetadata:
+            json_.containsKey('sourceMetadata')
+                ? GoogleCloudApihubV1SourceMetadata.fromJson(
                   json_['sourceMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceTypes: (json_['sourceTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          style: json_['style'] as core.String?,
-          unknownOperationsCount:
-              json_['unknownOperationsCount'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceTypes:
+            (json_['sourceTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        style: json_['style'] as core.String?,
+        unknownOperationsCount: json_['unknownOperationsCount'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiOperationCount != null) 'apiOperationCount': apiOperationCount!,
-        if (createTime != null) 'createTime': createTime!,
-        if (hostname != null) 'hostname': hostname!,
-        if (knownOperationsCount != null)
-          'knownOperationsCount': knownOperationsCount!,
-        if (lastEventDetectedTime != null)
-          'lastEventDetectedTime': lastEventDetectedTime!,
-        if (name != null) 'name': name!,
-        if (origin != null) 'origin': origin!,
-        if (serverIps != null) 'serverIps': serverIps!,
-        if (sourceLocations != null) 'sourceLocations': sourceLocations!,
-        if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
-        if (sourceTypes != null) 'sourceTypes': sourceTypes!,
-        if (style != null) 'style': style!,
-        if (unknownOperationsCount != null)
-          'unknownOperationsCount': unknownOperationsCount!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (apiOperationCount != null) 'apiOperationCount': apiOperationCount!,
+    if (createTime != null) 'createTime': createTime!,
+    if (hostname != null) 'hostname': hostname!,
+    if (knownOperationsCount != null)
+      'knownOperationsCount': knownOperationsCount!,
+    if (lastEventDetectedTime != null)
+      'lastEventDetectedTime': lastEventDetectedTime!,
+    if (name != null) 'name': name!,
+    if (origin != null) 'origin': origin!,
+    if (serverIps != null) 'serverIps': serverIps!,
+    if (sourceLocations != null) 'sourceLocations': sourceLocations!,
+    if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
+    if (sourceTypes != null) 'sourceTypes': sourceTypes!,
+    if (style != null) 'style': style!,
+    if (unknownOperationsCount != null)
+      'unknownOperationsCount': unknownOperationsCount!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// DiscoveredApiOperation represents an API Operation observed in one of the
@@ -7617,41 +7778,49 @@ class GoogleCloudApihubV1DiscoveredApiOperation {
   });
 
   GoogleCloudApihubV1DiscoveredApiOperation.fromJson(core.Map json_)
-      : this(
-          classification: json_['classification'] as core.String?,
-          count: json_['count'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          firstSeenTime: json_['firstSeenTime'] as core.String?,
-          httpOperation: json_.containsKey('httpOperation')
-              ? GoogleCloudApihubV1HttpOperationDetails.fromJson(
-                  json_['httpOperation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          lastSeenTime: json_['lastSeenTime'] as core.String?,
-          matchResults: (json_['matchResults'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1MatchResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          sourceMetadata: json_.containsKey('sourceMetadata')
-              ? GoogleCloudApihubV1SourceMetadata.fromJson(
+    : this(
+        classification: json_['classification'] as core.String?,
+        count: json_['count'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        firstSeenTime: json_['firstSeenTime'] as core.String?,
+        httpOperation:
+            json_.containsKey('httpOperation')
+                ? GoogleCloudApihubV1HttpOperationDetails.fromJson(
+                  json_['httpOperation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lastSeenTime: json_['lastSeenTime'] as core.String?,
+        matchResults:
+            (json_['matchResults'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1MatchResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        sourceMetadata:
+            json_.containsKey('sourceMetadata')
+                ? GoogleCloudApihubV1SourceMetadata.fromJson(
                   json_['sourceMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (classification != null) 'classification': classification!,
-        if (count != null) 'count': count!,
-        if (createTime != null) 'createTime': createTime!,
-        if (firstSeenTime != null) 'firstSeenTime': firstSeenTime!,
-        if (httpOperation != null) 'httpOperation': httpOperation!,
-        if (lastSeenTime != null) 'lastSeenTime': lastSeenTime!,
-        if (matchResults != null) 'matchResults': matchResults!,
-        if (name != null) 'name': name!,
-        if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (classification != null) 'classification': classification!,
+    if (count != null) 'count': count!,
+    if (createTime != null) 'createTime': createTime!,
+    if (firstSeenTime != null) 'firstSeenTime': firstSeenTime!,
+    if (httpOperation != null) 'httpOperation': httpOperation!,
+    if (lastSeenTime != null) 'lastSeenTime': lastSeenTime!,
+    if (matchResults != null) 'matchResults': matchResults!,
+    if (name != null) 'name': name!,
+    if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Documentation details.
@@ -7661,18 +7830,14 @@ class GoogleCloudApihubV1Documentation {
   /// Optional.
   core.String? externalUri;
 
-  GoogleCloudApihubV1Documentation({
-    this.externalUri,
-  });
+  GoogleCloudApihubV1Documentation({this.externalUri});
 
   GoogleCloudApihubV1Documentation.fromJson(core.Map json_)
-      : this(
-          externalUri: json_['externalUri'] as core.String?,
-        );
+    : this(externalUri: json_['externalUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (externalUri != null) 'externalUri': externalUri!,
-      };
+    if (externalUri != null) 'externalUri': externalUri!,
+  };
 }
 
 /// The EnablePluginInstanceAction method's request.
@@ -7682,18 +7847,14 @@ class GoogleCloudApihubV1EnablePluginInstanceActionRequest {
   /// Required.
   core.String? actionId;
 
-  GoogleCloudApihubV1EnablePluginInstanceActionRequest({
-    this.actionId,
-  });
+  GoogleCloudApihubV1EnablePluginInstanceActionRequest({this.actionId});
 
   GoogleCloudApihubV1EnablePluginInstanceActionRequest.fromJson(core.Map json_)
-      : this(
-          actionId: json_['actionId'] as core.String?,
-        );
+    : this(actionId: json_['actionId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionId != null) 'actionId': actionId!,
-      };
+    if (actionId != null) 'actionId': actionId!,
+  };
 }
 
 /// The EnablePlugin method's request.
@@ -7709,27 +7870,26 @@ class GoogleCloudApihubV1Endpoint {
   ///
   /// Required.
   GoogleCloudApihubV1ApplicationIntegrationEndpointDetails?
-      applicationIntegrationEndpointDetails;
+  applicationIntegrationEndpointDetails;
 
-  GoogleCloudApihubV1Endpoint({
-    this.applicationIntegrationEndpointDetails,
-  });
+  GoogleCloudApihubV1Endpoint({this.applicationIntegrationEndpointDetails});
 
   GoogleCloudApihubV1Endpoint.fromJson(core.Map json_)
-      : this(
-          applicationIntegrationEndpointDetails:
-              json_.containsKey('applicationIntegrationEndpointDetails')
-                  ? GoogleCloudApihubV1ApplicationIntegrationEndpointDetails
-                      .fromJson(json_['applicationIntegrationEndpointDetails']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        applicationIntegrationEndpointDetails:
+            json_.containsKey('applicationIntegrationEndpointDetails')
+                ? GoogleCloudApihubV1ApplicationIntegrationEndpointDetails.fromJson(
+                  json_['applicationIntegrationEndpointDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationIntegrationEndpointDetails != null)
-          'applicationIntegrationEndpointDetails':
-              applicationIntegrationEndpointDetails!,
-      };
+    if (applicationIntegrationEndpointDetails != null)
+      'applicationIntegrationEndpointDetails':
+          applicationIntegrationEndpointDetails!,
+  };
 }
 
 /// The attribute values of data type enum.
@@ -7739,21 +7899,23 @@ class GoogleCloudApihubV1EnumAttributeValues {
   /// Required.
   core.List<GoogleCloudApihubV1AllowedValue>? values;
 
-  GoogleCloudApihubV1EnumAttributeValues({
-    this.values,
-  });
+  GoogleCloudApihubV1EnumAttributeValues({this.values});
 
   GoogleCloudApihubV1EnumAttributeValues.fromJson(core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1AllowedValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1AllowedValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// The ExecutePluginInstanceAction method's request.
@@ -7768,18 +7930,20 @@ class GoogleCloudApihubV1ExecutePluginInstanceActionRequest {
   });
 
   GoogleCloudApihubV1ExecutePluginInstanceActionRequest.fromJson(core.Map json_)
-      : this(
-          actionExecutionDetail: json_.containsKey('actionExecutionDetail')
-              ? GoogleCloudApihubV1ActionExecutionDetail.fromJson(
+    : this(
+        actionExecutionDetail:
+            json_.containsKey('actionExecutionDetail')
+                ? GoogleCloudApihubV1ActionExecutionDetail.fromJson(
                   json_['actionExecutionDetail']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionExecutionDetail != null)
-          'actionExecutionDetail': actionExecutionDetail!,
-      };
+    if (actionExecutionDetail != null)
+      'actionExecutionDetail': actionExecutionDetail!,
+  };
 }
 
 /// The execution status for the plugin instance.
@@ -7805,19 +7969,21 @@ class GoogleCloudApihubV1ExecutionStatus {
   });
 
   GoogleCloudApihubV1ExecutionStatus.fromJson(core.Map json_)
-      : this(
-          currentExecutionState: json_['currentExecutionState'] as core.String?,
-          lastExecution: json_.containsKey('lastExecution')
-              ? GoogleCloudApihubV1LastExecution.fromJson(
-                  json_['lastExecution'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        currentExecutionState: json_['currentExecutionState'] as core.String?,
+        lastExecution:
+            json_.containsKey('lastExecution')
+                ? GoogleCloudApihubV1LastExecution.fromJson(
+                  json_['lastExecution'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentExecutionState != null)
-          'currentExecutionState': currentExecutionState!,
-        if (lastExecution != null) 'lastExecution': lastExecution!,
-      };
+    if (currentExecutionState != null)
+      'currentExecutionState': currentExecutionState!,
+    if (lastExecution != null) 'lastExecution': lastExecution!,
+  };
 }
 
 /// An external API represents an API being provided by external sources.
@@ -7892,44 +8058,48 @@ class GoogleCloudApihubV1ExternalApi {
   });
 
   GoogleCloudApihubV1ExternalApi.fromJson(core.Map json_)
-      : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudApihubV1AttributeValues.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1AttributeValues.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          documentation: json_.containsKey('documentation')
-              ? GoogleCloudApihubV1Documentation.fromJson(
-                  json_['documentation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          endpoints: (json_['endpoints'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          paths: (json_['paths'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-        );
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        documentation:
+            json_.containsKey('documentation')
+                ? GoogleCloudApihubV1Documentation.fromJson(
+                  json_['documentation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endpoints:
+            (json_['endpoints'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        paths:
+            (json_['paths'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (documentation != null) 'documentation': documentation!,
-        if (endpoints != null) 'endpoints': endpoints!,
-        if (name != null) 'name': name!,
-        if (paths != null) 'paths': paths!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (documentation != null) 'documentation': documentation!,
+    if (endpoints != null) 'endpoints': endpoints!,
+    if (name != null) 'name': name!,
+    if (paths != null) 'paths': paths!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Config for Google service account authentication.
@@ -7942,18 +8112,14 @@ class GoogleCloudApihubV1GoogleServiceAccountConfig {
   /// Required.
   core.String? serviceAccount;
 
-  GoogleCloudApihubV1GoogleServiceAccountConfig({
-    this.serviceAccount,
-  });
+  GoogleCloudApihubV1GoogleServiceAccountConfig({this.serviceAccount});
 
   GoogleCloudApihubV1GoogleServiceAccountConfig.fromJson(core.Map json_)
-      : this(
-          serviceAccount: json_['serviceAccount'] as core.String?,
-        );
+    : this(serviceAccount: json_['serviceAccount'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-      };
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+  };
 }
 
 /// An aggregation of HTTP header occurrences.
@@ -7974,24 +8140,20 @@ class GoogleCloudApihubV1Header {
   /// Header name.
   core.String? name;
 
-  GoogleCloudApihubV1Header({
-    this.count,
-    this.dataType,
-    this.name,
-  });
+  GoogleCloudApihubV1Header({this.count, this.dataType, this.name});
 
   GoogleCloudApihubV1Header.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.String?,
-          dataType: json_['dataType'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.String?,
+        dataType: json_['dataType'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (dataType != null) 'dataType': dataType!,
-        if (name != null) 'name': name!,
-      };
+    if (count != null) 'count': count!,
+    if (dataType != null) 'dataType': dataType!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Host project registration refers to the registration of a Google cloud
@@ -8028,17 +8190,17 @@ class GoogleCloudApihubV1HostProjectRegistration {
   });
 
   GoogleCloudApihubV1HostProjectRegistration.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          gcpProject: json_['gcpProject'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        gcpProject: json_['gcpProject'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (gcpProject != null) 'gcpProject': gcpProject!,
-        if (name != null) 'name': name!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (gcpProject != null) 'gcpProject': gcpProject!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The information related to the service implemented by the plugin developer,
@@ -8052,18 +8214,14 @@ class GoogleCloudApihubV1HostingService {
   /// Optional.
   core.String? serviceUri;
 
-  GoogleCloudApihubV1HostingService({
-    this.serviceUri,
-  });
+  GoogleCloudApihubV1HostingService({this.serviceUri});
 
   GoogleCloudApihubV1HostingService.fromJson(core.Map json_)
-      : this(
-          serviceUri: json_['serviceUri'] as core.String?,
-        );
+    : this(serviceUri: json_['serviceUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (serviceUri != null) 'serviceUri': serviceUri!,
-      };
+    if (serviceUri != null) 'serviceUri': serviceUri!,
+  };
 }
 
 /// The HTTP Operation.
@@ -8092,24 +8250,23 @@ class GoogleCloudApihubV1HttpOperation {
   /// Optional.
   GoogleCloudApihubV1Path? path;
 
-  GoogleCloudApihubV1HttpOperation({
-    this.method,
-    this.path,
-  });
+  GoogleCloudApihubV1HttpOperation({this.method, this.path});
 
   GoogleCloudApihubV1HttpOperation.fromJson(core.Map json_)
-      : this(
-          method: json_['method'] as core.String?,
-          path: json_.containsKey('path')
-              ? GoogleCloudApihubV1Path.fromJson(
-                  json_['path'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        method: json_['method'] as core.String?,
+        path:
+            json_.containsKey('path')
+                ? GoogleCloudApihubV1Path.fromJson(
+                  json_['path'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (method != null) 'method': method!,
-        if (path != null) 'path': path!,
-      };
+    if (method != null) 'method': method!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// An HTTP-based API Operation, sometimes called a "REST" Operation.
@@ -8148,41 +8305,51 @@ class GoogleCloudApihubV1HttpOperationDetails {
   });
 
   GoogleCloudApihubV1HttpOperationDetails.fromJson(core.Map json_)
-      : this(
-          httpOperation: json_.containsKey('httpOperation')
-              ? GoogleCloudApihubV1HttpOperation.fromJson(
-                  json_['httpOperation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pathParams: (json_['pathParams'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1PathParam.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          queryParams:
-              (json_['queryParams'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudApihubV1QueryParam.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        httpOperation:
+            json_.containsKey('httpOperation')
+                ? GoogleCloudApihubV1HttpOperation.fromJson(
+                  json_['httpOperation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pathParams:
+            (json_['pathParams'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1PathParam.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        queryParams:
+            (json_['queryParams'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1QueryParam.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          request: json_.containsKey('request')
-              ? GoogleCloudApihubV1HttpRequest.fromJson(
-                  json_['request'] as core.Map<core.String, core.dynamic>)
-              : null,
-          response: json_.containsKey('response')
-              ? GoogleCloudApihubV1HttpResponse.fromJson(
-                  json_['response'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        request:
+            json_.containsKey('request')
+                ? GoogleCloudApihubV1HttpRequest.fromJson(
+                  json_['request'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        response:
+            json_.containsKey('response')
+                ? GoogleCloudApihubV1HttpResponse.fromJson(
+                  json_['response'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (httpOperation != null) 'httpOperation': httpOperation!,
-        if (pathParams != null) 'pathParams': pathParams!,
-        if (queryParams != null) 'queryParams': queryParams!,
-        if (request != null) 'request': request!,
-        if (response != null) 'response': response!,
-      };
+    if (httpOperation != null) 'httpOperation': httpOperation!,
+    if (pathParams != null) 'pathParams': pathParams!,
+    if (queryParams != null) 'queryParams': queryParams!,
+    if (request != null) 'request': request!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// An aggregation of HTTP requests.
@@ -8192,25 +8359,24 @@ class GoogleCloudApihubV1HttpRequest {
   /// Optional.
   core.Map<core.String, GoogleCloudApihubV1Header>? headers;
 
-  GoogleCloudApihubV1HttpRequest({
-    this.headers,
-  });
+  GoogleCloudApihubV1HttpRequest({this.headers});
 
   GoogleCloudApihubV1HttpRequest.fromJson(core.Map json_)
-      : this(
-          headers:
-              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudApihubV1Header.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1Header.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (headers != null) 'headers': headers!,
-      };
+    if (headers != null) 'headers': headers!,
+  };
 }
 
 /// An aggregation of HTTP responses.
@@ -8225,35 +8391,28 @@ class GoogleCloudApihubV1HttpResponse {
   /// Optional.
   core.Map<core.String, core.String>? responseCodes;
 
-  GoogleCloudApihubV1HttpResponse({
-    this.headers,
-    this.responseCodes,
-  });
+  GoogleCloudApihubV1HttpResponse({this.headers, this.responseCodes});
 
   GoogleCloudApihubV1HttpResponse.fromJson(core.Map json_)
-      : this(
-          headers:
-              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudApihubV1Header.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1Header.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          responseCodes:
-              (json_['responseCodes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+        responseCodes: (json_['responseCodes']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (headers != null) 'headers': headers!,
-        if (responseCodes != null) 'responseCodes': responseCodes!,
-      };
+    if (headers != null) 'headers': headers!,
+    if (responseCodes != null) 'responseCodes': responseCodes!,
+  };
 }
 
 /// Issue contains the details of a single issue found by the linter.
@@ -8299,26 +8458,29 @@ class GoogleCloudApihubV1Issue {
   });
 
   GoogleCloudApihubV1Issue.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          message: json_['message'] as core.String?,
-          path: (json_['path'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          range: json_.containsKey('range')
-              ? GoogleCloudApihubV1Range.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          severity: json_['severity'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        message: json_['message'] as core.String?,
+        path:
+            (json_['path'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        range:
+            json_.containsKey('range')
+                ? GoogleCloudApihubV1Range.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        severity: json_['severity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (message != null) 'message': message!,
-        if (path != null) 'path': path!,
-        if (range != null) 'range': range!,
-        if (severity != null) 'severity': severity!,
-      };
+    if (code != null) 'code': code!,
+    if (message != null) 'message': message!,
+    if (path != null) 'path': path!,
+    if (range != null) 'range': range!,
+    if (severity != null) 'severity': severity!,
+  };
 }
 
 /// The result of the last execution of the plugin instance.
@@ -8355,19 +8517,19 @@ class GoogleCloudApihubV1LastExecution {
   });
 
   GoogleCloudApihubV1LastExecution.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          result: json_['result'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        result: json_['result'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (result != null) 'result': result!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (result != null) 'result': result!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// LintResponse contains the response from the linter.
@@ -8420,29 +8582,37 @@ class GoogleCloudApihubV1LintResponse {
   });
 
   GoogleCloudApihubV1LintResponse.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          issues: (json_['issues'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1Issue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          linter: json_['linter'] as core.String?,
-          source: json_['source'] as core.String?,
-          state: json_['state'] as core.String?,
-          summary: (json_['summary'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1SummaryEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        issues:
+            (json_['issues'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1Issue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        linter: json_['linter'] as core.String?,
+        source: json_['source'] as core.String?,
+        state: json_['state'] as core.String?,
+        summary:
+            (json_['summary'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1SummaryEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (issues != null) 'issues': issues!,
-        if (linter != null) 'linter': linter!,
-        if (source != null) 'source': source!,
-        if (state != null) 'state': state!,
-        if (summary != null) 'summary': summary!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (issues != null) 'issues': issues!,
+    if (linter != null) 'linter': linter!,
+    if (source != null) 'source': source!,
+    if (state != null) 'state': state!,
+    if (summary != null) 'summary': summary!,
+  };
 }
 
 /// The LintSpec method's request.
@@ -8464,18 +8634,22 @@ class GoogleCloudApihubV1ListApiOperationsResponse {
   });
 
   GoogleCloudApihubV1ListApiOperationsResponse.fromJson(core.Map json_)
-      : this(
-          apiOperations: (json_['apiOperations'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1ApiOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        apiOperations:
+            (json_['apiOperations'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1ApiOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiOperations != null) 'apiOperations': apiOperations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (apiOperations != null) 'apiOperations': apiOperations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The ListApis method's response.
@@ -8488,24 +8662,25 @@ class GoogleCloudApihubV1ListApisResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleCloudApihubV1ListApisResponse({
-    this.apis,
-    this.nextPageToken,
-  });
+  GoogleCloudApihubV1ListApisResponse({this.apis, this.nextPageToken});
 
   GoogleCloudApihubV1ListApisResponse.fromJson(core.Map json_)
-      : this(
-          apis: (json_['apis'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1Api.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        apis:
+            (json_['apis'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1Api.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apis != null) 'apis': apis!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (apis != null) 'apis': apis!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The ListAttributes method's response.
@@ -8524,18 +8699,22 @@ class GoogleCloudApihubV1ListAttributesResponse {
   });
 
   GoogleCloudApihubV1ListAttributesResponse.fromJson(core.Map json_)
-      : this(
-          attributes: (json_['attributes'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1Attribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        attributes:
+            (json_['attributes'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1Attribute.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The ListCurations method's response.
@@ -8554,18 +8733,22 @@ class GoogleCloudApihubV1ListCurationsResponse {
   });
 
   GoogleCloudApihubV1ListCurationsResponse.fromJson(core.Map json_)
-      : this(
-          curations: (json_['curations'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1Curation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        curations:
+            (json_['curations'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1Curation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (curations != null) 'curations': curations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (curations != null) 'curations': curations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The ListDependencies method's response.
@@ -8584,18 +8767,22 @@ class GoogleCloudApihubV1ListDependenciesResponse {
   });
 
   GoogleCloudApihubV1ListDependenciesResponse.fromJson(core.Map json_)
-      : this(
-          dependencies: (json_['dependencies'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1Dependency.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        dependencies:
+            (json_['dependencies'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1Dependency.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dependencies != null) 'dependencies': dependencies!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (dependencies != null) 'dependencies': dependencies!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The ListDeployments method's response.
@@ -8614,25 +8801,29 @@ class GoogleCloudApihubV1ListDeploymentsResponse {
   });
 
   GoogleCloudApihubV1ListDeploymentsResponse.fromJson(core.Map json_)
-      : this(
-          deployments: (json_['deployments'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1Deployment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        deployments:
+            (json_['deployments'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1Deployment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deployments != null) 'deployments': deployments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (deployments != null) 'deployments': deployments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Message for response to listing DiscoveredApiObservations
 class GoogleCloudApihubV1ListDiscoveredApiObservationsResponse {
   /// The DiscoveredApiObservation from the specified project and location.
   core.List<GoogleCloudApihubV1DiscoveredApiObservation>?
-      discoveredApiObservations;
+  discoveredApiObservations;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -8645,22 +8836,25 @@ class GoogleCloudApihubV1ListDiscoveredApiObservationsResponse {
   });
 
   GoogleCloudApihubV1ListDiscoveredApiObservationsResponse.fromJson(
-      core.Map json_)
-      : this(
-          discoveredApiObservations:
-              (json_['discoveredApiObservations'] as core.List?)
-                  ?.map((value) =>
+    core.Map json_,
+  ) : this(
+        discoveredApiObservations:
+            (json_['discoveredApiObservations'] as core.List?)
+                ?.map(
+                  (value) =>
                       GoogleCloudApihubV1DiscoveredApiObservation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (discoveredApiObservations != null)
-          'discoveredApiObservations': discoveredApiObservations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (discoveredApiObservations != null)
+      'discoveredApiObservations': discoveredApiObservations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Message for response to listing DiscoveredApiOperations
@@ -8680,22 +8874,24 @@ class GoogleCloudApihubV1ListDiscoveredApiOperationsResponse {
   });
 
   GoogleCloudApihubV1ListDiscoveredApiOperationsResponse.fromJson(
-      core.Map json_)
-      : this(
-          discoveredApiOperations:
-              (json_['discoveredApiOperations'] as core.List?)
-                  ?.map((value) =>
-                      GoogleCloudApihubV1DiscoveredApiOperation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        discoveredApiOperations:
+            (json_['discoveredApiOperations'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1DiscoveredApiOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (discoveredApiOperations != null)
-          'discoveredApiOperations': discoveredApiOperations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (discoveredApiOperations != null)
+      'discoveredApiOperations': discoveredApiOperations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The ListExternalApis method's response.
@@ -8714,25 +8910,29 @@ class GoogleCloudApihubV1ListExternalApisResponse {
   });
 
   GoogleCloudApihubV1ListExternalApisResponse.fromJson(core.Map json_)
-      : this(
-          externalApis: (json_['externalApis'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1ExternalApi.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        externalApis:
+            (json_['externalApis'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1ExternalApi.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (externalApis != null) 'externalApis': externalApis!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (externalApis != null) 'externalApis': externalApis!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The ListHostProjectRegistrations method's response.
 class GoogleCloudApihubV1ListHostProjectRegistrationsResponse {
   /// The list of host project registrations.
   core.List<GoogleCloudApihubV1HostProjectRegistration>?
-      hostProjectRegistrations;
+  hostProjectRegistrations;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -8745,22 +8945,25 @@ class GoogleCloudApihubV1ListHostProjectRegistrationsResponse {
   });
 
   GoogleCloudApihubV1ListHostProjectRegistrationsResponse.fromJson(
-      core.Map json_)
-      : this(
-          hostProjectRegistrations:
-              (json_['hostProjectRegistrations'] as core.List?)
-                  ?.map((value) =>
+    core.Map json_,
+  ) : this(
+        hostProjectRegistrations:
+            (json_['hostProjectRegistrations'] as core.List?)
+                ?.map(
+                  (value) =>
                       GoogleCloudApihubV1HostProjectRegistration.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hostProjectRegistrations != null)
-          'hostProjectRegistrations': hostProjectRegistrations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (hostProjectRegistrations != null)
+      'hostProjectRegistrations': hostProjectRegistrations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The ListPluginInstances method's response.
@@ -8779,18 +8982,22 @@ class GoogleCloudApihubV1ListPluginInstancesResponse {
   });
 
   GoogleCloudApihubV1ListPluginInstancesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          pluginInstances: (json_['pluginInstances'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1PluginInstance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        pluginInstances:
+            (json_['pluginInstances'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1PluginInstance.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (pluginInstances != null) 'pluginInstances': pluginInstances!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (pluginInstances != null) 'pluginInstances': pluginInstances!,
+  };
 }
 
 /// The ListPlugins method's response.
@@ -8803,24 +9010,25 @@ class GoogleCloudApihubV1ListPluginsResponse {
   /// The plugins from the specified parent resource.
   core.List<GoogleCloudApihubV1Plugin>? plugins;
 
-  GoogleCloudApihubV1ListPluginsResponse({
-    this.nextPageToken,
-    this.plugins,
-  });
+  GoogleCloudApihubV1ListPluginsResponse({this.nextPageToken, this.plugins});
 
   GoogleCloudApihubV1ListPluginsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          plugins: (json_['plugins'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1Plugin.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        plugins:
+            (json_['plugins'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1Plugin.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (plugins != null) 'plugins': plugins!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (plugins != null) 'plugins': plugins!,
+  };
 }
 
 /// The ListRuntimeProjectAttachments method's response.
@@ -8832,7 +9040,7 @@ class GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse {
 
   /// List of runtime project attachments.
   core.List<GoogleCloudApihubV1RuntimeProjectAttachment>?
-      runtimeProjectAttachments;
+  runtimeProjectAttachments;
 
   GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse({
     this.nextPageToken,
@@ -8840,22 +9048,25 @@ class GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse {
   });
 
   GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse.fromJson(
-      core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          runtimeProjectAttachments:
-              (json_['runtimeProjectAttachments'] as core.List?)
-                  ?.map((value) =>
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        runtimeProjectAttachments:
+            (json_['runtimeProjectAttachments'] as core.List?)
+                ?.map(
+                  (value) =>
                       GoogleCloudApihubV1RuntimeProjectAttachment.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (runtimeProjectAttachments != null)
-          'runtimeProjectAttachments': runtimeProjectAttachments!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (runtimeProjectAttachments != null)
+      'runtimeProjectAttachments': runtimeProjectAttachments!,
+  };
 }
 
 /// The ListSpecs method's response.
@@ -8868,24 +9079,25 @@ class GoogleCloudApihubV1ListSpecsResponse {
   /// The specs corresponding to an API Version.
   core.List<GoogleCloudApihubV1Spec>? specs;
 
-  GoogleCloudApihubV1ListSpecsResponse({
-    this.nextPageToken,
-    this.specs,
-  });
+  GoogleCloudApihubV1ListSpecsResponse({this.nextPageToken, this.specs});
 
   GoogleCloudApihubV1ListSpecsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          specs: (json_['specs'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1Spec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        specs:
+            (json_['specs'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1Spec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (specs != null) 'specs': specs!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (specs != null) 'specs': specs!,
+  };
 }
 
 /// The ListVersions method's response.
@@ -8898,24 +9110,25 @@ class GoogleCloudApihubV1ListVersionsResponse {
   /// The versions corresponding to an API.
   core.List<GoogleCloudApihubV1Version>? versions;
 
-  GoogleCloudApihubV1ListVersionsResponse({
-    this.nextPageToken,
-    this.versions,
-  });
+  GoogleCloudApihubV1ListVersionsResponse({this.nextPageToken, this.versions});
 
   GoogleCloudApihubV1ListVersionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          versions: (json_['versions'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1Version.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        versions:
+            (json_['versions'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1Version.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (versions != null) 'versions': versions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (versions != null) 'versions': versions!,
+  };
 }
 
 /// The LookupApiHubInstance method's response.\`
@@ -8923,22 +9136,22 @@ class GoogleCloudApihubV1LookupApiHubInstanceResponse {
   /// API Hub instance for a project if it exists, empty otherwise.
   GoogleCloudApihubV1ApiHubInstance? apiHubInstance;
 
-  GoogleCloudApihubV1LookupApiHubInstanceResponse({
-    this.apiHubInstance,
-  });
+  GoogleCloudApihubV1LookupApiHubInstanceResponse({this.apiHubInstance});
 
   GoogleCloudApihubV1LookupApiHubInstanceResponse.fromJson(core.Map json_)
-      : this(
-          apiHubInstance: json_.containsKey('apiHubInstance')
-              ? GoogleCloudApihubV1ApiHubInstance.fromJson(
+    : this(
+        apiHubInstance:
+            json_.containsKey('apiHubInstance')
+                ? GoogleCloudApihubV1ApiHubInstance.fromJson(
                   json_['apiHubInstance']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiHubInstance != null) 'apiHubInstance': apiHubInstance!,
-      };
+    if (apiHubInstance != null) 'apiHubInstance': apiHubInstance!,
+  };
 }
 
 /// The ListRuntimeProjectAttachments method's response.
@@ -8951,20 +9164,21 @@ class GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse {
   });
 
   GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse.fromJson(
-      core.Map json_)
-      : this(
-          runtimeProjectAttachment:
-              json_.containsKey('runtimeProjectAttachment')
-                  ? GoogleCloudApihubV1RuntimeProjectAttachment.fromJson(
-                      json_['runtimeProjectAttachment']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    core.Map json_,
+  ) : this(
+        runtimeProjectAttachment:
+            json_.containsKey('runtimeProjectAttachment')
+                ? GoogleCloudApihubV1RuntimeProjectAttachment.fromJson(
+                  json_['runtimeProjectAttachment']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (runtimeProjectAttachment != null)
-          'runtimeProjectAttachment': runtimeProjectAttachment!,
-      };
+    if (runtimeProjectAttachment != null)
+      'runtimeProjectAttachment': runtimeProjectAttachment!,
+  };
 }
 
 /// MatchResult represents the result of matching a discovered API operation
@@ -8978,18 +9192,14 @@ class GoogleCloudApihubV1MatchResult {
   /// Output only.
   core.String? name;
 
-  GoogleCloudApihubV1MatchResult({
-    this.name,
-  });
+  GoogleCloudApihubV1MatchResult({this.name});
 
   GoogleCloudApihubV1MatchResult.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+    : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The config variable value of data type multi int.
@@ -8999,20 +9209,19 @@ class GoogleCloudApihubV1MultiIntValues {
   /// Optional.
   core.List<core.int>? values;
 
-  GoogleCloudApihubV1MultiIntValues({
-    this.values,
-  });
+  GoogleCloudApihubV1MultiIntValues({this.values});
 
   GoogleCloudApihubV1MultiIntValues.fromJson(core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-        );
+    : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// The config variable value of data type multi select.
@@ -9022,21 +9231,23 @@ class GoogleCloudApihubV1MultiSelectValues {
   /// Optional.
   core.List<GoogleCloudApihubV1ConfigValueOption>? values;
 
-  GoogleCloudApihubV1MultiSelectValues({
-    this.values,
-  });
+  GoogleCloudApihubV1MultiSelectValues({this.values});
 
   GoogleCloudApihubV1MultiSelectValues.fromJson(core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1ConfigValueOption.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1ConfigValueOption.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// The config variable value of data type multi string.
@@ -9046,20 +9257,19 @@ class GoogleCloudApihubV1MultiStringValues {
   /// Optional.
   core.List<core.String>? values;
 
-  GoogleCloudApihubV1MultiStringValues({
-    this.values,
-  });
+  GoogleCloudApihubV1MultiStringValues({this.values});
 
   GoogleCloudApihubV1MultiStringValues.fromJson(core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Parameters to support Oauth 2.0 client credentials grant authentication.
@@ -9085,18 +9295,20 @@ class GoogleCloudApihubV1Oauth2ClientCredentialsConfig {
   });
 
   GoogleCloudApihubV1Oauth2ClientCredentialsConfig.fromJson(core.Map json_)
-      : this(
-          clientId: json_['clientId'] as core.String?,
-          clientSecret: json_.containsKey('clientSecret')
-              ? GoogleCloudApihubV1Secret.fromJson(
-                  json_['clientSecret'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        clientSecret:
+            json_.containsKey('clientSecret')
+                ? GoogleCloudApihubV1Secret.fromJson(
+                  json_['clientSecret'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientId != null) 'clientId': clientId!,
-        if (clientSecret != null) 'clientSecret': clientSecret!,
-      };
+    if (clientId != null) 'clientId': clientId!,
+    if (clientSecret != null) 'clientSecret': clientSecret!,
+  };
 }
 
 /// OpenApiSpecDetails contains the details parsed from an OpenAPI spec in
@@ -9133,20 +9345,22 @@ class GoogleCloudApihubV1OpenApiSpecDetails {
   });
 
   GoogleCloudApihubV1OpenApiSpecDetails.fromJson(core.Map json_)
-      : this(
-          format: json_['format'] as core.String?,
-          owner: json_.containsKey('owner')
-              ? GoogleCloudApihubV1Owner.fromJson(
-                  json_['owner'] as core.Map<core.String, core.dynamic>)
-              : null,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        format: json_['format'] as core.String?,
+        owner:
+            json_.containsKey('owner')
+                ? GoogleCloudApihubV1Owner.fromJson(
+                  json_['owner'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (format != null) 'format': format!,
-        if (owner != null) 'owner': owner!,
-        if (version != null) 'version': version!,
-      };
+    if (format != null) 'format': format!,
+    if (owner != null) 'owner': owner!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// The operation details parsed from the spec.
@@ -9183,25 +9397,29 @@ class GoogleCloudApihubV1OperationDetails {
   });
 
   GoogleCloudApihubV1OperationDetails.fromJson(core.Map json_)
-      : this(
-          deprecated: json_['deprecated'] as core.bool?,
-          description: json_['description'] as core.String?,
-          documentation: json_.containsKey('documentation')
-              ? GoogleCloudApihubV1Documentation.fromJson(
-                  json_['documentation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          httpOperation: json_.containsKey('httpOperation')
-              ? GoogleCloudApihubV1HttpOperation.fromJson(
-                  json_['httpOperation'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        deprecated: json_['deprecated'] as core.bool?,
+        description: json_['description'] as core.String?,
+        documentation:
+            json_.containsKey('documentation')
+                ? GoogleCloudApihubV1Documentation.fromJson(
+                  json_['documentation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        httpOperation:
+            json_.containsKey('httpOperation')
+                ? GoogleCloudApihubV1HttpOperation.fromJson(
+                  json_['httpOperation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deprecated != null) 'deprecated': deprecated!,
-        if (description != null) 'description': description!,
-        if (documentation != null) 'documentation': documentation!,
-        if (httpOperation != null) 'httpOperation': httpOperation!,
-      };
+    if (deprecated != null) 'deprecated': deprecated!,
+    if (description != null) 'description': description!,
+    if (documentation != null) 'documentation': documentation!,
+    if (httpOperation != null) 'httpOperation': httpOperation!,
+  };
 }
 
 /// Owner details.
@@ -9216,21 +9434,18 @@ class GoogleCloudApihubV1Owner {
   /// Required.
   core.String? email;
 
-  GoogleCloudApihubV1Owner({
-    this.displayName,
-    this.email,
-  });
+  GoogleCloudApihubV1Owner({this.displayName, this.email});
 
   GoogleCloudApihubV1Owner.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          email: json_['email'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (email != null) 'email': email!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (email != null) 'email': email!,
+  };
 }
 
 /// The path details derived from the spec.
@@ -9248,21 +9463,18 @@ class GoogleCloudApihubV1Path {
   /// Optional.
   core.String? path;
 
-  GoogleCloudApihubV1Path({
-    this.description,
-    this.path,
-  });
+  GoogleCloudApihubV1Path({this.description, this.path});
 
   GoogleCloudApihubV1Path.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          path: json_['path'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        path: json_['path'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (path != null) 'path': path!,
-      };
+    if (description != null) 'description': description!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// HTTP Path parameter.
@@ -9284,21 +9496,18 @@ class GoogleCloudApihubV1PathParam {
   /// Optional.
   core.int? position;
 
-  GoogleCloudApihubV1PathParam({
-    this.dataType,
-    this.position,
-  });
+  GoogleCloudApihubV1PathParam({this.dataType, this.position});
 
   GoogleCloudApihubV1PathParam.fromJson(core.Map json_)
-      : this(
-          dataType: json_['dataType'] as core.String?,
-          position: json_['position'] as core.int?,
-        );
+    : this(
+        dataType: json_['dataType'] as core.String?,
+        position: json_['position'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataType != null) 'dataType': dataType!,
-        if (position != null) 'position': position!,
-      };
+    if (dataType != null) 'dataType': dataType!,
+    if (position != null) 'position': position!,
+  };
 }
 
 /// A plugin resource in the API Hub.
@@ -9451,56 +9660,68 @@ class GoogleCloudApihubV1Plugin {
   });
 
   GoogleCloudApihubV1Plugin.fromJson(core.Map json_)
-      : this(
-          actionsConfig: (json_['actionsConfig'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1PluginActionConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          configTemplate: json_.containsKey('configTemplate')
-              ? GoogleCloudApihubV1ConfigTemplate.fromJson(
+    : this(
+        actionsConfig:
+            (json_['actionsConfig'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1PluginActionConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        configTemplate:
+            json_.containsKey('configTemplate')
+                ? GoogleCloudApihubV1ConfigTemplate.fromJson(
                   json_['configTemplate']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          documentation: json_.containsKey('documentation')
-              ? GoogleCloudApihubV1Documentation.fromJson(
-                  json_['documentation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gatewayType: json_['gatewayType'] as core.String?,
-          hostingService: json_.containsKey('hostingService')
-              ? GoogleCloudApihubV1HostingService.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        documentation:
+            json_.containsKey('documentation')
+                ? GoogleCloudApihubV1Documentation.fromJson(
+                  json_['documentation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gatewayType: json_['gatewayType'] as core.String?,
+        hostingService:
+            json_.containsKey('hostingService')
+                ? GoogleCloudApihubV1HostingService.fromJson(
                   json_['hostingService']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          ownershipType: json_['ownershipType'] as core.String?,
-          pluginCategory: json_['pluginCategory'] as core.String?,
-          state: json_['state'] as core.String?,
-          type: json_.containsKey('type')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['type'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        ownershipType: json_['ownershipType'] as core.String?,
+        pluginCategory: json_['pluginCategory'] as core.String?,
+        state: json_['state'] as core.String?,
+        type:
+            json_.containsKey('type')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['type'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionsConfig != null) 'actionsConfig': actionsConfig!,
-        if (configTemplate != null) 'configTemplate': configTemplate!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (documentation != null) 'documentation': documentation!,
-        if (gatewayType != null) 'gatewayType': gatewayType!,
-        if (hostingService != null) 'hostingService': hostingService!,
-        if (name != null) 'name': name!,
-        if (ownershipType != null) 'ownershipType': ownershipType!,
-        if (pluginCategory != null) 'pluginCategory': pluginCategory!,
-        if (state != null) 'state': state!,
-        if (type != null) 'type': type!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (actionsConfig != null) 'actionsConfig': actionsConfig!,
+    if (configTemplate != null) 'configTemplate': configTemplate!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (documentation != null) 'documentation': documentation!,
+    if (gatewayType != null) 'gatewayType': gatewayType!,
+    if (hostingService != null) 'hostingService': hostingService!,
+    if (name != null) 'name': name!,
+    if (ownershipType != null) 'ownershipType': ownershipType!,
+    if (pluginCategory != null) 'pluginCategory': pluginCategory!,
+    if (state != null) 'state': state!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// PluginActionConfig represents the configuration of an action supported by a
@@ -9549,19 +9770,19 @@ class GoogleCloudApihubV1PluginActionConfig {
   });
 
   GoogleCloudApihubV1PluginActionConfig.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          id: json_['id'] as core.String?,
-          triggerMode: json_['triggerMode'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+        triggerMode: json_['triggerMode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (id != null) 'id': id!,
-        if (triggerMode != null) 'triggerMode': triggerMode!,
-      };
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (id != null) 'id': id!,
+    if (triggerMode != null) 'triggerMode': triggerMode!,
+  };
 }
 
 /// Represents a plugin instance resource in the API Hub.
@@ -9668,45 +9889,52 @@ class GoogleCloudApihubV1PluginInstance {
   });
 
   GoogleCloudApihubV1PluginInstance.fromJson(core.Map json_)
-      : this(
-          actions: (json_['actions'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1PluginInstanceAction.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          additionalConfig: (json_['additionalConfig']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudApihubV1ConfigVariable.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        actions:
+            (json_['actions'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1PluginInstanceAction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        additionalConfig: (json_['additionalConfig']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1ConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          authConfig: json_.containsKey('authConfig')
-              ? GoogleCloudApihubV1AuthConfig.fromJson(
-                  json_['authConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          name: json_['name'] as core.String?,
-          sourceProjectId: json_['sourceProjectId'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+        authConfig:
+            json_.containsKey('authConfig')
+                ? GoogleCloudApihubV1AuthConfig.fromJson(
+                  json_['authConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        name: json_['name'] as core.String?,
+        sourceProjectId: json_['sourceProjectId'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actions != null) 'actions': actions!,
-        if (additionalConfig != null) 'additionalConfig': additionalConfig!,
-        if (authConfig != null) 'authConfig': authConfig!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (name != null) 'name': name!,
-        if (sourceProjectId != null) 'sourceProjectId': sourceProjectId!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (actions != null) 'actions': actions!,
+    if (additionalConfig != null) 'additionalConfig': additionalConfig!,
+    if (authConfig != null) 'authConfig': authConfig!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (name != null) 'name': name!,
+    if (sourceProjectId != null) 'sourceProjectId': sourceProjectId!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// PluginInstanceAction represents an action which can be executed in the
@@ -9792,41 +10020,46 @@ class GoogleCloudApihubV1PluginInstanceAction {
   });
 
   GoogleCloudApihubV1PluginInstanceAction.fromJson(core.Map json_)
-      : this(
-          actionId: json_['actionId'] as core.String?,
-          curationConfig: json_.containsKey('curationConfig')
-              ? GoogleCloudApihubV1CurationConfig.fromJson(
+    : this(
+        actionId: json_['actionId'] as core.String?,
+        curationConfig:
+            json_.containsKey('curationConfig')
+                ? GoogleCloudApihubV1CurationConfig.fromJson(
                   json_['curationConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          hubInstanceAction: json_.containsKey('hubInstanceAction')
-              ? GoogleCloudApihubV1ExecutionStatus.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hubInstanceAction:
+            json_.containsKey('hubInstanceAction')
+                ? GoogleCloudApihubV1ExecutionStatus.fromJson(
                   json_['hubInstanceAction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          resourceConfig: json_.containsKey('resourceConfig')
-              ? GoogleCloudApihubV1ResourceConfig.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resourceConfig:
+            json_.containsKey('resourceConfig')
+                ? GoogleCloudApihubV1ResourceConfig.fromJson(
                   json_['resourceConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          scheduleCronExpression:
-              json_['scheduleCronExpression'] as core.String?,
-          scheduleTimeZone: json_['scheduleTimeZone'] as core.String?,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scheduleCronExpression: json_['scheduleCronExpression'] as core.String?,
+        scheduleTimeZone: json_['scheduleTimeZone'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionId != null) 'actionId': actionId!,
-        if (curationConfig != null) 'curationConfig': curationConfig!,
-        if (hubInstanceAction != null) 'hubInstanceAction': hubInstanceAction!,
-        if (resourceConfig != null) 'resourceConfig': resourceConfig!,
-        if (scheduleCronExpression != null)
-          'scheduleCronExpression': scheduleCronExpression!,
-        if (scheduleTimeZone != null) 'scheduleTimeZone': scheduleTimeZone!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (state != null) 'state': state!,
-      };
+    if (actionId != null) 'actionId': actionId!,
+    if (curationConfig != null) 'curationConfig': curationConfig!,
+    if (hubInstanceAction != null) 'hubInstanceAction': hubInstanceAction!,
+    if (resourceConfig != null) 'resourceConfig': resourceConfig!,
+    if (scheduleCronExpression != null)
+      'scheduleCronExpression': scheduleCronExpression!,
+    if (scheduleTimeZone != null) 'scheduleTimeZone': scheduleTimeZone!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// The plugin instance and associated action that is using the curation.
@@ -9853,15 +10086,15 @@ class GoogleCloudApihubV1PluginInstanceActionID {
   });
 
   GoogleCloudApihubV1PluginInstanceActionID.fromJson(core.Map json_)
-      : this(
-          actionId: json_['actionId'] as core.String?,
-          pluginInstance: json_['pluginInstance'] as core.String?,
-        );
+    : this(
+        actionId: json_['actionId'] as core.String?,
+        pluginInstance: json_['pluginInstance'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionId != null) 'actionId': actionId!,
-        if (pluginInstance != null) 'pluginInstance': pluginInstance!,
-      };
+    if (actionId != null) 'actionId': actionId!,
+    if (pluginInstance != null) 'pluginInstance': pluginInstance!,
+  };
 }
 
 /// PluginInstanceActionSource represents the plugin instance action source.
@@ -9885,15 +10118,15 @@ class GoogleCloudApihubV1PluginInstanceActionSource {
   });
 
   GoogleCloudApihubV1PluginInstanceActionSource.fromJson(core.Map json_)
-      : this(
-          actionId: json_['actionId'] as core.String?,
-          pluginInstance: json_['pluginInstance'] as core.String?,
-        );
+    : this(
+        actionId: json_['actionId'] as core.String?,
+        pluginInstance: json_['pluginInstance'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionId != null) 'actionId': actionId!,
-        if (pluginInstance != null) 'pluginInstance': pluginInstance!,
-      };
+    if (actionId != null) 'actionId': actionId!,
+    if (pluginInstance != null) 'pluginInstance': pluginInstance!,
+  };
 }
 
 /// Point within the file (line and character).
@@ -9908,21 +10141,18 @@ class GoogleCloudApihubV1Point {
   /// Required.
   core.int? line;
 
-  GoogleCloudApihubV1Point({
-    this.character,
-    this.line,
-  });
+  GoogleCloudApihubV1Point({this.character, this.line});
 
   GoogleCloudApihubV1Point.fromJson(core.Map json_)
-      : this(
-          character: json_['character'] as core.int?,
-          line: json_['line'] as core.int?,
-        );
+    : this(
+        character: json_['character'] as core.int?,
+        line: json_['line'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (character != null) 'character': character!,
-        if (line != null) 'line': line!,
-      };
+    if (character != null) 'character': character!,
+    if (line != null) 'line': line!,
+  };
 }
 
 /// An aggregation of HTTP query parameter occurrences.
@@ -9949,24 +10179,20 @@ class GoogleCloudApihubV1QueryParam {
   /// Required.
   core.String? name;
 
-  GoogleCloudApihubV1QueryParam({
-    this.count,
-    this.dataType,
-    this.name,
-  });
+  GoogleCloudApihubV1QueryParam({this.count, this.dataType, this.name});
 
   GoogleCloudApihubV1QueryParam.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.String?,
-          dataType: json_['dataType'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.String?,
+        dataType: json_['dataType'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (dataType != null) 'dataType': dataType!,
-        if (name != null) 'name': name!,
-      };
+    if (count != null) 'count': count!,
+    if (dataType != null) 'dataType': dataType!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Object describing where in the file the issue was found.
@@ -9981,27 +10207,28 @@ class GoogleCloudApihubV1Range {
   /// Required.
   GoogleCloudApihubV1Point? start;
 
-  GoogleCloudApihubV1Range({
-    this.end,
-    this.start,
-  });
+  GoogleCloudApihubV1Range({this.end, this.start});
 
   GoogleCloudApihubV1Range.fromJson(core.Map json_)
-      : this(
-          end: json_.containsKey('end')
-              ? GoogleCloudApihubV1Point.fromJson(
-                  json_['end'] as core.Map<core.String, core.dynamic>)
-              : null,
-          start: json_.containsKey('start')
-              ? GoogleCloudApihubV1Point.fromJson(
-                  json_['start'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        end:
+            json_.containsKey('end')
+                ? GoogleCloudApihubV1Point.fromJson(
+                  json_['end'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        start:
+            json_.containsKey('start')
+                ? GoogleCloudApihubV1Point.fromJson(
+                  json_['start'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (end != null) 'end': end!,
-        if (start != null) 'start': start!,
-      };
+    if (end != null) 'end': end!,
+    if (start != null) 'start': start!,
+  };
 }
 
 /// The configuration of resources created for a given plugin instance action.
@@ -10022,21 +10249,18 @@ class GoogleCloudApihubV1ResourceConfig {
   /// Output only.
   core.String? pubsubTopic;
 
-  GoogleCloudApihubV1ResourceConfig({
-    this.actionType,
-    this.pubsubTopic,
-  });
+  GoogleCloudApihubV1ResourceConfig({this.actionType, this.pubsubTopic});
 
   GoogleCloudApihubV1ResourceConfig.fromJson(core.Map json_)
-      : this(
-          actionType: json_['actionType'] as core.String?,
-          pubsubTopic: json_['pubsubTopic'] as core.String?,
-        );
+    : this(
+        actionType: json_['actionType'] as core.String?,
+        pubsubTopic: json_['pubsubTopic'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionType != null) 'actionType': actionType!,
-        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
-      };
+    if (actionType != null) 'actionType': actionType!,
+    if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
+  };
 }
 
 /// Runtime project attachment represents an attachment from the runtime project
@@ -10071,17 +10295,17 @@ class GoogleCloudApihubV1RuntimeProjectAttachment {
   });
 
   GoogleCloudApihubV1RuntimeProjectAttachment.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          runtimeProject: json_['runtimeProject'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        runtimeProject: json_['runtimeProject'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (runtimeProject != null) 'runtimeProject': runtimeProject!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (runtimeProject != null) 'runtimeProject': runtimeProject!,
+  };
 }
 
 /// The schema details derived from the spec.
@@ -10105,25 +10329,24 @@ class GoogleCloudApihubV1Schema {
   core.List<core.int> get rawValueAsBytes => convert.base64.decode(rawValue!);
 
   set rawValueAsBytes(core.List<core.int> bytes_) {
-    rawValue =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    rawValue = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  GoogleCloudApihubV1Schema({
-    this.displayName,
-    this.rawValue,
-  });
+  GoogleCloudApihubV1Schema({this.displayName, this.rawValue});
 
   GoogleCloudApihubV1Schema.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          rawValue: json_['rawValue'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        rawValue: json_['rawValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (rawValue != null) 'rawValue': rawValue!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (rawValue != null) 'rawValue': rawValue!,
+  };
 }
 
 /// The SearchResources method's request.
@@ -10181,19 +10404,19 @@ class GoogleCloudApihubV1SearchResourcesRequest {
   });
 
   GoogleCloudApihubV1SearchResourcesRequest.fromJson(core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          pageSize: json_['pageSize'] as core.int?,
-          pageToken: json_['pageToken'] as core.String?,
-          query: json_['query'] as core.String?,
-        );
+    : this(
+        filter: json_['filter'] as core.String?,
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+        query: json_['query'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-        if (query != null) 'query': query!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (pageToken != null) 'pageToken': pageToken!,
+    if (query != null) 'query': query!,
+  };
 }
 
 /// Response for the SearchResources method.
@@ -10215,18 +10438,22 @@ class GoogleCloudApihubV1SearchResourcesResponse {
   });
 
   GoogleCloudApihubV1SearchResourcesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          searchResults: (json_['searchResults'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1SearchResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        searchResults:
+            (json_['searchResults'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1SearchResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (searchResults != null) 'searchResults': searchResults!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (searchResults != null) 'searchResults': searchResults!,
+  };
 }
 
 /// Represents the search results.
@@ -10236,21 +10463,21 @@ class GoogleCloudApihubV1SearchResult {
   /// Note: Only selected fields of the resources are populated in response.
   GoogleCloudApihubV1ApiHubResource? resource;
 
-  GoogleCloudApihubV1SearchResult({
-    this.resource,
-  });
+  GoogleCloudApihubV1SearchResult({this.resource});
 
   GoogleCloudApihubV1SearchResult.fromJson(core.Map json_)
-      : this(
-          resource: json_.containsKey('resource')
-              ? GoogleCloudApihubV1ApiHubResource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        resource:
+            json_.containsKey('resource')
+                ? GoogleCloudApihubV1ApiHubResource.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resource != null) 'resource': resource!,
-      };
+    if (resource != null) 'resource': resource!,
+  };
 }
 
 /// Secret provides a reference to entries in Secret Manager.
@@ -10261,18 +10488,14 @@ class GoogleCloudApihubV1Secret {
   /// Required.
   core.String? secretVersion;
 
-  GoogleCloudApihubV1Secret({
-    this.secretVersion,
-  });
+  GoogleCloudApihubV1Secret({this.secretVersion});
 
   GoogleCloudApihubV1Secret.fromJson(core.Map json_)
-      : this(
-          secretVersion: json_['secretVersion'] as core.String?,
-        );
+    : this(secretVersion: json_['secretVersion'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (secretVersion != null) 'secretVersion': secretVersion!,
-      };
+    if (secretVersion != null) 'secretVersion': secretVersion!,
+  };
 }
 
 /// SourceMetadata represents the metadata for a resource at the source.
@@ -10314,32 +10537,32 @@ class GoogleCloudApihubV1SourceMetadata {
   });
 
   GoogleCloudApihubV1SourceMetadata.fromJson(core.Map json_)
-      : this(
-          originalResourceCreateTime:
-              json_['originalResourceCreateTime'] as core.String?,
-          originalResourceId: json_['originalResourceId'] as core.String?,
-          originalResourceUpdateTime:
-              json_['originalResourceUpdateTime'] as core.String?,
-          pluginInstanceActionSource:
-              json_.containsKey('pluginInstanceActionSource')
-                  ? GoogleCloudApihubV1PluginInstanceActionSource.fromJson(
-                      json_['pluginInstanceActionSource']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          sourceType: json_['sourceType'] as core.String?,
-        );
+    : this(
+        originalResourceCreateTime:
+            json_['originalResourceCreateTime'] as core.String?,
+        originalResourceId: json_['originalResourceId'] as core.String?,
+        originalResourceUpdateTime:
+            json_['originalResourceUpdateTime'] as core.String?,
+        pluginInstanceActionSource:
+            json_.containsKey('pluginInstanceActionSource')
+                ? GoogleCloudApihubV1PluginInstanceActionSource.fromJson(
+                  json_['pluginInstanceActionSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceType: json_['sourceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (originalResourceCreateTime != null)
-          'originalResourceCreateTime': originalResourceCreateTime!,
-        if (originalResourceId != null)
-          'originalResourceId': originalResourceId!,
-        if (originalResourceUpdateTime != null)
-          'originalResourceUpdateTime': originalResourceUpdateTime!,
-        if (pluginInstanceActionSource != null)
-          'pluginInstanceActionSource': pluginInstanceActionSource!,
-        if (sourceType != null) 'sourceType': sourceType!,
-      };
+    if (originalResourceCreateTime != null)
+      'originalResourceCreateTime': originalResourceCreateTime!,
+    if (originalResourceId != null) 'originalResourceId': originalResourceId!,
+    if (originalResourceUpdateTime != null)
+      'originalResourceUpdateTime': originalResourceUpdateTime!,
+    if (pluginInstanceActionSource != null)
+      'pluginInstanceActionSource': pluginInstanceActionSource!,
+    if (sourceType != null) 'sourceType': sourceType!,
+  };
 }
 
 /// Represents a spec associated with an API version in the API Hub.
@@ -10456,63 +10679,77 @@ class GoogleCloudApihubV1Spec {
   });
 
   GoogleCloudApihubV1Spec.fromJson(core.Map json_)
-      : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudApihubV1AttributeValues.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1AttributeValues.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          contents: json_.containsKey('contents')
-              ? GoogleCloudApihubV1SpecContents.fromJson(
-                  json_['contents'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          details: json_.containsKey('details')
-              ? GoogleCloudApihubV1SpecDetails.fromJson(
-                  json_['details'] as core.Map<core.String, core.dynamic>)
-              : null,
-          displayName: json_['displayName'] as core.String?,
-          documentation: json_.containsKey('documentation')
-              ? GoogleCloudApihubV1Documentation.fromJson(
-                  json_['documentation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          lintResponse: json_.containsKey('lintResponse')
-              ? GoogleCloudApihubV1LintResponse.fromJson(
-                  json_['lintResponse'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          parsingMode: json_['parsingMode'] as core.String?,
-          sourceMetadata: (json_['sourceMetadata'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1SourceMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          sourceUri: json_['sourceUri'] as core.String?,
-          specType: json_.containsKey('specType')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['specType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+        contents:
+            json_.containsKey('contents')
+                ? GoogleCloudApihubV1SpecContents.fromJson(
+                  json_['contents'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        details:
+            json_.containsKey('details')
+                ? GoogleCloudApihubV1SpecDetails.fromJson(
+                  json_['details'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        displayName: json_['displayName'] as core.String?,
+        documentation:
+            json_.containsKey('documentation')
+                ? GoogleCloudApihubV1Documentation.fromJson(
+                  json_['documentation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lintResponse:
+            json_.containsKey('lintResponse')
+                ? GoogleCloudApihubV1LintResponse.fromJson(
+                  json_['lintResponse'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        parsingMode: json_['parsingMode'] as core.String?,
+        sourceMetadata:
+            (json_['sourceMetadata'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1SourceMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        sourceUri: json_['sourceUri'] as core.String?,
+        specType:
+            json_.containsKey('specType')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['specType'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (contents != null) 'contents': contents!,
-        if (createTime != null) 'createTime': createTime!,
-        if (details != null) 'details': details!,
-        if (displayName != null) 'displayName': displayName!,
-        if (documentation != null) 'documentation': documentation!,
-        if (lintResponse != null) 'lintResponse': lintResponse!,
-        if (name != null) 'name': name!,
-        if (parsingMode != null) 'parsingMode': parsingMode!,
-        if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
-        if (sourceUri != null) 'sourceUri': sourceUri!,
-        if (specType != null) 'specType': specType!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (contents != null) 'contents': contents!,
+    if (createTime != null) 'createTime': createTime!,
+    if (details != null) 'details': details!,
+    if (displayName != null) 'displayName': displayName!,
+    if (documentation != null) 'documentation': documentation!,
+    if (lintResponse != null) 'lintResponse': lintResponse!,
+    if (name != null) 'name': name!,
+    if (parsingMode != null) 'parsingMode': parsingMode!,
+    if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
+    if (sourceUri != null) 'sourceUri': sourceUri!,
+    if (specType != null) 'specType': specType!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The spec contents.
@@ -10524,8 +10761,10 @@ class GoogleCloudApihubV1SpecContents {
   core.List<core.int> get contentsAsBytes => convert.base64.decode(contents!);
 
   set contentsAsBytes(core.List<core.int> bytes_) {
-    contents =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    contents = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The mime type of the content for example application/json,
@@ -10534,21 +10773,18 @@ class GoogleCloudApihubV1SpecContents {
   /// Required.
   core.String? mimeType;
 
-  GoogleCloudApihubV1SpecContents({
-    this.contents,
-    this.mimeType,
-  });
+  GoogleCloudApihubV1SpecContents({this.contents, this.mimeType});
 
   GoogleCloudApihubV1SpecContents.fromJson(core.Map json_)
-      : this(
-          contents: json_['contents'] as core.String?,
-          mimeType: json_['mimeType'] as core.String?,
-        );
+    : this(
+        contents: json_['contents'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contents != null) 'contents': contents!,
-        if (mimeType != null) 'mimeType': mimeType!,
-      };
+    if (contents != null) 'contents': contents!,
+    if (mimeType != null) 'mimeType': mimeType!,
+  };
 }
 
 /// SpecDetails contains the details parsed from supported spec types.
@@ -10567,26 +10803,24 @@ class GoogleCloudApihubV1SpecDetails {
   /// Output only.
   GoogleCloudApihubV1OpenApiSpecDetails? openApiSpecDetails;
 
-  GoogleCloudApihubV1SpecDetails({
-    this.description,
-    this.openApiSpecDetails,
-  });
+  GoogleCloudApihubV1SpecDetails({this.description, this.openApiSpecDetails});
 
   GoogleCloudApihubV1SpecDetails.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          openApiSpecDetails: json_.containsKey('openApiSpecDetails')
-              ? GoogleCloudApihubV1OpenApiSpecDetails.fromJson(
+    : this(
+        description: json_['description'] as core.String?,
+        openApiSpecDetails:
+            json_.containsKey('openApiSpecDetails')
+                ? GoogleCloudApihubV1OpenApiSpecDetails.fromJson(
                   json_['openApiSpecDetails']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (openApiSpecDetails != null)
-          'openApiSpecDetails': openApiSpecDetails!,
-      };
+    if (description != null) 'description': description!,
+    if (openApiSpecDetails != null) 'openApiSpecDetails': openApiSpecDetails!,
+  };
 }
 
 /// The metadata associated with a spec of the API version.
@@ -10622,24 +10856,24 @@ class GoogleCloudApihubV1SpecMetadata {
   });
 
   GoogleCloudApihubV1SpecMetadata.fromJson(core.Map json_)
-      : this(
-          originalCreateTime: json_['originalCreateTime'] as core.String?,
-          originalId: json_['originalId'] as core.String?,
-          originalUpdateTime: json_['originalUpdateTime'] as core.String?,
-          spec: json_.containsKey('spec')
-              ? GoogleCloudApihubV1Spec.fromJson(
-                  json_['spec'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        originalCreateTime: json_['originalCreateTime'] as core.String?,
+        originalId: json_['originalId'] as core.String?,
+        originalUpdateTime: json_['originalUpdateTime'] as core.String?,
+        spec:
+            json_.containsKey('spec')
+                ? GoogleCloudApihubV1Spec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (originalCreateTime != null)
-          'originalCreateTime': originalCreateTime!,
-        if (originalId != null) 'originalId': originalId!,
-        if (originalUpdateTime != null)
-          'originalUpdateTime': originalUpdateTime!,
-        if (spec != null) 'spec': spec!,
-      };
+    if (originalCreateTime != null) 'originalCreateTime': originalCreateTime!,
+    if (originalId != null) 'originalId': originalId!,
+    if (originalUpdateTime != null) 'originalUpdateTime': originalUpdateTime!,
+    if (spec != null) 'spec': spec!,
+  };
 }
 
 /// The attribute values of data type string or JSON.
@@ -10649,20 +10883,19 @@ class GoogleCloudApihubV1StringAttributeValues {
   /// Required.
   core.List<core.String>? values;
 
-  GoogleCloudApihubV1StringAttributeValues({
-    this.values,
-  });
+  GoogleCloudApihubV1StringAttributeValues({this.values});
 
   GoogleCloudApihubV1StringAttributeValues.fromJson(core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Represents a singleton style guide resource to be used for linting Open API
@@ -10690,27 +10923,25 @@ class GoogleCloudApihubV1StyleGuide {
   /// `projects/{project}/locations/{location}/plugins/{plugin}/styleGuide`
   core.String? name;
 
-  GoogleCloudApihubV1StyleGuide({
-    this.contents,
-    this.linter,
-    this.name,
-  });
+  GoogleCloudApihubV1StyleGuide({this.contents, this.linter, this.name});
 
   GoogleCloudApihubV1StyleGuide.fromJson(core.Map json_)
-      : this(
-          contents: json_.containsKey('contents')
-              ? GoogleCloudApihubV1StyleGuideContents.fromJson(
-                  json_['contents'] as core.Map<core.String, core.dynamic>)
-              : null,
-          linter: json_['linter'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        contents:
+            json_.containsKey('contents')
+                ? GoogleCloudApihubV1StyleGuideContents.fromJson(
+                  json_['contents'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        linter: json_['linter'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contents != null) 'contents': contents!,
-        if (linter != null) 'linter': linter!,
-        if (name != null) 'name': name!,
-      };
+    if (contents != null) 'contents': contents!,
+    if (linter != null) 'linter': linter!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The style guide contents.
@@ -10722,8 +10953,10 @@ class GoogleCloudApihubV1StyleGuideContents {
   core.List<core.int> get contentsAsBytes => convert.base64.decode(contents!);
 
   set contentsAsBytes(core.List<core.int> bytes_) {
-    contents =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    contents = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The mime type of the content.
@@ -10731,21 +10964,18 @@ class GoogleCloudApihubV1StyleGuideContents {
   /// Required.
   core.String? mimeType;
 
-  GoogleCloudApihubV1StyleGuideContents({
-    this.contents,
-    this.mimeType,
-  });
+  GoogleCloudApihubV1StyleGuideContents({this.contents, this.mimeType});
 
   GoogleCloudApihubV1StyleGuideContents.fromJson(core.Map json_)
-      : this(
-          contents: json_['contents'] as core.String?,
-          mimeType: json_['mimeType'] as core.String?,
-        );
+    : this(
+        contents: json_['contents'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contents != null) 'contents': contents!,
-        if (mimeType != null) 'mimeType': mimeType!,
-      };
+    if (contents != null) 'contents': contents!,
+    if (mimeType != null) 'mimeType': mimeType!,
+  };
 }
 
 /// Count of issues with a given severity.
@@ -10766,21 +10996,18 @@ class GoogleCloudApihubV1SummaryEntry {
   /// - "SEVERITY_HINT" : Severity hint.
   core.String? severity;
 
-  GoogleCloudApihubV1SummaryEntry({
-    this.count,
-    this.severity,
-  });
+  GoogleCloudApihubV1SummaryEntry({this.count, this.severity});
 
   GoogleCloudApihubV1SummaryEntry.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.int?,
-          severity: json_['severity'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.int?,
+        severity: json_['severity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (severity != null) 'severity': severity!,
-      };
+    if (count != null) 'count': count!,
+    if (severity != null) 'severity': severity!,
+  };
 }
 
 /// Parameters to support Username and Password Authentication.
@@ -10798,24 +11025,23 @@ class GoogleCloudApihubV1UserPasswordConfig {
   /// Required.
   core.String? username;
 
-  GoogleCloudApihubV1UserPasswordConfig({
-    this.password,
-    this.username,
-  });
+  GoogleCloudApihubV1UserPasswordConfig({this.password, this.username});
 
   GoogleCloudApihubV1UserPasswordConfig.fromJson(core.Map json_)
-      : this(
-          password: json_.containsKey('password')
-              ? GoogleCloudApihubV1Secret.fromJson(
-                  json_['password'] as core.Map<core.String, core.dynamic>)
-              : null,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        password:
+            json_.containsKey('password')
+                ? GoogleCloudApihubV1Secret.fromJson(
+                  json_['password'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (password != null) 'password': password!,
-        if (username != null) 'username': username!,
-      };
+    if (password != null) 'password': password!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// Represents a version of the API resource in API hub.
@@ -10967,75 +11193,90 @@ class GoogleCloudApihubV1Version {
   });
 
   GoogleCloudApihubV1Version.fromJson(core.Map json_)
-      : this(
-          accreditation: json_.containsKey('accreditation')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['accreditation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          apiOperations: (json_['apiOperations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudApihubV1AttributeValues.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        accreditation:
+            json_.containsKey('accreditation')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['accreditation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        apiOperations:
+            (json_['apiOperations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1AttributeValues.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          compliance: json_.containsKey('compliance')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['compliance'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          definitions: (json_['definitions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          deployments: (json_['deployments'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          documentation: json_.containsKey('documentation')
-              ? GoogleCloudApihubV1Documentation.fromJson(
-                  json_['documentation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          lifecycle: json_.containsKey('lifecycle')
-              ? GoogleCloudApihubV1AttributeValues.fromJson(
-                  json_['lifecycle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          selectedDeployment: json_['selectedDeployment'] as core.String?,
-          sourceMetadata: (json_['sourceMetadata'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1SourceMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          specs: (json_['specs'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-        );
+        compliance:
+            json_.containsKey('compliance')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['compliance'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        definitions:
+            (json_['definitions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        deployments:
+            (json_['deployments'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        documentation:
+            json_.containsKey('documentation')
+                ? GoogleCloudApihubV1Documentation.fromJson(
+                  json_['documentation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lifecycle:
+            json_.containsKey('lifecycle')
+                ? GoogleCloudApihubV1AttributeValues.fromJson(
+                  json_['lifecycle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        selectedDeployment: json_['selectedDeployment'] as core.String?,
+        sourceMetadata:
+            (json_['sourceMetadata'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1SourceMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        specs:
+            (json_['specs'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accreditation != null) 'accreditation': accreditation!,
-        if (apiOperations != null) 'apiOperations': apiOperations!,
-        if (attributes != null) 'attributes': attributes!,
-        if (compliance != null) 'compliance': compliance!,
-        if (createTime != null) 'createTime': createTime!,
-        if (definitions != null) 'definitions': definitions!,
-        if (deployments != null) 'deployments': deployments!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (documentation != null) 'documentation': documentation!,
-        if (lifecycle != null) 'lifecycle': lifecycle!,
-        if (name != null) 'name': name!,
-        if (selectedDeployment != null)
-          'selectedDeployment': selectedDeployment!,
-        if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
-        if (specs != null) 'specs': specs!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (accreditation != null) 'accreditation': accreditation!,
+    if (apiOperations != null) 'apiOperations': apiOperations!,
+    if (attributes != null) 'attributes': attributes!,
+    if (compliance != null) 'compliance': compliance!,
+    if (createTime != null) 'createTime': createTime!,
+    if (definitions != null) 'definitions': definitions!,
+    if (deployments != null) 'deployments': deployments!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (documentation != null) 'documentation': documentation!,
+    if (lifecycle != null) 'lifecycle': lifecycle!,
+    if (name != null) 'name': name!,
+    if (selectedDeployment != null) 'selectedDeployment': selectedDeployment!,
+    if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
+    if (specs != null) 'specs': specs!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The metadata associated with a version of the API resource.
@@ -11088,34 +11329,42 @@ class GoogleCloudApihubV1VersionMetadata {
   });
 
   GoogleCloudApihubV1VersionMetadata.fromJson(core.Map json_)
-      : this(
-          deployments: (json_['deployments'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1DeploymentMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          originalCreateTime: json_['originalCreateTime'] as core.String?,
-          originalId: json_['originalId'] as core.String?,
-          originalUpdateTime: json_['originalUpdateTime'] as core.String?,
-          specs: (json_['specs'] as core.List?)
-              ?.map((value) => GoogleCloudApihubV1SpecMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          version: json_.containsKey('version')
-              ? GoogleCloudApihubV1Version.fromJson(
-                  json_['version'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        deployments:
+            (json_['deployments'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1DeploymentMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        originalCreateTime: json_['originalCreateTime'] as core.String?,
+        originalId: json_['originalId'] as core.String?,
+        originalUpdateTime: json_['originalUpdateTime'] as core.String?,
+        specs:
+            (json_['specs'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1SpecMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        version:
+            json_.containsKey('version')
+                ? GoogleCloudApihubV1Version.fromJson(
+                  json_['version'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deployments != null) 'deployments': deployments!,
-        if (originalCreateTime != null)
-          'originalCreateTime': originalCreateTime!,
-        if (originalId != null) 'originalId': originalId!,
-        if (originalUpdateTime != null)
-          'originalUpdateTime': originalUpdateTime!,
-        if (specs != null) 'specs': specs!,
-        if (version != null) 'version': version!,
-      };
+    if (deployments != null) 'deployments': deployments!,
+    if (originalCreateTime != null) 'originalCreateTime': originalCreateTime!,
+    if (originalId != null) 'originalId': originalId!,
+    if (originalUpdateTime != null) 'originalUpdateTime': originalUpdateTime!,
+    if (specs != null) 'specs': specs!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -11132,18 +11381,22 @@ class GoogleCloudLocationListLocationsResponse {
   });
 
   GoogleCloudLocationListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => GoogleCloudLocationLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudLocationLocation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -11166,18 +11419,22 @@ class GoogleLongrunningListOperationsResponse {
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => GoogleLongrunningOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -11232,28 +11489,32 @@ class GoogleLongrunningOperation {
   });
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for

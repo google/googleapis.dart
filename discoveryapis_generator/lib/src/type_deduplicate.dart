@@ -16,10 +16,10 @@ final _libraryZoneKey = Object();
 final _expando = Expando<String>();
 
 String _schemaUniqueId(JsonSchema schema) => convert.jsonEncode(
-      schema.toJson()
-        ..remove('id')
-        ..remove('description'),
-    );
+  schema.toJson()
+    ..remove('id')
+    ..remove('description'),
+);
 
 bool generatedDuplicateLibraries() {
   final zoneValue = Zone.current[_libraryZoneKey] as _LibraryZoneData?;
@@ -54,8 +54,10 @@ extension ObjectTypeExtention on ObjectType {
     libraryValue.addUsedItem(schema);
 
     final initialCovertCallCount = imports.convert.callCount;
-    final initialDefinition = classDefinitionCore(duplicateItem.outputName,
-        includeDescription: false);
+    final initialDefinition = classDefinitionCore(
+      duplicateItem.outputName,
+      includeDescription: false,
+    );
 
     final convertUsed = imports.convert.callCount > initialCovertCallCount;
     if (convertUsed) {
@@ -77,8 +79,9 @@ T libraryDeduplicateLogic<T>(T Function() action) {
 
   final packageValue = Zone.current[_packageZoneKey] as _PackageZoneData?;
   if (packageValue != null) {
-    packageValue.usedItems
-        .addAll(data.usedItems.map((e) => packageValue.candidates[e]!));
+    packageValue.usedItems.addAll(
+      data.usedItems.map((e) => packageValue.candidates[e]!),
+    );
   }
 
   return result;
@@ -132,8 +135,9 @@ mixin DedupeMixin {
     // Now populate the names of the classes
 
     // Group the classes by name
-    final groupByDesiredName =
-        candidates.values.groupListsBy((element) => element.desiredClassName);
+    final groupByDesiredName = candidates.values.groupListsBy(
+      (element) => element.desiredClassName,
+    );
 
     for (var entry in groupByDesiredName.entries) {
       final list = entry.value;
@@ -280,7 +284,9 @@ String _bestName(Set<String> allKeys) {
   var subShortest = 'Shared';
   for (var index in indices.reversed) {
     String lastNChars(String value) => value.substring(
-        value.length - (shortestKey.length - index), value.length);
+      value.length - (shortestKey.length - index),
+      value.length,
+    );
 
     final mergedKeys = allKeys.map(lastNChars).toSet();
     if (mergedKeys.length == 1) {

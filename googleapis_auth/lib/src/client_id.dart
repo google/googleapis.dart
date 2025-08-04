@@ -17,13 +17,11 @@ class ClientId {
 
   ClientId.serviceAccount(this.identifier) : secret = null;
 
-  factory ClientId.fromJson(Map<String, dynamic> json) => ClientId(
-        json['identifier'] as String,
-        json['secret'] as String?,
-      );
+  factory ClientId.fromJson(Map<String, dynamic> json) =>
+      ClientId(json['identifier'] as String, json['secret'] as String?);
 
   Map<String, dynamic> toJson() => {
-        'identifier': identifier,
-        if (secret != null) 'secret': secret,
-      };
+    'identifier': identifier,
+    if (secret != null) 'secret': secret,
+  };
 }

@@ -79,11 +79,16 @@ class GamesApi {
   SnapshotsResource get snapshots => SnapshotsResource(_requester);
   StatsResource get stats => StatsResource(_requester);
 
-  GamesApi(http.Client client,
-      {core.String rootUrl = 'https://games.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  GamesApi(
+    http.Client client, {
+    core.String rootUrl = 'https://games.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class AccesstokensResource {
@@ -116,7 +121,7 @@ class AccesstokensResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GeneratePlayGroupingApiTokenResponse>
-      generatePlayGroupingApiToken({
+  generatePlayGroupingApiToken({
     core.String? packageName,
     core.String? persona,
     core.String? $fields,
@@ -135,7 +140,8 @@ class AccesstokensResource {
       queryParams: queryParams_,
     );
     return GeneratePlayGroupingApiTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Generates a Play Grouping API token for the PGS user identified by the
@@ -169,7 +175,7 @@ class AccesstokensResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GenerateRecallPlayGroupingApiTokenResponse>
-      generateRecallPlayGroupingApiToken({
+  generateRecallPlayGroupingApiToken({
     core.String? packageName,
     core.String? persona,
     core.String? recallSessionId,
@@ -190,7 +196,8 @@ class AccesstokensResource {
       queryParams: queryParams_,
     );
     return GenerateRecallPlayGroupingApiTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -198,7 +205,7 @@ class AchievementDefinitionsResource {
   final commons.ApiRequester _requester;
 
   AchievementDefinitionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists all the achievement definitions for your application.
   ///
@@ -245,7 +252,8 @@ class AchievementDefinitionsResource {
       queryParams: queryParams_,
     );
     return AchievementDefinitionsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -289,7 +297,8 @@ class AchievementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/achievements/' +
+    final url_ =
+        'games/v1/achievements/' +
         commons.escapeVariable('$achievementId') +
         '/increment';
 
@@ -299,7 +308,8 @@ class AchievementsResource {
       queryParams: queryParams_,
     );
     return AchievementIncrementResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the progress for all your application's achievements for the
@@ -354,7 +364,8 @@ class AchievementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/players/' +
+    final url_ =
+        'games/v1/players/' +
         commons.escapeVariable('$playerId') +
         '/achievements';
 
@@ -364,7 +375,8 @@ class AchievementsResource {
       queryParams: queryParams_,
     );
     return PlayerAchievementListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the state of the achievement with the given ID to `REVEALED` for the
@@ -392,7 +404,8 @@ class AchievementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/achievements/' +
+    final url_ =
+        'games/v1/achievements/' +
         commons.escapeVariable('$achievementId') +
         '/reveal';
 
@@ -402,7 +415,8 @@ class AchievementsResource {
       queryParams: queryParams_,
     );
     return AchievementRevealResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the steps for the currently authenticated player towards unlocking an
@@ -438,7 +452,8 @@ class AchievementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/achievements/' +
+    final url_ =
+        'games/v1/achievements/' +
         commons.escapeVariable('$achievementId') +
         '/setStepsAtLeast';
 
@@ -448,7 +463,8 @@ class AchievementsResource {
       queryParams: queryParams_,
     );
     return AchievementSetStepsAtLeastResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Unlocks this achievement for the currently authenticated player.
@@ -475,7 +491,8 @@ class AchievementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/achievements/' +
+    final url_ =
+        'games/v1/achievements/' +
         commons.escapeVariable('$achievementId') +
         '/unlock';
 
@@ -485,7 +502,8 @@ class AchievementsResource {
       queryParams: queryParams_,
     );
     return AchievementUnlockResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates multiple achievements for the currently authenticated player.
@@ -522,7 +540,8 @@ class AchievementsResource {
       queryParams: queryParams_,
     );
     return AchievementUpdateMultipleResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -582,7 +601,8 @@ class ApplicationsResource {
       queryParams: queryParams_,
     );
     return Application.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a URL for the requested end point type.
@@ -641,9 +661,7 @@ class ApplicationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> played({
-    core.String? $fields,
-  }) async {
+  async.Future<void> played({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -685,7 +703,8 @@ class ApplicationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/applications/' +
+    final url_ =
+        'games/v1/applications/' +
         commons.escapeVariable('$applicationId') +
         '/verify';
 
@@ -695,7 +714,8 @@ class ApplicationsResource {
       queryParams: queryParams_,
     );
     return ApplicationVerifyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -749,7 +769,8 @@ class EventsResource {
       queryParams: queryParams_,
     );
     return PlayerEventListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of the event definitions in this application.
@@ -796,7 +817,8 @@ class EventsResource {
       queryParams: queryParams_,
     );
     return EventDefinitionListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Records a batch of changes to the number of times events have occurred for
@@ -839,7 +861,8 @@ class EventsResource {
       queryParams: queryParams_,
     );
     return EventUpdateResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -886,7 +909,8 @@ class LeaderboardsResource {
       queryParams: queryParams_,
     );
     return Leaderboard.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the leaderboard metadata for your application.
@@ -933,7 +957,8 @@ class LeaderboardsResource {
       queryParams: queryParams_,
     );
     return LeaderboardListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -956,9 +981,7 @@ class MetagameResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MetagameConfig> getMetagameConfig({
-    core.String? $fields,
-  }) async {
+  async.Future<MetagameConfig> getMetagameConfig({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -971,7 +994,8 @@ class MetagameResource {
       queryParams: queryParams_,
     );
     return MetagameConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List play data aggregated per category for the player corresponding to
@@ -1021,7 +1045,8 @@ class MetagameResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/players/' +
+    final url_ =
+        'games/v1/players/' +
         commons.escapeVariable('$playerId') +
         '/categories/' +
         commons.escapeVariable('$collection');
@@ -1032,7 +1057,8 @@ class MetagameResource {
       queryParams: queryParams_,
     );
     return CategoryListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1114,7 +1140,7 @@ class PlayersResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetMultipleApplicationPlayerIdsResponse>
-      getMultipleApplicationPlayerIds({
+  getMultipleApplicationPlayerIds({
     core.List<core.String>? applicationIds,
     core.String? $fields,
   }) async {
@@ -1131,7 +1157,8 @@ class PlayersResource {
       queryParams: queryParams_,
     );
     return GetMultipleApplicationPlayerIdsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves scoped player identifiers for currently authenticated user.
@@ -1163,7 +1190,8 @@ class PlayersResource {
       queryParams: queryParams_,
     );
     return ScopedPlayerIds.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get the collection of players for the currently authenticated user.
@@ -1221,7 +1249,8 @@ class PlayersResource {
       queryParams: queryParams_,
     );
     return PlayerListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1265,7 +1294,8 @@ class RecallResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/recall/gamesPlayerTokens/' +
+    final url_ =
+        'games/v1/recall/gamesPlayerTokens/' +
         commons.escapeVariable('$sessionId');
 
     final response_ = await _requester.request(
@@ -1274,7 +1304,8 @@ class RecallResource {
       queryParams: queryParams_,
     );
     return RetrieveGamesPlayerTokensResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieve the last Recall token from all developer games that is associated
@@ -1299,7 +1330,7 @@ class RecallResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RetrieveDeveloperGamesLastPlayerTokenResponse>
-      lastTokenFromAllDeveloperGames(
+  lastTokenFromAllDeveloperGames(
     core.String sessionId, {
     core.String? $fields,
   }) async {
@@ -1307,7 +1338,8 @@ class RecallResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/recall/developerGamesLastPlayerToken/' +
+    final url_ =
+        'games/v1/recall/developerGamesLastPlayerToken/' +
         commons.escapeVariable('$sessionId');
 
     final response_ = await _requester.request(
@@ -1316,7 +1348,8 @@ class RecallResource {
       queryParams: queryParams_,
     );
     return RetrieveDeveloperGamesLastPlayerTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Associate the PGS Player principal encoded in the provided recall session
@@ -1354,7 +1387,8 @@ class RecallResource {
       queryParams: queryParams_,
     );
     return LinkPersonaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete all Recall tokens linking the given persona to any player (with or
@@ -1392,7 +1426,8 @@ class RecallResource {
       queryParams: queryParams_,
     );
     return ResetPersonaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieve all Recall tokens associated with the PGS Player encoded in the
@@ -1433,7 +1468,8 @@ class RecallResource {
       queryParams: queryParams_,
     );
     return RetrievePlayerTokensResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a Recall token linking the PGS Player principal identified by the
@@ -1472,7 +1508,8 @@ class RecallResource {
       queryParams: queryParams_,
     );
     return UnlinkPersonaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1518,7 +1555,8 @@ class RevisionsResource {
       queryParams: queryParams_,
     );
     return RevisionCheckResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1598,7 +1636,8 @@ class ScoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/players/' +
+    final url_ =
+        'games/v1/players/' +
         commons.escapeVariable('$playerId') +
         '/leaderboards/' +
         commons.escapeVariable('$leaderboardId') +
@@ -1611,7 +1650,8 @@ class ScoresResource {
       queryParams: queryParams_,
     );
     return PlayerLeaderboardScoreListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the scores in a leaderboard, starting from the top.
@@ -1669,7 +1709,8 @@ class ScoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/leaderboards/' +
+    final url_ =
+        'games/v1/leaderboards/' +
         commons.escapeVariable('$leaderboardId') +
         '/scores/' +
         commons.escapeVariable('$collection');
@@ -1680,7 +1721,8 @@ class ScoresResource {
       queryParams: queryParams_,
     );
     return LeaderboardScores.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the scores in a leaderboard around (and including) a player's score.
@@ -1751,7 +1793,8 @@ class ScoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/leaderboards/' +
+    final url_ =
+        'games/v1/leaderboards/' +
         commons.escapeVariable('$leaderboardId') +
         '/window/' +
         commons.escapeVariable('$collection');
@@ -1762,7 +1805,8 @@ class ScoresResource {
       queryParams: queryParams_,
     );
     return LeaderboardScores.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Submits a score to the specified leaderboard.
@@ -1810,7 +1854,8 @@ class ScoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/leaderboards/' +
+    final url_ =
+        'games/v1/leaderboards/' +
         commons.escapeVariable('$leaderboardId') +
         '/scores';
 
@@ -1820,7 +1865,8 @@ class ScoresResource {
       queryParams: queryParams_,
     );
     return PlayerScoreResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Submits multiple scores to leaderboards.
@@ -1862,7 +1908,8 @@ class ScoresResource {
       queryParams: queryParams_,
     );
     return PlayerScoreListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1951,7 +1998,8 @@ class SnapshotsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'games/v1/players/' +
+    final url_ =
+        'games/v1/players/' +
         commons.escapeVariable('$playerId') +
         '/snapshots';
 
@@ -1961,7 +2009,8 @@ class SnapshotsResource {
       queryParams: queryParams_,
     );
     return SnapshotListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1985,9 +2034,7 @@ class StatsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<StatsResponse> get({
-    core.String? $fields,
-  }) async {
+  async.Future<StatsResponse> get({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2000,7 +2047,8 @@ class StatsResource {
       queryParams: queryParams_,
     );
     return StatsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2073,42 +2121,42 @@ class AchievementDefinition {
   });
 
   AchievementDefinition.fromJson(core.Map json_)
-      : this(
-          achievementType: json_['achievementType'] as core.String?,
-          description: json_['description'] as core.String?,
-          experiencePoints: json_['experiencePoints'] as core.String?,
-          formattedTotalSteps: json_['formattedTotalSteps'] as core.String?,
-          id: json_['id'] as core.String?,
-          initialState: json_['initialState'] as core.String?,
-          isRevealedIconUrlDefault:
-              json_['isRevealedIconUrlDefault'] as core.bool?,
-          isUnlockedIconUrlDefault:
-              json_['isUnlockedIconUrlDefault'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-          revealedIconUrl: json_['revealedIconUrl'] as core.String?,
-          totalSteps: json_['totalSteps'] as core.int?,
-          unlockedIconUrl: json_['unlockedIconUrl'] as core.String?,
-        );
+    : this(
+        achievementType: json_['achievementType'] as core.String?,
+        description: json_['description'] as core.String?,
+        experiencePoints: json_['experiencePoints'] as core.String?,
+        formattedTotalSteps: json_['formattedTotalSteps'] as core.String?,
+        id: json_['id'] as core.String?,
+        initialState: json_['initialState'] as core.String?,
+        isRevealedIconUrlDefault:
+            json_['isRevealedIconUrlDefault'] as core.bool?,
+        isUnlockedIconUrlDefault:
+            json_['isUnlockedIconUrlDefault'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        revealedIconUrl: json_['revealedIconUrl'] as core.String?,
+        totalSteps: json_['totalSteps'] as core.int?,
+        unlockedIconUrl: json_['unlockedIconUrl'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (achievementType != null) 'achievementType': achievementType!,
-        if (description != null) 'description': description!,
-        if (experiencePoints != null) 'experiencePoints': experiencePoints!,
-        if (formattedTotalSteps != null)
-          'formattedTotalSteps': formattedTotalSteps!,
-        if (id != null) 'id': id!,
-        if (initialState != null) 'initialState': initialState!,
-        if (isRevealedIconUrlDefault != null)
-          'isRevealedIconUrlDefault': isRevealedIconUrlDefault!,
-        if (isUnlockedIconUrlDefault != null)
-          'isUnlockedIconUrlDefault': isUnlockedIconUrlDefault!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (revealedIconUrl != null) 'revealedIconUrl': revealedIconUrl!,
-        if (totalSteps != null) 'totalSteps': totalSteps!,
-        if (unlockedIconUrl != null) 'unlockedIconUrl': unlockedIconUrl!,
-      };
+    if (achievementType != null) 'achievementType': achievementType!,
+    if (description != null) 'description': description!,
+    if (experiencePoints != null) 'experiencePoints': experiencePoints!,
+    if (formattedTotalSteps != null)
+      'formattedTotalSteps': formattedTotalSteps!,
+    if (id != null) 'id': id!,
+    if (initialState != null) 'initialState': initialState!,
+    if (isRevealedIconUrlDefault != null)
+      'isRevealedIconUrlDefault': isRevealedIconUrlDefault!,
+    if (isUnlockedIconUrlDefault != null)
+      'isUnlockedIconUrlDefault': isUnlockedIconUrlDefault!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (revealedIconUrl != null) 'revealedIconUrl': revealedIconUrl!,
+    if (totalSteps != null) 'totalSteps': totalSteps!,
+    if (unlockedIconUrl != null) 'unlockedIconUrl': unlockedIconUrl!,
+  };
 }
 
 /// A list of achievement definition objects.
@@ -2132,20 +2180,24 @@ class AchievementDefinitionsListResponse {
   });
 
   AchievementDefinitionsListResponse.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => AchievementDefinition.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => AchievementDefinition.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// An achievement increment response
@@ -2169,17 +2221,17 @@ class AchievementIncrementResponse {
   });
 
   AchievementIncrementResponse.fromJson(core.Map json_)
-      : this(
-          currentSteps: json_['currentSteps'] as core.int?,
-          kind: json_['kind'] as core.String?,
-          newlyUnlocked: json_['newlyUnlocked'] as core.bool?,
-        );
+    : this(
+        currentSteps: json_['currentSteps'] as core.int?,
+        kind: json_['kind'] as core.String?,
+        newlyUnlocked: json_['newlyUnlocked'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentSteps != null) 'currentSteps': currentSteps!,
-        if (kind != null) 'kind': kind!,
-        if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
-      };
+    if (currentSteps != null) 'currentSteps': currentSteps!,
+    if (kind != null) 'kind': kind!,
+    if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
+  };
 }
 
 /// An achievement reveal response
@@ -2197,21 +2249,18 @@ class AchievementRevealResponse {
   /// Value is always the fixed string `games#achievementRevealResponse`.
   core.String? kind;
 
-  AchievementRevealResponse({
-    this.currentState,
-    this.kind,
-  });
+  AchievementRevealResponse({this.currentState, this.kind});
 
   AchievementRevealResponse.fromJson(core.Map json_)
-      : this(
-          currentState: json_['currentState'] as core.String?,
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        currentState: json_['currentState'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentState != null) 'currentState': currentState!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (currentState != null) 'currentState': currentState!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// An achievement set steps at least response.
@@ -2236,17 +2285,17 @@ class AchievementSetStepsAtLeastResponse {
   });
 
   AchievementSetStepsAtLeastResponse.fromJson(core.Map json_)
-      : this(
-          currentSteps: json_['currentSteps'] as core.int?,
-          kind: json_['kind'] as core.String?,
-          newlyUnlocked: json_['newlyUnlocked'] as core.bool?,
-        );
+    : this(
+        currentSteps: json_['currentSteps'] as core.int?,
+        kind: json_['kind'] as core.String?,
+        newlyUnlocked: json_['newlyUnlocked'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentSteps != null) 'currentSteps': currentSteps!,
-        if (kind != null) 'kind': kind!,
-        if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
-      };
+    if (currentSteps != null) 'currentSteps': currentSteps!,
+    if (kind != null) 'kind': kind!,
+    if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
+  };
 }
 
 /// An achievement unlock response
@@ -2260,21 +2309,18 @@ class AchievementUnlockResponse {
   /// request for the achievement was the first for the player).
   core.bool? newlyUnlocked;
 
-  AchievementUnlockResponse({
-    this.kind,
-    this.newlyUnlocked,
-  });
+  AchievementUnlockResponse({this.kind, this.newlyUnlocked});
 
   AchievementUnlockResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          newlyUnlocked: json_['newlyUnlocked'] as core.bool?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        newlyUnlocked: json_['newlyUnlocked'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
+  };
 }
 
 /// A list of achievement update requests.
@@ -2287,24 +2333,25 @@ class AchievementUpdateMultipleRequest {
   /// The individual achievement update requests.
   core.List<AchievementUpdateRequest>? updates;
 
-  AchievementUpdateMultipleRequest({
-    this.kind,
-    this.updates,
-  });
+  AchievementUpdateMultipleRequest({this.kind, this.updates});
 
   AchievementUpdateMultipleRequest.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          updates: (json_['updates'] as core.List?)
-              ?.map((value) => AchievementUpdateRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        updates:
+            (json_['updates'] as core.List?)
+                ?.map(
+                  (value) => AchievementUpdateRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (updates != null) 'updates': updates!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (updates != null) 'updates': updates!,
+  };
 }
 
 /// Response message for UpdateMultipleAchievements rpc.
@@ -2318,25 +2365,26 @@ class AchievementUpdateMultipleResponse {
   /// The updated state of the achievements.
   core.List<AchievementUpdateResponse>? updatedAchievements;
 
-  AchievementUpdateMultipleResponse({
-    this.kind,
-    this.updatedAchievements,
-  });
+  AchievementUpdateMultipleResponse({this.kind, this.updatedAchievements});
 
   AchievementUpdateMultipleResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          updatedAchievements: (json_['updatedAchievements'] as core.List?)
-              ?.map((value) => AchievementUpdateResponse.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        updatedAchievements:
+            (json_['updatedAchievements'] as core.List?)
+                ?.map(
+                  (value) => AchievementUpdateResponse.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (updatedAchievements != null)
-          'updatedAchievements': updatedAchievements!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (updatedAchievements != null)
+      'updatedAchievements': updatedAchievements!,
+  };
 }
 
 /// A request to update an achievement.
@@ -2375,29 +2423,34 @@ class AchievementUpdateRequest {
   });
 
   AchievementUpdateRequest.fromJson(core.Map json_)
-      : this(
-          achievementId: json_['achievementId'] as core.String?,
-          incrementPayload: json_.containsKey('incrementPayload')
-              ? GamesAchievementIncrement.fromJson(json_['incrementPayload']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-          setStepsAtLeastPayload: json_.containsKey('setStepsAtLeastPayload')
-              ? GamesAchievementSetStepsAtLeast.fromJson(
+    : this(
+        achievementId: json_['achievementId'] as core.String?,
+        incrementPayload:
+            json_.containsKey('incrementPayload')
+                ? GamesAchievementIncrement.fromJson(
+                  json_['incrementPayload']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+        setStepsAtLeastPayload:
+            json_.containsKey('setStepsAtLeastPayload')
+                ? GamesAchievementSetStepsAtLeast.fromJson(
                   json_['setStepsAtLeastPayload']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateType: json_['updateType'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateType: json_['updateType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (achievementId != null) 'achievementId': achievementId!,
-        if (incrementPayload != null) 'incrementPayload': incrementPayload!,
-        if (kind != null) 'kind': kind!,
-        if (setStepsAtLeastPayload != null)
-          'setStepsAtLeastPayload': setStepsAtLeastPayload!,
-        if (updateType != null) 'updateType': updateType!,
-      };
+    if (achievementId != null) 'achievementId': achievementId!,
+    if (incrementPayload != null) 'incrementPayload': incrementPayload!,
+    if (kind != null) 'kind': kind!,
+    if (setStepsAtLeastPayload != null)
+      'setStepsAtLeastPayload': setStepsAtLeastPayload!,
+    if (updateType != null) 'updateType': updateType!,
+  };
 }
 
 /// An updated achievement.
@@ -2437,23 +2490,23 @@ class AchievementUpdateResponse {
   });
 
   AchievementUpdateResponse.fromJson(core.Map json_)
-      : this(
-          achievementId: json_['achievementId'] as core.String?,
-          currentState: json_['currentState'] as core.String?,
-          currentSteps: json_['currentSteps'] as core.int?,
-          kind: json_['kind'] as core.String?,
-          newlyUnlocked: json_['newlyUnlocked'] as core.bool?,
-          updateOccurred: json_['updateOccurred'] as core.bool?,
-        );
+    : this(
+        achievementId: json_['achievementId'] as core.String?,
+        currentState: json_['currentState'] as core.String?,
+        currentSteps: json_['currentSteps'] as core.int?,
+        kind: json_['kind'] as core.String?,
+        newlyUnlocked: json_['newlyUnlocked'] as core.bool?,
+        updateOccurred: json_['updateOccurred'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (achievementId != null) 'achievementId': achievementId!,
-        if (currentState != null) 'currentState': currentState!,
-        if (currentSteps != null) 'currentSteps': currentSteps!,
-        if (kind != null) 'kind': kind!,
-        if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
-        if (updateOccurred != null) 'updateOccurred': updateOccurred!,
-      };
+    if (achievementId != null) 'achievementId': achievementId!,
+    if (currentState != null) 'currentState': currentState!,
+    if (currentSteps != null) 'currentSteps': currentSteps!,
+    if (kind != null) 'kind': kind!,
+    if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
+    if (updateOccurred != null) 'updateOccurred': updateOccurred!,
+  };
 }
 
 /// The Application resource.
@@ -2518,49 +2571,60 @@ class Application {
   });
 
   Application.fromJson(core.Map json_)
-      : this(
-          achievementCount: json_['achievement_count'] as core.int?,
-          assets: (json_['assets'] as core.List?)
-              ?.map((value) => ImageAsset.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          author: json_['author'] as core.String?,
-          category: json_.containsKey('category')
-              ? ApplicationCategory.fromJson(
-                  json_['category'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          enabledFeatures: (json_['enabledFeatures'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          id: json_['id'] as core.String?,
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => Instance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          lastUpdatedTimestamp: json_['lastUpdatedTimestamp'] as core.String?,
-          leaderboardCount: json_['leaderboard_count'] as core.int?,
-          name: json_['name'] as core.String?,
-          themeColor: json_['themeColor'] as core.String?,
-        );
+    : this(
+        achievementCount: json_['achievement_count'] as core.int?,
+        assets:
+            (json_['assets'] as core.List?)
+                ?.map(
+                  (value) => ImageAsset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        author: json_['author'] as core.String?,
+        category:
+            json_.containsKey('category')
+                ? ApplicationCategory.fromJson(
+                  json_['category'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        enabledFeatures:
+            (json_['enabledFeatures'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        id: json_['id'] as core.String?,
+        instances:
+            (json_['instances'] as core.List?)
+                ?.map(
+                  (value) => Instance.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        lastUpdatedTimestamp: json_['lastUpdatedTimestamp'] as core.String?,
+        leaderboardCount: json_['leaderboard_count'] as core.int?,
+        name: json_['name'] as core.String?,
+        themeColor: json_['themeColor'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (achievementCount != null) 'achievement_count': achievementCount!,
-        if (assets != null) 'assets': assets!,
-        if (author != null) 'author': author!,
-        if (category != null) 'category': category!,
-        if (description != null) 'description': description!,
-        if (enabledFeatures != null) 'enabledFeatures': enabledFeatures!,
-        if (id != null) 'id': id!,
-        if (instances != null) 'instances': instances!,
-        if (kind != null) 'kind': kind!,
-        if (lastUpdatedTimestamp != null)
-          'lastUpdatedTimestamp': lastUpdatedTimestamp!,
-        if (leaderboardCount != null) 'leaderboard_count': leaderboardCount!,
-        if (name != null) 'name': name!,
-        if (themeColor != null) 'themeColor': themeColor!,
-      };
+    if (achievementCount != null) 'achievement_count': achievementCount!,
+    if (assets != null) 'assets': assets!,
+    if (author != null) 'author': author!,
+    if (category != null) 'category': category!,
+    if (description != null) 'description': description!,
+    if (enabledFeatures != null) 'enabledFeatures': enabledFeatures!,
+    if (id != null) 'id': id!,
+    if (instances != null) 'instances': instances!,
+    if (kind != null) 'kind': kind!,
+    if (lastUpdatedTimestamp != null)
+      'lastUpdatedTimestamp': lastUpdatedTimestamp!,
+    if (leaderboardCount != null) 'leaderboard_count': leaderboardCount!,
+    if (name != null) 'name': name!,
+    if (themeColor != null) 'themeColor': themeColor!,
+  };
 }
 
 /// An application category object.
@@ -2576,24 +2640,20 @@ class ApplicationCategory {
   /// The secondary category.
   core.String? secondary;
 
-  ApplicationCategory({
-    this.kind,
-    this.primary,
-    this.secondary,
-  });
+  ApplicationCategory({this.kind, this.primary, this.secondary});
 
   ApplicationCategory.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          primary: json_['primary'] as core.String?,
-          secondary: json_['secondary'] as core.String?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        primary: json_['primary'] as core.String?,
+        secondary: json_['secondary'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (primary != null) 'primary': primary!,
-        if (secondary != null) 'secondary': secondary!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (primary != null) 'primary': primary!,
+    if (secondary != null) 'secondary': secondary!,
+  };
 }
 
 /// Primary scoped player identifier for an application.
@@ -2604,21 +2664,18 @@ class ApplicationPlayerId {
   /// The player identifier for the application.
   core.String? playerId;
 
-  ApplicationPlayerId({
-    this.applicationId,
-    this.playerId,
-  });
+  ApplicationPlayerId({this.applicationId, this.playerId});
 
   ApplicationPlayerId.fromJson(core.Map json_)
-      : this(
-          applicationId: json_['applicationId'] as core.String?,
-          playerId: json_['playerId'] as core.String?,
-        );
+    : this(
+        applicationId: json_['applicationId'] as core.String?,
+        playerId: json_['playerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationId != null) 'applicationId': applicationId!,
-        if (playerId != null) 'playerId': playerId!,
-      };
+    if (applicationId != null) 'applicationId': applicationId!,
+    if (playerId != null) 'playerId': playerId!,
+  };
 }
 
 /// A third party application verification response resource.
@@ -2637,25 +2694,20 @@ class ApplicationVerifyResponse {
   /// The ID of the player that was issued the auth token used in this request.
   core.String? playerId;
 
-  ApplicationVerifyResponse({
-    this.alternatePlayerId,
-    this.kind,
-    this.playerId,
-  });
+  ApplicationVerifyResponse({this.alternatePlayerId, this.kind, this.playerId});
 
   ApplicationVerifyResponse.fromJson(core.Map json_)
-      : this(
-          alternatePlayerId: json_['alternate_player_id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          playerId: json_['player_id'] as core.String?,
-        );
+    : this(
+        alternatePlayerId: json_['alternate_player_id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        playerId: json_['player_id'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternatePlayerId != null)
-          'alternate_player_id': alternatePlayerId!,
-        if (kind != null) 'kind': kind!,
-        if (playerId != null) 'player_id': playerId!,
-      };
+    if (alternatePlayerId != null) 'alternate_player_id': alternatePlayerId!,
+    if (kind != null) 'kind': kind!,
+    if (playerId != null) 'player_id': playerId!,
+  };
 }
 
 /// Data related to individual game categories.
@@ -2671,24 +2723,20 @@ class Category {
   /// Value is always the fixed string `games#category`.
   core.String? kind;
 
-  Category({
-    this.category,
-    this.experiencePoints,
-    this.kind,
-  });
+  Category({this.category, this.experiencePoints, this.kind});
 
   Category.fromJson(core.Map json_)
-      : this(
-          category: json_['category'] as core.String?,
-          experiencePoints: json_['experiencePoints'] as core.String?,
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        category: json_['category'] as core.String?,
+        experiencePoints: json_['experiencePoints'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (category != null) 'category': category!,
-        if (experiencePoints != null) 'experiencePoints': experiencePoints!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (category != null) 'category': category!,
+    if (experiencePoints != null) 'experiencePoints': experiencePoints!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// A third party list metagame categories response.
@@ -2704,27 +2752,27 @@ class CategoryListResponse {
   /// Token corresponding to the next page of results.
   core.String? nextPageToken;
 
-  CategoryListResponse({
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  CategoryListResponse({this.items, this.kind, this.nextPageToken});
 
   CategoryListResponse.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => Category.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Category.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Container for a URL end point of the requested type.
@@ -2732,18 +2780,13 @@ class EndPoint {
   /// A URL suitable for loading in a web browser for the requested endpoint.
   core.String? url;
 
-  EndPoint({
-    this.url,
-  });
+  EndPoint({this.url});
 
-  EndPoint.fromJson(core.Map json_)
-      : this(
-          url: json_['url'] as core.String?,
-        );
+  EndPoint.fromJson(core.Map json_) : this(url: json_['url'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (url != null) 'url': url!,
-      };
+    if (url != null) 'url': url!,
+  };
 }
 
 /// A batch update failure resource.
@@ -2772,27 +2815,25 @@ class EventBatchRecordFailure {
   /// The time range which was rejected; empty for a request-wide failure.
   EventPeriodRange? range;
 
-  EventBatchRecordFailure({
-    this.failureCause,
-    this.kind,
-    this.range,
-  });
+  EventBatchRecordFailure({this.failureCause, this.kind, this.range});
 
   EventBatchRecordFailure.fromJson(core.Map json_)
-      : this(
-          failureCause: json_['failureCause'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          range: json_.containsKey('range')
-              ? EventPeriodRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        failureCause: json_['failureCause'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? EventPeriodRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failureCause != null) 'failureCause': failureCause!,
-        if (kind != null) 'kind': kind!,
-        if (range != null) 'range': range!,
-      };
+    if (failureCause != null) 'failureCause': failureCause!,
+    if (kind != null) 'kind': kind!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// An event child relationship resource.
@@ -2805,21 +2846,18 @@ class EventChild {
   /// Value is always the fixed string `games#eventChild`.
   core.String? kind;
 
-  EventChild({
-    this.childId,
-    this.kind,
-  });
+  EventChild({this.childId, this.kind});
 
   EventChild.fromJson(core.Map json_)
-      : this(
-          childId: json_['childId'] as core.String?,
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        childId: json_['childId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (childId != null) 'childId': childId!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (childId != null) 'childId': childId!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// An event definition resource.
@@ -2867,30 +2905,34 @@ class EventDefinition {
   });
 
   EventDefinition.fromJson(core.Map json_)
-      : this(
-          childEvents: (json_['childEvents'] as core.List?)
-              ?.map((value) => EventChild.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          id: json_['id'] as core.String?,
-          imageUrl: json_['imageUrl'] as core.String?,
-          isDefaultImageUrl: json_['isDefaultImageUrl'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          visibility: json_['visibility'] as core.String?,
-        );
+    : this(
+        childEvents:
+            (json_['childEvents'] as core.List?)
+                ?.map(
+                  (value) => EventChild.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+        imageUrl: json_['imageUrl'] as core.String?,
+        isDefaultImageUrl: json_['isDefaultImageUrl'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        visibility: json_['visibility'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (childEvents != null) 'childEvents': childEvents!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (id != null) 'id': id!,
-        if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (isDefaultImageUrl != null) 'isDefaultImageUrl': isDefaultImageUrl!,
-        if (kind != null) 'kind': kind!,
-        if (visibility != null) 'visibility': visibility!,
-      };
+    if (childEvents != null) 'childEvents': childEvents!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (id != null) 'id': id!,
+    if (imageUrl != null) 'imageUrl': imageUrl!,
+    if (isDefaultImageUrl != null) 'isDefaultImageUrl': isDefaultImageUrl!,
+    if (kind != null) 'kind': kind!,
+    if (visibility != null) 'visibility': visibility!,
+  };
 }
 
 /// A ListDefinitions response.
@@ -2906,27 +2948,27 @@ class EventDefinitionListResponse {
   /// The pagination token for the next page of results.
   core.String? nextPageToken;
 
-  EventDefinitionListResponse({
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  EventDefinitionListResponse({this.items, this.kind, this.nextPageToken});
 
   EventDefinitionListResponse.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => EventDefinition.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => EventDefinition.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// An event period time range.
@@ -2944,24 +2986,20 @@ class EventPeriodRange {
   /// Epoch).
   core.String? periodStartMillis;
 
-  EventPeriodRange({
-    this.kind,
-    this.periodEndMillis,
-    this.periodStartMillis,
-  });
+  EventPeriodRange({this.kind, this.periodEndMillis, this.periodStartMillis});
 
   EventPeriodRange.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          periodEndMillis: json_['periodEndMillis'] as core.String?,
-          periodStartMillis: json_['periodStartMillis'] as core.String?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        periodEndMillis: json_['periodEndMillis'] as core.String?,
+        periodStartMillis: json_['periodStartMillis'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (periodEndMillis != null) 'periodEndMillis': periodEndMillis!,
-        if (periodStartMillis != null) 'periodStartMillis': periodStartMillis!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (periodEndMillis != null) 'periodEndMillis': periodEndMillis!,
+    if (periodStartMillis != null) 'periodStartMillis': periodStartMillis!,
+  };
 }
 
 /// An event period update resource.
@@ -2977,30 +3015,32 @@ class EventPeriodUpdate {
   /// The updates being made for this time period.
   core.List<EventUpdateRequest>? updates;
 
-  EventPeriodUpdate({
-    this.kind,
-    this.timePeriod,
-    this.updates,
-  });
+  EventPeriodUpdate({this.kind, this.timePeriod, this.updates});
 
   EventPeriodUpdate.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          timePeriod: json_.containsKey('timePeriod')
-              ? EventPeriodRange.fromJson(
-                  json_['timePeriod'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updates: (json_['updates'] as core.List?)
-              ?.map((value) => EventUpdateRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        timePeriod:
+            json_.containsKey('timePeriod')
+                ? EventPeriodRange.fromJson(
+                  json_['timePeriod'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updates:
+            (json_['updates'] as core.List?)
+                ?.map(
+                  (value) => EventUpdateRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (timePeriod != null) 'timePeriod': timePeriod!,
-        if (updates != null) 'updates': updates!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (timePeriod != null) 'timePeriod': timePeriod!,
+    if (updates != null) 'updates': updates!,
+  };
 }
 
 /// An event update failure resource.
@@ -3020,24 +3060,20 @@ class EventRecordFailure {
   /// Value is always the fixed string `games#eventRecordFailure`.
   core.String? kind;
 
-  EventRecordFailure({
-    this.eventId,
-    this.failureCause,
-    this.kind,
-  });
+  EventRecordFailure({this.eventId, this.failureCause, this.kind});
 
   EventRecordFailure.fromJson(core.Map json_)
-      : this(
-          eventId: json_['eventId'] as core.String?,
-          failureCause: json_['failureCause'] as core.String?,
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        eventId: json_['eventId'] as core.String?,
+        failureCause: json_['failureCause'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eventId != null) 'eventId': eventId!,
-        if (failureCause != null) 'failureCause': failureCause!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (eventId != null) 'eventId': eventId!,
+    if (failureCause != null) 'failureCause': failureCause!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// An event period update resource.
@@ -3065,22 +3101,26 @@ class EventRecordRequest {
   });
 
   EventRecordRequest.fromJson(core.Map json_)
-      : this(
-          currentTimeMillis: json_['currentTimeMillis'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          requestId: json_['requestId'] as core.String?,
-          timePeriods: (json_['timePeriods'] as core.List?)
-              ?.map((value) => EventPeriodUpdate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        currentTimeMillis: json_['currentTimeMillis'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+        timePeriods:
+            (json_['timePeriods'] as core.List?)
+                ?.map(
+                  (value) => EventPeriodUpdate.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentTimeMillis != null) 'currentTimeMillis': currentTimeMillis!,
-        if (kind != null) 'kind': kind!,
-        if (requestId != null) 'requestId': requestId!,
-        if (timePeriods != null) 'timePeriods': timePeriods!,
-      };
+    if (currentTimeMillis != null) 'currentTimeMillis': currentTimeMillis!,
+    if (kind != null) 'kind': kind!,
+    if (requestId != null) 'requestId': requestId!,
+    if (timePeriods != null) 'timePeriods': timePeriods!,
+  };
 }
 
 /// An event period update resource.
@@ -3096,24 +3136,20 @@ class EventUpdateRequest {
   /// The number of times this event occurred in this time period.
   core.String? updateCount;
 
-  EventUpdateRequest({
-    this.definitionId,
-    this.kind,
-    this.updateCount,
-  });
+  EventUpdateRequest({this.definitionId, this.kind, this.updateCount});
 
   EventUpdateRequest.fromJson(core.Map json_)
-      : this(
-          definitionId: json_['definitionId'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          updateCount: json_['updateCount'] as core.String?,
-        );
+    : this(
+        definitionId: json_['definitionId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        updateCount: json_['updateCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (definitionId != null) 'definitionId': definitionId!,
-        if (kind != null) 'kind': kind!,
-        if (updateCount != null) 'updateCount': updateCount!,
-      };
+    if (definitionId != null) 'definitionId': definitionId!,
+    if (kind != null) 'kind': kind!,
+    if (updateCount != null) 'updateCount': updateCount!,
+  };
 }
 
 /// An event period update resource.
@@ -3140,28 +3176,40 @@ class EventUpdateResponse {
   });
 
   EventUpdateResponse.fromJson(core.Map json_)
-      : this(
-          batchFailures: (json_['batchFailures'] as core.List?)
-              ?.map((value) => EventBatchRecordFailure.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          eventFailures: (json_['eventFailures'] as core.List?)
-              ?.map((value) => EventRecordFailure.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          playerEvents: (json_['playerEvents'] as core.List?)
-              ?.map((value) => PlayerEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        batchFailures:
+            (json_['batchFailures'] as core.List?)
+                ?.map(
+                  (value) => EventBatchRecordFailure.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        eventFailures:
+            (json_['eventFailures'] as core.List?)
+                ?.map(
+                  (value) => EventRecordFailure.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        playerEvents:
+            (json_['playerEvents'] as core.List?)
+                ?.map(
+                  (value) => PlayerEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (batchFailures != null) 'batchFailures': batchFailures!,
-        if (eventFailures != null) 'eventFailures': eventFailures!,
-        if (kind != null) 'kind': kind!,
-        if (playerEvents != null) 'playerEvents': playerEvents!,
-      };
+    if (batchFailures != null) 'batchFailures': batchFailures!,
+    if (eventFailures != null) 'eventFailures': eventFailures!,
+    if (kind != null) 'kind': kind!,
+    if (playerEvents != null) 'playerEvents': playerEvents!,
+  };
 }
 
 /// Recall tokens for a game.
@@ -3172,24 +3220,23 @@ class GamePlayerToken {
   /// Recall token data.
   RecallToken? recallToken;
 
-  GamePlayerToken({
-    this.applicationId,
-    this.recallToken,
-  });
+  GamePlayerToken({this.applicationId, this.recallToken});
 
   GamePlayerToken.fromJson(core.Map json_)
-      : this(
-          applicationId: json_['applicationId'] as core.String?,
-          recallToken: json_.containsKey('recallToken')
-              ? RecallToken.fromJson(
-                  json_['recallToken'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        applicationId: json_['applicationId'] as core.String?,
+        recallToken:
+            json_.containsKey('recallToken')
+                ? RecallToken.fromJson(
+                  json_['recallToken'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationId != null) 'applicationId': applicationId!,
-        if (recallToken != null) 'recallToken': recallToken!,
-      };
+    if (applicationId != null) 'applicationId': applicationId!,
+    if (recallToken != null) 'recallToken': recallToken!,
+  };
 }
 
 /// The payload to request to increment an achievement.
@@ -3205,24 +3252,20 @@ class GamesAchievementIncrement {
   /// The number of steps to be incremented.
   core.int? steps;
 
-  GamesAchievementIncrement({
-    this.kind,
-    this.requestId,
-    this.steps,
-  });
+  GamesAchievementIncrement({this.kind, this.requestId, this.steps});
 
   GamesAchievementIncrement.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          requestId: json_['requestId'] as core.String?,
-          steps: json_['steps'] as core.int?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+        steps: json_['steps'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (requestId != null) 'requestId': requestId!,
-        if (steps != null) 'steps': steps!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (requestId != null) 'requestId': requestId!,
+    if (steps != null) 'steps': steps!,
+  };
 }
 
 /// The payload to request to increment an achievement.
@@ -3235,21 +3278,18 @@ class GamesAchievementSetStepsAtLeast {
   /// The minimum number of steps for the achievement to be set to.
   core.int? steps;
 
-  GamesAchievementSetStepsAtLeast({
-    this.kind,
-    this.steps,
-  });
+  GamesAchievementSetStepsAtLeast({this.kind, this.steps});
 
   GamesAchievementSetStepsAtLeast.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          steps: json_['steps'] as core.int?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        steps: json_['steps'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (steps != null) 'steps': steps!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (steps != null) 'steps': steps!,
+  };
 }
 
 /// Response for the GeneratePlayGroupingApiToken RPC.
@@ -3257,21 +3297,21 @@ class GeneratePlayGroupingApiTokenResponse {
   /// Token for accessing the Play Grouping API.
   PlayGroupingApiToken? token;
 
-  GeneratePlayGroupingApiTokenResponse({
-    this.token,
-  });
+  GeneratePlayGroupingApiTokenResponse({this.token});
 
   GeneratePlayGroupingApiTokenResponse.fromJson(core.Map json_)
-      : this(
-          token: json_.containsKey('token')
-              ? PlayGroupingApiToken.fromJson(
-                  json_['token'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        token:
+            json_.containsKey('token')
+                ? PlayGroupingApiToken.fromJson(
+                  json_['token'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (token != null) 'token': token!,
-      };
+    if (token != null) 'token': token!,
+  };
 }
 
 /// Response for the GenerateRecallPlayGroupingApiToken RPC.
@@ -3279,21 +3319,21 @@ class GenerateRecallPlayGroupingApiTokenResponse {
   /// Token for accessing the Play Grouping API.
   PlayGroupingApiToken? token;
 
-  GenerateRecallPlayGroupingApiTokenResponse({
-    this.token,
-  });
+  GenerateRecallPlayGroupingApiTokenResponse({this.token});
 
   GenerateRecallPlayGroupingApiTokenResponse.fromJson(core.Map json_)
-      : this(
-          token: json_.containsKey('token')
-              ? PlayGroupingApiToken.fromJson(
-                  json_['token'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        token:
+            json_.containsKey('token')
+                ? PlayGroupingApiToken.fromJson(
+                  json_['token'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (token != null) 'token': token!,
-      };
+    if (token != null) 'token': token!,
+  };
 }
 
 /// Response message for GetMultipleApplicationPlayerIds rpc.
@@ -3306,21 +3346,23 @@ class GetMultipleApplicationPlayerIdsResponse {
   /// Output only.
   core.List<ApplicationPlayerId>? playerIds;
 
-  GetMultipleApplicationPlayerIdsResponse({
-    this.playerIds,
-  });
+  GetMultipleApplicationPlayerIdsResponse({this.playerIds});
 
   GetMultipleApplicationPlayerIdsResponse.fromJson(core.Map json_)
-      : this(
-          playerIds: (json_['playerIds'] as core.List?)
-              ?.map((value) => ApplicationPlayerId.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        playerIds:
+            (json_['playerIds'] as core.List?)
+                ?.map(
+                  (value) => ApplicationPlayerId.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (playerIds != null) 'playerIds': playerIds!,
-      };
+    if (playerIds != null) 'playerIds': playerIds!,
+  };
 }
 
 /// An image asset object.
@@ -3342,30 +3384,24 @@ class ImageAsset {
   /// The width of the asset.
   core.int? width;
 
-  ImageAsset({
-    this.height,
-    this.kind,
-    this.name,
-    this.url,
-    this.width,
-  });
+  ImageAsset({this.height, this.kind, this.name, this.url, this.width});
 
   ImageAsset.fromJson(core.Map json_)
-      : this(
-          height: json_['height'] as core.int?,
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-          url: json_['url'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        height: json_['height'] as core.int?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        url: json_['url'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (url != null) 'url': url!,
-        if (width != null) 'width': width!,
-      };
+    if (height != null) 'height': height!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (url != null) 'url': url!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// The Instance resource.
@@ -3416,38 +3452,45 @@ class Instance {
   });
 
   Instance.fromJson(core.Map json_)
-      : this(
-          acquisitionUri: json_['acquisitionUri'] as core.String?,
-          androidInstance: json_.containsKey('androidInstance')
-              ? InstanceAndroidDetails.fromJson(json_['androidInstance']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          iosInstance: json_.containsKey('iosInstance')
-              ? InstanceIosDetails.fromJson(
-                  json_['iosInstance'] as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-          platformType: json_['platformType'] as core.String?,
-          realtimePlay: json_['realtimePlay'] as core.bool?,
-          turnBasedPlay: json_['turnBasedPlay'] as core.bool?,
-          webInstance: json_.containsKey('webInstance')
-              ? InstanceWebDetails.fromJson(
-                  json_['webInstance'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        acquisitionUri: json_['acquisitionUri'] as core.String?,
+        androidInstance:
+            json_.containsKey('androidInstance')
+                ? InstanceAndroidDetails.fromJson(
+                  json_['androidInstance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        iosInstance:
+            json_.containsKey('iosInstance')
+                ? InstanceIosDetails.fromJson(
+                  json_['iosInstance'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        platformType: json_['platformType'] as core.String?,
+        realtimePlay: json_['realtimePlay'] as core.bool?,
+        turnBasedPlay: json_['turnBasedPlay'] as core.bool?,
+        webInstance:
+            json_.containsKey('webInstance')
+                ? InstanceWebDetails.fromJson(
+                  json_['webInstance'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acquisitionUri != null) 'acquisitionUri': acquisitionUri!,
-        if (androidInstance != null) 'androidInstance': androidInstance!,
-        if (iosInstance != null) 'iosInstance': iosInstance!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (platformType != null) 'platformType': platformType!,
-        if (realtimePlay != null) 'realtimePlay': realtimePlay!,
-        if (turnBasedPlay != null) 'turnBasedPlay': turnBasedPlay!,
-        if (webInstance != null) 'webInstance': webInstance!,
-      };
+    if (acquisitionUri != null) 'acquisitionUri': acquisitionUri!,
+    if (androidInstance != null) 'androidInstance': androidInstance!,
+    if (iosInstance != null) 'iosInstance': iosInstance!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (platformType != null) 'platformType': platformType!,
+    if (realtimePlay != null) 'realtimePlay': realtimePlay!,
+    if (turnBasedPlay != null) 'turnBasedPlay': turnBasedPlay!,
+    if (webInstance != null) 'webInstance': webInstance!,
+  };
 }
 
 /// The Android instance details resource.
@@ -3474,19 +3517,19 @@ class InstanceAndroidDetails {
   });
 
   InstanceAndroidDetails.fromJson(core.Map json_)
-      : this(
-          enablePiracyCheck: json_['enablePiracyCheck'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          packageName: json_['packageName'] as core.String?,
-          preferred: json_['preferred'] as core.bool?,
-        );
+    : this(
+        enablePiracyCheck: json_['enablePiracyCheck'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        packageName: json_['packageName'] as core.String?,
+        preferred: json_['preferred'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enablePiracyCheck != null) 'enablePiracyCheck': enablePiracyCheck!,
-        if (kind != null) 'kind': kind!,
-        if (packageName != null) 'packageName': packageName!,
-        if (preferred != null) 'preferred': preferred!,
-      };
+    if (enablePiracyCheck != null) 'enablePiracyCheck': enablePiracyCheck!,
+    if (kind != null) 'kind': kind!,
+    if (packageName != null) 'packageName': packageName!,
+    if (preferred != null) 'preferred': preferred!,
+  };
 }
 
 /// The iOS details resource.
@@ -3527,26 +3570,25 @@ class InstanceIosDetails {
   });
 
   InstanceIosDetails.fromJson(core.Map json_)
-      : this(
-          bundleIdentifier: json_['bundleIdentifier'] as core.String?,
-          itunesAppId: json_['itunesAppId'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          preferredForIpad: json_['preferredForIpad'] as core.bool?,
-          preferredForIphone: json_['preferredForIphone'] as core.bool?,
-          supportIpad: json_['supportIpad'] as core.bool?,
-          supportIphone: json_['supportIphone'] as core.bool?,
-        );
+    : this(
+        bundleIdentifier: json_['bundleIdentifier'] as core.String?,
+        itunesAppId: json_['itunesAppId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        preferredForIpad: json_['preferredForIpad'] as core.bool?,
+        preferredForIphone: json_['preferredForIphone'] as core.bool?,
+        supportIpad: json_['supportIpad'] as core.bool?,
+        supportIphone: json_['supportIphone'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bundleIdentifier != null) 'bundleIdentifier': bundleIdentifier!,
-        if (itunesAppId != null) 'itunesAppId': itunesAppId!,
-        if (kind != null) 'kind': kind!,
-        if (preferredForIpad != null) 'preferredForIpad': preferredForIpad!,
-        if (preferredForIphone != null)
-          'preferredForIphone': preferredForIphone!,
-        if (supportIpad != null) 'supportIpad': supportIpad!,
-        if (supportIphone != null) 'supportIphone': supportIphone!,
-      };
+    if (bundleIdentifier != null) 'bundleIdentifier': bundleIdentifier!,
+    if (itunesAppId != null) 'itunesAppId': itunesAppId!,
+    if (kind != null) 'kind': kind!,
+    if (preferredForIpad != null) 'preferredForIpad': preferredForIpad!,
+    if (preferredForIphone != null) 'preferredForIphone': preferredForIphone!,
+    if (supportIpad != null) 'supportIpad': supportIpad!,
+    if (supportIphone != null) 'supportIphone': supportIphone!,
+  };
 }
 
 /// The Web details resource.
@@ -3562,24 +3604,20 @@ class InstanceWebDetails {
   /// Indicates that this instance is the default for new installations.
   core.bool? preferred;
 
-  InstanceWebDetails({
-    this.kind,
-    this.launchUrl,
-    this.preferred,
-  });
+  InstanceWebDetails({this.kind, this.launchUrl, this.preferred});
 
   InstanceWebDetails.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          launchUrl: json_['launchUrl'] as core.String?,
-          preferred: json_['preferred'] as core.bool?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        launchUrl: json_['launchUrl'] as core.String?,
+        preferred: json_['preferred'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (launchUrl != null) 'launchUrl': launchUrl!,
-        if (preferred != null) 'preferred': preferred!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (launchUrl != null) 'launchUrl': launchUrl!,
+    if (preferred != null) 'preferred': preferred!,
+  };
 }
 
 /// The Leaderboard resource.
@@ -3620,23 +3658,23 @@ class Leaderboard {
   });
 
   Leaderboard.fromJson(core.Map json_)
-      : this(
-          iconUrl: json_['iconUrl'] as core.String?,
-          id: json_['id'] as core.String?,
-          isIconUrlDefault: json_['isIconUrlDefault'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-          order: json_['order'] as core.String?,
-        );
+    : this(
+        iconUrl: json_['iconUrl'] as core.String?,
+        id: json_['id'] as core.String?,
+        isIconUrlDefault: json_['isIconUrlDefault'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        order: json_['order'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iconUrl != null) 'iconUrl': iconUrl!,
-        if (id != null) 'id': id!,
-        if (isIconUrlDefault != null) 'isIconUrlDefault': isIconUrlDefault!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (order != null) 'order': order!,
-      };
+    if (iconUrl != null) 'iconUrl': iconUrl!,
+    if (id != null) 'id': id!,
+    if (isIconUrlDefault != null) 'isIconUrlDefault': isIconUrlDefault!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (order != null) 'order': order!,
+  };
 }
 
 /// The Leaderboard Entry resource.
@@ -3691,34 +3729,35 @@ class LeaderboardEntry {
   });
 
   LeaderboardEntry.fromJson(core.Map json_)
-      : this(
-          formattedScore: json_['formattedScore'] as core.String?,
-          formattedScoreRank: json_['formattedScoreRank'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          player: json_.containsKey('player')
-              ? Player.fromJson(
-                  json_['player'] as core.Map<core.String, core.dynamic>)
-              : null,
-          scoreRank: json_['scoreRank'] as core.String?,
-          scoreTag: json_['scoreTag'] as core.String?,
-          scoreValue: json_['scoreValue'] as core.String?,
-          timeSpan: json_['timeSpan'] as core.String?,
-          writeTimestampMillis: json_['writeTimestampMillis'] as core.String?,
-        );
+    : this(
+        formattedScore: json_['formattedScore'] as core.String?,
+        formattedScoreRank: json_['formattedScoreRank'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        player:
+            json_.containsKey('player')
+                ? Player.fromJson(
+                  json_['player'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scoreRank: json_['scoreRank'] as core.String?,
+        scoreTag: json_['scoreTag'] as core.String?,
+        scoreValue: json_['scoreValue'] as core.String?,
+        timeSpan: json_['timeSpan'] as core.String?,
+        writeTimestampMillis: json_['writeTimestampMillis'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (formattedScore != null) 'formattedScore': formattedScore!,
-        if (formattedScoreRank != null)
-          'formattedScoreRank': formattedScoreRank!,
-        if (kind != null) 'kind': kind!,
-        if (player != null) 'player': player!,
-        if (scoreRank != null) 'scoreRank': scoreRank!,
-        if (scoreTag != null) 'scoreTag': scoreTag!,
-        if (scoreValue != null) 'scoreValue': scoreValue!,
-        if (timeSpan != null) 'timeSpan': timeSpan!,
-        if (writeTimestampMillis != null)
-          'writeTimestampMillis': writeTimestampMillis!,
-      };
+    if (formattedScore != null) 'formattedScore': formattedScore!,
+    if (formattedScoreRank != null) 'formattedScoreRank': formattedScoreRank!,
+    if (kind != null) 'kind': kind!,
+    if (player != null) 'player': player!,
+    if (scoreRank != null) 'scoreRank': scoreRank!,
+    if (scoreTag != null) 'scoreTag': scoreTag!,
+    if (scoreValue != null) 'scoreValue': scoreValue!,
+    if (timeSpan != null) 'timeSpan': timeSpan!,
+    if (writeTimestampMillis != null)
+      'writeTimestampMillis': writeTimestampMillis!,
+  };
 }
 
 /// A list of leaderboard objects.
@@ -3734,27 +3773,27 @@ class LeaderboardListResponse {
   /// Token corresponding to the next page of results.
   core.String? nextPageToken;
 
-  LeaderboardListResponse({
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  LeaderboardListResponse({this.items, this.kind, this.nextPageToken});
 
   LeaderboardListResponse.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => Leaderboard.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Leaderboard.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// A score rank in a leaderboard.
@@ -3785,22 +3824,21 @@ class LeaderboardScoreRank {
   });
 
   LeaderboardScoreRank.fromJson(core.Map json_)
-      : this(
-          formattedNumScores: json_['formattedNumScores'] as core.String?,
-          formattedRank: json_['formattedRank'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          numScores: json_['numScores'] as core.String?,
-          rank: json_['rank'] as core.String?,
-        );
+    : this(
+        formattedNumScores: json_['formattedNumScores'] as core.String?,
+        formattedRank: json_['formattedRank'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        numScores: json_['numScores'] as core.String?,
+        rank: json_['rank'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (formattedNumScores != null)
-          'formattedNumScores': formattedNumScores!,
-        if (formattedRank != null) 'formattedRank': formattedRank!,
-        if (kind != null) 'kind': kind!,
-        if (numScores != null) 'numScores': numScores!,
-        if (rank != null) 'rank': rank!,
-      };
+    if (formattedNumScores != null) 'formattedNumScores': formattedNumScores!,
+    if (formattedRank != null) 'formattedRank': formattedRank!,
+    if (kind != null) 'kind': kind!,
+    if (numScores != null) 'numScores': numScores!,
+    if (rank != null) 'rank': rank!,
+  };
 }
 
 /// A ListScores response.
@@ -3840,29 +3878,35 @@ class LeaderboardScores {
   });
 
   LeaderboardScores.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => LeaderboardEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          numScores: json_['numScores'] as core.String?,
-          playerScore: json_.containsKey('playerScore')
-              ? LeaderboardEntry.fromJson(
-                  json_['playerScore'] as core.Map<core.String, core.dynamic>)
-              : null,
-          prevPageToken: json_['prevPageToken'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => LeaderboardEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        numScores: json_['numScores'] as core.String?,
+        playerScore:
+            json_.containsKey('playerScore')
+                ? LeaderboardEntry.fromJson(
+                  json_['playerScore'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        prevPageToken: json_['prevPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (numScores != null) 'numScores': numScores!,
-        if (playerScore != null) 'playerScore': playerScore!,
-        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (numScores != null) 'numScores': numScores!,
+    if (playerScore != null) 'playerScore': playerScore!,
+    if (prevPageToken != null) 'prevPageToken': prevPageToken!,
+  };
 }
 
 /// Request to link an in-game account with a PGS principal (encoded in the
@@ -3956,28 +4000,28 @@ class LinkPersonaRequest {
   });
 
   LinkPersonaRequest.fromJson(core.Map json_)
-      : this(
-          cardinalityConstraint: json_['cardinalityConstraint'] as core.String?,
-          conflictingLinksResolutionPolicy:
-              json_['conflictingLinksResolutionPolicy'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          persona: json_['persona'] as core.String?,
-          sessionId: json_['sessionId'] as core.String?,
-          token: json_['token'] as core.String?,
-          ttl: json_['ttl'] as core.String?,
-        );
+    : this(
+        cardinalityConstraint: json_['cardinalityConstraint'] as core.String?,
+        conflictingLinksResolutionPolicy:
+            json_['conflictingLinksResolutionPolicy'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        persona: json_['persona'] as core.String?,
+        sessionId: json_['sessionId'] as core.String?,
+        token: json_['token'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cardinalityConstraint != null)
-          'cardinalityConstraint': cardinalityConstraint!,
-        if (conflictingLinksResolutionPolicy != null)
-          'conflictingLinksResolutionPolicy': conflictingLinksResolutionPolicy!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (persona != null) 'persona': persona!,
-        if (sessionId != null) 'sessionId': sessionId!,
-        if (token != null) 'token': token!,
-        if (ttl != null) 'ttl': ttl!,
-      };
+    if (cardinalityConstraint != null)
+      'cardinalityConstraint': cardinalityConstraint!,
+    if (conflictingLinksResolutionPolicy != null)
+      'conflictingLinksResolutionPolicy': conflictingLinksResolutionPolicy!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (persona != null) 'persona': persona!,
+    if (sessionId != null) 'sessionId': sessionId!,
+    if (token != null) 'token': token!,
+    if (ttl != null) 'ttl': ttl!,
+  };
 }
 
 /// Outcome of a persona linking attempt.
@@ -3993,18 +4037,14 @@ class LinkPersonaResponse {
   /// created.
   core.String? state;
 
-  LinkPersonaResponse({
-    this.state,
-  });
+  LinkPersonaResponse({this.state});
 
   LinkPersonaResponse.fromJson(core.Map json_)
-      : this(
-          state: json_['state'] as core.String?,
-        );
+    : this(state: json_['state'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (state != null) 'state': state!,
-      };
+    if (state != null) 'state': state!,
+  };
 }
 
 /// The metagame config resource
@@ -4022,27 +4062,27 @@ class MetagameConfig {
   /// The list of player levels.
   core.List<PlayerLevel>? playerLevels;
 
-  MetagameConfig({
-    this.currentVersion,
-    this.kind,
-    this.playerLevels,
-  });
+  MetagameConfig({this.currentVersion, this.kind, this.playerLevels});
 
   MetagameConfig.fromJson(core.Map json_)
-      : this(
-          currentVersion: json_['currentVersion'] as core.int?,
-          kind: json_['kind'] as core.String?,
-          playerLevels: (json_['playerLevels'] as core.List?)
-              ?.map((value) => PlayerLevel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        currentVersion: json_['currentVersion'] as core.int?,
+        kind: json_['kind'] as core.String?,
+        playerLevels:
+            (json_['playerLevels'] as core.List?)
+                ?.map(
+                  (value) => PlayerLevel.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentVersion != null) 'currentVersion': currentVersion!,
-        if (kind != null) 'kind': kind!,
-        if (playerLevels != null) 'playerLevels': playerLevels!,
-      };
+    if (currentVersion != null) 'currentVersion': currentVersion!,
+    if (kind != null) 'kind': kind!,
+    if (playerLevels != null) 'playerLevels': playerLevels!,
+  };
 }
 
 /// Token data returned from GeneratePlayGroupingApiToken RPC.
@@ -4050,18 +4090,14 @@ class PlayGroupingApiToken {
   /// Value of the token.
   core.String? tokenValue;
 
-  PlayGroupingApiToken({
-    this.tokenValue,
-  });
+  PlayGroupingApiToken({this.tokenValue});
 
   PlayGroupingApiToken.fromJson(core.Map json_)
-      : this(
-          tokenValue: json_['tokenValue'] as core.String?,
-        );
+    : this(tokenValue: json_['tokenValue'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tokenValue != null) 'tokenValue': tokenValue!,
-      };
+    if (tokenValue != null) 'tokenValue': tokenValue!,
+  };
 }
 
 /// A representation of the individual components of the name.
@@ -4076,21 +4112,18 @@ class PlayerName {
   /// In some places, this is known as the first name.
   core.String? givenName;
 
-  PlayerName({
-    this.familyName,
-    this.givenName,
-  });
+  PlayerName({this.familyName, this.givenName});
 
   PlayerName.fromJson(core.Map json_)
-      : this(
-          familyName: json_['familyName'] as core.String?,
-          givenName: json_['givenName'] as core.String?,
-        );
+    : this(
+        familyName: json_['familyName'] as core.String?,
+        givenName: json_['givenName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (familyName != null) 'familyName': familyName!,
-        if (givenName != null) 'givenName': givenName!,
-      };
+    if (familyName != null) 'familyName': familyName!,
+    if (givenName != null) 'givenName': givenName!,
+  };
 }
 
 /// A Player resource.
@@ -4166,47 +4199,54 @@ class Player {
   });
 
   Player.fromJson(core.Map json_)
-      : this(
-          avatarImageUrl: json_['avatarImageUrl'] as core.String?,
-          bannerUrlLandscape: json_['bannerUrlLandscape'] as core.String?,
-          bannerUrlPortrait: json_['bannerUrlPortrait'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          experienceInfo: json_.containsKey('experienceInfo')
-              ? PlayerExperienceInfo.fromJson(json_['experienceInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          friendStatus: json_['friendStatus'] as core.String?,
-          gamePlayerId: json_['gamePlayerId'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          name: json_.containsKey('name')
-              ? PlayerName.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>)
-              : null,
-          originalPlayerId: json_['originalPlayerId'] as core.String?,
-          playerId: json_['playerId'] as core.String?,
-          profileSettings: json_.containsKey('profileSettings')
-              ? ProfileSettings.fromJson(json_['profileSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        avatarImageUrl: json_['avatarImageUrl'] as core.String?,
+        bannerUrlLandscape: json_['bannerUrlLandscape'] as core.String?,
+        bannerUrlPortrait: json_['bannerUrlPortrait'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        experienceInfo:
+            json_.containsKey('experienceInfo')
+                ? PlayerExperienceInfo.fromJson(
+                  json_['experienceInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        friendStatus: json_['friendStatus'] as core.String?,
+        gamePlayerId: json_['gamePlayerId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name:
+            json_.containsKey('name')
+                ? PlayerName.fromJson(
+                  json_['name'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        originalPlayerId: json_['originalPlayerId'] as core.String?,
+        playerId: json_['playerId'] as core.String?,
+        profileSettings:
+            json_.containsKey('profileSettings')
+                ? ProfileSettings.fromJson(
+                  json_['profileSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (avatarImageUrl != null) 'avatarImageUrl': avatarImageUrl!,
-        if (bannerUrlLandscape != null)
-          'bannerUrlLandscape': bannerUrlLandscape!,
-        if (bannerUrlPortrait != null) 'bannerUrlPortrait': bannerUrlPortrait!,
-        if (displayName != null) 'displayName': displayName!,
-        if (experienceInfo != null) 'experienceInfo': experienceInfo!,
-        if (friendStatus != null) 'friendStatus': friendStatus!,
-        if (gamePlayerId != null) 'gamePlayerId': gamePlayerId!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (originalPlayerId != null) 'originalPlayerId': originalPlayerId!,
-        if (playerId != null) 'playerId': playerId!,
-        if (profileSettings != null) 'profileSettings': profileSettings!,
-        if (title != null) 'title': title!,
-      };
+    if (avatarImageUrl != null) 'avatarImageUrl': avatarImageUrl!,
+    if (bannerUrlLandscape != null) 'bannerUrlLandscape': bannerUrlLandscape!,
+    if (bannerUrlPortrait != null) 'bannerUrlPortrait': bannerUrlPortrait!,
+    if (displayName != null) 'displayName': displayName!,
+    if (experienceInfo != null) 'experienceInfo': experienceInfo!,
+    if (friendStatus != null) 'friendStatus': friendStatus!,
+    if (gamePlayerId != null) 'gamePlayerId': gamePlayerId!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (originalPlayerId != null) 'originalPlayerId': originalPlayerId!,
+    if (playerId != null) 'playerId': playerId!,
+    if (profileSettings != null) 'profileSettings': profileSettings!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// An achievement object.
@@ -4253,28 +4293,28 @@ class PlayerAchievement {
   });
 
   PlayerAchievement.fromJson(core.Map json_)
-      : this(
-          achievementState: json_['achievementState'] as core.String?,
-          currentSteps: json_['currentSteps'] as core.int?,
-          experiencePoints: json_['experiencePoints'] as core.String?,
-          formattedCurrentStepsString:
-              json_['formattedCurrentStepsString'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          lastUpdatedTimestamp: json_['lastUpdatedTimestamp'] as core.String?,
-        );
+    : this(
+        achievementState: json_['achievementState'] as core.String?,
+        currentSteps: json_['currentSteps'] as core.int?,
+        experiencePoints: json_['experiencePoints'] as core.String?,
+        formattedCurrentStepsString:
+            json_['formattedCurrentStepsString'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        lastUpdatedTimestamp: json_['lastUpdatedTimestamp'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (achievementState != null) 'achievementState': achievementState!,
-        if (currentSteps != null) 'currentSteps': currentSteps!,
-        if (experiencePoints != null) 'experiencePoints': experiencePoints!,
-        if (formattedCurrentStepsString != null)
-          'formattedCurrentStepsString': formattedCurrentStepsString!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (lastUpdatedTimestamp != null)
-          'lastUpdatedTimestamp': lastUpdatedTimestamp!,
-      };
+    if (achievementState != null) 'achievementState': achievementState!,
+    if (currentSteps != null) 'currentSteps': currentSteps!,
+    if (experiencePoints != null) 'experiencePoints': experiencePoints!,
+    if (formattedCurrentStepsString != null)
+      'formattedCurrentStepsString': formattedCurrentStepsString!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (lastUpdatedTimestamp != null)
+      'lastUpdatedTimestamp': lastUpdatedTimestamp!,
+  };
 }
 
 /// A list of achievement objects.
@@ -4290,27 +4330,27 @@ class PlayerAchievementListResponse {
   /// Token corresponding to the next page of results.
   core.String? nextPageToken;
 
-  PlayerAchievementListResponse({
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  PlayerAchievementListResponse({this.items, this.kind, this.nextPageToken});
 
   PlayerAchievementListResponse.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => PlayerAchievement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => PlayerAchievement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// An event status resource.
@@ -4344,22 +4384,21 @@ class PlayerEvent {
   });
 
   PlayerEvent.fromJson(core.Map json_)
-      : this(
-          definitionId: json_['definitionId'] as core.String?,
-          formattedNumEvents: json_['formattedNumEvents'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          numEvents: json_['numEvents'] as core.String?,
-          playerId: json_['playerId'] as core.String?,
-        );
+    : this(
+        definitionId: json_['definitionId'] as core.String?,
+        formattedNumEvents: json_['formattedNumEvents'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        numEvents: json_['numEvents'] as core.String?,
+        playerId: json_['playerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (definitionId != null) 'definitionId': definitionId!,
-        if (formattedNumEvents != null)
-          'formattedNumEvents': formattedNumEvents!,
-        if (kind != null) 'kind': kind!,
-        if (numEvents != null) 'numEvents': numEvents!,
-        if (playerId != null) 'playerId': playerId!,
-      };
+    if (definitionId != null) 'definitionId': definitionId!,
+    if (formattedNumEvents != null) 'formattedNumEvents': formattedNumEvents!,
+    if (kind != null) 'kind': kind!,
+    if (numEvents != null) 'numEvents': numEvents!,
+    if (playerId != null) 'playerId': playerId!,
+  };
 }
 
 /// A ListByPlayer response.
@@ -4375,27 +4414,27 @@ class PlayerEventListResponse {
   /// The pagination token for the next page of results.
   core.String? nextPageToken;
 
-  PlayerEventListResponse({
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  PlayerEventListResponse({this.items, this.kind, this.nextPageToken});
 
   PlayerEventListResponse.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => PlayerEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => PlayerEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// 1P/3P metadata about the player's experience.
@@ -4430,31 +4469,35 @@ class PlayerExperienceInfo {
   });
 
   PlayerExperienceInfo.fromJson(core.Map json_)
-      : this(
-          currentExperiencePoints:
-              json_['currentExperiencePoints'] as core.String?,
-          currentLevel: json_.containsKey('currentLevel')
-              ? PlayerLevel.fromJson(
-                  json_['currentLevel'] as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-          lastLevelUpTimestampMillis:
-              json_['lastLevelUpTimestampMillis'] as core.String?,
-          nextLevel: json_.containsKey('nextLevel')
-              ? PlayerLevel.fromJson(
-                  json_['nextLevel'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        currentExperiencePoints:
+            json_['currentExperiencePoints'] as core.String?,
+        currentLevel:
+            json_.containsKey('currentLevel')
+                ? PlayerLevel.fromJson(
+                  json_['currentLevel'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+        lastLevelUpTimestampMillis:
+            json_['lastLevelUpTimestampMillis'] as core.String?,
+        nextLevel:
+            json_.containsKey('nextLevel')
+                ? PlayerLevel.fromJson(
+                  json_['nextLevel'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentExperiencePoints != null)
-          'currentExperiencePoints': currentExperiencePoints!,
-        if (currentLevel != null) 'currentLevel': currentLevel!,
-        if (kind != null) 'kind': kind!,
-        if (lastLevelUpTimestampMillis != null)
-          'lastLevelUpTimestampMillis': lastLevelUpTimestampMillis!,
-        if (nextLevel != null) 'nextLevel': nextLevel!,
-      };
+    if (currentExperiencePoints != null)
+      'currentExperiencePoints': currentExperiencePoints!,
+    if (currentLevel != null) 'currentLevel': currentLevel!,
+    if (kind != null) 'kind': kind!,
+    if (lastLevelUpTimestampMillis != null)
+      'lastLevelUpTimestampMillis': lastLevelUpTimestampMillis!,
+    if (nextLevel != null) 'nextLevel': nextLevel!,
+  };
 }
 
 /// A player leaderboard score object.
@@ -4516,40 +4559,46 @@ class PlayerLeaderboardScore {
   });
 
   PlayerLeaderboardScore.fromJson(core.Map json_)
-      : this(
-          friendsRank: json_.containsKey('friendsRank')
-              ? LeaderboardScoreRank.fromJson(
-                  json_['friendsRank'] as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-          leaderboardId: json_['leaderboard_id'] as core.String?,
-          publicRank: json_.containsKey('publicRank')
-              ? LeaderboardScoreRank.fromJson(
-                  json_['publicRank'] as core.Map<core.String, core.dynamic>)
-              : null,
-          scoreString: json_['scoreString'] as core.String?,
-          scoreTag: json_['scoreTag'] as core.String?,
-          scoreValue: json_['scoreValue'] as core.String?,
-          socialRank: json_.containsKey('socialRank')
-              ? LeaderboardScoreRank.fromJson(
-                  json_['socialRank'] as core.Map<core.String, core.dynamic>)
-              : null,
-          timeSpan: json_['timeSpan'] as core.String?,
-          writeTimestamp: json_['writeTimestamp'] as core.String?,
-        );
+    : this(
+        friendsRank:
+            json_.containsKey('friendsRank')
+                ? LeaderboardScoreRank.fromJson(
+                  json_['friendsRank'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+        leaderboardId: json_['leaderboard_id'] as core.String?,
+        publicRank:
+            json_.containsKey('publicRank')
+                ? LeaderboardScoreRank.fromJson(
+                  json_['publicRank'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scoreString: json_['scoreString'] as core.String?,
+        scoreTag: json_['scoreTag'] as core.String?,
+        scoreValue: json_['scoreValue'] as core.String?,
+        socialRank:
+            json_.containsKey('socialRank')
+                ? LeaderboardScoreRank.fromJson(
+                  json_['socialRank'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        timeSpan: json_['timeSpan'] as core.String?,
+        writeTimestamp: json_['writeTimestamp'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (friendsRank != null) 'friendsRank': friendsRank!,
-        if (kind != null) 'kind': kind!,
-        if (leaderboardId != null) 'leaderboard_id': leaderboardId!,
-        if (publicRank != null) 'publicRank': publicRank!,
-        if (scoreString != null) 'scoreString': scoreString!,
-        if (scoreTag != null) 'scoreTag': scoreTag!,
-        if (scoreValue != null) 'scoreValue': scoreValue!,
-        if (socialRank != null) 'socialRank': socialRank!,
-        if (timeSpan != null) 'timeSpan': timeSpan!,
-        if (writeTimestamp != null) 'writeTimestamp': writeTimestamp!,
-      };
+    if (friendsRank != null) 'friendsRank': friendsRank!,
+    if (kind != null) 'kind': kind!,
+    if (leaderboardId != null) 'leaderboard_id': leaderboardId!,
+    if (publicRank != null) 'publicRank': publicRank!,
+    if (scoreString != null) 'scoreString': scoreString!,
+    if (scoreTag != null) 'scoreTag': scoreTag!,
+    if (scoreValue != null) 'scoreValue': scoreValue!,
+    if (socialRank != null) 'socialRank': socialRank!,
+    if (timeSpan != null) 'timeSpan': timeSpan!,
+    if (writeTimestamp != null) 'writeTimestamp': writeTimestamp!,
+  };
 }
 
 /// A list of player leaderboard scores.
@@ -4577,25 +4626,31 @@ class PlayerLeaderboardScoreListResponse {
   });
 
   PlayerLeaderboardScoreListResponse.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => PlayerLeaderboardScore.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          player: json_.containsKey('player')
-              ? Player.fromJson(
-                  json_['player'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => PlayerLeaderboardScore.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        player:
+            json_.containsKey('player')
+                ? Player.fromJson(
+                  json_['player'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (player != null) 'player': player!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (player != null) 'player': player!,
+  };
 }
 
 /// 1P/3P metadata about a user's level.
@@ -4622,21 +4677,21 @@ class PlayerLevel {
   });
 
   PlayerLevel.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          level: json_['level'] as core.int?,
-          maxExperiencePoints: json_['maxExperiencePoints'] as core.String?,
-          minExperiencePoints: json_['minExperiencePoints'] as core.String?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        level: json_['level'] as core.int?,
+        maxExperiencePoints: json_['maxExperiencePoints'] as core.String?,
+        minExperiencePoints: json_['minExperiencePoints'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (level != null) 'level': level!,
-        if (maxExperiencePoints != null)
-          'maxExperiencePoints': maxExperiencePoints!,
-        if (minExperiencePoints != null)
-          'minExperiencePoints': minExperiencePoints!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (level != null) 'level': level!,
+    if (maxExperiencePoints != null)
+      'maxExperiencePoints': maxExperiencePoints!,
+    if (minExperiencePoints != null)
+      'minExperiencePoints': minExperiencePoints!,
+  };
 }
 
 /// A third party player list response.
@@ -4652,27 +4707,27 @@ class PlayerListResponse {
   /// Token corresponding to the next page of results.
   core.String? nextPageToken;
 
-  PlayerListResponse({
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  PlayerListResponse({this.items, this.kind, this.nextPageToken});
 
   PlayerListResponse.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Player.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Player.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// A player score.
@@ -4710,21 +4765,21 @@ class PlayerScore {
   });
 
   PlayerScore.fromJson(core.Map json_)
-      : this(
-          formattedScore: json_['formattedScore'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          score: json_['score'] as core.String?,
-          scoreTag: json_['scoreTag'] as core.String?,
-          timeSpan: json_['timeSpan'] as core.String?,
-        );
+    : this(
+        formattedScore: json_['formattedScore'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        score: json_['score'] as core.String?,
+        scoreTag: json_['scoreTag'] as core.String?,
+        timeSpan: json_['timeSpan'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (formattedScore != null) 'formattedScore': formattedScore!,
-        if (kind != null) 'kind': kind!,
-        if (score != null) 'score': score!,
-        if (scoreTag != null) 'scoreTag': scoreTag!,
-        if (timeSpan != null) 'timeSpan': timeSpan!,
-      };
+    if (formattedScore != null) 'formattedScore': formattedScore!,
+    if (kind != null) 'kind': kind!,
+    if (score != null) 'score': score!,
+    if (scoreTag != null) 'scoreTag': scoreTag!,
+    if (timeSpan != null) 'timeSpan': timeSpan!,
+  };
 }
 
 /// A list of score submission statuses.
@@ -4737,24 +4792,25 @@ class PlayerScoreListResponse {
   /// The score submissions statuses.
   core.List<PlayerScoreResponse>? submittedScores;
 
-  PlayerScoreListResponse({
-    this.kind,
-    this.submittedScores,
-  });
+  PlayerScoreListResponse({this.kind, this.submittedScores});
 
   PlayerScoreListResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          submittedScores: (json_['submittedScores'] as core.List?)
-              ?.map((value) => PlayerScoreResponse.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        submittedScores:
+            (json_['submittedScores'] as core.List?)
+                ?.map(
+                  (value) => PlayerScoreResponse.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (submittedScores != null) 'submittedScores': submittedScores!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (submittedScores != null) 'submittedScores': submittedScores!,
+  };
 }
 
 /// A list of leaderboard entry resources.
@@ -4797,29 +4853,34 @@ class PlayerScoreResponse {
   });
 
   PlayerScoreResponse.fromJson(core.Map json_)
-      : this(
-          beatenScoreTimeSpans: (json_['beatenScoreTimeSpans'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          formattedScore: json_['formattedScore'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          leaderboardId: json_['leaderboardId'] as core.String?,
-          scoreTag: json_['scoreTag'] as core.String?,
-          unbeatenScores: (json_['unbeatenScores'] as core.List?)
-              ?.map((value) => PlayerScore.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        beatenScoreTimeSpans:
+            (json_['beatenScoreTimeSpans'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        formattedScore: json_['formattedScore'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        leaderboardId: json_['leaderboardId'] as core.String?,
+        scoreTag: json_['scoreTag'] as core.String?,
+        unbeatenScores:
+            (json_['unbeatenScores'] as core.List?)
+                ?.map(
+                  (value) => PlayerScore.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (beatenScoreTimeSpans != null)
-          'beatenScoreTimeSpans': beatenScoreTimeSpans!,
-        if (formattedScore != null) 'formattedScore': formattedScore!,
-        if (kind != null) 'kind': kind!,
-        if (leaderboardId != null) 'leaderboardId': leaderboardId!,
-        if (scoreTag != null) 'scoreTag': scoreTag!,
-        if (unbeatenScores != null) 'unbeatenScores': unbeatenScores!,
-      };
+    if (beatenScoreTimeSpans != null)
+      'beatenScoreTimeSpans': beatenScoreTimeSpans!,
+    if (formattedScore != null) 'formattedScore': formattedScore!,
+    if (kind != null) 'kind': kind!,
+    if (leaderboardId != null) 'leaderboardId': leaderboardId!,
+    if (scoreTag != null) 'scoreTag': scoreTag!,
+    if (unbeatenScores != null) 'unbeatenScores': unbeatenScores!,
+  };
 }
 
 /// A list of score submission requests.
@@ -4832,24 +4893,25 @@ class PlayerScoreSubmissionList {
   /// The score submissions.
   core.List<ScoreSubmission>? scores;
 
-  PlayerScoreSubmissionList({
-    this.kind,
-    this.scores,
-  });
+  PlayerScoreSubmissionList({this.kind, this.scores});
 
   PlayerScoreSubmissionList.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          scores: (json_['scores'] as core.List?)
-              ?.map((value) => ScoreSubmission.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        scores:
+            (json_['scores'] as core.List?)
+                ?.map(
+                  (value) => ScoreSubmission.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (scores != null) 'scores': scores!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (scores != null) 'scores': scores!,
+  };
 }
 
 /// Profile settings
@@ -4874,25 +4936,21 @@ class ProfileSettings {
   /// Whether the player's profile is visible to the currently signed in player.
   core.bool? profileVisible;
 
-  ProfileSettings({
-    this.friendsListVisibility,
-    this.kind,
-    this.profileVisible,
-  });
+  ProfileSettings({this.friendsListVisibility, this.kind, this.profileVisible});
 
   ProfileSettings.fromJson(core.Map json_)
-      : this(
-          friendsListVisibility: json_['friendsListVisibility'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          profileVisible: json_['profileVisible'] as core.bool?,
-        );
+    : this(
+        friendsListVisibility: json_['friendsListVisibility'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        profileVisible: json_['profileVisible'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (friendsListVisibility != null)
-          'friendsListVisibility': friendsListVisibility!,
-        if (kind != null) 'kind': kind!,
-        if (profileVisible != null) 'profileVisible': profileVisible!,
-      };
+    if (friendsListVisibility != null)
+      'friendsListVisibility': friendsListVisibility!,
+    if (kind != null) 'kind': kind!,
+    if (profileVisible != null) 'profileVisible': profileVisible!,
+  };
 }
 
 /// Recall token data returned from RetrievePlayerTokens RPC
@@ -4914,25 +4972,20 @@ class RecallToken {
   /// Required.
   core.String? token;
 
-  RecallToken({
-    this.expireTime,
-    this.multiPlayerPersona,
-    this.token,
-  });
+  RecallToken({this.expireTime, this.multiPlayerPersona, this.token});
 
   RecallToken.fromJson(core.Map json_)
-      : this(
-          expireTime: json_['expireTime'] as core.String?,
-          multiPlayerPersona: json_['multiPlayerPersona'] as core.bool?,
-          token: json_['token'] as core.String?,
-        );
+    : this(
+        expireTime: json_['expireTime'] as core.String?,
+        multiPlayerPersona: json_['multiPlayerPersona'] as core.bool?,
+        token: json_['token'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (multiPlayerPersona != null)
-          'multiPlayerPersona': multiPlayerPersona!,
-        if (token != null) 'token': token!,
-      };
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (multiPlayerPersona != null) 'multiPlayerPersona': multiPlayerPersona!,
+    if (token != null) 'token': token!,
+  };
 }
 
 /// Request to remove all Recall tokens associated with a persona for an app.
@@ -4941,18 +4994,14 @@ class ResetPersonaRequest {
   /// LinkPersona RPC
   core.String? persona;
 
-  ResetPersonaRequest({
-    this.persona,
-  });
+  ResetPersonaRequest({this.persona});
 
   ResetPersonaRequest.fromJson(core.Map json_)
-      : this(
-          persona: json_['persona'] as core.String?,
-        );
+    : this(persona: json_['persona'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (persona != null) 'persona': persona!,
-      };
+    if (persona != null) 'persona': persona!,
+  };
 }
 
 /// Response for the ResetPersona RPC
@@ -4962,18 +5011,14 @@ class ResetPersonaResponse {
   /// Required.
   core.bool? unlinked;
 
-  ResetPersonaResponse({
-    this.unlinked,
-  });
+  ResetPersonaResponse({this.unlinked});
 
   ResetPersonaResponse.fromJson(core.Map json_)
-      : this(
-          unlinked: json_['unlinked'] as core.bool?,
-        );
+    : this(unlinked: json_['unlinked'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (unlinked != null) 'unlinked': unlinked!,
-      };
+    if (unlinked != null) 'unlinked': unlinked!,
+  };
 }
 
 /// Recall token data returned from for the
@@ -4985,21 +5030,22 @@ class RetrieveDeveloperGamesLastPlayerTokenResponse {
   /// principal.
   GamePlayerToken? gamePlayerToken;
 
-  RetrieveDeveloperGamesLastPlayerTokenResponse({
-    this.gamePlayerToken,
-  });
+  RetrieveDeveloperGamesLastPlayerTokenResponse({this.gamePlayerToken});
 
   RetrieveDeveloperGamesLastPlayerTokenResponse.fromJson(core.Map json_)
-      : this(
-          gamePlayerToken: json_.containsKey('gamePlayerToken')
-              ? GamePlayerToken.fromJson(json_['gamePlayerToken']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gamePlayerToken:
+            json_.containsKey('gamePlayerToken')
+                ? GamePlayerToken.fromJson(
+                  json_['gamePlayerToken']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gamePlayerToken != null) 'gamePlayerToken': gamePlayerToken!,
-      };
+    if (gamePlayerToken != null) 'gamePlayerToken': gamePlayerToken!,
+  };
 }
 
 /// A list of recall token data returned from the RetrieveGamesPlayerTokens RPC
@@ -5010,21 +5056,23 @@ class RetrieveGamesPlayerTokensResponse {
   /// application is not included in the response.
   core.List<GamePlayerToken>? gamePlayerTokens;
 
-  RetrieveGamesPlayerTokensResponse({
-    this.gamePlayerTokens,
-  });
+  RetrieveGamesPlayerTokensResponse({this.gamePlayerTokens});
 
   RetrieveGamesPlayerTokensResponse.fromJson(core.Map json_)
-      : this(
-          gamePlayerTokens: (json_['gamePlayerTokens'] as core.List?)
-              ?.map((value) => GamePlayerToken.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        gamePlayerTokens:
+            (json_['gamePlayerTokens'] as core.List?)
+                ?.map(
+                  (value) => GamePlayerToken.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gamePlayerTokens != null) 'gamePlayerTokens': gamePlayerTokens!,
-      };
+    if (gamePlayerTokens != null) 'gamePlayerTokens': gamePlayerTokens!,
+  };
 }
 
 /// Response for the RetrievePlayerTokens RPC
@@ -5034,21 +5082,23 @@ class RetrievePlayerTokensResponse {
   /// Required.
   core.List<RecallToken>? tokens;
 
-  RetrievePlayerTokensResponse({
-    this.tokens,
-  });
+  RetrievePlayerTokensResponse({this.tokens});
 
   RetrievePlayerTokensResponse.fromJson(core.Map json_)
-      : this(
-          tokens: (json_['tokens'] as core.List?)
-              ?.map((value) => RecallToken.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        tokens:
+            (json_['tokens'] as core.List?)
+                ?.map(
+                  (value) => RecallToken.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tokens != null) 'tokens': tokens!,
-      };
+    if (tokens != null) 'tokens': tokens!,
+  };
 }
 
 /// A third party checking a revision response.
@@ -5071,24 +5121,20 @@ class RevisionCheckResponse {
   /// version.
   core.String? revisionStatus;
 
-  RevisionCheckResponse({
-    this.apiVersion,
-    this.kind,
-    this.revisionStatus,
-  });
+  RevisionCheckResponse({this.apiVersion, this.kind, this.revisionStatus});
 
   RevisionCheckResponse.fromJson(core.Map json_)
-      : this(
-          apiVersion: json_['apiVersion'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          revisionStatus: json_['revisionStatus'] as core.String?,
-        );
+    : this(
+        apiVersion: json_['apiVersion'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        revisionStatus: json_['revisionStatus'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (kind != null) 'kind': kind!,
-        if (revisionStatus != null) 'revisionStatus': revisionStatus!,
-      };
+    if (apiVersion != null) 'apiVersion': apiVersion!,
+    if (kind != null) 'kind': kind!,
+    if (revisionStatus != null) 'revisionStatus': revisionStatus!,
+  };
 }
 
 /// Scoped player identifiers.
@@ -5106,22 +5152,18 @@ class ScopedPlayerIds {
   /// This is the same id that is returned in GetPlayer game_player_id field.
   core.String? gamePlayerId;
 
-  ScopedPlayerIds({
-    this.developerPlayerKey,
-    this.gamePlayerId,
-  });
+  ScopedPlayerIds({this.developerPlayerKey, this.gamePlayerId});
 
   ScopedPlayerIds.fromJson(core.Map json_)
-      : this(
-          developerPlayerKey: json_['developerPlayerKey'] as core.String?,
-          gamePlayerId: json_['gamePlayerId'] as core.String?,
-        );
+    : this(
+        developerPlayerKey: json_['developerPlayerKey'] as core.String?,
+        gamePlayerId: json_['gamePlayerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (developerPlayerKey != null)
-          'developerPlayerKey': developerPlayerKey!,
-        if (gamePlayerId != null) 'gamePlayerId': gamePlayerId!,
-      };
+    if (developerPlayerKey != null) 'developerPlayerKey': developerPlayerKey!,
+    if (gamePlayerId != null) 'gamePlayerId': gamePlayerId!,
+  };
 }
 
 /// A request to submit a score to leaderboards.
@@ -5156,21 +5198,21 @@ class ScoreSubmission {
   });
 
   ScoreSubmission.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          leaderboardId: json_['leaderboardId'] as core.String?,
-          score: json_['score'] as core.String?,
-          scoreTag: json_['scoreTag'] as core.String?,
-          signature: json_['signature'] as core.String?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        leaderboardId: json_['leaderboardId'] as core.String?,
+        score: json_['score'] as core.String?,
+        scoreTag: json_['scoreTag'] as core.String?,
+        signature: json_['signature'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (leaderboardId != null) 'leaderboardId': leaderboardId!,
-        if (score != null) 'score': score!,
-        if (scoreTag != null) 'scoreTag': scoreTag!,
-        if (signature != null) 'signature': signature!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (leaderboardId != null) 'leaderboardId': leaderboardId!,
+    if (score != null) 'score': score!,
+    if (scoreTag != null) 'scoreTag': scoreTag!,
+    if (signature != null) 'signature': signature!,
+  };
 }
 
 /// An snapshot object.
@@ -5234,37 +5276,38 @@ class Snapshot {
   });
 
   Snapshot.fromJson(core.Map json_)
-      : this(
-          coverImage: json_.containsKey('coverImage')
-              ? SnapshotImage.fromJson(
-                  json_['coverImage'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          driveId: json_['driveId'] as core.String?,
-          durationMillis: json_['durationMillis'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          lastModifiedMillis: json_['lastModifiedMillis'] as core.String?,
-          progressValue: json_['progressValue'] as core.String?,
-          title: json_['title'] as core.String?,
-          type: json_['type'] as core.String?,
-          uniqueName: json_['uniqueName'] as core.String?,
-        );
+    : this(
+        coverImage:
+            json_.containsKey('coverImage')
+                ? SnapshotImage.fromJson(
+                  json_['coverImage'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        driveId: json_['driveId'] as core.String?,
+        durationMillis: json_['durationMillis'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        lastModifiedMillis: json_['lastModifiedMillis'] as core.String?,
+        progressValue: json_['progressValue'] as core.String?,
+        title: json_['title'] as core.String?,
+        type: json_['type'] as core.String?,
+        uniqueName: json_['uniqueName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coverImage != null) 'coverImage': coverImage!,
-        if (description != null) 'description': description!,
-        if (driveId != null) 'driveId': driveId!,
-        if (durationMillis != null) 'durationMillis': durationMillis!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (lastModifiedMillis != null)
-          'lastModifiedMillis': lastModifiedMillis!,
-        if (progressValue != null) 'progressValue': progressValue!,
-        if (title != null) 'title': title!,
-        if (type != null) 'type': type!,
-        if (uniqueName != null) 'uniqueName': uniqueName!,
-      };
+    if (coverImage != null) 'coverImage': coverImage!,
+    if (description != null) 'description': description!,
+    if (driveId != null) 'driveId': driveId!,
+    if (durationMillis != null) 'durationMillis': durationMillis!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (lastModifiedMillis != null) 'lastModifiedMillis': lastModifiedMillis!,
+    if (progressValue != null) 'progressValue': progressValue!,
+    if (title != null) 'title': title!,
+    if (type != null) 'type': type!,
+    if (uniqueName != null) 'uniqueName': uniqueName!,
+  };
 }
 
 /// An image of a snapshot.
@@ -5288,30 +5331,24 @@ class SnapshotImage {
   /// The width of the image.
   core.int? width;
 
-  SnapshotImage({
-    this.height,
-    this.kind,
-    this.mimeType,
-    this.url,
-    this.width,
-  });
+  SnapshotImage({this.height, this.kind, this.mimeType, this.url, this.width});
 
   SnapshotImage.fromJson(core.Map json_)
-      : this(
-          height: json_['height'] as core.int?,
-          kind: json_['kind'] as core.String?,
-          mimeType: json_['mime_type'] as core.String?,
-          url: json_['url'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        height: json_['height'] as core.int?,
+        kind: json_['kind'] as core.String?,
+        mimeType: json_['mime_type'] as core.String?,
+        url: json_['url'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (kind != null) 'kind': kind!,
-        if (mimeType != null) 'mime_type': mimeType!,
-        if (url != null) 'url': url!,
-        if (width != null) 'width': width!,
-      };
+    if (height != null) 'height': height!,
+    if (kind != null) 'kind': kind!,
+    if (mimeType != null) 'mime_type': mimeType!,
+    if (url != null) 'url': url!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// A third party list snapshots response.
@@ -5329,27 +5366,27 @@ class SnapshotListResponse {
   /// If there are no more results, the token is omitted.
   core.String? nextPageToken;
 
-  SnapshotListResponse({
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  SnapshotListResponse({this.items, this.kind, this.nextPageToken});
 
   SnapshotListResponse.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => Snapshot.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Snapshot.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// A third party stats resource.
@@ -5437,44 +5474,42 @@ class StatsResponse {
   });
 
   StatsResponse.fromJson(core.Map json_)
-      : this(
-          avgSessionLengthMinutes:
-              (json_['avg_session_length_minutes'] as core.num?)?.toDouble(),
-          churnProbability:
-              (json_['churn_probability'] as core.num?)?.toDouble(),
-          daysSinceLastPlayed: json_['days_since_last_played'] as core.int?,
-          highSpenderProbability:
-              (json_['high_spender_probability'] as core.num?)?.toDouble(),
-          kind: json_['kind'] as core.String?,
-          numPurchases: json_['num_purchases'] as core.int?,
-          numSessions: json_['num_sessions'] as core.int?,
-          numSessionsPercentile:
-              (json_['num_sessions_percentile'] as core.num?)?.toDouble(),
-          spendPercentile: (json_['spend_percentile'] as core.num?)?.toDouble(),
-          spendProbability:
-              (json_['spend_probability'] as core.num?)?.toDouble(),
-          totalSpendNext28Days:
-              (json_['total_spend_next_28_days'] as core.num?)?.toDouble(),
-        );
+    : this(
+        avgSessionLengthMinutes:
+            (json_['avg_session_length_minutes'] as core.num?)?.toDouble(),
+        churnProbability: (json_['churn_probability'] as core.num?)?.toDouble(),
+        daysSinceLastPlayed: json_['days_since_last_played'] as core.int?,
+        highSpenderProbability:
+            (json_['high_spender_probability'] as core.num?)?.toDouble(),
+        kind: json_['kind'] as core.String?,
+        numPurchases: json_['num_purchases'] as core.int?,
+        numSessions: json_['num_sessions'] as core.int?,
+        numSessionsPercentile:
+            (json_['num_sessions_percentile'] as core.num?)?.toDouble(),
+        spendPercentile: (json_['spend_percentile'] as core.num?)?.toDouble(),
+        spendProbability: (json_['spend_probability'] as core.num?)?.toDouble(),
+        totalSpendNext28Days:
+            (json_['total_spend_next_28_days'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (avgSessionLengthMinutes != null)
-          'avg_session_length_minutes': avgSessionLengthMinutes!,
-        if (churnProbability != null) 'churn_probability': churnProbability!,
-        if (daysSinceLastPlayed != null)
-          'days_since_last_played': daysSinceLastPlayed!,
-        if (highSpenderProbability != null)
-          'high_spender_probability': highSpenderProbability!,
-        if (kind != null) 'kind': kind!,
-        if (numPurchases != null) 'num_purchases': numPurchases!,
-        if (numSessions != null) 'num_sessions': numSessions!,
-        if (numSessionsPercentile != null)
-          'num_sessions_percentile': numSessionsPercentile!,
-        if (spendPercentile != null) 'spend_percentile': spendPercentile!,
-        if (spendProbability != null) 'spend_probability': spendProbability!,
-        if (totalSpendNext28Days != null)
-          'total_spend_next_28_days': totalSpendNext28Days!,
-      };
+    if (avgSessionLengthMinutes != null)
+      'avg_session_length_minutes': avgSessionLengthMinutes!,
+    if (churnProbability != null) 'churn_probability': churnProbability!,
+    if (daysSinceLastPlayed != null)
+      'days_since_last_played': daysSinceLastPlayed!,
+    if (highSpenderProbability != null)
+      'high_spender_probability': highSpenderProbability!,
+    if (kind != null) 'kind': kind!,
+    if (numPurchases != null) 'num_purchases': numPurchases!,
+    if (numSessions != null) 'num_sessions': numSessions!,
+    if (numSessionsPercentile != null)
+      'num_sessions_percentile': numSessionsPercentile!,
+    if (spendPercentile != null) 'spend_percentile': spendPercentile!,
+    if (spendProbability != null) 'spend_probability': spendProbability!,
+    if (totalSpendNext28Days != null)
+      'total_spend_next_28_days': totalSpendNext28Days!,
+  };
 }
 
 /// Request to remove a Recall token linking PGS principal and an in-game
@@ -5494,24 +5529,20 @@ class UnlinkPersonaRequest {
   /// RPC
   core.String? token;
 
-  UnlinkPersonaRequest({
-    this.persona,
-    this.sessionId,
-    this.token,
-  });
+  UnlinkPersonaRequest({this.persona, this.sessionId, this.token});
 
   UnlinkPersonaRequest.fromJson(core.Map json_)
-      : this(
-          persona: json_['persona'] as core.String?,
-          sessionId: json_['sessionId'] as core.String?,
-          token: json_['token'] as core.String?,
-        );
+    : this(
+        persona: json_['persona'] as core.String?,
+        sessionId: json_['sessionId'] as core.String?,
+        token: json_['token'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (persona != null) 'persona': persona!,
-        if (sessionId != null) 'sessionId': sessionId!,
-        if (token != null) 'token': token!,
-      };
+    if (persona != null) 'persona': persona!,
+    if (sessionId != null) 'sessionId': sessionId!,
+    if (token != null) 'token': token!,
+  };
 }
 
 /// Response for the UnlinkPersona RPC
@@ -5524,16 +5555,12 @@ class UnlinkPersonaResponse {
   /// Required.
   core.bool? unlinked;
 
-  UnlinkPersonaResponse({
-    this.unlinked,
-  });
+  UnlinkPersonaResponse({this.unlinked});
 
   UnlinkPersonaResponse.fromJson(core.Map json_)
-      : this(
-          unlinked: json_['unlinked'] as core.bool?,
-        );
+    : this(unlinked: json_['unlinked'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (unlinked != null) 'unlinked': unlinked!,
-      };
+    if (unlinked != null) 'unlinked': unlinked!,
+  };
 }

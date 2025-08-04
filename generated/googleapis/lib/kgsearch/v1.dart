@@ -40,11 +40,16 @@ class KgsearchApi {
 
   EntitiesResource get entities => EntitiesResource(_requester);
 
-  KgsearchApi(http.Client client,
-      {core.String rootUrl = 'https://kgsearch.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  KgsearchApi(
+    http.Client client, {
+    core.String rootUrl = 'https://kgsearch.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class EntitiesResource {
@@ -117,7 +122,8 @@ class EntitiesResource {
       queryParams: queryParams_,
     );
     return SearchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -144,24 +150,21 @@ class SearchResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object?>? itemListElement;
 
-  SearchResponse({
-    this.P_context,
-    this.P_type,
-    this.itemListElement,
-  });
+  SearchResponse({this.P_context, this.P_type, this.itemListElement});
 
   SearchResponse.fromJson(core.Map json_)
-      : this(
-          P_context: json_['@context'],
-          P_type: json_['@type'],
-          itemListElement: json_.containsKey('itemListElement')
-              ? json_['itemListElement'] as core.List
-              : null,
-        );
+    : this(
+        P_context: json_['@context'],
+        P_type: json_['@type'],
+        itemListElement:
+            json_.containsKey('itemListElement')
+                ? json_['itemListElement'] as core.List
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (P_context != null) '@context': P_context!,
-        if (P_type != null) '@type': P_type!,
-        if (itemListElement != null) 'itemListElement': itemListElement!,
-      };
+    if (P_context != null) '@context': P_context!,
+    if (P_type != null) '@type': P_type!,
+    if (itemListElement != null) 'itemListElement': itemListElement!,
+  };
 }

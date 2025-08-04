@@ -49,11 +49,16 @@ class AssuredworkloadsApi {
 
   OrganizationsResource get organizations => OrganizationsResource(_requester);
 
-  AssuredworkloadsApi(http.Client client,
-      {core.String rootUrl = 'https://assuredworkloads.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AssuredworkloadsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://assuredworkloads.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class OrganizationsResource {
@@ -74,14 +79,14 @@ class OrganizationsLocationsResource {
       OrganizationsLocationsWorkloadsResource(_requester);
 
   OrganizationsLocationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class OrganizationsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -120,7 +125,8 @@ class OrganizationsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -170,7 +176,8 @@ class OrganizationsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -183,7 +190,7 @@ class OrganizationsLocationsWorkloadsResource {
       OrganizationsLocationsWorkloadsViolationsResource(_requester);
 
   OrganizationsLocationsWorkloadsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Analyzes a hypothetical move of a source resource to a target workload to
   /// surface compliance risks.
@@ -230,7 +237,7 @@ class OrganizationsLocationsWorkloadsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse>
-      analyzeWorkloadMove(
+  analyzeWorkloadMove(
     core.String target, {
     core.List<core.String>? assetTypes,
     core.int? pageSize,
@@ -255,7 +262,8 @@ class OrganizationsLocationsWorkloadsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates Assured Workload.
@@ -304,7 +312,8 @@ class OrganizationsLocationsWorkloadsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the workload.
@@ -354,7 +363,8 @@ class OrganizationsLocationsWorkloadsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// This endpoint enables Assured Workloads service to offer compliance
@@ -386,10 +396,7 @@ class OrganizationsLocationsWorkloadsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse>
-      enableComplianceUpdates(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  enableComplianceUpdates(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -402,8 +409,9 @@ class OrganizationsLocationsWorkloadsResource {
       'PUT',
       queryParams: queryParams_,
     );
-    return GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Enable resource violation monitoring for a workload.
@@ -428,10 +436,7 @@ class OrganizationsLocationsWorkloadsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse>
-      enableResourceMonitoring(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  enableResourceMonitoring(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -444,8 +449,9 @@ class OrganizationsLocationsWorkloadsResource {
       'POST',
       queryParams: queryParams_,
     );
-    return GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets Assured Workload associated with a CRM Node
@@ -486,7 +492,8 @@ class OrganizationsLocationsWorkloadsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1Workload.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists Assured Workloads under a CRM Node.
@@ -538,7 +545,8 @@ class OrganizationsLocationsWorkloadsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update the permissions settings for an existing partner workload.
@@ -586,7 +594,8 @@ class OrganizationsLocationsWorkloadsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1Workload.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing workload.
@@ -638,7 +647,8 @@ class OrganizationsLocationsWorkloadsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1Workload.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Restrict the list of resources allowed in the Workload environment.
@@ -673,7 +683,7 @@ class OrganizationsLocationsWorkloadsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse>
-      restrictAllowedResources(
+  restrictAllowedResources(
     GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest request,
     core.String name, {
     core.String? $fields,
@@ -692,8 +702,9 @@ class OrganizationsLocationsWorkloadsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -701,7 +712,7 @@ class OrganizationsLocationsWorkloadsUpdatesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsWorkloadsUpdatesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// This endpoint creates a new operation to apply the given update.
   ///
@@ -743,7 +754,8 @@ class OrganizationsLocationsWorkloadsUpdatesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// This endpoint lists all updates for the given workload.
@@ -791,7 +803,8 @@ class OrganizationsLocationsWorkloadsUpdatesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -799,7 +812,7 @@ class OrganizationsLocationsWorkloadsViolationsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsWorkloadsViolationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Acknowledges an existing violation.
   ///
@@ -830,7 +843,7 @@ class OrganizationsLocationsWorkloadsViolationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse>
-      acknowledge(
+  acknowledge(
     GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest request,
     core.String name, {
     core.String? $fields,
@@ -849,7 +862,8 @@ class OrganizationsLocationsWorkloadsViolationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves Assured Workload Violation based on ID.
@@ -888,7 +902,8 @@ class OrganizationsLocationsWorkloadsViolationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1Violation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the Violations in the AssuredWorkload Environment.
@@ -953,7 +968,8 @@ class OrganizationsLocationsWorkloadsViolationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1ListViolationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -995,19 +1011,19 @@ class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
   });
 
   GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest.fromJson(
-      core.Map json_)
-      : this(
-          acknowledgeType: json_['acknowledgeType'] as core.String?,
-          comment: json_['comment'] as core.String?,
-          nonCompliantOrgPolicy: json_['nonCompliantOrgPolicy'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        acknowledgeType: json_['acknowledgeType'] as core.String?,
+        comment: json_['comment'] as core.String?,
+        nonCompliantOrgPolicy: json_['nonCompliantOrgPolicy'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acknowledgeType != null) 'acknowledgeType': acknowledgeType!,
-        if (comment != null) 'comment': comment!,
-        if (nonCompliantOrgPolicy != null)
-          'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
-      };
+    if (acknowledgeType != null) 'acknowledgeType': acknowledgeType!,
+    if (comment != null) 'comment': comment!,
+    if (nonCompliantOrgPolicy != null)
+      'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
+  };
 }
 
 /// Response for violation acknowledgement
@@ -1029,20 +1045,24 @@ class GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse {
   });
 
   GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse.fromJson(
-      core.Map json_)
-      : this(
-          assetMoveAnalyses: (json_['assetMoveAnalyses'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudAssuredworkloadsV1AssetMoveAnalysis.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        assetMoveAnalyses:
+            (json_['assetMoveAnalyses'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudAssuredworkloadsV1AssetMoveAnalysis.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assetMoveAnalyses != null) 'assetMoveAnalyses': assetMoveAnalyses!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (assetMoveAnalyses != null) 'assetMoveAnalyses': assetMoveAnalyses!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Request to apply update to a workload.
@@ -1053,19 +1073,15 @@ class GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest {
   /// - "APPLY" : The update is applied.
   core.String? action;
 
-  GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest({
-    this.action,
-  });
+  GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest({this.action});
 
   GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest.fromJson(
-      core.Map json_)
-      : this(
-          action: json_['action'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(action: json_['action'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-      };
+    if (action != null) 'action': action!,
+  };
 }
 
 /// Represents move analysis results for an asset.
@@ -1092,21 +1108,25 @@ class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis {
   });
 
   GoogleCloudAssuredworkloadsV1AssetMoveAnalysis.fromJson(core.Map json_)
-      : this(
-          analysisGroups: (json_['analysisGroups'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudAssuredworkloadsV1MoveAnalysisGroup.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          asset: json_['asset'] as core.String?,
-          assetType: json_['assetType'] as core.String?,
-        );
+    : this(
+        analysisGroups:
+            (json_['analysisGroups'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudAssuredworkloadsV1MoveAnalysisGroup.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        asset: json_['asset'] as core.String?,
+        assetType: json_['assetType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisGroups != null) 'analysisGroups': analysisGroups!,
-        if (asset != null) 'asset': asset!,
-        if (assetType != null) 'assetType': assetType!,
-      };
+    if (analysisGroups != null) 'analysisGroups': analysisGroups!,
+    if (asset != null) 'asset': asset!,
+    if (assetType != null) 'assetType': assetType!,
+  };
 }
 
 /// Response for EnableComplianceUpdates endpoint.
@@ -1131,18 +1151,22 @@ class GoogleCloudAssuredworkloadsV1ListViolationsResponse {
   });
 
   GoogleCloudAssuredworkloadsV1ListViolationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          violations: (json_['violations'] as core.List?)
-              ?.map((value) => GoogleCloudAssuredworkloadsV1Violation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        violations:
+            (json_['violations'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudAssuredworkloadsV1Violation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (violations != null) 'violations': violations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (violations != null) 'violations': violations!,
+  };
 }
 
 /// Response of listing the compliance updates per workload with pagination.
@@ -1161,20 +1185,24 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse {
   });
 
   GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse.fromJson(
-      core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          workloadUpdates: (json_['workloadUpdates'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudAssuredworkloadsV1WorkloadUpdate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        workloadUpdates:
+            (json_['workloadUpdates'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudAssuredworkloadsV1WorkloadUpdate.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (workloadUpdates != null) 'workloadUpdates': workloadUpdates!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (workloadUpdates != null) 'workloadUpdates': workloadUpdates!,
+  };
 }
 
 /// Response of ListWorkloads endpoint.
@@ -1193,18 +1221,22 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
   });
 
   GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          workloads: (json_['workloads'] as core.List?)
-              ?.map((value) => GoogleCloudAssuredworkloadsV1Workload.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        workloads:
+            (json_['workloads'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudAssuredworkloadsV1Workload.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (workloads != null) 'workloads': workloads!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (workloads != null) 'workloads': workloads!,
+  };
 }
 
 /// Represents a logical group of checks performed for an asset.
@@ -1228,24 +1260,28 @@ class GoogleCloudAssuredworkloadsV1MoveAnalysisGroup {
   });
 
   GoogleCloudAssuredworkloadsV1MoveAnalysisGroup.fromJson(core.Map json_)
-      : this(
-          analysisResult: json_.containsKey('analysisResult')
-              ? GoogleCloudAssuredworkloadsV1MoveAnalysisResult.fromJson(
+    : this(
+        analysisResult:
+            json_.containsKey('analysisResult')
+                ? GoogleCloudAssuredworkloadsV1MoveAnalysisResult.fromJson(
                   json_['analysisResult']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          displayName: json_['displayName'] as core.String?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        displayName: json_['displayName'] as core.String?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisResult != null) 'analysisResult': analysisResult!,
-        if (displayName != null) 'displayName': displayName!,
-        if (error != null) 'error': error!,
-      };
+    if (analysisResult != null) 'analysisResult': analysisResult!,
+    if (displayName != null) 'displayName': displayName!,
+    if (error != null) 'error': error!,
+  };
 }
 
 /// Represents the successful move analysis results for a group.
@@ -1266,21 +1302,29 @@ class GoogleCloudAssuredworkloadsV1MoveAnalysisResult {
   });
 
   GoogleCloudAssuredworkloadsV1MoveAnalysisResult.fromJson(core.Map json_)
-      : this(
-          blockers: (json_['blockers'] as core.List?)
-              ?.map((value) => GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          warnings: (json_['warnings'] as core.List?)
-              ?.map((value) => GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        blockers:
+            (json_['blockers'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        warnings:
+            (json_['warnings'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blockers != null) 'blockers': blockers!,
-        if (warnings != null) 'warnings': warnings!,
-      };
+    if (blockers != null) 'blockers': blockers!,
+    if (warnings != null) 'warnings': warnings!,
+  };
 }
 
 /// Represents the impact of moving the asset to the target.
@@ -1288,18 +1332,14 @@ class GoogleCloudAssuredworkloadsV1MoveImpact {
   /// Explanation of the impact.
   core.String? detail;
 
-  GoogleCloudAssuredworkloadsV1MoveImpact({
-    this.detail,
-  });
+  GoogleCloudAssuredworkloadsV1MoveImpact({this.detail});
 
   GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(core.Map json_)
-      : this(
-          detail: json_['detail'] as core.String?,
-        );
+    : this(detail: json_['detail'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detail != null) 'detail': detail!,
-      };
+    if (detail != null) 'detail': detail!,
+  };
 }
 
 /// Request for updating permission settings for a partner workload.
@@ -1330,23 +1370,24 @@ class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest {
   });
 
   GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest.fromJson(
-      core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          partnerPermissions: json_.containsKey('partnerPermissions')
-              ? GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
-                  .fromJson(json_['partnerPermissions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        etag: json_['etag'] as core.String?,
+        partnerPermissions:
+            json_.containsKey('partnerPermissions')
+                ? GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions.fromJson(
+                  json_['partnerPermissions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (partnerPermissions != null)
-          'partnerPermissions': partnerPermissions!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (partnerPermissions != null) 'partnerPermissions': partnerPermissions!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// This assured workload service object is used to represent the org policy
@@ -1390,24 +1431,26 @@ class GoogleCloudAssuredworkloadsV1OrgPolicy {
   });
 
   GoogleCloudAssuredworkloadsV1OrgPolicy.fromJson(core.Map json_)
-      : this(
-          constraint: json_['constraint'] as core.String?,
-          inherit: json_['inherit'] as core.bool?,
-          reset: json_['reset'] as core.bool?,
-          resource: json_['resource'] as core.String?,
-          rule: json_.containsKey('rule')
-              ? GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule.fromJson(
-                  json_['rule'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        constraint: json_['constraint'] as core.String?,
+        inherit: json_['inherit'] as core.bool?,
+        reset: json_['reset'] as core.bool?,
+        resource: json_['resource'] as core.String?,
+        rule:
+            json_.containsKey('rule')
+                ? GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule.fromJson(
+                  json_['rule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (constraint != null) 'constraint': constraint!,
-        if (inherit != null) 'inherit': inherit!,
-        if (reset != null) 'reset': reset!,
-        if (resource != null) 'resource': resource!,
-        if (rule != null) 'rule': rule!,
-      };
+    if (constraint != null) 'constraint': constraint!,
+    if (inherit != null) 'inherit': inherit!,
+    if (reset != null) 'reset': reset!,
+    if (resource != null) 'resource': resource!,
+    if (rule != null) 'rule': rule!,
+  };
 }
 
 /// A rule used to express this policy.
@@ -1432,28 +1475,29 @@ class GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule {
   });
 
   GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule.fromJson(core.Map json_)
-      : this(
-          allowAll: json_['allowAll'] as core.bool?,
-          denyAll: json_['denyAll'] as core.bool?,
-          enforce: json_['enforce'] as core.bool?,
-          values: json_.containsKey('values')
-              ? GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues
-                  .fromJson(
-                      json_['values'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        allowAll: json_['allowAll'] as core.bool?,
+        denyAll: json_['denyAll'] as core.bool?,
+        enforce: json_['enforce'] as core.bool?,
+        values:
+            json_.containsKey('values')
+                ? GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues.fromJson(
+                  json_['values'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowAll != null) 'allowAll': allowAll!,
-        if (denyAll != null) 'denyAll': denyAll!,
-        if (enforce != null) 'enforce': enforce!,
-        if (values != null) 'values': values!,
-      };
+    if (allowAll != null) 'allowAll': allowAll!,
+    if (denyAll != null) 'denyAll': denyAll!,
+    if (enforce != null) 'enforce': enforce!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// The values allowed for a ListPolicy.
-typedef GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues
-    = $StringValues;
+typedef GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues =
+    $StringValues;
 
 /// Represents an update for an org policy control applied on an Assured
 /// Workload resource.
@@ -1472,22 +1516,26 @@ class GoogleCloudAssuredworkloadsV1OrgPolicyUpdate {
   });
 
   GoogleCloudAssuredworkloadsV1OrgPolicyUpdate.fromJson(core.Map json_)
-      : this(
-          appliedPolicy: json_.containsKey('appliedPolicy')
-              ? GoogleCloudAssuredworkloadsV1OrgPolicy.fromJson(
-                  json_['appliedPolicy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          suggestedPolicy: json_.containsKey('suggestedPolicy')
-              ? GoogleCloudAssuredworkloadsV1OrgPolicy.fromJson(
+    : this(
+        appliedPolicy:
+            json_.containsKey('appliedPolicy')
+                ? GoogleCloudAssuredworkloadsV1OrgPolicy.fromJson(
+                  json_['appliedPolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        suggestedPolicy:
+            json_.containsKey('suggestedPolicy')
+                ? GoogleCloudAssuredworkloadsV1OrgPolicy.fromJson(
                   json_['suggestedPolicy']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appliedPolicy != null) 'appliedPolicy': appliedPolicy!,
-        if (suggestedPolicy != null) 'suggestedPolicy': suggestedPolicy!,
-      };
+    if (appliedPolicy != null) 'appliedPolicy': appliedPolicy!,
+    if (suggestedPolicy != null) 'suggestedPolicy': suggestedPolicy!,
+  };
 }
 
 /// Request for restricting list of available resources in Workload environment.
@@ -1516,14 +1564,12 @@ class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
   });
 
   GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest.fromJson(
-      core.Map json_)
-      : this(
-          restrictionType: json_['restrictionType'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(restrictionType: json_['restrictionType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (restrictionType != null) 'restrictionType': restrictionType!,
-      };
+    if (restrictionType != null) 'restrictionType': restrictionType!,
+  };
 }
 
 /// Response for restricting the list of allowed resources.
@@ -1534,22 +1580,22 @@ class GoogleCloudAssuredworkloadsV1UpdateDetails {
   /// Update to one org policy, e.g. gcp.resourceLocation.
   GoogleCloudAssuredworkloadsV1OrgPolicyUpdate? orgPolicyUpdate;
 
-  GoogleCloudAssuredworkloadsV1UpdateDetails({
-    this.orgPolicyUpdate,
-  });
+  GoogleCloudAssuredworkloadsV1UpdateDetails({this.orgPolicyUpdate});
 
   GoogleCloudAssuredworkloadsV1UpdateDetails.fromJson(core.Map json_)
-      : this(
-          orgPolicyUpdate: json_.containsKey('orgPolicyUpdate')
-              ? GoogleCloudAssuredworkloadsV1OrgPolicyUpdate.fromJson(
+    : this(
+        orgPolicyUpdate:
+            json_.containsKey('orgPolicyUpdate')
+                ? GoogleCloudAssuredworkloadsV1OrgPolicyUpdate.fromJson(
                   json_['orgPolicyUpdate']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (orgPolicyUpdate != null) 'orgPolicyUpdate': orgPolicyUpdate!,
-      };
+    if (orgPolicyUpdate != null) 'orgPolicyUpdate': orgPolicyUpdate!,
+  };
 }
 
 /// Workload monitoring Violation.
@@ -1612,7 +1658,7 @@ class GoogleCloudAssuredworkloadsV1Violation {
   ///
   /// Output only.
   core.List<GoogleCloudAssuredworkloadsV1ViolationExceptionContext>?
-      exceptionContexts;
+  exceptionContexts;
 
   /// Name of the Violation.
   ///
@@ -1723,65 +1769,71 @@ class GoogleCloudAssuredworkloadsV1Violation {
   });
 
   GoogleCloudAssuredworkloadsV1Violation.fromJson(core.Map json_)
-      : this(
-          acknowledged: json_['acknowledged'] as core.bool?,
-          acknowledgementTime: json_['acknowledgementTime'] as core.String?,
-          associatedOrgPolicyViolationId:
-              json_['associatedOrgPolicyViolationId'] as core.String?,
-          auditLogLink: json_['auditLogLink'] as core.String?,
-          beginTime: json_['beginTime'] as core.String?,
-          category: json_['category'] as core.String?,
-          description: json_['description'] as core.String?,
-          exceptionAuditLogLink: json_['exceptionAuditLogLink'] as core.String?,
-          exceptionContexts: (json_['exceptionContexts'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudAssuredworkloadsV1ViolationExceptionContext
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          nonCompliantOrgPolicy: json_['nonCompliantOrgPolicy'] as core.String?,
-          orgPolicyConstraint: json_['orgPolicyConstraint'] as core.String?,
-          parentProjectNumber: json_['parentProjectNumber'] as core.String?,
-          remediation: json_.containsKey('remediation')
-              ? GoogleCloudAssuredworkloadsV1ViolationRemediation.fromJson(
-                  json_['remediation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          resolveTime: json_['resolveTime'] as core.String?,
-          resourceName: json_['resourceName'] as core.String?,
-          resourceType: json_['resourceType'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          violationType: json_['violationType'] as core.String?,
-        );
+    : this(
+        acknowledged: json_['acknowledged'] as core.bool?,
+        acknowledgementTime: json_['acknowledgementTime'] as core.String?,
+        associatedOrgPolicyViolationId:
+            json_['associatedOrgPolicyViolationId'] as core.String?,
+        auditLogLink: json_['auditLogLink'] as core.String?,
+        beginTime: json_['beginTime'] as core.String?,
+        category: json_['category'] as core.String?,
+        description: json_['description'] as core.String?,
+        exceptionAuditLogLink: json_['exceptionAuditLogLink'] as core.String?,
+        exceptionContexts:
+            (json_['exceptionContexts'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudAssuredworkloadsV1ViolationExceptionContext.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        nonCompliantOrgPolicy: json_['nonCompliantOrgPolicy'] as core.String?,
+        orgPolicyConstraint: json_['orgPolicyConstraint'] as core.String?,
+        parentProjectNumber: json_['parentProjectNumber'] as core.String?,
+        remediation:
+            json_.containsKey('remediation')
+                ? GoogleCloudAssuredworkloadsV1ViolationRemediation.fromJson(
+                  json_['remediation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resolveTime: json_['resolveTime'] as core.String?,
+        resourceName: json_['resourceName'] as core.String?,
+        resourceType: json_['resourceType'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        violationType: json_['violationType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acknowledged != null) 'acknowledged': acknowledged!,
-        if (acknowledgementTime != null)
-          'acknowledgementTime': acknowledgementTime!,
-        if (associatedOrgPolicyViolationId != null)
-          'associatedOrgPolicyViolationId': associatedOrgPolicyViolationId!,
-        if (auditLogLink != null) 'auditLogLink': auditLogLink!,
-        if (beginTime != null) 'beginTime': beginTime!,
-        if (category != null) 'category': category!,
-        if (description != null) 'description': description!,
-        if (exceptionAuditLogLink != null)
-          'exceptionAuditLogLink': exceptionAuditLogLink!,
-        if (exceptionContexts != null) 'exceptionContexts': exceptionContexts!,
-        if (name != null) 'name': name!,
-        if (nonCompliantOrgPolicy != null)
-          'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
-        if (orgPolicyConstraint != null)
-          'orgPolicyConstraint': orgPolicyConstraint!,
-        if (parentProjectNumber != null)
-          'parentProjectNumber': parentProjectNumber!,
-        if (remediation != null) 'remediation': remediation!,
-        if (resolveTime != null) 'resolveTime': resolveTime!,
-        if (resourceName != null) 'resourceName': resourceName!,
-        if (resourceType != null) 'resourceType': resourceType!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (violationType != null) 'violationType': violationType!,
-      };
+    if (acknowledged != null) 'acknowledged': acknowledged!,
+    if (acknowledgementTime != null)
+      'acknowledgementTime': acknowledgementTime!,
+    if (associatedOrgPolicyViolationId != null)
+      'associatedOrgPolicyViolationId': associatedOrgPolicyViolationId!,
+    if (auditLogLink != null) 'auditLogLink': auditLogLink!,
+    if (beginTime != null) 'beginTime': beginTime!,
+    if (category != null) 'category': category!,
+    if (description != null) 'description': description!,
+    if (exceptionAuditLogLink != null)
+      'exceptionAuditLogLink': exceptionAuditLogLink!,
+    if (exceptionContexts != null) 'exceptionContexts': exceptionContexts!,
+    if (name != null) 'name': name!,
+    if (nonCompliantOrgPolicy != null)
+      'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
+    if (orgPolicyConstraint != null)
+      'orgPolicyConstraint': orgPolicyConstraint!,
+    if (parentProjectNumber != null)
+      'parentProjectNumber': parentProjectNumber!,
+    if (remediation != null) 'remediation': remediation!,
+    if (resolveTime != null) 'resolveTime': resolveTime!,
+    if (resourceName != null) 'resourceName': resourceName!,
+    if (resourceType != null) 'resourceType': resourceType!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (violationType != null) 'violationType': violationType!,
+  };
 }
 
 /// Violation exception detail.
@@ -1803,19 +1855,19 @@ class GoogleCloudAssuredworkloadsV1ViolationExceptionContext {
   });
 
   GoogleCloudAssuredworkloadsV1ViolationExceptionContext.fromJson(
-      core.Map json_)
-      : this(
-          acknowledgementTime: json_['acknowledgementTime'] as core.String?,
-          comment: json_['comment'] as core.String?,
-          userName: json_['userName'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        acknowledgementTime: json_['acknowledgementTime'] as core.String?,
+        comment: json_['comment'] as core.String?,
+        userName: json_['userName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acknowledgementTime != null)
-          'acknowledgementTime': acknowledgementTime!,
-        if (comment != null) 'comment': comment!,
-        if (userName != null) 'userName': userName!,
-      };
+    if (acknowledgementTime != null)
+      'acknowledgementTime': acknowledgementTime!,
+    if (comment != null) 'comment': comment!,
+    if (userName != null) 'userName': userName!,
+  };
 }
 
 /// Represents remediation guidance to resolve compliance violation for
@@ -1856,34 +1908,36 @@ class GoogleCloudAssuredworkloadsV1ViolationRemediation {
   });
 
   GoogleCloudAssuredworkloadsV1ViolationRemediation.fromJson(core.Map json_)
-      : this(
-          compliantValues: (json_['compliantValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          instructions: json_.containsKey('instructions')
-              ? GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions
-                  .fromJson(json_['instructions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          remediationType: json_['remediationType'] as core.String?,
-        );
+    : this(
+        compliantValues:
+            (json_['compliantValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        instructions:
+            json_.containsKey('instructions')
+                ? GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions.fromJson(
+                  json_['instructions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        remediationType: json_['remediationType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (compliantValues != null) 'compliantValues': compliantValues!,
-        if (instructions != null) 'instructions': instructions!,
-        if (remediationType != null) 'remediationType': remediationType!,
-      };
+    if (compliantValues != null) 'compliantValues': compliantValues!,
+    if (instructions != null) 'instructions': instructions!,
+    if (remediationType != null) 'remediationType': remediationType!,
+  };
 }
 
 /// Instructions to remediate violation
 class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions {
   /// Remediation instructions to resolve violation via cloud console
   GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole?
-      consoleInstructions;
+  consoleInstructions;
 
   /// Remediation instructions to resolve violation via gcloud cli
   GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud?
-      gcloudInstructions;
+  gcloudInstructions;
 
   GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions({
     this.consoleInstructions,
@@ -1891,35 +1945,38 @@ class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions {
   });
 
   GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions.fromJson(
-      core.Map json_)
-      : this(
-          consoleInstructions: json_.containsKey('consoleInstructions')
-              ? GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole
-                  .fromJson(json_['consoleInstructions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          gcloudInstructions: json_.containsKey('gcloudInstructions')
-              ? GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud
-                  .fromJson(json_['gcloudInstructions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        consoleInstructions:
+            json_.containsKey('consoleInstructions')
+                ? GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole.fromJson(
+                  json_['consoleInstructions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gcloudInstructions:
+            json_.containsKey('gcloudInstructions')
+                ? GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud.fromJson(
+                  json_['gcloudInstructions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consoleInstructions != null)
-          'consoleInstructions': consoleInstructions!,
-        if (gcloudInstructions != null)
-          'gcloudInstructions': gcloudInstructions!,
-      };
+    if (consoleInstructions != null)
+      'consoleInstructions': consoleInstructions!,
+    if (gcloudInstructions != null) 'gcloudInstructions': gcloudInstructions!,
+  };
 }
 
 /// Remediation instructions to resolve violation via cloud console
-typedef GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole
-    = $Console;
+typedef GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole =
+    $Console;
 
 /// Remediation instructions to resolve violation via gcloud cli
-typedef GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud
-    = $Gcloud;
+typedef GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud =
+    $Gcloud;
 
 /// A Workload object for managing highly regulated workloads of cloud
 /// customers.
@@ -2037,7 +2094,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
   ///
   /// Output only.
   GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse?
-      ekmProvisioningResponse;
+  ekmProvisioningResponse;
 
   /// Indicates the sovereignty status of the given workload.
   ///
@@ -2142,7 +2199,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// properties (such as custom project id) will be used to create workload
   /// resources if possible. This field is optional.
   core.List<GoogleCloudAssuredworkloadsV1WorkloadResourceSettings>?
-      resourceSettings;
+  resourceSettings;
 
   /// The resources associated with this workload.
   ///
@@ -2159,7 +2216,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
   ///
   /// Output only.
   GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse?
-      saaEnrollmentResponse;
+  saaEnrollmentResponse;
 
   /// Indicates whether the e-mail notification for a violation is enabled for a
   /// workload.
@@ -2204,112 +2261,125 @@ class GoogleCloudAssuredworkloadsV1Workload {
   });
 
   GoogleCloudAssuredworkloadsV1Workload.fromJson(core.Map json_)
-      : this(
-          billingAccount: json_['billingAccount'] as core.String?,
-          complianceRegime: json_['complianceRegime'] as core.String?,
-          complianceStatus: json_.containsKey('complianceStatus')
-              ? GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus.fromJson(
+    : this(
+        billingAccount: json_['billingAccount'] as core.String?,
+        complianceRegime: json_['complianceRegime'] as core.String?,
+        complianceStatus:
+            json_.containsKey('complianceStatus')
+                ? GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus.fromJson(
                   json_['complianceStatus']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          compliantButDisallowedServices:
-              (json_['compliantButDisallowedServices'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          ekmProvisioningResponse: json_.containsKey('ekmProvisioningResponse')
-              ? GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse
-                  .fromJson(json_['ekmProvisioningResponse']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          enableSovereignControls:
-              json_['enableSovereignControls'] as core.bool?,
-          etag: json_['etag'] as core.String?,
-          kajEnrollmentState: json_['kajEnrollmentState'] as core.String?,
-          kmsSettings: json_.containsKey('kmsSettings')
-              ? GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(
-                  json_['kmsSettings'] as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          partner: json_['partner'] as core.String?,
-          partnerPermissions: json_.containsKey('partnerPermissions')
-              ? GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
-                  .fromJson(json_['partnerPermissions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          partnerServicesBillingAccount:
-              json_['partnerServicesBillingAccount'] as core.String?,
-          provisionedResourcesParent:
-              json_['provisionedResourcesParent'] as core.String?,
-          resourceMonitoringEnabled:
-              json_['resourceMonitoringEnabled'] as core.bool?,
-          resourceSettings: (json_['resourceSettings'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudAssuredworkloadsV1WorkloadResourceSettings
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          saaEnrollmentResponse: json_.containsKey('saaEnrollmentResponse')
-              ? GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse
-                  .fromJson(json_['saaEnrollmentResponse']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          violationNotificationsEnabled:
-              json_['violationNotificationsEnabled'] as core.bool?,
-          workloadOptions: json_.containsKey('workloadOptions')
-              ? GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        compliantButDisallowedServices:
+            (json_['compliantButDisallowedServices'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        ekmProvisioningResponse:
+            json_.containsKey('ekmProvisioningResponse')
+                ? GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse.fromJson(
+                  json_['ekmProvisioningResponse']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enableSovereignControls: json_['enableSovereignControls'] as core.bool?,
+        etag: json_['etag'] as core.String?,
+        kajEnrollmentState: json_['kajEnrollmentState'] as core.String?,
+        kmsSettings:
+            json_.containsKey('kmsSettings')
+                ? GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(
+                  json_['kmsSettings'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        partner: json_['partner'] as core.String?,
+        partnerPermissions:
+            json_.containsKey('partnerPermissions')
+                ? GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions.fromJson(
+                  json_['partnerPermissions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        partnerServicesBillingAccount:
+            json_['partnerServicesBillingAccount'] as core.String?,
+        provisionedResourcesParent:
+            json_['provisionedResourcesParent'] as core.String?,
+        resourceMonitoringEnabled:
+            json_['resourceMonitoringEnabled'] as core.bool?,
+        resourceSettings:
+            (json_['resourceSettings'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        resources:
+            (json_['resources'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        saaEnrollmentResponse:
+            json_.containsKey('saaEnrollmentResponse')
+                ? GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse.fromJson(
+                  json_['saaEnrollmentResponse']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        violationNotificationsEnabled:
+            json_['violationNotificationsEnabled'] as core.bool?,
+        workloadOptions:
+            json_.containsKey('workloadOptions')
+                ? GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions.fromJson(
                   json_['workloadOptions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (billingAccount != null) 'billingAccount': billingAccount!,
-        if (complianceRegime != null) 'complianceRegime': complianceRegime!,
-        if (complianceStatus != null) 'complianceStatus': complianceStatus!,
-        if (compliantButDisallowedServices != null)
-          'compliantButDisallowedServices': compliantButDisallowedServices!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (ekmProvisioningResponse != null)
-          'ekmProvisioningResponse': ekmProvisioningResponse!,
-        if (enableSovereignControls != null)
-          'enableSovereignControls': enableSovereignControls!,
-        if (etag != null) 'etag': etag!,
-        if (kajEnrollmentState != null)
-          'kajEnrollmentState': kajEnrollmentState!,
-        if (kmsSettings != null) 'kmsSettings': kmsSettings!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (partner != null) 'partner': partner!,
-        if (partnerPermissions != null)
-          'partnerPermissions': partnerPermissions!,
-        if (partnerServicesBillingAccount != null)
-          'partnerServicesBillingAccount': partnerServicesBillingAccount!,
-        if (provisionedResourcesParent != null)
-          'provisionedResourcesParent': provisionedResourcesParent!,
-        if (resourceMonitoringEnabled != null)
-          'resourceMonitoringEnabled': resourceMonitoringEnabled!,
-        if (resourceSettings != null) 'resourceSettings': resourceSettings!,
-        if (resources != null) 'resources': resources!,
-        if (saaEnrollmentResponse != null)
-          'saaEnrollmentResponse': saaEnrollmentResponse!,
-        if (violationNotificationsEnabled != null)
-          'violationNotificationsEnabled': violationNotificationsEnabled!,
-        if (workloadOptions != null) 'workloadOptions': workloadOptions!,
-      };
+    if (billingAccount != null) 'billingAccount': billingAccount!,
+    if (complianceRegime != null) 'complianceRegime': complianceRegime!,
+    if (complianceStatus != null) 'complianceStatus': complianceStatus!,
+    if (compliantButDisallowedServices != null)
+      'compliantButDisallowedServices': compliantButDisallowedServices!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (ekmProvisioningResponse != null)
+      'ekmProvisioningResponse': ekmProvisioningResponse!,
+    if (enableSovereignControls != null)
+      'enableSovereignControls': enableSovereignControls!,
+    if (etag != null) 'etag': etag!,
+    if (kajEnrollmentState != null) 'kajEnrollmentState': kajEnrollmentState!,
+    if (kmsSettings != null) 'kmsSettings': kmsSettings!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (partner != null) 'partner': partner!,
+    if (partnerPermissions != null) 'partnerPermissions': partnerPermissions!,
+    if (partnerServicesBillingAccount != null)
+      'partnerServicesBillingAccount': partnerServicesBillingAccount!,
+    if (provisionedResourcesParent != null)
+      'provisionedResourcesParent': provisionedResourcesParent!,
+    if (resourceMonitoringEnabled != null)
+      'resourceMonitoringEnabled': resourceMonitoringEnabled!,
+    if (resourceSettings != null) 'resourceSettings': resourceSettings!,
+    if (resources != null) 'resources': resources!,
+    if (saaEnrollmentResponse != null)
+      'saaEnrollmentResponse': saaEnrollmentResponse!,
+    if (violationNotificationsEnabled != null)
+      'violationNotificationsEnabled': violationNotificationsEnabled!,
+    if (workloadOptions != null) 'workloadOptions': workloadOptions!,
+  };
 }
 
 /// Represents the Compliance Status of this workload
@@ -2334,27 +2404,26 @@ class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus {
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus.fromJson(core.Map json_)
-      : this(
-          acknowledgedResourceViolationCount:
-              json_['acknowledgedResourceViolationCount'] as core.int?,
-          acknowledgedViolationCount:
-              json_['acknowledgedViolationCount'] as core.int?,
-          activeResourceViolationCount:
-              json_['activeResourceViolationCount'] as core.int?,
-          activeViolationCount: json_['activeViolationCount'] as core.int?,
-        );
+    : this(
+        acknowledgedResourceViolationCount:
+            json_['acknowledgedResourceViolationCount'] as core.int?,
+        acknowledgedViolationCount:
+            json_['acknowledgedViolationCount'] as core.int?,
+        activeResourceViolationCount:
+            json_['activeResourceViolationCount'] as core.int?,
+        activeViolationCount: json_['activeViolationCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acknowledgedResourceViolationCount != null)
-          'acknowledgedResourceViolationCount':
-              acknowledgedResourceViolationCount!,
-        if (acknowledgedViolationCount != null)
-          'acknowledgedViolationCount': acknowledgedViolationCount!,
-        if (activeResourceViolationCount != null)
-          'activeResourceViolationCount': activeResourceViolationCount!,
-        if (activeViolationCount != null)
-          'activeViolationCount': activeViolationCount!,
-      };
+    if (acknowledgedResourceViolationCount != null)
+      'acknowledgedResourceViolationCount': acknowledgedResourceViolationCount!,
+    if (acknowledgedViolationCount != null)
+      'acknowledgedViolationCount': acknowledgedViolationCount!,
+    if (activeResourceViolationCount != null)
+      'activeResourceViolationCount': activeResourceViolationCount!,
+    if (activeViolationCount != null)
+      'activeViolationCount': activeViolationCount!,
+  };
 }
 
 /// External key management systems(EKM) Provisioning response
@@ -2401,23 +2470,23 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse.fromJson(
-      core.Map json_)
-      : this(
-          ekmProvisioningErrorDomain:
-              json_['ekmProvisioningErrorDomain'] as core.String?,
-          ekmProvisioningErrorMapping:
-              json_['ekmProvisioningErrorMapping'] as core.String?,
-          ekmProvisioningState: json_['ekmProvisioningState'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        ekmProvisioningErrorDomain:
+            json_['ekmProvisioningErrorDomain'] as core.String?,
+        ekmProvisioningErrorMapping:
+            json_['ekmProvisioningErrorMapping'] as core.String?,
+        ekmProvisioningState: json_['ekmProvisioningState'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ekmProvisioningErrorDomain != null)
-          'ekmProvisioningErrorDomain': ekmProvisioningErrorDomain!,
-        if (ekmProvisioningErrorMapping != null)
-          'ekmProvisioningErrorMapping': ekmProvisioningErrorMapping!,
-        if (ekmProvisioningState != null)
-          'ekmProvisioningState': ekmProvisioningState!,
-      };
+    if (ekmProvisioningErrorDomain != null)
+      'ekmProvisioningErrorDomain': ekmProvisioningErrorDomain!,
+    if (ekmProvisioningErrorMapping != null)
+      'ekmProvisioningErrorMapping': ekmProvisioningErrorMapping!,
+    if (ekmProvisioningState != null)
+      'ekmProvisioningState': ekmProvisioningState!,
+  };
 }
 
 /// Settings specific to the Key Management Service.
@@ -2445,15 +2514,15 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(core.Map json_)
-      : this(
-          nextRotationTime: json_['nextRotationTime'] as core.String?,
-          rotationPeriod: json_['rotationPeriod'] as core.String?,
-        );
+    : this(
+        nextRotationTime: json_['nextRotationTime'] as core.String?,
+        rotationPeriod: json_['rotationPeriod'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
-        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
-      };
+    if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
+    if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
+  };
 }
 
 /// Permissions granted to the AW Partner SA account for the customer workload
@@ -2486,26 +2555,26 @@ class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions.fromJson(
-      core.Map json_)
-      : this(
-          accessTransparencyLogsSupportCaseViewer:
-              json_['accessTransparencyLogsSupportCaseViewer'] as core.bool?,
-          assuredWorkloadsMonitoring:
-              json_['assuredWorkloadsMonitoring'] as core.bool?,
-          dataLogsViewer: json_['dataLogsViewer'] as core.bool?,
-          serviceAccessApprover: json_['serviceAccessApprover'] as core.bool?,
-        );
+    core.Map json_,
+  ) : this(
+        accessTransparencyLogsSupportCaseViewer:
+            json_['accessTransparencyLogsSupportCaseViewer'] as core.bool?,
+        assuredWorkloadsMonitoring:
+            json_['assuredWorkloadsMonitoring'] as core.bool?,
+        dataLogsViewer: json_['dataLogsViewer'] as core.bool?,
+        serviceAccessApprover: json_['serviceAccessApprover'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessTransparencyLogsSupportCaseViewer != null)
-          'accessTransparencyLogsSupportCaseViewer':
-              accessTransparencyLogsSupportCaseViewer!,
-        if (assuredWorkloadsMonitoring != null)
-          'assuredWorkloadsMonitoring': assuredWorkloadsMonitoring!,
-        if (dataLogsViewer != null) 'dataLogsViewer': dataLogsViewer!,
-        if (serviceAccessApprover != null)
-          'serviceAccessApprover': serviceAccessApprover!,
-      };
+    if (accessTransparencyLogsSupportCaseViewer != null)
+      'accessTransparencyLogsSupportCaseViewer':
+          accessTransparencyLogsSupportCaseViewer!,
+    if (assuredWorkloadsMonitoring != null)
+      'assuredWorkloadsMonitoring': assuredWorkloadsMonitoring!,
+    if (dataLogsViewer != null) 'dataLogsViewer': dataLogsViewer!,
+    if (serviceAccessApprover != null)
+      'serviceAccessApprover': serviceAccessApprover!,
+  };
 }
 
 /// Represent the resources that are children of this Workload.
@@ -2534,15 +2603,15 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(core.Map json_)
-      : this(
-          resourceId: json_['resourceId'] as core.String?,
-          resourceType: json_['resourceType'] as core.String?,
-        );
+    : this(
+        resourceId: json_['resourceId'] as core.String?,
+        resourceType: json_['resourceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceId != null) 'resourceId': resourceId!,
-        if (resourceType != null) 'resourceType': resourceType!,
-      };
+    if (resourceId != null) 'resourceId': resourceId!,
+    if (resourceType != null) 'resourceType': resourceType!,
+  };
 }
 
 /// Represent the custom settings for the resources to be created.
@@ -2581,17 +2650,17 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          resourceId: json_['resourceId'] as core.String?,
-          resourceType: json_['resourceType'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        resourceId: json_['resourceId'] as core.String?,
+        resourceType: json_['resourceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (resourceId != null) 'resourceId': resourceId!,
-        if (resourceType != null) 'resourceType': resourceType!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (resourceId != null) 'resourceId': resourceId!,
+    if (resourceType != null) 'resourceType': resourceType!,
+  };
 }
 
 /// Signed Access Approvals (SAA) enrollment response.
@@ -2614,18 +2683,19 @@ class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse {
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse.fromJson(
-      core.Map json_)
-      : this(
-          setupErrors: (json_['setupErrors'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          setupStatus: json_['setupStatus'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        setupErrors:
+            (json_['setupErrors'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        setupStatus: json_['setupStatus'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (setupErrors != null) 'setupErrors': setupErrors!,
-        if (setupStatus != null) 'setupStatus': setupStatus!,
-      };
+    if (setupErrors != null) 'setupErrors': setupErrors!,
+    if (setupStatus != null) 'setupStatus': setupStatus!,
+  };
 }
 
 /// A workload update is a change to the workload's compliance configuration.
@@ -2666,24 +2736,26 @@ class GoogleCloudAssuredworkloadsV1WorkloadUpdate {
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadUpdate.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          details: json_.containsKey('details')
-              ? GoogleCloudAssuredworkloadsV1UpdateDetails.fromJson(
-                  json_['details'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        details:
+            json_.containsKey('details')
+                ? GoogleCloudAssuredworkloadsV1UpdateDetails.fromJson(
+                  json_['details'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (details != null) 'details': details!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (details != null) 'details': details!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Options to be set for the given created workload.
@@ -2702,13 +2774,11 @@ class GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions {
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions.fromJson(core.Map json_)
-      : this(
-          kajEnrollmentType: json_['kajEnrollmentType'] as core.String?,
-        );
+    : this(kajEnrollmentType: json_['kajEnrollmentType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kajEnrollmentType != null) 'kajEnrollmentType': kajEnrollmentType!,
-      };
+    if (kajEnrollmentType != null) 'kajEnrollmentType': kajEnrollmentType!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -2725,18 +2795,22 @@ class GoogleLongrunningListOperationsResponse {
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => GoogleLongrunningOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2791,28 +2865,32 @@ class GoogleLongrunningOperation {
   });
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

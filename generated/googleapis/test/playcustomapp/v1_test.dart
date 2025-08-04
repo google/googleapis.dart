@@ -27,9 +27,9 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<api.Organization> buildUnnamed0() => [
-      buildOrganization(),
-      buildOrganization(),
-    ];
+  buildOrganization(),
+  buildOrganization(),
+];
 
 void checkUnnamed0(core.List<api.Organization> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -54,19 +54,10 @@ api.CustomApp buildCustomApp() {
 void checkCustomApp(api.CustomApp o) {
   buildCounterCustomApp++;
   if (buildCounterCustomApp < 3) {
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     checkUnnamed0(o.organizations!);
-    unittest.expect(
-      o.packageName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.packageName!, unittest.equals('foo'));
+    unittest.expect(o.title!, unittest.equals('foo'));
   }
   buildCounterCustomApp--;
 }
@@ -86,14 +77,8 @@ api.Organization buildOrganization() {
 void checkOrganization(api.Organization o) {
   buildCounterOrganization++;
   if (buildCounterOrganization < 3) {
-    unittest.expect(
-      o.organizationId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.organizationName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.organizationId!, unittest.equals('foo'));
+    unittest.expect(o.organizationName!, unittest.equals('foo'));
   }
   buildCounterOrganization--;
 }
@@ -103,8 +88,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildCustomApp();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.CustomApp.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.CustomApp.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCustomApp(od);
     });
   });
@@ -114,7 +100,8 @@ void main() {
       final o = buildOrganization();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Organization.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkOrganization(od);
     });
   });
@@ -129,68 +116,71 @@ void main() {
       final arg_request = buildCustomApp();
       final arg_account = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.CustomApp.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkCustomApp(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.CustomApp.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkCustomApp(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 26),
-          unittest.equals('playcustomapp/v1/accounts/'),
-        );
-        pathOffset += 26;
-        index = path.indexOf('/customApps', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_account'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/customApps'),
-        );
-        pathOffset += 11;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 26),
+            unittest.equals('playcustomapp/v1/accounts/'),
+          );
+          pathOffset += 26;
+          index = path.indexOf('/customApps', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_account'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/customApps'),
+          );
+          pathOffset += 11;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildCustomApp());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.create(arg_request, arg_account, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildCustomApp());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_account,
+        $fields: arg_$fields,
+      );
       checkCustomApp(response as api.CustomApp);
     });
   });

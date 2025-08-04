@@ -26,16 +26,12 @@ import 'dart:core' as core;
 class $Response {
   core.String? result;
 
-  $Response({
-    this.result,
-  });
+  $Response({this.result});
 
   $Response.fromJson(core.Map json_)
-      : this(
-          result: json_['result'] as core.String?,
-        );
+    : this(result: json_['result'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (result != null) 'result': result!,
-      };
+    if (result != null) 'result': result!,
+  };
 }

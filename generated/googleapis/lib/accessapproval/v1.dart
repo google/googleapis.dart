@@ -55,11 +55,16 @@ class AccessApprovalApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  AccessApprovalApi(http.Client client,
-      {core.String rootUrl = 'https://accessapproval.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AccessApprovalApi(
+    http.Client client, {
+    core.String rootUrl = 'https://accessapproval.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class FoldersResource {
@@ -145,7 +150,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return AccessApprovalSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the service account that is used by Access Approval to access
@@ -182,7 +188,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return AccessApprovalServiceAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the settings associated with a project, folder, or organization.
@@ -239,7 +246,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return AccessApprovalSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -247,7 +255,7 @@ class FoldersApprovalRequestsResource {
   final commons.ApiRequester _requester;
 
   FoldersApprovalRequestsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Approves a request and returns the updated ApprovalRequest.
   ///
@@ -290,7 +298,8 @@ class FoldersApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Dismisses a request.
@@ -337,7 +346,8 @@ class FoldersApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an approval request.
@@ -376,7 +386,8 @@ class FoldersApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Invalidates an existing ApprovalRequest.
@@ -422,7 +433,8 @@ class FoldersApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists approval requests associated with a project, folder, or
@@ -482,7 +494,8 @@ class FoldersApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ListApprovalRequestsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -569,7 +582,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return AccessApprovalSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the service account that is used by Access Approval to access
@@ -606,7 +620,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return AccessApprovalServiceAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the settings associated with a project, folder, or organization.
@@ -663,7 +678,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return AccessApprovalSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -671,7 +687,7 @@ class OrganizationsApprovalRequestsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsApprovalRequestsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Approves a request and returns the updated ApprovalRequest.
   ///
@@ -715,7 +731,8 @@ class OrganizationsApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Dismisses a request.
@@ -763,7 +780,8 @@ class OrganizationsApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an approval request.
@@ -803,7 +821,8 @@ class OrganizationsApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Invalidates an existing ApprovalRequest.
@@ -850,7 +869,8 @@ class OrganizationsApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists approval requests associated with a project, folder, or
@@ -910,7 +930,8 @@ class OrganizationsApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ListApprovalRequestsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -997,7 +1018,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return AccessApprovalSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the service account that is used by Access Approval to access
@@ -1034,7 +1056,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return AccessApprovalServiceAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the settings associated with a project, folder, or organization.
@@ -1091,7 +1114,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return AccessApprovalSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1099,7 +1123,7 @@ class ProjectsApprovalRequestsResource {
   final commons.ApiRequester _requester;
 
   ProjectsApprovalRequestsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Approves a request and returns the updated ApprovalRequest.
   ///
@@ -1142,7 +1166,8 @@ class ProjectsApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Dismisses a request.
@@ -1189,7 +1214,8 @@ class ProjectsApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an approval request.
@@ -1228,7 +1254,8 @@ class ProjectsApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Invalidates an existing ApprovalRequest.
@@ -1274,7 +1301,8 @@ class ProjectsApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists approval requests associated with a project, folder, or
@@ -1334,7 +1362,8 @@ class ProjectsApprovalRequestsResource {
       queryParams: queryParams_,
     );
     return ListApprovalRequestsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1350,21 +1379,18 @@ class AccessApprovalServiceAccount {
   /// "organizations/{organization}/serviceAccount"
   core.String? name;
 
-  AccessApprovalServiceAccount({
-    this.accountEmail,
-    this.name,
-  });
+  AccessApprovalServiceAccount({this.accountEmail, this.name});
 
   AccessApprovalServiceAccount.fromJson(core.Map json_)
-      : this(
-          accountEmail: json_['accountEmail'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        accountEmail: json_['accountEmail'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountEmail != null) 'accountEmail': accountEmail!,
-        if (name != null) 'name': name!,
-      };
+    if (accountEmail != null) 'accountEmail': accountEmail!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Settings on a Project/Folder/Organization related to Access Approval.
@@ -1508,66 +1534,75 @@ class AccessApprovalSettings {
   });
 
   AccessApprovalSettings.fromJson(core.Map json_)
-      : this(
-          activeKeyVersion: json_['activeKeyVersion'] as core.String?,
-          ancestorHasActiveKeyVersion:
-              json_['ancestorHasActiveKeyVersion'] as core.bool?,
-          approvalPolicy: json_.containsKey('approvalPolicy')
-              ? CustomerApprovalApprovalPolicy.fromJson(json_['approvalPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          effectiveApprovalPolicy: json_.containsKey('effectiveApprovalPolicy')
-              ? CustomerApprovalApprovalPolicy.fromJson(
+    : this(
+        activeKeyVersion: json_['activeKeyVersion'] as core.String?,
+        ancestorHasActiveKeyVersion:
+            json_['ancestorHasActiveKeyVersion'] as core.bool?,
+        approvalPolicy:
+            json_.containsKey('approvalPolicy')
+                ? CustomerApprovalApprovalPolicy.fromJson(
+                  json_['approvalPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        effectiveApprovalPolicy:
+            json_.containsKey('effectiveApprovalPolicy')
+                ? CustomerApprovalApprovalPolicy.fromJson(
                   json_['effectiveApprovalPolicy']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          enrolledAncestor: json_['enrolledAncestor'] as core.bool?,
-          enrolledServices: (json_['enrolledServices'] as core.List?)
-              ?.map((value) => EnrolledService.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          invalidKeyVersion: json_['invalidKeyVersion'] as core.bool?,
-          name: json_['name'] as core.String?,
-          notificationEmails: (json_['notificationEmails'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          notificationPubsubTopic:
-              json_['notificationPubsubTopic'] as core.String?,
-          preferNoBroadApprovalRequests:
-              json_['preferNoBroadApprovalRequests'] as core.bool?,
-          preferredRequestExpirationDays:
-              json_['preferredRequestExpirationDays'] as core.int?,
-          requestScopeMaxWidthPreference:
-              json_['requestScopeMaxWidthPreference'] as core.String?,
-          requireCustomerVisibleJustification:
-              json_['requireCustomerVisibleJustification'] as core.bool?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enrolledAncestor: json_['enrolledAncestor'] as core.bool?,
+        enrolledServices:
+            (json_['enrolledServices'] as core.List?)
+                ?.map(
+                  (value) => EnrolledService.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        invalidKeyVersion: json_['invalidKeyVersion'] as core.bool?,
+        name: json_['name'] as core.String?,
+        notificationEmails:
+            (json_['notificationEmails'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        notificationPubsubTopic:
+            json_['notificationPubsubTopic'] as core.String?,
+        preferNoBroadApprovalRequests:
+            json_['preferNoBroadApprovalRequests'] as core.bool?,
+        preferredRequestExpirationDays:
+            json_['preferredRequestExpirationDays'] as core.int?,
+        requestScopeMaxWidthPreference:
+            json_['requestScopeMaxWidthPreference'] as core.String?,
+        requireCustomerVisibleJustification:
+            json_['requireCustomerVisibleJustification'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeKeyVersion != null) 'activeKeyVersion': activeKeyVersion!,
-        if (ancestorHasActiveKeyVersion != null)
-          'ancestorHasActiveKeyVersion': ancestorHasActiveKeyVersion!,
-        if (approvalPolicy != null) 'approvalPolicy': approvalPolicy!,
-        if (effectiveApprovalPolicy != null)
-          'effectiveApprovalPolicy': effectiveApprovalPolicy!,
-        if (enrolledAncestor != null) 'enrolledAncestor': enrolledAncestor!,
-        if (enrolledServices != null) 'enrolledServices': enrolledServices!,
-        if (invalidKeyVersion != null) 'invalidKeyVersion': invalidKeyVersion!,
-        if (name != null) 'name': name!,
-        if (notificationEmails != null)
-          'notificationEmails': notificationEmails!,
-        if (notificationPubsubTopic != null)
-          'notificationPubsubTopic': notificationPubsubTopic!,
-        if (preferNoBroadApprovalRequests != null)
-          'preferNoBroadApprovalRequests': preferNoBroadApprovalRequests!,
-        if (preferredRequestExpirationDays != null)
-          'preferredRequestExpirationDays': preferredRequestExpirationDays!,
-        if (requestScopeMaxWidthPreference != null)
-          'requestScopeMaxWidthPreference': requestScopeMaxWidthPreference!,
-        if (requireCustomerVisibleJustification != null)
-          'requireCustomerVisibleJustification':
-              requireCustomerVisibleJustification!,
-      };
+    if (activeKeyVersion != null) 'activeKeyVersion': activeKeyVersion!,
+    if (ancestorHasActiveKeyVersion != null)
+      'ancestorHasActiveKeyVersion': ancestorHasActiveKeyVersion!,
+    if (approvalPolicy != null) 'approvalPolicy': approvalPolicy!,
+    if (effectiveApprovalPolicy != null)
+      'effectiveApprovalPolicy': effectiveApprovalPolicy!,
+    if (enrolledAncestor != null) 'enrolledAncestor': enrolledAncestor!,
+    if (enrolledServices != null) 'enrolledServices': enrolledServices!,
+    if (invalidKeyVersion != null) 'invalidKeyVersion': invalidKeyVersion!,
+    if (name != null) 'name': name!,
+    if (notificationEmails != null) 'notificationEmails': notificationEmails!,
+    if (notificationPubsubTopic != null)
+      'notificationPubsubTopic': notificationPubsubTopic!,
+    if (preferNoBroadApprovalRequests != null)
+      'preferNoBroadApprovalRequests': preferNoBroadApprovalRequests!,
+    if (preferredRequestExpirationDays != null)
+      'preferredRequestExpirationDays': preferredRequestExpirationDays!,
+    if (requestScopeMaxWidthPreference != null)
+      'requestScopeMaxWidthPreference': requestScopeMaxWidthPreference!,
+    if (requireCustomerVisibleJustification != null)
+      'requireCustomerVisibleJustification':
+          requireCustomerVisibleJustification!,
+  };
 }
 
 /// Home office and physical location of the principal.
@@ -1596,19 +1631,18 @@ class AccessLocations {
   });
 
   AccessLocations.fromJson(core.Map json_)
-      : this(
-          principalOfficeCountry:
-              json_['principalOfficeCountry'] as core.String?,
-          principalPhysicalLocationCountry:
-              json_['principalPhysicalLocationCountry'] as core.String?,
-        );
+    : this(
+        principalOfficeCountry: json_['principalOfficeCountry'] as core.String?,
+        principalPhysicalLocationCountry:
+            json_['principalPhysicalLocationCountry'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (principalOfficeCountry != null)
-          'principalOfficeCountry': principalOfficeCountry!,
-        if (principalPhysicalLocationCountry != null)
-          'principalPhysicalLocationCountry': principalPhysicalLocationCountry!,
-      };
+    if (principalOfficeCountry != null)
+      'principalOfficeCountry': principalOfficeCountry!,
+    if (principalPhysicalLocationCountry != null)
+      'principalPhysicalLocationCountry': principalPhysicalLocationCountry!,
+  };
 }
 
 class AccessReason {
@@ -1644,21 +1678,18 @@ class AccessReason {
   /// abuse, or compliance review purposes.
   core.String? type;
 
-  AccessReason({
-    this.detail,
-    this.type,
-  });
+  AccessReason({this.detail, this.type});
 
   AccessReason.fromJson(core.Map json_)
-      : this(
-          detail: json_['detail'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        detail: json_['detail'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detail != null) 'detail': detail!,
-        if (type != null) 'type': type!,
-      };
+    if (detail != null) 'detail': detail!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A request for the customer to approve access to a resource.
@@ -1723,57 +1754,71 @@ class ApprovalRequest {
   });
 
   ApprovalRequest.fromJson(core.Map json_)
-      : this(
-          approve: json_.containsKey('approve')
-              ? ApproveDecision.fromJson(
-                  json_['approve'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dismiss: json_.containsKey('dismiss')
-              ? DismissDecision.fromJson(
-                  json_['dismiss'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          requestTime: json_['requestTime'] as core.String?,
-          requestedAugmentedInfo: json_.containsKey('requestedAugmentedInfo')
-              ? AugmentedInfo.fromJson(json_['requestedAugmentedInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          requestedDuration: json_['requestedDuration'] as core.String?,
-          requestedExpiration: json_['requestedExpiration'] as core.String?,
-          requestedLocations: json_.containsKey('requestedLocations')
-              ? AccessLocations.fromJson(json_['requestedLocations']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          requestedReason: json_.containsKey('requestedReason')
-              ? AccessReason.fromJson(json_['requestedReason']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          requestedResourceName: json_['requestedResourceName'] as core.String?,
-          requestedResourceProperties: json_
-                  .containsKey('requestedResourceProperties')
-              ? ResourceProperties.fromJson(json_['requestedResourceProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        approve:
+            json_.containsKey('approve')
+                ? ApproveDecision.fromJson(
+                  json_['approve'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dismiss:
+            json_.containsKey('dismiss')
+                ? DismissDecision.fromJson(
+                  json_['dismiss'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        requestTime: json_['requestTime'] as core.String?,
+        requestedAugmentedInfo:
+            json_.containsKey('requestedAugmentedInfo')
+                ? AugmentedInfo.fromJson(
+                  json_['requestedAugmentedInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestedDuration: json_['requestedDuration'] as core.String?,
+        requestedExpiration: json_['requestedExpiration'] as core.String?,
+        requestedLocations:
+            json_.containsKey('requestedLocations')
+                ? AccessLocations.fromJson(
+                  json_['requestedLocations']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestedReason:
+            json_.containsKey('requestedReason')
+                ? AccessReason.fromJson(
+                  json_['requestedReason']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestedResourceName: json_['requestedResourceName'] as core.String?,
+        requestedResourceProperties:
+            json_.containsKey('requestedResourceProperties')
+                ? ResourceProperties.fromJson(
+                  json_['requestedResourceProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approve != null) 'approve': approve!,
-        if (dismiss != null) 'dismiss': dismiss!,
-        if (name != null) 'name': name!,
-        if (requestTime != null) 'requestTime': requestTime!,
-        if (requestedAugmentedInfo != null)
-          'requestedAugmentedInfo': requestedAugmentedInfo!,
-        if (requestedDuration != null) 'requestedDuration': requestedDuration!,
-        if (requestedExpiration != null)
-          'requestedExpiration': requestedExpiration!,
-        if (requestedLocations != null)
-          'requestedLocations': requestedLocations!,
-        if (requestedReason != null) 'requestedReason': requestedReason!,
-        if (requestedResourceName != null)
-          'requestedResourceName': requestedResourceName!,
-        if (requestedResourceProperties != null)
-          'requestedResourceProperties': requestedResourceProperties!,
-      };
+    if (approve != null) 'approve': approve!,
+    if (dismiss != null) 'dismiss': dismiss!,
+    if (name != null) 'name': name!,
+    if (requestTime != null) 'requestTime': requestTime!,
+    if (requestedAugmentedInfo != null)
+      'requestedAugmentedInfo': requestedAugmentedInfo!,
+    if (requestedDuration != null) 'requestedDuration': requestedDuration!,
+    if (requestedExpiration != null)
+      'requestedExpiration': requestedExpiration!,
+    if (requestedLocations != null) 'requestedLocations': requestedLocations!,
+    if (requestedReason != null) 'requestedReason': requestedReason!,
+    if (requestedResourceName != null)
+      'requestedResourceName': requestedResourceName!,
+    if (requestedResourceProperties != null)
+      'requestedResourceProperties': requestedResourceProperties!,
+  };
 }
 
 /// Request to approve an ApprovalRequest.
@@ -1781,18 +1826,14 @@ class ApproveApprovalRequestMessage {
   /// The expiration time of this approval.
   core.String? expireTime;
 
-  ApproveApprovalRequestMessage({
-    this.expireTime,
-  });
+  ApproveApprovalRequestMessage({this.expireTime});
 
   ApproveApprovalRequestMessage.fromJson(core.Map json_)
-      : this(
-          expireTime: json_['expireTime'] as core.String?,
-        );
+    : this(expireTime: json_['expireTime'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime!,
-      };
+    if (expireTime != null) 'expireTime': expireTime!,
+  };
 }
 
 /// A decision that has been made to approve access to a resource.
@@ -1825,26 +1866,28 @@ class ApproveDecision {
   });
 
   ApproveDecision.fromJson(core.Map json_)
-      : this(
-          approveTime: json_['approveTime'] as core.String?,
-          autoApproved: json_['autoApproved'] as core.bool?,
-          expireTime: json_['expireTime'] as core.String?,
-          invalidateTime: json_['invalidateTime'] as core.String?,
-          policyApproved: json_['policyApproved'] as core.bool?,
-          signatureInfo: json_.containsKey('signatureInfo')
-              ? SignatureInfo.fromJson(
-                  json_['signatureInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        approveTime: json_['approveTime'] as core.String?,
+        autoApproved: json_['autoApproved'] as core.bool?,
+        expireTime: json_['expireTime'] as core.String?,
+        invalidateTime: json_['invalidateTime'] as core.String?,
+        policyApproved: json_['policyApproved'] as core.bool?,
+        signatureInfo:
+            json_.containsKey('signatureInfo')
+                ? SignatureInfo.fromJson(
+                  json_['signatureInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approveTime != null) 'approveTime': approveTime!,
-        if (autoApproved != null) 'autoApproved': autoApproved!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (invalidateTime != null) 'invalidateTime': invalidateTime!,
-        if (policyApproved != null) 'policyApproved': policyApproved!,
-        if (signatureInfo != null) 'signatureInfo': signatureInfo!,
-      };
+    if (approveTime != null) 'approveTime': approveTime!,
+    if (autoApproved != null) 'autoApproved': autoApproved!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (invalidateTime != null) 'invalidateTime': invalidateTime!,
+    if (policyApproved != null) 'policyApproved': policyApproved!,
+    if (signatureInfo != null) 'signatureInfo': signatureInfo!,
+  };
 }
 
 /// This field contains the augmented information of the request.
@@ -1853,18 +1896,14 @@ class AugmentedInfo {
   /// actor without adding any additional characters (such as quotation marks).
   core.String? command;
 
-  AugmentedInfo({
-    this.command,
-  });
+  AugmentedInfo({this.command});
 
   AugmentedInfo.fromJson(core.Map json_)
-      : this(
-          command: json_['command'] as core.String?,
-        );
+    : this(command: json_['command'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (command != null) 'command': command!,
-      };
+    if (command != null) 'command': command!,
+  };
 }
 
 /// Represents all the policies that can be set for Customer Approval.
@@ -1885,20 +1924,18 @@ class CustomerApprovalApprovalPolicy {
   /// from the parent.
   core.String? justificationBasedApprovalPolicy;
 
-  CustomerApprovalApprovalPolicy({
-    this.justificationBasedApprovalPolicy,
-  });
+  CustomerApprovalApprovalPolicy({this.justificationBasedApprovalPolicy});
 
   CustomerApprovalApprovalPolicy.fromJson(core.Map json_)
-      : this(
-          justificationBasedApprovalPolicy:
-              json_['justificationBasedApprovalPolicy'] as core.String?,
-        );
+    : this(
+        justificationBasedApprovalPolicy:
+            json_['justificationBasedApprovalPolicy'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (justificationBasedApprovalPolicy != null)
-          'justificationBasedApprovalPolicy': justificationBasedApprovalPolicy!,
-      };
+    if (justificationBasedApprovalPolicy != null)
+      'justificationBasedApprovalPolicy': justificationBasedApprovalPolicy!,
+  };
 }
 
 /// Request to dismiss an approval request.
@@ -1914,21 +1951,18 @@ class DismissDecision {
   /// on by the approvers before the exiration time).
   core.bool? implicit;
 
-  DismissDecision({
-    this.dismissTime,
-    this.implicit,
-  });
+  DismissDecision({this.dismissTime, this.implicit});
 
   DismissDecision.fromJson(core.Map json_)
-      : this(
-          dismissTime: json_['dismissTime'] as core.String?,
-          implicit: json_['implicit'] as core.bool?,
-        );
+    : this(
+        dismissTime: json_['dismissTime'] as core.String?,
+        implicit: json_['implicit'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dismissTime != null) 'dismissTime': dismissTime!,
-        if (implicit != null) 'implicit': implicit!,
-      };
+    if (dismissTime != null) 'dismissTime': dismissTime!,
+    if (implicit != null) 'implicit': implicit!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1976,21 +2010,18 @@ class EnrolledService {
   /// - "BLOCK_ALL" : Service is enrolled in Access Approval for all requests
   core.String? enrollmentLevel;
 
-  EnrolledService({
-    this.cloudProduct,
-    this.enrollmentLevel,
-  });
+  EnrolledService({this.cloudProduct, this.enrollmentLevel});
 
   EnrolledService.fromJson(core.Map json_)
-      : this(
-          cloudProduct: json_['cloudProduct'] as core.String?,
-          enrollmentLevel: json_['enrollmentLevel'] as core.String?,
-        );
+    : this(
+        cloudProduct: json_['cloudProduct'] as core.String?,
+        enrollmentLevel: json_['enrollmentLevel'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudProduct != null) 'cloudProduct': cloudProduct!,
-        if (enrollmentLevel != null) 'enrollmentLevel': enrollmentLevel!,
-      };
+    if (cloudProduct != null) 'cloudProduct': cloudProduct!,
+    if (enrollmentLevel != null) 'enrollmentLevel': enrollmentLevel!,
+  };
 }
 
 /// Request to invalidate an existing approval.
@@ -2004,24 +2035,25 @@ class ListApprovalRequestsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more.
   core.String? nextPageToken;
 
-  ListApprovalRequestsResponse({
-    this.approvalRequests,
-    this.nextPageToken,
-  });
+  ListApprovalRequestsResponse({this.approvalRequests, this.nextPageToken});
 
   ListApprovalRequestsResponse.fromJson(core.Map json_)
-      : this(
-          approvalRequests: (json_['approvalRequests'] as core.List?)
-              ?.map((value) => ApprovalRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        approvalRequests:
+            (json_['approvalRequests'] as core.List?)
+                ?.map(
+                  (value) => ApprovalRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvalRequests != null) 'approvalRequests': approvalRequests!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (approvalRequests != null) 'approvalRequests': approvalRequests!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The properties associated with the resource of the request.
@@ -2030,19 +2062,15 @@ class ResourceProperties {
   /// requested.
   core.bool? excludesDescendants;
 
-  ResourceProperties({
-    this.excludesDescendants,
-  });
+  ResourceProperties({this.excludesDescendants});
 
   ResourceProperties.fromJson(core.Map json_)
-      : this(
-          excludesDescendants: json_['excludesDescendants'] as core.bool?,
-        );
+    : this(excludesDescendants: json_['excludesDescendants'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludesDescendants != null)
-          'excludesDescendants': excludesDescendants!,
-      };
+    if (excludesDescendants != null)
+      'excludesDescendants': excludesDescendants!,
+  };
 }
 
 /// Information about the digital signature of the resource.
@@ -2146,8 +2174,10 @@ class SignatureInfo {
       convert.base64.decode(serializedApprovalRequest!);
 
   set serializedApprovalRequestAsBytes(core.List<core.int> bytes_) {
-    serializedApprovalRequest =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    serializedApprovalRequest = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The digital signature.
@@ -2155,8 +2185,10 @@ class SignatureInfo {
   core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
 
   set signatureAsBytes(core.List<core.int> bytes_) {
-    signature =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    signature = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   SignatureInfo({
@@ -2168,24 +2200,22 @@ class SignatureInfo {
   });
 
   SignatureInfo.fromJson(core.Map json_)
-      : this(
-          customerKmsKeyVersion: json_['customerKmsKeyVersion'] as core.String?,
-          googleKeyAlgorithm: json_['googleKeyAlgorithm'] as core.String?,
-          googlePublicKeyPem: json_['googlePublicKeyPem'] as core.String?,
-          serializedApprovalRequest:
-              json_['serializedApprovalRequest'] as core.String?,
-          signature: json_['signature'] as core.String?,
-        );
+    : this(
+        customerKmsKeyVersion: json_['customerKmsKeyVersion'] as core.String?,
+        googleKeyAlgorithm: json_['googleKeyAlgorithm'] as core.String?,
+        googlePublicKeyPem: json_['googlePublicKeyPem'] as core.String?,
+        serializedApprovalRequest:
+            json_['serializedApprovalRequest'] as core.String?,
+        signature: json_['signature'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customerKmsKeyVersion != null)
-          'customerKmsKeyVersion': customerKmsKeyVersion!,
-        if (googleKeyAlgorithm != null)
-          'googleKeyAlgorithm': googleKeyAlgorithm!,
-        if (googlePublicKeyPem != null)
-          'googlePublicKeyPem': googlePublicKeyPem!,
-        if (serializedApprovalRequest != null)
-          'serializedApprovalRequest': serializedApprovalRequest!,
-        if (signature != null) 'signature': signature!,
-      };
+    if (customerKmsKeyVersion != null)
+      'customerKmsKeyVersion': customerKmsKeyVersion!,
+    if (googleKeyAlgorithm != null) 'googleKeyAlgorithm': googleKeyAlgorithm!,
+    if (googlePublicKeyPem != null) 'googlePublicKeyPem': googlePublicKeyPem!,
+    if (serializedApprovalRequest != null)
+      'serializedApprovalRequest': serializedApprovalRequest!,
+    if (signature != null) 'signature': signature!,
+  };
 }

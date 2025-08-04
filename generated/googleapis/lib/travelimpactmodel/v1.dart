@@ -43,11 +43,16 @@ class TravelImpactModelApi {
 
   FlightsResource get flights => FlightsResource(_requester);
 
-  TravelImpactModelApi(http.Client client,
-      {core.String rootUrl = 'https://travelimpactmodel.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  TravelImpactModelApi(
+    http.Client client, {
+    core.String rootUrl = 'https://travelimpactmodel.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class FlightsResource {
@@ -102,7 +107,8 @@ class FlightsResource {
       queryParams: queryParams_,
     );
     return ComputeFlightEmissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves typical flight emissions estimates between two airports, also
@@ -131,7 +137,7 @@ class FlightsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ComputeTypicalFlightEmissionsResponse>
-      computeTypicalFlightEmissions(
+  computeTypicalFlightEmissions(
     ComputeTypicalFlightEmissionsRequest request, {
     core.String? $fields,
   }) async {
@@ -149,7 +155,8 @@ class FlightsResource {
       queryParams: queryParams_,
     );
     return ComputeTypicalFlightEmissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -160,21 +167,23 @@ class ComputeFlightEmissionsRequest {
   /// Required.
   core.List<Flight>? flights;
 
-  ComputeFlightEmissionsRequest({
-    this.flights,
-  });
+  ComputeFlightEmissionsRequest({this.flights});
 
   ComputeFlightEmissionsRequest.fromJson(core.Map json_)
-      : this(
-          flights: (json_['flights'] as core.List?)
-              ?.map((value) =>
-                  Flight.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        flights:
+            (json_['flights'] as core.List?)
+                ?.map(
+                  (value) => Flight.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (flights != null) 'flights': flights!,
-      };
+    if (flights != null) 'flights': flights!,
+  };
 }
 
 /// Output definition for the ComputeFlightEmissions response.
@@ -186,27 +195,30 @@ class ComputeFlightEmissionsResponse {
   /// response were computed.
   ModelVersion? modelVersion;
 
-  ComputeFlightEmissionsResponse({
-    this.flightEmissions,
-    this.modelVersion,
-  });
+  ComputeFlightEmissionsResponse({this.flightEmissions, this.modelVersion});
 
   ComputeFlightEmissionsResponse.fromJson(core.Map json_)
-      : this(
-          flightEmissions: (json_['flightEmissions'] as core.List?)
-              ?.map((value) => FlightWithEmissions.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          modelVersion: json_.containsKey('modelVersion')
-              ? ModelVersion.fromJson(
-                  json_['modelVersion'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        flightEmissions:
+            (json_['flightEmissions'] as core.List?)
+                ?.map(
+                  (value) => FlightWithEmissions.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        modelVersion:
+            json_.containsKey('modelVersion')
+                ? ModelVersion.fromJson(
+                  json_['modelVersion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (flightEmissions != null) 'flightEmissions': flightEmissions!,
-        if (modelVersion != null) 'modelVersion': modelVersion!,
-      };
+    if (flightEmissions != null) 'flightEmissions': flightEmissions!,
+    if (modelVersion != null) 'modelVersion': modelVersion!,
+  };
 }
 
 /// A list of pair of airports (markets) to request the typical emissions for.
@@ -218,21 +230,23 @@ class ComputeTypicalFlightEmissionsRequest {
   /// Required.
   core.List<Market>? markets;
 
-  ComputeTypicalFlightEmissionsRequest({
-    this.markets,
-  });
+  ComputeTypicalFlightEmissionsRequest({this.markets});
 
   ComputeTypicalFlightEmissionsRequest.fromJson(core.Map json_)
-      : this(
-          markets: (json_['markets'] as core.List?)
-              ?.map((value) =>
-                  Market.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        markets:
+            (json_['markets'] as core.List?)
+                ?.map(
+                  (value) => Market.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (markets != null) 'markets': markets!,
-      };
+    if (markets != null) 'markets': markets!,
+  };
 }
 
 /// The response includes the emissions but also the model version.
@@ -250,23 +264,28 @@ class ComputeTypicalFlightEmissionsResponse {
   });
 
   ComputeTypicalFlightEmissionsResponse.fromJson(core.Map json_)
-      : this(
-          modelVersion: json_.containsKey('modelVersion')
-              ? ModelVersion.fromJson(
-                  json_['modelVersion'] as core.Map<core.String, core.dynamic>)
-              : null,
-          typicalFlightEmissions:
-              (json_['typicalFlightEmissions'] as core.List?)
-                  ?.map((value) => TypicalFlightEmissions.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        modelVersion:
+            json_.containsKey('modelVersion')
+                ? ModelVersion.fromJson(
+                  json_['modelVersion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        typicalFlightEmissions:
+            (json_['typicalFlightEmissions'] as core.List?)
+                ?.map(
+                  (value) => TypicalFlightEmissions.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (modelVersion != null) 'modelVersion': modelVersion!,
-        if (typicalFlightEmissions != null)
-          'typicalFlightEmissions': typicalFlightEmissions!,
-      };
+    if (modelVersion != null) 'modelVersion': modelVersion!,
+    if (typicalFlightEmissions != null)
+      'typicalFlightEmissions': typicalFlightEmissions!,
+  };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -311,27 +330,33 @@ class EasaLabelMetadata {
   });
 
   EasaLabelMetadata.fromJson(core.Map json_)
-      : this(
-          labelExpiryDate: json_.containsKey('labelExpiryDate')
-              ? Date.fromJson(json_['labelExpiryDate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          labelIssueDate: json_.containsKey('labelIssueDate')
-              ? Date.fromJson(json_['labelIssueDate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          labelVersion: json_['labelVersion'] as core.String?,
-          safDiscountPercentage:
-              (json_['safDiscountPercentage'] as core.num?)?.toDouble(),
-        );
+    : this(
+        labelExpiryDate:
+            json_.containsKey('labelExpiryDate')
+                ? Date.fromJson(
+                  json_['labelExpiryDate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labelIssueDate:
+            json_.containsKey('labelIssueDate')
+                ? Date.fromJson(
+                  json_['labelIssueDate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labelVersion: json_['labelVersion'] as core.String?,
+        safDiscountPercentage:
+            (json_['safDiscountPercentage'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labelExpiryDate != null) 'labelExpiryDate': labelExpiryDate!,
-        if (labelIssueDate != null) 'labelIssueDate': labelIssueDate!,
-        if (labelVersion != null) 'labelVersion': labelVersion!,
-        if (safDiscountPercentage != null)
-          'safDiscountPercentage': safDiscountPercentage!,
-      };
+    if (labelExpiryDate != null) 'labelExpiryDate': labelExpiryDate!,
+    if (labelIssueDate != null) 'labelIssueDate': labelIssueDate!,
+    if (labelVersion != null) 'labelVersion': labelVersion!,
+    if (safDiscountPercentage != null)
+      'safDiscountPercentage': safDiscountPercentage!,
+  };
 }
 
 /// Grouped emissions per seating class results.
@@ -368,19 +393,19 @@ class EmissionsGramsPerPax {
   });
 
   EmissionsGramsPerPax.fromJson(core.Map json_)
-      : this(
-          business: json_['business'] as core.int?,
-          economy: json_['economy'] as core.int?,
-          first: json_['first'] as core.int?,
-          premiumEconomy: json_['premiumEconomy'] as core.int?,
-        );
+    : this(
+        business: json_['business'] as core.int?,
+        economy: json_['economy'] as core.int?,
+        first: json_['first'] as core.int?,
+        premiumEconomy: json_['premiumEconomy'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (business != null) 'business': business!,
-        if (economy != null) 'economy': economy!,
-        if (first != null) 'first': first!,
-        if (premiumEconomy != null) 'premiumEconomy': premiumEconomy!,
-      };
+    if (business != null) 'business': business!,
+    if (economy != null) 'economy': economy!,
+    if (first != null) 'first': first!,
+    if (premiumEconomy != null) 'premiumEconomy': premiumEconomy!,
+  };
 }
 
 /// All details related to a single request item for a direct flight emission
@@ -422,25 +447,27 @@ class Flight {
   });
 
   Flight.fromJson(core.Map json_)
-      : this(
-          departureDate: json_.containsKey('departureDate')
-              ? Date.fromJson(
-                  json_['departureDate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          destination: json_['destination'] as core.String?,
-          flightNumber: json_['flightNumber'] as core.int?,
-          operatingCarrierCode: json_['operatingCarrierCode'] as core.String?,
-          origin: json_['origin'] as core.String?,
-        );
+    : this(
+        departureDate:
+            json_.containsKey('departureDate')
+                ? Date.fromJson(
+                  json_['departureDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        destination: json_['destination'] as core.String?,
+        flightNumber: json_['flightNumber'] as core.int?,
+        operatingCarrierCode: json_['operatingCarrierCode'] as core.String?,
+        origin: json_['origin'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (departureDate != null) 'departureDate': departureDate!,
-        if (destination != null) 'destination': destination!,
-        if (flightNumber != null) 'flightNumber': flightNumber!,
-        if (operatingCarrierCode != null)
-          'operatingCarrierCode': operatingCarrierCode!,
-        if (origin != null) 'origin': origin!,
-      };
+    if (departureDate != null) 'departureDate': departureDate!,
+    if (destination != null) 'destination': destination!,
+    if (flightNumber != null) 'flightNumber': flightNumber!,
+    if (operatingCarrierCode != null)
+      'operatingCarrierCode': operatingCarrierCode!,
+    if (origin != null) 'origin': origin!,
+  };
 }
 
 /// Direct flight with emission estimates.
@@ -499,32 +526,40 @@ class FlightWithEmissions {
   });
 
   FlightWithEmissions.fromJson(core.Map json_)
-      : this(
-          contrailsImpactBucket: json_['contrailsImpactBucket'] as core.String?,
-          easaLabelMetadata: json_.containsKey('easaLabelMetadata')
-              ? EasaLabelMetadata.fromJson(json_['easaLabelMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          emissionsGramsPerPax: json_.containsKey('emissionsGramsPerPax')
-              ? EmissionsGramsPerPax.fromJson(json_['emissionsGramsPerPax']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          flight: json_.containsKey('flight')
-              ? Flight.fromJson(
-                  json_['flight'] as core.Map<core.String, core.dynamic>)
-              : null,
-          source: json_['source'] as core.String?,
-        );
+    : this(
+        contrailsImpactBucket: json_['contrailsImpactBucket'] as core.String?,
+        easaLabelMetadata:
+            json_.containsKey('easaLabelMetadata')
+                ? EasaLabelMetadata.fromJson(
+                  json_['easaLabelMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        emissionsGramsPerPax:
+            json_.containsKey('emissionsGramsPerPax')
+                ? EmissionsGramsPerPax.fromJson(
+                  json_['emissionsGramsPerPax']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        flight:
+            json_.containsKey('flight')
+                ? Flight.fromJson(
+                  json_['flight'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        source: json_['source'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contrailsImpactBucket != null)
-          'contrailsImpactBucket': contrailsImpactBucket!,
-        if (easaLabelMetadata != null) 'easaLabelMetadata': easaLabelMetadata!,
-        if (emissionsGramsPerPax != null)
-          'emissionsGramsPerPax': emissionsGramsPerPax!,
-        if (flight != null) 'flight': flight!,
-        if (source != null) 'source': source!,
-      };
+    if (contrailsImpactBucket != null)
+      'contrailsImpactBucket': contrailsImpactBucket!,
+    if (easaLabelMetadata != null) 'easaLabelMetadata': easaLabelMetadata!,
+    if (emissionsGramsPerPax != null)
+      'emissionsGramsPerPax': emissionsGramsPerPax!,
+    if (flight != null) 'flight': flight!,
+    if (source != null) 'source': source!,
+  };
 }
 
 /// A pair of airports.
@@ -539,21 +574,18 @@ class Market {
   /// Required.
   core.String? origin;
 
-  Market({
-    this.destination,
-    this.origin,
-  });
+  Market({this.destination, this.origin});
 
   Market.fromJson(core.Map json_)
-      : this(
-          destination: json_['destination'] as core.String?,
-          origin: json_['origin'] as core.String?,
-        );
+    : this(
+        destination: json_['destination'] as core.String?,
+        origin: json_['origin'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destination != null) 'destination': destination!,
-        if (origin != null) 'origin': origin!,
-      };
+    if (destination != null) 'destination': destination!,
+    if (origin != null) 'origin': origin!,
+  };
 }
 
 /// Travel Impact Model version.
@@ -581,27 +613,22 @@ class ModelVersion {
   /// inaccuracies in the model implementation.
   core.int? patch;
 
-  ModelVersion({
-    this.dated,
-    this.major,
-    this.minor,
-    this.patch,
-  });
+  ModelVersion({this.dated, this.major, this.minor, this.patch});
 
   ModelVersion.fromJson(core.Map json_)
-      : this(
-          dated: json_['dated'] as core.String?,
-          major: json_['major'] as core.int?,
-          minor: json_['minor'] as core.int?,
-          patch: json_['patch'] as core.int?,
-        );
+    : this(
+        dated: json_['dated'] as core.String?,
+        major: json_['major'] as core.int?,
+        minor: json_['minor'] as core.int?,
+        patch: json_['patch'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dated != null) 'dated': dated!,
-        if (major != null) 'major': major!,
-        if (minor != null) 'minor': minor!,
-        if (patch != null) 'patch': patch!,
-      };
+    if (dated != null) 'dated': dated!,
+    if (major != null) 'major': major!,
+    if (minor != null) 'minor': minor!,
+    if (patch != null) 'patch': patch!,
+  };
 }
 
 /// Typical flight emission estimates for a certain market
@@ -622,26 +649,28 @@ class TypicalFlightEmissions {
   /// Required.
   Market? market;
 
-  TypicalFlightEmissions({
-    this.emissionsGramsPerPax,
-    this.market,
-  });
+  TypicalFlightEmissions({this.emissionsGramsPerPax, this.market});
 
   TypicalFlightEmissions.fromJson(core.Map json_)
-      : this(
-          emissionsGramsPerPax: json_.containsKey('emissionsGramsPerPax')
-              ? EmissionsGramsPerPax.fromJson(json_['emissionsGramsPerPax']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          market: json_.containsKey('market')
-              ? Market.fromJson(
-                  json_['market'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        emissionsGramsPerPax:
+            json_.containsKey('emissionsGramsPerPax')
+                ? EmissionsGramsPerPax.fromJson(
+                  json_['emissionsGramsPerPax']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        market:
+            json_.containsKey('market')
+                ? Market.fromJson(
+                  json_['market'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emissionsGramsPerPax != null)
-          'emissionsGramsPerPax': emissionsGramsPerPax!,
-        if (market != null) 'market': market!,
-      };
+    if (emissionsGramsPerPax != null)
+      'emissionsGramsPerPax': emissionsGramsPerPax!,
+    if (market != null) 'market': market!,
+  };
 }

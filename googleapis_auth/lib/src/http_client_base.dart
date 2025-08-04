@@ -39,8 +39,8 @@ class RefCountedClient extends DelegatingClient {
   int _refCount;
 
   RefCountedClient(super.baseClient, {int initialRefCount = 1})
-      : _refCount = initialRefCount,
-        super(closeUnderlyingClient: true);
+    : _refCount = initialRefCount,
+      super(closeUnderlyingClient: true);
 
   @override
   Future<StreamedResponse> send(BaseRequest request) {
@@ -92,7 +92,7 @@ class RequestImpl extends BaseRequest {
   final Stream<List<int>> _stream;
 
   RequestImpl(super.method, super.url, [Stream<List<int>>? stream])
-      : _stream = stream ?? const Stream.empty();
+    : _stream = stream ?? const Stream.empty();
 
   @override
   ByteStream finalize() {

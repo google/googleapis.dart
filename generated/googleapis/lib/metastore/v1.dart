@@ -58,11 +58,16 @@ class DataprocMetastoreApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  DataprocMetastoreApi(http.Client client,
-      {core.String rootUrl = 'https://metastore.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DataprocMetastoreApi(
+    http.Client client, {
+    core.String rootUrl = 'https://metastore.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -103,10 +108,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -176,7 +178,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -184,7 +187,7 @@ class ProjectsLocationsFederationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsFederationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a metastore federation in a project and location.
   ///
@@ -318,10 +321,7 @@ class ProjectsLocationsFederationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Federation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Federation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -334,7 +334,8 @@ class ProjectsLocationsFederationsResource {
       queryParams: queryParams_,
     );
     return Federation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -455,7 +456,8 @@ class ProjectsLocationsFederationsResource {
       queryParams: queryParams_,
     );
     return ListFederationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the fields of a federation.
@@ -615,7 +617,8 @@ class ProjectsLocationsFederationsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -623,7 +626,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -697,10 +700,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -736,10 +736,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -801,7 +798,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -815,11 +813,11 @@ class ProjectsLocationsServicesResource {
   ProjectsLocationsServicesMetadataImportsResource get metadataImports =>
       ProjectsLocationsServicesMetadataImportsResource(_requester);
   ProjectsLocationsServicesMigrationExecutionsResource
-      get migrationExecutions =>
-          ProjectsLocationsServicesMigrationExecutionsResource(_requester);
+  get migrationExecutions =>
+      ProjectsLocationsServicesMigrationExecutionsResource(_requester);
 
   ProjectsLocationsServicesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Alter metadata resource location.
   ///
@@ -1178,10 +1176,7 @@ class ProjectsLocationsServicesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Service> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Service> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1315,7 +1310,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return ListServicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Move a table to another database.
@@ -1648,7 +1644,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1656,7 +1653,7 @@ class ProjectsLocationsServicesBackupsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsServicesBackupsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new backup in a given project and location.
   ///
@@ -1790,10 +1787,7 @@ class ProjectsLocationsServicesBackupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Backup> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Backup> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1928,7 +1922,8 @@ class ProjectsLocationsServicesBackupsResource {
       queryParams: queryParams_,
     );
     return ListBackupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1986,7 +1981,7 @@ class ProjectsLocationsServicesDatabasesResource {
       ProjectsLocationsServicesDatabasesTablesResource(_requester);
 
   ProjectsLocationsServicesDatabasesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the access control policy for a resource.
   ///
@@ -2097,7 +2092,7 @@ class ProjectsLocationsServicesDatabasesTablesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsServicesDatabasesTablesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the access control policy for a resource.
   ///
@@ -2208,7 +2203,7 @@ class ProjectsLocationsServicesMetadataImportsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsServicesMetadataImportsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new MetadataImport in a given project and location.
   ///
@@ -2309,7 +2304,8 @@ class ProjectsLocationsServicesMetadataImportsResource {
       queryParams: queryParams_,
     );
     return MetadataImport.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists imports in a service.
@@ -2375,7 +2371,8 @@ class ProjectsLocationsServicesMetadataImportsResource {
       queryParams: queryParams_,
     );
     return ListMetadataImportsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a single import.
@@ -2447,8 +2444,8 @@ class ProjectsLocationsServicesMigrationExecutionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsServicesMigrationExecutionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Deletes a single migration execution.
   ///
@@ -2536,7 +2533,8 @@ class ProjectsLocationsServicesMigrationExecutionsResource {
       queryParams: queryParams_,
     );
     return MigrationExecution.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists migration executions on a service.
@@ -2603,7 +2601,8 @@ class ProjectsLocationsServicesMigrationExecutionsResource {
       queryParams: queryParams_,
     );
     return ListMigrationExecutionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2622,21 +2621,18 @@ class AlterMetadataResourceLocationRequest {
   /// Required.
   core.String? resourceName;
 
-  AlterMetadataResourceLocationRequest({
-    this.locationUri,
-    this.resourceName,
-  });
+  AlterMetadataResourceLocationRequest({this.locationUri, this.resourceName});
 
   AlterMetadataResourceLocationRequest.fromJson(core.Map json_)
-      : this(
-          locationUri: json_['locationUri'] as core.String?,
-          resourceName: json_['resourceName'] as core.String?,
-        );
+    : this(
+        locationUri: json_['locationUri'] as core.String?,
+        resourceName: json_['resourceName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locationUri != null) 'locationUri': locationUri!,
-        if (resourceName != null) 'resourceName': resourceName!,
-      };
+    if (locationUri != null) 'locationUri': locationUri!,
+    if (resourceName != null) 'resourceName': resourceName!,
+  };
 }
 
 /// Request message for DataprocMetastore.AlterTableProperties.
@@ -2672,24 +2668,19 @@ class AlterTablePropertiesRequest {
   });
 
   AlterTablePropertiesRequest.fromJson(core.Map json_)
-      : this(
-          properties:
-              (json_['properties'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          tableName: json_['tableName'] as core.String?,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        properties: (json_['properties']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        tableName: json_['tableName'] as core.String?,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (properties != null) 'properties': properties!,
-        if (tableName != null) 'tableName': tableName!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (properties != null) 'properties': properties!,
+    if (tableName != null) 'tableName': tableName!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Specifies the audit configuration for a service.
@@ -2719,24 +2710,25 @@ class AuditConfig {
   /// is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -2771,22 +2763,23 @@ class AutoscalingConfig {
   });
 
   AutoscalingConfig.fromJson(core.Map json_)
-      : this(
-          autoscalingEnabled: json_['autoscalingEnabled'] as core.bool?,
-          autoscalingFactor:
-              (json_['autoscalingFactor'] as core.num?)?.toDouble(),
-          limitConfig: json_.containsKey('limitConfig')
-              ? LimitConfig.fromJson(
-                  json_['limitConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        autoscalingEnabled: json_['autoscalingEnabled'] as core.bool?,
+        autoscalingFactor:
+            (json_['autoscalingFactor'] as core.num?)?.toDouble(),
+        limitConfig:
+            json_.containsKey('limitConfig')
+                ? LimitConfig.fromJson(
+                  json_['limitConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoscalingEnabled != null)
-          'autoscalingEnabled': autoscalingEnabled!,
-        if (autoscalingFactor != null) 'autoscalingFactor': autoscalingFactor!,
-        if (limitConfig != null) 'limitConfig': limitConfig!,
-      };
+    if (autoscalingEnabled != null) 'autoscalingEnabled': autoscalingEnabled!,
+    if (autoscalingFactor != null) 'autoscalingFactor': autoscalingFactor!,
+    if (limitConfig != null) 'limitConfig': limitConfig!,
+  };
 }
 
 /// Configuration information for the auxiliary service versions.
@@ -2822,27 +2815,24 @@ class AuxiliaryVersionConfig {
   });
 
   AuxiliaryVersionConfig.fromJson(core.Map json_)
-      : this(
-          configOverrides:
-              (json_['configOverrides'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          networkConfig: json_.containsKey('networkConfig')
-              ? NetworkConfig.fromJson(
-                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        configOverrides: (json_['configOverrides']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        networkConfig:
+            json_.containsKey('networkConfig')
+                ? NetworkConfig.fromJson(
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configOverrides != null) 'configOverrides': configOverrides!,
-        if (networkConfig != null) 'networkConfig': networkConfig!,
-        if (version != null) 'version': version!,
-      };
+    if (configOverrides != null) 'configOverrides': configOverrides!,
+    if (networkConfig != null) 'networkConfig': networkConfig!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Represents a backend metastore for the federation.
@@ -2861,21 +2851,18 @@ class BackendMetastore {
   /// Metastore projects/{project_id}/locations/{location}/services/{service_id}
   core.String? name;
 
-  BackendMetastore({
-    this.metastoreType,
-    this.name,
-  });
+  BackendMetastore({this.metastoreType, this.name});
 
   BackendMetastore.fromJson(core.Map json_)
-      : this(
-          metastoreType: json_['metastoreType'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        metastoreType: json_['metastoreType'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metastoreType != null) 'metastoreType': metastoreType!,
-        if (name != null) 'name': name!,
-      };
+    if (metastoreType != null) 'metastoreType': metastoreType!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The details of a backup resource.
@@ -2936,30 +2923,34 @@ class Backup {
   });
 
   Backup.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          restoringServices: (json_['restoringServices'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          serviceRevision: json_.containsKey('serviceRevision')
-              ? Service.fromJson(json_['serviceRevision']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        restoringServices:
+            (json_['restoringServices'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        serviceRevision:
+            json_.containsKey('serviceRevision')
+                ? Service.fromJson(
+                  json_['serviceRevision']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (endTime != null) 'endTime': endTime!,
-        if (name != null) 'name': name!,
-        if (restoringServices != null) 'restoringServices': restoringServices!,
-        if (serviceRevision != null) 'serviceRevision': serviceRevision!,
-        if (state != null) 'state': state!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (endTime != null) 'endTime': endTime!,
+    if (name != null) 'name': name!,
+    if (restoringServices != null) 'restoringServices': restoringServices!,
+    if (serviceRevision != null) 'serviceRevision': serviceRevision!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Associates members, or principals, with a role.
@@ -3041,29 +3032,28 @@ class Binding {
   /// (https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// Request message for DataprocMetastore.CancelMigration.
@@ -3146,26 +3136,25 @@ class CdcConfig {
   });
 
   CdcConfig.fromJson(core.Map json_)
-      : this(
-          bucket: json_['bucket'] as core.String?,
-          password: json_['password'] as core.String?,
-          reverseProxySubnet: json_['reverseProxySubnet'] as core.String?,
-          rootPath: json_['rootPath'] as core.String?,
-          subnetIpRange: json_['subnetIpRange'] as core.String?,
-          username: json_['username'] as core.String?,
-          vpcNetwork: json_['vpcNetwork'] as core.String?,
-        );
+    : this(
+        bucket: json_['bucket'] as core.String?,
+        password: json_['password'] as core.String?,
+        reverseProxySubnet: json_['reverseProxySubnet'] as core.String?,
+        rootPath: json_['rootPath'] as core.String?,
+        subnetIpRange: json_['subnetIpRange'] as core.String?,
+        username: json_['username'] as core.String?,
+        vpcNetwork: json_['vpcNetwork'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucket != null) 'bucket': bucket!,
-        if (password != null) 'password': password!,
-        if (reverseProxySubnet != null)
-          'reverseProxySubnet': reverseProxySubnet!,
-        if (rootPath != null) 'rootPath': rootPath!,
-        if (subnetIpRange != null) 'subnetIpRange': subnetIpRange!,
-        if (username != null) 'username': username!,
-        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
-      };
+    if (bucket != null) 'bucket': bucket!,
+    if (password != null) 'password': password!,
+    if (reverseProxySubnet != null) 'reverseProxySubnet': reverseProxySubnet!,
+    if (rootPath != null) 'rootPath': rootPath!,
+    if (subnetIpRange != null) 'subnetIpRange': subnetIpRange!,
+    if (username != null) 'username': username!,
+    if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+  };
 }
 
 /// Configuration information to establish customer database connection before
@@ -3241,29 +3230,28 @@ class CloudSQLConnectionConfig {
   });
 
   CloudSQLConnectionConfig.fromJson(core.Map json_)
-      : this(
-          hiveDatabaseName: json_['hiveDatabaseName'] as core.String?,
-          instanceConnectionName:
-              json_['instanceConnectionName'] as core.String?,
-          ipAddress: json_['ipAddress'] as core.String?,
-          natSubnet: json_['natSubnet'] as core.String?,
-          password: json_['password'] as core.String?,
-          port: json_['port'] as core.int?,
-          proxySubnet: json_['proxySubnet'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        hiveDatabaseName: json_['hiveDatabaseName'] as core.String?,
+        instanceConnectionName: json_['instanceConnectionName'] as core.String?,
+        ipAddress: json_['ipAddress'] as core.String?,
+        natSubnet: json_['natSubnet'] as core.String?,
+        password: json_['password'] as core.String?,
+        port: json_['port'] as core.int?,
+        proxySubnet: json_['proxySubnet'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hiveDatabaseName != null) 'hiveDatabaseName': hiveDatabaseName!,
-        if (instanceConnectionName != null)
-          'instanceConnectionName': instanceConnectionName!,
-        if (ipAddress != null) 'ipAddress': ipAddress!,
-        if (natSubnet != null) 'natSubnet': natSubnet!,
-        if (password != null) 'password': password!,
-        if (port != null) 'port': port!,
-        if (proxySubnet != null) 'proxySubnet': proxySubnet!,
-        if (username != null) 'username': username!,
-      };
+    if (hiveDatabaseName != null) 'hiveDatabaseName': hiveDatabaseName!,
+    if (instanceConnectionName != null)
+      'instanceConnectionName': instanceConnectionName!,
+    if (ipAddress != null) 'ipAddress': ipAddress!,
+    if (natSubnet != null) 'natSubnet': natSubnet!,
+    if (password != null) 'password': password!,
+    if (port != null) 'port': port!,
+    if (proxySubnet != null) 'proxySubnet': proxySubnet!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// Configuration information for migrating from self-managed hive metastore on
@@ -3284,30 +3272,30 @@ class CloudSQLMigrationConfig {
   /// Required.
   CloudSQLConnectionConfig? cloudSqlConnectionConfig;
 
-  CloudSQLMigrationConfig({
-    this.cdcConfig,
-    this.cloudSqlConnectionConfig,
-  });
+  CloudSQLMigrationConfig({this.cdcConfig, this.cloudSqlConnectionConfig});
 
   CloudSQLMigrationConfig.fromJson(core.Map json_)
-      : this(
-          cdcConfig: json_.containsKey('cdcConfig')
-              ? CdcConfig.fromJson(
-                  json_['cdcConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          cloudSqlConnectionConfig:
-              json_.containsKey('cloudSqlConnectionConfig')
-                  ? CloudSQLConnectionConfig.fromJson(
-                      json_['cloudSqlConnectionConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        cdcConfig:
+            json_.containsKey('cdcConfig')
+                ? CdcConfig.fromJson(
+                  json_['cdcConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cloudSqlConnectionConfig:
+            json_.containsKey('cloudSqlConnectionConfig')
+                ? CloudSQLConnectionConfig.fromJson(
+                  json_['cloudSqlConnectionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cdcConfig != null) 'cdcConfig': cdcConfig!,
-        if (cloudSqlConnectionConfig != null)
-          'cloudSqlConnectionConfig': cloudSqlConnectionConfig!,
-      };
+    if (cdcConfig != null) 'cdcConfig': cdcConfig!,
+    if (cloudSqlConnectionConfig != null)
+      'cloudSqlConnectionConfig': cloudSqlConnectionConfig!,
+  };
 }
 
 /// Request message for DataprocMetastore.CompleteMigration.
@@ -3339,24 +3327,20 @@ class Consumer {
   /// Immutable.
   core.String? subnetwork;
 
-  Consumer({
-    this.endpointLocation,
-    this.endpointUri,
-    this.subnetwork,
-  });
+  Consumer({this.endpointLocation, this.endpointUri, this.subnetwork});
 
   Consumer.fromJson(core.Map json_)
-      : this(
-          endpointLocation: json_['endpointLocation'] as core.String?,
-          endpointUri: json_['endpointUri'] as core.String?,
-          subnetwork: json_['subnetwork'] as core.String?,
-        );
+    : this(
+        endpointLocation: json_['endpointLocation'] as core.String?,
+        endpointUri: json_['endpointUri'] as core.String?,
+        subnetwork: json_['subnetwork'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endpointLocation != null) 'endpointLocation': endpointLocation!,
-        if (endpointUri != null) 'endpointUri': endpointUri!,
-        if (subnetwork != null) 'subnetwork': subnetwork!,
-      };
+    if (endpointLocation != null) 'endpointLocation': endpointLocation!,
+    if (endpointUri != null) 'endpointUri': endpointUri!,
+    if (subnetwork != null) 'subnetwork': subnetwork!,
+  };
 }
 
 /// Specifies how metastore metadata should be integrated with the Data Catalog
@@ -3370,18 +3354,14 @@ class DataCatalogConfig {
   /// Optional.
   core.bool? enabled;
 
-  DataCatalogConfig({
-    this.enabled,
-  });
+  DataCatalogConfig({this.enabled});
 
   DataCatalogConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 /// A specification of the location of and metadata about a database dump from a
@@ -3432,19 +3412,19 @@ class DatabaseDump {
   });
 
   DatabaseDump.fromJson(core.Map json_)
-      : this(
-          databaseType: json_['databaseType'] as core.String?,
-          gcsUri: json_['gcsUri'] as core.String?,
-          sourceDatabase: json_['sourceDatabase'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        databaseType: json_['databaseType'] as core.String?,
+        gcsUri: json_['gcsUri'] as core.String?,
+        sourceDatabase: json_['sourceDatabase'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (databaseType != null) 'databaseType': databaseType!,
-        if (gcsUri != null) 'gcsUri': gcsUri!,
-        if (sourceDatabase != null) 'sourceDatabase': sourceDatabase!,
-        if (type != null) 'type': type!,
-      };
+    if (databaseType != null) 'databaseType': databaseType!,
+    if (gcsUri != null) 'gcsUri': gcsUri!,
+    if (sourceDatabase != null) 'sourceDatabase': sourceDatabase!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3464,18 +3444,14 @@ class EncryptionConfig {
   /// Optional.
   core.String? kmsKey;
 
-  EncryptionConfig({
-    this.kmsKey,
-  });
+  EncryptionConfig({this.kmsKey});
 
   EncryptionConfig.fromJson(core.Map json_)
-      : this(
-          kmsKey: json_['kmsKey'] as core.String?,
-        );
+    : this(kmsKey: json_['kmsKey'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsKey != null) 'kmsKey': kmsKey!,
-      };
+    if (kmsKey != null) 'kmsKey': kmsKey!,
+  };
 }
 
 /// Request message for DataprocMetastore.ExportMetadata.
@@ -3517,18 +3493,18 @@ class ExportMetadataRequest {
   });
 
   ExportMetadataRequest.fromJson(core.Map json_)
-      : this(
-          databaseDumpType: json_['databaseDumpType'] as core.String?,
-          destinationGcsFolder: json_['destinationGcsFolder'] as core.String?,
-          requestId: json_['requestId'] as core.String?,
-        );
+    : this(
+        databaseDumpType: json_['databaseDumpType'] as core.String?,
+        destinationGcsFolder: json_['destinationGcsFolder'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (databaseDumpType != null) 'databaseDumpType': databaseDumpType!,
-        if (destinationGcsFolder != null)
-          'destinationGcsFolder': destinationGcsFolder!,
-        if (requestId != null) 'requestId': requestId!,
-      };
+    if (databaseDumpType != null) 'databaseDumpType': databaseDumpType!,
+    if (destinationGcsFolder != null)
+      'destinationGcsFolder': destinationGcsFolder!,
+    if (requestId != null) 'requestId': requestId!,
+  };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3646,52 +3622,46 @@ class Federation {
   });
 
   Federation.fromJson(core.Map json_)
-      : this(
-          backendMetastores: (json_['backendMetastores']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              BackendMetastore.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        backendMetastores: (json_['backendMetastores']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                BackendMetastore.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          endpointUri: json_['endpointUri'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateMessage: json_['stateMessage'] as core.String?,
-          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+        createTime: json_['createTime'] as core.String?,
+        endpointUri: json_['endpointUri'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateMessage: json_['stateMessage'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backendMetastores != null) 'backendMetastores': backendMetastores!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endpointUri != null) 'endpointUri': endpointUri!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (stateMessage != null) 'stateMessage': stateMessage!,
-        if (tags != null) 'tags': tags!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (version != null) 'version': version!,
-      };
+    if (backendMetastores != null) 'backendMetastores': backendMetastores!,
+    if (createTime != null) 'createTime': createTime!,
+    if (endpointUri != null) 'endpointUri': endpointUri!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (stateMessage != null) 'stateMessage': stateMessage!,
+    if (tags != null) 'tags': tags!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Specifies configuration information specific to running Hive metastore
@@ -3758,39 +3728,38 @@ class HiveMetastoreConfig {
   });
 
   HiveMetastoreConfig.fromJson(core.Map json_)
-      : this(
-          auxiliaryVersions: (json_['auxiliaryVersions']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              AuxiliaryVersionConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        auxiliaryVersions: (json_['auxiliaryVersions']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                AuxiliaryVersionConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          configOverrides:
-              (json_['configOverrides'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          endpointProtocol: json_['endpointProtocol'] as core.String?,
-          kerberosConfig: json_.containsKey('kerberosConfig')
-              ? KerberosConfig.fromJson(json_['kerberosConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          version: json_['version'] as core.String?,
-        );
+        configOverrides: (json_['configOverrides']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        endpointProtocol: json_['endpointProtocol'] as core.String?,
+        kerberosConfig:
+            json_.containsKey('kerberosConfig')
+                ? KerberosConfig.fromJson(
+                  json_['kerberosConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auxiliaryVersions != null) 'auxiliaryVersions': auxiliaryVersions!,
-        if (configOverrides != null) 'configOverrides': configOverrides!,
-        if (endpointProtocol != null) 'endpointProtocol': endpointProtocol!,
-        if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!,
-        if (version != null) 'version': version!,
-      };
+    if (auxiliaryVersions != null) 'auxiliaryVersions': auxiliaryVersions!,
+    if (configOverrides != null) 'configOverrides': configOverrides!,
+    if (endpointProtocol != null) 'endpointProtocol': endpointProtocol!,
+    if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Configuration information for a Kerberos principal.
@@ -3818,27 +3787,25 @@ class KerberosConfig {
   /// Optional.
   core.String? principal;
 
-  KerberosConfig({
-    this.keytab,
-    this.krb5ConfigGcsUri,
-    this.principal,
-  });
+  KerberosConfig({this.keytab, this.krb5ConfigGcsUri, this.principal});
 
   KerberosConfig.fromJson(core.Map json_)
-      : this(
-          keytab: json_.containsKey('keytab')
-              ? Secret.fromJson(
-                  json_['keytab'] as core.Map<core.String, core.dynamic>)
-              : null,
-          krb5ConfigGcsUri: json_['krb5ConfigGcsUri'] as core.String?,
-          principal: json_['principal'] as core.String?,
-        );
+    : this(
+        keytab:
+            json_.containsKey('keytab')
+                ? Secret.fromJson(
+                  json_['keytab'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        krb5ConfigGcsUri: json_['krb5ConfigGcsUri'] as core.String?,
+        principal: json_['principal'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keytab != null) 'keytab': keytab!,
-        if (krb5ConfigGcsUri != null) 'krb5ConfigGcsUri': krb5ConfigGcsUri!,
-        if (principal != null) 'principal': principal!,
-      };
+    if (keytab != null) 'keytab': keytab!,
+    if (krb5ConfigGcsUri != null) 'krb5ConfigGcsUri': krb5ConfigGcsUri!,
+    if (principal != null) 'principal': principal!,
+  };
 }
 
 /// The details of the latest scheduled backup.
@@ -3870,27 +3837,22 @@ class LatestBackup {
   /// - "FAILED" : The backup failed.
   core.String? state;
 
-  LatestBackup({
-    this.backupId,
-    this.duration,
-    this.startTime,
-    this.state,
-  });
+  LatestBackup({this.backupId, this.duration, this.startTime, this.state});
 
   LatestBackup.fromJson(core.Map json_)
-      : this(
-          backupId: json_['backupId'] as core.String?,
-          duration: json_['duration'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        backupId: json_['backupId'] as core.String?,
+        duration: json_['duration'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupId != null) 'backupId': backupId!,
-        if (duration != null) 'duration': duration!,
-        if (startTime != null) 'startTime': startTime!,
-        if (state != null) 'state': state!,
-      };
+    if (backupId != null) 'backupId': backupId!,
+    if (duration != null) 'duration': duration!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Represents the autoscaling limit configuration of a metastore service.
@@ -3905,23 +3867,18 @@ class LimitConfig {
   /// Optional.
   core.double? minScalingFactor;
 
-  LimitConfig({
-    this.maxScalingFactor,
-    this.minScalingFactor,
-  });
+  LimitConfig({this.maxScalingFactor, this.minScalingFactor});
 
   LimitConfig.fromJson(core.Map json_)
-      : this(
-          maxScalingFactor:
-              (json_['maxScalingFactor'] as core.num?)?.toDouble(),
-          minScalingFactor:
-              (json_['minScalingFactor'] as core.num?)?.toDouble(),
-        );
+    : this(
+        maxScalingFactor: (json_['maxScalingFactor'] as core.num?)?.toDouble(),
+        minScalingFactor: (json_['minScalingFactor'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxScalingFactor != null) 'maxScalingFactor': maxScalingFactor!,
-        if (minScalingFactor != null) 'minScalingFactor': minScalingFactor!,
-      };
+    if (maxScalingFactor != null) 'maxScalingFactor': maxScalingFactor!,
+    if (minScalingFactor != null) 'minScalingFactor': minScalingFactor!,
+  };
 }
 
 /// Response message for DataprocMetastore.ListBackups.
@@ -3937,29 +3894,30 @@ class ListBackupsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListBackupsResponse({
-    this.backups,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListBackupsResponse({this.backups, this.nextPageToken, this.unreachable});
 
   ListBackupsResponse.fromJson(core.Map json_)
-      : this(
-          backups: (json_['backups'] as core.List?)
-              ?.map((value) =>
-                  Backup.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        backups:
+            (json_['backups'] as core.List?)
+                ?.map(
+                  (value) => Backup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backups != null) 'backups': backups!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (backups != null) 'backups': backups!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response message for ListFederations
@@ -3982,22 +3940,27 @@ class ListFederationsResponse {
   });
 
   ListFederationsResponse.fromJson(core.Map json_)
-      : this(
-          federations: (json_['federations'] as core.List?)
-              ?.map((value) => Federation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        federations:
+            (json_['federations'] as core.List?)
+                ?.map(
+                  (value) => Federation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (federations != null) 'federations': federations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (federations != null) 'federations': federations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -4008,24 +3971,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for DataprocMetastore.ListMetadataImports.
@@ -4048,22 +4012,27 @@ class ListMetadataImportsResponse {
   });
 
   ListMetadataImportsResponse.fromJson(core.Map json_)
-      : this(
-          metadataImports: (json_['metadataImports'] as core.List?)
-              ?.map((value) => MetadataImport.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        metadataImports:
+            (json_['metadataImports'] as core.List?)
+                ?.map(
+                  (value) => MetadataImport.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metadataImports != null) 'metadataImports': metadataImports!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (metadataImports != null) 'metadataImports': metadataImports!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response message for DataprocMetastore.ListMigrationExecutions.
@@ -4086,23 +4055,28 @@ class ListMigrationExecutionsResponse {
   });
 
   ListMigrationExecutionsResponse.fromJson(core.Map json_)
-      : this(
-          migrationExecutions: (json_['migrationExecutions'] as core.List?)
-              ?.map((value) => MigrationExecution.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        migrationExecutions:
+            (json_['migrationExecutions'] as core.List?)
+                ?.map(
+                  (value) => MigrationExecution.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (migrationExecutions != null)
-          'migrationExecutions': migrationExecutions!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (migrationExecutions != null)
+      'migrationExecutions': migrationExecutions!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -4113,24 +4087,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// Response message for DataprocMetastore.ListServices.
@@ -4146,29 +4121,30 @@ class ListServicesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListServicesResponse({
-    this.nextPageToken,
-    this.services,
-    this.unreachable,
-  });
+  ListServicesResponse({this.nextPageToken, this.services, this.unreachable});
 
   ListServicesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          services: (json_['services'] as core.List?)
-              ?.map((value) => Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        services:
+            (json_['services'] as core.List?)
+                ?.map(
+                  (value) => Service.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (services != null) 'services': services!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (services != null) 'services': services!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -4198,21 +4174,18 @@ class MaintenanceWindow {
   /// Optional.
   core.int? hourOfDay;
 
-  MaintenanceWindow({
-    this.dayOfWeek,
-    this.hourOfDay,
-  });
+  MaintenanceWindow({this.dayOfWeek, this.hourOfDay});
 
   MaintenanceWindow.fromJson(core.Map json_)
-      : this(
-          dayOfWeek: json_['dayOfWeek'] as core.String?,
-          hourOfDay: json_['hourOfDay'] as core.int?,
-        );
+    : this(
+        dayOfWeek: json_['dayOfWeek'] as core.String?,
+        hourOfDay: json_['hourOfDay'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
-        if (hourOfDay != null) 'hourOfDay': hourOfDay!,
-      };
+    if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
+    if (hourOfDay != null) 'hourOfDay': hourOfDay!,
+  };
 }
 
 /// The details of a metadata export operation.
@@ -4262,21 +4235,21 @@ class MetadataExport {
   });
 
   MetadataExport.fromJson(core.Map json_)
-      : this(
-          databaseDumpType: json_['databaseDumpType'] as core.String?,
-          destinationGcsUri: json_['destinationGcsUri'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        databaseDumpType: json_['databaseDumpType'] as core.String?,
+        destinationGcsUri: json_['destinationGcsUri'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (databaseDumpType != null) 'databaseDumpType': databaseDumpType!,
-        if (destinationGcsUri != null) 'destinationGcsUri': destinationGcsUri!,
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-        if (state != null) 'state': state!,
-      };
+    if (databaseDumpType != null) 'databaseDumpType': databaseDumpType!,
+    if (destinationGcsUri != null) 'destinationGcsUri': destinationGcsUri!,
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// A metastore resource that imports metadata.
@@ -4337,28 +4310,30 @@ class MetadataImport {
   });
 
   MetadataImport.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          databaseDump: json_.containsKey('databaseDump')
-              ? DatabaseDump.fromJson(
-                  json_['databaseDump'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        databaseDump:
+            json_.containsKey('databaseDump')
+                ? DatabaseDump.fromJson(
+                  json_['databaseDump'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (databaseDump != null) 'databaseDump': databaseDump!,
-        if (description != null) 'description': description!,
-        if (endTime != null) 'endTime': endTime!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (databaseDump != null) 'databaseDump': databaseDump!,
+    if (description != null) 'description': description!,
+    if (endTime != null) 'endTime': endTime!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Specifies how metastore metadata should be integrated with external
@@ -4369,21 +4344,22 @@ class MetadataIntegration {
   /// Optional.
   DataCatalogConfig? dataCatalogConfig;
 
-  MetadataIntegration({
-    this.dataCatalogConfig,
-  });
+  MetadataIntegration({this.dataCatalogConfig});
 
   MetadataIntegration.fromJson(core.Map json_)
-      : this(
-          dataCatalogConfig: json_.containsKey('dataCatalogConfig')
-              ? DataCatalogConfig.fromJson(json_['dataCatalogConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataCatalogConfig:
+            json_.containsKey('dataCatalogConfig')
+                ? DataCatalogConfig.fromJson(
+                  json_['dataCatalogConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataCatalogConfig != null) 'dataCatalogConfig': dataCatalogConfig!,
-      };
+    if (dataCatalogConfig != null) 'dataCatalogConfig': dataCatalogConfig!,
+  };
 }
 
 /// The metadata management activities of the metastore service.
@@ -4398,27 +4374,32 @@ class MetadataManagementActivity {
   /// Output only.
   core.List<Restore>? restores;
 
-  MetadataManagementActivity({
-    this.metadataExports,
-    this.restores,
-  });
+  MetadataManagementActivity({this.metadataExports, this.restores});
 
   MetadataManagementActivity.fromJson(core.Map json_)
-      : this(
-          metadataExports: (json_['metadataExports'] as core.List?)
-              ?.map((value) => MetadataExport.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          restores: (json_['restores'] as core.List?)
-              ?.map((value) => Restore.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        metadataExports:
+            (json_['metadataExports'] as core.List?)
+                ?.map(
+                  (value) => MetadataExport.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        restores:
+            (json_['restores'] as core.List?)
+                ?.map(
+                  (value) => Restore.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metadataExports != null) 'metadataExports': metadataExports!,
-        if (restores != null) 'restores': restores!,
-      };
+    if (metadataExports != null) 'metadataExports': metadataExports!,
+    if (restores != null) 'restores': restores!,
+  };
 }
 
 /// The details of a migration execution resource.
@@ -4494,30 +4475,32 @@ class MigrationExecution {
   });
 
   MigrationExecution.fromJson(core.Map json_)
-      : this(
-          cloudSqlMigrationConfig: json_.containsKey('cloudSqlMigrationConfig')
-              ? CloudSQLMigrationConfig.fromJson(
+    : this(
+        cloudSqlMigrationConfig:
+            json_.containsKey('cloudSqlMigrationConfig')
+                ? CloudSQLMigrationConfig.fromJson(
                   json_['cloudSqlMigrationConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          phase: json_['phase'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateMessage: json_['stateMessage'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        phase: json_['phase'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateMessage: json_['stateMessage'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudSqlMigrationConfig != null)
-          'cloudSqlMigrationConfig': cloudSqlMigrationConfig!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (name != null) 'name': name!,
-        if (phase != null) 'phase': phase!,
-        if (state != null) 'state': state!,
-        if (stateMessage != null) 'stateMessage': stateMessage!,
-      };
+    if (cloudSqlMigrationConfig != null)
+      'cloudSqlMigrationConfig': cloudSqlMigrationConfig!,
+    if (createTime != null) 'createTime': createTime!,
+    if (endTime != null) 'endTime': endTime!,
+    if (name != null) 'name': name!,
+    if (phase != null) 'phase': phase!,
+    if (state != null) 'state': state!,
+    if (stateMessage != null) 'stateMessage': stateMessage!,
+  };
 }
 
 /// Request message for DataprocMetastore.MoveTableToDatabase.
@@ -4544,17 +4527,17 @@ class MoveTableToDatabaseRequest {
   });
 
   MoveTableToDatabaseRequest.fromJson(core.Map json_)
-      : this(
-          dbName: json_['dbName'] as core.String?,
-          destinationDbName: json_['destinationDbName'] as core.String?,
-          tableName: json_['tableName'] as core.String?,
-        );
+    : this(
+        dbName: json_['dbName'] as core.String?,
+        destinationDbName: json_['destinationDbName'] as core.String?,
+        tableName: json_['tableName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dbName != null) 'dbName': dbName!,
-        if (destinationDbName != null) 'destinationDbName': destinationDbName!,
-        if (tableName != null) 'tableName': tableName!,
-      };
+    if (dbName != null) 'dbName': dbName!,
+    if (destinationDbName != null) 'destinationDbName': destinationDbName!,
+    if (tableName != null) 'tableName': tableName!,
+  };
 }
 
 /// Network configuration for the Dataproc Metastore service.
@@ -4565,21 +4548,23 @@ class NetworkConfig {
   /// Immutable.
   core.List<Consumer>? consumers;
 
-  NetworkConfig({
-    this.consumers,
-  });
+  NetworkConfig({this.consumers});
 
   NetworkConfig.fromJson(core.Map json_)
-      : this(
-          consumers: (json_['consumers'] as core.List?)
-              ?.map((value) => Consumer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        consumers:
+            (json_['consumers'] as core.List?)
+                ?.map(
+                  (value) => Consumer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumers != null) 'consumers': consumers!,
-      };
+    if (consumers != null) 'consumers': consumers!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -4625,37 +4610,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -4720,8 +4703,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.Valid values are 0, 1, and 3.
@@ -4742,33 +4727,36 @@ class Policy {
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Request message for DataprocMetastore.QueryMetadata.
@@ -4780,18 +4768,14 @@ class QueryMetadataRequest {
   /// Required.
   core.String? query;
 
-  QueryMetadataRequest({
-    this.query,
-  });
+  QueryMetadataRequest({this.query});
 
   QueryMetadataRequest.fromJson(core.Map json_)
-      : this(
-          query: json_['query'] as core.String?,
-        );
+    : this(query: json_['query'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (query != null) 'query': query!,
-      };
+    if (query != null) 'query': query!,
+  };
 }
 
 /// The details of a metadata restore operation.
@@ -4856,25 +4840,25 @@ class Restore {
   });
 
   Restore.fromJson(core.Map json_)
-      : this(
-          backup: json_['backup'] as core.String?,
-          backupLocation: json_['backupLocation'] as core.String?,
-          details: json_['details'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        backup: json_['backup'] as core.String?,
+        backupLocation: json_['backupLocation'] as core.String?,
+        details: json_['details'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backup != null) 'backup': backup!,
-        if (backupLocation != null) 'backupLocation': backupLocation!,
-        if (details != null) 'details': details!,
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-        if (state != null) 'state': state!,
-        if (type != null) 'type': type!,
-      };
+    if (backup != null) 'backup': backup!,
+    if (backupLocation != null) 'backupLocation': backupLocation!,
+    if (details != null) 'details': details!,
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Request message for DataprocMetastore.RestoreService.
@@ -4931,19 +4915,19 @@ class RestoreServiceRequest {
   });
 
   RestoreServiceRequest.fromJson(core.Map json_)
-      : this(
-          backup: json_['backup'] as core.String?,
-          backupLocation: json_['backupLocation'] as core.String?,
-          requestId: json_['requestId'] as core.String?,
-          restoreType: json_['restoreType'] as core.String?,
-        );
+    : this(
+        backup: json_['backup'] as core.String?,
+        backupLocation: json_['backupLocation'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+        restoreType: json_['restoreType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backup != null) 'backup': backup!,
-        if (backupLocation != null) 'backupLocation': backupLocation!,
-        if (requestId != null) 'requestId': requestId!,
-        if (restoreType != null) 'restoreType': restoreType!,
-      };
+    if (backup != null) 'backup': backup!,
+    if (backupLocation != null) 'backupLocation': backupLocation!,
+    if (requestId != null) 'requestId': requestId!,
+    if (restoreType != null) 'restoreType': restoreType!,
+  };
 }
 
 /// Represents the scaling configuration of a metastore service.
@@ -4977,20 +4961,23 @@ class ScalingConfig {
   });
 
   ScalingConfig.fromJson(core.Map json_)
-      : this(
-          autoscalingConfig: json_.containsKey('autoscalingConfig')
-              ? AutoscalingConfig.fromJson(json_['autoscalingConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          instanceSize: json_['instanceSize'] as core.String?,
-          scalingFactor: (json_['scalingFactor'] as core.num?)?.toDouble(),
-        );
+    : this(
+        autoscalingConfig:
+            json_.containsKey('autoscalingConfig')
+                ? AutoscalingConfig.fromJson(
+                  json_['autoscalingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        instanceSize: json_['instanceSize'] as core.String?,
+        scalingFactor: (json_['scalingFactor'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoscalingConfig != null) 'autoscalingConfig': autoscalingConfig!,
-        if (instanceSize != null) 'instanceSize': instanceSize!,
-        if (scalingFactor != null) 'scalingFactor': scalingFactor!,
-      };
+    if (autoscalingConfig != null) 'autoscalingConfig': autoscalingConfig!,
+    if (instanceSize != null) 'instanceSize': instanceSize!,
+    if (scalingFactor != null) 'scalingFactor': scalingFactor!,
+  };
 }
 
 /// This specifies the configuration of scheduled backup.
@@ -5048,26 +5035,28 @@ class ScheduledBackup {
   });
 
   ScheduledBackup.fromJson(core.Map json_)
-      : this(
-          backupLocation: json_['backupLocation'] as core.String?,
-          cronSchedule: json_['cronSchedule'] as core.String?,
-          enabled: json_['enabled'] as core.bool?,
-          latestBackup: json_.containsKey('latestBackup')
-              ? LatestBackup.fromJson(
-                  json_['latestBackup'] as core.Map<core.String, core.dynamic>)
-              : null,
-          nextScheduledTime: json_['nextScheduledTime'] as core.String?,
-          timeZone: json_['timeZone'] as core.String?,
-        );
+    : this(
+        backupLocation: json_['backupLocation'] as core.String?,
+        cronSchedule: json_['cronSchedule'] as core.String?,
+        enabled: json_['enabled'] as core.bool?,
+        latestBackup:
+            json_.containsKey('latestBackup')
+                ? LatestBackup.fromJson(
+                  json_['latestBackup'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nextScheduledTime: json_['nextScheduledTime'] as core.String?,
+        timeZone: json_['timeZone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupLocation != null) 'backupLocation': backupLocation!,
-        if (cronSchedule != null) 'cronSchedule': cronSchedule!,
-        if (enabled != null) 'enabled': enabled!,
-        if (latestBackup != null) 'latestBackup': latestBackup!,
-        if (nextScheduledTime != null) 'nextScheduledTime': nextScheduledTime!,
-        if (timeZone != null) 'timeZone': timeZone!,
-      };
+    if (backupLocation != null) 'backupLocation': backupLocation!,
+    if (cronSchedule != null) 'cronSchedule': cronSchedule!,
+    if (enabled != null) 'enabled': enabled!,
+    if (latestBackup != null) 'latestBackup': latestBackup!,
+    if (nextScheduledTime != null) 'nextScheduledTime': nextScheduledTime!,
+    if (timeZone != null) 'timeZone': timeZone!,
+  };
 }
 
 /// A securely stored value.
@@ -5079,18 +5068,14 @@ class Secret {
   /// Optional.
   core.String? cloudSecret;
 
-  Secret({
-    this.cloudSecret,
-  });
+  Secret({this.cloudSecret});
 
   Secret.fromJson(core.Map json_)
-      : this(
-          cloudSecret: json_['cloudSecret'] as core.String?,
-        );
+    : this(cloudSecret: json_['cloudSecret'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudSecret != null) 'cloudSecret': cloudSecret!,
-      };
+    if (cloudSecret != null) 'cloudSecret': cloudSecret!,
+  };
 }
 
 /// A managed metastore service that serves metadata queries.
@@ -5311,105 +5296,120 @@ class Service {
   });
 
   Service.fromJson(core.Map json_)
-      : this(
-          artifactGcsUri: json_['artifactGcsUri'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          databaseType: json_['databaseType'] as core.String?,
-          deletionProtection: json_['deletionProtection'] as core.bool?,
-          encryptionConfig: json_.containsKey('encryptionConfig')
-              ? EncryptionConfig.fromJson(json_['encryptionConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          endpointUri: json_['endpointUri'] as core.String?,
-          hiveMetastoreConfig: json_.containsKey('hiveMetastoreConfig')
-              ? HiveMetastoreConfig.fromJson(json_['hiveMetastoreConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          maintenanceWindow: json_.containsKey('maintenanceWindow')
-              ? MaintenanceWindow.fromJson(json_['maintenanceWindow']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          metadataIntegration: json_.containsKey('metadataIntegration')
-              ? MetadataIntegration.fromJson(json_['metadataIntegration']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          metadataManagementActivity:
-              json_.containsKey('metadataManagementActivity')
-                  ? MetadataManagementActivity.fromJson(
-                      json_['metadataManagementActivity']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          networkConfig: json_.containsKey('networkConfig')
-              ? NetworkConfig.fromJson(
-                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          port: json_['port'] as core.int?,
-          releaseChannel: json_['releaseChannel'] as core.String?,
-          scalingConfig: json_.containsKey('scalingConfig')
-              ? ScalingConfig.fromJson(
-                  json_['scalingConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          scheduledBackup: json_.containsKey('scheduledBackup')
-              ? ScheduledBackup.fromJson(json_['scheduledBackup']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          stateMessage: json_['stateMessage'] as core.String?,
-          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          telemetryConfig: json_.containsKey('telemetryConfig')
-              ? TelemetryConfig.fromJson(json_['telemetryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          tier: json_['tier'] as core.String?,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        artifactGcsUri: json_['artifactGcsUri'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        databaseType: json_['databaseType'] as core.String?,
+        deletionProtection: json_['deletionProtection'] as core.bool?,
+        encryptionConfig:
+            json_.containsKey('encryptionConfig')
+                ? EncryptionConfig.fromJson(
+                  json_['encryptionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endpointUri: json_['endpointUri'] as core.String?,
+        hiveMetastoreConfig:
+            json_.containsKey('hiveMetastoreConfig')
+                ? HiveMetastoreConfig.fromJson(
+                  json_['hiveMetastoreConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        maintenanceWindow:
+            json_.containsKey('maintenanceWindow')
+                ? MaintenanceWindow.fromJson(
+                  json_['maintenanceWindow']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadataIntegration:
+            json_.containsKey('metadataIntegration')
+                ? MetadataIntegration.fromJson(
+                  json_['metadataIntegration']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadataManagementActivity:
+            json_.containsKey('metadataManagementActivity')
+                ? MetadataManagementActivity.fromJson(
+                  json_['metadataManagementActivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        networkConfig:
+            json_.containsKey('networkConfig')
+                ? NetworkConfig.fromJson(
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        port: json_['port'] as core.int?,
+        releaseChannel: json_['releaseChannel'] as core.String?,
+        scalingConfig:
+            json_.containsKey('scalingConfig')
+                ? ScalingConfig.fromJson(
+                  json_['scalingConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scheduledBackup:
+            json_.containsKey('scheduledBackup')
+                ? ScheduledBackup.fromJson(
+                  json_['scheduledBackup']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        stateMessage: json_['stateMessage'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        telemetryConfig:
+            json_.containsKey('telemetryConfig')
+                ? TelemetryConfig.fromJson(
+                  json_['telemetryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tier: json_['tier'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (artifactGcsUri != null) 'artifactGcsUri': artifactGcsUri!,
-        if (createTime != null) 'createTime': createTime!,
-        if (databaseType != null) 'databaseType': databaseType!,
-        if (deletionProtection != null)
-          'deletionProtection': deletionProtection!,
-        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
-        if (endpointUri != null) 'endpointUri': endpointUri!,
-        if (hiveMetastoreConfig != null)
-          'hiveMetastoreConfig': hiveMetastoreConfig!,
-        if (labels != null) 'labels': labels!,
-        if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
-        if (metadataIntegration != null)
-          'metadataIntegration': metadataIntegration!,
-        if (metadataManagementActivity != null)
-          'metadataManagementActivity': metadataManagementActivity!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (networkConfig != null) 'networkConfig': networkConfig!,
-        if (port != null) 'port': port!,
-        if (releaseChannel != null) 'releaseChannel': releaseChannel!,
-        if (scalingConfig != null) 'scalingConfig': scalingConfig!,
-        if (scheduledBackup != null) 'scheduledBackup': scheduledBackup!,
-        if (state != null) 'state': state!,
-        if (stateMessage != null) 'stateMessage': stateMessage!,
-        if (tags != null) 'tags': tags!,
-        if (telemetryConfig != null) 'telemetryConfig': telemetryConfig!,
-        if (tier != null) 'tier': tier!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (artifactGcsUri != null) 'artifactGcsUri': artifactGcsUri!,
+    if (createTime != null) 'createTime': createTime!,
+    if (databaseType != null) 'databaseType': databaseType!,
+    if (deletionProtection != null) 'deletionProtection': deletionProtection!,
+    if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+    if (endpointUri != null) 'endpointUri': endpointUri!,
+    if (hiveMetastoreConfig != null)
+      'hiveMetastoreConfig': hiveMetastoreConfig!,
+    if (labels != null) 'labels': labels!,
+    if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
+    if (metadataIntegration != null)
+      'metadataIntegration': metadataIntegration!,
+    if (metadataManagementActivity != null)
+      'metadataManagementActivity': metadataManagementActivity!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (networkConfig != null) 'networkConfig': networkConfig!,
+    if (port != null) 'port': port!,
+    if (releaseChannel != null) 'releaseChannel': releaseChannel!,
+    if (scalingConfig != null) 'scalingConfig': scalingConfig!,
+    if (scheduledBackup != null) 'scheduledBackup': scheduledBackup!,
+    if (state != null) 'state': state!,
+    if (stateMessage != null) 'stateMessage': stateMessage!,
+    if (tags != null) 'tags': tags!,
+    if (telemetryConfig != null) 'telemetryConfig': telemetryConfig!,
+    if (tier != null) 'tier': tier!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Request message for SetIamPolicy method.
@@ -5427,24 +5427,23 @@ class SetIamPolicyRequest {
   /// following default mask is used:paths: "bindings, etag"
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Request message for DataprocMetastore.StartMigration.
@@ -5468,25 +5467,24 @@ class StartMigrationRequest {
   /// Optional.
   core.String? requestId;
 
-  StartMigrationRequest({
-    this.migrationExecution,
-    this.requestId,
-  });
+  StartMigrationRequest({this.migrationExecution, this.requestId});
 
   StartMigrationRequest.fromJson(core.Map json_)
-      : this(
-          migrationExecution: json_.containsKey('migrationExecution')
-              ? MigrationExecution.fromJson(json_['migrationExecution']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          requestId: json_['requestId'] as core.String?,
-        );
+    : this(
+        migrationExecution:
+            json_.containsKey('migrationExecution')
+                ? MigrationExecution.fromJson(
+                  json_['migrationExecution']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestId: json_['requestId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (migrationExecution != null)
-          'migrationExecution': migrationExecution!,
-        if (requestId != null) 'requestId': requestId!,
-      };
+    if (migrationExecution != null) 'migrationExecution': migrationExecution!,
+    if (requestId != null) 'requestId': requestId!,
+  };
 }
 
 /// The Status type defines a logical error model that is suitable for different
@@ -5509,18 +5507,14 @@ class TelemetryConfig {
   /// - "JSON" : Logging output uses the jsonPayload format.
   core.String? logFormat;
 
-  TelemetryConfig({
-    this.logFormat,
-  });
+  TelemetryConfig({this.logFormat});
 
   TelemetryConfig.fromJson(core.Map json_)
-      : this(
-          logFormat: json_['logFormat'] as core.String?,
-        );
+    : this(logFormat: json_['logFormat'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (logFormat != null) 'logFormat': logFormat!,
-      };
+    if (logFormat != null) 'logFormat': logFormat!,
+  };
 }
 
 /// Request message for TestIamPermissions method.

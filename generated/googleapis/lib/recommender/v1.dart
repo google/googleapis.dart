@@ -71,11 +71,16 @@ class RecommenderApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  RecommenderApi(http.Client client,
-      {core.String rootUrl = 'https://recommender.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  RecommenderApi(
+    http.Client client, {
+    core.String rootUrl = 'https://recommender.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class BillingAccountsResource {
@@ -96,7 +101,7 @@ class BillingAccountsLocationsResource {
       BillingAccountsLocationsRecommendersResource(_requester);
 
   BillingAccountsLocationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class BillingAccountsLocationsInsightTypesResource {
@@ -106,7 +111,7 @@ class BillingAccountsLocationsInsightTypesResource {
       BillingAccountsLocationsInsightTypesInsightsResource(_requester);
 
   BillingAccountsLocationsInsightTypesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the requested InsightTypeConfig.
   ///
@@ -152,7 +157,8 @@ class BillingAccountsLocationsInsightTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an InsightTypeConfig change.
@@ -206,7 +212,8 @@ class BillingAccountsLocationsInsightTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -214,8 +221,8 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
   final commons.ApiRequester _requester;
 
   BillingAccountsLocationsInsightTypesInsightsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets the requested insight.
   ///
@@ -254,7 +261,8 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists insights for the specified Cloud Resource.
@@ -333,7 +341,8 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Insight State as Accepted.
@@ -381,7 +390,8 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -389,12 +399,11 @@ class BillingAccountsLocationsRecommendersResource {
   final commons.ApiRequester _requester;
 
   BillingAccountsLocationsRecommendersRecommendationsResource
-      get recommendations =>
-          BillingAccountsLocationsRecommendersRecommendationsResource(
-              _requester);
+  get recommendations =>
+      BillingAccountsLocationsRecommendersRecommendationsResource(_requester);
 
   BillingAccountsLocationsRecommendersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the requested Recommender Config.
   ///
@@ -440,7 +449,8 @@ class BillingAccountsLocationsRecommendersResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a Recommender Config.
@@ -494,7 +504,8 @@ class BillingAccountsLocationsRecommendersResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -502,8 +513,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   final commons.ApiRequester _requester;
 
   BillingAccountsLocationsRecommendersRecommendationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets the requested recommendation.
   ///
@@ -542,7 +553,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists recommendations for the specified Cloud Resource.
@@ -621,7 +633,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Recommendation State as Claimed.
@@ -671,7 +684,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Mark the Recommendation State as Dismissed.
@@ -719,7 +733,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Recommendation State as Failed.
@@ -769,7 +784,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Recommendation State as Succeeded.
@@ -819,7 +835,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -850,14 +867,14 @@ class FoldersLocationsInsightTypesResource {
       FoldersLocationsInsightTypesInsightsResource(_requester);
 
   FoldersLocationsInsightTypesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class FoldersLocationsInsightTypesInsightsResource {
   final commons.ApiRequester _requester;
 
   FoldersLocationsInsightTypesInsightsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the requested insight.
   ///
@@ -896,7 +913,8 @@ class FoldersLocationsInsightTypesInsightsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists insights for the specified Cloud Resource.
@@ -975,7 +993,8 @@ class FoldersLocationsInsightTypesInsightsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Insight State as Accepted.
@@ -1023,7 +1042,8 @@ class FoldersLocationsInsightTypesInsightsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1034,15 +1054,15 @@ class FoldersLocationsRecommendersResource {
       FoldersLocationsRecommendersRecommendationsResource(_requester);
 
   FoldersLocationsRecommendersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class FoldersLocationsRecommendersRecommendationsResource {
   final commons.ApiRequester _requester;
 
   FoldersLocationsRecommendersRecommendationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets the requested recommendation.
   ///
@@ -1081,7 +1101,8 @@ class FoldersLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists recommendations for the specified Cloud Resource.
@@ -1160,7 +1181,8 @@ class FoldersLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Recommendation State as Claimed.
@@ -1210,7 +1232,8 @@ class FoldersLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Mark the Recommendation State as Dismissed.
@@ -1258,7 +1281,8 @@ class FoldersLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Recommendation State as Failed.
@@ -1308,7 +1332,8 @@ class FoldersLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Recommendation State as Succeeded.
@@ -1358,7 +1383,8 @@ class FoldersLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1380,7 +1406,7 @@ class OrganizationsLocationsResource {
       OrganizationsLocationsRecommendersResource(_requester);
 
   OrganizationsLocationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class OrganizationsLocationsInsightTypesResource {
@@ -1390,7 +1416,7 @@ class OrganizationsLocationsInsightTypesResource {
       OrganizationsLocationsInsightTypesInsightsResource(_requester);
 
   OrganizationsLocationsInsightTypesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the requested InsightTypeConfig.
   ///
@@ -1436,7 +1462,8 @@ class OrganizationsLocationsInsightTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an InsightTypeConfig change.
@@ -1490,7 +1517,8 @@ class OrganizationsLocationsInsightTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1498,8 +1526,8 @@ class OrganizationsLocationsInsightTypesInsightsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsInsightTypesInsightsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets the requested insight.
   ///
@@ -1538,7 +1566,8 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists insights for the specified Cloud Resource.
@@ -1617,7 +1646,8 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Insight State as Accepted.
@@ -1665,7 +1695,8 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1673,11 +1704,11 @@ class OrganizationsLocationsRecommendersResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsRecommendersRecommendationsResource
-      get recommendations =>
-          OrganizationsLocationsRecommendersRecommendationsResource(_requester);
+  get recommendations =>
+      OrganizationsLocationsRecommendersRecommendationsResource(_requester);
 
   OrganizationsLocationsRecommendersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the requested Recommender Config.
   ///
@@ -1723,7 +1754,8 @@ class OrganizationsLocationsRecommendersResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a Recommender Config.
@@ -1777,7 +1809,8 @@ class OrganizationsLocationsRecommendersResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1785,8 +1818,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsRecommendersRecommendationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets the requested recommendation.
   ///
@@ -1825,7 +1858,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists recommendations for the specified Cloud Resource.
@@ -1904,7 +1938,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Recommendation State as Claimed.
@@ -1954,7 +1989,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Mark the Recommendation State as Dismissed.
@@ -2002,7 +2038,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Recommendation State as Failed.
@@ -2052,7 +2089,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Recommendation State as Succeeded.
@@ -2102,7 +2140,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2133,7 +2172,7 @@ class ProjectsLocationsInsightTypesResource {
       ProjectsLocationsInsightTypesInsightsResource(_requester);
 
   ProjectsLocationsInsightTypesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the requested InsightTypeConfig.
   ///
@@ -2179,7 +2218,8 @@ class ProjectsLocationsInsightTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an InsightTypeConfig change.
@@ -2233,7 +2273,8 @@ class ProjectsLocationsInsightTypesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2241,7 +2282,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsInsightTypesInsightsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the requested insight.
   ///
@@ -2280,7 +2321,8 @@ class ProjectsLocationsInsightTypesInsightsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists insights for the specified Cloud Resource.
@@ -2359,7 +2401,8 @@ class ProjectsLocationsInsightTypesInsightsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Insight State as Accepted.
@@ -2407,7 +2450,8 @@ class ProjectsLocationsInsightTypesInsightsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2418,7 +2462,7 @@ class ProjectsLocationsRecommendersResource {
       ProjectsLocationsRecommendersRecommendationsResource(_requester);
 
   ProjectsLocationsRecommendersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the requested Recommender Config.
   ///
@@ -2464,7 +2508,8 @@ class ProjectsLocationsRecommendersResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a Recommender Config.
@@ -2518,7 +2563,8 @@ class ProjectsLocationsRecommendersResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2526,8 +2572,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRecommendersRecommendationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets the requested recommendation.
   ///
@@ -2566,7 +2612,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists recommendations for the specified Cloud Resource.
@@ -2645,7 +2692,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Recommendation State as Claimed.
@@ -2695,7 +2743,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Mark the Recommendation State as Dismissed.
@@ -2743,7 +2792,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Recommendation State as Failed.
@@ -2793,7 +2843,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks the Recommendation State as Succeeded.
@@ -2843,7 +2894,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2870,24 +2922,29 @@ class GoogleCloudRecommenderV1CostProjection {
   });
 
   GoogleCloudRecommenderV1CostProjection.fromJson(core.Map json_)
-      : this(
-          cost: json_.containsKey('cost')
-              ? GoogleTypeMoney.fromJson(
-                  json_['cost'] as core.Map<core.String, core.dynamic>)
-              : null,
-          costInLocalCurrency: json_.containsKey('costInLocalCurrency')
-              ? GoogleTypeMoney.fromJson(json_['costInLocalCurrency']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          duration: json_['duration'] as core.String?,
-        );
+    : this(
+        cost:
+            json_.containsKey('cost')
+                ? GoogleTypeMoney.fromJson(
+                  json_['cost'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        costInLocalCurrency:
+            json_.containsKey('costInLocalCurrency')
+                ? GoogleTypeMoney.fromJson(
+                  json_['costInLocalCurrency']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        duration: json_['duration'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cost != null) 'cost': cost!,
-        if (costInLocalCurrency != null)
-          'costInLocalCurrency': costInLocalCurrency!,
-        if (duration != null) 'duration': duration!,
-      };
+    if (cost != null) 'cost': cost!,
+    if (costInLocalCurrency != null)
+      'costInLocalCurrency': costInLocalCurrency!,
+    if (duration != null) 'duration': duration!,
+  };
 }
 
 /// Contains the impact a recommendation can have for a given category.
@@ -2940,48 +2997,58 @@ class GoogleCloudRecommenderV1Impact {
   });
 
   GoogleCloudRecommenderV1Impact.fromJson(core.Map json_)
-      : this(
-          category: json_['category'] as core.String?,
-          costProjection: json_.containsKey('costProjection')
-              ? GoogleCloudRecommenderV1CostProjection.fromJson(
+    : this(
+        category: json_['category'] as core.String?,
+        costProjection:
+            json_.containsKey('costProjection')
+                ? GoogleCloudRecommenderV1CostProjection.fromJson(
                   json_['costProjection']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          impactComponents: (json_['impactComponents'] as core.List?)
-              ?.map((value) => GoogleCloudRecommenderV1Impact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          reliabilityProjection: json_.containsKey('reliabilityProjection')
-              ? GoogleCloudRecommenderV1ReliabilityProjection.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        impactComponents:
+            (json_['impactComponents'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRecommenderV1Impact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        reliabilityProjection:
+            json_.containsKey('reliabilityProjection')
+                ? GoogleCloudRecommenderV1ReliabilityProjection.fromJson(
                   json_['reliabilityProjection']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          securityProjection: json_.containsKey('securityProjection')
-              ? GoogleCloudRecommenderV1SecurityProjection.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        securityProjection:
+            json_.containsKey('securityProjection')
+                ? GoogleCloudRecommenderV1SecurityProjection.fromJson(
                   json_['securityProjection']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          service: json_['service'] as core.String?,
-          sustainabilityProjection:
-              json_.containsKey('sustainabilityProjection')
-                  ? GoogleCloudRecommenderV1SustainabilityProjection.fromJson(
-                      json_['sustainabilityProjection']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        service: json_['service'] as core.String?,
+        sustainabilityProjection:
+            json_.containsKey('sustainabilityProjection')
+                ? GoogleCloudRecommenderV1SustainabilityProjection.fromJson(
+                  json_['sustainabilityProjection']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (category != null) 'category': category!,
-        if (costProjection != null) 'costProjection': costProjection!,
-        if (impactComponents != null) 'impactComponents': impactComponents!,
-        if (reliabilityProjection != null)
-          'reliabilityProjection': reliabilityProjection!,
-        if (securityProjection != null)
-          'securityProjection': securityProjection!,
-        if (service != null) 'service': service!,
-        if (sustainabilityProjection != null)
-          'sustainabilityProjection': sustainabilityProjection!,
-      };
+    if (category != null) 'category': category!,
+    if (costProjection != null) 'costProjection': costProjection!,
+    if (impactComponents != null) 'impactComponents': impactComponents!,
+    if (reliabilityProjection != null)
+      'reliabilityProjection': reliabilityProjection!,
+    if (securityProjection != null) 'securityProjection': securityProjection!,
+    if (service != null) 'service': service!,
+    if (sustainabilityProjection != null)
+      'sustainabilityProjection': sustainabilityProjection!,
+  };
 }
 
 /// An insight along with the information used to derive the insight.
@@ -2990,7 +3057,7 @@ class GoogleCloudRecommenderV1Impact {
 class GoogleCloudRecommenderV1Insight {
   /// Recommendations derived from this insight.
   core.List<GoogleCloudRecommenderV1InsightRecommendationReference>?
-      associatedRecommendations;
+  associatedRecommendations;
 
   /// Category being targeted by the insight.
   /// Possible string values are:
@@ -3071,48 +3138,55 @@ class GoogleCloudRecommenderV1Insight {
   });
 
   GoogleCloudRecommenderV1Insight.fromJson(core.Map json_)
-      : this(
-          associatedRecommendations: (json_['associatedRecommendations']
-                  as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecommenderV1InsightRecommendationReference
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          category: json_['category'] as core.String?,
-          content: json_.containsKey('content')
-              ? json_['content'] as core.Map<core.String, core.dynamic>
-              : null,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          insightSubtype: json_['insightSubtype'] as core.String?,
-          lastRefreshTime: json_['lastRefreshTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          observationPeriod: json_['observationPeriod'] as core.String?,
-          severity: json_['severity'] as core.String?,
-          stateInfo: json_.containsKey('stateInfo')
-              ? GoogleCloudRecommenderV1InsightStateInfo.fromJson(
-                  json_['stateInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          targetResources: (json_['targetResources'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        associatedRecommendations:
+            (json_['associatedRecommendations'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRecommenderV1InsightRecommendationReference.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        category: json_['category'] as core.String?,
+        content:
+            json_.containsKey('content')
+                ? json_['content'] as core.Map<core.String, core.dynamic>
+                : null,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        insightSubtype: json_['insightSubtype'] as core.String?,
+        lastRefreshTime: json_['lastRefreshTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        observationPeriod: json_['observationPeriod'] as core.String?,
+        severity: json_['severity'] as core.String?,
+        stateInfo:
+            json_.containsKey('stateInfo')
+                ? GoogleCloudRecommenderV1InsightStateInfo.fromJson(
+                  json_['stateInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        targetResources:
+            (json_['targetResources'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (associatedRecommendations != null)
-          'associatedRecommendations': associatedRecommendations!,
-        if (category != null) 'category': category!,
-        if (content != null) 'content': content!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (insightSubtype != null) 'insightSubtype': insightSubtype!,
-        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
-        if (name != null) 'name': name!,
-        if (observationPeriod != null) 'observationPeriod': observationPeriod!,
-        if (severity != null) 'severity': severity!,
-        if (stateInfo != null) 'stateInfo': stateInfo!,
-        if (targetResources != null) 'targetResources': targetResources!,
-      };
+    if (associatedRecommendations != null)
+      'associatedRecommendations': associatedRecommendations!,
+    if (category != null) 'category': category!,
+    if (content != null) 'content': content!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (insightSubtype != null) 'insightSubtype': insightSubtype!,
+    if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
+    if (name != null) 'name': name!,
+    if (observationPeriod != null) 'observationPeriod': observationPeriod!,
+    if (severity != null) 'severity': severity!,
+    if (stateInfo != null) 'stateInfo': stateInfo!,
+    if (targetResources != null) 'targetResources': targetResources!,
+  };
 }
 
 /// Reference to an associated recommendation.
@@ -3121,19 +3195,15 @@ class GoogleCloudRecommenderV1InsightRecommendationReference {
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/recommendations/\[RECOMMENDATION_ID\]
   core.String? recommendation;
 
-  GoogleCloudRecommenderV1InsightRecommendationReference({
-    this.recommendation,
-  });
+  GoogleCloudRecommenderV1InsightRecommendationReference({this.recommendation});
 
   GoogleCloudRecommenderV1InsightRecommendationReference.fromJson(
-      core.Map json_)
-      : this(
-          recommendation: json_['recommendation'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(recommendation: json_['recommendation'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (recommendation != null) 'recommendation': recommendation!,
-      };
+    if (recommendation != null) 'recommendation': recommendation!,
+  };
 }
 
 /// Information related to insight state.
@@ -3155,28 +3225,20 @@ class GoogleCloudRecommenderV1InsightStateInfo {
   /// A map of metadata for the state, provided by user or automations systems.
   core.Map<core.String, core.String>? stateMetadata;
 
-  GoogleCloudRecommenderV1InsightStateInfo({
-    this.state,
-    this.stateMetadata,
-  });
+  GoogleCloudRecommenderV1InsightStateInfo({this.state, this.stateMetadata});
 
   GoogleCloudRecommenderV1InsightStateInfo.fromJson(core.Map json_)
-      : this(
-          state: json_['state'] as core.String?,
-          stateMetadata:
-              (json_['stateMetadata'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        state: json_['state'] as core.String?,
+        stateMetadata: (json_['stateMetadata']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (state != null) 'state': state!,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-      };
+    if (state != null) 'state': state!,
+    if (stateMetadata != null) 'stateMetadata': stateMetadata!,
+  };
 }
 
 /// Configuration for an InsightType.
@@ -3203,7 +3265,7 @@ class GoogleCloudRecommenderV1InsightTypeConfig {
   /// InsightTypeGenerationConfig which configures the generation of insights
   /// for this insight type.
   GoogleCloudRecommenderV1InsightTypeGenerationConfig?
-      insightTypeGenerationConfig;
+  insightTypeGenerationConfig;
 
   /// Identifier.
   ///
@@ -3233,38 +3295,34 @@ class GoogleCloudRecommenderV1InsightTypeConfig {
   });
 
   GoogleCloudRecommenderV1InsightTypeConfig.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          insightTypeGenerationConfig: json_
-                  .containsKey('insightTypeGenerationConfig')
-              ? GoogleCloudRecommenderV1InsightTypeGenerationConfig.fromJson(
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        insightTypeGenerationConfig:
+            json_.containsKey('insightTypeGenerationConfig')
+                ? GoogleCloudRecommenderV1InsightTypeGenerationConfig.fromJson(
                   json_['insightTypeGenerationConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          revisionId: json_['revisionId'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        revisionId: json_['revisionId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (insightTypeGenerationConfig != null)
-          'insightTypeGenerationConfig': insightTypeGenerationConfig!,
-        if (name != null) 'name': name!,
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (insightTypeGenerationConfig != null)
+      'insightTypeGenerationConfig': insightTypeGenerationConfig!,
+    if (name != null) 'name': name!,
+    if (revisionId != null) 'revisionId': revisionId!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A configuration to customize the generation of insights.
@@ -3279,20 +3337,19 @@ class GoogleCloudRecommenderV1InsightTypeGenerationConfig {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? params;
 
-  GoogleCloudRecommenderV1InsightTypeGenerationConfig({
-    this.params,
-  });
+  GoogleCloudRecommenderV1InsightTypeGenerationConfig({this.params});
 
   GoogleCloudRecommenderV1InsightTypeGenerationConfig.fromJson(core.Map json_)
-      : this(
-          params: json_.containsKey('params')
-              ? json_['params'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        params:
+            json_.containsKey('params')
+                ? json_['params'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (params != null) 'params': params!,
-      };
+    if (params != null) 'params': params!,
+  };
 }
 
 /// Response to the `ListInsights` method.
@@ -3311,18 +3368,22 @@ class GoogleCloudRecommenderV1ListInsightsResponse {
   });
 
   GoogleCloudRecommenderV1ListInsightsResponse.fromJson(core.Map json_)
-      : this(
-          insights: (json_['insights'] as core.List?)
-              ?.map((value) => GoogleCloudRecommenderV1Insight.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        insights:
+            (json_['insights'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRecommenderV1Insight.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (insights != null) 'insights': insights!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (insights != null) 'insights': insights!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response to the `ListRecommendations` method.
@@ -3341,18 +3402,22 @@ class GoogleCloudRecommenderV1ListRecommendationsResponse {
   });
 
   GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          recommendations: (json_['recommendations'] as core.List?)
-              ?.map((value) => GoogleCloudRecommenderV1Recommendation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        recommendations:
+            (json_['recommendations'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRecommenderV1Recommendation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (recommendations != null) 'recommendations': recommendations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (recommendations != null) 'recommendations': recommendations!,
+  };
 }
 
 /// Request for the `MarkInsightAccepted` method.
@@ -3377,22 +3442,17 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
   });
 
   GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          stateMetadata:
-              (json_['stateMetadata'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        stateMetadata: (json_['stateMetadata']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (stateMetadata != null) 'stateMetadata': stateMetadata!,
+  };
 }
 
 /// Request for the `MarkRecommendationClaimed` Method.
@@ -3405,19 +3465,15 @@ class GoogleCloudRecommenderV1MarkRecommendationDismissedRequest {
   /// Provides optimistic locking.
   core.String? etag;
 
-  GoogleCloudRecommenderV1MarkRecommendationDismissedRequest({
-    this.etag,
-  });
+  GoogleCloudRecommenderV1MarkRecommendationDismissedRequest({this.etag});
 
   GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
-      core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(etag: json_['etag'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-      };
+    if (etag != null) 'etag': etag!,
+  };
 }
 
 /// Request for the `MarkRecommendationFailed` Method.
@@ -3470,7 +3526,7 @@ class GoogleCloudRecommenderV1Operation {
   /// exact match, use path_filters. When both path_filters and
   /// path_value_matchers are set, an implicit AND must be performed.
   core.Map<core.String, GoogleCloudRecommenderV1ValueMatcher>?
-      pathValueMatchers;
+  pathValueMatchers;
 
   /// Contains the fully qualified resource name.
   ///
@@ -3528,44 +3584,48 @@ class GoogleCloudRecommenderV1Operation {
   });
 
   GoogleCloudRecommenderV1Operation.fromJson(core.Map json_)
-      : this(
-          action: json_['action'] as core.String?,
-          path: json_['path'] as core.String?,
-          pathFilters: json_.containsKey('pathFilters')
-              ? json_['pathFilters'] as core.Map<core.String, core.dynamic>
-              : null,
-          pathValueMatchers: (json_['pathValueMatchers']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudRecommenderV1ValueMatcher.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        action: json_['action'] as core.String?,
+        path: json_['path'] as core.String?,
+        pathFilters:
+            json_.containsKey('pathFilters')
+                ? json_['pathFilters'] as core.Map<core.String, core.dynamic>
+                : null,
+        pathValueMatchers: (json_['pathValueMatchers']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudRecommenderV1ValueMatcher.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          resource: json_['resource'] as core.String?,
-          resourceType: json_['resourceType'] as core.String?,
-          sourcePath: json_['sourcePath'] as core.String?,
-          sourceResource: json_['sourceResource'] as core.String?,
-          value: json_['value'],
-          valueMatcher: json_.containsKey('valueMatcher')
-              ? GoogleCloudRecommenderV1ValueMatcher.fromJson(
-                  json_['valueMatcher'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        resource: json_['resource'] as core.String?,
+        resourceType: json_['resourceType'] as core.String?,
+        sourcePath: json_['sourcePath'] as core.String?,
+        sourceResource: json_['sourceResource'] as core.String?,
+        value: json_['value'],
+        valueMatcher:
+            json_.containsKey('valueMatcher')
+                ? GoogleCloudRecommenderV1ValueMatcher.fromJson(
+                  json_['valueMatcher'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (path != null) 'path': path!,
-        if (pathFilters != null) 'pathFilters': pathFilters!,
-        if (pathValueMatchers != null) 'pathValueMatchers': pathValueMatchers!,
-        if (resource != null) 'resource': resource!,
-        if (resourceType != null) 'resourceType': resourceType!,
-        if (sourcePath != null) 'sourcePath': sourcePath!,
-        if (sourceResource != null) 'sourceResource': sourceResource!,
-        if (value != null) 'value': value!,
-        if (valueMatcher != null) 'valueMatcher': valueMatcher!,
-      };
+    if (action != null) 'action': action!,
+    if (path != null) 'path': path!,
+    if (pathFilters != null) 'pathFilters': pathFilters!,
+    if (pathValueMatchers != null) 'pathValueMatchers': pathValueMatchers!,
+    if (resource != null) 'resource': resource!,
+    if (resourceType != null) 'resourceType': resourceType!,
+    if (sourcePath != null) 'sourcePath': sourcePath!,
+    if (sourceResource != null) 'sourceResource': sourceResource!,
+    if (value != null) 'value': value!,
+    if (valueMatcher != null) 'valueMatcher': valueMatcher!,
+  };
 }
 
 /// Group of operations that need to be performed atomically.
@@ -3575,21 +3635,23 @@ class GoogleCloudRecommenderV1OperationGroup {
   /// Loosely based on RFC6902 and should be performed in the order they appear.
   core.List<GoogleCloudRecommenderV1Operation>? operations;
 
-  GoogleCloudRecommenderV1OperationGroup({
-    this.operations,
-  });
+  GoogleCloudRecommenderV1OperationGroup({this.operations});
 
   GoogleCloudRecommenderV1OperationGroup.fromJson(core.Map json_)
-      : this(
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleCloudRecommenderV1Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRecommenderV1Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operations != null) 'operations': operations!,
-      };
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// A recommendation along with a suggested action.
@@ -3605,7 +3667,7 @@ class GoogleCloudRecommenderV1Recommendation {
 
   /// Insights that led to this recommendation.
   core.List<GoogleCloudRecommenderV1RecommendationInsightReference>?
-      associatedInsights;
+  associatedInsights;
 
   /// Content of the recommendation describing recommended changes to resources.
   GoogleCloudRecommenderV1RecommendationContent? content;
@@ -3685,57 +3747,70 @@ class GoogleCloudRecommenderV1Recommendation {
   });
 
   GoogleCloudRecommenderV1Recommendation.fromJson(core.Map json_)
-      : this(
-          additionalImpact: (json_['additionalImpact'] as core.List?)
-              ?.map((value) => GoogleCloudRecommenderV1Impact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          associatedInsights: (json_['associatedInsights'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRecommenderV1RecommendationInsightReference
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          content: json_.containsKey('content')
-              ? GoogleCloudRecommenderV1RecommendationContent.fromJson(
-                  json_['content'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          lastRefreshTime: json_['lastRefreshTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          primaryImpact: json_.containsKey('primaryImpact')
-              ? GoogleCloudRecommenderV1Impact.fromJson(
-                  json_['primaryImpact'] as core.Map<core.String, core.dynamic>)
-              : null,
-          priority: json_['priority'] as core.String?,
-          recommenderSubtype: json_['recommenderSubtype'] as core.String?,
-          stateInfo: json_.containsKey('stateInfo')
-              ? GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(
-                  json_['stateInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          targetResources: (json_['targetResources'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          xorGroupId: json_['xorGroupId'] as core.String?,
-        );
+    : this(
+        additionalImpact:
+            (json_['additionalImpact'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRecommenderV1Impact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        associatedInsights:
+            (json_['associatedInsights'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRecommenderV1RecommendationInsightReference.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        content:
+            json_.containsKey('content')
+                ? GoogleCloudRecommenderV1RecommendationContent.fromJson(
+                  json_['content'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        lastRefreshTime: json_['lastRefreshTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        primaryImpact:
+            json_.containsKey('primaryImpact')
+                ? GoogleCloudRecommenderV1Impact.fromJson(
+                  json_['primaryImpact'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        priority: json_['priority'] as core.String?,
+        recommenderSubtype: json_['recommenderSubtype'] as core.String?,
+        stateInfo:
+            json_.containsKey('stateInfo')
+                ? GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(
+                  json_['stateInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        targetResources:
+            (json_['targetResources'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        xorGroupId: json_['xorGroupId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalImpact != null) 'additionalImpact': additionalImpact!,
-        if (associatedInsights != null)
-          'associatedInsights': associatedInsights!,
-        if (content != null) 'content': content!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
-        if (name != null) 'name': name!,
-        if (primaryImpact != null) 'primaryImpact': primaryImpact!,
-        if (priority != null) 'priority': priority!,
-        if (recommenderSubtype != null)
-          'recommenderSubtype': recommenderSubtype!,
-        if (stateInfo != null) 'stateInfo': stateInfo!,
-        if (targetResources != null) 'targetResources': targetResources!,
-        if (xorGroupId != null) 'xorGroupId': xorGroupId!,
-      };
+    if (additionalImpact != null) 'additionalImpact': additionalImpact!,
+    if (associatedInsights != null) 'associatedInsights': associatedInsights!,
+    if (content != null) 'content': content!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
+    if (name != null) 'name': name!,
+    if (primaryImpact != null) 'primaryImpact': primaryImpact!,
+    if (priority != null) 'priority': priority!,
+    if (recommenderSubtype != null) 'recommenderSubtype': recommenderSubtype!,
+    if (stateInfo != null) 'stateInfo': stateInfo!,
+    if (targetResources != null) 'targetResources': targetResources!,
+    if (xorGroupId != null) 'xorGroupId': xorGroupId!,
+  };
 }
 
 /// Contains what resources are changing and how they are changing.
@@ -3757,20 +3832,25 @@ class GoogleCloudRecommenderV1RecommendationContent {
   });
 
   GoogleCloudRecommenderV1RecommendationContent.fromJson(core.Map json_)
-      : this(
-          operationGroups: (json_['operationGroups'] as core.List?)
-              ?.map((value) => GoogleCloudRecommenderV1OperationGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          overview: json_.containsKey('overview')
-              ? json_['overview'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        operationGroups:
+            (json_['operationGroups'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRecommenderV1OperationGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        overview:
+            json_.containsKey('overview')
+                ? json_['overview'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operationGroups != null) 'operationGroups': operationGroups!,
-        if (overview != null) 'overview': overview!,
-      };
+    if (operationGroups != null) 'operationGroups': operationGroups!,
+    if (overview != null) 'overview': overview!,
+  };
 }
 
 /// Reference to an associated insight.
@@ -3779,19 +3859,15 @@ class GoogleCloudRecommenderV1RecommendationInsightReference {
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/insights/\[INSIGHT_ID\]
   core.String? insight;
 
-  GoogleCloudRecommenderV1RecommendationInsightReference({
-    this.insight,
-  });
+  GoogleCloudRecommenderV1RecommendationInsightReference({this.insight});
 
   GoogleCloudRecommenderV1RecommendationInsightReference.fromJson(
-      core.Map json_)
-      : this(
-          insight: json_['insight'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(insight: json_['insight'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (insight != null) 'insight': insight!,
-      };
+    if (insight != null) 'insight': insight!,
+  };
 }
 
 /// Information for state.
@@ -3827,22 +3903,17 @@ class GoogleCloudRecommenderV1RecommendationStateInfo {
   });
 
   GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(core.Map json_)
-      : this(
-          state: json_['state'] as core.String?,
-          stateMetadata:
-              (json_['stateMetadata'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        state: json_['state'] as core.String?,
+        stateMetadata: (json_['stateMetadata']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (state != null) 'state': state!,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-      };
+    if (state != null) 'state': state!,
+    if (stateMetadata != null) 'stateMetadata': stateMetadata!,
+  };
 }
 
 /// Configuration for a Recommender.
@@ -3875,7 +3946,7 @@ class GoogleCloudRecommenderV1RecommenderConfig {
   /// RecommenderGenerationConfig which configures the Generation of
   /// recommendations for this recommender.
   GoogleCloudRecommenderV1RecommenderGenerationConfig?
-      recommenderGenerationConfig;
+  recommenderGenerationConfig;
 
   /// The revision ID of the config.
   ///
@@ -3899,38 +3970,34 @@ class GoogleCloudRecommenderV1RecommenderConfig {
   });
 
   GoogleCloudRecommenderV1RecommenderConfig.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          recommenderGenerationConfig: json_
-                  .containsKey('recommenderGenerationConfig')
-              ? GoogleCloudRecommenderV1RecommenderGenerationConfig.fromJson(
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        recommenderGenerationConfig:
+            json_.containsKey('recommenderGenerationConfig')
+                ? GoogleCloudRecommenderV1RecommenderGenerationConfig.fromJson(
                   json_['recommenderGenerationConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          revisionId: json_['revisionId'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        revisionId: json_['revisionId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (recommenderGenerationConfig != null)
-          'recommenderGenerationConfig': recommenderGenerationConfig!,
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (recommenderGenerationConfig != null)
+      'recommenderGenerationConfig': recommenderGenerationConfig!,
+    if (revisionId != null) 'revisionId': revisionId!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A Configuration to customize the generation of recommendations.
@@ -3946,20 +4013,19 @@ class GoogleCloudRecommenderV1RecommenderGenerationConfig {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? params;
 
-  GoogleCloudRecommenderV1RecommenderGenerationConfig({
-    this.params,
-  });
+  GoogleCloudRecommenderV1RecommenderGenerationConfig({this.params});
 
   GoogleCloudRecommenderV1RecommenderGenerationConfig.fromJson(core.Map json_)
-      : this(
-          params: json_.containsKey('params')
-              ? json_['params'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        params:
+            json_.containsKey('params')
+                ? json_['params'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (params != null) 'params': params!,
-      };
+    if (params != null) 'params': params!,
+  };
 }
 
 /// Contains information on the impact of a reliability recommendation.
@@ -3973,25 +4039,24 @@ class GoogleCloudRecommenderV1ReliabilityProjection {
   /// Reliability risks mitigated by this recommendation.
   core.List<core.String>? risks;
 
-  GoogleCloudRecommenderV1ReliabilityProjection({
-    this.details,
-    this.risks,
-  });
+  GoogleCloudRecommenderV1ReliabilityProjection({this.details, this.risks});
 
   GoogleCloudRecommenderV1ReliabilityProjection.fromJson(core.Map json_)
-      : this(
-          details: json_.containsKey('details')
-              ? json_['details'] as core.Map<core.String, core.dynamic>
-              : null,
-          risks: (json_['risks'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        details:
+            json_.containsKey('details')
+                ? json_['details'] as core.Map<core.String, core.dynamic>
+                : null,
+        risks:
+            (json_['risks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (risks != null) 'risks': risks!,
-      };
+    if (details != null) 'details': details!,
+    if (risks != null) 'risks': risks!,
+  };
 }
 
 /// Contains various ways of describing the impact on Security.
@@ -4002,20 +4067,19 @@ class GoogleCloudRecommenderV1SecurityProjection {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? details;
 
-  GoogleCloudRecommenderV1SecurityProjection({
-    this.details,
-  });
+  GoogleCloudRecommenderV1SecurityProjection({this.details});
 
   GoogleCloudRecommenderV1SecurityProjection.fromJson(core.Map json_)
-      : this(
-          details: json_.containsKey('details')
-              ? json_['details'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        details:
+            json_.containsKey('details')
+                ? json_['details'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-      };
+    if (details != null) 'details': details!,
+  };
 }
 
 /// Contains metadata about how much sustainability a recommendation can save or
@@ -4035,15 +4099,15 @@ class GoogleCloudRecommenderV1SustainabilityProjection {
   });
 
   GoogleCloudRecommenderV1SustainabilityProjection.fromJson(core.Map json_)
-      : this(
-          duration: json_['duration'] as core.String?,
-          kgCO2e: (json_['kgCO2e'] as core.num?)?.toDouble(),
-        );
+    : this(
+        duration: json_['duration'] as core.String?,
+        kgCO2e: (json_['kgCO2e'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (kgCO2e != null) 'kgCO2e': kgCO2e!,
-      };
+    if (duration != null) 'duration': duration!,
+    if (kgCO2e != null) 'kgCO2e': kgCO2e!,
+  };
 }
 
 /// Contains various matching options for values for a GCP resource field.
@@ -4055,18 +4119,14 @@ class GoogleCloudRecommenderV1ValueMatcher {
   /// RE2::FullMatch
   core.String? matchesPattern;
 
-  GoogleCloudRecommenderV1ValueMatcher({
-    this.matchesPattern,
-  });
+  GoogleCloudRecommenderV1ValueMatcher({this.matchesPattern});
 
   GoogleCloudRecommenderV1ValueMatcher.fromJson(core.Map json_)
-      : this(
-          matchesPattern: json_['matchesPattern'] as core.String?,
-        );
+    : this(matchesPattern: json_['matchesPattern'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (matchesPattern != null) 'matchesPattern': matchesPattern!,
-      };
+    if (matchesPattern != null) 'matchesPattern': matchesPattern!,
+  };
 }
 
 /// Represents an amount of money with its currency type.

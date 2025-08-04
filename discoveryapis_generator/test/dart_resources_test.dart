@@ -55,19 +55,15 @@ void main() {
           'any': {'type': 'any'},
           'labels': {
             'type': 'array',
-            'items': {
-              'type': 'integer',
-            },
+            'items': {'type': 'integer'},
           },
           'properties': {
             'type': 'object',
-            'additionalProperties': {
-              'type': 'string',
-            },
+            'additionalProperties': {'type': 'string'},
           },
         },
       },
-    }
+    },
   };
 
   withParsedDB(schema, (DartSchemaTypeDB db) {
@@ -100,11 +96,7 @@ void main() {
           'path': 'foo$i/{id$i}',
           'httpMethod': 'GET',
           'parameters': {
-            'id$i': {
-              'type': 'string',
-              'required': true,
-              'location': 'path',
-            },
+            'id$i': {'type': 'string', 'required': true, 'location': 'path'},
             'reapetedPathParam$i': {
               'type': 'string',
               'required': true,
@@ -116,7 +108,7 @@ void main() {
               'required': true,
               'repeated': true,
               'location': 'query',
-            }
+            },
           },
         },
       };
@@ -136,13 +128,17 @@ void main() {
       expect(foo, isNotNull);
       expect(foo.urlPattern.parts, hasLength(2));
       expect(foo.urlPattern.parts[0] is StringPart, isTrue);
-      expect((foo.urlPattern.parts[0] as StringPart).staticString,
-          equals('foo$i/'));
+      expect(
+        (foo.urlPattern.parts[0] as StringPart).staticString,
+        equals('foo$i/'),
+      );
       expect(foo.urlPattern.parts[1] is VariableExpression, isTrue);
       expect(foo.urlPattern.parts[1].templateVar, equals('id$i'));
       expect(foo.httpMethod, equals('GET'));
       expect(
-          foo.parameters, hasLength(3 + reservedMethodParameterNames.length));
+        foo.parameters,
+        hasLength(3 + reservedMethodParameterNames.length),
+      );
 
       final id = foo.parameters[0];
       expect(id, isNotNull);
@@ -155,8 +151,10 @@ void main() {
       expect(repeatedPathParam, isNotNull);
       expect(repeatedPathParam.name.name, equals('reapetedPathParam$i'));
       expect(repeatedPathParam.type is UnnamedArrayType, isTrue);
-      expect((repeatedPathParam.type as UnnamedArrayType).innerType,
-          equals(db.stringType));
+      expect(
+        (repeatedPathParam.type as UnnamedArrayType).innerType,
+        equals(db.stringType),
+      );
       expect(repeatedPathParam.required, isTrue);
       expect(repeatedPathParam.encodedInPath, isTrue);
 
@@ -164,8 +162,10 @@ void main() {
       expect(repeatedQueryParam, isNotNull);
       expect(repeatedQueryParam.name.name, equals('reapetedQueryParam$i'));
       expect(repeatedQueryParam.type is UnnamedArrayType, isTrue);
-      expect((repeatedQueryParam.type as UnnamedArrayType).innerType,
-          equals(db.stringType));
+      expect(
+        (repeatedQueryParam.type as UnnamedArrayType).innerType,
+        equals(db.stringType),
+      );
       expect(repeatedQueryParam.required, isTrue);
       expect(repeatedQueryParam.encodedInPath, isFalse);
 
@@ -189,12 +189,8 @@ void main() {
         final subResources = buildResources('${i}L$level', level: level + 1);
 
         final resources = {
-          'resA$i': {
-            'methods': methods,
-          },
-          'resB$i': {
-            'methods': methods,
-          },
+          'resA$i': {'methods': methods},
+          'resB$i': {'methods': methods},
         };
         if (subResources != null) {
           resources['resA$i']!['resources'] = subResources;
@@ -218,15 +214,23 @@ void main() {
         expect(abc, isNotNull);
         expect(abc.className.name, equals('${parent}ResA${i}Resource'));
         checkMethods('${i}M$level', abc.methods);
-        checkResources('${i}L$level', '${parent}ResA$i', abc.subResources,
-            level: level + 1);
+        checkResources(
+          '${i}L$level',
+          '${parent}ResA$i',
+          abc.subResources,
+          level: level + 1,
+        );
 
         final def = resources.last;
         expect(def.className.name, equals('${parent}ResB${i}Resource'));
         expect(def, isNotNull);
         checkMethods('${i}M$level', def.methods);
-        checkResources('${i}L$level', '${parent}ResB$i', def.subResources,
-            level: level + 1);
+        checkResources(
+          '${i}L$level',
+          '${parent}ResB$i',
+          def.subResources,
+          level: level + 1,
+        );
       }
     }
 
@@ -242,38 +246,39 @@ void main() {
       });
 
       test('api-scopes', () {
-        withParsedApiResource(db, {
-          'name': 'apiname',
-          'version': 'apiversion',
-          'rootUrl': 'https://www.googleapis.com/',
-          'servicePath': 'mapsengine/v1/',
-          'auth': {
-            'oauth2': {
-              'scopes': {
-                'https://foo.com': {
-                  'description': 'com1',
+        withParsedApiResource(
+          db,
+          {
+            'name': 'apiname',
+            'version': 'apiversion',
+            'rootUrl': 'https://www.googleapis.com/',
+            'servicePath': 'mapsengine/v1/',
+            'auth': {
+              'oauth2': {
+                'scopes': {
+                  'https://foo.com': {'description': 'com1'},
+                  'https://bar.com': {'description': 'com2'},
                 },
-                'https://bar.com': {
-                  'description': 'com2',
-                }
-              }
-            }
-          }
-        }, (DartApiClass apiClass) {
-          expect(apiClass, isNotNull);
-          expect(apiClass.methods, isEmpty);
-          expect(apiClass.subResources, isEmpty);
-          expect(apiClass.scopes, hasLength(2));
-          expect(apiClass.scopes[0].url, equals('https://bar.com'));
-          expect(apiClass.scopes[0].comment.rawComment, equals('com2'));
-          expect(apiClass.scopes[1].url, equals('https://foo.com'));
-          expect(apiClass.scopes[1].comment.rawComment, equals('com1'));
-        });
+              },
+            },
+          },
+          (DartApiClass apiClass) {
+            expect(apiClass, isNotNull);
+            expect(apiClass.methods, isEmpty);
+            expect(apiClass.subResources, isEmpty);
+            expect(apiClass.scopes, hasLength(2));
+            expect(apiClass.scopes[0].url, equals('https://bar.com'));
+            expect(apiClass.scopes[0].comment.rawComment, equals('com2'));
+            expect(apiClass.scopes[1].url, equals('https://foo.com'));
+            expect(apiClass.scopes[1].comment.rawComment, equals('com1'));
+          },
+        );
       });
 
       test('api-methods', () {
-        withParsedApiResource(db, buildApi('2', methods: buildMethods('3')),
-            (DartApiClass apiClass) {
+        withParsedApiResource(db, buildApi('2', methods: buildMethods('3')), (
+          DartApiClass apiClass,
+        ) {
           expect(apiClass, isNotNull);
           checkApi('2', apiClass);
           checkMethods('3', apiClass.methods);
@@ -283,15 +288,19 @@ void main() {
 
       test('api-resources-methods', () {
         withParsedApiResource(
-            db,
-            buildApi('4',
-                methods: buildMethods('5'),
-                resources: buildResources('6')), (DartApiClass apiClass) {
-          expect(apiClass, isNotNull);
-          checkApi('4', apiClass);
-          checkMethods('5', apiClass.methods);
-          checkResources('6', '', apiClass.subResources);
-        });
+          db,
+          buildApi(
+            '4',
+            methods: buildMethods('5'),
+            resources: buildResources('6'),
+          ),
+          (DartApiClass apiClass) {
+            expect(apiClass, isNotNull);
+            checkApi('4', apiClass);
+            checkMethods('5', apiClass.methods);
+            checkResources('6', '', apiClass.subResources);
+          },
+        );
       });
     });
   });

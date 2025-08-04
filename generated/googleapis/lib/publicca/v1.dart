@@ -54,11 +54,16 @@ class PublicCertificateAuthorityApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  PublicCertificateAuthorityApi(http.Client client,
-      {core.String rootUrl = 'https://publicca.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  PublicCertificateAuthorityApi(
+    http.Client client, {
+    core.String rootUrl = 'https://publicca.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -83,7 +88,7 @@ class ProjectsLocationsExternalAccountKeysResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsExternalAccountKeysResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new ExternalAccountKey bound to the project.
   ///
@@ -126,7 +131,8 @@ class ProjectsLocationsExternalAccountKeysResource {
       queryParams: queryParams_,
     );
     return ExternalAccountKey.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -144,8 +150,10 @@ class ExternalAccountKey {
   core.List<core.int> get b64MacKeyAsBytes => convert.base64.decode(b64MacKey!);
 
   set b64MacKeyAsBytes(core.List<core.int> bytes_) {
-    b64MacKey =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    b64MacKey = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Key ID.
@@ -163,22 +171,18 @@ class ExternalAccountKey {
   /// Output only.
   core.String? name;
 
-  ExternalAccountKey({
-    this.b64MacKey,
-    this.keyId,
-    this.name,
-  });
+  ExternalAccountKey({this.b64MacKey, this.keyId, this.name});
 
   ExternalAccountKey.fromJson(core.Map json_)
-      : this(
-          b64MacKey: json_['b64MacKey'] as core.String?,
-          keyId: json_['keyId'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        b64MacKey: json_['b64MacKey'] as core.String?,
+        keyId: json_['keyId'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (b64MacKey != null) 'b64MacKey': b64MacKey!,
-        if (keyId != null) 'keyId': keyId!,
-        if (name != null) 'name': name!,
-      };
+    if (b64MacKey != null) 'b64MacKey': b64MacKey!,
+    if (keyId != null) 'keyId': keyId!,
+    if (name != null) 'name': name!,
+  };
 }

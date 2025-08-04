@@ -63,11 +63,16 @@ class PubsubLiteApi {
   CursorResource get cursor => CursorResource(_requester);
   TopicStatsResource get topicStats => TopicStatsResource(_requester);
 
-  PubsubLiteApi(http.Client client,
-      {core.String rootUrl = 'https://pubsublite.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  PubsubLiteApi(
+    http.Client client, {
+    core.String rootUrl = 'https://pubsublite.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class AdminResource {
@@ -100,14 +105,14 @@ class AdminProjectsLocationsResource {
       AdminProjectsLocationsTopicsResource(_requester);
 
   AdminProjectsLocationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class AdminProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   AdminProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -181,10 +186,7 @@ class AdminProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -220,10 +222,7 @@ class AdminProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -285,7 +284,8 @@ class AdminProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -296,7 +296,7 @@ class AdminProjectsLocationsReservationsResource {
       AdminProjectsLocationsReservationsTopicsResource(_requester);
 
   AdminProjectsLocationsReservationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new reservation.
   ///
@@ -344,7 +344,8 @@ class AdminProjectsLocationsReservationsResource {
       queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified reservation.
@@ -366,10 +367,7 @@ class AdminProjectsLocationsReservationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -420,7 +418,8 @@ class AdminProjectsLocationsReservationsResource {
       queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of reservations for the given project.
@@ -470,7 +469,8 @@ class AdminProjectsLocationsReservationsResource {
       queryParams: queryParams_,
     );
     return ListReservationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates properties of the specified reservation.
@@ -518,7 +518,8 @@ class AdminProjectsLocationsReservationsResource {
       queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -526,7 +527,7 @@ class AdminProjectsLocationsReservationsTopicsResource {
   final commons.ApiRequester _requester;
 
   AdminProjectsLocationsReservationsTopicsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the topics attached to the specified reservation.
   ///
@@ -577,7 +578,8 @@ class AdminProjectsLocationsReservationsTopicsResource {
       queryParams: queryParams_,
     );
     return ListReservationTopicsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -585,7 +587,7 @@ class AdminProjectsLocationsSubscriptionsResource {
   final commons.ApiRequester _requester;
 
   AdminProjectsLocationsSubscriptionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new subscription.
   ///
@@ -641,7 +643,8 @@ class AdminProjectsLocationsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified subscription.
@@ -662,10 +665,7 @@ class AdminProjectsLocationsSubscriptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -715,7 +715,8 @@ class AdminProjectsLocationsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of subscriptions for the given project.
@@ -766,7 +767,8 @@ class AdminProjectsLocationsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return ListSubscriptionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates properties of the specified subscription.
@@ -814,7 +816,8 @@ class AdminProjectsLocationsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Performs an out-of-band seek for a subscription to a specified target,
@@ -882,7 +885,7 @@ class AdminProjectsLocationsTopicsResource {
       AdminProjectsLocationsTopicsSubscriptionsResource(_requester);
 
   AdminProjectsLocationsTopicsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new topic.
   ///
@@ -949,10 +952,7 @@ class AdminProjectsLocationsTopicsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -985,10 +985,7 @@ class AdminProjectsLocationsTopicsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Topic> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Topic> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1037,7 +1034,8 @@ class AdminProjectsLocationsTopicsResource {
       queryParams: queryParams_,
     );
     return TopicPartitions.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the list of topics for the given project.
@@ -1087,7 +1085,8 @@ class AdminProjectsLocationsTopicsResource {
       queryParams: queryParams_,
     );
     return ListTopicsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates properties of the specified topic.
@@ -1141,7 +1140,7 @@ class AdminProjectsLocationsTopicsSubscriptionsResource {
   final commons.ApiRequester _requester;
 
   AdminProjectsLocationsTopicsSubscriptionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the subscriptions attached to the specified topic.
   ///
@@ -1190,7 +1189,8 @@ class AdminProjectsLocationsTopicsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return ListTopicSubscriptionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1218,7 +1218,7 @@ class CursorProjectsLocationsResource {
       CursorProjectsLocationsSubscriptionsResource(_requester);
 
   CursorProjectsLocationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class CursorProjectsLocationsSubscriptionsResource {
@@ -1228,7 +1228,7 @@ class CursorProjectsLocationsSubscriptionsResource {
       CursorProjectsLocationsSubscriptionsCursorsResource(_requester);
 
   CursorProjectsLocationsSubscriptionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Updates the committed cursor.
   ///
@@ -1270,7 +1270,8 @@ class CursorProjectsLocationsSubscriptionsResource {
       queryParams: queryParams_,
     );
     return CommitCursorResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1278,8 +1279,8 @@ class CursorProjectsLocationsSubscriptionsCursorsResource {
   final commons.ApiRequester _requester;
 
   CursorProjectsLocationsSubscriptionsCursorsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Returns all committed cursor information for a subscription.
   ///
@@ -1330,7 +1331,8 @@ class CursorProjectsLocationsSubscriptionsCursorsResource {
       queryParams: queryParams_,
     );
     return ListPartitionCursorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1359,14 +1361,14 @@ class TopicStatsProjectsLocationsResource {
       TopicStatsProjectsLocationsTopicsResource(_requester);
 
   TopicStatsProjectsLocationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class TopicStatsProjectsLocationsTopicsResource {
   final commons.ApiRequester _requester;
 
   TopicStatsProjectsLocationsTopicsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Compute the head cursor for the partition.
   ///
@@ -1414,7 +1416,8 @@ class TopicStatsProjectsLocationsTopicsResource {
       queryParams: queryParams_,
     );
     return ComputeHeadCursorResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Compute statistics about a range of messages in a given topic and
@@ -1448,7 +1451,8 @@ class TopicStatsProjectsLocationsTopicsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/topicStats/' +
+    final url_ =
+        'v1/topicStats/' +
         core.Uri.encodeFull('$topic') +
         ':computeMessageStats';
 
@@ -1459,7 +1463,8 @@ class TopicStatsProjectsLocationsTopicsResource {
       queryParams: queryParams_,
     );
     return ComputeMessageStatsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Compute the corresponding cursor for a publish or event time in a topic
@@ -1503,7 +1508,8 @@ class TopicStatsProjectsLocationsTopicsResource {
       queryParams: queryParams_,
     );
     return ComputeTimeCursorResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1522,22 +1528,18 @@ class Capacity {
   /// Must be \>= 4 and \<= 32.
   core.int? subscribeMibPerSec;
 
-  Capacity({
-    this.publishMibPerSec,
-    this.subscribeMibPerSec,
-  });
+  Capacity({this.publishMibPerSec, this.subscribeMibPerSec});
 
   Capacity.fromJson(core.Map json_)
-      : this(
-          publishMibPerSec: json_['publishMibPerSec'] as core.int?,
-          subscribeMibPerSec: json_['subscribeMibPerSec'] as core.int?,
-        );
+    : this(
+        publishMibPerSec: json_['publishMibPerSec'] as core.int?,
+        subscribeMibPerSec: json_['subscribeMibPerSec'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (publishMibPerSec != null) 'publishMibPerSec': publishMibPerSec!,
-        if (subscribeMibPerSec != null)
-          'subscribeMibPerSec': subscribeMibPerSec!,
-      };
+    if (publishMibPerSec != null) 'publishMibPerSec': publishMibPerSec!,
+    if (subscribeMibPerSec != null) 'subscribeMibPerSec': subscribeMibPerSec!,
+  };
 }
 
 /// Request for CommitCursor.
@@ -1551,24 +1553,23 @@ class CommitCursorRequest {
   /// topic.num_partitions).
   core.String? partition;
 
-  CommitCursorRequest({
-    this.cursor,
-    this.partition,
-  });
+  CommitCursorRequest({this.cursor, this.partition});
 
   CommitCursorRequest.fromJson(core.Map json_)
-      : this(
-          cursor: json_.containsKey('cursor')
-              ? Cursor.fromJson(
-                  json_['cursor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          partition: json_['partition'] as core.String?,
-        );
+    : this(
+        cursor:
+            json_.containsKey('cursor')
+                ? Cursor.fromJson(
+                  json_['cursor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        partition: json_['partition'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cursor != null) 'cursor': cursor!,
-        if (partition != null) 'partition': partition!,
-      };
+    if (cursor != null) 'cursor': cursor!,
+    if (partition != null) 'partition': partition!,
+  };
 }
 
 /// Response for CommitCursor.
@@ -1581,18 +1582,14 @@ class ComputeHeadCursorRequest {
   /// Required.
   core.String? partition;
 
-  ComputeHeadCursorRequest({
-    this.partition,
-  });
+  ComputeHeadCursorRequest({this.partition});
 
   ComputeHeadCursorRequest.fromJson(core.Map json_)
-      : this(
-          partition: json_['partition'] as core.String?,
-        );
+    : this(partition: json_['partition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (partition != null) 'partition': partition!,
-      };
+    if (partition != null) 'partition': partition!,
+  };
 }
 
 /// Response containing the head cursor for the requested topic and partition.
@@ -1600,21 +1597,21 @@ class ComputeHeadCursorResponse {
   /// The head cursor.
   Cursor? headCursor;
 
-  ComputeHeadCursorResponse({
-    this.headCursor,
-  });
+  ComputeHeadCursorResponse({this.headCursor});
 
   ComputeHeadCursorResponse.fromJson(core.Map json_)
-      : this(
-          headCursor: json_.containsKey('headCursor')
-              ? Cursor.fromJson(
-                  json_['headCursor'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        headCursor:
+            json_.containsKey('headCursor')
+                ? Cursor.fromJson(
+                  json_['headCursor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (headCursor != null) 'headCursor': headCursor!,
-      };
+    if (headCursor != null) 'headCursor': headCursor!,
+  };
 }
 
 /// Compute statistics about a range of messages in a given topic and partition.
@@ -1641,23 +1638,27 @@ class ComputeMessageStatsRequest {
   });
 
   ComputeMessageStatsRequest.fromJson(core.Map json_)
-      : this(
-          endCursor: json_.containsKey('endCursor')
-              ? Cursor.fromJson(
-                  json_['endCursor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          partition: json_['partition'] as core.String?,
-          startCursor: json_.containsKey('startCursor')
-              ? Cursor.fromJson(
-                  json_['startCursor'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        endCursor:
+            json_.containsKey('endCursor')
+                ? Cursor.fromJson(
+                  json_['endCursor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        partition: json_['partition'] as core.String?,
+        startCursor:
+            json_.containsKey('startCursor')
+                ? Cursor.fromJson(
+                  json_['startCursor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endCursor != null) 'endCursor': endCursor!,
-        if (partition != null) 'partition': partition!,
-        if (startCursor != null) 'startCursor': startCursor!,
-      };
+    if (endCursor != null) 'endCursor': endCursor!,
+    if (partition != null) 'partition': partition!,
+    if (startCursor != null) 'startCursor': startCursor!,
+  };
 }
 
 /// Response containing stats for messages in the requested topic and partition.
@@ -1689,20 +1690,19 @@ class ComputeMessageStatsResponse {
   });
 
   ComputeMessageStatsResponse.fromJson(core.Map json_)
-      : this(
-          messageBytes: json_['messageBytes'] as core.String?,
-          messageCount: json_['messageCount'] as core.String?,
-          minimumEventTime: json_['minimumEventTime'] as core.String?,
-          minimumPublishTime: json_['minimumPublishTime'] as core.String?,
-        );
+    : this(
+        messageBytes: json_['messageBytes'] as core.String?,
+        messageCount: json_['messageCount'] as core.String?,
+        minimumEventTime: json_['minimumEventTime'] as core.String?,
+        minimumPublishTime: json_['minimumPublishTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (messageBytes != null) 'messageBytes': messageBytes!,
-        if (messageCount != null) 'messageCount': messageCount!,
-        if (minimumEventTime != null) 'minimumEventTime': minimumEventTime!,
-        if (minimumPublishTime != null)
-          'minimumPublishTime': minimumPublishTime!,
-      };
+    if (messageBytes != null) 'messageBytes': messageBytes!,
+    if (messageCount != null) 'messageCount': messageCount!,
+    if (minimumEventTime != null) 'minimumEventTime': minimumEventTime!,
+    if (minimumPublishTime != null) 'minimumPublishTime': minimumPublishTime!,
+  };
 }
 
 /// Compute the corresponding cursor for a publish or event time in a topic
@@ -1720,24 +1720,23 @@ class ComputeTimeCursorRequest {
   /// Required.
   TimeTarget? target;
 
-  ComputeTimeCursorRequest({
-    this.partition,
-    this.target,
-  });
+  ComputeTimeCursorRequest({this.partition, this.target});
 
   ComputeTimeCursorRequest.fromJson(core.Map json_)
-      : this(
-          partition: json_['partition'] as core.String?,
-          target: json_.containsKey('target')
-              ? TimeTarget.fromJson(
-                  json_['target'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        partition: json_['partition'] as core.String?,
+        target:
+            json_.containsKey('target')
+                ? TimeTarget.fromJson(
+                  json_['target'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (partition != null) 'partition': partition!,
-        if (target != null) 'target': target!,
-      };
+    if (partition != null) 'partition': partition!,
+    if (target != null) 'target': target!,
+  };
 }
 
 /// Response containing the cursor corresponding to a publish or event time in a
@@ -1750,21 +1749,21 @@ class ComputeTimeCursorResponse {
   /// is not present).
   Cursor? cursor;
 
-  ComputeTimeCursorResponse({
-    this.cursor,
-  });
+  ComputeTimeCursorResponse({this.cursor});
 
   ComputeTimeCursorResponse.fromJson(core.Map json_)
-      : this(
-          cursor: json_.containsKey('cursor')
-              ? Cursor.fromJson(
-                  json_['cursor'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        cursor:
+            json_.containsKey('cursor')
+                ? Cursor.fromJson(
+                  json_['cursor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cursor != null) 'cursor': cursor!,
-      };
+    if (cursor != null) 'cursor': cursor!,
+  };
 }
 
 /// A cursor that describes the position of a message within a topic partition.
@@ -1774,18 +1773,14 @@ class Cursor {
   /// Must be greater than or equal 0.
   core.String? offset;
 
-  Cursor({
-    this.offset,
-  });
+  Cursor({this.offset});
 
   Cursor.fromJson(core.Map json_)
-      : this(
-          offset: json_['offset'] as core.String?,
-        );
+    : this(offset: json_['offset'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (offset != null) 'offset': offset!,
-      };
+    if (offset != null) 'offset': offset!,
+  };
 }
 
 /// The settings for a subscription's message delivery.
@@ -1801,19 +1796,15 @@ class DeliveryConfig {
   /// This will result in higher end-to-end latency, but consistent delivery.
   core.String? deliveryRequirement;
 
-  DeliveryConfig({
-    this.deliveryRequirement,
-  });
+  DeliveryConfig({this.deliveryRequirement});
 
   DeliveryConfig.fromJson(core.Map json_)
-      : this(
-          deliveryRequirement: json_['deliveryRequirement'] as core.String?,
-        );
+    : this(deliveryRequirement: json_['deliveryRequirement'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deliveryRequirement != null)
-          'deliveryRequirement': deliveryRequirement!,
-      };
+    if (deliveryRequirement != null)
+      'deliveryRequirement': deliveryRequirement!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1884,22 +1875,24 @@ class ExportConfig {
   });
 
   ExportConfig.fromJson(core.Map json_)
-      : this(
-          currentState: json_['currentState'] as core.String?,
-          deadLetterTopic: json_['deadLetterTopic'] as core.String?,
-          desiredState: json_['desiredState'] as core.String?,
-          pubsubConfig: json_.containsKey('pubsubConfig')
-              ? PubSubConfig.fromJson(
-                  json_['pubsubConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        currentState: json_['currentState'] as core.String?,
+        deadLetterTopic: json_['deadLetterTopic'] as core.String?,
+        desiredState: json_['desiredState'] as core.String?,
+        pubsubConfig:
+            json_.containsKey('pubsubConfig')
+                ? PubSubConfig.fromJson(
+                  json_['pubsubConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentState != null) 'currentState': currentState!,
-        if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic!,
-        if (desiredState != null) 'desiredState': desiredState!,
-        if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!,
-      };
+    if (currentState != null) 'currentState': currentState!,
+    if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic!,
+    if (desiredState != null) 'desiredState': desiredState!,
+    if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1910,24 +1903,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// Response for ListPartitionCursors
@@ -1940,24 +1934,25 @@ class ListPartitionCursorsResponse {
   /// The partition cursors from this request.
   core.List<PartitionCursor>? partitionCursors;
 
-  ListPartitionCursorsResponse({
-    this.nextPageToken,
-    this.partitionCursors,
-  });
+  ListPartitionCursorsResponse({this.nextPageToken, this.partitionCursors});
 
   ListPartitionCursorsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          partitionCursors: (json_['partitionCursors'] as core.List?)
-              ?.map((value) => PartitionCursor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        partitionCursors:
+            (json_['partitionCursors'] as core.List?)
+                ?.map(
+                  (value) => PartitionCursor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (partitionCursors != null) 'partitionCursors': partitionCursors!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (partitionCursors != null) 'partitionCursors': partitionCursors!,
+  };
 }
 
 /// Response for ListReservationTopics.
@@ -1973,23 +1968,21 @@ class ListReservationTopicsResponse {
   /// The order of the topics is unspecified.
   core.List<core.String>? topics;
 
-  ListReservationTopicsResponse({
-    this.nextPageToken,
-    this.topics,
-  });
+  ListReservationTopicsResponse({this.nextPageToken, this.topics});
 
   ListReservationTopicsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          topics: (json_['topics'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        topics:
+            (json_['topics'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (topics != null) 'topics': topics!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (topics != null) 'topics': topics!,
+  };
 }
 
 /// Response for ListReservations.
@@ -2005,24 +1998,25 @@ class ListReservationsResponse {
   /// The order of the reservations is unspecified.
   core.List<Reservation>? reservations;
 
-  ListReservationsResponse({
-    this.nextPageToken,
-    this.reservations,
-  });
+  ListReservationsResponse({this.nextPageToken, this.reservations});
 
   ListReservationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          reservations: (json_['reservations'] as core.List?)
-              ?.map((value) => Reservation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        reservations:
+            (json_['reservations'] as core.List?)
+                ?.map(
+                  (value) => Reservation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (reservations != null) 'reservations': reservations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (reservations != null) 'reservations': reservations!,
+  };
 }
 
 /// Response for ListSubscriptions.
@@ -2038,24 +2032,25 @@ class ListSubscriptionsResponse {
   /// The order of the subscriptions is unspecified.
   core.List<Subscription>? subscriptions;
 
-  ListSubscriptionsResponse({
-    this.nextPageToken,
-    this.subscriptions,
-  });
+  ListSubscriptionsResponse({this.nextPageToken, this.subscriptions});
 
   ListSubscriptionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          subscriptions: (json_['subscriptions'] as core.List?)
-              ?.map((value) => Subscription.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        subscriptions:
+            (json_['subscriptions'] as core.List?)
+                ?.map(
+                  (value) => Subscription.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (subscriptions != null) 'subscriptions': subscriptions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (subscriptions != null) 'subscriptions': subscriptions!,
+  };
 }
 
 /// Response for ListTopicSubscriptions.
@@ -2071,23 +2066,21 @@ class ListTopicSubscriptionsResponse {
   /// The order of the subscriptions is unspecified.
   core.List<core.String>? subscriptions;
 
-  ListTopicSubscriptionsResponse({
-    this.nextPageToken,
-    this.subscriptions,
-  });
+  ListTopicSubscriptionsResponse({this.nextPageToken, this.subscriptions});
 
   ListTopicSubscriptionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          subscriptions: (json_['subscriptions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        subscriptions:
+            (json_['subscriptions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (subscriptions != null) 'subscriptions': subscriptions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (subscriptions != null) 'subscriptions': subscriptions!,
+  };
 }
 
 /// Response for ListTopics.
@@ -2103,24 +2096,25 @@ class ListTopicsResponse {
   /// The order of the topics is unspecified.
   core.List<Topic>? topics;
 
-  ListTopicsResponse({
-    this.nextPageToken,
-    this.topics,
-  });
+  ListTopicsResponse({this.nextPageToken, this.topics});
 
   ListTopicsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          topics: (json_['topics'] as core.List?)
-              ?.map((value) =>
-                  Topic.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        topics:
+            (json_['topics'] as core.List?)
+                ?.map(
+                  (value) => Topic.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (topics != null) 'topics': topics!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (topics != null) 'topics': topics!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2166,37 +2160,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// The settings for a topic's partitions.
@@ -2224,27 +2216,25 @@ class PartitionConfig {
   )
   core.int? scale;
 
-  PartitionConfig({
-    this.capacity,
-    this.count,
-    this.scale,
-  });
+  PartitionConfig({this.capacity, this.count, this.scale});
 
   PartitionConfig.fromJson(core.Map json_)
-      : this(
-          capacity: json_.containsKey('capacity')
-              ? Capacity.fromJson(
-                  json_['capacity'] as core.Map<core.String, core.dynamic>)
-              : null,
-          count: json_['count'] as core.String?,
-          scale: json_['scale'] as core.int?,
-        );
+    : this(
+        capacity:
+            json_.containsKey('capacity')
+                ? Capacity.fromJson(
+                  json_['capacity'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        count: json_['count'] as core.String?,
+        scale: json_['scale'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (capacity != null) 'capacity': capacity!,
-        if (count != null) 'count': count!,
-        if (scale != null) 'scale': scale!,
-      };
+    if (capacity != null) 'capacity': capacity!,
+    if (count != null) 'count': count!,
+    if (scale != null) 'scale': scale!,
+  };
 }
 
 /// A pair of a Cursor and the partition it is for.
@@ -2255,24 +2245,23 @@ class PartitionCursor {
   /// The partition this is for.
   core.String? partition;
 
-  PartitionCursor({
-    this.cursor,
-    this.partition,
-  });
+  PartitionCursor({this.cursor, this.partition});
 
   PartitionCursor.fromJson(core.Map json_)
-      : this(
-          cursor: json_.containsKey('cursor')
-              ? Cursor.fromJson(
-                  json_['cursor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          partition: json_['partition'] as core.String?,
-        );
+    : this(
+        cursor:
+            json_.containsKey('cursor')
+                ? Cursor.fromJson(
+                  json_['cursor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        partition: json_['partition'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cursor != null) 'cursor': cursor!,
-        if (partition != null) 'partition': partition!,
-      };
+    if (cursor != null) 'cursor': cursor!,
+    if (partition != null) 'partition': partition!,
+  };
 }
 
 /// Configuration for exporting to a Pub/Sub topic.
@@ -2283,18 +2272,14 @@ class PubSubConfig {
   /// may be changed.
   core.String? topic;
 
-  PubSubConfig({
-    this.topic,
-  });
+  PubSubConfig({this.topic});
 
   PubSubConfig.fromJson(core.Map json_)
-      : this(
-          topic: json_['topic'] as core.String?,
-        );
+    : this(topic: json_['topic'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (topic != null) 'topic': topic!,
-      };
+    if (topic != null) 'topic': topic!,
+  };
 }
 
 /// Metadata about a reservation resource.
@@ -2313,22 +2298,18 @@ class Reservation {
   /// reservation instead of being charged individually.
   core.String? throughputCapacity;
 
-  Reservation({
-    this.name,
-    this.throughputCapacity,
-  });
+  Reservation({this.name, this.throughputCapacity});
 
   Reservation.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          throughputCapacity: json_['throughputCapacity'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        throughputCapacity: json_['throughputCapacity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (throughputCapacity != null)
-          'throughputCapacity': throughputCapacity!,
-      };
+    if (name != null) 'name': name!,
+    if (throughputCapacity != null) 'throughputCapacity': throughputCapacity!,
+  };
 }
 
 /// The settings for this topic's Reservation usage.
@@ -2339,19 +2320,17 @@ class ReservationConfig {
   /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
   core.String? throughputReservation;
 
-  ReservationConfig({
-    this.throughputReservation,
-  });
+  ReservationConfig({this.throughputReservation});
 
   ReservationConfig.fromJson(core.Map json_)
-      : this(
-          throughputReservation: json_['throughputReservation'] as core.String?,
-        );
+    : this(
+        throughputReservation: json_['throughputReservation'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (throughputReservation != null)
-          'throughputReservation': throughputReservation!,
-      };
+    if (throughputReservation != null)
+      'throughputReservation': throughputReservation!,
+  };
 }
 
 /// The settings for a topic's message retention.
@@ -2369,21 +2348,18 @@ class RetentionConfig {
   /// partition is below `per_partition_bytes`.
   core.String? period;
 
-  RetentionConfig({
-    this.perPartitionBytes,
-    this.period,
-  });
+  RetentionConfig({this.perPartitionBytes, this.period});
 
   RetentionConfig.fromJson(core.Map json_)
-      : this(
-          perPartitionBytes: json_['perPartitionBytes'] as core.String?,
-          period: json_['period'] as core.String?,
-        );
+    : this(
+        perPartitionBytes: json_['perPartitionBytes'] as core.String?,
+        period: json_['period'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (perPartitionBytes != null) 'perPartitionBytes': perPartitionBytes!,
-        if (period != null) 'period': period!,
-      };
+    if (perPartitionBytes != null) 'perPartitionBytes': perPartitionBytes!,
+    if (period != null) 'period': period!,
+  };
 }
 
 /// Request for SeekSubscription.
@@ -2403,24 +2379,23 @@ class SeekSubscriptionRequest {
   /// backlog.
   TimeTarget? timeTarget;
 
-  SeekSubscriptionRequest({
-    this.namedTarget,
-    this.timeTarget,
-  });
+  SeekSubscriptionRequest({this.namedTarget, this.timeTarget});
 
   SeekSubscriptionRequest.fromJson(core.Map json_)
-      : this(
-          namedTarget: json_['namedTarget'] as core.String?,
-          timeTarget: json_.containsKey('timeTarget')
-              ? TimeTarget.fromJson(
-                  json_['timeTarget'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        namedTarget: json_['namedTarget'] as core.String?,
+        timeTarget:
+            json_.containsKey('timeTarget')
+                ? TimeTarget.fromJson(
+                  json_['timeTarget'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (namedTarget != null) 'namedTarget': namedTarget!,
-        if (timeTarget != null) 'timeTarget': timeTarget!,
-      };
+    if (namedTarget != null) 'namedTarget': namedTarget!,
+    if (timeTarget != null) 'timeTarget': timeTarget!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2453,33 +2428,33 @@ class Subscription {
   /// projects/{project_number}/locations/{location}/topics/{topic_id}
   core.String? topic;
 
-  Subscription({
-    this.deliveryConfig,
-    this.exportConfig,
-    this.name,
-    this.topic,
-  });
+  Subscription({this.deliveryConfig, this.exportConfig, this.name, this.topic});
 
   Subscription.fromJson(core.Map json_)
-      : this(
-          deliveryConfig: json_.containsKey('deliveryConfig')
-              ? DeliveryConfig.fromJson(json_['deliveryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          exportConfig: json_.containsKey('exportConfig')
-              ? ExportConfig.fromJson(
-                  json_['exportConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          topic: json_['topic'] as core.String?,
-        );
+    : this(
+        deliveryConfig:
+            json_.containsKey('deliveryConfig')
+                ? DeliveryConfig.fromJson(
+                  json_['deliveryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        exportConfig:
+            json_.containsKey('exportConfig')
+                ? ExportConfig.fromJson(
+                  json_['exportConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        topic: json_['topic'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deliveryConfig != null) 'deliveryConfig': deliveryConfig!,
-        if (exportConfig != null) 'exportConfig': exportConfig!,
-        if (name != null) 'name': name!,
-        if (topic != null) 'topic': topic!,
-      };
+    if (deliveryConfig != null) 'deliveryConfig': deliveryConfig!,
+    if (exportConfig != null) 'exportConfig': exportConfig!,
+    if (name != null) 'name': name!,
+    if (topic != null) 'topic': topic!,
+  };
 }
 
 /// A target publish or event time.
@@ -2502,21 +2477,18 @@ class TimeTarget {
   /// `publish_time`.
   core.String? publishTime;
 
-  TimeTarget({
-    this.eventTime,
-    this.publishTime,
-  });
+  TimeTarget({this.eventTime, this.publishTime});
 
   TimeTarget.fromJson(core.Map json_)
-      : this(
-          eventTime: json_['eventTime'] as core.String?,
-          publishTime: json_['publishTime'] as core.String?,
-        );
+    : this(
+        eventTime: json_['eventTime'] as core.String?,
+        publishTime: json_['publishTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eventTime != null) 'eventTime': eventTime!,
-        if (publishTime != null) 'publishTime': publishTime!,
-      };
+    if (eventTime != null) 'eventTime': eventTime!,
+    if (publishTime != null) 'publishTime': publishTime!,
+  };
 }
 
 /// Metadata about a topic resource.
@@ -2544,28 +2516,37 @@ class Topic {
   });
 
   Topic.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          partitionConfig: json_.containsKey('partitionConfig')
-              ? PartitionConfig.fromJson(json_['partitionConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          reservationConfig: json_.containsKey('reservationConfig')
-              ? ReservationConfig.fromJson(json_['reservationConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          retentionConfig: json_.containsKey('retentionConfig')
-              ? RetentionConfig.fromJson(json_['retentionConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        partitionConfig:
+            json_.containsKey('partitionConfig')
+                ? PartitionConfig.fromJson(
+                  json_['partitionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reservationConfig:
+            json_.containsKey('reservationConfig')
+                ? ReservationConfig.fromJson(
+                  json_['reservationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        retentionConfig:
+            json_.containsKey('retentionConfig')
+                ? RetentionConfig.fromJson(
+                  json_['retentionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (partitionConfig != null) 'partitionConfig': partitionConfig!,
-        if (reservationConfig != null) 'reservationConfig': reservationConfig!,
-        if (retentionConfig != null) 'retentionConfig': retentionConfig!,
-      };
+    if (name != null) 'name': name!,
+    if (partitionConfig != null) 'partitionConfig': partitionConfig!,
+    if (reservationConfig != null) 'reservationConfig': reservationConfig!,
+    if (retentionConfig != null) 'retentionConfig': retentionConfig!,
+  };
 }
 
 /// Response for GetTopicPartitions.
@@ -2573,16 +2554,12 @@ class TopicPartitions {
   /// The number of partitions in the topic.
   core.String? partitionCount;
 
-  TopicPartitions({
-    this.partitionCount,
-  });
+  TopicPartitions({this.partitionCount});
 
   TopicPartitions.fromJson(core.Map json_)
-      : this(
-          partitionCount: json_['partitionCount'] as core.String?,
-        );
+    : this(partitionCount: json_['partitionCount'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (partitionCount != null) 'partitionCount': partitionCount!,
-      };
+    if (partitionCount != null) 'partitionCount': partitionCount!,
+  };
 }

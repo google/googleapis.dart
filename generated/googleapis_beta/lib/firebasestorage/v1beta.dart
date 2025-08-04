@@ -54,11 +54,16 @@ class FirebasestorageApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  FirebasestorageApi(http.Client client,
-      {core.String rootUrl = 'https://firebasestorage.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  FirebasestorageApi(
+    http.Client client, {
+    core.String rootUrl = 'https://firebasestorage.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -140,7 +145,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return DefaultBucket.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -210,10 +216,7 @@ class ProjectsBucketsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Bucket> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Bucket> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -274,7 +277,8 @@ class ProjectsBucketsResource {
       queryParams: queryParams_,
     );
     return ListBucketsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Unlinks a linked Google Cloud Storage bucket from a Firebase project.
@@ -324,7 +328,7 @@ class ProjectsDefaultBucketResource {
   final commons.ApiRequester _requester;
 
   ProjectsDefaultBucketResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Spark tier-eligible Cloud Storage bucket and links it to your
   /// Firebase project.
@@ -370,7 +374,8 @@ class ProjectsDefaultBucketResource {
       queryParams: queryParams_,
     );
     return DefaultBucket.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -385,18 +390,13 @@ class Bucket {
   /// Output only.
   core.String? name;
 
-  Bucket({
-    this.name,
-  });
+  Bucket({this.name});
 
-  Bucket.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+  Bucket.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Spark tier-eligible Cloud Storage bucket.
@@ -426,30 +426,27 @@ class DefaultBucket {
   /// Immutable.
   core.String? storageClass;
 
-  DefaultBucket({
-    this.bucket,
-    this.location,
-    this.name,
-    this.storageClass,
-  });
+  DefaultBucket({this.bucket, this.location, this.name, this.storageClass});
 
   DefaultBucket.fromJson(core.Map json_)
-      : this(
-          bucket: json_.containsKey('bucket')
-              ? Bucket.fromJson(
-                  json_['bucket'] as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_['location'] as core.String?,
-          name: json_['name'] as core.String?,
-          storageClass: json_['storageClass'] as core.String?,
-        );
+    : this(
+        bucket:
+            json_.containsKey('bucket')
+                ? Bucket.fromJson(
+                  json_['bucket'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location: json_['location'] as core.String?,
+        name: json_['name'] as core.String?,
+        storageClass: json_['storageClass'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucket != null) 'bucket': bucket!,
-        if (location != null) 'location': location!,
-        if (name != null) 'name': name!,
-        if (storageClass != null) 'storageClass': storageClass!,
-      };
+    if (bucket != null) 'bucket': bucket!,
+    if (location != null) 'location': location!,
+    if (name != null) 'name': name!,
+    if (storageClass != null) 'storageClass': storageClass!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -470,24 +467,25 @@ class ListBucketsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListBucketsResponse({
-    this.buckets,
-    this.nextPageToken,
-  });
+  ListBucketsResponse({this.buckets, this.nextPageToken});
 
   ListBucketsResponse.fromJson(core.Map json_)
-      : this(
-          buckets: (json_['buckets'] as core.List?)
-              ?.map((value) =>
-                  Bucket.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        buckets:
+            (json_['buckets'] as core.List?)
+                ?.map(
+                  (value) => Bucket.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buckets != null) 'buckets': buckets!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (buckets != null) 'buckets': buckets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The request used to unlink a Google Cloud Storage bucket from a Firebase

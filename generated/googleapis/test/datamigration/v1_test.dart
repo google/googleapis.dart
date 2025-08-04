@@ -41,30 +41,18 @@ api.AlloyDbConnectionProfile buildAlloyDbConnectionProfile() {
 void checkAlloyDbConnectionProfile(api.AlloyDbConnectionProfile o) {
   buildCounterAlloyDbConnectionProfile++;
   if (buildCounterAlloyDbConnectionProfile < 3) {
-    unittest.expect(
-      o.clusterId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.clusterId!, unittest.equals('foo'));
     checkAlloyDbSettings(o.settings!);
   }
   buildCounterAlloyDbConnectionProfile--;
 }
 
-core.Map<core.String, core.String> buildUnnamed0() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed0() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed0(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
 core.int buildCounterAlloyDbSettings = 0;
@@ -86,18 +74,12 @@ api.AlloyDbSettings buildAlloyDbSettings() {
 void checkAlloyDbSettings(api.AlloyDbSettings o) {
   buildCounterAlloyDbSettings++;
   if (buildCounterAlloyDbSettings < 3) {
-    unittest.expect(
-      o.databaseVersion!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.databaseVersion!, unittest.equals('foo'));
     checkEncryptionConfig(o.encryptionConfig!);
     checkUserPassword(o.initialUser!);
     checkUnnamed0(o.labels!);
     checkPrimaryInstanceSettings(o.primaryInstanceSettings!);
-    unittest.expect(
-      o.vpcNetwork!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.vpcNetwork!, unittest.equals('foo'));
   }
   buildCounterAlloyDbSettings--;
 }
@@ -117,19 +99,14 @@ api.ApplyConversionWorkspaceRequest buildApplyConversionWorkspaceRequest() {
 }
 
 void checkApplyConversionWorkspaceRequest(
-    api.ApplyConversionWorkspaceRequest o) {
+  api.ApplyConversionWorkspaceRequest o,
+) {
   buildCounterApplyConversionWorkspaceRequest++;
   if (buildCounterApplyConversionWorkspaceRequest < 3) {
     unittest.expect(o.autoCommit!, unittest.isTrue);
-    unittest.expect(
-      o.connectionProfile!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.connectionProfile!, unittest.equals('foo'));
     unittest.expect(o.dryRun!, unittest.isTrue);
-    unittest.expect(
-      o.filter!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.filter!, unittest.equals('foo'));
   }
   buildCounterApplyConversionWorkspaceRequest--;
 }
@@ -168,14 +145,8 @@ api.ApplyJobDetails buildApplyJobDetails() {
 void checkApplyJobDetails(api.ApplyJobDetails o) {
   buildCounterApplyJobDetails++;
   if (buildCounterApplyJobDetails < 3) {
-    unittest.expect(
-      o.connectionProfile!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.filter!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.connectionProfile!, unittest.equals('foo'));
+    unittest.expect(o.filter!, unittest.equals('foo'));
   }
   buildCounterApplyJobDetails--;
 }
@@ -194,18 +165,15 @@ api.AssignSpecificValue buildAssignSpecificValue() {
 void checkAssignSpecificValue(api.AssignSpecificValue o) {
   buildCounterAssignSpecificValue++;
   if (buildCounterAssignSpecificValue < 3) {
-    unittest.expect(
-      o.value!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.value!, unittest.equals('foo'));
   }
   buildCounterAssignSpecificValue--;
 }
 
 core.List<api.AuditLogConfig> buildUnnamed1() => [
-      buildAuditLogConfig(),
-      buildAuditLogConfig(),
-    ];
+  buildAuditLogConfig(),
+  buildAuditLogConfig(),
+];
 
 void checkUnnamed1(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -229,29 +197,17 @@ void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
     checkUnnamed1(o.auditLogConfigs!);
-    unittest.expect(
-      o.service!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.service!, unittest.equals('foo'));
   }
   buildCounterAuditConfig--;
 }
 
-core.List<core.String> buildUnnamed2() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
 
 void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterAuditLogConfig = 0;
@@ -270,10 +226,7 @@ void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
     checkUnnamed2(o.exemptedMembers!);
-    unittest.expect(
-      o.logType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.logType!, unittest.equals('foo'));
   }
   buildCounterAuditLogConfig--;
 }
@@ -292,10 +245,7 @@ api.AuthorizedNetwork buildAuthorizedNetwork() {
 void checkAuthorizedNetwork(api.AuthorizedNetwork o) {
   buildCounterAuthorizedNetwork++;
   if (buildCounterAuthorizedNetwork < 3) {
-    unittest.expect(
-      o.cidrRange!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.cidrRange!, unittest.equals('foo'));
   }
   buildCounterAuthorizedNetwork--;
 }
@@ -325,34 +275,16 @@ void checkBackgroundJobLogEntry(api.BackgroundJobLogEntry o) {
   buildCounterBackgroundJobLogEntry++;
   if (buildCounterBackgroundJobLogEntry < 3) {
     checkApplyJobDetails(o.applyJobDetails!);
-    unittest.expect(
-      o.completionComment!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.completionState!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.completionComment!, unittest.equals('foo'));
+    unittest.expect(o.completionState!, unittest.equals('foo'));
     checkConvertJobDetails(o.convertJobDetails!);
-    unittest.expect(
-      o.finishTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.finishTime!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkImportRulesJobDetails(o.importRulesJobDetails!);
-    unittest.expect(
-      o.jobType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.jobType!, unittest.equals('foo'));
     unittest.expect(o.requestAutocommit!, unittest.isTrue);
     checkSeedJobDetails(o.seedJobDetails!);
-    unittest.expect(
-      o.startTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.startTime!, unittest.equals('foo'));
   }
   buildCounterBackgroundJobLogEntry--;
 }
@@ -378,21 +310,12 @@ void checkBinaryLogParser(api.BinaryLogParser o) {
   buildCounterBinaryLogParser--;
 }
 
-core.List<core.String> buildUnnamed3() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
 
 void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterBinding = 0;
@@ -413,10 +336,7 @@ void checkBinding(api.Binding o) {
   if (buildCounterBinding < 3) {
     checkExpr(o.condition!);
     checkUnnamed3(o.members!);
-    unittest.expect(
-      o.role!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.role!, unittest.equals('foo'));
   }
   buildCounterBinding--;
 }
@@ -454,59 +374,29 @@ api.CloudSqlConnectionProfile buildCloudSqlConnectionProfile() {
 void checkCloudSqlConnectionProfile(api.CloudSqlConnectionProfile o) {
   buildCounterCloudSqlConnectionProfile++;
   if (buildCounterCloudSqlConnectionProfile < 3) {
-    unittest.expect(
-      o.additionalPublicIp!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.cloudSqlId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.privateIp!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.publicIp!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.additionalPublicIp!, unittest.equals('foo'));
+    unittest.expect(o.cloudSqlId!, unittest.equals('foo'));
+    unittest.expect(o.privateIp!, unittest.equals('foo'));
+    unittest.expect(o.publicIp!, unittest.equals('foo'));
     checkCloudSqlSettings(o.settings!);
   }
   buildCounterCloudSqlConnectionProfile--;
 }
 
-core.Map<core.String, core.String> buildUnnamed4() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed4() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed4(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed5() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed5() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed5(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
 core.int buildCounterCloudSqlSettings = 0;
@@ -545,144 +435,66 @@ api.CloudSqlSettings buildCloudSqlSettings() {
 void checkCloudSqlSettings(api.CloudSqlSettings o) {
   buildCounterCloudSqlSettings++;
   if (buildCounterCloudSqlSettings < 3) {
-    unittest.expect(
-      o.activationPolicy!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.activationPolicy!, unittest.equals('foo'));
     unittest.expect(o.autoStorageIncrease!, unittest.isTrue);
-    unittest.expect(
-      o.availabilityType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.cmekKeyName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.collation!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.availabilityType!, unittest.equals('foo'));
+    unittest.expect(o.cmekKeyName!, unittest.equals('foo'));
+    unittest.expect(o.collation!, unittest.equals('foo'));
     checkDataCacheConfig(o.dataCacheConfig!);
-    unittest.expect(
-      o.dataDiskProvisionedIops!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dataDiskProvisionedThroughput!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dataDiskSizeGb!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dataDiskType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dataDiskProvisionedIops!, unittest.equals('foo'));
+    unittest.expect(o.dataDiskProvisionedThroughput!, unittest.equals('foo'));
+    unittest.expect(o.dataDiskSizeGb!, unittest.equals('foo'));
+    unittest.expect(o.dataDiskType!, unittest.equals('foo'));
     checkUnnamed4(o.databaseFlags!);
-    unittest.expect(
-      o.databaseVersion!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.databaseVersionName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.edition!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.databaseVersion!, unittest.equals('foo'));
+    unittest.expect(o.databaseVersionName!, unittest.equals('foo'));
+    unittest.expect(o.edition!, unittest.equals('foo'));
     checkSqlIpConfig(o.ipConfig!);
-    unittest.expect(
-      o.rootPassword!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.rootPassword!, unittest.equals('foo'));
     unittest.expect(o.rootPasswordSet!, unittest.isTrue);
-    unittest.expect(
-      o.secondaryZone!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sourceId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.storageAutoResizeLimit!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tier!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.secondaryZone!, unittest.equals('foo'));
+    unittest.expect(o.sourceId!, unittest.equals('foo'));
+    unittest.expect(o.storageAutoResizeLimit!, unittest.equals('foo'));
+    unittest.expect(o.tier!, unittest.equals('foo'));
     checkUnnamed5(o.userLabels!);
-    unittest.expect(
-      o.zone!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.zone!, unittest.equals('foo'));
   }
   buildCounterCloudSqlSettings--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed6() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed6(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(
-    casted1['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted1['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted1['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
   var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(
-    casted2['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted2['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted2['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed7() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
 
 void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterColumnEntity = 0;
@@ -718,58 +530,22 @@ void checkColumnEntity(api.ColumnEntity o) {
   buildCounterColumnEntity++;
   if (buildCounterColumnEntity < 3) {
     unittest.expect(o.array!, unittest.isTrue);
-    unittest.expect(
-      o.arrayLength!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.arrayLength!, unittest.equals(42));
     unittest.expect(o.autoGenerated!, unittest.isTrue);
-    unittest.expect(
-      o.charset!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.collation!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.comment!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.charset!, unittest.equals('foo'));
+    unittest.expect(o.collation!, unittest.equals('foo'));
+    unittest.expect(o.comment!, unittest.equals('foo'));
     unittest.expect(o.computed!, unittest.isTrue);
     checkUnnamed6(o.customFeatures!);
-    unittest.expect(
-      o.dataType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.defaultValue!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.fractionalSecondsPrecision!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.length!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dataType!, unittest.equals('foo'));
+    unittest.expect(o.defaultValue!, unittest.equals('foo'));
+    unittest.expect(o.fractionalSecondsPrecision!, unittest.equals(42));
+    unittest.expect(o.length!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.nullable!, unittest.isTrue);
-    unittest.expect(
-      o.ordinalPosition!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.precision!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.scale!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.ordinalPosition!, unittest.equals(42));
+    unittest.expect(o.precision!, unittest.equals(42));
+    unittest.expect(o.scale!, unittest.equals(42));
     checkUnnamed7(o.setValues!);
     unittest.expect(o.udt!, unittest.isTrue);
   }
@@ -788,60 +564,40 @@ api.CommitConversionWorkspaceRequest buildCommitConversionWorkspaceRequest() {
 }
 
 void checkCommitConversionWorkspaceRequest(
-    api.CommitConversionWorkspaceRequest o) {
+  api.CommitConversionWorkspaceRequest o,
+) {
   buildCounterCommitConversionWorkspaceRequest++;
   if (buildCounterCommitConversionWorkspaceRequest < 3) {
-    unittest.expect(
-      o.commitName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.commitName!, unittest.equals('foo'));
   }
   buildCounterCommitConversionWorkspaceRequest--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed8() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(
-    casted3['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted3['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted3['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
   var casted4 = (o['y']!) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(
-    casted4['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted4['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted4['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterConditionalColumnSetValue = 0;
@@ -869,21 +625,12 @@ void checkConditionalColumnSetValue(api.ConditionalColumnSetValue o) {
   buildCounterConditionalColumnSetValue--;
 }
 
-core.Map<core.String, core.String> buildUnnamed9() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed9() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed9(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
 core.int buildCounterConnectionProfile = 0;
@@ -918,123 +665,66 @@ void checkConnectionProfile(api.ConnectionProfile o) {
   if (buildCounterConnectionProfile < 3) {
     checkAlloyDbConnectionProfile(o.alloydb!);
     checkCloudSqlConnectionProfile(o.cloudsql!);
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
     checkStatus(o.error!);
     checkUnnamed9(o.labels!);
     checkMySqlConnectionProfile(o.mysql!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkOracleConnectionProfile(o.oracle!);
     checkPostgreSqlConnectionProfile(o.postgresql!);
-    unittest.expect(
-      o.provider!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.role!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.provider!, unittest.equals('foo'));
+    unittest.expect(o.role!, unittest.equals('foo'));
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkSqlServerConnectionProfile(o.sqlserver!);
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterConnectionProfile--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed10() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed10(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(
-    casted5['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted5['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted5['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
   var casted6 = (o['y']!) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(
-    casted6['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted6['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted6['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed11() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed11() => ['foo', 'foo'];
 
 void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed12() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed12() => ['foo', 'foo'];
 
 void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterConstraintEntity = 0;
@@ -1058,43 +748,22 @@ void checkConstraintEntity(api.ConstraintEntity o) {
   buildCounterConstraintEntity++;
   if (buildCounterConstraintEntity < 3) {
     checkUnnamed10(o.customFeatures!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkUnnamed11(o.referenceColumns!);
-    unittest.expect(
-      o.referenceTable!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.referenceTable!, unittest.equals('foo'));
     checkUnnamed12(o.tableColumns!);
-    unittest.expect(
-      o.tableName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.tableName!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterConstraintEntity--;
 }
 
-core.Map<core.String, core.String> buildUnnamed13() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed13() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed13(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
 core.int buildCounterConversionWorkspace = 0;
@@ -1122,42 +791,18 @@ api.ConversionWorkspace buildConversionWorkspace() {
 void checkConversionWorkspace(api.ConversionWorkspace o) {
   buildCounterConversionWorkspace++;
   if (buildCounterConversionWorkspace < 3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.createTime!, unittest.equals('foo'));
     checkDatabaseEngineInfo(o.destination!);
-    unittest.expect(
-      o.destinationProvider!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.destinationProvider!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
     checkUnnamed13(o.globalSettings!);
     unittest.expect(o.hasUncommittedChanges!, unittest.isTrue);
-    unittest.expect(
-      o.latestCommitId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.latestCommitTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.latestCommitId!, unittest.equals('foo'));
+    unittest.expect(o.latestCommitTime!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkDatabaseEngineInfo(o.source!);
-    unittest.expect(
-      o.sourceProvider!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sourceProvider!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterConversionWorkspace--;
 }
@@ -1177,14 +822,8 @@ api.ConversionWorkspaceInfo buildConversionWorkspaceInfo() {
 void checkConversionWorkspaceInfo(api.ConversionWorkspaceInfo o) {
   buildCounterConversionWorkspaceInfo++;
   if (buildCounterConversionWorkspaceInfo < 3) {
-    unittest.expect(
-      o.commitId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.commitId!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterConversionWorkspaceInfo--;
 }
@@ -1203,15 +842,13 @@ api.ConvertConversionWorkspaceRequest buildConvertConversionWorkspaceRequest() {
 }
 
 void checkConvertConversionWorkspaceRequest(
-    api.ConvertConversionWorkspaceRequest o) {
+  api.ConvertConversionWorkspaceRequest o,
+) {
   buildCounterConvertConversionWorkspaceRequest++;
   if (buildCounterConvertConversionWorkspaceRequest < 3) {
     unittest.expect(o.autoCommit!, unittest.isTrue);
     unittest.expect(o.convertFullPath!, unittest.isTrue);
-    unittest.expect(
-      o.filter!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.filter!, unittest.equals('foo'));
   }
   buildCounterConvertConversionWorkspaceRequest--;
 }
@@ -1230,10 +867,7 @@ api.ConvertJobDetails buildConvertJobDetails() {
 void checkConvertJobDetails(api.ConvertJobDetails o) {
   buildCounterConvertJobDetails++;
   if (buildCounterConvertJobDetails < 3) {
-    unittest.expect(
-      o.filter!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.filter!, unittest.equals('foo'));
   }
   buildCounterConvertJobDetails--;
 }
@@ -1291,22 +925,16 @@ api.DatabaseEngineInfo buildDatabaseEngineInfo() {
 void checkDatabaseEngineInfo(api.DatabaseEngineInfo o) {
   buildCounterDatabaseEngineInfo++;
   if (buildCounterDatabaseEngineInfo < 3) {
-    unittest.expect(
-      o.engine!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.version!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.engine!, unittest.equals('foo'));
+    unittest.expect(o.version!, unittest.equals('foo'));
   }
   buildCounterDatabaseEngineInfo--;
 }
 
 core.List<api.EntityDdl> buildUnnamed14() => [
-      buildEntityDdl(),
-      buildEntityDdl(),
-    ];
+  buildEntityDdl(),
+  buildEntityDdl(),
+];
 
 void checkUnnamed14(core.List<api.EntityDdl> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1315,9 +943,9 @@ void checkUnnamed14(core.List<api.EntityDdl> o) {
 }
 
 core.List<api.EntityIssue> buildUnnamed15() => [
-      buildEntityIssue(),
-      buildEntityIssue(),
-    ];
+  buildEntityIssue(),
+  buildEntityIssue(),
+];
 
 void checkUnnamed15(core.List<api.EntityIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1326,9 +954,9 @@ void checkUnnamed15(core.List<api.EntityIssue> o) {
 }
 
 core.List<api.EntityMapping> buildUnnamed16() => [
-      buildEntityMapping(),
-      buildEntityMapping(),
-    ];
+  buildEntityMapping(),
+  buildEntityMapping(),
+];
 
 void checkUnnamed16(core.List<api.EntityMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1371,30 +999,18 @@ void checkDatabaseEntity(api.DatabaseEntity o) {
     checkFunctionEntity(o.databaseFunction!);
     checkPackageEntity(o.databasePackage!);
     checkUnnamed14(o.entityDdl!);
-    unittest.expect(
-      o.entityType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.entityType!, unittest.equals('foo'));
     checkUnnamed15(o.issues!);
     checkUnnamed16(o.mappings!);
     checkMaterializedViewEntity(o.materializedView!);
-    unittest.expect(
-      o.parentEntity!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.parentEntity!, unittest.equals('foo'));
     checkSchemaEntity(o.schema!);
     checkSequenceEntity(o.sequence!);
-    unittest.expect(
-      o.shortName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.shortName!, unittest.equals('foo'));
     checkStoredProcedureEntity(o.storedProcedure!);
     checkSynonymEntity(o.synonym!);
     checkTableEntity(o.table!);
-    unittest.expect(
-      o.tree!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.tree!, unittest.equals('foo'));
     checkUDTEntity(o.udt!);
     checkViewEntity(o.view!);
   }
@@ -1402,48 +1018,30 @@ void checkDatabaseEntity(api.DatabaseEntity o) {
 }
 
 core.Map<core.String, core.Object?> buildUnnamed17() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed17(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(
-    casted7['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted7['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted7['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
   var casted8 = (o['y']!) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(
-    casted8['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted8['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted8['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterDatabaseInstanceEntity = 0;
@@ -1480,14 +1078,8 @@ api.DatabaseType buildDatabaseType() {
 void checkDatabaseType(api.DatabaseType o) {
   buildCounterDatabaseType++;
   if (buildCounterDatabaseType < 3) {
-    unittest.expect(
-      o.engine!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.provider!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.engine!, unittest.equals('foo'));
+    unittest.expect(o.provider!, unittest.equals('foo'));
   }
   buildCounterDatabaseType--;
 }
@@ -1508,9 +1100,9 @@ void checkDemoteDestinationRequest(api.DemoteDestinationRequest o) {
 }
 
 core.List<api.ConversionWorkspace> buildUnnamed18() => [
-      buildConversionWorkspace(),
-      buildConversionWorkspace(),
-    ];
+  buildConversionWorkspace(),
+  buildConversionWorkspace(),
+];
 
 void checkUnnamed18(core.List<api.ConversionWorkspace> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1520,7 +1112,7 @@ void checkUnnamed18(core.List<api.ConversionWorkspace> o) {
 
 core.int buildCounterDescribeConversionWorkspaceRevisionsResponse = 0;
 api.DescribeConversionWorkspaceRevisionsResponse
-    buildDescribeConversionWorkspaceRevisionsResponse() {
+buildDescribeConversionWorkspaceRevisionsResponse() {
   final o = api.DescribeConversionWorkspaceRevisionsResponse();
   buildCounterDescribeConversionWorkspaceRevisionsResponse++;
   if (buildCounterDescribeConversionWorkspaceRevisionsResponse < 3) {
@@ -1531,7 +1123,8 @@ api.DescribeConversionWorkspaceRevisionsResponse
 }
 
 void checkDescribeConversionWorkspaceRevisionsResponse(
-    api.DescribeConversionWorkspaceRevisionsResponse o) {
+  api.DescribeConversionWorkspaceRevisionsResponse o,
+) {
   buildCounterDescribeConversionWorkspaceRevisionsResponse++;
   if (buildCounterDescribeConversionWorkspaceRevisionsResponse < 3) {
     checkUnnamed18(o.revisions!);
@@ -1540,9 +1133,9 @@ void checkDescribeConversionWorkspaceRevisionsResponse(
 }
 
 core.List<api.DatabaseEntity> buildUnnamed19() => [
-      buildDatabaseEntity(),
-      buildDatabaseEntity(),
-    ];
+  buildDatabaseEntity(),
+  buildDatabaseEntity(),
+];
 
 void checkUnnamed19(core.List<api.DatabaseEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1563,14 +1156,12 @@ api.DescribeDatabaseEntitiesResponse buildDescribeDatabaseEntitiesResponse() {
 }
 
 void checkDescribeDatabaseEntitiesResponse(
-    api.DescribeDatabaseEntitiesResponse o) {
+  api.DescribeDatabaseEntitiesResponse o,
+) {
   buildCounterDescribeDatabaseEntitiesResponse++;
   if (buildCounterDescribeDatabaseEntitiesResponse < 3) {
     checkUnnamed19(o.databaseEntities!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterDescribeDatabaseEntitiesResponse--;
 }
@@ -1590,14 +1181,8 @@ api.DoubleComparisonFilter buildDoubleComparisonFilter() {
 void checkDoubleComparisonFilter(api.DoubleComparisonFilter o) {
   buildCounterDoubleComparisonFilter++;
   if (buildCounterDoubleComparisonFilter < 3) {
-    unittest.expect(
-      o.value!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.valueComparison!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.value!, unittest.equals(42.0));
+    unittest.expect(o.valueComparison!, unittest.equals('foo'));
   }
   buildCounterDoubleComparisonFilter--;
 }
@@ -1617,22 +1202,13 @@ api.DumpFlag buildDumpFlag() {
 void checkDumpFlag(api.DumpFlag o) {
   buildCounterDumpFlag++;
   if (buildCounterDumpFlag < 3) {
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.value!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.value!, unittest.equals('foo'));
   }
   buildCounterDumpFlag--;
 }
 
-core.List<api.DumpFlag> buildUnnamed20() => [
-      buildDumpFlag(),
-      buildDumpFlag(),
-    ];
+core.List<api.DumpFlag> buildUnnamed20() => [buildDumpFlag(), buildDumpFlag()];
 
 void checkUnnamed20(core.List<api.DumpFlag> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1688,29 +1264,17 @@ api.EncryptionConfig buildEncryptionConfig() {
 void checkEncryptionConfig(api.EncryptionConfig o) {
   buildCounterEncryptionConfig++;
   if (buildCounterEncryptionConfig < 3) {
-    unittest.expect(
-      o.kmsKeyName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.kmsKeyName!, unittest.equals('foo'));
   }
   buildCounterEncryptionConfig--;
 }
 
-core.List<core.String> buildUnnamed21() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed21() => ['foo', 'foo'];
 
 void checkUnnamed21(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterEntityDdl = 0;
@@ -1733,30 +1297,12 @@ api.EntityDdl buildEntityDdl() {
 void checkEntityDdl(api.EntityDdl o) {
   buildCounterEntityDdl++;
   if (buildCounterEntityDdl < 3) {
-    unittest.expect(
-      o.ddl!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.ddlKind!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.ddlType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.editedDdlKind!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.entity!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.entityType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.ddl!, unittest.equals('foo'));
+    unittest.expect(o.ddlKind!, unittest.equals('foo'));
+    unittest.expect(o.ddlType!, unittest.equals('foo'));
+    unittest.expect(o.editedDdlKind!, unittest.equals('foo'));
+    unittest.expect(o.entity!, unittest.equals('foo'));
+    unittest.expect(o.entityType!, unittest.equals('foo'));
     checkUnnamed21(o.issueId!);
   }
   buildCounterEntityDdl--;
@@ -1783,43 +1329,22 @@ api.EntityIssue buildEntityIssue() {
 void checkEntityIssue(api.EntityIssue o) {
   buildCounterEntityIssue++;
   if (buildCounterEntityIssue < 3) {
-    unittest.expect(
-      o.code!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.ddl!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.entityType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.message!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.code!, unittest.equals('foo'));
+    unittest.expect(o.ddl!, unittest.equals('foo'));
+    unittest.expect(o.entityType!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.message!, unittest.equals('foo'));
     checkPosition(o.position!);
-    unittest.expect(
-      o.severity!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.severity!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterEntityIssue--;
 }
 
 core.List<api.EntityMappingLogEntry> buildUnnamed22() => [
-      buildEntityMappingLogEntry(),
-      buildEntityMappingLogEntry(),
-    ];
+  buildEntityMappingLogEntry(),
+  buildEntityMappingLogEntry(),
+];
 
 void checkUnnamed22(core.List<api.EntityMappingLogEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1845,23 +1370,11 @@ api.EntityMapping buildEntityMapping() {
 void checkEntityMapping(api.EntityMapping o) {
   buildCounterEntityMapping++;
   if (buildCounterEntityMapping < 3) {
-    unittest.expect(
-      o.draftEntity!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.draftType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.draftEntity!, unittest.equals('foo'));
+    unittest.expect(o.draftType!, unittest.equals('foo'));
     checkUnnamed22(o.mappingLog!);
-    unittest.expect(
-      o.sourceEntity!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sourceType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sourceEntity!, unittest.equals('foo'));
+    unittest.expect(o.sourceType!, unittest.equals('foo'));
   }
   buildCounterEntityMapping--;
 }
@@ -1882,18 +1395,9 @@ api.EntityMappingLogEntry buildEntityMappingLogEntry() {
 void checkEntityMappingLogEntry(api.EntityMappingLogEntry o) {
   buildCounterEntityMappingLogEntry++;
   if (buildCounterEntityMappingLogEntry < 3) {
-    unittest.expect(
-      o.mappingComment!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.ruleId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.ruleRevisionId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.mappingComment!, unittest.equals('foo'));
+    unittest.expect(o.ruleId!, unittest.equals('foo'));
+    unittest.expect(o.ruleRevisionId!, unittest.equals('foo'));
   }
   buildCounterEntityMappingLogEntry--;
 }
@@ -1912,10 +1416,7 @@ api.EntityMove buildEntityMove() {
 void checkEntityMove(api.EntityMove o) {
   buildCounterEntityMove++;
   if (buildCounterEntityMove < 3) {
-    unittest.expect(
-      o.newSchema!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.newSchema!, unittest.equals('foo'));
   }
   buildCounterEntityMove--;
 }
@@ -1937,41 +1438,20 @@ api.Expr buildExpr() {
 void checkExpr(api.Expr o) {
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.expression!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.location!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.expression!, unittest.equals('foo'));
+    unittest.expect(o.location!, unittest.equals('foo'));
+    unittest.expect(o.title!, unittest.equals('foo'));
   }
   buildCounterExpr--;
 }
 
-core.List<core.String> buildUnnamed23() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed23() => ['foo', 'foo'];
 
 void checkUnnamed23(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterFetchStaticIpsResponse = 0;
@@ -1989,47 +1469,26 @@ api.FetchStaticIpsResponse buildFetchStaticIpsResponse() {
 void checkFetchStaticIpsResponse(api.FetchStaticIpsResponse o) {
   buildCounterFetchStaticIpsResponse++;
   if (buildCounterFetchStaticIpsResponse < 3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed23(o.staticIps!);
   }
   buildCounterFetchStaticIpsResponse--;
 }
 
-core.List<core.String> buildUnnamed24() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed24() => ['foo', 'foo'];
 
 void checkUnnamed24(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed25() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed25() => ['foo', 'foo'];
 
 void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterFilterTableColumns = 0;
@@ -2071,73 +1530,40 @@ api.ForwardSshTunnelConnectivity buildForwardSshTunnelConnectivity() {
 void checkForwardSshTunnelConnectivity(api.ForwardSshTunnelConnectivity o) {
   buildCounterForwardSshTunnelConnectivity++;
   if (buildCounterForwardSshTunnelConnectivity < 3) {
-    unittest.expect(
-      o.hostname!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.password!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.port!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.privateKey!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.username!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.hostname!, unittest.equals('foo'));
+    unittest.expect(o.password!, unittest.equals('foo'));
+    unittest.expect(o.port!, unittest.equals(42));
+    unittest.expect(o.privateKey!, unittest.equals('foo'));
+    unittest.expect(o.username!, unittest.equals('foo'));
   }
   buildCounterForwardSshTunnelConnectivity--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed26() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed26(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
-  unittest.expect(
-    casted9['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted9['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted9['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted9['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted9['bool'], unittest.equals(true));
+  unittest.expect(casted9['string'], unittest.equals('foo'));
   var casted10 = (o['y']!) as core.Map;
   unittest.expect(casted10, unittest.hasLength(3));
-  unittest.expect(
-    casted10['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted10['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted10['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted10['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted10['bool'], unittest.equals(true));
+  unittest.expect(casted10['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterFunctionEntity = 0;
@@ -2156,10 +1582,7 @@ void checkFunctionEntity(api.FunctionEntity o) {
   buildCounterFunctionEntity++;
   if (buildCounterFunctionEntity < 3) {
     checkUnnamed26(o.customFeatures!);
-    unittest.expect(
-      o.sqlCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sqlCode!, unittest.equals('foo'));
   }
   buildCounterFunctionEntity--;
 }
@@ -2181,15 +1604,9 @@ api.GenerateSshScriptRequest buildGenerateSshScriptRequest() {
 void checkGenerateSshScriptRequest(api.GenerateSshScriptRequest o) {
   buildCounterGenerateSshScriptRequest++;
   if (buildCounterGenerateSshScriptRequest < 3) {
-    unittest.expect(
-      o.vm!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.vm!, unittest.equals('foo'));
     checkVmCreationConfig(o.vmCreationConfig!);
-    unittest.expect(
-      o.vmPort!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.vmPort!, unittest.equals(42));
     checkVmSelectionConfig(o.vmSelectionConfig!);
   }
   buildCounterGenerateSshScriptRequest--;
@@ -2212,30 +1629,18 @@ api.GenerateTcpProxyScriptRequest buildGenerateTcpProxyScriptRequest() {
 void checkGenerateTcpProxyScriptRequest(api.GenerateTcpProxyScriptRequest o) {
   buildCounterGenerateTcpProxyScriptRequest++;
   if (buildCounterGenerateTcpProxyScriptRequest < 3) {
-    unittest.expect(
-      o.vmMachineType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.vmName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.vmSubnet!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.vmZone!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.vmMachineType!, unittest.equals('foo'));
+    unittest.expect(o.vmName!, unittest.equals('foo'));
+    unittest.expect(o.vmSubnet!, unittest.equals('foo'));
+    unittest.expect(o.vmZone!, unittest.equals('foo'));
   }
   buildCounterGenerateTcpProxyScriptRequest--;
 }
 
 core.List<api.RulesFile> buildUnnamed27() => [
-      buildRulesFile(),
-      buildRulesFile(),
-    ];
+  buildRulesFile(),
+  buildRulesFile(),
+];
 
 void checkUnnamed27(core.List<api.RulesFile> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2261,29 +1666,17 @@ void checkImportMappingRulesRequest(api.ImportMappingRulesRequest o) {
   if (buildCounterImportMappingRulesRequest < 3) {
     unittest.expect(o.autoCommit!, unittest.isTrue);
     checkUnnamed27(o.rulesFiles!);
-    unittest.expect(
-      o.rulesFormat!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.rulesFormat!, unittest.equals('foo'));
   }
   buildCounterImportMappingRulesRequest--;
 }
 
-core.List<core.String> buildUnnamed28() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed28() => ['foo', 'foo'];
 
 void checkUnnamed28(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterImportRulesJobDetails = 0;
@@ -2301,81 +1694,48 @@ api.ImportRulesJobDetails buildImportRulesJobDetails() {
 void checkImportRulesJobDetails(api.ImportRulesJobDetails o) {
   buildCounterImportRulesJobDetails++;
   if (buildCounterImportRulesJobDetails < 3) {
-    unittest.expect(
-      o.fileFormat!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fileFormat!, unittest.equals('foo'));
     checkUnnamed28(o.files!);
   }
   buildCounterImportRulesJobDetails--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed29() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
-  unittest.expect(
-    casted11['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted11['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted11['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted11['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted11['bool'], unittest.equals(true));
+  unittest.expect(casted11['string'], unittest.equals('foo'));
   var casted12 = (o['y']!) as core.Map;
   unittest.expect(casted12, unittest.hasLength(3));
-  unittest.expect(
-    casted12['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted12['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted12['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted12['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted12['bool'], unittest.equals(true));
+  unittest.expect(casted12['string'], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed30() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed30() => ['foo', 'foo'];
 
 void checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.bool> buildUnnamed31() => [
-      true,
-      true,
-    ];
+core.List<core.bool> buildUnnamed31() => [true, true];
 
 void checkUnnamed31(core.List<core.bool> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2403,25 +1763,19 @@ void checkIndexEntity(api.IndexEntity o) {
   buildCounterIndexEntity++;
   if (buildCounterIndexEntity < 3) {
     checkUnnamed29(o.customFeatures!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkUnnamed30(o.tableColumns!);
     checkUnnamed31(o.tableColumnsDescending!);
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
     unittest.expect(o.unique!, unittest.isTrue);
   }
   buildCounterIndexEntity--;
 }
 
 core.List<api.AuthorizedNetwork> buildUnnamed32() => [
-      buildAuthorizedNetwork(),
-      buildAuthorizedNetwork(),
-    ];
+  buildAuthorizedNetwork(),
+  buildAuthorizedNetwork(),
+];
 
 void checkUnnamed32(core.List<api.AuthorizedNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2467,22 +1821,16 @@ api.IntComparisonFilter buildIntComparisonFilter() {
 void checkIntComparisonFilter(api.IntComparisonFilter o) {
   buildCounterIntComparisonFilter++;
   if (buildCounterIntComparisonFilter < 3) {
-    unittest.expect(
-      o.value!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.valueComparison!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.value!, unittest.equals('foo'));
+    unittest.expect(o.valueComparison!, unittest.equals('foo'));
   }
   buildCounterIntComparisonFilter--;
 }
 
 core.List<api.ConnectionProfile> buildUnnamed33() => [
-      buildConnectionProfile(),
-      buildConnectionProfile(),
-    ];
+  buildConnectionProfile(),
+  buildConnectionProfile(),
+];
 
 void checkUnnamed33(core.List<api.ConnectionProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2490,21 +1838,12 @@ void checkUnnamed33(core.List<api.ConnectionProfile> o) {
   checkConnectionProfile(o[1]);
 }
 
-core.List<core.String> buildUnnamed34() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed34() => ['foo', 'foo'];
 
 void checkUnnamed34(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterListConnectionProfilesResponse = 0;
@@ -2524,19 +1863,16 @@ void checkListConnectionProfilesResponse(api.ListConnectionProfilesResponse o) {
   buildCounterListConnectionProfilesResponse++;
   if (buildCounterListConnectionProfilesResponse < 3) {
     checkUnnamed33(o.connectionProfiles!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed34(o.unreachable!);
   }
   buildCounterListConnectionProfilesResponse--;
 }
 
 core.List<api.ConversionWorkspace> buildUnnamed35() => [
-      buildConversionWorkspace(),
-      buildConversionWorkspace(),
-    ];
+  buildConversionWorkspace(),
+  buildConversionWorkspace(),
+];
 
 void checkUnnamed35(core.List<api.ConversionWorkspace> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2544,21 +1880,12 @@ void checkUnnamed35(core.List<api.ConversionWorkspace> o) {
   checkConversionWorkspace(o[1]);
 }
 
-core.List<core.String> buildUnnamed36() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed36() => ['foo', 'foo'];
 
 void checkUnnamed36(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterListConversionWorkspacesResponse = 0;
@@ -2575,23 +1902,18 @@ api.ListConversionWorkspacesResponse buildListConversionWorkspacesResponse() {
 }
 
 void checkListConversionWorkspacesResponse(
-    api.ListConversionWorkspacesResponse o) {
+  api.ListConversionWorkspacesResponse o,
+) {
   buildCounterListConversionWorkspacesResponse++;
   if (buildCounterListConversionWorkspacesResponse < 3) {
     checkUnnamed35(o.conversionWorkspaces!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed36(o.unreachable!);
   }
   buildCounterListConversionWorkspacesResponse--;
 }
 
-core.List<api.Location> buildUnnamed37() => [
-      buildLocation(),
-      buildLocation(),
-    ];
+core.List<api.Location> buildUnnamed37() => [buildLocation(), buildLocation()];
 
 void checkUnnamed37(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2615,18 +1937,15 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
     checkUnnamed37(o.locations!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListLocationsResponse--;
 }
 
 core.List<api.MappingRule> buildUnnamed38() => [
-      buildMappingRule(),
-      buildMappingRule(),
-    ];
+  buildMappingRule(),
+  buildMappingRule(),
+];
 
 void checkUnnamed38(core.List<api.MappingRule> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2650,18 +1969,15 @@ void checkListMappingRulesResponse(api.ListMappingRulesResponse o) {
   buildCounterListMappingRulesResponse++;
   if (buildCounterListMappingRulesResponse < 3) {
     checkUnnamed38(o.mappingRules!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListMappingRulesResponse--;
 }
 
 core.List<api.MigrationJobObject> buildUnnamed39() => [
-      buildMigrationJobObject(),
-      buildMigrationJobObject(),
-    ];
+  buildMigrationJobObject(),
+  buildMigrationJobObject(),
+];
 
 void checkUnnamed39(core.List<api.MigrationJobObject> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2682,22 +1998,20 @@ api.ListMigrationJobObjectsResponse buildListMigrationJobObjectsResponse() {
 }
 
 void checkListMigrationJobObjectsResponse(
-    api.ListMigrationJobObjectsResponse o) {
+  api.ListMigrationJobObjectsResponse o,
+) {
   buildCounterListMigrationJobObjectsResponse++;
   if (buildCounterListMigrationJobObjectsResponse < 3) {
     checkUnnamed39(o.migrationJobObjects!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListMigrationJobObjectsResponse--;
 }
 
 core.List<api.MigrationJob> buildUnnamed40() => [
-      buildMigrationJob(),
-      buildMigrationJob(),
-    ];
+  buildMigrationJob(),
+  buildMigrationJob(),
+];
 
 void checkUnnamed40(core.List<api.MigrationJob> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2705,21 +2019,12 @@ void checkUnnamed40(core.List<api.MigrationJob> o) {
   checkMigrationJob(o[1]);
 }
 
-core.List<core.String> buildUnnamed41() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed41() => ['foo', 'foo'];
 
 void checkUnnamed41(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterListMigrationJobsResponse = 0;
@@ -2739,19 +2044,16 @@ void checkListMigrationJobsResponse(api.ListMigrationJobsResponse o) {
   buildCounterListMigrationJobsResponse++;
   if (buildCounterListMigrationJobsResponse < 3) {
     checkUnnamed40(o.migrationJobs!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed41(o.unreachable!);
   }
   buildCounterListMigrationJobsResponse--;
 }
 
 core.List<api.Operation> buildUnnamed42() => [
-      buildOperation(),
-      buildOperation(),
-    ];
+  buildOperation(),
+  buildOperation(),
+];
 
 void checkUnnamed42(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2774,19 +2076,16 @@ api.ListOperationsResponse buildListOperationsResponse() {
 void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed42(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
 core.List<api.PrivateConnection> buildUnnamed43() => [
-      buildPrivateConnection(),
-      buildPrivateConnection(),
-    ];
+  buildPrivateConnection(),
+  buildPrivateConnection(),
+];
 
 void checkUnnamed43(core.List<api.PrivateConnection> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2794,21 +2093,12 @@ void checkUnnamed43(core.List<api.PrivateConnection> o) {
   checkPrivateConnection(o[1]);
 }
 
-core.List<core.String> buildUnnamed44() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed44() => ['foo', 'foo'];
 
 void checkUnnamed44(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterListPrivateConnectionsResponse = 0;
@@ -2827,76 +2117,46 @@ api.ListPrivateConnectionsResponse buildListPrivateConnectionsResponse() {
 void checkListPrivateConnectionsResponse(api.ListPrivateConnectionsResponse o) {
   buildCounterListPrivateConnectionsResponse++;
   if (buildCounterListPrivateConnectionsResponse < 3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed43(o.privateConnections!);
     checkUnnamed44(o.unreachable!);
   }
   buildCounterListPrivateConnectionsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed45() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed45() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed45(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object?> buildUnnamed46() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed46(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
-  unittest.expect(
-    casted13['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted13['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted13['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted13['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted13['bool'], unittest.equals(true));
+  unittest.expect(casted13['string'], unittest.equals('foo'));
   var casted14 = (o['y']!) as core.Map;
   unittest.expect(casted14, unittest.hasLength(3));
-  unittest.expect(
-    casted14['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted14['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted14['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted14['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted14['bool'], unittest.equals(true));
+  unittest.expect(casted14['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterLocation = 0;
@@ -2917,20 +2177,11 @@ api.Location buildLocation() {
 void checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.displayName!, unittest.equals('foo'));
     checkUnnamed45(o.labels!);
-    unittest.expect(
-      o.locationId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.locationId!, unittest.equals('foo'));
     checkUnnamed46(o.metadata!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterLocation--;
 }
@@ -2950,14 +2201,8 @@ api.LogFileDirectories buildLogFileDirectories() {
 void checkLogFileDirectories(api.LogFileDirectories o) {
   buildCounterLogFileDirectories++;
   if (buildCounterLogFileDirectories < 3) {
-    unittest.expect(
-      o.archivedLogDirectory!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.onlineLogDirectory!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.archivedLogDirectory!, unittest.equals('foo'));
+    unittest.expect(o.onlineLogDirectory!, unittest.equals('foo'));
   }
   buildCounterLogFileDirectories--;
 }
@@ -2989,7 +2234,8 @@ api.LookupMigrationJobObjectRequest buildLookupMigrationJobObjectRequest() {
 }
 
 void checkLookupMigrationJobObjectRequest(
-    api.LookupMigrationJobObjectRequest o) {
+  api.LookupMigrationJobObjectRequest o,
+) {
   buildCounterLookupMigrationJobObjectRequest++;
   if (buildCounterLookupMigrationJobObjectRequest < 3) {
     checkSourceObjectIdentifier(o.sourceObjectIdentifier!);
@@ -3012,14 +2258,8 @@ api.MachineConfig buildMachineConfig() {
 void checkMachineConfig(api.MachineConfig o) {
   buildCounterMachineConfig++;
   if (buildCounterMachineConfig < 3) {
-    unittest.expect(
-      o.cpuCount!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.machineType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.cpuCount!, unittest.equals(42));
+    unittest.expect(o.machineType!, unittest.equals('foo'));
   }
   buildCounterMachineConfig--;
 }
@@ -3058,63 +2298,33 @@ void checkMappingRule(api.MappingRule o) {
   if (buildCounterMappingRule < 3) {
     checkConditionalColumnSetValue(o.conditionalColumnSetValue!);
     checkConvertRowIdToColumn(o.convertRowidColumn!);
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.displayName!, unittest.equals('foo'));
     checkEntityMove(o.entityMove!);
     checkMappingRuleFilter(o.filter!);
     checkFilterTableColumns(o.filterTableColumns!);
     checkMultiColumnDatatypeChange(o.multiColumnDataTypeChange!);
     checkMultiEntityRename(o.multiEntityRename!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.revisionCreateTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.revisionId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.ruleOrder!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.ruleScope!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.revisionCreateTime!, unittest.equals('foo'));
+    unittest.expect(o.revisionId!, unittest.equals('foo'));
+    unittest.expect(o.ruleOrder!, unittest.equals('foo'));
+    unittest.expect(o.ruleScope!, unittest.equals('foo'));
     checkSetTablePrimaryKey(o.setTablePrimaryKey!);
     checkSingleColumnChange(o.singleColumnChange!);
     checkSingleEntityRename(o.singleEntityRename!);
     checkSinglePackageChange(o.singlePackageChange!);
     checkSourceSqlChange(o.sourceSqlChange!);
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.state!, unittest.equals('foo'));
   }
   buildCounterMappingRule--;
 }
 
-core.List<core.String> buildUnnamed47() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed47() => ['foo', 'foo'];
 
 void checkUnnamed47(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterMappingRuleFilter = 0;
@@ -3136,75 +2346,45 @@ void checkMappingRuleFilter(api.MappingRuleFilter o) {
   buildCounterMappingRuleFilter++;
   if (buildCounterMappingRuleFilter < 3) {
     checkUnnamed47(o.entities!);
-    unittest.expect(
-      o.entityNameContains!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.entityNamePrefix!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.entityNameSuffix!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.parentEntity!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.entityNameContains!, unittest.equals('foo'));
+    unittest.expect(o.entityNamePrefix!, unittest.equals('foo'));
+    unittest.expect(o.entityNameSuffix!, unittest.equals('foo'));
+    unittest.expect(o.parentEntity!, unittest.equals('foo'));
   }
   buildCounterMappingRuleFilter--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed48() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed48(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted15 = (o['x']!) as core.Map;
   unittest.expect(casted15, unittest.hasLength(3));
-  unittest.expect(
-    casted15['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted15['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted15['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted15['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted15['bool'], unittest.equals(true));
+  unittest.expect(casted15['string'], unittest.equals('foo'));
   var casted16 = (o['y']!) as core.Map;
   unittest.expect(casted16, unittest.hasLength(3));
-  unittest.expect(
-    casted16['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted16['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted16['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted16['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted16['bool'], unittest.equals(true));
+  unittest.expect(casted16['string'], unittest.equals('foo'));
 }
 
 core.List<api.IndexEntity> buildUnnamed49() => [
-      buildIndexEntity(),
-      buildIndexEntity(),
-    ];
+  buildIndexEntity(),
+  buildIndexEntity(),
+];
 
 void checkUnnamed49(core.List<api.IndexEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3230,29 +2410,17 @@ void checkMaterializedViewEntity(api.MaterializedViewEntity o) {
   if (buildCounterMaterializedViewEntity < 3) {
     checkUnnamed48(o.customFeatures!);
     checkUnnamed49(o.indices!);
-    unittest.expect(
-      o.sqlCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sqlCode!, unittest.equals('foo'));
   }
   buildCounterMaterializedViewEntity--;
 }
 
-core.Map<core.String, core.String> buildUnnamed50() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed50() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed50(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
 core.int buildCounterMigrationJob = 0;
@@ -3300,82 +2468,38 @@ api.MigrationJob buildMigrationJob() {
 void checkMigrationJob(api.MigrationJob o) {
   buildCounterMigrationJob++;
   if (buildCounterMigrationJob < 3) {
-    unittest.expect(
-      o.cmekKeyName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.cmekKeyName!, unittest.equals('foo'));
     checkConversionWorkspaceInfo(o.conversionWorkspace!);
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.destination!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.destination!, unittest.equals('foo'));
     checkDatabaseType(o.destinationDatabase!);
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.displayName!, unittest.equals('foo'));
     checkDumpFlags(o.dumpFlags!);
-    unittest.expect(
-      o.dumpPath!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dumpType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.duration!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.endTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dumpPath!, unittest.equals('foo'));
+    unittest.expect(o.dumpType!, unittest.equals('foo'));
+    unittest.expect(o.duration!, unittest.equals('foo'));
+    unittest.expect(o.endTime!, unittest.equals('foo'));
     checkStatus(o.error!);
-    unittest.expect(
-      o.filter!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.filter!, unittest.equals('foo'));
     checkUnnamed50(o.labels!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkMigrationJobObjectsConfig(o.objectsConfig!);
     checkOracleToPostgresConfig(o.oracleToPostgresConfig!);
     checkPerformanceConfig(o.performanceConfig!);
-    unittest.expect(
-      o.phase!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.phase!, unittest.equals('foo'));
     checkReverseSshConnectivity(o.reverseSshConnectivity!);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
-    unittest.expect(
-      o.source!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.source!, unittest.equals('foo'));
     checkDatabaseType(o.sourceDatabase!);
     checkSqlServerHomogeneousMigrationJobConfig(
-        o.sqlserverHomogeneousMigrationJobConfig!);
+      o.sqlserverHomogeneousMigrationJobConfig!,
+    );
     checkSqlServerToPostgresConfig(o.sqlserverToPostgresConfig!);
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.state!, unittest.equals('foo'));
     checkStaticIpConnectivity(o.staticIpConnectivity!);
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
     checkVpcPeeringConnectivity(o.vpcPeeringConnectivity!);
   }
   buildCounterMigrationJob--;
@@ -3401,28 +2525,13 @@ api.MigrationJobObject buildMigrationJobObject() {
 void checkMigrationJobObject(api.MigrationJobObject o) {
   buildCounterMigrationJobObject++;
   if (buildCounterMigrationJobObject < 3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.createTime!, unittest.equals('foo'));
     checkStatus(o.error!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.phase!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.phase!, unittest.equals('foo'));
     checkSourceObjectIdentifier(o.sourceObject!);
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterMigrationJobObject--;
 }
@@ -3447,48 +2556,30 @@ void checkMigrationJobObjectsConfig(api.MigrationJobObjectsConfig o) {
 }
 
 core.Map<core.String, core.Object?> buildUnnamed51() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed51(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted17 = (o['x']!) as core.Map;
   unittest.expect(casted17, unittest.hasLength(3));
-  unittest.expect(
-    casted17['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted17['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted17['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted17['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted17['bool'], unittest.equals(true));
+  unittest.expect(casted17['string'], unittest.equals('foo'));
   var casted18 = (o['y']!) as core.Map;
   unittest.expect(casted18, unittest.hasLength(3));
-  unittest.expect(
-    casted18['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted18['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted18['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted18['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted18['bool'], unittest.equals(true));
+  unittest.expect(casted18['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterMultiColumnDatatypeChange = 0;
@@ -3514,30 +2605,12 @@ void checkMultiColumnDatatypeChange(api.MultiColumnDatatypeChange o) {
   buildCounterMultiColumnDatatypeChange++;
   if (buildCounterMultiColumnDatatypeChange < 3) {
     checkUnnamed51(o.customFeatures!);
-    unittest.expect(
-      o.newDataType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.overrideFractionalSecondsPrecision!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.overrideLength!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.overridePrecision!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.overrideScale!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sourceDataTypeFilter!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.newDataType!, unittest.equals('foo'));
+    unittest.expect(o.overrideFractionalSecondsPrecision!, unittest.equals(42));
+    unittest.expect(o.overrideLength!, unittest.equals('foo'));
+    unittest.expect(o.overridePrecision!, unittest.equals(42));
+    unittest.expect(o.overrideScale!, unittest.equals(42));
+    unittest.expect(o.sourceDataTypeFilter!, unittest.equals('foo'));
     checkSourceNumericFilter(o.sourceNumericFilter!);
     checkSourceTextFilter(o.sourceTextFilter!);
   }
@@ -3559,14 +2632,8 @@ api.MultiEntityRename buildMultiEntityRename() {
 void checkMultiEntityRename(api.MultiEntityRename o) {
   buildCounterMultiEntityRename++;
   if (buildCounterMultiEntityRename < 3) {
-    unittest.expect(
-      o.newNamePattern!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sourceNameTransformation!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.newNamePattern!, unittest.equals('foo'));
+    unittest.expect(o.sourceNameTransformation!, unittest.equals('foo'));
   }
   buildCounterMultiEntityRename--;
 }
@@ -3591,120 +2658,69 @@ api.MySqlConnectionProfile buildMySqlConnectionProfile() {
 void checkMySqlConnectionProfile(api.MySqlConnectionProfile o) {
   buildCounterMySqlConnectionProfile++;
   if (buildCounterMySqlConnectionProfile < 3) {
-    unittest.expect(
-      o.cloudSqlId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.host!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.password!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.cloudSqlId!, unittest.equals('foo'));
+    unittest.expect(o.host!, unittest.equals('foo'));
+    unittest.expect(o.password!, unittest.equals('foo'));
     unittest.expect(o.passwordSet!, unittest.isTrue);
-    unittest.expect(
-      o.port!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.port!, unittest.equals(42));
     checkSslConfig(o.ssl!);
-    unittest.expect(
-      o.username!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.username!, unittest.equals('foo'));
   }
   buildCounterMySqlConnectionProfile--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed52() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed52(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted19 = (o['x']!) as core.Map;
   unittest.expect(casted19, unittest.hasLength(3));
-  unittest.expect(
-    casted19['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted19['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted19['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted19['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted19['bool'], unittest.equals(true));
+  unittest.expect(casted19['string'], unittest.equals('foo'));
   var casted20 = (o['y']!) as core.Map;
   unittest.expect(casted20, unittest.hasLength(3));
-  unittest.expect(
-    casted20['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted20['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted20['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted20['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted20['bool'], unittest.equals(true));
+  unittest.expect(casted20['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object?> buildUnnamed53() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed53(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted21 = (o['x']!) as core.Map;
   unittest.expect(casted21, unittest.hasLength(3));
-  unittest.expect(
-    casted21['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted21['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted21['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted21['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted21['bool'], unittest.equals(true));
+  unittest.expect(casted21['string'], unittest.equals('foo'));
   var casted22 = (o['y']!) as core.Map;
   unittest.expect(casted22, unittest.hasLength(3));
-  unittest.expect(
-    casted22['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted22['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted22['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted22['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted22['bool'], unittest.equals(true));
+  unittest.expect(casted22['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterOperation = 0;
@@ -3728,10 +2744,7 @@ void checkOperation(api.Operation o) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
     checkUnnamed52(o.metadata!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkUnnamed53(o.response!);
   }
   buildCounterOperation--;
@@ -3757,28 +2770,13 @@ api.OracleAsmConfig buildOracleAsmConfig() {
 void checkOracleAsmConfig(api.OracleAsmConfig o) {
   buildCounterOracleAsmConfig++;
   if (buildCounterOracleAsmConfig < 3) {
-    unittest.expect(
-      o.asmService!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.hostname!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.password!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.asmService!, unittest.equals('foo'));
+    unittest.expect(o.hostname!, unittest.equals('foo'));
+    unittest.expect(o.password!, unittest.equals('foo'));
     unittest.expect(o.passwordSet!, unittest.isTrue);
-    unittest.expect(
-      o.port!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.port!, unittest.equals(42));
     checkSslConfig(o.ssl!);
-    unittest.expect(
-      o.username!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.username!, unittest.equals('foo'));
   }
   buildCounterOracleAsmConfig--;
 }
@@ -3822,32 +2820,17 @@ api.OracleConnectionProfile buildOracleConnectionProfile() {
 void checkOracleConnectionProfile(api.OracleConnectionProfile o) {
   buildCounterOracleConnectionProfile++;
   if (buildCounterOracleConnectionProfile < 3) {
-    unittest.expect(
-      o.databaseService!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.databaseService!, unittest.equals('foo'));
     checkForwardSshTunnelConnectivity(o.forwardSshConnectivity!);
-    unittest.expect(
-      o.host!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.host!, unittest.equals('foo'));
     checkOracleAsmConfig(o.oracleAsmConfig!);
-    unittest.expect(
-      o.password!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.password!, unittest.equals('foo'));
     unittest.expect(o.passwordSet!, unittest.isTrue);
-    unittest.expect(
-      o.port!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.port!, unittest.equals(42));
     checkPrivateConnectivity(o.privateConnectivity!);
     checkSslConfig(o.ssl!);
     checkStaticServiceIpConnectivity(o.staticServiceIpConnectivity!);
-    unittest.expect(
-      o.username!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.username!, unittest.equals('foo'));
   }
   buildCounterOracleConnectionProfile--;
 }
@@ -3872,19 +2855,10 @@ void checkOracleSourceConfig(api.OracleSourceConfig o) {
   buildCounterOracleSourceConfig++;
   if (buildCounterOracleSourceConfig < 3) {
     checkBinaryLogParser(o.binaryLogParser!);
-    unittest.expect(
-      o.cdcStartPosition!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.cdcStartPosition!, unittest.equals('foo'));
     checkLogMiner(o.logMiner!);
-    unittest.expect(
-      o.maxConcurrentCdcConnections!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxConcurrentFullDumpConnections!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.maxConcurrentCdcConnections!, unittest.equals(42));
+    unittest.expect(o.maxConcurrentFullDumpConnections!, unittest.equals(42));
     unittest.expect(o.skipFullDump!, unittest.isTrue);
   }
   buildCounterOracleSourceConfig--;
@@ -3912,48 +2886,30 @@ void checkOracleToPostgresConfig(api.OracleToPostgresConfig o) {
 }
 
 core.Map<core.String, core.Object?> buildUnnamed54() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed54(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted23 = (o['x']!) as core.Map;
   unittest.expect(casted23, unittest.hasLength(3));
-  unittest.expect(
-    casted23['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted23['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted23['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted23['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted23['bool'], unittest.equals(true));
+  unittest.expect(casted23['string'], unittest.equals('foo'));
   var casted24 = (o['y']!) as core.Map;
   unittest.expect(casted24, unittest.hasLength(3));
-  unittest.expect(
-    casted24['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted24['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted24['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted24['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted24['bool'], unittest.equals(true));
+  unittest.expect(casted24['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterPackageEntity = 0;
@@ -3973,14 +2929,8 @@ void checkPackageEntity(api.PackageEntity o) {
   buildCounterPackageEntity++;
   if (buildCounterPackageEntity < 3) {
     checkUnnamed54(o.customFeatures!);
-    unittest.expect(
-      o.packageBody!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.packageSqlCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.packageBody!, unittest.equals('foo'));
+    unittest.expect(o.packageSqlCode!, unittest.equals('foo'));
   }
   buildCounterPackageEntity--;
 }
@@ -3999,18 +2949,15 @@ api.PerformanceConfig buildPerformanceConfig() {
 void checkPerformanceConfig(api.PerformanceConfig o) {
   buildCounterPerformanceConfig++;
   if (buildCounterPerformanceConfig < 3) {
-    unittest.expect(
-      o.dumpParallelLevel!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dumpParallelLevel!, unittest.equals('foo'));
   }
   buildCounterPerformanceConfig--;
 }
 
 core.List<api.AuditConfig> buildUnnamed55() => [
-      buildAuditConfig(),
-      buildAuditConfig(),
-    ];
+  buildAuditConfig(),
+  buildAuditConfig(),
+];
 
 void checkUnnamed55(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4018,10 +2965,7 @@ void checkUnnamed55(core.List<api.AuditConfig> o) {
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed56() => [
-      buildBinding(),
-      buildBinding(),
-    ];
+core.List<api.Binding> buildUnnamed56() => [buildBinding(), buildBinding()];
 
 void checkUnnamed56(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4048,14 +2992,8 @@ void checkPolicy(api.Policy o) {
   if (buildCounterPolicy < 3) {
     checkUnnamed55(o.auditConfigs!);
     checkUnnamed56(o.bindings!);
-    unittest.expect(
-      o.etag!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.version!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.etag!, unittest.equals('foo'));
+    unittest.expect(o.version!, unittest.equals(42));
   }
   buildCounterPolicy--;
 }
@@ -4077,22 +3015,10 @@ api.Position buildPosition() {
 void checkPosition(api.Position o) {
   buildCounterPosition++;
   if (buildCounterPosition < 3) {
-    unittest.expect(
-      o.column!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.length!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.line!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.offset!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.column!, unittest.equals(42));
+    unittest.expect(o.length!, unittest.equals(42));
+    unittest.expect(o.line!, unittest.equals(42));
+    unittest.expect(o.offset!, unittest.equals(42));
   }
   buildCounterPosition--;
 }
@@ -4123,43 +3049,20 @@ api.PostgreSqlConnectionProfile buildPostgreSqlConnectionProfile() {
 void checkPostgreSqlConnectionProfile(api.PostgreSqlConnectionProfile o) {
   buildCounterPostgreSqlConnectionProfile++;
   if (buildCounterPostgreSqlConnectionProfile < 3) {
-    unittest.expect(
-      o.alloydbClusterId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.cloudSqlId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.database!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.host!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.networkArchitecture!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.password!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.alloydbClusterId!, unittest.equals('foo'));
+    unittest.expect(o.cloudSqlId!, unittest.equals('foo'));
+    unittest.expect(o.database!, unittest.equals('foo'));
+    unittest.expect(o.host!, unittest.equals('foo'));
+    unittest.expect(o.networkArchitecture!, unittest.equals('foo'));
+    unittest.expect(o.password!, unittest.equals('foo'));
     unittest.expect(o.passwordSet!, unittest.isTrue);
-    unittest.expect(
-      o.port!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.port!, unittest.equals(42));
     checkPrivateServiceConnectConnectivity(
-        o.privateServiceConnectConnectivity!);
+      o.privateServiceConnectConnectivity!,
+    );
     checkSslConfig(o.ssl!);
     checkStaticIpConnectivity(o.staticIpConnectivity!);
-    unittest.expect(
-      o.username!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.username!, unittest.equals('foo'));
   }
   buildCounterPostgreSqlConnectionProfile--;
 }
@@ -4179,67 +3082,34 @@ api.PostgresDestinationConfig buildPostgresDestinationConfig() {
 void checkPostgresDestinationConfig(api.PostgresDestinationConfig o) {
   buildCounterPostgresDestinationConfig++;
   if (buildCounterPostgresDestinationConfig < 3) {
-    unittest.expect(
-      o.maxConcurrentConnections!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.transactionTimeout!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.maxConcurrentConnections!, unittest.equals(42));
+    unittest.expect(o.transactionTimeout!, unittest.equals('foo'));
   }
   buildCounterPostgresDestinationConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed57() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed57() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed57(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed58() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed58() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed58(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed59() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed59() => ['foo', 'foo'];
 
 void checkUnnamed59(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterPrimaryInstanceSettings = 0;
@@ -4263,37 +3133,22 @@ void checkPrimaryInstanceSettings(api.PrimaryInstanceSettings o) {
   buildCounterPrimaryInstanceSettings++;
   if (buildCounterPrimaryInstanceSettings < 3) {
     checkUnnamed57(o.databaseFlags!);
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkInstanceNetworkConfig(o.instanceNetworkConfig!);
     checkUnnamed58(o.labels!);
     checkMachineConfig(o.machineConfig!);
     checkUnnamed59(o.outboundPublicIpAddresses!);
-    unittest.expect(
-      o.privateIp!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.privateIp!, unittest.equals('foo'));
   }
   buildCounterPrimaryInstanceSettings--;
 }
 
-core.Map<core.String, core.String> buildUnnamed60() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed60() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed60(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
 core.int buildCounterPrivateConnection = 0;
@@ -4320,31 +3175,16 @@ api.PrivateConnection buildPrivateConnection() {
 void checkPrivateConnection(api.PrivateConnection o) {
   buildCounterPrivateConnection++;
   if (buildCounterPrivateConnection < 3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
     checkStatus(o.error!);
     checkUnnamed60(o.labels!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkPscInterfaceConfig(o.pscInterfaceConfig!);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
     checkVpcPeeringConfig(o.vpcPeeringConfig!);
   }
   buildCounterPrivateConnection--;
@@ -4364,10 +3204,7 @@ api.PrivateConnectivity buildPrivateConnectivity() {
 void checkPrivateConnectivity(api.PrivateConnectivity o) {
   buildCounterPrivateConnectivity++;
   if (buildCounterPrivateConnectivity < 3) {
-    unittest.expect(
-      o.privateConnection!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.privateConnection!, unittest.equals('foo'));
   }
   buildCounterPrivateConnectivity--;
 }
@@ -4384,13 +3221,11 @@ api.PrivateServiceConnectConnectivity buildPrivateServiceConnectConnectivity() {
 }
 
 void checkPrivateServiceConnectConnectivity(
-    api.PrivateServiceConnectConnectivity o) {
+  api.PrivateServiceConnectConnectivity o,
+) {
   buildCounterPrivateServiceConnectConnectivity++;
   if (buildCounterPrivateServiceConnectConnectivity < 3) {
-    unittest.expect(
-      o.serviceAttachment!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.serviceAttachment!, unittest.equals('foo'));
   }
   buildCounterPrivateServiceConnectConnectivity--;
 }
@@ -4428,10 +3263,7 @@ api.PscInterfaceConfig buildPscInterfaceConfig() {
 void checkPscInterfaceConfig(api.PscInterfaceConfig o) {
   buildCounterPscInterfaceConfig++;
   if (buildCounterPscInterfaceConfig < 3) {
-    unittest.expect(
-      o.networkAttachment!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.networkAttachment!, unittest.equals('foo'));
   }
   buildCounterPscInterfaceConfig--;
 }
@@ -4495,29 +3327,17 @@ api.ReverseSshConnectivity buildReverseSshConnectivity() {
 void checkReverseSshConnectivity(api.ReverseSshConnectivity o) {
   buildCounterReverseSshConnectivity++;
   if (buildCounterReverseSshConnectivity < 3) {
-    unittest.expect(
-      o.vm!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.vmIp!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.vmPort!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.vpc!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.vm!, unittest.equals('foo'));
+    unittest.expect(o.vmIp!, unittest.equals('foo'));
+    unittest.expect(o.vmPort!, unittest.equals(42));
+    unittest.expect(o.vpc!, unittest.equals('foo'));
   }
   buildCounterReverseSshConnectivity--;
 }
 
 core.int buildCounterRollbackConversionWorkspaceRequest = 0;
 api.RollbackConversionWorkspaceRequest
-    buildRollbackConversionWorkspaceRequest() {
+buildRollbackConversionWorkspaceRequest() {
   final o = api.RollbackConversionWorkspaceRequest();
   buildCounterRollbackConversionWorkspaceRequest++;
   if (buildCounterRollbackConversionWorkspaceRequest < 3) {}
@@ -4526,7 +3346,8 @@ api.RollbackConversionWorkspaceRequest
 }
 
 void checkRollbackConversionWorkspaceRequest(
-    api.RollbackConversionWorkspaceRequest o) {
+  api.RollbackConversionWorkspaceRequest o,
+) {
   buildCounterRollbackConversionWorkspaceRequest++;
   if (buildCounterRollbackConversionWorkspaceRequest < 3) {}
   buildCounterRollbackConversionWorkspaceRequest--;
@@ -4546,10 +3367,7 @@ api.RoundToScale buildRoundToScale() {
 void checkRoundToScale(api.RoundToScale o) {
   buildCounterRoundToScale++;
   if (buildCounterRoundToScale < 3) {
-    unittest.expect(
-      o.scale!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.scale!, unittest.equals(42));
   }
   buildCounterRoundToScale--;
 }
@@ -4569,61 +3387,37 @@ api.RulesFile buildRulesFile() {
 void checkRulesFile(api.RulesFile o) {
   buildCounterRulesFile++;
   if (buildCounterRulesFile < 3) {
-    unittest.expect(
-      o.rulesContent!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.rulesSourceFilename!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.rulesContent!, unittest.equals('foo'));
+    unittest.expect(o.rulesSourceFilename!, unittest.equals('foo'));
   }
   buildCounterRulesFile--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed61() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed61(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted25 = (o['x']!) as core.Map;
   unittest.expect(casted25, unittest.hasLength(3));
-  unittest.expect(
-    casted25['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted25['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted25['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted25['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted25['bool'], unittest.equals(true));
+  unittest.expect(casted25['string'], unittest.equals('foo'));
   var casted26 = (o['y']!) as core.Map;
   unittest.expect(casted26, unittest.hasLength(3));
-  unittest.expect(
-    casted26['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted26['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted26['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted26['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted26['bool'], unittest.equals(true));
+  unittest.expect(casted26['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterSchemaEntity = 0;
@@ -4646,9 +3440,9 @@ void checkSchemaEntity(api.SchemaEntity o) {
 }
 
 core.List<api.BackgroundJobLogEntry> buildUnnamed62() => [
-      buildBackgroundJobLogEntry(),
-      buildBackgroundJobLogEntry(),
-    ];
+  buildBackgroundJobLogEntry(),
+  buildBackgroundJobLogEntry(),
+];
 
 void checkUnnamed62(core.List<api.BackgroundJobLogEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4692,14 +3486,8 @@ void checkSeedConversionWorkspaceRequest(api.SeedConversionWorkspaceRequest o) {
   buildCounterSeedConversionWorkspaceRequest++;
   if (buildCounterSeedConversionWorkspaceRequest < 3) {
     unittest.expect(o.autoCommit!, unittest.isTrue);
-    unittest.expect(
-      o.destinationConnectionProfile!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sourceConnectionProfile!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.destinationConnectionProfile!, unittest.equals('foo'));
+    unittest.expect(o.sourceConnectionProfile!, unittest.equals('foo'));
   }
   buildCounterSeedConversionWorkspaceRequest--;
 }
@@ -4718,57 +3506,36 @@ api.SeedJobDetails buildSeedJobDetails() {
 void checkSeedJobDetails(api.SeedJobDetails o) {
   buildCounterSeedJobDetails++;
   if (buildCounterSeedJobDetails < 3) {
-    unittest.expect(
-      o.connectionProfile!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.connectionProfile!, unittest.equals('foo'));
   }
   buildCounterSeedJobDetails--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed63() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed63(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted27 = (o['x']!) as core.Map;
   unittest.expect(casted27, unittest.hasLength(3));
-  unittest.expect(
-    casted27['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted27['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted27['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted27['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted27['bool'], unittest.equals(true));
+  unittest.expect(casted27['string'], unittest.equals('foo'));
   var casted28 = (o['y']!) as core.Map;
   unittest.expect(casted28, unittest.hasLength(3));
-  unittest.expect(
-    casted28['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted28['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted28['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted28['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted28['bool'], unittest.equals(true));
+  unittest.expect(casted28['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterSequenceEntity = 0;
@@ -4791,28 +3558,13 @@ api.SequenceEntity buildSequenceEntity() {
 void checkSequenceEntity(api.SequenceEntity o) {
   buildCounterSequenceEntity++;
   if (buildCounterSequenceEntity < 3) {
-    unittest.expect(
-      o.cache!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.cache!, unittest.equals('foo'));
     checkUnnamed63(o.customFeatures!);
     unittest.expect(o.cycle!, unittest.isTrue);
-    unittest.expect(
-      o.increment!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.maxValue!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.minValue!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.startValue!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.increment!, unittest.equals('foo'));
+    unittest.expect(o.maxValue!, unittest.equals('foo'));
+    unittest.expect(o.minValue!, unittest.equals('foo'));
+    unittest.expect(o.startValue!, unittest.equals('foo'));
   }
   buildCounterSequenceEntity--;
 }
@@ -4833,29 +3585,17 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
     checkPolicy(o.policy!);
-    unittest.expect(
-      o.updateMask!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.updateMask!, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed64() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed64() => ['foo', 'foo'];
 
 void checkUnnamed64(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterSetTablePrimaryKey = 0;
@@ -4873,75 +3613,45 @@ api.SetTablePrimaryKey buildSetTablePrimaryKey() {
 void checkSetTablePrimaryKey(api.SetTablePrimaryKey o) {
   buildCounterSetTablePrimaryKey++;
   if (buildCounterSetTablePrimaryKey < 3) {
-    unittest.expect(
-      o.primaryKey!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.primaryKey!, unittest.equals('foo'));
     checkUnnamed64(o.primaryKeyColumns!);
   }
   buildCounterSetTablePrimaryKey--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed65() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed65(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted29 = (o['x']!) as core.Map;
   unittest.expect(casted29, unittest.hasLength(3));
-  unittest.expect(
-    casted29['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted29['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted29['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted29['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted29['bool'], unittest.equals(true));
+  unittest.expect(casted29['string'], unittest.equals('foo'));
   var casted30 = (o['y']!) as core.Map;
   unittest.expect(casted30, unittest.hasLength(3));
-  unittest.expect(
-    casted30['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted30['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted30['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted30['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted30['bool'], unittest.equals(true));
+  unittest.expect(casted30['string'], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed66() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed66() => ['foo', 'foo'];
 
 void checkUnnamed66(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterSingleColumnChange = 0;
@@ -4973,45 +3683,18 @@ void checkSingleColumnChange(api.SingleColumnChange o) {
   buildCounterSingleColumnChange++;
   if (buildCounterSingleColumnChange < 3) {
     unittest.expect(o.array!, unittest.isTrue);
-    unittest.expect(
-      o.arrayLength!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.arrayLength!, unittest.equals(42));
     unittest.expect(o.autoGenerated!, unittest.isTrue);
-    unittest.expect(
-      o.charset!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.collation!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.comment!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.charset!, unittest.equals('foo'));
+    unittest.expect(o.collation!, unittest.equals('foo'));
+    unittest.expect(o.comment!, unittest.equals('foo'));
     checkUnnamed65(o.customFeatures!);
-    unittest.expect(
-      o.dataType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.fractionalSecondsPrecision!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.length!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dataType!, unittest.equals('foo'));
+    unittest.expect(o.fractionalSecondsPrecision!, unittest.equals(42));
+    unittest.expect(o.length!, unittest.equals('foo'));
     unittest.expect(o.nullable!, unittest.isTrue);
-    unittest.expect(
-      o.precision!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.scale!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.precision!, unittest.equals(42));
+    unittest.expect(o.scale!, unittest.equals(42));
     checkUnnamed66(o.setValues!);
     unittest.expect(o.udt!, unittest.isTrue);
   }
@@ -5032,10 +3715,7 @@ api.SingleEntityRename buildSingleEntityRename() {
 void checkSingleEntityRename(api.SingleEntityRename o) {
   buildCounterSingleEntityRename++;
   if (buildCounterSingleEntityRename < 3) {
-    unittest.expect(
-      o.newName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.newName!, unittest.equals('foo'));
   }
   buildCounterSingleEntityRename--;
 }
@@ -5055,14 +3735,8 @@ api.SinglePackageChange buildSinglePackageChange() {
 void checkSinglePackageChange(api.SinglePackageChange o) {
   buildCounterSinglePackageChange++;
   if (buildCounterSinglePackageChange < 3) {
-    unittest.expect(
-      o.packageBody!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.packageDescription!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.packageBody!, unittest.equals('foo'));
+    unittest.expect(o.packageDescription!, unittest.equals('foo'));
   }
   buildCounterSinglePackageChange--;
 }
@@ -5085,26 +3759,11 @@ api.SourceNumericFilter buildSourceNumericFilter() {
 void checkSourceNumericFilter(api.SourceNumericFilter o) {
   buildCounterSourceNumericFilter++;
   if (buildCounterSourceNumericFilter < 3) {
-    unittest.expect(
-      o.numericFilterOption!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sourceMaxPrecisionFilter!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sourceMaxScaleFilter!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sourceMinPrecisionFilter!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.sourceMinScaleFilter!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.numericFilterOption!, unittest.equals('foo'));
+    unittest.expect(o.sourceMaxPrecisionFilter!, unittest.equals(42));
+    unittest.expect(o.sourceMaxScaleFilter!, unittest.equals(42));
+    unittest.expect(o.sourceMinPrecisionFilter!, unittest.equals(42));
+    unittest.expect(o.sourceMinScaleFilter!, unittest.equals(42));
   }
   buildCounterSourceNumericFilter--;
 }
@@ -5145,30 +3804,18 @@ api.SourceObjectIdentifier buildSourceObjectIdentifier() {
 void checkSourceObjectIdentifier(api.SourceObjectIdentifier o) {
   buildCounterSourceObjectIdentifier++;
   if (buildCounterSourceObjectIdentifier < 3) {
-    unittest.expect(
-      o.database!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.schema!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.table!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.database!, unittest.equals('foo'));
+    unittest.expect(o.schema!, unittest.equals('foo'));
+    unittest.expect(o.table!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterSourceObjectIdentifier--;
 }
 
 core.List<api.SourceObjectConfig> buildUnnamed67() => [
-      buildSourceObjectConfig(),
-      buildSourceObjectConfig(),
-    ];
+  buildSourceObjectConfig(),
+  buildSourceObjectConfig(),
+];
 
 void checkUnnamed67(core.List<api.SourceObjectConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5192,10 +3839,7 @@ void checkSourceObjectsConfig(api.SourceObjectsConfig o) {
   buildCounterSourceObjectsConfig++;
   if (buildCounterSourceObjectsConfig < 3) {
     checkUnnamed67(o.objectConfigs!);
-    unittest.expect(
-      o.objectsSelectionType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.objectsSelectionType!, unittest.equals('foo'));
   }
   buildCounterSourceObjectsConfig--;
 }
@@ -5214,10 +3858,7 @@ api.SourceSqlChange buildSourceSqlChange() {
 void checkSourceSqlChange(api.SourceSqlChange o) {
   buildCounterSourceSqlChange++;
   if (buildCounterSourceSqlChange < 3) {
-    unittest.expect(
-      o.sqlCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sqlCode!, unittest.equals('foo'));
   }
   buildCounterSourceSqlChange--;
 }
@@ -5237,14 +3878,8 @@ api.SourceTextFilter buildSourceTextFilter() {
 void checkSourceTextFilter(api.SourceTextFilter o) {
   buildCounterSourceTextFilter++;
   if (buildCounterSourceTextFilter < 3) {
-    unittest.expect(
-      o.sourceMaxLengthFilter!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sourceMinLengthFilter!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sourceMaxLengthFilter!, unittest.equals('foo'));
+    unittest.expect(o.sourceMinLengthFilter!, unittest.equals('foo'));
   }
   buildCounterSourceTextFilter--;
 }
@@ -5266,30 +3901,18 @@ api.SqlAclEntry buildSqlAclEntry() {
 void checkSqlAclEntry(api.SqlAclEntry o) {
   buildCounterSqlAclEntry++;
   if (buildCounterSqlAclEntry < 3) {
-    unittest.expect(
-      o.expireTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.label!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.ttl!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.value!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.expireTime!, unittest.equals('foo'));
+    unittest.expect(o.label!, unittest.equals('foo'));
+    unittest.expect(o.ttl!, unittest.equals('foo'));
+    unittest.expect(o.value!, unittest.equals('foo'));
   }
   buildCounterSqlAclEntry--;
 }
 
 core.List<api.SqlAclEntry> buildUnnamed68() => [
-      buildSqlAclEntry(),
-      buildSqlAclEntry(),
-    ];
+  buildSqlAclEntry(),
+  buildSqlAclEntry(),
+];
 
 void checkUnnamed68(core.List<api.SqlAclEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5315,16 +3938,10 @@ api.SqlIpConfig buildSqlIpConfig() {
 void checkSqlIpConfig(api.SqlIpConfig o) {
   buildCounterSqlIpConfig++;
   if (buildCounterSqlIpConfig < 3) {
-    unittest.expect(
-      o.allocatedIpRange!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.allocatedIpRange!, unittest.equals('foo'));
     checkUnnamed68(o.authorizedNetworks!);
     unittest.expect(o.enableIpv4!, unittest.isTrue);
-    unittest.expect(
-      o.privateNetwork!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.privateNetwork!, unittest.equals('foo'));
     unittest.expect(o.requireSsl!, unittest.isTrue);
   }
   buildCounterSqlIpConfig--;
@@ -5345,14 +3962,8 @@ api.SqlServerBackups buildSqlServerBackups() {
 void checkSqlServerBackups(api.SqlServerBackups o) {
   buildCounterSqlServerBackups++;
   if (buildCounterSqlServerBackups < 3) {
-    unittest.expect(
-      o.gcsBucket!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.gcsPrefix!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.gcsBucket!, unittest.equals('foo'));
+    unittest.expect(o.gcsPrefix!, unittest.equals('foo'));
   }
   buildCounterSqlServerBackups--;
 }
@@ -5385,37 +3996,20 @@ void checkSqlServerConnectionProfile(api.SqlServerConnectionProfile o) {
   buildCounterSqlServerConnectionProfile++;
   if (buildCounterSqlServerConnectionProfile < 3) {
     checkSqlServerBackups(o.backups!);
-    unittest.expect(
-      o.cloudSqlId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.database!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.cloudSqlId!, unittest.equals('foo'));
+    unittest.expect(o.database!, unittest.equals('foo'));
     checkForwardSshTunnelConnectivity(o.forwardSshConnectivity!);
-    unittest.expect(
-      o.host!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.password!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.host!, unittest.equals('foo'));
+    unittest.expect(o.password!, unittest.equals('foo'));
     unittest.expect(o.passwordSet!, unittest.isTrue);
-    unittest.expect(
-      o.port!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.port!, unittest.equals(42));
     checkPrivateConnectivity(o.privateConnectivity!);
     checkPrivateServiceConnectConnectivity(
-        o.privateServiceConnectConnectivity!);
+      o.privateServiceConnectConnectivity!,
+    );
     checkSslConfig(o.ssl!);
     checkStaticIpConnectivity(o.staticIpConnectivity!);
-    unittest.expect(
-      o.username!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.username!, unittest.equals('foo'));
   }
   buildCounterSqlServerConnectionProfile--;
 }
@@ -5435,10 +4029,7 @@ api.SqlServerDatabaseBackup buildSqlServerDatabaseBackup() {
 void checkSqlServerDatabaseBackup(api.SqlServerDatabaseBackup o) {
   buildCounterSqlServerDatabaseBackup++;
   if (buildCounterSqlServerDatabaseBackup < 3) {
-    unittest.expect(
-      o.database!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.database!, unittest.equals('foo'));
     checkSqlServerEncryptionOptions(o.encryptionOptions!);
   }
   buildCounterSqlServerDatabaseBackup--;
@@ -5460,26 +4051,17 @@ api.SqlServerEncryptionOptions buildSqlServerEncryptionOptions() {
 void checkSqlServerEncryptionOptions(api.SqlServerEncryptionOptions o) {
   buildCounterSqlServerEncryptionOptions++;
   if (buildCounterSqlServerEncryptionOptions < 3) {
-    unittest.expect(
-      o.certPath!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.pvkPassword!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.pvkPath!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.certPath!, unittest.equals('foo'));
+    unittest.expect(o.pvkPassword!, unittest.equals('foo'));
+    unittest.expect(o.pvkPath!, unittest.equals('foo'));
   }
   buildCounterSqlServerEncryptionOptions--;
 }
 
 core.List<api.SqlServerDatabaseBackup> buildUnnamed69() => [
-      buildSqlServerDatabaseBackup(),
-      buildSqlServerDatabaseBackup(),
-    ];
+  buildSqlServerDatabaseBackup(),
+  buildSqlServerDatabaseBackup(),
+];
 
 void checkUnnamed69(core.List<api.SqlServerDatabaseBackup> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5489,7 +4071,7 @@ void checkUnnamed69(core.List<api.SqlServerDatabaseBackup> o) {
 
 core.int buildCounterSqlServerHomogeneousMigrationJobConfig = 0;
 api.SqlServerHomogeneousMigrationJobConfig
-    buildSqlServerHomogeneousMigrationJobConfig() {
+buildSqlServerHomogeneousMigrationJobConfig() {
   final o = api.SqlServerHomogeneousMigrationJobConfig();
   buildCounterSqlServerHomogeneousMigrationJobConfig++;
   if (buildCounterSqlServerHomogeneousMigrationJobConfig < 3) {
@@ -5503,13 +4085,11 @@ api.SqlServerHomogeneousMigrationJobConfig
 }
 
 void checkSqlServerHomogeneousMigrationJobConfig(
-    api.SqlServerHomogeneousMigrationJobConfig o) {
+  api.SqlServerHomogeneousMigrationJobConfig o,
+) {
   buildCounterSqlServerHomogeneousMigrationJobConfig++;
   if (buildCounterSqlServerHomogeneousMigrationJobConfig < 3) {
-    unittest.expect(
-      o.backupFilePattern!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.backupFilePattern!, unittest.equals('foo'));
     checkUnnamed69(o.databaseBackups!);
     unittest.expect(o.promoteWhenReady!, unittest.isTrue);
     unittest.expect(o.useDiffBackup!, unittest.isTrue);
@@ -5534,18 +4114,9 @@ api.SqlServerSourceConfig buildSqlServerSourceConfig() {
 void checkSqlServerSourceConfig(api.SqlServerSourceConfig o) {
   buildCounterSqlServerSourceConfig++;
   if (buildCounterSqlServerSourceConfig < 3) {
-    unittest.expect(
-      o.cdcStartPosition!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.maxConcurrentCdcConnections!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxConcurrentFullDumpConnections!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.cdcStartPosition!, unittest.equals('foo'));
+    unittest.expect(o.maxConcurrentCdcConnections!, unittest.equals(42));
+    unittest.expect(o.maxConcurrentFullDumpConnections!, unittest.equals(42));
     unittest.expect(o.skipFullDump!, unittest.isTrue);
   }
   buildCounterSqlServerSourceConfig--;
@@ -5586,29 +4157,17 @@ api.SshScript buildSshScript() {
 void checkSshScript(api.SshScript o) {
   buildCounterSshScript++;
   if (buildCounterSshScript < 3) {
-    unittest.expect(
-      o.script!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.script!, unittest.equals('foo'));
   }
   buildCounterSshScript--;
 }
 
-core.Map<core.String, core.String> buildUnnamed70() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.Map<core.String, core.String> buildUnnamed70() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed70(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
 core.int buildCounterSslConfig = 0;
@@ -5629,23 +4188,11 @@ api.SslConfig buildSslConfig() {
 void checkSslConfig(api.SslConfig o) {
   buildCounterSslConfig++;
   if (buildCounterSslConfig < 3) {
-    unittest.expect(
-      o.caCertificate!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.clientCertificate!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.clientKey!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.caCertificate!, unittest.equals('foo'));
+    unittest.expect(o.clientCertificate!, unittest.equals('foo'));
+    unittest.expect(o.clientKey!, unittest.equals('foo'));
     checkUnnamed70(o.sslFlags!);
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterSslConfig--;
 }
@@ -5700,54 +4247,36 @@ void checkStaticServiceIpConnectivity(api.StaticServiceIpConnectivity o) {
 }
 
 core.Map<core.String, core.Object?> buildUnnamed71() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed71(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted31 = (o['x']!) as core.Map;
   unittest.expect(casted31, unittest.hasLength(3));
-  unittest.expect(
-    casted31['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted31['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted31['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted31['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted31['bool'], unittest.equals(true));
+  unittest.expect(casted31['string'], unittest.equals('foo'));
   var casted32 = (o['y']!) as core.Map;
   unittest.expect(casted32, unittest.hasLength(3));
-  unittest.expect(
-    casted32['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted32['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted32['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted32['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted32['bool'], unittest.equals(true));
+  unittest.expect(casted32['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object?>> buildUnnamed72() => [
-      buildUnnamed71(),
-      buildUnnamed71(),
-    ];
+  buildUnnamed71(),
+  buildUnnamed71(),
+];
 
 void checkUnnamed72(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5771,15 +4300,9 @@ api.Status buildStatus() {
 void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
-    unittest.expect(
-      o.code!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.code!, unittest.equals(42));
     checkUnnamed72(o.details!);
-    unittest.expect(
-      o.message!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
@@ -5800,48 +4323,30 @@ void checkStopMigrationJobRequest(api.StopMigrationJobRequest o) {
 }
 
 core.Map<core.String, core.Object?> buildUnnamed73() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed73(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted33 = (o['x']!) as core.Map;
   unittest.expect(casted33, unittest.hasLength(3));
-  unittest.expect(
-    casted33['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted33['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted33['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted33['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted33['bool'], unittest.equals(true));
+  unittest.expect(casted33['string'], unittest.equals('foo'));
   var casted34 = (o['y']!) as core.Map;
   unittest.expect(casted34, unittest.hasLength(3));
-  unittest.expect(
-    casted34['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted34['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted34['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted34['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted34['bool'], unittest.equals(true));
+  unittest.expect(casted34['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterStoredProcedureEntity = 0;
@@ -5860,57 +4365,36 @@ void checkStoredProcedureEntity(api.StoredProcedureEntity o) {
   buildCounterStoredProcedureEntity++;
   if (buildCounterStoredProcedureEntity < 3) {
     checkUnnamed73(o.customFeatures!);
-    unittest.expect(
-      o.sqlCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sqlCode!, unittest.equals('foo'));
   }
   buildCounterStoredProcedureEntity--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed74() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed74(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted35 = (o['x']!) as core.Map;
   unittest.expect(casted35, unittest.hasLength(3));
-  unittest.expect(
-    casted35['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted35['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted35['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted35['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted35['bool'], unittest.equals(true));
+  unittest.expect(casted35['string'], unittest.equals('foo'));
   var casted36 = (o['y']!) as core.Map;
   unittest.expect(casted36, unittest.hasLength(3));
-  unittest.expect(
-    casted36['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted36['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted36['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted36['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted36['bool'], unittest.equals(true));
+  unittest.expect(casted36['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterSynonymEntity = 0;
@@ -5930,22 +4414,16 @@ void checkSynonymEntity(api.SynonymEntity o) {
   buildCounterSynonymEntity++;
   if (buildCounterSynonymEntity < 3) {
     checkUnnamed74(o.customFeatures!);
-    unittest.expect(
-      o.sourceEntity!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sourceType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sourceEntity!, unittest.equals('foo'));
+    unittest.expect(o.sourceType!, unittest.equals('foo'));
   }
   buildCounterSynonymEntity--;
 }
 
 core.List<api.ColumnEntity> buildUnnamed75() => [
-      buildColumnEntity(),
-      buildColumnEntity(),
-    ];
+  buildColumnEntity(),
+  buildColumnEntity(),
+];
 
 void checkUnnamed75(core.List<api.ColumnEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5954,9 +4432,9 @@ void checkUnnamed75(core.List<api.ColumnEntity> o) {
 }
 
 core.List<api.ConstraintEntity> buildUnnamed76() => [
-      buildConstraintEntity(),
-      buildConstraintEntity(),
-    ];
+  buildConstraintEntity(),
+  buildConstraintEntity(),
+];
 
 void checkUnnamed76(core.List<api.ConstraintEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5965,54 +4443,36 @@ void checkUnnamed76(core.List<api.ConstraintEntity> o) {
 }
 
 core.Map<core.String, core.Object?> buildUnnamed77() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed77(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted37 = (o['x']!) as core.Map;
   unittest.expect(casted37, unittest.hasLength(3));
-  unittest.expect(
-    casted37['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted37['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted37['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted37['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted37['bool'], unittest.equals(true));
+  unittest.expect(casted37['string'], unittest.equals('foo'));
   var casted38 = (o['y']!) as core.Map;
   unittest.expect(casted38, unittest.hasLength(3));
-  unittest.expect(
-    casted38['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted38['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted38['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted38['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted38['bool'], unittest.equals(true));
+  unittest.expect(casted38['string'], unittest.equals('foo'));
 }
 
 core.List<api.IndexEntity> buildUnnamed78() => [
-      buildIndexEntity(),
-      buildIndexEntity(),
-    ];
+  buildIndexEntity(),
+  buildIndexEntity(),
+];
 
 void checkUnnamed78(core.List<api.IndexEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6021,9 +4481,9 @@ void checkUnnamed78(core.List<api.IndexEntity> o) {
 }
 
 core.List<api.TriggerEntity> buildUnnamed79() => [
-      buildTriggerEntity(),
-      buildTriggerEntity(),
-    ];
+  buildTriggerEntity(),
+  buildTriggerEntity(),
+];
 
 void checkUnnamed79(core.List<api.TriggerEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6051,10 +4511,7 @@ void checkTableEntity(api.TableEntity o) {
   buildCounterTableEntity++;
   if (buildCounterTableEntity < 3) {
     checkUnnamed75(o.columns!);
-    unittest.expect(
-      o.comment!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.comment!, unittest.equals('foo'));
     checkUnnamed76(o.constraints!);
     checkUnnamed77(o.customFeatures!);
     checkUnnamed78(o.indices!);
@@ -6077,29 +4534,17 @@ api.TcpProxyScript buildTcpProxyScript() {
 void checkTcpProxyScript(api.TcpProxyScript o) {
   buildCounterTcpProxyScript++;
   if (buildCounterTcpProxyScript < 3) {
-    unittest.expect(
-      o.script!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.script!, unittest.equals('foo'));
   }
   buildCounterTcpProxyScript--;
 }
 
-core.List<core.String> buildUnnamed80() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed80() => ['foo', 'foo'];
 
 void checkUnnamed80(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterTestIamPermissionsRequest = 0;
@@ -6121,21 +4566,12 @@ void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed81() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed81() => ['foo', 'foo'];
 
 void checkUnnamed81(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterTestIamPermissionsResponse = 0;
@@ -6158,65 +4594,38 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
 }
 
 core.Map<core.String, core.Object?> buildUnnamed82() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed82(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted39 = (o['x']!) as core.Map;
   unittest.expect(casted39, unittest.hasLength(3));
-  unittest.expect(
-    casted39['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted39['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted39['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted39['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted39['bool'], unittest.equals(true));
+  unittest.expect(casted39['string'], unittest.equals('foo'));
   var casted40 = (o['y']!) as core.Map;
   unittest.expect(casted40, unittest.hasLength(3));
-  unittest.expect(
-    casted40['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted40['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted40['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted40['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted40['bool'], unittest.equals(true));
+  unittest.expect(casted40['string'], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed83() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed83() => ['foo', 'foo'];
 
 void checkUnnamed83(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterTriggerEntity = 0;
@@ -6238,66 +4647,39 @@ void checkTriggerEntity(api.TriggerEntity o) {
   buildCounterTriggerEntity++;
   if (buildCounterTriggerEntity < 3) {
     checkUnnamed82(o.customFeatures!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sqlCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.triggerType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.sqlCode!, unittest.equals('foo'));
+    unittest.expect(o.triggerType!, unittest.equals('foo'));
     checkUnnamed83(o.triggeringEvents!);
   }
   buildCounterTriggerEntity--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed84() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed84(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted41 = (o['x']!) as core.Map;
   unittest.expect(casted41, unittest.hasLength(3));
-  unittest.expect(
-    casted41['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted41['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted41['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted41['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted41['bool'], unittest.equals(true));
+  unittest.expect(casted41['string'], unittest.equals('foo'));
   var casted42 = (o['y']!) as core.Map;
   unittest.expect(casted42, unittest.hasLength(3));
-  unittest.expect(
-    casted42['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted42['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted42['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted42['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted42['bool'], unittest.equals(true));
+  unittest.expect(casted42['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterUDTEntity = 0;
@@ -6317,14 +4699,8 @@ void checkUDTEntity(api.UDTEntity o) {
   buildCounterUDTEntity++;
   if (buildCounterUDTEntity < 3) {
     checkUnnamed84(o.customFeatures!);
-    unittest.expect(
-      o.udtBody!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.udtSqlCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.udtBody!, unittest.equals('foo'));
+    unittest.expect(o.udtSqlCode!, unittest.equals('foo'));
   }
   buildCounterUDTEntity--;
 }
@@ -6345,34 +4721,19 @@ api.UserPassword buildUserPassword() {
 void checkUserPassword(api.UserPassword o) {
   buildCounterUserPassword++;
   if (buildCounterUserPassword < 3) {
-    unittest.expect(
-      o.password!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.password!, unittest.equals('foo'));
     unittest.expect(o.passwordSet!, unittest.isTrue);
-    unittest.expect(
-      o.user!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.user!, unittest.equals('foo'));
   }
   buildCounterUserPassword--;
 }
 
-core.List<core.String> buildUnnamed85() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed85() => ['foo', 'foo'];
 
 void checkUnnamed85(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterValueListFilter = 0;
@@ -6392,10 +4753,7 @@ void checkValueListFilter(api.ValueListFilter o) {
   buildCounterValueListFilter++;
   if (buildCounterValueListFilter < 3) {
     unittest.expect(o.ignoreCase!, unittest.isTrue);
-    unittest.expect(
-      o.valuePresentList!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.valuePresentList!, unittest.equals('foo'));
     checkUnnamed85(o.values!);
   }
   buildCounterValueListFilter--;
@@ -6454,18 +4812,15 @@ void checkVerifyMigrationJobRequest(api.VerifyMigrationJobRequest o) {
   buildCounterVerifyMigrationJobRequest++;
   if (buildCounterVerifyMigrationJobRequest < 3) {
     checkMigrationJob(o.migrationJob!);
-    unittest.expect(
-      o.updateMask!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.updateMask!, unittest.equals('foo'));
   }
   buildCounterVerifyMigrationJobRequest--;
 }
 
 core.List<api.ConstraintEntity> buildUnnamed86() => [
-      buildConstraintEntity(),
-      buildConstraintEntity(),
-    ];
+  buildConstraintEntity(),
+  buildConstraintEntity(),
+];
 
 void checkUnnamed86(core.List<api.ConstraintEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6474,48 +4829,30 @@ void checkUnnamed86(core.List<api.ConstraintEntity> o) {
 }
 
 core.Map<core.String, core.Object?> buildUnnamed87() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed87(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted43 = (o['x']!) as core.Map;
   unittest.expect(casted43, unittest.hasLength(3));
-  unittest.expect(
-    casted43['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted43['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted43['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted43['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted43['bool'], unittest.equals(true));
+  unittest.expect(casted43['string'], unittest.equals('foo'));
   var casted44 = (o['y']!) as core.Map;
   unittest.expect(casted44, unittest.hasLength(3));
-  unittest.expect(
-    casted44['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted44['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted44['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted44['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted44['bool'], unittest.equals(true));
+  unittest.expect(casted44['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterViewEntity = 0;
@@ -6536,10 +4873,7 @@ void checkViewEntity(api.ViewEntity o) {
   if (buildCounterViewEntity < 3) {
     checkUnnamed86(o.constraints!);
     checkUnnamed87(o.customFeatures!);
-    unittest.expect(
-      o.sqlCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.sqlCode!, unittest.equals('foo'));
   }
   buildCounterViewEntity--;
 }
@@ -6560,18 +4894,9 @@ api.VmCreationConfig buildVmCreationConfig() {
 void checkVmCreationConfig(api.VmCreationConfig o) {
   buildCounterVmCreationConfig++;
   if (buildCounterVmCreationConfig < 3) {
-    unittest.expect(
-      o.subnet!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.vmMachineType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.vmZone!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.subnet!, unittest.equals('foo'));
+    unittest.expect(o.vmMachineType!, unittest.equals('foo'));
+    unittest.expect(o.vmZone!, unittest.equals('foo'));
   }
   buildCounterVmCreationConfig--;
 }
@@ -6590,10 +4915,7 @@ api.VmSelectionConfig buildVmSelectionConfig() {
 void checkVmSelectionConfig(api.VmSelectionConfig o) {
   buildCounterVmSelectionConfig++;
   if (buildCounterVmSelectionConfig < 3) {
-    unittest.expect(
-      o.vmZone!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.vmZone!, unittest.equals('foo'));
   }
   buildCounterVmSelectionConfig--;
 }
@@ -6613,14 +4935,8 @@ api.VpcPeeringConfig buildVpcPeeringConfig() {
 void checkVpcPeeringConfig(api.VpcPeeringConfig o) {
   buildCounterVpcPeeringConfig++;
   if (buildCounterVpcPeeringConfig < 3) {
-    unittest.expect(
-      o.subnet!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.vpcName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.subnet!, unittest.equals('foo'));
+    unittest.expect(o.vpcName!, unittest.equals('foo'));
   }
   buildCounterVpcPeeringConfig--;
 }
@@ -6639,29 +4955,17 @@ api.VpcPeeringConnectivity buildVpcPeeringConnectivity() {
 void checkVpcPeeringConnectivity(api.VpcPeeringConnectivity o) {
   buildCounterVpcPeeringConnectivity++;
   if (buildCounterVpcPeeringConnectivity < 3) {
-    unittest.expect(
-      o.vpc!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.vpc!, unittest.equals('foo'));
   }
   buildCounterVpcPeeringConnectivity--;
 }
 
-core.List<core.String> buildUnnamed88() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed88() => ['foo', 'foo'];
 
 void checkUnnamed88(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 void main() {
@@ -6670,7 +4974,8 @@ void main() {
       final o = buildAlloyDbConnectionProfile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AlloyDbConnectionProfile.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAlloyDbConnectionProfile(od);
     });
   });
@@ -6680,7 +4985,8 @@ void main() {
       final o = buildAlloyDbSettings();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AlloyDbSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAlloyDbSettings(od);
     });
   });
@@ -6690,7 +4996,8 @@ void main() {
       final o = buildApplyConversionWorkspaceRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ApplyConversionWorkspaceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkApplyConversionWorkspaceRequest(od);
     });
   });
@@ -6699,8 +5006,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildApplyHash();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ApplyHash.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.ApplyHash.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkApplyHash(od);
     });
   });
@@ -6710,7 +5018,8 @@ void main() {
       final o = buildApplyJobDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ApplyJobDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkApplyJobDetails(od);
     });
   });
@@ -6720,7 +5029,8 @@ void main() {
       final o = buildAssignSpecificValue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AssignSpecificValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAssignSpecificValue(od);
     });
   });
@@ -6730,7 +5040,8 @@ void main() {
       final o = buildAuditConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AuditConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAuditConfig(od);
     });
   });
@@ -6740,7 +5051,8 @@ void main() {
       final o = buildAuditLogConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AuditLogConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAuditLogConfig(od);
     });
   });
@@ -6750,7 +5062,8 @@ void main() {
       final o = buildAuthorizedNetwork();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.AuthorizedNetwork.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkAuthorizedNetwork(od);
     });
   });
@@ -6760,7 +5073,8 @@ void main() {
       final o = buildBackgroundJobLogEntry();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BackgroundJobLogEntry.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBackgroundJobLogEntry(od);
     });
   });
@@ -6770,7 +5084,8 @@ void main() {
       final o = buildBinaryLogParser();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.BinaryLogParser.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBinaryLogParser(od);
     });
   });
@@ -6779,8 +5094,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildBinding();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Binding.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkBinding(od);
     });
   });
@@ -6790,7 +5106,8 @@ void main() {
       final o = buildCancelOperationRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CancelOperationRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCancelOperationRequest(od);
     });
   });
@@ -6800,7 +5117,8 @@ void main() {
       final o = buildCloudSqlConnectionProfile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CloudSqlConnectionProfile.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCloudSqlConnectionProfile(od);
     });
   });
@@ -6810,7 +5128,8 @@ void main() {
       final o = buildCloudSqlSettings();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CloudSqlSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCloudSqlSettings(od);
     });
   });
@@ -6820,7 +5139,8 @@ void main() {
       final o = buildColumnEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ColumnEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkColumnEntity(od);
     });
   });
@@ -6830,7 +5150,8 @@ void main() {
       final o = buildCommitConversionWorkspaceRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.CommitConversionWorkspaceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCommitConversionWorkspaceRequest(od);
     });
   });
@@ -6840,7 +5161,8 @@ void main() {
       final o = buildConditionalColumnSetValue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ConditionalColumnSetValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConditionalColumnSetValue(od);
     });
   });
@@ -6850,7 +5172,8 @@ void main() {
       final o = buildConnectionProfile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ConnectionProfile.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConnectionProfile(od);
     });
   });
@@ -6860,7 +5183,8 @@ void main() {
       final o = buildConstraintEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ConstraintEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConstraintEntity(od);
     });
   });
@@ -6870,7 +5194,8 @@ void main() {
       final o = buildConversionWorkspace();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ConversionWorkspace.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConversionWorkspace(od);
     });
   });
@@ -6880,7 +5205,8 @@ void main() {
       final o = buildConversionWorkspaceInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ConversionWorkspaceInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConversionWorkspaceInfo(od);
     });
   });
@@ -6890,7 +5216,8 @@ void main() {
       final o = buildConvertConversionWorkspaceRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ConvertConversionWorkspaceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConvertConversionWorkspaceRequest(od);
     });
   });
@@ -6900,7 +5227,8 @@ void main() {
       final o = buildConvertJobDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ConvertJobDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConvertJobDetails(od);
     });
   });
@@ -6910,7 +5238,8 @@ void main() {
       final o = buildConvertRowIdToColumn();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ConvertRowIdToColumn.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkConvertRowIdToColumn(od);
     });
   });
@@ -6920,7 +5249,8 @@ void main() {
       final o = buildDataCacheConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DataCacheConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDataCacheConfig(od);
     });
   });
@@ -6930,7 +5260,8 @@ void main() {
       final o = buildDatabaseEngineInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DatabaseEngineInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDatabaseEngineInfo(od);
     });
   });
@@ -6940,7 +5271,8 @@ void main() {
       final o = buildDatabaseEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DatabaseEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDatabaseEntity(od);
     });
   });
@@ -6950,7 +5282,8 @@ void main() {
       final o = buildDatabaseInstanceEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DatabaseInstanceEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDatabaseInstanceEntity(od);
     });
   });
@@ -6960,7 +5293,8 @@ void main() {
       final o = buildDatabaseType();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DatabaseType.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDatabaseType(od);
     });
   });
@@ -6970,7 +5304,8 @@ void main() {
       final o = buildDemoteDestinationRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DemoteDestinationRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDemoteDestinationRequest(od);
     });
   });
@@ -6980,7 +5315,8 @@ void main() {
       final o = buildDescribeConversionWorkspaceRevisionsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DescribeConversionWorkspaceRevisionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDescribeConversionWorkspaceRevisionsResponse(od);
     });
   });
@@ -6990,7 +5326,8 @@ void main() {
       final o = buildDescribeDatabaseEntitiesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DescribeDatabaseEntitiesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDescribeDatabaseEntitiesResponse(od);
     });
   });
@@ -7000,7 +5337,8 @@ void main() {
       final o = buildDoubleComparisonFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.DoubleComparisonFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDoubleComparisonFilter(od);
     });
   });
@@ -7009,8 +5347,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDumpFlag();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.DumpFlag.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.DumpFlag.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDumpFlag(od);
     });
   });
@@ -7019,8 +5358,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDumpFlags();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.DumpFlags.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.DumpFlags.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDumpFlags(od);
     });
   });
@@ -7029,8 +5369,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildEmpty();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Empty.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEmpty(od);
     });
   });
@@ -7040,7 +5381,8 @@ void main() {
       final o = buildEncryptionConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EncryptionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEncryptionConfig(od);
     });
   });
@@ -7049,8 +5391,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildEntityDdl();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.EntityDdl.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.EntityDdl.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEntityDdl(od);
     });
   });
@@ -7060,7 +5403,8 @@ void main() {
       final o = buildEntityIssue();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EntityIssue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEntityIssue(od);
     });
   });
@@ -7070,7 +5414,8 @@ void main() {
       final o = buildEntityMapping();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EntityMapping.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEntityMapping(od);
     });
   });
@@ -7080,7 +5425,8 @@ void main() {
       final o = buildEntityMappingLogEntry();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.EntityMappingLogEntry.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEntityMappingLogEntry(od);
     });
   });
@@ -7089,8 +5435,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildEntityMove();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.EntityMove.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.EntityMove.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkEntityMove(od);
     });
   });
@@ -7099,8 +5446,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildExpr();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Expr.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkExpr(od);
     });
   });
@@ -7110,7 +5458,8 @@ void main() {
       final o = buildFetchStaticIpsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FetchStaticIpsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFetchStaticIpsResponse(od);
     });
   });
@@ -7120,7 +5469,8 @@ void main() {
       final o = buildFilterTableColumns();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FilterTableColumns.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFilterTableColumns(od);
     });
   });
@@ -7130,7 +5480,8 @@ void main() {
       final o = buildForwardSshTunnelConnectivity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ForwardSshTunnelConnectivity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkForwardSshTunnelConnectivity(od);
     });
   });
@@ -7140,7 +5491,8 @@ void main() {
       final o = buildFunctionEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.FunctionEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFunctionEntity(od);
     });
   });
@@ -7150,7 +5502,8 @@ void main() {
       final o = buildGenerateSshScriptRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GenerateSshScriptRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGenerateSshScriptRequest(od);
     });
   });
@@ -7160,7 +5513,8 @@ void main() {
       final o = buildGenerateTcpProxyScriptRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GenerateTcpProxyScriptRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGenerateTcpProxyScriptRequest(od);
     });
   });
@@ -7170,7 +5524,8 @@ void main() {
       final o = buildImportMappingRulesRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ImportMappingRulesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkImportMappingRulesRequest(od);
     });
   });
@@ -7180,7 +5535,8 @@ void main() {
       final o = buildImportRulesJobDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ImportRulesJobDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkImportRulesJobDetails(od);
     });
   });
@@ -7190,7 +5546,8 @@ void main() {
       final o = buildIndexEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.IndexEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkIndexEntity(od);
     });
   });
@@ -7200,7 +5557,8 @@ void main() {
       final o = buildInstanceNetworkConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.InstanceNetworkConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkInstanceNetworkConfig(od);
     });
   });
@@ -7210,7 +5568,8 @@ void main() {
       final o = buildIntComparisonFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.IntComparisonFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkIntComparisonFilter(od);
     });
   });
@@ -7220,7 +5579,8 @@ void main() {
       final o = buildListConnectionProfilesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListConnectionProfilesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkListConnectionProfilesResponse(od);
     });
   });
@@ -7230,7 +5590,8 @@ void main() {
       final o = buildListConversionWorkspacesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListConversionWorkspacesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkListConversionWorkspacesResponse(od);
     });
   });
@@ -7240,7 +5601,8 @@ void main() {
       final o = buildListLocationsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListLocationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkListLocationsResponse(od);
     });
   });
@@ -7250,7 +5612,8 @@ void main() {
       final o = buildListMappingRulesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListMappingRulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkListMappingRulesResponse(od);
     });
   });
@@ -7260,7 +5623,8 @@ void main() {
       final o = buildListMigrationJobObjectsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListMigrationJobObjectsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkListMigrationJobObjectsResponse(od);
     });
   });
@@ -7270,7 +5634,8 @@ void main() {
       final o = buildListMigrationJobsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListMigrationJobsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkListMigrationJobsResponse(od);
     });
   });
@@ -7280,7 +5645,8 @@ void main() {
       final o = buildListOperationsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListOperationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkListOperationsResponse(od);
     });
   });
@@ -7290,7 +5656,8 @@ void main() {
       final o = buildListPrivateConnectionsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListPrivateConnectionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkListPrivateConnectionsResponse(od);
     });
   });
@@ -7299,8 +5666,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildLocation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Location.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLocation(od);
     });
   });
@@ -7310,7 +5678,8 @@ void main() {
       final o = buildLogFileDirectories();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LogFileDirectories.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLogFileDirectories(od);
     });
   });
@@ -7319,8 +5688,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildLogMiner();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.LogMiner.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.LogMiner.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLogMiner(od);
     });
   });
@@ -7330,7 +5700,8 @@ void main() {
       final o = buildLookupMigrationJobObjectRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LookupMigrationJobObjectRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLookupMigrationJobObjectRequest(od);
     });
   });
@@ -7340,7 +5711,8 @@ void main() {
       final o = buildMachineConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MachineConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMachineConfig(od);
     });
   });
@@ -7350,7 +5722,8 @@ void main() {
       final o = buildMappingRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MappingRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMappingRule(od);
     });
   });
@@ -7360,7 +5733,8 @@ void main() {
       final o = buildMappingRuleFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MappingRuleFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMappingRuleFilter(od);
     });
   });
@@ -7370,7 +5744,8 @@ void main() {
       final o = buildMaterializedViewEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MaterializedViewEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMaterializedViewEntity(od);
     });
   });
@@ -7380,7 +5755,8 @@ void main() {
       final o = buildMigrationJob();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MigrationJob.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMigrationJob(od);
     });
   });
@@ -7390,7 +5766,8 @@ void main() {
       final o = buildMigrationJobObject();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MigrationJobObject.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMigrationJobObject(od);
     });
   });
@@ -7400,7 +5777,8 @@ void main() {
       final o = buildMigrationJobObjectsConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MigrationJobObjectsConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMigrationJobObjectsConfig(od);
     });
   });
@@ -7410,7 +5788,8 @@ void main() {
       final o = buildMultiColumnDatatypeChange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MultiColumnDatatypeChange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMultiColumnDatatypeChange(od);
     });
   });
@@ -7420,7 +5799,8 @@ void main() {
       final o = buildMultiEntityRename();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MultiEntityRename.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMultiEntityRename(od);
     });
   });
@@ -7430,7 +5810,8 @@ void main() {
       final o = buildMySqlConnectionProfile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.MySqlConnectionProfile.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkMySqlConnectionProfile(od);
     });
   });
@@ -7439,8 +5820,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildOperation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Operation.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkOperation(od);
     });
   });
@@ -7450,7 +5832,8 @@ void main() {
       final o = buildOracleAsmConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.OracleAsmConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkOracleAsmConfig(od);
     });
   });
@@ -7460,7 +5843,8 @@ void main() {
       final o = buildOracleAsmLogFileAccess();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.OracleAsmLogFileAccess.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkOracleAsmLogFileAccess(od);
     });
   });
@@ -7470,7 +5854,8 @@ void main() {
       final o = buildOracleConnectionProfile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.OracleConnectionProfile.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkOracleConnectionProfile(od);
     });
   });
@@ -7480,7 +5865,8 @@ void main() {
       final o = buildOracleSourceConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.OracleSourceConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkOracleSourceConfig(od);
     });
   });
@@ -7490,7 +5876,8 @@ void main() {
       final o = buildOracleToPostgresConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.OracleToPostgresConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkOracleToPostgresConfig(od);
     });
   });
@@ -7500,7 +5887,8 @@ void main() {
       final o = buildPackageEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PackageEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPackageEntity(od);
     });
   });
@@ -7510,7 +5898,8 @@ void main() {
       final o = buildPerformanceConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PerformanceConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPerformanceConfig(od);
     });
   });
@@ -7519,8 +5908,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPolicy();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Policy.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPolicy(od);
     });
   });
@@ -7529,8 +5919,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPosition();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Position.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Position.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPosition(od);
     });
   });
@@ -7540,7 +5931,8 @@ void main() {
       final o = buildPostgreSqlConnectionProfile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PostgreSqlConnectionProfile.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPostgreSqlConnectionProfile(od);
     });
   });
@@ -7550,7 +5942,8 @@ void main() {
       final o = buildPostgresDestinationConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PostgresDestinationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPostgresDestinationConfig(od);
     });
   });
@@ -7560,7 +5953,8 @@ void main() {
       final o = buildPrimaryInstanceSettings();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PrimaryInstanceSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPrimaryInstanceSettings(od);
     });
   });
@@ -7570,7 +5964,8 @@ void main() {
       final o = buildPrivateConnection();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PrivateConnection.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPrivateConnection(od);
     });
   });
@@ -7580,7 +5975,8 @@ void main() {
       final o = buildPrivateConnectivity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PrivateConnectivity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPrivateConnectivity(od);
     });
   });
@@ -7590,7 +5986,8 @@ void main() {
       final o = buildPrivateServiceConnectConnectivity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PrivateServiceConnectConnectivity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPrivateServiceConnectConnectivity(od);
     });
   });
@@ -7600,7 +5997,8 @@ void main() {
       final o = buildPromoteMigrationJobRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PromoteMigrationJobRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPromoteMigrationJobRequest(od);
     });
   });
@@ -7610,7 +6008,8 @@ void main() {
       final o = buildPscInterfaceConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PscInterfaceConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPscInterfaceConfig(od);
     });
   });
@@ -7620,7 +6019,8 @@ void main() {
       final o = buildRestartMigrationJobRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RestartMigrationJobRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRestartMigrationJobRequest(od);
     });
   });
@@ -7630,7 +6030,8 @@ void main() {
       final o = buildResumeMigrationJobRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ResumeMigrationJobRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkResumeMigrationJobRequest(od);
     });
   });
@@ -7640,7 +6041,8 @@ void main() {
       final o = buildReverseSshConnectivity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ReverseSshConnectivity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkReverseSshConnectivity(od);
     });
   });
@@ -7650,7 +6052,8 @@ void main() {
       final o = buildRollbackConversionWorkspaceRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RollbackConversionWorkspaceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRollbackConversionWorkspaceRequest(od);
     });
   });
@@ -7660,7 +6063,8 @@ void main() {
       final o = buildRoundToScale();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RoundToScale.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRoundToScale(od);
     });
   });
@@ -7669,8 +6073,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildRulesFile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.RulesFile.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.RulesFile.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRulesFile(od);
     });
   });
@@ -7680,7 +6085,8 @@ void main() {
       final o = buildSchemaEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SchemaEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSchemaEntity(od);
     });
   });
@@ -7690,7 +6096,8 @@ void main() {
       final o = buildSearchBackgroundJobsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SearchBackgroundJobsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSearchBackgroundJobsResponse(od);
     });
   });
@@ -7700,7 +6107,8 @@ void main() {
       final o = buildSeedConversionWorkspaceRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SeedConversionWorkspaceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSeedConversionWorkspaceRequest(od);
     });
   });
@@ -7710,7 +6118,8 @@ void main() {
       final o = buildSeedJobDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SeedJobDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSeedJobDetails(od);
     });
   });
@@ -7720,7 +6129,8 @@ void main() {
       final o = buildSequenceEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SequenceEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSequenceEntity(od);
     });
   });
@@ -7730,7 +6140,8 @@ void main() {
       final o = buildSetIamPolicyRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SetIamPolicyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSetIamPolicyRequest(od);
     });
   });
@@ -7740,7 +6151,8 @@ void main() {
       final o = buildSetTablePrimaryKey();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SetTablePrimaryKey.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSetTablePrimaryKey(od);
     });
   });
@@ -7750,7 +6162,8 @@ void main() {
       final o = buildSingleColumnChange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SingleColumnChange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSingleColumnChange(od);
     });
   });
@@ -7760,7 +6173,8 @@ void main() {
       final o = buildSingleEntityRename();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SingleEntityRename.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSingleEntityRename(od);
     });
   });
@@ -7770,7 +6184,8 @@ void main() {
       final o = buildSinglePackageChange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SinglePackageChange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSinglePackageChange(od);
     });
   });
@@ -7780,7 +6195,8 @@ void main() {
       final o = buildSourceNumericFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SourceNumericFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSourceNumericFilter(od);
     });
   });
@@ -7790,7 +6206,8 @@ void main() {
       final o = buildSourceObjectConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SourceObjectConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSourceObjectConfig(od);
     });
   });
@@ -7800,7 +6217,8 @@ void main() {
       final o = buildSourceObjectIdentifier();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SourceObjectIdentifier.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSourceObjectIdentifier(od);
     });
   });
@@ -7810,7 +6228,8 @@ void main() {
       final o = buildSourceObjectsConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SourceObjectsConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSourceObjectsConfig(od);
     });
   });
@@ -7820,7 +6239,8 @@ void main() {
       final o = buildSourceSqlChange();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SourceSqlChange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSourceSqlChange(od);
     });
   });
@@ -7830,7 +6250,8 @@ void main() {
       final o = buildSourceTextFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SourceTextFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSourceTextFilter(od);
     });
   });
@@ -7840,7 +6261,8 @@ void main() {
       final o = buildSqlAclEntry();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SqlAclEntry.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSqlAclEntry(od);
     });
   });
@@ -7850,7 +6272,8 @@ void main() {
       final o = buildSqlIpConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SqlIpConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSqlIpConfig(od);
     });
   });
@@ -7860,7 +6283,8 @@ void main() {
       final o = buildSqlServerBackups();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SqlServerBackups.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSqlServerBackups(od);
     });
   });
@@ -7870,7 +6294,8 @@ void main() {
       final o = buildSqlServerConnectionProfile();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SqlServerConnectionProfile.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSqlServerConnectionProfile(od);
     });
   });
@@ -7880,7 +6305,8 @@ void main() {
       final o = buildSqlServerDatabaseBackup();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SqlServerDatabaseBackup.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSqlServerDatabaseBackup(od);
     });
   });
@@ -7890,7 +6316,8 @@ void main() {
       final o = buildSqlServerEncryptionOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SqlServerEncryptionOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSqlServerEncryptionOptions(od);
     });
   });
@@ -7900,7 +6327,8 @@ void main() {
       final o = buildSqlServerHomogeneousMigrationJobConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SqlServerHomogeneousMigrationJobConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSqlServerHomogeneousMigrationJobConfig(od);
     });
   });
@@ -7910,7 +6338,8 @@ void main() {
       final o = buildSqlServerSourceConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SqlServerSourceConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSqlServerSourceConfig(od);
     });
   });
@@ -7920,7 +6349,8 @@ void main() {
       final o = buildSqlServerToPostgresConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SqlServerToPostgresConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSqlServerToPostgresConfig(od);
     });
   });
@@ -7929,8 +6359,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildSshScript();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.SshScript.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.SshScript.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSshScript(od);
     });
   });
@@ -7939,8 +6370,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildSslConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.SslConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.SslConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSslConfig(od);
     });
   });
@@ -7950,7 +6382,8 @@ void main() {
       final o = buildStartMigrationJobRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.StartMigrationJobRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkStartMigrationJobRequest(od);
     });
   });
@@ -7960,7 +6393,8 @@ void main() {
       final o = buildStaticIpConnectivity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.StaticIpConnectivity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkStaticIpConnectivity(od);
     });
   });
@@ -7970,7 +6404,8 @@ void main() {
       final o = buildStaticServiceIpConnectivity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.StaticServiceIpConnectivity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkStaticServiceIpConnectivity(od);
     });
   });
@@ -7979,8 +6414,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildStatus();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Status.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkStatus(od);
     });
   });
@@ -7990,7 +6426,8 @@ void main() {
       final o = buildStopMigrationJobRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.StopMigrationJobRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkStopMigrationJobRequest(od);
     });
   });
@@ -8000,7 +6437,8 @@ void main() {
       final o = buildStoredProcedureEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.StoredProcedureEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkStoredProcedureEntity(od);
     });
   });
@@ -8010,7 +6448,8 @@ void main() {
       final o = buildSynonymEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.SynonymEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkSynonymEntity(od);
     });
   });
@@ -8020,7 +6459,8 @@ void main() {
       final o = buildTableEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TableEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTableEntity(od);
     });
   });
@@ -8030,7 +6470,8 @@ void main() {
       final o = buildTcpProxyScript();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TcpProxyScript.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTcpProxyScript(od);
     });
   });
@@ -8040,7 +6481,8 @@ void main() {
       final o = buildTestIamPermissionsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TestIamPermissionsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTestIamPermissionsRequest(od);
     });
   });
@@ -8050,7 +6492,8 @@ void main() {
       final o = buildTestIamPermissionsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TestIamPermissionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTestIamPermissionsResponse(od);
     });
   });
@@ -8060,7 +6503,8 @@ void main() {
       final o = buildTriggerEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.TriggerEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTriggerEntity(od);
     });
   });
@@ -8069,8 +6513,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildUDTEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.UDTEntity.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.UDTEntity.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUDTEntity(od);
     });
   });
@@ -8080,7 +6525,8 @@ void main() {
       final o = buildUserPassword();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.UserPassword.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkUserPassword(od);
     });
   });
@@ -8090,7 +6536,8 @@ void main() {
       final o = buildValueListFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ValueListFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkValueListFilter(od);
     });
   });
@@ -8100,7 +6547,8 @@ void main() {
       final o = buildValueTransformation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ValueTransformation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkValueTransformation(od);
     });
   });
@@ -8110,7 +6558,8 @@ void main() {
       final o = buildVerifyMigrationJobRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VerifyMigrationJobRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkVerifyMigrationJobRequest(od);
     });
   });
@@ -8119,8 +6568,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildViewEntity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ViewEntity.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.ViewEntity.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkViewEntity(od);
     });
   });
@@ -8130,7 +6580,8 @@ void main() {
       final o = buildVmCreationConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VmCreationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkVmCreationConfig(od);
     });
   });
@@ -8140,7 +6591,8 @@ void main() {
       final o = buildVmSelectionConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VmSelectionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkVmSelectionConfig(od);
     });
   });
@@ -8150,7 +6602,8 @@ void main() {
       final o = buildVpcPeeringConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VpcPeeringConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkVpcPeeringConfig(od);
     });
   });
@@ -8160,7 +6613,8 @@ void main() {
       final o = buildVpcPeeringConnectivity();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.VpcPeeringConnectivity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkVpcPeeringConnectivity(od);
     });
   });
@@ -8173,61 +6627,64 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildFetchStaticIpsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.fetchStaticIps(arg_name,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildFetchStaticIpsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.fetchStaticIps(
+        arg_name,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkFetchStaticIpsResponse(response as api.FetchStaticIpsResponse);
     });
 
@@ -8236,49 +6693,50 @@ void main() {
       final res = api.DatabaseMigrationServiceApi(mock).projects.locations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildLocation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildLocation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkLocation(response as api.Location);
     });
@@ -8292,71 +6750,74 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['extraLocationTypes']!,
-          unittest.equals(arg_extraLocationTypes),
-        );
-        unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['extraLocationTypes']!,
+            unittest.equals(arg_extraLocationTypes),
+          );
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildListLocationsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_name,
-          extraLocationTypes: arg_extraLocationTypes,
-          filter: arg_filter,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListLocationsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_name,
+        extraLocationTypes: arg_extraLocationTypes,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
@@ -8364,10 +6825,10 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectionProfilesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .connectionProfiles;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.connectionProfiles;
       final arg_request = buildConnectionProfile();
       final arg_parent = 'foo';
       final arg_connectionProfileId = 'foo';
@@ -8375,348 +6836,368 @@ void main() {
       final arg_skipValidation = true;
       final arg_validateOnly = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ConnectionProfile.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkConnectionProfile(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ConnectionProfile.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkConnectionProfile(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['connectionProfileId']!.first,
-          unittest.equals(arg_connectionProfileId),
-        );
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['skipValidation']!.first,
-          unittest.equals('$arg_skipValidation'),
-        );
-        unittest.expect(
-          queryMap['validateOnly']!.first,
-          unittest.equals('$arg_validateOnly'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['connectionProfileId']!.first,
+            unittest.equals(arg_connectionProfileId),
+          );
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['skipValidation']!.first,
+            unittest.equals('$arg_skipValidation'),
+          );
+          unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.create(arg_request, arg_parent,
-          connectionProfileId: arg_connectionProfileId,
-          requestId: arg_requestId,
-          skipValidation: arg_skipValidation,
-          validateOnly: arg_validateOnly,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        connectionProfileId: arg_connectionProfileId,
+        requestId: arg_requestId,
+        skipValidation: arg_skipValidation,
+        validateOnly: arg_validateOnly,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .connectionProfiles;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.connectionProfiles;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['force']!.first,
-          unittest.equals('$arg_force'),
-        );
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['force']!.first,
+            unittest.equals('$arg_force'),
+          );
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.delete(arg_name,
-          force: arg_force, requestId: arg_requestId, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        force: arg_force,
+        requestId: arg_requestId,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .connectionProfiles;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.connectionProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildConnectionProfile());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildConnectionProfile());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkConnectionProfile(response as api.ConnectionProfile);
     });
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .connectionProfiles;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.connectionProfiles;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
-          unittest.equals(arg_options_requestedPolicyVersion),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+            unittest.equals(arg_options_requestedPolicyVersion),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildPolicy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.getIamPolicy(arg_resource,
-          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPolicy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getIamPolicy(
+        arg_resource,
+        options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+        $fields: arg_$fields,
+      );
       checkPolicy(response as api.Policy);
     });
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .connectionProfiles;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.connectionProfiles;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
-        );
-        unittest.expect(
-          queryMap['orderBy']!.first,
-          unittest.equals(arg_orderBy),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildListConnectionProfilesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          filter: arg_filter,
-          orderBy: arg_orderBy,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListConnectionProfilesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkListConnectionProfilesResponse(
-          response as api.ListConnectionProfilesResponse);
+        response as api.ListConnectionProfilesResponse,
+      );
     });
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .connectionProfiles;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.connectionProfiles;
       final arg_request = buildConnectionProfile();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -8724,596 +7205,641 @@ void main() {
       final arg_updateMask = 'foo';
       final arg_validateOnly = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ConnectionProfile.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkConnectionProfile(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ConnectionProfile.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkConnectionProfile(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['skipValidation']!.first,
-          unittest.equals('$arg_skipValidation'),
-        );
-        unittest.expect(
-          queryMap['updateMask']!.first,
-          unittest.equals(arg_updateMask),
-        );
-        unittest.expect(
-          queryMap['validateOnly']!.first,
-          unittest.equals('$arg_validateOnly'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['skipValidation']!.first,
+            unittest.equals('$arg_skipValidation'),
+          );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.patch(arg_request, arg_name,
-          requestId: arg_requestId,
-          skipValidation: arg_skipValidation,
-          updateMask: arg_updateMask,
-          validateOnly: arg_validateOnly,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        requestId: arg_requestId,
+        skipValidation: arg_skipValidation,
+        updateMask: arg_updateMask,
+        validateOnly: arg_validateOnly,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .connectionProfiles;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.connectionProfiles;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.SetIamPolicyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSetIamPolicyRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSetIamPolicyRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildPolicy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.setIamPolicy(arg_request, arg_resource,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPolicy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.setIamPolicy(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
       checkPolicy(response as api.Policy);
     });
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .connectionProfiles;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.connectionProfiles;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.TestIamPermissionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkTestIamPermissionsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTestIamPermissionsRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildTestIamPermissionsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.testIamPermissions(arg_request, arg_resource,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTestIamPermissionsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.testIamPermissions(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
       checkTestIamPermissionsResponse(
-          response as api.TestIamPermissionsResponse);
+        response as api.TestIamPermissionsResponse,
+      );
     });
   });
 
   unittest.group('resource-ProjectsLocationsConversionWorkspacesResource', () {
     unittest.test('method--apply', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_request = buildApplyConversionWorkspaceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ApplyConversionWorkspaceRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkApplyConversionWorkspaceRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ApplyConversionWorkspaceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkApplyConversionWorkspaceRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.apply(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.apply(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--commit', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_request = buildCommitConversionWorkspaceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.CommitConversionWorkspaceRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkCommitConversionWorkspaceRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.CommitConversionWorkspaceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkCommitConversionWorkspaceRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.commit(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.commit(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--convert', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_request = buildConvertConversionWorkspaceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ConvertConversionWorkspaceRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkConvertConversionWorkspaceRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ConvertConversionWorkspaceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkConvertConversionWorkspaceRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.convert(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.convert(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_request = buildConversionWorkspace();
       final arg_parent = 'foo';
       final arg_conversionWorkspaceId = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ConversionWorkspace.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkConversionWorkspace(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ConversionWorkspace.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkConversionWorkspace(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['conversionWorkspaceId']!.first,
-          unittest.equals(arg_conversionWorkspaceId),
-        );
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['conversionWorkspaceId']!.first,
+            unittest.equals(arg_conversionWorkspaceId),
+          );
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.create(arg_request, arg_parent,
-          conversionWorkspaceId: arg_conversionWorkspaceId,
-          requestId: arg_requestId,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        conversionWorkspaceId: arg_conversionWorkspaceId,
+        requestId: arg_requestId,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['force']!.first,
-          unittest.equals('$arg_force'),
-        );
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['force']!.first,
+            unittest.equals('$arg_force'),
+          );
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.delete(arg_name,
-          force: arg_force, requestId: arg_requestId, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        force: arg_force,
+        requestId: arg_requestId,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--describeConversionWorkspaceRevisions', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_conversionWorkspace = 'foo';
       final arg_commitId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['commitId']!.first,
-          unittest.equals(arg_commitId),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['commitId']!.first,
+            unittest.equals(arg_commitId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildDescribeConversionWorkspaceRevisionsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildDescribeConversionWorkspaceRevisionsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.describeConversionWorkspaceRevisions(
-          arg_conversionWorkspace,
-          commitId: arg_commitId,
-          $fields: arg_$fields);
+        arg_conversionWorkspace,
+        commitId: arg_commitId,
+        $fields: arg_$fields,
+      );
       checkDescribeConversionWorkspaceRevisionsResponse(
-          response as api.DescribeConversionWorkspaceRevisionsResponse);
+        response as api.DescribeConversionWorkspaceRevisionsResponse,
+      );
     });
 
     unittest.test('method--describeDatabaseEntities', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_conversionWorkspace = 'foo';
       final arg_commitId = 'foo';
       final arg_filter = 'foo';
@@ -9323,2142 +7849,2273 @@ void main() {
       final arg_uncommitted = true;
       final arg_view = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['commitId']!.first,
-          unittest.equals(arg_commitId),
-        );
-        unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['tree']!.first,
-          unittest.equals(arg_tree),
-        );
-        unittest.expect(
-          queryMap['uncommitted']!.first,
-          unittest.equals('$arg_uncommitted'),
-        );
-        unittest.expect(
-          queryMap['view']!.first,
-          unittest.equals(arg_view),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['commitId']!.first,
+            unittest.equals(arg_commitId),
+          );
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(queryMap['tree']!.first, unittest.equals(arg_tree));
+          unittest.expect(
+            queryMap['uncommitted']!.first,
+            unittest.equals('$arg_uncommitted'),
+          );
+          unittest.expect(queryMap['view']!.first, unittest.equals(arg_view));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildDescribeDatabaseEntitiesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildDescribeDatabaseEntitiesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.describeDatabaseEntities(
-          arg_conversionWorkspace,
-          commitId: arg_commitId,
-          filter: arg_filter,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          tree: arg_tree,
-          uncommitted: arg_uncommitted,
-          view: arg_view,
-          $fields: arg_$fields);
+        arg_conversionWorkspace,
+        commitId: arg_commitId,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        tree: arg_tree,
+        uncommitted: arg_uncommitted,
+        view: arg_view,
+        $fields: arg_$fields,
+      );
       checkDescribeDatabaseEntitiesResponse(
-          response as api.DescribeDatabaseEntitiesResponse);
+        response as api.DescribeDatabaseEntitiesResponse,
+      );
     });
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildConversionWorkspace());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildConversionWorkspace());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkConversionWorkspace(response as api.ConversionWorkspace);
     });
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
-          unittest.equals(arg_options_requestedPolicyVersion),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+            unittest.equals(arg_options_requestedPolicyVersion),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildPolicy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.getIamPolicy(arg_resource,
-          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPolicy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getIamPolicy(
+        arg_resource,
+        options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+        $fields: arg_$fields,
+      );
       checkPolicy(response as api.Policy);
     });
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildListConversionWorkspacesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          filter: arg_filter,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListConversionWorkspacesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkListConversionWorkspacesResponse(
-          response as api.ListConversionWorkspacesResponse);
+        response as api.ListConversionWorkspacesResponse,
+      );
     });
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_request = buildConversionWorkspace();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ConversionWorkspace.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkConversionWorkspace(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ConversionWorkspace.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkConversionWorkspace(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['updateMask']!.first,
-          unittest.equals(arg_updateMask),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.patch(arg_request, arg_name,
-          requestId: arg_requestId,
-          updateMask: arg_updateMask,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        requestId: arg_requestId,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--rollback', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_request = buildRollbackConversionWorkspaceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.RollbackConversionWorkspaceRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkRollbackConversionWorkspaceRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.RollbackConversionWorkspaceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkRollbackConversionWorkspaceRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.rollback(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.rollback(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--searchBackgroundJobs', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_conversionWorkspace = 'foo';
       final arg_completedUntilTime = 'foo';
       final arg_maxSize = 42;
       final arg_returnMostRecentPerJobType = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['completedUntilTime']!.first,
-          unittest.equals(arg_completedUntilTime),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['maxSize']!.first),
-          unittest.equals(arg_maxSize),
-        );
-        unittest.expect(
-          queryMap['returnMostRecentPerJobType']!.first,
-          unittest.equals('$arg_returnMostRecentPerJobType'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['completedUntilTime']!.first,
+            unittest.equals(arg_completedUntilTime),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['maxSize']!.first),
+            unittest.equals(arg_maxSize),
+          );
+          unittest.expect(
+            queryMap['returnMostRecentPerJobType']!.first,
+            unittest.equals('$arg_returnMostRecentPerJobType'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildSearchBackgroundJobsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.searchBackgroundJobs(arg_conversionWorkspace,
-          completedUntilTime: arg_completedUntilTime,
-          maxSize: arg_maxSize,
-          returnMostRecentPerJobType: arg_returnMostRecentPerJobType,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSearchBackgroundJobsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.searchBackgroundJobs(
+        arg_conversionWorkspace,
+        completedUntilTime: arg_completedUntilTime,
+        maxSize: arg_maxSize,
+        returnMostRecentPerJobType: arg_returnMostRecentPerJobType,
+        $fields: arg_$fields,
+      );
       checkSearchBackgroundJobsResponse(
-          response as api.SearchBackgroundJobsResponse);
+        response as api.SearchBackgroundJobsResponse,
+      );
     });
 
     unittest.test('method--seed', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_request = buildSeedConversionWorkspaceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.SeedConversionWorkspaceRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSeedConversionWorkspaceRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SeedConversionWorkspaceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSeedConversionWorkspaceRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.seed(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.seed(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.SetIamPolicyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSetIamPolicyRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSetIamPolicyRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildPolicy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.setIamPolicy(arg_request, arg_resource,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPolicy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.setIamPolicy(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
       checkPolicy(response as api.Policy);
     });
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.conversionWorkspaces;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.TestIamPermissionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkTestIamPermissionsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTestIamPermissionsRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildTestIamPermissionsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.testIamPermissions(arg_request, arg_resource,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTestIamPermissionsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.testIamPermissions(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
       checkTestIamPermissionsResponse(
-          response as api.TestIamPermissionsResponse);
+        response as api.TestIamPermissionsResponse,
+      );
     });
   });
 
   unittest.group(
-      'resource-ProjectsLocationsConversionWorkspacesMappingRulesResource', () {
-    unittest.test('method--create', () async {
-      final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces
-          .mappingRules;
-      final arg_request = buildMappingRule();
-      final arg_parent = 'foo';
-      final arg_mappingRuleId = 'foo';
-      final arg_requestId = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.MappingRule.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkMappingRule(obj);
-
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
+    'resource-ProjectsLocationsConversionWorkspacesMappingRulesResource',
+    () {
+      unittest.test('method--create', () async {
+        final mock = HttpServerMock();
+        final res =
+            api.DatabaseMigrationServiceApi(
+              mock,
+            ).projects.locations.conversionWorkspaces.mappingRules;
+        final arg_request = buildMappingRule();
+        final arg_parent = 'foo';
+        final arg_mappingRuleId = 'foo';
+        final arg_requestId = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final obj = api.MappingRule.fromJson(
+              json as core.Map<core.String, core.dynamic>,
             );
-          }
-        }
-        unittest.expect(
-          queryMap['mappingRuleId']!.first,
-          unittest.equals(arg_mappingRuleId),
-        );
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+            checkMappingRule(obj);
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildMappingRule());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.create(arg_request, arg_parent,
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['mappingRuleId']!.first,
+              unittest.equals(arg_mappingRuleId),
+            );
+            unittest.expect(
+              queryMap['requestId']!.first,
+              unittest.equals(arg_requestId),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(buildMappingRule());
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.create(
+          arg_request,
+          arg_parent,
           mappingRuleId: arg_mappingRuleId,
           requestId: arg_requestId,
-          $fields: arg_$fields);
-      checkMappingRule(response as api.MappingRule);
-    });
-
-    unittest.test('method--delete', () async {
-      final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces
-          .mappingRules;
-      final arg_name = 'foo';
-      final arg_requestId = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
+          $fields: arg_$fields,
         );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+        checkMappingRule(response as api.MappingRule);
+      });
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
+      unittest.test('method--delete', () async {
+        final mock = HttpServerMock();
+        final res =
+            api.DatabaseMigrationServiceApi(
+              mock,
+            ).projects.locations.conversionWorkspaces.mappingRules;
+        final arg_name = 'foo';
+        final arg_requestId = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
             );
-          }
-        }
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.delete(arg_name,
-          requestId: arg_requestId, $fields: arg_$fields);
-      checkEmpty(response as api.Empty);
-    });
-
-    unittest.test('method--get', () async {
-      final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces
-          .mappingRules;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
             );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildMappingRule());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
-      checkMappingRule(response as api.MappingRule);
-    });
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
 
-    unittest.test('method--import', () async {
-      final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces
-          .mappingRules;
-      final arg_request = buildImportMappingRulesRequest();
-      final arg_parent = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ImportMappingRulesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkImportMappingRulesRequest(obj);
-
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['requestId']!.first,
+              unittest.equals(arg_requestId),
             );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.import(arg_request, arg_parent, $fields: arg_$fields);
-      checkOperation(response as api.Operation);
-    });
-
-    unittest.test('method--list', () async {
-      final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .conversionWorkspaces
-          .mappingRules;
-      final arg_parent = 'foo';
-      final arg_pageSize = 42;
-      final arg_pageToken = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
             );
-          }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildListMappingRulesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(buildEmpty());
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.delete(
+          arg_name,
+          requestId: arg_requestId,
+          $fields: arg_$fields,
+        );
+        checkEmpty(response as api.Empty);
+      });
+
+      unittest.test('method--get', () async {
+        final mock = HttpServerMock();
+        final res =
+            api.DatabaseMigrationServiceApi(
+              mock,
+            ).projects.locations.conversionWorkspaces.mappingRules;
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(buildMappingRule());
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.get(arg_name, $fields: arg_$fields);
+        checkMappingRule(response as api.MappingRule);
+      });
+
+      unittest.test('method--import', () async {
+        final mock = HttpServerMock();
+        final res =
+            api.DatabaseMigrationServiceApi(
+              mock,
+            ).projects.locations.conversionWorkspaces.mappingRules;
+        final arg_request = buildImportMappingRulesRequest();
+        final arg_parent = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final obj = api.ImportMappingRulesRequest.fromJson(
+              json as core.Map<core.String, core.dynamic>,
+            );
+            checkImportMappingRulesRequest(obj);
+
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(buildOperation());
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.import(
+          arg_request,
+          arg_parent,
+          $fields: arg_$fields,
+        );
+        checkOperation(response as api.Operation);
+      });
+
+      unittest.test('method--list', () async {
+        final mock = HttpServerMock();
+        final res =
+            api.DatabaseMigrationServiceApi(
+              mock,
+            ).projects.locations.conversionWorkspaces.mappingRules;
+        final arg_parent = 'foo';
+        final arg_pageSize = 42;
+        final arg_pageToken = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              core.int.parse(queryMap['pageSize']!.first),
+              unittest.equals(arg_pageSize),
+            );
+            unittest.expect(
+              queryMap['pageToken']!.first,
+              unittest.equals(arg_pageToken),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(buildListMappingRulesResponse());
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.list(
+          arg_parent,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
-          $fields: arg_$fields);
-      checkListMappingRulesResponse(response as api.ListMappingRulesResponse);
-    });
-  });
+          $fields: arg_$fields,
+        );
+        checkListMappingRulesResponse(response as api.ListMappingRulesResponse);
+      });
+    },
+  );
 
   unittest.group('resource-ProjectsLocationsMigrationJobsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildMigrationJob();
       final arg_parent = 'foo';
       final arg_migrationJobId = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.MigrationJob.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkMigrationJob(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.MigrationJob.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkMigrationJob(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['migrationJobId']!.first,
-          unittest.equals(arg_migrationJobId),
-        );
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['migrationJobId']!.first,
+            unittest.equals(arg_migrationJobId),
+          );
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.create(arg_request, arg_parent,
-          migrationJobId: arg_migrationJobId,
-          requestId: arg_requestId,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        migrationJobId: arg_migrationJobId,
+        requestId: arg_requestId,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['force']!.first,
-          unittest.equals('$arg_force'),
-        );
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['force']!.first,
+            unittest.equals('$arg_force'),
+          );
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.delete(arg_name,
-          force: arg_force, requestId: arg_requestId, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        force: arg_force,
+        requestId: arg_requestId,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--demoteDestination', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildDemoteDestinationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.DemoteDestinationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkDemoteDestinationRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.DemoteDestinationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkDemoteDestinationRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.demoteDestination(arg_request, arg_name,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.demoteDestination(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--fetchSourceObjects', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.fetchSourceObjects(arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.fetchSourceObjects(
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--generateSshScript', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildGenerateSshScriptRequest();
       final arg_migrationJob = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GenerateSshScriptRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGenerateSshScriptRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GenerateSshScriptRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGenerateSshScriptRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildSshScript());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSshScript());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.generateSshScript(
-          arg_request, arg_migrationJob,
-          $fields: arg_$fields);
+        arg_request,
+        arg_migrationJob,
+        $fields: arg_$fields,
+      );
       checkSshScript(response as api.SshScript);
     });
 
     unittest.test('method--generateTcpProxyScript', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildGenerateTcpProxyScriptRequest();
       final arg_migrationJob = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GenerateTcpProxyScriptRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGenerateTcpProxyScriptRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GenerateTcpProxyScriptRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGenerateTcpProxyScriptRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildTcpProxyScript());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTcpProxyScript());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.generateTcpProxyScript(
-          arg_request, arg_migrationJob,
-          $fields: arg_$fields);
+        arg_request,
+        arg_migrationJob,
+        $fields: arg_$fields,
+      );
       checkTcpProxyScript(response as api.TcpProxyScript);
     });
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildMigrationJob());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildMigrationJob());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkMigrationJob(response as api.MigrationJob);
     });
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
-          unittest.equals(arg_options_requestedPolicyVersion),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+            unittest.equals(arg_options_requestedPolicyVersion),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildPolicy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.getIamPolicy(arg_resource,
-          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPolicy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getIamPolicy(
+        arg_resource,
+        options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+        $fields: arg_$fields,
+      );
       checkPolicy(response as api.Policy);
     });
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
-        );
-        unittest.expect(
-          queryMap['orderBy']!.first,
-          unittest.equals(arg_orderBy),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildListMigrationJobsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          filter: arg_filter,
-          orderBy: arg_orderBy,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListMigrationJobsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkListMigrationJobsResponse(response as api.ListMigrationJobsResponse);
     });
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildMigrationJob();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.MigrationJob.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkMigrationJob(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.MigrationJob.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkMigrationJob(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['updateMask']!.first,
-          unittest.equals(arg_updateMask),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.patch(arg_request, arg_name,
-          requestId: arg_requestId,
-          updateMask: arg_updateMask,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        requestId: arg_requestId,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--promote', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildPromoteMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.PromoteMigrationJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkPromoteMigrationJobRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.PromoteMigrationJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkPromoteMigrationJobRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.promote(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.promote(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--restart', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildRestartMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.RestartMigrationJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkRestartMigrationJobRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.RestartMigrationJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkRestartMigrationJobRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.restart(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.restart(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--resume', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildResumeMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ResumeMigrationJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkResumeMigrationJobRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ResumeMigrationJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkResumeMigrationJobRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.resume(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.resume(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.SetIamPolicyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSetIamPolicyRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSetIamPolicyRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildPolicy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.setIamPolicy(arg_request, arg_resource,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPolicy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.setIamPolicy(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
       checkPolicy(response as api.Policy);
     });
 
     unittest.test('method--start', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildStartMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.StartMigrationJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkStartMigrationJobRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.StartMigrationJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkStartMigrationJobRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.start(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.start(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--stop', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildStopMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.StopMigrationJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkStopMigrationJobRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.StopMigrationJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkStopMigrationJobRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.stop(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.stop(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.TestIamPermissionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkTestIamPermissionsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTestIamPermissionsRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildTestIamPermissionsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.testIamPermissions(arg_request, arg_resource,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTestIamPermissionsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.testIamPermissions(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
       checkTestIamPermissionsResponse(
-          response as api.TestIamPermissionsResponse);
+        response as api.TestIamPermissionsResponse,
+      );
     });
 
     unittest.test('method--verify', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs;
       final arg_request = buildVerifyMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.VerifyMigrationJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkVerifyMigrationJobRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.VerifyMigrationJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkVerifyMigrationJobRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.verify(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.verify(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
   });
@@ -11466,379 +10123,398 @@ void main() {
   unittest.group('resource-ProjectsLocationsMigrationJobsObjectsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs
-          .objects;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs.objects;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildMigrationJobObject());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildMigrationJobObject());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkMigrationJobObject(response as api.MigrationJobObject);
     });
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs
-          .objects;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs.objects;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
-          unittest.equals(arg_options_requestedPolicyVersion),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+            unittest.equals(arg_options_requestedPolicyVersion),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildPolicy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.getIamPolicy(arg_resource,
-          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPolicy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getIamPolicy(
+        arg_resource,
+        options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+        $fields: arg_$fields,
+      );
       checkPolicy(response as api.Policy);
     });
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs
-          .objects;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs.objects;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildListMigrationJobObjectsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListMigrationJobObjectsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkListMigrationJobObjectsResponse(
-          response as api.ListMigrationJobObjectsResponse);
+        response as api.ListMigrationJobObjectsResponse,
+      );
     });
 
     unittest.test('method--lookup', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs
-          .objects;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs.objects;
       final arg_request = buildLookupMigrationJobObjectRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.LookupMigrationJobObjectRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkLookupMigrationJobObjectRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.LookupMigrationJobObjectRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkLookupMigrationJobObjectRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildMigrationJobObject());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.lookup(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildMigrationJobObject());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.lookup(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkMigrationJobObject(response as api.MigrationJobObject);
     });
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs
-          .objects;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs.objects;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.SetIamPolicyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSetIamPolicyRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSetIamPolicyRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildPolicy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.setIamPolicy(arg_request, arg_resource,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPolicy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.setIamPolicy(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
       checkPolicy(response as api.Policy);
     });
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .migrationJobs
-          .objects;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.migrationJobs.objects;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.TestIamPermissionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkTestIamPermissionsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTestIamPermissionsRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildTestIamPermissionsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.testIamPermissions(arg_request, arg_resource,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTestIamPermissionsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.testIamPermissions(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
       checkTestIamPermissionsResponse(
-          response as api.TestIamPermissionsResponse);
+        response as api.TestIamPermissionsResponse,
+      );
     });
   });
 
@@ -11850,55 +10526,60 @@ void main() {
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.CancelOperationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkCancelOperationRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.CancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkCancelOperationRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.cancel(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkEmpty(response as api.Empty);
     });
 
@@ -11908,49 +10589,50 @@ void main() {
           api.DatabaseMigrationServiceApi(mock).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkEmpty(response as api.Empty);
     });
@@ -11961,49 +10643,50 @@ void main() {
           api.DatabaseMigrationServiceApi(mock).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
@@ -12017,66 +10700,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildListOperationsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_name,
-          filter: arg_filter,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListOperationsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_name,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
@@ -12084,10 +10770,10 @@ void main() {
   unittest.group('resource-ProjectsLocationsPrivateConnectionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .privateConnections;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.privateConnections;
       final arg_request = buildPrivateConnection();
       final arg_parent = 'foo';
       final arg_privateConnectionId = 'foo';
@@ -12095,458 +10781,488 @@ void main() {
       final arg_skipValidation = true;
       final arg_validateOnly = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.PrivateConnection.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkPrivateConnection(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.PrivateConnection.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkPrivateConnection(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['privateConnectionId']!.first,
-          unittest.equals(arg_privateConnectionId),
-        );
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['skipValidation']!.first,
-          unittest.equals('$arg_skipValidation'),
-        );
-        unittest.expect(
-          queryMap['validateOnly']!.first,
-          unittest.equals('$arg_validateOnly'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['privateConnectionId']!.first,
+            unittest.equals(arg_privateConnectionId),
+          );
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['skipValidation']!.first,
+            unittest.equals('$arg_skipValidation'),
+          );
+          unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.create(arg_request, arg_parent,
-          privateConnectionId: arg_privateConnectionId,
-          requestId: arg_requestId,
-          skipValidation: arg_skipValidation,
-          validateOnly: arg_validateOnly,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        privateConnectionId: arg_privateConnectionId,
+        requestId: arg_requestId,
+        skipValidation: arg_skipValidation,
+        validateOnly: arg_validateOnly,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .privateConnections;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.privateConnections;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['requestId']!.first,
-          unittest.equals(arg_requestId),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.delete(arg_name,
-          requestId: arg_requestId, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        requestId: arg_requestId,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .privateConnections;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.privateConnections;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildPrivateConnection());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPrivateConnection());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkPrivateConnection(response as api.PrivateConnection);
     });
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .privateConnections;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.privateConnections;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
-          unittest.equals(arg_options_requestedPolicyVersion),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+            unittest.equals(arg_options_requestedPolicyVersion),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildPolicy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.getIamPolicy(arg_resource,
-          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPolicy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getIamPolicy(
+        arg_resource,
+        options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+        $fields: arg_$fields,
+      );
       checkPolicy(response as api.Policy);
     });
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .privateConnections;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.privateConnections;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
-        );
-        unittest.expect(
-          queryMap['orderBy']!.first,
-          unittest.equals(arg_orderBy),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildListPrivateConnectionsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          filter: arg_filter,
-          orderBy: arg_orderBy,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListPrivateConnectionsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkListPrivateConnectionsResponse(
-          response as api.ListPrivateConnectionsResponse);
+        response as api.ListPrivateConnectionsResponse,
+      );
     });
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .privateConnections;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.privateConnections;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.SetIamPolicyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSetIamPolicyRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSetIamPolicyRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildPolicy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.setIamPolicy(arg_request, arg_resource,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPolicy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.setIamPolicy(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
       checkPolicy(response as api.Policy);
     });
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res = api.DatabaseMigrationServiceApi(mock)
-          .projects
-          .locations
-          .privateConnections;
+      final res =
+          api.DatabaseMigrationServiceApi(
+            mock,
+          ).projects.locations.privateConnections;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.TestIamPermissionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkTestIamPermissionsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTestIamPermissionsRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildTestIamPermissionsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.testIamPermissions(arg_request, arg_resource,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTestIamPermissionsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.testIamPermissions(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
       checkTestIamPermissionsResponse(
-          response as api.TestIamPermissionsResponse);
+        response as api.TestIamPermissionsResponse,
+      );
     });
   });
 }

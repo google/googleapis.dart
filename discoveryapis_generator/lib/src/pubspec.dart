@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'utils.dart';
+
 /// Specification of the pubspec.yaml for a generated package.
 class Pubspec {
   final String name;
@@ -22,18 +24,16 @@ class Pubspec {
     Map<String, String>? extraDevDependencies,
     this.resolution,
   }) : devDependencies = {
-          ..._defaultDevDependencies,
-          if (extraDevDependencies != null) ...extraDevDependencies,
-        };
+         ..._defaultDevDependencies,
+         if (extraDevDependencies != null) ...extraDevDependencies,
+       };
 
-  String get sdkConstraint => '^3.6.0';
+  String get sdkConstraint => targetDartVersionConstraint;
 
   static const dependencies = {
     'http': '^1.0.0',
     '_discoveryapis_commons': '^1.0.0',
   };
 
-  static const _defaultDevDependencies = {
-    'test': '^1.16.0',
-  };
+  static const _defaultDevDependencies = {'test': '^1.16.0'};
 }

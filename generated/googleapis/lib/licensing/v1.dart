@@ -50,11 +50,16 @@ class LicensingApi {
   LicenseAssignmentsResource get licenseAssignments =>
       LicenseAssignmentsResource(_requester);
 
-  LicensingApi(http.Client client,
-      {core.String rootUrl = 'https://licensing.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  LicensingApi(
+    http.Client client, {
+    core.String rootUrl = 'https://licensing.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class LicenseAssignmentsResource {
@@ -98,7 +103,8 @@ class LicenseAssignmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/licensing/v1/product/' +
+    final url_ =
+        'apps/licensing/v1/product/' +
         commons.escapeVariable('$productId') +
         '/sku/' +
         commons.escapeVariable('$skuId') +
@@ -149,7 +155,8 @@ class LicenseAssignmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/licensing/v1/product/' +
+    final url_ =
+        'apps/licensing/v1/product/' +
         commons.escapeVariable('$productId') +
         '/sku/' +
         commons.escapeVariable('$skuId') +
@@ -162,7 +169,8 @@ class LicenseAssignmentsResource {
       queryParams: queryParams_,
     );
     return LicenseAssignment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Assign a license.
@@ -198,7 +206,8 @@ class LicenseAssignmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/licensing/v1/product/' +
+    final url_ =
+        'apps/licensing/v1/product/' +
         commons.escapeVariable('$productId') +
         '/sku/' +
         commons.escapeVariable('$skuId') +
@@ -211,7 +220,8 @@ class LicenseAssignmentsResource {
       queryParams: queryParams_,
     );
     return LicenseAssignment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all users assigned licenses for a specific product SKU.
@@ -259,7 +269,8 @@ class LicenseAssignmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/licensing/v1/product/' +
+    final url_ =
+        'apps/licensing/v1/product/' +
         commons.escapeVariable('$productId') +
         '/users';
 
@@ -269,7 +280,8 @@ class LicenseAssignmentsResource {
       queryParams: queryParams_,
     );
     return LicenseAssignmentList.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all users assigned licenses for a specific product SKU.
@@ -321,7 +333,8 @@ class LicenseAssignmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/licensing/v1/product/' +
+    final url_ =
+        'apps/licensing/v1/product/' +
         commons.escapeVariable('$productId') +
         '/sku/' +
         commons.escapeVariable('$skuId') +
@@ -333,7 +346,8 @@ class LicenseAssignmentsResource {
       queryParams: queryParams_,
     );
     return LicenseAssignmentList.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reassign a user's product SKU with a different SKU in the same product.
@@ -378,7 +392,8 @@ class LicenseAssignmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/licensing/v1/product/' +
+    final url_ =
+        'apps/licensing/v1/product/' +
         commons.escapeVariable('$productId') +
         '/sku/' +
         commons.escapeVariable('$skuId') +
@@ -392,7 +407,8 @@ class LicenseAssignmentsResource {
       queryParams: queryParams_,
     );
     return LicenseAssignment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reassign a user's product SKU with a different SKU in the same product.
@@ -435,7 +451,8 @@ class LicenseAssignmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/licensing/v1/product/' +
+    final url_ =
+        'apps/licensing/v1/product/' +
         commons.escapeVariable('$productId') +
         '/sku/' +
         commons.escapeVariable('$skuId') +
@@ -449,7 +466,8 @@ class LicenseAssignmentsResource {
       queryParams: queryParams_,
     );
     return LicenseAssignment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -512,27 +530,27 @@ class LicenseAssignment {
   });
 
   LicenseAssignment.fromJson(core.Map json_)
-      : this(
-          etags: json_['etags'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          productId: json_['productId'] as core.String?,
-          productName: json_['productName'] as core.String?,
-          selfLink: json_['selfLink'] as core.String?,
-          skuId: json_['skuId'] as core.String?,
-          skuName: json_['skuName'] as core.String?,
-          userId: json_['userId'] as core.String?,
-        );
+    : this(
+        etags: json_['etags'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        productId: json_['productId'] as core.String?,
+        productName: json_['productName'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        skuId: json_['skuId'] as core.String?,
+        skuName: json_['skuName'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etags != null) 'etags': etags!,
-        if (kind != null) 'kind': kind!,
-        if (productId != null) 'productId': productId!,
-        if (productName != null) 'productName': productName!,
-        if (selfLink != null) 'selfLink': selfLink!,
-        if (skuId != null) 'skuId': skuId!,
-        if (skuName != null) 'skuName': skuName!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (etags != null) 'etags': etags!,
+    if (kind != null) 'kind': kind!,
+    if (productId != null) 'productId': productId!,
+    if (productName != null) 'productName': productName!,
+    if (selfLink != null) 'selfLink': selfLink!,
+    if (skuId != null) 'skuId': skuId!,
+    if (skuName != null) 'skuName': skuName!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// Representation of a license assignment.
@@ -540,18 +558,14 @@ class LicenseAssignmentInsert {
   /// Email id of the user
   core.String? userId;
 
-  LicenseAssignmentInsert({
-    this.userId,
-  });
+  LicenseAssignmentInsert({this.userId});
 
   LicenseAssignmentInsert.fromJson(core.Map json_)
-      : this(
-          userId: json_['userId'] as core.String?,
-        );
+    : this(userId: json_['userId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userId != null) 'userId': userId!,
-      };
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 class LicenseAssignmentList {
@@ -571,28 +585,27 @@ class LicenseAssignmentList {
   /// `maxResults` determines how many entries are returned on each next page.
   core.String? nextPageToken;
 
-  LicenseAssignmentList({
-    this.etag,
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  LicenseAssignmentList({this.etag, this.items, this.kind, this.nextPageToken});
 
   LicenseAssignmentList.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) => LicenseAssignment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => LicenseAssignment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }

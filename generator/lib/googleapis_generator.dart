@@ -20,10 +20,7 @@ Future<List<RestDescription>> downloadDiscoveryDocuments(
   return apis;
 }
 
-void writeDiscoveryDocuments(
-  String outputDir,
-  Iterable<RestDescription> apis,
-) {
+void writeDiscoveryDocuments(String outputDir, Iterable<RestDescription> apis) {
   final directory = Directory(outputDir);
   if (directory.existsSync()) {
     print('Deleting directory $outputDir.');
@@ -46,7 +43,8 @@ List<RestDescription> loadDiscoveryDocuments(String directory) =>
         .where((fse) => fse is File && fse.path.endsWith('.json'))
         .map(
           (FileSystemEntity file) => RestDescription.fromJson(
-              json.decode((file as File).readAsStringSync()) as Map),
+            json.decode((file as File).readAsStringSync()) as Map,
+          ),
         )
         .toList();
 
@@ -55,9 +53,7 @@ Future downloadFromConfiguration(String configFile) async {
 
   // Generate the packages.
   final configFileUri = Uri.file(configFile);
-  await configuration.download(
-    discoveryPathFromConfigFileUri(configFileUri),
-  );
+  await configuration.download(discoveryPathFromConfigFileUri(configFileUri));
 
   // Print warnings for APIs not mentioned.
   if (configuration.missingApis.isNotEmpty) {
@@ -86,10 +82,7 @@ Future downloadFromConfiguration(String configFile) async {
   prettyNotNull('old revisions', configuration.oldRevisions);
 }
 
-void generateFromConfiguration(
-  String configFile,
-  bool deleteExisting,
-) {
+void generateFromConfiguration(String configFile, bool deleteExisting) {
   final configuration = DiscoveryPackagesConfiguration(configFile);
 
   // Generate the packages.

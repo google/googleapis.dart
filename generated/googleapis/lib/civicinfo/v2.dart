@@ -44,11 +44,16 @@ class CivicInfoApi {
   DivisionsResource get divisions => DivisionsResource(_requester);
   ElectionsResource get elections => ElectionsResource(_requester);
 
-  CivicInfoApi(http.Client client,
-      {core.String rootUrl = 'https://civicinfo.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CivicInfoApi(
+    http.Client client, {
+    core.String rootUrl = 'https://civicinfo.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class DivisionsResource {
@@ -73,10 +78,7 @@ class DivisionsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CivicinfoApiprotosV2DivisionByAddressResponse>
-      queryDivisionByAddress({
-    core.String? address,
-    core.String? $fields,
-  }) async {
+  queryDivisionByAddress({core.String? address, core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (address != null) 'address': [address],
       if ($fields != null) 'fields': [$fields],
@@ -90,7 +92,8 @@ class DivisionsResource {
       queryParams: queryParams_,
     );
     return CivicinfoApiprotosV2DivisionByAddressResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Searches for political divisions by their natural name or OCD ID.
@@ -130,7 +133,8 @@ class DivisionsResource {
       queryParams: queryParams_,
     );
     return CivicinfoApiprotosV2DivisionSearchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -174,7 +178,8 @@ class ElectionsResource {
       queryParams: queryParams_,
     );
     return CivicinfoApiprotosV2ElectionsQueryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Looks up information relevant to a voter based on the voter's registered
@@ -240,7 +245,8 @@ class ElectionsResource {
       queryParams: queryParams_,
     );
     return CivicinfoApiprotosV2VoterInfoResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -256,26 +262,29 @@ class CivicinfoApiprotosV2DivisionByAddressResponse {
   });
 
   CivicinfoApiprotosV2DivisionByAddressResponse.fromJson(core.Map json_)
-      : this(
-          divisions:
-              (json_['divisions'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              CivicinfoSchemaV2GeographicDivision.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        divisions: (json_['divisions'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                CivicinfoSchemaV2GeographicDivision.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          normalizedInput: json_.containsKey('normalizedInput')
-              ? CivicinfoSchemaV2SimpleAddressType.fromJson(
+        normalizedInput:
+            json_.containsKey('normalizedInput')
+                ? CivicinfoSchemaV2SimpleAddressType.fromJson(
                   json_['normalizedInput']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (divisions != null) 'divisions': divisions!,
-        if (normalizedInput != null) 'normalizedInput': normalizedInput!,
-      };
+    if (divisions != null) 'divisions': divisions!,
+    if (normalizedInput != null) 'normalizedInput': normalizedInput!,
+  };
 }
 
 /// The result of a division search query.
@@ -286,25 +295,25 @@ class CivicinfoApiprotosV2DivisionSearchResponse {
   core.String? kind;
   core.List<CivicinfoApiprotosV2DivisionSearchResult>? results;
 
-  CivicinfoApiprotosV2DivisionSearchResponse({
-    this.kind,
-    this.results,
-  });
+  CivicinfoApiprotosV2DivisionSearchResponse({this.kind, this.results});
 
   CivicinfoApiprotosV2DivisionSearchResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          results: (json_['results'] as core.List?)
-              ?.map((value) =>
-                  CivicinfoApiprotosV2DivisionSearchResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        results:
+            (json_['results'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoApiprotosV2DivisionSearchResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (results != null) 'results': results!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (results != null) 'results': results!,
+  };
 }
 
 /// Represents a political geographic division that matches the requested query.
@@ -331,19 +340,20 @@ class CivicinfoApiprotosV2DivisionSearchResult {
   });
 
   CivicinfoApiprotosV2DivisionSearchResult.fromJson(core.Map json_)
-      : this(
-          aliases: (json_['aliases'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          ocdId: json_['ocdId'] as core.String?,
-        );
+    : this(
+        aliases:
+            (json_['aliases'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        ocdId: json_['ocdId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aliases != null) 'aliases': aliases!,
-        if (name != null) 'name': name!,
-        if (ocdId != null) 'ocdId': ocdId!,
-      };
+    if (aliases != null) 'aliases': aliases!,
+    if (name != null) 'name': name!,
+    if (ocdId != null) 'ocdId': ocdId!,
+  };
 }
 
 /// The list of elections available for this version of the API.
@@ -356,24 +366,25 @@ class CivicinfoApiprotosV2ElectionsQueryResponse {
   /// Value: the fixed string "civicinfo#electionsQueryResponse".
   core.String? kind;
 
-  CivicinfoApiprotosV2ElectionsQueryResponse({
-    this.elections,
-    this.kind,
-  });
+  CivicinfoApiprotosV2ElectionsQueryResponse({this.elections, this.kind});
 
   CivicinfoApiprotosV2ElectionsQueryResponse.fromJson(core.Map json_)
-      : this(
-          elections: (json_['elections'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2Election.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        elections:
+            (json_['elections'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2Election.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (elections != null) 'elections': elections!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (elections != null) 'elections': elections!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// The result of a voter info lookup query.
@@ -452,63 +463,95 @@ class CivicinfoApiprotosV2VoterInfoResponse {
   });
 
   CivicinfoApiprotosV2VoterInfoResponse.fromJson(core.Map json_)
-      : this(
-          contests: (json_['contests'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2Contest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dropOffLocations: (json_['dropOffLocations'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2PollingLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          earlyVoteSites: (json_['earlyVoteSites'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2PollingLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          election: json_.containsKey('election')
-              ? CivicinfoSchemaV2Election.fromJson(
-                  json_['election'] as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-          mailOnly: json_['mailOnly'] as core.bool?,
-          normalizedInput: json_.containsKey('normalizedInput')
-              ? CivicinfoSchemaV2SimpleAddressType.fromJson(
+    : this(
+        contests:
+            (json_['contests'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2Contest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dropOffLocations:
+            (json_['dropOffLocations'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2PollingLocation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        earlyVoteSites:
+            (json_['earlyVoteSites'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2PollingLocation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        election:
+            json_.containsKey('election')
+                ? CivicinfoSchemaV2Election.fromJson(
+                  json_['election'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+        mailOnly: json_['mailOnly'] as core.bool?,
+        normalizedInput:
+            json_.containsKey('normalizedInput')
+                ? CivicinfoSchemaV2SimpleAddressType.fromJson(
                   json_['normalizedInput']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          otherElections: (json_['otherElections'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2Election.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          pollingLocations: (json_['pollingLocations'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2PollingLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          precinctId: json_['precinctId'] as core.String?,
-          precincts: (json_['precincts'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2Precinct.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          state: (json_['state'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2AdministrationRegion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        otherElections:
+            (json_['otherElections'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2Election.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        pollingLocations:
+            (json_['pollingLocations'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2PollingLocation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        precinctId: json_['precinctId'] as core.String?,
+        precincts:
+            (json_['precincts'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2Precinct.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        state:
+            (json_['state'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2AdministrationRegion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contests != null) 'contests': contests!,
-        if (dropOffLocations != null) 'dropOffLocations': dropOffLocations!,
-        if (earlyVoteSites != null) 'earlyVoteSites': earlyVoteSites!,
-        if (election != null) 'election': election!,
-        if (kind != null) 'kind': kind!,
-        if (mailOnly != null) 'mailOnly': mailOnly!,
-        if (normalizedInput != null) 'normalizedInput': normalizedInput!,
-        if (otherElections != null) 'otherElections': otherElections!,
-        if (pollingLocations != null) 'pollingLocations': pollingLocations!,
-        if (precinctId != null) 'precinctId': precinctId!,
-        if (precincts != null) 'precincts': precincts!,
-        if (state != null) 'state': state!,
-      };
+    if (contests != null) 'contests': contests!,
+    if (dropOffLocations != null) 'dropOffLocations': dropOffLocations!,
+    if (earlyVoteSites != null) 'earlyVoteSites': earlyVoteSites!,
+    if (election != null) 'election': election!,
+    if (kind != null) 'kind': kind!,
+    if (mailOnly != null) 'mailOnly': mailOnly!,
+    if (normalizedInput != null) 'normalizedInput': normalizedInput!,
+    if (otherElections != null) 'otherElections': otherElections!,
+    if (pollingLocations != null) 'pollingLocations': pollingLocations!,
+    if (precinctId != null) 'precinctId': precinctId!,
+    if (precincts != null) 'precincts': precincts!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Describes information about a regional election administrative area.
@@ -538,32 +581,39 @@ class CivicinfoSchemaV2AdministrationRegion {
   });
 
   CivicinfoSchemaV2AdministrationRegion.fromJson(core.Map json_)
-      : this(
-          electionAdministrationBody:
-              json_.containsKey('electionAdministrationBody')
-                  ? CivicinfoSchemaV2AdministrativeBody.fromJson(
-                      json_['electionAdministrationBody']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          localJurisdiction: json_.containsKey('local_jurisdiction')
-              ? CivicinfoSchemaV2AdministrationRegion.fromJson(
+    : this(
+        electionAdministrationBody:
+            json_.containsKey('electionAdministrationBody')
+                ? CivicinfoSchemaV2AdministrativeBody.fromJson(
+                  json_['electionAdministrationBody']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        localJurisdiction:
+            json_.containsKey('local_jurisdiction')
+                ? CivicinfoSchemaV2AdministrationRegion.fromJson(
                   json_['local_jurisdiction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          sources: (json_['sources'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2Source.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        sources:
+            (json_['sources'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2Source.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (electionAdministrationBody != null)
-          'electionAdministrationBody': electionAdministrationBody!,
-        if (localJurisdiction != null) 'local_jurisdiction': localJurisdiction!,
-        if (name != null) 'name': name!,
-        if (sources != null) 'sources': sources!,
-      };
+    if (electionAdministrationBody != null)
+      'electionAdministrationBody': electionAdministrationBody!,
+    if (localJurisdiction != null) 'local_jurisdiction': localJurisdiction!,
+    if (name != null) 'name': name!,
+    if (sources != null) 'sources': sources!,
+  };
 }
 
 /// Information about an election administrative body (e.g. County Board of
@@ -641,64 +691,72 @@ class CivicinfoSchemaV2AdministrativeBody {
   });
 
   CivicinfoSchemaV2AdministrativeBody.fromJson(core.Map json_)
-      : this(
-          absenteeVotingInfoUrl: json_['absenteeVotingInfoUrl'] as core.String?,
-          ballotInfoUrl: json_['ballotInfoUrl'] as core.String?,
-          correspondenceAddress: json_.containsKey('correspondenceAddress')
-              ? CivicinfoSchemaV2SimpleAddressType.fromJson(
+    : this(
+        absenteeVotingInfoUrl: json_['absenteeVotingInfoUrl'] as core.String?,
+        ballotInfoUrl: json_['ballotInfoUrl'] as core.String?,
+        correspondenceAddress:
+            json_.containsKey('correspondenceAddress')
+                ? CivicinfoSchemaV2SimpleAddressType.fromJson(
                   json_['correspondenceAddress']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          electionInfoUrl: json_['electionInfoUrl'] as core.String?,
-          electionNoticeText: json_['electionNoticeText'] as core.String?,
-          electionNoticeUrl: json_['electionNoticeUrl'] as core.String?,
-          electionOfficials: (json_['electionOfficials'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2ElectionOfficial.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          electionRegistrationConfirmationUrl:
-              json_['electionRegistrationConfirmationUrl'] as core.String?,
-          electionRegistrationUrl:
-              json_['electionRegistrationUrl'] as core.String?,
-          electionRulesUrl: json_['electionRulesUrl'] as core.String?,
-          hoursOfOperation: json_['hoursOfOperation'] as core.String?,
-          name: json_['name'] as core.String?,
-          physicalAddress: json_.containsKey('physicalAddress')
-              ? CivicinfoSchemaV2SimpleAddressType.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        electionInfoUrl: json_['electionInfoUrl'] as core.String?,
+        electionNoticeText: json_['electionNoticeText'] as core.String?,
+        electionNoticeUrl: json_['electionNoticeUrl'] as core.String?,
+        electionOfficials:
+            (json_['electionOfficials'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2ElectionOfficial.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        electionRegistrationConfirmationUrl:
+            json_['electionRegistrationConfirmationUrl'] as core.String?,
+        electionRegistrationUrl:
+            json_['electionRegistrationUrl'] as core.String?,
+        electionRulesUrl: json_['electionRulesUrl'] as core.String?,
+        hoursOfOperation: json_['hoursOfOperation'] as core.String?,
+        name: json_['name'] as core.String?,
+        physicalAddress:
+            json_.containsKey('physicalAddress')
+                ? CivicinfoSchemaV2SimpleAddressType.fromJson(
                   json_['physicalAddress']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          voterServices: (json_['voter_services'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          votingLocationFinderUrl:
-              json_['votingLocationFinderUrl'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        voterServices:
+            (json_['voter_services'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        votingLocationFinderUrl:
+            json_['votingLocationFinderUrl'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (absenteeVotingInfoUrl != null)
-          'absenteeVotingInfoUrl': absenteeVotingInfoUrl!,
-        if (ballotInfoUrl != null) 'ballotInfoUrl': ballotInfoUrl!,
-        if (correspondenceAddress != null)
-          'correspondenceAddress': correspondenceAddress!,
-        if (electionInfoUrl != null) 'electionInfoUrl': electionInfoUrl!,
-        if (electionNoticeText != null)
-          'electionNoticeText': electionNoticeText!,
-        if (electionNoticeUrl != null) 'electionNoticeUrl': electionNoticeUrl!,
-        if (electionOfficials != null) 'electionOfficials': electionOfficials!,
-        if (electionRegistrationConfirmationUrl != null)
-          'electionRegistrationConfirmationUrl':
-              electionRegistrationConfirmationUrl!,
-        if (electionRegistrationUrl != null)
-          'electionRegistrationUrl': electionRegistrationUrl!,
-        if (electionRulesUrl != null) 'electionRulesUrl': electionRulesUrl!,
-        if (hoursOfOperation != null) 'hoursOfOperation': hoursOfOperation!,
-        if (name != null) 'name': name!,
-        if (physicalAddress != null) 'physicalAddress': physicalAddress!,
-        if (voterServices != null) 'voter_services': voterServices!,
-        if (votingLocationFinderUrl != null)
-          'votingLocationFinderUrl': votingLocationFinderUrl!,
-      };
+    if (absenteeVotingInfoUrl != null)
+      'absenteeVotingInfoUrl': absenteeVotingInfoUrl!,
+    if (ballotInfoUrl != null) 'ballotInfoUrl': ballotInfoUrl!,
+    if (correspondenceAddress != null)
+      'correspondenceAddress': correspondenceAddress!,
+    if (electionInfoUrl != null) 'electionInfoUrl': electionInfoUrl!,
+    if (electionNoticeText != null) 'electionNoticeText': electionNoticeText!,
+    if (electionNoticeUrl != null) 'electionNoticeUrl': electionNoticeUrl!,
+    if (electionOfficials != null) 'electionOfficials': electionOfficials!,
+    if (electionRegistrationConfirmationUrl != null)
+      'electionRegistrationConfirmationUrl':
+          electionRegistrationConfirmationUrl!,
+    if (electionRegistrationUrl != null)
+      'electionRegistrationUrl': electionRegistrationUrl!,
+    if (electionRulesUrl != null) 'electionRulesUrl': electionRulesUrl!,
+    if (hoursOfOperation != null) 'hoursOfOperation': hoursOfOperation!,
+    if (name != null) 'name': name!,
+    if (physicalAddress != null) 'physicalAddress': physicalAddress!,
+    if (voterServices != null) 'voter_services': voterServices!,
+    if (votingLocationFinderUrl != null)
+      'votingLocationFinderUrl': votingLocationFinderUrl!,
+  };
 }
 
 /// Information about a candidate running for elected office.
@@ -743,30 +801,34 @@ class CivicinfoSchemaV2Candidate {
   });
 
   CivicinfoSchemaV2Candidate.fromJson(core.Map json_)
-      : this(
-          candidateUrl: json_['candidateUrl'] as core.String?,
-          channels: (json_['channels'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2Channel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          email: json_['email'] as core.String?,
-          name: json_['name'] as core.String?,
-          orderOnBallot: json_['orderOnBallot'] as core.String?,
-          party: json_['party'] as core.String?,
-          phone: json_['phone'] as core.String?,
-          photoUrl: json_['photoUrl'] as core.String?,
-        );
+    : this(
+        candidateUrl: json_['candidateUrl'] as core.String?,
+        channels:
+            (json_['channels'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2Channel.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        email: json_['email'] as core.String?,
+        name: json_['name'] as core.String?,
+        orderOnBallot: json_['orderOnBallot'] as core.String?,
+        party: json_['party'] as core.String?,
+        phone: json_['phone'] as core.String?,
+        photoUrl: json_['photoUrl'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (candidateUrl != null) 'candidateUrl': candidateUrl!,
-        if (channels != null) 'channels': channels!,
-        if (email != null) 'email': email!,
-        if (name != null) 'name': name!,
-        if (orderOnBallot != null) 'orderOnBallot': orderOnBallot!,
-        if (party != null) 'party': party!,
-        if (phone != null) 'phone': phone!,
-        if (photoUrl != null) 'photoUrl': photoUrl!,
-      };
+    if (candidateUrl != null) 'candidateUrl': candidateUrl!,
+    if (channels != null) 'channels': channels!,
+    if (email != null) 'email': email!,
+    if (name != null) 'name': name!,
+    if (orderOnBallot != null) 'orderOnBallot': orderOnBallot!,
+    if (party != null) 'party': party!,
+    if (phone != null) 'phone': phone!,
+    if (photoUrl != null) 'photoUrl': photoUrl!,
+  };
 }
 
 /// A social media or web channel for a candidate.
@@ -781,21 +843,18 @@ class CivicinfoSchemaV2Channel {
   /// Facebook, Twitter
   core.String? type;
 
-  CivicinfoSchemaV2Channel({
-    this.id,
-    this.type,
-  });
+  CivicinfoSchemaV2Channel({this.id, this.type});
 
   CivicinfoSchemaV2Channel.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (type != null) 'type': type!,
-      };
+    if (id != null) 'id': id!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Information about a contest that appears on a voter's ballot.
@@ -941,89 +1000,99 @@ class CivicinfoSchemaV2Contest {
   });
 
   CivicinfoSchemaV2Contest.fromJson(core.Map json_)
-      : this(
-          ballotPlacement: json_['ballotPlacement'] as core.String?,
-          ballotTitle: json_['ballotTitle'] as core.String?,
-          candidates: (json_['candidates'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2Candidate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          district: json_.containsKey('district')
-              ? CivicinfoSchemaV2ElectoralDistrict.fromJson(
-                  json_['district'] as core.Map<core.String, core.dynamic>)
-              : null,
-          electorateSpecifications:
-              json_['electorateSpecifications'] as core.String?,
-          level: (json_['level'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          numberElected: json_['numberElected'] as core.String?,
-          numberVotingFor: json_['numberVotingFor'] as core.String?,
-          office: json_['office'] as core.String?,
-          primaryParties: (json_['primaryParties'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          referendumBallotResponses:
-              (json_['referendumBallotResponses'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          referendumBrief: json_['referendumBrief'] as core.String?,
-          referendumConStatement:
-              json_['referendumConStatement'] as core.String?,
-          referendumEffectOfAbstain:
-              json_['referendumEffectOfAbstain'] as core.String?,
-          referendumPassageThreshold:
-              json_['referendumPassageThreshold'] as core.String?,
-          referendumProStatement:
-              json_['referendumProStatement'] as core.String?,
-          referendumSubtitle: json_['referendumSubtitle'] as core.String?,
-          referendumText: json_['referendumText'] as core.String?,
-          referendumTitle: json_['referendumTitle'] as core.String?,
-          referendumUrl: json_['referendumUrl'] as core.String?,
-          roles: (json_['roles'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          sources: (json_['sources'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2Source.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          special: json_['special'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        ballotPlacement: json_['ballotPlacement'] as core.String?,
+        ballotTitle: json_['ballotTitle'] as core.String?,
+        candidates:
+            (json_['candidates'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2Candidate.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        district:
+            json_.containsKey('district')
+                ? CivicinfoSchemaV2ElectoralDistrict.fromJson(
+                  json_['district'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        electorateSpecifications:
+            json_['electorateSpecifications'] as core.String?,
+        level:
+            (json_['level'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        numberElected: json_['numberElected'] as core.String?,
+        numberVotingFor: json_['numberVotingFor'] as core.String?,
+        office: json_['office'] as core.String?,
+        primaryParties:
+            (json_['primaryParties'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        referendumBallotResponses:
+            (json_['referendumBallotResponses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        referendumBrief: json_['referendumBrief'] as core.String?,
+        referendumConStatement: json_['referendumConStatement'] as core.String?,
+        referendumEffectOfAbstain:
+            json_['referendumEffectOfAbstain'] as core.String?,
+        referendumPassageThreshold:
+            json_['referendumPassageThreshold'] as core.String?,
+        referendumProStatement: json_['referendumProStatement'] as core.String?,
+        referendumSubtitle: json_['referendumSubtitle'] as core.String?,
+        referendumText: json_['referendumText'] as core.String?,
+        referendumTitle: json_['referendumTitle'] as core.String?,
+        referendumUrl: json_['referendumUrl'] as core.String?,
+        roles:
+            (json_['roles'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        sources:
+            (json_['sources'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2Source.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        special: json_['special'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ballotPlacement != null) 'ballotPlacement': ballotPlacement!,
-        if (ballotTitle != null) 'ballotTitle': ballotTitle!,
-        if (candidates != null) 'candidates': candidates!,
-        if (district != null) 'district': district!,
-        if (electorateSpecifications != null)
-          'electorateSpecifications': electorateSpecifications!,
-        if (level != null) 'level': level!,
-        if (numberElected != null) 'numberElected': numberElected!,
-        if (numberVotingFor != null) 'numberVotingFor': numberVotingFor!,
-        if (office != null) 'office': office!,
-        if (primaryParties != null) 'primaryParties': primaryParties!,
-        if (referendumBallotResponses != null)
-          'referendumBallotResponses': referendumBallotResponses!,
-        if (referendumBrief != null) 'referendumBrief': referendumBrief!,
-        if (referendumConStatement != null)
-          'referendumConStatement': referendumConStatement!,
-        if (referendumEffectOfAbstain != null)
-          'referendumEffectOfAbstain': referendumEffectOfAbstain!,
-        if (referendumPassageThreshold != null)
-          'referendumPassageThreshold': referendumPassageThreshold!,
-        if (referendumProStatement != null)
-          'referendumProStatement': referendumProStatement!,
-        if (referendumSubtitle != null)
-          'referendumSubtitle': referendumSubtitle!,
-        if (referendumText != null) 'referendumText': referendumText!,
-        if (referendumTitle != null) 'referendumTitle': referendumTitle!,
-        if (referendumUrl != null) 'referendumUrl': referendumUrl!,
-        if (roles != null) 'roles': roles!,
-        if (sources != null) 'sources': sources!,
-        if (special != null) 'special': special!,
-        if (type != null) 'type': type!,
-      };
+    if (ballotPlacement != null) 'ballotPlacement': ballotPlacement!,
+    if (ballotTitle != null) 'ballotTitle': ballotTitle!,
+    if (candidates != null) 'candidates': candidates!,
+    if (district != null) 'district': district!,
+    if (electorateSpecifications != null)
+      'electorateSpecifications': electorateSpecifications!,
+    if (level != null) 'level': level!,
+    if (numberElected != null) 'numberElected': numberElected!,
+    if (numberVotingFor != null) 'numberVotingFor': numberVotingFor!,
+    if (office != null) 'office': office!,
+    if (primaryParties != null) 'primaryParties': primaryParties!,
+    if (referendumBallotResponses != null)
+      'referendumBallotResponses': referendumBallotResponses!,
+    if (referendumBrief != null) 'referendumBrief': referendumBrief!,
+    if (referendumConStatement != null)
+      'referendumConStatement': referendumConStatement!,
+    if (referendumEffectOfAbstain != null)
+      'referendumEffectOfAbstain': referendumEffectOfAbstain!,
+    if (referendumPassageThreshold != null)
+      'referendumPassageThreshold': referendumPassageThreshold!,
+    if (referendumProStatement != null)
+      'referendumProStatement': referendumProStatement!,
+    if (referendumSubtitle != null) 'referendumSubtitle': referendumSubtitle!,
+    if (referendumText != null) 'referendumText': referendumText!,
+    if (referendumTitle != null) 'referendumTitle': referendumTitle!,
+    if (referendumUrl != null) 'referendumUrl': referendumUrl!,
+    if (roles != null) 'roles': roles!,
+    if (sources != null) 'sources': sources!,
+    if (special != null) 'special': special!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Information about the election that was queried.
@@ -1061,22 +1130,22 @@ class CivicinfoSchemaV2Election {
   });
 
   CivicinfoSchemaV2Election.fromJson(core.Map json_)
-      : this(
-          electionDay: json_['electionDay'] as core.String?,
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-          ocdDivisionId: json_['ocdDivisionId'] as core.String?,
-          shapeLookupBehavior: json_['shapeLookupBehavior'] as core.String?,
-        );
+    : this(
+        electionDay: json_['electionDay'] as core.String?,
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        ocdDivisionId: json_['ocdDivisionId'] as core.String?,
+        shapeLookupBehavior: json_['shapeLookupBehavior'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (electionDay != null) 'electionDay': electionDay!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (ocdDivisionId != null) 'ocdDivisionId': ocdDivisionId!,
-        if (shapeLookupBehavior != null)
-          'shapeLookupBehavior': shapeLookupBehavior!,
-      };
+    if (electionDay != null) 'electionDay': electionDay!,
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (ocdDivisionId != null) 'ocdDivisionId': ocdDivisionId!,
+    if (shapeLookupBehavior != null)
+      'shapeLookupBehavior': shapeLookupBehavior!,
+  };
 }
 
 /// Information about individual election officials.
@@ -1105,21 +1174,21 @@ class CivicinfoSchemaV2ElectionOfficial {
   });
 
   CivicinfoSchemaV2ElectionOfficial.fromJson(core.Map json_)
-      : this(
-          emailAddress: json_['emailAddress'] as core.String?,
-          faxNumber: json_['faxNumber'] as core.String?,
-          name: json_['name'] as core.String?,
-          officePhoneNumber: json_['officePhoneNumber'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        emailAddress: json_['emailAddress'] as core.String?,
+        faxNumber: json_['faxNumber'] as core.String?,
+        name: json_['name'] as core.String?,
+        officePhoneNumber: json_['officePhoneNumber'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emailAddress != null) 'emailAddress': emailAddress!,
-        if (faxNumber != null) 'faxNumber': faxNumber!,
-        if (name != null) 'name': name!,
-        if (officePhoneNumber != null) 'officePhoneNumber': officePhoneNumber!,
-        if (title != null) 'title': title!,
-      };
+    if (emailAddress != null) 'emailAddress': emailAddress!,
+    if (faxNumber != null) 'faxNumber': faxNumber!,
+    if (name != null) 'name': name!,
+    if (officePhoneNumber != null) 'officePhoneNumber': officePhoneNumber!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Describes the geographic scope of a contest.
@@ -1155,24 +1224,20 @@ class CivicinfoSchemaV2ElectoralDistrict {
   /// - "national"
   core.String? scope;
 
-  CivicinfoSchemaV2ElectoralDistrict({
-    this.id,
-    this.name,
-    this.scope,
-  });
+  CivicinfoSchemaV2ElectoralDistrict({this.id, this.name, this.scope});
 
   CivicinfoSchemaV2ElectoralDistrict.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-          scope: json_['scope'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        scope: json_['scope'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (scope != null) 'scope': scope!,
-      };
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (scope != null) 'scope': scope!,
+  };
 }
 
 /// Describes a political geography.
@@ -1206,21 +1271,23 @@ class CivicinfoSchemaV2GeographicDivision {
   });
 
   CivicinfoSchemaV2GeographicDivision.fromJson(core.Map json_)
-      : this(
-          alsoKnownAs: (json_['alsoKnownAs'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          officeIndices: (json_['officeIndices'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-        );
+    : this(
+        alsoKnownAs:
+            (json_['alsoKnownAs'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        officeIndices:
+            (json_['officeIndices'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alsoKnownAs != null) 'alsoKnownAs': alsoKnownAs!,
-        if (name != null) 'name': name!,
-        if (officeIndices != null) 'officeIndices': officeIndices!,
-      };
+    if (alsoKnownAs != null) 'alsoKnownAs': alsoKnownAs!,
+    if (name != null) 'name': name!,
+    if (officeIndices != null) 'officeIndices': officeIndices!,
+  };
 }
 
 /// A location where a voter can vote.
@@ -1287,37 +1354,43 @@ class CivicinfoSchemaV2PollingLocation {
   });
 
   CivicinfoSchemaV2PollingLocation.fromJson(core.Map json_)
-      : this(
-          address: json_.containsKey('address')
-              ? CivicinfoSchemaV2SimpleAddressType.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>)
-              : null,
-          endDate: json_['endDate'] as core.String?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
-          name: json_['name'] as core.String?,
-          notes: json_['notes'] as core.String?,
-          pollingHours: json_['pollingHours'] as core.String?,
-          sources: (json_['sources'] as core.List?)
-              ?.map((value) => CivicinfoSchemaV2Source.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          startDate: json_['startDate'] as core.String?,
-          voterServices: json_['voterServices'] as core.String?,
-        );
+    : this(
+        address:
+            json_.containsKey('address')
+                ? CivicinfoSchemaV2SimpleAddressType.fromJson(
+                  json_['address'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endDate: json_['endDate'] as core.String?,
+        latitude: (json_['latitude'] as core.num?)?.toDouble(),
+        longitude: (json_['longitude'] as core.num?)?.toDouble(),
+        name: json_['name'] as core.String?,
+        notes: json_['notes'] as core.String?,
+        pollingHours: json_['pollingHours'] as core.String?,
+        sources:
+            (json_['sources'] as core.List?)
+                ?.map(
+                  (value) => CivicinfoSchemaV2Source.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        startDate: json_['startDate'] as core.String?,
+        voterServices: json_['voterServices'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (endDate != null) 'endDate': endDate!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-        if (name != null) 'name': name!,
-        if (notes != null) 'notes': notes!,
-        if (pollingHours != null) 'pollingHours': pollingHours!,
-        if (sources != null) 'sources': sources!,
-        if (startDate != null) 'startDate': startDate!,
-        if (voterServices != null) 'voterServices': voterServices!,
-      };
+    if (address != null) 'address': address!,
+    if (endDate != null) 'endDate': endDate!,
+    if (latitude != null) 'latitude': latitude!,
+    if (longitude != null) 'longitude': longitude!,
+    if (name != null) 'name': name!,
+    if (notes != null) 'notes': notes!,
+    if (pollingHours != null) 'pollingHours': pollingHours!,
+    if (sources != null) 'sources': sources!,
+    if (startDate != null) 'startDate': startDate!,
+    if (voterServices != null) 'voterServices': voterServices!,
+  };
 }
 
 class CivicinfoSchemaV2Precinct {
@@ -1398,54 +1471,59 @@ class CivicinfoSchemaV2Precinct {
   });
 
   CivicinfoSchemaV2Precinct.fromJson(core.Map json_)
-      : this(
-          administrationRegionId:
-              json_['administrationRegionId'] as core.String?,
-          contestId: (json_['contestId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          datasetId: json_['datasetId'] as core.String?,
-          earlyVoteSiteId: (json_['earlyVoteSiteId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          electoralDistrictId: (json_['electoralDistrictId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          id: json_['id'] as core.String?,
-          mailOnly: json_['mailOnly'] as core.bool?,
-          name: json_['name'] as core.String?,
-          number: json_['number'] as core.String?,
-          ocdId: (json_['ocdId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          pollingLocationId: (json_['pollingLocationId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          spatialBoundaryId: (json_['spatialBoundaryId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          splitName: json_['splitName'] as core.String?,
-          ward: json_['ward'] as core.String?,
-        );
+    : this(
+        administrationRegionId: json_['administrationRegionId'] as core.String?,
+        contestId:
+            (json_['contestId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        datasetId: json_['datasetId'] as core.String?,
+        earlyVoteSiteId:
+            (json_['earlyVoteSiteId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        electoralDistrictId:
+            (json_['electoralDistrictId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        id: json_['id'] as core.String?,
+        mailOnly: json_['mailOnly'] as core.bool?,
+        name: json_['name'] as core.String?,
+        number: json_['number'] as core.String?,
+        ocdId:
+            (json_['ocdId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        pollingLocationId:
+            (json_['pollingLocationId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        spatialBoundaryId:
+            (json_['spatialBoundaryId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        splitName: json_['splitName'] as core.String?,
+        ward: json_['ward'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (administrationRegionId != null)
-          'administrationRegionId': administrationRegionId!,
-        if (contestId != null) 'contestId': contestId!,
-        if (datasetId != null) 'datasetId': datasetId!,
-        if (earlyVoteSiteId != null) 'earlyVoteSiteId': earlyVoteSiteId!,
-        if (electoralDistrictId != null)
-          'electoralDistrictId': electoralDistrictId!,
-        if (id != null) 'id': id!,
-        if (mailOnly != null) 'mailOnly': mailOnly!,
-        if (name != null) 'name': name!,
-        if (number != null) 'number': number!,
-        if (ocdId != null) 'ocdId': ocdId!,
-        if (pollingLocationId != null) 'pollingLocationId': pollingLocationId!,
-        if (spatialBoundaryId != null) 'spatialBoundaryId': spatialBoundaryId!,
-        if (splitName != null) 'splitName': splitName!,
-        if (ward != null) 'ward': ward!,
-      };
+    if (administrationRegionId != null)
+      'administrationRegionId': administrationRegionId!,
+    if (contestId != null) 'contestId': contestId!,
+    if (datasetId != null) 'datasetId': datasetId!,
+    if (earlyVoteSiteId != null) 'earlyVoteSiteId': earlyVoteSiteId!,
+    if (electoralDistrictId != null)
+      'electoralDistrictId': electoralDistrictId!,
+    if (id != null) 'id': id!,
+    if (mailOnly != null) 'mailOnly': mailOnly!,
+    if (name != null) 'name': name!,
+    if (number != null) 'number': number!,
+    if (ocdId != null) 'ocdId': ocdId!,
+    if (pollingLocationId != null) 'pollingLocationId': pollingLocationId!,
+    if (spatialBoundaryId != null) 'spatialBoundaryId': spatialBoundaryId!,
+    if (splitName != null) 'splitName': splitName!,
+    if (ward != null) 'ward': ward!,
+  };
 }
 
 /// A simple representation of an address.
@@ -1485,29 +1563,30 @@ class CivicinfoSchemaV2SimpleAddressType {
   });
 
   CivicinfoSchemaV2SimpleAddressType.fromJson(core.Map json_)
-      : this(
-          addressLine: (json_['addressLine'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          city: json_['city'] as core.String?,
-          line1: json_['line1'] as core.String?,
-          line2: json_['line2'] as core.String?,
-          line3: json_['line3'] as core.String?,
-          locationName: json_['locationName'] as core.String?,
-          state: json_['state'] as core.String?,
-          zip: json_['zip'] as core.String?,
-        );
+    : this(
+        addressLine:
+            (json_['addressLine'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        city: json_['city'] as core.String?,
+        line1: json_['line1'] as core.String?,
+        line2: json_['line2'] as core.String?,
+        line3: json_['line3'] as core.String?,
+        locationName: json_['locationName'] as core.String?,
+        state: json_['state'] as core.String?,
+        zip: json_['zip'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLine != null) 'addressLine': addressLine!,
-        if (city != null) 'city': city!,
-        if (line1 != null) 'line1': line1!,
-        if (line2 != null) 'line2': line2!,
-        if (line3 != null) 'line3': line3!,
-        if (locationName != null) 'locationName': locationName!,
-        if (state != null) 'state': state!,
-        if (zip != null) 'zip': zip!,
-      };
+    if (addressLine != null) 'addressLine': addressLine!,
+    if (city != null) 'city': city!,
+    if (line1 != null) 'line1': line1!,
+    if (line2 != null) 'line2': line2!,
+    if (line3 != null) 'line3': line3!,
+    if (locationName != null) 'locationName': locationName!,
+    if (state != null) 'state': state!,
+    if (zip != null) 'zip': zip!,
+  };
 }
 
 /// Contains information about the data source for the element containing it.
@@ -1518,19 +1597,16 @@ class CivicinfoSchemaV2Source {
   /// Whether this data comes from an official government source.
   core.bool? official;
 
-  CivicinfoSchemaV2Source({
-    this.name,
-    this.official,
-  });
+  CivicinfoSchemaV2Source({this.name, this.official});
 
   CivicinfoSchemaV2Source.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          official: json_['official'] as core.bool?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        official: json_['official'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (official != null) 'official': official!,
-      };
+    if (name != null) 'name': name!,
+    if (official != null) 'official': official!,
+  };
 }

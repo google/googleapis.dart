@@ -8,21 +8,17 @@ import 'package:googleapis/youtube/v3.dart';
 import 'package:test_integration/test_integration.dart';
 
 Future<void> main() async {
-  await withClientFromUserCredentials(
-    [YouTubeApi.youtubeReadonlyScope],
-    (client) async {
-      final api = YouTubeApi(client).videos;
+  await withClientFromUserCredentials([YouTubeApi.youtubeReadonlyScope], (
+    client,
+  ) async {
+    final api = YouTubeApi(client).videos;
 
-      final result = await api.list(
-        ['snippet'],
-        myRating: 'like',
+    final result = await api.list(['snippet'], myRating: 'like');
+
+    for (var item in result.items!) {
+      print(
+        '${item.snippet!.title!.padRight(40)} https://www.youtube.com/watch?v=${item.id}',
       );
-
-      for (var item in result.items!) {
-        print(
-          '${item.snippet!.title!.padRight(40)} https://www.youtube.com/watch?v=${item.id}',
-        );
-      }
-    },
-  );
+    }
+  });
 }

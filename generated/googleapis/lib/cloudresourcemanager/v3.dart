@@ -76,11 +76,16 @@ class CloudResourceManagerApi {
   TagKeysResource get tagKeys => TagKeysResource(_requester);
   TagValuesResource get tagValues => TagValuesResource(_requester);
 
-  CloudResourceManagerApi(http.Client client,
-      {core.String rootUrl = 'https://cloudresourcemanager.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudResourceManagerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudresourcemanager.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class EffectiveTagsResource {
@@ -136,7 +141,8 @@ class EffectiveTagsResource {
       queryParams: queryParams_,
     );
     return ListEffectiveTagsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -182,10 +188,7 @@ class FoldersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(
-    Folder request, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> create(Folder request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -267,10 +270,7 @@ class FoldersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Folder> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Folder> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -393,7 +393,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return ListFoldersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves a folder under a new resource parent.
@@ -576,7 +577,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return SearchFoldersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on a folder, replacing any existing policy.
@@ -673,7 +675,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Cancels the deletion request for a folder.
@@ -730,7 +733,7 @@ class FoldersCapabilitiesResource {
   final commons.ApiRequester _requester;
 
   FoldersCapabilitiesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Retrieves the Capability identified by the supplied resource name.
   ///
@@ -750,10 +753,7 @@ class FoldersCapabilitiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Capability> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Capability> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -766,7 +766,8 @@ class FoldersCapabilitiesResource {
       queryParams: queryParams_,
     );
     return Capability.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the Capability.
@@ -845,10 +846,7 @@ class LiensResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Lien> create(
-    Lien request, {
-    core.String? $fields,
-  }) async {
+  async.Future<Lien> create(Lien request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -886,10 +884,7 @@ class LiensResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -925,10 +920,7 @@ class LiensResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Lien> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Lien> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -995,7 +987,8 @@ class LiensResource {
       queryParams: queryParams_,
     );
     return ListLiensResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1003,8 +996,8 @@ class LocationsResource {
   final commons.ApiRequester _requester;
 
   LocationsEffectiveTagBindingCollectionsResource
-      get effectiveTagBindingCollections =>
-          LocationsEffectiveTagBindingCollectionsResource(_requester);
+  get effectiveTagBindingCollections =>
+      LocationsEffectiveTagBindingCollectionsResource(_requester);
   LocationsTagBindingCollectionsResource get tagBindingCollections =>
       LocationsTagBindingCollectionsResource(_requester);
 
@@ -1015,7 +1008,7 @@ class LocationsEffectiveTagBindingCollectionsResource {
   final commons.ApiRequester _requester;
 
   LocationsEffectiveTagBindingCollectionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Returns effective tag bindings on a GCP resource.
   ///
@@ -1056,7 +1049,8 @@ class LocationsEffectiveTagBindingCollectionsResource {
       queryParams: queryParams_,
     );
     return EffectiveTagBindingCollection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1064,7 +1058,7 @@ class LocationsTagBindingCollectionsResource {
   final commons.ApiRequester _requester;
 
   LocationsTagBindingCollectionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Returns tag bindings directly attached to a GCP resource.
   ///
@@ -1104,7 +1098,8 @@ class LocationsTagBindingCollectionsResource {
       queryParams: queryParams_,
     );
     return TagBindingCollection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates tag bindings directly attached to a GCP resource.
@@ -1179,10 +1174,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1239,7 +1231,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return Organization.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for an organization resource.
@@ -1353,7 +1346,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return SearchOrganizationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on an organization resource.
@@ -1451,7 +1445,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1571,10 +1566,7 @@ class ProjectsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Project> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1695,7 +1687,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return ListProjectsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Move a project to another place in your resource hierarchy, under a new
@@ -1871,7 +1864,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return SearchProjectsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the IAM access control policy for the specified project, in the
@@ -1989,7 +1983,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Restores the project identified by the specified `name` (for example,
@@ -2174,7 +2169,8 @@ class TagBindingsResource {
       queryParams: queryParams_,
     );
     return ListTagBindingsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2298,10 +2294,7 @@ class TagKeysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TagKey> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<TagKey> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2452,7 +2445,8 @@ class TagKeysResource {
       queryParams: queryParams_,
     );
     return ListTagKeysResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the attributes of the TagKey resource.
@@ -2602,7 +2596,8 @@ class TagKeysResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2728,10 +2723,7 @@ class TagValuesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TagValue> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<TagValue> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2883,7 +2875,8 @@ class TagValuesResource {
       queryParams: queryParams_,
     );
     return ListTagValuesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the attributes of the TagValue resource.
@@ -3031,7 +3024,8 @@ class TagValuesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3187,7 +3181,8 @@ class TagValuesTagHoldsResource {
       queryParams: queryParams_,
     );
     return ListTagHoldsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3218,24 +3213,25 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -3326,29 +3322,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// Representation of a Capability.
@@ -3368,21 +3363,18 @@ class Capability {
   /// Required.
   core.bool? value;
 
-  Capability({
-    this.name,
-    this.value,
-  });
+  Capability({this.name, this.value});
 
   Capability.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          value: json_['value'] as core.bool?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_['value'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
+    if (name != null) 'name': name!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// An EffectiveTag represents a tag that applies to a resource during policy
@@ -3439,24 +3431,23 @@ class EffectiveTag {
   });
 
   EffectiveTag.fromJson(core.Map json_)
-      : this(
-          inherited: json_['inherited'] as core.bool?,
-          namespacedTagKey: json_['namespacedTagKey'] as core.String?,
-          namespacedTagValue: json_['namespacedTagValue'] as core.String?,
-          tagKey: json_['tagKey'] as core.String?,
-          tagKeyParentName: json_['tagKeyParentName'] as core.String?,
-          tagValue: json_['tagValue'] as core.String?,
-        );
+    : this(
+        inherited: json_['inherited'] as core.bool?,
+        namespacedTagKey: json_['namespacedTagKey'] as core.String?,
+        namespacedTagValue: json_['namespacedTagValue'] as core.String?,
+        tagKey: json_['tagKey'] as core.String?,
+        tagKeyParentName: json_['tagKeyParentName'] as core.String?,
+        tagValue: json_['tagValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inherited != null) 'inherited': inherited!,
-        if (namespacedTagKey != null) 'namespacedTagKey': namespacedTagKey!,
-        if (namespacedTagValue != null)
-          'namespacedTagValue': namespacedTagValue!,
-        if (tagKey != null) 'tagKey': tagKey!,
-        if (tagKeyParentName != null) 'tagKeyParentName': tagKeyParentName!,
-        if (tagValue != null) 'tagValue': tagValue!,
-      };
+    if (inherited != null) 'inherited': inherited!,
+    if (namespacedTagKey != null) 'namespacedTagKey': namespacedTagKey!,
+    if (namespacedTagValue != null) 'namespacedTagValue': namespacedTagValue!,
+    if (tagKey != null) 'tagKey': tagKey!,
+    if (tagKeyParentName != null) 'tagKeyParentName': tagKeyParentName!,
+    if (tagValue != null) 'tagValue': tagValue!,
+  };
 }
 
 /// Represents a collection of effective tag bindings for a GCP resource.
@@ -3488,24 +3479,19 @@ class EffectiveTagBindingCollection {
   });
 
   EffectiveTagBindingCollection.fromJson(core.Map json_)
-      : this(
-          effectiveTags:
-              (json_['effectiveTags'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          fullResourceName: json_['fullResourceName'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        effectiveTags: (json_['effectiveTags']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        fullResourceName: json_['fullResourceName'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (effectiveTags != null) 'effectiveTags': effectiveTags!,
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-        if (name != null) 'name': name!,
-      };
+    if (effectiveTags != null) 'effectiveTags': effectiveTags!,
+    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3640,42 +3626,39 @@ class Folder {
   });
 
   Folder.fromJson(core.Map json_)
-      : this(
-          configuredCapabilities:
-              (json_['configuredCapabilities'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          createTime: json_['createTime'] as core.String?,
-          deleteTime: json_['deleteTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          managementProject: json_['managementProject'] as core.String?,
-          name: json_['name'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          state: json_['state'] as core.String?,
-          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        configuredCapabilities:
+            (json_['configuredCapabilities'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        managementProject: json_['managementProject'] as core.String?,
+        name: json_['name'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        state: json_['state'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configuredCapabilities != null)
-          'configuredCapabilities': configuredCapabilities!,
-        if (createTime != null) 'createTime': createTime!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (managementProject != null) 'managementProject': managementProject!,
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (state != null) 'state': state!,
-        if (tags != null) 'tags': tags!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (configuredCapabilities != null)
+      'configuredCapabilities': configuredCapabilities!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (managementProject != null) 'managementProject': managementProject!,
+    if (name != null) 'name': name!,
+    if (parent != null) 'parent': parent!,
+    if (state != null) 'state': state!,
+    if (tags != null) 'tags': tags!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -3684,21 +3667,21 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest({
-    this.options,
-  });
+  GetIamPolicyRequest({this.options});
 
   GetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          options: json_.containsKey('options')
-              ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        options:
+            json_.containsKey('options')
+                ? GetPolicyOptions.fromJson(
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!,
-      };
+    if (options != null) 'options': options!,
+  };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -3723,24 +3706,25 @@ class ListEffectiveTagsResponse {
   /// set. Pagination tokens have a limited lifetime.
   core.String? nextPageToken;
 
-  ListEffectiveTagsResponse({
-    this.effectiveTags,
-    this.nextPageToken,
-  });
+  ListEffectiveTagsResponse({this.effectiveTags, this.nextPageToken});
 
   ListEffectiveTagsResponse.fromJson(core.Map json_)
-      : this(
-          effectiveTags: (json_['effectiveTags'] as core.List?)
-              ?.map((value) => EffectiveTag.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        effectiveTags:
+            (json_['effectiveTags'] as core.List?)
+                ?.map(
+                  (value) => EffectiveTag.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (effectiveTags != null) 'effectiveTags': effectiveTags!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (effectiveTags != null) 'effectiveTags': effectiveTags!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The ListFolders response message.
@@ -3753,24 +3737,25 @@ class ListFoldersResponse {
   /// indicates from where listing should continue.
   core.String? nextPageToken;
 
-  ListFoldersResponse({
-    this.folders,
-    this.nextPageToken,
-  });
+  ListFoldersResponse({this.folders, this.nextPageToken});
 
   ListFoldersResponse.fromJson(core.Map json_)
-      : this(
-          folders: (json_['folders'] as core.List?)
-              ?.map((value) =>
-                  Folder.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        folders:
+            (json_['folders'] as core.List?)
+                ?.map(
+                  (value) => Folder.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (folders != null) 'folders': folders!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (folders != null) 'folders': folders!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Liens.ListLiens.
@@ -3782,24 +3767,25 @@ class ListLiensResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  ListLiensResponse({
-    this.liens,
-    this.nextPageToken,
-  });
+  ListLiensResponse({this.liens, this.nextPageToken});
 
   ListLiensResponse.fromJson(core.Map json_)
-      : this(
-          liens: (json_['liens'] as core.List?)
-              ?.map((value) =>
-                  Lien.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        liens:
+            (json_['liens'] as core.List?)
+                ?.map(
+                  (value) => Lien.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (liens != null) 'liens': liens!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (liens != null) 'liens': liens!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// A page of the response received from the ListProjects method.
@@ -3824,24 +3810,25 @@ class ListProjectsResponse {
   /// This list can be paginated.
   core.List<Project>? projects;
 
-  ListProjectsResponse({
-    this.nextPageToken,
-    this.projects,
-  });
+  ListProjectsResponse({this.nextPageToken, this.projects});
 
   ListProjectsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          projects: (json_['projects'] as core.List?)
-              ?.map((value) => Project.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        projects:
+            (json_['projects'] as core.List?)
+                ?.map(
+                  (value) => Project.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (projects != null) 'projects': projects!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (projects != null) 'projects': projects!,
+  };
 }
 
 /// The ListTagBindings response.
@@ -3859,24 +3846,25 @@ class ListTagBindingsResponse {
   /// A possibly paginated list of TagBindings for the specified resource.
   core.List<TagBinding>? tagBindings;
 
-  ListTagBindingsResponse({
-    this.nextPageToken,
-    this.tagBindings,
-  });
+  ListTagBindingsResponse({this.nextPageToken, this.tagBindings});
 
   ListTagBindingsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          tagBindings: (json_['tagBindings'] as core.List?)
-              ?.map((value) => TagBinding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        tagBindings:
+            (json_['tagBindings'] as core.List?)
+                ?.map(
+                  (value) => TagBinding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tagBindings != null) 'tagBindings': tagBindings!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (tagBindings != null) 'tagBindings': tagBindings!,
+  };
 }
 
 /// The ListTagHolds response.
@@ -3894,24 +3882,25 @@ class ListTagHoldsResponse {
   /// A possibly paginated list of TagHolds.
   core.List<TagHold>? tagHolds;
 
-  ListTagHoldsResponse({
-    this.nextPageToken,
-    this.tagHolds,
-  });
+  ListTagHoldsResponse({this.nextPageToken, this.tagHolds});
 
   ListTagHoldsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          tagHolds: (json_['tagHolds'] as core.List?)
-              ?.map((value) => TagHold.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        tagHolds:
+            (json_['tagHolds'] as core.List?)
+                ?.map(
+                  (value) => TagHold.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tagHolds != null) 'tagHolds': tagHolds!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (tagHolds != null) 'tagHolds': tagHolds!,
+  };
 }
 
 /// The ListTagKeys response message.
@@ -3923,24 +3912,25 @@ class ListTagKeysResponse {
   /// List of TagKeys that live under the specified parent in the request.
   core.List<TagKey>? tagKeys;
 
-  ListTagKeysResponse({
-    this.nextPageToken,
-    this.tagKeys,
-  });
+  ListTagKeysResponse({this.nextPageToken, this.tagKeys});
 
   ListTagKeysResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          tagKeys: (json_['tagKeys'] as core.List?)
-              ?.map((value) =>
-                  TagKey.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        tagKeys:
+            (json_['tagKeys'] as core.List?)
+                ?.map(
+                  (value) => TagKey.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tagKeys != null) 'tagKeys': tagKeys!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (tagKeys != null) 'tagKeys': tagKeys!,
+  };
 }
 
 /// The ListTagValues response.
@@ -3956,24 +3946,25 @@ class ListTagValuesResponse {
   /// specified parent TagKey.
   core.List<TagValue>? tagValues;
 
-  ListTagValuesResponse({
-    this.nextPageToken,
-    this.tagValues,
-  });
+  ListTagValuesResponse({this.nextPageToken, this.tagValues});
 
   ListTagValuesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          tagValues: (json_['tagValues'] as core.List?)
-              ?.map((value) => TagValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        tagValues:
+            (json_['tagValues'] as core.List?)
+                ?.map(
+                  (value) => TagValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tagValues != null) 'tagValues': tagValues!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (tagValues != null) 'tagValues': tagValues!,
+  };
 }
 
 /// The MoveFolder request message.
@@ -3986,18 +3977,14 @@ class MoveFolderRequest {
   /// Required.
   core.String? destinationParent;
 
-  MoveFolderRequest({
-    this.destinationParent,
-  });
+  MoveFolderRequest({this.destinationParent});
 
   MoveFolderRequest.fromJson(core.Map json_)
-      : this(
-          destinationParent: json_['destinationParent'] as core.String?,
-        );
+    : this(destinationParent: json_['destinationParent'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent!,
-      };
+    if (destinationParent != null) 'destinationParent': destinationParent!,
+  };
 }
 
 /// The request sent to MoveProject method.
@@ -4007,18 +3994,14 @@ class MoveProjectRequest {
   /// Required.
   core.String? destinationParent;
 
-  MoveProjectRequest({
-    this.destinationParent,
-  });
+  MoveProjectRequest({this.destinationParent});
 
   MoveProjectRequest.fromJson(core.Map json_)
-      : this(
-          destinationParent: json_['destinationParent'] as core.String?,
-        );
+    : this(destinationParent: json_['destinationParent'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent!,
-      };
+    if (destinationParent != null) 'destinationParent': destinationParent!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -4064,37 +4047,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// The root node in the resource hierarchy to which a particular entity's (a
@@ -4170,28 +4151,28 @@ class Organization {
   });
 
   Organization.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          deleteTime: json_['deleteTime'] as core.String?,
-          directoryCustomerId: json_['directoryCustomerId'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        directoryCustomerId: json_['directoryCustomerId'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (directoryCustomerId != null)
-          'directoryCustomerId': directoryCustomerId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (directoryCustomerId != null)
+      'directoryCustomerId': directoryCustomerId!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -4257,8 +4238,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -4280,33 +4263,36 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// A project is a high-level Google Cloud entity.
@@ -4432,50 +4418,43 @@ class Project {
   });
 
   Project.fromJson(core.Map json_)
-      : this(
-          configuredCapabilities:
-              (json_['configuredCapabilities'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          createTime: json_['createTime'] as core.String?,
-          deleteTime: json_['deleteTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          projectId: json_['projectId'] as core.String?,
-          state: json_['state'] as core.String?,
-          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        configuredCapabilities:
+            (json_['configuredCapabilities'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+        state: json_['state'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configuredCapabilities != null)
-          'configuredCapabilities': configuredCapabilities!,
-        if (createTime != null) 'createTime': createTime!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (projectId != null) 'projectId': projectId!,
-        if (state != null) 'state': state!,
-        if (tags != null) 'tags': tags!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (configuredCapabilities != null)
+      'configuredCapabilities': configuredCapabilities!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (parent != null) 'parent': parent!,
+    if (projectId != null) 'projectId': projectId!,
+    if (state != null) 'state': state!,
+    if (tags != null) 'tags': tags!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The response message for searching folders.
@@ -4489,24 +4468,25 @@ class SearchFoldersResponse {
   /// indicates from where searching should continue.
   core.String? nextPageToken;
 
-  SearchFoldersResponse({
-    this.folders,
-    this.nextPageToken,
-  });
+  SearchFoldersResponse({this.folders, this.nextPageToken});
 
   SearchFoldersResponse.fromJson(core.Map json_)
-      : this(
-          folders: (json_['folders'] as core.List?)
-              ?.map((value) =>
-                  Folder.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        folders:
+            (json_['folders'] as core.List?)
+                ?.map(
+                  (value) => Folder.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (folders != null) 'folders': folders!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (folders != null) 'folders': folders!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response returned from the `SearchOrganizations` method.
@@ -4523,24 +4503,25 @@ class SearchOrganizationsResponse {
   /// paginated.
   core.List<Organization>? organizations;
 
-  SearchOrganizationsResponse({
-    this.nextPageToken,
-    this.organizations,
-  });
+  SearchOrganizationsResponse({this.nextPageToken, this.organizations});
 
   SearchOrganizationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          organizations: (json_['organizations'] as core.List?)
-              ?.map((value) => Organization.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        organizations:
+            (json_['organizations'] as core.List?)
+                ?.map(
+                  (value) => Organization.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (organizations != null) 'organizations': organizations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (organizations != null) 'organizations': organizations!,
+  };
 }
 
 /// A page of the response received from the SearchProjects method.
@@ -4564,24 +4545,25 @@ class SearchProjectsResponse {
   /// This list can be paginated.
   core.List<Project>? projects;
 
-  SearchProjectsResponse({
-    this.nextPageToken,
-    this.projects,
-  });
+  SearchProjectsResponse({this.nextPageToken, this.projects});
 
   SearchProjectsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          projects: (json_['projects'] as core.List?)
-              ?.map((value) => Project.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        projects:
+            (json_['projects'] as core.List?)
+                ?.map(
+                  (value) => Project.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (projects != null) 'projects': projects!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (projects != null) 'projects': projects!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -4599,24 +4581,23 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4667,21 +4648,20 @@ class TagBinding {
   });
 
   TagBinding.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          tagValue: json_['tagValue'] as core.String?,
-          tagValueNamespacedName:
-              json_['tagValueNamespacedName'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        tagValue: json_['tagValue'] as core.String?,
+        tagValueNamespacedName: json_['tagValueNamespacedName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (tagValue != null) 'tagValue': tagValue!,
-        if (tagValueNamespacedName != null)
-          'tagValueNamespacedName': tagValueNamespacedName!,
-      };
+    if (name != null) 'name': name!,
+    if (parent != null) 'parent': parent!,
+    if (tagValue != null) 'tagValue': tagValue!,
+    if (tagValueNamespacedName != null)
+      'tagValueNamespacedName': tagValueNamespacedName!,
+  };
 }
 
 /// Represents a collection of tags directly bound to a GCP resource.
@@ -4722,24 +4702,21 @@ class TagBindingCollection {
   });
 
   TagBindingCollection.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          fullResourceName: json_['fullResourceName'] as core.String?,
-          name: json_['name'] as core.String?,
-          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        fullResourceName: json_['fullResourceName'] as core.String?,
+        name: json_['name'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-        if (name != null) 'name': name!,
-        if (tags != null) 'tags': tags!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+    if (name != null) 'name': name!,
+    if (tags != null) 'tags': tags!,
+  };
 }
 
 /// A TagHold represents the use of a TagValue that is not captured by
@@ -4797,21 +4774,21 @@ class TagHold {
   });
 
   TagHold.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          helpLink: json_['helpLink'] as core.String?,
-          holder: json_['holder'] as core.String?,
-          name: json_['name'] as core.String?,
-          origin: json_['origin'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        helpLink: json_['helpLink'] as core.String?,
+        holder: json_['holder'] as core.String?,
+        name: json_['name'] as core.String?,
+        origin: json_['origin'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (helpLink != null) 'helpLink': helpLink!,
-        if (holder != null) 'holder': holder!,
-        if (name != null) 'name': name!,
-        if (origin != null) 'origin': origin!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (helpLink != null) 'helpLink': helpLink!,
+    if (holder != null) 'holder': holder!,
+    if (name != null) 'name': name!,
+    if (origin != null) 'origin': origin!,
+  };
 }
 
 /// A TagKey, used to group a set of TagValues.
@@ -4921,38 +4898,33 @@ class TagKey {
   });
 
   TagKey.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          namespacedName: json_['namespacedName'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          purpose: json_['purpose'] as core.String?,
-          purposeData:
-              (json_['purposeData'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          shortName: json_['shortName'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        namespacedName: json_['namespacedName'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        purpose: json_['purpose'] as core.String?,
+        purposeData: (json_['purposeData']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        shortName: json_['shortName'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (namespacedName != null) 'namespacedName': namespacedName!,
-        if (parent != null) 'parent': parent!,
-        if (purpose != null) 'purpose': purpose!,
-        if (purposeData != null) 'purposeData': purposeData!,
-        if (shortName != null) 'shortName': shortName!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (namespacedName != null) 'namespacedName': namespacedName!,
+    if (parent != null) 'parent': parent!,
+    if (purpose != null) 'purpose': purpose!,
+    if (purposeData != null) 'purposeData': purposeData!,
+    if (shortName != null) 'shortName': shortName!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A TagValue is a child of a particular TagKey.
@@ -5029,27 +5001,27 @@ class TagValue {
   });
 
   TagValue.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          namespacedName: json_['namespacedName'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          shortName: json_['shortName'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        namespacedName: json_['namespacedName'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        shortName: json_['shortName'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (namespacedName != null) 'namespacedName': namespacedName!,
-        if (parent != null) 'parent': parent!,
-        if (shortName != null) 'shortName': shortName!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (namespacedName != null) 'namespacedName': namespacedName!,
+    if (parent != null) 'parent': parent!,
+    if (shortName != null) 'shortName': shortName!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Request message for `TestIamPermissions` method.

@@ -49,11 +49,16 @@ class DatalineageApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  DatalineageApi(http.Client client,
-      {core.String rootUrl = 'https://datalineage.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DatalineageApi(
+    http.Client client, {
+    core.String rootUrl = 'https://datalineage.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -106,7 +111,7 @@ class ProjectsLocationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse>
-      batchSearchLinkProcesses(
+  batchSearchLinkProcesses(
     GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest request,
     core.String parent, {
     core.String? $fields,
@@ -125,8 +130,9 @@ class ProjectsLocationsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates new lineage events together with their parents: process and run.
@@ -156,9 +162,10 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async
-      .Future<GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse>
-      processOpenLineageRunEvent(
+  async.Future<
+    GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse
+  >
+  processOpenLineageRunEvent(
     core.String parent, {
     core.String? requestId,
     core.String? $fields,
@@ -176,8 +183,9 @@ class ProjectsLocationsResource {
       'POST',
       queryParams: queryParams_,
     );
-    return GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieve a list of links connected to a specific asset.
@@ -224,7 +232,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1SearchLinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -232,7 +241,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -282,7 +291,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a long-running operation.
@@ -323,7 +333,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -363,7 +374,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -413,7 +425,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -424,7 +437,7 @@ class ProjectsLocationsProcessesResource {
       ProjectsLocationsProcessesRunsResource(_requester);
 
   ProjectsLocationsProcessesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new process.
   ///
@@ -471,7 +484,8 @@ class ProjectsLocationsProcessesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1Process.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the process with the specified name.
@@ -513,7 +527,8 @@ class ProjectsLocationsProcessesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the details of the specified process.
@@ -550,7 +565,8 @@ class ProjectsLocationsProcessesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1Process.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List processes in the given project and location.
@@ -603,7 +619,8 @@ class ProjectsLocationsProcessesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1ListProcessesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a process.
@@ -664,7 +681,8 @@ class ProjectsLocationsProcessesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1Process.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -675,7 +693,7 @@ class ProjectsLocationsProcessesRunsResource {
       ProjectsLocationsProcessesRunsLineageEventsResource(_requester);
 
   ProjectsLocationsProcessesRunsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new run.
   ///
@@ -722,7 +740,8 @@ class ProjectsLocationsProcessesRunsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1Run.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the run with the specified name.
@@ -764,7 +783,8 @@ class ProjectsLocationsProcessesRunsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the details of the specified run.
@@ -801,7 +821,8 @@ class ProjectsLocationsProcessesRunsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1Run.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists runs in the given project and location.
@@ -854,7 +875,8 @@ class ProjectsLocationsProcessesRunsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1ListRunsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a run.
@@ -909,7 +931,8 @@ class ProjectsLocationsProcessesRunsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1Run.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -917,8 +940,8 @@ class ProjectsLocationsProcessesRunsLineageEventsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsProcessesRunsLineageEventsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a new lineage event.
   ///
@@ -966,7 +989,8 @@ class ProjectsLocationsProcessesRunsLineageEventsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1LineageEvent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the lineage event with the specified name.
@@ -1008,7 +1032,8 @@ class ProjectsLocationsProcessesRunsLineageEventsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a specified lineage event.
@@ -1045,7 +1070,8 @@ class ProjectsLocationsProcessesRunsLineageEventsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1LineageEvent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists lineage events in the given project and location.
@@ -1100,7 +1126,8 @@ class ProjectsLocationsProcessesRunsLineageEventsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1ListLineageEventsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1135,20 +1162,21 @@ class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest {
   });
 
   GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest.fromJson(
-      core.Map json_)
-      : this(
-          links: (json_['links'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          pageSize: json_['pageSize'] as core.int?,
-          pageToken: json_['pageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        links:
+            (json_['links'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (links != null) 'links': links!,
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-      };
+    if (links != null) 'links': links!,
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (pageToken != null) 'pageToken': pageToken!,
+  };
 }
 
 /// Response message for BatchSearchLinkProcesses.
@@ -1168,20 +1196,24 @@ class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse {
   });
 
   GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse.fromJson(
-      core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          processLinks: (json_['processLinks'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDatacatalogLineageV1ProcessLinks.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        processLinks:
+            (json_['processLinks'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDatacatalogLineageV1ProcessLinks.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (processLinks != null) 'processLinks': processLinks!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (processLinks != null) 'processLinks': processLinks!,
+  };
 }
 
 /// The soft reference to everything you can attach a lineage event to.
@@ -1193,19 +1225,14 @@ class GoogleCloudDatacatalogLineageV1EntityReference {
   /// Required.
   core.String? fullyQualifiedName;
 
-  GoogleCloudDatacatalogLineageV1EntityReference({
-    this.fullyQualifiedName,
-  });
+  GoogleCloudDatacatalogLineageV1EntityReference({this.fullyQualifiedName});
 
   GoogleCloudDatacatalogLineageV1EntityReference.fromJson(core.Map json_)
-      : this(
-          fullyQualifiedName: json_['fullyQualifiedName'] as core.String?,
-        );
+    : this(fullyQualifiedName: json_['fullyQualifiedName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fullyQualifiedName != null)
-          'fullyQualifiedName': fullyQualifiedName!,
-      };
+    if (fullyQualifiedName != null) 'fullyQualifiedName': fullyQualifiedName!,
+  };
 }
 
 /// A lineage between source and target entities.
@@ -1220,27 +1247,28 @@ class GoogleCloudDatacatalogLineageV1EventLink {
   /// Required.
   GoogleCloudDatacatalogLineageV1EntityReference? target;
 
-  GoogleCloudDatacatalogLineageV1EventLink({
-    this.source,
-    this.target,
-  });
+  GoogleCloudDatacatalogLineageV1EventLink({this.source, this.target});
 
   GoogleCloudDatacatalogLineageV1EventLink.fromJson(core.Map json_)
-      : this(
-          source: json_.containsKey('source')
-              ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          target: json_.containsKey('target')
-              ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
-                  json_['target'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        source:
+            json_.containsKey('source')
+                ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        target:
+            json_.containsKey('target')
+                ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
+                  json_['target'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (source != null) 'source': source!,
-        if (target != null) 'target': target!,
-      };
+    if (source != null) 'source': source!,
+    if (target != null) 'target': target!,
+  };
 }
 
 /// A lineage event represents an operation on assets.
@@ -1289,23 +1317,26 @@ class GoogleCloudDatacatalogLineageV1LineageEvent {
   });
 
   GoogleCloudDatacatalogLineageV1LineageEvent.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          links: (json_['links'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDatacatalogLineageV1EventLink.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        links:
+            (json_['links'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDatacatalogLineageV1EventLink.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (links != null) 'links': links!,
-        if (name != null) 'name': name!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (links != null) 'links': links!,
+    if (name != null) 'name': name!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// Links represent the data flow between **source** (upstream) and **target**
@@ -1342,27 +1373,31 @@ class GoogleCloudDatacatalogLineageV1Link {
   });
 
   GoogleCloudDatacatalogLineageV1Link.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          source: json_.containsKey('source')
-              ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startTime: json_['startTime'] as core.String?,
-          target: json_.containsKey('target')
-              ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
-                  json_['target'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        source:
+            json_.containsKey('source')
+                ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startTime: json_['startTime'] as core.String?,
+        target:
+            json_.containsKey('target')
+                ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
+                  json_['target'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (name != null) 'name': name!,
-        if (source != null) 'source': source!,
-        if (startTime != null) 'startTime': startTime!,
-        if (target != null) 'target': target!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (name != null) 'name': name!,
+    if (source != null) 'source': source!,
+    if (startTime != null) 'startTime': startTime!,
+    if (target != null) 'target': target!,
+  };
 }
 
 /// Response message for ListLineageEvents.
@@ -1382,20 +1417,24 @@ class GoogleCloudDatacatalogLineageV1ListLineageEventsResponse {
   });
 
   GoogleCloudDatacatalogLineageV1ListLineageEventsResponse.fromJson(
-      core.Map json_)
-      : this(
-          lineageEvents: (json_['lineageEvents'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDatacatalogLineageV1LineageEvent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        lineageEvents:
+            (json_['lineageEvents'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDatacatalogLineageV1LineageEvent.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lineageEvents != null) 'lineageEvents': lineageEvents!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (lineageEvents != null) 'lineageEvents': lineageEvents!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListProcesses.
@@ -1415,18 +1454,22 @@ class GoogleCloudDatacatalogLineageV1ListProcessesResponse {
   });
 
   GoogleCloudDatacatalogLineageV1ListProcessesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          processes: (json_['processes'] as core.List?)
-              ?.map((value) => GoogleCloudDatacatalogLineageV1Process.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        processes:
+            (json_['processes'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDatacatalogLineageV1Process.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (processes != null) 'processes': processes!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (processes != null) 'processes': processes!,
+  };
 }
 
 /// Response message for ListRuns.
@@ -1446,18 +1489,22 @@ class GoogleCloudDatacatalogLineageV1ListRunsResponse {
   });
 
   GoogleCloudDatacatalogLineageV1ListRunsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          runs: (json_['runs'] as core.List?)
-              ?.map((value) => GoogleCloudDatacatalogLineageV1Run.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        runs:
+            (json_['runs'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDatacatalogLineageV1Run.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (runs != null) 'runs': runs!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (runs != null) 'runs': runs!,
+  };
 }
 
 /// Origin of a process.
@@ -1490,21 +1537,18 @@ class GoogleCloudDatacatalogLineageV1Origin {
   /// - "VERTEX_AI" : Vertex AI
   core.String? sourceType;
 
-  GoogleCloudDatacatalogLineageV1Origin({
-    this.name,
-    this.sourceType,
-  });
+  GoogleCloudDatacatalogLineageV1Origin({this.name, this.sourceType});
 
   GoogleCloudDatacatalogLineageV1Origin.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          sourceType: json_['sourceType'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        sourceType: json_['sourceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (sourceType != null) 'sourceType': sourceType!,
-      };
+    if (name != null) 'name': name!,
+    if (sourceType != null) 'sourceType': sourceType!,
+  };
 }
 
 /// A process is the definition of a data transformation operation.
@@ -1551,24 +1595,27 @@ class GoogleCloudDatacatalogLineageV1Process {
   });
 
   GoogleCloudDatacatalogLineageV1Process.fromJson(core.Map json_)
-      : this(
-          attributes: json_.containsKey('attributes')
-              ? json_['attributes'] as core.Map<core.String, core.dynamic>
-              : null,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          origin: json_.containsKey('origin')
-              ? GoogleCloudDatacatalogLineageV1Origin.fromJson(
-                  json_['origin'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        attributes:
+            json_.containsKey('attributes')
+                ? json_['attributes'] as core.Map<core.String, core.dynamic>
+                : null,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        origin:
+            json_.containsKey('origin')
+                ? GoogleCloudDatacatalogLineageV1Origin.fromJson(
+                  json_['origin'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (origin != null) 'origin': origin!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (origin != null) 'origin': origin!,
+  };
 }
 
 /// Link details.
@@ -1590,17 +1637,17 @@ class GoogleCloudDatacatalogLineageV1ProcessLinkInfo {
   });
 
   GoogleCloudDatacatalogLineageV1ProcessLinkInfo.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          link: json_['link'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        link: json_['link'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (link != null) 'link': link!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (link != null) 'link': link!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// Links associated with a specific process.
@@ -1617,25 +1664,26 @@ class GoogleCloudDatacatalogLineageV1ProcessLinks {
   /// `projects/{project}/locations/{location}/processes/{process}`.
   core.String? process;
 
-  GoogleCloudDatacatalogLineageV1ProcessLinks({
-    this.links,
-    this.process,
-  });
+  GoogleCloudDatacatalogLineageV1ProcessLinks({this.links, this.process});
 
   GoogleCloudDatacatalogLineageV1ProcessLinks.fromJson(core.Map json_)
-      : this(
-          links: (json_['links'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudDatacatalogLineageV1ProcessLinkInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          process: json_['process'] as core.String?,
-        );
+    : this(
+        links:
+            (json_['links'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDatacatalogLineageV1ProcessLinkInfo.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        process: json_['process'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (links != null) 'links': links!,
-        if (process != null) 'process': process!,
-      };
+    if (links != null) 'links': links!,
+    if (process != null) 'process': process!,
+  };
 }
 
 /// Response message for ProcessOpenLineageRunEvent.
@@ -1664,20 +1712,21 @@ class GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse {
   });
 
   GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse.fromJson(
-      core.Map json_)
-      : this(
-          lineageEvents: (json_['lineageEvents'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          process: json_['process'] as core.String?,
-          run: json_['run'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        lineageEvents:
+            (json_['lineageEvents'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        process: json_['process'] as core.String?,
+        run: json_['run'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lineageEvents != null) 'lineageEvents': lineageEvents!,
-        if (process != null) 'process': process!,
-        if (run != null) 'run': run!,
-      };
+    if (lineageEvents != null) 'lineageEvents': lineageEvents!,
+    if (process != null) 'process': process!,
+    if (run != null) 'run': run!,
+  };
 }
 
 /// A lineage run represents an execution of a process that creates lineage
@@ -1745,25 +1794,26 @@ class GoogleCloudDatacatalogLineageV1Run {
   });
 
   GoogleCloudDatacatalogLineageV1Run.fromJson(core.Map json_)
-      : this(
-          attributes: json_.containsKey('attributes')
-              ? json_['attributes'] as core.Map<core.String, core.dynamic>
-              : null,
-          displayName: json_['displayName'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        attributes:
+            json_.containsKey('attributes')
+                ? json_['attributes'] as core.Map<core.String, core.dynamic>
+                : null,
+        displayName: json_['displayName'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (displayName != null) 'displayName': displayName!,
-        if (endTime != null) 'endTime': endTime!,
-        if (name != null) 'name': name!,
-        if (startTime != null) 'startTime': startTime!,
-        if (state != null) 'state': state!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (displayName != null) 'displayName': displayName!,
+    if (endTime != null) 'endTime': endTime!,
+    if (name != null) 'name': name!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Request message for SearchLinks.
@@ -1806,25 +1856,29 @@ class GoogleCloudDatacatalogLineageV1SearchLinksRequest {
   });
 
   GoogleCloudDatacatalogLineageV1SearchLinksRequest.fromJson(core.Map json_)
-      : this(
-          pageSize: json_['pageSize'] as core.int?,
-          pageToken: json_['pageToken'] as core.String?,
-          source: json_.containsKey('source')
-              ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          target: json_.containsKey('target')
-              ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
-                  json_['target'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+        source:
+            json_.containsKey('source')
+                ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        target:
+            json_.containsKey('target')
+                ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
+                  json_['target'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-        if (source != null) 'source': source!,
-        if (target != null) 'target': target!,
-      };
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (pageToken != null) 'pageToken': pageToken!,
+    if (source != null) 'source': source!,
+    if (target != null) 'target': target!,
+  };
 }
 
 /// Response message for SearchLinks.
@@ -1847,18 +1901,22 @@ class GoogleCloudDatacatalogLineageV1SearchLinksResponse {
   });
 
   GoogleCloudDatacatalogLineageV1SearchLinksResponse.fromJson(core.Map json_)
-      : this(
-          links: (json_['links'] as core.List?)
-              ?.map((value) => GoogleCloudDatacatalogLineageV1Link.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        links:
+            (json_['links'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDatacatalogLineageV1Link.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (links != null) 'links': links!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (links != null) 'links': links!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -1878,18 +1936,22 @@ class GoogleLongrunningListOperationsResponse {
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => GoogleLongrunningOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1944,28 +2006,32 @@ class GoogleLongrunningOperation {
   });
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

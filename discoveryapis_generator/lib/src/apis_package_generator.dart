@@ -78,14 +78,11 @@ class ApisPackageGenerator with DedupeMixin {
     _writeFile(pubspecYamlPath, _writePubspec);
     writeString(gitIgnorePath, _gitIgnore);
 
-    writeDartSource(
-      '$libFolderPath/$userAgentDartFilePath',
-      """
+    writeDartSource('$libFolderPath/$userAgentDartFilePath', """
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 
 ${requestHeadersField(pubspec.version)}
-""",
-    );
+""");
 
     // Test utility
     writeDartSource(
@@ -122,8 +119,9 @@ ${requestHeadersField(pubspec.version)}
             apiTestVersionFile,
             packagePath,
             apiLibrary,
-            skip: skipTests
-                .contains('${description.name}:${description.version}'),
+            skip: skipTests.contains(
+              '${description.name}:${description.version}',
+            ),
           );
 
           results.add(GenerateResult(name, version, packagePath));
@@ -135,7 +133,8 @@ ${requestHeadersField(pubspec.version)}
             errorMessage = '$error\nstack: $stack';
           }
           results.add(
-              GenerateResult.error(name, version, packagePath, errorMessage));
+            GenerateResult.error(name, version, packagePath, errorMessage),
+          );
         }
       }
     });
@@ -147,9 +146,7 @@ ${requestHeadersField(pubspec.version)}
         "import 'dart:core' as core;",
       ];
 
-      writeDartSource(
-        '$libFolderPath/$sharedLibraryName',
-        '''
+      writeDartSource('$libFolderPath/$sharedLibraryName', '''
 /// Shared types to minimize the package size. Do not use directly.
 @core.Deprecated('Avoid importing this library. '
 'Use the members defined in the target API library instead.',)
@@ -160,8 +157,7 @@ ${ignoreForFileComments(ignoreForFileSet)}
 ${importDirectives.join('\n')}
 
 ${duplicateItems.map((e) => e.definition).join('\n\n')}
-''',
-      );
+''');
     }
 
     return results;
@@ -170,12 +166,11 @@ ${duplicateItems.map((e) => e.definition).join('\n\n')}
   DartApiLibrary _generateApiLibrary(
     String outputFile,
     RestDescription description,
-  ) =>
-      libraryDeduplicateLogic(() {
-        final lib = DartApiLibrary.build(description, isPackage: true);
-        writeDartSource(outputFile, lib.librarySource);
-        return lib;
-      });
+  ) => libraryDeduplicateLogic(() {
+    final lib = DartApiLibrary.build(description, isPackage: true);
+    writeDartSource(outputFile, lib.librarySource);
+    return lib;
+  });
 
   void _generateApiTestLibrary(
     String outputFile,
@@ -194,24 +189,25 @@ ${duplicateItems.map((e) => e.definition).join('\n\n')}
 
   void _writePubspec(StringSink sink) {
     void writeDependencies(Map<String, dynamic> dependencies) {
-      orderedForEach<String, dynamic>(
-        dependencies,
-        (String lib, Object? value) {
-          if (value is String) {
-            if (lib.startsWith('_discoveryapis_commons')) {
-              sink.writeln(
-                  '  # This is a private package dependency used by the '
-                  'generated client stubs.');
-            }
-            sink.writeln('  $lib: ${_yamlFormatValue(value)}');
-          } else if (value is Map) {
-            sink.writeln('  $lib:');
-            value.forEach((k, v) {
-              sink.writeln('    $k: ${_yamlFormatValue(v.toString())}');
-            });
+      orderedForEach<String, dynamic>(dependencies, (
+        String lib,
+        Object? value,
+      ) {
+        if (value is String) {
+          if (lib.startsWith('_discoveryapis_commons')) {
+            sink.writeln(
+              '  # This is a private package dependency used by the '
+              'generated client stubs.',
+            );
           }
-        },
-      );
+          sink.writeln('  $lib: ${_yamlFormatValue(value)}');
+        } else if (value is Map) {
+          sink.writeln('  $lib:');
+          value.forEach((k, v) {
+            sink.writeln('    $k: ${_yamlFormatValue(v.toString())}');
+          });
+        }
+      });
     }
 
     sink.writeln('name: ${pubspec.name}');
@@ -249,8 +245,9 @@ ${duplicateItems.map((e) => e.definition).join('\n\n')}
   String get commonsDirRelativePath {
     const commonsDir = 'discoveryapis_commons';
 
-    final outputPackageDir =
-        Directory(p.absolute(p.join(p.current, packageFolderPath)));
+    final outputPackageDir = Directory(
+      p.absolute(p.join(p.current, packageFolderPath)),
+    );
 
     var commonsParentDir = outputPackageDir.parent;
 

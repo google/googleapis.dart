@@ -56,11 +56,16 @@ class PlayIntegrityApi {
   DeviceRecallResource get deviceRecall => DeviceRecallResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
 
-  PlayIntegrityApi(http.Client client,
-      {core.String rootUrl = 'https://playintegrity.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  PlayIntegrityApi(
+    http.Client client, {
+    core.String rootUrl = 'https://playintegrity.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class DeviceRecallResource {
@@ -112,7 +117,8 @@ class DeviceRecallResource {
       queryParams: queryParams_,
     );
     return WriteDeviceRecallResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -161,7 +167,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return DecodeIntegrityTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Decodes the PC integrity token and returns the PC token payload.
@@ -204,7 +211,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return DecodePcIntegrityTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -227,18 +235,14 @@ class AccountActivity {
   /// device, with harder to replicate signals.
   core.String? activityLevel;
 
-  AccountActivity({
-    this.activityLevel,
-  });
+  AccountActivity({this.activityLevel});
 
   AccountActivity.fromJson(core.Map json_)
-      : this(
-          activityLevel: json_['activityLevel'] as core.String?,
-        );
+    : this(activityLevel: json_['activityLevel'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activityLevel != null) 'activityLevel': activityLevel!,
-      };
+    if (activityLevel != null) 'activityLevel': activityLevel!,
+  };
 }
 
 /// Contains the account information such as the licensing status for the user
@@ -266,25 +270,25 @@ class AccountDetails {
   /// minimum bar or the application was not a known Play version.
   core.String? appLicensingVerdict;
 
-  AccountDetails({
-    this.accountActivity,
-    this.appLicensingVerdict,
-  });
+  AccountDetails({this.accountActivity, this.appLicensingVerdict});
 
   AccountDetails.fromJson(core.Map json_)
-      : this(
-          accountActivity: json_.containsKey('accountActivity')
-              ? AccountActivity.fromJson(json_['accountActivity']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          appLicensingVerdict: json_['appLicensingVerdict'] as core.String?,
-        );
+    : this(
+        accountActivity:
+            json_.containsKey('accountActivity')
+                ? AccountActivity.fromJson(
+                  json_['accountActivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        appLicensingVerdict: json_['appLicensingVerdict'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountActivity != null) 'accountActivity': accountActivity!,
-        if (appLicensingVerdict != null)
-          'appLicensingVerdict': appLicensingVerdict!,
-      };
+    if (accountActivity != null) 'accountActivity': accountActivity!,
+    if (appLicensingVerdict != null)
+      'appLicensingVerdict': appLicensingVerdict!,
+  };
 }
 
 /// Contains signals about others apps on the device which could be used to
@@ -293,20 +297,19 @@ class AppAccessRiskVerdict {
   /// List of detected app types signalled for App Access Risk.
   core.List<core.String>? appsDetected;
 
-  AppAccessRiskVerdict({
-    this.appsDetected,
-  });
+  AppAccessRiskVerdict({this.appsDetected});
 
   AppAccessRiskVerdict.fromJson(core.Map json_)
-      : this(
-          appsDetected: (json_['appsDetected'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        appsDetected:
+            (json_['appsDetected'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appsDetected != null) 'appsDetected': appsDetected!,
-      };
+    if (appsDetected != null) 'appsDetected': appsDetected!,
+  };
 }
 
 /// Contains the application integrity information.
@@ -350,24 +353,24 @@ class AppIntegrity {
   });
 
   AppIntegrity.fromJson(core.Map json_)
-      : this(
-          appRecognitionVerdict: json_['appRecognitionVerdict'] as core.String?,
-          certificateSha256Digest:
-              (json_['certificateSha256Digest'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          packageName: json_['packageName'] as core.String?,
-          versionCode: json_['versionCode'] as core.String?,
-        );
+    : this(
+        appRecognitionVerdict: json_['appRecognitionVerdict'] as core.String?,
+        certificateSha256Digest:
+            (json_['certificateSha256Digest'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        packageName: json_['packageName'] as core.String?,
+        versionCode: json_['versionCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appRecognitionVerdict != null)
-          'appRecognitionVerdict': appRecognitionVerdict!,
-        if (certificateSha256Digest != null)
-          'certificateSha256Digest': certificateSha256Digest!,
-        if (packageName != null) 'packageName': packageName!,
-        if (versionCode != null) 'versionCode': versionCode!,
-      };
+    if (appRecognitionVerdict != null)
+      'appRecognitionVerdict': appRecognitionVerdict!,
+    if (certificateSha256Digest != null)
+      'certificateSha256Digest': certificateSha256Digest!,
+    if (packageName != null) 'packageName': packageName!,
+    if (versionCode != null) 'versionCode': versionCode!,
+  };
 }
 
 /// Request to decode the integrity token.
@@ -378,22 +381,23 @@ class DecodeIntegrityTokenResponse {
   /// Plain token payload generated from the decoded integrity token.
   TokenPayloadExternal? tokenPayloadExternal;
 
-  DecodeIntegrityTokenResponse({
-    this.tokenPayloadExternal,
-  });
+  DecodeIntegrityTokenResponse({this.tokenPayloadExternal});
 
   DecodeIntegrityTokenResponse.fromJson(core.Map json_)
-      : this(
-          tokenPayloadExternal: json_.containsKey('tokenPayloadExternal')
-              ? TokenPayloadExternal.fromJson(json_['tokenPayloadExternal']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        tokenPayloadExternal:
+            json_.containsKey('tokenPayloadExternal')
+                ? TokenPayloadExternal.fromJson(
+                  json_['tokenPayloadExternal']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tokenPayloadExternal != null)
-          'tokenPayloadExternal': tokenPayloadExternal!,
-      };
+    if (tokenPayloadExternal != null)
+      'tokenPayloadExternal': tokenPayloadExternal!,
+  };
 }
 
 /// Request to decode the PC integrity token.
@@ -404,22 +408,23 @@ class DecodePcIntegrityTokenResponse {
   /// Plain token payload generated from the decoded integrity token.
   PcTokenPayloadExternal? tokenPayloadExternal;
 
-  DecodePcIntegrityTokenResponse({
-    this.tokenPayloadExternal,
-  });
+  DecodePcIntegrityTokenResponse({this.tokenPayloadExternal});
 
   DecodePcIntegrityTokenResponse.fromJson(core.Map json_)
-      : this(
-          tokenPayloadExternal: json_.containsKey('tokenPayloadExternal')
-              ? PcTokenPayloadExternal.fromJson(json_['tokenPayloadExternal']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        tokenPayloadExternal:
+            json_.containsKey('tokenPayloadExternal')
+                ? PcTokenPayloadExternal.fromJson(
+                  json_['tokenPayloadExternal']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tokenPayloadExternal != null)
-          'tokenPayloadExternal': tokenPayloadExternal!,
-      };
+    if (tokenPayloadExternal != null)
+      'tokenPayloadExternal': tokenPayloadExternal!,
+  };
 }
 
 /// Contains information about the device for which the integrity token was
@@ -433,18 +438,14 @@ class DeviceAttributes {
   /// DeviceIntegrity did not meet the minimum bar.
   core.int? sdkVersion;
 
-  DeviceAttributes({
-    this.sdkVersion,
-  });
+  DeviceAttributes({this.sdkVersion});
 
   DeviceAttributes.fromJson(core.Map json_)
-      : this(
-          sdkVersion: json_['sdkVersion'] as core.int?,
-        );
+    : this(sdkVersion: json_['sdkVersion'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
-      };
+    if (sdkVersion != null) 'sdkVersion': sdkVersion!,
+  };
 }
 
 /// Contains the device attestation information.
@@ -478,39 +479,47 @@ class DeviceIntegrity {
   });
 
   DeviceIntegrity.fromJson(core.Map json_)
-      : this(
-          deviceAttributes: json_.containsKey('deviceAttributes')
-              ? DeviceAttributes.fromJson(json_['deviceAttributes']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deviceRecall: json_.containsKey('deviceRecall')
-              ? DeviceRecall.fromJson(
-                  json_['deviceRecall'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deviceRecognitionVerdict:
-              (json_['deviceRecognitionVerdict'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          legacyDeviceRecognitionVerdict:
-              (json_['legacyDeviceRecognitionVerdict'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          recentDeviceActivity: json_.containsKey('recentDeviceActivity')
-              ? RecentDeviceActivity.fromJson(json_['recentDeviceActivity']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        deviceAttributes:
+            json_.containsKey('deviceAttributes')
+                ? DeviceAttributes.fromJson(
+                  json_['deviceAttributes']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deviceRecall:
+            json_.containsKey('deviceRecall')
+                ? DeviceRecall.fromJson(
+                  json_['deviceRecall'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deviceRecognitionVerdict:
+            (json_['deviceRecognitionVerdict'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        legacyDeviceRecognitionVerdict:
+            (json_['legacyDeviceRecognitionVerdict'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        recentDeviceActivity:
+            json_.containsKey('recentDeviceActivity')
+                ? RecentDeviceActivity.fromJson(
+                  json_['recentDeviceActivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceAttributes != null) 'deviceAttributes': deviceAttributes!,
-        if (deviceRecall != null) 'deviceRecall': deviceRecall!,
-        if (deviceRecognitionVerdict != null)
-          'deviceRecognitionVerdict': deviceRecognitionVerdict!,
-        if (legacyDeviceRecognitionVerdict != null)
-          'legacyDeviceRecognitionVerdict': legacyDeviceRecognitionVerdict!,
-        if (recentDeviceActivity != null)
-          'recentDeviceActivity': recentDeviceActivity!,
-      };
+    if (deviceAttributes != null) 'deviceAttributes': deviceAttributes!,
+    if (deviceRecall != null) 'deviceRecall': deviceRecall!,
+    if (deviceRecognitionVerdict != null)
+      'deviceRecognitionVerdict': deviceRecognitionVerdict!,
+    if (legacyDeviceRecognitionVerdict != null)
+      'legacyDeviceRecognitionVerdict': legacyDeviceRecognitionVerdict!,
+    if (recentDeviceActivity != null)
+      'recentDeviceActivity': recentDeviceActivity!,
+  };
 }
 
 /// Contains the recall bits per device set by the developer.
@@ -525,27 +534,28 @@ class DeviceRecall {
   /// Required.
   WriteDates? writeDates;
 
-  DeviceRecall({
-    this.values,
-    this.writeDates,
-  });
+  DeviceRecall({this.values, this.writeDates});
 
   DeviceRecall.fromJson(core.Map json_)
-      : this(
-          values: json_.containsKey('values')
-              ? Values.fromJson(
-                  json_['values'] as core.Map<core.String, core.dynamic>)
-              : null,
-          writeDates: json_.containsKey('writeDates')
-              ? WriteDates.fromJson(
-                  json_['writeDates'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        values:
+            json_.containsKey('values')
+                ? Values.fromJson(
+                  json_['values'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        writeDates:
+            json_.containsKey('writeDates')
+                ? WriteDates.fromJson(
+                  json_['writeDates'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-        if (writeDates != null) 'writeDates': writeDates!,
-      };
+    if (values != null) 'values': values!,
+    if (writeDates != null) 'writeDates': writeDates!,
+  };
 }
 
 /// Contains information about the environment Play Integrity API runs in, e.g.
@@ -568,26 +578,25 @@ class EnvironmentDetails {
   /// - "POSSIBLE_RISK" : Play Protect is turned off. Turn on Play Protect.
   core.String? playProtectVerdict;
 
-  EnvironmentDetails({
-    this.appAccessRiskVerdict,
-    this.playProtectVerdict,
-  });
+  EnvironmentDetails({this.appAccessRiskVerdict, this.playProtectVerdict});
 
   EnvironmentDetails.fromJson(core.Map json_)
-      : this(
-          appAccessRiskVerdict: json_.containsKey('appAccessRiskVerdict')
-              ? AppAccessRiskVerdict.fromJson(json_['appAccessRiskVerdict']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          playProtectVerdict: json_['playProtectVerdict'] as core.String?,
-        );
+    : this(
+        appAccessRiskVerdict:
+            json_.containsKey('appAccessRiskVerdict')
+                ? AppAccessRiskVerdict.fromJson(
+                  json_['appAccessRiskVerdict']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        playProtectVerdict: json_['playProtectVerdict'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appAccessRiskVerdict != null)
-          'appAccessRiskVerdict': appAccessRiskVerdict!,
-        if (playProtectVerdict != null)
-          'playProtectVerdict': playProtectVerdict!,
-      };
+    if (appAccessRiskVerdict != null)
+      'appAccessRiskVerdict': appAccessRiskVerdict!,
+    if (playProtectVerdict != null) 'playProtectVerdict': playProtectVerdict!,
+  };
 }
 
 /// Contains the device attestation information.
@@ -595,22 +604,20 @@ class PcDeviceIntegrity {
   /// Details about the integrity of the device the app is running on.
   core.List<core.String>? deviceRecognitionVerdict;
 
-  PcDeviceIntegrity({
-    this.deviceRecognitionVerdict,
-  });
+  PcDeviceIntegrity({this.deviceRecognitionVerdict});
 
   PcDeviceIntegrity.fromJson(core.Map json_)
-      : this(
-          deviceRecognitionVerdict:
-              (json_['deviceRecognitionVerdict'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-        );
+    : this(
+        deviceRecognitionVerdict:
+            (json_['deviceRecognitionVerdict'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceRecognitionVerdict != null)
-          'deviceRecognitionVerdict': deviceRecognitionVerdict!,
-      };
+    if (deviceRecognitionVerdict != null)
+      'deviceRecognitionVerdict': deviceRecognitionVerdict!,
+  };
 }
 
 /// Contains the integrity request information.
@@ -637,18 +644,17 @@ class PcRequestDetails {
   });
 
   PcRequestDetails.fromJson(core.Map json_)
-      : this(
-          requestHash: json_['requestHash'] as core.String?,
-          requestPackageName: json_['requestPackageName'] as core.String?,
-          requestTime: json_['requestTime'] as core.String?,
-        );
+    : this(
+        requestHash: json_['requestHash'] as core.String?,
+        requestPackageName: json_['requestPackageName'] as core.String?,
+        requestTime: json_['requestTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestHash != null) 'requestHash': requestHash!,
-        if (requestPackageName != null)
-          'requestPackageName': requestPackageName!,
-        if (requestTime != null) 'requestTime': requestTime!,
-      };
+    if (requestHash != null) 'requestHash': requestHash!,
+    if (requestPackageName != null) 'requestPackageName': requestPackageName!,
+    if (requestTime != null) 'requestTime': requestTime!,
+  };
 }
 
 /// Contains PC device attestation details.
@@ -663,27 +669,30 @@ class PcTokenPayloadExternal {
   /// Required.
   PcRequestDetails? requestDetails;
 
-  PcTokenPayloadExternal({
-    this.deviceIntegrity,
-    this.requestDetails,
-  });
+  PcTokenPayloadExternal({this.deviceIntegrity, this.requestDetails});
 
   PcTokenPayloadExternal.fromJson(core.Map json_)
-      : this(
-          deviceIntegrity: json_.containsKey('deviceIntegrity')
-              ? PcDeviceIntegrity.fromJson(json_['deviceIntegrity']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          requestDetails: json_.containsKey('requestDetails')
-              ? PcRequestDetails.fromJson(json_['requestDetails']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        deviceIntegrity:
+            json_.containsKey('deviceIntegrity')
+                ? PcDeviceIntegrity.fromJson(
+                  json_['deviceIntegrity']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestDetails:
+            json_.containsKey('requestDetails')
+                ? PcRequestDetails.fromJson(
+                  json_['requestDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceIntegrity != null) 'deviceIntegrity': deviceIntegrity!,
-        if (requestDetails != null) 'requestDetails': requestDetails!,
-      };
+    if (deviceIntegrity != null) 'deviceIntegrity': deviceIntegrity!,
+    if (requestDetails != null) 'requestDetails': requestDetails!,
+  };
 }
 
 /// Recent device activity can help developers identify devices that have
@@ -707,19 +716,15 @@ class RecentDeviceActivity {
   /// for details.
   core.String? deviceActivityLevel;
 
-  RecentDeviceActivity({
-    this.deviceActivityLevel,
-  });
+  RecentDeviceActivity({this.deviceActivityLevel});
 
   RecentDeviceActivity.fromJson(core.Map json_)
-      : this(
-          deviceActivityLevel: json_['deviceActivityLevel'] as core.String?,
-        );
+    : this(deviceActivityLevel: json_['deviceActivityLevel'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceActivityLevel != null)
-          'deviceActivityLevel': deviceActivityLevel!,
-      };
+    if (deviceActivityLevel != null)
+      'deviceActivityLevel': deviceActivityLevel!,
+  };
 }
 
 /// Contains the integrity request information.
@@ -751,20 +756,19 @@ class RequestDetails {
   });
 
   RequestDetails.fromJson(core.Map json_)
-      : this(
-          nonce: json_['nonce'] as core.String?,
-          requestHash: json_['requestHash'] as core.String?,
-          requestPackageName: json_['requestPackageName'] as core.String?,
-          timestampMillis: json_['timestampMillis'] as core.String?,
-        );
+    : this(
+        nonce: json_['nonce'] as core.String?,
+        requestHash: json_['requestHash'] as core.String?,
+        requestPackageName: json_['requestPackageName'] as core.String?,
+        timestampMillis: json_['timestampMillis'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nonce != null) 'nonce': nonce!,
-        if (requestHash != null) 'requestHash': requestHash!,
-        if (requestPackageName != null)
-          'requestPackageName': requestPackageName!,
-        if (timestampMillis != null) 'timestampMillis': timestampMillis!,
-      };
+    if (nonce != null) 'nonce': nonce!,
+    if (requestHash != null) 'requestHash': requestHash!,
+    if (requestPackageName != null) 'requestPackageName': requestPackageName!,
+    if (timestampMillis != null) 'timestampMillis': timestampMillis!,
+  };
 }
 
 /// Contains additional information generated for testing responses.
@@ -775,18 +779,14 @@ class TestingDetails {
   /// Required.
   core.bool? isTestingResponse;
 
-  TestingDetails({
-    this.isTestingResponse,
-  });
+  TestingDetails({this.isTestingResponse});
 
   TestingDetails.fromJson(core.Map json_)
-      : this(
-          isTestingResponse: json_['isTestingResponse'] as core.bool?,
-        );
+    : this(isTestingResponse: json_['isTestingResponse'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (isTestingResponse != null) 'isTestingResponse': isTestingResponse!,
-      };
+    if (isTestingResponse != null) 'isTestingResponse': isTestingResponse!,
+  };
 }
 
 /// Contains basic app information and integrity signals like device attestation
@@ -829,42 +829,58 @@ class TokenPayloadExternal {
   });
 
   TokenPayloadExternal.fromJson(core.Map json_)
-      : this(
-          accountDetails: json_.containsKey('accountDetails')
-              ? AccountDetails.fromJson(json_['accountDetails']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          appIntegrity: json_.containsKey('appIntegrity')
-              ? AppIntegrity.fromJson(
-                  json_['appIntegrity'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deviceIntegrity: json_.containsKey('deviceIntegrity')
-              ? DeviceIntegrity.fromJson(json_['deviceIntegrity']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          environmentDetails: json_.containsKey('environmentDetails')
-              ? EnvironmentDetails.fromJson(json_['environmentDetails']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          requestDetails: json_.containsKey('requestDetails')
-              ? RequestDetails.fromJson(json_['requestDetails']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          testingDetails: json_.containsKey('testingDetails')
-              ? TestingDetails.fromJson(json_['testingDetails']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        accountDetails:
+            json_.containsKey('accountDetails')
+                ? AccountDetails.fromJson(
+                  json_['accountDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        appIntegrity:
+            json_.containsKey('appIntegrity')
+                ? AppIntegrity.fromJson(
+                  json_['appIntegrity'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deviceIntegrity:
+            json_.containsKey('deviceIntegrity')
+                ? DeviceIntegrity.fromJson(
+                  json_['deviceIntegrity']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        environmentDetails:
+            json_.containsKey('environmentDetails')
+                ? EnvironmentDetails.fromJson(
+                  json_['environmentDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestDetails:
+            json_.containsKey('requestDetails')
+                ? RequestDetails.fromJson(
+                  json_['requestDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        testingDetails:
+            json_.containsKey('testingDetails')
+                ? TestingDetails.fromJson(
+                  json_['testingDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountDetails != null) 'accountDetails': accountDetails!,
-        if (appIntegrity != null) 'appIntegrity': appIntegrity!,
-        if (deviceIntegrity != null) 'deviceIntegrity': deviceIntegrity!,
-        if (environmentDetails != null)
-          'environmentDetails': environmentDetails!,
-        if (requestDetails != null) 'requestDetails': requestDetails!,
-        if (testingDetails != null) 'testingDetails': testingDetails!,
-      };
+    if (accountDetails != null) 'accountDetails': accountDetails!,
+    if (appIntegrity != null) 'appIntegrity': appIntegrity!,
+    if (deviceIntegrity != null) 'deviceIntegrity': deviceIntegrity!,
+    if (environmentDetails != null) 'environmentDetails': environmentDetails!,
+    if (requestDetails != null) 'requestDetails': requestDetails!,
+    if (testingDetails != null) 'testingDetails': testingDetails!,
+  };
 }
 
 /// Contains the recall bits values.
@@ -884,24 +900,20 @@ class Values {
   /// Required.
   core.bool? bitThird;
 
-  Values({
-    this.bitFirst,
-    this.bitSecond,
-    this.bitThird,
-  });
+  Values({this.bitFirst, this.bitSecond, this.bitThird});
 
   Values.fromJson(core.Map json_)
-      : this(
-          bitFirst: json_['bitFirst'] as core.bool?,
-          bitSecond: json_['bitSecond'] as core.bool?,
-          bitThird: json_['bitThird'] as core.bool?,
-        );
+    : this(
+        bitFirst: json_['bitFirst'] as core.bool?,
+        bitSecond: json_['bitSecond'] as core.bool?,
+        bitThird: json_['bitThird'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bitFirst != null) 'bitFirst': bitFirst!,
-        if (bitSecond != null) 'bitSecond': bitSecond!,
-        if (bitThird != null) 'bitThird': bitThird!,
-      };
+    if (bitFirst != null) 'bitFirst': bitFirst!,
+    if (bitSecond != null) 'bitSecond': bitSecond!,
+    if (bitThird != null) 'bitThird': bitThird!,
+  };
 }
 
 /// Contains the recall bits write dates.
@@ -927,24 +939,20 @@ class WriteDates {
   /// Optional.
   core.int? yyyymmThird;
 
-  WriteDates({
-    this.yyyymmFirst,
-    this.yyyymmSecond,
-    this.yyyymmThird,
-  });
+  WriteDates({this.yyyymmFirst, this.yyyymmSecond, this.yyyymmThird});
 
   WriteDates.fromJson(core.Map json_)
-      : this(
-          yyyymmFirst: json_['yyyymmFirst'] as core.int?,
-          yyyymmSecond: json_['yyyymmSecond'] as core.int?,
-          yyyymmThird: json_['yyyymmThird'] as core.int?,
-        );
+    : this(
+        yyyymmFirst: json_['yyyymmFirst'] as core.int?,
+        yyyymmSecond: json_['yyyymmSecond'] as core.int?,
+        yyyymmThird: json_['yyyymmThird'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (yyyymmFirst != null) 'yyyymmFirst': yyyymmFirst!,
-        if (yyyymmSecond != null) 'yyyymmSecond': yyyymmSecond!,
-        if (yyyymmThird != null) 'yyyymmThird': yyyymmThird!,
-      };
+    if (yyyymmFirst != null) 'yyyymmFirst': yyyymmFirst!,
+    if (yyyymmSecond != null) 'yyyymmSecond': yyyymmSecond!,
+    if (yyyymmThird != null) 'yyyymmThird': yyyymmThird!,
+  };
 }
 
 /// Request to write device recall bits.
@@ -959,24 +967,23 @@ class WriteDeviceRecallRequest {
   /// Required.
   Values? newValues;
 
-  WriteDeviceRecallRequest({
-    this.integrityToken,
-    this.newValues,
-  });
+  WriteDeviceRecallRequest({this.integrityToken, this.newValues});
 
   WriteDeviceRecallRequest.fromJson(core.Map json_)
-      : this(
-          integrityToken: json_['integrityToken'] as core.String?,
-          newValues: json_.containsKey('newValues')
-              ? Values.fromJson(
-                  json_['newValues'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        integrityToken: json_['integrityToken'] as core.String?,
+        newValues:
+            json_.containsKey('newValues')
+                ? Values.fromJson(
+                  json_['newValues'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (integrityToken != null) 'integrityToken': integrityToken!,
-        if (newValues != null) 'newValues': newValues!,
-      };
+    if (integrityToken != null) 'integrityToken': integrityToken!,
+    if (newValues != null) 'newValues': newValues!,
+  };
 }
 
 /// Response for the Write Device Recall action.

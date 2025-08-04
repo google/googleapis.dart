@@ -55,11 +55,16 @@ class BigQueryConnectionServiceApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  BigQueryConnectionServiceApi(http.Client client,
-      {core.String rootUrl = 'https://bigqueryconnection.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  BigQueryConnectionServiceApi(
+    http.Client client, {
+    core.String rootUrl = 'https://bigqueryconnection.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -84,7 +89,7 @@ class ProjectsLocationsConnectionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new connection.
   ///
@@ -130,7 +135,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return Connection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes connection and associated credential.
@@ -152,10 +158,7 @@ class ProjectsLocationsConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -189,10 +192,7 @@ class ProjectsLocationsConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Connection> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Connection> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -205,7 +205,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return Connection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -298,7 +299,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return ListConnectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified connection.
@@ -349,7 +351,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return Connection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -448,7 +451,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the credential for the specified connection.
@@ -521,24 +525,25 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -562,23 +567,21 @@ class AuditLogConfig {
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
   core.String? logType;
 
-  AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
+  AuditLogConfig({this.exemptedMembers, this.logType});
 
   AuditLogConfig.fromJson(core.Map json_)
-      : this(
-          exemptedMembers: (json_['exemptedMembers'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          logType: json_['logType'] as core.String?,
-        );
+    : this(
+        exemptedMembers:
+            (json_['exemptedMembers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        logType: json_['logType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
-        if (logType != null) 'logType': logType!,
-      };
+    if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+    if (logType != null) 'logType': logType!,
+  };
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -661,29 +664,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// Credential info for the Cloud SQL.
@@ -694,21 +696,18 @@ class CloudSqlCredential {
   /// The username for the credential.
   core.String? username;
 
-  CloudSqlCredential({
-    this.password,
-    this.username,
-  });
+  CloudSqlCredential({this.password, this.username});
 
   CloudSqlCredential.fromJson(core.Map json_)
-      : this(
-          password: json_['password'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        password: json_['password'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (password != null) 'password': password!,
-        if (username != null) 'username': username!,
-      };
+    if (password != null) 'password': password!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// Connection properties specific to the Cloud SQL.
@@ -749,24 +748,26 @@ class CloudSqlProperties {
   });
 
   CloudSqlProperties.fromJson(core.Map json_)
-      : this(
-          credential: json_.containsKey('credential')
-              ? CloudSqlCredential.fromJson(
-                  json_['credential'] as core.Map<core.String, core.dynamic>)
-              : null,
-          database: json_['database'] as core.String?,
-          instanceId: json_['instanceId'] as core.String?,
-          serviceAccountId: json_['serviceAccountId'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        credential:
+            json_.containsKey('credential')
+                ? CloudSqlCredential.fromJson(
+                  json_['credential'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        database: json_['database'] as core.String?,
+        instanceId: json_['instanceId'] as core.String?,
+        serviceAccountId: json_['serviceAccountId'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (credential != null) 'credential': credential!,
-        if (database != null) 'database': database!,
-        if (instanceId != null) 'instanceId': instanceId!,
-        if (serviceAccountId != null) 'serviceAccountId': serviceAccountId!,
-        if (type != null) 'type': type!,
-      };
+    if (credential != null) 'credential': credential!,
+    if (database != null) 'database': database!,
+    if (instanceId != null) 'instanceId': instanceId!,
+    if (serviceAccountId != null) 'serviceAccountId': serviceAccountId!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Configuration parameters to establish connection with an external data
@@ -811,28 +812,30 @@ class Connection {
   });
 
   Connection.fromJson(core.Map json_)
-      : this(
-          cloudSql: json_.containsKey('cloudSql')
-              ? CloudSqlProperties.fromJson(
-                  json_['cloudSql'] as core.Map<core.String, core.dynamic>)
-              : null,
-          creationTime: json_['creationTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          friendlyName: json_['friendlyName'] as core.String?,
-          hasCredential: json_['hasCredential'] as core.bool?,
-          lastModifiedTime: json_['lastModifiedTime'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        cloudSql:
+            json_.containsKey('cloudSql')
+                ? CloudSqlProperties.fromJson(
+                  json_['cloudSql'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        creationTime: json_['creationTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        friendlyName: json_['friendlyName'] as core.String?,
+        hasCredential: json_['hasCredential'] as core.bool?,
+        lastModifiedTime: json_['lastModifiedTime'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudSql != null) 'cloudSql': cloudSql!,
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (description != null) 'description': description!,
-        if (friendlyName != null) 'friendlyName': friendlyName!,
-        if (hasCredential != null) 'hasCredential': hasCredential!,
-        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
-        if (name != null) 'name': name!,
-      };
+    if (cloudSql != null) 'cloudSql': cloudSql!,
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (description != null) 'description': description!,
+    if (friendlyName != null) 'friendlyName': friendlyName!,
+    if (hasCredential != null) 'hasCredential': hasCredential!,
+    if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Credential to use with a connection.
@@ -840,21 +843,21 @@ class ConnectionCredential {
   /// Credential for Cloud SQL database.
   CloudSqlCredential? cloudSql;
 
-  ConnectionCredential({
-    this.cloudSql,
-  });
+  ConnectionCredential({this.cloudSql});
 
   ConnectionCredential.fromJson(core.Map json_)
-      : this(
-          cloudSql: json_.containsKey('cloudSql')
-              ? CloudSqlCredential.fromJson(
-                  json_['cloudSql'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        cloudSql:
+            json_.containsKey('cloudSql')
+                ? CloudSqlCredential.fromJson(
+                  json_['cloudSql'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudSql != null) 'cloudSql': cloudSql!,
-      };
+    if (cloudSql != null) 'cloudSql': cloudSql!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -909,27 +912,22 @@ class Expr {
   /// Optional.
   core.String? title;
 
-  Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
+  Expr({this.description, this.expression, this.location, this.title});
 
   Expr.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          expression: json_['expression'] as core.String?,
-          location: json_['location'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        expression: json_['expression'] as core.String?,
+        location: json_['location'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
+    if (description != null) 'description': description!,
+    if (expression != null) 'expression': expression!,
+    if (location != null) 'location': location!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -938,21 +936,21 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest({
-    this.options,
-  });
+  GetIamPolicyRequest({this.options});
 
   GetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          options: json_.containsKey('options')
-              ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        options:
+            json_.containsKey('options')
+                ? GetPolicyOptions.fromJson(
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!,
-      };
+    if (options != null) 'options': options!,
+  };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -972,19 +970,17 @@ class GetPolicyOptions {
   /// Optional.
   core.int? requestedPolicyVersion;
 
-  GetPolicyOptions({
-    this.requestedPolicyVersion,
-  });
+  GetPolicyOptions({this.requestedPolicyVersion});
 
   GetPolicyOptions.fromJson(core.Map json_)
-      : this(
-          requestedPolicyVersion: json_['requestedPolicyVersion'] as core.int?,
-        );
+    : this(
+        requestedPolicyVersion: json_['requestedPolicyVersion'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion!,
-      };
+    if (requestedPolicyVersion != null)
+      'requestedPolicyVersion': requestedPolicyVersion!,
+  };
 }
 
 /// The response for ConnectionService.ListConnections.
@@ -995,24 +991,25 @@ class ListConnectionsResponse {
   /// Next page token.
   core.String? nextPageToken;
 
-  ListConnectionsResponse({
-    this.connections,
-    this.nextPageToken,
-  });
+  ListConnectionsResponse({this.connections, this.nextPageToken});
 
   ListConnectionsResponse.fromJson(core.Map json_)
-      : this(
-          connections: (json_['connections'] as core.List?)
-              ?.map((value) => Connection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        connections:
+            (json_['connections'] as core.List?)
+                ?.map(
+                  (value) => Connection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connections != null) 'connections': connections!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (connections != null) 'connections': connections!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -1078,8 +1075,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -1101,33 +1100,36 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -1145,24 +1147,23 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -1174,20 +1175,19 @@ class TestIamPermissionsRequest {
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  TestIamPermissionsRequest({
-    this.permissions,
-  });
+  TestIamPermissionsRequest({this.permissions});
 
   TestIamPermissionsRequest.fromJson(core.Map json_)
-      : this(
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
+    if (permissions != null) 'permissions': permissions!,
+  };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -1196,18 +1196,17 @@ class TestIamPermissionsResponse {
   /// allowed.
   core.List<core.String>? permissions;
 
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
+  TestIamPermissionsResponse({this.permissions});
 
   TestIamPermissionsResponse.fromJson(core.Map json_)
-      : this(
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
+    if (permissions != null) 'permissions': permissions!,
+  };
 }

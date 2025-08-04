@@ -46,11 +46,16 @@ class LibraryagentApi {
 
   ShelvesResource get shelves => ShelvesResource(_requester);
 
-  LibraryagentApi(http.Client client,
-      {core.String rootUrl = 'https://libraryagent.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  LibraryagentApi(
+    http.Client client, {
+    core.String rootUrl = 'https://libraryagent.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ShelvesResource {
@@ -95,7 +100,8 @@ class ShelvesResource {
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Shelf.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists shelves.
@@ -142,7 +148,8 @@ class ShelvesResource {
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -188,7 +195,8 @@ class ShelvesBooksResource {
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a book.
@@ -226,7 +234,8 @@ class ShelvesBooksResource {
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists books in a shelf.
@@ -277,7 +286,8 @@ class ShelvesBooksResource {
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1ListBooksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Return a book to the library.
@@ -317,7 +327,8 @@ class ShelvesBooksResource {
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -346,19 +357,19 @@ class GoogleExampleLibraryagentV1Book {
   });
 
   GoogleExampleLibraryagentV1Book.fromJson(core.Map json_)
-      : this(
-          author: json_['author'] as core.String?,
-          name: json_['name'] as core.String?,
-          read: json_['read'] as core.bool?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        author: json_['author'] as core.String?,
+        name: json_['name'] as core.String?,
+        read: json_['read'] as core.bool?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (author != null) 'author': author!,
-        if (name != null) 'name': name!,
-        if (read != null) 'read': read!,
-        if (title != null) 'title': title!,
-      };
+    if (author != null) 'author': author!,
+    if (name != null) 'name': name!,
+    if (read != null) 'read': read!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Response message for LibraryAgent.ListBooks.
@@ -378,18 +389,22 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
   });
 
   GoogleExampleLibraryagentV1ListBooksResponse.fromJson(core.Map json_)
-      : this(
-          books: (json_['books'] as core.List?)
-              ?.map((value) => GoogleExampleLibraryagentV1Book.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        books:
+            (json_['books'] as core.List?)
+                ?.map(
+                  (value) => GoogleExampleLibraryagentV1Book.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (books != null) 'books': books!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (books != null) 'books': books!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for LibraryAgent.ListShelves.
@@ -410,18 +425,22 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
   });
 
   GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          shelves: (json_['shelves'] as core.List?)
-              ?.map((value) => GoogleExampleLibraryagentV1Shelf.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        shelves:
+            (json_['shelves'] as core.List?)
+                ?.map(
+                  (value) => GoogleExampleLibraryagentV1Shelf.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (shelves != null) 'shelves': shelves!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (shelves != null) 'shelves': shelves!,
+  };
 }
 
 /// A Shelf contains a collection of books with a theme.
@@ -437,19 +456,16 @@ class GoogleExampleLibraryagentV1Shelf {
   /// The theme of the shelf
   core.String? theme;
 
-  GoogleExampleLibraryagentV1Shelf({
-    this.name,
-    this.theme,
-  });
+  GoogleExampleLibraryagentV1Shelf({this.name, this.theme});
 
   GoogleExampleLibraryagentV1Shelf.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          theme: json_['theme'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        theme: json_['theme'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (theme != null) 'theme': theme!,
-      };
+    if (name != null) 'name': name!,
+    if (theme != null) 'theme': theme!,
+  };
 }

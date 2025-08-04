@@ -15,8 +15,10 @@ void main() {
       expect(identifier('ABC'), equals('ABC'));
       expect(identifier('0abc'), equals('D0abc'));
       expect(identifier('_abc'), equals('P_abc'));
-      expect(identifier('_a_bc_def_', removeUnderscores: false),
-          equals('P_a_bc_def_'));
+      expect(
+        identifier('_a_bc_def_', removeUnderscores: false),
+        equals('P_a_bc_def_'),
+      );
       expect(identifier('_a_bc_def_'), equals('P_aBcDef_'));
       expect(identifier('_a__bc___def_'), equals('P_aBcDef_'));
       expect(identifier('A-bc'), equals('ABc'));
@@ -112,8 +114,10 @@ void main() {
         expect(scope.identifiers, hasLength(1));
         expect(scope.childScopes, hasLength(1));
         expect(scope.childScopes.first.identifiers, hasLength(1));
-        expect(scope.childScopes.first.identifiers.first.preferredName,
-            equals('a_1'));
+        expect(
+          scope.childScopes.first.identifiers.first.preferredName,
+          equals('a_1'),
+        );
       });
     });
 

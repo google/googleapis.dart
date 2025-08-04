@@ -87,11 +87,16 @@ class AndroidEnterpriseApi {
   UsersResource get users => UsersResource(_requester);
   WebappsResource get webapps => WebappsResource(_requester);
 
-  AndroidEnterpriseApi(http.Client client,
-      {core.String rootUrl = 'https://androidenterprise.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AndroidEnterpriseApi(
+    http.Client client, {
+    core.String rootUrl = 'https://androidenterprise.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class DevicesResource {
@@ -132,7 +137,8 @@ class DevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -178,7 +184,8 @@ class DevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -229,7 +236,8 @@ class DevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -243,7 +251,8 @@ class DevicesResource {
       queryParams: queryParams_,
     );
     return DeviceState.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the IDs of all of a user's devices.
@@ -273,7 +282,8 @@ class DevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -285,7 +295,8 @@ class DevicesResource {
       queryParams: queryParams_,
     );
     return DevicesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets whether a device's access to Google services is enabled or disabled.
@@ -327,7 +338,8 @@ class DevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -342,7 +354,8 @@ class DevicesResource {
       queryParams: queryParams_,
     );
     return DeviceState.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the device policy.
@@ -393,7 +406,8 @@ class DevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -448,7 +462,8 @@ class EnrollmentTokensResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/enrollmentTokens';
 
@@ -459,7 +474,8 @@ class EnrollmentTokensResource {
       queryParams: queryParams_,
     );
     return EnrollmentToken.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -546,7 +562,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return Enterprise.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a unique token to access an embeddable UI.
@@ -581,7 +598,8 @@ class EnterprisesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/createWebToken';
 
@@ -592,7 +610,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return AdministratorWebToken.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Enrolls an enterprise with the calling EMM.
@@ -634,7 +653,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return Enterprise.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Generates an enterprise upgrade URL to upgrade an existing managed Google
@@ -671,7 +691,7 @@ class EnterprisesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GenerateEnterpriseUpgradeUrlResponse>
-      generateEnterpriseUpgradeUrl(
+  generateEnterpriseUpgradeUrl(
     core.String enterpriseId, {
     core.String? adminEmail,
     core.List<core.String>? allowedDomains,
@@ -683,7 +703,8 @@ class EnterprisesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/generateEnterpriseUpgradeUrl';
 
@@ -693,7 +714,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return GenerateEnterpriseUpgradeUrlResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Generates a sign-up URL.
@@ -754,7 +776,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return SignupInfo.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the name and domain of an enterprise.
@@ -781,7 +804,8 @@ class EnterprisesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId');
 
     final response_ = await _requester.request(
@@ -790,7 +814,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return Enterprise.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a service account and credentials.
@@ -844,7 +869,8 @@ class EnterprisesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/serviceAccount';
 
@@ -854,7 +880,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return ServiceAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the store layout for the enterprise.
@@ -884,7 +911,8 @@ class EnterprisesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout';
 
@@ -894,7 +922,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return StoreLayout.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Looks up an enterprise by domain name.
@@ -936,7 +965,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return EnterprisesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Pulls and returns a notification set for the enterprises associated with
@@ -997,7 +1027,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return NotificationSet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sends a test notification to validate the EMM integration with the Google
@@ -1018,7 +1049,7 @@ class EnterprisesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EnterprisesSendTestPushNotificationResponse>
-      sendTestPushNotification(
+  sendTestPushNotification(
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
@@ -1026,7 +1057,8 @@ class EnterprisesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/sendTestPushNotification';
 
@@ -1036,7 +1068,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return EnterprisesSendTestPushNotificationResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the account that will be used to authenticate to the API as the
@@ -1068,7 +1101,8 @@ class EnterprisesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/account';
 
@@ -1079,7 +1113,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return EnterpriseAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the store layout for the enterprise.
@@ -1118,7 +1153,8 @@ class EnterprisesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout';
 
@@ -1129,7 +1165,8 @@ class EnterprisesResource {
       queryParams: queryParams_,
     );
     return StoreLayout.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Unenrolls an enterprise from the calling EMM.
@@ -1154,7 +1191,8 @@ class EnterprisesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/unenroll';
 
@@ -1204,7 +1242,8 @@ class EntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1253,7 +1292,8 @@ class EntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1266,7 +1306,8 @@ class EntitlementsResource {
       queryParams: queryParams_,
     );
     return Entitlement.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all entitlements for the specified user.
@@ -1300,7 +1341,8 @@ class EntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1312,7 +1354,8 @@ class EntitlementsResource {
       queryParams: queryParams_,
     );
     return EntitlementsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds or updates an entitlement to an app for a user.
@@ -1360,7 +1403,8 @@ class EntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1374,7 +1418,8 @@ class EntitlementsResource {
       queryParams: queryParams_,
     );
     return Entitlement.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1414,7 +1459,8 @@ class GrouplicensesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/groupLicenses/' +
         commons.escapeVariable('$groupLicenseId');
@@ -1425,7 +1471,8 @@ class GrouplicensesResource {
       queryParams: queryParams_,
     );
     return GroupLicense.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves IDs of all products for which the enterprise has a group
@@ -1456,7 +1503,8 @@ class GrouplicensesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/groupLicenses';
 
@@ -1466,7 +1514,8 @@ class GrouplicensesResource {
       queryParams: queryParams_,
     );
     return GroupLicensesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1507,7 +1556,8 @@ class GrouplicenseusersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/groupLicenses/' +
         commons.escapeVariable('$groupLicenseId') +
@@ -1519,7 +1569,8 @@ class GrouplicenseusersResource {
       queryParams: queryParams_,
     );
     return GroupLicenseUsersListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1566,7 +1617,8 @@ class InstallsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1617,7 +1669,8 @@ class InstallsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1664,7 +1717,8 @@ class InstallsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1678,7 +1732,8 @@ class InstallsResource {
       queryParams: queryParams_,
     );
     return InstallsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Requests to install the latest version of an app to a device.
@@ -1722,7 +1777,8 @@ class InstallsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1745,7 +1801,7 @@ class ManagedconfigurationsfordeviceResource {
   final commons.ApiRequester _requester;
 
   ManagedconfigurationsfordeviceResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Removes a per-device managed configuration for an app for the specified
   /// device.
@@ -1780,7 +1836,8 @@ class ManagedconfigurationsfordeviceResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1831,7 +1888,8 @@ class ManagedconfigurationsfordeviceResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1846,7 +1904,8 @@ class ManagedconfigurationsfordeviceResource {
       queryParams: queryParams_,
     );
     return ManagedConfiguration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the per-device managed configurations for the specified device.
@@ -1881,7 +1940,8 @@ class ManagedconfigurationsfordeviceResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1895,7 +1955,8 @@ class ManagedconfigurationsfordeviceResource {
       queryParams: queryParams_,
     );
     return ManagedConfigurationsForDeviceListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds or updates a per-device managed configuration for an app for the
@@ -1937,7 +1998,8 @@ class ManagedconfigurationsfordeviceResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1953,7 +2015,8 @@ class ManagedconfigurationsfordeviceResource {
       queryParams: queryParams_,
     );
     return ManagedConfiguration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1961,7 +2024,7 @@ class ManagedconfigurationsforuserResource {
   final commons.ApiRequester _requester;
 
   ManagedconfigurationsforuserResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Removes a per-user managed configuration for an app for the specified
   /// user.
@@ -1993,7 +2056,8 @@ class ManagedconfigurationsforuserResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -2040,7 +2104,8 @@ class ManagedconfigurationsforuserResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -2053,7 +2118,8 @@ class ManagedconfigurationsforuserResource {
       queryParams: queryParams_,
     );
     return ManagedConfiguration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the per-user managed configurations for the specified user.
@@ -2085,7 +2151,8 @@ class ManagedconfigurationsforuserResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -2097,7 +2164,8 @@ class ManagedconfigurationsforuserResource {
       queryParams: queryParams_,
     );
     return ManagedConfigurationsForUserListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds or updates the managed configuration settings for an app for the
@@ -2141,7 +2209,8 @@ class ManagedconfigurationsforuserResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -2155,7 +2224,8 @@ class ManagedconfigurationsforuserResource {
       queryParams: queryParams_,
     );
     return ManagedConfiguration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2163,7 +2233,7 @@ class ManagedconfigurationssettingsResource {
   final commons.ApiRequester _requester;
 
   ManagedconfigurationssettingsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists all the managed configurations settings for the specified app.
   ///
@@ -2193,7 +2263,8 @@ class ManagedconfigurationssettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId') +
@@ -2205,7 +2276,8 @@ class ManagedconfigurationssettingsResource {
       queryParams: queryParams_,
     );
     return ManagedConfigurationsSettingsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2244,7 +2316,8 @@ class PermissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/permissions/' +
+    final url_ =
+        'androidenterprise/v1/permissions/' +
         commons.escapeVariable('$permissionId');
 
     final response_ = await _requester.request(
@@ -2253,7 +2326,8 @@ class PermissionsResource {
       queryParams: queryParams_,
     );
     return Permission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2298,7 +2372,8 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId') +
@@ -2355,7 +2430,8 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId') +
@@ -2367,7 +2443,8 @@ class ProductsResource {
       queryParams: queryParams_,
     );
     return ProductsGenerateApprovalUrlResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves details of a product for display to an enterprise admin.
@@ -2402,7 +2479,8 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId');
@@ -2454,7 +2532,8 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId') +
@@ -2466,7 +2545,8 @@ class ProductsResource {
       queryParams: queryParams_,
     );
     return AppRestrictionsSchema.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the Android app permissions required by this app.
@@ -2496,7 +2576,8 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId') +
@@ -2508,7 +2589,8 @@ class ProductsResource {
       queryParams: queryParams_,
     );
     return ProductPermissions.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Finds approved products that match a query, or all approved products if
@@ -2568,7 +2650,8 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products';
 
@@ -2578,7 +2661,8 @@ class ProductsResource {
       queryParams: queryParams_,
     );
     return ProductsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Unapproves the specified product (and the relevant app permissions, if
@@ -2610,7 +2694,8 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId') +
@@ -2666,7 +2751,8 @@ class ServiceaccountkeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/serviceAccountKeys/' +
         commons.escapeVariable('$keyId');
@@ -2716,7 +2802,8 @@ class ServiceaccountkeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/serviceAccountKeys';
 
@@ -2727,7 +2814,8 @@ class ServiceaccountkeysResource {
       queryParams: queryParams_,
     );
     return ServiceAccountKey.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all active credentials for the service account associated with this
@@ -2763,7 +2851,8 @@ class ServiceaccountkeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/serviceAccountKeys';
 
@@ -2773,7 +2862,8 @@ class ServiceaccountkeysResource {
       queryParams: queryParams_,
     );
     return ServiceAccountKeysListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2781,7 +2871,7 @@ class StorelayoutclustersResource {
   final commons.ApiRequester _requester;
 
   StorelayoutclustersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes a cluster.
   ///
@@ -2811,7 +2901,8 @@ class StorelayoutclustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId') +
@@ -2856,7 +2947,8 @@ class StorelayoutclustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId') +
@@ -2869,7 +2961,8 @@ class StorelayoutclustersResource {
       queryParams: queryParams_,
     );
     return StoreCluster.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Inserts a new cluster in a page.
@@ -2903,7 +2996,8 @@ class StorelayoutclustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId') +
@@ -2916,7 +3010,8 @@ class StorelayoutclustersResource {
       queryParams: queryParams_,
     );
     return StoreCluster.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the details of all clusters on the specified page.
@@ -2946,7 +3041,8 @@ class StorelayoutclustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId') +
@@ -2958,7 +3054,8 @@ class StorelayoutclustersResource {
       queryParams: queryParams_,
     );
     return StoreLayoutClustersListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a cluster.
@@ -2995,7 +3092,8 @@ class StorelayoutclustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId') +
@@ -3009,7 +3107,8 @@ class StorelayoutclustersResource {
       queryParams: queryParams_,
     );
     return StoreCluster.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3043,7 +3142,8 @@ class StorelayoutpagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId');
@@ -3083,7 +3183,8 @@ class StorelayoutpagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId');
@@ -3124,7 +3225,8 @@ class StorelayoutpagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages';
 
@@ -3161,7 +3263,8 @@ class StorelayoutpagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages';
 
@@ -3171,7 +3274,8 @@ class StorelayoutpagesResource {
       queryParams: queryParams_,
     );
     return StoreLayoutPagesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the content of a store page.
@@ -3205,7 +3309,8 @@ class StorelayoutpagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId');
@@ -3250,7 +3355,8 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId');
@@ -3295,7 +3401,8 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -3307,7 +3414,8 @@ class UsersResource {
       queryParams: queryParams_,
     );
     return AuthenticationToken.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a user's details.
@@ -3337,7 +3445,8 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId');
@@ -3380,7 +3489,8 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -3392,7 +3502,8 @@ class UsersResource {
       queryParams: queryParams_,
     );
     return ProductSet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new EMM-managed user.
@@ -3428,7 +3539,8 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users';
 
@@ -3474,7 +3586,8 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users';
 
@@ -3484,7 +3597,8 @@ class UsersResource {
       queryParams: queryParams_,
     );
     return UsersListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Revokes access to all devices currently provisioned to the user.
@@ -3515,7 +3629,8 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -3566,7 +3681,8 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -3579,7 +3695,8 @@ class UsersResource {
       queryParams: queryParams_,
     );
     return ProductSet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the details of an EMM-managed user.
@@ -3618,7 +3735,8 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId');
@@ -3663,7 +3781,8 @@ class WebappsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/webApps/' +
         commons.escapeVariable('$webAppId');
@@ -3703,7 +3822,8 @@ class WebappsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/webApps/' +
         commons.escapeVariable('$webAppId');
@@ -3744,7 +3864,8 @@ class WebappsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/webApps';
 
@@ -3781,7 +3902,8 @@ class WebappsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/webApps';
 
@@ -3791,7 +3913,8 @@ class WebappsResource {
       queryParams: queryParams_,
     );
     return WebAppsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing web app.
@@ -3825,7 +3948,8 @@ class WebappsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'androidenterprise/v1/enterprises/' +
+    final url_ =
+        'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/webApps/' +
         commons.escapeVariable('$webAppId');
@@ -3846,18 +3970,14 @@ class Administrator {
   /// The admin's email address.
   core.String? email;
 
-  Administrator({
-    this.email,
-  });
+  Administrator({this.email});
 
   Administrator.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-        );
+    : this(email: json_['email'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-      };
+    if (email != null) 'email': email!,
+  };
 }
 
 /// A token authorizing an admin to access an iframe.
@@ -3865,18 +3985,14 @@ class AdministratorWebToken {
   /// An opaque token to be passed to the Play front-end to generate an iframe.
   core.String? token;
 
-  AdministratorWebToken({
-    this.token,
-  });
+  AdministratorWebToken({this.token});
 
   AdministratorWebToken.fromJson(core.Map json_)
-      : this(
-          token: json_['token'] as core.String?,
-        );
+    : this(token: json_['token'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (token != null) 'token': token!,
-      };
+    if (token != null) 'token': token!,
+  };
 }
 
 /// Specification for a token used to generate iframes.
@@ -3925,49 +4041,62 @@ class AdministratorWebTokenSpec {
   });
 
   AdministratorWebTokenSpec.fromJson(core.Map json_)
-      : this(
-          managedConfigurations: json_.containsKey('managedConfigurations')
-              ? AdministratorWebTokenSpecManagedConfigurations.fromJson(
+    : this(
+        managedConfigurations:
+            json_.containsKey('managedConfigurations')
+                ? AdministratorWebTokenSpecManagedConfigurations.fromJson(
                   json_['managedConfigurations']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          parent: json_['parent'] as core.String?,
-          permission: (json_['permission'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          playSearch: json_.containsKey('playSearch')
-              ? AdministratorWebTokenSpecPlaySearch.fromJson(
-                  json_['playSearch'] as core.Map<core.String, core.dynamic>)
-              : null,
-          privateApps: json_.containsKey('privateApps')
-              ? AdministratorWebTokenSpecPrivateApps.fromJson(
-                  json_['privateApps'] as core.Map<core.String, core.dynamic>)
-              : null,
-          storeBuilder: json_.containsKey('storeBuilder')
-              ? AdministratorWebTokenSpecStoreBuilder.fromJson(
-                  json_['storeBuilder'] as core.Map<core.String, core.dynamic>)
-              : null,
-          webApps: json_.containsKey('webApps')
-              ? AdministratorWebTokenSpecWebApps.fromJson(
-                  json_['webApps'] as core.Map<core.String, core.dynamic>)
-              : null,
-          zeroTouch: json_.containsKey('zeroTouch')
-              ? AdministratorWebTokenSpecZeroTouch.fromJson(
-                  json_['zeroTouch'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        parent: json_['parent'] as core.String?,
+        permission:
+            (json_['permission'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        playSearch:
+            json_.containsKey('playSearch')
+                ? AdministratorWebTokenSpecPlaySearch.fromJson(
+                  json_['playSearch'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        privateApps:
+            json_.containsKey('privateApps')
+                ? AdministratorWebTokenSpecPrivateApps.fromJson(
+                  json_['privateApps'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        storeBuilder:
+            json_.containsKey('storeBuilder')
+                ? AdministratorWebTokenSpecStoreBuilder.fromJson(
+                  json_['storeBuilder'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        webApps:
+            json_.containsKey('webApps')
+                ? AdministratorWebTokenSpecWebApps.fromJson(
+                  json_['webApps'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        zeroTouch:
+            json_.containsKey('zeroTouch')
+                ? AdministratorWebTokenSpecZeroTouch.fromJson(
+                  json_['zeroTouch'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (managedConfigurations != null)
-          'managedConfigurations': managedConfigurations!,
-        if (parent != null) 'parent': parent!,
-        if (permission != null) 'permission': permission!,
-        if (playSearch != null) 'playSearch': playSearch!,
-        if (privateApps != null) 'privateApps': privateApps!,
-        if (storeBuilder != null) 'storeBuilder': storeBuilder!,
-        if (webApps != null) 'webApps': webApps!,
-        if (zeroTouch != null) 'zeroTouch': zeroTouch!,
-      };
+    if (managedConfigurations != null)
+      'managedConfigurations': managedConfigurations!,
+    if (parent != null) 'parent': parent!,
+    if (permission != null) 'permission': permission!,
+    if (playSearch != null) 'playSearch': playSearch!,
+    if (privateApps != null) 'privateApps': privateApps!,
+    if (storeBuilder != null) 'storeBuilder': storeBuilder!,
+    if (webApps != null) 'webApps': webApps!,
+    if (zeroTouch != null) 'zeroTouch': zeroTouch!,
+  };
 }
 
 class AdministratorWebTokenSpecManagedConfigurations {
@@ -3976,18 +4105,14 @@ class AdministratorWebTokenSpecManagedConfigurations {
   /// Default is true.
   core.bool? enabled;
 
-  AdministratorWebTokenSpecManagedConfigurations({
-    this.enabled,
-  });
+  AdministratorWebTokenSpecManagedConfigurations({this.enabled});
 
   AdministratorWebTokenSpecManagedConfigurations.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 class AdministratorWebTokenSpecPlaySearch {
@@ -4001,21 +4126,18 @@ class AdministratorWebTokenSpecPlaySearch {
   /// Default is true.
   core.bool? enabled;
 
-  AdministratorWebTokenSpecPlaySearch({
-    this.approveApps,
-    this.enabled,
-  });
+  AdministratorWebTokenSpecPlaySearch({this.approveApps, this.enabled});
 
   AdministratorWebTokenSpecPlaySearch.fromJson(core.Map json_)
-      : this(
-          approveApps: json_['approveApps'] as core.bool?,
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(
+        approveApps: json_['approveApps'] as core.bool?,
+        enabled: json_['enabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approveApps != null) 'approveApps': approveApps!,
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (approveApps != null) 'approveApps': approveApps!,
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 class AdministratorWebTokenSpecPrivateApps {
@@ -4024,18 +4146,14 @@ class AdministratorWebTokenSpecPrivateApps {
   /// Default is true.
   core.bool? enabled;
 
-  AdministratorWebTokenSpecPrivateApps({
-    this.enabled,
-  });
+  AdministratorWebTokenSpecPrivateApps({this.enabled});
 
   AdministratorWebTokenSpecPrivateApps.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 class AdministratorWebTokenSpecStoreBuilder {
@@ -4044,18 +4162,14 @@ class AdministratorWebTokenSpecStoreBuilder {
   /// Default is true.
   core.bool? enabled;
 
-  AdministratorWebTokenSpecStoreBuilder({
-    this.enabled,
-  });
+  AdministratorWebTokenSpecStoreBuilder({this.enabled});
 
   AdministratorWebTokenSpecStoreBuilder.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 class AdministratorWebTokenSpecWebApps {
@@ -4064,18 +4178,14 @@ class AdministratorWebTokenSpecWebApps {
   /// Default is true.
   core.bool? enabled;
 
-  AdministratorWebTokenSpecWebApps({
-    this.enabled,
-  });
+  AdministratorWebTokenSpecWebApps({this.enabled});
 
   AdministratorWebTokenSpecWebApps.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 class AdministratorWebTokenSpecZeroTouch {
@@ -4084,18 +4194,14 @@ class AdministratorWebTokenSpecZeroTouch {
   /// If enabled, the admin can link zero-touch customers to this enterprise.
   core.bool? enabled;
 
-  AdministratorWebTokenSpecZeroTouch({
-    this.enabled,
-  });
+  AdministratorWebTokenSpecZeroTouch({this.enabled});
 
   AdministratorWebTokenSpecZeroTouch.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 /// Represents the list of app restrictions available to be pre-configured for
@@ -4107,24 +4213,25 @@ class AppRestrictionsSchema {
   /// The set of restrictions that make up this schema.
   core.List<AppRestrictionsSchemaRestriction>? restrictions;
 
-  AppRestrictionsSchema({
-    this.kind,
-    this.restrictions,
-  });
+  AppRestrictionsSchema({this.kind, this.restrictions});
 
   AppRestrictionsSchema.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          restrictions: (json_['restrictions'] as core.List?)
-              ?.map((value) => AppRestrictionsSchemaRestriction.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        restrictions:
+            (json_['restrictions'] as core.List?)
+                ?.map(
+                  (value) => AppRestrictionsSchemaRestriction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (restrictions != null) 'restrictions': restrictions!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (restrictions != null) 'restrictions': restrictions!,
+  };
 }
 
 /// An event generated when a new app version is uploaded to Google Play and its
@@ -4139,18 +4246,14 @@ class AppRestrictionsSchemaChangeEvent {
   /// This field will always be present.
   core.String? productId;
 
-  AppRestrictionsSchemaChangeEvent({
-    this.productId,
-  });
+  AppRestrictionsSchemaChangeEvent({this.productId});
 
   AppRestrictionsSchemaChangeEvent.fromJson(core.Map json_)
-      : this(
-          productId: json_['productId'] as core.String?,
-        );
+    : this(productId: json_['productId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (productId != null) 'productId': productId!,
-      };
+    if (productId != null) 'productId': productId!,
+  };
 }
 
 /// A restriction in the App Restriction Schema represents a piece of
@@ -4216,37 +4319,45 @@ class AppRestrictionsSchemaRestriction {
   });
 
   AppRestrictionsSchemaRestriction.fromJson(core.Map json_)
-      : this(
-          defaultValue: json_.containsKey('defaultValue')
-              ? AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(
-                  json_['defaultValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          entry: (json_['entry'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          entryValue: (json_['entryValue'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          key: json_['key'] as core.String?,
-          nestedRestriction: (json_['nestedRestriction'] as core.List?)
-              ?.map((value) => AppRestrictionsSchemaRestriction.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          restrictionType: json_['restrictionType'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        defaultValue:
+            json_.containsKey('defaultValue')
+                ? AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(
+                  json_['defaultValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        entry:
+            (json_['entry'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        entryValue:
+            (json_['entryValue'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        key: json_['key'] as core.String?,
+        nestedRestriction:
+            (json_['nestedRestriction'] as core.List?)
+                ?.map(
+                  (value) => AppRestrictionsSchemaRestriction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        restrictionType: json_['restrictionType'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultValue != null) 'defaultValue': defaultValue!,
-        if (description != null) 'description': description!,
-        if (entry != null) 'entry': entry!,
-        if (entryValue != null) 'entryValue': entryValue!,
-        if (key != null) 'key': key!,
-        if (nestedRestriction != null) 'nestedRestriction': nestedRestriction!,
-        if (restrictionType != null) 'restrictionType': restrictionType!,
-        if (title != null) 'title': title!,
-      };
+    if (defaultValue != null) 'defaultValue': defaultValue!,
+    if (description != null) 'description': description!,
+    if (entry != null) 'entry': entry!,
+    if (entryValue != null) 'entryValue': entryValue!,
+    if (key != null) 'key': key!,
+    if (nestedRestriction != null) 'nestedRestriction': nestedRestriction!,
+    if (restrictionType != null) 'restrictionType': restrictionType!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// A typed value for the restriction.
@@ -4288,23 +4399,24 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
   });
 
   AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-          valueBool: json_['valueBool'] as core.bool?,
-          valueInteger: json_['valueInteger'] as core.int?,
-          valueMultiselect: (json_['valueMultiselect'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          valueString: json_['valueString'] as core.String?,
-        );
+    : this(
+        type: json_['type'] as core.String?,
+        valueBool: json_['valueBool'] as core.bool?,
+        valueInteger: json_['valueInteger'] as core.int?,
+        valueMultiselect:
+            (json_['valueMultiselect'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        valueString: json_['valueString'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (valueBool != null) 'valueBool': valueBool!,
-        if (valueInteger != null) 'valueInteger': valueInteger!,
-        if (valueMultiselect != null) 'valueMultiselect': valueMultiselect!,
-        if (valueString != null) 'valueString': valueString!,
-      };
+    if (type != null) 'type': type!,
+    if (valueBool != null) 'valueBool': valueBool!,
+    if (valueInteger != null) 'valueInteger': valueInteger!,
+    if (valueMultiselect != null) 'valueMultiselect': valueMultiselect!,
+    if (valueString != null) 'valueString': valueString!,
+  };
 }
 
 /// List of states set by the app.
@@ -4319,24 +4431,25 @@ class AppState {
   /// This field will always be present.
   core.String? packageName;
 
-  AppState({
-    this.keyedAppState,
-    this.packageName,
-  });
+  AppState({this.keyedAppState, this.packageName});
 
   AppState.fromJson(core.Map json_)
-      : this(
-          keyedAppState: (json_['keyedAppState'] as core.List?)
-              ?.map((value) => KeyedAppState.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          packageName: json_['packageName'] as core.String?,
-        );
+    : this(
+        keyedAppState:
+            (json_['keyedAppState'] as core.List?)
+                ?.map(
+                  (value) => KeyedAppState.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        packageName: json_['packageName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keyedAppState != null) 'keyedAppState': keyedAppState!,
-        if (packageName != null) 'packageName': packageName!,
-      };
+    if (keyedAppState != null) 'keyedAppState': keyedAppState!,
+    if (packageName != null) 'packageName': packageName!,
+  };
 }
 
 /// An event generated when a new version of an app is uploaded to Google Play.
@@ -4350,18 +4463,14 @@ class AppUpdateEvent {
   /// This field will always be present.
   core.String? productId;
 
-  AppUpdateEvent({
-    this.productId,
-  });
+  AppUpdateEvent({this.productId});
 
   AppUpdateEvent.fromJson(core.Map json_)
-      : this(
-          productId: json_['productId'] as core.String?,
-        );
+    : this(productId: json_['productId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (productId != null) 'productId': productId!,
-      };
+    if (productId != null) 'productId': productId!,
+  };
 }
 
 /// This represents a single version of the app.
@@ -4409,25 +4518,26 @@ class AppVersion {
   });
 
   AppVersion.fromJson(core.Map json_)
-      : this(
-          isProduction: json_['isProduction'] as core.bool?,
-          targetSdkVersion: json_['targetSdkVersion'] as core.int?,
-          track: json_['track'] as core.String?,
-          trackId: (json_['trackId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          versionCode: json_['versionCode'] as core.int?,
-          versionString: json_['versionString'] as core.String?,
-        );
+    : this(
+        isProduction: json_['isProduction'] as core.bool?,
+        targetSdkVersion: json_['targetSdkVersion'] as core.int?,
+        track: json_['track'] as core.String?,
+        trackId:
+            (json_['trackId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        versionCode: json_['versionCode'] as core.int?,
+        versionString: json_['versionString'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (isProduction != null) 'isProduction': isProduction!,
-        if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
-        if (track != null) 'track': track!,
-        if (trackId != null) 'trackId': trackId!,
-        if (versionCode != null) 'versionCode': versionCode!,
-        if (versionString != null) 'versionString': versionString!,
-      };
+    if (isProduction != null) 'isProduction': isProduction!,
+    if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
+    if (track != null) 'track': track!,
+    if (trackId != null) 'trackId': trackId!,
+    if (versionCode != null) 'versionCode': versionCode!,
+    if (versionString != null) 'versionString': versionString!,
+  };
 }
 
 /// Information on an approval URL.
@@ -4436,18 +4546,14 @@ class ApprovalUrlInfo {
   /// approve the product with the Products.approve call.
   core.String? approvalUrl;
 
-  ApprovalUrlInfo({
-    this.approvalUrl,
-  });
+  ApprovalUrlInfo({this.approvalUrl});
 
   ApprovalUrlInfo.fromJson(core.Map json_)
-      : this(
-          approvalUrl: json_['approvalUrl'] as core.String?,
-        );
+    : this(approvalUrl: json_['approvalUrl'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvalUrl != null) 'approvalUrl': approvalUrl!,
-      };
+    if (approvalUrl != null) 'approvalUrl': approvalUrl!,
+  };
 }
 
 /// An AuthenticationToken is used by the EMM's device policy client on a device
@@ -4458,18 +4564,14 @@ class AuthenticationToken {
   /// was generated.
   core.String? token;
 
-  AuthenticationToken({
-    this.token,
-  });
+  AuthenticationToken({this.token});
 
   AuthenticationToken.fromJson(core.Map json_)
-      : this(
-          token: json_['token'] as core.String?,
-        );
+    : this(token: json_['token'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (token != null) 'token': token!,
-      };
+    if (token != null) 'token': token!,
+  };
 }
 
 /// The auto-install constraint.
@@ -4506,22 +4608,22 @@ class AutoInstallConstraint {
   });
 
   AutoInstallConstraint.fromJson(core.Map json_)
-      : this(
-          chargingStateConstraint:
-              json_['chargingStateConstraint'] as core.String?,
-          deviceIdleStateConstraint:
-              json_['deviceIdleStateConstraint'] as core.String?,
-          networkTypeConstraint: json_['networkTypeConstraint'] as core.String?,
-        );
+    : this(
+        chargingStateConstraint:
+            json_['chargingStateConstraint'] as core.String?,
+        deviceIdleStateConstraint:
+            json_['deviceIdleStateConstraint'] as core.String?,
+        networkTypeConstraint: json_['networkTypeConstraint'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chargingStateConstraint != null)
-          'chargingStateConstraint': chargingStateConstraint!,
-        if (deviceIdleStateConstraint != null)
-          'deviceIdleStateConstraint': deviceIdleStateConstraint!,
-        if (networkTypeConstraint != null)
-          'networkTypeConstraint': networkTypeConstraint!,
-      };
+    if (chargingStateConstraint != null)
+      'chargingStateConstraint': chargingStateConstraint!,
+    if (deviceIdleStateConstraint != null)
+      'deviceIdleStateConstraint': deviceIdleStateConstraint!,
+    if (networkTypeConstraint != null)
+      'networkTypeConstraint': networkTypeConstraint!,
+  };
 }
 
 class AutoInstallPolicy {
@@ -4566,25 +4668,28 @@ class AutoInstallPolicy {
   });
 
   AutoInstallPolicy.fromJson(core.Map json_)
-      : this(
-          autoInstallConstraint: (json_['autoInstallConstraint'] as core.List?)
-              ?.map((value) => AutoInstallConstraint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          autoInstallMode: json_['autoInstallMode'] as core.String?,
-          autoInstallPriority: json_['autoInstallPriority'] as core.int?,
-          minimumVersionCode: json_['minimumVersionCode'] as core.int?,
-        );
+    : this(
+        autoInstallConstraint:
+            (json_['autoInstallConstraint'] as core.List?)
+                ?.map(
+                  (value) => AutoInstallConstraint.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        autoInstallMode: json_['autoInstallMode'] as core.String?,
+        autoInstallPriority: json_['autoInstallPriority'] as core.int?,
+        minimumVersionCode: json_['minimumVersionCode'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoInstallConstraint != null)
-          'autoInstallConstraint': autoInstallConstraint!,
-        if (autoInstallMode != null) 'autoInstallMode': autoInstallMode!,
-        if (autoInstallPriority != null)
-          'autoInstallPriority': autoInstallPriority!,
-        if (minimumVersionCode != null)
-          'minimumVersionCode': minimumVersionCode!,
-      };
+    if (autoInstallConstraint != null)
+      'autoInstallConstraint': autoInstallConstraint!,
+    if (autoInstallMode != null) 'autoInstallMode': autoInstallMode!,
+    if (autoInstallPriority != null)
+      'autoInstallPriority': autoInstallPriority!,
+    if (minimumVersionCode != null) 'minimumVersionCode': minimumVersionCode!,
+  };
 }
 
 /// A configuration variables resource contains the managed configuration
@@ -4600,24 +4705,25 @@ class ConfigurationVariables {
   /// The variable set that is attributed to the user.
   core.List<VariableSet>? variableSet;
 
-  ConfigurationVariables({
-    this.mcmId,
-    this.variableSet,
-  });
+  ConfigurationVariables({this.mcmId, this.variableSet});
 
   ConfigurationVariables.fromJson(core.Map json_)
-      : this(
-          mcmId: json_['mcmId'] as core.String?,
-          variableSet: (json_['variableSet'] as core.List?)
-              ?.map((value) => VariableSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        mcmId: json_['mcmId'] as core.String?,
+        variableSet:
+            (json_['variableSet'] as core.List?)
+                ?.map(
+                  (value) => VariableSet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mcmId != null) 'mcmId': mcmId!,
-        if (variableSet != null) 'variableSet': variableSet!,
-      };
+    if (mcmId != null) 'mcmId': mcmId!,
+    if (variableSet != null) 'variableSet': variableSet!,
+  };
 }
 
 /// A Devices resource represents a mobile device managed by the EMM and
@@ -4700,41 +4806,44 @@ class Device {
   });
 
   Device.fromJson(core.Map json_)
-      : this(
-          androidId: json_['androidId'] as core.String?,
-          device: json_['device'] as core.String?,
-          latestBuildFingerprint:
-              json_['latestBuildFingerprint'] as core.String?,
-          maker: json_['maker'] as core.String?,
-          managementType: json_['managementType'] as core.String?,
-          model: json_['model'] as core.String?,
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          product: json_['product'] as core.String?,
-          report: json_.containsKey('report')
-              ? DeviceReport.fromJson(
-                  json_['report'] as core.Map<core.String, core.dynamic>)
-              : null,
-          retailBrand: json_['retailBrand'] as core.String?,
-          sdkVersion: json_['sdkVersion'] as core.int?,
-        );
+    : this(
+        androidId: json_['androidId'] as core.String?,
+        device: json_['device'] as core.String?,
+        latestBuildFingerprint: json_['latestBuildFingerprint'] as core.String?,
+        maker: json_['maker'] as core.String?,
+        managementType: json_['managementType'] as core.String?,
+        model: json_['model'] as core.String?,
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        product: json_['product'] as core.String?,
+        report:
+            json_.containsKey('report')
+                ? DeviceReport.fromJson(
+                  json_['report'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        retailBrand: json_['retailBrand'] as core.String?,
+        sdkVersion: json_['sdkVersion'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidId != null) 'androidId': androidId!,
-        if (device != null) 'device': device!,
-        if (latestBuildFingerprint != null)
-          'latestBuildFingerprint': latestBuildFingerprint!,
-        if (maker != null) 'maker': maker!,
-        if (managementType != null) 'managementType': managementType!,
-        if (model != null) 'model': model!,
-        if (policy != null) 'policy': policy!,
-        if (product != null) 'product': product!,
-        if (report != null) 'report': report!,
-        if (retailBrand != null) 'retailBrand': retailBrand!,
-        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
-      };
+    if (androidId != null) 'androidId': androidId!,
+    if (device != null) 'device': device!,
+    if (latestBuildFingerprint != null)
+      'latestBuildFingerprint': latestBuildFingerprint!,
+    if (maker != null) 'maker': maker!,
+    if (managementType != null) 'managementType': managementType!,
+    if (model != null) 'model': model!,
+    if (policy != null) 'policy': policy!,
+    if (product != null) 'product': product!,
+    if (report != null) 'report': report!,
+    if (retailBrand != null) 'retailBrand': retailBrand!,
+    if (sdkVersion != null) 'sdkVersion': sdkVersion!,
+  };
 }
 
 /// Device report updated with the latest app states for managed apps on the
@@ -4751,26 +4860,27 @@ class DeviceReport {
   /// This field will always be present.
   core.String? lastUpdatedTimestampMillis;
 
-  DeviceReport({
-    this.appState,
-    this.lastUpdatedTimestampMillis,
-  });
+  DeviceReport({this.appState, this.lastUpdatedTimestampMillis});
 
   DeviceReport.fromJson(core.Map json_)
-      : this(
-          appState: (json_['appState'] as core.List?)
-              ?.map((value) => AppState.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          lastUpdatedTimestampMillis:
-              json_['lastUpdatedTimestampMillis'] as core.String?,
-        );
+    : this(
+        appState:
+            (json_['appState'] as core.List?)
+                ?.map(
+                  (value) => AppState.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        lastUpdatedTimestampMillis:
+            json_['lastUpdatedTimestampMillis'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appState != null) 'appState': appState!,
-        if (lastUpdatedTimestampMillis != null)
-          'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,
-      };
+    if (appState != null) 'appState': appState!,
+    if (lastUpdatedTimestampMillis != null)
+      'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,
+  };
 }
 
 /// An event generated when an updated device report is available.
@@ -4790,27 +4900,25 @@ class DeviceReportUpdateEvent {
   /// This field will always be present.
   core.String? userId;
 
-  DeviceReportUpdateEvent({
-    this.deviceId,
-    this.report,
-    this.userId,
-  });
+  DeviceReportUpdateEvent({this.deviceId, this.report, this.userId});
 
   DeviceReportUpdateEvent.fromJson(core.Map json_)
-      : this(
-          deviceId: json_['deviceId'] as core.String?,
-          report: json_.containsKey('report')
-              ? DeviceReport.fromJson(
-                  json_['report'] as core.Map<core.String, core.dynamic>)
-              : null,
-          userId: json_['userId'] as core.String?,
-        );
+    : this(
+        deviceId: json_['deviceId'] as core.String?,
+        report:
+            json_.containsKey('report')
+                ? DeviceReport.fromJson(
+                  json_['report'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId!,
-        if (report != null) 'report': report!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (deviceId != null) 'deviceId': deviceId!,
+    if (report != null) 'report': report!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// The state of a user's device, as accessed by the getState and setState
@@ -4826,39 +4934,37 @@ class DeviceState {
   /// - "disabled"
   core.String? accountState;
 
-  DeviceState({
-    this.accountState,
-  });
+  DeviceState({this.accountState});
 
   DeviceState.fromJson(core.Map json_)
-      : this(
-          accountState: json_['accountState'] as core.String?,
-        );
+    : this(accountState: json_['accountState'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountState != null) 'accountState': accountState!,
-      };
+    if (accountState != null) 'accountState': accountState!,
+  };
 }
 
 class DevicesListResponse {
   /// A managed device.
   core.List<Device>? device;
 
-  DevicesListResponse({
-    this.device,
-  });
+  DevicesListResponse({this.device});
 
   DevicesListResponse.fromJson(core.Map json_)
-      : this(
-          device: (json_['device'] as core.List?)
-              ?.map((value) =>
-                  Device.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        device:
+            (json_['device'] as core.List?)
+                ?.map(
+                  (value) => Device.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (device != null) 'device': device!,
-      };
+    if (device != null) 'device': device!,
+  };
 }
 
 /// A token used to enroll a device.
@@ -4900,26 +5006,27 @@ class EnrollmentToken {
   });
 
   EnrollmentToken.fromJson(core.Map json_)
-      : this(
-          duration: json_['duration'] as core.String?,
-          enrollmentTokenType: json_['enrollmentTokenType'] as core.String?,
-          googleAuthenticationOptions:
-              json_.containsKey('googleAuthenticationOptions')
-                  ? EnrollmentTokenGoogleAuthenticationOptions.fromJson(
-                      json_['googleAuthenticationOptions']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          token: json_['token'] as core.String?,
-        );
+    : this(
+        duration: json_['duration'] as core.String?,
+        enrollmentTokenType: json_['enrollmentTokenType'] as core.String?,
+        googleAuthenticationOptions:
+            json_.containsKey('googleAuthenticationOptions')
+                ? EnrollmentTokenGoogleAuthenticationOptions.fromJson(
+                  json_['googleAuthenticationOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        token: json_['token'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (enrollmentTokenType != null)
-          'enrollmentTokenType': enrollmentTokenType!,
-        if (googleAuthenticationOptions != null)
-          'googleAuthenticationOptions': googleAuthenticationOptions!,
-        if (token != null) 'token': token!,
-      };
+    if (duration != null) 'duration': duration!,
+    if (enrollmentTokenType != null)
+      'enrollmentTokenType': enrollmentTokenType!,
+    if (googleAuthenticationOptions != null)
+      'googleAuthenticationOptions': googleAuthenticationOptions!,
+    if (token != null) 'token': token!,
+  };
 }
 
 /// Options for Google authentication during the enrollment.
@@ -4951,18 +5058,18 @@ class EnrollmentTokenGoogleAuthenticationOptions {
   });
 
   EnrollmentTokenGoogleAuthenticationOptions.fromJson(core.Map json_)
-      : this(
-          authenticationRequirement:
-              json_['authenticationRequirement'] as core.String?,
-          requiredAccountEmail: json_['requiredAccountEmail'] as core.String?,
-        );
+    : this(
+        authenticationRequirement:
+            json_['authenticationRequirement'] as core.String?,
+        requiredAccountEmail: json_['requiredAccountEmail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authenticationRequirement != null)
-          'authenticationRequirement': authenticationRequirement!,
-        if (requiredAccountEmail != null)
-          'requiredAccountEmail': requiredAccountEmail!,
-      };
+    if (authenticationRequirement != null)
+      'authenticationRequirement': authenticationRequirement!,
+    if (requiredAccountEmail != null)
+      'requiredAccountEmail': requiredAccountEmail!,
+  };
 }
 
 /// An Enterprises resource represents the binding between an EMM and a specific
@@ -5027,36 +5134,41 @@ class Enterprise {
   });
 
   Enterprise.fromJson(core.Map json_)
-      : this(
-          administrator: (json_['administrator'] as core.List?)
-              ?.map((value) => Administrator.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          enterpriseType: json_['enterpriseType'] as core.String?,
-          googleAuthenticationSettings:
-              json_.containsKey('googleAuthenticationSettings')
-                  ? GoogleAuthenticationSettings.fromJson(
-                      json_['googleAuthenticationSettings']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          id: json_['id'] as core.String?,
-          managedGoogleDomainType:
-              json_['managedGoogleDomainType'] as core.String?,
-          name: json_['name'] as core.String?,
-          primaryDomain: json_['primaryDomain'] as core.String?,
-        );
+    : this(
+        administrator:
+            (json_['administrator'] as core.List?)
+                ?.map(
+                  (value) => Administrator.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        enterpriseType: json_['enterpriseType'] as core.String?,
+        googleAuthenticationSettings:
+            json_.containsKey('googleAuthenticationSettings')
+                ? GoogleAuthenticationSettings.fromJson(
+                  json_['googleAuthenticationSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+        managedGoogleDomainType:
+            json_['managedGoogleDomainType'] as core.String?,
+        name: json_['name'] as core.String?,
+        primaryDomain: json_['primaryDomain'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (administrator != null) 'administrator': administrator!,
-        if (enterpriseType != null) 'enterpriseType': enterpriseType!,
-        if (googleAuthenticationSettings != null)
-          'googleAuthenticationSettings': googleAuthenticationSettings!,
-        if (id != null) 'id': id!,
-        if (managedGoogleDomainType != null)
-          'managedGoogleDomainType': managedGoogleDomainType!,
-        if (name != null) 'name': name!,
-        if (primaryDomain != null) 'primaryDomain': primaryDomain!,
-      };
+    if (administrator != null) 'administrator': administrator!,
+    if (enterpriseType != null) 'enterpriseType': enterpriseType!,
+    if (googleAuthenticationSettings != null)
+      'googleAuthenticationSettings': googleAuthenticationSettings!,
+    if (id != null) 'id': id!,
+    if (managedGoogleDomainType != null)
+      'managedGoogleDomainType': managedGoogleDomainType!,
+    if (name != null) 'name': name!,
+    if (primaryDomain != null) 'primaryDomain': primaryDomain!,
+  };
 }
 
 /// A service account that can be used to authenticate as the enterprise to API
@@ -5065,18 +5177,14 @@ class EnterpriseAccount {
   /// The email address of the service account.
   core.String? accountEmail;
 
-  EnterpriseAccount({
-    this.accountEmail,
-  });
+  EnterpriseAccount({this.accountEmail});
 
   EnterpriseAccount.fromJson(core.Map json_)
-      : this(
-          accountEmail: json_['accountEmail'] as core.String?,
-        );
+    : this(accountEmail: json_['accountEmail'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountEmail != null) 'accountEmail': accountEmail!,
-      };
+    if (accountEmail != null) 'accountEmail': accountEmail!,
+  };
 }
 
 /// An authentication URL configuration for the authenticator app of an identity
@@ -5085,18 +5193,14 @@ class EnterpriseAuthenticationAppLinkConfig {
   /// An authentication url.
   core.String? uri;
 
-  EnterpriseAuthenticationAppLinkConfig({
-    this.uri,
-  });
+  EnterpriseAuthenticationAppLinkConfig({this.uri});
 
   EnterpriseAuthenticationAppLinkConfig.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+    : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// An event generated when an enterprise is upgraded.
@@ -5107,39 +5211,37 @@ class EnterpriseUpgradeEvent {
   /// - "upgradeStateSucceeded" : The upgrade has succeeded.
   core.String? upgradeState;
 
-  EnterpriseUpgradeEvent({
-    this.upgradeState,
-  });
+  EnterpriseUpgradeEvent({this.upgradeState});
 
   EnterpriseUpgradeEvent.fromJson(core.Map json_)
-      : this(
-          upgradeState: json_['upgradeState'] as core.String?,
-        );
+    : this(upgradeState: json_['upgradeState'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (upgradeState != null) 'upgradeState': upgradeState!,
-      };
+    if (upgradeState != null) 'upgradeState': upgradeState!,
+  };
 }
 
 class EnterprisesListResponse {
   /// An enterprise.
   core.List<Enterprise>? enterprise;
 
-  EnterprisesListResponse({
-    this.enterprise,
-  });
+  EnterprisesListResponse({this.enterprise});
 
   EnterprisesListResponse.fromJson(core.Map json_)
-      : this(
-          enterprise: (json_['enterprise'] as core.List?)
-              ?.map((value) => Enterprise.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        enterprise:
+            (json_['enterprise'] as core.List?)
+                ?.map(
+                  (value) => Enterprise.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enterprise != null) 'enterprise': enterprise!,
-      };
+    if (enterprise != null) 'enterprise': enterprise!,
+  };
 }
 
 class EnterprisesSendTestPushNotificationResponse {
@@ -5150,21 +5252,18 @@ class EnterprisesSendTestPushNotificationResponse {
   /// enterprise's enrolled account will be sent.
   core.String? topicName;
 
-  EnterprisesSendTestPushNotificationResponse({
-    this.messageId,
-    this.topicName,
-  });
+  EnterprisesSendTestPushNotificationResponse({this.messageId, this.topicName});
 
   EnterprisesSendTestPushNotificationResponse.fromJson(core.Map json_)
-      : this(
-          messageId: json_['messageId'] as core.String?,
-          topicName: json_['topicName'] as core.String?,
-        );
+    : this(
+        messageId: json_['messageId'] as core.String?,
+        topicName: json_['topicName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (messageId != null) 'messageId': messageId!,
-        if (topicName != null) 'topicName': topicName!,
-      };
+    if (messageId != null) 'messageId': messageId!,
+    if (topicName != null) 'topicName': topicName!,
+  };
 }
 
 /// *Deprecated:* New integrations cannot use this method and can refer to our
@@ -5185,21 +5284,18 @@ class Entitlement {
   /// - "userPurchase"
   core.String? reason;
 
-  Entitlement({
-    this.productId,
-    this.reason,
-  });
+  Entitlement({this.productId, this.reason});
 
   Entitlement.fromJson(core.Map json_)
-      : this(
-          productId: json_['productId'] as core.String?,
-          reason: json_['reason'] as core.String?,
-        );
+    : this(
+        productId: json_['productId'] as core.String?,
+        reason: json_['reason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (productId != null) 'productId': productId!,
-        if (reason != null) 'reason': reason!,
-      };
+    if (productId != null) 'productId': productId!,
+    if (reason != null) 'reason': reason!,
+  };
 }
 
 class EntitlementsListResponse {
@@ -5209,27 +5305,29 @@ class EntitlementsListResponse {
   /// have been allocated a license to.
   core.List<Entitlement>? entitlement;
 
-  EntitlementsListResponse({
-    this.entitlement,
-  });
+  EntitlementsListResponse({this.entitlement});
 
   EntitlementsListResponse.fromJson(core.Map json_)
-      : this(
-          entitlement: (json_['entitlement'] as core.List?)
-              ?.map((value) => Entitlement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        entitlement:
+            (json_['entitlement'] as core.List?)
+                ?.map(
+                  (value) => Entitlement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entitlement != null) 'entitlement': entitlement!,
-      };
+    if (entitlement != null) 'entitlement': entitlement!,
+  };
 }
 
 /// Response message for generating a URL to upgrade an existing managed Google
 /// Play Accounts enterprise to a managed Google domain.
-typedef GenerateEnterpriseUpgradeUrlResponse
-    = $GenerateEnterpriseUpgradeUrlResponse;
+typedef GenerateEnterpriseUpgradeUrlResponse =
+    $GenerateEnterpriseUpgradeUrlResponse;
 
 /// Contains settings for Google-provided user authentication.
 class GoogleAuthenticationSettings {
@@ -5254,19 +5352,19 @@ class GoogleAuthenticationSettings {
   });
 
   GoogleAuthenticationSettings.fromJson(core.Map json_)
-      : this(
-          dedicatedDevicesAllowed:
-              json_['dedicatedDevicesAllowed'] as core.String?,
-          googleAuthenticationRequired:
-              json_['googleAuthenticationRequired'] as core.String?,
-        );
+    : this(
+        dedicatedDevicesAllowed:
+            json_['dedicatedDevicesAllowed'] as core.String?,
+        googleAuthenticationRequired:
+            json_['googleAuthenticationRequired'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dedicatedDevicesAllowed != null)
-          'dedicatedDevicesAllowed': dedicatedDevicesAllowed!,
-        if (googleAuthenticationRequired != null)
-          'googleAuthenticationRequired': googleAuthenticationRequired!,
-      };
+    if (dedicatedDevicesAllowed != null)
+      'dedicatedDevicesAllowed': dedicatedDevicesAllowed!,
+    if (googleAuthenticationRequired != null)
+      'googleAuthenticationRequired': googleAuthenticationRequired!,
+  };
 }
 
 /// *Deprecated:* New integrations cannot use this method and can refer to our
@@ -5338,65 +5436,69 @@ class GroupLicense {
   });
 
   GroupLicense.fromJson(core.Map json_)
-      : this(
-          acquisitionKind: json_['acquisitionKind'] as core.String?,
-          approval: json_['approval'] as core.String?,
-          numProvisioned: json_['numProvisioned'] as core.int?,
-          numPurchased: json_['numPurchased'] as core.int?,
-          permissions: json_['permissions'] as core.String?,
-          productId: json_['productId'] as core.String?,
-        );
+    : this(
+        acquisitionKind: json_['acquisitionKind'] as core.String?,
+        approval: json_['approval'] as core.String?,
+        numProvisioned: json_['numProvisioned'] as core.int?,
+        numPurchased: json_['numPurchased'] as core.int?,
+        permissions: json_['permissions'] as core.String?,
+        productId: json_['productId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acquisitionKind != null) 'acquisitionKind': acquisitionKind!,
-        if (approval != null) 'approval': approval!,
-        if (numProvisioned != null) 'numProvisioned': numProvisioned!,
-        if (numPurchased != null) 'numPurchased': numPurchased!,
-        if (permissions != null) 'permissions': permissions!,
-        if (productId != null) 'productId': productId!,
-      };
+    if (acquisitionKind != null) 'acquisitionKind': acquisitionKind!,
+    if (approval != null) 'approval': approval!,
+    if (numProvisioned != null) 'numProvisioned': numProvisioned!,
+    if (numPurchased != null) 'numPurchased': numPurchased!,
+    if (permissions != null) 'permissions': permissions!,
+    if (productId != null) 'productId': productId!,
+  };
 }
 
 class GroupLicenseUsersListResponse {
   /// A user of an enterprise.
   core.List<User>? user;
 
-  GroupLicenseUsersListResponse({
-    this.user,
-  });
+  GroupLicenseUsersListResponse({this.user});
 
   GroupLicenseUsersListResponse.fromJson(core.Map json_)
-      : this(
-          user: (json_['user'] as core.List?)
-              ?.map((value) =>
-                  User.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        user:
+            (json_['user'] as core.List?)
+                ?.map(
+                  (value) => User.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (user != null) 'user': user!,
-      };
+    if (user != null) 'user': user!,
+  };
 }
 
 class GroupLicensesListResponse {
   /// A group license for a product approved for use in the enterprise.
   core.List<GroupLicense>? groupLicense;
 
-  GroupLicensesListResponse({
-    this.groupLicense,
-  });
+  GroupLicensesListResponse({this.groupLicense});
 
   GroupLicensesListResponse.fromJson(core.Map json_)
-      : this(
-          groupLicense: (json_['groupLicense'] as core.List?)
-              ?.map((value) => GroupLicense.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        groupLicense:
+            (json_['groupLicense'] as core.List?)
+                ?.map(
+                  (value) => GroupLicense.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groupLicense != null) 'groupLicense': groupLicense!,
-      };
+    if (groupLicense != null) 'groupLicense': groupLicense!,
+  };
 }
 
 /// The existence of an Installs resource indicates that an app is installed on
@@ -5439,24 +5541,20 @@ class Install {
   /// Guaranteed to be set only if the install state is "installed".
   core.int? versionCode;
 
-  Install({
-    this.installState,
-    this.productId,
-    this.versionCode,
-  });
+  Install({this.installState, this.productId, this.versionCode});
 
   Install.fromJson(core.Map json_)
-      : this(
-          installState: json_['installState'] as core.String?,
-          productId: json_['productId'] as core.String?,
-          versionCode: json_['versionCode'] as core.int?,
-        );
+    : this(
+        installState: json_['installState'] as core.String?,
+        productId: json_['productId'] as core.String?,
+        versionCode: json_['versionCode'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (installState != null) 'installState': installState!,
-        if (productId != null) 'productId': productId!,
-        if (versionCode != null) 'versionCode': versionCode!,
-      };
+    if (installState != null) 'installState': installState!,
+    if (productId != null) 'productId': productId!,
+    if (versionCode != null) 'versionCode': versionCode!,
+  };
 }
 
 /// An event generated when an app installation failed on a device
@@ -5500,21 +5598,21 @@ class InstallFailureEvent {
   });
 
   InstallFailureEvent.fromJson(core.Map json_)
-      : this(
-          deviceId: json_['deviceId'] as core.String?,
-          failureDetails: json_['failureDetails'] as core.String?,
-          failureReason: json_['failureReason'] as core.String?,
-          productId: json_['productId'] as core.String?,
-          userId: json_['userId'] as core.String?,
-        );
+    : this(
+        deviceId: json_['deviceId'] as core.String?,
+        failureDetails: json_['failureDetails'] as core.String?,
+        failureReason: json_['failureReason'] as core.String?,
+        productId: json_['productId'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId!,
-        if (failureDetails != null) 'failureDetails': failureDetails!,
-        if (failureReason != null) 'failureReason': failureReason!,
-        if (productId != null) 'productId': productId!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (deviceId != null) 'deviceId': deviceId!,
+    if (failureDetails != null) 'failureDetails': failureDetails!,
+    if (failureReason != null) 'failureReason': failureReason!,
+    if (productId != null) 'productId': productId!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 class InstallsListResponse {
@@ -5524,21 +5622,23 @@ class InstallsListResponse {
   /// to the app.
   core.List<Install>? install;
 
-  InstallsListResponse({
-    this.install,
-  });
+  InstallsListResponse({this.install});
 
   InstallsListResponse.fromJson(core.Map json_)
-      : this(
-          install: (json_['install'] as core.List?)
-              ?.map((value) => Install.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        install:
+            (json_['install'] as core.List?)
+                ?.map(
+                  (value) => Install.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (install != null) 'install': install!,
-      };
+    if (install != null) 'install': install!,
+  };
 }
 
 /// Represents a keyed app state containing a key, timestamp, severity level,
@@ -5586,22 +5686,22 @@ class KeyedAppState {
   });
 
   KeyedAppState.fromJson(core.Map json_)
-      : this(
-          data: json_['data'] as core.String?,
-          key: json_['key'] as core.String?,
-          message: json_['message'] as core.String?,
-          severity: json_['severity'] as core.String?,
-          stateTimestampMillis: json_['stateTimestampMillis'] as core.String?,
-        );
+    : this(
+        data: json_['data'] as core.String?,
+        key: json_['key'] as core.String?,
+        message: json_['message'] as core.String?,
+        severity: json_['severity'] as core.String?,
+        stateTimestampMillis: json_['stateTimestampMillis'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (key != null) 'key': key!,
-        if (message != null) 'message': message!,
-        if (severity != null) 'severity': severity!,
-        if (stateTimestampMillis != null)
-          'stateTimestampMillis': stateTimestampMillis!,
-      };
+    if (data != null) 'data': data!,
+    if (key != null) 'key': key!,
+    if (message != null) 'message': message!,
+    if (severity != null) 'severity': severity!,
+    if (stateTimestampMillis != null)
+      'stateTimestampMillis': stateTimestampMillis!,
+  };
 }
 
 /// A localized string with its locale.
@@ -5614,21 +5714,18 @@ class LocalizedText {
   /// The text localized in the associated locale.
   core.String? text;
 
-  LocalizedText({
-    this.locale,
-    this.text,
-  });
+  LocalizedText({this.locale, this.text});
 
   LocalizedText.fromJson(core.Map json_)
-      : this(
-          locale: json_['locale'] as core.String?,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        locale: json_['locale'] as core.String?,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locale != null) 'locale': locale!,
-        if (text != null) 'text': text!,
-      };
+    if (locale != null) 'locale': locale!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Maintenance window for managed Google Play Accounts.
@@ -5647,23 +5744,20 @@ class MaintenanceWindow {
   /// Windows can span midnight.
   core.String? startTimeAfterMidnightMs;
 
-  MaintenanceWindow({
-    this.durationMs,
-    this.startTimeAfterMidnightMs,
-  });
+  MaintenanceWindow({this.durationMs, this.startTimeAfterMidnightMs});
 
   MaintenanceWindow.fromJson(core.Map json_)
-      : this(
-          durationMs: json_['durationMs'] as core.String?,
-          startTimeAfterMidnightMs:
-              json_['startTimeAfterMidnightMs'] as core.String?,
-        );
+    : this(
+        durationMs: json_['durationMs'] as core.String?,
+        startTimeAfterMidnightMs:
+            json_['startTimeAfterMidnightMs'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (durationMs != null) 'durationMs': durationMs!,
-        if (startTimeAfterMidnightMs != null)
-          'startTimeAfterMidnightMs': startTimeAfterMidnightMs!,
-      };
+    if (durationMs != null) 'durationMs': durationMs!,
+    if (startTimeAfterMidnightMs != null)
+      'startTimeAfterMidnightMs': startTimeAfterMidnightMs!,
+  };
 }
 
 /// *Deprecated:* New integrations cannot use this method and can refer to our
@@ -5691,26 +5785,33 @@ class ManagedConfiguration {
   });
 
   ManagedConfiguration.fromJson(core.Map json_)
-      : this(
-          configurationVariables: json_.containsKey('configurationVariables')
-              ? ConfigurationVariables.fromJson(json_['configurationVariables']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-          managedProperty: (json_['managedProperty'] as core.List?)
-              ?.map((value) => ManagedProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          productId: json_['productId'] as core.String?,
-        );
+    : this(
+        configurationVariables:
+            json_.containsKey('configurationVariables')
+                ? ConfigurationVariables.fromJson(
+                  json_['configurationVariables']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+        managedProperty:
+            (json_['managedProperty'] as core.List?)
+                ?.map(
+                  (value) => ManagedProperty.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        productId: json_['productId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configurationVariables != null)
-          'configurationVariables': configurationVariables!,
-        if (kind != null) 'kind': kind!,
-        if (managedProperty != null) 'managedProperty': managedProperty!,
-        if (productId != null) 'productId': productId!,
-      };
+    if (configurationVariables != null)
+      'configurationVariables': configurationVariables!,
+    if (kind != null) 'kind': kind!,
+    if (managedProperty != null) 'managedProperty': managedProperty!,
+    if (productId != null) 'productId': productId!,
+  };
 }
 
 class ManagedConfigurationsForDeviceListResponse {
@@ -5722,41 +5823,45 @@ class ManagedConfigurationsForDeviceListResponse {
   });
 
   ManagedConfigurationsForDeviceListResponse.fromJson(core.Map json_)
-      : this(
-          managedConfigurationForDevice:
-              (json_['managedConfigurationForDevice'] as core.List?)
-                  ?.map((value) => ManagedConfiguration.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        managedConfigurationForDevice:
+            (json_['managedConfigurationForDevice'] as core.List?)
+                ?.map(
+                  (value) => ManagedConfiguration.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (managedConfigurationForDevice != null)
-          'managedConfigurationForDevice': managedConfigurationForDevice!,
-      };
+    if (managedConfigurationForDevice != null)
+      'managedConfigurationForDevice': managedConfigurationForDevice!,
+  };
 }
 
 class ManagedConfigurationsForUserListResponse {
   /// A managed configuration for an app for a specific user.
   core.List<ManagedConfiguration>? managedConfigurationForUser;
 
-  ManagedConfigurationsForUserListResponse({
-    this.managedConfigurationForUser,
-  });
+  ManagedConfigurationsForUserListResponse({this.managedConfigurationForUser});
 
   ManagedConfigurationsForUserListResponse.fromJson(core.Map json_)
-      : this(
-          managedConfigurationForUser:
-              (json_['managedConfigurationForUser'] as core.List?)
-                  ?.map((value) => ManagedConfiguration.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        managedConfigurationForUser:
+            (json_['managedConfigurationForUser'] as core.List?)
+                ?.map(
+                  (value) => ManagedConfiguration.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (managedConfigurationForUser != null)
-          'managedConfigurationForUser': managedConfigurationForUser!,
-      };
+    if (managedConfigurationForUser != null)
+      'managedConfigurationForUser': managedConfigurationForUser!,
+  };
 }
 
 /// A managed configurations settings resource contains the set of managed
@@ -5783,19 +5888,19 @@ class ManagedConfigurationsSettings {
   });
 
   ManagedConfigurationsSettings.fromJson(core.Map json_)
-      : this(
-          lastUpdatedTimestampMillis:
-              json_['lastUpdatedTimestampMillis'] as core.String?,
-          mcmId: json_['mcmId'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        lastUpdatedTimestampMillis:
+            json_['lastUpdatedTimestampMillis'] as core.String?,
+        mcmId: json_['mcmId'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastUpdatedTimestampMillis != null)
-          'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,
-        if (mcmId != null) 'mcmId': mcmId!,
-        if (name != null) 'name': name!,
-      };
+    if (lastUpdatedTimestampMillis != null)
+      'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,
+    if (mcmId != null) 'mcmId': mcmId!,
+    if (name != null) 'name': name!,
+  };
 }
 
 class ManagedConfigurationsSettingsListResponse {
@@ -5808,18 +5913,21 @@ class ManagedConfigurationsSettingsListResponse {
   });
 
   ManagedConfigurationsSettingsListResponse.fromJson(core.Map json_)
-      : this(
-          managedConfigurationsSettings:
-              (json_['managedConfigurationsSettings'] as core.List?)
-                  ?.map((value) => ManagedConfigurationsSettings.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        managedConfigurationsSettings:
+            (json_['managedConfigurationsSettings'] as core.List?)
+                ?.map(
+                  (value) => ManagedConfigurationsSettings.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (managedConfigurationsSettings != null)
-          'managedConfigurationsSettings': managedConfigurationsSettings!,
-      };
+    if (managedConfigurationsSettings != null)
+      'managedConfigurationsSettings': managedConfigurationsSettings!,
+  };
 }
 
 /// A managed property of a managed configuration.
@@ -5866,33 +5974,40 @@ class ManagedProperty {
   });
 
   ManagedProperty.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-          valueBool: json_['valueBool'] as core.bool?,
-          valueBundle: json_.containsKey('valueBundle')
-              ? ManagedPropertyBundle.fromJson(
-                  json_['valueBundle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          valueBundleArray: (json_['valueBundleArray'] as core.List?)
-              ?.map((value) => ManagedPropertyBundle.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          valueInteger: json_['valueInteger'] as core.int?,
-          valueString: json_['valueString'] as core.String?,
-          valueStringArray: (json_['valueStringArray'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        key: json_['key'] as core.String?,
+        valueBool: json_['valueBool'] as core.bool?,
+        valueBundle:
+            json_.containsKey('valueBundle')
+                ? ManagedPropertyBundle.fromJson(
+                  json_['valueBundle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        valueBundleArray:
+            (json_['valueBundleArray'] as core.List?)
+                ?.map(
+                  (value) => ManagedPropertyBundle.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        valueInteger: json_['valueInteger'] as core.int?,
+        valueString: json_['valueString'] as core.String?,
+        valueStringArray:
+            (json_['valueStringArray'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (valueBool != null) 'valueBool': valueBool!,
-        if (valueBundle != null) 'valueBundle': valueBundle!,
-        if (valueBundleArray != null) 'valueBundleArray': valueBundleArray!,
-        if (valueInteger != null) 'valueInteger': valueInteger!,
-        if (valueString != null) 'valueString': valueString!,
-        if (valueStringArray != null) 'valueStringArray': valueStringArray!,
-      };
+    if (key != null) 'key': key!,
+    if (valueBool != null) 'valueBool': valueBool!,
+    if (valueBundle != null) 'valueBundle': valueBundle!,
+    if (valueBundleArray != null) 'valueBundleArray': valueBundleArray!,
+    if (valueInteger != null) 'valueInteger': valueInteger!,
+    if (valueString != null) 'valueString': valueString!,
+    if (valueStringArray != null) 'valueStringArray': valueStringArray!,
+  };
 }
 
 /// A bundle of managed properties.
@@ -5900,21 +6015,23 @@ class ManagedPropertyBundle {
   /// The list of managed properties.
   core.List<ManagedProperty>? managedProperty;
 
-  ManagedPropertyBundle({
-    this.managedProperty,
-  });
+  ManagedPropertyBundle({this.managedProperty});
 
   ManagedPropertyBundle.fromJson(core.Map json_)
-      : this(
-          managedProperty: (json_['managedProperty'] as core.List?)
-              ?.map((value) => ManagedProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        managedProperty:
+            (json_['managedProperty'] as core.List?)
+                ?.map(
+                  (value) => ManagedProperty.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (managedProperty != null) 'managedProperty': managedProperty!,
-      };
+    if (managedProperty != null) 'managedProperty': managedProperty!,
+  };
 }
 
 /// An event generated when a new device is ready to be managed.
@@ -5951,19 +6068,19 @@ class NewDeviceEvent {
   });
 
   NewDeviceEvent.fromJson(core.Map json_)
-      : this(
-          deviceId: json_['deviceId'] as core.String?,
-          dpcPackageName: json_['dpcPackageName'] as core.String?,
-          managementType: json_['managementType'] as core.String?,
-          userId: json_['userId'] as core.String?,
-        );
+    : this(
+        deviceId: json_['deviceId'] as core.String?,
+        dpcPackageName: json_['dpcPackageName'] as core.String?,
+        managementType: json_['managementType'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId!,
-        if (dpcPackageName != null) 'dpcPackageName': dpcPackageName!,
-        if (managementType != null) 'managementType': managementType!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (deviceId != null) 'deviceId': deviceId!,
+    if (dpcPackageName != null) 'dpcPackageName': dpcPackageName!,
+    if (managementType != null) 'managementType': managementType!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// An event generated when new permissions are added to an app.
@@ -5994,23 +6111,25 @@ class NewPermissionsEvent {
   });
 
   NewPermissionsEvent.fromJson(core.Map json_)
-      : this(
-          approvedPermissions: (json_['approvedPermissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          productId: json_['productId'] as core.String?,
-          requestedPermissions: (json_['requestedPermissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        approvedPermissions:
+            (json_['approvedPermissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        productId: json_['productId'] as core.String?,
+        requestedPermissions:
+            (json_['requestedPermissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvedPermissions != null)
-          'approvedPermissions': approvedPermissions!,
-        if (productId != null) 'productId': productId!,
-        if (requestedPermissions != null)
-          'requestedPermissions': requestedPermissions!,
-      };
+    if (approvedPermissions != null)
+      'approvedPermissions': approvedPermissions!,
+    if (productId != null) 'productId': productId!,
+    if (requestedPermissions != null)
+      'requestedPermissions': requestedPermissions!,
+  };
 }
 
 /// A notification of one event relating to an enterprise.
@@ -6087,74 +6206,96 @@ class Notification {
   });
 
   Notification.fromJson(core.Map json_)
-      : this(
-          appRestrictionsSchemaChangeEvent:
-              json_.containsKey('appRestrictionsSchemaChangeEvent')
-                  ? AppRestrictionsSchemaChangeEvent.fromJson(
-                      json_['appRestrictionsSchemaChangeEvent']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          appUpdateEvent: json_.containsKey('appUpdateEvent')
-              ? AppUpdateEvent.fromJson(json_['appUpdateEvent']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deviceReportUpdateEvent: json_.containsKey('deviceReportUpdateEvent')
-              ? DeviceReportUpdateEvent.fromJson(
+    : this(
+        appRestrictionsSchemaChangeEvent:
+            json_.containsKey('appRestrictionsSchemaChangeEvent')
+                ? AppRestrictionsSchemaChangeEvent.fromJson(
+                  json_['appRestrictionsSchemaChangeEvent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        appUpdateEvent:
+            json_.containsKey('appUpdateEvent')
+                ? AppUpdateEvent.fromJson(
+                  json_['appUpdateEvent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deviceReportUpdateEvent:
+            json_.containsKey('deviceReportUpdateEvent')
+                ? DeviceReportUpdateEvent.fromJson(
                   json_['deviceReportUpdateEvent']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          enterpriseId: json_['enterpriseId'] as core.String?,
-          enterpriseUpgradeEvent: json_.containsKey('enterpriseUpgradeEvent')
-              ? EnterpriseUpgradeEvent.fromJson(json_['enterpriseUpgradeEvent']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          installFailureEvent: json_.containsKey('installFailureEvent')
-              ? InstallFailureEvent.fromJson(json_['installFailureEvent']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          newDeviceEvent: json_.containsKey('newDeviceEvent')
-              ? NewDeviceEvent.fromJson(json_['newDeviceEvent']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          newPermissionsEvent: json_.containsKey('newPermissionsEvent')
-              ? NewPermissionsEvent.fromJson(json_['newPermissionsEvent']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          notificationType: json_['notificationType'] as core.String?,
-          productApprovalEvent: json_.containsKey('productApprovalEvent')
-              ? ProductApprovalEvent.fromJson(json_['productApprovalEvent']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          productAvailabilityChangeEvent:
-              json_.containsKey('productAvailabilityChangeEvent')
-                  ? ProductAvailabilityChangeEvent.fromJson(
-                      json_['productAvailabilityChangeEvent']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          timestampMillis: json_['timestampMillis'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enterpriseId: json_['enterpriseId'] as core.String?,
+        enterpriseUpgradeEvent:
+            json_.containsKey('enterpriseUpgradeEvent')
+                ? EnterpriseUpgradeEvent.fromJson(
+                  json_['enterpriseUpgradeEvent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        installFailureEvent:
+            json_.containsKey('installFailureEvent')
+                ? InstallFailureEvent.fromJson(
+                  json_['installFailureEvent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        newDeviceEvent:
+            json_.containsKey('newDeviceEvent')
+                ? NewDeviceEvent.fromJson(
+                  json_['newDeviceEvent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        newPermissionsEvent:
+            json_.containsKey('newPermissionsEvent')
+                ? NewPermissionsEvent.fromJson(
+                  json_['newPermissionsEvent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        notificationType: json_['notificationType'] as core.String?,
+        productApprovalEvent:
+            json_.containsKey('productApprovalEvent')
+                ? ProductApprovalEvent.fromJson(
+                  json_['productApprovalEvent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        productAvailabilityChangeEvent:
+            json_.containsKey('productAvailabilityChangeEvent')
+                ? ProductAvailabilityChangeEvent.fromJson(
+                  json_['productAvailabilityChangeEvent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        timestampMillis: json_['timestampMillis'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appRestrictionsSchemaChangeEvent != null)
-          'appRestrictionsSchemaChangeEvent': appRestrictionsSchemaChangeEvent!,
-        if (appUpdateEvent != null) 'appUpdateEvent': appUpdateEvent!,
-        if (deviceReportUpdateEvent != null)
-          'deviceReportUpdateEvent': deviceReportUpdateEvent!,
-        if (enterpriseId != null) 'enterpriseId': enterpriseId!,
-        if (enterpriseUpgradeEvent != null)
-          'enterpriseUpgradeEvent': enterpriseUpgradeEvent!,
-        if (installFailureEvent != null)
-          'installFailureEvent': installFailureEvent!,
-        if (newDeviceEvent != null) 'newDeviceEvent': newDeviceEvent!,
-        if (newPermissionsEvent != null)
-          'newPermissionsEvent': newPermissionsEvent!,
-        if (notificationType != null) 'notificationType': notificationType!,
-        if (productApprovalEvent != null)
-          'productApprovalEvent': productApprovalEvent!,
-        if (productAvailabilityChangeEvent != null)
-          'productAvailabilityChangeEvent': productAvailabilityChangeEvent!,
-        if (timestampMillis != null) 'timestampMillis': timestampMillis!,
-      };
+    if (appRestrictionsSchemaChangeEvent != null)
+      'appRestrictionsSchemaChangeEvent': appRestrictionsSchemaChangeEvent!,
+    if (appUpdateEvent != null) 'appUpdateEvent': appUpdateEvent!,
+    if (deviceReportUpdateEvent != null)
+      'deviceReportUpdateEvent': deviceReportUpdateEvent!,
+    if (enterpriseId != null) 'enterpriseId': enterpriseId!,
+    if (enterpriseUpgradeEvent != null)
+      'enterpriseUpgradeEvent': enterpriseUpgradeEvent!,
+    if (installFailureEvent != null)
+      'installFailureEvent': installFailureEvent!,
+    if (newDeviceEvent != null) 'newDeviceEvent': newDeviceEvent!,
+    if (newPermissionsEvent != null)
+      'newPermissionsEvent': newPermissionsEvent!,
+    if (notificationType != null) 'notificationType': notificationType!,
+    if (productApprovalEvent != null)
+      'productApprovalEvent': productApprovalEvent!,
+    if (productAvailabilityChangeEvent != null)
+      'productAvailabilityChangeEvent': productAvailabilityChangeEvent!,
+    if (timestampMillis != null) 'timestampMillis': timestampMillis!,
+  };
 }
 
 /// A resource returned by the PullNotificationSet API, which contains a
@@ -6170,24 +6311,25 @@ class NotificationSet {
   /// This will be omitted if no notifications are present.
   core.String? notificationSetId;
 
-  NotificationSet({
-    this.notification,
-    this.notificationSetId,
-  });
+  NotificationSet({this.notification, this.notificationSetId});
 
   NotificationSet.fromJson(core.Map json_)
-      : this(
-          notification: (json_['notification'] as core.List?)
-              ?.map((value) => Notification.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          notificationSetId: json_['notificationSetId'] as core.String?,
-        );
+    : this(
+        notification:
+            (json_['notification'] as core.List?)
+                ?.map(
+                  (value) => Notification.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        notificationSetId: json_['notificationSetId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (notification != null) 'notification': notification!,
-        if (notificationSetId != null) 'notificationSetId': notificationSetId!,
-      };
+    if (notification != null) 'notification': notification!,
+    if (notificationSetId != null) 'notificationSetId': notificationSetId!,
+  };
 }
 
 /// Information about the current page.
@@ -6215,24 +6357,20 @@ class Permission {
   /// An opaque string uniquely identifying the permission.
   core.String? permissionId;
 
-  Permission({
-    this.description,
-    this.name,
-    this.permissionId,
-  });
+  Permission({this.description, this.name, this.permissionId});
 
   Permission.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          name: json_['name'] as core.String?,
-          permissionId: json_['permissionId'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        name: json_['name'] as core.String?,
+        permissionId: json_['permissionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (name != null) 'name': name!,
-        if (permissionId != null) 'permissionId': permissionId!,
-      };
+    if (description != null) 'description': description!,
+    if (name != null) 'name': name!,
+    if (permissionId != null) 'permissionId': permissionId!,
+  };
 }
 
 /// The device policy for a given managed device.
@@ -6310,32 +6448,38 @@ class Policy {
   });
 
   Policy.fromJson(core.Map json_)
-      : this(
-          autoUpdatePolicy: json_['autoUpdatePolicy'] as core.String?,
-          deviceReportPolicy: json_['deviceReportPolicy'] as core.String?,
-          maintenanceWindow: json_.containsKey('maintenanceWindow')
-              ? MaintenanceWindow.fromJson(json_['maintenanceWindow']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          policyId: json_['policyId'] as core.String?,
-          productAvailabilityPolicy:
-              json_['productAvailabilityPolicy'] as core.String?,
-          productPolicy: (json_['productPolicy'] as core.List?)
-              ?.map((value) => ProductPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        autoUpdatePolicy: json_['autoUpdatePolicy'] as core.String?,
+        deviceReportPolicy: json_['deviceReportPolicy'] as core.String?,
+        maintenanceWindow:
+            json_.containsKey('maintenanceWindow')
+                ? MaintenanceWindow.fromJson(
+                  json_['maintenanceWindow']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        policyId: json_['policyId'] as core.String?,
+        productAvailabilityPolicy:
+            json_['productAvailabilityPolicy'] as core.String?,
+        productPolicy:
+            (json_['productPolicy'] as core.List?)
+                ?.map(
+                  (value) => ProductPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoUpdatePolicy != null) 'autoUpdatePolicy': autoUpdatePolicy!,
-        if (deviceReportPolicy != null)
-          'deviceReportPolicy': deviceReportPolicy!,
-        if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
-        if (policyId != null) 'policyId': policyId!,
-        if (productAvailabilityPolicy != null)
-          'productAvailabilityPolicy': productAvailabilityPolicy!,
-        if (productPolicy != null) 'productPolicy': productPolicy!,
-      };
+    if (autoUpdatePolicy != null) 'autoUpdatePolicy': autoUpdatePolicy!,
+    if (deviceReportPolicy != null) 'deviceReportPolicy': deviceReportPolicy!,
+    if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
+    if (policyId != null) 'policyId': policyId!,
+    if (productAvailabilityPolicy != null)
+      'productAvailabilityPolicy': productAvailabilityPolicy!,
+    if (productPolicy != null) 'productPolicy': productPolicy!,
+  };
 }
 
 /// A Products resource represents an app in the Google Play store that is
@@ -6491,94 +6635,114 @@ class Product {
   });
 
   Product.fromJson(core.Map json_)
-      : this(
-          appRestrictionsSchema: json_.containsKey('appRestrictionsSchema')
-              ? AppRestrictionsSchema.fromJson(json_['appRestrictionsSchema']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          appTracks: (json_['appTracks'] as core.List?)
-              ?.map((value) => TrackInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          appVersion: (json_['appVersion'] as core.List?)
-              ?.map((value) => AppVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          authorName: json_['authorName'] as core.String?,
-          availableCountries: (json_['availableCountries'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          availableTracks: (json_['availableTracks'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          category: json_['category'] as core.String?,
-          contentRating: json_['contentRating'] as core.String?,
-          description: json_['description'] as core.String?,
-          detailsUrl: json_['detailsUrl'] as core.String?,
-          distributionChannel: json_['distributionChannel'] as core.String?,
-          features: (json_['features'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          fullDescription: json_['fullDescription'] as core.String?,
-          iconUrl: json_['iconUrl'] as core.String?,
-          lastUpdatedTimestampMillis:
-              json_['lastUpdatedTimestampMillis'] as core.String?,
-          minAndroidSdkVersion: json_['minAndroidSdkVersion'] as core.int?,
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => ProductPermission.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          productId: json_['productId'] as core.String?,
-          productPricing: json_['productPricing'] as core.String?,
-          recentChanges: json_['recentChanges'] as core.String?,
-          requiresContainerApp: json_['requiresContainerApp'] as core.bool?,
-          screenshotUrls: (json_['screenshotUrls'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          signingCertificate: json_.containsKey('signingCertificate')
-              ? ProductSigningCertificate.fromJson(json_['signingCertificate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          smallIconUrl: json_['smallIconUrl'] as core.String?,
-          title: json_['title'] as core.String?,
-          workDetailsUrl: json_['workDetailsUrl'] as core.String?,
-        );
+    : this(
+        appRestrictionsSchema:
+            json_.containsKey('appRestrictionsSchema')
+                ? AppRestrictionsSchema.fromJson(
+                  json_['appRestrictionsSchema']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        appTracks:
+            (json_['appTracks'] as core.List?)
+                ?.map(
+                  (value) => TrackInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        appVersion:
+            (json_['appVersion'] as core.List?)
+                ?.map(
+                  (value) => AppVersion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        authorName: json_['authorName'] as core.String?,
+        availableCountries:
+            (json_['availableCountries'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        availableTracks:
+            (json_['availableTracks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        category: json_['category'] as core.String?,
+        contentRating: json_['contentRating'] as core.String?,
+        description: json_['description'] as core.String?,
+        detailsUrl: json_['detailsUrl'] as core.String?,
+        distributionChannel: json_['distributionChannel'] as core.String?,
+        features:
+            (json_['features'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        fullDescription: json_['fullDescription'] as core.String?,
+        iconUrl: json_['iconUrl'] as core.String?,
+        lastUpdatedTimestampMillis:
+            json_['lastUpdatedTimestampMillis'] as core.String?,
+        minAndroidSdkVersion: json_['minAndroidSdkVersion'] as core.int?,
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map(
+                  (value) => ProductPermission.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        productId: json_['productId'] as core.String?,
+        productPricing: json_['productPricing'] as core.String?,
+        recentChanges: json_['recentChanges'] as core.String?,
+        requiresContainerApp: json_['requiresContainerApp'] as core.bool?,
+        screenshotUrls:
+            (json_['screenshotUrls'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        signingCertificate:
+            json_.containsKey('signingCertificate')
+                ? ProductSigningCertificate.fromJson(
+                  json_['signingCertificate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        smallIconUrl: json_['smallIconUrl'] as core.String?,
+        title: json_['title'] as core.String?,
+        workDetailsUrl: json_['workDetailsUrl'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appRestrictionsSchema != null)
-          'appRestrictionsSchema': appRestrictionsSchema!,
-        if (appTracks != null) 'appTracks': appTracks!,
-        if (appVersion != null) 'appVersion': appVersion!,
-        if (authorName != null) 'authorName': authorName!,
-        if (availableCountries != null)
-          'availableCountries': availableCountries!,
-        if (availableTracks != null) 'availableTracks': availableTracks!,
-        if (category != null) 'category': category!,
-        if (contentRating != null) 'contentRating': contentRating!,
-        if (description != null) 'description': description!,
-        if (detailsUrl != null) 'detailsUrl': detailsUrl!,
-        if (distributionChannel != null)
-          'distributionChannel': distributionChannel!,
-        if (features != null) 'features': features!,
-        if (fullDescription != null) 'fullDescription': fullDescription!,
-        if (iconUrl != null) 'iconUrl': iconUrl!,
-        if (lastUpdatedTimestampMillis != null)
-          'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,
-        if (minAndroidSdkVersion != null)
-          'minAndroidSdkVersion': minAndroidSdkVersion!,
-        if (permissions != null) 'permissions': permissions!,
-        if (productId != null) 'productId': productId!,
-        if (productPricing != null) 'productPricing': productPricing!,
-        if (recentChanges != null) 'recentChanges': recentChanges!,
-        if (requiresContainerApp != null)
-          'requiresContainerApp': requiresContainerApp!,
-        if (screenshotUrls != null) 'screenshotUrls': screenshotUrls!,
-        if (signingCertificate != null)
-          'signingCertificate': signingCertificate!,
-        if (smallIconUrl != null) 'smallIconUrl': smallIconUrl!,
-        if (title != null) 'title': title!,
-        if (workDetailsUrl != null) 'workDetailsUrl': workDetailsUrl!,
-      };
+    if (appRestrictionsSchema != null)
+      'appRestrictionsSchema': appRestrictionsSchema!,
+    if (appTracks != null) 'appTracks': appTracks!,
+    if (appVersion != null) 'appVersion': appVersion!,
+    if (authorName != null) 'authorName': authorName!,
+    if (availableCountries != null) 'availableCountries': availableCountries!,
+    if (availableTracks != null) 'availableTracks': availableTracks!,
+    if (category != null) 'category': category!,
+    if (contentRating != null) 'contentRating': contentRating!,
+    if (description != null) 'description': description!,
+    if (detailsUrl != null) 'detailsUrl': detailsUrl!,
+    if (distributionChannel != null)
+      'distributionChannel': distributionChannel!,
+    if (features != null) 'features': features!,
+    if (fullDescription != null) 'fullDescription': fullDescription!,
+    if (iconUrl != null) 'iconUrl': iconUrl!,
+    if (lastUpdatedTimestampMillis != null)
+      'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,
+    if (minAndroidSdkVersion != null)
+      'minAndroidSdkVersion': minAndroidSdkVersion!,
+    if (permissions != null) 'permissions': permissions!,
+    if (productId != null) 'productId': productId!,
+    if (productPricing != null) 'productPricing': productPricing!,
+    if (recentChanges != null) 'recentChanges': recentChanges!,
+    if (requiresContainerApp != null)
+      'requiresContainerApp': requiresContainerApp!,
+    if (screenshotUrls != null) 'screenshotUrls': screenshotUrls!,
+    if (signingCertificate != null) 'signingCertificate': signingCertificate!,
+    if (smallIconUrl != null) 'smallIconUrl': smallIconUrl!,
+    if (title != null) 'title': title!,
+    if (workDetailsUrl != null) 'workDetailsUrl': workDetailsUrl!,
+  };
 }
 
 /// An event generated when a product's approval status is changed.
@@ -6598,21 +6762,18 @@ class ProductApprovalEvent {
   /// This field will always be present.
   core.String? productId;
 
-  ProductApprovalEvent({
-    this.approved,
-    this.productId,
-  });
+  ProductApprovalEvent({this.approved, this.productId});
 
   ProductApprovalEvent.fromJson(core.Map json_)
-      : this(
-          approved: json_['approved'] as core.String?,
-          productId: json_['productId'] as core.String?,
-        );
+    : this(
+        approved: json_['approved'] as core.String?,
+        productId: json_['productId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approved != null) 'approved': approved!,
-        if (productId != null) 'productId': productId!,
-      };
+    if (approved != null) 'approved': approved!,
+    if (productId != null) 'productId': productId!,
+  };
 }
 
 /// An event generated whenever a product's availability changes.
@@ -6634,22 +6795,18 @@ class ProductAvailabilityChangeEvent {
   /// This field will always be present.
   core.String? productId;
 
-  ProductAvailabilityChangeEvent({
-    this.availabilityStatus,
-    this.productId,
-  });
+  ProductAvailabilityChangeEvent({this.availabilityStatus, this.productId});
 
   ProductAvailabilityChangeEvent.fromJson(core.Map json_)
-      : this(
-          availabilityStatus: json_['availabilityStatus'] as core.String?,
-          productId: json_['productId'] as core.String?,
-        );
+    : this(
+        availabilityStatus: json_['availabilityStatus'] as core.String?,
+        productId: json_['productId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availabilityStatus != null)
-          'availabilityStatus': availabilityStatus!,
-        if (productId != null) 'productId': productId!,
-      };
+    if (availabilityStatus != null) 'availabilityStatus': availabilityStatus!,
+    if (productId != null) 'productId': productId!,
+  };
 }
 
 /// A product permissions resource represents the set of permissions required by
@@ -6669,21 +6826,18 @@ class ProductPermission {
   /// - "accepted" : The permission has been accepted by the enterprise.
   core.String? state;
 
-  ProductPermission({
-    this.permissionId,
-    this.state,
-  });
+  ProductPermission({this.permissionId, this.state});
 
   ProductPermission.fromJson(core.Map json_)
-      : this(
-          permissionId: json_['permissionId'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        permissionId: json_['permissionId'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissionId != null) 'permissionId': permissionId!,
-        if (state != null) 'state': state!,
-      };
+    if (permissionId != null) 'permissionId': permissionId!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Information about the permissions required by a specific app and whether
@@ -6696,24 +6850,25 @@ class ProductPermissions {
   /// "app:com.google.android.gm".
   core.String? productId;
 
-  ProductPermissions({
-    this.permission,
-    this.productId,
-  });
+  ProductPermissions({this.permission, this.productId});
 
   ProductPermissions.fromJson(core.Map json_)
-      : this(
-          permission: (json_['permission'] as core.List?)
-              ?.map((value) => ProductPermission.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          productId: json_['productId'] as core.String?,
-        );
+    : this(
+        permission:
+            (json_['permission'] as core.List?)
+                ?.map(
+                  (value) => ProductPermission.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        productId: json_['productId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permission != null) 'permission': permission!,
-        if (productId != null) 'productId': productId!,
-      };
+    if (permission != null) 'permission': permission!,
+    if (productId != null) 'productId': productId!,
+  };
 }
 
 /// The policy for a product.
@@ -6756,7 +6911,7 @@ class ProductPolicy {
   /// Authenticator app should already be the default handler for the
   /// authentication url on the device.
   core.List<EnterpriseAuthenticationAppLinkConfig>?
-      enterpriseAuthenticationAppLinkConfigs;
+  enterpriseAuthenticationAppLinkConfigs;
 
   /// The managed configuration for the product.
   ManagedConfiguration? managedConfiguration;
@@ -6789,43 +6944,53 @@ class ProductPolicy {
   });
 
   ProductPolicy.fromJson(core.Map json_)
-      : this(
-          autoInstallPolicy: json_.containsKey('autoInstallPolicy')
-              ? AutoInstallPolicy.fromJson(json_['autoInstallPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          autoUpdateMode: json_['autoUpdateMode'] as core.String?,
-          enterpriseAuthenticationAppLinkConfigs:
-              (json_['enterpriseAuthenticationAppLinkConfigs'] as core.List?)
-                  ?.map((value) =>
-                      EnterpriseAuthenticationAppLinkConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          managedConfiguration: json_.containsKey('managedConfiguration')
-              ? ManagedConfiguration.fromJson(json_['managedConfiguration']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          productId: json_['productId'] as core.String?,
-          trackIds: (json_['trackIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          tracks: (json_['tracks'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        autoInstallPolicy:
+            json_.containsKey('autoInstallPolicy')
+                ? AutoInstallPolicy.fromJson(
+                  json_['autoInstallPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        autoUpdateMode: json_['autoUpdateMode'] as core.String?,
+        enterpriseAuthenticationAppLinkConfigs:
+            (json_['enterpriseAuthenticationAppLinkConfigs'] as core.List?)
+                ?.map(
+                  (value) => EnterpriseAuthenticationAppLinkConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        managedConfiguration:
+            json_.containsKey('managedConfiguration')
+                ? ManagedConfiguration.fromJson(
+                  json_['managedConfiguration']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        productId: json_['productId'] as core.String?,
+        trackIds:
+            (json_['trackIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        tracks:
+            (json_['tracks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoInstallPolicy != null) 'autoInstallPolicy': autoInstallPolicy!,
-        if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode!,
-        if (enterpriseAuthenticationAppLinkConfigs != null)
-          'enterpriseAuthenticationAppLinkConfigs':
-              enterpriseAuthenticationAppLinkConfigs!,
-        if (managedConfiguration != null)
-          'managedConfiguration': managedConfiguration!,
-        if (productId != null) 'productId': productId!,
-        if (trackIds != null) 'trackIds': trackIds!,
-        if (tracks != null) 'tracks': tracks!,
-      };
+    if (autoInstallPolicy != null) 'autoInstallPolicy': autoInstallPolicy!,
+    if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode!,
+    if (enterpriseAuthenticationAppLinkConfigs != null)
+      'enterpriseAuthenticationAppLinkConfigs':
+          enterpriseAuthenticationAppLinkConfigs!,
+    if (managedConfiguration != null)
+      'managedConfiguration': managedConfiguration!,
+    if (productId != null) 'productId': productId!,
+    if (trackIds != null) 'trackIds': trackIds!,
+    if (tracks != null) 'tracks': tracks!,
+  };
 }
 
 /// A set of products.
@@ -6866,30 +7031,30 @@ class ProductSet {
   /// result in an error.
   core.List<ProductVisibility>? productVisibility;
 
-  ProductSet({
-    this.productId,
-    this.productSetBehavior,
-    this.productVisibility,
-  });
+  ProductSet({this.productId, this.productSetBehavior, this.productVisibility});
 
   ProductSet.fromJson(core.Map json_)
-      : this(
-          productId: (json_['productId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          productSetBehavior: json_['productSetBehavior'] as core.String?,
-          productVisibility: (json_['productVisibility'] as core.List?)
-              ?.map((value) => ProductVisibility.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        productId:
+            (json_['productId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        productSetBehavior: json_['productSetBehavior'] as core.String?,
+        productVisibility:
+            (json_['productVisibility'] as core.List?)
+                ?.map(
+                  (value) => ProductVisibility.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (productId != null) 'productId': productId!,
-        if (productSetBehavior != null)
-          'productSetBehavior': productSetBehavior!,
-        if (productVisibility != null) 'productVisibility': productVisibility!,
-      };
+    if (productId != null) 'productId': productId!,
+    if (productSetBehavior != null) 'productSetBehavior': productSetBehavior!,
+    if (productVisibility != null) 'productVisibility': productVisibility!,
+  };
 }
 
 class ProductSigningCertificate {
@@ -6908,17 +7073,17 @@ class ProductSigningCertificate {
   });
 
   ProductSigningCertificate.fromJson(core.Map json_)
-      : this(
-          certificateHashSha1: json_['certificateHashSha1'] as core.String?,
-          certificateHashSha256: json_['certificateHashSha256'] as core.String?,
-        );
+    : this(
+        certificateHashSha1: json_['certificateHashSha1'] as core.String?,
+        certificateHashSha256: json_['certificateHashSha256'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificateHashSha1 != null)
-          'certificateHashSha1': certificateHashSha1!,
-        if (certificateHashSha256 != null)
-          'certificateHashSha256': certificateHashSha256!,
-      };
+    if (certificateHashSha1 != null)
+      'certificateHashSha1': certificateHashSha1!,
+    if (certificateHashSha256 != null)
+      'certificateHashSha256': certificateHashSha256!,
+  };
 }
 
 /// A product to be made visible to a user.
@@ -6937,28 +7102,26 @@ class ProductVisibility {
   /// Deprecated.
   core.List<core.String>? tracks;
 
-  ProductVisibility({
-    this.productId,
-    this.trackIds,
-    this.tracks,
-  });
+  ProductVisibility({this.productId, this.trackIds, this.tracks});
 
   ProductVisibility.fromJson(core.Map json_)
-      : this(
-          productId: json_['productId'] as core.String?,
-          trackIds: (json_['trackIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          tracks: (json_['tracks'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        productId: json_['productId'] as core.String?,
+        trackIds:
+            (json_['trackIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        tracks:
+            (json_['tracks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (productId != null) 'productId': productId!,
-        if (trackIds != null) 'trackIds': trackIds!,
-        if (tracks != null) 'tracks': tracks!,
-      };
+    if (productId != null) 'productId': productId!,
+    if (trackIds != null) 'trackIds': trackIds!,
+    if (tracks != null) 'tracks': tracks!,
+  };
 }
 
 class ProductsApproveRequest {
@@ -6987,25 +7150,25 @@ class ProductsApproveRequest {
   /// are automatically approved.
   core.String? approvedPermissions;
 
-  ProductsApproveRequest({
-    this.approvalUrlInfo,
-    this.approvedPermissions,
-  });
+  ProductsApproveRequest({this.approvalUrlInfo, this.approvedPermissions});
 
   ProductsApproveRequest.fromJson(core.Map json_)
-      : this(
-          approvalUrlInfo: json_.containsKey('approvalUrlInfo')
-              ? ApprovalUrlInfo.fromJson(json_['approvalUrlInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          approvedPermissions: json_['approvedPermissions'] as core.String?,
-        );
+    : this(
+        approvalUrlInfo:
+            json_.containsKey('approvalUrlInfo')
+                ? ApprovalUrlInfo.fromJson(
+                  json_['approvalUrlInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        approvedPermissions: json_['approvedPermissions'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvalUrlInfo != null) 'approvalUrlInfo': approvalUrlInfo!,
-        if (approvedPermissions != null)
-          'approvedPermissions': approvedPermissions!,
-      };
+    if (approvalUrlInfo != null) 'approvalUrlInfo': approvalUrlInfo!,
+    if (approvedPermissions != null)
+      'approvedPermissions': approvedPermissions!,
+  };
 }
 
 class ProductsGenerateApprovalUrlResponse {
@@ -7021,18 +7184,14 @@ class ProductsGenerateApprovalUrlResponse {
   /// not yet been accepted.
   core.String? url;
 
-  ProductsGenerateApprovalUrlResponse({
-    this.url,
-  });
+  ProductsGenerateApprovalUrlResponse({this.url});
 
   ProductsGenerateApprovalUrlResponse.fromJson(core.Map json_)
-      : this(
-          url: json_['url'] as core.String?,
-        );
+    : this(url: json_['url'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (url != null) 'url': url!,
-      };
+    if (url != null) 'url': url!,
+  };
 }
 
 class ProductsListResponse {
@@ -7046,33 +7205,38 @@ class ProductsListResponse {
   /// Pagination information for token pagination.
   TokenPagination? tokenPagination;
 
-  ProductsListResponse({
-    this.pageInfo,
-    this.product,
-    this.tokenPagination,
-  });
+  ProductsListResponse({this.pageInfo, this.product, this.tokenPagination});
 
   ProductsListResponse.fromJson(core.Map json_)
-      : this(
-          pageInfo: json_.containsKey('pageInfo')
-              ? PageInfo.fromJson(
-                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          product: (json_['product'] as core.List?)
-              ?.map((value) => Product.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          tokenPagination: json_.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(json_['tokenPagination']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        pageInfo:
+            json_.containsKey('pageInfo')
+                ? PageInfo.fromJson(
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        product:
+            (json_['product'] as core.List?)
+                ?.map(
+                  (value) => Product.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        tokenPagination:
+            json_.containsKey('tokenPagination')
+                ? TokenPagination.fromJson(
+                  json_['tokenPagination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pageInfo != null) 'pageInfo': pageInfo!,
-        if (product != null) 'product': product!,
-        if (tokenPagination != null) 'tokenPagination': tokenPagination!,
-      };
+    if (pageInfo != null) 'pageInfo': pageInfo!,
+    if (product != null) 'product': product!,
+    if (tokenPagination != null) 'tokenPagination': tokenPagination!,
+  };
 }
 
 /// A service account identity, including the name and credentials that can be
@@ -7086,24 +7250,23 @@ class ServiceAccount {
   /// Assigned by the server.
   core.String? name;
 
-  ServiceAccount({
-    this.key,
-    this.name,
-  });
+  ServiceAccount({this.key, this.name});
 
   ServiceAccount.fromJson(core.Map json_)
-      : this(
-          key: json_.containsKey('key')
-              ? ServiceAccountKey.fromJson(
-                  json_['key'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        key:
+            json_.containsKey('key')
+                ? ServiceAccountKey.fromJson(
+                  json_['key'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (name != null) 'name': name!,
-      };
+    if (key != null) 'key': key!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// *Deprecated:* New integrations cannot use this method and can refer to our
@@ -7137,48 +7300,45 @@ class ServiceAccountKey {
   /// http://tools.ietf.org/html/rfc4648#section-4.
   core.String? type;
 
-  ServiceAccountKey({
-    this.data,
-    this.id,
-    this.publicData,
-    this.type,
-  });
+  ServiceAccountKey({this.data, this.id, this.publicData, this.type});
 
   ServiceAccountKey.fromJson(core.Map json_)
-      : this(
-          data: json_['data'] as core.String?,
-          id: json_['id'] as core.String?,
-          publicData: json_['publicData'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        data: json_['data'] as core.String?,
+        id: json_['id'] as core.String?,
+        publicData: json_['publicData'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (id != null) 'id': id!,
-        if (publicData != null) 'publicData': publicData!,
-        if (type != null) 'type': type!,
-      };
+    if (data != null) 'data': data!,
+    if (id != null) 'id': id!,
+    if (publicData != null) 'publicData': publicData!,
+    if (type != null) 'type': type!,
+  };
 }
 
 class ServiceAccountKeysListResponse {
   /// The service account credentials.
   core.List<ServiceAccountKey>? serviceAccountKey;
 
-  ServiceAccountKeysListResponse({
-    this.serviceAccountKey,
-  });
+  ServiceAccountKeysListResponse({this.serviceAccountKey});
 
   ServiceAccountKeysListResponse.fromJson(core.Map json_)
-      : this(
-          serviceAccountKey: (json_['serviceAccountKey'] as core.List?)
-              ?.map((value) => ServiceAccountKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        serviceAccountKey:
+            (json_['serviceAccountKey'] as core.List?)
+                ?.map(
+                  (value) => ServiceAccountKey.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (serviceAccountKey != null) 'serviceAccountKey': serviceAccountKey!,
-      };
+    if (serviceAccountKey != null) 'serviceAccountKey': serviceAccountKey!,
+  };
 }
 
 /// A resource returned by the GenerateSignupUrl API, which contains the Signup
@@ -7196,24 +7356,20 @@ class SignupInfo {
   /// The page pointed to cannot be rendered in an iframe.
   core.String? url;
 
-  SignupInfo({
-    this.completionToken,
-    this.kind,
-    this.url,
-  });
+  SignupInfo({this.completionToken, this.kind, this.url});
 
   SignupInfo.fromJson(core.Map json_)
-      : this(
-          completionToken: json_['completionToken'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        completionToken: json_['completionToken'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (completionToken != null) 'completionToken': completionToken!,
-        if (kind != null) 'kind': kind!,
-        if (url != null) 'url': url!,
-      };
+    if (completionToken != null) 'completionToken': completionToken!,
+    if (kind != null) 'kind': kind!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Definition of a managed Google Play store cluster, a list of products
@@ -7246,32 +7402,32 @@ class StoreCluster {
   /// There should not be duplicates within a cluster.
   core.List<core.String>? productId;
 
-  StoreCluster({
-    this.id,
-    this.name,
-    this.orderInPage,
-    this.productId,
-  });
+  StoreCluster({this.id, this.name, this.orderInPage, this.productId});
 
   StoreCluster.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          name: (json_['name'] as core.List?)
-              ?.map((value) => LocalizedText.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          orderInPage: json_['orderInPage'] as core.String?,
-          productId: (json_['productId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        name:
+            (json_['name'] as core.List?)
+                ?.map(
+                  (value) => LocalizedText.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        orderInPage: json_['orderInPage'] as core.String?,
+        productId:
+            (json_['productId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (orderInPage != null) 'orderInPage': orderInPage!,
-        if (productId != null) 'productId': productId!,
-      };
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (orderInPage != null) 'orderInPage': orderInPage!,
+    if (productId != null) 'productId': productId!,
+  };
 }
 
 /// General setting for the managed Google Play store layout, currently only
@@ -7295,63 +7451,64 @@ class StoreLayout {
   /// - "custom"
   core.String? storeLayoutType;
 
-  StoreLayout({
-    this.homepageId,
-    this.storeLayoutType,
-  });
+  StoreLayout({this.homepageId, this.storeLayoutType});
 
   StoreLayout.fromJson(core.Map json_)
-      : this(
-          homepageId: json_['homepageId'] as core.String?,
-          storeLayoutType: json_['storeLayoutType'] as core.String?,
-        );
+    : this(
+        homepageId: json_['homepageId'] as core.String?,
+        storeLayoutType: json_['storeLayoutType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (homepageId != null) 'homepageId': homepageId!,
-        if (storeLayoutType != null) 'storeLayoutType': storeLayoutType!,
-      };
+    if (homepageId != null) 'homepageId': homepageId!,
+    if (storeLayoutType != null) 'storeLayoutType': storeLayoutType!,
+  };
 }
 
 class StoreLayoutClustersListResponse {
   /// A store cluster of an enterprise.
   core.List<StoreCluster>? cluster;
 
-  StoreLayoutClustersListResponse({
-    this.cluster,
-  });
+  StoreLayoutClustersListResponse({this.cluster});
 
   StoreLayoutClustersListResponse.fromJson(core.Map json_)
-      : this(
-          cluster: (json_['cluster'] as core.List?)
-              ?.map((value) => StoreCluster.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        cluster:
+            (json_['cluster'] as core.List?)
+                ?.map(
+                  (value) => StoreCluster.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cluster != null) 'cluster': cluster!,
-      };
+    if (cluster != null) 'cluster': cluster!,
+  };
 }
 
 class StoreLayoutPagesListResponse {
   /// A store page of an enterprise.
   core.List<StorePage>? page;
 
-  StoreLayoutPagesListResponse({
-    this.page,
-  });
+  StoreLayoutPagesListResponse({this.page});
 
   StoreLayoutPagesListResponse.fromJson(core.Map json_)
-      : this(
-          page: (json_['page'] as core.List?)
-              ?.map((value) => StorePage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        page:
+            (json_['page'] as core.List?)
+                ?.map(
+                  (value) => StorePage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (page != null) 'page': page!,
-      };
+    if (page != null) 'page': page!,
+  };
 }
 
 /// Definition of a managed Google Play store page, made of a localized name and
@@ -7378,29 +7535,30 @@ class StorePage {
   /// entry.
   core.List<LocalizedText>? name;
 
-  StorePage({
-    this.id,
-    this.link,
-    this.name,
-  });
+  StorePage({this.id, this.link, this.name});
 
   StorePage.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          link: (json_['link'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: (json_['name'] as core.List?)
-              ?.map((value) => LocalizedText.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        link:
+            (json_['link'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name:
+            (json_['name'] as core.List?)
+                ?.map(
+                  (value) => LocalizedText.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (link != null) 'link': link!,
-        if (name != null) 'name': name!,
-      };
+    if (id != null) 'id': id!,
+    if (link != null) 'link': link!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Pagination information returned by a List operation when token pagination is
@@ -7428,21 +7586,18 @@ class TrackInfo {
   /// console page that displays the track information.
   core.String? trackId;
 
-  TrackInfo({
-    this.trackAlias,
-    this.trackId,
-  });
+  TrackInfo({this.trackAlias, this.trackId});
 
   TrackInfo.fromJson(core.Map json_)
-      : this(
-          trackAlias: json_['trackAlias'] as core.String?,
-          trackId: json_['trackId'] as core.String?,
-        );
+    : this(
+        trackAlias: json_['trackAlias'] as core.String?,
+        trackId: json_['trackId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (trackAlias != null) 'trackAlias': trackAlias!,
-        if (trackId != null) 'trackId': trackId!,
-      };
+    if (trackAlias != null) 'trackAlias': trackAlias!,
+    if (trackId != null) 'trackId': trackId!,
+  };
 }
 
 /// A Users resource represents an account associated with an enterprise.
@@ -7512,44 +7667,46 @@ class User {
   });
 
   User.fromJson(core.Map json_)
-      : this(
-          accountIdentifier: json_['accountIdentifier'] as core.String?,
-          accountType: json_['accountType'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          id: json_['id'] as core.String?,
-          managementType: json_['managementType'] as core.String?,
-          primaryEmail: json_['primaryEmail'] as core.String?,
-        );
+    : this(
+        accountIdentifier: json_['accountIdentifier'] as core.String?,
+        accountType: json_['accountType'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+        managementType: json_['managementType'] as core.String?,
+        primaryEmail: json_['primaryEmail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountIdentifier != null) 'accountIdentifier': accountIdentifier!,
-        if (accountType != null) 'accountType': accountType!,
-        if (displayName != null) 'displayName': displayName!,
-        if (id != null) 'id': id!,
-        if (managementType != null) 'managementType': managementType!,
-        if (primaryEmail != null) 'primaryEmail': primaryEmail!,
-      };
+    if (accountIdentifier != null) 'accountIdentifier': accountIdentifier!,
+    if (accountType != null) 'accountType': accountType!,
+    if (displayName != null) 'displayName': displayName!,
+    if (id != null) 'id': id!,
+    if (managementType != null) 'managementType': managementType!,
+    if (primaryEmail != null) 'primaryEmail': primaryEmail!,
+  };
 }
 
 class UsersListResponse {
   /// A user of an enterprise.
   core.List<User>? user;
 
-  UsersListResponse({
-    this.user,
-  });
+  UsersListResponse({this.user});
 
   UsersListResponse.fromJson(core.Map json_)
-      : this(
-          user: (json_['user'] as core.List?)
-              ?.map((value) =>
-                  User.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        user:
+            (json_['user'] as core.List?)
+                ?.map(
+                  (value) => User.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (user != null) 'user': user!,
-      };
+    if (user != null) 'user': user!,
+  };
 }
 
 /// A variable set is a key-value pair of EMM-provided placeholders and its
@@ -7565,21 +7722,18 @@ class VariableSet {
   /// The value of the placeholder, specific to the user.
   core.String? userValue;
 
-  VariableSet({
-    this.placeholder,
-    this.userValue,
-  });
+  VariableSet({this.placeholder, this.userValue});
 
   VariableSet.fromJson(core.Map json_)
-      : this(
-          placeholder: json_['placeholder'] as core.String?,
-          userValue: json_['userValue'] as core.String?,
-        );
+    : this(
+        placeholder: json_['placeholder'] as core.String?,
+        userValue: json_['userValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (placeholder != null) 'placeholder': placeholder!,
-        if (userValue != null) 'userValue': userValue!,
-      };
+    if (placeholder != null) 'placeholder': placeholder!,
+    if (userValue != null) 'userValue': userValue!,
+  };
 }
 
 /// A WebApps resource represents a web app created for an enterprise.
@@ -7652,28 +7806,32 @@ class WebApp {
   });
 
   WebApp.fromJson(core.Map json_)
-      : this(
-          displayMode: json_['displayMode'] as core.String?,
-          icons: (json_['icons'] as core.List?)
-              ?.map((value) => WebAppIcon.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          isPublished: json_['isPublished'] as core.bool?,
-          startUrl: json_['startUrl'] as core.String?,
-          title: json_['title'] as core.String?,
-          versionCode: json_['versionCode'] as core.String?,
-          webAppId: json_['webAppId'] as core.String?,
-        );
+    : this(
+        displayMode: json_['displayMode'] as core.String?,
+        icons:
+            (json_['icons'] as core.List?)
+                ?.map(
+                  (value) => WebAppIcon.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        isPublished: json_['isPublished'] as core.bool?,
+        startUrl: json_['startUrl'] as core.String?,
+        title: json_['title'] as core.String?,
+        versionCode: json_['versionCode'] as core.String?,
+        webAppId: json_['webAppId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayMode != null) 'displayMode': displayMode!,
-        if (icons != null) 'icons': icons!,
-        if (isPublished != null) 'isPublished': isPublished!,
-        if (startUrl != null) 'startUrl': startUrl!,
-        if (title != null) 'title': title!,
-        if (versionCode != null) 'versionCode': versionCode!,
-        if (webAppId != null) 'webAppId': webAppId!,
-      };
+    if (displayMode != null) 'displayMode': displayMode!,
+    if (icons != null) 'icons': icons!,
+    if (isPublished != null) 'isPublished': isPublished!,
+    if (startUrl != null) 'startUrl': startUrl!,
+    if (title != null) 'title': title!,
+    if (versionCode != null) 'versionCode': versionCode!,
+    if (webAppId != null) 'webAppId': webAppId!,
+  };
 }
 
 /// Icon for a web app.
@@ -7683,19 +7841,21 @@ class WebAppsListResponse {
   /// The manifest describing a web app.
   core.List<WebApp>? webApp;
 
-  WebAppsListResponse({
-    this.webApp,
-  });
+  WebAppsListResponse({this.webApp});
 
   WebAppsListResponse.fromJson(core.Map json_)
-      : this(
-          webApp: (json_['webApp'] as core.List?)
-              ?.map((value) =>
-                  WebApp.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        webApp:
+            (json_['webApp'] as core.List?)
+                ?.map(
+                  (value) => WebApp.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (webApp != null) 'webApp': webApp!,
-      };
+    if (webApp != null) 'webApp': webApp!,
+  };
 }

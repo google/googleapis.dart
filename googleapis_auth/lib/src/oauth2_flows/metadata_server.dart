@@ -60,29 +60,24 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
 
   @override
   Future<AccessCredentials> run() async {
-    final results = await Future.wait(
-      [
-        _client.requestJson(
-          http.Request('GET', _tokenUrl)..headers.addAll(_headers),
-          'Failed to obtain access credentials.',
-        ),
-        _getScopes()
-      ],
-    );
+    final results = await Future.wait([
+      _client.requestJson(
+        http.Request('GET', _tokenUrl)..headers.addAll(_headers),
+        'Failed to obtain access credentials.',
+      ),
+      _getScopes(),
+    ]);
     final json = results.first as Map<String, dynamic>;
     final accessToken = parseAccessToken(json);
 
-    final scopes = (results.last as String)
-        .replaceAll('\n', ' ')
-        .split(' ')
-        .where((part) => part.isNotEmpty)
-        .toList();
+    final scopes =
+        (results.last as String)
+            .replaceAll('\n', ' ')
+            .split(' ')
+            .where((part) => part.isNotEmpty)
+            .toList();
 
-    return AccessCredentials(
-      accessToken,
-      null,
-      scopes,
-    );
+    return AccessCredentials(accessToken, null, scopes);
   }
 
   Future<String> _getScopes() async {

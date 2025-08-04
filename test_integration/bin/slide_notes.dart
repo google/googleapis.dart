@@ -33,8 +33,9 @@ Future<void> main(List<String> args) async {
         print('*** Retry #$count - waiting $duration');
         return duration;
       },
-      when: (response) =>
-          response.statusCode == 503 || response.statusCode == 429,
+      when:
+          (response) =>
+              response.statusCode == 503 || response.statusCode == 429,
     ),
     (client) async {
       final api = SlidesApi(client).presentations;
@@ -96,9 +97,10 @@ Stream<String> _yieldSlideHtml(
 }) async* {
   var count = 0;
 
-  final titleElement = title == null
-      ? ''
-      : '''
+  final titleElement =
+      title == null
+          ? ''
+          : '''
 <title>${const HtmlEscape(HtmlEscapeMode.element).convert(title)}</title>
   ''';
 
@@ -226,12 +228,13 @@ extension on Page {
 
 extension on TextContent {
   Iterable<String> get lines sync* {
-    final value = textElements!
-        .map((e) => e.textRun?.content)
-        .whereType<String>()
-        .where((element) => element.isNotEmpty)
-        .join()
-        .trim();
+    final value =
+        textElements!
+            .map((e) => e.textRun?.content)
+            .whereType<String>()
+            .where((element) => element.isNotEmpty)
+            .join()
+            .trim();
 
     if (value.isEmpty) {
       return;
@@ -240,12 +243,13 @@ extension on TextContent {
     // `value` may contain sections split by new-lines. Turn these into
     // individual returned "lines" removing extra whitespace and
     // blank lines
-    yield* LineSplitter.split(value)
-        .map((line) => line.trim())
-        .where((line) => line.isNotEmpty);
+    yield* LineSplitter.split(
+      value,
+    ).map((line) => line.trim()).where((line) => line.isNotEmpty);
   }
 }
 
-final _parser = ArgParser()
-  ..addOption('last-slide')
-  ..addOption('html', help: 'HTML file to write content.');
+final _parser =
+    ArgParser()
+      ..addOption('last-slide')
+      ..addOption('html', help: 'HTML file to write content.');

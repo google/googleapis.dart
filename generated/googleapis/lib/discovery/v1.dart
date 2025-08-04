@@ -42,11 +42,16 @@ class DiscoveryApi {
 
   ApisResource get apis => ApisResource(_requester);
 
-  DiscoveryApi(http.Client client,
-      {core.String rootUrl = 'https://www.googleapis.com/',
-      core.String servicePath = 'discovery/v1/'})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DiscoveryApi(
+    http.Client client, {
+    core.String rootUrl = 'https://www.googleapis.com/',
+    core.String servicePath = 'discovery/v1/',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ApisResource {
@@ -81,7 +86,8 @@ class ApisResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apis/' +
+    final url_ =
+        'apis/' +
         commons.escapeVariable('$api') +
         '/' +
         commons.escapeVariable('$version') +
@@ -93,7 +99,8 @@ class ApisResource {
       queryParams: queryParams_,
     );
     return RestDescription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieve the list of APIs supported at this endpoint.
@@ -133,7 +140,8 @@ class ApisResource {
       queryParams: queryParams_,
     );
     return DirectoryList.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -145,21 +153,18 @@ class DirectoryListItemsIcons {
   /// The URL of the 32x32 icon.
   core.String? x32;
 
-  DirectoryListItemsIcons({
-    this.x16,
-    this.x32,
-  });
+  DirectoryListItemsIcons({this.x16, this.x32});
 
   DirectoryListItemsIcons.fromJson(core.Map json_)
-      : this(
-          x16: json_['x16'] as core.String?,
-          x32: json_['x32'] as core.String?,
-        );
+    : this(
+        x16: json_['x16'] as core.String?,
+        x32: json_['x32'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (x16 != null) 'x16': x16!,
-        if (x32 != null) 'x32': x32!,
-      };
+    if (x16 != null) 'x16': x16!,
+    if (x32 != null) 'x32': x32!,
+  };
 }
 
 class DirectoryListItems {
@@ -215,40 +220,43 @@ class DirectoryListItems {
   });
 
   DirectoryListItems.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          discoveryLink: json_['discoveryLink'] as core.String?,
-          discoveryRestUrl: json_['discoveryRestUrl'] as core.String?,
-          documentationLink: json_['documentationLink'] as core.String?,
-          icons: json_.containsKey('icons')
-              ? DirectoryListItemsIcons.fromJson(
-                  json_['icons'] as core.Map<core.String, core.dynamic>)
-              : null,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          labels: (json_['labels'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          preferred: json_['preferred'] as core.bool?,
-          title: json_['title'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        discoveryLink: json_['discoveryLink'] as core.String?,
+        discoveryRestUrl: json_['discoveryRestUrl'] as core.String?,
+        documentationLink: json_['documentationLink'] as core.String?,
+        icons:
+            json_.containsKey('icons')
+                ? DirectoryListItemsIcons.fromJson(
+                  json_['icons'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        labels:
+            (json_['labels'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        preferred: json_['preferred'] as core.bool?,
+        title: json_['title'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (discoveryLink != null) 'discoveryLink': discoveryLink!,
-        if (discoveryRestUrl != null) 'discoveryRestUrl': discoveryRestUrl!,
-        if (documentationLink != null) 'documentationLink': documentationLink!,
-        if (icons != null) 'icons': icons!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (preferred != null) 'preferred': preferred!,
-        if (title != null) 'title': title!,
-        if (version != null) 'version': version!,
-      };
+    if (description != null) 'description': description!,
+    if (discoveryLink != null) 'discoveryLink': discoveryLink!,
+    if (discoveryRestUrl != null) 'discoveryRestUrl': discoveryRestUrl!,
+    if (documentationLink != null) 'documentationLink': documentationLink!,
+    if (icons != null) 'icons': icons!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (preferred != null) 'preferred': preferred!,
+    if (title != null) 'title': title!,
+    if (version != null) 'version': version!,
+  };
 }
 
 class DirectoryList {
@@ -263,27 +271,27 @@ class DirectoryList {
   /// The kind for this response.
   core.String? kind;
 
-  DirectoryList({
-    this.discoveryVersion,
-    this.items,
-    this.kind,
-  });
+  DirectoryList({this.discoveryVersion, this.items, this.kind});
 
   DirectoryList.fromJson(core.Map json_)
-      : this(
-          discoveryVersion: json_['discoveryVersion'] as core.String?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) => DirectoryListItems.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        discoveryVersion: json_['discoveryVersion'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => DirectoryListItems.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (discoveryVersion != null) 'discoveryVersion': discoveryVersion!,
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (discoveryVersion != null) 'discoveryVersion': discoveryVersion!,
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// Additional information about this property.
@@ -291,41 +299,37 @@ class JsonSchemaAnnotations {
   /// A list of methods for which this property is required on requests.
   core.List<core.String>? required;
 
-  JsonSchemaAnnotations({
-    this.required,
-  });
+  JsonSchemaAnnotations({this.required});
 
   JsonSchemaAnnotations.fromJson(core.Map json_)
-      : this(
-          required: (json_['required'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        required:
+            (json_['required'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (required != null) 'required': required!,
-      };
+    if (required != null) 'required': required!,
+  };
 }
 
 class JsonSchemaVariantMap {
   core.String? P_ref;
   core.String? typeValue;
 
-  JsonSchemaVariantMap({
-    this.P_ref,
-    this.typeValue,
-  });
+  JsonSchemaVariantMap({this.P_ref, this.typeValue});
 
   JsonSchemaVariantMap.fromJson(core.Map json_)
-      : this(
-          P_ref: json_[r'$ref'] as core.String?,
-          typeValue: json_['type_value'] as core.String?,
-        );
+    : this(
+        P_ref: json_[r'$ref'] as core.String?,
+        typeValue: json_['type_value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (P_ref != null) r'$ref': P_ref!,
-        if (typeValue != null) 'type_value': typeValue!,
-      };
+    if (P_ref != null) r'$ref': P_ref!,
+    if (typeValue != null) 'type_value': typeValue!,
+  };
 }
 
 /// In a variant data type, the value of one property is used to determine how
@@ -339,24 +343,25 @@ class JsonSchemaVariant {
   /// The map of discriminant value to schema to use for parsing..
   core.List<JsonSchemaVariantMap>? map;
 
-  JsonSchemaVariant({
-    this.discriminant,
-    this.map,
-  });
+  JsonSchemaVariant({this.discriminant, this.map});
 
   JsonSchemaVariant.fromJson(core.Map json_)
-      : this(
-          discriminant: json_['discriminant'] as core.String?,
-          map: (json_['map'] as core.List?)
-              ?.map((value) => JsonSchemaVariantMap.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        discriminant: json_['discriminant'] as core.String?,
+        map:
+            (json_['map'] as core.List?)
+                ?.map(
+                  (value) => JsonSchemaVariantMap.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (discriminant != null) 'discriminant': discriminant!,
-        if (map != null) 'map': map!,
-      };
+    if (discriminant != null) 'discriminant': discriminant!,
+    if (map != null) 'map': map!,
+  };
 }
 
 class JsonSchema {
@@ -476,81 +481,94 @@ class JsonSchema {
   });
 
   JsonSchema.fromJson(core.Map json_)
-      : this(
-          P_ref: json_[r'$ref'] as core.String?,
-          additionalProperties: json_.containsKey('additionalProperties')
-              ? JsonSchema.fromJson(json_['additionalProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          annotations: json_.containsKey('annotations')
-              ? JsonSchemaAnnotations.fromJson(
-                  json_['annotations'] as core.Map<core.String, core.dynamic>)
-              : null,
-          default_: json_['default'] as core.String?,
-          deprecated: json_['deprecated'] as core.bool?,
-          description: json_['description'] as core.String?,
-          enum_: (json_['enum'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          enumDeprecated: (json_['enumDeprecated'] as core.List?)
-              ?.map((value) => value as core.bool)
-              .toList(),
-          enumDescriptions: (json_['enumDescriptions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          format: json_['format'] as core.String?,
-          id: json_['id'] as core.String?,
-          items: json_.containsKey('items')
-              ? JsonSchema.fromJson(
-                  json_['items'] as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_['location'] as core.String?,
-          maximum: json_['maximum'] as core.String?,
-          minimum: json_['minimum'] as core.String?,
-          pattern: json_['pattern'] as core.String?,
-          properties:
-              (json_['properties'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
+    : this(
+        P_ref: json_[r'$ref'] as core.String?,
+        additionalProperties:
+            json_.containsKey('additionalProperties')
+                ? JsonSchema.fromJson(
+                  json_['additionalProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        annotations:
+            json_.containsKey('annotations')
+                ? JsonSchemaAnnotations.fromJson(
+                  json_['annotations'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        default_: json_['default'] as core.String?,
+        deprecated: json_['deprecated'] as core.bool?,
+        description: json_['description'] as core.String?,
+        enum_:
+            (json_['enum'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        enumDeprecated:
+            (json_['enumDeprecated'] as core.List?)
+                ?.map((value) => value as core.bool)
+                .toList(),
+        enumDescriptions:
+            (json_['enumDescriptions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        format: json_['format'] as core.String?,
+        id: json_['id'] as core.String?,
+        items:
+            json_.containsKey('items')
+                ? JsonSchema.fromJson(
+                  json_['items'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location: json_['location'] as core.String?,
+        maximum: json_['maximum'] as core.String?,
+        minimum: json_['minimum'] as core.String?,
+        pattern: json_['pattern'] as core.String?,
+        properties:
+            (json_['properties'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                JsonSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          readOnly: json_['readOnly'] as core.bool?,
-          repeated: json_['repeated'] as core.bool?,
-          required: json_['required'] as core.bool?,
-          type: json_['type'] as core.String?,
-          variant: json_.containsKey('variant')
-              ? JsonSchemaVariant.fromJson(
-                  json_['variant'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        readOnly: json_['readOnly'] as core.bool?,
+        repeated: json_['repeated'] as core.bool?,
+        required: json_['required'] as core.bool?,
+        type: json_['type'] as core.String?,
+        variant:
+            json_.containsKey('variant')
+                ? JsonSchemaVariant.fromJson(
+                  json_['variant'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (P_ref != null) r'$ref': P_ref!,
-        if (additionalProperties != null)
-          'additionalProperties': additionalProperties!,
-        if (annotations != null) 'annotations': annotations!,
-        if (default_ != null) 'default': default_!,
-        if (deprecated != null) 'deprecated': deprecated!,
-        if (description != null) 'description': description!,
-        if (enum_ != null) 'enum': enum_!,
-        if (enumDeprecated != null) 'enumDeprecated': enumDeprecated!,
-        if (enumDescriptions != null) 'enumDescriptions': enumDescriptions!,
-        if (format != null) 'format': format!,
-        if (id != null) 'id': id!,
-        if (items != null) 'items': items!,
-        if (location != null) 'location': location!,
-        if (maximum != null) 'maximum': maximum!,
-        if (minimum != null) 'minimum': minimum!,
-        if (pattern != null) 'pattern': pattern!,
-        if (properties != null) 'properties': properties!,
-        if (readOnly != null) 'readOnly': readOnly!,
-        if (repeated != null) 'repeated': repeated!,
-        if (required != null) 'required': required!,
-        if (type != null) 'type': type!,
-        if (variant != null) 'variant': variant!,
-      };
+    if (P_ref != null) r'$ref': P_ref!,
+    if (additionalProperties != null)
+      'additionalProperties': additionalProperties!,
+    if (annotations != null) 'annotations': annotations!,
+    if (default_ != null) 'default': default_!,
+    if (deprecated != null) 'deprecated': deprecated!,
+    if (description != null) 'description': description!,
+    if (enum_ != null) 'enum': enum_!,
+    if (enumDeprecated != null) 'enumDeprecated': enumDeprecated!,
+    if (enumDescriptions != null) 'enumDescriptions': enumDescriptions!,
+    if (format != null) 'format': format!,
+    if (id != null) 'id': id!,
+    if (items != null) 'items': items!,
+    if (location != null) 'location': location!,
+    if (maximum != null) 'maximum': maximum!,
+    if (minimum != null) 'minimum': minimum!,
+    if (pattern != null) 'pattern': pattern!,
+    if (properties != null) 'properties': properties!,
+    if (readOnly != null) 'readOnly': readOnly!,
+    if (repeated != null) 'repeated': repeated!,
+    if (required != null) 'required': required!,
+    if (type != null) 'type': type!,
+    if (variant != null) 'variant': variant!,
+  };
 }
 
 /// The scope value.
@@ -558,18 +576,14 @@ class RestDescriptionAuthOauth2ScopesValue {
   /// Description of scope.
   core.String? description;
 
-  RestDescriptionAuthOauth2ScopesValue({
-    this.description,
-  });
+  RestDescriptionAuthOauth2ScopesValue({this.description});
 
   RestDescriptionAuthOauth2ScopesValue.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-        );
+    : this(description: json_['description'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-      };
+    if (description != null) 'description': description!,
+  };
 }
 
 /// OAuth 2.0 authentication information.
@@ -577,25 +591,23 @@ class RestDescriptionAuthOauth2 {
   /// Available OAuth 2.0 scopes.
   core.Map<core.String, RestDescriptionAuthOauth2ScopesValue>? scopes;
 
-  RestDescriptionAuthOauth2({
-    this.scopes,
-  });
+  RestDescriptionAuthOauth2({this.scopes});
 
   RestDescriptionAuthOauth2.fromJson(core.Map json_)
-      : this(
-          scopes:
-              (json_['scopes'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              RestDescriptionAuthOauth2ScopesValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        scopes: (json_['scopes'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            RestDescriptionAuthOauth2ScopesValue.fromJson(
+              value as core.Map<core.String, core.dynamic>,
             ),
           ),
-        );
+        ),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (scopes != null) 'scopes': scopes!,
-      };
+    if (scopes != null) 'scopes': scopes!,
+  };
 }
 
 /// Authentication information.
@@ -603,21 +615,21 @@ class RestDescriptionAuth {
   /// OAuth 2.0 authentication information.
   RestDescriptionAuthOauth2? oauth2;
 
-  RestDescriptionAuth({
-    this.oauth2,
-  });
+  RestDescriptionAuth({this.oauth2});
 
   RestDescriptionAuth.fromJson(core.Map json_)
-      : this(
-          oauth2: json_.containsKey('oauth2')
-              ? RestDescriptionAuthOauth2.fromJson(
-                  json_['oauth2'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        oauth2:
+            json_.containsKey('oauth2')
+                ? RestDescriptionAuthOauth2.fromJson(
+                  json_['oauth2'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (oauth2 != null) 'oauth2': oauth2!,
-      };
+    if (oauth2 != null) 'oauth2': oauth2!,
+  };
 }
 
 /// A single endpoint object
@@ -642,19 +654,19 @@ class RestDescriptionEndpoints {
   });
 
   RestDescriptionEndpoints.fromJson(core.Map json_)
-      : this(
-          deprecated: json_['deprecated'] as core.bool?,
-          description: json_['description'] as core.String?,
-          endpointUrl: json_['endpointUrl'] as core.String?,
-          location: json_['location'] as core.String?,
-        );
+    : this(
+        deprecated: json_['deprecated'] as core.bool?,
+        description: json_['description'] as core.String?,
+        endpointUrl: json_['endpointUrl'] as core.String?,
+        location: json_['location'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deprecated != null) 'deprecated': deprecated!,
-        if (description != null) 'description': description!,
-        if (endpointUrl != null) 'endpointUrl': endpointUrl!,
-        if (location != null) 'location': location!,
-      };
+    if (deprecated != null) 'deprecated': deprecated!,
+    if (description != null) 'description': description!,
+    if (endpointUrl != null) 'endpointUrl': endpointUrl!,
+    if (location != null) 'location': location!,
+  };
 }
 
 /// Links to 16x16 and 32x32 icons representing the API.
@@ -665,21 +677,18 @@ class RestDescriptionIcons {
   /// The URL of the 32x32 icon.
   core.String? x32;
 
-  RestDescriptionIcons({
-    this.x16,
-    this.x32,
-  });
+  RestDescriptionIcons({this.x16, this.x32});
 
   RestDescriptionIcons.fromJson(core.Map json_)
-      : this(
-          x16: json_['x16'] as core.String?,
-          x32: json_['x32'] as core.String?,
-        );
+    : this(
+        x16: json_['x16'] as core.String?,
+        x32: json_['x32'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (x16 != null) 'x16': x16!,
-        if (x32 != null) 'x32': x32!,
-      };
+    if (x16 != null) 'x16': x16!,
+    if (x32 != null) 'x32': x32!,
+  };
 }
 
 class RestDescription {
@@ -827,114 +836,130 @@ class RestDescription {
   });
 
   RestDescription.fromJson(core.Map json_)
-      : this(
-          auth: json_.containsKey('auth')
-              ? RestDescriptionAuth.fromJson(
-                  json_['auth'] as core.Map<core.String, core.dynamic>)
-              : null,
-          basePath: json_['basePath'] as core.String?,
-          baseUrl: json_['baseUrl'] as core.String?,
-          batchPath: json_['batchPath'] as core.String?,
-          canonicalName: json_['canonicalName'] as core.String?,
-          description: json_['description'] as core.String?,
-          discoveryVersion: json_['discoveryVersion'] as core.String?,
-          documentationLink: json_['documentationLink'] as core.String?,
-          endpoints: (json_['endpoints'] as core.List?)
-              ?.map((value) => RestDescriptionEndpoints.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          exponentialBackoffDefault:
-              json_['exponentialBackoffDefault'] as core.bool?,
-          features: (json_['features'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          icons: json_.containsKey('icons')
-              ? RestDescriptionIcons.fromJson(
-                  json_['icons'] as core.Map<core.String, core.dynamic>)
-              : null,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          labels: (json_['labels'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          methods:
-              (json_['methods'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              RestMethod.fromJson(value as core.Map<core.String, core.dynamic>),
+    : this(
+        auth:
+            json_.containsKey('auth')
+                ? RestDescriptionAuth.fromJson(
+                  json_['auth'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        basePath: json_['basePath'] as core.String?,
+        baseUrl: json_['baseUrl'] as core.String?,
+        batchPath: json_['batchPath'] as core.String?,
+        canonicalName: json_['canonicalName'] as core.String?,
+        description: json_['description'] as core.String?,
+        discoveryVersion: json_['discoveryVersion'] as core.String?,
+        documentationLink: json_['documentationLink'] as core.String?,
+        endpoints:
+            (json_['endpoints'] as core.List?)
+                ?.map(
+                  (value) => RestDescriptionEndpoints.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        exponentialBackoffDefault:
+            json_['exponentialBackoffDefault'] as core.bool?,
+        features:
+            (json_['features'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        icons:
+            json_.containsKey('icons')
+                ? RestDescriptionIcons.fromJson(
+                  json_['icons'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        labels:
+            (json_['labels'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        methods: (json_['methods'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                RestMethod.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          name: json_['name'] as core.String?,
-          ownerDomain: json_['ownerDomain'] as core.String?,
-          ownerName: json_['ownerName'] as core.String?,
-          packagePath: json_['packagePath'] as core.String?,
-          parameters:
-              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
+        name: json_['name'] as core.String?,
+        ownerDomain: json_['ownerDomain'] as core.String?,
+        ownerName: json_['ownerName'] as core.String?,
+        packagePath: json_['packagePath'] as core.String?,
+        parameters:
+            (json_['parameters'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                JsonSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          protocol: json_['protocol'] as core.String?,
-          resources:
-              (json_['resources'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              RestResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        protocol: json_['protocol'] as core.String?,
+        resources: (json_['resources'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                RestResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          revision: json_['revision'] as core.String?,
-          rootUrl: json_['rootUrl'] as core.String?,
-          schemas:
-              (json_['schemas'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
+        revision: json_['revision'] as core.String?,
+        rootUrl: json_['rootUrl'] as core.String?,
+        schemas: (json_['schemas'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                JsonSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          servicePath: json_['servicePath'] as core.String?,
-          title: json_['title'] as core.String?,
-          version: json_['version'] as core.String?,
-          versionModule: json_['version_module'] as core.bool?,
-        );
+        servicePath: json_['servicePath'] as core.String?,
+        title: json_['title'] as core.String?,
+        version: json_['version'] as core.String?,
+        versionModule: json_['version_module'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auth != null) 'auth': auth!,
-        if (basePath != null) 'basePath': basePath!,
-        if (baseUrl != null) 'baseUrl': baseUrl!,
-        if (batchPath != null) 'batchPath': batchPath!,
-        if (canonicalName != null) 'canonicalName': canonicalName!,
-        if (description != null) 'description': description!,
-        if (discoveryVersion != null) 'discoveryVersion': discoveryVersion!,
-        if (documentationLink != null) 'documentationLink': documentationLink!,
-        if (endpoints != null) 'endpoints': endpoints!,
-        if (etag != null) 'etag': etag!,
-        if (exponentialBackoffDefault != null)
-          'exponentialBackoffDefault': exponentialBackoffDefault!,
-        if (features != null) 'features': features!,
-        if (icons != null) 'icons': icons!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (labels != null) 'labels': labels!,
-        if (methods != null) 'methods': methods!,
-        if (name != null) 'name': name!,
-        if (ownerDomain != null) 'ownerDomain': ownerDomain!,
-        if (ownerName != null) 'ownerName': ownerName!,
-        if (packagePath != null) 'packagePath': packagePath!,
-        if (parameters != null) 'parameters': parameters!,
-        if (protocol != null) 'protocol': protocol!,
-        if (resources != null) 'resources': resources!,
-        if (revision != null) 'revision': revision!,
-        if (rootUrl != null) 'rootUrl': rootUrl!,
-        if (schemas != null) 'schemas': schemas!,
-        if (servicePath != null) 'servicePath': servicePath!,
-        if (title != null) 'title': title!,
-        if (version != null) 'version': version!,
-        if (versionModule != null) 'version_module': versionModule!,
-      };
+    if (auth != null) 'auth': auth!,
+    if (basePath != null) 'basePath': basePath!,
+    if (baseUrl != null) 'baseUrl': baseUrl!,
+    if (batchPath != null) 'batchPath': batchPath!,
+    if (canonicalName != null) 'canonicalName': canonicalName!,
+    if (description != null) 'description': description!,
+    if (discoveryVersion != null) 'discoveryVersion': discoveryVersion!,
+    if (documentationLink != null) 'documentationLink': documentationLink!,
+    if (endpoints != null) 'endpoints': endpoints!,
+    if (etag != null) 'etag': etag!,
+    if (exponentialBackoffDefault != null)
+      'exponentialBackoffDefault': exponentialBackoffDefault!,
+    if (features != null) 'features': features!,
+    if (icons != null) 'icons': icons!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (labels != null) 'labels': labels!,
+    if (methods != null) 'methods': methods!,
+    if (name != null) 'name': name!,
+    if (ownerDomain != null) 'ownerDomain': ownerDomain!,
+    if (ownerName != null) 'ownerName': ownerName!,
+    if (packagePath != null) 'packagePath': packagePath!,
+    if (parameters != null) 'parameters': parameters!,
+    if (protocol != null) 'protocol': protocol!,
+    if (resources != null) 'resources': resources!,
+    if (revision != null) 'revision': revision!,
+    if (rootUrl != null) 'rootUrl': rootUrl!,
+    if (schemas != null) 'schemas': schemas!,
+    if (servicePath != null) 'servicePath': servicePath!,
+    if (title != null) 'title': title!,
+    if (version != null) 'version': version!,
+    if (versionModule != null) 'version_module': versionModule!,
+  };
 }
 
 /// Supports the Resumable Media Upload protocol.
@@ -947,21 +972,18 @@ class RestMethodMediaUploadProtocolsResumable {
   /// Should be used in conjunction with the basePath property at the api-level.
   core.String? path;
 
-  RestMethodMediaUploadProtocolsResumable({
-    this.multipart,
-    this.path,
-  });
+  RestMethodMediaUploadProtocolsResumable({this.multipart, this.path});
 
   RestMethodMediaUploadProtocolsResumable.fromJson(core.Map json_)
-      : this(
-          multipart: json_['multipart'] as core.bool?,
-          path: json_['path'] as core.String?,
-        );
+    : this(
+        multipart: json_['multipart'] as core.bool?,
+        path: json_['path'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (multipart != null) 'multipart': multipart!,
-        if (path != null) 'path': path!,
-      };
+    if (multipart != null) 'multipart': multipart!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// Supports uploading as a single HTTP request.
@@ -974,21 +996,18 @@ class RestMethodMediaUploadProtocolsSimple {
   /// Should be used in conjunction with the basePath property at the api-level.
   core.String? path;
 
-  RestMethodMediaUploadProtocolsSimple({
-    this.multipart,
-    this.path,
-  });
+  RestMethodMediaUploadProtocolsSimple({this.multipart, this.path});
 
   RestMethodMediaUploadProtocolsSimple.fromJson(core.Map json_)
-      : this(
-          multipart: json_['multipart'] as core.bool?,
-          path: json_['path'] as core.String?,
-        );
+    : this(
+        multipart: json_['multipart'] as core.bool?,
+        path: json_['path'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (multipart != null) 'multipart': multipart!,
-        if (path != null) 'path': path!,
-      };
+    if (multipart != null) 'multipart': multipart!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// Supported upload protocols.
@@ -999,27 +1018,28 @@ class RestMethodMediaUploadProtocols {
   /// Supports uploading as a single HTTP request.
   RestMethodMediaUploadProtocolsSimple? simple;
 
-  RestMethodMediaUploadProtocols({
-    this.resumable,
-    this.simple,
-  });
+  RestMethodMediaUploadProtocols({this.resumable, this.simple});
 
   RestMethodMediaUploadProtocols.fromJson(core.Map json_)
-      : this(
-          resumable: json_.containsKey('resumable')
-              ? RestMethodMediaUploadProtocolsResumable.fromJson(
-                  json_['resumable'] as core.Map<core.String, core.dynamic>)
-              : null,
-          simple: json_.containsKey('simple')
-              ? RestMethodMediaUploadProtocolsSimple.fromJson(
-                  json_['simple'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        resumable:
+            json_.containsKey('resumable')
+                ? RestMethodMediaUploadProtocolsResumable.fromJson(
+                  json_['resumable'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        simple:
+            json_.containsKey('simple')
+                ? RestMethodMediaUploadProtocolsSimple.fromJson(
+                  json_['simple'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resumable != null) 'resumable': resumable!,
-        if (simple != null) 'simple': simple!,
-      };
+    if (resumable != null) 'resumable': resumable!,
+    if (simple != null) 'simple': simple!,
+  };
 }
 
 /// Media upload parameters.
@@ -1033,29 +1053,28 @@ class RestMethodMediaUpload {
   /// Supported upload protocols.
   RestMethodMediaUploadProtocols? protocols;
 
-  RestMethodMediaUpload({
-    this.accept,
-    this.maxSize,
-    this.protocols,
-  });
+  RestMethodMediaUpload({this.accept, this.maxSize, this.protocols});
 
   RestMethodMediaUpload.fromJson(core.Map json_)
-      : this(
-          accept: (json_['accept'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          maxSize: json_['maxSize'] as core.String?,
-          protocols: json_.containsKey('protocols')
-              ? RestMethodMediaUploadProtocols.fromJson(
-                  json_['protocols'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        accept:
+            (json_['accept'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        maxSize: json_['maxSize'] as core.String?,
+        protocols:
+            json_.containsKey('protocols')
+                ? RestMethodMediaUploadProtocols.fromJson(
+                  json_['protocols'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accept != null) 'accept': accept!,
-        if (maxSize != null) 'maxSize': maxSize!,
-        if (protocols != null) 'protocols': protocols!,
-      };
+    if (accept != null) 'accept': accept!,
+    if (maxSize != null) 'maxSize': maxSize!,
+    if (protocols != null) 'protocols': protocols!,
+  };
 }
 
 /// The schema for the request.
@@ -1066,21 +1085,18 @@ class RestMethodRequest {
   /// parameter name.
   core.String? parameterName;
 
-  RestMethodRequest({
-    this.P_ref,
-    this.parameterName,
-  });
+  RestMethodRequest({this.P_ref, this.parameterName});
 
   RestMethodRequest.fromJson(core.Map json_)
-      : this(
-          P_ref: json_[r'$ref'] as core.String?,
-          parameterName: json_['parameterName'] as core.String?,
-        );
+    : this(
+        P_ref: json_[r'$ref'] as core.String?,
+        parameterName: json_['parameterName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (P_ref != null) r'$ref': P_ref!,
-        if (parameterName != null) 'parameterName': parameterName!,
-      };
+    if (P_ref != null) r'$ref': P_ref!,
+    if (parameterName != null) 'parameterName': parameterName!,
+  };
 }
 
 /// The schema for the response.
@@ -1088,18 +1104,14 @@ class RestMethodResponse {
   /// Schema ID for the response schema.
   core.String? P_ref;
 
-  RestMethodResponse({
-    this.P_ref,
-  });
+  RestMethodResponse({this.P_ref});
 
   RestMethodResponse.fromJson(core.Map json_)
-      : this(
-          P_ref: json_[r'$ref'] as core.String?,
-        );
+    : this(P_ref: json_[r'$ref'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (P_ref != null) r'$ref': P_ref!,
-      };
+    if (P_ref != null) r'$ref': P_ref!,
+  };
 }
 
 class RestMethod {
@@ -1197,72 +1209,80 @@ class RestMethod {
   });
 
   RestMethod.fromJson(core.Map json_)
-      : this(
-          apiVersion: json_['apiVersion'] as core.String?,
-          deprecated: json_['deprecated'] as core.bool?,
-          description: json_['description'] as core.String?,
-          etagRequired: json_['etagRequired'] as core.bool?,
-          flatPath: json_['flatPath'] as core.String?,
-          httpMethod: json_['httpMethod'] as core.String?,
-          id: json_['id'] as core.String?,
-          mediaUpload: json_.containsKey('mediaUpload')
-              ? RestMethodMediaUpload.fromJson(
-                  json_['mediaUpload'] as core.Map<core.String, core.dynamic>)
-              : null,
-          parameterOrder: (json_['parameterOrder'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          parameters:
-              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
+    : this(
+        apiVersion: json_['apiVersion'] as core.String?,
+        deprecated: json_['deprecated'] as core.bool?,
+        description: json_['description'] as core.String?,
+        etagRequired: json_['etagRequired'] as core.bool?,
+        flatPath: json_['flatPath'] as core.String?,
+        httpMethod: json_['httpMethod'] as core.String?,
+        id: json_['id'] as core.String?,
+        mediaUpload:
+            json_.containsKey('mediaUpload')
+                ? RestMethodMediaUpload.fromJson(
+                  json_['mediaUpload'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        parameterOrder:
+            (json_['parameterOrder'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        parameters:
+            (json_['parameters'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                JsonSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          path: json_['path'] as core.String?,
-          request: json_.containsKey('request')
-              ? RestMethodRequest.fromJson(
-                  json_['request'] as core.Map<core.String, core.dynamic>)
-              : null,
-          response: json_.containsKey('response')
-              ? RestMethodResponse.fromJson(
-                  json_['response'] as core.Map<core.String, core.dynamic>)
-              : null,
-          scopes: (json_['scopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          supportsMediaDownload: json_['supportsMediaDownload'] as core.bool?,
-          supportsMediaUpload: json_['supportsMediaUpload'] as core.bool?,
-          supportsSubscription: json_['supportsSubscription'] as core.bool?,
-          useMediaDownloadService:
-              json_['useMediaDownloadService'] as core.bool?,
-        );
+        path: json_['path'] as core.String?,
+        request:
+            json_.containsKey('request')
+                ? RestMethodRequest.fromJson(
+                  json_['request'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        response:
+            json_.containsKey('response')
+                ? RestMethodResponse.fromJson(
+                  json_['response'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scopes:
+            (json_['scopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        supportsMediaDownload: json_['supportsMediaDownload'] as core.bool?,
+        supportsMediaUpload: json_['supportsMediaUpload'] as core.bool?,
+        supportsSubscription: json_['supportsSubscription'] as core.bool?,
+        useMediaDownloadService: json_['useMediaDownloadService'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (deprecated != null) 'deprecated': deprecated!,
-        if (description != null) 'description': description!,
-        if (etagRequired != null) 'etagRequired': etagRequired!,
-        if (flatPath != null) 'flatPath': flatPath!,
-        if (httpMethod != null) 'httpMethod': httpMethod!,
-        if (id != null) 'id': id!,
-        if (mediaUpload != null) 'mediaUpload': mediaUpload!,
-        if (parameterOrder != null) 'parameterOrder': parameterOrder!,
-        if (parameters != null) 'parameters': parameters!,
-        if (path != null) 'path': path!,
-        if (request != null) 'request': request!,
-        if (response != null) 'response': response!,
-        if (scopes != null) 'scopes': scopes!,
-        if (supportsMediaDownload != null)
-          'supportsMediaDownload': supportsMediaDownload!,
-        if (supportsMediaUpload != null)
-          'supportsMediaUpload': supportsMediaUpload!,
-        if (supportsSubscription != null)
-          'supportsSubscription': supportsSubscription!,
-        if (useMediaDownloadService != null)
-          'useMediaDownloadService': useMediaDownloadService!,
-      };
+    if (apiVersion != null) 'apiVersion': apiVersion!,
+    if (deprecated != null) 'deprecated': deprecated!,
+    if (description != null) 'description': description!,
+    if (etagRequired != null) 'etagRequired': etagRequired!,
+    if (flatPath != null) 'flatPath': flatPath!,
+    if (httpMethod != null) 'httpMethod': httpMethod!,
+    if (id != null) 'id': id!,
+    if (mediaUpload != null) 'mediaUpload': mediaUpload!,
+    if (parameterOrder != null) 'parameterOrder': parameterOrder!,
+    if (parameters != null) 'parameters': parameters!,
+    if (path != null) 'path': path!,
+    if (request != null) 'request': request!,
+    if (response != null) 'response': response!,
+    if (scopes != null) 'scopes': scopes!,
+    if (supportsMediaDownload != null)
+      'supportsMediaDownload': supportsMediaDownload!,
+    if (supportsMediaUpload != null)
+      'supportsMediaUpload': supportsMediaUpload!,
+    if (supportsSubscription != null)
+      'supportsSubscription': supportsSubscription!,
+    if (useMediaDownloadService != null)
+      'useMediaDownloadService': useMediaDownloadService!,
+  };
 }
 
 class RestResource {
@@ -1275,35 +1295,34 @@ class RestResource {
   /// Sub-resources on this resource.
   core.Map<core.String, RestResource>? resources;
 
-  RestResource({
-    this.deprecated,
-    this.methods,
-    this.resources,
-  });
+  RestResource({this.deprecated, this.methods, this.resources});
 
   RestResource.fromJson(core.Map json_)
-      : this(
-          deprecated: json_['deprecated'] as core.bool?,
-          methods:
-              (json_['methods'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              RestMethod.fromJson(value as core.Map<core.String, core.dynamic>),
+    : this(
+        deprecated: json_['deprecated'] as core.bool?,
+        methods: (json_['methods'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                RestMethod.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          resources:
-              (json_['resources'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              RestResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        resources: (json_['resources'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                RestResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deprecated != null) 'deprecated': deprecated!,
-        if (methods != null) 'methods': methods!,
-        if (resources != null) 'resources': resources!,
-      };
+    if (deprecated != null) 'deprecated': deprecated!,
+    if (methods != null) 'methods': methods!,
+    if (resources != null) 'resources': resources!,
+  };
 }

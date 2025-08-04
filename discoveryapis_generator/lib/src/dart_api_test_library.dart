@@ -112,13 +112,14 @@ class DartApiTestLibrary extends TestHelper {
       "import 'package:test/test.dart' as unittest;",
     ]..sort();
 
-    final optionalSkip = skip
-        ? '''
+    final optionalSkip =
+        skip
+            ? '''
 \n@unittest.Skip()
 library;
 
 '''
-        : '';
+            : '';
 
     return """
 ${ignoreForFileComments(_testIgnores)}
@@ -208,7 +209,11 @@ class ResourceTest extends TestHelper {
   final Identifier? nameInParent;
 
   ResourceTest(
-      this.apiTestLibrary, this.resource, this.parent, this.nameInParent) {
+    this.apiTestLibrary,
+    this.resource,
+    this.parent,
+    this.nameInParent,
+  ) {
     apiLibrary = apiTestLibrary.apiLibrary;
   }
 
@@ -224,18 +229,25 @@ class ResourceTest extends TestHelper {
     final sb = StringBuffer();
 
     final rootPath = StringPart(
-        apiLibrary.imports, Uri.parse(apiLibrary.apiClass.rootUrl!).path);
+      apiLibrary.imports,
+      Uri.parse(apiLibrary.apiClass.rootUrl!).path,
+    );
 
-    final basePath =
-        StringPart(apiLibrary.imports, apiLibrary.apiClass.servicePath);
+    final basePath = StringPart(
+      apiLibrary.imports,
+      apiLibrary.apiClass.servicePath,
+    );
 
     withTestGroup(2, sb, 'resource-${resource.className}', () {
       for (var method in resource.methods) {
         withTest(4, sb, 'method--${method.name.name}', () {
           void registerRequestHandlerMock(
-              Map<MethodParameter, String> paramValues) {
-            sb.writeln('      mock.register(unittest.expectAsync2('
-                '(http.BaseRequest req, json) {');
+            Map<MethodParameter, String> paramValues,
+          ) {
+            sb.writeln(
+              '      mock.register(unittest.expectAsync2('
+              '(http.BaseRequest req, json) {',
+            );
             if (method.requestParameter != null) {
               final t =
                   apiTestLibrary.schemaTests[method.requestParameter!.type]!;
@@ -260,23 +272,31 @@ class ResourceTest extends TestHelper {
             sb.writeln(test.queryValidationStatements(8));
             sb.writeln();
             sb.writeln('        final h = {');
-            sb.writeln('          '
-                "'content-type' : 'application/json; charset=utf-8',");
+            sb.writeln(
+              '          '
+              "'content-type' : 'application/json; charset=utf-8',",
+            );
             sb.writeln('        };');
             if (method.returnType == null) {
               sb.writeln("        final resp = '';");
             } else {
               final t = apiTestLibrary.schemaTests[method.returnType];
               if (method.enableDataWrapper) {
-                sb.writeln('        final resp = '
-                    'convert.json.encode({\'data\': ${t!.newSchemaExpr}});');
+                sb.writeln(
+                  '        final resp = '
+                  'convert.json.encode({\'data\': ${t!.newSchemaExpr}});',
+                );
               } else {
-                sb.writeln('        final resp = '
-                    'convert.json.encode(${t!.newSchemaExpr});');
+                sb.writeln(
+                  '        final resp = '
+                  'convert.json.encode(${t!.newSchemaExpr});',
+                );
               }
             }
-            sb.writeln('        return async.Future.value('
-                'stringResponse(200, h, resp));');
+            sb.writeln(
+              '        return async.Future.value('
+              'stringResponse(200, h, resp));',
+            );
             sb.writeln('      }), true);');
           }
 
@@ -325,8 +345,10 @@ class ResourceTest extends TestHelper {
           }
 
           if (method.requestParameter != null) {
-            addArg(method.requestParameter!,
-                paramValues[method.requestParameter!]!);
+            addArg(
+              method.requestParameter!,
+              paramValues[method.requestParameter!]!,
+            );
           }
           for (var p in method.parameters) {
             addArg(p, paramValues[p]!);
@@ -370,8 +392,13 @@ class MethodArgsTest extends TestHelper {
   final DartResourceMethod method;
   final Map<MethodParameter, String> parameterValues;
 
-  MethodArgsTest(this.uriExpr, this.rootUrl, this.basePath, this.method,
-      this.parameterValues);
+  MethodArgsTest(
+    this.uriExpr,
+    this.rootUrl,
+    this.basePath,
+    this.method,
+    this.parameterValues,
+  );
 
   String uriValidationStatements(int indentationLevel) {
     final sb = StringBuffer();
@@ -392,7 +419,8 @@ class MethodArgsTest extends TestHelper {
     // First part absolute/relative is handled specially.
     if (firstPart is StringPart && firstPart.staticString!.startsWith('/')) {
       parts.add(
-          StringPart(firstPart.imports, firstPart.staticString!.substring(1)));
+        StringPart(firstPart.imports, firstPart.staticString!.substring(1)),
+      );
       parts.addAll(method.urlPattern.parts.skip(1));
     } else if (firstPart is StringPart) {
       parts.add(basePath);
@@ -406,9 +434,12 @@ class MethodArgsTest extends TestHelper {
         final str = part.staticString!;
         // NOTE: Sometimes there are empty strings, we do not assert for them.
         if (str.isNotEmpty) {
-          ln(expectEqual(
+          ln(
+            expectEqual(
               'path.substring(pathOffset, pathOffset + ${str.length})',
-              escapeDartString(str)));
+              escapeDartString(str),
+            ),
+          );
           ln('pathOffset += ${str.length};');
         }
       } else if (part is VariableExpression) {
@@ -420,15 +451,21 @@ class MethodArgsTest extends TestHelper {
             );
           }
           final stringPart = nextPart;
-          ln('index = path.indexOf('
-              '${escapeDartString(stringPart.staticString!)}, pathOffset);');
+          ln(
+            'index = path.indexOf('
+            '${escapeDartString(stringPart.staticString!)}, pathOffset);',
+          );
           ln(expectIsTrue('index >= 0'));
-          ln('subPart = core.Uri.decodeQueryComponent'
-              '(path.substring(pathOffset, index));');
+          ln(
+            'subPart = core.Uri.decodeQueryComponent'
+            '(path.substring(pathOffset, index));',
+          );
           ln('pathOffset = index;');
         } else {
-          ln('subPart = core.Uri.decodeQueryComponent'
-              '(path.substring(pathOffset));');
+          ln(
+            'subPart = core.Uri.decodeQueryComponent'
+            '(path.substring(pathOffset));',
+          );
           ln('pathOffset = path.length;');
         }
         final name = parameterValues[_findMethodParameter(part.templateVar!)];
@@ -440,15 +477,19 @@ class MethodArgsTest extends TestHelper {
           );
         }
         final name = parameterValues[_findMethodParameter(part.templateVar!)];
-        ln("var parts = path.substring(pathOffset).split('/')"
-            '.map(core.Uri.decodeQueryComponent).where((p) => p.length > 0)'
-            '.toList();');
+        ln(
+          "var parts = path.substring(pathOffset).split('/')"
+          '.map(core.Uri.decodeQueryComponent).where((p) => p.length > 0)'
+          '.toList();',
+        );
         ln(expectEqual('parts', name));
       } else {
         // This is probably pub sub with the broken usage of the reserved
         // variable expansions
-        ln('// NOTE: We cannot test reserved expansions due to the inability to'
-            ' reverse the operation;');
+        ln(
+          '// NOTE: We cannot test reserved expansions due to the inability to'
+          ' reverse the operation;',
+        );
         break;
       }
     }
@@ -465,14 +506,18 @@ class MethodArgsTest extends TestHelper {
     ln('final query = $uriExpr.query;');
     ln('var queryOffset = 0;');
     ln('final queryMap = <core.String, core.List<core.String>>{};');
-    ln('void addQueryParam(core.String n, core.String v) => '
-        'queryMap.putIfAbsent(n, () => []).add(v);');
+    ln(
+      'void addQueryParam(core.String n, core.String v) => '
+      'queryMap.putIfAbsent(n, () => []).add(v);',
+    );
     ln(parseBoolPlaceholder);
     ln('if (query.isNotEmpty) {');
     ln("  for (var part in query.split('&')) {");
     ln("    final keyValue = part.split('=');");
-    ln('    addQueryParam(core.Uri.decodeQueryComponent(keyValue[0]), '
-        'core.Uri.decodeQueryComponent(keyValue[1]),);');
+    ln(
+      '    addQueryParam(core.Uri.decodeQueryComponent(keyValue[0]), '
+      'core.Uri.decodeQueryComponent(keyValue[1]),);',
+    );
     ln('  }');
     ln('}');
 
@@ -497,8 +542,9 @@ core.bool parseBool(n) {
         } else if (p.type is UnnamedArrayType) {
           final innerType = (p.type as UnnamedArrayType).innerType;
           if (innerType is IntegerType || innerType is StringIntegerType) {
-            ln(expectEqual(
-                '$queryMapValue.map(core.int.parse).toList()', name));
+            ln(
+              expectEqual('$queryMapValue.map(core.int.parse).toList()', name),
+            );
           } else if (innerType is StringType) {
             ln(expectEqual(queryMapValue, name));
           } else if (innerType is BooleanType) {
@@ -533,9 +579,10 @@ core.bool parseBool(n) {
   }
 
   MethodParameter _findMethodParameter(String varname) {
-    final parameters = parameterValues.keys
-        .where((parameter) => parameter.jsonName == varname)
-        .toList();
+    final parameters =
+        parameterValues.keys
+            .where((parameter) => parameter.jsonName == varname)
+            .toList();
     if (parameters.length != 1) {
       throw ArgumentError(
         'Invalid generator. Expected exactly one parameter of name $varname',
@@ -635,10 +682,7 @@ class IntSchemaTest extends PrimitiveSchemaTest<IntegerType> {
 }
 
 class StringIntSchemaTest extends PrimitiveSchemaTest<StringIntegerType> {
-  StringIntSchemaTest(
-    super.apiTestLibrary,
-    super.schema,
-  );
+  StringIntSchemaTest(super.apiTestLibrary, super.schema);
 
   @override
   String get declaration => 'core.int';
@@ -846,9 +890,7 @@ abstract class NamedSchemaTest<T extends ComplexDartSchemaType>
       withTest(4, sb, 'to-json--from-json', () {
         sb.writeln('final o = $newSchemaExpr;');
         sb.writeln('final oJson = convert.jsonDecode(convert.jsonEncode(o));');
-        sb.writeln(
-          'final od = ${schema.apiDecode('oJson')};',
-        );
+        sb.writeln('final od = ${schema.apiDecode('oJson')};');
         sb.writeln(checkSchemaStatement('od'));
       });
     });
@@ -885,8 +927,10 @@ class ObjectSchemaTest extends NamedSchemaTest<ObjectType> {
       for (var prop in schema.properties) {
         if (!schema.isVariantDiscriminator(prop)) {
           final propertyTest = apiTestLibrary.schemaTests[prop.type]!;
-          sb.writeln('    o.${prop.name.name} = '
-              '${propertyTest.newSchemaExpr};');
+          sb.writeln(
+            '    o.${prop.name.name} = '
+            '${propertyTest.newSchemaExpr};',
+          );
         }
       }
       sb.writeln('  }');
@@ -899,20 +943,25 @@ class ObjectSchemaTest extends NamedSchemaTest<ObjectType> {
   @override
   String get checkSchemaFunction {
     final sb = StringBuffer();
-    withFunc(0, sb, 'void check${schema.className!.name}', '$declaration o',
-        () {
-      sb.writeln('  $counterName++;');
-      sb.writeln('  if ($counterName < 3) {');
-      for (var prop in schema.properties) {
-        if (!schema.isVariantDiscriminator(prop)) {
-          final propertyTest = apiTestLibrary.schemaTests[prop.type]!;
-          final name = prop.name.name;
-          sb.writeln('    ${propertyTest.checkSchemaStatement('o.$name!')}');
+    withFunc(
+      0,
+      sb,
+      'void check${schema.className!.name}',
+      '$declaration o',
+      () {
+        sb.writeln('  $counterName++;');
+        sb.writeln('  if ($counterName < 3) {');
+        for (var prop in schema.properties) {
+          if (!schema.isVariantDiscriminator(prop)) {
+            final propertyTest = apiTestLibrary.schemaTests[prop.type]!;
+            final name = prop.name.name;
+            sb.writeln('    ${propertyTest.checkSchemaStatement('o.$name!')}');
+          }
         }
-      }
-      sb.writeln('  }');
-      sb.writeln('  $counterName--;');
-    });
+        sb.writeln('  }');
+        sb.writeln('  $counterName--;');
+      },
+    );
     return '$sb';
   }
 }
@@ -940,12 +989,17 @@ ${innerTest.newSchemaExpr},
     final innerTest = apiTestLibrary.schemaTests[schema.innerType];
 
     final sb = StringBuffer();
-    withFunc(0, sb, 'void check${schema.className!.name}', '$declaration o',
-        () {
-      sb.writeln('  ${expectHasLength('o', '2')}');
-      sb.writeln('  ${innerTest!.checkSchemaStatement('o[0]')}');
-      sb.writeln('  ${innerTest.checkSchemaStatement('o[1]')}');
-    });
+    withFunc(
+      0,
+      sb,
+      'void check${schema.className!.name}',
+      '$declaration o',
+      () {
+        sb.writeln('  ${expectHasLength('o', '2')}');
+        sb.writeln('  ${innerTest!.checkSchemaStatement('o[0]')}');
+        sb.writeln('  ${innerTest.checkSchemaStatement('o[1]')}');
+      },
+    );
     return '$sb';
   }
 }
@@ -974,12 +1028,17 @@ return {
     final innerTest = apiTestLibrary.schemaTests[schema.toType];
 
     final sb = StringBuffer();
-    withFunc(0, sb, 'void check${schema.className!.name}', '$declaration o',
-        () {
-      sb.writeln('  ${expectHasLength('o', '2')}');
-      sb.writeln('  ${innerTest!.checkSchemaStatement("o['a']!")}');
-      sb.writeln('  ${innerTest.checkSchemaStatement("o['b']!")}');
-    });
+    withFunc(
+      0,
+      sb,
+      'void check${schema.className!.name}',
+      '$declaration o',
+      () {
+        sb.writeln('  ${expectHasLength('o', '2')}');
+        sb.writeln('  ${innerTest!.checkSchemaStatement("o['a']!")}');
+        sb.writeln('  ${innerTest.checkSchemaStatement("o['b']!")}');
+      },
+    );
     return '$sb';
   }
 }
@@ -988,10 +1047,7 @@ class AbstractVariantSchemaTest extends NamedSchemaTest<AbstractVariantType> {
   DartSchemaType? subSchema;
   SchemaTest? subSchemaTest;
 
-  AbstractVariantSchemaTest(
-    super.apiTestLibrary,
-    super.schema,
-  );
+  AbstractVariantSchemaTest(super.apiTestLibrary, super.schema);
 
   void _init() {
     if (subSchema == null) {
@@ -1017,10 +1073,15 @@ class AbstractVariantSchemaTest extends NamedSchemaTest<AbstractVariantType> {
     _init();
 
     final sb = StringBuffer();
-    withFunc(0, sb, 'void check${schema.className!.name}', '$declaration o',
-        () {
-      sb.writeln('  ${subSchemaTest!.checkSchemaFunction}(o);');
-    });
+    withFunc(
+      0,
+      sb,
+      'void check${schema.className!.name}',
+      '$declaration o',
+      () {
+        sb.writeln('  ${subSchemaTest!.checkSchemaFunction}(o);');
+      },
+    );
     return '$sb';
   }
 }

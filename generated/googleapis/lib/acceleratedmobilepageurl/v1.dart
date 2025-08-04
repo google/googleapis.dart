@@ -44,11 +44,16 @@ class AcceleratedmobilepageurlApi {
 
   AmpUrlsResource get ampUrls => AmpUrlsResource(_requester);
 
-  AcceleratedmobilepageurlApi(http.Client client,
-      {core.String rootUrl = 'https://acceleratedmobilepageurl.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AcceleratedmobilepageurlApi(
+    http.Client client, {
+    core.String rootUrl = 'https://acceleratedmobilepageurl.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class AmpUrlsResource {
@@ -91,7 +96,8 @@ class AmpUrlsResource {
       queryParams: queryParams_,
     );
     return BatchGetAmpUrlsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -107,24 +113,20 @@ class AmpUrl {
   /// The original non-AMP URL.
   core.String? originalUrl;
 
-  AmpUrl({
-    this.ampUrl,
-    this.cdnAmpUrl,
-    this.originalUrl,
-  });
+  AmpUrl({this.ampUrl, this.cdnAmpUrl, this.originalUrl});
 
   AmpUrl.fromJson(core.Map json_)
-      : this(
-          ampUrl: json_['ampUrl'] as core.String?,
-          cdnAmpUrl: json_['cdnAmpUrl'] as core.String?,
-          originalUrl: json_['originalUrl'] as core.String?,
-        );
+    : this(
+        ampUrl: json_['ampUrl'] as core.String?,
+        cdnAmpUrl: json_['cdnAmpUrl'] as core.String?,
+        originalUrl: json_['originalUrl'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ampUrl != null) 'ampUrl': ampUrl!,
-        if (cdnAmpUrl != null) 'cdnAmpUrl': cdnAmpUrl!,
-        if (originalUrl != null) 'originalUrl': originalUrl!,
-      };
+    if (ampUrl != null) 'ampUrl': ampUrl!,
+    if (cdnAmpUrl != null) 'cdnAmpUrl': cdnAmpUrl!,
+    if (originalUrl != null) 'originalUrl': originalUrl!,
+  };
 }
 
 /// AMP URL Error resource for a requested URL that couldn't be found.
@@ -152,24 +154,20 @@ class AmpUrlError {
   /// The original non-AMP URL.
   core.String? originalUrl;
 
-  AmpUrlError({
-    this.errorCode,
-    this.errorMessage,
-    this.originalUrl,
-  });
+  AmpUrlError({this.errorCode, this.errorMessage, this.originalUrl});
 
   AmpUrlError.fromJson(core.Map json_)
-      : this(
-          errorCode: json_['errorCode'] as core.String?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          originalUrl: json_['originalUrl'] as core.String?,
-        );
+    : this(
+        errorCode: json_['errorCode'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        originalUrl: json_['originalUrl'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (originalUrl != null) 'originalUrl': originalUrl!,
-      };
+    if (errorCode != null) 'errorCode': errorCode!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (originalUrl != null) 'originalUrl': originalUrl!,
+  };
 }
 
 /// AMP URL request for a batch of URLs.
@@ -193,23 +191,21 @@ class BatchGetAmpUrlsRequest {
   /// Limits\](/amp/cache/reference/limits)).
   core.List<core.String>? urls;
 
-  BatchGetAmpUrlsRequest({
-    this.lookupStrategy,
-    this.urls,
-  });
+  BatchGetAmpUrlsRequest({this.lookupStrategy, this.urls});
 
   BatchGetAmpUrlsRequest.fromJson(core.Map json_)
-      : this(
-          lookupStrategy: json_['lookupStrategy'] as core.String?,
-          urls: (json_['urls'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        lookupStrategy: json_['lookupStrategy'] as core.String?,
+        urls:
+            (json_['urls'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lookupStrategy != null) 'lookupStrategy': lookupStrategy!,
-        if (urls != null) 'urls': urls!,
-      };
+    if (lookupStrategy != null) 'lookupStrategy': lookupStrategy!,
+    if (urls != null) 'urls': urls!,
+  };
 }
 
 /// Batch AMP URL response.
@@ -224,25 +220,30 @@ class BatchGetAmpUrlsResponse {
   /// The errors for requested URLs that have no AMP URL.
   core.List<AmpUrlError>? urlErrors;
 
-  BatchGetAmpUrlsResponse({
-    this.ampUrls,
-    this.urlErrors,
-  });
+  BatchGetAmpUrlsResponse({this.ampUrls, this.urlErrors});
 
   BatchGetAmpUrlsResponse.fromJson(core.Map json_)
-      : this(
-          ampUrls: (json_['ampUrls'] as core.List?)
-              ?.map((value) =>
-                  AmpUrl.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          urlErrors: (json_['urlErrors'] as core.List?)
-              ?.map((value) => AmpUrlError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        ampUrls:
+            (json_['ampUrls'] as core.List?)
+                ?.map(
+                  (value) => AmpUrl.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        urlErrors:
+            (json_['urlErrors'] as core.List?)
+                ?.map(
+                  (value) => AmpUrlError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ampUrls != null) 'ampUrls': ampUrls!,
-        if (urlErrors != null) 'urlErrors': urlErrors!,
-      };
+    if (ampUrls != null) 'ampUrls': ampUrls!,
+    if (urlErrors != null) 'urlErrors': urlErrors!,
+  };
 }

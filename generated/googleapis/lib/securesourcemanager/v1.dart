@@ -59,11 +59,16 @@ class SecureSourceManagerApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  SecureSourceManagerApi(http.Client client,
-      {core.String rootUrl = 'https://securesourcemanager.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  SecureSourceManagerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://securesourcemanager.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -104,10 +109,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -177,7 +179,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -185,7 +188,7 @@ class ProjectsLocationsInstancesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsInstancesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new instance in a given project and location.
   ///
@@ -313,10 +316,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Instance> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Instance> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -439,7 +439,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return ListInstancesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -537,7 +538,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -545,7 +547,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -619,10 +621,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -658,10 +657,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -723,7 +719,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -740,7 +737,7 @@ class ProjectsLocationsRepositoriesResource {
       ProjectsLocationsRepositoriesPullRequestsResource(_requester);
 
   ProjectsLocationsRepositoriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new repository in a given project and location.
   ///
@@ -874,7 +871,8 @@ class ProjectsLocationsRepositoriesResource {
       queryParams: queryParams_,
     );
     return FetchBlobResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Fetches a tree from a repository.
@@ -934,7 +932,8 @@ class ProjectsLocationsRepositoriesResource {
       queryParams: queryParams_,
     );
     return FetchTreeResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets metadata of a repository.
@@ -956,10 +955,7 @@ class ProjectsLocationsRepositoriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Repository> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Repository> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -972,7 +968,8 @@ class ProjectsLocationsRepositoriesResource {
       queryParams: queryParams_,
     );
     return Repository.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get IAM policy for a repository.
@@ -1088,7 +1085,8 @@ class ProjectsLocationsRepositoriesResource {
       queryParams: queryParams_,
     );
     return ListRepositoriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the metadata of a repository.
@@ -1237,7 +1235,8 @@ class ProjectsLocationsRepositoriesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1245,7 +1244,7 @@ class ProjectsLocationsRepositoriesBranchRulesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesBranchRulesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// CreateBranchRule creates a branch rule in a given repository.
   ///
@@ -1352,10 +1351,7 @@ class ProjectsLocationsRepositoriesBranchRulesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BranchRule> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<BranchRule> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1368,7 +1364,8 @@ class ProjectsLocationsRepositoriesBranchRulesResource {
       queryParams: queryParams_,
     );
     return BranchRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// ListBranchRules lists branch rules in a given repository.
@@ -1413,7 +1410,8 @@ class ProjectsLocationsRepositoriesBranchRulesResource {
       queryParams: queryParams_,
     );
     return ListBranchRulesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// UpdateBranchRule updates a branch rule.
@@ -1478,7 +1476,7 @@ class ProjectsLocationsRepositoriesHooksResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesHooksResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new hook in a given repository.
   ///
@@ -1586,10 +1584,7 @@ class ProjectsLocationsRepositoriesHooksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Hook> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Hook> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1648,7 +1643,8 @@ class ProjectsLocationsRepositoriesHooksResource {
       queryParams: queryParams_,
     );
     return ListHooksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the metadata of a hook.
@@ -1710,7 +1706,7 @@ class ProjectsLocationsRepositoriesIssuesResource {
       ProjectsLocationsRepositoriesIssuesIssueCommentsResource(_requester);
 
   ProjectsLocationsRepositoriesIssuesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Closes an issue.
   ///
@@ -1858,10 +1854,7 @@ class ProjectsLocationsRepositoriesIssuesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Issue> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Issue> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1925,7 +1918,8 @@ class ProjectsLocationsRepositoriesIssuesResource {
       queryParams: queryParams_,
     );
     return ListIssuesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Opens an issue.
@@ -2026,8 +2020,8 @@ class ProjectsLocationsRepositoriesIssuesIssueCommentsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesIssuesIssueCommentsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates an issue comment.
   ///
@@ -2144,7 +2138,8 @@ class ProjectsLocationsRepositoriesIssuesIssueCommentsResource {
       queryParams: queryParams_,
     );
     return IssueComment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists comments in an issue.
@@ -2192,7 +2187,8 @@ class ProjectsLocationsRepositoriesIssuesIssueCommentsResource {
       queryParams: queryParams_,
     );
     return ListIssueCommentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an issue comment.
@@ -2251,12 +2247,13 @@ class ProjectsLocationsRepositoriesPullRequestsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResource
-      get pullRequestComments =>
-          ProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResource(
-              _requester);
+  get pullRequestComments =>
+      ProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResource(
+        _requester,
+      );
 
   ProjectsLocationsRepositoriesPullRequestsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Closes a pull request without merging.
   ///
@@ -2378,7 +2375,8 @@ class ProjectsLocationsRepositoriesPullRequestsResource {
       queryParams: queryParams_,
     );
     return PullRequest.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists pull requests in a repository.
@@ -2427,7 +2425,8 @@ class ProjectsLocationsRepositoriesPullRequestsResource {
       queryParams: queryParams_,
     );
     return ListPullRequestsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists a pull request's file diffs.
@@ -2475,7 +2474,8 @@ class ProjectsLocationsRepositoriesPullRequestsResource {
       queryParams: queryParams_,
     );
     return ListPullRequestFileDiffsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Merges a pull request.
@@ -2618,8 +2618,8 @@ class ProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Batch creates pull request comments.
   ///
@@ -2653,7 +2653,8 @@ class ProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/pullRequestComments:batchCreate';
 
@@ -2784,7 +2785,8 @@ class ProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResource {
       queryParams: queryParams_,
     );
     return PullRequestComment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists pull request comments.
@@ -2835,7 +2837,8 @@ class ProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResource {
       queryParams: queryParams_,
     );
     return ListPullRequestCommentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a pull request comment.
@@ -2963,7 +2966,8 @@ class ProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/pullRequestComments:unresolve';
 
@@ -3004,24 +3008,25 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -3043,21 +3048,23 @@ class BatchCreatePullRequestCommentsRequest {
   /// Required.
   core.List<CreatePullRequestCommentRequest>? requests;
 
-  BatchCreatePullRequestCommentsRequest({
-    this.requests,
-  });
+  BatchCreatePullRequestCommentsRequest({this.requests});
 
   BatchCreatePullRequestCommentsRequest.fromJson(core.Map json_)
-      : this(
-          requests: (json_['requests'] as core.List?)
-              ?.map((value) => CreatePullRequestCommentRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        requests:
+            (json_['requests'] as core.List?)
+                ?.map(
+                  (value) => CreatePullRequestCommentRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null) 'requests': requests!,
-      };
+    if (requests != null) 'requests': requests!,
+  };
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -3140,29 +3147,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// Branch represents a branch involved in a pull request.
@@ -3177,21 +3183,18 @@ class Branch {
   /// Output only.
   core.String? sha;
 
-  Branch({
-    this.ref,
-    this.sha,
-  });
+  Branch({this.ref, this.sha});
 
   Branch.fromJson(core.Map json_)
-      : this(
-          ref: json_['ref'] as core.String?,
-          sha: json_['sha'] as core.String?,
-        );
+    : this(
+        ref: json_['ref'] as core.String?,
+        sha: json_['sha'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ref != null) 'ref': ref!,
-        if (sha != null) 'sha': sha!,
-      };
+    if (ref != null) 'ref': ref!,
+    if (sha != null) 'sha': sha!,
+  };
 }
 
 /// Metadata of a BranchRule.
@@ -3307,58 +3310,55 @@ class BranchRule {
   });
 
   BranchRule.fromJson(core.Map json_)
-      : this(
-          allowStaleReviews: json_['allowStaleReviews'] as core.bool?,
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          disabled: json_['disabled'] as core.bool?,
-          etag: json_['etag'] as core.String?,
-          includePattern: json_['includePattern'] as core.String?,
-          minimumApprovalsCount: json_['minimumApprovalsCount'] as core.int?,
-          minimumReviewsCount: json_['minimumReviewsCount'] as core.int?,
-          name: json_['name'] as core.String?,
-          requireCommentsResolved:
-              json_['requireCommentsResolved'] as core.bool?,
-          requireLinearHistory: json_['requireLinearHistory'] as core.bool?,
-          requirePullRequest: json_['requirePullRequest'] as core.bool?,
-          requiredStatusChecks: (json_['requiredStatusChecks'] as core.List?)
-              ?.map((value) =>
-                  Check.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        allowStaleReviews: json_['allowStaleReviews'] as core.bool?,
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        etag: json_['etag'] as core.String?,
+        includePattern: json_['includePattern'] as core.String?,
+        minimumApprovalsCount: json_['minimumApprovalsCount'] as core.int?,
+        minimumReviewsCount: json_['minimumReviewsCount'] as core.int?,
+        name: json_['name'] as core.String?,
+        requireCommentsResolved: json_['requireCommentsResolved'] as core.bool?,
+        requireLinearHistory: json_['requireLinearHistory'] as core.bool?,
+        requirePullRequest: json_['requirePullRequest'] as core.bool?,
+        requiredStatusChecks:
+            (json_['requiredStatusChecks'] as core.List?)
+                ?.map(
+                  (value) => Check.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowStaleReviews != null) 'allowStaleReviews': allowStaleReviews!,
-        if (annotations != null) 'annotations': annotations!,
-        if (createTime != null) 'createTime': createTime!,
-        if (disabled != null) 'disabled': disabled!,
-        if (etag != null) 'etag': etag!,
-        if (includePattern != null) 'includePattern': includePattern!,
-        if (minimumApprovalsCount != null)
-          'minimumApprovalsCount': minimumApprovalsCount!,
-        if (minimumReviewsCount != null)
-          'minimumReviewsCount': minimumReviewsCount!,
-        if (name != null) 'name': name!,
-        if (requireCommentsResolved != null)
-          'requireCommentsResolved': requireCommentsResolved!,
-        if (requireLinearHistory != null)
-          'requireLinearHistory': requireLinearHistory!,
-        if (requirePullRequest != null)
-          'requirePullRequest': requirePullRequest!,
-        if (requiredStatusChecks != null)
-          'requiredStatusChecks': requiredStatusChecks!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (allowStaleReviews != null) 'allowStaleReviews': allowStaleReviews!,
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (disabled != null) 'disabled': disabled!,
+    if (etag != null) 'etag': etag!,
+    if (includePattern != null) 'includePattern': includePattern!,
+    if (minimumApprovalsCount != null)
+      'minimumApprovalsCount': minimumApprovalsCount!,
+    if (minimumReviewsCount != null)
+      'minimumReviewsCount': minimumReviewsCount!,
+    if (name != null) 'name': name!,
+    if (requireCommentsResolved != null)
+      'requireCommentsResolved': requireCommentsResolved!,
+    if (requireLinearHistory != null)
+      'requireLinearHistory': requireLinearHistory!,
+    if (requirePullRequest != null) 'requirePullRequest': requirePullRequest!,
+    if (requiredStatusChecks != null)
+      'requiredStatusChecks': requiredStatusChecks!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -3371,18 +3371,14 @@ class Check {
   /// Required.
   core.String? context;
 
-  Check({
-    this.context,
-  });
+  Check({this.context});
 
   Check.fromJson(core.Map json_)
-      : this(
-          context: json_['context'] as core.String?,
-        );
+    : this(context: json_['context'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (context != null) 'context': context!,
-      };
+    if (context != null) 'context': context!,
+  };
 }
 
 /// The request to close an issue.
@@ -3395,18 +3391,14 @@ class CloseIssueRequest {
   /// Optional.
   core.String? etag;
 
-  CloseIssueRequest({
-    this.etag,
-  });
+  CloseIssueRequest({this.etag});
 
   CloseIssueRequest.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-        );
+    : this(etag: json_['etag'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-      };
+    if (etag != null) 'etag': etag!,
+  };
 }
 
 /// ClosePullRequestRequest is the request to close a pull request.
@@ -3456,28 +3448,29 @@ class Code {
   });
 
   Code.fromJson(core.Map json_)
-      : this(
-          body: json_['body'] as core.String?,
-          effectiveCommitSha: json_['effectiveCommitSha'] as core.String?,
-          effectiveRootComment: json_['effectiveRootComment'] as core.String?,
-          position: json_.containsKey('position')
-              ? Position.fromJson(
-                  json_['position'] as core.Map<core.String, core.dynamic>)
-              : null,
-          reply: json_['reply'] as core.String?,
-          resolved: json_['resolved'] as core.bool?,
-        );
+    : this(
+        body: json_['body'] as core.String?,
+        effectiveCommitSha: json_['effectiveCommitSha'] as core.String?,
+        effectiveRootComment: json_['effectiveRootComment'] as core.String?,
+        position:
+            json_.containsKey('position')
+                ? Position.fromJson(
+                  json_['position'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reply: json_['reply'] as core.String?,
+        resolved: json_['resolved'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-        if (effectiveCommitSha != null)
-          'effectiveCommitSha': effectiveCommitSha!,
-        if (effectiveRootComment != null)
-          'effectiveRootComment': effectiveRootComment!,
-        if (position != null) 'position': position!,
-        if (reply != null) 'reply': reply!,
-        if (resolved != null) 'resolved': resolved!,
-      };
+    if (body != null) 'body': body!,
+    if (effectiveCommitSha != null) 'effectiveCommitSha': effectiveCommitSha!,
+    if (effectiveRootComment != null)
+      'effectiveRootComment': effectiveRootComment!,
+    if (position != null) 'position': position!,
+    if (reply != null) 'reply': reply!,
+    if (resolved != null) 'resolved': resolved!,
+  };
 }
 
 /// The general pull request comment.
@@ -3487,18 +3480,13 @@ class Comment {
   /// Required.
   core.String? body;
 
-  Comment({
-    this.body,
-  });
+  Comment({this.body});
 
-  Comment.fromJson(core.Map json_)
-      : this(
-          body: json_['body'] as core.String?,
-        );
+  Comment.fromJson(core.Map json_) : this(body: json_['body'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-      };
+    if (body != null) 'body': body!,
+  };
 }
 
 /// The request to create a pull request comment.
@@ -3516,25 +3504,24 @@ class CreatePullRequestCommentRequest {
   /// Required.
   PullRequestComment? pullRequestComment;
 
-  CreatePullRequestCommentRequest({
-    this.parent,
-    this.pullRequestComment,
-  });
+  CreatePullRequestCommentRequest({this.parent, this.pullRequestComment});
 
   CreatePullRequestCommentRequest.fromJson(core.Map json_)
-      : this(
-          parent: json_['parent'] as core.String?,
-          pullRequestComment: json_.containsKey('pullRequestComment')
-              ? PullRequestComment.fromJson(json_['pullRequestComment']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        parent: json_['parent'] as core.String?,
+        pullRequestComment:
+            json_.containsKey('pullRequestComment')
+                ? PullRequestComment.fromJson(
+                  json_['pullRequestComment']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parent != null) 'parent': parent!,
-        if (pullRequestComment != null)
-          'pullRequestComment': pullRequestComment!,
-      };
+    if (parent != null) 'parent': parent!,
+    if (pullRequestComment != null) 'pullRequestComment': pullRequestComment!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3573,21 +3560,18 @@ class FetchBlobResponse {
   /// The SHA-1 hash of the blob.
   core.String? sha;
 
-  FetchBlobResponse({
-    this.content,
-    this.sha,
-  });
+  FetchBlobResponse({this.content, this.sha});
 
   FetchBlobResponse.fromJson(core.Map json_)
-      : this(
-          content: json_['content'] as core.String?,
-          sha: json_['sha'] as core.String?,
-        );
+    : this(
+        content: json_['content'] as core.String?,
+        sha: json_['sha'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (sha != null) 'sha': sha!,
-      };
+    if (content != null) 'content': content!,
+    if (sha != null) 'sha': sha!,
+  };
 }
 
 /// Response message containing a list of TreeEntry objects.
@@ -3598,24 +3582,25 @@ class FetchTreeResponse {
   /// The list of TreeEntry objects.
   core.List<TreeEntry>? treeEntries;
 
-  FetchTreeResponse({
-    this.nextPageToken,
-    this.treeEntries,
-  });
+  FetchTreeResponse({this.nextPageToken, this.treeEntries});
 
   FetchTreeResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          treeEntries: (json_['treeEntries'] as core.List?)
-              ?.map((value) => TreeEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        treeEntries:
+            (json_['treeEntries'] as core.List?)
+                ?.map(
+                  (value) => TreeEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (treeEntries != null) 'treeEntries': treeEntries!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (treeEntries != null) 'treeEntries': treeEntries!,
+  };
 }
 
 /// Metadata of a FileDiff.
@@ -3649,27 +3634,22 @@ class FileDiff {
   /// Output only.
   core.String? sha;
 
-  FileDiff({
-    this.action,
-    this.name,
-    this.patch,
-    this.sha,
-  });
+  FileDiff({this.action, this.name, this.patch, this.sha});
 
   FileDiff.fromJson(core.Map json_)
-      : this(
-          action: json_['action'] as core.String?,
-          name: json_['name'] as core.String?,
-          patch: json_['patch'] as core.String?,
-          sha: json_['sha'] as core.String?,
-        );
+    : this(
+        action: json_['action'] as core.String?,
+        name: json_['name'] as core.String?,
+        patch: json_['patch'] as core.String?,
+        sha: json_['sha'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (name != null) 'name': name!,
-        if (patch != null) 'patch': patch!,
-        if (sha != null) 'sha': sha!,
-      };
+    if (action != null) 'action': action!,
+    if (name != null) 'name': name!,
+    if (patch != null) 'patch': patch!,
+    if (sha != null) 'sha': sha!,
+  };
 }
 
 /// Metadata of a Secure Source Manager Hook.
@@ -3735,35 +3715,38 @@ class Hook {
   });
 
   Hook.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          disabled: json_['disabled'] as core.bool?,
-          events: (json_['events'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          pushOption: json_.containsKey('pushOption')
-              ? PushOption.fromJson(
-                  json_['pushOption'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sensitiveQueryString: json_['sensitiveQueryString'] as core.String?,
-          targetUri: json_['targetUri'] as core.String?,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        events:
+            (json_['events'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        pushOption:
+            json_.containsKey('pushOption')
+                ? PushOption.fromJson(
+                  json_['pushOption'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sensitiveQueryString: json_['sensitiveQueryString'] as core.String?,
+        targetUri: json_['targetUri'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (disabled != null) 'disabled': disabled!,
-        if (events != null) 'events': events!,
-        if (name != null) 'name': name!,
-        if (pushOption != null) 'pushOption': pushOption!,
-        if (sensitiveQueryString != null)
-          'sensitiveQueryString': sensitiveQueryString!,
-        if (targetUri != null) 'targetUri': targetUri!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (disabled != null) 'disabled': disabled!,
+    if (events != null) 'events': events!,
+    if (name != null) 'name': name!,
+    if (pushOption != null) 'pushOption': pushOption!,
+    if (sensitiveQueryString != null)
+      'sensitiveQueryString': sensitiveQueryString!,
+    if (targetUri != null) 'targetUri': targetUri!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// HostConfig has different instance endpoints.
@@ -3788,27 +3771,22 @@ class HostConfig {
   /// Output only.
   core.String? html;
 
-  HostConfig({
-    this.api,
-    this.gitHttp,
-    this.gitSsh,
-    this.html,
-  });
+  HostConfig({this.api, this.gitHttp, this.gitSsh, this.html});
 
   HostConfig.fromJson(core.Map json_)
-      : this(
-          api: json_['api'] as core.String?,
-          gitHttp: json_['gitHttp'] as core.String?,
-          gitSsh: json_['gitSsh'] as core.String?,
-          html: json_['html'] as core.String?,
-        );
+    : this(
+        api: json_['api'] as core.String?,
+        gitHttp: json_['gitHttp'] as core.String?,
+        gitSsh: json_['gitSsh'] as core.String?,
+        html: json_['html'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (api != null) 'api': api!,
-        if (gitHttp != null) 'gitHttp': gitHttp!,
-        if (gitSsh != null) 'gitSsh': gitSsh!,
-        if (html != null) 'html': html!,
-      };
+    if (api != null) 'api': api!,
+    if (gitHttp != null) 'gitHttp': gitHttp!,
+    if (gitSsh != null) 'gitSsh': gitSsh!,
+    if (html != null) 'html': html!,
+  };
 }
 
 /// Repository initialization configuration.
@@ -3960,21 +3938,22 @@ class InitialConfig {
   });
 
   InitialConfig.fromJson(core.Map json_)
-      : this(
-          defaultBranch: json_['defaultBranch'] as core.String?,
-          gitignores: (json_['gitignores'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          license: json_['license'] as core.String?,
-          readme: json_['readme'] as core.String?,
-        );
+    : this(
+        defaultBranch: json_['defaultBranch'] as core.String?,
+        gitignores:
+            (json_['gitignores'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        license: json_['license'] as core.String?,
+        readme: json_['readme'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultBranch != null) 'defaultBranch': defaultBranch!,
-        if (gitignores != null) 'gitignores': gitignores!,
-        if (license != null) 'license': license!,
-        if (readme != null) 'readme': readme!,
-      };
+    if (defaultBranch != null) 'defaultBranch': defaultBranch!,
+    if (gitignores != null) 'gitignores': gitignores!,
+    if (license != null) 'license': license!,
+    if (readme != null) 'readme': readme!,
+  };
 }
 
 /// A resource that represents a Secure Source Manager instance.
@@ -4069,50 +4048,50 @@ class Instance {
   });
 
   Instance.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          hostConfig: json_.containsKey('hostConfig')
-              ? HostConfig.fromJson(
-                  json_['hostConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          kmsKey: json_['kmsKey'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          privateConfig: json_.containsKey('privateConfig')
-              ? PrivateConfig.fromJson(
-                  json_['privateConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          stateNote: json_['stateNote'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          workforceIdentityFederationConfig:
-              json_.containsKey('workforceIdentityFederationConfig')
-                  ? WorkforceIdentityFederationConfig.fromJson(
-                      json_['workforceIdentityFederationConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        hostConfig:
+            json_.containsKey('hostConfig')
+                ? HostConfig.fromJson(
+                  json_['hostConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kmsKey: json_['kmsKey'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        privateConfig:
+            json_.containsKey('privateConfig')
+                ? PrivateConfig.fromJson(
+                  json_['privateConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        stateNote: json_['stateNote'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        workforceIdentityFederationConfig:
+            json_.containsKey('workforceIdentityFederationConfig')
+                ? WorkforceIdentityFederationConfig.fromJson(
+                  json_['workforceIdentityFederationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (hostConfig != null) 'hostConfig': hostConfig!,
-        if (kmsKey != null) 'kmsKey': kmsKey!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (privateConfig != null) 'privateConfig': privateConfig!,
-        if (state != null) 'state': state!,
-        if (stateNote != null) 'stateNote': stateNote!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (workforceIdentityFederationConfig != null)
-          'workforceIdentityFederationConfig':
-              workforceIdentityFederationConfig!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (hostConfig != null) 'hostConfig': hostConfig!,
+    if (kmsKey != null) 'kmsKey': kmsKey!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (privateConfig != null) 'privateConfig': privateConfig!,
+    if (state != null) 'state': state!,
+    if (stateNote != null) 'stateNote': stateNote!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (workforceIdentityFederationConfig != null)
+      'workforceIdentityFederationConfig': workforceIdentityFederationConfig!,
+  };
 }
 
 /// Metadata of an Issue.
@@ -4181,27 +4160,27 @@ class Issue {
   });
 
   Issue.fromJson(core.Map json_)
-      : this(
-          body: json_['body'] as core.String?,
-          closeTime: json_['closeTime'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          title: json_['title'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        body: json_['body'] as core.String?,
+        closeTime: json_['closeTime'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        title: json_['title'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-        if (closeTime != null) 'closeTime': closeTime!,
-        if (createTime != null) 'createTime': createTime!,
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (title != null) 'title': title!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (body != null) 'body': body!,
+    if (closeTime != null) 'closeTime': closeTime!,
+    if (createTime != null) 'createTime': createTime!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (title != null) 'title': title!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// IssueComment represents a comment on an issue.
@@ -4228,27 +4207,22 @@ class IssueComment {
   /// Output only.
   core.String? updateTime;
 
-  IssueComment({
-    this.body,
-    this.createTime,
-    this.name,
-    this.updateTime,
-  });
+  IssueComment({this.body, this.createTime, this.name, this.updateTime});
 
   IssueComment.fromJson(core.Map json_)
-      : this(
-          body: json_['body'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        body: json_['body'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (body != null) 'body': body!,
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// ListBranchRulesResponse is the response to listing branchRules.
@@ -4259,24 +4233,25 @@ class ListBranchRulesResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListBranchRulesResponse({
-    this.branchRules,
-    this.nextPageToken,
-  });
+  ListBranchRulesResponse({this.branchRules, this.nextPageToken});
 
   ListBranchRulesResponse.fromJson(core.Map json_)
-      : this(
-          branchRules: (json_['branchRules'] as core.List?)
-              ?.map((value) => BranchRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        branchRules:
+            (json_['branchRules'] as core.List?)
+                ?.map(
+                  (value) => BranchRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (branchRules != null) 'branchRules': branchRules!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (branchRules != null) 'branchRules': branchRules!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// ListHooksResponse is response to list hooks.
@@ -4287,24 +4262,25 @@ class ListHooksResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListHooksResponse({
-    this.hooks,
-    this.nextPageToken,
-  });
+  ListHooksResponse({this.hooks, this.nextPageToken});
 
   ListHooksResponse.fromJson(core.Map json_)
-      : this(
-          hooks: (json_['hooks'] as core.List?)
-              ?.map((value) =>
-                  Hook.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        hooks:
+            (json_['hooks'] as core.List?)
+                ?.map(
+                  (value) => Hook.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hooks != null) 'hooks': hooks!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (hooks != null) 'hooks': hooks!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 class ListInstancesResponse {
@@ -4317,29 +4293,30 @@ class ListInstancesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListInstancesResponse({
-    this.instances,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListInstancesResponse({this.instances, this.nextPageToken, this.unreachable});
 
   ListInstancesResponse.fromJson(core.Map json_)
-      : this(
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => Instance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        instances:
+            (json_['instances'] as core.List?)
+                ?.map(
+                  (value) => Instance.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (instances != null) 'instances': instances!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response to list issue comments.
@@ -4350,24 +4327,25 @@ class ListIssueCommentsResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListIssueCommentsResponse({
-    this.issueComments,
-    this.nextPageToken,
-  });
+  ListIssueCommentsResponse({this.issueComments, this.nextPageToken});
 
   ListIssueCommentsResponse.fromJson(core.Map json_)
-      : this(
-          issueComments: (json_['issueComments'] as core.List?)
-              ?.map((value) => IssueComment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        issueComments:
+            (json_['issueComments'] as core.List?)
+                ?.map(
+                  (value) => IssueComment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issueComments != null) 'issueComments': issueComments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (issueComments != null) 'issueComments': issueComments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response to list issues.
@@ -4378,24 +4356,25 @@ class ListIssuesResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListIssuesResponse({
-    this.issues,
-    this.nextPageToken,
-  });
+  ListIssuesResponse({this.issues, this.nextPageToken});
 
   ListIssuesResponse.fromJson(core.Map json_)
-      : this(
-          issues: (json_['issues'] as core.List?)
-              ?.map((value) =>
-                  Issue.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        issues:
+            (json_['issues'] as core.List?)
+                ?.map(
+                  (value) => Issue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issues != null) 'issues': issues!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (issues != null) 'issues': issues!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -4406,24 +4385,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -4434,24 +4414,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// The response to list pull request comments.
@@ -4470,19 +4451,23 @@ class ListPullRequestCommentsResponse {
   });
 
   ListPullRequestCommentsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          pullRequestComments: (json_['pullRequestComments'] as core.List?)
-              ?.map((value) => PullRequestComment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        pullRequestComments:
+            (json_['pullRequestComments'] as core.List?)
+                ?.map(
+                  (value) => PullRequestComment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (pullRequestComments != null)
-          'pullRequestComments': pullRequestComments!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (pullRequestComments != null)
+      'pullRequestComments': pullRequestComments!,
+  };
 }
 
 /// ListPullRequestFileDiffsResponse is the response containing file diffs
@@ -4494,24 +4479,25 @@ class ListPullRequestFileDiffsResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListPullRequestFileDiffsResponse({
-    this.fileDiffs,
-    this.nextPageToken,
-  });
+  ListPullRequestFileDiffsResponse({this.fileDiffs, this.nextPageToken});
 
   ListPullRequestFileDiffsResponse.fromJson(core.Map json_)
-      : this(
-          fileDiffs: (json_['fileDiffs'] as core.List?)
-              ?.map((value) => FileDiff.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        fileDiffs:
+            (json_['fileDiffs'] as core.List?)
+                ?.map(
+                  (value) => FileDiff.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileDiffs != null) 'fileDiffs': fileDiffs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (fileDiffs != null) 'fileDiffs': fileDiffs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// ListPullRequestsResponse is the response to list pull requests.
@@ -4522,24 +4508,25 @@ class ListPullRequestsResponse {
   /// The list of pull requests.
   core.List<PullRequest>? pullRequests;
 
-  ListPullRequestsResponse({
-    this.nextPageToken,
-    this.pullRequests,
-  });
+  ListPullRequestsResponse({this.nextPageToken, this.pullRequests});
 
   ListPullRequestsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          pullRequests: (json_['pullRequests'] as core.List?)
-              ?.map((value) => PullRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        pullRequests:
+            (json_['pullRequests'] as core.List?)
+                ?.map(
+                  (value) => PullRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (pullRequests != null) 'pullRequests': pullRequests!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (pullRequests != null) 'pullRequests': pullRequests!,
+  };
 }
 
 class ListRepositoriesResponse {
@@ -4549,24 +4536,25 @@ class ListRepositoriesResponse {
   /// The list of repositories.
   core.List<Repository>? repositories;
 
-  ListRepositoriesResponse({
-    this.nextPageToken,
-    this.repositories,
-  });
+  ListRepositoriesResponse({this.nextPageToken, this.repositories});
 
   ListRepositoriesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          repositories: (json_['repositories'] as core.List?)
-              ?.map((value) => Repository.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        repositories:
+            (json_['repositories'] as core.List?)
+                ?.map(
+                  (value) => Repository.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (repositories != null) 'repositories': repositories!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (repositories != null) 'repositories': repositories!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -4585,18 +4573,14 @@ class OpenIssueRequest {
   /// Optional.
   core.String? etag;
 
-  OpenIssueRequest({
-    this.etag,
-  });
+  OpenIssueRequest({this.etag});
 
   OpenIssueRequest.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-        );
+    : this(etag: json_['etag'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-      };
+    if (etag != null) 'etag': etag!,
+  };
 }
 
 /// OpenPullRequestRequest is the request to open a pull request.
@@ -4645,37 +4629,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -4741,8 +4723,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -4764,33 +4748,36 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// The position of the code comment.
@@ -4808,21 +4795,18 @@ class Position {
   /// Required.
   core.String? path;
 
-  Position({
-    this.line,
-    this.path,
-  });
+  Position({this.line, this.path});
 
   Position.fromJson(core.Map json_)
-      : this(
-          line: json_['line'] as core.String?,
-          path: json_['path'] as core.String?,
-        );
+    : this(
+        line: json_['line'] as core.String?,
+        path: json_['path'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (line != null) 'line': line!,
-        if (path != null) 'path': path!,
-      };
+    if (line != null) 'line': line!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// PrivateConfig includes settings for private instance.
@@ -4867,26 +4851,26 @@ class PrivateConfig {
   });
 
   PrivateConfig.fromJson(core.Map json_)
-      : this(
-          caPool: json_['caPool'] as core.String?,
-          httpServiceAttachment: json_['httpServiceAttachment'] as core.String?,
-          isPrivate: json_['isPrivate'] as core.bool?,
-          pscAllowedProjects: (json_['pscAllowedProjects'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          sshServiceAttachment: json_['sshServiceAttachment'] as core.String?,
-        );
+    : this(
+        caPool: json_['caPool'] as core.String?,
+        httpServiceAttachment: json_['httpServiceAttachment'] as core.String?,
+        isPrivate: json_['isPrivate'] as core.bool?,
+        pscAllowedProjects:
+            (json_['pscAllowedProjects'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        sshServiceAttachment: json_['sshServiceAttachment'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caPool != null) 'caPool': caPool!,
-        if (httpServiceAttachment != null)
-          'httpServiceAttachment': httpServiceAttachment!,
-        if (isPrivate != null) 'isPrivate': isPrivate!,
-        if (pscAllowedProjects != null)
-          'pscAllowedProjects': pscAllowedProjects!,
-        if (sshServiceAttachment != null)
-          'sshServiceAttachment': sshServiceAttachment!,
-      };
+    if (caPool != null) 'caPool': caPool!,
+    if (httpServiceAttachment != null)
+      'httpServiceAttachment': httpServiceAttachment!,
+    if (isPrivate != null) 'isPrivate': isPrivate!,
+    if (pscAllowedProjects != null) 'pscAllowedProjects': pscAllowedProjects!,
+    if (sshServiceAttachment != null)
+      'sshServiceAttachment': sshServiceAttachment!,
+  };
 }
 
 /// Metadata of a PullRequest.
@@ -4964,35 +4948,39 @@ class PullRequest {
   });
 
   PullRequest.fromJson(core.Map json_)
-      : this(
-          base: json_.containsKey('base')
-              ? Branch.fromJson(
-                  json_['base'] as core.Map<core.String, core.dynamic>)
-              : null,
-          body: json_['body'] as core.String?,
-          closeTime: json_['closeTime'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          head: json_.containsKey('head')
-              ? Branch.fromJson(
-                  json_['head'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          title: json_['title'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        base:
+            json_.containsKey('base')
+                ? Branch.fromJson(
+                  json_['base'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        body: json_['body'] as core.String?,
+        closeTime: json_['closeTime'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        head:
+            json_.containsKey('head')
+                ? Branch.fromJson(
+                  json_['head'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        title: json_['title'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (base != null) 'base': base!,
-        if (body != null) 'body': body!,
-        if (closeTime != null) 'closeTime': closeTime!,
-        if (createTime != null) 'createTime': createTime!,
-        if (head != null) 'head': head!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (title != null) 'title': title!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (base != null) 'base': base!,
+    if (body != null) 'body': body!,
+    if (closeTime != null) 'closeTime': closeTime!,
+    if (createTime != null) 'createTime': createTime!,
+    if (head != null) 'head': head!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (title != null) 'title': title!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// PullRequestComment represents a comment on a pull request.
@@ -5039,32 +5027,38 @@ class PullRequestComment {
   });
 
   PullRequestComment.fromJson(core.Map json_)
-      : this(
-          code: json_.containsKey('code')
-              ? Code.fromJson(
-                  json_['code'] as core.Map<core.String, core.dynamic>)
-              : null,
-          comment: json_.containsKey('comment')
-              ? Comment.fromJson(
-                  json_['comment'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          review: json_.containsKey('review')
-              ? Review.fromJson(
-                  json_['review'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        code:
+            json_.containsKey('code')
+                ? Code.fromJson(
+                  json_['code'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        comment:
+            json_.containsKey('comment')
+                ? Comment.fromJson(
+                  json_['comment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        review:
+            json_.containsKey('review')
+                ? Review.fromJson(
+                  json_['review'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (comment != null) 'comment': comment!,
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (review != null) 'review': review!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (code != null) 'code': code!,
+    if (comment != null) 'comment': comment!,
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (review != null) 'review': review!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 class PushOption {
@@ -5077,18 +5071,14 @@ class PushOption {
   /// Optional.
   core.String? branchFilter;
 
-  PushOption({
-    this.branchFilter,
-  });
+  PushOption({this.branchFilter});
 
   PushOption.fromJson(core.Map json_)
-      : this(
-          branchFilter: json_['branchFilter'] as core.String?,
-        );
+    : this(branchFilter: json_['branchFilter'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (branchFilter != null) 'branchFilter': branchFilter!,
-      };
+    if (branchFilter != null) 'branchFilter': branchFilter!,
+  };
 }
 
 /// Metadata of a Secure Source Manager repository.
@@ -5162,35 +5152,39 @@ class Repository {
   });
 
   Repository.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          initialConfig: json_.containsKey('initialConfig')
-              ? InitialConfig.fromJson(
-                  json_['initialConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          instance: json_['instance'] as core.String?,
-          name: json_['name'] as core.String?,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          uris: json_.containsKey('uris')
-              ? URIs.fromJson(
-                  json_['uris'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        initialConfig:
+            json_.containsKey('initialConfig')
+                ? InitialConfig.fromJson(
+                  json_['initialConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        instance: json_['instance'] as core.String?,
+        name: json_['name'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        uris:
+            json_.containsKey('uris')
+                ? URIs.fromJson(
+                  json_['uris'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (initialConfig != null) 'initialConfig': initialConfig!,
-        if (instance != null) 'instance': instance!,
-        if (name != null) 'name': name!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (uris != null) 'uris': uris!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (initialConfig != null) 'initialConfig': initialConfig!,
+    if (instance != null) 'instance': instance!,
+    if (name != null) 'name': name!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (uris != null) 'uris': uris!,
+  };
 }
 
 /// The request to resolve multiple pull request comments.
@@ -5212,23 +5206,21 @@ class ResolvePullRequestCommentsRequest {
   /// Required.
   core.List<core.String>? names;
 
-  ResolvePullRequestCommentsRequest({
-    this.autoFill,
-    this.names,
-  });
+  ResolvePullRequestCommentsRequest({this.autoFill, this.names});
 
   ResolvePullRequestCommentsRequest.fromJson(core.Map json_)
-      : this(
-          autoFill: json_['autoFill'] as core.bool?,
-          names: (json_['names'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        autoFill: json_['autoFill'] as core.bool?,
+        names:
+            (json_['names'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoFill != null) 'autoFill': autoFill!,
-        if (names != null) 'names': names!,
-      };
+    if (autoFill != null) 'autoFill': autoFill!,
+    if (names != null) 'names': names!,
+  };
 }
 
 /// The review summary comment.
@@ -5253,25 +5245,20 @@ class Review {
   /// Output only.
   core.String? effectiveCommitSha;
 
-  Review({
-    this.actionType,
-    this.body,
-    this.effectiveCommitSha,
-  });
+  Review({this.actionType, this.body, this.effectiveCommitSha});
 
   Review.fromJson(core.Map json_)
-      : this(
-          actionType: json_['actionType'] as core.String?,
-          body: json_['body'] as core.String?,
-          effectiveCommitSha: json_['effectiveCommitSha'] as core.String?,
-        );
+    : this(
+        actionType: json_['actionType'] as core.String?,
+        body: json_['body'] as core.String?,
+        effectiveCommitSha: json_['effectiveCommitSha'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionType != null) 'actionType': actionType!,
-        if (body != null) 'body': body!,
-        if (effectiveCommitSha != null)
-          'effectiveCommitSha': effectiveCommitSha!,
-      };
+    if (actionType != null) 'actionType': actionType!,
+    if (body != null) 'body': body!,
+    if (effectiveCommitSha != null) 'effectiveCommitSha': effectiveCommitSha!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -5289,24 +5276,23 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5368,30 +5354,24 @@ class TreeEntry {
   /// - "COMMIT" : Represents a pointer to another repository (submodule).
   core.String? type;
 
-  TreeEntry({
-    this.mode,
-    this.path,
-    this.sha,
-    this.size,
-    this.type,
-  });
+  TreeEntry({this.mode, this.path, this.sha, this.size, this.type});
 
   TreeEntry.fromJson(core.Map json_)
-      : this(
-          mode: json_['mode'] as core.String?,
-          path: json_['path'] as core.String?,
-          sha: json_['sha'] as core.String?,
-          size: json_['size'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        mode: json_['mode'] as core.String?,
+        path: json_['path'] as core.String?,
+        sha: json_['sha'] as core.String?,
+        size: json_['size'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-        if (path != null) 'path': path!,
-        if (sha != null) 'sha': sha!,
-        if (size != null) 'size': size!,
-        if (type != null) 'type': type!,
-      };
+    if (mode != null) 'mode': mode!,
+    if (path != null) 'path': path!,
+    if (sha != null) 'sha': sha!,
+    if (size != null) 'size': size!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// URIs for the repository.
@@ -5411,24 +5391,20 @@ class URIs {
   /// Output only.
   core.String? html;
 
-  URIs({
-    this.api,
-    this.gitHttps,
-    this.html,
-  });
+  URIs({this.api, this.gitHttps, this.html});
 
   URIs.fromJson(core.Map json_)
-      : this(
-          api: json_['api'] as core.String?,
-          gitHttps: json_['gitHttps'] as core.String?,
-          html: json_['html'] as core.String?,
-        );
+    : this(
+        api: json_['api'] as core.String?,
+        gitHttps: json_['gitHttps'] as core.String?,
+        html: json_['html'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (api != null) 'api': api!,
-        if (gitHttps != null) 'gitHttps': gitHttps!,
-        if (html != null) 'html': html!,
-      };
+    if (api != null) 'api': api!,
+    if (gitHttps != null) 'gitHttps': gitHttps!,
+    if (html != null) 'html': html!,
+  };
 }
 
 /// The request to unresolve multiple pull request comments.
@@ -5450,23 +5426,21 @@ class UnresolvePullRequestCommentsRequest {
   /// Required.
   core.List<core.String>? names;
 
-  UnresolvePullRequestCommentsRequest({
-    this.autoFill,
-    this.names,
-  });
+  UnresolvePullRequestCommentsRequest({this.autoFill, this.names});
 
   UnresolvePullRequestCommentsRequest.fromJson(core.Map json_)
-      : this(
-          autoFill: json_['autoFill'] as core.bool?,
-          names: (json_['names'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        autoFill: json_['autoFill'] as core.bool?,
+        names:
+            (json_['names'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoFill != null) 'autoFill': autoFill!,
-        if (names != null) 'names': names!,
-      };
+    if (autoFill != null) 'autoFill': autoFill!,
+    if (names != null) 'names': names!,
+  };
 }
 
 /// WorkforceIdentityFederationConfig allows this instance to support users from
@@ -5477,16 +5451,12 @@ class WorkforceIdentityFederationConfig {
   /// Optional. Immutable.
   core.bool? enabled;
 
-  WorkforceIdentityFederationConfig({
-    this.enabled,
-  });
+  WorkforceIdentityFederationConfig({this.enabled});
 
   WorkforceIdentityFederationConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+  };
 }

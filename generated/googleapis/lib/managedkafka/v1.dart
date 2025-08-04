@@ -79,11 +79,16 @@ class ManagedKafkaApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ManagedKafkaApi(http.Client client,
-      {core.String rootUrl = 'https://managedkafka.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ManagedKafkaApi(
+    http.Client client, {
+    core.String rootUrl = 'https://managedkafka.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -126,10 +131,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -199,7 +201,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -214,7 +217,7 @@ class ProjectsLocationsClustersResource {
       ProjectsLocationsClustersTopicsResource(_requester);
 
   ProjectsLocationsClustersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new cluster in a given project and location.
   ///
@@ -346,10 +349,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Cluster> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Cluster> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -419,7 +419,8 @@ class ProjectsLocationsClustersResource {
       queryParams: queryParams_,
     );
     return ListClustersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the properties of a single cluster.
@@ -491,7 +492,7 @@ class ProjectsLocationsClustersAclsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsClustersAclsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Incremental update: Adds an acl entry to an acl.
   ///
@@ -538,7 +539,8 @@ class ProjectsLocationsClustersAclsResource {
       queryParams: queryParams_,
     );
     return AddAclEntryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new acl in the given project, location, and cluster.
@@ -621,10 +623,7 @@ class ProjectsLocationsClustersAclsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -660,10 +659,7 @@ class ProjectsLocationsClustersAclsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Acl> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Acl> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -727,7 +723,8 @@ class ProjectsLocationsClustersAclsResource {
       queryParams: queryParams_,
     );
     return ListAclsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the properties of a single acl.
@@ -837,7 +834,8 @@ class ProjectsLocationsClustersAclsResource {
       queryParams: queryParams_,
     );
     return RemoveAclEntryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -845,7 +843,7 @@ class ProjectsLocationsClustersConsumerGroupsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsClustersConsumerGroupsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes a single consumer group.
   ///
@@ -866,10 +864,7 @@ class ProjectsLocationsClustersConsumerGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -920,7 +915,8 @@ class ProjectsLocationsClustersConsumerGroupsResource {
       queryParams: queryParams_,
     );
     return ConsumerGroup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the consumer groups in a given cluster.
@@ -972,7 +968,8 @@ class ProjectsLocationsClustersConsumerGroupsResource {
       queryParams: queryParams_,
     );
     return ListConsumerGroupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the properties of a single consumer group.
@@ -1024,7 +1021,8 @@ class ProjectsLocationsClustersConsumerGroupsResource {
       queryParams: queryParams_,
     );
     return ConsumerGroup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1032,7 +1030,7 @@ class ProjectsLocationsClustersTopicsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsClustersTopicsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new topic in a given project and location.
   ///
@@ -1102,10 +1100,7 @@ class ProjectsLocationsClustersTopicsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1140,10 +1135,7 @@ class ProjectsLocationsClustersTopicsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Topic> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Topic> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1207,7 +1199,8 @@ class ProjectsLocationsClustersTopicsResource {
       queryParams: queryParams_,
     );
     return ListTopicsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the properties of a single topic.
@@ -1269,7 +1262,7 @@ class ProjectsLocationsConnectClustersResource {
       ProjectsLocationsConnectClustersConnectorsResource(_requester);
 
   ProjectsLocationsConnectClustersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new Kafka Connect cluster in a given project and location.
   ///
@@ -1423,7 +1416,8 @@ class ProjectsLocationsConnectClustersResource {
       queryParams: queryParams_,
     );
     return ConnectCluster.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the Kafka Connect clusters in a given project and location.
@@ -1482,7 +1476,8 @@ class ProjectsLocationsConnectClustersResource {
       queryParams: queryParams_,
     );
     return ListConnectClustersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the properties of a single Kafka Connect cluster.
@@ -1555,8 +1550,8 @@ class ProjectsLocationsConnectClustersConnectorsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectClustersConnectorsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a new connector in a given Connect cluster.
   ///
@@ -1628,10 +1623,7 @@ class ProjectsLocationsConnectClustersConnectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1666,10 +1658,7 @@ class ProjectsLocationsConnectClustersConnectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Connector> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Connector> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1733,7 +1722,8 @@ class ProjectsLocationsConnectClustersConnectorsResource {
       queryParams: queryParams_,
     );
     return ListConnectorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the properties of a connector.
@@ -1826,7 +1816,8 @@ class ProjectsLocationsConnectClustersConnectorsResource {
       queryParams: queryParams_,
     );
     return PauseConnectorResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Restarts the connector.
@@ -1869,7 +1860,8 @@ class ProjectsLocationsConnectClustersConnectorsResource {
       queryParams: queryParams_,
     );
     return RestartConnectorResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Resumes the connector and its tasks.
@@ -1912,7 +1904,8 @@ class ProjectsLocationsConnectClustersConnectorsResource {
       queryParams: queryParams_,
     );
     return ResumeConnectorResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Stops the connector.
@@ -1955,7 +1948,8 @@ class ProjectsLocationsConnectClustersConnectorsResource {
       queryParams: queryParams_,
     );
     return StopConnectorResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1963,7 +1957,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -2037,10 +2031,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2076,10 +2067,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2141,7 +2129,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2162,7 +2151,7 @@ class ProjectsLocationsSchemaRegistriesResource {
       ProjectsLocationsSchemaRegistriesSubjectsResource(_requester);
 
   ProjectsLocationsSchemaRegistriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a schema registry instance.
   ///
@@ -2203,7 +2192,8 @@ class ProjectsLocationsSchemaRegistriesResource {
       queryParams: queryParams_,
     );
     return SchemaRegistry.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a schema registry instance.
@@ -2226,10 +2216,7 @@ class ProjectsLocationsSchemaRegistriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2280,7 +2267,8 @@ class ProjectsLocationsSchemaRegistriesResource {
       queryParams: queryParams_,
     );
     return SchemaRegistry.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List schema registries.
@@ -2317,7 +2305,8 @@ class ProjectsLocationsSchemaRegistriesResource {
       queryParams: queryParams_,
     );
     return ListSchemaRegistriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2325,8 +2314,8 @@ class ProjectsLocationsSchemaRegistriesCompatibilityResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesCompatibilityResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Check compatibility of a schema with all versions or a specific version of
   /// a subject.
@@ -2374,7 +2363,8 @@ class ProjectsLocationsSchemaRegistriesCompatibilityResource {
       queryParams: queryParams_,
     );
     return CheckCompatibilityResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2382,7 +2372,7 @@ class ProjectsLocationsSchemaRegistriesConfigResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesConfigResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Delete schema config for a subject.
   ///
@@ -2420,7 +2410,8 @@ class ProjectsLocationsSchemaRegistriesConfigResource {
       queryParams: queryParams_,
     );
     return SchemaConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get schema config at global level or for a subject.
@@ -2467,7 +2458,8 @@ class ProjectsLocationsSchemaRegistriesConfigResource {
       queryParams: queryParams_,
     );
     return SchemaConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update config at global level or for a subject.
@@ -2516,7 +2508,8 @@ class ProjectsLocationsSchemaRegistriesConfigResource {
       queryParams: queryParams_,
     );
     return SchemaConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2524,9 +2517,10 @@ class ProjectsLocationsSchemaRegistriesContextsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesContextsCompatibilityResource
-      get compatibility =>
-          ProjectsLocationsSchemaRegistriesContextsCompatibilityResource(
-              _requester);
+  get compatibility =>
+      ProjectsLocationsSchemaRegistriesContextsCompatibilityResource(
+        _requester,
+      );
   ProjectsLocationsSchemaRegistriesContextsConfigResource get config =>
       ProjectsLocationsSchemaRegistriesContextsConfigResource(_requester);
   ProjectsLocationsSchemaRegistriesContextsModeResource get mode =>
@@ -2537,7 +2531,7 @@ class ProjectsLocationsSchemaRegistriesContextsResource {
       ProjectsLocationsSchemaRegistriesContextsSubjectsResource(_requester);
 
   ProjectsLocationsSchemaRegistriesContextsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Get the context.
   ///
@@ -2558,10 +2552,7 @@ class ProjectsLocationsSchemaRegistriesContextsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Context> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Context> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2618,8 +2609,8 @@ class ProjectsLocationsSchemaRegistriesContextsCompatibilityResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesContextsCompatibilityResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Check compatibility of a schema with all versions or a specific version of
   /// a subject.
@@ -2667,7 +2658,8 @@ class ProjectsLocationsSchemaRegistriesContextsCompatibilityResource {
       queryParams: queryParams_,
     );
     return CheckCompatibilityResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2675,8 +2667,8 @@ class ProjectsLocationsSchemaRegistriesContextsConfigResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesContextsConfigResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Delete schema config for a subject.
   ///
@@ -2714,7 +2706,8 @@ class ProjectsLocationsSchemaRegistriesContextsConfigResource {
       queryParams: queryParams_,
     );
     return SchemaConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get schema config at global level or for a subject.
@@ -2761,7 +2754,8 @@ class ProjectsLocationsSchemaRegistriesContextsConfigResource {
       queryParams: queryParams_,
     );
     return SchemaConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update config at global level or for a subject.
@@ -2810,7 +2804,8 @@ class ProjectsLocationsSchemaRegistriesContextsConfigResource {
       queryParams: queryParams_,
     );
     return SchemaConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2818,8 +2813,8 @@ class ProjectsLocationsSchemaRegistriesContextsModeResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesContextsModeResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Delete schema mode for a subject.
   ///
@@ -2859,7 +2854,8 @@ class ProjectsLocationsSchemaRegistriesContextsModeResource {
       queryParams: queryParams_,
     );
     return SchemaMode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get mode at global level or for a subject.
@@ -2884,10 +2880,7 @@ class ProjectsLocationsSchemaRegistriesContextsModeResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SchemaMode> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<SchemaMode> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2900,7 +2893,8 @@ class ProjectsLocationsSchemaRegistriesContextsModeResource {
       queryParams: queryParams_,
     );
     return SchemaMode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update mode at global level or for a subject.
@@ -2946,7 +2940,8 @@ class ProjectsLocationsSchemaRegistriesContextsModeResource {
       queryParams: queryParams_,
     );
     return SchemaMode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2954,19 +2949,21 @@ class ProjectsLocationsSchemaRegistriesContextsSchemasResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesContextsSchemasSubjectsResource
-      get subjects =>
-          ProjectsLocationsSchemaRegistriesContextsSchemasSubjectsResource(
-              _requester);
+  get subjects =>
+      ProjectsLocationsSchemaRegistriesContextsSchemasSubjectsResource(
+        _requester,
+      );
   ProjectsLocationsSchemaRegistriesContextsSchemasTypesResource get types =>
       ProjectsLocationsSchemaRegistriesContextsSchemasTypesResource(_requester);
   ProjectsLocationsSchemaRegistriesContextsSchemasVersionsResource
-      get versions =>
-          ProjectsLocationsSchemaRegistriesContextsSchemasVersionsResource(
-              _requester);
+  get versions =>
+      ProjectsLocationsSchemaRegistriesContextsSchemasVersionsResource(
+        _requester,
+      );
 
   ProjectsLocationsSchemaRegistriesContextsSchemasResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Get the schema for the given schema id.
   ///
@@ -3061,8 +3058,8 @@ class ProjectsLocationsSchemaRegistriesContextsSchemasSubjectsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesContextsSchemasSubjectsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// List subjects which reference a particular schema id.
   ///
@@ -3120,8 +3117,8 @@ class ProjectsLocationsSchemaRegistriesContextsSchemasTypesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesContextsSchemasTypesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// List the supported schema types.
   ///
@@ -3168,8 +3165,8 @@ class ProjectsLocationsSchemaRegistriesContextsSchemasVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesContextsSchemasVersionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// List the schema versions for the given schema id.
   ///
@@ -3230,13 +3227,14 @@ class ProjectsLocationsSchemaRegistriesContextsSubjectsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResource
-      get versions =>
-          ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResource(
-              _requester);
+  get versions =>
+      ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResource(
+        _requester,
+      );
 
   ProjectsLocationsSchemaRegistriesContextsSubjectsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Delete a subject.
   ///
@@ -3384,7 +3382,8 @@ class ProjectsLocationsSchemaRegistriesContextsSubjectsResource {
       queryParams: queryParams_,
     );
     return SchemaVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3392,13 +3391,14 @@ class ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyResource
-      get referencedby =>
-          ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyResource(
-              _requester);
+  get referencedby =>
+      ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyResource(
+        _requester,
+      );
 
   ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Register a new version under a given subject with the given schema.
   ///
@@ -3443,7 +3443,8 @@ class ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResource {
       queryParams: queryParams_,
     );
     return CreateVersionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a version of a subject.
@@ -3542,7 +3543,8 @@ class ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResource {
       queryParams: queryParams_,
     );
     return SchemaVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get the schema string only for a version of a subject.
@@ -3646,8 +3648,8 @@ class ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyResou
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Get a list of IDs of schemas that reference the schema with the given
   /// subject and version.
@@ -3694,7 +3696,7 @@ class ProjectsLocationsSchemaRegistriesModeResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesModeResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Delete schema mode for a subject.
   ///
@@ -3734,7 +3736,8 @@ class ProjectsLocationsSchemaRegistriesModeResource {
       queryParams: queryParams_,
     );
     return SchemaMode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get mode at global level or for a subject.
@@ -3759,10 +3762,7 @@ class ProjectsLocationsSchemaRegistriesModeResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SchemaMode> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<SchemaMode> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3775,7 +3775,8 @@ class ProjectsLocationsSchemaRegistriesModeResource {
       queryParams: queryParams_,
     );
     return SchemaMode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update mode at global level or for a subject.
@@ -3821,7 +3822,8 @@ class ProjectsLocationsSchemaRegistriesModeResource {
       queryParams: queryParams_,
     );
     return SchemaMode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3836,7 +3838,7 @@ class ProjectsLocationsSchemaRegistriesSchemasResource {
       ProjectsLocationsSchemaRegistriesSchemasVersionsResource(_requester);
 
   ProjectsLocationsSchemaRegistriesSchemasResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Get the schema for the given schema id.
   ///
@@ -3931,8 +3933,8 @@ class ProjectsLocationsSchemaRegistriesSchemasSubjectsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesSchemasSubjectsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// List subjects which reference a particular schema id.
   ///
@@ -3990,8 +3992,8 @@ class ProjectsLocationsSchemaRegistriesSchemasTypesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesSchemasTypesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// List the supported schema types.
   ///
@@ -4038,8 +4040,8 @@ class ProjectsLocationsSchemaRegistriesSchemasVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesSchemasVersionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// List the schema versions for the given schema id.
   ///
@@ -4103,7 +4105,7 @@ class ProjectsLocationsSchemaRegistriesSubjectsResource {
       ProjectsLocationsSchemaRegistriesSubjectsVersionsResource(_requester);
 
   ProjectsLocationsSchemaRegistriesSubjectsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Delete a subject.
   ///
@@ -4251,7 +4253,8 @@ class ProjectsLocationsSchemaRegistriesSubjectsResource {
       queryParams: queryParams_,
     );
     return SchemaVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4259,13 +4262,14 @@ class ProjectsLocationsSchemaRegistriesSubjectsVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResource
-      get referencedby =>
-          ProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResource(
-              _requester);
+  get referencedby =>
+      ProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResource(
+        _requester,
+      );
 
   ProjectsLocationsSchemaRegistriesSubjectsVersionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Register a new version under a given subject with the given schema.
   ///
@@ -4310,7 +4314,8 @@ class ProjectsLocationsSchemaRegistriesSubjectsVersionsResource {
       queryParams: queryParams_,
     );
     return CreateVersionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a version of a subject.
@@ -4409,7 +4414,8 @@ class ProjectsLocationsSchemaRegistriesSubjectsVersionsResource {
       queryParams: queryParams_,
     );
     return SchemaVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get the schema string only for a version of a subject.
@@ -4513,8 +4519,8 @@ class ProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Get a list of IDs of schemas that reference the schema with the given
   /// subject and version.
@@ -4567,21 +4573,23 @@ class AccessConfig {
   /// Required.
   core.List<NetworkConfig>? networkConfigs;
 
-  AccessConfig({
-    this.networkConfigs,
-  });
+  AccessConfig({this.networkConfigs});
 
   AccessConfig.fromJson(core.Map json_)
-      : this(
-          networkConfigs: (json_['networkConfigs'] as core.List?)
-              ?.map((value) => NetworkConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        networkConfigs:
+            (json_['networkConfigs'] as core.List?)
+                ?.map(
+                  (value) => NetworkConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (networkConfigs != null) 'networkConfigs': networkConfigs!,
-      };
+    if (networkConfigs != null) 'networkConfigs': networkConfigs!,
+  };
 }
 
 /// Represents the set of ACLs for a given Kafka Resource Pattern, which
@@ -4656,26 +4664,30 @@ class Acl {
   });
 
   Acl.fromJson(core.Map json_)
-      : this(
-          aclEntries: (json_['aclEntries'] as core.List?)
-              ?.map((value) => AclEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          patternType: json_['patternType'] as core.String?,
-          resourceName: json_['resourceName'] as core.String?,
-          resourceType: json_['resourceType'] as core.String?,
-        );
+    : this(
+        aclEntries:
+            (json_['aclEntries'] as core.List?)
+                ?.map(
+                  (value) => AclEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        patternType: json_['patternType'] as core.String?,
+        resourceName: json_['resourceName'] as core.String?,
+        resourceType: json_['resourceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aclEntries != null) 'aclEntries': aclEntries!,
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (patternType != null) 'patternType': patternType!,
-        if (resourceName != null) 'resourceName': resourceName!,
-        if (resourceType != null) 'resourceType': resourceType!,
-      };
+    if (aclEntries != null) 'aclEntries': aclEntries!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (patternType != null) 'patternType': patternType!,
+    if (resourceName != null) 'resourceName': resourceName!,
+    if (resourceType != null) 'resourceType': resourceType!,
+  };
 }
 
 /// Represents the access granted for a given Resource Pattern in an ACL.
@@ -4716,27 +4728,22 @@ class AclEntry {
   /// Required.
   core.String? principal;
 
-  AclEntry({
-    this.host,
-    this.operation,
-    this.permissionType,
-    this.principal,
-  });
+  AclEntry({this.host, this.operation, this.permissionType, this.principal});
 
   AclEntry.fromJson(core.Map json_)
-      : this(
-          host: json_['host'] as core.String?,
-          operation: json_['operation'] as core.String?,
-          permissionType: json_['permissionType'] as core.String?,
-          principal: json_['principal'] as core.String?,
-        );
+    : this(
+        host: json_['host'] as core.String?,
+        operation: json_['operation'] as core.String?,
+        permissionType: json_['permissionType'] as core.String?,
+        principal: json_['principal'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (host != null) 'host': host!,
-        if (operation != null) 'operation': operation!,
-        if (permissionType != null) 'permissionType': permissionType!,
-        if (principal != null) 'principal': principal!,
-      };
+    if (host != null) 'host': host!,
+    if (operation != null) 'operation': operation!,
+    if (permissionType != null) 'permissionType': permissionType!,
+    if (principal != null) 'principal': principal!,
+  };
 }
 
 /// Response for AddAclEntry.
@@ -4747,24 +4754,23 @@ class AddAclEntryResponse {
   /// Whether the acl was created as a result of adding the acl entry.
   core.bool? aclCreated;
 
-  AddAclEntryResponse({
-    this.acl,
-    this.aclCreated,
-  });
+  AddAclEntryResponse({this.acl, this.aclCreated});
 
   AddAclEntryResponse.fromJson(core.Map json_)
-      : this(
-          acl: json_.containsKey('acl')
-              ? Acl.fromJson(
-                  json_['acl'] as core.Map<core.String, core.dynamic>)
-              : null,
-          aclCreated: json_['aclCreated'] as core.bool?,
-        );
+    : this(
+        acl:
+            json_.containsKey('acl')
+                ? Acl.fromJson(
+                  json_['acl'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        aclCreated: json_['aclCreated'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acl != null) 'acl': acl!,
-        if (aclCreated != null) 'aclCreated': aclCreated!,
-      };
+    if (acl != null) 'acl': acl!,
+    if (aclCreated != null) 'aclCreated': aclCreated!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -4787,21 +4793,18 @@ class CapacityConfig {
   /// Required.
   core.String? vcpuCount;
 
-  CapacityConfig({
-    this.memoryBytes,
-    this.vcpuCount,
-  });
+  CapacityConfig({this.memoryBytes, this.vcpuCount});
 
   CapacityConfig.fromJson(core.Map json_)
-      : this(
-          memoryBytes: json_['memoryBytes'] as core.String?,
-          vcpuCount: json_['vcpuCount'] as core.String?,
-        );
+    : this(
+        memoryBytes: json_['memoryBytes'] as core.String?,
+        vcpuCount: json_['vcpuCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memoryBytes != null) 'memoryBytes': memoryBytes!,
-        if (vcpuCount != null) 'vcpuCount': vcpuCount!,
-      };
+    if (memoryBytes != null) 'memoryBytes': memoryBytes!,
+    if (vcpuCount != null) 'vcpuCount': vcpuCount!,
+  };
 }
 
 /// A configuration for the Google Certificate Authority Service.
@@ -4815,18 +4818,14 @@ class CertificateAuthorityServiceConfig {
   /// Required.
   core.String? caPool;
 
-  CertificateAuthorityServiceConfig({
-    this.caPool,
-  });
+  CertificateAuthorityServiceConfig({this.caPool});
 
   CertificateAuthorityServiceConfig.fromJson(core.Map json_)
-      : this(
-          caPool: json_['caPool'] as core.String?,
-        );
+    : this(caPool: json_['caPool'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caPool != null) 'caPool': caPool!,
-      };
+    if (caPool != null) 'caPool': caPool!,
+  };
 }
 
 /// Request for CheckCompatibility.
@@ -4867,22 +4866,26 @@ class CheckCompatibilityRequest {
   });
 
   CheckCompatibilityRequest.fromJson(core.Map json_)
-      : this(
-          references: (json_['references'] as core.List?)
-              ?.map((value) => SchemaReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          schema: json_['schema'] as core.String?,
-          schemaType: json_['schemaType'] as core.String?,
-          verbose: json_['verbose'] as core.bool?,
-        );
+    : this(
+        references:
+            (json_['references'] as core.List?)
+                ?.map(
+                  (value) => SchemaReference.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        schema: json_['schema'] as core.String?,
+        schemaType: json_['schemaType'] as core.String?,
+        verbose: json_['verbose'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (references != null) 'references': references!,
-        if (schema != null) 'schema': schema!,
-        if (schemaType != null) 'schemaType': schemaType!,
-        if (verbose != null) 'verbose': verbose!,
-      };
+    if (references != null) 'references': references!,
+    if (schema != null) 'schema': schema!,
+    if (schemaType != null) 'schemaType': schemaType!,
+    if (verbose != null) 'verbose': verbose!,
+  };
 }
 
 /// Response for CheckCompatibility.
@@ -4895,23 +4898,21 @@ class CheckCompatibilityResponse {
   /// Failure reasons if verbose = true.
   core.List<core.String>? messages;
 
-  CheckCompatibilityResponse({
-    this.isCompatible,
-    this.messages,
-  });
+  CheckCompatibilityResponse({this.isCompatible, this.messages});
 
   CheckCompatibilityResponse.fromJson(core.Map json_)
-      : this(
-          isCompatible: json_['is_compatible'] as core.bool?,
-          messages: (json_['messages'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        isCompatible: json_['is_compatible'] as core.bool?,
+        messages:
+            (json_['messages'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (isCompatible != null) 'is_compatible': isCompatible!,
-        if (messages != null) 'messages': messages!,
-      };
+    if (isCompatible != null) 'is_compatible': isCompatible!,
+    if (messages != null) 'messages': messages!,
+  };
 }
 
 /// An Apache Kafka cluster deployed in a location.
@@ -4993,51 +4994,57 @@ class Cluster {
   });
 
   Cluster.fromJson(core.Map json_)
-      : this(
-          capacityConfig: json_.containsKey('capacityConfig')
-              ? CapacityConfig.fromJson(json_['capacityConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          gcpConfig: json_.containsKey('gcpConfig')
-              ? GcpConfig.fromJson(
-                  json_['gcpConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          rebalanceConfig: json_.containsKey('rebalanceConfig')
-              ? RebalanceConfig.fromJson(json_['rebalanceConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
-          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-          state: json_['state'] as core.String?,
-          tlsConfig: json_.containsKey('tlsConfig')
-              ? TlsConfig.fromJson(
-                  json_['tlsConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        capacityConfig:
+            json_.containsKey('capacityConfig')
+                ? CapacityConfig.fromJson(
+                  json_['capacityConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        gcpConfig:
+            json_.containsKey('gcpConfig')
+                ? GcpConfig.fromJson(
+                  json_['gcpConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        rebalanceConfig:
+            json_.containsKey('rebalanceConfig')
+                ? RebalanceConfig.fromJson(
+                  json_['rebalanceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        state: json_['state'] as core.String?,
+        tlsConfig:
+            json_.containsKey('tlsConfig')
+                ? TlsConfig.fromJson(
+                  json_['tlsConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (capacityConfig != null) 'capacityConfig': capacityConfig!,
-        if (createTime != null) 'createTime': createTime!,
-        if (gcpConfig != null) 'gcpConfig': gcpConfig!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (rebalanceConfig != null) 'rebalanceConfig': rebalanceConfig!,
-        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-        if (state != null) 'state': state!,
-        if (tlsConfig != null) 'tlsConfig': tlsConfig!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (capacityConfig != null) 'capacityConfig': capacityConfig!,
+    if (createTime != null) 'createTime': createTime!,
+    if (gcpConfig != null) 'gcpConfig': gcpConfig!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (rebalanceConfig != null) 'rebalanceConfig': rebalanceConfig!,
+    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (state != null) 'state': state!,
+    if (tlsConfig != null) 'tlsConfig': tlsConfig!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The configuration of access to the Kafka Connect cluster.
@@ -5050,21 +5057,23 @@ class ConnectAccessConfig {
   /// Required.
   core.List<ConnectNetworkConfig>? networkConfigs;
 
-  ConnectAccessConfig({
-    this.networkConfigs,
-  });
+  ConnectAccessConfig({this.networkConfigs});
 
   ConnectAccessConfig.fromJson(core.Map json_)
-      : this(
-          networkConfigs: (json_['networkConfigs'] as core.List?)
-              ?.map((value) => ConnectNetworkConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        networkConfigs:
+            (json_['networkConfigs'] as core.List?)
+                ?.map(
+                  (value) => ConnectNetworkConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (networkConfigs != null) 'networkConfigs': networkConfigs!,
-      };
+    if (networkConfigs != null) 'networkConfigs': networkConfigs!,
+  };
 }
 
 /// An Apache Kafka Connect cluster deployed in a location.
@@ -5152,51 +5161,48 @@ class ConnectCluster {
   });
 
   ConnectCluster.fromJson(core.Map json_)
-      : this(
-          capacityConfig: json_.containsKey('capacityConfig')
-              ? CapacityConfig.fromJson(json_['capacityConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          config:
-              (json_['config'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          gcpConfig: json_.containsKey('gcpConfig')
-              ? ConnectGcpConfig.fromJson(
-                  json_['gcpConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          kafkaCluster: json_['kafkaCluster'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
-          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        capacityConfig:
+            json_.containsKey('capacityConfig')
+                ? CapacityConfig.fromJson(
+                  json_['capacityConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        config: (json_['config'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        createTime: json_['createTime'] as core.String?,
+        gcpConfig:
+            json_.containsKey('gcpConfig')
+                ? ConnectGcpConfig.fromJson(
+                  json_['gcpConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kafkaCluster: json_['kafkaCluster'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (capacityConfig != null) 'capacityConfig': capacityConfig!,
-        if (config != null) 'config': config!,
-        if (createTime != null) 'createTime': createTime!,
-        if (gcpConfig != null) 'gcpConfig': gcpConfig!,
-        if (kafkaCluster != null) 'kafkaCluster': kafkaCluster!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (capacityConfig != null) 'capacityConfig': capacityConfig!,
+    if (config != null) 'config': config!,
+    if (createTime != null) 'createTime': createTime!,
+    if (gcpConfig != null) 'gcpConfig': gcpConfig!,
+    if (kafkaCluster != null) 'kafkaCluster': kafkaCluster!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Configuration properties for a Kafka Connect cluster deployed to Google
@@ -5216,26 +5222,26 @@ class ConnectGcpConfig {
   /// Optional.
   core.List<core.String>? secretPaths;
 
-  ConnectGcpConfig({
-    this.accessConfig,
-    this.secretPaths,
-  });
+  ConnectGcpConfig({this.accessConfig, this.secretPaths});
 
   ConnectGcpConfig.fromJson(core.Map json_)
-      : this(
-          accessConfig: json_.containsKey('accessConfig')
-              ? ConnectAccessConfig.fromJson(
-                  json_['accessConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          secretPaths: (json_['secretPaths'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        accessConfig:
+            json_.containsKey('accessConfig')
+                ? ConnectAccessConfig.fromJson(
+                  json_['accessConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        secretPaths:
+            (json_['secretPaths'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessConfig != null) 'accessConfig': accessConfig!,
-        if (secretPaths != null) 'secretPaths': secretPaths!,
-      };
+    if (accessConfig != null) 'accessConfig': accessConfig!,
+    if (secretPaths != null) 'secretPaths': secretPaths!,
+  };
 }
 
 /// The configuration of a Virtual Private Cloud (VPC) network that can access
@@ -5280,21 +5286,23 @@ class ConnectNetworkConfig {
   });
 
   ConnectNetworkConfig.fromJson(core.Map json_)
-      : this(
-          additionalSubnets: (json_['additionalSubnets'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          dnsDomainNames: (json_['dnsDomainNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          primarySubnet: json_['primarySubnet'] as core.String?,
-        );
+    : this(
+        additionalSubnets:
+            (json_['additionalSubnets'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        dnsDomainNames:
+            (json_['dnsDomainNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        primarySubnet: json_['primarySubnet'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalSubnets != null) 'additionalSubnets': additionalSubnets!,
-        if (dnsDomainNames != null) 'dnsDomainNames': dnsDomainNames!,
-        if (primarySubnet != null) 'primarySubnet': primarySubnet!,
-      };
+    if (additionalSubnets != null) 'additionalSubnets': additionalSubnets!,
+    if (dnsDomainNames != null) 'dnsDomainNames': dnsDomainNames!,
+    if (primarySubnet != null) 'primarySubnet': primarySubnet!,
+  };
 }
 
 /// A Kafka Connect connector in a given ConnectCluster.
@@ -5332,36 +5340,29 @@ class Connector {
   /// Optional.
   TaskRetryPolicy? taskRestartPolicy;
 
-  Connector({
-    this.configs,
-    this.name,
-    this.state,
-    this.taskRestartPolicy,
-  });
+  Connector({this.configs, this.name, this.state, this.taskRestartPolicy});
 
   Connector.fromJson(core.Map json_)
-      : this(
-          configs:
-              (json_['configs'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          taskRestartPolicy: json_.containsKey('taskRestartPolicy')
-              ? TaskRetryPolicy.fromJson(json_['taskRestartPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        configs: (json_['configs'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        taskRestartPolicy:
+            json_.containsKey('taskRestartPolicy')
+                ? TaskRetryPolicy.fromJson(
+                  json_['taskRestartPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configs != null) 'configs': configs!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (taskRestartPolicy != null) 'taskRestartPolicy': taskRestartPolicy!,
-      };
+    if (configs != null) 'configs': configs!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (taskRestartPolicy != null) 'taskRestartPolicy': taskRestartPolicy!,
+  };
 }
 
 /// A Kafka consumer group in a given cluster.
@@ -5381,28 +5382,25 @@ class ConsumerGroup {
   /// Optional.
   core.Map<core.String, ConsumerTopicMetadata>? topics;
 
-  ConsumerGroup({
-    this.name,
-    this.topics,
-  });
+  ConsumerGroup({this.name, this.topics});
 
   ConsumerGroup.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          topics:
-              (json_['topics'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              ConsumerTopicMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        name: json_['name'] as core.String?,
+        topics: (json_['topics'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            ConsumerTopicMetadata.fromJson(
+              value as core.Map<core.String, core.dynamic>,
             ),
           ),
-        );
+        ),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (topics != null) 'topics': topics!,
-      };
+    if (name != null) 'name': name!,
+    if (topics != null) 'topics': topics!,
+  };
 }
 
 /// Metadata for a consumer group corresponding to a specific partition.
@@ -5418,21 +5416,18 @@ class ConsumerPartitionMetadata {
   /// Required.
   core.String? offset;
 
-  ConsumerPartitionMetadata({
-    this.metadata,
-    this.offset,
-  });
+  ConsumerPartitionMetadata({this.metadata, this.offset});
 
   ConsumerPartitionMetadata.fromJson(core.Map json_)
-      : this(
-          metadata: json_['metadata'] as core.String?,
-          offset: json_['offset'] as core.String?,
-        );
+    : this(
+        metadata: json_['metadata'] as core.String?,
+        offset: json_['offset'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metadata != null) 'metadata': metadata!,
-        if (offset != null) 'offset': offset!,
-      };
+    if (metadata != null) 'metadata': metadata!,
+    if (offset != null) 'offset': offset!,
+  };
 }
 
 /// Metadata for a consumer group corresponding to a specific topic.
@@ -5443,26 +5438,24 @@ class ConsumerTopicMetadata {
   /// Optional.
   core.Map<core.String, ConsumerPartitionMetadata>? partitions;
 
-  ConsumerTopicMetadata({
-    this.partitions,
-  });
+  ConsumerTopicMetadata({this.partitions});
 
   ConsumerTopicMetadata.fromJson(core.Map json_)
-      : this(
-          partitions:
-              (json_['partitions'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              ConsumerPartitionMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        partitions:
+            (json_['partitions'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                ConsumerPartitionMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (partitions != null) 'partitions': partitions!,
-      };
+    if (partitions != null) 'partitions': partitions!,
+  };
 }
 
 /// Context represents an independent schema grouping in a schema registry
@@ -5483,23 +5476,21 @@ class Context {
   /// Optional.
   core.List<core.String>? subjects;
 
-  Context({
-    this.name,
-    this.subjects,
-  });
+  Context({this.name, this.subjects});
 
   Context.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          subjects: (json_['subjects'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        subjects:
+            (json_['subjects'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (subjects != null) 'subjects': subjects!,
-      };
+    if (name != null) 'name': name!,
+    if (subjects != null) 'subjects': subjects!,
+  };
 }
 
 /// Request to create a schema registry instance.
@@ -5520,24 +5511,24 @@ class CreateSchemaRegistryRequest {
   /// Required.
   core.String? schemaRegistryId;
 
-  CreateSchemaRegistryRequest({
-    this.schemaRegistry,
-    this.schemaRegistryId,
-  });
+  CreateSchemaRegistryRequest({this.schemaRegistry, this.schemaRegistryId});
 
   CreateSchemaRegistryRequest.fromJson(core.Map json_)
-      : this(
-          schemaRegistry: json_.containsKey('schemaRegistry')
-              ? SchemaRegistry.fromJson(json_['schemaRegistry']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          schemaRegistryId: json_['schemaRegistryId'] as core.String?,
-        );
+    : this(
+        schemaRegistry:
+            json_.containsKey('schemaRegistry')
+                ? SchemaRegistry.fromJson(
+                  json_['schemaRegistry']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        schemaRegistryId: json_['schemaRegistryId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (schemaRegistry != null) 'schemaRegistry': schemaRegistry!,
-        if (schemaRegistryId != null) 'schemaRegistryId': schemaRegistryId!,
-      };
+    if (schemaRegistry != null) 'schemaRegistry': schemaRegistry!,
+    if (schemaRegistryId != null) 'schemaRegistryId': schemaRegistryId!,
+  };
 }
 
 /// Request for CreateVersion.
@@ -5600,26 +5591,30 @@ class CreateVersionRequest {
   });
 
   CreateVersionRequest.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.int?,
-          normalize: json_['normalize'] as core.bool?,
-          references: (json_['references'] as core.List?)
-              ?.map((value) => SchemaReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          schema: json_['schema'] as core.String?,
-          schemaType: json_['schemaType'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        id: json_['id'] as core.int?,
+        normalize: json_['normalize'] as core.bool?,
+        references:
+            (json_['references'] as core.List?)
+                ?.map(
+                  (value) => SchemaReference.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        schema: json_['schema'] as core.String?,
+        schemaType: json_['schemaType'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (normalize != null) 'normalize': normalize!,
-        if (references != null) 'references': references!,
-        if (schema != null) 'schema': schema!,
-        if (schemaType != null) 'schemaType': schemaType!,
-        if (version != null) 'version': version!,
-      };
+    if (id != null) 'id': id!,
+    if (normalize != null) 'normalize': normalize!,
+    if (references != null) 'references': references!,
+    if (schema != null) 'schema': schema!,
+    if (schemaType != null) 'schemaType': schemaType!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Response for CreateVersion.
@@ -5627,18 +5622,12 @@ class CreateVersionResponse {
   /// The unique identifier of the schema created.
   core.int? id;
 
-  CreateVersionResponse({
-    this.id,
-  });
+  CreateVersionResponse({this.id});
 
   CreateVersionResponse.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.int?,
-        );
+    : this(id: json_['id'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-      };
+  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -5666,24 +5655,23 @@ class GcpConfig {
   /// Optional. Immutable.
   core.String? kmsKey;
 
-  GcpConfig({
-    this.accessConfig,
-    this.kmsKey,
-  });
+  GcpConfig({this.accessConfig, this.kmsKey});
 
   GcpConfig.fromJson(core.Map json_)
-      : this(
-          accessConfig: json_.containsKey('accessConfig')
-              ? AccessConfig.fromJson(
-                  json_['accessConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          kmsKey: json_['kmsKey'] as core.String?,
-        );
+    : this(
+        accessConfig:
+            json_.containsKey('accessConfig')
+                ? AccessConfig.fromJson(
+                  json_['accessConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kmsKey: json_['kmsKey'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessConfig != null) 'accessConfig': accessConfig!,
-        if (kmsKey != null) 'kmsKey': kmsKey!,
-      };
+    if (accessConfig != null) 'accessConfig': accessConfig!,
+    if (kmsKey != null) 'kmsKey': kmsKey!,
+  };
 }
 
 /// Message that represents an arbitrary HTTP body.
@@ -5719,24 +5707,25 @@ class ListAclsResponse {
   /// If this field is omitted, there are no more results.
   core.String? nextPageToken;
 
-  ListAclsResponse({
-    this.acls,
-    this.nextPageToken,
-  });
+  ListAclsResponse({this.acls, this.nextPageToken});
 
   ListAclsResponse.fromJson(core.Map json_)
-      : this(
-          acls: (json_['acls'] as core.List?)
-              ?.map((value) =>
-                  Acl.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        acls:
+            (json_['acls'] as core.List?)
+                ?.map(
+                  (value) => Acl.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acls != null) 'acls': acls!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (acls != null) 'acls': acls!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response for ListClusters.
@@ -5753,29 +5742,30 @@ class ListClustersResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListClustersResponse({
-    this.clusters,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListClustersResponse({this.clusters, this.nextPageToken, this.unreachable});
 
   ListClustersResponse.fromJson(core.Map json_)
-      : this(
-          clusters: (json_['clusters'] as core.List?)
-              ?.map((value) => Cluster.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        clusters:
+            (json_['clusters'] as core.List?)
+                ?.map(
+                  (value) => Cluster.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusters != null) 'clusters': clusters!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (clusters != null) 'clusters': clusters!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response for ListConnectClusters.
@@ -5799,22 +5789,27 @@ class ListConnectClustersResponse {
   });
 
   ListConnectClustersResponse.fromJson(core.Map json_)
-      : this(
-          connectClusters: (json_['connectClusters'] as core.List?)
-              ?.map((value) => ConnectCluster.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        connectClusters:
+            (json_['connectClusters'] as core.List?)
+                ?.map(
+                  (value) => ConnectCluster.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectClusters != null) 'connectClusters': connectClusters!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (connectClusters != null) 'connectClusters': connectClusters!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response for ListConnectors.
@@ -5828,24 +5823,25 @@ class ListConnectorsResponse {
   /// If this field is omitted, there are no more results.
   core.String? nextPageToken;
 
-  ListConnectorsResponse({
-    this.connectors,
-    this.nextPageToken,
-  });
+  ListConnectorsResponse({this.connectors, this.nextPageToken});
 
   ListConnectorsResponse.fromJson(core.Map json_)
-      : this(
-          connectors: (json_['connectors'] as core.List?)
-              ?.map((value) => Connector.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        connectors:
+            (json_['connectors'] as core.List?)
+                ?.map(
+                  (value) => Connector.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectors != null) 'connectors': connectors!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (connectors != null) 'connectors': connectors!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response for ListConsumerGroups.
@@ -5861,24 +5857,25 @@ class ListConsumerGroupsResponse {
   /// If this field is omitted, there are no more results.
   core.String? nextPageToken;
 
-  ListConsumerGroupsResponse({
-    this.consumerGroups,
-    this.nextPageToken,
-  });
+  ListConsumerGroupsResponse({this.consumerGroups, this.nextPageToken});
 
   ListConsumerGroupsResponse.fromJson(core.Map json_)
-      : this(
-          consumerGroups: (json_['consumerGroups'] as core.List?)
-              ?.map((value) => ConsumerGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        consumerGroups:
+            (json_['consumerGroups'] as core.List?)
+                ?.map(
+                  (value) => ConsumerGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerGroups != null) 'consumerGroups': consumerGroups!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (consumerGroups != null) 'consumerGroups': consumerGroups!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -5889,24 +5886,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -5917,24 +5915,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// Request for ListSchemaRegistries.
@@ -5942,21 +5941,23 @@ class ListSchemaRegistriesResponse {
   /// The schema registry instances.
   core.List<SchemaRegistry>? schemaRegistries;
 
-  ListSchemaRegistriesResponse({
-    this.schemaRegistries,
-  });
+  ListSchemaRegistriesResponse({this.schemaRegistries});
 
   ListSchemaRegistriesResponse.fromJson(core.Map json_)
-      : this(
-          schemaRegistries: (json_['schemaRegistries'] as core.List?)
-              ?.map((value) => SchemaRegistry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        schemaRegistries:
+            (json_['schemaRegistries'] as core.List?)
+                ?.map(
+                  (value) => SchemaRegistry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (schemaRegistries != null) 'schemaRegistries': schemaRegistries!,
-      };
+    if (schemaRegistries != null) 'schemaRegistries': schemaRegistries!,
+  };
 }
 
 /// Response for ListTopics.
@@ -5972,24 +5973,25 @@ class ListTopicsResponse {
   /// The order of the topics is unspecified.
   core.List<Topic>? topics;
 
-  ListTopicsResponse({
-    this.nextPageToken,
-    this.topics,
-  });
+  ListTopicsResponse({this.nextPageToken, this.topics});
 
   ListTopicsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          topics: (json_['topics'] as core.List?)
-              ?.map((value) =>
-                  Topic.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        topics:
+            (json_['topics'] as core.List?)
+                ?.map(
+                  (value) => Topic.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (topics != null) 'topics': topics!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (topics != null) 'topics': topics!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -6041,24 +6043,28 @@ class LookupVersionRequest {
   });
 
   LookupVersionRequest.fromJson(core.Map json_)
-      : this(
-          deleted: json_['deleted'] as core.bool?,
-          normalize: json_['normalize'] as core.bool?,
-          references: (json_['references'] as core.List?)
-              ?.map((value) => SchemaReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          schema: json_['schema'] as core.String?,
-          schemaType: json_['schemaType'] as core.String?,
-        );
+    : this(
+        deleted: json_['deleted'] as core.bool?,
+        normalize: json_['normalize'] as core.bool?,
+        references:
+            (json_['references'] as core.List?)
+                ?.map(
+                  (value) => SchemaReference.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        schema: json_['schema'] as core.String?,
+        schemaType: json_['schemaType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deleted != null) 'deleted': deleted!,
-        if (normalize != null) 'normalize': normalize!,
-        if (references != null) 'references': references!,
-        if (schema != null) 'schema': schema!,
-        if (schemaType != null) 'schemaType': schemaType!,
-      };
+    if (deleted != null) 'deleted': deleted!,
+    if (normalize != null) 'normalize': normalize!,
+    if (references != null) 'references': references!,
+    if (schema != null) 'schema': schema!,
+    if (schemaType != null) 'schemaType': schemaType!,
+  };
 }
 
 /// The configuration of a Virtual Private Cloud (VPC) network that can access
@@ -6076,18 +6082,14 @@ class NetworkConfig {
   /// Required.
   core.String? subnet;
 
-  NetworkConfig({
-    this.subnet,
-  });
+  NetworkConfig({this.subnet});
 
   NetworkConfig.fromJson(core.Map json_)
-      : this(
-          subnet: json_['subnet'] as core.String?,
-        );
+    : this(subnet: json_['subnet'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (subnet != null) 'subnet': subnet!,
-      };
+    if (subnet != null) 'subnet': subnet!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -6133,37 +6135,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Request for PauseConnector.
@@ -6186,18 +6186,14 @@ class RebalanceConfig {
   /// among brokers when the cluster is scaled up.
   core.String? mode;
 
-  RebalanceConfig({
-    this.mode,
-  });
+  RebalanceConfig({this.mode});
 
   RebalanceConfig.fromJson(core.Map json_)
-      : this(
-          mode: json_['mode'] as core.String?,
-        );
+    : this(mode: json_['mode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-      };
+    if (mode != null) 'mode': mode!,
+  };
 }
 
 /// Response for RemoveAclEntry.
@@ -6211,24 +6207,23 @@ class RemoveAclEntryResponse {
   /// the acl, resulting in acl deletion.
   core.bool? aclDeleted;
 
-  RemoveAclEntryResponse({
-    this.acl,
-    this.aclDeleted,
-  });
+  RemoveAclEntryResponse({this.acl, this.aclDeleted});
 
   RemoveAclEntryResponse.fromJson(core.Map json_)
-      : this(
-          acl: json_.containsKey('acl')
-              ? Acl.fromJson(
-                  json_['acl'] as core.Map<core.String, core.dynamic>)
-              : null,
-          aclDeleted: json_['aclDeleted'] as core.bool?,
-        );
+    : this(
+        acl:
+            json_.containsKey('acl')
+                ? Acl.fromJson(
+                  json_['acl'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        aclDeleted: json_['aclDeleted'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acl != null) 'acl': acl!,
-        if (aclDeleted != null) 'aclDeleted': aclDeleted!,
-      };
+    if (acl != null) 'acl': acl!,
+    if (aclDeleted != null) 'aclDeleted': aclDeleted!,
+  };
 }
 
 /// Request for RestartConnector.
@@ -6263,27 +6258,27 @@ class Schema {
   /// - "PROTOBUF" : Protobuf schema type.
   core.String? schemaType;
 
-  Schema({
-    this.references,
-    this.schema,
-    this.schemaType,
-  });
+  Schema({this.references, this.schema, this.schemaType});
 
   Schema.fromJson(core.Map json_)
-      : this(
-          references: (json_['references'] as core.List?)
-              ?.map((value) => SchemaReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          schema: json_['schema'] as core.String?,
-          schemaType: json_['schemaType'] as core.String?,
-        );
+    : this(
+        references:
+            (json_['references'] as core.List?)
+                ?.map(
+                  (value) => SchemaReference.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        schema: json_['schema'] as core.String?,
+        schemaType: json_['schemaType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (references != null) 'references': references!,
-        if (schema != null) 'schema': schema!,
-        if (schemaType != null) 'schemaType': schemaType!,
-      };
+    if (references != null) 'references': references!,
+    if (schema != null) 'schema': schema!,
+    if (schemaType != null) 'schemaType': schemaType!,
+  };
 }
 
 /// SchemaConfig represents configuration for a schema registry or a specific
@@ -6323,24 +6318,20 @@ class SchemaConfig {
   /// Optional.
   core.bool? normalize;
 
-  SchemaConfig({
-    this.alias,
-    this.compatibility,
-    this.normalize,
-  });
+  SchemaConfig({this.alias, this.compatibility, this.normalize});
 
   SchemaConfig.fromJson(core.Map json_)
-      : this(
-          alias: json_['alias'] as core.String?,
-          compatibility: json_['compatibility'] as core.String?,
-          normalize: json_['normalize'] as core.bool?,
-        );
+    : this(
+        alias: json_['alias'] as core.String?,
+        compatibility: json_['compatibility'] as core.String?,
+        normalize: json_['normalize'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alias != null) 'alias': alias!,
-        if (compatibility != null) 'compatibility': compatibility!,
-        if (normalize != null) 'normalize': normalize!,
-      };
+    if (alias != null) 'alias': alias!,
+    if (compatibility != null) 'compatibility': compatibility!,
+    if (normalize != null) 'normalize': normalize!,
+  };
 }
 
 /// SchemaMode represents the mode of a schema registry or a specific subject.
@@ -6366,18 +6357,14 @@ class SchemaMode {
   /// - "IMPORT" : IMPORT mode.
   core.String? mode;
 
-  SchemaMode({
-    this.mode,
-  });
+  SchemaMode({this.mode});
 
   SchemaMode.fromJson(core.Map json_)
-      : this(
-          mode: json_['mode'] as core.String?,
-        );
+    : this(mode: json_['mode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-      };
+    if (mode != null) 'mode': mode!,
+  };
 }
 
 /// SchemaReference is a reference to a schema.
@@ -6397,24 +6384,20 @@ class SchemaReference {
   /// Required.
   core.int? version;
 
-  SchemaReference({
-    this.name,
-    this.subject,
-    this.version,
-  });
+  SchemaReference({this.name, this.subject, this.version});
 
   SchemaReference.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          subject: json_['subject'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        subject: json_['subject'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (subject != null) 'subject': subject!,
-        if (version != null) 'version': version!,
-      };
+    if (name != null) 'name': name!,
+    if (subject != null) 'subject': subject!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// SchemaRegistry is a schema registry instance.
@@ -6432,23 +6415,21 @@ class SchemaRegistry {
   /// characters. * Letters (uppercase or lowercase), numbers, and underscores.
   core.String? name;
 
-  SchemaRegistry({
-    this.contexts,
-    this.name,
-  });
+  SchemaRegistry({this.contexts, this.name});
 
   SchemaRegistry.fromJson(core.Map json_)
-      : this(
-          contexts: (json_['contexts'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        contexts:
+            (json_['contexts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contexts != null) 'contexts': contexts!,
-        if (name != null) 'name': name!,
-      };
+    if (contexts != null) 'contexts': contexts!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Version of a schema.
@@ -6498,26 +6479,30 @@ class SchemaVersion {
   });
 
   SchemaVersion.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.int?,
-          references: (json_['references'] as core.List?)
-              ?.map((value) => SchemaReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          schema: json_['schema'] as core.String?,
-          schemaType: json_['schemaType'] as core.String?,
-          subject: json_['subject'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        id: json_['id'] as core.int?,
+        references:
+            (json_['references'] as core.List?)
+                ?.map(
+                  (value) => SchemaReference.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        schema: json_['schema'] as core.String?,
+        schemaType: json_['schemaType'] as core.String?,
+        subject: json_['subject'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (references != null) 'references': references!,
-        if (schema != null) 'schema': schema!,
-        if (schemaType != null) 'schemaType': schemaType!,
-        if (subject != null) 'subject': subject!,
-        if (version != null) 'version': version!,
-      };
+    if (id != null) 'id': id!,
+    if (references != null) 'references': references!,
+    if (schema != null) 'schema': schema!,
+    if (schemaType != null) 'schemaType': schemaType!,
+    if (subject != null) 'subject': subject!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -6559,21 +6544,18 @@ class TaskRetryPolicy {
   /// Optional.
   core.String? minimumBackoff;
 
-  TaskRetryPolicy({
-    this.maximumBackoff,
-    this.minimumBackoff,
-  });
+  TaskRetryPolicy({this.maximumBackoff, this.minimumBackoff});
 
   TaskRetryPolicy.fromJson(core.Map json_)
-      : this(
-          maximumBackoff: json_['maximumBackoff'] as core.String?,
-          minimumBackoff: json_['minimumBackoff'] as core.String?,
-        );
+    : this(
+        maximumBackoff: json_['maximumBackoff'] as core.String?,
+        minimumBackoff: json_['minimumBackoff'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maximumBackoff != null) 'maximumBackoff': maximumBackoff!,
-        if (minimumBackoff != null) 'minimumBackoff': minimumBackoff!,
-      };
+    if (maximumBackoff != null) 'maximumBackoff': maximumBackoff!,
+    if (minimumBackoff != null) 'minimumBackoff': minimumBackoff!,
+  };
 }
 
 /// The TLS configuration for the Kafka cluster.
@@ -6598,26 +6580,25 @@ class TlsConfig {
   /// Optional.
   TrustConfig? trustConfig;
 
-  TlsConfig({
-    this.sslPrincipalMappingRules,
-    this.trustConfig,
-  });
+  TlsConfig({this.sslPrincipalMappingRules, this.trustConfig});
 
   TlsConfig.fromJson(core.Map json_)
-      : this(
-          sslPrincipalMappingRules:
-              json_['sslPrincipalMappingRules'] as core.String?,
-          trustConfig: json_.containsKey('trustConfig')
-              ? TrustConfig.fromJson(
-                  json_['trustConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        sslPrincipalMappingRules:
+            json_['sslPrincipalMappingRules'] as core.String?,
+        trustConfig:
+            json_.containsKey('trustConfig')
+                ? TrustConfig.fromJson(
+                  json_['trustConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sslPrincipalMappingRules != null)
-          'sslPrincipalMappingRules': sslPrincipalMappingRules!,
-        if (trustConfig != null) 'trustConfig': trustConfig!,
-      };
+    if (sslPrincipalMappingRules != null)
+      'sslPrincipalMappingRules': sslPrincipalMappingRules!,
+    if (trustConfig != null) 'trustConfig': trustConfig!,
+  };
 }
 
 /// A Kafka topic in a given cluster.
@@ -6654,33 +6635,23 @@ class Topic {
   /// Required. Immutable.
   core.int? replicationFactor;
 
-  Topic({
-    this.configs,
-    this.name,
-    this.partitionCount,
-    this.replicationFactor,
-  });
+  Topic({this.configs, this.name, this.partitionCount, this.replicationFactor});
 
   Topic.fromJson(core.Map json_)
-      : this(
-          configs:
-              (json_['configs'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          partitionCount: json_['partitionCount'] as core.int?,
-          replicationFactor: json_['replicationFactor'] as core.int?,
-        );
+    : this(
+        configs: (json_['configs'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        name: json_['name'] as core.String?,
+        partitionCount: json_['partitionCount'] as core.int?,
+        replicationFactor: json_['replicationFactor'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configs != null) 'configs': configs!,
-        if (name != null) 'name': name!,
-        if (partitionCount != null) 'partitionCount': partitionCount!,
-        if (replicationFactor != null) 'replicationFactor': replicationFactor!,
-      };
+    if (configs != null) 'configs': configs!,
+    if (name != null) 'name': name!,
+    if (partitionCount != null) 'partitionCount': partitionCount!,
+    if (replicationFactor != null) 'replicationFactor': replicationFactor!,
+  };
 }
 
 /// Sources of CA certificates to install in the broker's truststore.
@@ -6692,21 +6663,23 @@ class TrustConfig {
   /// Optional.
   core.List<CertificateAuthorityServiceConfig>? casConfigs;
 
-  TrustConfig({
-    this.casConfigs,
-  });
+  TrustConfig({this.casConfigs});
 
   TrustConfig.fromJson(core.Map json_)
-      : this(
-          casConfigs: (json_['casConfigs'] as core.List?)
-              ?.map((value) => CertificateAuthorityServiceConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        casConfigs:
+            (json_['casConfigs'] as core.List?)
+                ?.map(
+                  (value) => CertificateAuthorityServiceConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (casConfigs != null) 'casConfigs': casConfigs!,
-      };
+    if (casConfigs != null) 'casConfigs': casConfigs!,
+  };
 }
 
 /// Request for updating schema config.
@@ -6741,21 +6714,18 @@ class UpdateSchemaConfigRequest {
   /// Optional.
   core.bool? normalize;
 
-  UpdateSchemaConfigRequest({
-    this.compatibility,
-    this.normalize,
-  });
+  UpdateSchemaConfigRequest({this.compatibility, this.normalize});
 
   UpdateSchemaConfigRequest.fromJson(core.Map json_)
-      : this(
-          compatibility: json_['compatibility'] as core.String?,
-          normalize: json_['normalize'] as core.bool?,
-        );
+    : this(
+        compatibility: json_['compatibility'] as core.String?,
+        normalize: json_['normalize'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (compatibility != null) 'compatibility': compatibility!,
-        if (normalize != null) 'normalize': normalize!,
-      };
+    if (compatibility != null) 'compatibility': compatibility!,
+    if (normalize != null) 'normalize': normalize!,
+  };
 }
 
 /// Request for updating schema registry or subject mode.
@@ -6772,16 +6742,12 @@ class UpdateSchemaModeRequest {
   /// - "IMPORT" : IMPORT mode.
   core.String? mode;
 
-  UpdateSchemaModeRequest({
-    this.mode,
-  });
+  UpdateSchemaModeRequest({this.mode});
 
   UpdateSchemaModeRequest.fromJson(core.Map json_)
-      : this(
-          mode: json_['mode'] as core.String?,
-        );
+    : this(mode: json_['mode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-      };
+    if (mode != null) 'mode': mode!,
+  };
 }

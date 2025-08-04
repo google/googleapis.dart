@@ -63,11 +63,16 @@ class NetAppFilesApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  NetAppFilesApi(http.Client client,
-      {core.String rootUrl = 'https://netapp.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  NetAppFilesApi(
+    http.Client client, {
+    core.String rootUrl = 'https://netapp.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -116,10 +121,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -189,7 +191,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -197,7 +200,7 @@ class ProjectsLocationsActiveDirectoriesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsActiveDirectoriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// CreateActiveDirectory Creates the active directory specified in the
   /// request.
@@ -317,7 +320,8 @@ class ProjectsLocationsActiveDirectoriesResource {
       queryParams: queryParams_,
     );
     return ActiveDirectory.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists active directories.
@@ -371,7 +375,8 @@ class ProjectsLocationsActiveDirectoriesResource {
       queryParams: queryParams_,
     );
     return ListActiveDirectoriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update the parameters of an active directories.
@@ -429,7 +434,7 @@ class ProjectsLocationsBackupPoliciesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsBackupPoliciesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates new backup policy
   ///
@@ -552,7 +557,8 @@ class ProjectsLocationsBackupPoliciesResource {
       queryParams: queryParams_,
     );
     return BackupPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns list of all available backup policies.
@@ -606,7 +612,8 @@ class ProjectsLocationsBackupPoliciesResource {
       queryParams: queryParams_,
     );
     return ListBackupPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates settings of a specific backup policy.
@@ -667,7 +674,7 @@ class ProjectsLocationsBackupVaultsResource {
       ProjectsLocationsBackupVaultsBackupsResource(_requester);
 
   ProjectsLocationsBackupVaultsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates new backup vault
   ///
@@ -789,7 +796,8 @@ class ProjectsLocationsBackupVaultsResource {
       queryParams: queryParams_,
     );
     return BackupVault.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns list of all available backup vaults.
@@ -844,7 +852,8 @@ class ProjectsLocationsBackupVaultsResource {
       queryParams: queryParams_,
     );
     return ListBackupVaultsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the settings of a specific backup vault.
@@ -902,7 +911,7 @@ class ProjectsLocationsBackupVaultsBackupsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsBackupVaultsBackupsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a backup from the volume specified in the request The backup can
   /// be created from the given snapshot if specified in the request.
@@ -1013,10 +1022,7 @@ class ProjectsLocationsBackupVaultsBackupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Backup> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Backup> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1094,7 +1100,8 @@ class ProjectsLocationsBackupVaultsBackupsResource {
       queryParams: queryParams_,
     );
     return ListBackupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update backup with full spec.
@@ -1152,7 +1159,7 @@ class ProjectsLocationsKmsConfigsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsKmsConfigsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new KMS config.
   ///
@@ -1297,10 +1304,7 @@ class ProjectsLocationsKmsConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<KmsConfig> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<KmsConfig> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1366,7 +1370,8 @@ class ProjectsLocationsKmsConfigsResource {
       queryParams: queryParams_,
     );
     return ListKmsConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the Kms config properties with the full spec
@@ -1457,7 +1462,8 @@ class ProjectsLocationsKmsConfigsResource {
       queryParams: queryParams_,
     );
     return VerifyKmsConfigResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1465,7 +1471,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -1515,7 +1521,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a long-running operation.
@@ -1556,7 +1563,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -1580,10 +1588,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1645,7 +1650,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1653,7 +1659,7 @@ class ProjectsLocationsStoragePoolsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsStoragePoolsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new storage pool.
   ///
@@ -1772,7 +1778,8 @@ class ProjectsLocationsStoragePoolsResource {
       queryParams: queryParams_,
     );
     return StoragePool.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns descriptions of all storage pools owned by the caller.
@@ -1826,7 +1833,8 @@ class ProjectsLocationsStoragePoolsResource {
       queryParams: queryParams_,
     );
     return ListStoragePoolsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the storage pool properties with the full spec
@@ -1975,7 +1983,7 @@ class ProjectsLocationsVolumesResource {
       ProjectsLocationsVolumesSnapshotsResource(_requester);
 
   ProjectsLocationsVolumesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new Volume in a given project and location.
   ///
@@ -2084,10 +2092,7 @@ class ProjectsLocationsVolumesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Volume> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Volume> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2153,7 +2158,8 @@ class ProjectsLocationsVolumesResource {
       queryParams: queryParams_,
     );
     return ListVolumesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Volume.
@@ -2255,7 +2261,7 @@ class ProjectsLocationsVolumesQuotaRulesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsVolumesQuotaRulesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new quota rule.
   ///
@@ -2359,10 +2365,7 @@ class ProjectsLocationsVolumesQuotaRulesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<QuotaRule> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<QuotaRule> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2430,7 +2433,8 @@ class ProjectsLocationsVolumesQuotaRulesResource {
       queryParams: queryParams_,
     );
     return ListQuotaRulesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a quota rule.
@@ -2488,7 +2492,7 @@ class ProjectsLocationsVolumesReplicationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsVolumesReplicationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a new replication for a volume.
   ///
@@ -2654,7 +2658,8 @@ class ProjectsLocationsVolumesReplicationsResource {
       queryParams: queryParams_,
     );
     return Replication.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns descriptions of all replications for a volume.
@@ -2711,7 +2716,8 @@ class ProjectsLocationsVolumesReplicationsResource {
       queryParams: queryParams_,
     );
     return ListReplicationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the settings of a specific replication.
@@ -2938,7 +2944,7 @@ class ProjectsLocationsVolumesSnapshotsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsVolumesSnapshotsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a new snapshot for a volume.
   ///
@@ -3045,10 +3051,7 @@ class ProjectsLocationsVolumesSnapshotsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Snapshot> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Snapshot> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3117,7 +3120,8 @@ class ProjectsLocationsVolumesSnapshotsResource {
       queryParams: queryParams_,
     );
     return ListSnapshotsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the settings of a specific snapshot.
@@ -3304,69 +3308,67 @@ class ActiveDirectory {
   });
 
   ActiveDirectory.fromJson(core.Map json_)
-      : this(
-          administrators: (json_['administrators'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          aesEncryption: json_['aesEncryption'] as core.bool?,
-          backupOperators: (json_['backupOperators'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          dns: json_['dns'] as core.String?,
-          domain: json_['domain'] as core.String?,
-          encryptDcConnections: json_['encryptDcConnections'] as core.bool?,
-          kdcHostname: json_['kdcHostname'] as core.String?,
-          kdcIp: json_['kdcIp'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          ldapSigning: json_['ldapSigning'] as core.bool?,
-          name: json_['name'] as core.String?,
-          netBiosPrefix: json_['netBiosPrefix'] as core.String?,
-          nfsUsersWithLdap: json_['nfsUsersWithLdap'] as core.bool?,
-          organizationalUnit: json_['organizationalUnit'] as core.String?,
-          password: json_['password'] as core.String?,
-          securityOperators: (json_['securityOperators'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          site: json_['site'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateDetails: json_['stateDetails'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        administrators:
+            (json_['administrators'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        aesEncryption: json_['aesEncryption'] as core.bool?,
+        backupOperators:
+            (json_['backupOperators'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        dns: json_['dns'] as core.String?,
+        domain: json_['domain'] as core.String?,
+        encryptDcConnections: json_['encryptDcConnections'] as core.bool?,
+        kdcHostname: json_['kdcHostname'] as core.String?,
+        kdcIp: json_['kdcIp'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        ldapSigning: json_['ldapSigning'] as core.bool?,
+        name: json_['name'] as core.String?,
+        netBiosPrefix: json_['netBiosPrefix'] as core.String?,
+        nfsUsersWithLdap: json_['nfsUsersWithLdap'] as core.bool?,
+        organizationalUnit: json_['organizationalUnit'] as core.String?,
+        password: json_['password'] as core.String?,
+        securityOperators:
+            (json_['securityOperators'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        site: json_['site'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateDetails: json_['stateDetails'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (administrators != null) 'administrators': administrators!,
-        if (aesEncryption != null) 'aesEncryption': aesEncryption!,
-        if (backupOperators != null) 'backupOperators': backupOperators!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (dns != null) 'dns': dns!,
-        if (domain != null) 'domain': domain!,
-        if (encryptDcConnections != null)
-          'encryptDcConnections': encryptDcConnections!,
-        if (kdcHostname != null) 'kdcHostname': kdcHostname!,
-        if (kdcIp != null) 'kdcIp': kdcIp!,
-        if (labels != null) 'labels': labels!,
-        if (ldapSigning != null) 'ldapSigning': ldapSigning!,
-        if (name != null) 'name': name!,
-        if (netBiosPrefix != null) 'netBiosPrefix': netBiosPrefix!,
-        if (nfsUsersWithLdap != null) 'nfsUsersWithLdap': nfsUsersWithLdap!,
-        if (organizationalUnit != null)
-          'organizationalUnit': organizationalUnit!,
-        if (password != null) 'password': password!,
-        if (securityOperators != null) 'securityOperators': securityOperators!,
-        if (site != null) 'site': site!,
-        if (state != null) 'state': state!,
-        if (stateDetails != null) 'stateDetails': stateDetails!,
-        if (username != null) 'username': username!,
-      };
+    if (administrators != null) 'administrators': administrators!,
+    if (aesEncryption != null) 'aesEncryption': aesEncryption!,
+    if (backupOperators != null) 'backupOperators': backupOperators!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (dns != null) 'dns': dns!,
+    if (domain != null) 'domain': domain!,
+    if (encryptDcConnections != null)
+      'encryptDcConnections': encryptDcConnections!,
+    if (kdcHostname != null) 'kdcHostname': kdcHostname!,
+    if (kdcIp != null) 'kdcIp': kdcIp!,
+    if (labels != null) 'labels': labels!,
+    if (ldapSigning != null) 'ldapSigning': ldapSigning!,
+    if (name != null) 'name': name!,
+    if (netBiosPrefix != null) 'netBiosPrefix': netBiosPrefix!,
+    if (nfsUsersWithLdap != null) 'nfsUsersWithLdap': nfsUsersWithLdap!,
+    if (organizationalUnit != null) 'organizationalUnit': organizationalUnit!,
+    if (password != null) 'password': password!,
+    if (securityOperators != null) 'securityOperators': securityOperators!,
+    if (site != null) 'site': site!,
+    if (state != null) 'state': state!,
+    if (stateDetails != null) 'stateDetails': stateDetails!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// A NetApp Backup.
@@ -3490,49 +3492,45 @@ class Backup {
   });
 
   Backup.fromJson(core.Map json_)
-      : this(
-          backupRegion: json_['backupRegion'] as core.String?,
-          backupType: json_['backupType'] as core.String?,
-          chainStorageBytes: json_['chainStorageBytes'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          enforcedRetentionEndTime:
-              json_['enforcedRetentionEndTime'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
-          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-          sourceSnapshot: json_['sourceSnapshot'] as core.String?,
-          sourceVolume: json_['sourceVolume'] as core.String?,
-          state: json_['state'] as core.String?,
-          volumeRegion: json_['volumeRegion'] as core.String?,
-          volumeUsageBytes: json_['volumeUsageBytes'] as core.String?,
-        );
+    : this(
+        backupRegion: json_['backupRegion'] as core.String?,
+        backupType: json_['backupType'] as core.String?,
+        chainStorageBytes: json_['chainStorageBytes'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        enforcedRetentionEndTime:
+            json_['enforcedRetentionEndTime'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        sourceSnapshot: json_['sourceSnapshot'] as core.String?,
+        sourceVolume: json_['sourceVolume'] as core.String?,
+        state: json_['state'] as core.String?,
+        volumeRegion: json_['volumeRegion'] as core.String?,
+        volumeUsageBytes: json_['volumeUsageBytes'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupRegion != null) 'backupRegion': backupRegion!,
-        if (backupType != null) 'backupType': backupType!,
-        if (chainStorageBytes != null) 'chainStorageBytes': chainStorageBytes!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (enforcedRetentionEndTime != null)
-          'enforcedRetentionEndTime': enforcedRetentionEndTime!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-        if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
-        if (sourceVolume != null) 'sourceVolume': sourceVolume!,
-        if (state != null) 'state': state!,
-        if (volumeRegion != null) 'volumeRegion': volumeRegion!,
-        if (volumeUsageBytes != null) 'volumeUsageBytes': volumeUsageBytes!,
-      };
+    if (backupRegion != null) 'backupRegion': backupRegion!,
+    if (backupType != null) 'backupType': backupType!,
+    if (chainStorageBytes != null) 'chainStorageBytes': chainStorageBytes!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (enforcedRetentionEndTime != null)
+      'enforcedRetentionEndTime': enforcedRetentionEndTime!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
+    if (sourceVolume != null) 'sourceVolume': sourceVolume!,
+    if (state != null) 'state': state!,
+    if (volumeRegion != null) 'volumeRegion': volumeRegion!,
+    if (volumeUsageBytes != null) 'volumeUsageBytes': volumeUsageBytes!,
+  };
 }
 
 /// BackupConfig contains backup related config on a volume.
@@ -3572,22 +3570,23 @@ class BackupConfig {
   });
 
   BackupConfig.fromJson(core.Map json_)
-      : this(
-          backupChainBytes: json_['backupChainBytes'] as core.String?,
-          backupPolicies: (json_['backupPolicies'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          backupVault: json_['backupVault'] as core.String?,
-          scheduledBackupEnabled: json_['scheduledBackupEnabled'] as core.bool?,
-        );
+    : this(
+        backupChainBytes: json_['backupChainBytes'] as core.String?,
+        backupPolicies:
+            (json_['backupPolicies'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        backupVault: json_['backupVault'] as core.String?,
+        scheduledBackupEnabled: json_['scheduledBackupEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupChainBytes != null) 'backupChainBytes': backupChainBytes!,
-        if (backupPolicies != null) 'backupPolicies': backupPolicies!,
-        if (backupVault != null) 'backupVault': backupVault!,
-        if (scheduledBackupEnabled != null)
-          'scheduledBackupEnabled': scheduledBackupEnabled!,
-      };
+    if (backupChainBytes != null) 'backupChainBytes': backupChainBytes!,
+    if (backupPolicies != null) 'backupPolicies': backupPolicies!,
+    if (backupVault != null) 'backupVault': backupVault!,
+    if (scheduledBackupEnabled != null)
+      'scheduledBackupEnabled': scheduledBackupEnabled!,
+  };
 }
 
 /// Backup Policy.
@@ -3663,39 +3662,34 @@ class BackupPolicy {
   });
 
   BackupPolicy.fromJson(core.Map json_)
-      : this(
-          assignedVolumeCount: json_['assignedVolumeCount'] as core.int?,
-          createTime: json_['createTime'] as core.String?,
-          dailyBackupLimit: json_['dailyBackupLimit'] as core.int?,
-          description: json_['description'] as core.String?,
-          enabled: json_['enabled'] as core.bool?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          monthlyBackupLimit: json_['monthlyBackupLimit'] as core.int?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          weeklyBackupLimit: json_['weeklyBackupLimit'] as core.int?,
-        );
+    : this(
+        assignedVolumeCount: json_['assignedVolumeCount'] as core.int?,
+        createTime: json_['createTime'] as core.String?,
+        dailyBackupLimit: json_['dailyBackupLimit'] as core.int?,
+        description: json_['description'] as core.String?,
+        enabled: json_['enabled'] as core.bool?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        monthlyBackupLimit: json_['monthlyBackupLimit'] as core.int?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        weeklyBackupLimit: json_['weeklyBackupLimit'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedVolumeCount != null)
-          'assignedVolumeCount': assignedVolumeCount!,
-        if (createTime != null) 'createTime': createTime!,
-        if (dailyBackupLimit != null) 'dailyBackupLimit': dailyBackupLimit!,
-        if (description != null) 'description': description!,
-        if (enabled != null) 'enabled': enabled!,
-        if (labels != null) 'labels': labels!,
-        if (monthlyBackupLimit != null)
-          'monthlyBackupLimit': monthlyBackupLimit!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (weeklyBackupLimit != null) 'weeklyBackupLimit': weeklyBackupLimit!,
-      };
+    if (assignedVolumeCount != null)
+      'assignedVolumeCount': assignedVolumeCount!,
+    if (createTime != null) 'createTime': createTime!,
+    if (dailyBackupLimit != null) 'dailyBackupLimit': dailyBackupLimit!,
+    if (description != null) 'description': description!,
+    if (enabled != null) 'enabled': enabled!,
+    if (labels != null) 'labels': labels!,
+    if (monthlyBackupLimit != null) 'monthlyBackupLimit': monthlyBackupLimit!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (weeklyBackupLimit != null) 'weeklyBackupLimit': weeklyBackupLimit!,
+  };
 }
 
 /// Retention policy for backups in the backup vault
@@ -3746,28 +3740,27 @@ class BackupRetentionPolicy {
   });
 
   BackupRetentionPolicy.fromJson(core.Map json_)
-      : this(
-          backupMinimumEnforcedRetentionDays:
-              json_['backupMinimumEnforcedRetentionDays'] as core.int?,
-          dailyBackupImmutable: json_['dailyBackupImmutable'] as core.bool?,
-          manualBackupImmutable: json_['manualBackupImmutable'] as core.bool?,
-          monthlyBackupImmutable: json_['monthlyBackupImmutable'] as core.bool?,
-          weeklyBackupImmutable: json_['weeklyBackupImmutable'] as core.bool?,
-        );
+    : this(
+        backupMinimumEnforcedRetentionDays:
+            json_['backupMinimumEnforcedRetentionDays'] as core.int?,
+        dailyBackupImmutable: json_['dailyBackupImmutable'] as core.bool?,
+        manualBackupImmutable: json_['manualBackupImmutable'] as core.bool?,
+        monthlyBackupImmutable: json_['monthlyBackupImmutable'] as core.bool?,
+        weeklyBackupImmutable: json_['weeklyBackupImmutable'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupMinimumEnforcedRetentionDays != null)
-          'backupMinimumEnforcedRetentionDays':
-              backupMinimumEnforcedRetentionDays!,
-        if (dailyBackupImmutable != null)
-          'dailyBackupImmutable': dailyBackupImmutable!,
-        if (manualBackupImmutable != null)
-          'manualBackupImmutable': manualBackupImmutable!,
-        if (monthlyBackupImmutable != null)
-          'monthlyBackupImmutable': monthlyBackupImmutable!,
-        if (weeklyBackupImmutable != null)
-          'weeklyBackupImmutable': weeklyBackupImmutable!,
-      };
+    if (backupMinimumEnforcedRetentionDays != null)
+      'backupMinimumEnforcedRetentionDays': backupMinimumEnforcedRetentionDays!,
+    if (dailyBackupImmutable != null)
+      'dailyBackupImmutable': dailyBackupImmutable!,
+    if (manualBackupImmutable != null)
+      'manualBackupImmutable': manualBackupImmutable!,
+    if (monthlyBackupImmutable != null)
+      'monthlyBackupImmutable': monthlyBackupImmutable!,
+    if (weeklyBackupImmutable != null)
+      'weeklyBackupImmutable': weeklyBackupImmutable!,
+  };
 }
 
 /// A NetApp BackupVault.
@@ -3862,45 +3855,43 @@ class BackupVault {
   });
 
   BackupVault.fromJson(core.Map json_)
-      : this(
-          backupRegion: json_['backupRegion'] as core.String?,
-          backupRetentionPolicy: json_.containsKey('backupRetentionPolicy')
-              ? BackupRetentionPolicy.fromJson(json_['backupRetentionPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          backupVaultType: json_['backupVaultType'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          destinationBackupVault:
-              json_['destinationBackupVault'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          sourceBackupVault: json_['sourceBackupVault'] as core.String?,
-          sourceRegion: json_['sourceRegion'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        backupRegion: json_['backupRegion'] as core.String?,
+        backupRetentionPolicy:
+            json_.containsKey('backupRetentionPolicy')
+                ? BackupRetentionPolicy.fromJson(
+                  json_['backupRetentionPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        backupVaultType: json_['backupVaultType'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        destinationBackupVault: json_['destinationBackupVault'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        sourceBackupVault: json_['sourceBackupVault'] as core.String?,
+        sourceRegion: json_['sourceRegion'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupRegion != null) 'backupRegion': backupRegion!,
-        if (backupRetentionPolicy != null)
-          'backupRetentionPolicy': backupRetentionPolicy!,
-        if (backupVaultType != null) 'backupVaultType': backupVaultType!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (destinationBackupVault != null)
-          'destinationBackupVault': destinationBackupVault!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (sourceBackupVault != null) 'sourceBackupVault': sourceBackupVault!,
-        if (sourceRegion != null) 'sourceRegion': sourceRegion!,
-        if (state != null) 'state': state!,
-      };
+    if (backupRegion != null) 'backupRegion': backupRegion!,
+    if (backupRetentionPolicy != null)
+      'backupRetentionPolicy': backupRetentionPolicy!,
+    if (backupVaultType != null) 'backupVaultType': backupVaultType!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (destinationBackupVault != null)
+      'destinationBackupVault': destinationBackupVault!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (sourceBackupVault != null) 'sourceBackupVault': sourceBackupVault!,
+    if (sourceRegion != null) 'sourceRegion': sourceRegion!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -3918,24 +3909,20 @@ class DailySchedule {
   /// The maximum number of Snapshots to keep for the hourly schedule
   core.double? snapshotsToKeep;
 
-  DailySchedule({
-    this.hour,
-    this.minute,
-    this.snapshotsToKeep,
-  });
+  DailySchedule({this.hour, this.minute, this.snapshotsToKeep});
 
   DailySchedule.fromJson(core.Map json_)
-      : this(
-          hour: (json_['hour'] as core.num?)?.toDouble(),
-          minute: (json_['minute'] as core.num?)?.toDouble(),
-          snapshotsToKeep: (json_['snapshotsToKeep'] as core.num?)?.toDouble(),
-        );
+    : this(
+        hour: (json_['hour'] as core.num?)?.toDouble(),
+        minute: (json_['minute'] as core.num?)?.toDouble(),
+        snapshotsToKeep: (json_['snapshotsToKeep'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hour != null) 'hour': hour!,
-        if (minute != null) 'minute': minute!,
-        if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
-      };
+    if (hour != null) 'hour': hour!,
+    if (minute != null) 'minute': minute!,
+    if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
+  };
 }
 
 /// DestinationVolumeParameters specify input parameters used for creating
@@ -3975,24 +3962,26 @@ class DestinationVolumeParameters {
   });
 
   DestinationVolumeParameters.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          shareName: json_['shareName'] as core.String?,
-          storagePool: json_['storagePool'] as core.String?,
-          tieringPolicy: json_.containsKey('tieringPolicy')
-              ? TieringPolicy.fromJson(
-                  json_['tieringPolicy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        shareName: json_['shareName'] as core.String?,
+        storagePool: json_['storagePool'] as core.String?,
+        tieringPolicy:
+            json_.containsKey('tieringPolicy')
+                ? TieringPolicy.fromJson(
+                  json_['tieringPolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (shareName != null) 'shareName': shareName!,
-        if (storagePool != null) 'storagePool': storagePool!,
-        if (tieringPolicy != null) 'tieringPolicy': tieringPolicy!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (description != null) 'description': description!,
+    if (shareName != null) 'shareName': shareName!,
+    if (storagePool != null) 'storagePool': storagePool!,
+    if (tieringPolicy != null) 'tieringPolicy': tieringPolicy!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 /// EncryptVolumesRequest specifies the KMS config to encrypt existing volumes.
@@ -4032,21 +4021,22 @@ class EstablishPeeringRequest {
   });
 
   EstablishPeeringRequest.fromJson(core.Map json_)
-      : this(
-          peerClusterName: json_['peerClusterName'] as core.String?,
-          peerIpAddresses: (json_['peerIpAddresses'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          peerSvmName: json_['peerSvmName'] as core.String?,
-          peerVolumeName: json_['peerVolumeName'] as core.String?,
-        );
+    : this(
+        peerClusterName: json_['peerClusterName'] as core.String?,
+        peerIpAddresses:
+            (json_['peerIpAddresses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        peerSvmName: json_['peerSvmName'] as core.String?,
+        peerVolumeName: json_['peerVolumeName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (peerClusterName != null) 'peerClusterName': peerClusterName!,
-        if (peerIpAddresses != null) 'peerIpAddresses': peerIpAddresses!,
-        if (peerSvmName != null) 'peerSvmName': peerSvmName!,
-        if (peerVolumeName != null) 'peerVolumeName': peerVolumeName!,
-      };
+    if (peerClusterName != null) 'peerClusterName': peerClusterName!,
+    if (peerIpAddresses != null) 'peerIpAddresses': peerIpAddresses!,
+    if (peerSvmName != null) 'peerSvmName': peerSvmName!,
+    if (peerVolumeName != null) 'peerVolumeName': peerVolumeName!,
+  };
 }
 
 /// Defines the export policy for the volume.
@@ -4056,21 +4046,23 @@ class ExportPolicy {
   /// Required.
   core.List<SimpleExportPolicyRule>? rules;
 
-  ExportPolicy({
-    this.rules,
-  });
+  ExportPolicy({this.rules});
 
   ExportPolicy.fromJson(core.Map json_)
-      : this(
-          rules: (json_['rules'] as core.List?)
-              ?.map((value) => SimpleExportPolicyRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        rules:
+            (json_['rules'] as core.List?)
+                ?.map(
+                  (value) => SimpleExportPolicyRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rules != null) 'rules': rules!,
-      };
+    if (rules != null) 'rules': rules!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -4090,21 +4082,18 @@ class HourlySchedule {
   /// The maximum number of Snapshots to keep for the hourly schedule
   core.double? snapshotsToKeep;
 
-  HourlySchedule({
-    this.minute,
-    this.snapshotsToKeep,
-  });
+  HourlySchedule({this.minute, this.snapshotsToKeep});
 
   HourlySchedule.fromJson(core.Map json_)
-      : this(
-          minute: (json_['minute'] as core.num?)?.toDouble(),
-          snapshotsToKeep: (json_['snapshotsToKeep'] as core.num?)?.toDouble(),
-        );
+    : this(
+        minute: (json_['minute'] as core.num?)?.toDouble(),
+        snapshotsToKeep: (json_['snapshotsToKeep'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (minute != null) 'minute': minute!,
-        if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
-      };
+    if (minute != null) 'minute': minute!,
+    if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
+  };
 }
 
 /// HybridPeeringDetails contains details about the hybrid peering.
@@ -4159,25 +4148,25 @@ class HybridPeeringDetails {
   });
 
   HybridPeeringDetails.fromJson(core.Map json_)
-      : this(
-          command: json_['command'] as core.String?,
-          commandExpiryTime: json_['commandExpiryTime'] as core.String?,
-          passphrase: json_['passphrase'] as core.String?,
-          peerClusterName: json_['peerClusterName'] as core.String?,
-          peerSvmName: json_['peerSvmName'] as core.String?,
-          peerVolumeName: json_['peerVolumeName'] as core.String?,
-          subnetIp: json_['subnetIp'] as core.String?,
-        );
+    : this(
+        command: json_['command'] as core.String?,
+        commandExpiryTime: json_['commandExpiryTime'] as core.String?,
+        passphrase: json_['passphrase'] as core.String?,
+        peerClusterName: json_['peerClusterName'] as core.String?,
+        peerSvmName: json_['peerSvmName'] as core.String?,
+        peerVolumeName: json_['peerVolumeName'] as core.String?,
+        subnetIp: json_['subnetIp'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (command != null) 'command': command!,
-        if (commandExpiryTime != null) 'commandExpiryTime': commandExpiryTime!,
-        if (passphrase != null) 'passphrase': passphrase!,
-        if (peerClusterName != null) 'peerClusterName': peerClusterName!,
-        if (peerSvmName != null) 'peerSvmName': peerSvmName!,
-        if (peerVolumeName != null) 'peerVolumeName': peerVolumeName!,
-        if (subnetIp != null) 'subnetIp': subnetIp!,
-      };
+    if (command != null) 'command': command!,
+    if (commandExpiryTime != null) 'commandExpiryTime': commandExpiryTime!,
+    if (passphrase != null) 'passphrase': passphrase!,
+    if (peerClusterName != null) 'peerClusterName': peerClusterName!,
+    if (peerSvmName != null) 'peerSvmName': peerSvmName!,
+    if (peerVolumeName != null) 'peerVolumeName': peerVolumeName!,
+    if (subnetIp != null) 'subnetIp': subnetIp!,
+  };
 }
 
 /// The Hybrid Replication parameters for the volume.
@@ -4239,35 +4228,32 @@ class HybridReplicationParameters {
   });
 
   HybridReplicationParameters.fromJson(core.Map json_)
-      : this(
-          clusterLocation: json_['clusterLocation'] as core.String?,
-          description: json_['description'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          peerClusterName: json_['peerClusterName'] as core.String?,
-          peerIpAddresses: (json_['peerIpAddresses'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          peerSvmName: json_['peerSvmName'] as core.String?,
-          peerVolumeName: json_['peerVolumeName'] as core.String?,
-          replication: json_['replication'] as core.String?,
-        );
+    : this(
+        clusterLocation: json_['clusterLocation'] as core.String?,
+        description: json_['description'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        peerClusterName: json_['peerClusterName'] as core.String?,
+        peerIpAddresses:
+            (json_['peerIpAddresses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        peerSvmName: json_['peerSvmName'] as core.String?,
+        peerVolumeName: json_['peerVolumeName'] as core.String?,
+        replication: json_['replication'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterLocation != null) 'clusterLocation': clusterLocation!,
-        if (description != null) 'description': description!,
-        if (labels != null) 'labels': labels!,
-        if (peerClusterName != null) 'peerClusterName': peerClusterName!,
-        if (peerIpAddresses != null) 'peerIpAddresses': peerIpAddresses!,
-        if (peerSvmName != null) 'peerSvmName': peerSvmName!,
-        if (peerVolumeName != null) 'peerVolumeName': peerVolumeName!,
-        if (replication != null) 'replication': replication!,
-      };
+    if (clusterLocation != null) 'clusterLocation': clusterLocation!,
+    if (description != null) 'description': description!,
+    if (labels != null) 'labels': labels!,
+    if (peerClusterName != null) 'peerClusterName': peerClusterName!,
+    if (peerIpAddresses != null) 'peerIpAddresses': peerIpAddresses!,
+    if (peerSvmName != null) 'peerSvmName': peerSvmName!,
+    if (peerVolumeName != null) 'peerVolumeName': peerVolumeName!,
+    if (replication != null) 'replication': replication!,
+  };
 }
 
 /// KmsConfig is the customer managed encryption key(CMEK) configuration.
@@ -4347,35 +4333,31 @@ class KmsConfig {
   });
 
   KmsConfig.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          cryptoKeyName: json_['cryptoKeyName'] as core.String?,
-          description: json_['description'] as core.String?,
-          instructions: json_['instructions'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateDetails: json_['stateDetails'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        cryptoKeyName: json_['cryptoKeyName'] as core.String?,
+        description: json_['description'] as core.String?,
+        instructions: json_['instructions'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateDetails: json_['stateDetails'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
-        if (description != null) 'description': description!,
-        if (instructions != null) 'instructions': instructions!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (state != null) 'state': state!,
-        if (stateDetails != null) 'stateDetails': stateDetails!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
+    if (description != null) 'description': description!,
+    if (instructions != null) 'instructions': instructions!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (state != null) 'state': state!,
+    if (stateDetails != null) 'stateDetails': stateDetails!,
+  };
 }
 
 /// ListActiveDirectoriesResponse contains all the active directories requested.
@@ -4396,22 +4378,27 @@ class ListActiveDirectoriesResponse {
   });
 
   ListActiveDirectoriesResponse.fromJson(core.Map json_)
-      : this(
-          activeDirectories: (json_['activeDirectories'] as core.List?)
-              ?.map((value) => ActiveDirectory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        activeDirectories:
+            (json_['activeDirectories'] as core.List?)
+                ?.map(
+                  (value) => ActiveDirectory.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeDirectories != null) 'activeDirectories': activeDirectories!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (activeDirectories != null) 'activeDirectories': activeDirectories!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// ListBackupPoliciesResponse contains all the backup policies requested.
@@ -4432,22 +4419,27 @@ class ListBackupPoliciesResponse {
   });
 
   ListBackupPoliciesResponse.fromJson(core.Map json_)
-      : this(
-          backupPolicies: (json_['backupPolicies'] as core.List?)
-              ?.map((value) => BackupPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        backupPolicies:
+            (json_['backupPolicies'] as core.List?)
+                ?.map(
+                  (value) => BackupPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupPolicies != null) 'backupPolicies': backupPolicies!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (backupPolicies != null) 'backupPolicies': backupPolicies!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// ListBackupVaultsResponse is the result of ListBackupVaultsRequest.
@@ -4470,22 +4462,27 @@ class ListBackupVaultsResponse {
   });
 
   ListBackupVaultsResponse.fromJson(core.Map json_)
-      : this(
-          backupVaults: (json_['backupVaults'] as core.List?)
-              ?.map((value) => BackupVault.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        backupVaults:
+            (json_['backupVaults'] as core.List?)
+                ?.map(
+                  (value) => BackupVault.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupVaults != null) 'backupVaults': backupVaults!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (backupVaults != null) 'backupVaults': backupVaults!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// ListBackupsResponse is the result of ListBackupsRequest.
@@ -4501,29 +4498,30 @@ class ListBackupsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListBackupsResponse({
-    this.backups,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListBackupsResponse({this.backups, this.nextPageToken, this.unreachable});
 
   ListBackupsResponse.fromJson(core.Map json_)
-      : this(
-          backups: (json_['backups'] as core.List?)
-              ?.map((value) =>
-                  Backup.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        backups:
+            (json_['backups'] as core.List?)
+                ?.map(
+                  (value) => Backup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backups != null) 'backups': backups!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (backups != null) 'backups': backups!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// ListKmsConfigsResponse is the response to a ListKmsConfigsRequest.
@@ -4544,22 +4542,27 @@ class ListKmsConfigsResponse {
   });
 
   ListKmsConfigsResponse.fromJson(core.Map json_)
-      : this(
-          kmsConfigs: (json_['kmsConfigs'] as core.List?)
-              ?.map((value) => KmsConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        kmsConfigs:
+            (json_['kmsConfigs'] as core.List?)
+                ?.map(
+                  (value) => KmsConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsConfigs != null) 'kmsConfigs': kmsConfigs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (kmsConfigs != null) 'kmsConfigs': kmsConfigs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -4570,24 +4573,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -4598,24 +4602,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// ListQuotaRulesResponse is the response to a ListQuotaRulesRequest.
@@ -4636,22 +4641,27 @@ class ListQuotaRulesResponse {
   });
 
   ListQuotaRulesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          quotaRules: (json_['quotaRules'] as core.List?)
-              ?.map((value) => QuotaRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        quotaRules:
+            (json_['quotaRules'] as core.List?)
+                ?.map(
+                  (value) => QuotaRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (quotaRules != null) 'quotaRules': quotaRules!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (quotaRules != null) 'quotaRules': quotaRules!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// ListReplicationsResponse is the result of ListReplicationsRequest.
@@ -4674,22 +4684,27 @@ class ListReplicationsResponse {
   });
 
   ListReplicationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          replications: (json_['replications'] as core.List?)
-              ?.map((value) => Replication.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        replications:
+            (json_['replications'] as core.List?)
+                ?.map(
+                  (value) => Replication.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (replications != null) 'replications': replications!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (replications != null) 'replications': replications!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// ListSnapshotsResponse is the result of ListSnapshotsRequest.
@@ -4705,29 +4720,30 @@ class ListSnapshotsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListSnapshotsResponse({
-    this.nextPageToken,
-    this.snapshots,
-    this.unreachable,
-  });
+  ListSnapshotsResponse({this.nextPageToken, this.snapshots, this.unreachable});
 
   ListSnapshotsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          snapshots: (json_['snapshots'] as core.List?)
-              ?.map((value) => Snapshot.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        snapshots:
+            (json_['snapshots'] as core.List?)
+                ?.map(
+                  (value) => Snapshot.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (snapshots != null) 'snapshots': snapshots!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (snapshots != null) 'snapshots': snapshots!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// ListStoragePoolsResponse is the response to a ListStoragePoolsRequest.
@@ -4748,22 +4764,27 @@ class ListStoragePoolsResponse {
   });
 
   ListStoragePoolsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          storagePools: (json_['storagePools'] as core.List?)
-              ?.map((value) => StoragePool.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        storagePools:
+            (json_['storagePools'] as core.List?)
+                ?.map(
+                  (value) => StoragePool.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (storagePools != null) 'storagePools': storagePools!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (storagePools != null) 'storagePools': storagePools!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Message for response to listing Volumes
@@ -4777,29 +4798,30 @@ class ListVolumesResponse {
   /// The list of Volume
   core.List<Volume>? volumes;
 
-  ListVolumesResponse({
-    this.nextPageToken,
-    this.unreachable,
-    this.volumes,
-  });
+  ListVolumesResponse({this.nextPageToken, this.unreachable, this.volumes});
 
   ListVolumesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          volumes: (json_['volumes'] as core.List?)
-              ?.map((value) =>
-                  Volume.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        volumes:
+            (json_['volumes'] as core.List?)
+                ?.map(
+                  (value) => Volume.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-        if (volumes != null) 'volumes': volumes!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+    if (volumes != null) 'volumes': volumes!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -4830,19 +4852,19 @@ class MonthlySchedule {
   });
 
   MonthlySchedule.fromJson(core.Map json_)
-      : this(
-          daysOfMonth: json_['daysOfMonth'] as core.String?,
-          hour: (json_['hour'] as core.num?)?.toDouble(),
-          minute: (json_['minute'] as core.num?)?.toDouble(),
-          snapshotsToKeep: (json_['snapshotsToKeep'] as core.num?)?.toDouble(),
-        );
+    : this(
+        daysOfMonth: json_['daysOfMonth'] as core.String?,
+        hour: (json_['hour'] as core.num?)?.toDouble(),
+        minute: (json_['minute'] as core.num?)?.toDouble(),
+        snapshotsToKeep: (json_['snapshotsToKeep'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (daysOfMonth != null) 'daysOfMonth': daysOfMonth!,
-        if (hour != null) 'hour': hour!,
-        if (minute != null) 'minute': minute!,
-        if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
-      };
+    if (daysOfMonth != null) 'daysOfMonth': daysOfMonth!,
+    if (hour != null) 'hour': hour!,
+    if (minute != null) 'minute': minute!,
+    if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
+  };
 }
 
 /// View only mount options for a volume.
@@ -4878,21 +4900,21 @@ class MountOption {
   });
 
   MountOption.fromJson(core.Map json_)
-      : this(
-          export: json_['export'] as core.String?,
-          exportFull: json_['exportFull'] as core.String?,
-          instructions: json_['instructions'] as core.String?,
-          ipAddress: json_['ipAddress'] as core.String?,
-          protocol: json_['protocol'] as core.String?,
-        );
+    : this(
+        export: json_['export'] as core.String?,
+        exportFull: json_['exportFull'] as core.String?,
+        instructions: json_['instructions'] as core.String?,
+        ipAddress: json_['ipAddress'] as core.String?,
+        protocol: json_['protocol'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (export != null) 'export': export!,
-        if (exportFull != null) 'exportFull': exportFull!,
-        if (instructions != null) 'instructions': instructions!,
-        if (ipAddress != null) 'ipAddress': ipAddress!,
-        if (protocol != null) 'protocol': protocol!,
-      };
+    if (export != null) 'export': export!,
+    if (exportFull != null) 'exportFull': exportFull!,
+    if (instructions != null) 'instructions': instructions!,
+    if (ipAddress != null) 'ipAddress': ipAddress!,
+    if (protocol != null) 'protocol': protocol!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -4938,37 +4960,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// QuotaRule specifies the maximum disk space a user or group can use within a
@@ -5049,35 +5069,31 @@ class QuotaRule {
   });
 
   QuotaRule.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          diskLimitMib: json_['diskLimitMib'] as core.int?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateDetails: json_['stateDetails'] as core.String?,
-          target: json_['target'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        diskLimitMib: json_['diskLimitMib'] as core.int?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateDetails: json_['stateDetails'] as core.String?,
+        target: json_['target'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (diskLimitMib != null) 'diskLimitMib': diskLimitMib!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (stateDetails != null) 'stateDetails': stateDetails!,
-        if (target != null) 'target': target!,
-        if (type != null) 'type': type!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (diskLimitMib != null) 'diskLimitMib': diskLimitMib!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (stateDetails != null) 'stateDetails': stateDetails!,
+    if (target != null) 'target': target!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Replication is a nested resource under Volume, that describes a cross-region
@@ -5232,66 +5248,68 @@ class Replication {
   });
 
   Replication.fromJson(core.Map json_)
-      : this(
-          clusterLocation: json_['clusterLocation'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          destinationVolume: json_['destinationVolume'] as core.String?,
-          destinationVolumeParameters:
-              json_.containsKey('destinationVolumeParameters')
-                  ? DestinationVolumeParameters.fromJson(
-                      json_['destinationVolumeParameters']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          healthy: json_['healthy'] as core.bool?,
-          hybridPeeringDetails: json_.containsKey('hybridPeeringDetails')
-              ? HybridPeeringDetails.fromJson(json_['hybridPeeringDetails']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          hybridReplicationType: json_['hybridReplicationType'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          mirrorState: json_['mirrorState'] as core.String?,
-          name: json_['name'] as core.String?,
-          replicationSchedule: json_['replicationSchedule'] as core.String?,
-          role: json_['role'] as core.String?,
-          sourceVolume: json_['sourceVolume'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateDetails: json_['stateDetails'] as core.String?,
-          transferStats: json_.containsKey('transferStats')
-              ? TransferStats.fromJson(
-                  json_['transferStats'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        clusterLocation: json_['clusterLocation'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        destinationVolume: json_['destinationVolume'] as core.String?,
+        destinationVolumeParameters:
+            json_.containsKey('destinationVolumeParameters')
+                ? DestinationVolumeParameters.fromJson(
+                  json_['destinationVolumeParameters']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        healthy: json_['healthy'] as core.bool?,
+        hybridPeeringDetails:
+            json_.containsKey('hybridPeeringDetails')
+                ? HybridPeeringDetails.fromJson(
+                  json_['hybridPeeringDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hybridReplicationType: json_['hybridReplicationType'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        mirrorState: json_['mirrorState'] as core.String?,
+        name: json_['name'] as core.String?,
+        replicationSchedule: json_['replicationSchedule'] as core.String?,
+        role: json_['role'] as core.String?,
+        sourceVolume: json_['sourceVolume'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateDetails: json_['stateDetails'] as core.String?,
+        transferStats:
+            json_.containsKey('transferStats')
+                ? TransferStats.fromJson(
+                  json_['transferStats'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterLocation != null) 'clusterLocation': clusterLocation!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (destinationVolume != null) 'destinationVolume': destinationVolume!,
-        if (destinationVolumeParameters != null)
-          'destinationVolumeParameters': destinationVolumeParameters!,
-        if (healthy != null) 'healthy': healthy!,
-        if (hybridPeeringDetails != null)
-          'hybridPeeringDetails': hybridPeeringDetails!,
-        if (hybridReplicationType != null)
-          'hybridReplicationType': hybridReplicationType!,
-        if (labels != null) 'labels': labels!,
-        if (mirrorState != null) 'mirrorState': mirrorState!,
-        if (name != null) 'name': name!,
-        if (replicationSchedule != null)
-          'replicationSchedule': replicationSchedule!,
-        if (role != null) 'role': role!,
-        if (sourceVolume != null) 'sourceVolume': sourceVolume!,
-        if (state != null) 'state': state!,
-        if (stateDetails != null) 'stateDetails': stateDetails!,
-        if (transferStats != null) 'transferStats': transferStats!,
-      };
+    if (clusterLocation != null) 'clusterLocation': clusterLocation!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (destinationVolume != null) 'destinationVolume': destinationVolume!,
+    if (destinationVolumeParameters != null)
+      'destinationVolumeParameters': destinationVolumeParameters!,
+    if (healthy != null) 'healthy': healthy!,
+    if (hybridPeeringDetails != null)
+      'hybridPeeringDetails': hybridPeeringDetails!,
+    if (hybridReplicationType != null)
+      'hybridReplicationType': hybridReplicationType!,
+    if (labels != null) 'labels': labels!,
+    if (mirrorState != null) 'mirrorState': mirrorState!,
+    if (name != null) 'name': name!,
+    if (replicationSchedule != null)
+      'replicationSchedule': replicationSchedule!,
+    if (role != null) 'role': role!,
+    if (sourceVolume != null) 'sourceVolume': sourceVolume!,
+    if (state != null) 'state': state!,
+    if (stateDetails != null) 'stateDetails': stateDetails!,
+    if (transferStats != null) 'transferStats': transferStats!,
+  };
 }
 
 /// The RestoreParameters if volume is created from a snapshot or backup.
@@ -5308,21 +5326,18 @@ class RestoreParameters {
   /// projects/{project}/locations/{location}/volumes/{volume}/snapshots/{snapshot}
   core.String? sourceSnapshot;
 
-  RestoreParameters({
-    this.sourceBackup,
-    this.sourceSnapshot,
-  });
+  RestoreParameters({this.sourceBackup, this.sourceSnapshot});
 
   RestoreParameters.fromJson(core.Map json_)
-      : this(
-          sourceBackup: json_['sourceBackup'] as core.String?,
-          sourceSnapshot: json_['sourceSnapshot'] as core.String?,
-        );
+    : this(
+        sourceBackup: json_['sourceBackup'] as core.String?,
+        sourceSnapshot: json_['sourceSnapshot'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sourceBackup != null) 'sourceBackup': sourceBackup!,
-        if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
-      };
+    if (sourceBackup != null) 'sourceBackup': sourceBackup!,
+    if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
+  };
 }
 
 /// ResumeReplicationRequest resumes a stopped replication.
@@ -5342,18 +5357,14 @@ class RevertVolumeRequest {
   /// Required.
   core.String? snapshotId;
 
-  RevertVolumeRequest({
-    this.snapshotId,
-  });
+  RevertVolumeRequest({this.snapshotId});
 
   RevertVolumeRequest.fromJson(core.Map json_)
-      : this(
-          snapshotId: json_['snapshotId'] as core.String?,
-        );
+    : this(snapshotId: json_['snapshotId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (snapshotId != null) 'snapshotId': snapshotId!,
-      };
+    if (snapshotId != null) 'snapshotId': snapshotId!,
+  };
 }
 
 /// An export policy rule describing various export options.
@@ -5433,38 +5444,35 @@ class SimpleExportPolicyRule {
   });
 
   SimpleExportPolicyRule.fromJson(core.Map json_)
-      : this(
-          accessType: json_['accessType'] as core.String?,
-          allowedClients: json_['allowedClients'] as core.String?,
-          hasRootAccess: json_['hasRootAccess'] as core.String?,
-          kerberos5ReadOnly: json_['kerberos5ReadOnly'] as core.bool?,
-          kerberos5ReadWrite: json_['kerberos5ReadWrite'] as core.bool?,
-          kerberos5iReadOnly: json_['kerberos5iReadOnly'] as core.bool?,
-          kerberos5iReadWrite: json_['kerberos5iReadWrite'] as core.bool?,
-          kerberos5pReadOnly: json_['kerberos5pReadOnly'] as core.bool?,
-          kerberos5pReadWrite: json_['kerberos5pReadWrite'] as core.bool?,
-          nfsv3: json_['nfsv3'] as core.bool?,
-          nfsv4: json_['nfsv4'] as core.bool?,
-        );
+    : this(
+        accessType: json_['accessType'] as core.String?,
+        allowedClients: json_['allowedClients'] as core.String?,
+        hasRootAccess: json_['hasRootAccess'] as core.String?,
+        kerberos5ReadOnly: json_['kerberos5ReadOnly'] as core.bool?,
+        kerberos5ReadWrite: json_['kerberos5ReadWrite'] as core.bool?,
+        kerberos5iReadOnly: json_['kerberos5iReadOnly'] as core.bool?,
+        kerberos5iReadWrite: json_['kerberos5iReadWrite'] as core.bool?,
+        kerberos5pReadOnly: json_['kerberos5pReadOnly'] as core.bool?,
+        kerberos5pReadWrite: json_['kerberos5pReadWrite'] as core.bool?,
+        nfsv3: json_['nfsv3'] as core.bool?,
+        nfsv4: json_['nfsv4'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessType != null) 'accessType': accessType!,
-        if (allowedClients != null) 'allowedClients': allowedClients!,
-        if (hasRootAccess != null) 'hasRootAccess': hasRootAccess!,
-        if (kerberos5ReadOnly != null) 'kerberos5ReadOnly': kerberos5ReadOnly!,
-        if (kerberos5ReadWrite != null)
-          'kerberos5ReadWrite': kerberos5ReadWrite!,
-        if (kerberos5iReadOnly != null)
-          'kerberos5iReadOnly': kerberos5iReadOnly!,
-        if (kerberos5iReadWrite != null)
-          'kerberos5iReadWrite': kerberos5iReadWrite!,
-        if (kerberos5pReadOnly != null)
-          'kerberos5pReadOnly': kerberos5pReadOnly!,
-        if (kerberos5pReadWrite != null)
-          'kerberos5pReadWrite': kerberos5pReadWrite!,
-        if (nfsv3 != null) 'nfsv3': nfsv3!,
-        if (nfsv4 != null) 'nfsv4': nfsv4!,
-      };
+    if (accessType != null) 'accessType': accessType!,
+    if (allowedClients != null) 'allowedClients': allowedClients!,
+    if (hasRootAccess != null) 'hasRootAccess': hasRootAccess!,
+    if (kerberos5ReadOnly != null) 'kerberos5ReadOnly': kerberos5ReadOnly!,
+    if (kerberos5ReadWrite != null) 'kerberos5ReadWrite': kerberos5ReadWrite!,
+    if (kerberos5iReadOnly != null) 'kerberos5iReadOnly': kerberos5iReadOnly!,
+    if (kerberos5iReadWrite != null)
+      'kerberos5iReadWrite': kerberos5iReadWrite!,
+    if (kerberos5pReadOnly != null) 'kerberos5pReadOnly': kerberos5pReadOnly!,
+    if (kerberos5pReadWrite != null)
+      'kerberos5pReadWrite': kerberos5pReadWrite!,
+    if (nfsv3 != null) 'nfsv3': nfsv3!,
+    if (nfsv4 != null) 'nfsv4': nfsv4!,
+  };
 }
 
 /// Snapshot is a point-in-time version of a Volume's content.
@@ -5522,31 +5530,27 @@ class Snapshot {
   });
 
   Snapshot.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateDetails: json_['stateDetails'] as core.String?,
-          usedBytes: (json_['usedBytes'] as core.num?)?.toDouble(),
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateDetails: json_['stateDetails'] as core.String?,
+        usedBytes: (json_['usedBytes'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (stateDetails != null) 'stateDetails': stateDetails!,
-        if (usedBytes != null) 'usedBytes': usedBytes!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (stateDetails != null) 'stateDetails': stateDetails!,
+    if (usedBytes != null) 'usedBytes': usedBytes!,
+  };
 }
 
 /// Snapshot Policy for a volume.
@@ -5577,33 +5581,44 @@ class SnapshotPolicy {
   });
 
   SnapshotPolicy.fromJson(core.Map json_)
-      : this(
-          dailySchedule: json_.containsKey('dailySchedule')
-              ? DailySchedule.fromJson(
-                  json_['dailySchedule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          enabled: json_['enabled'] as core.bool?,
-          hourlySchedule: json_.containsKey('hourlySchedule')
-              ? HourlySchedule.fromJson(json_['hourlySchedule']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          monthlySchedule: json_.containsKey('monthlySchedule')
-              ? MonthlySchedule.fromJson(json_['monthlySchedule']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          weeklySchedule: json_.containsKey('weeklySchedule')
-              ? WeeklySchedule.fromJson(json_['weeklySchedule']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dailySchedule:
+            json_.containsKey('dailySchedule')
+                ? DailySchedule.fromJson(
+                  json_['dailySchedule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enabled: json_['enabled'] as core.bool?,
+        hourlySchedule:
+            json_.containsKey('hourlySchedule')
+                ? HourlySchedule.fromJson(
+                  json_['hourlySchedule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        monthlySchedule:
+            json_.containsKey('monthlySchedule')
+                ? MonthlySchedule.fromJson(
+                  json_['monthlySchedule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        weeklySchedule:
+            json_.containsKey('weeklySchedule')
+                ? WeeklySchedule.fromJson(
+                  json_['weeklySchedule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dailySchedule != null) 'dailySchedule': dailySchedule!,
-        if (enabled != null) 'enabled': enabled!,
-        if (hourlySchedule != null) 'hourlySchedule': hourlySchedule!,
-        if (monthlySchedule != null) 'monthlySchedule': monthlySchedule!,
-        if (weeklySchedule != null) 'weeklySchedule': weeklySchedule!,
-      };
+    if (dailySchedule != null) 'dailySchedule': dailySchedule!,
+    if (enabled != null) 'enabled': enabled!,
+    if (hourlySchedule != null) 'hourlySchedule': hourlySchedule!,
+    if (monthlySchedule != null) 'monthlySchedule': monthlySchedule!,
+    if (weeklySchedule != null) 'weeklySchedule': weeklySchedule!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5626,18 +5641,14 @@ class StopReplicationRequest {
   /// to retry later.
   core.bool? force;
 
-  StopReplicationRequest({
-    this.force,
-  });
+  StopReplicationRequest({this.force});
 
   StopReplicationRequest.fromJson(core.Map json_)
-      : this(
-          force: json_['force'] as core.bool?,
-        );
+    : this(force: json_['force'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (force != null) 'force': force!,
-      };
+    if (force != null) 'force': force!,
+  };
 }
 
 /// StoragePool is a container for volumes with a service level and capacity.
@@ -5851,77 +5862,72 @@ class StoragePool {
   });
 
   StoragePool.fromJson(core.Map json_)
-      : this(
-          activeDirectory: json_['activeDirectory'] as core.String?,
-          allowAutoTiering: json_['allowAutoTiering'] as core.bool?,
-          capacityGib: json_['capacityGib'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          customPerformanceEnabled:
-              json_['customPerformanceEnabled'] as core.bool?,
-          description: json_['description'] as core.String?,
-          enableHotTierAutoResize:
-              json_['enableHotTierAutoResize'] as core.bool?,
-          encryptionType: json_['encryptionType'] as core.String?,
-          globalAccessAllowed: json_['globalAccessAllowed'] as core.bool?,
-          hotTierSizeGib: json_['hotTierSizeGib'] as core.String?,
-          kmsConfig: json_['kmsConfig'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          ldapEnabled: json_['ldapEnabled'] as core.bool?,
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          psaRange: json_['psaRange'] as core.String?,
-          replicaZone: json_['replicaZone'] as core.String?,
-          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
-          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-          serviceLevel: json_['serviceLevel'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateDetails: json_['stateDetails'] as core.String?,
-          totalIops: json_['totalIops'] as core.String?,
-          totalThroughputMibps: json_['totalThroughputMibps'] as core.String?,
-          volumeCapacityGib: json_['volumeCapacityGib'] as core.String?,
-          volumeCount: json_['volumeCount'] as core.int?,
-          zone: json_['zone'] as core.String?,
-        );
+    : this(
+        activeDirectory: json_['activeDirectory'] as core.String?,
+        allowAutoTiering: json_['allowAutoTiering'] as core.bool?,
+        capacityGib: json_['capacityGib'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        customPerformanceEnabled:
+            json_['customPerformanceEnabled'] as core.bool?,
+        description: json_['description'] as core.String?,
+        enableHotTierAutoResize: json_['enableHotTierAutoResize'] as core.bool?,
+        encryptionType: json_['encryptionType'] as core.String?,
+        globalAccessAllowed: json_['globalAccessAllowed'] as core.bool?,
+        hotTierSizeGib: json_['hotTierSizeGib'] as core.String?,
+        kmsConfig: json_['kmsConfig'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        ldapEnabled: json_['ldapEnabled'] as core.bool?,
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        psaRange: json_['psaRange'] as core.String?,
+        replicaZone: json_['replicaZone'] as core.String?,
+        satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        serviceLevel: json_['serviceLevel'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateDetails: json_['stateDetails'] as core.String?,
+        totalIops: json_['totalIops'] as core.String?,
+        totalThroughputMibps: json_['totalThroughputMibps'] as core.String?,
+        volumeCapacityGib: json_['volumeCapacityGib'] as core.String?,
+        volumeCount: json_['volumeCount'] as core.int?,
+        zone: json_['zone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeDirectory != null) 'activeDirectory': activeDirectory!,
-        if (allowAutoTiering != null) 'allowAutoTiering': allowAutoTiering!,
-        if (capacityGib != null) 'capacityGib': capacityGib!,
-        if (createTime != null) 'createTime': createTime!,
-        if (customPerformanceEnabled != null)
-          'customPerformanceEnabled': customPerformanceEnabled!,
-        if (description != null) 'description': description!,
-        if (enableHotTierAutoResize != null)
-          'enableHotTierAutoResize': enableHotTierAutoResize!,
-        if (encryptionType != null) 'encryptionType': encryptionType!,
-        if (globalAccessAllowed != null)
-          'globalAccessAllowed': globalAccessAllowed!,
-        if (hotTierSizeGib != null) 'hotTierSizeGib': hotTierSizeGib!,
-        if (kmsConfig != null) 'kmsConfig': kmsConfig!,
-        if (labels != null) 'labels': labels!,
-        if (ldapEnabled != null) 'ldapEnabled': ldapEnabled!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (psaRange != null) 'psaRange': psaRange!,
-        if (replicaZone != null) 'replicaZone': replicaZone!,
-        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-        if (serviceLevel != null) 'serviceLevel': serviceLevel!,
-        if (state != null) 'state': state!,
-        if (stateDetails != null) 'stateDetails': stateDetails!,
-        if (totalIops != null) 'totalIops': totalIops!,
-        if (totalThroughputMibps != null)
-          'totalThroughputMibps': totalThroughputMibps!,
-        if (volumeCapacityGib != null) 'volumeCapacityGib': volumeCapacityGib!,
-        if (volumeCount != null) 'volumeCount': volumeCount!,
-        if (zone != null) 'zone': zone!,
-      };
+    if (activeDirectory != null) 'activeDirectory': activeDirectory!,
+    if (allowAutoTiering != null) 'allowAutoTiering': allowAutoTiering!,
+    if (capacityGib != null) 'capacityGib': capacityGib!,
+    if (createTime != null) 'createTime': createTime!,
+    if (customPerformanceEnabled != null)
+      'customPerformanceEnabled': customPerformanceEnabled!,
+    if (description != null) 'description': description!,
+    if (enableHotTierAutoResize != null)
+      'enableHotTierAutoResize': enableHotTierAutoResize!,
+    if (encryptionType != null) 'encryptionType': encryptionType!,
+    if (globalAccessAllowed != null)
+      'globalAccessAllowed': globalAccessAllowed!,
+    if (hotTierSizeGib != null) 'hotTierSizeGib': hotTierSizeGib!,
+    if (kmsConfig != null) 'kmsConfig': kmsConfig!,
+    if (labels != null) 'labels': labels!,
+    if (ldapEnabled != null) 'ldapEnabled': ldapEnabled!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (psaRange != null) 'psaRange': psaRange!,
+    if (replicaZone != null) 'replicaZone': replicaZone!,
+    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (serviceLevel != null) 'serviceLevel': serviceLevel!,
+    if (state != null) 'state': state!,
+    if (stateDetails != null) 'stateDetails': stateDetails!,
+    if (totalIops != null) 'totalIops': totalIops!,
+    if (totalThroughputMibps != null)
+      'totalThroughputMibps': totalThroughputMibps!,
+    if (volumeCapacityGib != null) 'volumeCapacityGib': volumeCapacityGib!,
+    if (volumeCount != null) 'volumeCount': volumeCount!,
+    if (zone != null) 'zone': zone!,
+  };
 }
 
 /// SwitchActiveReplicaZoneRequest switch the active/replica zone for a regional
@@ -5967,20 +5973,20 @@ class TieringPolicy {
   });
 
   TieringPolicy.fromJson(core.Map json_)
-      : this(
-          coolingThresholdDays: json_['coolingThresholdDays'] as core.int?,
-          hotTierBypassModeEnabled:
-              json_['hotTierBypassModeEnabled'] as core.bool?,
-          tierAction: json_['tierAction'] as core.String?,
-        );
+    : this(
+        coolingThresholdDays: json_['coolingThresholdDays'] as core.int?,
+        hotTierBypassModeEnabled:
+            json_['hotTierBypassModeEnabled'] as core.bool?,
+        tierAction: json_['tierAction'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coolingThresholdDays != null)
-          'coolingThresholdDays': coolingThresholdDays!,
-        if (hotTierBypassModeEnabled != null)
-          'hotTierBypassModeEnabled': hotTierBypassModeEnabled!,
-        if (tierAction != null) 'tierAction': tierAction!,
-      };
+    if (coolingThresholdDays != null)
+      'coolingThresholdDays': coolingThresholdDays!,
+    if (hotTierBypassModeEnabled != null)
+      'hotTierBypassModeEnabled': hotTierBypassModeEnabled!,
+    if (tierAction != null) 'tierAction': tierAction!,
+  };
 }
 
 /// TransferStats reports all statistics related to replication transfer.
@@ -6023,30 +6029,30 @@ class TransferStats {
   });
 
   TransferStats.fromJson(core.Map json_)
-      : this(
-          lagDuration: json_['lagDuration'] as core.String?,
-          lastTransferBytes: json_['lastTransferBytes'] as core.String?,
-          lastTransferDuration: json_['lastTransferDuration'] as core.String?,
-          lastTransferEndTime: json_['lastTransferEndTime'] as core.String?,
-          lastTransferError: json_['lastTransferError'] as core.String?,
-          totalTransferDuration: json_['totalTransferDuration'] as core.String?,
-          transferBytes: json_['transferBytes'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        lagDuration: json_['lagDuration'] as core.String?,
+        lastTransferBytes: json_['lastTransferBytes'] as core.String?,
+        lastTransferDuration: json_['lastTransferDuration'] as core.String?,
+        lastTransferEndTime: json_['lastTransferEndTime'] as core.String?,
+        lastTransferError: json_['lastTransferError'] as core.String?,
+        totalTransferDuration: json_['totalTransferDuration'] as core.String?,
+        transferBytes: json_['transferBytes'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lagDuration != null) 'lagDuration': lagDuration!,
-        if (lastTransferBytes != null) 'lastTransferBytes': lastTransferBytes!,
-        if (lastTransferDuration != null)
-          'lastTransferDuration': lastTransferDuration!,
-        if (lastTransferEndTime != null)
-          'lastTransferEndTime': lastTransferEndTime!,
-        if (lastTransferError != null) 'lastTransferError': lastTransferError!,
-        if (totalTransferDuration != null)
-          'totalTransferDuration': totalTransferDuration!,
-        if (transferBytes != null) 'transferBytes': transferBytes!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (lagDuration != null) 'lagDuration': lagDuration!,
+    if (lastTransferBytes != null) 'lastTransferBytes': lastTransferBytes!,
+    if (lastTransferDuration != null)
+      'lastTransferDuration': lastTransferDuration!,
+    if (lastTransferEndTime != null)
+      'lastTransferEndTime': lastTransferEndTime!,
+    if (lastTransferError != null) 'lastTransferError': lastTransferError!,
+    if (totalTransferDuration != null)
+      'totalTransferDuration': totalTransferDuration!,
+    if (transferBytes != null) 'transferBytes': transferBytes!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// ValidateDirectoryServiceRequest validates the directory service policy
@@ -6060,19 +6066,15 @@ class ValidateDirectoryServiceRequest {
   /// pool.
   core.String? directoryServiceType;
 
-  ValidateDirectoryServiceRequest({
-    this.directoryServiceType,
-  });
+  ValidateDirectoryServiceRequest({this.directoryServiceType});
 
   ValidateDirectoryServiceRequest.fromJson(core.Map json_)
-      : this(
-          directoryServiceType: json_['directoryServiceType'] as core.String?,
-        );
+    : this(directoryServiceType: json_['directoryServiceType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (directoryServiceType != null)
-          'directoryServiceType': directoryServiceType!,
-      };
+    if (directoryServiceType != null)
+      'directoryServiceType': directoryServiceType!,
+  };
 }
 
 /// VerifyKmsConfigRequest specifies the KMS config to be validated.
@@ -6097,24 +6099,20 @@ class VerifyKmsConfigResponse {
   /// Output only.
   core.String? instructions;
 
-  VerifyKmsConfigResponse({
-    this.healthError,
-    this.healthy,
-    this.instructions,
-  });
+  VerifyKmsConfigResponse({this.healthError, this.healthy, this.instructions});
 
   VerifyKmsConfigResponse.fromJson(core.Map json_)
-      : this(
-          healthError: json_['healthError'] as core.String?,
-          healthy: json_['healthy'] as core.bool?,
-          instructions: json_['instructions'] as core.String?,
-        );
+    : this(
+        healthError: json_['healthError'] as core.String?,
+        healthy: json_['healthy'] as core.bool?,
+        instructions: json_['instructions'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (healthError != null) 'healthError': healthError!,
-        if (healthy != null) 'healthy': healthy!,
-        if (instructions != null) 'instructions': instructions!,
-      };
+    if (healthError != null) 'healthError': healthError!,
+    if (healthy != null) 'healthy': healthy!,
+    if (instructions != null) 'instructions': instructions!,
+  };
 }
 
 /// Volume provides a filesystem that you can mount.
@@ -6397,123 +6395,139 @@ class Volume {
   });
 
   Volume.fromJson(core.Map json_)
-      : this(
-          activeDirectory: json_['activeDirectory'] as core.String?,
-          backupConfig: json_.containsKey('backupConfig')
-              ? BackupConfig.fromJson(
-                  json_['backupConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          capacityGib: json_['capacityGib'] as core.String?,
-          coldTierSizeGib: json_['coldTierSizeGib'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          encryptionType: json_['encryptionType'] as core.String?,
-          exportPolicy: json_.containsKey('exportPolicy')
-              ? ExportPolicy.fromJson(
-                  json_['exportPolicy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          hasReplication: json_['hasReplication'] as core.bool?,
-          hybridReplicationParameters:
-              json_.containsKey('hybridReplicationParameters')
-                  ? HybridReplicationParameters.fromJson(
-                      json_['hybridReplicationParameters']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          kerberosEnabled: json_['kerberosEnabled'] as core.bool?,
-          kmsConfig: json_['kmsConfig'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          largeCapacity: json_['largeCapacity'] as core.bool?,
-          ldapEnabled: json_['ldapEnabled'] as core.bool?,
-          mountOptions: (json_['mountOptions'] as core.List?)
-              ?.map((value) => MountOption.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          multipleEndpoints: json_['multipleEndpoints'] as core.bool?,
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          protocols: (json_['protocols'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          psaRange: json_['psaRange'] as core.String?,
-          replicaZone: json_['replicaZone'] as core.String?,
-          restoreParameters: json_.containsKey('restoreParameters')
-              ? RestoreParameters.fromJson(json_['restoreParameters']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          restrictedActions: (json_['restrictedActions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          securityStyle: json_['securityStyle'] as core.String?,
-          serviceLevel: json_['serviceLevel'] as core.String?,
-          shareName: json_['shareName'] as core.String?,
-          smbSettings: (json_['smbSettings'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          snapReserve: (json_['snapReserve'] as core.num?)?.toDouble(),
-          snapshotDirectory: json_['snapshotDirectory'] as core.bool?,
-          snapshotPolicy: json_.containsKey('snapshotPolicy')
-              ? SnapshotPolicy.fromJson(json_['snapshotPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          stateDetails: json_['stateDetails'] as core.String?,
-          storagePool: json_['storagePool'] as core.String?,
-          tieringPolicy: json_.containsKey('tieringPolicy')
-              ? TieringPolicy.fromJson(
-                  json_['tieringPolicy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          unixPermissions: json_['unixPermissions'] as core.String?,
-          usedGib: json_['usedGib'] as core.String?,
-          zone: json_['zone'] as core.String?,
-        );
+    : this(
+        activeDirectory: json_['activeDirectory'] as core.String?,
+        backupConfig:
+            json_.containsKey('backupConfig')
+                ? BackupConfig.fromJson(
+                  json_['backupConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        capacityGib: json_['capacityGib'] as core.String?,
+        coldTierSizeGib: json_['coldTierSizeGib'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        encryptionType: json_['encryptionType'] as core.String?,
+        exportPolicy:
+            json_.containsKey('exportPolicy')
+                ? ExportPolicy.fromJson(
+                  json_['exportPolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hasReplication: json_['hasReplication'] as core.bool?,
+        hybridReplicationParameters:
+            json_.containsKey('hybridReplicationParameters')
+                ? HybridReplicationParameters.fromJson(
+                  json_['hybridReplicationParameters']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kerberosEnabled: json_['kerberosEnabled'] as core.bool?,
+        kmsConfig: json_['kmsConfig'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        largeCapacity: json_['largeCapacity'] as core.bool?,
+        ldapEnabled: json_['ldapEnabled'] as core.bool?,
+        mountOptions:
+            (json_['mountOptions'] as core.List?)
+                ?.map(
+                  (value) => MountOption.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        multipleEndpoints: json_['multipleEndpoints'] as core.bool?,
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        protocols:
+            (json_['protocols'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        psaRange: json_['psaRange'] as core.String?,
+        replicaZone: json_['replicaZone'] as core.String?,
+        restoreParameters:
+            json_.containsKey('restoreParameters')
+                ? RestoreParameters.fromJson(
+                  json_['restoreParameters']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        restrictedActions:
+            (json_['restrictedActions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        securityStyle: json_['securityStyle'] as core.String?,
+        serviceLevel: json_['serviceLevel'] as core.String?,
+        shareName: json_['shareName'] as core.String?,
+        smbSettings:
+            (json_['smbSettings'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        snapReserve: (json_['snapReserve'] as core.num?)?.toDouble(),
+        snapshotDirectory: json_['snapshotDirectory'] as core.bool?,
+        snapshotPolicy:
+            json_.containsKey('snapshotPolicy')
+                ? SnapshotPolicy.fromJson(
+                  json_['snapshotPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        stateDetails: json_['stateDetails'] as core.String?,
+        storagePool: json_['storagePool'] as core.String?,
+        tieringPolicy:
+            json_.containsKey('tieringPolicy')
+                ? TieringPolicy.fromJson(
+                  json_['tieringPolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        unixPermissions: json_['unixPermissions'] as core.String?,
+        usedGib: json_['usedGib'] as core.String?,
+        zone: json_['zone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeDirectory != null) 'activeDirectory': activeDirectory!,
-        if (backupConfig != null) 'backupConfig': backupConfig!,
-        if (capacityGib != null) 'capacityGib': capacityGib!,
-        if (coldTierSizeGib != null) 'coldTierSizeGib': coldTierSizeGib!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (encryptionType != null) 'encryptionType': encryptionType!,
-        if (exportPolicy != null) 'exportPolicy': exportPolicy!,
-        if (hasReplication != null) 'hasReplication': hasReplication!,
-        if (hybridReplicationParameters != null)
-          'hybridReplicationParameters': hybridReplicationParameters!,
-        if (kerberosEnabled != null) 'kerberosEnabled': kerberosEnabled!,
-        if (kmsConfig != null) 'kmsConfig': kmsConfig!,
-        if (labels != null) 'labels': labels!,
-        if (largeCapacity != null) 'largeCapacity': largeCapacity!,
-        if (ldapEnabled != null) 'ldapEnabled': ldapEnabled!,
-        if (mountOptions != null) 'mountOptions': mountOptions!,
-        if (multipleEndpoints != null) 'multipleEndpoints': multipleEndpoints!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (protocols != null) 'protocols': protocols!,
-        if (psaRange != null) 'psaRange': psaRange!,
-        if (replicaZone != null) 'replicaZone': replicaZone!,
-        if (restoreParameters != null) 'restoreParameters': restoreParameters!,
-        if (restrictedActions != null) 'restrictedActions': restrictedActions!,
-        if (securityStyle != null) 'securityStyle': securityStyle!,
-        if (serviceLevel != null) 'serviceLevel': serviceLevel!,
-        if (shareName != null) 'shareName': shareName!,
-        if (smbSettings != null) 'smbSettings': smbSettings!,
-        if (snapReserve != null) 'snapReserve': snapReserve!,
-        if (snapshotDirectory != null) 'snapshotDirectory': snapshotDirectory!,
-        if (snapshotPolicy != null) 'snapshotPolicy': snapshotPolicy!,
-        if (state != null) 'state': state!,
-        if (stateDetails != null) 'stateDetails': stateDetails!,
-        if (storagePool != null) 'storagePool': storagePool!,
-        if (tieringPolicy != null) 'tieringPolicy': tieringPolicy!,
-        if (unixPermissions != null) 'unixPermissions': unixPermissions!,
-        if (usedGib != null) 'usedGib': usedGib!,
-        if (zone != null) 'zone': zone!,
-      };
+    if (activeDirectory != null) 'activeDirectory': activeDirectory!,
+    if (backupConfig != null) 'backupConfig': backupConfig!,
+    if (capacityGib != null) 'capacityGib': capacityGib!,
+    if (coldTierSizeGib != null) 'coldTierSizeGib': coldTierSizeGib!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (encryptionType != null) 'encryptionType': encryptionType!,
+    if (exportPolicy != null) 'exportPolicy': exportPolicy!,
+    if (hasReplication != null) 'hasReplication': hasReplication!,
+    if (hybridReplicationParameters != null)
+      'hybridReplicationParameters': hybridReplicationParameters!,
+    if (kerberosEnabled != null) 'kerberosEnabled': kerberosEnabled!,
+    if (kmsConfig != null) 'kmsConfig': kmsConfig!,
+    if (labels != null) 'labels': labels!,
+    if (largeCapacity != null) 'largeCapacity': largeCapacity!,
+    if (ldapEnabled != null) 'ldapEnabled': ldapEnabled!,
+    if (mountOptions != null) 'mountOptions': mountOptions!,
+    if (multipleEndpoints != null) 'multipleEndpoints': multipleEndpoints!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (protocols != null) 'protocols': protocols!,
+    if (psaRange != null) 'psaRange': psaRange!,
+    if (replicaZone != null) 'replicaZone': replicaZone!,
+    if (restoreParameters != null) 'restoreParameters': restoreParameters!,
+    if (restrictedActions != null) 'restrictedActions': restrictedActions!,
+    if (securityStyle != null) 'securityStyle': securityStyle!,
+    if (serviceLevel != null) 'serviceLevel': serviceLevel!,
+    if (shareName != null) 'shareName': shareName!,
+    if (smbSettings != null) 'smbSettings': smbSettings!,
+    if (snapReserve != null) 'snapReserve': snapReserve!,
+    if (snapshotDirectory != null) 'snapshotDirectory': snapshotDirectory!,
+    if (snapshotPolicy != null) 'snapshotPolicy': snapshotPolicy!,
+    if (state != null) 'state': state!,
+    if (stateDetails != null) 'stateDetails': stateDetails!,
+    if (storagePool != null) 'storagePool': storagePool!,
+    if (tieringPolicy != null) 'tieringPolicy': tieringPolicy!,
+    if (unixPermissions != null) 'unixPermissions': unixPermissions!,
+    if (usedGib != null) 'usedGib': usedGib!,
+    if (zone != null) 'zone': zone!,
+  };
 }
 
 /// Make a snapshot every week e.g. at Monday 04:00, Wednesday 05:20, Sunday
@@ -6534,25 +6548,20 @@ class WeeklySchedule {
   /// The maximum number of Snapshots to keep for the hourly schedule
   core.double? snapshotsToKeep;
 
-  WeeklySchedule({
-    this.day,
-    this.hour,
-    this.minute,
-    this.snapshotsToKeep,
-  });
+  WeeklySchedule({this.day, this.hour, this.minute, this.snapshotsToKeep});
 
   WeeklySchedule.fromJson(core.Map json_)
-      : this(
-          day: json_['day'] as core.String?,
-          hour: (json_['hour'] as core.num?)?.toDouble(),
-          minute: (json_['minute'] as core.num?)?.toDouble(),
-          snapshotsToKeep: (json_['snapshotsToKeep'] as core.num?)?.toDouble(),
-        );
+    : this(
+        day: json_['day'] as core.String?,
+        hour: (json_['hour'] as core.num?)?.toDouble(),
+        minute: (json_['minute'] as core.num?)?.toDouble(),
+        snapshotsToKeep: (json_['snapshotsToKeep'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (hour != null) 'hour': hour!,
-        if (minute != null) 'minute': minute!,
-        if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
-      };
+    if (day != null) 'day': day!,
+    if (hour != null) 'hour': hour!,
+    if (minute != null) 'minute': minute!,
+    if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
+  };
 }

@@ -25,18 +25,22 @@ class FetchGitHub extends FetchCore {
     final discoveriesPath = p.join(submodulePath, _discoveriesPath);
     final discoveriesIndex = p.join(discoveriesPath, 'index.json');
 
-    final directoryList =
-        DirectoryList.fromJson(await _jsonFromFile(discoveriesIndex));
+    final directoryList = DirectoryList.fromJson(
+      await _jsonFromFile(discoveriesIndex),
+    );
 
     final list = directoryList.items!;
 
     Future<RestDescription?> download(DirectoryListItems item) async {
-      final itemPath =
-          p.join(discoveriesPath, '${item.name}.${item.version}.json');
+      final itemPath = p.join(
+        discoveriesPath,
+        '${item.name}.${item.version}.json',
+      );
 
       try {
-        final description =
-            RestDescription.fromJson(await _jsonFromFile(itemPath));
+        final description = RestDescription.fromJson(
+          await _jsonFromFile(itemPath),
+        );
 
         description.sort();
 
@@ -52,9 +56,11 @@ class FetchGitHub extends FetchCore {
       var count = 0;
       return await pool
           .forEach(list, (DirectoryListItems item) async {
-            print(ansi.darkGray.wrap(
-              'Requesting ${++count} of ${list.length} - ${item.id}',
-            ));
+            print(
+              ansi.darkGray.wrap(
+                'Requesting ${++count} of ${list.length} - ${item.id}',
+              ),
+            );
 
             RestDescription? description;
             for (var i = 1; i <= 10; i++) {
@@ -66,8 +72,9 @@ class FetchGitHub extends FetchCore {
               final existingRevision = existingRevisions![description?.id!];
               if (existingRevision != null &&
                   existingRevision != description!.revision) {
-                final compare =
-                    existingRevision.compareTo(description.revision!);
+                final compare = existingRevision.compareTo(
+                  description.revision!,
+                );
 
                 if (compare.isNegative) {
                   print(

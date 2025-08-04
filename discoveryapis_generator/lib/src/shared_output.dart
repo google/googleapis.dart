@@ -2,14 +2,15 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-String requestHeadersField(String? packageVersion) => packageVersion == null
-    ? '''
+String requestHeadersField(String? packageVersion) =>
+    packageVersion == null
+        ? '''
 /// Request headers used by all libraries in this package
 final requestHeaders = {
   'user-agent': 'google-api-dart-client/unknown',
   'x-goog-api-client': 'gl-dart/\${commons.dartVersion}',
 };'''
-    : '''
+        : '''
 /// Request headers used by all libraries in this package
 final requestHeaders = {
   'user-agent': 'google-api-dart-client/$packageVersion',

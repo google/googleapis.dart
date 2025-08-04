@@ -60,11 +60,16 @@ class FirebaseDataConnectApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  FirebaseDataConnectApi(http.Client client,
-      {core.String rootUrl = 'https://firebasedataconnect.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  FirebaseDataConnectApi(
+    http.Client client, {
+    core.String rootUrl = 'https://firebasedataconnect.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -103,10 +108,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -176,7 +178,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -184,7 +187,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -258,10 +261,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -297,10 +297,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -362,7 +359,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -375,7 +373,7 @@ class ProjectsLocationsServicesResource {
       ProjectsLocationsServicesSchemasResource(_requester);
 
   ProjectsLocationsServicesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new Service in a given project and location.
   ///
@@ -559,7 +557,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GraphqlResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Execute any GraphQL query against the Firebase Data Connect's generated
@@ -607,7 +606,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return GraphqlResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single Service.
@@ -629,10 +629,7 @@ class ProjectsLocationsServicesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Service> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Service> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -700,7 +697,8 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return ListServicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Service.
@@ -786,7 +784,7 @@ class ProjectsLocationsServicesConnectorsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsServicesConnectorsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new Connector in a given project and location.
   ///
@@ -972,7 +970,8 @@ class ProjectsLocationsServicesConnectorsResource {
       queryParams: queryParams_,
     );
     return ExecuteMutationResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Execute a predefined query in a Connector.
@@ -1017,7 +1016,8 @@ class ProjectsLocationsServicesConnectorsResource {
       queryParams: queryParams_,
     );
     return ExecuteQueryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single Connector.
@@ -1041,10 +1041,7 @@ class ProjectsLocationsServicesConnectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Connector> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Connector> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1113,7 +1110,8 @@ class ProjectsLocationsServicesConnectorsResource {
       queryParams: queryParams_,
     );
     return ListConnectorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Connector, and creates a new
@@ -1202,7 +1200,7 @@ class ProjectsLocationsServicesSchemasResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsServicesSchemasResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new Schema in a given project and location.
   ///
@@ -1368,10 +1366,7 @@ class ProjectsLocationsServicesSchemasResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Schema> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Schema> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1443,7 +1438,8 @@ class ProjectsLocationsServicesSchemasResource {
       queryParams: queryParams_,
     );
     return ListSchemasResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Schema, and creates a new
@@ -1535,18 +1531,14 @@ class CloudSqlInstance {
   /// Required.
   core.String? instance;
 
-  CloudSqlInstance({
-    this.instance,
-  });
+  CloudSqlInstance({this.instance});
 
   CloudSqlInstance.fromJson(core.Map json_)
-      : this(
-          instance: json_['instance'] as core.String?,
-        );
+    : this(instance: json_['instance'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instance != null) 'instance': instance!,
-      };
+    if (instance != null) 'instance': instance!,
+  };
 }
 
 /// Connector consists of a set of operations, i.e. queries and mutations.
@@ -1624,47 +1616,40 @@ class Connector {
   });
 
   Connector.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          reconciling: json_['reconciling'] as core.bool?,
-          source: json_.containsKey('source')
-              ? Source.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        reconciling: json_['reconciling'] as core.bool?,
+        source:
+            json_.containsKey('source')
+                ? Source.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (reconciling != null) 'reconciling': reconciling!,
-        if (source != null) 'source': source!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (source != null) 'source': source!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A data source that backs Firebase Data Connect services.
@@ -1672,21 +1657,21 @@ class Datasource {
   /// PostgreSQL configurations.
   PostgreSql? postgresql;
 
-  Datasource({
-    this.postgresql,
-  });
+  Datasource({this.postgresql});
 
   Datasource.fromJson(core.Map json_)
-      : this(
-          postgresql: json_.containsKey('postgresql')
-              ? PostgreSql.fromJson(
-                  json_['postgresql'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        postgresql:
+            json_.containsKey('postgresql')
+                ? PostgreSql.fromJson(
+                  json_['postgresql'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (postgresql != null) 'postgresql': postgresql!,
-      };
+    if (postgresql != null) 'postgresql': postgresql!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1711,26 +1696,28 @@ class ExecuteMutationResponse {
   /// Errors of this response.
   core.List<GraphqlError>? errors;
 
-  ExecuteMutationResponse({
-    this.data,
-    this.errors,
-  });
+  ExecuteMutationResponse({this.data, this.errors});
 
   ExecuteMutationResponse.fromJson(core.Map json_)
-      : this(
-          data: json_.containsKey('data')
-              ? json_['data'] as core.Map<core.String, core.dynamic>
-              : null,
-          errors: (json_['errors'] as core.List?)
-              ?.map((value) => GraphqlError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        data:
+            json_.containsKey('data')
+                ? json_['data'] as core.Map<core.String, core.dynamic>
+                : null,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => GraphqlError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (errors != null) 'errors': errors!,
-      };
+    if (data != null) 'data': data!,
+    if (errors != null) 'errors': errors!,
+  };
 }
 
 /// The ExecuteQuery request to Firebase Data Connect.
@@ -1747,26 +1734,28 @@ class ExecuteQueryResponse {
   /// Errors of this response.
   core.List<GraphqlError>? errors;
 
-  ExecuteQueryResponse({
-    this.data,
-    this.errors,
-  });
+  ExecuteQueryResponse({this.data, this.errors});
 
   ExecuteQueryResponse.fromJson(core.Map json_)
-      : this(
-          data: json_.containsKey('data')
-              ? json_['data'] as core.Map<core.String, core.dynamic>
-              : null,
-          errors: (json_['errors'] as core.List?)
-              ?.map((value) => GraphqlError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        data:
+            json_.containsKey('data')
+                ? json_['data'] as core.Map<core.String, core.dynamic>
+                : null,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => GraphqlError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (errors != null) 'errors': errors!,
-      };
+    if (data != null) 'data': data!,
+    if (errors != null) 'errors': errors!,
+  };
 }
 
 /// Individual files.
@@ -1785,21 +1774,18 @@ class File {
   /// Required.
   core.String? path;
 
-  File({
-    this.content,
-    this.path,
-  });
+  File({this.content, this.path});
 
   File.fromJson(core.Map json_)
-      : this(
-          content: json_['content'] as core.String?,
-          path: json_['path'] as core.String?,
-        );
+    : this(
+        content: json_['content'] as core.String?,
+        path: json_['path'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (path != null) 'path': path!,
-      };
+    if (content != null) 'content': content!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// GraphqlError conforms to the GraphQL error spec.
@@ -1842,33 +1828,34 @@ class GraphqlError {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object?>? path;
 
-  GraphqlError({
-    this.extensions,
-    this.locations,
-    this.message,
-    this.path,
-  });
+  GraphqlError({this.extensions, this.locations, this.message, this.path});
 
   GraphqlError.fromJson(core.Map json_)
-      : this(
-          extensions: json_.containsKey('extensions')
-              ? GraphqlErrorExtensions.fromJson(
-                  json_['extensions'] as core.Map<core.String, core.dynamic>)
-              : null,
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => SourceLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          message: json_['message'] as core.String?,
-          path: json_.containsKey('path') ? json_['path'] as core.List : null,
-        );
+    : this(
+        extensions:
+            json_.containsKey('extensions')
+                ? GraphqlErrorExtensions.fromJson(
+                  json_['extensions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => SourceLocation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        message: json_['message'] as core.String?,
+        path: json_.containsKey('path') ? json_['path'] as core.List : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (extensions != null) 'extensions': extensions!,
-        if (locations != null) 'locations': locations!,
-        if (message != null) 'message': message!,
-        if (path != null) 'path': path!,
-      };
+    if (extensions != null) 'extensions': extensions!,
+    if (locations != null) 'locations': locations!,
+    if (message != null) 'message': message!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// GraphqlErrorExtensions contains additional information of `GraphqlError`.
@@ -1988,19 +1975,19 @@ class GraphqlErrorExtensions {
   });
 
   GraphqlErrorExtensions.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          debugDetails: json_['debugDetails'] as core.String?,
-          file: json_['file'] as core.String?,
-          resource: json_['resource'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        debugDetails: json_['debugDetails'] as core.String?,
+        file: json_['file'] as core.String?,
+        resource: json_['resource'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (debugDetails != null) 'debugDetails': debugDetails!,
-        if (file != null) 'file': file!,
-        if (resource != null) 'resource': resource!,
-      };
+    if (code != null) 'code': code!,
+    if (debugDetails != null) 'debugDetails': debugDetails!,
+    if (file != null) 'file': file!,
+    if (resource != null) 'resource': resource!,
+  };
 }
 
 /// The GraphQL request to Firebase Data Connect.
@@ -2042,24 +2029,27 @@ class GraphqlRequest {
   });
 
   GraphqlRequest.fromJson(core.Map json_)
-      : this(
-          extensions: json_.containsKey('extensions')
-              ? GraphqlRequestExtensions.fromJson(
-                  json_['extensions'] as core.Map<core.String, core.dynamic>)
-              : null,
-          operationName: json_['operationName'] as core.String?,
-          query: json_['query'] as core.String?,
-          variables: json_.containsKey('variables')
-              ? json_['variables'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        extensions:
+            json_.containsKey('extensions')
+                ? GraphqlRequestExtensions.fromJson(
+                  json_['extensions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        operationName: json_['operationName'] as core.String?,
+        query: json_['query'] as core.String?,
+        variables:
+            json_.containsKey('variables')
+                ? json_['variables'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (extensions != null) 'extensions': extensions!,
-        if (operationName != null) 'operationName': operationName!,
-        if (query != null) 'query': query!,
-        if (variables != null) 'variables': variables!,
-      };
+    if (extensions != null) 'extensions': extensions!,
+    if (operationName != null) 'operationName': operationName!,
+    if (query != null) 'query': query!,
+    if (variables != null) 'variables': variables!,
+  };
 }
 
 /// GraphqlRequestExtensions contains additional information of
@@ -2073,21 +2063,21 @@ class GraphqlRequestExtensions {
   /// Optional.
   Impersonation? impersonate;
 
-  GraphqlRequestExtensions({
-    this.impersonate,
-  });
+  GraphqlRequestExtensions({this.impersonate});
 
   GraphqlRequestExtensions.fromJson(core.Map json_)
-      : this(
-          impersonate: json_.containsKey('impersonate')
-              ? Impersonation.fromJson(
-                  json_['impersonate'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        impersonate:
+            json_.containsKey('impersonate')
+                ? Impersonation.fromJson(
+                  json_['impersonate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (impersonate != null) 'impersonate': impersonate!,
-      };
+    if (impersonate != null) 'impersonate': impersonate!,
+  };
 }
 
 /// The GraphQL response from Firebase Data Connect.
@@ -2115,26 +2105,28 @@ class GraphqlResponse {
   /// present. It conforms to https://spec.graphql.org/draft/#sec-Errors.
   core.List<GraphqlError>? errors;
 
-  GraphqlResponse({
-    this.data,
-    this.errors,
-  });
+  GraphqlResponse({this.data, this.errors});
 
   GraphqlResponse.fromJson(core.Map json_)
-      : this(
-          data: json_.containsKey('data')
-              ? json_['data'] as core.Map<core.String, core.dynamic>
-              : null,
-          errors: (json_['errors'] as core.List?)
-              ?.map((value) => GraphqlError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        data:
+            json_.containsKey('data')
+                ? json_['data'] as core.Map<core.String, core.dynamic>
+                : null,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => GraphqlError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (errors != null) 'errors': errors!,
-      };
+    if (data != null) 'data': data!,
+    if (errors != null) 'errors': errors!,
+  };
 }
 
 /// Impersonation configures the Firebase Auth context to impersonate.
@@ -2166,20 +2158,21 @@ class Impersonation {
   });
 
   Impersonation.fromJson(core.Map json_)
-      : this(
-          authClaims: json_.containsKey('authClaims')
-              ? json_['authClaims'] as core.Map<core.String, core.dynamic>
-              : null,
-          includeDebugDetails: json_['includeDebugDetails'] as core.bool?,
-          unauthenticated: json_['unauthenticated'] as core.bool?,
-        );
+    : this(
+        authClaims:
+            json_.containsKey('authClaims')
+                ? json_['authClaims'] as core.Map<core.String, core.dynamic>
+                : null,
+        includeDebugDetails: json_['includeDebugDetails'] as core.bool?,
+        unauthenticated: json_['unauthenticated'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authClaims != null) 'authClaims': authClaims!,
-        if (includeDebugDetails != null)
-          'includeDebugDetails': includeDebugDetails!,
-        if (unauthenticated != null) 'unauthenticated': unauthenticated!,
-      };
+    if (authClaims != null) 'authClaims': authClaims!,
+    if (includeDebugDetails != null)
+      'includeDebugDetails': includeDebugDetails!,
+    if (unauthenticated != null) 'unauthenticated': unauthenticated!,
+  };
 }
 
 /// Message for response to listing Connectors.
@@ -2207,22 +2200,27 @@ class ListConnectorsResponse {
   });
 
   ListConnectorsResponse.fromJson(core.Map json_)
-      : this(
-          connectors: (json_['connectors'] as core.List?)
-              ?.map((value) => Connector.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        connectors:
+            (json_['connectors'] as core.List?)
+                ?.map(
+                  (value) => Connector.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectors != null) 'connectors': connectors!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (connectors != null) 'connectors': connectors!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -2233,24 +2231,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -2261,24 +2260,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// Message for response to listing Schemas.
@@ -2299,29 +2299,30 @@ class ListSchemasResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListSchemasResponse({
-    this.nextPageToken,
-    this.schemas,
-    this.unreachable,
-  });
+  ListSchemasResponse({this.nextPageToken, this.schemas, this.unreachable});
 
   ListSchemasResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          schemas: (json_['schemas'] as core.List?)
-              ?.map((value) =>
-                  Schema.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        schemas:
+            (json_['schemas'] as core.List?)
+                ?.map(
+                  (value) => Schema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (schemas != null) 'schemas': schemas!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (schemas != null) 'schemas': schemas!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Message for response to listing Services.
@@ -2337,29 +2338,30 @@ class ListServicesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListServicesResponse({
-    this.nextPageToken,
-    this.services,
-    this.unreachable,
-  });
+  ListServicesResponse({this.nextPageToken, this.services, this.unreachable});
 
   ListServicesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          services: (json_['services'] as core.List?)
-              ?.map((value) => Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        services:
+            (json_['services'] as core.List?)
+                ?.map(
+                  (value) => Service.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (services != null) 'services': services!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (services != null) 'services': services!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -2408,37 +2410,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Settings for PostgreSQL data source.
@@ -2499,24 +2499,26 @@ class PostgreSql {
   });
 
   PostgreSql.fromJson(core.Map json_)
-      : this(
-          cloudSql: json_.containsKey('cloudSql')
-              ? CloudSqlInstance.fromJson(
-                  json_['cloudSql'] as core.Map<core.String, core.dynamic>)
-              : null,
-          database: json_['database'] as core.String?,
-          schemaMigration: json_['schemaMigration'] as core.String?,
-          schemaValidation: json_['schemaValidation'] as core.String?,
-          unlinked: json_['unlinked'] as core.bool?,
-        );
+    : this(
+        cloudSql:
+            json_.containsKey('cloudSql')
+                ? CloudSqlInstance.fromJson(
+                  json_['cloudSql'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        database: json_['database'] as core.String?,
+        schemaMigration: json_['schemaMigration'] as core.String?,
+        schemaValidation: json_['schemaValidation'] as core.String?,
+        unlinked: json_['unlinked'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudSql != null) 'cloudSql': cloudSql!,
-        if (database != null) 'database': database!,
-        if (schemaMigration != null) 'schemaMigration': schemaMigration!,
-        if (schemaValidation != null) 'schemaValidation': schemaValidation!,
-        if (unlinked != null) 'unlinked': unlinked!,
-      };
+    if (cloudSql != null) 'cloudSql': cloudSql!,
+    if (database != null) 'database': database!,
+    if (schemaMigration != null) 'schemaMigration': schemaMigration!,
+    if (schemaValidation != null) 'schemaValidation': schemaValidation!,
+    if (unlinked != null) 'unlinked': unlinked!,
+  };
 }
 
 /// The application schema of a Firebase Data Connect service.
@@ -2600,52 +2602,49 @@ class Schema {
   });
 
   Schema.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          datasources: (json_['datasources'] as core.List?)
-              ?.map((value) => Datasource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          reconciling: json_['reconciling'] as core.bool?,
-          source: json_.containsKey('source')
-              ? Source.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        datasources:
+            (json_['datasources'] as core.List?)
+                ?.map(
+                  (value) => Datasource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        reconciling: json_['reconciling'] as core.bool?,
+        source:
+            json_.containsKey('source')
+                ? Source.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (createTime != null) 'createTime': createTime!,
-        if (datasources != null) 'datasources': datasources!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (reconciling != null) 'reconciling': reconciling!,
-        if (source != null) 'source': source!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (datasources != null) 'datasources': datasources!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (source != null) 'source': source!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A Firebase Data Connect service.
@@ -2719,42 +2718,33 @@ class Service {
   });
 
   Service.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          reconciling: json_['reconciling'] as core.bool?,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        reconciling: json_['reconciling'] as core.bool?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (reconciling != null) 'reconciling': reconciling!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Used to represent a set of source files.
@@ -2764,21 +2754,23 @@ class Source {
   /// Required.
   core.List<File>? files;
 
-  Source({
-    this.files,
-  });
+  Source({this.files});
 
   Source.fromJson(core.Map json_)
-      : this(
-          files: (json_['files'] as core.List?)
-              ?.map((value) =>
-                  File.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        files:
+            (json_['files'] as core.List?)
+                ?.map(
+                  (value) => File.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (files != null) 'files': files!,
-      };
+    if (files != null) 'files': files!,
+  };
 }
 
 /// SourceLocation references a location in a GraphQL source.
@@ -2789,21 +2781,18 @@ class SourceLocation {
   /// Line number starting at 1.
   core.int? line;
 
-  SourceLocation({
-    this.column,
-    this.line,
-  });
+  SourceLocation({this.column, this.line});
 
   SourceLocation.fromJson(core.Map json_)
-      : this(
-          column: json_['column'] as core.int?,
-          line: json_['line'] as core.int?,
-        );
+    : this(
+        column: json_['column'] as core.int?,
+        line: json_['line'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (column != null) 'column': column!,
-        if (line != null) 'line': line!,
-      };
+    if (column != null) 'column': column!,
+    if (line != null) 'line': line!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for

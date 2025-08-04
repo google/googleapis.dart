@@ -72,32 +72,27 @@ class $AccessPolicy {
   /// Required.
   core.String? title;
 
-  $AccessPolicy({
-    this.etag,
-    this.name,
-    this.parent,
-    this.scopes,
-    this.title,
-  });
+  $AccessPolicy({this.etag, this.name, this.parent, this.scopes, this.title});
 
   $AccessPolicy.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          scopes: (json_['scopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        scopes:
+            (json_['scopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (scopes != null) 'scopes': scopes!,
-        if (title != null) 'title': title!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (parent != null) 'parent': parent!,
+    if (scopes != null) 'scopes': scopes!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Used by:
@@ -111,21 +106,18 @@ class $ActionParameter {
   /// The value of the parameter.
   core.String? value;
 
-  $ActionParameter({
-    this.key,
-    this.value,
-  });
+  $ActionParameter({this.key, this.value});
 
   $ActionParameter.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
+    if (key != null) 'key': key!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -220,22 +212,21 @@ class $ActiveViewVideoViewabilityMetricConfig {
   });
 
   $ActiveViewVideoViewabilityMetricConfig.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          minimumDuration: json_['minimumDuration'] as core.String?,
-          minimumQuartile: json_['minimumQuartile'] as core.String?,
-          minimumViewability: json_['minimumViewability'] as core.String?,
-          minimumVolume: json_['minimumVolume'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        minimumDuration: json_['minimumDuration'] as core.String?,
+        minimumQuartile: json_['minimumQuartile'] as core.String?,
+        minimumViewability: json_['minimumViewability'] as core.String?,
+        minimumVolume: json_['minimumVolume'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (minimumDuration != null) 'minimumDuration': minimumDuration!,
-        if (minimumQuartile != null) 'minimumQuartile': minimumQuartile!,
-        if (minimumViewability != null)
-          'minimumViewability': minimumViewability!,
-        if (minimumVolume != null) 'minimumVolume': minimumVolume!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (minimumDuration != null) 'minimumDuration': minimumDuration!,
+    if (minimumQuartile != null) 'minimumQuartile': minimumQuartile!,
+    if (minimumViewability != null) 'minimumViewability': minimumViewability!,
+    if (minimumVolume != null) 'minimumVolume': minimumVolume!,
+  };
 }
 
 /// Used by:
@@ -260,21 +251,18 @@ class $AdUrl {
   /// The URL string value.
   core.String? url;
 
-  $AdUrl({
-    this.type,
-    this.url,
-  });
+  $AdUrl({this.type, this.url});
 
   $AdUrl.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        type: json_['type'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (url != null) 'url': url!,
-      };
+    if (type != null) 'type': type!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Used by:
@@ -312,21 +300,22 @@ class $AddressPool {
   });
 
   $AddressPool.fromJson(core.Map json_)
-      : this(
-          addresses: (json_['addresses'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          avoidBuggyIps: json_['avoidBuggyIps'] as core.bool?,
-          manualAssign: json_['manualAssign'] as core.bool?,
-          pool: json_['pool'] as core.String?,
-        );
+    : this(
+        addresses:
+            (json_['addresses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        avoidBuggyIps: json_['avoidBuggyIps'] as core.bool?,
+        manualAssign: json_['manualAssign'] as core.bool?,
+        pool: json_['pool'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addresses != null) 'addresses': addresses!,
-        if (avoidBuggyIps != null) 'avoidBuggyIps': avoidBuggyIps!,
-        if (manualAssign != null) 'manualAssign': manualAssign!,
-        if (pool != null) 'pool': pool!,
-      };
+    if (addresses != null) 'addresses': addresses!,
+    if (avoidBuggyIps != null) 'avoidBuggyIps': avoidBuggyIps!,
+    if (manualAssign != null) 'manualAssign': manualAssign!,
+    if (pool != null) 'pool': pool!,
+  };
 }
 
 /// Used by:
@@ -577,78 +566,74 @@ class $Adloox {
   });
 
   $Adloox.fromJson(core.Map json_)
-      : this(
-          adultExplicitSexualContent:
-              json_['adultExplicitSexualContent'] as core.String?,
-          armsAmmunitionContent: json_['armsAmmunitionContent'] as core.String?,
-          crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent: json_[
-                  'crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent']
-              as core.String?,
-          deathInjuryMilitaryConflictContent:
-              json_['deathInjuryMilitaryConflictContent'] as core.String?,
-          debatedSensitiveSocialIssueContent:
-              json_['debatedSensitiveSocialIssueContent'] as core.String?,
-          displayIabViewability: json_['displayIabViewability'] as core.String?,
-          excludedAdlooxCategories:
-              (json_['excludedAdlooxCategories'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          excludedFraudIvtMfaCategories:
-              (json_['excludedFraudIvtMfaCategories'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          hateSpeechActsAggressionContent:
-              json_['hateSpeechActsAggressionContent'] as core.String?,
-          illegalDrugsTobaccoEcigarettesVapingAlcoholContent:
-              json_['illegalDrugsTobaccoEcigarettesVapingAlcoholContent']
-                  as core.String?,
-          misinformationContent: json_['misinformationContent'] as core.String?,
-          obscenityProfanityContent:
-              json_['obscenityProfanityContent'] as core.String?,
-          onlinePiracyContent: json_['onlinePiracyContent'] as core.String?,
-          spamHarmfulContent: json_['spamHarmfulContent'] as core.String?,
-          terrorismContent: json_['terrorismContent'] as core.String?,
-          videoIabViewability: json_['videoIabViewability'] as core.String?,
-        );
+    : this(
+        adultExplicitSexualContent:
+            json_['adultExplicitSexualContent'] as core.String?,
+        armsAmmunitionContent: json_['armsAmmunitionContent'] as core.String?,
+        crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent:
+            json_['crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent']
+                as core.String?,
+        deathInjuryMilitaryConflictContent:
+            json_['deathInjuryMilitaryConflictContent'] as core.String?,
+        debatedSensitiveSocialIssueContent:
+            json_['debatedSensitiveSocialIssueContent'] as core.String?,
+        displayIabViewability: json_['displayIabViewability'] as core.String?,
+        excludedAdlooxCategories:
+            (json_['excludedAdlooxCategories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        excludedFraudIvtMfaCategories:
+            (json_['excludedFraudIvtMfaCategories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        hateSpeechActsAggressionContent:
+            json_['hateSpeechActsAggressionContent'] as core.String?,
+        illegalDrugsTobaccoEcigarettesVapingAlcoholContent:
+            json_['illegalDrugsTobaccoEcigarettesVapingAlcoholContent']
+                as core.String?,
+        misinformationContent: json_['misinformationContent'] as core.String?,
+        obscenityProfanityContent:
+            json_['obscenityProfanityContent'] as core.String?,
+        onlinePiracyContent: json_['onlinePiracyContent'] as core.String?,
+        spamHarmfulContent: json_['spamHarmfulContent'] as core.String?,
+        terrorismContent: json_['terrorismContent'] as core.String?,
+        videoIabViewability: json_['videoIabViewability'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adultExplicitSexualContent != null)
-          'adultExplicitSexualContent': adultExplicitSexualContent!,
-        if (armsAmmunitionContent != null)
-          'armsAmmunitionContent': armsAmmunitionContent!,
-        if (crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent !=
-            null)
-          'crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent':
-              crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent!,
-        if (deathInjuryMilitaryConflictContent != null)
-          'deathInjuryMilitaryConflictContent':
-              deathInjuryMilitaryConflictContent!,
-        if (debatedSensitiveSocialIssueContent != null)
-          'debatedSensitiveSocialIssueContent':
-              debatedSensitiveSocialIssueContent!,
-        if (displayIabViewability != null)
-          'displayIabViewability': displayIabViewability!,
-        if (excludedAdlooxCategories != null)
-          'excludedAdlooxCategories': excludedAdlooxCategories!,
-        if (excludedFraudIvtMfaCategories != null)
-          'excludedFraudIvtMfaCategories': excludedFraudIvtMfaCategories!,
-        if (hateSpeechActsAggressionContent != null)
-          'hateSpeechActsAggressionContent': hateSpeechActsAggressionContent!,
-        if (illegalDrugsTobaccoEcigarettesVapingAlcoholContent != null)
-          'illegalDrugsTobaccoEcigarettesVapingAlcoholContent':
-              illegalDrugsTobaccoEcigarettesVapingAlcoholContent!,
-        if (misinformationContent != null)
-          'misinformationContent': misinformationContent!,
-        if (obscenityProfanityContent != null)
-          'obscenityProfanityContent': obscenityProfanityContent!,
-        if (onlinePiracyContent != null)
-          'onlinePiracyContent': onlinePiracyContent!,
-        if (spamHarmfulContent != null)
-          'spamHarmfulContent': spamHarmfulContent!,
-        if (terrorismContent != null) 'terrorismContent': terrorismContent!,
-        if (videoIabViewability != null)
-          'videoIabViewability': videoIabViewability!,
-      };
+    if (adultExplicitSexualContent != null)
+      'adultExplicitSexualContent': adultExplicitSexualContent!,
+    if (armsAmmunitionContent != null)
+      'armsAmmunitionContent': armsAmmunitionContent!,
+    if (crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent != null)
+      'crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent':
+          crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent!,
+    if (deathInjuryMilitaryConflictContent != null)
+      'deathInjuryMilitaryConflictContent': deathInjuryMilitaryConflictContent!,
+    if (debatedSensitiveSocialIssueContent != null)
+      'debatedSensitiveSocialIssueContent': debatedSensitiveSocialIssueContent!,
+    if (displayIabViewability != null)
+      'displayIabViewability': displayIabViewability!,
+    if (excludedAdlooxCategories != null)
+      'excludedAdlooxCategories': excludedAdlooxCategories!,
+    if (excludedFraudIvtMfaCategories != null)
+      'excludedFraudIvtMfaCategories': excludedFraudIvtMfaCategories!,
+    if (hateSpeechActsAggressionContent != null)
+      'hateSpeechActsAggressionContent': hateSpeechActsAggressionContent!,
+    if (illegalDrugsTobaccoEcigarettesVapingAlcoholContent != null)
+      'illegalDrugsTobaccoEcigarettesVapingAlcoholContent':
+          illegalDrugsTobaccoEcigarettesVapingAlcoholContent!,
+    if (misinformationContent != null)
+      'misinformationContent': misinformationContent!,
+    if (obscenityProfanityContent != null)
+      'obscenityProfanityContent': obscenityProfanityContent!,
+    if (onlinePiracyContent != null)
+      'onlinePiracyContent': onlinePiracyContent!,
+    if (spamHarmfulContent != null) 'spamHarmfulContent': spamHarmfulContent!,
+    if (terrorismContent != null) 'terrorismContent': terrorismContent!,
+    if (videoIabViewability != null)
+      'videoIabViewability': videoIabViewability!,
+  };
 }
 
 /// Used by:
@@ -661,18 +646,14 @@ class $AdvertiserBillingConfig {
   /// Required.
   core.String? billingProfileId;
 
-  $AdvertiserBillingConfig({
-    this.billingProfileId,
-  });
+  $AdvertiserBillingConfig({this.billingProfileId});
 
   $AdvertiserBillingConfig.fromJson(core.Map json_)
-      : this(
-          billingProfileId: json_['billingProfileId'] as core.String?,
-        );
+    : this(billingProfileId: json_['billingProfileId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (billingProfileId != null) 'billingProfileId': billingProfileId!,
-      };
+    if (billingProfileId != null) 'billingProfileId': billingProfileId!,
+  };
 }
 
 /// Used by:
@@ -728,24 +709,23 @@ class $AdvertiserCreativeConfig {
   });
 
   $AdvertiserCreativeConfig.fromJson(core.Map json_)
-      : this(
-          dynamicCreativeEnabled: json_['dynamicCreativeEnabled'] as core.bool?,
-          iasClientId: json_['iasClientId'] as core.String?,
-          obaComplianceDisabled: json_['obaComplianceDisabled'] as core.bool?,
-          videoCreativeDataSharingAuthorized:
-              json_['videoCreativeDataSharingAuthorized'] as core.bool?,
-        );
+    : this(
+        dynamicCreativeEnabled: json_['dynamicCreativeEnabled'] as core.bool?,
+        iasClientId: json_['iasClientId'] as core.String?,
+        obaComplianceDisabled: json_['obaComplianceDisabled'] as core.bool?,
+        videoCreativeDataSharingAuthorized:
+            json_['videoCreativeDataSharingAuthorized'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dynamicCreativeEnabled != null)
-          'dynamicCreativeEnabled': dynamicCreativeEnabled!,
-        if (iasClientId != null) 'iasClientId': iasClientId!,
-        if (obaComplianceDisabled != null)
-          'obaComplianceDisabled': obaComplianceDisabled!,
-        if (videoCreativeDataSharingAuthorized != null)
-          'videoCreativeDataSharingAuthorized':
-              videoCreativeDataSharingAuthorized!,
-      };
+    if (dynamicCreativeEnabled != null)
+      'dynamicCreativeEnabled': dynamicCreativeEnabled!,
+    if (iasClientId != null) 'iasClientId': iasClientId!,
+    if (obaComplianceDisabled != null)
+      'obaComplianceDisabled': obaComplianceDisabled!,
+    if (videoCreativeDataSharingAuthorized != null)
+      'videoCreativeDataSharingAuthorized': videoCreativeDataSharingAuthorized!,
+  };
 }
 
 /// Used by:
@@ -794,24 +774,20 @@ class $AdvertiserGeneralConfig {
   /// Output only.
   core.String? timeZone;
 
-  $AdvertiserGeneralConfig({
-    this.currencyCode,
-    this.domainUrl,
-    this.timeZone,
-  });
+  $AdvertiserGeneralConfig({this.currencyCode, this.domainUrl, this.timeZone});
 
   $AdvertiserGeneralConfig.fromJson(core.Map json_)
-      : this(
-          currencyCode: json_['currencyCode'] as core.String?,
-          domainUrl: json_['domainUrl'] as core.String?,
-          timeZone: json_['timeZone'] as core.String?,
-        );
+    : this(
+        currencyCode: json_['currencyCode'] as core.String?,
+        domainUrl: json_['domainUrl'] as core.String?,
+        timeZone: json_['timeZone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (domainUrl != null) 'domainUrl': domainUrl!,
-        if (timeZone != null) 'timeZone': timeZone!,
-      };
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+    if (domainUrl != null) 'domainUrl': domainUrl!,
+    if (timeZone != null) 'timeZone': timeZone!,
+  };
 }
 
 /// Used by:
@@ -824,20 +800,18 @@ class $AdvertiserTargetingConfig {
   /// for all video line items under the advertiser.
   core.bool? exemptTvFromViewabilityTargeting;
 
-  $AdvertiserTargetingConfig({
-    this.exemptTvFromViewabilityTargeting,
-  });
+  $AdvertiserTargetingConfig({this.exemptTvFromViewabilityTargeting});
 
   $AdvertiserTargetingConfig.fromJson(core.Map json_)
-      : this(
-          exemptTvFromViewabilityTargeting:
-              json_['exemptTvFromViewabilityTargeting'] as core.bool?,
-        );
+    : this(
+        exemptTvFromViewabilityTargeting:
+            json_['exemptTvFromViewabilityTargeting'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptTvFromViewabilityTargeting != null)
-          'exemptTvFromViewabilityTargeting': exemptTvFromViewabilityTargeting!,
-      };
+    if (exemptTvFromViewabilityTargeting != null)
+      'exemptTvFromViewabilityTargeting': exemptTvFromViewabilityTargeting!,
+  };
 }
 
 /// Used by:
@@ -887,18 +861,14 @@ class $AgeRangeAssignedTargetingOptionDetails {
   /// supported for the AdGroup of YouTube Programmatic Reservation line item.
   core.String? ageRange;
 
-  $AgeRangeAssignedTargetingOptionDetails({
-    this.ageRange,
-  });
+  $AgeRangeAssignedTargetingOptionDetails({this.ageRange});
 
   $AgeRangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          ageRange: json_['ageRange'] as core.String?,
-        );
+    : this(ageRange: json_['ageRange'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ageRange != null) 'ageRange': ageRange!,
-      };
+    if (ageRange != null) 'ageRange': ageRange!,
+  };
 }
 
 /// Used by:
@@ -943,18 +913,14 @@ class $AgeRangeTargetingOptionDetails {
   /// supported for the AdGroup of YouTube Programmatic Reservation line item.
   core.String? ageRange;
 
-  $AgeRangeTargetingOptionDetails({
-    this.ageRange,
-  });
+  $AgeRangeTargetingOptionDetails({this.ageRange});
 
   $AgeRangeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          ageRange: json_['ageRange'] as core.String?,
-        );
+    : this(ageRange: json_['ageRange'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ageRange != null) 'ageRange': ageRange!,
-      };
+    if (ageRange != null) 'ageRange': ageRange!,
+  };
 }
 
 /// Used by:
@@ -974,21 +940,18 @@ class $AliasContext {
   /// The alias name.
   core.String? name;
 
-  $AliasContext({
-    this.kind,
-    this.name,
-  });
+  $AliasContext({this.kind, this.name});
 
   $AliasContext.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -1009,23 +972,21 @@ class $AllowedLocations {
   /// Output only.
   core.List<core.String>? locations;
 
-  $AllowedLocations({
-    this.encodedLocations,
-    this.locations,
-  });
+  $AllowedLocations({this.encodedLocations, this.locations});
 
   $AllowedLocations.fromJson(core.Map json_)
-      : this(
-          encodedLocations: json_['encodedLocations'] as core.String?,
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        encodedLocations: json_['encodedLocations'] as core.String?,
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedLocations != null) 'encodedLocations': encodedLocations!,
-        if (locations != null) 'locations': locations!,
-      };
+    if (encodedLocations != null) 'encodedLocations': encodedLocations!,
+    if (locations != null) 'locations': locations!,
+  };
 }
 
 /// Used by:
@@ -1035,20 +996,19 @@ class $AllowedLocations {
 class $AnalysisCompleted {
   core.List<core.String>? analysisType;
 
-  $AnalysisCompleted({
-    this.analysisType,
-  });
+  $AnalysisCompleted({this.analysisType});
 
   $AnalysisCompleted.fromJson(core.Map json_)
-      : this(
-          analysisType: (json_['analysisType'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        analysisType:
+            (json_['analysisType'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisType != null) 'analysisType': analysisType!,
-      };
+    if (analysisType != null) 'analysisType': analysisType!,
+  };
 }
 
 /// Used by:
@@ -1106,19 +1066,19 @@ class $AppAssignedTargetingOptionDetails {
   });
 
   $AppAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          appId: json_['appId'] as core.String?,
-          appPlatform: json_['appPlatform'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-        );
+    : this(
+        appId: json_['appId'] as core.String?,
+        appPlatform: json_['appPlatform'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appId != null) 'appId': appId!,
-        if (appPlatform != null) 'appPlatform': appPlatform!,
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-      };
+    if (appId != null) 'appId': appId!,
+    if (appPlatform != null) 'appPlatform': appPlatform!,
+    if (displayName != null) 'displayName': displayName!,
+    if (negative != null) 'negative': negative!,
+  };
 }
 
 /// Used by:
@@ -1148,17 +1108,17 @@ class $AppCategoryAssignedTargetingOptionDetails {
   });
 
   $AppCategoryAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (negative != null) 'negative': negative!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -1172,18 +1132,14 @@ class $AppCategoryTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $AppCategoryTargetingOptionDetails({
-    this.displayName,
-  });
+  $AppCategoryTargetingOptionDetails({this.displayName});
 
   $AppCategoryTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+    : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+  };
 }
 
 /// Used by:
@@ -1208,26 +1164,23 @@ class $Artifact {
   /// to one image.
   core.List<core.String>? names;
 
-  $Artifact({
-    this.checksum,
-    this.id,
-    this.names,
-  });
+  $Artifact({this.checksum, this.id, this.names});
 
   $Artifact.fromJson(core.Map json_)
-      : this(
-          checksum: json_['checksum'] as core.String?,
-          id: json_['id'] as core.String?,
-          names: (json_['names'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        checksum: json_['checksum'] as core.String?,
+        id: json_['id'] as core.String?,
+        names:
+            (json_['names'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (checksum != null) 'checksum': checksum!,
-        if (id != null) 'id': id!,
-        if (names != null) 'names': names!,
-      };
+    if (checksum != null) 'checksum': checksum!,
+    if (id != null) 'id': id!,
+    if (names != null) 'names': names!,
+  };
 }
 
 /// Used by:
@@ -1241,23 +1194,21 @@ class $ArtifactsGcsSource {
   /// Supports URI wildcards for matching multiple objects from a single URI.
   core.bool? useWildcards;
 
-  $ArtifactsGcsSource({
-    this.uris,
-    this.useWildcards,
-  });
+  $ArtifactsGcsSource({this.uris, this.useWildcards});
 
   $ArtifactsGcsSource.fromJson(core.Map json_)
-      : this(
-          uris: (json_['uris'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          useWildcards: json_['useWildcards'] as core.bool?,
-        );
+    : this(
+        uris:
+            (json_['uris'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        useWildcards: json_['useWildcards'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uris != null) 'uris': uris!,
-        if (useWildcards != null) 'useWildcards': useWildcards!,
-      };
+    if (uris != null) 'uris': uris!,
+    if (useWildcards != null) 'useWildcards': useWildcards!,
+  };
 }
 
 /// Used by:
@@ -1280,21 +1231,18 @@ class $Asset {
   /// creative resources or re-uploading the asset.
   core.String? mediaId;
 
-  $Asset({
-    this.content,
-    this.mediaId,
-  });
+  $Asset({this.content, this.mediaId});
 
   $Asset.fromJson(core.Map json_)
-      : this(
-          content: json_['content'] as core.String?,
-          mediaId: json_['mediaId'] as core.String?,
-        );
+    : this(
+        content: json_['content'] as core.String?,
+        mediaId: json_['mediaId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (mediaId != null) 'mediaId': mediaId!,
-      };
+    if (content != null) 'content': content!,
+    if (mediaId != null) 'mediaId': mediaId!,
+  };
 }
 
 /// Used by:
@@ -1328,19 +1276,19 @@ class $AssignedInventorySource {
   });
 
   $AssignedInventorySource.fromJson(core.Map json_)
-      : this(
-          assignedInventorySourceId:
-              json_['assignedInventorySourceId'] as core.String?,
-          inventorySourceId: json_['inventorySourceId'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        assignedInventorySourceId:
+            json_['assignedInventorySourceId'] as core.String?,
+        inventorySourceId: json_['inventorySourceId'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedInventorySourceId != null)
-          'assignedInventorySourceId': assignedInventorySourceId!,
-        if (inventorySourceId != null) 'inventorySourceId': inventorySourceId!,
-        if (name != null) 'name': name!,
-      };
+    if (assignedInventorySourceId != null)
+      'assignedInventorySourceId': assignedInventorySourceId!,
+    if (inventorySourceId != null) 'inventorySourceId': inventorySourceId!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -1374,18 +1322,17 @@ class $AssignedLocation {
   });
 
   $AssignedLocation.fromJson(core.Map json_)
-      : this(
-          assignedLocationId: json_['assignedLocationId'] as core.String?,
-          name: json_['name'] as core.String?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        assignedLocationId: json_['assignedLocationId'] as core.String?,
+        name: json_['name'] as core.String?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedLocationId != null)
-          'assignedLocationId': assignedLocationId!,
-        if (name != null) 'name': name!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (assignedLocationId != null) 'assignedLocationId': assignedLocationId!,
+    if (name != null) 'name': name!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -1458,20 +1405,19 @@ class $AssignedUserRole {
   });
 
   $AssignedUserRole.fromJson(core.Map json_)
-      : this(
-          advertiserId: json_['advertiserId'] as core.String?,
-          assignedUserRoleId: json_['assignedUserRoleId'] as core.String?,
-          partnerId: json_['partnerId'] as core.String?,
-          userRole: json_['userRole'] as core.String?,
-        );
+    : this(
+        advertiserId: json_['advertiserId'] as core.String?,
+        assignedUserRoleId: json_['assignedUserRoleId'] as core.String?,
+        partnerId: json_['partnerId'] as core.String?,
+        userRole: json_['userRole'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (assignedUserRoleId != null)
-          'assignedUserRoleId': assignedUserRoleId!,
-        if (partnerId != null) 'partnerId': partnerId!,
-        if (userRole != null) 'userRole': userRole!,
-      };
+    if (advertiserId != null) 'advertiserId': advertiserId!,
+    if (assignedUserRoleId != null) 'assignedUserRoleId': assignedUserRoleId!,
+    if (partnerId != null) 'partnerId': partnerId!,
+    if (userRole != null) 'userRole': userRole!,
+  };
 }
 
 /// Used by:
@@ -1485,18 +1431,14 @@ class $Attribution {
   /// property is met within the desired error range.
   core.int? numIntegralSteps;
 
-  $Attribution({
-    this.numIntegralSteps,
-  });
+  $Attribution({this.numIntegralSteps});
 
   $Attribution.fromJson(core.Map json_)
-      : this(
-          numIntegralSteps: json_['numIntegralSteps'] as core.int?,
-        );
+    : this(numIntegralSteps: json_['numIntegralSteps'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps!,
-      };
+    if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps!,
+  };
 }
 
 /// Used by:
@@ -1518,18 +1460,14 @@ class $AudioContentTypeAssignedTargetingOptionDetails {
   /// - "AUDIO_CONTENT_TYPE_PODCAST" : The audio content type is podcast.
   core.String? audioContentType;
 
-  $AudioContentTypeAssignedTargetingOptionDetails({
-    this.audioContentType,
-  });
+  $AudioContentTypeAssignedTargetingOptionDetails({this.audioContentType});
 
   $AudioContentTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          audioContentType: json_['audioContentType'] as core.String?,
-        );
+    : this(audioContentType: json_['audioContentType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audioContentType != null) 'audioContentType': audioContentType!,
-      };
+    if (audioContentType != null) 'audioContentType': audioContentType!,
+  };
 }
 
 /// Used by:
@@ -1551,18 +1489,14 @@ class $AudioContentTypeTargetingOptionDetails {
   /// - "AUDIO_CONTENT_TYPE_PODCAST" : The audio content type is podcast.
   core.String? audioContentType;
 
-  $AudioContentTypeTargetingOptionDetails({
-    this.audioContentType,
-  });
+  $AudioContentTypeTargetingOptionDetails({this.audioContentType});
 
   $AudioContentTypeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          audioContentType: json_['audioContentType'] as core.String?,
-        );
+    : this(audioContentType: json_['audioContentType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audioContentType != null) 'audioContentType': audioContentType!,
-      };
+    if (audioContentType != null) 'audioContentType': audioContentType!,
+  };
 }
 
 /// Used by:
@@ -1581,21 +1515,18 @@ class $AudioVideoOffset {
   /// Optional.
   core.String? seconds;
 
-  $AudioVideoOffset({
-    this.percentage,
-    this.seconds,
-  });
+  $AudioVideoOffset({this.percentage, this.seconds});
 
   $AudioVideoOffset.fromJson(core.Map json_)
-      : this(
-          percentage: json_['percentage'] as core.String?,
-          seconds: json_['seconds'] as core.String?,
-        );
+    : this(
+        percentage: json_['percentage'] as core.String?,
+        seconds: json_['seconds'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (percentage != null) 'percentage': percentage!,
-        if (seconds != null) 'seconds': seconds!,
-      };
+    if (percentage != null) 'percentage': percentage!,
+    if (seconds != null) 'seconds': seconds!,
+  };
 }
 
 /// Used by:
@@ -1673,37 +1604,35 @@ class $AuditAdvertiserResponse {
   });
 
   $AuditAdvertiserResponse.fromJson(core.Map json_)
-      : this(
-          adGroupCriteriaCount: json_['adGroupCriteriaCount'] as core.String?,
-          campaignCriteriaCount: json_['campaignCriteriaCount'] as core.String?,
-          channelsCount: json_['channelsCount'] as core.String?,
-          negativeKeywordListsCount:
-              json_['negativeKeywordListsCount'] as core.String?,
-          negativelyTargetedChannelsCount:
-              json_['negativelyTargetedChannelsCount'] as core.String?,
-          usedCampaignsCount: json_['usedCampaignsCount'] as core.String?,
-          usedInsertionOrdersCount:
-              json_['usedInsertionOrdersCount'] as core.String?,
-          usedLineItemsCount: json_['usedLineItemsCount'] as core.String?,
-        );
+    : this(
+        adGroupCriteriaCount: json_['adGroupCriteriaCount'] as core.String?,
+        campaignCriteriaCount: json_['campaignCriteriaCount'] as core.String?,
+        channelsCount: json_['channelsCount'] as core.String?,
+        negativeKeywordListsCount:
+            json_['negativeKeywordListsCount'] as core.String?,
+        negativelyTargetedChannelsCount:
+            json_['negativelyTargetedChannelsCount'] as core.String?,
+        usedCampaignsCount: json_['usedCampaignsCount'] as core.String?,
+        usedInsertionOrdersCount:
+            json_['usedInsertionOrdersCount'] as core.String?,
+        usedLineItemsCount: json_['usedLineItemsCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adGroupCriteriaCount != null)
-          'adGroupCriteriaCount': adGroupCriteriaCount!,
-        if (campaignCriteriaCount != null)
-          'campaignCriteriaCount': campaignCriteriaCount!,
-        if (channelsCount != null) 'channelsCount': channelsCount!,
-        if (negativeKeywordListsCount != null)
-          'negativeKeywordListsCount': negativeKeywordListsCount!,
-        if (negativelyTargetedChannelsCount != null)
-          'negativelyTargetedChannelsCount': negativelyTargetedChannelsCount!,
-        if (usedCampaignsCount != null)
-          'usedCampaignsCount': usedCampaignsCount!,
-        if (usedInsertionOrdersCount != null)
-          'usedInsertionOrdersCount': usedInsertionOrdersCount!,
-        if (usedLineItemsCount != null)
-          'usedLineItemsCount': usedLineItemsCount!,
-      };
+    if (adGroupCriteriaCount != null)
+      'adGroupCriteriaCount': adGroupCriteriaCount!,
+    if (campaignCriteriaCount != null)
+      'campaignCriteriaCount': campaignCriteriaCount!,
+    if (channelsCount != null) 'channelsCount': channelsCount!,
+    if (negativeKeywordListsCount != null)
+      'negativeKeywordListsCount': negativeKeywordListsCount!,
+    if (negativelyTargetedChannelsCount != null)
+      'negativelyTargetedChannelsCount': negativelyTargetedChannelsCount!,
+    if (usedCampaignsCount != null) 'usedCampaignsCount': usedCampaignsCount!,
+    if (usedInsertionOrdersCount != null)
+      'usedInsertionOrdersCount': usedInsertionOrdersCount!,
+    if (usedLineItemsCount != null) 'usedLineItemsCount': usedLineItemsCount!,
+  };
 }
 
 /// Used by:
@@ -1777,23 +1706,21 @@ class $AuditLogConfig {
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
   core.String? logType;
 
-  $AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
+  $AuditLogConfig({this.exemptedMembers, this.logType});
 
   $AuditLogConfig.fromJson(core.Map json_)
-      : this(
-          exemptedMembers: (json_['exemptedMembers'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          logType: json_['logType'] as core.String?,
-        );
+    : this(
+        exemptedMembers:
+            (json_['exemptedMembers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        logType: json_['logType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
-        if (logType != null) 'logType': logType!,
-      };
+    if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+    if (logType != null) 'logType': logType!,
+  };
 }
 
 /// Used by:
@@ -1821,21 +1748,18 @@ class $AuthRequirement {
   /// Example: provider_id: bookstore_auth
   core.String? providerId;
 
-  $AuthRequirement({
-    this.audiences,
-    this.providerId,
-  });
+  $AuthRequirement({this.audiences, this.providerId});
 
   $AuthRequirement.fromJson(core.Map json_)
-      : this(
-          audiences: json_['audiences'] as core.String?,
-          providerId: json_['providerId'] as core.String?,
-        );
+    : this(
+        audiences: json_['audiences'] as core.String?,
+        providerId: json_['providerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audiences != null) 'audiences': audiences!,
-        if (providerId != null) 'providerId': providerId!,
-      };
+    if (audiences != null) 'audiences': audiences!,
+    if (providerId != null) 'providerId': providerId!,
+  };
 }
 
 /// Used by:
@@ -1852,24 +1776,20 @@ class $AuthorAttribution {
   /// URI of the author of the Photo or Review.
   core.String? uri;
 
-  $AuthorAttribution({
-    this.displayName,
-    this.photoUri,
-    this.uri,
-  });
+  $AuthorAttribution({this.displayName, this.photoUri, this.uri});
 
   $AuthorAttribution.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          photoUri: json_['photoUri'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        photoUri: json_['photoUri'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (photoUri != null) 'photoUri': photoUri!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (photoUri != null) 'photoUri': photoUri!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Used by:
@@ -1909,17 +1829,16 @@ class $AuthorizedSellerStatusAssignedTargetingOptionDetails {
   });
 
   $AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          authorizedSellerStatus:
-              json_['authorizedSellerStatus'] as core.String?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        authorizedSellerStatus: json_['authorizedSellerStatus'] as core.String?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizedSellerStatus != null)
-          'authorizedSellerStatus': authorizedSellerStatus!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (authorizedSellerStatus != null)
+      'authorizedSellerStatus': authorizedSellerStatus!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -1947,20 +1866,17 @@ class $AuthorizedSellerStatusTargetingOptionDetails {
   /// Publishers" in the UI.
   core.String? authorizedSellerStatus;
 
-  $AuthorizedSellerStatusTargetingOptionDetails({
-    this.authorizedSellerStatus,
-  });
+  $AuthorizedSellerStatusTargetingOptionDetails({this.authorizedSellerStatus});
 
   $AuthorizedSellerStatusTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          authorizedSellerStatus:
-              json_['authorizedSellerStatus'] as core.String?,
-        );
+    : this(
+        authorizedSellerStatus: json_['authorizedSellerStatus'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizedSellerStatus != null)
-          'authorizedSellerStatus': authorizedSellerStatus!,
-      };
+    if (authorizedSellerStatus != null)
+      'authorizedSellerStatus': authorizedSellerStatus!,
+  };
 }
 
 /// Used by:
@@ -1972,18 +1888,14 @@ class $AutoRetrievalInfo {
   /// API.
   core.String? appSignatureHash;
 
-  $AutoRetrievalInfo({
-    this.appSignatureHash,
-  });
+  $AutoRetrievalInfo({this.appSignatureHash});
 
   $AutoRetrievalInfo.fromJson(core.Map json_)
-      : this(
-          appSignatureHash: json_['appSignatureHash'] as core.String?,
-        );
+    : this(appSignatureHash: json_['appSignatureHash'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appSignatureHash != null) 'appSignatureHash': appSignatureHash!,
-      };
+    if (appSignatureHash != null) 'appSignatureHash': appSignatureHash!,
+  };
 }
 
 /// Used by:
@@ -2008,21 +1920,18 @@ class $AvroConfig {
   /// Optional.
   core.bool? writeMetadata;
 
-  $AvroConfig({
-    this.useTopicSchema,
-    this.writeMetadata,
-  });
+  $AvroConfig({this.useTopicSchema, this.writeMetadata});
 
   $AvroConfig.fromJson(core.Map json_)
-      : this(
-          useTopicSchema: json_['useTopicSchema'] as core.bool?,
-          writeMetadata: json_['writeMetadata'] as core.bool?,
-        );
+    : this(
+        useTopicSchema: json_['useTopicSchema'] as core.bool?,
+        writeMetadata: json_['writeMetadata'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
-        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
-      };
+    if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
+    if (writeMetadata != null) 'writeMetadata': writeMetadata!,
+  };
 }
 
 /// Used by:
@@ -2040,24 +1949,20 @@ class $BaseImage {
   /// The repository name in which the base image is from.
   core.String? repository;
 
-  $BaseImage({
-    this.layerCount,
-    this.name,
-    this.repository,
-  });
+  $BaseImage({this.layerCount, this.name, this.repository});
 
   $BaseImage.fromJson(core.Map json_)
-      : this(
-          layerCount: json_['layerCount'] as core.int?,
-          name: json_['name'] as core.String?,
-          repository: json_['repository'] as core.String?,
-        );
+    : this(
+        layerCount: json_['layerCount'] as core.int?,
+        name: json_['name'] as core.String?,
+        repository: json_['repository'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (layerCount != null) 'layerCount': layerCount!,
-        if (name != null) 'name': name!,
-        if (repository != null) 'repository': repository!,
-      };
+    if (layerCount != null) 'layerCount': layerCount!,
+    if (name != null) 'name': name!,
+    if (repository != null) 'repository': repository!,
+  };
 }
 
 /// Used by:
@@ -2074,18 +1979,14 @@ class $BillingConfig {
   /// - "NON_GCP_CONNECTOR" : Non-GCP connector.
   core.String? billingCategory;
 
-  $BillingConfig({
-    this.billingCategory,
-  });
+  $BillingConfig({this.billingCategory});
 
   $BillingConfig.fromJson(core.Map json_)
-      : this(
-          billingCategory: json_['billingCategory'] as core.String?,
-        );
+    : this(billingCategory: json_['billingCategory'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (billingCategory != null) 'billingCategory': billingCategory!,
-      };
+    if (billingCategory != null) 'billingCategory': billingCategory!,
+  };
 }
 
 /// Used by:
@@ -2109,8 +2010,10 @@ class $Blobstore2Info {
       convert.base64.decode(downloadReadHandle!);
 
   set downloadReadHandleAsBytes(core.List<core.int> bytes_) {
-    downloadReadHandle =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    downloadReadHandle = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The blob read token.
@@ -2129,8 +2032,10 @@ class $Blobstore2Info {
       convert.base64.decode(uploadMetadataContainer!);
 
   set uploadMetadataContainerAsBytes(core.List<core.int> bytes_) {
-    uploadMetadataContainer =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    uploadMetadataContainer = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   $Blobstore2Info({
@@ -2142,24 +2047,23 @@ class $Blobstore2Info {
   });
 
   $Blobstore2Info.fromJson(core.Map json_)
-      : this(
-          blobGeneration: json_['blobGeneration'] as core.String?,
-          blobId: json_['blobId'] as core.String?,
-          downloadReadHandle: json_['downloadReadHandle'] as core.String?,
-          readToken: json_['readToken'] as core.String?,
-          uploadMetadataContainer:
-              json_['uploadMetadataContainer'] as core.String?,
-        );
+    : this(
+        blobGeneration: json_['blobGeneration'] as core.String?,
+        blobId: json_['blobId'] as core.String?,
+        downloadReadHandle: json_['downloadReadHandle'] as core.String?,
+        readToken: json_['readToken'] as core.String?,
+        uploadMetadataContainer:
+            json_['uploadMetadataContainer'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blobGeneration != null) 'blobGeneration': blobGeneration!,
-        if (blobId != null) 'blobId': blobId!,
-        if (downloadReadHandle != null)
-          'downloadReadHandle': downloadReadHandle!,
-        if (readToken != null) 'readToken': readToken!,
-        if (uploadMetadataContainer != null)
-          'uploadMetadataContainer': uploadMetadataContainer!,
-      };
+    if (blobGeneration != null) 'blobGeneration': blobGeneration!,
+    if (blobId != null) 'blobId': blobId!,
+    if (downloadReadHandle != null) 'downloadReadHandle': downloadReadHandle!,
+    if (readToken != null) 'readToken': readToken!,
+    if (uploadMetadataContainer != null)
+      'uploadMetadataContainer': uploadMetadataContainer!,
+  };
 }
 
 /// Used by:
@@ -2195,18 +2099,14 @@ class $BooleanPolicy {
   /// enforced, because `constraint_default` for the `Constraint` is `ALLOW`.
   core.bool? enforced;
 
-  $BooleanPolicy({
-    this.enforced,
-  });
+  $BooleanPolicy({this.enforced});
 
   $BooleanPolicy.fromJson(core.Map json_)
-      : this(
-          enforced: json_['enforced'] as core.bool?,
-        );
+    : this(enforced: json_['enforced'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enforced != null) 'enforced': enforced!,
-      };
+    if (enforced != null) 'enforced': enforced!,
+  };
 }
 
 /// Used by:
@@ -2235,16 +2135,16 @@ class $BoostSpecConditionBoostSpecBoostControlSpecControlPoint {
   });
 
   $BoostSpecConditionBoostSpecBoostControlSpecControlPoint.fromJson(
-      core.Map json_)
-      : this(
-          attributeValue: json_['attributeValue'] as core.String?,
-          boostAmount: (json_['boostAmount'] as core.num?)?.toDouble(),
-        );
+    core.Map json_,
+  ) : this(
+        attributeValue: json_['attributeValue'] as core.String?,
+        boostAmount: (json_['boostAmount'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeValue != null) 'attributeValue': attributeValue!,
-        if (boostAmount != null) 'boostAmount': boostAmount!,
-      };
+    if (attributeValue != null) 'attributeValue': attributeValue!,
+    if (boostAmount != null) 'boostAmount': boostAmount!,
+  };
 }
 
 /// Used by:
@@ -2277,17 +2177,17 @@ class $BrowserAssignedTargetingOptionDetails {
   });
 
   $BrowserAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (negative != null) 'negative': negative!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -2301,18 +2201,14 @@ class $BrowserTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $BrowserTargetingOptionDetails({
-    this.displayName,
-  });
+  $BrowserTargetingOptionDetails({this.displayName});
 
   $BrowserTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+    : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+  };
 }
 
 /// Used by:
@@ -2324,24 +2220,20 @@ class $BuildMetadata {
   core.String? invocationId;
   core.String? startedOn;
 
-  $BuildMetadata({
-    this.finishedOn,
-    this.invocationId,
-    this.startedOn,
-  });
+  $BuildMetadata({this.finishedOn, this.invocationId, this.startedOn});
 
   $BuildMetadata.fromJson(core.Map json_)
-      : this(
-          finishedOn: json_['finishedOn'] as core.String?,
-          invocationId: json_['invocationId'] as core.String?,
-          startedOn: json_['startedOn'] as core.String?,
-        );
+    : this(
+        finishedOn: json_['finishedOn'] as core.String?,
+        invocationId: json_['invocationId'] as core.String?,
+        startedOn: json_['startedOn'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (finishedOn != null) 'finishedOn': finishedOn!,
-        if (invocationId != null) 'invocationId': invocationId!,
-        if (startedOn != null) 'startedOn': startedOn!,
-      };
+    if (finishedOn != null) 'finishedOn': finishedOn!,
+    if (invocationId != null) 'invocationId': invocationId!,
+    if (startedOn != null) 'startedOn': startedOn!,
+  };
 }
 
 /// Used by:
@@ -2393,22 +2285,22 @@ class $BusinessChainAssignedTargetingOptionDetails {
   });
 
   $BusinessChainAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          proximityRadiusAmount:
-              (json_['proximityRadiusAmount'] as core.num?)?.toDouble(),
-          proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        proximityRadiusAmount:
+            (json_['proximityRadiusAmount'] as core.num?)?.toDouble(),
+        proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (proximityRadiusAmount != null)
-          'proximityRadiusAmount': proximityRadiusAmount!,
-        if (proximityRadiusUnit != null)
-          'proximityRadiusUnit': proximityRadiusUnit!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (proximityRadiusAmount != null)
+      'proximityRadiusAmount': proximityRadiusAmount!,
+    if (proximityRadiusUnit != null)
+      'proximityRadiusUnit': proximityRadiusUnit!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -2427,22 +2319,18 @@ class $BusinessChainSearchTerms {
   /// State".
   core.String? regionQuery;
 
-  $BusinessChainSearchTerms({
-    this.businessChainQuery,
-    this.regionQuery,
-  });
+  $BusinessChainSearchTerms({this.businessChainQuery, this.regionQuery});
 
   $BusinessChainSearchTerms.fromJson(core.Map json_)
-      : this(
-          businessChainQuery: json_['businessChainQuery'] as core.String?,
-          regionQuery: json_['regionQuery'] as core.String?,
-        );
+    : this(
+        businessChainQuery: json_['businessChainQuery'] as core.String?,
+        regionQuery: json_['regionQuery'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (businessChainQuery != null)
-          'businessChainQuery': businessChainQuery!,
-        if (regionQuery != null) 'regionQuery': regionQuery!,
-      };
+    if (businessChainQuery != null) 'businessChainQuery': businessChainQuery!,
+    if (regionQuery != null) 'regionQuery': regionQuery!,
+  };
 }
 
 /// Used by:
@@ -2525,17 +2413,17 @@ class $BusinessChainTargetingOptionDetails {
   });
 
   $BusinessChainTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          businessChain: json_['businessChain'] as core.String?,
-          geoRegion: json_['geoRegion'] as core.String?,
-          geoRegionType: json_['geoRegionType'] as core.String?,
-        );
+    : this(
+        businessChain: json_['businessChain'] as core.String?,
+        geoRegion: json_['geoRegion'] as core.String?,
+        geoRegionType: json_['geoRegionType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (businessChain != null) 'businessChain': businessChain!,
-        if (geoRegion != null) 'geoRegion': geoRegion!,
-        if (geoRegionType != null) 'geoRegionType': geoRegionType!,
-      };
+    if (businessChain != null) 'businessChain': businessChain!,
+    if (geoRegion != null) 'geoRegion': geoRegion!,
+    if (geoRegionType != null) 'geoRegionType': geoRegionType!,
+  };
 }
 
 /// Used by:
@@ -2642,40 +2530,38 @@ class $CVSS {
   });
 
   $CVSS.fromJson(core.Map json_)
-      : this(
-          attackComplexity: json_['attackComplexity'] as core.String?,
-          attackVector: json_['attackVector'] as core.String?,
-          authentication: json_['authentication'] as core.String?,
-          availabilityImpact: json_['availabilityImpact'] as core.String?,
-          baseScore: (json_['baseScore'] as core.num?)?.toDouble(),
-          confidentialityImpact: json_['confidentialityImpact'] as core.String?,
-          exploitabilityScore:
-              (json_['exploitabilityScore'] as core.num?)?.toDouble(),
-          impactScore: (json_['impactScore'] as core.num?)?.toDouble(),
-          integrityImpact: json_['integrityImpact'] as core.String?,
-          privilegesRequired: json_['privilegesRequired'] as core.String?,
-          scope: json_['scope'] as core.String?,
-          userInteraction: json_['userInteraction'] as core.String?,
-        );
+    : this(
+        attackComplexity: json_['attackComplexity'] as core.String?,
+        attackVector: json_['attackVector'] as core.String?,
+        authentication: json_['authentication'] as core.String?,
+        availabilityImpact: json_['availabilityImpact'] as core.String?,
+        baseScore: (json_['baseScore'] as core.num?)?.toDouble(),
+        confidentialityImpact: json_['confidentialityImpact'] as core.String?,
+        exploitabilityScore:
+            (json_['exploitabilityScore'] as core.num?)?.toDouble(),
+        impactScore: (json_['impactScore'] as core.num?)?.toDouble(),
+        integrityImpact: json_['integrityImpact'] as core.String?,
+        privilegesRequired: json_['privilegesRequired'] as core.String?,
+        scope: json_['scope'] as core.String?,
+        userInteraction: json_['userInteraction'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attackComplexity != null) 'attackComplexity': attackComplexity!,
-        if (attackVector != null) 'attackVector': attackVector!,
-        if (authentication != null) 'authentication': authentication!,
-        if (availabilityImpact != null)
-          'availabilityImpact': availabilityImpact!,
-        if (baseScore != null) 'baseScore': baseScore!,
-        if (confidentialityImpact != null)
-          'confidentialityImpact': confidentialityImpact!,
-        if (exploitabilityScore != null)
-          'exploitabilityScore': exploitabilityScore!,
-        if (impactScore != null) 'impactScore': impactScore!,
-        if (integrityImpact != null) 'integrityImpact': integrityImpact!,
-        if (privilegesRequired != null)
-          'privilegesRequired': privilegesRequired!,
-        if (scope != null) 'scope': scope!,
-        if (userInteraction != null) 'userInteraction': userInteraction!,
-      };
+    if (attackComplexity != null) 'attackComplexity': attackComplexity!,
+    if (attackVector != null) 'attackVector': attackVector!,
+    if (authentication != null) 'authentication': authentication!,
+    if (availabilityImpact != null) 'availabilityImpact': availabilityImpact!,
+    if (baseScore != null) 'baseScore': baseScore!,
+    if (confidentialityImpact != null)
+      'confidentialityImpact': confidentialityImpact!,
+    if (exploitabilityScore != null)
+      'exploitabilityScore': exploitabilityScore!,
+    if (impactScore != null) 'impactScore': impactScore!,
+    if (integrityImpact != null) 'integrityImpact': integrityImpact!,
+    if (privilegesRequired != null) 'privilegesRequired': privilegesRequired!,
+    if (scope != null) 'scope': scope!,
+    if (userInteraction != null) 'userInteraction': userInteraction!,
+  };
 }
 
 /// Used by:
@@ -2708,17 +2594,17 @@ class $CarrierAndIspAssignedTargetingOptionDetails {
   });
 
   $CarrierAndIspAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (negative != null) 'negative': negative!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -2744,21 +2630,18 @@ class $CarrierAndIspTargetingOptionDetails {
   /// refers to a mobile carrier.
   core.String? type;
 
-  $CarrierAndIspTargetingOptionDetails({
-    this.displayName,
-    this.type,
-  });
+  $CarrierAndIspTargetingOptionDetails({this.displayName, this.type});
 
   $CarrierAndIspTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (type != null) 'type': type!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Used by:
@@ -2772,21 +2655,18 @@ class $Category {
   /// The localized name of the category.
   core.String? name;
 
-  $Category({
-    this.categoryId,
-    this.name,
-  });
+  $Category({this.categoryId, this.name});
 
   $Category.fromJson(core.Map json_)
-      : this(
-          categoryId: json_['categoryId'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        categoryId: json_['categoryId'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categoryId != null) 'categoryId': categoryId!,
-        if (name != null) 'name': name!,
-      };
+    if (categoryId != null) 'categoryId': categoryId!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -2816,17 +2696,17 @@ class $CategoryAssignedTargetingOptionDetails {
   });
 
   $CategoryAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (negative != null) 'negative': negative!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -2840,18 +2720,14 @@ class $CategoryTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $CategoryTargetingOptionDetails({
-    this.displayName,
-  });
+  $CategoryTargetingOptionDetails({this.displayName});
 
   $CategoryTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+    : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+  };
 }
 
 /// Used by:
@@ -2864,18 +2740,14 @@ class $CdnPolicyBypassCacheOnRequestHeader {
   /// Values are case-insensitive.
   core.String? headerName;
 
-  $CdnPolicyBypassCacheOnRequestHeader({
-    this.headerName,
-  });
+  $CdnPolicyBypassCacheOnRequestHeader({this.headerName});
 
   $CdnPolicyBypassCacheOnRequestHeader.fromJson(core.Map json_)
-      : this(
-          headerName: json_['headerName'] as core.String?,
-        );
+    : this(headerName: json_['headerName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (headerName != null) 'headerName': headerName!,
-      };
+    if (headerName != null) 'headerName': headerName!,
+  };
 }
 
 /// Used by:
@@ -2897,21 +2769,15 @@ class $CdnPolicyNegativeCachingPolicy {
   /// accessed objects may be evicted from the cache before the defined TTL.
   core.int? ttl;
 
-  $CdnPolicyNegativeCachingPolicy({
-    this.code,
-    this.ttl,
-  });
+  $CdnPolicyNegativeCachingPolicy({this.code, this.ttl});
 
   $CdnPolicyNegativeCachingPolicy.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.int?,
-          ttl: json_['ttl'] as core.int?,
-        );
+    : this(code: json_['code'] as core.int?, ttl: json_['ttl'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (ttl != null) 'ttl': ttl!,
-      };
+    if (code != null) 'code': code!,
+    if (ttl != null) 'ttl': ttl!,
+  };
 }
 
 /// Used by:
@@ -2922,20 +2788,19 @@ class $CertChain {
   /// The certificates that form the CA chain, from leaf to root order.
   core.List<core.String>? certificates;
 
-  $CertChain({
-    this.certificates,
-  });
+  $CertChain({this.certificates});
 
   $CertChain.fromJson(core.Map json_)
-      : this(
-          certificates: (json_['certificates'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        certificates:
+            (json_['certificates'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificates != null) 'certificates': certificates!,
-      };
+    if (certificates != null) 'certificates': certificates!,
+  };
 }
 
 /// Used by:
@@ -2959,24 +2824,27 @@ class $CertificateChains {
   });
 
   $CertificateChains.fromJson(core.Map json_)
-      : this(
-          caviumCerts: (json_['caviumCerts'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          googleCardCerts: (json_['googleCardCerts'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          googlePartitionCerts: (json_['googlePartitionCerts'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        caviumCerts:
+            (json_['caviumCerts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        googleCardCerts:
+            (json_['googleCardCerts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        googlePartitionCerts:
+            (json_['googlePartitionCerts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caviumCerts != null) 'caviumCerts': caviumCerts!,
-        if (googleCardCerts != null) 'googleCardCerts': googleCardCerts!,
-        if (googlePartitionCerts != null)
-          'googlePartitionCerts': googlePartitionCerts!,
-      };
+    if (caviumCerts != null) 'caviumCerts': caviumCerts!,
+    if (googleCardCerts != null) 'googleCardCerts': googleCardCerts!,
+    if (googlePartitionCerts != null)
+      'googlePartitionCerts': googlePartitionCerts!,
+  };
 }
 
 /// Used by:
@@ -3031,29 +2899,29 @@ class $Channel00 {
   });
 
   $Channel00.fromJson(core.Map json_)
-      : this(
-          advertiserId: json_['advertiserId'] as core.String?,
-          channelId: json_['channelId'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          negativelyTargetedLineItemCount:
-              json_['negativelyTargetedLineItemCount'] as core.String?,
-          partnerId: json_['partnerId'] as core.String?,
-          positivelyTargetedLineItemCount:
-              json_['positivelyTargetedLineItemCount'] as core.String?,
-        );
+    : this(
+        advertiserId: json_['advertiserId'] as core.String?,
+        channelId: json_['channelId'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        negativelyTargetedLineItemCount:
+            json_['negativelyTargetedLineItemCount'] as core.String?,
+        partnerId: json_['partnerId'] as core.String?,
+        positivelyTargetedLineItemCount:
+            json_['positivelyTargetedLineItemCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (channelId != null) 'channelId': channelId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (negativelyTargetedLineItemCount != null)
-          'negativelyTargetedLineItemCount': negativelyTargetedLineItemCount!,
-        if (partnerId != null) 'partnerId': partnerId!,
-        if (positivelyTargetedLineItemCount != null)
-          'positivelyTargetedLineItemCount': positivelyTargetedLineItemCount!,
-      };
+    if (advertiserId != null) 'advertiserId': advertiserId!,
+    if (channelId != null) 'channelId': channelId!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (negativelyTargetedLineItemCount != null)
+      'negativelyTargetedLineItemCount': negativelyTargetedLineItemCount!,
+    if (partnerId != null) 'partnerId': partnerId!,
+    if (positivelyTargetedLineItemCount != null)
+      'positivelyTargetedLineItemCount': positivelyTargetedLineItemCount!,
+  };
 }
 
 /// Used by:
@@ -3120,37 +2988,33 @@ class $Channel01 {
   });
 
   $Channel01.fromJson(core.Map json_)
-      : this(
-          address: json_['address'] as core.String?,
-          expiration: json_['expiration'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          params:
-              (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          payload: json_['payload'] as core.bool?,
-          resourceId: json_['resourceId'] as core.String?,
-          resourceUri: json_['resourceUri'] as core.String?,
-          token: json_['token'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        address: json_['address'] as core.String?,
+        expiration: json_['expiration'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        params: (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        payload: json_['payload'] as core.bool?,
+        resourceId: json_['resourceId'] as core.String?,
+        resourceUri: json_['resourceUri'] as core.String?,
+        token: json_['token'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (expiration != null) 'expiration': expiration!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (params != null) 'params': params!,
-        if (payload != null) 'payload': payload!,
-        if (resourceId != null) 'resourceId': resourceId!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-        if (token != null) 'token': token!,
-        if (type != null) 'type': type!,
-      };
+    if (address != null) 'address': address!,
+    if (expiration != null) 'expiration': expiration!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (params != null) 'params': params!,
+    if (payload != null) 'payload': payload!,
+    if (resourceId != null) 'resourceId': resourceId!,
+    if (resourceUri != null) 'resourceUri': resourceUri!,
+    if (token != null) 'token': token!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Used by:
@@ -3174,21 +3038,18 @@ class $ChannelAssignedTargetingOptionDetails {
   /// For advertiser level assigned targeting option, this field must be true.
   core.bool? negative;
 
-  $ChannelAssignedTargetingOptionDetails({
-    this.channelId,
-    this.negative,
-  });
+  $ChannelAssignedTargetingOptionDetails({this.channelId, this.negative});
 
   $ChannelAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          channelId: json_['channelId'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-        );
+    : this(
+        channelId: json_['channelId'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (channelId != null) 'channelId': channelId!,
-        if (negative != null) 'negative': negative!,
-      };
+    if (channelId != null) 'channelId': channelId!,
+    if (negative != null) 'negative': negative!,
+  };
 }
 
 /// Used by:
@@ -3202,22 +3063,20 @@ class $Checksum {
   core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256!);
 
   set sha256AsBytes(core.List<core.int> bytes_) {
-    sha256 =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    sha256 = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  $Checksum({
-    this.sha256,
-  });
+  $Checksum({this.sha256});
 
   $Checksum.fromJson(core.Map json_)
-      : this(
-          sha256: json_['sha256'] as core.String?,
-        );
+    : this(sha256: json_['sha256'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sha256 != null) 'sha256': sha256!,
-      };
+    if (sha256 != null) 'sha256': sha256!,
+  };
 }
 
 /// Used by:
@@ -3255,20 +3114,20 @@ class $CloudSchedulerConfig {
   });
 
   $CloudSchedulerConfig.fromJson(core.Map json_)
-      : this(
-          cronTab: json_['cronTab'] as core.String?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          location: json_['location'] as core.String?,
-          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-        );
+    : this(
+        cronTab: json_['cronTab'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        location: json_['location'] as core.String?,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cronTab != null) 'cronTab': cronTab!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (location != null) 'location': location!,
-        if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail!,
-      };
+    if (cronTab != null) 'cronTab': cronTab!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (location != null) 'location': location!,
+    if (serviceAccountEmail != null)
+      'serviceAccountEmail': serviceAccountEmail!,
+  };
 }
 
 /// Used by:
@@ -3280,19 +3139,15 @@ class $ClusterOperationsConfig {
   /// addition to system logs/metrics).
   core.bool? enableApplicationLogs;
 
-  $ClusterOperationsConfig({
-    this.enableApplicationLogs,
-  });
+  $ClusterOperationsConfig({this.enableApplicationLogs});
 
   $ClusterOperationsConfig.fromJson(core.Map json_)
-      : this(
-          enableApplicationLogs: json_['enableApplicationLogs'] as core.bool?,
-        );
+    : this(enableApplicationLogs: json_['enableApplicationLogs'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enableApplicationLogs != null)
-          'enableApplicationLogs': enableApplicationLogs!,
-      };
+    if (enableApplicationLogs != null)
+      'enableApplicationLogs': enableApplicationLogs!,
+  };
 }
 
 /// Used by:
@@ -3306,21 +3161,18 @@ class $ClusterUpgradeIgnoredMembership {
   /// Reason why the membership is ignored.
   core.String? reason;
 
-  $ClusterUpgradeIgnoredMembership({
-    this.ignoredTime,
-    this.reason,
-  });
+  $ClusterUpgradeIgnoredMembership({this.ignoredTime, this.reason});
 
   $ClusterUpgradeIgnoredMembership.fromJson(core.Map json_)
-      : this(
-          ignoredTime: json_['ignoredTime'] as core.String?,
-          reason: json_['reason'] as core.String?,
-        );
+    : this(
+        ignoredTime: json_['ignoredTime'] as core.String?,
+        reason: json_['reason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ignoredTime != null) 'ignoredTime': ignoredTime!,
-        if (reason != null) 'reason': reason!,
-      };
+    if (ignoredTime != null) 'ignoredTime': ignoredTime!,
+    if (reason != null) 'reason': reason!,
+  };
 }
 
 /// Used by:
@@ -3355,24 +3207,20 @@ class $ClusterUpgradeUpgradeStatus {
   /// Last timestamp the status was updated.
   core.String? updateTime;
 
-  $ClusterUpgradeUpgradeStatus({
-    this.code,
-    this.reason,
-    this.updateTime,
-  });
+  $ClusterUpgradeUpgradeStatus({this.code, this.reason, this.updateTime});
 
   $ClusterUpgradeUpgradeStatus.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          reason: json_['reason'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        reason: json_['reason'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (reason != null) 'reason': reason!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (code != null) 'code': code!,
+    if (reason != null) 'reason': reason!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Used by:
@@ -3431,36 +3279,38 @@ class $CmHybridConfig {
   });
 
   $CmHybridConfig.fromJson(core.Map json_)
-      : this(
-          cmAccountId: json_['cmAccountId'] as core.String?,
-          cmAdvertiserIds: (json_['cmAdvertiserIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          cmFloodlightConfigId: json_['cmFloodlightConfigId'] as core.String?,
-          cmFloodlightLinkingAuthorized:
-              json_['cmFloodlightLinkingAuthorized'] as core.bool?,
-          cmSyncableSiteIds: (json_['cmSyncableSiteIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          dv360ToCmCostReportingEnabled:
-              json_['dv360ToCmCostReportingEnabled'] as core.bool?,
-          dv360ToCmDataSharingEnabled:
-              json_['dv360ToCmDataSharingEnabled'] as core.bool?,
-        );
+    : this(
+        cmAccountId: json_['cmAccountId'] as core.String?,
+        cmAdvertiserIds:
+            (json_['cmAdvertiserIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        cmFloodlightConfigId: json_['cmFloodlightConfigId'] as core.String?,
+        cmFloodlightLinkingAuthorized:
+            json_['cmFloodlightLinkingAuthorized'] as core.bool?,
+        cmSyncableSiteIds:
+            (json_['cmSyncableSiteIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        dv360ToCmCostReportingEnabled:
+            json_['dv360ToCmCostReportingEnabled'] as core.bool?,
+        dv360ToCmDataSharingEnabled:
+            json_['dv360ToCmDataSharingEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cmAccountId != null) 'cmAccountId': cmAccountId!,
-        if (cmAdvertiserIds != null) 'cmAdvertiserIds': cmAdvertiserIds!,
-        if (cmFloodlightConfigId != null)
-          'cmFloodlightConfigId': cmFloodlightConfigId!,
-        if (cmFloodlightLinkingAuthorized != null)
-          'cmFloodlightLinkingAuthorized': cmFloodlightLinkingAuthorized!,
-        if (cmSyncableSiteIds != null) 'cmSyncableSiteIds': cmSyncableSiteIds!,
-        if (dv360ToCmCostReportingEnabled != null)
-          'dv360ToCmCostReportingEnabled': dv360ToCmCostReportingEnabled!,
-        if (dv360ToCmDataSharingEnabled != null)
-          'dv360ToCmDataSharingEnabled': dv360ToCmDataSharingEnabled!,
-      };
+    if (cmAccountId != null) 'cmAccountId': cmAccountId!,
+    if (cmAdvertiserIds != null) 'cmAdvertiserIds': cmAdvertiserIds!,
+    if (cmFloodlightConfigId != null)
+      'cmFloodlightConfigId': cmFloodlightConfigId!,
+    if (cmFloodlightLinkingAuthorized != null)
+      'cmFloodlightLinkingAuthorized': cmFloodlightLinkingAuthorized!,
+    if (cmSyncableSiteIds != null) 'cmSyncableSiteIds': cmSyncableSiteIds!,
+    if (dv360ToCmCostReportingEnabled != null)
+      'dv360ToCmCostReportingEnabled': dv360ToCmCostReportingEnabled!,
+    if (dv360ToCmDataSharingEnabled != null)
+      'dv360ToCmDataSharingEnabled': dv360ToCmDataSharingEnabled!,
+  };
 }
 
 /// Used by:
@@ -3484,24 +3334,20 @@ class $CmTrackingAd {
   /// Optional.
   core.String? cmPlacementId;
 
-  $CmTrackingAd({
-    this.cmAdId,
-    this.cmCreativeId,
-    this.cmPlacementId,
-  });
+  $CmTrackingAd({this.cmAdId, this.cmCreativeId, this.cmPlacementId});
 
   $CmTrackingAd.fromJson(core.Map json_)
-      : this(
-          cmAdId: json_['cmAdId'] as core.String?,
-          cmCreativeId: json_['cmCreativeId'] as core.String?,
-          cmPlacementId: json_['cmPlacementId'] as core.String?,
-        );
+    : this(
+        cmAdId: json_['cmAdId'] as core.String?,
+        cmCreativeId: json_['cmCreativeId'] as core.String?,
+        cmPlacementId: json_['cmPlacementId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cmAdId != null) 'cmAdId': cmAdId!,
-        if (cmCreativeId != null) 'cmCreativeId': cmCreativeId!,
-        if (cmPlacementId != null) 'cmPlacementId': cmPlacementId!,
-      };
+    if (cmAdId != null) 'cmAdId': cmAdId!,
+    if (cmCreativeId != null) 'cmCreativeId': cmCreativeId!,
+    if (cmPlacementId != null) 'cmPlacementId': cmPlacementId!,
+  };
 }
 
 /// Used by:
@@ -3537,27 +3383,22 @@ class $Color {
   /// The amount of red in the color as a value in the interval \[0, 1\].
   core.double? red;
 
-  $Color({
-    this.alpha,
-    this.blue,
-    this.green,
-    this.red,
-  });
+  $Color({this.alpha, this.blue, this.green, this.red});
 
   $Color.fromJson(core.Map json_)
-      : this(
-          alpha: (json_['alpha'] as core.num?)?.toDouble(),
-          blue: (json_['blue'] as core.num?)?.toDouble(),
-          green: (json_['green'] as core.num?)?.toDouble(),
-          red: (json_['red'] as core.num?)?.toDouble(),
-        );
+    : this(
+        alpha: (json_['alpha'] as core.num?)?.toDouble(),
+        blue: (json_['blue'] as core.num?)?.toDouble(),
+        green: (json_['green'] as core.num?)?.toDouble(),
+        red: (json_['red'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alpha != null) 'alpha': alpha!,
-        if (blue != null) 'blue': blue!,
-        if (green != null) 'green': green!,
-        if (red != null) 'red': red!,
-      };
+    if (alpha != null) 'alpha': alpha!,
+    if (blue != null) 'blue': blue!,
+    if (green != null) 'green': green!,
+    if (red != null) 'red': red!,
+  };
 }
 
 /// Used by:
@@ -3585,25 +3426,20 @@ class $CombinedAudience {
   /// Output only.
   core.String? name;
 
-  $CombinedAudience({
-    this.combinedAudienceId,
-    this.displayName,
-    this.name,
-  });
+  $CombinedAudience({this.combinedAudienceId, this.displayName, this.name});
 
   $CombinedAudience.fromJson(core.Map json_)
-      : this(
-          combinedAudienceId: json_['combinedAudienceId'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        combinedAudienceId: json_['combinedAudienceId'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (combinedAudienceId != null)
-          'combinedAudienceId': combinedAudienceId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-      };
+    if (combinedAudienceId != null) 'combinedAudienceId': combinedAudienceId!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -3619,19 +3455,14 @@ class $CombinedAudienceTargetingSetting {
   /// Required.
   core.String? combinedAudienceId;
 
-  $CombinedAudienceTargetingSetting({
-    this.combinedAudienceId,
-  });
+  $CombinedAudienceTargetingSetting({this.combinedAudienceId});
 
   $CombinedAudienceTargetingSetting.fromJson(core.Map json_)
-      : this(
-          combinedAudienceId: json_['combinedAudienceId'] as core.String?,
-        );
+    : this(combinedAudienceId: json_['combinedAudienceId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (combinedAudienceId != null)
-          'combinedAudienceId': combinedAudienceId!,
-      };
+    if (combinedAudienceId != null) 'combinedAudienceId': combinedAudienceId!,
+  };
 }
 
 /// Used by:
@@ -3662,39 +3493,35 @@ class $Command {
   /// The ID(s) of the command(s) that this command depends on.
   core.List<core.String>? waitFor;
 
-  $Command({
-    this.args,
-    this.dir,
-    this.env,
-    this.id,
-    this.name,
-    this.waitFor,
-  });
+  $Command({this.args, this.dir, this.env, this.id, this.name, this.waitFor});
 
   $Command.fromJson(core.Map json_)
-      : this(
-          args: (json_['args'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          dir: json_['dir'] as core.String?,
-          env: (json_['env'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-          waitFor: (json_['waitFor'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        args:
+            (json_['args'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        dir: json_['dir'] as core.String?,
+        env:
+            (json_['env'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        waitFor:
+            (json_['waitFor'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (args != null) 'args': args!,
-        if (dir != null) 'dir': dir!,
-        if (env != null) 'env': env!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (waitFor != null) 'waitFor': waitFor!,
-      };
+    if (args != null) 'args': args!,
+    if (dir != null) 'dir': dir!,
+    if (env != null) 'env': env!,
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (waitFor != null) 'waitFor': waitFor!,
+  };
 }
 
 /// Used by:
@@ -3718,24 +3545,20 @@ class $Completeness {
   /// Sometimes called "hermetic".
   core.bool? materials;
 
-  $Completeness({
-    this.arguments,
-    this.environment,
-    this.materials,
-  });
+  $Completeness({this.arguments, this.environment, this.materials});
 
   $Completeness.fromJson(core.Map json_)
-      : this(
-          arguments: json_['arguments'] as core.bool?,
-          environment: json_['environment'] as core.bool?,
-          materials: json_['materials'] as core.bool?,
-        );
+    : this(
+        arguments: json_['arguments'] as core.bool?,
+        environment: json_['environment'] as core.bool?,
+        materials: json_['materials'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arguments != null) 'arguments': arguments!,
-        if (environment != null) 'environment': environment!,
-        if (materials != null) 'materials': materials!,
-      };
+    if (arguments != null) 'arguments': arguments!,
+    if (environment != null) 'environment': environment!,
+    if (materials != null) 'materials': materials!,
+  };
 }
 
 /// Used by:
@@ -3746,18 +3569,14 @@ class $ComplianceStandard {
   /// Name of the compliance standard.
   core.String? standard;
 
-  $ComplianceStandard({
-    this.standard,
-  });
+  $ComplianceStandard({this.standard});
 
   $ComplianceStandard.fromJson(core.Map json_)
-      : this(
-          standard: json_['standard'] as core.String?,
-        );
+    : this(standard: json_['standard'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (standard != null) 'standard': standard!,
-      };
+    if (standard != null) 'standard': standard!,
+  };
 }
 
 /// Used by:
@@ -3779,24 +3598,20 @@ class $ComplianceVersion {
   /// is defined in.
   core.String? version;
 
-  $ComplianceVersion({
-    this.benchmarkDocument,
-    this.cpeUri,
-    this.version,
-  });
+  $ComplianceVersion({this.benchmarkDocument, this.cpeUri, this.version});
 
   $ComplianceVersion.fromJson(core.Map json_)
-      : this(
-          benchmarkDocument: json_['benchmarkDocument'] as core.String?,
-          cpeUri: json_['cpeUri'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        benchmarkDocument: json_['benchmarkDocument'] as core.String?,
+        cpeUri: json_['cpeUri'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (benchmarkDocument != null) 'benchmarkDocument': benchmarkDocument!,
-        if (cpeUri != null) 'cpeUri': cpeUri!,
-        if (version != null) 'version': version!,
-      };
+    if (benchmarkDocument != null) 'benchmarkDocument': benchmarkDocument!,
+    if (cpeUri != null) 'cpeUri': cpeUri!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Used by:
@@ -3809,18 +3624,14 @@ class $ConditionExpectation {
   /// Optional.
   core.String? sqlExpression;
 
-  $ConditionExpectation({
-    this.sqlExpression,
-  });
+  $ConditionExpectation({this.sqlExpression});
 
   $ConditionExpectation.fromJson(core.Map json_)
-      : this(
-          sqlExpression: json_['sqlExpression'] as core.String?,
-        );
+    : this(sqlExpression: json_['sqlExpression'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sqlExpression != null) 'sqlExpression': sqlExpression!,
-      };
+    if (sqlExpression != null) 'sqlExpression': sqlExpression!,
+  };
 }
 
 /// Used by:
@@ -3833,20 +3644,18 @@ class $ConfidentialInstanceConfig {
   /// Optional.
   core.bool? enableConfidentialCompute;
 
-  $ConfidentialInstanceConfig({
-    this.enableConfidentialCompute,
-  });
+  $ConfidentialInstanceConfig({this.enableConfidentialCompute});
 
   $ConfidentialInstanceConfig.fromJson(core.Map json_)
-      : this(
-          enableConfidentialCompute:
-              json_['enableConfidentialCompute'] as core.bool?,
-        );
+    : this(
+        enableConfidentialCompute:
+            json_['enableConfidentialCompute'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enableConfidentialCompute != null)
-          'enableConfidentialCompute': enableConfidentialCompute!,
-      };
+    if (enableConfidentialCompute != null)
+      'enableConfidentialCompute': enableConfidentialCompute!,
+  };
 }
 
 /// Used by:
@@ -3888,21 +3697,21 @@ class $ConfigManagementContainerOverride {
   });
 
   $ConfigManagementContainerOverride.fromJson(core.Map json_)
-      : this(
-          containerName: json_['containerName'] as core.String?,
-          cpuLimit: json_['cpuLimit'] as core.String?,
-          cpuRequest: json_['cpuRequest'] as core.String?,
-          memoryLimit: json_['memoryLimit'] as core.String?,
-          memoryRequest: json_['memoryRequest'] as core.String?,
-        );
+    : this(
+        containerName: json_['containerName'] as core.String?,
+        cpuLimit: json_['cpuLimit'] as core.String?,
+        cpuRequest: json_['cpuRequest'] as core.String?,
+        memoryLimit: json_['memoryLimit'] as core.String?,
+        memoryRequest: json_['memoryRequest'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containerName != null) 'containerName': containerName!,
-        if (cpuLimit != null) 'cpuLimit': cpuLimit!,
-        if (cpuRequest != null) 'cpuRequest': cpuRequest!,
-        if (memoryLimit != null) 'memoryLimit': memoryLimit!,
-        if (memoryRequest != null) 'memoryRequest': memoryRequest!,
-      };
+    if (containerName != null) 'containerName': containerName!,
+    if (cpuLimit != null) 'cpuLimit': cpuLimit!,
+    if (cpuRequest != null) 'cpuRequest': cpuRequest!,
+    if (memoryLimit != null) 'memoryLimit': memoryLimit!,
+    if (memoryRequest != null) 'memoryRequest': memoryRequest!,
+  };
 }
 
 /// Used by:
@@ -3975,29 +3784,28 @@ class $ConfigManagementGitConfig {
   });
 
   $ConfigManagementGitConfig.fromJson(core.Map json_)
-      : this(
-          gcpServiceAccountEmail:
-              json_['gcpServiceAccountEmail'] as core.String?,
-          httpsProxy: json_['httpsProxy'] as core.String?,
-          policyDir: json_['policyDir'] as core.String?,
-          secretType: json_['secretType'] as core.String?,
-          syncBranch: json_['syncBranch'] as core.String?,
-          syncRepo: json_['syncRepo'] as core.String?,
-          syncRev: json_['syncRev'] as core.String?,
-          syncWaitSecs: json_['syncWaitSecs'] as core.String?,
-        );
+    : this(
+        gcpServiceAccountEmail: json_['gcpServiceAccountEmail'] as core.String?,
+        httpsProxy: json_['httpsProxy'] as core.String?,
+        policyDir: json_['policyDir'] as core.String?,
+        secretType: json_['secretType'] as core.String?,
+        syncBranch: json_['syncBranch'] as core.String?,
+        syncRepo: json_['syncRepo'] as core.String?,
+        syncRev: json_['syncRev'] as core.String?,
+        syncWaitSecs: json_['syncWaitSecs'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcpServiceAccountEmail != null)
-          'gcpServiceAccountEmail': gcpServiceAccountEmail!,
-        if (httpsProxy != null) 'httpsProxy': httpsProxy!,
-        if (policyDir != null) 'policyDir': policyDir!,
-        if (secretType != null) 'secretType': secretType!,
-        if (syncBranch != null) 'syncBranch': syncBranch!,
-        if (syncRepo != null) 'syncRepo': syncRepo!,
-        if (syncRev != null) 'syncRev': syncRev!,
-        if (syncWaitSecs != null) 'syncWaitSecs': syncWaitSecs!,
-      };
+    if (gcpServiceAccountEmail != null)
+      'gcpServiceAccountEmail': gcpServiceAccountEmail!,
+    if (httpsProxy != null) 'httpsProxy': httpsProxy!,
+    if (policyDir != null) 'policyDir': policyDir!,
+    if (secretType != null) 'secretType': secretType!,
+    if (syncBranch != null) 'syncBranch': syncBranch!,
+    if (syncRepo != null) 'syncRepo': syncRepo!,
+    if (syncRev != null) 'syncRev': syncRev!,
+    if (syncWaitSecs != null) 'syncWaitSecs': syncWaitSecs!,
+  };
 }
 
 /// Used by:
@@ -4014,24 +3822,20 @@ class $ConfigManagementGroupVersionKind {
   /// Kubernetes Version
   core.String? version;
 
-  $ConfigManagementGroupVersionKind({
-    this.group,
-    this.kind,
-    this.version,
-  });
+  $ConfigManagementGroupVersionKind({this.group, this.kind, this.version});
 
   $ConfigManagementGroupVersionKind.fromJson(core.Map json_)
-      : this(
-          group: json_['group'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        group: json_['group'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (group != null) 'group': group!,
-        if (kind != null) 'kind': kind!,
-        if (version != null) 'version': version!,
-      };
+    if (group != null) 'group': group!,
+    if (kind != null) 'kind': kind!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Used by:
@@ -4055,20 +3859,20 @@ class $ConfigManagementHierarchyControllerConfig {
   });
 
   $ConfigManagementHierarchyControllerConfig.fromJson(core.Map json_)
-      : this(
-          enableHierarchicalResourceQuota:
-              json_['enableHierarchicalResourceQuota'] as core.bool?,
-          enablePodTreeLabels: json_['enablePodTreeLabels'] as core.bool?,
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(
+        enableHierarchicalResourceQuota:
+            json_['enableHierarchicalResourceQuota'] as core.bool?,
+        enablePodTreeLabels: json_['enablePodTreeLabels'] as core.bool?,
+        enabled: json_['enabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enableHierarchicalResourceQuota != null)
-          'enableHierarchicalResourceQuota': enableHierarchicalResourceQuota!,
-        if (enablePodTreeLabels != null)
-          'enablePodTreeLabels': enablePodTreeLabels!,
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (enableHierarchicalResourceQuota != null)
+      'enableHierarchicalResourceQuota': enableHierarchicalResourceQuota!,
+    if (enablePodTreeLabels != null)
+      'enablePodTreeLabels': enablePodTreeLabels!,
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 /// Used by:
@@ -4120,23 +3924,22 @@ class $ConfigManagementOciConfig {
   });
 
   $ConfigManagementOciConfig.fromJson(core.Map json_)
-      : this(
-          gcpServiceAccountEmail:
-              json_['gcpServiceAccountEmail'] as core.String?,
-          policyDir: json_['policyDir'] as core.String?,
-          secretType: json_['secretType'] as core.String?,
-          syncRepo: json_['syncRepo'] as core.String?,
-          syncWaitSecs: json_['syncWaitSecs'] as core.String?,
-        );
+    : this(
+        gcpServiceAccountEmail: json_['gcpServiceAccountEmail'] as core.String?,
+        policyDir: json_['policyDir'] as core.String?,
+        secretType: json_['secretType'] as core.String?,
+        syncRepo: json_['syncRepo'] as core.String?,
+        syncWaitSecs: json_['syncWaitSecs'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcpServiceAccountEmail != null)
-          'gcpServiceAccountEmail': gcpServiceAccountEmail!,
-        if (policyDir != null) 'policyDir': policyDir!,
-        if (secretType != null) 'secretType': secretType!,
-        if (syncRepo != null) 'syncRepo': syncRepo!,
-        if (syncWaitSecs != null) 'syncWaitSecs': syncWaitSecs!,
-      };
+    if (gcpServiceAccountEmail != null)
+      'gcpServiceAccountEmail': gcpServiceAccountEmail!,
+    if (policyDir != null) 'policyDir': policyDir!,
+    if (secretType != null) 'secretType': secretType!,
+    if (syncRepo != null) 'syncRepo': syncRepo!,
+    if (syncWaitSecs != null) 'syncWaitSecs': syncWaitSecs!,
+  };
 }
 
 /// Used by:
@@ -4156,21 +3959,18 @@ class $ConfigManagementPolicyControllerMigration {
   /// policycontroller.
   core.String? stage;
 
-  $ConfigManagementPolicyControllerMigration({
-    this.copyTime,
-    this.stage,
-  });
+  $ConfigManagementPolicyControllerMigration({this.copyTime, this.stage});
 
   $ConfigManagementPolicyControllerMigration.fromJson(core.Map json_)
-      : this(
-          copyTime: json_['copyTime'] as core.String?,
-          stage: json_['stage'] as core.String?,
-        );
+    : this(
+        copyTime: json_['copyTime'] as core.String?,
+        stage: json_['stage'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (copyTime != null) 'copyTime': copyTime!,
-        if (stage != null) 'stage': stage!,
-      };
+    if (copyTime != null) 'copyTime': copyTime!,
+    if (stage != null) 'stage': stage!,
+  };
 }
 
 /// Used by:
@@ -4182,18 +3982,14 @@ class $ConfigManagementPolicyControllerVersion {
   /// number.
   core.String? version;
 
-  $ConfigManagementPolicyControllerVersion({
-    this.version,
-  });
+  $ConfigManagementPolicyControllerVersion({this.version});
 
   $ConfigManagementPolicyControllerVersion.fromJson(core.Map json_)
-      : this(
-          version: json_['version'] as core.String?,
-        );
+    : this(version: json_['version'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (version != null) 'version': version!,
-      };
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Used by:
@@ -4220,24 +4016,20 @@ class $ConnectionStatus {
   /// Status provides detailed information for the state.
   core.String? status;
 
-  $ConnectionStatus({
-    this.description,
-    this.state,
-    this.status,
-  });
+  $ConnectionStatus({this.description, this.state, this.status});
 
   $ConnectionStatus.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          state: json_['state'] as core.String?,
-          status: json_['status'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        state: json_['state'] as core.String?,
+        status: json_['status'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (state != null) 'state': state!,
-        if (status != null) 'status': status!,
-      };
+    if (description != null) 'description': description!,
+    if (state != null) 'state': state!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// Used by:
@@ -4261,21 +4053,18 @@ class $Consent {
   /// - "CONSENT_STATUS_DENIED" : Consent is denied.
   core.String? adUserData;
 
-  $Consent({
-    this.adPersonalization,
-    this.adUserData,
-  });
+  $Consent({this.adPersonalization, this.adUserData});
 
   $Consent.fromJson(core.Map json_)
-      : this(
-          adPersonalization: json_['adPersonalization'] as core.String?,
-          adUserData: json_['adUserData'] as core.String?,
-        );
+    : this(
+        adPersonalization: json_['adPersonalization'] as core.String?,
+        adUserData: json_['adUserData'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adPersonalization != null) 'adPersonalization': adPersonalization!,
-        if (adUserData != null) 'adUserData': adUserData!,
-      };
+    if (adPersonalization != null) 'adPersonalization': adPersonalization!,
+    if (adUserData != null) 'adUserData': adUserData!,
+  };
 }
 
 /// Used by:
@@ -4292,30 +4081,29 @@ class $Console {
   /// Steps to resolve violation via cloud console
   core.List<core.String>? steps;
 
-  $Console({
-    this.additionalLinks,
-    this.consoleUris,
-    this.steps,
-  });
+  $Console({this.additionalLinks, this.consoleUris, this.steps});
 
   $Console.fromJson(core.Map json_)
-      : this(
-          additionalLinks: (json_['additionalLinks'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          consoleUris: (json_['consoleUris'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          steps: (json_['steps'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        additionalLinks:
+            (json_['additionalLinks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        consoleUris:
+            (json_['consoleUris'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        steps:
+            (json_['steps'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalLinks != null) 'additionalLinks': additionalLinks!,
-        if (consoleUris != null) 'consoleUris': consoleUris!,
-        if (steps != null) 'steps': steps!,
-      };
+    if (additionalLinks != null) 'additionalLinks': additionalLinks!,
+    if (consoleUris != null) 'consoleUris': consoleUris!,
+    if (steps != null) 'steps': steps!,
+  };
 }
 
 /// Used by:
@@ -4372,30 +4160,32 @@ class $ContactInfo {
   });
 
   $ContactInfo.fromJson(core.Map json_)
-      : this(
-          countryCode: json_['countryCode'] as core.String?,
-          hashedEmails: (json_['hashedEmails'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          hashedFirstName: json_['hashedFirstName'] as core.String?,
-          hashedLastName: json_['hashedLastName'] as core.String?,
-          hashedPhoneNumbers: (json_['hashedPhoneNumbers'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          zipCodes: (json_['zipCodes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        countryCode: json_['countryCode'] as core.String?,
+        hashedEmails:
+            (json_['hashedEmails'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        hashedFirstName: json_['hashedFirstName'] as core.String?,
+        hashedLastName: json_['hashedLastName'] as core.String?,
+        hashedPhoneNumbers:
+            (json_['hashedPhoneNumbers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        zipCodes:
+            (json_['zipCodes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (hashedEmails != null) 'hashedEmails': hashedEmails!,
-        if (hashedFirstName != null) 'hashedFirstName': hashedFirstName!,
-        if (hashedLastName != null) 'hashedLastName': hashedLastName!,
-        if (hashedPhoneNumbers != null)
-          'hashedPhoneNumbers': hashedPhoneNumbers!,
-        if (zipCodes != null) 'zipCodes': zipCodes!,
-      };
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (hashedEmails != null) 'hashedEmails': hashedEmails!,
+    if (hashedFirstName != null) 'hashedFirstName': hashedFirstName!,
+    if (hashedLastName != null) 'hashedLastName': hashedLastName!,
+    if (hashedPhoneNumbers != null) 'hashedPhoneNumbers': hashedPhoneNumbers!,
+    if (zipCodes != null) 'zipCodes': zipCodes!,
+  };
 }
 
 /// Used by:
@@ -4432,15 +4222,15 @@ class $ContentDurationAssignedTargetingOptionDetails {
   });
 
   $ContentDurationAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentDuration: json_['contentDuration'] as core.String?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        contentDuration: json_['contentDuration'] as core.String?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentDuration != null) 'contentDuration': contentDuration!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (contentDuration != null) 'contentDuration': contentDuration!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -4465,18 +4255,14 @@ class $ContentDurationTargetingOptionDetails {
   /// - "CONTENT_DURATION_OVER_60_MIN" : Content is over 60 minutes long.
   core.String? contentDuration;
 
-  $ContentDurationTargetingOptionDetails({
-    this.contentDuration,
-  });
+  $ContentDurationTargetingOptionDetails({this.contentDuration});
 
   $ContentDurationTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentDuration: json_['contentDuration'] as core.String?,
-        );
+    : this(contentDuration: json_['contentDuration'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentDuration != null) 'contentDuration': contentDuration!,
-      };
+    if (contentDuration != null) 'contentDuration': contentDuration!,
+  };
 }
 
 /// Used by:
@@ -4506,17 +4292,17 @@ class $ContentGenreAssignedTargetingOptionDetails {
   });
 
   $ContentGenreAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (negative != null) 'negative': negative!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -4530,18 +4316,14 @@ class $ContentGenreTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $ContentGenreTargetingOptionDetails({
-    this.displayName,
-  });
+  $ContentGenreTargetingOptionDetails({this.displayName});
 
   $ContentGenreTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+    : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+  };
 }
 
 /// Used by:
@@ -4592,18 +4374,18 @@ class $ContentInstreamPositionAssignedTargetingOptionDetails {
   });
 
   $ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
-      core.Map json_)
-      : this(
-          adType: json_['adType'] as core.String?,
-          contentInstreamPosition:
-              json_['contentInstreamPosition'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        adType: json_['adType'] as core.String?,
+        contentInstreamPosition:
+            json_['contentInstreamPosition'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adType != null) 'adType': adType!,
-        if (contentInstreamPosition != null)
-          'contentInstreamPosition': contentInstreamPosition!,
-      };
+    if (adType != null) 'adType': adType!,
+    if (contentInstreamPosition != null)
+      'contentInstreamPosition': contentInstreamPosition!,
+  };
 }
 
 /// Used by:
@@ -4633,15 +4415,15 @@ class $ContentInstreamPositionTargetingOptionDetails {
   });
 
   $ContentInstreamPositionTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentInstreamPosition:
-              json_['contentInstreamPosition'] as core.String?,
-        );
+    : this(
+        contentInstreamPosition:
+            json_['contentInstreamPosition'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentInstreamPosition != null)
-          'contentInstreamPosition': contentInstreamPosition!,
-      };
+    if (contentInstreamPosition != null)
+      'contentInstreamPosition': contentInstreamPosition!,
+  };
 }
 
 /// Used by:
@@ -4696,18 +4478,18 @@ class $ContentOutstreamPositionAssignedTargetingOptionDetails {
   });
 
   $ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
-      core.Map json_)
-      : this(
-          adType: json_['adType'] as core.String?,
-          contentOutstreamPosition:
-              json_['contentOutstreamPosition'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        adType: json_['adType'] as core.String?,
+        contentOutstreamPosition:
+            json_['contentOutstreamPosition'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adType != null) 'adType': adType!,
-        if (contentOutstreamPosition != null)
-          'contentOutstreamPosition': contentOutstreamPosition!,
-      };
+    if (adType != null) 'adType': adType!,
+    if (contentOutstreamPosition != null)
+      'contentOutstreamPosition': contentOutstreamPosition!,
+  };
 }
 
 /// Used by:
@@ -4741,15 +4523,15 @@ class $ContentOutstreamPositionTargetingOptionDetails {
   });
 
   $ContentOutstreamPositionTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentOutstreamPosition:
-              json_['contentOutstreamPosition'] as core.String?,
-        );
+    : this(
+        contentOutstreamPosition:
+            json_['contentOutstreamPosition'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentOutstreamPosition != null)
-          'contentOutstreamPosition': contentOutstreamPosition!,
-      };
+    if (contentOutstreamPosition != null)
+      'contentOutstreamPosition': contentOutstreamPosition!,
+  };
 }
 
 /// Used by:
@@ -4781,15 +4563,15 @@ class $ContentStreamTypeAssignedTargetingOptionDetails {
   });
 
   $ContentStreamTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentStreamType: json_['contentStreamType'] as core.String?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        contentStreamType: json_['contentStreamType'] as core.String?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentStreamType != null) 'contentStreamType': contentStreamType!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (contentStreamType != null) 'contentStreamType': contentStreamType!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -4809,18 +4591,14 @@ class $ContentStreamTypeTargetingOptionDetails {
   /// - "CONTENT_ON_DEMAND" : The content is viewed on-demand.
   core.String? contentStreamType;
 
-  $ContentStreamTypeTargetingOptionDetails({
-    this.contentStreamType,
-  });
+  $ContentStreamTypeTargetingOptionDetails({this.contentStreamType});
 
   $ContentStreamTypeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentStreamType: json_['contentStreamType'] as core.String?,
-        );
+    : this(contentStreamType: json_['contentStreamType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentStreamType != null) 'contentStreamType': contentStreamType!,
-      };
+    if (contentStreamType != null) 'contentStreamType': contentStreamType!,
+  };
 }
 
 /// Used by:
@@ -4878,20 +4656,20 @@ class $ContentThemeAssignedTargetingOptionDetails {
   });
 
   $ContentThemeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentTheme: json_['contentTheme'] as core.String?,
-          excludedContentTheme: json_['excludedContentTheme'] as core.String?,
-          excludedTargetingOptionId:
-              json_['excludedTargetingOptionId'] as core.String?,
-        );
+    : this(
+        contentTheme: json_['contentTheme'] as core.String?,
+        excludedContentTheme: json_['excludedContentTheme'] as core.String?,
+        excludedTargetingOptionId:
+            json_['excludedTargetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentTheme != null) 'contentTheme': contentTheme!,
-        if (excludedContentTheme != null)
-          'excludedContentTheme': excludedContentTheme!,
-        if (excludedTargetingOptionId != null)
-          'excludedTargetingOptionId': excludedTargetingOptionId!,
-      };
+    if (contentTheme != null) 'contentTheme': contentTheme!,
+    if (excludedContentTheme != null)
+      'excludedContentTheme': excludedContentTheme!,
+    if (excludedTargetingOptionId != null)
+      'excludedTargetingOptionId': excludedTargetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -4918,18 +4696,14 @@ class $ContentThemeTargetingOptionDetails {
   /// - "CONTENT_THEME_UNPLEASANT_NEWS" : Unpleasant news.
   core.String? contentTheme;
 
-  $ContentThemeTargetingOptionDetails({
-    this.contentTheme,
-  });
+  $ContentThemeTargetingOptionDetails({this.contentTheme});
 
   $ContentThemeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentTheme: json_['contentTheme'] as core.String?,
-        );
+    : this(contentTheme: json_['contentTheme'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentTheme != null) 'contentTheme': contentTheme!,
-      };
+    if (contentTheme != null) 'contentTheme': contentTheme!,
+  };
 }
 
 /// Used by:
@@ -4968,21 +4742,21 @@ class $ContentTypeInfo {
   });
 
   $ContentTypeInfo.fromJson(core.Map json_)
-      : this(
-          bestGuess: json_['bestGuess'] as core.String?,
-          fromBytes: json_['fromBytes'] as core.String?,
-          fromFileName: json_['fromFileName'] as core.String?,
-          fromHeader: json_['fromHeader'] as core.String?,
-          fromUrlPath: json_['fromUrlPath'] as core.String?,
-        );
+    : this(
+        bestGuess: json_['bestGuess'] as core.String?,
+        fromBytes: json_['fromBytes'] as core.String?,
+        fromFileName: json_['fromFileName'] as core.String?,
+        fromHeader: json_['fromHeader'] as core.String?,
+        fromUrlPath: json_['fromUrlPath'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bestGuess != null) 'bestGuess': bestGuess!,
-        if (fromBytes != null) 'fromBytes': fromBytes!,
-        if (fromFileName != null) 'fromFileName': fromFileName!,
-        if (fromHeader != null) 'fromHeader': fromHeader!,
-        if (fromUrlPath != null) 'fromUrlPath': fromUrlPath!,
-      };
+    if (bestGuess != null) 'bestGuess': bestGuess!,
+    if (fromBytes != null) 'fromBytes': fromBytes!,
+    if (fromFileName != null) 'fromFileName': fromFileName!,
+    if (fromHeader != null) 'fromHeader': fromHeader!,
+    if (fromUrlPath != null) 'fromUrlPath': fromUrlPath!,
+  };
 }
 
 /// Used by:
@@ -4993,20 +4767,19 @@ class $ContextChildrenRequest {
   /// The resource names of the child Contexts.
   core.List<core.String>? childContexts;
 
-  $ContextChildrenRequest({
-    this.childContexts,
-  });
+  $ContextChildrenRequest({this.childContexts});
 
   $ContextChildrenRequest.fromJson(core.Map json_)
-      : this(
-          childContexts: (json_['childContexts'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        childContexts:
+            (json_['childContexts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (childContexts != null) 'childContexts': childContexts!,
-      };
+    if (childContexts != null) 'childContexts': childContexts!,
+  };
 }
 
 /// Used by:
@@ -5025,21 +4798,18 @@ class $CounterEvent {
   /// Required.
   core.String? reportingName;
 
-  $CounterEvent({
-    this.name,
-    this.reportingName,
-  });
+  $CounterEvent({this.name, this.reportingName});
 
   $CounterEvent.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          reportingName: json_['reportingName'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        reportingName: json_['reportingName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (reportingName != null) 'reportingName': reportingName!,
-      };
+    if (name != null) 'name': name!,
+    if (reportingName != null) 'reportingName': reportingName!,
+  };
 }
 
 /// Used by:
@@ -5055,18 +4825,14 @@ class $CreateAssetRequest {
   /// Required.
   core.String? filename;
 
-  $CreateAssetRequest({
-    this.filename,
-  });
+  $CreateAssetRequest({this.filename});
 
   $CreateAssetRequest.fromJson(core.Map json_)
-      : this(
-          filename: json_['filename'] as core.String?,
-        );
+    : this(filename: json_['filename'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filename != null) 'filename': filename!,
-      };
+    if (filename != null) 'filename': filename!,
+  };
 }
 
 /// Used by:
@@ -5095,21 +4861,18 @@ class $CreativeAssetId {
   /// - "AUDIO"
   core.String? type;
 
-  $CreativeAssetId({
-    this.name,
-    this.type,
-  });
+  $CreativeAssetId({this.name, this.type});
 
   $CreativeAssetId.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Used by:
@@ -5140,20 +4903,20 @@ class $CreativeClickThroughUrl {
   });
 
   $CreativeClickThroughUrl.fromJson(core.Map json_)
-      : this(
-          computedClickThroughUrl:
-              json_['computedClickThroughUrl'] as core.String?,
-          customClickThroughUrl: json_['customClickThroughUrl'] as core.String?,
-          landingPageId: json_['landingPageId'] as core.String?,
-        );
+    : this(
+        computedClickThroughUrl:
+            json_['computedClickThroughUrl'] as core.String?,
+        customClickThroughUrl: json_['customClickThroughUrl'] as core.String?,
+        landingPageId: json_['landingPageId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (computedClickThroughUrl != null)
-          'computedClickThroughUrl': computedClickThroughUrl!,
-        if (customClickThroughUrl != null)
-          'customClickThroughUrl': customClickThroughUrl!,
-        if (landingPageId != null) 'landingPageId': landingPageId!,
-      };
+    if (computedClickThroughUrl != null)
+      'computedClickThroughUrl': computedClickThroughUrl!,
+    if (customClickThroughUrl != null)
+      'customClickThroughUrl': customClickThroughUrl!,
+    if (landingPageId != null) 'landingPageId': landingPageId!,
+  };
 }
 
 /// Used by:
@@ -5172,18 +4935,14 @@ class $CustomBiddingAlgorithmRulesError {
   /// rules.
   core.String? errorCode;
 
-  $CustomBiddingAlgorithmRulesError({
-    this.errorCode,
-  });
+  $CustomBiddingAlgorithmRulesError({this.errorCode});
 
   $CustomBiddingAlgorithmRulesError.fromJson(core.Map json_)
-      : this(
-          errorCode: json_['errorCode'] as core.String?,
-        );
+    : this(errorCode: json_['errorCode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode!,
-      };
+    if (errorCode != null) 'errorCode': errorCode!,
+  };
 }
 
 /// Used by:
@@ -5197,18 +4956,14 @@ class $CustomBiddingAlgorithmRulesRef {
   /// `customBiddingAlgorithms/{custom_bidding_algorithm_id}/rulesRef/{ref_id}`.
   core.String? resourceName;
 
-  $CustomBiddingAlgorithmRulesRef({
-    this.resourceName,
-  });
+  $CustomBiddingAlgorithmRulesRef({this.resourceName});
 
   $CustomBiddingAlgorithmRulesRef.fromJson(core.Map json_)
-      : this(
-          resourceName: json_['resourceName'] as core.String?,
-        );
+    : this(resourceName: json_['resourceName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName!,
-      };
+    if (resourceName != null) 'resourceName': resourceName!,
+  };
 }
 
 /// Used by:
@@ -5262,17 +5017,17 @@ class $CustomBiddingModelDetails {
   });
 
   $CustomBiddingModelDetails.fromJson(core.Map json_)
-      : this(
-          advertiserId: json_['advertiserId'] as core.String?,
-          readinessState: json_['readinessState'] as core.String?,
-          suspensionState: json_['suspensionState'] as core.String?,
-        );
+    : this(
+        advertiserId: json_['advertiserId'] as core.String?,
+        readinessState: json_['readinessState'] as core.String?,
+        suspensionState: json_['suspensionState'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (readinessState != null) 'readinessState': readinessState!,
-        if (suspensionState != null) 'suspensionState': suspensionState!,
-      };
+    if (advertiserId != null) 'advertiserId': advertiserId!,
+    if (readinessState != null) 'readinessState': readinessState!,
+    if (suspensionState != null) 'suspensionState': suspensionState!,
+  };
 }
 
 /// Used by:
@@ -5287,18 +5042,14 @@ class $CustomBiddingScriptRef {
   /// `customBiddingAlgorithms/{custom_bidding_algorithm_id}/scriptRef/{ref_id}`.
   core.String? resourceName;
 
-  $CustomBiddingScriptRef({
-    this.resourceName,
-  });
+  $CustomBiddingScriptRef({this.resourceName});
 
   $CustomBiddingScriptRef.fromJson(core.Map json_)
-      : this(
-          resourceName: json_['resourceName'] as core.String?,
-        );
+    : this(resourceName: json_['resourceName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName!,
-      };
+    if (resourceName != null) 'resourceName': resourceName!,
+  };
 }
 
 /// Used by:
@@ -5320,21 +5071,18 @@ class $CustomLabel {
   /// The value of the label.
   core.String? value;
 
-  $CustomLabel({
-    this.key,
-    this.value,
-  });
+  $CustomLabel({this.key, this.value});
 
   $CustomLabel.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
+    if (key != null) 'key': key!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -5362,24 +5110,20 @@ class $CustomList {
   /// Output only.
   core.String? name;
 
-  $CustomList({
-    this.customListId,
-    this.displayName,
-    this.name,
-  });
+  $CustomList({this.customListId, this.displayName, this.name});
 
   $CustomList.fromJson(core.Map json_)
-      : this(
-          customListId: json_['customListId'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        customListId: json_['customListId'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customListId != null) 'customListId': customListId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-      };
+    if (customListId != null) 'customListId': customListId!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -5395,18 +5139,14 @@ class $CustomListTargetingSetting {
   /// Required.
   core.String? customListId;
 
-  $CustomListTargetingSetting({
-    this.customListId,
-  });
+  $CustomListTargetingSetting({this.customListId});
 
   $CustomListTargetingSetting.fromJson(core.Map json_)
-      : this(
-          customListId: json_['customListId'] as core.String?,
-        );
+    : this(customListId: json_['customListId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customListId != null) 'customListId': customListId!,
-      };
+    if (customListId != null) 'customListId': customListId!,
+  };
 }
 
 /// Used by:
@@ -5470,24 +5210,20 @@ class $Date {
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int? year;
 
-  $Date({
-    this.day,
-    this.month,
-    this.year,
-  });
+  $Date({this.day, this.month, this.year});
 
   $Date.fromJson(core.Map json_)
-      : this(
-          day: json_['day'] as core.int?,
-          month: json_['month'] as core.int?,
-          year: json_['year'] as core.int?,
-        );
+    : this(
+        day: json_['day'] as core.int?,
+        month: json_['month'] as core.int?,
+        year: json_['year'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
+    if (day != null) 'day': day!,
+    if (month != null) 'month': month!,
+    if (year != null) 'year': year!,
+  };
 }
 
 /// Used by:
@@ -5545,20 +5281,19 @@ class $DayAndTimeAssignedTargetingOptionDetails {
   });
 
   $DayAndTimeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          dayOfWeek: json_['dayOfWeek'] as core.String?,
-          endHour: json_['endHour'] as core.int?,
-          startHour: json_['startHour'] as core.int?,
-          timeZoneResolution: json_['timeZoneResolution'] as core.String?,
-        );
+    : this(
+        dayOfWeek: json_['dayOfWeek'] as core.String?,
+        endHour: json_['endHour'] as core.int?,
+        startHour: json_['startHour'] as core.int?,
+        timeZoneResolution: json_['timeZoneResolution'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
-        if (endHour != null) 'endHour': endHour!,
-        if (startHour != null) 'startHour': startHour!,
-        if (timeZoneResolution != null)
-          'timeZoneResolution': timeZoneResolution!,
-      };
+    if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
+    if (endHour != null) 'endHour': endHour!,
+    if (startHour != null) 'startHour': startHour!,
+    if (timeZoneResolution != null) 'timeZoneResolution': timeZoneResolution!,
+  };
 }
 
 /// Used by:
@@ -5576,21 +5311,18 @@ class $DeadLetterConfig {
   /// Optional.
   core.String? topic;
 
-  $DeadLetterConfig({
-    this.projectId,
-    this.topic,
-  });
+  $DeadLetterConfig({this.projectId, this.topic});
 
   $DeadLetterConfig.fromJson(core.Map json_)
-      : this(
-          projectId: json_['projectId'] as core.String?,
-          topic: json_['topic'] as core.String?,
-        );
+    : this(
+        projectId: json_['projectId'] as core.String?,
+        topic: json_['topic'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'projectId': projectId!,
-        if (topic != null) 'topic': topic!,
-      };
+    if (projectId != null) 'projectId': projectId!,
+    if (topic != null) 'topic': topic!,
+  };
 }
 
 /// Used by:
@@ -5601,19 +5333,14 @@ class $DebugInfo {
   /// General debug info formatted for display.
   core.String? formattedDebugInfo;
 
-  $DebugInfo({
-    this.formattedDebugInfo,
-  });
+  $DebugInfo({this.formattedDebugInfo});
 
   $DebugInfo.fromJson(core.Map json_)
-      : this(
-          formattedDebugInfo: json_['formattedDebugInfo'] as core.String?,
-        );
+    : this(formattedDebugInfo: json_['formattedDebugInfo'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (formattedDebugInfo != null)
-          'formattedDebugInfo': formattedDebugInfo!,
-      };
+    if (formattedDebugInfo != null) 'formattedDebugInfo': formattedDebugInfo!,
+  };
 }
 
 /// Used by:
@@ -5751,19 +5478,19 @@ class $DeleteAssignedTargetingOptionsRequest {
   });
 
   $DeleteAssignedTargetingOptionsRequest.fromJson(core.Map json_)
-      : this(
-          assignedTargetingOptionIds:
-              (json_['assignedTargetingOptionIds'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          targetingType: json_['targetingType'] as core.String?,
-        );
+    : this(
+        assignedTargetingOptionIds:
+            (json_['assignedTargetingOptionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        targetingType: json_['targetingType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedTargetingOptionIds != null)
-          'assignedTargetingOptionIds': assignedTargetingOptionIds!,
-        if (targetingType != null) 'targetingType': targetingType!,
-      };
+    if (assignedTargetingOptionIds != null)
+      'assignedTargetingOptionIds': assignedTargetingOptionIds!,
+    if (targetingType != null) 'targetingType': targetingType!,
+  };
 }
 
 /// Used by:
@@ -5813,27 +5540,28 @@ class $DeploymentOccurrence {
   });
 
   $DeploymentOccurrence.fromJson(core.Map json_)
-      : this(
-          address: json_['address'] as core.String?,
-          config: json_['config'] as core.String?,
-          deployTime: json_['deployTime'] as core.String?,
-          platform: json_['platform'] as core.String?,
-          resourceUri: (json_['resourceUri'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          undeployTime: json_['undeployTime'] as core.String?,
-          userEmail: json_['userEmail'] as core.String?,
-        );
+    : this(
+        address: json_['address'] as core.String?,
+        config: json_['config'] as core.String?,
+        deployTime: json_['deployTime'] as core.String?,
+        platform: json_['platform'] as core.String?,
+        resourceUri:
+            (json_['resourceUri'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        undeployTime: json_['undeployTime'] as core.String?,
+        userEmail: json_['userEmail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (config != null) 'config': config!,
-        if (deployTime != null) 'deployTime': deployTime!,
-        if (platform != null) 'platform': platform!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-        if (undeployTime != null) 'undeployTime': undeployTime!,
-        if (userEmail != null) 'userEmail': userEmail!,
-      };
+    if (address != null) 'address': address!,
+    if (config != null) 'config': config!,
+    if (deployTime != null) 'deployTime': deployTime!,
+    if (platform != null) 'platform': platform!,
+    if (resourceUri != null) 'resourceUri': resourceUri!,
+    if (undeployTime != null) 'undeployTime': undeployTime!,
+    if (userEmail != null) 'userEmail': userEmail!,
+  };
 }
 
 /// Used by:
@@ -5855,24 +5583,20 @@ class $Destination {
   )
   core.String? serviceAttachment;
 
-  $Destination({
-    this.host,
-    this.port,
-    this.serviceAttachment,
-  });
+  $Destination({this.host, this.port, this.serviceAttachment});
 
   $Destination.fromJson(core.Map json_)
-      : this(
-          host: json_['host'] as core.String?,
-          port: json_['port'] as core.int?,
-          serviceAttachment: json_['serviceAttachment'] as core.String?,
-        );
+    : this(
+        host: json_['host'] as core.String?,
+        port: json_['port'] as core.int?,
+        serviceAttachment: json_['serviceAttachment'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (host != null) 'host': host!,
-        if (port != null) 'port': port!,
-        if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
-      };
+    if (host != null) 'host': host!,
+    if (port != null) 'port': port!,
+    if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
+  };
 }
 
 /// Used by:
@@ -5902,17 +5626,17 @@ class $DeviceMakeModelAssignedTargetingOptionDetails {
   });
 
   $DeviceMakeModelAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (negative != null) 'negative': negative!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -5926,18 +5650,14 @@ class $DeviceMakeModelTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $DeviceMakeModelTargetingOptionDetails({
-    this.displayName,
-  });
+  $DeviceMakeModelTargetingOptionDetails({this.displayName});
 
   $DeviceMakeModelTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+    : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+  };
 }
 
 /// Used by:
@@ -5978,18 +5698,17 @@ class $DeviceTypeAssignedTargetingOptionDetails {
   });
 
   $DeviceTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          deviceType: json_['deviceType'] as core.String?,
-          youtubeAndPartnersBidMultiplier:
-              (json_['youtubeAndPartnersBidMultiplier'] as core.num?)
-                  ?.toDouble(),
-        );
+    : this(
+        deviceType: json_['deviceType'] as core.String?,
+        youtubeAndPartnersBidMultiplier:
+            (json_['youtubeAndPartnersBidMultiplier'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceType != null) 'deviceType': deviceType!,
-        if (youtubeAndPartnersBidMultiplier != null)
-          'youtubeAndPartnersBidMultiplier': youtubeAndPartnersBidMultiplier!,
-      };
+    if (deviceType != null) 'deviceType': deviceType!,
+    if (youtubeAndPartnersBidMultiplier != null)
+      'youtubeAndPartnersBidMultiplier': youtubeAndPartnersBidMultiplier!,
+  };
 }
 
 /// Used by:
@@ -6012,18 +5731,14 @@ class $DeviceTypeTargetingOptionDetails {
   /// - "DEVICE_TYPE_CONNECTED_DEVICE" : Connected device.
   core.String? deviceType;
 
-  $DeviceTypeTargetingOptionDetails({
-    this.deviceType,
-  });
+  $DeviceTypeTargetingOptionDetails({this.deviceType});
 
   $DeviceTypeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          deviceType: json_['deviceType'] as core.String?,
-        );
+    : this(deviceType: json_['deviceType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceType != null) 'deviceType': deviceType!,
-      };
+    if (deviceType != null) 'deviceType': deviceType!,
+  };
 }
 
 /// Used by:
@@ -6037,21 +5752,18 @@ class $DiffVersionResponse {
   /// The version of the object stored at the server.
   core.String? objectVersion;
 
-  $DiffVersionResponse({
-    this.objectSizeBytes,
-    this.objectVersion,
-  });
+  $DiffVersionResponse({this.objectSizeBytes, this.objectVersion});
 
   $DiffVersionResponse.fromJson(core.Map json_)
-      : this(
-          objectSizeBytes: json_['objectSizeBytes'] as core.String?,
-          objectVersion: json_['objectVersion'] as core.String?,
-        );
+    : this(
+        objectSizeBytes: json_['objectSizeBytes'] as core.String?,
+        objectVersion: json_['objectVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
-        if (objectVersion != null) 'objectVersion': objectVersion!,
-      };
+    if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
+    if (objectVersion != null) 'objectVersion': objectVersion!,
+  };
 }
 
 /// Used by:
@@ -6085,15 +5797,15 @@ class $DigitalContentLabelAssignedTargetingOptionDetails {
   });
 
   $DigitalContentLabelAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          excludedContentRatingTier:
-              json_['excludedContentRatingTier'] as core.String?,
-        );
+    : this(
+        excludedContentRatingTier:
+            json_['excludedContentRatingTier'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludedContentRatingTier != null)
-          'excludedContentRatingTier': excludedContentRatingTier!,
-      };
+    if (excludedContentRatingTier != null)
+      'excludedContentRatingTier': excludedContentRatingTier!,
+  };
 }
 
 /// Used by:
@@ -6122,18 +5834,14 @@ class $DigitalContentLabelTargetingOptionDetails {
   /// and Partners line items.
   core.String? contentRatingTier;
 
-  $DigitalContentLabelTargetingOptionDetails({
-    this.contentRatingTier,
-  });
+  $DigitalContentLabelTargetingOptionDetails({this.contentRatingTier});
 
   $DigitalContentLabelTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentRatingTier: json_['contentRatingTier'] as core.String?,
-        );
+    : this(contentRatingTier: json_['contentRatingTier'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentRatingTier != null) 'contentRatingTier': contentRatingTier!,
-      };
+    if (contentRatingTier != null) 'contentRatingTier': contentRatingTier!,
+  };
 }
 
 /// Used by:
@@ -6179,23 +5887,23 @@ class $DimensionValue {
   });
 
   $DimensionValue.fromJson(core.Map json_)
-      : this(
-          dimensionName: json_['dimensionName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          matchType: json_['matchType'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        dimensionName: json_['dimensionName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        matchType: json_['matchType'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName!,
-        if (etag != null) 'etag': etag!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (matchType != null) 'matchType': matchType!,
-        if (value != null) 'value': value!,
-      };
+    if (dimensionName != null) 'dimensionName': dimensionName!,
+    if (etag != null) 'etag': etag!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (matchType != null) 'matchType': matchType!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -6210,21 +5918,18 @@ class $Dimensions {
   /// The width in pixels.
   core.int? widthPixels;
 
-  $Dimensions({
-    this.heightPixels,
-    this.widthPixels,
-  });
+  $Dimensions({this.heightPixels, this.widthPixels});
 
   $Dimensions.fromJson(core.Map json_)
-      : this(
-          heightPixels: json_['heightPixels'] as core.int?,
-          widthPixels: json_['widthPixels'] as core.int?,
-        );
+    : this(
+        heightPixels: json_['heightPixels'] as core.int?,
+        widthPixels: json_['widthPixels'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (heightPixels != null) 'heightPixels': heightPixels!,
-        if (widthPixels != null) 'widthPixels': widthPixels!,
-      };
+    if (heightPixels != null) 'heightPixels': heightPixels!,
+    if (widthPixels != null) 'widthPixels': widthPixels!,
+  };
 }
 
 /// Used by:
@@ -6267,20 +5972,20 @@ class $DiscoverySpecCsvOptions {
   });
 
   $DiscoverySpecCsvOptions.fromJson(core.Map json_)
-      : this(
-          delimiter: json_['delimiter'] as core.String?,
-          disableTypeInference: json_['disableTypeInference'] as core.bool?,
-          encoding: json_['encoding'] as core.String?,
-          headerRows: json_['headerRows'] as core.int?,
-        );
+    : this(
+        delimiter: json_['delimiter'] as core.String?,
+        disableTypeInference: json_['disableTypeInference'] as core.bool?,
+        encoding: json_['encoding'] as core.String?,
+        headerRows: json_['headerRows'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delimiter != null) 'delimiter': delimiter!,
-        if (disableTypeInference != null)
-          'disableTypeInference': disableTypeInference!,
-        if (encoding != null) 'encoding': encoding!,
-        if (headerRows != null) 'headerRows': headerRows!,
-      };
+    if (delimiter != null) 'delimiter': delimiter!,
+    if (disableTypeInference != null)
+      'disableTypeInference': disableTypeInference!,
+    if (encoding != null) 'encoding': encoding!,
+    if (headerRows != null) 'headerRows': headerRows!,
+  };
 }
 
 /// Used by:
@@ -6303,22 +6008,19 @@ class $DiscoverySpecJsonOptions {
   /// Optional.
   core.String? encoding;
 
-  $DiscoverySpecJsonOptions({
-    this.disableTypeInference,
-    this.encoding,
-  });
+  $DiscoverySpecJsonOptions({this.disableTypeInference, this.encoding});
 
   $DiscoverySpecJsonOptions.fromJson(core.Map json_)
-      : this(
-          disableTypeInference: json_['disableTypeInference'] as core.bool?,
-          encoding: json_['encoding'] as core.String?,
-        );
+    : this(
+        disableTypeInference: json_['disableTypeInference'] as core.bool?,
+        encoding: json_['encoding'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disableTypeInference != null)
-          'disableTypeInference': disableTypeInference!,
-        if (encoding != null) 'encoding': encoding!,
-      };
+    if (disableTypeInference != null)
+      'disableTypeInference': disableTypeInference!,
+    if (encoding != null) 'encoding': encoding!,
+  };
 }
 
 /// Used by:
@@ -6329,20 +6031,19 @@ class $DisksRemoveResourcePoliciesRequest {
   /// Resource policies to be removed from this disk.
   core.List<core.String>? resourcePolicies;
 
-  $DisksRemoveResourcePoliciesRequest({
-    this.resourcePolicies,
-  });
+  $DisksRemoveResourcePoliciesRequest({this.resourcePolicies});
 
   $DisksRemoveResourcePoliciesRequest.fromJson(core.Map json_)
-      : this(
-          resourcePolicies: (json_['resourcePolicies'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        resourcePolicies:
+            (json_['resourcePolicies'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
-      };
+    if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
+  };
 }
 
 /// Used by:
@@ -6362,19 +6063,14 @@ class $DisksStartAsyncReplicationRequest {
   /// regions/region/disks/disk
   core.String? asyncSecondaryDisk;
 
-  $DisksStartAsyncReplicationRequest({
-    this.asyncSecondaryDisk,
-  });
+  $DisksStartAsyncReplicationRequest({this.asyncSecondaryDisk});
 
   $DisksStartAsyncReplicationRequest.fromJson(core.Map json_)
-      : this(
-          asyncSecondaryDisk: json_['asyncSecondaryDisk'] as core.String?,
-        );
+    : this(asyncSecondaryDisk: json_['asyncSecondaryDisk'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (asyncSecondaryDisk != null)
-          'asyncSecondaryDisk': asyncSecondaryDisk!,
-      };
+    if (asyncSecondaryDisk != null) 'asyncSecondaryDisk': asyncSecondaryDisk!,
+  };
 }
 
 /// Used by:
@@ -6386,18 +6082,14 @@ class $DisplayVideoSourceAd {
   /// The ID of the source creative.
   core.String? creativeId;
 
-  $DisplayVideoSourceAd({
-    this.creativeId,
-  });
+  $DisplayVideoSourceAd({this.creativeId});
 
   $DisplayVideoSourceAd.fromJson(core.Map json_)
-      : this(
-          creativeId: json_['creativeId'] as core.String?,
-        );
+    : this(creativeId: json_['creativeId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (creativeId != null) 'creativeId': creativeId!,
-      };
+    if (creativeId != null) 'creativeId': creativeId!,
+  };
 }
 
 /// Used by:
@@ -6440,23 +6132,22 @@ class $DocumentationRule {
   });
 
   $DocumentationRule.fromJson(core.Map json_)
-      : this(
-          deprecationDescription:
-              json_['deprecationDescription'] as core.String?,
-          description: json_['description'] as core.String?,
-          disableReplacementWords:
-              json_['disableReplacementWords'] as core.String?,
-          selector: json_['selector'] as core.String?,
-        );
+    : this(
+        deprecationDescription: json_['deprecationDescription'] as core.String?,
+        description: json_['description'] as core.String?,
+        disableReplacementWords:
+            json_['disableReplacementWords'] as core.String?,
+        selector: json_['selector'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deprecationDescription != null)
-          'deprecationDescription': deprecationDescription!,
-        if (description != null) 'description': description!,
-        if (disableReplacementWords != null)
-          'disableReplacementWords': disableReplacementWords!,
-        if (selector != null) 'selector': selector!,
-      };
+    if (deprecationDescription != null)
+      'deprecationDescription': deprecationDescription!,
+    if (description != null) 'description': description!,
+    if (disableReplacementWords != null)
+      'disableReplacementWords': disableReplacementWords!,
+    if (selector != null) 'selector': selector!,
+  };
 }
 
 /// Used by:
@@ -6470,21 +6161,18 @@ class $DoubleRange {
   /// start of the range (inclusive)
   core.double? start;
 
-  $DoubleRange({
-    this.end,
-    this.start,
-  });
+  $DoubleRange({this.end, this.start});
 
   $DoubleRange.fromJson(core.Map json_)
-      : this(
-          end: (json_['end'] as core.num?)?.toDouble(),
-          start: (json_['start'] as core.num?)?.toDouble(),
-        );
+    : this(
+        end: (json_['end'] as core.num?)?.toDouble(),
+        start: (json_['start'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (end != null) 'end': end!,
-        if (start != null) 'start': start!,
-      };
+    if (end != null) 'end': end!,
+    if (start != null) 'start': start!,
+  };
 }
 
 /// Used by:
@@ -6515,17 +6203,17 @@ class $DoubleVerifyAppStarRating {
   });
 
   $DoubleVerifyAppStarRating.fromJson(core.Map json_)
-      : this(
-          avoidInsufficientStarRating:
-              json_['avoidInsufficientStarRating'] as core.bool?,
-          avoidedStarRating: json_['avoidedStarRating'] as core.String?,
-        );
+    : this(
+        avoidInsufficientStarRating:
+            json_['avoidInsufficientStarRating'] as core.bool?,
+        avoidedStarRating: json_['avoidedStarRating'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (avoidInsufficientStarRating != null)
-          'avoidInsufficientStarRating': avoidInsufficientStarRating!,
-        if (avoidedStarRating != null) 'avoidedStarRating': avoidedStarRating!,
-      };
+    if (avoidInsufficientStarRating != null)
+      'avoidInsufficientStarRating': avoidInsufficientStarRating!,
+    if (avoidedStarRating != null) 'avoidedStarRating': avoidedStarRating!,
+  };
 }
 
 /// Used by:
@@ -6550,27 +6238,27 @@ class $DoubleVerifyBrandSafetyCategories {
   });
 
   $DoubleVerifyBrandSafetyCategories.fromJson(core.Map json_)
-      : this(
-          avoidUnknownBrandSafetyCategory:
-              json_['avoidUnknownBrandSafetyCategory'] as core.bool?,
-          avoidedHighSeverityCategories:
-              (json_['avoidedHighSeverityCategories'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          avoidedMediumSeverityCategories:
-              (json_['avoidedMediumSeverityCategories'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-        );
+    : this(
+        avoidUnknownBrandSafetyCategory:
+            json_['avoidUnknownBrandSafetyCategory'] as core.bool?,
+        avoidedHighSeverityCategories:
+            (json_['avoidedHighSeverityCategories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        avoidedMediumSeverityCategories:
+            (json_['avoidedMediumSeverityCategories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (avoidUnknownBrandSafetyCategory != null)
-          'avoidUnknownBrandSafetyCategory': avoidUnknownBrandSafetyCategory!,
-        if (avoidedHighSeverityCategories != null)
-          'avoidedHighSeverityCategories': avoidedHighSeverityCategories!,
-        if (avoidedMediumSeverityCategories != null)
-          'avoidedMediumSeverityCategories': avoidedMediumSeverityCategories!,
-      };
+    if (avoidUnknownBrandSafetyCategory != null)
+      'avoidUnknownBrandSafetyCategory': avoidUnknownBrandSafetyCategory!,
+    if (avoidedHighSeverityCategories != null)
+      'avoidedHighSeverityCategories': avoidedHighSeverityCategories!,
+    if (avoidedMediumSeverityCategories != null)
+      'avoidedMediumSeverityCategories': avoidedMediumSeverityCategories!,
+  };
 }
 
 /// Used by:
@@ -6615,21 +6303,18 @@ class $DoubleVerifyDisplayViewability {
   /// maximize 100% viewable duration 15 seconds or more.
   core.String? viewableDuring;
 
-  $DoubleVerifyDisplayViewability({
-    this.iab,
-    this.viewableDuring,
-  });
+  $DoubleVerifyDisplayViewability({this.iab, this.viewableDuring});
 
   $DoubleVerifyDisplayViewability.fromJson(core.Map json_)
-      : this(
-          iab: json_['iab'] as core.String?,
-          viewableDuring: json_['viewableDuring'] as core.String?,
-        );
+    : this(
+        iab: json_['iab'] as core.String?,
+        viewableDuring: json_['viewableDuring'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iab != null) 'iab': iab!,
-        if (viewableDuring != null) 'viewableDuring': viewableDuring!,
-      };
+    if (iab != null) 'iab': iab!,
+    if (viewableDuring != null) 'viewableDuring': viewableDuring!,
+  };
 }
 
 /// Used by:
@@ -6661,18 +6346,16 @@ class $DoubleVerifyFraudInvalidTraffic {
   });
 
   $DoubleVerifyFraudInvalidTraffic.fromJson(core.Map json_)
-      : this(
-          avoidInsufficientOption:
-              json_['avoidInsufficientOption'] as core.bool?,
-          avoidedFraudOption: json_['avoidedFraudOption'] as core.String?,
-        );
+    : this(
+        avoidInsufficientOption: json_['avoidInsufficientOption'] as core.bool?,
+        avoidedFraudOption: json_['avoidedFraudOption'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (avoidInsufficientOption != null)
-          'avoidInsufficientOption': avoidInsufficientOption!,
-        if (avoidedFraudOption != null)
-          'avoidedFraudOption': avoidedFraudOption!,
-      };
+    if (avoidInsufficientOption != null)
+      'avoidInsufficientOption': avoidInsufficientOption!,
+    if (avoidedFraudOption != null) 'avoidedFraudOption': avoidedFraudOption!,
+  };
 }
 
 /// Used by:
@@ -6741,18 +6424,18 @@ class $DoubleVerifyVideoViewability {
   });
 
   $DoubleVerifyVideoViewability.fromJson(core.Map json_)
-      : this(
-          playerImpressionRate: json_['playerImpressionRate'] as core.String?,
-          videoIab: json_['videoIab'] as core.String?,
-          videoViewableRate: json_['videoViewableRate'] as core.String?,
-        );
+    : this(
+        playerImpressionRate: json_['playerImpressionRate'] as core.String?,
+        videoIab: json_['videoIab'] as core.String?,
+        videoViewableRate: json_['videoViewableRate'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (playerImpressionRate != null)
-          'playerImpressionRate': playerImpressionRate!,
-        if (videoIab != null) 'videoIab': videoIab!,
-        if (videoViewableRate != null) 'videoViewableRate': videoViewableRate!,
-      };
+    if (playerImpressionRate != null)
+      'playerImpressionRate': playerImpressionRate!,
+    if (videoIab != null) 'videoIab': videoIab!,
+    if (videoViewableRate != null) 'videoViewableRate': videoViewableRate!,
+  };
 }
 
 /// Used by:
@@ -6771,22 +6454,19 @@ class $DownloadParameters {
   /// Content-Range header on its response to Scotty.
   core.bool? ignoreRange;
 
-  $DownloadParameters({
-    this.allowGzipCompression,
-    this.ignoreRange,
-  });
+  $DownloadParameters({this.allowGzipCompression, this.ignoreRange});
 
   $DownloadParameters.fromJson(core.Map json_)
-      : this(
-          allowGzipCompression: json_['allowGzipCompression'] as core.bool?,
-          ignoreRange: json_['ignoreRange'] as core.bool?,
-        );
+    : this(
+        allowGzipCompression: json_['allowGzipCompression'] as core.bool?,
+        ignoreRange: json_['ignoreRange'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowGzipCompression != null)
-          'allowGzipCompression': allowGzipCompression!,
-        if (ignoreRange != null) 'ignoreRange': ignoreRange!,
-      };
+    if (allowGzipCompression != null)
+      'allowGzipCompression': allowGzipCompression!,
+    if (ignoreRange != null) 'ignoreRange': ignoreRange!,
+  };
 }
 
 /// Used by:
@@ -6797,18 +6477,14 @@ class $DrainedMachine {
   /// Drained machine IP address.
   core.String? nodeIp;
 
-  $DrainedMachine({
-    this.nodeIp,
-  });
+  $DrainedMachine({this.nodeIp});
 
   $DrainedMachine.fromJson(core.Map json_)
-      : this(
-          nodeIp: json_['nodeIp'] as core.String?,
-        );
+    : this(nodeIp: json_['nodeIp'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nodeIp != null) 'nodeIp': nodeIp!,
-      };
+    if (nodeIp != null) 'nodeIp': nodeIp!,
+  };
 }
 
 /// Used by:
@@ -6822,21 +6498,18 @@ class $DrainingMachine {
   /// The count of pods yet to drain.
   core.int? podCount;
 
-  $DrainingMachine({
-    this.nodeIp,
-    this.podCount,
-  });
+  $DrainingMachine({this.nodeIp, this.podCount});
 
   $DrainingMachine.fromJson(core.Map json_)
-      : this(
-          nodeIp: json_['nodeIp'] as core.String?,
-          podCount: json_['podCount'] as core.int?,
-        );
+    : this(
+        nodeIp: json_['nodeIp'] as core.String?,
+        podCount: json_['podCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nodeIp != null) 'nodeIp': nodeIp!,
-        if (podCount != null) 'podCount': podCount!,
-      };
+    if (nodeIp != null) 'nodeIp': nodeIp!,
+    if (podCount != null) 'podCount': podCount!,
+  };
 }
 
 /// Used by:
@@ -6850,18 +6523,14 @@ class $DuplicateLineItemRequest {
   /// Must be UTF-8 encoded with a maximum size of 240 bytes.
   core.String? targetDisplayName;
 
-  $DuplicateLineItemRequest({
-    this.targetDisplayName,
-  });
+  $DuplicateLineItemRequest({this.targetDisplayName});
 
   $DuplicateLineItemRequest.fromJson(core.Map json_)
-      : this(
-          targetDisplayName: json_['targetDisplayName'] as core.String?,
-        );
+    : this(targetDisplayName: json_['targetDisplayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (targetDisplayName != null) 'targetDisplayName': targetDisplayName!,
-      };
+    if (targetDisplayName != null) 'targetDisplayName': targetDisplayName!,
+  };
 }
 
 /// Used by:
@@ -6873,19 +6542,15 @@ class $DuplicateLineItemResponse {
   /// The ID of the created line item.
   core.String? duplicateLineItemId;
 
-  $DuplicateLineItemResponse({
-    this.duplicateLineItemId,
-  });
+  $DuplicateLineItemResponse({this.duplicateLineItemId});
 
   $DuplicateLineItemResponse.fromJson(core.Map json_)
-      : this(
-          duplicateLineItemId: json_['duplicateLineItemId'] as core.String?,
-        );
+    : this(duplicateLineItemId: json_['duplicateLineItemId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (duplicateLineItemId != null)
-          'duplicateLineItemId': duplicateLineItemId!,
-      };
+    if (duplicateLineItemId != null)
+      'duplicateLineItemId': duplicateLineItemId!,
+  };
 }
 
 /// Used by:
@@ -6909,26 +6574,23 @@ class $DynamicListenerState {
   /// versions may be supported by the API.
   core.String? versionInfo;
 
-  $DynamicListenerState({
-    this.lastUpdated,
-    this.listener,
-    this.versionInfo,
-  });
+  $DynamicListenerState({this.lastUpdated, this.listener, this.versionInfo});
 
   $DynamicListenerState.fromJson(core.Map json_)
-      : this(
-          lastUpdated: json_['lastUpdated'] as core.String?,
-          listener: json_.containsKey('listener')
-              ? json_['listener'] as core.Map<core.String, core.dynamic>
-              : null,
-          versionInfo: json_['versionInfo'] as core.String?,
-        );
+    : this(
+        lastUpdated: json_['lastUpdated'] as core.String?,
+        listener:
+            json_.containsKey('listener')
+                ? json_['listener'] as core.Map<core.String, core.dynamic>
+                : null,
+        versionInfo: json_['versionInfo'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
-        if (listener != null) 'listener': listener!,
-        if (versionInfo != null) 'versionInfo': versionInfo!,
-      };
+    if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+    if (listener != null) 'listener': listener!,
+    if (versionInfo != null) 'versionInfo': versionInfo!,
+  };
 }
 
 /// Used by:
@@ -6962,25 +6624,26 @@ class $EditGuaranteedOrderReadAccessorsRequest {
   });
 
   $EditGuaranteedOrderReadAccessorsRequest.fromJson(core.Map json_)
-      : this(
-          addedAdvertisers: (json_['addedAdvertisers'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          partnerId: json_['partnerId'] as core.String?,
-          readAccessInherited: json_['readAccessInherited'] as core.bool?,
-          removedAdvertisers: (json_['removedAdvertisers'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        addedAdvertisers:
+            (json_['addedAdvertisers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        partnerId: json_['partnerId'] as core.String?,
+        readAccessInherited: json_['readAccessInherited'] as core.bool?,
+        removedAdvertisers:
+            (json_['removedAdvertisers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addedAdvertisers != null) 'addedAdvertisers': addedAdvertisers!,
-        if (partnerId != null) 'partnerId': partnerId!,
-        if (readAccessInherited != null)
-          'readAccessInherited': readAccessInherited!,
-        if (removedAdvertisers != null)
-          'removedAdvertisers': removedAdvertisers!,
-      };
+    if (addedAdvertisers != null) 'addedAdvertisers': addedAdvertisers!,
+    if (partnerId != null) 'partnerId': partnerId!,
+    if (readAccessInherited != null)
+      'readAccessInherited': readAccessInherited!,
+    if (removedAdvertisers != null) 'removedAdvertisers': removedAdvertisers!,
+  };
 }
 
 /// Used by:
@@ -7002,18 +6665,19 @@ class $EditGuaranteedOrderReadAccessorsResponse {
   });
 
   $EditGuaranteedOrderReadAccessorsResponse.fromJson(core.Map json_)
-      : this(
-          readAccessInherited: json_['readAccessInherited'] as core.bool?,
-          readAdvertiserIds: (json_['readAdvertiserIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        readAccessInherited: json_['readAccessInherited'] as core.bool?,
+        readAdvertiserIds:
+            (json_['readAdvertiserIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (readAccessInherited != null)
-          'readAccessInherited': readAccessInherited!,
-        if (readAdvertiserIds != null) 'readAdvertiserIds': readAdvertiserIds!,
-      };
+    if (readAccessInherited != null)
+      'readAccessInherited': readAccessInherited!,
+    if (readAdvertiserIds != null) 'readAdvertiserIds': readAdvertiserIds!,
+  };
 }
 
 /// Used by:
@@ -7034,21 +6698,22 @@ class $EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate {
   });
 
   $EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate.fromJson(
-      core.Map json_)
-      : this(
-          addedAdvertisers: (json_['addedAdvertisers'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          removedAdvertisers: (json_['removedAdvertisers'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        addedAdvertisers:
+            (json_['addedAdvertisers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        removedAdvertisers:
+            (json_['removedAdvertisers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addedAdvertisers != null) 'addedAdvertisers': addedAdvertisers!,
-        if (removedAdvertisers != null)
-          'removedAdvertisers': removedAdvertisers!,
-      };
+    if (addedAdvertisers != null) 'addedAdvertisers': addedAdvertisers!,
+    if (removedAdvertisers != null) 'removedAdvertisers': removedAdvertisers!,
+  };
 }
 
 /// Used by:
@@ -7076,21 +6741,18 @@ class $EgressSource {
   /// Google Cloud resources.
   core.String? resource;
 
-  $EgressSource({
-    this.accessLevel,
-    this.resource,
-  });
+  $EgressSource({this.accessLevel, this.resource});
 
   $EgressSource.fromJson(core.Map json_)
-      : this(
-          accessLevel: json_['accessLevel'] as core.String?,
-          resource: json_['resource'] as core.String?,
-        );
+    : this(
+        accessLevel: json_['accessLevel'] as core.String?,
+        resource: json_['resource'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevel != null) 'accessLevel': accessLevel!,
-        if (resource != null) 'resource': resource!,
-      };
+    if (accessLevel != null) 'accessLevel': accessLevel!,
+    if (resource != null) 'resource': resource!,
+  };
 }
 
 /// Used by:
@@ -7984,8 +7646,9 @@ class $Empty {
   $Empty();
 
   $Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map json_);
+    // ignore: avoid_unused_constructor_parameters
+    core.Map json_,
+  );
 
   core.Map<core.String, core.dynamic> toJson() => {};
 }
@@ -8001,18 +7664,14 @@ class $EncryptionConfig {
   /// projects/\[PROJECT\]/locations/\[REGION\]/keyRings/\[RING\]/cryptoKeys/\[KEY_NAME\]
   core.String? kmsKeyName;
 
-  $EncryptionConfig({
-    this.kmsKeyName,
-  });
+  $EncryptionConfig({this.kmsKeyName});
 
   $EncryptionConfig.fromJson(core.Map json_)
-      : this(
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-        );
+    : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-      };
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+  };
 }
 
 /// Used by:
@@ -8035,21 +7694,18 @@ class $EncryptionKey {
   /// - "CUSTOMER_MANAGED" : Customer Managed.
   core.String? type;
 
-  $EncryptionKey({
-    this.kmsKeyName,
-    this.type,
-  });
+  $EncryptionKey({this.kmsKeyName, this.type});
 
   $EncryptionKey.fromJson(core.Map json_)
-      : this(
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-        if (type != null) 'type': type!,
-      };
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Used by:
@@ -8082,29 +7738,25 @@ class $Endpoint {
   /// For example, "8.8.8.8" or "myservice.appspot.com".
   core.String? target;
 
-  $Endpoint({
-    this.aliases,
-    this.allowCors,
-    this.name,
-    this.target,
-  });
+  $Endpoint({this.aliases, this.allowCors, this.name, this.target});
 
   $Endpoint.fromJson(core.Map json_)
-      : this(
-          aliases: (json_['aliases'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          allowCors: json_['allowCors'] as core.bool?,
-          name: json_['name'] as core.String?,
-          target: json_['target'] as core.String?,
-        );
+    : this(
+        aliases:
+            (json_['aliases'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        allowCors: json_['allowCors'] as core.bool?,
+        name: json_['name'] as core.String?,
+        target: json_['target'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aliases != null) 'aliases': aliases!,
-        if (allowCors != null) 'allowCors': allowCors!,
-        if (name != null) 'name': name!,
-        if (target != null) 'target': target!,
-      };
+    if (aliases != null) 'aliases': aliases!,
+    if (allowCors != null) 'allowCors': allowCors!,
+    if (name != null) 'name': name!,
+    if (target != null) 'target': target!,
+  };
 }
 
 /// Used by:
@@ -8130,21 +7782,18 @@ class $EndpointGroupAssociationLocationDetails {
   /// recover automatically.
   core.String? state;
 
-  $EndpointGroupAssociationLocationDetails({
-    this.location,
-    this.state,
-  });
+  $EndpointGroupAssociationLocationDetails({this.location, this.state});
 
   $EndpointGroupAssociationLocationDetails.fromJson(core.Map json_)
-      : this(
-          location: json_['location'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        location: json_['location'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!,
-        if (state != null) 'state': state!,
-      };
+    if (location != null) 'location': location!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Used by:
@@ -8157,18 +7806,14 @@ class $EnrichmentConfig {
   /// Optional.
   core.bool? appendAcl;
 
-  $EnrichmentConfig({
-    this.appendAcl,
-  });
+  $EnrichmentConfig({this.appendAcl});
 
   $EnrichmentConfig.fromJson(core.Map json_)
-      : this(
-          appendAcl: json_['appendAcl'] as core.bool?,
-        );
+    : this(appendAcl: json_['appendAcl'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appendAcl != null) 'appendAcl': appendAcl!,
-      };
+    if (appendAcl != null) 'appendAcl': appendAcl!,
+  };
 }
 
 /// Used by:
@@ -8182,20 +7827,19 @@ class $Entity {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? customFeatures;
 
-  $Entity({
-    this.customFeatures,
-  });
+  $Entity({this.customFeatures});
 
   $Entity.fromJson(core.Map json_)
-      : this(
-          customFeatures: json_.containsKey('customFeatures')
-              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        customFeatures:
+            json_.containsKey('customFeatures')
+                ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customFeatures != null) 'customFeatures': customFeatures!,
-      };
+    if (customFeatures != null) 'customFeatures': customFeatures!,
+  };
 }
 
 /// Used by:
@@ -8208,25 +7852,24 @@ class $EnvelopeSignature {
   core.List<core.int> get sigAsBytes => convert.base64.decode(sig!);
 
   set sigAsBytes(core.List<core.int> bytes_) {
-    sig =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    sig = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  $EnvelopeSignature({
-    this.keyid,
-    this.sig,
-  });
+  $EnvelopeSignature({this.keyid, this.sig});
 
   $EnvelopeSignature.fromJson(core.Map json_)
-      : this(
-          keyid: json_['keyid'] as core.String?,
-          sig: json_['sig'] as core.String?,
-        );
+    : this(
+        keyid: json_['keyid'] as core.String?,
+        sig: json_['sig'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keyid != null) 'keyid': keyid!,
-        if (sig != null) 'sig': sig!,
-      };
+    if (keyid != null) 'keyid': keyid!,
+    if (sig != null) 'sig': sig!,
+  };
 }
 
 /// Used by:
@@ -8255,18 +7898,14 @@ class $EnvironmentAssignedTargetingOptionDetails {
   /// - "ENVIRONMENT_APP" : Target inventory displayed in apps.
   core.String? environment;
 
-  $EnvironmentAssignedTargetingOptionDetails({
-    this.environment,
-  });
+  $EnvironmentAssignedTargetingOptionDetails({this.environment});
 
   $EnvironmentAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          environment: json_['environment'] as core.String?,
-        );
+    : this(environment: json_['environment'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (environment != null) 'environment': environment!,
-      };
+    if (environment != null) 'environment': environment!,
+  };
 }
 
 /// Used by:
@@ -8295,18 +7934,14 @@ class $EnvironmentTargetingOptionDetails {
   /// - "ENVIRONMENT_APP" : Target inventory displayed in apps.
   core.String? environment;
 
-  $EnvironmentTargetingOptionDetails({
-    this.environment,
-  });
+  $EnvironmentTargetingOptionDetails({this.environment});
 
   $EnvironmentTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          environment: json_['environment'] as core.String?,
-        );
+    : this(environment: json_['environment'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (environment != null) 'environment': environment!,
-      };
+    if (environment != null) 'environment': environment!,
+  };
 }
 
 /// Used by:
@@ -8318,18 +7953,14 @@ class $Error {
   /// A string representing the user facing error message
   core.String? errorMessage;
 
-  $Error({
-    this.errorMessage,
-  });
+  $Error({this.errorMessage});
 
   $Error.fromJson(core.Map json_)
-      : this(
-          errorMessage: json_['errorMessage'] as core.String?,
-        );
+    : this(errorMessage: json_['errorMessage'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-      };
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+  };
 }
 
 /// Used by:
@@ -8365,30 +7996,21 @@ class $ErrorInfo {
   /// which represents UPPER_SNAKE_CASE.
   core.String? reason;
 
-  $ErrorInfo({
-    this.domain,
-    this.metadatas,
-    this.reason,
-  });
+  $ErrorInfo({this.domain, this.metadatas, this.reason});
 
   $ErrorInfo.fromJson(core.Map json_)
-      : this(
-          domain: json_['domain'] as core.String?,
-          metadatas:
-              (json_['metadatas'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          reason: json_['reason'] as core.String?,
-        );
+    : this(
+        domain: json_['domain'] as core.String?,
+        metadatas: (json_['metadatas'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        reason: json_['reason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domain != null) 'domain': domain!,
-        if (metadatas != null) 'metadatas': metadatas!,
-        if (reason != null) 'reason': reason!,
-      };
+    if (domain != null) 'domain': domain!,
+    if (metadatas != null) 'metadatas': metadatas!,
+    if (reason != null) 'reason': reason!,
+  };
 }
 
 /// Used by:
@@ -8398,20 +8020,19 @@ class $ErrorInfo {
 class $EventbusProtoBooleanParameterArray {
   core.List<core.bool>? booleanValues;
 
-  $EventbusProtoBooleanParameterArray({
-    this.booleanValues,
-  });
+  $EventbusProtoBooleanParameterArray({this.booleanValues});
 
   $EventbusProtoBooleanParameterArray.fromJson(core.Map json_)
-      : this(
-          booleanValues: (json_['booleanValues'] as core.List?)
-              ?.map((value) => value as core.bool)
-              .toList(),
-        );
+    : this(
+        booleanValues:
+            (json_['booleanValues'] as core.List?)
+                ?.map((value) => value as core.bool)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (booleanValues != null) 'booleanValues': booleanValues!,
-      };
+    if (booleanValues != null) 'booleanValues': booleanValues!,
+  };
 }
 
 /// Used by:
@@ -8421,20 +8042,19 @@ class $EventbusProtoBooleanParameterArray {
 class $EventbusProtoDoubleParameterArray {
   core.List<core.double>? doubleValues;
 
-  $EventbusProtoDoubleParameterArray({
-    this.doubleValues,
-  });
+  $EventbusProtoDoubleParameterArray({this.doubleValues});
 
   $EventbusProtoDoubleParameterArray.fromJson(core.Map json_)
-      : this(
-          doubleValues: (json_['doubleValues'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-        );
+    : this(
+        doubleValues:
+            (json_['doubleValues'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (doubleValues != null) 'doubleValues': doubleValues!,
-      };
+    if (doubleValues != null) 'doubleValues': doubleValues!,
+  };
 }
 
 /// Used by:
@@ -8444,20 +8064,19 @@ class $EventbusProtoDoubleParameterArray {
 class $EventbusProtoIntParameterArray {
   core.List<core.String>? intValues;
 
-  $EventbusProtoIntParameterArray({
-    this.intValues,
-  });
+  $EventbusProtoIntParameterArray({this.intValues});
 
   $EventbusProtoIntParameterArray.fromJson(core.Map json_)
-      : this(
-          intValues: (json_['intValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        intValues:
+            (json_['intValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (intValues != null) 'intValues': intValues!,
-      };
+    if (intValues != null) 'intValues': intValues!,
+  };
 }
 
 /// Used by:
@@ -8471,20 +8090,19 @@ class $EventbusProtoProtoParameterArray {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? protoValues;
 
-  $EventbusProtoProtoParameterArray({
-    this.protoValues,
-  });
+  $EventbusProtoProtoParameterArray({this.protoValues});
 
   $EventbusProtoProtoParameterArray.fromJson(core.Map json_)
-      : this(
-          protoValues: (json_['protoValues'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-        );
+    : this(
+        protoValues:
+            (json_['protoValues'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (protoValues != null) 'protoValues': protoValues!,
-      };
+    if (protoValues != null) 'protoValues': protoValues!,
+  };
 }
 
 /// Used by:
@@ -8497,22 +8115,20 @@ class $EventbusProtoSerializedObjectParameter {
       convert.base64.decode(objectValue!);
 
   set objectValueAsBytes(core.List<core.int> bytes_) {
-    objectValue =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    objectValue = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  $EventbusProtoSerializedObjectParameter({
-    this.objectValue,
-  });
+  $EventbusProtoSerializedObjectParameter({this.objectValue});
 
   $EventbusProtoSerializedObjectParameter.fromJson(core.Map json_)
-      : this(
-          objectValue: json_['objectValue'] as core.String?,
-        );
+    : this(objectValue: json_['objectValue'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectValue != null) 'objectValue': objectValue!,
-      };
+    if (objectValue != null) 'objectValue': objectValue!,
+  };
 }
 
 /// Used by:
@@ -8522,20 +8138,19 @@ class $EventbusProtoSerializedObjectParameter {
 class $EventbusProtoStringParameterArray {
   core.List<core.String>? stringValues;
 
-  $EventbusProtoStringParameterArray({
-    this.stringValues,
-  });
+  $EventbusProtoStringParameterArray({this.stringValues});
 
   $EventbusProtoStringParameterArray.fromJson(core.Map json_)
-      : this(
-          stringValues: (json_['stringValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        stringValues:
+            (json_['stringValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (stringValues != null) 'stringValues': stringValues!,
-      };
+    if (stringValues != null) 'stringValues': stringValues!,
+  };
 }
 
 /// Used by:
@@ -8558,21 +8173,18 @@ class $EventingStatus {
   /// - "INGRESS_ENDPOINT_REQUIRED" : Ingress endpoint required.
   core.String? state;
 
-  $EventingStatus({
-    this.description,
-    this.state,
-  });
+  $EventingStatus({this.description, this.state});
 
   $EventingStatus.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (state != null) 'state': state!,
-      };
+    if (description != null) 'description': description!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Used by:
@@ -8676,18 +8288,14 @@ class $ExchangeAssignedTargetingOptionDetails {
   /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
-  $ExchangeAssignedTargetingOptionDetails({
-    this.exchange,
-  });
+  $ExchangeAssignedTargetingOptionDetails({this.exchange});
 
   $ExchangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          exchange: json_['exchange'] as core.String?,
-        );
+    : this(exchange: json_['exchange'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exchange != null) 'exchange': exchange!,
-      };
+    if (exchange != null) 'exchange': exchange!,
+  };
 }
 
 /// Used by:
@@ -8816,23 +8424,23 @@ class $ExchangeConfigEnabledExchange {
   });
 
   $ExchangeConfigEnabledExchange.fromJson(core.Map json_)
-      : this(
-          exchange: json_['exchange'] as core.String?,
-          googleAdManagerAgencyId:
-              json_['googleAdManagerAgencyId'] as core.String?,
-          googleAdManagerBuyerNetworkId:
-              json_['googleAdManagerBuyerNetworkId'] as core.String?,
-          seatId: json_['seatId'] as core.String?,
-        );
+    : this(
+        exchange: json_['exchange'] as core.String?,
+        googleAdManagerAgencyId:
+            json_['googleAdManagerAgencyId'] as core.String?,
+        googleAdManagerBuyerNetworkId:
+            json_['googleAdManagerBuyerNetworkId'] as core.String?,
+        seatId: json_['seatId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exchange != null) 'exchange': exchange!,
-        if (googleAdManagerAgencyId != null)
-          'googleAdManagerAgencyId': googleAdManagerAgencyId!,
-        if (googleAdManagerBuyerNetworkId != null)
-          'googleAdManagerBuyerNetworkId': googleAdManagerBuyerNetworkId!,
-        if (seatId != null) 'seatId': seatId!,
-      };
+    if (exchange != null) 'exchange': exchange!,
+    if (googleAdManagerAgencyId != null)
+      'googleAdManagerAgencyId': googleAdManagerAgencyId!,
+    if (googleAdManagerBuyerNetworkId != null)
+      'googleAdManagerBuyerNetworkId': googleAdManagerBuyerNetworkId!,
+    if (seatId != null) 'seatId': seatId!,
+  };
 }
 
 /// Used by:
@@ -8943,21 +8551,18 @@ class $ExchangeReviewStatus {
   /// - "REVIEW_STATUS_PENDING" : The creative is pending review.
   core.String? status;
 
-  $ExchangeReviewStatus({
-    this.exchange,
-    this.status,
-  });
+  $ExchangeReviewStatus({this.exchange, this.status});
 
   $ExchangeReviewStatus.fromJson(core.Map json_)
-      : this(
-          exchange: json_['exchange'] as core.String?,
-          status: json_['status'] as core.String?,
-        );
+    : this(
+        exchange: json_['exchange'] as core.String?,
+        status: json_['status'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exchange != null) 'exchange': exchange!,
-        if (status != null) 'status': status!,
-      };
+    if (exchange != null) 'exchange': exchange!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// Used by:
@@ -9061,18 +8666,14 @@ class $ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
-  $ExchangeTargetingOptionDetails({
-    this.exchange,
-  });
+  $ExchangeTargetingOptionDetails({this.exchange});
 
   $ExchangeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          exchange: json_['exchange'] as core.String?,
-        );
+    : this(exchange: json_['exchange'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exchange != null) 'exchange': exchange!,
-      };
+    if (exchange != null) 'exchange': exchange!,
+  };
 }
 
 /// Used by:
@@ -9089,20 +8690,19 @@ class $ExecAction {
   /// live/healthy and non-zero is unhealthy.
   core.List<core.String>? command;
 
-  $ExecAction({
-    this.command,
-  });
+  $ExecAction({this.command});
 
   $ExecAction.fromJson(core.Map json_)
-      : this(
-          command: (json_['command'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        command:
+            (json_['command'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (command != null) 'command': command!,
-      };
+    if (command != null) 'command': command!,
+  };
 }
 
 /// Used by:
@@ -9139,21 +8739,22 @@ class $ExecutionStats {
   });
 
   $ExecutionStats.fromJson(core.Map json_)
-      : this(
-          debugStats: json_.containsKey('debugStats')
-              ? json_['debugStats'] as core.Map<core.String, core.dynamic>
-              : null,
-          executionDuration: json_['executionDuration'] as core.String?,
-          readOperations: json_['readOperations'] as core.String?,
-          resultsReturned: json_['resultsReturned'] as core.String?,
-        );
+    : this(
+        debugStats:
+            json_.containsKey('debugStats')
+                ? json_['debugStats'] as core.Map<core.String, core.dynamic>
+                : null,
+        executionDuration: json_['executionDuration'] as core.String?,
+        readOperations: json_['readOperations'] as core.String?,
+        resultsReturned: json_['resultsReturned'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (debugStats != null) 'debugStats': debugStats!,
-        if (executionDuration != null) 'executionDuration': executionDuration!,
-        if (readOperations != null) 'readOperations': readOperations!,
-        if (resultsReturned != null) 'resultsReturned': resultsReturned!,
-      };
+    if (debugStats != null) 'debugStats': debugStats!,
+    if (executionDuration != null) 'executionDuration': executionDuration!,
+    if (readOperations != null) 'readOperations': readOperations!,
+    if (resultsReturned != null) 'resultsReturned': resultsReturned!,
+  };
 }
 
 /// Used by:
@@ -9196,27 +8797,22 @@ class $ExitEvent {
   /// Required.
   core.String? url;
 
-  $ExitEvent({
-    this.name,
-    this.reportingName,
-    this.type,
-    this.url,
-  });
+  $ExitEvent({this.name, this.reportingName, this.type, this.url});
 
   $ExitEvent.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          reportingName: json_['reportingName'] as core.String?,
-          type: json_['type'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        reportingName: json_['reportingName'] as core.String?,
+        type: json_['type'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (reportingName != null) 'reportingName': reportingName!,
-        if (type != null) 'type': type!,
-        if (url != null) 'url': url!,
-      };
+    if (name != null) 'name': name!,
+    if (reportingName != null) 'reportingName': reportingName!,
+    if (type != null) 'type': type!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Used by:
@@ -9235,18 +8831,14 @@ class $ExpirationPolicy {
   /// Optional.
   core.String? ttl;
 
-  $ExpirationPolicy({
-    this.ttl,
-  });
+  $ExpirationPolicy({this.ttl});
 
   $ExpirationPolicy.fromJson(core.Map json_)
-      : this(
-          ttl: json_['ttl'] as core.String?,
-        );
+    : this(ttl: json_['ttl'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ttl != null) 'ttl': ttl!,
-      };
+    if (ttl != null) 'ttl': ttl!,
+  };
 }
 
 /// Used by:
@@ -9264,18 +8856,14 @@ class $ExplainOptions {
   /// Optional.
   core.bool? analyze;
 
-  $ExplainOptions({
-    this.analyze,
-  });
+  $ExplainOptions({this.analyze});
 
   $ExplainOptions.fromJson(core.Map json_)
-      : this(
-          analyze: json_['analyze'] as core.bool?,
-        );
+    : this(analyze: json_['analyze'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analyze != null) 'analyze': analyze!,
-      };
+    if (analyze != null) 'analyze': analyze!,
+  };
 }
 
 /// Used by:
@@ -9286,20 +8874,19 @@ class $Explicit {
   /// The values must be monotonically increasing.
   core.List<core.double>? bounds;
 
-  $Explicit({
-    this.bounds,
-  });
+  $Explicit({this.bounds});
 
   $Explicit.fromJson(core.Map json_)
-      : this(
-          bounds: (json_['bounds'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-        );
+    : this(
+        bounds:
+            (json_['bounds'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bounds != null) 'bounds': bounds!,
-      };
+    if (bounds != null) 'bounds': bounds!,
+  };
 }
 
 /// Used by:
@@ -9316,24 +8903,20 @@ class $Exponential {
   /// Must be greater than 0.
   core.double? scale;
 
-  $Exponential({
-    this.growthFactor,
-    this.numFiniteBuckets,
-    this.scale,
-  });
+  $Exponential({this.growthFactor, this.numFiniteBuckets, this.scale});
 
   $Exponential.fromJson(core.Map json_)
-      : this(
-          growthFactor: (json_['growthFactor'] as core.num?)?.toDouble(),
-          numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
-          scale: (json_['scale'] as core.num?)?.toDouble(),
-        );
+    : this(
+        growthFactor: (json_['growthFactor'] as core.num?)?.toDouble(),
+        numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
+        scale: (json_['scale'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (growthFactor != null) 'growthFactor': growthFactor!,
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
-        if (scale != null) 'scale': scale!,
-      };
+    if (growthFactor != null) 'growthFactor': growthFactor!,
+    if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
+    if (scale != null) 'scale': scale!,
+  };
 }
 
 /// Used by:
@@ -9353,18 +8936,14 @@ class $ExportOptions00 {
   /// - "XML" : Export as XML. Only available for Gemini.
   core.String? exportFormat;
 
-  $ExportOptions00({
-    this.exportFormat,
-  });
+  $ExportOptions00({this.exportFormat});
 
   $ExportOptions00.fromJson(core.Map json_)
-      : this(
-          exportFormat: json_['exportFormat'] as core.String?,
-        );
+    : this(exportFormat: json_['exportFormat'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exportFormat != null) 'exportFormat': exportFormat!,
-      };
+    if (exportFormat != null) 'exportFormat': exportFormat!,
+  };
 }
 
 /// Used by:
@@ -9383,18 +8962,14 @@ class $ExportOptions01 {
   /// - "XML" : Export as XML. Only available for Gemini.
   core.String? exportFormat;
 
-  $ExportOptions01({
-    this.exportFormat,
-  });
+  $ExportOptions01({this.exportFormat});
 
   $ExportOptions01.fromJson(core.Map json_)
-      : this(
-          exportFormat: json_['exportFormat'] as core.String?,
-        );
+    : this(exportFormat: json_['exportFormat'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exportFormat != null) 'exportFormat': exportFormat!,
-      };
+    if (exportFormat != null) 'exportFormat': exportFormat!,
+  };
 }
 
 /// Used by:
@@ -9500,27 +9075,22 @@ class $Expr {
   /// Optional.
   core.String? title;
 
-  $Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
+  $Expr({this.description, this.expression, this.location, this.title});
 
   $Expr.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          expression: json_['expression'] as core.String?,
-          location: json_['location'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        expression: json_['expression'] as core.String?,
+        location: json_['location'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
+    if (description != null) 'description': description!,
+    if (expression != null) 'expression': expression!,
+    if (location != null) 'location': location!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Used by:
@@ -9543,16 +9113,16 @@ class $ExternalProtectionLevelOptions {
   });
 
   $ExternalProtectionLevelOptions.fromJson(core.Map json_)
-      : this(
-          ekmConnectionKeyPath: json_['ekmConnectionKeyPath'] as core.String?,
-          externalKeyUri: json_['externalKeyUri'] as core.String?,
-        );
+    : this(
+        ekmConnectionKeyPath: json_['ekmConnectionKeyPath'] as core.String?,
+        externalKeyUri: json_['externalKeyUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ekmConnectionKeyPath != null)
-          'ekmConnectionKeyPath': ekmConnectionKeyPath!,
-        if (externalKeyUri != null) 'externalKeyUri': externalKeyUri!,
-      };
+    if (ekmConnectionKeyPath != null)
+      'ekmConnectionKeyPath': ekmConnectionKeyPath!,
+    if (externalKeyUri != null) 'externalKeyUri': externalKeyUri!,
+  };
 }
 
 /// Used by:
@@ -9574,24 +9144,20 @@ class $F5BigIpConfig {
   /// Only necessary, if using SNAT.
   core.String? snatPool;
 
-  $F5BigIpConfig({
-    this.address,
-    this.partition,
-    this.snatPool,
-  });
+  $F5BigIpConfig({this.address, this.partition, this.snatPool});
 
   $F5BigIpConfig.fromJson(core.Map json_)
-      : this(
-          address: json_['address'] as core.String?,
-          partition: json_['partition'] as core.String?,
-          snatPool: json_['snatPool'] as core.String?,
-        );
+    : this(
+        address: json_['address'] as core.String?,
+        partition: json_['partition'] as core.String?,
+        snatPool: json_['snatPool'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (partition != null) 'partition': partition!,
-        if (snatPool != null) 'snatPool': snatPool!,
-      };
+    if (address != null) 'address': address!,
+    if (partition != null) 'partition': partition!,
+    if (snatPool != null) 'snatPool': snatPool!,
+  };
 }
 
 /// Used by:
@@ -9602,18 +9168,14 @@ class $FcmOptions {
   /// Label associated with the message's analytics data.
   core.String? analyticsLabel;
 
-  $FcmOptions({
-    this.analyticsLabel,
-  });
+  $FcmOptions({this.analyticsLabel});
 
   $FcmOptions.fromJson(core.Map json_)
-      : this(
-          analyticsLabel: json_['analyticsLabel'] as core.String?,
-        );
+    : this(analyticsLabel: json_['analyticsLabel'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
-      };
+    if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
+  };
 }
 
 /// Used by:
@@ -9627,23 +9189,21 @@ class $FetchGitRefsResponse {
   /// Name of the refs fetched.
   core.List<core.String>? refNames;
 
-  $FetchGitRefsResponse({
-    this.nextPageToken,
-    this.refNames,
-  });
+  $FetchGitRefsResponse({this.nextPageToken, this.refNames});
 
   $FetchGitRefsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          refNames: (json_['refNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        refNames:
+            (json_['refNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (refNames != null) 'refNames': refNames!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (refNames != null) 'refNames': refNames!,
+  };
 }
 
 /// Used by:
@@ -9654,27 +9214,20 @@ class $File {
   core.Map<core.String, core.String>? digest;
   core.String? name;
 
-  $File({
-    this.digest,
-    this.name,
-  });
+  $File({this.digest, this.name});
 
   $File.fromJson(core.Map json_)
-      : this(
-          digest:
-              (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        digest: (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!,
-        if (name != null) 'name': name!,
-      };
+    if (digest != null) 'digest': digest!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -9715,24 +9268,20 @@ class $FilterSplit {
   /// Required.
   core.String? validationFilter;
 
-  $FilterSplit({
-    this.testFilter,
-    this.trainingFilter,
-    this.validationFilter,
-  });
+  $FilterSplit({this.testFilter, this.trainingFilter, this.validationFilter});
 
   $FilterSplit.fromJson(core.Map json_)
-      : this(
-          testFilter: json_['testFilter'] as core.String?,
-          trainingFilter: json_['trainingFilter'] as core.String?,
-          validationFilter: json_['validationFilter'] as core.String?,
-        );
+    : this(
+        testFilter: json_['testFilter'] as core.String?,
+        trainingFilter: json_['trainingFilter'] as core.String?,
+        validationFilter: json_['validationFilter'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (testFilter != null) 'testFilter': testFilter!,
-        if (trainingFilter != null) 'trainingFilter': trainingFilter!,
-        if (validationFilter != null) 'validationFilter': validationFilter!,
-      };
+    if (testFilter != null) 'testFilter': testFilter!,
+    if (trainingFilter != null) 'trainingFilter': trainingFilter!,
+    if (validationFilter != null) 'validationFilter': validationFilter!,
+  };
 }
 
 /// Used by:
@@ -9757,26 +9306,23 @@ class $Fingerprint {
   /// Output only.
   core.String? v2Name;
 
-  $Fingerprint({
-    this.v1Name,
-    this.v2Blob,
-    this.v2Name,
-  });
+  $Fingerprint({this.v1Name, this.v2Blob, this.v2Name});
 
   $Fingerprint.fromJson(core.Map json_)
-      : this(
-          v1Name: json_['v1Name'] as core.String?,
-          v2Blob: (json_['v2Blob'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          v2Name: json_['v2Name'] as core.String?,
-        );
+    : this(
+        v1Name: json_['v1Name'] as core.String?,
+        v2Blob:
+            (json_['v2Blob'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        v2Name: json_['v2Name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (v1Name != null) 'v1Name': v1Name!,
-        if (v2Blob != null) 'v2Blob': v2Blob!,
-        if (v2Name != null) 'v2Name': v2Name!,
-      };
+    if (v1Name != null) 'v1Name': v1Name!,
+    if (v2Blob != null) 'v2Blob': v2Blob!,
+    if (v2Name != null) 'v2Name': v2Name!,
+  };
 }
 
 /// Used by:
@@ -9794,18 +9340,14 @@ class $FixedBidStrategy {
   /// currency.
   core.String? bidAmountMicros;
 
-  $FixedBidStrategy({
-    this.bidAmountMicros,
-  });
+  $FixedBidStrategy({this.bidAmountMicros});
 
   $FixedBidStrategy.fromJson(core.Map json_)
-      : this(
-          bidAmountMicros: json_['bidAmountMicros'] as core.String?,
-        );
+    : this(bidAmountMicros: json_['bidAmountMicros'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bidAmountMicros != null) 'bidAmountMicros': bidAmountMicros!,
-      };
+    if (bidAmountMicros != null) 'bidAmountMicros': bidAmountMicros!,
+  };
 }
 
 /// Used by:
@@ -9820,21 +9362,18 @@ class $FixedOrPercent {
   /// multiplied by a reference value.
   core.int? percent;
 
-  $FixedOrPercent({
-    this.fixed,
-    this.percent,
-  });
+  $FixedOrPercent({this.fixed, this.percent});
 
   $FixedOrPercent.fromJson(core.Map json_)
-      : this(
-          fixed: json_['fixed'] as core.int?,
-          percent: json_['percent'] as core.int?,
-        );
+    : this(
+        fixed: json_['fixed'] as core.int?,
+        percent: json_['percent'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fixed != null) 'fixed': fixed!,
-        if (percent != null) 'percent': percent!,
-      };
+    if (fixed != null) 'fixed': fixed!,
+    if (percent != null) 'percent': percent!,
+  };
 }
 
 /// Used by:
@@ -9847,18 +9386,14 @@ class $Format {
   /// Optional.
   core.String? schemaDefinition;
 
-  $Format({
-    this.schemaDefinition,
-  });
+  $Format({this.schemaDefinition});
 
   $Format.fromJson(core.Map json_)
-      : this(
-          schemaDefinition: json_['schemaDefinition'] as core.String?,
-        );
+    : this(schemaDefinition: json_['schemaDefinition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (schemaDefinition != null) 'schemaDefinition': schemaDefinition!,
-      };
+    if (schemaDefinition != null) 'schemaDefinition': schemaDefinition!,
+  };
 }
 
 /// Used by:
@@ -9898,21 +9433,21 @@ class $ForwardSshTunnelConnectivity {
   });
 
   $ForwardSshTunnelConnectivity.fromJson(core.Map json_)
-      : this(
-          hostname: json_['hostname'] as core.String?,
-          password: json_['password'] as core.String?,
-          port: json_['port'] as core.int?,
-          privateKey: json_['privateKey'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        hostname: json_['hostname'] as core.String?,
+        password: json_['password'] as core.String?,
+        port: json_['port'] as core.int?,
+        privateKey: json_['privateKey'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hostname != null) 'hostname': hostname!,
-        if (password != null) 'password': password!,
-        if (port != null) 'port': port!,
-        if (privateKey != null) 'privateKey': privateKey!,
-        if (username != null) 'username': username!,
-      };
+    if (hostname != null) 'hostname': hostname!,
+    if (password != null) 'password': password!,
+    if (port != null) 'port': port!,
+    if (privateKey != null) 'privateKey': privateKey!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// Used by:
@@ -9936,20 +9471,18 @@ class $FractionSplit {
   });
 
   $FractionSplit.fromJson(core.Map json_)
-      : this(
-          testFraction: (json_['testFraction'] as core.num?)?.toDouble(),
-          trainingFraction:
-              (json_['trainingFraction'] as core.num?)?.toDouble(),
-          validationFraction:
-              (json_['validationFraction'] as core.num?)?.toDouble(),
-        );
+    : this(
+        testFraction: (json_['testFraction'] as core.num?)?.toDouble(),
+        trainingFraction: (json_['trainingFraction'] as core.num?)?.toDouble(),
+        validationFraction:
+            (json_['validationFraction'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (testFraction != null) 'testFraction': testFraction!,
-        if (trainingFraction != null) 'trainingFraction': trainingFraction!,
-        if (validationFraction != null)
-          'validationFraction': validationFraction!,
-      };
+    if (testFraction != null) 'testFraction': testFraction!,
+    if (trainingFraction != null) 'trainingFraction': trainingFraction!,
+    if (validationFraction != null) 'validationFraction': validationFraction!,
+  };
 }
 
 /// Used by:
@@ -10018,21 +9551,21 @@ class $FrequencyCap {
   });
 
   $FrequencyCap.fromJson(core.Map json_)
-      : this(
-          maxImpressions: json_['maxImpressions'] as core.int?,
-          maxViews: json_['maxViews'] as core.int?,
-          timeUnit: json_['timeUnit'] as core.String?,
-          timeUnitCount: json_['timeUnitCount'] as core.int?,
-          unlimited: json_['unlimited'] as core.bool?,
-        );
+    : this(
+        maxImpressions: json_['maxImpressions'] as core.int?,
+        maxViews: json_['maxViews'] as core.int?,
+        timeUnit: json_['timeUnit'] as core.String?,
+        timeUnitCount: json_['timeUnitCount'] as core.int?,
+        unlimited: json_['unlimited'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxImpressions != null) 'maxImpressions': maxImpressions!,
-        if (maxViews != null) 'maxViews': maxViews!,
-        if (timeUnit != null) 'timeUnit': timeUnit!,
-        if (timeUnitCount != null) 'timeUnitCount': timeUnitCount!,
-        if (unlimited != null) 'unlimited': unlimited!,
-      };
+    if (maxImpressions != null) 'maxImpressions': maxImpressions!,
+    if (maxViews != null) 'maxViews': maxViews!,
+    if (timeUnit != null) 'timeUnit': timeUnit!,
+    if (timeUnitCount != null) 'timeUnitCount': timeUnitCount!,
+    if (unlimited != null) 'unlimited': unlimited!,
+  };
 }
 
 /// Used by:
@@ -10049,30 +9582,29 @@ class $Gcloud {
   /// Steps to resolve violation via gcloud cli
   core.List<core.String>? steps;
 
-  $Gcloud({
-    this.additionalLinks,
-    this.gcloudCommands,
-    this.steps,
-  });
+  $Gcloud({this.additionalLinks, this.gcloudCommands, this.steps});
 
   $Gcloud.fromJson(core.Map json_)
-      : this(
-          additionalLinks: (json_['additionalLinks'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          gcloudCommands: (json_['gcloudCommands'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          steps: (json_['steps'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        additionalLinks:
+            (json_['additionalLinks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        gcloudCommands:
+            (json_['gcloudCommands'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        steps:
+            (json_['steps'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalLinks != null) 'additionalLinks': additionalLinks!,
-        if (gcloudCommands != null) 'gcloudCommands': gcloudCommands!,
-        if (steps != null) 'steps': steps!,
-      };
+    if (additionalLinks != null) 'additionalLinks': additionalLinks!,
+    if (gcloudCommands != null) 'gcloudCommands': gcloudCommands!,
+    if (steps != null) 'steps': steps!,
+  };
 }
 
 /// Used by:
@@ -10087,18 +9619,13 @@ class $GcsBucket {
   /// Required.
   core.String? uri;
 
-  $GcsBucket({
-    this.uri,
-  });
+  $GcsBucket({this.uri});
 
-  $GcsBucket.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+  $GcsBucket.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Used by:
@@ -10121,18 +9648,13 @@ class $GcsSource {
   /// are expected to contain content only, no metadata.
   core.String? uri;
 
-  $GcsSource({
-    this.uri,
-  });
+  $GcsSource({this.uri});
 
-  $GcsSource.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+  $GcsSource.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Used by:
@@ -10153,18 +9675,14 @@ class $GenderAssignedTargetingOptionDetails {
   /// - "GENDER_UNKNOWN" : The audience gender is unknown.
   core.String? gender;
 
-  $GenderAssignedTargetingOptionDetails({
-    this.gender,
-  });
+  $GenderAssignedTargetingOptionDetails({this.gender});
 
   $GenderAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          gender: json_['gender'] as core.String?,
-        );
+    : this(gender: json_['gender'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gender != null) 'gender': gender!,
-      };
+    if (gender != null) 'gender': gender!,
+  };
 }
 
 /// Used by:
@@ -10185,18 +9703,14 @@ class $GenderTargetingOptionDetails {
   /// - "GENDER_UNKNOWN" : The audience gender is unknown.
   core.String? gender;
 
-  $GenderTargetingOptionDetails({
-    this.gender,
-  });
+  $GenderTargetingOptionDetails({this.gender});
 
   $GenderTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          gender: json_['gender'] as core.String?,
-        );
+    : this(gender: json_['gender'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gender != null) 'gender': gender!,
-      };
+    if (gender != null) 'gender': gender!,
+  };
 }
 
 /// Used by:
@@ -10208,18 +9722,14 @@ class $GenerateDownloadUrlResponse {
   /// function source code download.
   core.String? downloadUrl;
 
-  $GenerateDownloadUrlResponse({
-    this.downloadUrl,
-  });
+  $GenerateDownloadUrlResponse({this.downloadUrl});
 
   $GenerateDownloadUrlResponse.fromJson(core.Map json_)
-      : this(
-          downloadUrl: json_['downloadUrl'] as core.String?,
-        );
+    : this(downloadUrl: json_['downloadUrl'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (downloadUrl != null) 'downloadUrl': downloadUrl!,
-      };
+    if (downloadUrl != null) 'downloadUrl': downloadUrl!,
+  };
 }
 
 /// Used by:
@@ -10232,18 +9742,14 @@ class $GenerateEnterpriseUpgradeUrlResponse {
   /// The page can't be rendered in an iframe.
   core.String? url;
 
-  $GenerateEnterpriseUpgradeUrlResponse({
-    this.url,
-  });
+  $GenerateEnterpriseUpgradeUrlResponse({this.url});
 
   $GenerateEnterpriseUpgradeUrlResponse.fromJson(core.Map json_)
-      : this(
-          url: json_['url'] as core.String?,
-        );
+    : this(url: json_['url'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (url != null) 'url': url!,
-      };
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Used by:
@@ -10331,19 +9837,19 @@ class $GeoRegionAssignedTargetingOptionDetails {
   });
 
   $GeoRegionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          geoRegionType: json_['geoRegionType'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        geoRegionType: json_['geoRegionType'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (geoRegionType != null) 'geoRegionType': geoRegionType!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (geoRegionType != null) 'geoRegionType': geoRegionType!,
+    if (negative != null) 'negative': negative!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -10357,18 +9863,14 @@ class $GeoRegionSearchTerms {
   /// The query can be a prefix, e.g. "New Yor", "Seattle", "USA", etc.
   core.String? geoRegionQuery;
 
-  $GeoRegionSearchTerms({
-    this.geoRegionQuery,
-  });
+  $GeoRegionSearchTerms({this.geoRegionQuery});
 
   $GeoRegionSearchTerms.fromJson(core.Map json_)
-      : this(
-          geoRegionQuery: json_['geoRegionQuery'] as core.String?,
-        );
+    : this(geoRegionQuery: json_['geoRegionQuery'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (geoRegionQuery != null) 'geoRegionQuery': geoRegionQuery!,
-      };
+    if (geoRegionQuery != null) 'geoRegionQuery': geoRegionQuery!,
+  };
 }
 
 /// Used by:
@@ -10439,21 +9941,18 @@ class $GeoRegionTargetingOptionDetails {
   /// colloquial area.
   core.String? geoRegionType;
 
-  $GeoRegionTargetingOptionDetails({
-    this.displayName,
-    this.geoRegionType,
-  });
+  $GeoRegionTargetingOptionDetails({this.displayName, this.geoRegionType});
 
   $GeoRegionTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          geoRegionType: json_['geoRegionType'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        geoRegionType: json_['geoRegionType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (geoRegionType != null) 'geoRegionType': geoRegionType!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (geoRegionType != null) 'geoRegionType': geoRegionType!,
+  };
 }
 
 /// Used by:
@@ -10494,19 +9993,17 @@ class $GetPolicyOptions00 {
   /// Optional.
   core.int? requestedPolicyVersion;
 
-  $GetPolicyOptions00({
-    this.requestedPolicyVersion,
-  });
+  $GetPolicyOptions00({this.requestedPolicyVersion});
 
   $GetPolicyOptions00.fromJson(core.Map json_)
-      : this(
-          requestedPolicyVersion: json_['requestedPolicyVersion'] as core.int?,
-        );
+    : this(
+        requestedPolicyVersion: json_['requestedPolicyVersion'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion!,
-      };
+    if (requestedPolicyVersion != null)
+      'requestedPolicyVersion': requestedPolicyVersion!,
+  };
 }
 
 /// Used by:
@@ -10530,19 +10027,17 @@ class $GetPolicyOptions01 {
   /// Optional.
   core.int? requestedPolicyVersion;
 
-  $GetPolicyOptions01({
-    this.requestedPolicyVersion,
-  });
+  $GetPolicyOptions01({this.requestedPolicyVersion});
 
   $GetPolicyOptions01.fromJson(core.Map json_)
-      : this(
-          requestedPolicyVersion: json_['requestedPolicyVersion'] as core.int?,
-        );
+    : this(
+        requestedPolicyVersion: json_['requestedPolicyVersion'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion!,
-      };
+    if (requestedPolicyVersion != null)
+      'requestedPolicyVersion': requestedPolicyVersion!,
+  };
 }
 
 /// Used by:
@@ -10556,21 +10051,18 @@ class $GitSourceContext {
   /// Git repository URL.
   core.String? url;
 
-  $GitSourceContext({
-    this.revisionId,
-    this.url,
-  });
+  $GitSourceContext({this.revisionId, this.url});
 
   $GitSourceContext.fromJson(core.Map json_)
-      : this(
-          revisionId: json_['revisionId'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        revisionId: json_['revisionId'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (url != null) 'url': url!,
-      };
+    if (revisionId != null) 'revisionId': revisionId!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Used by:
@@ -10605,19 +10097,19 @@ class $GlossaryConfig {
   });
 
   $GlossaryConfig.fromJson(core.Map json_)
-      : this(
-          contextualTranslationEnabled:
-              json_['contextualTranslationEnabled'] as core.bool?,
-          glossary: json_['glossary'] as core.String?,
-          ignoreCase: json_['ignoreCase'] as core.bool?,
-        );
+    : this(
+        contextualTranslationEnabled:
+            json_['contextualTranslationEnabled'] as core.bool?,
+        glossary: json_['glossary'] as core.String?,
+        ignoreCase: json_['ignoreCase'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contextualTranslationEnabled != null)
-          'contextualTranslationEnabled': contextualTranslationEnabled!,
-        if (glossary != null) 'glossary': glossary!,
-        if (ignoreCase != null) 'ignoreCase': ignoreCase!,
-      };
+    if (contextualTranslationEnabled != null)
+      'contextualTranslationEnabled': contextualTranslationEnabled!,
+    if (glossary != null) 'glossary': glossary!,
+    if (ignoreCase != null) 'ignoreCase': ignoreCase!,
+  };
 }
 
 /// Used by:
@@ -10672,20 +10164,19 @@ class $GoogleAudience {
   });
 
   $GoogleAudience.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          googleAudienceId: json_['googleAudienceId'] as core.String?,
-          googleAudienceType: json_['googleAudienceType'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        googleAudienceId: json_['googleAudienceId'] as core.String?,
+        googleAudienceType: json_['googleAudienceType'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (googleAudienceId != null) 'googleAudienceId': googleAudienceId!,
-        if (googleAudienceType != null)
-          'googleAudienceType': googleAudienceType!,
-        if (name != null) 'name': name!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (googleAudienceId != null) 'googleAudienceId': googleAudienceId!,
+    if (googleAudienceType != null) 'googleAudienceType': googleAudienceType!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -10701,18 +10192,14 @@ class $GoogleAudienceTargetingSetting {
   /// Required.
   core.String? googleAudienceId;
 
-  $GoogleAudienceTargetingSetting({
-    this.googleAudienceId,
-  });
+  $GoogleAudienceTargetingSetting({this.googleAudienceId});
 
   $GoogleAudienceTargetingSetting.fromJson(core.Map json_)
-      : this(
-          googleAudienceId: json_['googleAudienceId'] as core.String?,
-        );
+    : this(googleAudienceId: json_['googleAudienceId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (googleAudienceId != null) 'googleAudienceId': googleAudienceId!,
-      };
+    if (googleAudienceId != null) 'googleAudienceId': googleAudienceId!,
+  };
 }
 
 /// Used by:
@@ -10752,17 +10239,17 @@ class $GoogleCloudDocumentaiV1Barcode {
   });
 
   $GoogleCloudDocumentaiV1Barcode.fromJson(core.Map json_)
-      : this(
-          format: json_['format'] as core.String?,
-          rawValue: json_['rawValue'] as core.String?,
-          valueFormat: json_['valueFormat'] as core.String?,
-        );
+    : this(
+        format: json_['format'] as core.String?,
+        rawValue: json_['rawValue'] as core.String?,
+        valueFormat: json_['valueFormat'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (format != null) 'format': format!,
-        if (rawValue != null) 'rawValue': rawValue!,
-        if (valueFormat != null) 'valueFormat': valueFormat!,
-      };
+    if (format != null) 'format': format!,
+    if (rawValue != null) 'rawValue': rawValue!,
+    if (valueFormat != null) 'valueFormat': valueFormat!,
+  };
 }
 
 /// Used by:
@@ -10782,16 +10269,16 @@ class $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan {
   });
 
   $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
-      core.Map json_)
-      : this(
-          pageEnd: json_['pageEnd'] as core.int?,
-          pageStart: json_['pageStart'] as core.int?,
-        );
+    core.Map json_,
+  ) : this(
+        pageEnd: json_['pageEnd'] as core.int?,
+        pageStart: json_['pageStart'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pageEnd != null) 'pageEnd': pageEnd!,
-        if (pageStart != null) 'pageStart': pageStart!,
-      };
+    if (pageEnd != null) 'pageEnd': pageEnd!,
+    if (pageStart != null) 'pageStart': pageStart!,
+  };
 }
 
 /// Used by:
@@ -10811,16 +10298,16 @@ class $GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPag
   });
 
   $GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan.fromJson(
-      core.Map json_)
-      : this(
-          pageEnd: json_['pageEnd'] as core.int?,
-          pageStart: json_['pageStart'] as core.int?,
-        );
+    core.Map json_,
+  ) : this(
+        pageEnd: json_['pageEnd'] as core.int?,
+        pageStart: json_['pageStart'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pageEnd != null) 'pageEnd': pageEnd!,
-        if (pageStart != null) 'pageStart': pageStart!,
-      };
+    if (pageEnd != null) 'pageEnd': pageEnd!,
+    if (pageStart != null) 'pageStart': pageStart!,
+  };
 }
 
 /// Used by:
@@ -10844,17 +10331,17 @@ class $GoogleCloudDocumentaiV1DocumentEntityRelation {
   });
 
   $GoogleCloudDocumentaiV1DocumentEntityRelation.fromJson(core.Map json_)
-      : this(
-          objectId: json_['objectId'] as core.String?,
-          relation: json_['relation'] as core.String?,
-          subjectId: json_['subjectId'] as core.String?,
-        );
+    : this(
+        objectId: json_['objectId'] as core.String?,
+        relation: json_['relation'] as core.String?,
+        subjectId: json_['subjectId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectId != null) 'objectId': objectId!,
-        if (relation != null) 'relation': relation!,
-        if (subjectId != null) 'subjectId': subjectId!,
-      };
+    if (objectId != null) 'objectId': objectId!,
+    if (relation != null) 'relation': relation!,
+    if (subjectId != null) 'subjectId': subjectId!,
+  };
 }
 
 /// Used by:
@@ -10878,15 +10365,15 @@ class $GoogleCloudDocumentaiV1DocumentPageDetectedLanguage {
   });
 
   $GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(core.Map json_)
-      : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          languageCode: json_['languageCode'] as core.String?,
-        );
+    : this(
+        confidence: (json_['confidence'] as core.num?)?.toDouble(),
+        languageCode: json_['languageCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
+    if (confidence != null) 'confidence': confidence!,
+    if (languageCode != null) 'languageCode': languageCode!,
+  };
 }
 
 /// Used by:
@@ -10910,17 +10397,17 @@ class $GoogleCloudDocumentaiV1DocumentPageDimension {
   });
 
   $GoogleCloudDocumentaiV1DocumentPageDimension.fromJson(core.Map json_)
-      : this(
-          height: (json_['height'] as core.num?)?.toDouble(),
-          unit: json_['unit'] as core.String?,
-          width: (json_['width'] as core.num?)?.toDouble(),
-        );
+    : this(
+        height: (json_['height'] as core.num?)?.toDouble(),
+        unit: json_['unit'] as core.String?,
+        width: (json_['width'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (unit != null) 'unit': unit!,
-        if (width != null) 'width': width!,
-      };
+    if (height != null) 'height': height!,
+    if (unit != null) 'unit': unit!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// Used by:
@@ -10933,8 +10420,10 @@ class $GoogleCloudDocumentaiV1DocumentPageImage {
   core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> bytes_) {
-    content =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    content = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Height of the image in pixels.
@@ -10956,19 +10445,19 @@ class $GoogleCloudDocumentaiV1DocumentPageImage {
   });
 
   $GoogleCloudDocumentaiV1DocumentPageImage.fromJson(core.Map json_)
-      : this(
-          content: json_['content'] as core.String?,
-          height: json_['height'] as core.int?,
-          mimeType: json_['mimeType'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        content: json_['content'] as core.String?,
+        height: json_['height'] as core.int?,
+        mimeType: json_['mimeType'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (height != null) 'height': height!,
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (width != null) 'width': width!,
-      };
+    if (content != null) 'content': content!,
+    if (height != null) 'height': height!,
+    if (mimeType != null) 'mimeType': mimeType!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// Used by:
@@ -10996,16 +10485,16 @@ class $GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect {
   });
 
   $GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromJson(
-      core.Map json_)
-      : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          type: json_['type'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        confidence: (json_['confidence'] as core.num?)?.toDouble(),
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (type != null) 'type': type!,
-      };
+    if (confidence != null) 'confidence': confidence!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Used by:
@@ -11021,8 +10510,10 @@ class $GoogleCloudDocumentaiV1DocumentPageMatrix {
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> bytes_) {
-    data =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Number of rows in the matrix.
@@ -11043,19 +10534,19 @@ class $GoogleCloudDocumentaiV1DocumentPageMatrix {
   });
 
   $GoogleCloudDocumentaiV1DocumentPageMatrix.fromJson(core.Map json_)
-      : this(
-          cols: json_['cols'] as core.int?,
-          data: json_['data'] as core.String?,
-          rows: json_['rows'] as core.int?,
-          type: json_['type'] as core.int?,
-        );
+    : this(
+        cols: json_['cols'] as core.int?,
+        data: json_['data'] as core.String?,
+        rows: json_['rows'] as core.int?,
+        type: json_['type'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cols != null) 'cols': cols!,
-        if (data != null) 'data': data!,
-        if (rows != null) 'rows': rows!,
-        if (type != null) 'type': type!,
-      };
+    if (cols != null) 'cols': cols!,
+    if (data != null) 'data': data!,
+    if (rows != null) 'rows': rows!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Used by:
@@ -11072,19 +10563,15 @@ class $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak {
   /// lines.
   core.String? type;
 
-  $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak({
-    this.type,
-  });
+  $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak({this.type});
 
   $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromJson(
-      core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(type: json_['type'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-      };
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Used by:
@@ -11114,17 +10601,17 @@ class $GoogleCloudDocumentaiV1DocumentProvenanceParent {
   });
 
   $GoogleCloudDocumentaiV1DocumentProvenanceParent.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.int?,
-          index: json_['index'] as core.int?,
-          revision: json_['revision'] as core.int?,
-        );
+    : this(
+        id: json_['id'] as core.int?,
+        index: json_['index'] as core.int?,
+        revision: json_['revision'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (index != null) 'index': index!,
-        if (revision != null) 'revision': revision!,
-      };
+    if (id != null) 'id': id!,
+    if (index != null) 'index': index!,
+    if (revision != null) 'revision': revision!,
+  };
 }
 
 /// Used by:
@@ -11148,15 +10635,15 @@ class $GoogleCloudDocumentaiV1DocumentRevisionHumanReview {
   });
 
   $GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromJson(core.Map json_)
-      : this(
-          state: json_['state'] as core.String?,
-          stateMessage: json_['stateMessage'] as core.String?,
-        );
+    : this(
+        state: json_['state'] as core.String?,
+        stateMessage: json_['stateMessage'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (state != null) 'state': state!,
-        if (stateMessage != null) 'stateMessage': stateMessage!,
-      };
+    if (state != null) 'state': state!,
+    if (stateMessage != null) 'stateMessage': stateMessage!,
+  };
 }
 
 /// Used by:
@@ -11181,17 +10668,17 @@ class $GoogleCloudDocumentaiV1DocumentShardInfo {
   });
 
   $GoogleCloudDocumentaiV1DocumentShardInfo.fromJson(core.Map json_)
-      : this(
-          shardCount: json_['shardCount'] as core.String?,
-          shardIndex: json_['shardIndex'] as core.String?,
-          textOffset: json_['textOffset'] as core.String?,
-        );
+    : this(
+        shardCount: json_['shardCount'] as core.String?,
+        shardIndex: json_['shardIndex'] as core.String?,
+        textOffset: json_['textOffset'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (shardCount != null) 'shardCount': shardCount!,
-        if (shardIndex != null) 'shardIndex': shardIndex!,
-        if (textOffset != null) 'textOffset': textOffset!,
-      };
+    if (shardCount != null) 'shardCount': shardCount!,
+    if (shardIndex != null) 'shardIndex': shardIndex!,
+    if (textOffset != null) 'textOffset': textOffset!,
+  };
 }
 
 /// Used by:
@@ -11207,21 +10694,18 @@ class $GoogleCloudDocumentaiV1DocumentStyleFontSize {
   /// Follows CSS naming (such as `in`, `px`, and `pt`).
   core.String? unit;
 
-  $GoogleCloudDocumentaiV1DocumentStyleFontSize({
-    this.size,
-    this.unit,
-  });
+  $GoogleCloudDocumentaiV1DocumentStyleFontSize({this.size, this.unit});
 
   $GoogleCloudDocumentaiV1DocumentStyleFontSize.fromJson(core.Map json_)
-      : this(
-          size: (json_['size'] as core.num?)?.toDouble(),
-          unit: json_['unit'] as core.String?,
-        );
+    : this(
+        size: (json_['size'] as core.num?)?.toDouble(),
+        unit: json_['unit'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (size != null) 'size': size!,
-        if (unit != null) 'unit': unit!,
-      };
+    if (size != null) 'size': size!,
+    if (unit != null) 'unit': unit!,
+  };
 }
 
 /// Used by:
@@ -11241,15 +10725,15 @@ class $GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment {
   });
 
   $GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromJson(core.Map json_)
-      : this(
-          endIndex: json_['endIndex'] as core.String?,
-          startIndex: json_['startIndex'] as core.String?,
-        );
+    : this(
+        endIndex: json_['endIndex'] as core.String?,
+        startIndex: json_['startIndex'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex!,
-        if (startIndex != null) 'startIndex': startIndex!,
-      };
+    if (endIndex != null) 'endIndex': endIndex!,
+    if (startIndex != null) 'startIndex': startIndex!,
+  };
 }
 
 /// Used by:
@@ -11263,21 +10747,18 @@ class $GoogleCloudDocumentaiV1NormalizedVertex {
   /// Y coordinate (starts from the top of the image).
   core.double? y;
 
-  $GoogleCloudDocumentaiV1NormalizedVertex({
-    this.x,
-    this.y,
-  });
+  $GoogleCloudDocumentaiV1NormalizedVertex({this.x, this.y});
 
   $GoogleCloudDocumentaiV1NormalizedVertex.fromJson(core.Map json_)
-      : this(
-          x: (json_['x'] as core.num?)?.toDouble(),
-          y: (json_['y'] as core.num?)?.toDouble(),
-        );
+    : this(
+        x: (json_['x'] as core.num?)?.toDouble(),
+        y: (json_['y'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
+    if (x != null) 'x': x!,
+    if (y != null) 'y': y!,
+  };
 }
 
 /// Used by:
@@ -11291,21 +10772,15 @@ class $GoogleCloudDocumentaiV1Vertex {
   /// Y coordinate (starts from the top of the image).
   core.int? y;
 
-  $GoogleCloudDocumentaiV1Vertex({
-    this.x,
-    this.y,
-  });
+  $GoogleCloudDocumentaiV1Vertex({this.x, this.y});
 
   $GoogleCloudDocumentaiV1Vertex.fromJson(core.Map json_)
-      : this(
-          x: json_['x'] as core.int?,
-          y: json_['y'] as core.int?,
-        );
+    : this(x: json_['x'] as core.int?, y: json_['y'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
+    if (x != null) 'x': x!,
+    if (y != null) 'y': y!,
+  };
 }
 
 /// Used by:
@@ -11382,31 +10857,33 @@ class $GoogleCloudOrgpolicyV2CustomConstraint {
   });
 
   $GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
-      : this(
-          actionType: json_['actionType'] as core.String?,
-          condition: json_['condition'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          methodTypes: (json_['methodTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          resourceTypes: (json_['resourceTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        actionType: json_['actionType'] as core.String?,
+        condition: json_['condition'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        methodTypes:
+            (json_['methodTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        resourceTypes:
+            (json_['resourceTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionType != null) 'actionType': actionType!,
-        if (condition != null) 'condition': condition!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (methodTypes != null) 'methodTypes': methodTypes!,
-        if (name != null) 'name': name!,
-        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (actionType != null) 'actionType': actionType!,
+    if (condition != null) 'condition': condition!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (methodTypes != null) 'methodTypes': methodTypes!,
+    if (name != null) 'name': name!,
+    if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Used by:
@@ -11423,21 +10900,18 @@ class $GoogleTypeLocalizedText {
   /// Localized string in the language corresponding to language_code below.
   core.String? text;
 
-  $GoogleTypeLocalizedText({
-    this.languageCode,
-    this.text,
-  });
+  $GoogleTypeLocalizedText({this.languageCode, this.text});
 
   $GoogleTypeLocalizedText.fromJson(core.Map json_)
-      : this(
-          languageCode: json_['languageCode'] as core.String?,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        languageCode: json_['languageCode'] as core.String?,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (text != null) 'text': text!,
-      };
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Used by:
@@ -11456,17 +10930,17 @@ class $GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
   });
 
   $GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromJson(core.Map json_)
-      : this(
-          environment: json_['environment'] as core.bool?,
-          materials: json_['materials'] as core.bool?,
-          parameters: json_['parameters'] as core.bool?,
-        );
+    : this(
+        environment: json_['environment'] as core.bool?,
+        materials: json_['materials'] as core.bool?,
+        parameters: json_['parameters'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (environment != null) 'environment': environment!,
-        if (materials != null) 'materials': materials!,
-        if (parameters != null) 'parameters': parameters!,
-      };
+    if (environment != null) 'environment': environment!,
+    if (materials != null) 'materials': materials!,
+    if (parameters != null) 'parameters': parameters!,
+  };
 }
 
 /// Used by:
@@ -11485,23 +10959,19 @@ class $GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
   });
 
   $GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromJson(core.Map json_)
-      : this(
-          digest:
-              (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          entryPoint: json_['entryPoint'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        digest: (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        entryPoint: json_['entryPoint'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!,
-        if (entryPoint != null) 'entryPoint': entryPoint!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (digest != null) 'digest': digest!,
+    if (entryPoint != null) 'entryPoint': entryPoint!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Used by:
@@ -11558,17 +11028,17 @@ class $GuaranteedOrderStatus {
   });
 
   $GuaranteedOrderStatus.fromJson(core.Map json_)
-      : this(
-          configStatus: json_['configStatus'] as core.String?,
-          entityPauseReason: json_['entityPauseReason'] as core.String?,
-          entityStatus: json_['entityStatus'] as core.String?,
-        );
+    : this(
+        configStatus: json_['configStatus'] as core.String?,
+        entityPauseReason: json_['entityPauseReason'] as core.String?,
+        entityStatus: json_['entityStatus'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configStatus != null) 'configStatus': configStatus!,
-        if (entityPauseReason != null) 'entityPauseReason': entityPauseReason!,
-        if (entityStatus != null) 'entityStatus': entityStatus!,
-      };
+    if (configStatus != null) 'configStatus': configStatus!,
+    if (entityPauseReason != null) 'entityPauseReason': entityPauseReason!,
+    if (entityStatus != null) 'entityStatus': entityStatus!,
+  };
 }
 
 /// Used by:
@@ -11585,24 +11055,20 @@ class $GuestAttributesEntry {
   /// Value for the guest attribute entry.
   core.String? value;
 
-  $GuestAttributesEntry({
-    this.key,
-    this.namespace,
-    this.value,
-  });
+  $GuestAttributesEntry({this.key, this.namespace, this.value});
 
   $GuestAttributesEntry.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-          namespace: json_['namespace'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        key: json_['key'] as core.String?,
+        namespace: json_['namespace'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (namespace != null) 'namespace': namespace!,
-        if (value != null) 'value': value!,
-      };
+    if (key != null) 'key': key!,
+    if (namespace != null) 'namespace': namespace!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -11620,25 +11086,22 @@ class $HPAConfig {
   /// Output only.
   core.String? memoryUtilizationThreshold;
 
-  $HPAConfig({
-    this.cpuUtilizationThreshold,
-    this.memoryUtilizationThreshold,
-  });
+  $HPAConfig({this.cpuUtilizationThreshold, this.memoryUtilizationThreshold});
 
   $HPAConfig.fromJson(core.Map json_)
-      : this(
-          cpuUtilizationThreshold:
-              json_['cpuUtilizationThreshold'] as core.String?,
-          memoryUtilizationThreshold:
-              json_['memoryUtilizationThreshold'] as core.String?,
-        );
+    : this(
+        cpuUtilizationThreshold:
+            json_['cpuUtilizationThreshold'] as core.String?,
+        memoryUtilizationThreshold:
+            json_['memoryUtilizationThreshold'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cpuUtilizationThreshold != null)
-          'cpuUtilizationThreshold': cpuUtilizationThreshold!,
-        if (memoryUtilizationThreshold != null)
-          'memoryUtilizationThreshold': memoryUtilizationThreshold!,
-      };
+    if (cpuUtilizationThreshold != null)
+      'cpuUtilizationThreshold': cpuUtilizationThreshold!,
+    if (memoryUtilizationThreshold != null)
+      'memoryUtilizationThreshold': memoryUtilizationThreshold!,
+  };
 }
 
 /// Used by:
@@ -11649,18 +11112,14 @@ class $Handler {
   /// Path to the script from the application root directory.
   core.String? scriptPath;
 
-  $Handler({
-    this.scriptPath,
-  });
+  $Handler({this.scriptPath});
 
   $Handler.fromJson(core.Map json_)
-      : this(
-          scriptPath: json_['scriptPath'] as core.String?,
-        );
+    : this(scriptPath: json_['scriptPath'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (scriptPath != null) 'scriptPath': scriptPath!,
-      };
+    if (scriptPath != null) 'scriptPath': scriptPath!,
+  };
 }
 
 /// Used by:
@@ -11680,25 +11139,24 @@ class $Hash {
   core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
 
   set valueAsBytes(core.List<core.int> bytes_) {
-    value =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    value = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  $Hash({
-    this.type,
-    this.value,
-  });
+  $Hash({this.type, this.value});
 
   $Hash.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        type: json_['type'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (value != null) 'value': value!,
-      };
+    if (type != null) 'type': type!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -11712,21 +11170,18 @@ class $Header {
   /// Header value.
   core.String? value;
 
-  $Header({
-    this.name,
-    this.value,
-  });
+  $Header({this.name, this.value});
 
   $Header.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
+    if (name != null) 'name': name!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -11758,18 +11213,14 @@ class $HouseholdIncomeAssignedTargetingOptionDetails {
   /// U.S. household incomes.
   core.String? householdIncome;
 
-  $HouseholdIncomeAssignedTargetingOptionDetails({
-    this.householdIncome,
-  });
+  $HouseholdIncomeAssignedTargetingOptionDetails({this.householdIncome});
 
   $HouseholdIncomeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          householdIncome: json_['householdIncome'] as core.String?,
-        );
+    : this(householdIncome: json_['householdIncome'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (householdIncome != null) 'householdIncome': householdIncome!,
-      };
+    if (householdIncome != null) 'householdIncome': householdIncome!,
+  };
 }
 
 /// Used by:
@@ -11801,18 +11252,14 @@ class $HouseholdIncomeTargetingOptionDetails {
   /// U.S. household incomes.
   core.String? householdIncome;
 
-  $HouseholdIncomeTargetingOptionDetails({
-    this.householdIncome,
-  });
+  $HouseholdIncomeTargetingOptionDetails({this.householdIncome});
 
   $HouseholdIncomeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          householdIncome: json_['householdIncome'] as core.String?,
-        );
+    : this(householdIncome: json_['householdIncome'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (householdIncome != null) 'householdIncome': householdIncome!,
-      };
+    if (householdIncome != null) 'householdIncome': householdIncome!,
+  };
 }
 
 /// Used by:
@@ -11842,8 +11289,10 @@ class $HttpBody {
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> bytes_) {
-    data =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Application specific response metadata.
@@ -11854,26 +11303,23 @@ class $HttpBody {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? extensions;
 
-  $HttpBody({
-    this.contentType,
-    this.data,
-    this.extensions,
-  });
+  $HttpBody({this.contentType, this.data, this.extensions});
 
   $HttpBody.fromJson(core.Map json_)
-      : this(
-          contentType: json_['contentType'] as core.String?,
-          data: json_['data'] as core.String?,
-          extensions: (json_['extensions'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-        );
+    : this(
+        contentType: json_['contentType'] as core.String?,
+        data: json_['data'] as core.String?,
+        extensions:
+            (json_['extensions'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentType != null) 'contentType': contentType!,
-        if (data != null) 'data': data!,
-        if (extensions != null) 'extensions': extensions!,
-      };
+    if (contentType != null) 'contentType': contentType!,
+    if (data != null) 'data': data!,
+    if (extensions != null) 'extensions': extensions!,
+  };
 }
 
 /// Used by:
@@ -11945,43 +11391,51 @@ class $IdFilter {
   });
 
   $IdFilter.fromJson(core.Map json_)
-      : this(
-          adGroupAdIds: (json_['adGroupAdIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          adGroupIds: (json_['adGroupIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          adGroupQaIds: (json_['adGroupQaIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          campaignIds: (json_['campaignIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          insertionOrderIds: (json_['insertionOrderIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          lineItemIds: (json_['lineItemIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          lineItemQaIds: (json_['lineItemQaIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          mediaProductIds: (json_['mediaProductIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        adGroupAdIds:
+            (json_['adGroupAdIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        adGroupIds:
+            (json_['adGroupIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        adGroupQaIds:
+            (json_['adGroupQaIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        campaignIds:
+            (json_['campaignIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        insertionOrderIds:
+            (json_['insertionOrderIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        lineItemIds:
+            (json_['lineItemIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        lineItemQaIds:
+            (json_['lineItemQaIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        mediaProductIds:
+            (json_['mediaProductIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adGroupAdIds != null) 'adGroupAdIds': adGroupAdIds!,
-        if (adGroupIds != null) 'adGroupIds': adGroupIds!,
-        if (adGroupQaIds != null) 'adGroupQaIds': adGroupQaIds!,
-        if (campaignIds != null) 'campaignIds': campaignIds!,
-        if (insertionOrderIds != null) 'insertionOrderIds': insertionOrderIds!,
-        if (lineItemIds != null) 'lineItemIds': lineItemIds!,
-        if (lineItemQaIds != null) 'lineItemQaIds': lineItemQaIds!,
-        if (mediaProductIds != null) 'mediaProductIds': mediaProductIds!,
-      };
+    if (adGroupAdIds != null) 'adGroupAdIds': adGroupAdIds!,
+    if (adGroupIds != null) 'adGroupIds': adGroupIds!,
+    if (adGroupQaIds != null) 'adGroupQaIds': adGroupQaIds!,
+    if (campaignIds != null) 'campaignIds': campaignIds!,
+    if (insertionOrderIds != null) 'insertionOrderIds': insertionOrderIds!,
+    if (lineItemIds != null) 'lineItemIds': lineItemIds!,
+    if (lineItemQaIds != null) 'lineItemQaIds': lineItemQaIds!,
+    if (mediaProductIds != null) 'mediaProductIds': mediaProductIds!,
+  };
 }
 
 /// Used by:
@@ -11995,21 +11449,18 @@ class $Identity {
   /// The revision independent identifier of the update.
   core.String? updateId;
 
-  $Identity({
-    this.revision,
-    this.updateId,
-  });
+  $Identity({this.revision, this.updateId});
 
   $Identity.fromJson(core.Map json_)
-      : this(
-          revision: json_['revision'] as core.int?,
-          updateId: json_['updateId'] as core.String?,
-        );
+    : this(
+        revision: json_['revision'] as core.int?,
+        updateId: json_['updateId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (revision != null) 'revision': revision!,
-        if (updateId != null) 'updateId': updateId!,
-      };
+    if (revision != null) 'revision': revision!,
+    if (updateId != null) 'updateId': updateId!,
+  };
 }
 
 /// Used by:
@@ -12034,8 +11485,10 @@ class $IdentityServiceAzureADConfig {
       convert.base64.decode(encryptedClientSecret!);
 
   set encryptedClientSecretAsBytes(core.List<core.int> bytes_) {
-    encryptedClientSecret =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    encryptedClientSecret = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Format of the AzureAD groups that the client wants for auth.
@@ -12067,27 +11520,26 @@ class $IdentityServiceAzureADConfig {
   });
 
   $IdentityServiceAzureADConfig.fromJson(core.Map json_)
-      : this(
-          clientId: json_['clientId'] as core.String?,
-          clientSecret: json_['clientSecret'] as core.String?,
-          encryptedClientSecret: json_['encryptedClientSecret'] as core.String?,
-          groupFormat: json_['groupFormat'] as core.String?,
-          kubectlRedirectUri: json_['kubectlRedirectUri'] as core.String?,
-          tenant: json_['tenant'] as core.String?,
-          userClaim: json_['userClaim'] as core.String?,
-        );
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+        encryptedClientSecret: json_['encryptedClientSecret'] as core.String?,
+        groupFormat: json_['groupFormat'] as core.String?,
+        kubectlRedirectUri: json_['kubectlRedirectUri'] as core.String?,
+        tenant: json_['tenant'] as core.String?,
+        userClaim: json_['userClaim'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientId != null) 'clientId': clientId!,
-        if (clientSecret != null) 'clientSecret': clientSecret!,
-        if (encryptedClientSecret != null)
-          'encryptedClientSecret': encryptedClientSecret!,
-        if (groupFormat != null) 'groupFormat': groupFormat!,
-        if (kubectlRedirectUri != null)
-          'kubectlRedirectUri': kubectlRedirectUri!,
-        if (tenant != null) 'tenant': tenant!,
-        if (userClaim != null) 'userClaim': userClaim!,
-      };
+    if (clientId != null) 'clientId': clientId!,
+    if (clientSecret != null) 'clientSecret': clientSecret!,
+    if (encryptedClientSecret != null)
+      'encryptedClientSecret': encryptedClientSecret!,
+    if (groupFormat != null) 'groupFormat': groupFormat!,
+    if (kubectlRedirectUri != null) 'kubectlRedirectUri': kubectlRedirectUri!,
+    if (tenant != null) 'tenant': tenant!,
+    if (userClaim != null) 'userClaim': userClaim!,
+  };
 }
 
 /// Used by:
@@ -12103,21 +11555,18 @@ class $IdentityServiceDiagnosticInterface {
   /// When reached, requests to the interface would be automatically rejected.
   core.String? expirationTime;
 
-  $IdentityServiceDiagnosticInterface({
-    this.enabled,
-    this.expirationTime,
-  });
+  $IdentityServiceDiagnosticInterface({this.enabled, this.expirationTime});
 
   $IdentityServiceDiagnosticInterface.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-          expirationTime: json_['expirationTime'] as core.String?,
-        );
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        expirationTime: json_['expirationTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-        if (expirationTime != null) 'expirationTime': expirationTime!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+    if (expirationTime != null) 'expirationTime': expirationTime!,
+  };
 }
 
 /// Used by:
@@ -12128,18 +11577,14 @@ class $IdentityServiceGoogleConfig {
   /// Disable automatic configuration of Google Plugin on supported platforms.
   core.bool? disable;
 
-  $IdentityServiceGoogleConfig({
-    this.disable,
-  });
+  $IdentityServiceGoogleConfig({this.disable});
 
   $IdentityServiceGoogleConfig.fromJson(core.Map json_)
-      : this(
-          disable: json_['disable'] as core.bool?,
-        );
+    : this(disable: json_['disable'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disable != null) 'disable': disable!,
-      };
+    if (disable != null) 'disable': disable!,
+  };
 }
 
 /// Used by:
@@ -12171,24 +11616,20 @@ class $IdentityServiceGroupConfig {
   /// Optional.
   core.String? idAttribute;
 
-  $IdentityServiceGroupConfig({
-    this.baseDn,
-    this.filter,
-    this.idAttribute,
-  });
+  $IdentityServiceGroupConfig({this.baseDn, this.filter, this.idAttribute});
 
   $IdentityServiceGroupConfig.fromJson(core.Map json_)
-      : this(
-          baseDn: json_['baseDn'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          idAttribute: json_['idAttribute'] as core.String?,
-        );
+    : this(
+        baseDn: json_['baseDn'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        idAttribute: json_['idAttribute'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (baseDn != null) 'baseDn': baseDn!,
-        if (filter != null) 'filter': filter!,
-        if (idAttribute != null) 'idAttribute': idAttribute!,
-      };
+    if (baseDn != null) 'baseDn': baseDn!,
+    if (filter != null) 'filter': filter!,
+    if (idAttribute != null) 'idAttribute': idAttribute!,
+  };
 }
 
 /// Used by:
@@ -12224,8 +11665,10 @@ class $IdentityServiceOidcConfig {
       convert.base64.decode(encryptedClientSecret!);
 
   set encryptedClientSecretAsBytes(core.List<core.int> bytes_) {
-    encryptedClientSecret =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    encryptedClientSecret = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Comma-separated list of key-value pairs.
@@ -12273,45 +11716,43 @@ class $IdentityServiceOidcConfig {
   });
 
   $IdentityServiceOidcConfig.fromJson(core.Map json_)
-      : this(
-          certificateAuthorityData:
-              json_['certificateAuthorityData'] as core.String?,
-          clientId: json_['clientId'] as core.String?,
-          clientSecret: json_['clientSecret'] as core.String?,
-          deployCloudConsoleProxy:
-              json_['deployCloudConsoleProxy'] as core.bool?,
-          enableAccessToken: json_['enableAccessToken'] as core.bool?,
-          encryptedClientSecret: json_['encryptedClientSecret'] as core.String?,
-          extraParams: json_['extraParams'] as core.String?,
-          groupPrefix: json_['groupPrefix'] as core.String?,
-          groupsClaim: json_['groupsClaim'] as core.String?,
-          issuerUri: json_['issuerUri'] as core.String?,
-          kubectlRedirectUri: json_['kubectlRedirectUri'] as core.String?,
-          scopes: json_['scopes'] as core.String?,
-          userClaim: json_['userClaim'] as core.String?,
-          userPrefix: json_['userPrefix'] as core.String?,
-        );
+    : this(
+        certificateAuthorityData:
+            json_['certificateAuthorityData'] as core.String?,
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+        deployCloudConsoleProxy: json_['deployCloudConsoleProxy'] as core.bool?,
+        enableAccessToken: json_['enableAccessToken'] as core.bool?,
+        encryptedClientSecret: json_['encryptedClientSecret'] as core.String?,
+        extraParams: json_['extraParams'] as core.String?,
+        groupPrefix: json_['groupPrefix'] as core.String?,
+        groupsClaim: json_['groupsClaim'] as core.String?,
+        issuerUri: json_['issuerUri'] as core.String?,
+        kubectlRedirectUri: json_['kubectlRedirectUri'] as core.String?,
+        scopes: json_['scopes'] as core.String?,
+        userClaim: json_['userClaim'] as core.String?,
+        userPrefix: json_['userPrefix'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificateAuthorityData != null)
-          'certificateAuthorityData': certificateAuthorityData!,
-        if (clientId != null) 'clientId': clientId!,
-        if (clientSecret != null) 'clientSecret': clientSecret!,
-        if (deployCloudConsoleProxy != null)
-          'deployCloudConsoleProxy': deployCloudConsoleProxy!,
-        if (enableAccessToken != null) 'enableAccessToken': enableAccessToken!,
-        if (encryptedClientSecret != null)
-          'encryptedClientSecret': encryptedClientSecret!,
-        if (extraParams != null) 'extraParams': extraParams!,
-        if (groupPrefix != null) 'groupPrefix': groupPrefix!,
-        if (groupsClaim != null) 'groupsClaim': groupsClaim!,
-        if (issuerUri != null) 'issuerUri': issuerUri!,
-        if (kubectlRedirectUri != null)
-          'kubectlRedirectUri': kubectlRedirectUri!,
-        if (scopes != null) 'scopes': scopes!,
-        if (userClaim != null) 'userClaim': userClaim!,
-        if (userPrefix != null) 'userPrefix': userPrefix!,
-      };
+    if (certificateAuthorityData != null)
+      'certificateAuthorityData': certificateAuthorityData!,
+    if (clientId != null) 'clientId': clientId!,
+    if (clientSecret != null) 'clientSecret': clientSecret!,
+    if (deployCloudConsoleProxy != null)
+      'deployCloudConsoleProxy': deployCloudConsoleProxy!,
+    if (enableAccessToken != null) 'enableAccessToken': enableAccessToken!,
+    if (encryptedClientSecret != null)
+      'encryptedClientSecret': encryptedClientSecret!,
+    if (extraParams != null) 'extraParams': extraParams!,
+    if (groupPrefix != null) 'groupPrefix': groupPrefix!,
+    if (groupsClaim != null) 'groupsClaim': groupsClaim!,
+    if (issuerUri != null) 'issuerUri': issuerUri!,
+    if (kubectlRedirectUri != null) 'kubectlRedirectUri': kubectlRedirectUri!,
+    if (scopes != null) 'scopes': scopes!,
+    if (userClaim != null) 'userClaim': userClaim!,
+    if (userPrefix != null) 'userPrefix': userPrefix!,
+  };
 }
 
 /// Used by:
@@ -12385,41 +11826,34 @@ class $IdentityServiceSamlConfig {
   });
 
   $IdentityServiceSamlConfig.fromJson(core.Map json_)
-      : this(
-          attributeMapping: (json_['attributeMapping']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          groupPrefix: json_['groupPrefix'] as core.String?,
-          groupsAttribute: json_['groupsAttribute'] as core.String?,
-          identityProviderCertificates:
-              (json_['identityProviderCertificates'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          identityProviderId: json_['identityProviderId'] as core.String?,
-          identityProviderSsoUri:
-              json_['identityProviderSsoUri'] as core.String?,
-          userAttribute: json_['userAttribute'] as core.String?,
-          userPrefix: json_['userPrefix'] as core.String?,
-        );
+    : this(
+        attributeMapping: (json_['attributeMapping']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        groupPrefix: json_['groupPrefix'] as core.String?,
+        groupsAttribute: json_['groupsAttribute'] as core.String?,
+        identityProviderCertificates:
+            (json_['identityProviderCertificates'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        identityProviderId: json_['identityProviderId'] as core.String?,
+        identityProviderSsoUri: json_['identityProviderSsoUri'] as core.String?,
+        userAttribute: json_['userAttribute'] as core.String?,
+        userPrefix: json_['userPrefix'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeMapping != null) 'attributeMapping': attributeMapping!,
-        if (groupPrefix != null) 'groupPrefix': groupPrefix!,
-        if (groupsAttribute != null) 'groupsAttribute': groupsAttribute!,
-        if (identityProviderCertificates != null)
-          'identityProviderCertificates': identityProviderCertificates!,
-        if (identityProviderId != null)
-          'identityProviderId': identityProviderId!,
-        if (identityProviderSsoUri != null)
-          'identityProviderSsoUri': identityProviderSsoUri!,
-        if (userAttribute != null) 'userAttribute': userAttribute!,
-        if (userPrefix != null) 'userPrefix': userPrefix!,
-      };
+    if (attributeMapping != null) 'attributeMapping': attributeMapping!,
+    if (groupPrefix != null) 'groupPrefix': groupPrefix!,
+    if (groupsAttribute != null) 'groupsAttribute': groupsAttribute!,
+    if (identityProviderCertificates != null)
+      'identityProviderCertificates': identityProviderCertificates!,
+    if (identityProviderId != null) 'identityProviderId': identityProviderId!,
+    if (identityProviderSsoUri != null)
+      'identityProviderSsoUri': identityProviderSsoUri!,
+    if (userAttribute != null) 'userAttribute': userAttribute!,
+    if (userPrefix != null) 'userPrefix': userPrefix!,
+  };
 }
 
 /// Used by:
@@ -12438,8 +11872,10 @@ class $IdentityServiceServerConfig {
       convert.base64.decode(certificateAuthorityData!);
 
   set certificateAuthorityDataAsBytes(core.List<core.int> bytes_) {
-    certificateAuthorityData =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    certificateAuthorityData = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Defines the connection type to communicate with the LDAP server.
@@ -12465,19 +11901,19 @@ class $IdentityServiceServerConfig {
   });
 
   $IdentityServiceServerConfig.fromJson(core.Map json_)
-      : this(
-          certificateAuthorityData:
-              json_['certificateAuthorityData'] as core.String?,
-          connectionType: json_['connectionType'] as core.String?,
-          host: json_['host'] as core.String?,
-        );
+    : this(
+        certificateAuthorityData:
+            json_['certificateAuthorityData'] as core.String?,
+        connectionType: json_['connectionType'] as core.String?,
+        host: json_['host'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificateAuthorityData != null)
-          'certificateAuthorityData': certificateAuthorityData!,
-        if (connectionType != null) 'connectionType': connectionType!,
-        if (host != null) 'host': host!,
-      };
+    if (certificateAuthorityData != null)
+      'certificateAuthorityData': certificateAuthorityData!,
+    if (connectionType != null) 'connectionType': connectionType!,
+    if (host != null) 'host': host!,
+  };
 }
 
 /// Used by:
@@ -12498,8 +11934,10 @@ class $IdentityServiceSimpleBindCredentials {
       convert.base64.decode(encryptedPassword!);
 
   set encryptedPasswordAsBytes(core.List<core.int> bytes_) {
-    encryptedPassword =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    encryptedPassword = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Input only.
@@ -12516,17 +11954,17 @@ class $IdentityServiceSimpleBindCredentials {
   });
 
   $IdentityServiceSimpleBindCredentials.fromJson(core.Map json_)
-      : this(
-          dn: json_['dn'] as core.String?,
-          encryptedPassword: json_['encryptedPassword'] as core.String?,
-          password: json_['password'] as core.String?,
-        );
+    : this(
+        dn: json_['dn'] as core.String?,
+        encryptedPassword: json_['encryptedPassword'] as core.String?,
+        password: json_['password'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dn != null) 'dn': dn!,
-        if (encryptedPassword != null) 'encryptedPassword': encryptedPassword!,
-        if (password != null) 'password': password!,
-      };
+    if (dn != null) 'dn': dn!,
+    if (encryptedPassword != null) 'encryptedPassword': encryptedPassword!,
+    if (password != null) 'password': password!,
+  };
 }
 
 /// Used by:
@@ -12580,19 +12018,19 @@ class $IdentityServiceUserConfig {
   });
 
   $IdentityServiceUserConfig.fromJson(core.Map json_)
-      : this(
-          baseDn: json_['baseDn'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          idAttribute: json_['idAttribute'] as core.String?,
-          loginAttribute: json_['loginAttribute'] as core.String?,
-        );
+    : this(
+        baseDn: json_['baseDn'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        idAttribute: json_['idAttribute'] as core.String?,
+        loginAttribute: json_['loginAttribute'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (baseDn != null) 'baseDn': baseDn!,
-        if (filter != null) 'filter': filter!,
-        if (idAttribute != null) 'idAttribute': idAttribute!,
-        if (loginAttribute != null) 'loginAttribute': loginAttribute!,
-      };
+    if (baseDn != null) 'baseDn': baseDn!,
+    if (filter != null) 'filter': filter!,
+    if (idAttribute != null) 'idAttribute': idAttribute!,
+    if (loginAttribute != null) 'loginAttribute': loginAttribute!,
+  };
 }
 
 /// Used by:
@@ -12622,21 +12060,18 @@ class $IngressSource {
   /// case of allowing all Google Cloud resources only is not supported.
   core.String? resource;
 
-  $IngressSource({
-    this.accessLevel,
-    this.resource,
-  });
+  $IngressSource({this.accessLevel, this.resource});
 
   $IngressSource.fromJson(core.Map json_)
-      : this(
-          accessLevel: json_['accessLevel'] as core.String?,
-          resource: json_['resource'] as core.String?,
-        );
+    : this(
+        accessLevel: json_['accessLevel'] as core.String?,
+        resource: json_['resource'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevel != null) 'accessLevel': accessLevel!,
-        if (resource != null) 'resource': resource!,
-      };
+    if (accessLevel != null) 'accessLevel': accessLevel!,
+    if (resource != null) 'resource': resource!,
+  };
 }
 
 /// Used by:
@@ -12663,20 +12098,20 @@ class $InlineScopedRouteConfigs {
   });
 
   $InlineScopedRouteConfigs.fromJson(core.Map json_)
-      : this(
-          lastUpdated: json_['lastUpdated'] as core.String?,
-          name: json_['name'] as core.String?,
-          scopedRouteConfigs: (json_['scopedRouteConfigs'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-        );
+    : this(
+        lastUpdated: json_['lastUpdated'] as core.String?,
+        name: json_['name'] as core.String?,
+        scopedRouteConfigs:
+            (json_['scopedRouteConfigs'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
-        if (name != null) 'name': name!,
-        if (scopedRouteConfigs != null)
-          'scopedRouteConfigs': scopedRouteConfigs!,
-      };
+    if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+    if (name != null) 'name': name!,
+    if (scopedRouteConfigs != null) 'scopedRouteConfigs': scopedRouteConfigs!,
+  };
 }
 
 /// Used by:
@@ -12687,21 +12122,18 @@ class $InputMetrics {
   core.String? bytesRead;
   core.String? recordsRead;
 
-  $InputMetrics({
-    this.bytesRead,
-    this.recordsRead,
-  });
+  $InputMetrics({this.bytesRead, this.recordsRead});
 
   $InputMetrics.fromJson(core.Map json_)
-      : this(
-          bytesRead: json_['bytesRead'] as core.String?,
-          recordsRead: json_['recordsRead'] as core.String?,
-        );
+    : this(
+        bytesRead: json_['bytesRead'] as core.String?,
+        recordsRead: json_['recordsRead'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bytesRead != null) 'bytesRead': bytesRead!,
-        if (recordsRead != null) 'recordsRead': recordsRead!,
-      };
+    if (bytesRead != null) 'bytesRead': bytesRead!,
+    if (recordsRead != null) 'recordsRead': recordsRead!,
+  };
 }
 
 /// Used by:
@@ -12738,24 +12170,20 @@ class $InstallationState {
   /// - "COMPLETE" : Installation process has been completed.
   core.String? stage;
 
-  $InstallationState({
-    this.actionUri,
-    this.message,
-    this.stage,
-  });
+  $InstallationState({this.actionUri, this.message, this.stage});
 
   $InstallationState.fromJson(core.Map json_)
-      : this(
-          actionUri: json_['actionUri'] as core.String?,
-          message: json_['message'] as core.String?,
-          stage: json_['stage'] as core.String?,
-        );
+    : this(
+        actionUri: json_['actionUri'] as core.String?,
+        message: json_['message'] as core.String?,
+        stage: json_['stage'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionUri != null) 'actionUri': actionUri!,
-        if (message != null) 'message': message!,
-        if (stage != null) 'stage': stage!,
-      };
+    if (actionUri != null) 'actionUri': actionUri!,
+    if (message != null) 'message': message!,
+    if (stage != null) 'stage': stage!,
+  };
 }
 
 /// Used by:
@@ -12778,21 +12206,18 @@ class $Instance00 {
   /// Required.
   core.String? reference;
 
-  $Instance00({
-    this.prediction,
-    this.reference,
-  });
+  $Instance00({this.prediction, this.reference});
 
   $Instance00.fromJson(core.Map json_)
-      : this(
-          prediction: json_['prediction'] as core.String?,
-          reference: json_['reference'] as core.String?,
-        );
+    : this(
+        prediction: json_['prediction'] as core.String?,
+        reference: json_['reference'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (prediction != null) 'prediction': prediction!,
-        if (reference != null) 'reference': reference!,
-      };
+    if (prediction != null) 'prediction': prediction!,
+    if (reference != null) 'reference': reference!,
+  };
 }
 
 /// Used by:
@@ -12806,18 +12231,14 @@ class $Instance01 {
   /// Required.
   core.String? prediction;
 
-  $Instance01({
-    this.prediction,
-  });
+  $Instance01({this.prediction});
 
   $Instance01.fromJson(core.Map json_)
-      : this(
-          prediction: json_['prediction'] as core.String?,
-        );
+    : this(prediction: json_['prediction'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (prediction != null) 'prediction': prediction!,
-      };
+    if (prediction != null) 'prediction': prediction!,
+  };
 }
 
 /// Used by:
@@ -12854,19 +12275,19 @@ class $Instance02 {
   });
 
   $Instance02.fromJson(core.Map json_)
-      : this(
-          context: json_['context'] as core.String?,
-          instruction: json_['instruction'] as core.String?,
-          prediction: json_['prediction'] as core.String?,
-          reference: json_['reference'] as core.String?,
-        );
+    : this(
+        context: json_['context'] as core.String?,
+        instruction: json_['instruction'] as core.String?,
+        prediction: json_['prediction'] as core.String?,
+        reference: json_['reference'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (context != null) 'context': context!,
-        if (instruction != null) 'instruction': instruction!,
-        if (prediction != null) 'prediction': prediction!,
-        if (reference != null) 'reference': reference!,
-      };
+    if (context != null) 'context': context!,
+    if (instruction != null) 'instruction': instruction!,
+    if (prediction != null) 'prediction': prediction!,
+    if (reference != null) 'reference': reference!,
+  };
 }
 
 /// Used by:
@@ -12889,24 +12310,20 @@ class $Instance03 {
   /// Optional.
   core.String? source;
 
-  $Instance03({
-    this.prediction,
-    this.reference,
-    this.source,
-  });
+  $Instance03({this.prediction, this.reference, this.source});
 
   $Instance03.fromJson(core.Map json_)
-      : this(
-          prediction: json_['prediction'] as core.String?,
-          reference: json_['reference'] as core.String?,
-          source: json_['source'] as core.String?,
-        );
+    : this(
+        prediction: json_['prediction'] as core.String?,
+        reference: json_['reference'] as core.String?,
+        source: json_['source'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (prediction != null) 'prediction': prediction!,
-        if (reference != null) 'reference': reference!,
-        if (source != null) 'source': source!,
-      };
+    if (prediction != null) 'prediction': prediction!,
+    if (reference != null) 'reference': reference!,
+    if (source != null) 'source': source!,
+  };
 }
 
 /// Used by:
@@ -12942,19 +12359,19 @@ class $Instance04 {
   });
 
   $Instance04.fromJson(core.Map json_)
-      : this(
-          context: json_['context'] as core.String?,
-          instruction: json_['instruction'] as core.String?,
-          prediction: json_['prediction'] as core.String?,
-          reference: json_['reference'] as core.String?,
-        );
+    : this(
+        context: json_['context'] as core.String?,
+        instruction: json_['instruction'] as core.String?,
+        prediction: json_['prediction'] as core.String?,
+        reference: json_['reference'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (context != null) 'context': context!,
-        if (instruction != null) 'instruction': instruction!,
-        if (prediction != null) 'prediction': prediction!,
-        if (reference != null) 'reference': reference!,
-      };
+    if (context != null) 'context': context!,
+    if (instruction != null) 'instruction': instruction!,
+    if (prediction != null) 'prediction': prediction!,
+    if (reference != null) 'reference': reference!,
+  };
 }
 
 /// Used by:
@@ -12968,20 +12385,19 @@ class $InstanceGroupManagersAbandonInstancesRequest {
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $InstanceGroupManagersAbandonInstancesRequest({
-    this.instances,
-  });
+  $InstanceGroupManagersAbandonInstancesRequest({this.instances});
 
   $InstanceGroupManagersAbandonInstancesRequest.fromJson(core.Map json_)
-      : this(
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        instances:
+            (json_['instances'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-      };
+    if (instances != null) 'instances': instances!,
+  };
 }
 
 /// Used by:
@@ -13042,23 +12458,24 @@ class $InstanceGroupManagersApplyUpdatesRequest {
   });
 
   $InstanceGroupManagersApplyUpdatesRequest.fromJson(core.Map json_)
-      : this(
-          allInstances: json_['allInstances'] as core.bool?,
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          minimalAction: json_['minimalAction'] as core.String?,
-          mostDisruptiveAllowedAction:
-              json_['mostDisruptiveAllowedAction'] as core.String?,
-        );
+    : this(
+        allInstances: json_['allInstances'] as core.bool?,
+        instances:
+            (json_['instances'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        minimalAction: json_['minimalAction'] as core.String?,
+        mostDisruptiveAllowedAction:
+            json_['mostDisruptiveAllowedAction'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allInstances != null) 'allInstances': allInstances!,
-        if (instances != null) 'instances': instances!,
-        if (minimalAction != null) 'minimalAction': minimalAction!,
-        if (mostDisruptiveAllowedAction != null)
-          'mostDisruptiveAllowedAction': mostDisruptiveAllowedAction!,
-      };
+    if (allInstances != null) 'allInstances': allInstances!,
+    if (instances != null) 'instances': instances!,
+    if (minimalAction != null) 'minimalAction': minimalAction!,
+    if (mostDisruptiveAllowedAction != null)
+      'mostDisruptiveAllowedAction': mostDisruptiveAllowedAction!,
+  };
 }
 
 /// Used by:
@@ -13072,20 +12489,19 @@ class $InstanceGroupManagersResumeInstancesRequest {
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $InstanceGroupManagersResumeInstancesRequest({
-    this.instances,
-  });
+  $InstanceGroupManagersResumeInstancesRequest({this.instances});
 
   $InstanceGroupManagersResumeInstancesRequest.fromJson(core.Map json_)
-      : this(
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        instances:
+            (json_['instances'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-      };
+    if (instances != null) 'instances': instances!,
+  };
 }
 
 /// Used by:
@@ -13099,20 +12515,19 @@ class $InstanceGroupManagersStartInstancesRequest {
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $InstanceGroupManagersStartInstancesRequest({
-    this.instances,
-  });
+  $InstanceGroupManagersStartInstancesRequest({this.instances});
 
   $InstanceGroupManagersStartInstancesRequest.fromJson(core.Map json_)
-      : this(
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        instances:
+            (json_['instances'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-      };
+    if (instances != null) 'instances': instances!,
+  };
 }
 
 /// Used by:
@@ -13130,23 +12545,21 @@ class $InstanceGroupManagersStopInstancesRequest {
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $InstanceGroupManagersStopInstancesRequest({
-    this.forceStop,
-    this.instances,
-  });
+  $InstanceGroupManagersStopInstancesRequest({this.forceStop, this.instances});
 
   $InstanceGroupManagersStopInstancesRequest.fromJson(core.Map json_)
-      : this(
-          forceStop: json_['forceStop'] as core.bool?,
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        forceStop: json_['forceStop'] as core.bool?,
+        instances:
+            (json_['instances'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (forceStop != null) 'forceStop': forceStop!,
-        if (instances != null) 'instances': instances!,
-      };
+    if (forceStop != null) 'forceStop': forceStop!,
+    if (instances != null) 'instances': instances!,
+  };
 }
 
 /// Used by:
@@ -13170,17 +12583,18 @@ class $InstanceGroupManagersSuspendInstancesRequest {
   });
 
   $InstanceGroupManagersSuspendInstancesRequest.fromJson(core.Map json_)
-      : this(
-          forceSuspend: json_['forceSuspend'] as core.bool?,
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        forceSuspend: json_['forceSuspend'] as core.bool?,
+        instances:
+            (json_['instances'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (forceSuspend != null) 'forceSuspend': forceSuspend!,
-        if (instances != null) 'instances': instances!,
-      };
+    if (forceSuspend != null) 'forceSuspend': forceSuspend!,
+    if (instances != null) 'instances': instances!,
+  };
 }
 
 /// Used by:
@@ -13330,58 +12744,57 @@ class $IntegralAdScience {
   });
 
   $IntegralAdScience.fromJson(core.Map json_)
-      : this(
-          customSegmentId: (json_['customSegmentId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          displayViewability: json_['displayViewability'] as core.String?,
-          excludeUnrateable: json_['excludeUnrateable'] as core.bool?,
-          excludedAdFraudRisk: json_['excludedAdFraudRisk'] as core.String?,
-          excludedAdultRisk: json_['excludedAdultRisk'] as core.String?,
-          excludedAlcoholRisk: json_['excludedAlcoholRisk'] as core.String?,
-          excludedDrugsRisk: json_['excludedDrugsRisk'] as core.String?,
-          excludedGamblingRisk: json_['excludedGamblingRisk'] as core.String?,
-          excludedHateSpeechRisk:
-              json_['excludedHateSpeechRisk'] as core.String?,
-          excludedIllegalDownloadsRisk:
-              json_['excludedIllegalDownloadsRisk'] as core.String?,
-          excludedOffensiveLanguageRisk:
-              json_['excludedOffensiveLanguageRisk'] as core.String?,
-          excludedViolenceRisk: json_['excludedViolenceRisk'] as core.String?,
-          qualitySyncCustomSegmentId:
-              (json_['qualitySyncCustomSegmentId'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          traqScoreOption: json_['traqScoreOption'] as core.String?,
-          videoViewability: json_['videoViewability'] as core.String?,
-        );
+    : this(
+        customSegmentId:
+            (json_['customSegmentId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        displayViewability: json_['displayViewability'] as core.String?,
+        excludeUnrateable: json_['excludeUnrateable'] as core.bool?,
+        excludedAdFraudRisk: json_['excludedAdFraudRisk'] as core.String?,
+        excludedAdultRisk: json_['excludedAdultRisk'] as core.String?,
+        excludedAlcoholRisk: json_['excludedAlcoholRisk'] as core.String?,
+        excludedDrugsRisk: json_['excludedDrugsRisk'] as core.String?,
+        excludedGamblingRisk: json_['excludedGamblingRisk'] as core.String?,
+        excludedHateSpeechRisk: json_['excludedHateSpeechRisk'] as core.String?,
+        excludedIllegalDownloadsRisk:
+            json_['excludedIllegalDownloadsRisk'] as core.String?,
+        excludedOffensiveLanguageRisk:
+            json_['excludedOffensiveLanguageRisk'] as core.String?,
+        excludedViolenceRisk: json_['excludedViolenceRisk'] as core.String?,
+        qualitySyncCustomSegmentId:
+            (json_['qualitySyncCustomSegmentId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        traqScoreOption: json_['traqScoreOption'] as core.String?,
+        videoViewability: json_['videoViewability'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customSegmentId != null) 'customSegmentId': customSegmentId!,
-        if (displayViewability != null)
-          'displayViewability': displayViewability!,
-        if (excludeUnrateable != null) 'excludeUnrateable': excludeUnrateable!,
-        if (excludedAdFraudRisk != null)
-          'excludedAdFraudRisk': excludedAdFraudRisk!,
-        if (excludedAdultRisk != null) 'excludedAdultRisk': excludedAdultRisk!,
-        if (excludedAlcoholRisk != null)
-          'excludedAlcoholRisk': excludedAlcoholRisk!,
-        if (excludedDrugsRisk != null) 'excludedDrugsRisk': excludedDrugsRisk!,
-        if (excludedGamblingRisk != null)
-          'excludedGamblingRisk': excludedGamblingRisk!,
-        if (excludedHateSpeechRisk != null)
-          'excludedHateSpeechRisk': excludedHateSpeechRisk!,
-        if (excludedIllegalDownloadsRisk != null)
-          'excludedIllegalDownloadsRisk': excludedIllegalDownloadsRisk!,
-        if (excludedOffensiveLanguageRisk != null)
-          'excludedOffensiveLanguageRisk': excludedOffensiveLanguageRisk!,
-        if (excludedViolenceRisk != null)
-          'excludedViolenceRisk': excludedViolenceRisk!,
-        if (qualitySyncCustomSegmentId != null)
-          'qualitySyncCustomSegmentId': qualitySyncCustomSegmentId!,
-        if (traqScoreOption != null) 'traqScoreOption': traqScoreOption!,
-        if (videoViewability != null) 'videoViewability': videoViewability!,
-      };
+    if (customSegmentId != null) 'customSegmentId': customSegmentId!,
+    if (displayViewability != null) 'displayViewability': displayViewability!,
+    if (excludeUnrateable != null) 'excludeUnrateable': excludeUnrateable!,
+    if (excludedAdFraudRisk != null)
+      'excludedAdFraudRisk': excludedAdFraudRisk!,
+    if (excludedAdultRisk != null) 'excludedAdultRisk': excludedAdultRisk!,
+    if (excludedAlcoholRisk != null)
+      'excludedAlcoholRisk': excludedAlcoholRisk!,
+    if (excludedDrugsRisk != null) 'excludedDrugsRisk': excludedDrugsRisk!,
+    if (excludedGamblingRisk != null)
+      'excludedGamblingRisk': excludedGamblingRisk!,
+    if (excludedHateSpeechRisk != null)
+      'excludedHateSpeechRisk': excludedHateSpeechRisk!,
+    if (excludedIllegalDownloadsRisk != null)
+      'excludedIllegalDownloadsRisk': excludedIllegalDownloadsRisk!,
+    if (excludedOffensiveLanguageRisk != null)
+      'excludedOffensiveLanguageRisk': excludedOffensiveLanguageRisk!,
+    if (excludedViolenceRisk != null)
+      'excludedViolenceRisk': excludedViolenceRisk!,
+    if (qualitySyncCustomSegmentId != null)
+      'qualitySyncCustomSegmentId': qualitySyncCustomSegmentId!,
+    if (traqScoreOption != null) 'traqScoreOption': traqScoreOption!,
+    if (videoViewability != null) 'videoViewability': videoViewability!,
+  };
 }
 
 /// Used by:
@@ -13402,21 +12815,18 @@ class $IntegrationDetails {
   /// of no more than 500 characters.
   core.String? integrationCode;
 
-  $IntegrationDetails({
-    this.details,
-    this.integrationCode,
-  });
+  $IntegrationDetails({this.details, this.integrationCode});
 
   $IntegrationDetails.fromJson(core.Map json_)
-      : this(
-          details: json_['details'] as core.String?,
-          integrationCode: json_['integrationCode'] as core.String?,
-        );
+    : this(
+        details: json_['details'] as core.String?,
+        integrationCode: json_['integrationCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (integrationCode != null) 'integrationCode': integrationCode!,
-      };
+    if (details != null) 'details': details!,
+    if (integrationCode != null) 'integrationCode': integrationCode!,
+  };
 }
 
 /// Used by:
@@ -13427,18 +12837,14 @@ class $IntegrityTokenRequest {
   /// Encoded integrity token.
   core.String? integrityToken;
 
-  $IntegrityTokenRequest({
-    this.integrityToken,
-  });
+  $IntegrityTokenRequest({this.integrityToken});
 
   $IntegrityTokenRequest.fromJson(core.Map json_)
-      : this(
-          integrityToken: json_['integrityToken'] as core.String?,
-        );
+    : this(integrityToken: json_['integrityToken'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (integrityToken != null) 'integrityToken': integrityToken!,
-      };
+    if (integrityToken != null) 'integrityToken': integrityToken!,
+  };
 }
 
 /// Used by:
@@ -13468,21 +12874,18 @@ class $Interval {
   /// Optional.
   core.String? startTime;
 
-  $Interval({
-    this.endTime,
-    this.startTime,
-  });
+  $Interval({this.endTime, this.startTime});
 
   $Interval.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// Used by:
@@ -13494,20 +12897,19 @@ class $InventorySourceAccessorsAdvertiserAccessors {
   /// The IDs of the advertisers.
   core.List<core.String>? advertiserIds;
 
-  $InventorySourceAccessorsAdvertiserAccessors({
-    this.advertiserIds,
-  });
+  $InventorySourceAccessorsAdvertiserAccessors({this.advertiserIds});
 
   $InventorySourceAccessorsAdvertiserAccessors.fromJson(core.Map json_)
-      : this(
-          advertiserIds: (json_['advertiserIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        advertiserIds:
+            (json_['advertiserIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserIds != null) 'advertiserIds': advertiserIds!,
-      };
+    if (advertiserIds != null) 'advertiserIds': advertiserIds!,
+  };
 }
 
 /// Used by:
@@ -13519,18 +12921,14 @@ class $InventorySourceAccessorsPartnerAccessor {
   /// The ID of the partner.
   core.String? partnerId;
 
-  $InventorySourceAccessorsPartnerAccessor({
-    this.partnerId,
-  });
+  $InventorySourceAccessorsPartnerAccessor({this.partnerId});
 
   $InventorySourceAccessorsPartnerAccessor.fromJson(core.Map json_)
-      : this(
-          partnerId: json_['partnerId'] as core.String?,
-        );
+    : this(partnerId: json_['partnerId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (partnerId != null) 'partnerId': partnerId!,
-      };
+    if (partnerId != null) 'partnerId': partnerId!,
+  };
 }
 
 /// Used by:
@@ -13547,18 +12945,14 @@ class $InventorySourceAssignedTargetingOptionDetails {
   /// Required.
   core.String? inventorySourceId;
 
-  $InventorySourceAssignedTargetingOptionDetails({
-    this.inventorySourceId,
-  });
+  $InventorySourceAssignedTargetingOptionDetails({this.inventorySourceId});
 
   $InventorySourceAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          inventorySourceId: json_['inventorySourceId'] as core.String?,
-        );
+    : this(inventorySourceId: json_['inventorySourceId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inventorySourceId != null) 'inventorySourceId': inventorySourceId!,
-      };
+    if (inventorySourceId != null) 'inventorySourceId': inventorySourceId!,
+  };
 }
 
 /// Used by:
@@ -13574,21 +12968,19 @@ class $InventorySourceFilter {
   /// Sources for the selected Advertiser or Partner.
   core.List<core.String>? inventorySourceIds;
 
-  $InventorySourceFilter({
-    this.inventorySourceIds,
-  });
+  $InventorySourceFilter({this.inventorySourceIds});
 
   $InventorySourceFilter.fromJson(core.Map json_)
-      : this(
-          inventorySourceIds: (json_['inventorySourceIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        inventorySourceIds:
+            (json_['inventorySourceIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inventorySourceIds != null)
-          'inventorySourceIds': inventorySourceIds!,
-      };
+    if (inventorySourceIds != null) 'inventorySourceIds': inventorySourceIds!,
+  };
 }
 
 /// Used by:
@@ -13623,19 +13015,18 @@ class $InventorySourceGroup {
   });
 
   $InventorySourceGroup.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          inventorySourceGroupId:
-              json_['inventorySourceGroupId'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        inventorySourceGroupId: json_['inventorySourceGroupId'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (inventorySourceGroupId != null)
-          'inventorySourceGroupId': inventorySourceGroupId!,
-        if (name != null) 'name': name!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (inventorySourceGroupId != null)
+      'inventorySourceGroupId': inventorySourceGroupId!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -13657,15 +13048,14 @@ class $InventorySourceGroupAssignedTargetingOptionDetails {
   });
 
   $InventorySourceGroupAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          inventorySourceGroupId:
-              json_['inventorySourceGroupId'] as core.String?,
-        );
+    : this(
+        inventorySourceGroupId: json_['inventorySourceGroupId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inventorySourceGroupId != null)
-          'inventorySourceGroupId': inventorySourceGroupId!,
-      };
+    if (inventorySourceGroupId != null)
+      'inventorySourceGroupId': inventorySourceGroupId!,
+  };
 }
 
 /// Used by:
@@ -13756,21 +13146,21 @@ class $InventorySourceStatus {
   });
 
   $InventorySourceStatus.fromJson(core.Map json_)
-      : this(
-          configStatus: json_['configStatus'] as core.String?,
-          entityPauseReason: json_['entityPauseReason'] as core.String?,
-          entityStatus: json_['entityStatus'] as core.String?,
-          sellerPauseReason: json_['sellerPauseReason'] as core.String?,
-          sellerStatus: json_['sellerStatus'] as core.String?,
-        );
+    : this(
+        configStatus: json_['configStatus'] as core.String?,
+        entityPauseReason: json_['entityPauseReason'] as core.String?,
+        entityStatus: json_['entityStatus'] as core.String?,
+        sellerPauseReason: json_['sellerPauseReason'] as core.String?,
+        sellerStatus: json_['sellerStatus'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configStatus != null) 'configStatus': configStatus!,
-        if (entityPauseReason != null) 'entityPauseReason': entityPauseReason!,
-        if (entityStatus != null) 'entityStatus': entityStatus!,
-        if (sellerPauseReason != null) 'sellerPauseReason': sellerPauseReason!,
-        if (sellerStatus != null) 'sellerStatus': sellerStatus!,
-      };
+    if (configStatus != null) 'configStatus': configStatus!,
+    if (entityPauseReason != null) 'entityPauseReason': entityPauseReason!,
+    if (entityStatus != null) 'entityStatus': entityStatus!,
+    if (sellerPauseReason != null) 'sellerPauseReason': sellerPauseReason!,
+    if (sellerStatus != null) 'sellerStatus': sellerStatus!,
+  };
 }
 
 /// Used by:
@@ -13783,18 +13173,14 @@ class $InventorySourceVideoCreativeConfig {
   /// the inventory source.
   core.String? duration;
 
-  $InventorySourceVideoCreativeConfig({
-    this.duration,
-  });
+  $InventorySourceVideoCreativeConfig({this.duration});
 
   $InventorySourceVideoCreativeConfig.fromJson(core.Map json_)
-      : this(
-          duration: json_['duration'] as core.String?,
-        );
+    : this(duration: json_['duration'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-      };
+    if (duration != null) 'duration': duration!,
+  };
 }
 
 /// Used by:
@@ -13834,22 +13220,19 @@ class $IssuesRequestPayload {
   /// `triggeraction` method.
   core.String? userInputActionOption;
 
-  $IssuesRequestPayload({
-    this.contentOption,
-    this.userInputActionOption,
-  });
+  $IssuesRequestPayload({this.contentOption, this.userInputActionOption});
 
   $IssuesRequestPayload.fromJson(core.Map json_)
-      : this(
-          contentOption: json_['contentOption'] as core.String?,
-          userInputActionOption: json_['userInputActionOption'] as core.String?,
-        );
+    : this(
+        contentOption: json_['contentOption'] as core.String?,
+        userInputActionOption: json_['userInputActionOption'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentOption != null) 'contentOption': contentOption!,
-        if (userInputActionOption != null)
-          'userInputActionOption': userInputActionOption!,
-      };
+    if (contentOption != null) 'contentOption': contentOption!,
+    if (userInputActionOption != null)
+      'userInputActionOption': userInputActionOption!,
+  };
 }
 
 /// Used by:
@@ -13880,21 +13263,18 @@ class $Justification {
   /// prevent exploitation based on known attack vectors.
   core.String? justificationType;
 
-  $Justification({
-    this.details,
-    this.justificationType,
-  });
+  $Justification({this.details, this.justificationType});
 
   $Justification.fromJson(core.Map json_)
-      : this(
-          details: json_['details'] as core.String?,
-          justificationType: json_['justificationType'] as core.String?,
-        );
+    : this(
+        details: json_['details'] as core.String?,
+        justificationType: json_['justificationType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (justificationType != null) 'justificationType': justificationType!,
-      };
+    if (details != null) 'details': details!,
+    if (justificationType != null) 'justificationType': justificationType!,
+  };
 }
 
 /// Used by:
@@ -13909,18 +13289,14 @@ class $Jwt {
   /// For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
   core.String? compactJwt;
 
-  $Jwt({
-    this.compactJwt,
-  });
+  $Jwt({this.compactJwt});
 
   $Jwt.fromJson(core.Map json_)
-      : this(
-          compactJwt: json_['compactJwt'] as core.String?,
-        );
+    : this(compactJwt: json_['compactJwt'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (compactJwt != null) 'compactJwt': compactJwt!,
-      };
+    if (compactJwt != null) 'compactJwt': compactJwt!,
+  };
 }
 
 /// Used by:
@@ -13943,24 +13319,20 @@ class $JwtClaims {
   /// Optional.
   core.String? subject;
 
-  $JwtClaims({
-    this.audience,
-    this.issuer,
-    this.subject,
-  });
+  $JwtClaims({this.audience, this.issuer, this.subject});
 
   $JwtClaims.fromJson(core.Map json_)
-      : this(
-          audience: json_['audience'] as core.String?,
-          issuer: json_['issuer'] as core.String?,
-          subject: json_['subject'] as core.String?,
-        );
+    : this(
+        audience: json_['audience'] as core.String?,
+        issuer: json_['issuer'] as core.String?,
+        subject: json_['subject'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audience != null) 'audience': audience!,
-        if (issuer != null) 'issuer': issuer!,
-        if (subject != null) 'subject': subject!,
-      };
+    if (audience != null) 'audience': audience!,
+    if (issuer != null) 'issuer': issuer!,
+    if (subject != null) 'subject': subject!,
+  };
 }
 
 /// Used by:
@@ -13987,27 +13359,22 @@ class $JwtLocation {
   /// with a space at the end.
   core.String? valuePrefix;
 
-  $JwtLocation({
-    this.cookie,
-    this.header,
-    this.query,
-    this.valuePrefix,
-  });
+  $JwtLocation({this.cookie, this.header, this.query, this.valuePrefix});
 
   $JwtLocation.fromJson(core.Map json_)
-      : this(
-          cookie: json_['cookie'] as core.String?,
-          header: json_['header'] as core.String?,
-          query: json_['query'] as core.String?,
-          valuePrefix: json_['valuePrefix'] as core.String?,
-        );
+    : this(
+        cookie: json_['cookie'] as core.String?,
+        header: json_['header'] as core.String?,
+        query: json_['query'] as core.String?,
+        valuePrefix: json_['valuePrefix'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cookie != null) 'cookie': cookie!,
-        if (header != null) 'header': header!,
-        if (query != null) 'query': query!,
-        if (valuePrefix != null) 'valuePrefix': valuePrefix!,
-      };
+    if (cookie != null) 'cookie': cookie!,
+    if (header != null) 'header': header!,
+    if (query != null) 'query': query!,
+    if (valuePrefix != null) 'valuePrefix': valuePrefix!,
+  };
 }
 
 /// Used by:
@@ -14021,21 +13388,18 @@ class $KMSEnvMap {
   /// The name of the KMS key that will be used to decrypt the cipher text.
   core.String? keyName;
 
-  $KMSEnvMap({
-    this.cipherText,
-    this.keyName,
-  });
+  $KMSEnvMap({this.cipherText, this.keyName});
 
   $KMSEnvMap.fromJson(core.Map json_)
-      : this(
-          cipherText: json_['cipherText'] as core.String?,
-          keyName: json_['keyName'] as core.String?,
-        );
+    : this(
+        cipherText: json_['cipherText'] as core.String?,
+        keyName: json_['keyName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cipherText != null) 'cipherText': cipherText!,
-        if (keyName != null) 'keyName': keyName!,
-      };
+    if (cipherText != null) 'cipherText': cipherText!,
+    if (keyName != null) 'keyName': keyName!,
+  };
 }
 
 /// Used by:
@@ -14049,21 +13413,20 @@ class $KeyAccessJustificationsPolicy {
   /// operations for the CryptoKey associated with this policy will fail.
   core.List<core.String>? allowedAccessReasons;
 
-  $KeyAccessJustificationsPolicy({
-    this.allowedAccessReasons,
-  });
+  $KeyAccessJustificationsPolicy({this.allowedAccessReasons});
 
   $KeyAccessJustificationsPolicy.fromJson(core.Map json_)
-      : this(
-          allowedAccessReasons: (json_['allowedAccessReasons'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        allowedAccessReasons:
+            (json_['allowedAccessReasons'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedAccessReasons != null)
-          'allowedAccessReasons': allowedAccessReasons!,
-      };
+    if (allowedAccessReasons != null)
+      'allowedAccessReasons': allowedAccessReasons!,
+  };
 }
 
 /// Used by:
@@ -14084,21 +13447,18 @@ class $KeywordAssignedTargetingOptionDetails {
   /// Indicates if this option is being negatively targeted.
   core.bool? negative;
 
-  $KeywordAssignedTargetingOptionDetails({
-    this.keyword,
-    this.negative,
-  });
+  $KeywordAssignedTargetingOptionDetails({this.keyword, this.negative});
 
   $KeywordAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          keyword: json_['keyword'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-        );
+    : this(
+        keyword: json_['keyword'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keyword != null) 'keyword': keyword!,
-        if (negative != null) 'negative': negative!,
-      };
+    if (keyword != null) 'keyword': keyword!,
+    if (negative != null) 'negative': negative!,
+  };
 }
 
 /// Used by:
@@ -14109,18 +13469,14 @@ class $KindExpression {
   /// The name of the kind.
   core.String? name;
 
-  $KindExpression({
-    this.name,
-  });
+  $KindExpression({this.name});
 
   $KindExpression.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+    : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -14207,22 +13563,22 @@ class $Kpi {
   });
 
   $Kpi.fromJson(core.Map json_)
-      : this(
-          kpiAlgorithmId: json_['kpiAlgorithmId'] as core.String?,
-          kpiAmountMicros: json_['kpiAmountMicros'] as core.String?,
-          kpiPercentageMicros: json_['kpiPercentageMicros'] as core.String?,
-          kpiString: json_['kpiString'] as core.String?,
-          kpiType: json_['kpiType'] as core.String?,
-        );
+    : this(
+        kpiAlgorithmId: json_['kpiAlgorithmId'] as core.String?,
+        kpiAmountMicros: json_['kpiAmountMicros'] as core.String?,
+        kpiPercentageMicros: json_['kpiPercentageMicros'] as core.String?,
+        kpiString: json_['kpiString'] as core.String?,
+        kpiType: json_['kpiType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kpiAlgorithmId != null) 'kpiAlgorithmId': kpiAlgorithmId!,
-        if (kpiAmountMicros != null) 'kpiAmountMicros': kpiAmountMicros!,
-        if (kpiPercentageMicros != null)
-          'kpiPercentageMicros': kpiPercentageMicros!,
-        if (kpiString != null) 'kpiString': kpiString!,
-        if (kpiType != null) 'kpiType': kpiType!,
-      };
+    if (kpiAlgorithmId != null) 'kpiAlgorithmId': kpiAlgorithmId!,
+    if (kpiAmountMicros != null) 'kpiAmountMicros': kpiAmountMicros!,
+    if (kpiPercentageMicros != null)
+      'kpiPercentageMicros': kpiPercentageMicros!,
+    if (kpiString != null) 'kpiString': kpiString!,
+    if (kpiType != null) 'kpiType': kpiType!,
+  };
 }
 
 /// Used by:
@@ -14244,24 +13600,20 @@ class $LabelDescriptor {
   /// - "INT64" : A 64-bit signed integer.
   core.String? valueType;
 
-  $LabelDescriptor({
-    this.description,
-    this.key,
-    this.valueType,
-  });
+  $LabelDescriptor({this.description, this.key, this.valueType});
 
   $LabelDescriptor.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          key: json_['key'] as core.String?,
-          valueType: json_['valueType'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        key: json_['key'] as core.String?,
+        valueType: json_['valueType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (key != null) 'key': key!,
-        if (valueType != null) 'valueType': valueType!,
-      };
+    if (description != null) 'description': description!,
+    if (key != null) 'key': key!,
+    if (valueType != null) 'valueType': valueType!,
+  };
 }
 
 /// Used by:
@@ -14275,21 +13627,18 @@ class $LabelEntry {
   /// Value of the label
   core.String? value;
 
-  $LabelEntry({
-    this.key,
-    this.value,
-  });
+  $LabelEntry({this.key, this.value});
 
   $LabelEntry.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
+    if (key != null) 'key': key!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -14300,24 +13649,18 @@ class $Labels {
   /// Map of node label keys and node label values.
   core.Map<core.String, core.String>? labels;
 
-  $Labels({
-    this.labels,
-  });
+  $Labels({this.labels});
 
   $Labels.fromJson(core.Map json_)
-      : this(
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-      };
+    if (labels != null) 'labels': labels!,
+  };
 }
 
 /// Used by:
@@ -14350,17 +13693,17 @@ class $LanguageAssignedTargetingOptionDetails {
   });
 
   $LanguageAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (negative != null) 'negative': negative!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -14374,18 +13717,14 @@ class $LanguageTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $LanguageTargetingOptionDetails({
-    this.displayName,
-  });
+  $LanguageTargetingOptionDetails({this.displayName});
 
   $LanguageTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+    : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+  };
 }
 
 /// Used by:
@@ -14416,21 +13755,18 @@ class $LatLng {
   /// It must be in the range \[-180.0, +180.0\].
   core.double? longitude;
 
-  $LatLng({
-    this.latitude,
-    this.longitude,
-  });
+  $LatLng({this.latitude, this.longitude});
 
   $LatLng.fromJson(core.Map json_)
-      : this(
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
-        );
+    : this(
+        latitude: (json_['latitude'] as core.num?)?.toDouble(),
+        longitude: (json_['longitude'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-      };
+    if (latitude != null) 'latitude': latitude!,
+    if (longitude != null) 'longitude': longitude!,
+  };
 }
 
 /// Used by:
@@ -14449,21 +13785,18 @@ class $Layer {
   /// Required.
   core.String? directive;
 
-  $Layer({
-    this.arguments,
-    this.directive,
-  });
+  $Layer({this.arguments, this.directive});
 
   $Layer.fromJson(core.Map json_)
-      : this(
-          arguments: json_['arguments'] as core.String?,
-          directive: json_['directive'] as core.String?,
-        );
+    : this(
+        arguments: json_['arguments'] as core.String?,
+        directive: json_['directive'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arguments != null) 'arguments': arguments!,
-        if (directive != null) 'directive': directive!,
-      };
+    if (arguments != null) 'arguments': arguments!,
+    if (directive != null) 'directive': directive!,
+  };
 }
 
 /// Used by:
@@ -14481,21 +13814,18 @@ class $License {
   /// "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
   core.String? expression;
 
-  $License({
-    this.comments,
-    this.expression,
-  });
+  $License({this.comments, this.expression});
 
   $License.fromJson(core.Map json_)
-      : this(
-          comments: json_['comments'] as core.String?,
-          expression: json_['expression'] as core.String?,
-        );
+    : this(
+        comments: json_['comments'] as core.String?,
+        expression: json_['expression'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (comments != null) 'comments': comments!,
-        if (expression != null) 'expression': expression!,
-      };
+    if (comments != null) 'comments': comments!,
+    if (expression != null) 'expression': expression!,
+  };
 }
 
 /// Used by:
@@ -14547,25 +13877,26 @@ class $Lien {
   });
 
   $Lien.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          origin: json_['origin'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          reason: json_['reason'] as core.String?,
-          restrictions: (json_['restrictions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        origin: json_['origin'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        reason: json_['reason'] as core.String?,
+        restrictions:
+            (json_['restrictions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (origin != null) 'origin': origin!,
-        if (parent != null) 'parent': parent!,
-        if (reason != null) 'reason': reason!,
-        if (restrictions != null) 'restrictions': restrictions!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (origin != null) 'origin': origin!,
+    if (parent != null) 'parent': parent!,
+    if (reason != null) 'reason': reason!,
+    if (restrictions != null) 'restrictions': restrictions!,
+  };
 }
 
 /// Used by:
@@ -14617,25 +13948,21 @@ class $LineItemBudget {
   /// field is not applicable and will be ignored by the system.
   core.String? maxAmount;
 
-  $LineItemBudget({
-    this.budgetAllocationType,
-    this.budgetUnit,
-    this.maxAmount,
-  });
+  $LineItemBudget({this.budgetAllocationType, this.budgetUnit, this.maxAmount});
 
   $LineItemBudget.fromJson(core.Map json_)
-      : this(
-          budgetAllocationType: json_['budgetAllocationType'] as core.String?,
-          budgetUnit: json_['budgetUnit'] as core.String?,
-          maxAmount: json_['maxAmount'] as core.String?,
-        );
+    : this(
+        budgetAllocationType: json_['budgetAllocationType'] as core.String?,
+        budgetUnit: json_['budgetUnit'] as core.String?,
+        maxAmount: json_['maxAmount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (budgetAllocationType != null)
-          'budgetAllocationType': budgetAllocationType!,
-        if (budgetUnit != null) 'budgetUnit': budgetUnit!,
-        if (maxAmount != null) 'maxAmount': maxAmount!,
-      };
+    if (budgetAllocationType != null)
+      'budgetAllocationType': budgetAllocationType!,
+    if (budgetUnit != null) 'budgetUnit': budgetUnit!,
+    if (maxAmount != null) 'maxAmount': maxAmount!,
+  };
 }
 
 /// Used by:
@@ -14652,24 +13979,20 @@ class $Linear {
   /// Must be greater than 0.
   core.double? width;
 
-  $Linear({
-    this.numFiniteBuckets,
-    this.offset,
-    this.width,
-  });
+  $Linear({this.numFiniteBuckets, this.offset, this.width});
 
   $Linear.fromJson(core.Map json_)
-      : this(
-          numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
-          offset: (json_['offset'] as core.num?)?.toDouble(),
-          width: (json_['width'] as core.num?)?.toDouble(),
-        );
+    : this(
+        numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
+        offset: (json_['offset'] as core.num?)?.toDouble(),
+        width: (json_['width'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
-        if (offset != null) 'offset': offset!,
-        if (width != null) 'width': width!,
-      };
+    if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
+    if (offset != null) 'offset': offset!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// Used by:
@@ -14684,21 +14007,18 @@ class $Link {
   /// The URL of the link.
   core.String? url;
 
-  $Link({
-    this.description,
-    this.url,
-  });
+  $Link({this.description, this.url});
 
   $Link.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (url != null) 'url': url!,
-      };
+    if (description != null) 'description': description!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Used by:
@@ -14805,25 +14125,27 @@ class $ListPolicy {
   });
 
   $ListPolicy.fromJson(core.Map json_)
-      : this(
-          allValues: json_['allValues'] as core.String?,
-          allowedValues: (json_['allowedValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          deniedValues: (json_['deniedValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          inheritFromParent: json_['inheritFromParent'] as core.bool?,
-          suggestedValue: json_['suggestedValue'] as core.String?,
-        );
+    : this(
+        allValues: json_['allValues'] as core.String?,
+        allowedValues:
+            (json_['allowedValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        deniedValues:
+            (json_['deniedValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        inheritFromParent: json_['inheritFromParent'] as core.bool?,
+        suggestedValue: json_['suggestedValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allValues != null) 'allValues': allValues!,
-        if (allowedValues != null) 'allowedValues': allowedValues!,
-        if (deniedValues != null) 'deniedValues': deniedValues!,
-        if (inheritFromParent != null) 'inheritFromParent': inheritFromParent!,
-        if (suggestedValue != null) 'suggestedValue': suggestedValue!,
-      };
+    if (allValues != null) 'allValues': allValues!,
+    if (allowedValues != null) 'allowedValues': allowedValues!,
+    if (deniedValues != null) 'deniedValues': deniedValues!,
+    if (inheritFromParent != null) 'inheritFromParent': inheritFromParent!,
+    if (suggestedValue != null) 'suggestedValue': suggestedValue!,
+  };
 }
 
 /// Used by:
@@ -14847,24 +14169,20 @@ class $Locality {
   /// e.g. `Availability Zone (AZ) `_ on AWS, `Zone `_ on GCP, etc.
   core.String? zone;
 
-  $Locality({
-    this.region,
-    this.subZone,
-    this.zone,
-  });
+  $Locality({this.region, this.subZone, this.zone});
 
   $Locality.fromJson(core.Map json_)
-      : this(
-          region: json_['region'] as core.String?,
-          subZone: json_['subZone'] as core.String?,
-          zone: json_['zone'] as core.String?,
-        );
+    : this(
+        region: json_['region'] as core.String?,
+        subZone: json_['subZone'] as core.String?,
+        zone: json_['zone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (region != null) 'region': region!,
-        if (subZone != null) 'subZone': subZone!,
-        if (zone != null) 'zone': zone!,
-      };
+    if (region != null) 'region': region!,
+    if (subZone != null) 'subZone': subZone!,
+    if (zone != null) 'zone': zone!,
+  };
 }
 
 /// Used by:
@@ -14882,21 +14200,18 @@ class $LocalizedMessage {
   /// The localized error message in the above locale.
   core.String? message;
 
-  $LocalizedMessage({
-    this.locale,
-    this.message,
-  });
+  $LocalizedMessage({this.locale, this.message});
 
   $LocalizedMessage.fromJson(core.Map json_)
-      : this(
-          locale: json_['locale'] as core.String?,
-          message: json_['message'] as core.String?,
-        );
+    : this(
+        locale: json_['locale'] as core.String?,
+        message: json_['message'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locale != null) 'locale': locale!,
-        if (message != null) 'message': message!,
-      };
+    if (locale != null) 'locale': locale!,
+    if (message != null) 'message': message!,
+  };
 }
 
 /// Used by:
@@ -15015,29 +14330,26 @@ class $Location00 {
   });
 
   $Location00.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          locationId: json_['locationId'] as core.String?,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        locationId: json_['locationId'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (locationId != null) 'locationId': locationId!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (locationId != null) 'locationId': locationId!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -15084,29 +14396,26 @@ class $Location01 {
   });
 
   $Location01.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          locationId: json_['locationId'] as core.String?,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        locationId: json_['locationId'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (locationId != null) 'locationId': locationId!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (locationId != null) 'locationId': locationId!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -15131,21 +14440,18 @@ class $Location02 {
   /// automatically.
   core.String? state;
 
-  $Location02({
-    this.location,
-    this.state,
-  });
+  $Location02({this.location, this.state});
 
   $Location02.fromJson(core.Map json_)
-      : this(
-          location: json_['location'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        location: json_['location'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!,
-        if (state != null) 'state': state!,
-      };
+    if (location != null) 'location': location!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Used by:
@@ -15200,21 +14506,21 @@ class $LocationList {
   });
 
   $LocationList.fromJson(core.Map json_)
-      : this(
-          advertiserId: json_['advertiserId'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          locationListId: json_['locationListId'] as core.String?,
-          locationType: json_['locationType'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        advertiserId: json_['advertiserId'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        locationListId: json_['locationListId'] as core.String?,
+        locationType: json_['locationType'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (locationListId != null) 'locationListId': locationListId!,
-        if (locationType != null) 'locationType': locationType!,
-        if (name != null) 'name': name!,
-      };
+    if (advertiserId != null) 'advertiserId': advertiserId!,
+    if (displayName != null) 'displayName': displayName!,
+    if (locationListId != null) 'locationListId': locationListId!,
+    if (locationType != null) 'locationType': locationType!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -15232,21 +14538,18 @@ class $LockConfig {
   /// Optional.
   core.String? reason;
 
-  $LockConfig({
-    this.locked,
-    this.reason,
-  });
+  $LockConfig({this.locked, this.reason});
 
   $LockConfig.fromJson(core.Map json_)
-      : this(
-          locked: json_['locked'] as core.bool?,
-          reason: json_['reason'] as core.String?,
-        );
+    : this(
+        locked: json_['locked'] as core.bool?,
+        reason: json_['reason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locked != null) 'locked': locked!,
-        if (reason != null) 'reason': reason!,
-      };
+    if (locked != null) 'locked': locked!,
+    if (reason != null) 'reason': reason!,
+  };
 }
 
 /// Used by:
@@ -15269,21 +14572,18 @@ class $LogConfig {
   /// - "DEBUG" : Debug and high verbosity logs are enabled.
   core.String? level;
 
-  $LogConfig({
-    this.enabled,
-    this.level,
-  });
+  $LogConfig({this.enabled, this.level});
 
   $LogConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-          level: json_['level'] as core.String?,
-        );
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        level: json_['level'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-        if (level != null) 'level': level!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+    if (level != null) 'level': level!,
+  };
 }
 
 /// Used by:
@@ -15301,23 +14601,19 @@ class $LogFileDirectories {
   /// Required.
   core.String? onlineLogDirectory;
 
-  $LogFileDirectories({
-    this.archivedLogDirectory,
-    this.onlineLogDirectory,
-  });
+  $LogFileDirectories({this.archivedLogDirectory, this.onlineLogDirectory});
 
   $LogFileDirectories.fromJson(core.Map json_)
-      : this(
-          archivedLogDirectory: json_['archivedLogDirectory'] as core.String?,
-          onlineLogDirectory: json_['onlineLogDirectory'] as core.String?,
-        );
+    : this(
+        archivedLogDirectory: json_['archivedLogDirectory'] as core.String?,
+        onlineLogDirectory: json_['onlineLogDirectory'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (archivedLogDirectory != null)
-          'archivedLogDirectory': archivedLogDirectory!,
-        if (onlineLogDirectory != null)
-          'onlineLogDirectory': onlineLogDirectory!,
-      };
+    if (archivedLogDirectory != null)
+      'archivedLogDirectory': archivedLogDirectory!,
+    if (onlineLogDirectory != null) 'onlineLogDirectory': onlineLogDirectory!,
+  };
 }
 
 /// Used by:
@@ -15334,21 +14630,18 @@ class $LookbackWindow {
   /// your ads.
   core.int? impressionDays;
 
-  $LookbackWindow({
-    this.clickDays,
-    this.impressionDays,
-  });
+  $LookbackWindow({this.clickDays, this.impressionDays});
 
   $LookbackWindow.fromJson(core.Map json_)
-      : this(
-          clickDays: json_['clickDays'] as core.int?,
-          impressionDays: json_['impressionDays'] as core.int?,
-        );
+    : this(
+        clickDays: json_['clickDays'] as core.int?,
+        impressionDays: json_['impressionDays'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clickDays != null) 'clickDays': clickDays!,
-        if (impressionDays != null) 'impressionDays': impressionDays!,
-      };
+    if (clickDays != null) 'clickDays': clickDays!,
+    if (impressionDays != null) 'impressionDays': impressionDays!,
+  };
 }
 
 /// Used by:
@@ -15360,18 +14653,14 @@ class $LookupInvoiceCurrencyResponse {
   /// Currency used by the advertiser in ISO 4217 format.
   core.String? currencyCode;
 
-  $LookupInvoiceCurrencyResponse({
-    this.currencyCode,
-  });
+  $LookupInvoiceCurrencyResponse({this.currencyCode});
 
   $LookupInvoiceCurrencyResponse.fromJson(core.Map json_)
-      : this(
-          currencyCode: json_['currencyCode'] as core.String?,
-        );
+    : this(currencyCode: json_['currencyCode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-      };
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+  };
 }
 
 /// Used by:
@@ -15388,22 +14677,20 @@ class $MaintenanceConfig {
   /// Required.
   core.List<core.String>? maintenanceAddressCidrBlocks;
 
-  $MaintenanceConfig({
-    this.maintenanceAddressCidrBlocks,
-  });
+  $MaintenanceConfig({this.maintenanceAddressCidrBlocks});
 
   $MaintenanceConfig.fromJson(core.Map json_)
-      : this(
-          maintenanceAddressCidrBlocks:
-              (json_['maintenanceAddressCidrBlocks'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-        );
+    : this(
+        maintenanceAddressCidrBlocks:
+            (json_['maintenanceAddressCidrBlocks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maintenanceAddressCidrBlocks != null)
-          'maintenanceAddressCidrBlocks': maintenanceAddressCidrBlocks!,
-      };
+    if (maintenanceAddressCidrBlocks != null)
+      'maintenanceAddressCidrBlocks': maintenanceAddressCidrBlocks!,
+  };
 }
 
 /// Used by:
@@ -15414,18 +14701,14 @@ class $ManualLbConfig {
   /// Whether manual load balancing is enabled.
   core.bool? enabled;
 
-  $ManualLbConfig({
-    this.enabled,
-  });
+  $ManualLbConfig({this.enabled});
 
   $ManualLbConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 /// Used by:
@@ -15438,27 +14721,20 @@ class $Material {
   core.Map<core.String, core.String>? digest;
   core.String? uri;
 
-  $Material({
-    this.digest,
-    this.uri,
-  });
+  $Material({this.digest, this.uri});
 
   $Material.fromJson(core.Map json_)
-      : this(
-          digest:
-              (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        digest: (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (digest != null) 'digest': digest!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Used by:
@@ -15516,24 +14792,24 @@ class $MaximizeSpendBidStrategy {
   });
 
   $MaximizeSpendBidStrategy.fromJson(core.Map json_)
-      : this(
-          customBiddingAlgorithmId:
-              json_['customBiddingAlgorithmId'] as core.String?,
-          maxAverageCpmBidAmountMicros:
-              json_['maxAverageCpmBidAmountMicros'] as core.String?,
-          performanceGoalType: json_['performanceGoalType'] as core.String?,
-          raiseBidForDeals: json_['raiseBidForDeals'] as core.bool?,
-        );
+    : this(
+        customBiddingAlgorithmId:
+            json_['customBiddingAlgorithmId'] as core.String?,
+        maxAverageCpmBidAmountMicros:
+            json_['maxAverageCpmBidAmountMicros'] as core.String?,
+        performanceGoalType: json_['performanceGoalType'] as core.String?,
+        raiseBidForDeals: json_['raiseBidForDeals'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customBiddingAlgorithmId != null)
-          'customBiddingAlgorithmId': customBiddingAlgorithmId!,
-        if (maxAverageCpmBidAmountMicros != null)
-          'maxAverageCpmBidAmountMicros': maxAverageCpmBidAmountMicros!,
-        if (performanceGoalType != null)
-          'performanceGoalType': performanceGoalType!,
-        if (raiseBidForDeals != null) 'raiseBidForDeals': raiseBidForDeals!,
-      };
+    if (customBiddingAlgorithmId != null)
+      'customBiddingAlgorithmId': customBiddingAlgorithmId!,
+    if (maxAverageCpmBidAmountMicros != null)
+      'maxAverageCpmBidAmountMicros': maxAverageCpmBidAmountMicros!,
+    if (performanceGoalType != null)
+      'performanceGoalType': performanceGoalType!,
+    if (raiseBidForDeals != null) 'raiseBidForDeals': raiseBidForDeals!,
+  };
 }
 
 /// Used by:
@@ -15554,19 +14830,19 @@ class $MeasurementConfig {
   });
 
   $MeasurementConfig.fromJson(core.Map json_)
-      : this(
-          dv360ToCmCostReportingEnabled:
-              json_['dv360ToCmCostReportingEnabled'] as core.bool?,
-          dv360ToCmDataSharingEnabled:
-              json_['dv360ToCmDataSharingEnabled'] as core.bool?,
-        );
+    : this(
+        dv360ToCmCostReportingEnabled:
+            json_['dv360ToCmCostReportingEnabled'] as core.bool?,
+        dv360ToCmDataSharingEnabled:
+            json_['dv360ToCmDataSharingEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dv360ToCmCostReportingEnabled != null)
-          'dv360ToCmCostReportingEnabled': dv360ToCmCostReportingEnabled!,
-        if (dv360ToCmDataSharingEnabled != null)
-          'dv360ToCmDataSharingEnabled': dv360ToCmDataSharingEnabled!,
-      };
+    if (dv360ToCmCostReportingEnabled != null)
+      'dv360ToCmCostReportingEnabled': dv360ToCmCostReportingEnabled!,
+    if (dv360ToCmDataSharingEnabled != null)
+      'dv360ToCmDataSharingEnabled': dv360ToCmDataSharingEnabled!,
+  };
 }
 
 /// Used by:
@@ -15580,18 +14856,14 @@ class $Media {
   /// Name of the media resource.
   core.String? resourceName;
 
-  $Media({
-    this.resourceName,
-  });
+  $Media({this.resourceName});
 
   $Media.fromJson(core.Map json_)
-      : this(
-          resourceName: json_['resourceName'] as core.String?,
-        );
+    : this(resourceName: json_['resourceName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName!,
-      };
+    if (resourceName != null) 'resourceName': resourceName!,
+  };
 }
 
 /// Used by:
@@ -15609,21 +14881,18 @@ class $MethodSelector {
   /// ApiOperation.
   core.String? permission;
 
-  $MethodSelector({
-    this.method,
-    this.permission,
-  });
+  $MethodSelector({this.method, this.permission});
 
   $MethodSelector.fromJson(core.Map json_)
-      : this(
-          method: json_['method'] as core.String?,
-          permission: json_['permission'] as core.String?,
-        );
+    : this(
+        method: json_['method'] as core.String?,
+        permission: json_['permission'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (method != null) 'method': method!,
-        if (permission != null) 'permission': permission!,
-      };
+    if (method != null) 'method': method!,
+    if (permission != null) 'permission': permission!,
+  };
 }
 
 /// Used by:
@@ -15695,23 +14964,23 @@ class $MetricDescriptorMetadata {
   });
 
   $MetricDescriptorMetadata.fromJson(core.Map json_)
-      : this(
-          ingestDelay: json_['ingestDelay'] as core.String?,
-          launchStage: json_['launchStage'] as core.String?,
-          samplePeriod: json_['samplePeriod'] as core.String?,
-          timeSeriesResourceHierarchyLevel:
-              (json_['timeSeriesResourceHierarchyLevel'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-        );
+    : this(
+        ingestDelay: json_['ingestDelay'] as core.String?,
+        launchStage: json_['launchStage'] as core.String?,
+        samplePeriod: json_['samplePeriod'] as core.String?,
+        timeSeriesResourceHierarchyLevel:
+            (json_['timeSeriesResourceHierarchyLevel'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ingestDelay != null) 'ingestDelay': ingestDelay!,
-        if (launchStage != null) 'launchStage': launchStage!,
-        if (samplePeriod != null) 'samplePeriod': samplePeriod!,
-        if (timeSeriesResourceHierarchyLevel != null)
-          'timeSeriesResourceHierarchyLevel': timeSeriesResourceHierarchyLevel!,
-      };
+    if (ingestDelay != null) 'ingestDelay': ingestDelay!,
+    if (launchStage != null) 'launchStage': launchStage!,
+    if (samplePeriod != null) 'samplePeriod': samplePeriod!,
+    if (timeSeriesResourceHierarchyLevel != null)
+      'timeSeriesResourceHierarchyLevel': timeSeriesResourceHierarchyLevel!,
+  };
 }
 
 /// Used by:
@@ -15732,28 +15001,20 @@ class $MetricRule {
   /// Refer to selector for syntax details.
   core.String? selector;
 
-  $MetricRule({
-    this.metricCosts,
-    this.selector,
-  });
+  $MetricRule({this.metricCosts, this.selector});
 
   $MetricRule.fromJson(core.Map json_)
-      : this(
-          metricCosts:
-              (json_['metricCosts'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          selector: json_['selector'] as core.String?,
-        );
+    : this(
+        metricCosts: (json_['metricCosts']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        selector: json_['selector'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metricCosts != null) 'metricCosts': metricCosts!,
-        if (selector != null) 'selector': selector!,
-      };
+    if (metricCosts != null) 'metricCosts': metricCosts!,
+    if (selector != null) 'selector': selector!,
+  };
 }
 
 /// Used by:
@@ -15767,21 +15028,18 @@ class $Mixin {
   /// If non-empty specifies a path under which inherited HTTP paths are rooted.
   core.String? root;
 
-  $Mixin({
-    this.name,
-    this.root,
-  });
+  $Mixin({this.name, this.root});
 
   $Mixin.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          root: json_['root'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        root: json_['root'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (root != null) 'root': root!,
-      };
+    if (name != null) 'name': name!,
+    if (root != null) 'root': root!,
+  };
 }
 
 /// Used by:
@@ -15818,27 +15076,22 @@ class $MobileApp {
   /// Output only.
   core.String? publisher;
 
-  $MobileApp({
-    this.appId,
-    this.displayName,
-    this.platform,
-    this.publisher,
-  });
+  $MobileApp({this.appId, this.displayName, this.platform, this.publisher});
 
   $MobileApp.fromJson(core.Map json_)
-      : this(
-          appId: json_['appId'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          platform: json_['platform'] as core.String?,
-          publisher: json_['publisher'] as core.String?,
-        );
+    : this(
+        appId: json_['appId'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        platform: json_['platform'] as core.String?,
+        publisher: json_['publisher'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appId != null) 'appId': appId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (platform != null) 'platform': platform!,
-        if (publisher != null) 'publisher': publisher!,
-      };
+    if (appId != null) 'appId': appId!,
+    if (displayName != null) 'displayName': displayName!,
+    if (platform != null) 'platform': platform!,
+    if (publisher != null) 'publisher': publisher!,
+  };
 }
 
 /// Used by:
@@ -15858,24 +15111,20 @@ class $ModelCallSignals {
   /// Prompt as sent to the model.
   core.String? renderedPrompt;
 
-  $ModelCallSignals({
-    this.model,
-    this.modelOutput,
-    this.renderedPrompt,
-  });
+  $ModelCallSignals({this.model, this.modelOutput, this.renderedPrompt});
 
   $ModelCallSignals.fromJson(core.Map json_)
-      : this(
-          model: json_['model'] as core.String?,
-          modelOutput: json_['modelOutput'] as core.String?,
-          renderedPrompt: json_['renderedPrompt'] as core.String?,
-        );
+    : this(
+        model: json_['model'] as core.String?,
+        modelOutput: json_['modelOutput'] as core.String?,
+        renderedPrompt: json_['renderedPrompt'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (model != null) 'model': model!,
-        if (modelOutput != null) 'modelOutput': modelOutput!,
-        if (renderedPrompt != null) 'renderedPrompt': renderedPrompt!,
-      };
+    if (model != null) 'model': model!,
+    if (modelOutput != null) 'modelOutput': modelOutput!,
+    if (renderedPrompt != null) 'renderedPrompt': renderedPrompt!,
+  };
 }
 
 /// Used by:
@@ -15901,21 +15150,18 @@ class $ModelSourceInfo {
   /// - "MARKETPLACE" : The Model is saved or tuned from Marketplace.
   core.String? sourceType;
 
-  $ModelSourceInfo({
-    this.copy,
-    this.sourceType,
-  });
+  $ModelSourceInfo({this.copy, this.sourceType});
 
   $ModelSourceInfo.fromJson(core.Map json_)
-      : this(
-          copy: json_['copy'] as core.bool?,
-          sourceType: json_['sourceType'] as core.String?,
-        );
+    : this(
+        copy: json_['copy'] as core.bool?,
+        sourceType: json_['sourceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (copy != null) 'copy': copy!,
-        if (sourceType != null) 'sourceType': sourceType!,
-      };
+    if (copy != null) 'copy': copy!,
+    if (sourceType != null) 'sourceType': sourceType!,
+  };
 }
 
 /// Used by:
@@ -15959,24 +15205,20 @@ class $Money {
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
   core.String? units;
 
-  $Money({
-    this.currencyCode,
-    this.nanos,
-    this.units,
-  });
+  $Money({this.currencyCode, this.nanos, this.units});
 
   $Money.fromJson(core.Map json_)
-      : this(
-          currencyCode: json_['currencyCode'] as core.String?,
-          nanos: json_['nanos'] as core.int?,
-          units: json_['units'] as core.String?,
-        );
+    : this(
+        currencyCode: json_['currencyCode'] as core.String?,
+        nanos: json_['nanos'] as core.int?,
+        units: json_['units'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (nanos != null) 'nanos': nanos!,
-        if (units != null) 'units': units!,
-      };
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+    if (nanos != null) 'nanos': nanos!,
+    if (units != null) 'units': units!,
+  };
 }
 
 /// Used by:
@@ -16003,30 +15245,23 @@ class $MonitoredResourceMetadata {
   /// Output only.
   core.Map<core.String, core.String>? userLabels;
 
-  $MonitoredResourceMetadata({
-    this.systemLabels,
-    this.userLabels,
-  });
+  $MonitoredResourceMetadata({this.systemLabels, this.userLabels});
 
   $MonitoredResourceMetadata.fromJson(core.Map json_)
-      : this(
-          systemLabels: json_.containsKey('systemLabels')
-              ? json_['systemLabels'] as core.Map<core.String, core.dynamic>
-              : null,
-          userLabels:
-              (json_['userLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        systemLabels:
+            json_.containsKey('systemLabels')
+                ? json_['systemLabels'] as core.Map<core.String, core.dynamic>
+                : null,
+        userLabels: (json_['userLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (systemLabels != null) 'systemLabels': systemLabels!,
-        if (userLabels != null) 'userLabels': userLabels!,
-      };
+    if (systemLabels != null) 'systemLabels': systemLabels!,
+    if (userLabels != null) 'userLabels': userLabels!,
+  };
 }
 
 /// Used by:
@@ -16044,23 +15279,21 @@ class $MonitoringDestination {
   /// The type must be defined in Service.monitored_resources section.
   core.String? monitoredResource;
 
-  $MonitoringDestination({
-    this.metrics,
-    this.monitoredResource,
-  });
+  $MonitoringDestination({this.metrics, this.monitoredResource});
 
   $MonitoringDestination.fromJson(core.Map json_)
-      : this(
-          metrics: (json_['metrics'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          monitoredResource: json_['monitoredResource'] as core.String?,
-        );
+    : this(
+        metrics:
+            (json_['metrics'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        monitoredResource: json_['monitoredResource'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metrics != null) 'metrics': metrics!,
-        if (monitoredResource != null) 'monitoredResource': monitoredResource!,
-      };
+    if (metrics != null) 'metrics': metrics!,
+    if (monitoredResource != null) 'monitoredResource': monitoredResource!,
+  };
 }
 
 /// Used by:
@@ -16091,18 +15324,14 @@ class $NativeContentPositionAssignedTargetingOptionDetails {
   /// recommendation, i.e., ads appear in sections for recommended content.
   core.String? contentPosition;
 
-  $NativeContentPositionAssignedTargetingOptionDetails({
-    this.contentPosition,
-  });
+  $NativeContentPositionAssignedTargetingOptionDetails({this.contentPosition});
 
   $NativeContentPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentPosition: json_['contentPosition'] as core.String?,
-        );
+    : this(contentPosition: json_['contentPosition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentPosition != null) 'contentPosition': contentPosition!,
-      };
+    if (contentPosition != null) 'contentPosition': contentPosition!,
+  };
 }
 
 /// Used by:
@@ -16133,18 +15362,14 @@ class $NativeContentPositionTargetingOptionDetails {
   /// recommendation, i.e., ads appear in sections for recommended content.
   core.String? contentPosition;
 
-  $NativeContentPositionTargetingOptionDetails({
-    this.contentPosition,
-  });
+  $NativeContentPositionTargetingOptionDetails({this.contentPosition});
 
   $NativeContentPositionTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentPosition: json_['contentPosition'] as core.String?,
-        );
+    : this(contentPosition: json_['contentPosition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentPosition != null) 'contentPosition': contentPosition!,
-      };
+    if (contentPosition != null) 'contentPosition': contentPosition!,
+  };
 }
 
 /// Used by:
@@ -16169,21 +15394,18 @@ class $NegativeKeyword {
   /// Output only.
   core.String? name;
 
-  $NegativeKeyword({
-    this.keywordValue,
-    this.name,
-  });
+  $NegativeKeyword({this.keywordValue, this.name});
 
   $NegativeKeyword.fromJson(core.Map json_)
-      : this(
-          keywordValue: json_['keywordValue'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        keywordValue: json_['keywordValue'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keywordValue != null) 'keywordValue': keywordValue!,
-        if (name != null) 'name': name!,
-      };
+    if (keywordValue != null) 'keywordValue': keywordValue!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -16231,23 +15453,23 @@ class $NegativeKeywordList {
   });
 
   $NegativeKeywordList.fromJson(core.Map json_)
-      : this(
-          advertiserId: json_['advertiserId'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          negativeKeywordListId: json_['negativeKeywordListId'] as core.String?,
-          targetedLineItemCount: json_['targetedLineItemCount'] as core.String?,
-        );
+    : this(
+        advertiserId: json_['advertiserId'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        negativeKeywordListId: json_['negativeKeywordListId'] as core.String?,
+        targetedLineItemCount: json_['targetedLineItemCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (negativeKeywordListId != null)
-          'negativeKeywordListId': negativeKeywordListId!,
-        if (targetedLineItemCount != null)
-          'targetedLineItemCount': targetedLineItemCount!,
-      };
+    if (advertiserId != null) 'advertiserId': advertiserId!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (negativeKeywordListId != null)
+      'negativeKeywordListId': negativeKeywordListId!,
+    if (targetedLineItemCount != null)
+      'targetedLineItemCount': targetedLineItemCount!,
+  };
 }
 
 /// Used by:
@@ -16269,14 +15491,14 @@ class $NegativeKeywordListAssignedTargetingOptionDetails {
   });
 
   $NegativeKeywordListAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          negativeKeywordListId: json_['negativeKeywordListId'] as core.String?,
-        );
+    : this(
+        negativeKeywordListId: json_['negativeKeywordListId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (negativeKeywordListId != null)
-          'negativeKeywordListId': negativeKeywordListId!,
-      };
+    if (negativeKeywordListId != null)
+      'negativeKeywordListId': negativeKeywordListId!,
+  };
 }
 
 /// Used by:
@@ -16292,18 +15514,14 @@ class $NoWrapper {
   /// Optional.
   core.bool? writeMetadata;
 
-  $NoWrapper({
-    this.writeMetadata,
-  });
+  $NoWrapper({this.writeMetadata});
 
   $NoWrapper.fromJson(core.Map json_)
-      : this(
-          writeMetadata: json_['writeMetadata'] as core.bool?,
-        );
+    : this(writeMetadata: json_['writeMetadata'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
-      };
+    if (writeMetadata != null) 'writeMetadata': writeMetadata!,
+  };
 }
 
 /// Used by:
@@ -16321,21 +15539,18 @@ class $NodeConfig {
   /// Optional.
   core.int? minNodeCount;
 
-  $NodeConfig({
-    this.maxNodeCount,
-    this.minNodeCount,
-  });
+  $NodeConfig({this.maxNodeCount, this.minNodeCount});
 
   $NodeConfig.fromJson(core.Map json_)
-      : this(
-          maxNodeCount: json_['maxNodeCount'] as core.int?,
-          minNodeCount: json_['minNodeCount'] as core.int?,
-        );
+    : this(
+        maxNodeCount: json_['maxNodeCount'] as core.int?,
+        minNodeCount: json_['minNodeCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
-        if (minNodeCount != null) 'minNodeCount': minNodeCount!,
-      };
+    if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
+    if (minNodeCount != null) 'minNodeCount': minNodeCount!,
+  };
 }
 
 /// Used by:
@@ -16352,24 +15567,20 @@ class $NonCompliantFile {
   /// Explains why a file is non compliant for a CIS check.
   core.String? reason;
 
-  $NonCompliantFile({
-    this.displayCommand,
-    this.path,
-    this.reason,
-  });
+  $NonCompliantFile({this.displayCommand, this.path, this.reason});
 
   $NonCompliantFile.fromJson(core.Map json_)
-      : this(
-          displayCommand: json_['displayCommand'] as core.String?,
-          path: json_['path'] as core.String?,
-          reason: json_['reason'] as core.String?,
-        );
+    : this(
+        displayCommand: json_['displayCommand'] as core.String?,
+        path: json_['path'] as core.String?,
+        reason: json_['reason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayCommand != null) 'displayCommand': displayCommand!,
-        if (path != null) 'path': path!,
-        if (reason != null) 'reason': reason!,
-      };
+    if (displayCommand != null) 'displayCommand': displayCommand!,
+    if (path != null) 'path': path!,
+    if (reason != null) 'reason': reason!,
+  };
 }
 
 /// Used by:
@@ -16384,18 +15595,14 @@ class $OAuthRequirements {
   /// https://www.googleapis.com/auth/calendar.read
   core.String? canonicalScopes;
 
-  $OAuthRequirements({
-    this.canonicalScopes,
-  });
+  $OAuthRequirements({this.canonicalScopes});
 
   $OAuthRequirements.fromJson(core.Map json_)
-      : this(
-          canonicalScopes: json_['canonicalScopes'] as core.String?,
-        );
+    : this(canonicalScopes: json_['canonicalScopes'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (canonicalScopes != null) 'canonicalScopes': canonicalScopes!,
-      };
+    if (canonicalScopes != null) 'canonicalScopes': canonicalScopes!,
+  };
 }
 
 /// Used by:
@@ -16409,24 +15616,18 @@ class $OSPolicyAssignmentLabelSet {
   /// selected.
   core.Map<core.String, core.String>? labels;
 
-  $OSPolicyAssignmentLabelSet({
-    this.labels,
-  });
+  $OSPolicyAssignmentLabelSet({this.labels});
 
   $OSPolicyAssignmentLabelSet.fromJson(core.Map json_)
-      : this(
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-      };
+    if (labels != null) 'labels': labels!,
+  };
 }
 
 /// Used by:
@@ -16447,24 +15648,20 @@ class $OSPolicyResourceFileGcs {
   /// Required.
   core.String? object;
 
-  $OSPolicyResourceFileGcs({
-    this.bucket,
-    this.generation,
-    this.object,
-  });
+  $OSPolicyResourceFileGcs({this.bucket, this.generation, this.object});
 
   $OSPolicyResourceFileGcs.fromJson(core.Map json_)
-      : this(
-          bucket: json_['bucket'] as core.String?,
-          generation: json_['generation'] as core.String?,
-          object: json_['object'] as core.String?,
-        );
+    : this(
+        bucket: json_['bucket'] as core.String?,
+        generation: json_['generation'] as core.String?,
+        object: json_['object'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucket != null) 'bucket': bucket!,
-        if (generation != null) 'generation': generation!,
-        if (object != null) 'object': object!,
-      };
+    if (bucket != null) 'bucket': bucket!,
+    if (generation != null) 'generation': generation!,
+    if (object != null) 'object': object!,
+  };
 }
 
 /// Used by:
@@ -16483,21 +15680,18 @@ class $OSPolicyResourceFileRemote {
   /// Required.
   core.String? uri;
 
-  $OSPolicyResourceFileRemote({
-    this.sha256Checksum,
-    this.uri,
-  });
+  $OSPolicyResourceFileRemote({this.sha256Checksum, this.uri});
 
   $OSPolicyResourceFileRemote.fromJson(core.Map json_)
-      : this(
-          sha256Checksum: json_['sha256Checksum'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        sha256Checksum: json_['sha256Checksum'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sha256Checksum != null) 'sha256Checksum': sha256Checksum!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (sha256Checksum != null) 'sha256Checksum': sha256Checksum!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Used by:
@@ -16546,23 +15740,24 @@ class $OSPolicyResourceRepositoryResourceAptRepository {
   });
 
   $OSPolicyResourceRepositoryResourceAptRepository.fromJson(core.Map json_)
-      : this(
-          archiveType: json_['archiveType'] as core.String?,
-          components: (json_['components'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          distribution: json_['distribution'] as core.String?,
-          gpgKey: json_['gpgKey'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        archiveType: json_['archiveType'] as core.String?,
+        components:
+            (json_['components'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        distribution: json_['distribution'] as core.String?,
+        gpgKey: json_['gpgKey'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (archiveType != null) 'archiveType': archiveType!,
-        if (components != null) 'components': components!,
-        if (distribution != null) 'distribution': distribution!,
-        if (gpgKey != null) 'gpgKey': gpgKey!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (archiveType != null) 'archiveType': archiveType!,
+    if (components != null) 'components': components!,
+    if (distribution != null) 'distribution': distribution!,
+    if (gpgKey != null) 'gpgKey': gpgKey!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Used by:
@@ -16580,21 +15775,18 @@ class $OSPolicyResourceRepositoryResourceGooRepository {
   /// Required.
   core.String? url;
 
-  $OSPolicyResourceRepositoryResourceGooRepository({
-    this.name,
-    this.url,
-  });
+  $OSPolicyResourceRepositoryResourceGooRepository({this.name, this.url});
 
   $OSPolicyResourceRepositoryResourceGooRepository.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (url != null) 'url': url!,
-      };
+    if (name != null) 'name': name!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Used by:
@@ -16630,21 +15822,22 @@ class $OSPolicyResourceRepositoryResourceYumRepository {
   });
 
   $OSPolicyResourceRepositoryResourceYumRepository.fromJson(core.Map json_)
-      : this(
-          baseUrl: json_['baseUrl'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          gpgKeys: (json_['gpgKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          id: json_['id'] as core.String?,
-        );
+    : this(
+        baseUrl: json_['baseUrl'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        gpgKeys:
+            (json_['gpgKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        id: json_['id'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (baseUrl != null) 'baseUrl': baseUrl!,
-        if (displayName != null) 'displayName': displayName!,
-        if (gpgKeys != null) 'gpgKeys': gpgKeys!,
-        if (id != null) 'id': id!,
-      };
+    if (baseUrl != null) 'baseUrl': baseUrl!,
+    if (displayName != null) 'displayName': displayName!,
+    if (gpgKeys != null) 'gpgKeys': gpgKeys!,
+    if (id != null) 'id': id!,
+  };
 }
 
 /// Used by:
@@ -16680,21 +15873,22 @@ class $OSPolicyResourceRepositoryResourceZypperRepository {
   });
 
   $OSPolicyResourceRepositoryResourceZypperRepository.fromJson(core.Map json_)
-      : this(
-          baseUrl: json_['baseUrl'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          gpgKeys: (json_['gpgKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          id: json_['id'] as core.String?,
-        );
+    : this(
+        baseUrl: json_['baseUrl'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        gpgKeys:
+            (json_['gpgKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        id: json_['id'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (baseUrl != null) 'baseUrl': baseUrl!,
-        if (displayName != null) 'displayName': displayName!,
-        if (gpgKeys != null) 'gpgKeys': gpgKeys!,
-        if (id != null) 'id': id!,
-      };
+    if (baseUrl != null) 'baseUrl': baseUrl!,
+    if (displayName != null) 'displayName': displayName!,
+    if (gpgKeys != null) 'gpgKeys': gpgKeys!,
+    if (id != null) 'id': id!,
+  };
 }
 
 /// Used by:
@@ -16725,19 +15919,20 @@ class $Oauth2AuthCodeFlowGoogleManaged {
   });
 
   $Oauth2AuthCodeFlowGoogleManaged.fromJson(core.Map json_)
-      : this(
-          authCode: json_['authCode'] as core.String?,
-          redirectUri: json_['redirectUri'] as core.String?,
-          scopes: (json_['scopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        authCode: json_['authCode'] as core.String?,
+        redirectUri: json_['redirectUri'] as core.String?,
+        scopes:
+            (json_['scopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authCode != null) 'authCode': authCode!,
-        if (redirectUri != null) 'redirectUri': redirectUri!,
-        if (scopes != null) 'scopes': scopes!,
-      };
+    if (authCode != null) 'authCode': authCode!,
+    if (redirectUri != null) 'redirectUri': redirectUri!,
+    if (scopes != null) 'scopes': scopes!,
+  };
 }
 
 /// Used by:
@@ -16759,24 +15954,20 @@ class $ObjectId {
   /// The name of the object.
   core.String? objectName;
 
-  $ObjectId({
-    this.bucketName,
-    this.generation,
-    this.objectName,
-  });
+  $ObjectId({this.bucketName, this.generation, this.objectName});
 
   $ObjectId.fromJson(core.Map json_)
-      : this(
-          bucketName: json_['bucketName'] as core.String?,
-          generation: json_['generation'] as core.String?,
-          objectName: json_['objectName'] as core.String?,
-        );
+    : this(
+        bucketName: json_['bucketName'] as core.String?,
+        generation: json_['generation'] as core.String?,
+        objectName: json_['objectName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucketName != null) 'bucketName': bucketName!,
-        if (generation != null) 'generation': generation!,
-        if (objectName != null) 'objectName': objectName!,
-      };
+    if (bucketName != null) 'bucketName': bucketName!,
+    if (generation != null) 'generation': generation!,
+    if (objectName != null) 'objectName': objectName!,
+  };
 }
 
 /// Used by:
@@ -16795,21 +15986,18 @@ class $ObjectIdentifier {
   /// Required.
   core.String? table;
 
-  $ObjectIdentifier({
-    this.schema,
-    this.table,
-  });
+  $ObjectIdentifier({this.schema, this.table});
 
   $ObjectIdentifier.fromJson(core.Map json_)
-      : this(
-          schema: json_['schema'] as core.String?,
-          table: json_['table'] as core.String?,
-        );
+    : this(
+        schema: json_['schema'] as core.String?,
+        table: json_['table'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (schema != null) 'schema': schema!,
-        if (table != null) 'table': table!,
-      };
+    if (schema != null) 'schema': schema!,
+    if (table != null) 'table': table!,
+  };
 }
 
 /// Used by:
@@ -16823,21 +16011,15 @@ class $OffsetPosition {
   /// Offset distance from top side of an asset or a window.
   core.int? top;
 
-  $OffsetPosition({
-    this.left,
-    this.top,
-  });
+  $OffsetPosition({this.left, this.top});
 
   $OffsetPosition.fromJson(core.Map json_)
-      : this(
-          left: json_['left'] as core.int?,
-          top: json_['top'] as core.int?,
-        );
+    : this(left: json_['left'] as core.int?, top: json_['top'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (left != null) 'left': left!,
-        if (top != null) 'top': top!,
-      };
+    if (left != null) 'left': left!,
+    if (top != null) 'top': top!,
+  };
 }
 
 /// Used by:
@@ -16866,22 +16048,19 @@ class $OidcToken {
   /// Optional.
   core.String? serviceAccountEmail;
 
-  $OidcToken({
-    this.audience,
-    this.serviceAccountEmail,
-  });
+  $OidcToken({this.audience, this.serviceAccountEmail});
 
   $OidcToken.fromJson(core.Map json_)
-      : this(
-          audience: json_['audience'] as core.String?,
-          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-        );
+    : this(
+        audience: json_['audience'] as core.String?,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audience != null) 'audience': audience!,
-        if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail!,
-      };
+    if (audience != null) 'audience': audience!,
+    if (serviceAccountEmail != null)
+      'serviceAccountEmail': serviceAccountEmail!,
+  };
 }
 
 /// Used by:
@@ -16900,18 +16079,14 @@ class $OmidAssignedTargetingOptionDetails {
   /// inventory.
   core.String? omid;
 
-  $OmidAssignedTargetingOptionDetails({
-    this.omid,
-  });
+  $OmidAssignedTargetingOptionDetails({this.omid});
 
   $OmidAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          omid: json_['omid'] as core.String?,
-        );
+    : this(omid: json_['omid'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (omid != null) 'omid': omid!,
-      };
+    if (omid != null) 'omid': omid!,
+  };
 }
 
 /// Used by:
@@ -16930,18 +16105,14 @@ class $OmidTargetingOptionDetails {
   /// inventory.
   core.String? omid;
 
-  $OmidTargetingOptionDetails({
-    this.omid,
-  });
+  $OmidTargetingOptionDetails({this.omid});
 
   $OmidTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          omid: json_['omid'] as core.String?,
-        );
+    : this(omid: json_['omid'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (omid != null) 'omid': omid!,
-      };
+    if (omid != null) 'omid': omid!,
+  };
 }
 
 /// Used by:
@@ -16995,17 +16166,17 @@ class $OnScreenPositionAssignedTargetingOptionDetails {
   });
 
   $OnScreenPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          adType: json_['adType'] as core.String?,
-          onScreenPosition: json_['onScreenPosition'] as core.String?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        adType: json_['adType'] as core.String?,
+        onScreenPosition: json_['onScreenPosition'] as core.String?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adType != null) 'adType': adType!,
-        if (onScreenPosition != null) 'onScreenPosition': onScreenPosition!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (adType != null) 'adType': adType!,
+    if (onScreenPosition != null) 'onScreenPosition': onScreenPosition!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -17026,18 +16197,14 @@ class $OnScreenPositionTargetingOptionDetails {
   /// - "ON_SCREEN_POSITION_BELOW_THE_FOLD" : The ad is located below the fold.
   core.String? onScreenPosition;
 
-  $OnScreenPositionTargetingOptionDetails({
-    this.onScreenPosition,
-  });
+  $OnScreenPositionTargetingOptionDetails({this.onScreenPosition});
 
   $OnScreenPositionTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          onScreenPosition: json_['onScreenPosition'] as core.String?,
-        );
+    : this(onScreenPosition: json_['onScreenPosition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (onScreenPosition != null) 'onScreenPosition': onScreenPosition!,
-      };
+    if (onScreenPosition != null) 'onScreenPosition': onScreenPosition!,
+  };
 }
 
 /// Used by:
@@ -17067,17 +16234,17 @@ class $OperatingSystemAssignedTargetingOptionDetails {
   });
 
   $OperatingSystemAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (negative != null) 'negative': negative!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -17091,18 +16258,14 @@ class $OperatingSystemTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $OperatingSystemTargetingOptionDetails({
-    this.displayName,
-  });
+  $OperatingSystemTargetingOptionDetails({this.displayName});
 
   $OperatingSystemTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+    : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+  };
 }
 
 /// Used by:
@@ -17128,23 +16291,21 @@ class $Option {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? value;
 
-  $Option({
-    this.name,
-    this.value,
-  });
+  $Option({this.name, this.value});
 
   $Option.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          value: json_.containsKey('value')
-              ? json_['value'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        value:
+            json_.containsKey('value')
+                ? json_['value'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
+    if (name != null) 'name': name!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -17186,19 +16347,18 @@ class $OsConstraint {
   });
 
   $OsConstraint.fromJson(core.Map json_)
-      : this(
-          minimumVersion: json_['minimumVersion'] as core.String?,
-          osType: json_['osType'] as core.String?,
-          requireVerifiedChromeOs:
-              json_['requireVerifiedChromeOs'] as core.bool?,
-        );
+    : this(
+        minimumVersion: json_['minimumVersion'] as core.String?,
+        osType: json_['osType'] as core.String?,
+        requireVerifiedChromeOs: json_['requireVerifiedChromeOs'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (minimumVersion != null) 'minimumVersion': minimumVersion!,
-        if (osType != null) 'osType': osType!,
-        if (requireVerifiedChromeOs != null)
-          'requireVerifiedChromeOs': requireVerifiedChromeOs!,
-      };
+    if (minimumVersion != null) 'minimumVersion': minimumVersion!,
+    if (osType != null) 'osType': osType!,
+    if (requireVerifiedChromeOs != null)
+      'requireVerifiedChromeOs': requireVerifiedChromeOs!,
+  };
 }
 
 /// Used by:
@@ -17247,28 +16407,28 @@ class $OsInfo {
   });
 
   $OsInfo.fromJson(core.Map json_)
-      : this(
-          architecture: json_['architecture'] as core.String?,
-          hostname: json_['hostname'] as core.String?,
-          kernelRelease: json_['kernelRelease'] as core.String?,
-          kernelVersion: json_['kernelVersion'] as core.String?,
-          longName: json_['longName'] as core.String?,
-          osconfigAgentVersion: json_['osconfigAgentVersion'] as core.String?,
-          shortName: json_['shortName'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        architecture: json_['architecture'] as core.String?,
+        hostname: json_['hostname'] as core.String?,
+        kernelRelease: json_['kernelRelease'] as core.String?,
+        kernelVersion: json_['kernelVersion'] as core.String?,
+        longName: json_['longName'] as core.String?,
+        osconfigAgentVersion: json_['osconfigAgentVersion'] as core.String?,
+        shortName: json_['shortName'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (architecture != null) 'architecture': architecture!,
-        if (hostname != null) 'hostname': hostname!,
-        if (kernelRelease != null) 'kernelRelease': kernelRelease!,
-        if (kernelVersion != null) 'kernelVersion': kernelVersion!,
-        if (longName != null) 'longName': longName!,
-        if (osconfigAgentVersion != null)
-          'osconfigAgentVersion': osconfigAgentVersion!,
-        if (shortName != null) 'shortName': shortName!,
-        if (version != null) 'version': version!,
-      };
+    if (architecture != null) 'architecture': architecture!,
+    if (hostname != null) 'hostname': hostname!,
+    if (kernelRelease != null) 'kernelRelease': kernelRelease!,
+    if (kernelVersion != null) 'kernelVersion': kernelVersion!,
+    if (longName != null) 'longName': longName!,
+    if (osconfigAgentVersion != null)
+      'osconfigAgentVersion': osconfigAgentVersion!,
+    if (shortName != null) 'shortName': shortName!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Used by:
@@ -17279,21 +16439,18 @@ class $OutputMetrics {
   core.String? bytesWritten;
   core.String? recordsWritten;
 
-  $OutputMetrics({
-    this.bytesWritten,
-    this.recordsWritten,
-  });
+  $OutputMetrics({this.bytesWritten, this.recordsWritten});
 
   $OutputMetrics.fromJson(core.Map json_)
-      : this(
-          bytesWritten: json_['bytesWritten'] as core.String?,
-          recordsWritten: json_['recordsWritten'] as core.String?,
-        );
+    : this(
+        bytesWritten: json_['bytesWritten'] as core.String?,
+        recordsWritten: json_['recordsWritten'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bytesWritten != null) 'bytesWritten': bytesWritten!,
-        if (recordsWritten != null) 'recordsWritten': recordsWritten!,
-      };
+    if (bytesWritten != null) 'bytesWritten': bytesWritten!,
+    if (recordsWritten != null) 'recordsWritten': recordsWritten!,
+  };
 }
 
 /// Used by:
@@ -17364,20 +16521,20 @@ class $Pacing {
   });
 
   $Pacing.fromJson(core.Map json_)
-      : this(
-          dailyMaxImpressions: json_['dailyMaxImpressions'] as core.String?,
-          dailyMaxMicros: json_['dailyMaxMicros'] as core.String?,
-          pacingPeriod: json_['pacingPeriod'] as core.String?,
-          pacingType: json_['pacingType'] as core.String?,
-        );
+    : this(
+        dailyMaxImpressions: json_['dailyMaxImpressions'] as core.String?,
+        dailyMaxMicros: json_['dailyMaxMicros'] as core.String?,
+        pacingPeriod: json_['pacingPeriod'] as core.String?,
+        pacingType: json_['pacingType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dailyMaxImpressions != null)
-          'dailyMaxImpressions': dailyMaxImpressions!,
-        if (dailyMaxMicros != null) 'dailyMaxMicros': dailyMaxMicros!,
-        if (pacingPeriod != null) 'pacingPeriod': pacingPeriod!,
-        if (pacingType != null) 'pacingType': pacingType!,
-      };
+    if (dailyMaxImpressions != null)
+      'dailyMaxImpressions': dailyMaxImpressions!,
+    if (dailyMaxMicros != null) 'dailyMaxMicros': dailyMaxMicros!,
+    if (pacingPeriod != null) 'pacingPeriod': pacingPeriod!,
+    if (pacingType != null) 'pacingType': pacingType!,
+  };
 }
 
 /// Used by:
@@ -17397,24 +16554,20 @@ class $PageInfo {
   /// results in the result set.
   core.int? totalResults;
 
-  $PageInfo({
-    this.resultPerPage,
-    this.startIndex,
-    this.totalResults,
-  });
+  $PageInfo({this.resultPerPage, this.startIndex, this.totalResults});
 
   $PageInfo.fromJson(core.Map json_)
-      : this(
-          resultPerPage: json_['resultPerPage'] as core.int?,
-          startIndex: json_['startIndex'] as core.int?,
-          totalResults: json_['totalResults'] as core.int?,
-        );
+    : this(
+        resultPerPage: json_['resultPerPage'] as core.int?,
+        startIndex: json_['startIndex'] as core.int?,
+        totalResults: json_['totalResults'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resultPerPage != null) 'resultPerPage': resultPerPage!,
-        if (startIndex != null) 'startIndex': startIndex!,
-        if (totalResults != null) 'totalResults': totalResults!,
-      };
+    if (resultPerPage != null) 'resultPerPage': resultPerPage!,
+    if (startIndex != null) 'startIndex': startIndex!,
+    if (totalResults != null) 'totalResults': totalResults!,
+  };
 }
 
 /// Used by:
@@ -17429,18 +16582,14 @@ class $Parallelstore {
   /// Optional.
   core.String? path;
 
-  $Parallelstore({
-    this.path,
-  });
+  $Parallelstore({this.path});
 
   $Parallelstore.fromJson(core.Map json_)
-      : this(
-          path: json_['path'] as core.String?,
-        );
+    : this(path: json_['path'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (path != null) 'path': path!,
-      };
+    if (path != null) 'path': path!,
+  };
 }
 
 /// Used by:
@@ -17462,26 +16611,19 @@ class $Params {
   /// "tagValues/444"} is invalid.
   core.Map<core.String, core.String>? resourceManagerTags;
 
-  $Params({
-    this.resourceManagerTags,
-  });
+  $Params({this.resourceManagerTags});
 
   $Params.fromJson(core.Map json_)
-      : this(
-          resourceManagerTags: (json_['resourceManagerTags']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        resourceManagerTags: (json_['resourceManagerTags']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceManagerTags != null)
-          'resourceManagerTags': resourceManagerTags!,
-      };
+    if (resourceManagerTags != null)
+      'resourceManagerTags': resourceManagerTags!,
+  };
 }
 
 /// Used by:
@@ -17532,28 +16674,26 @@ class $ParentEntityFilter {
   /// `FILE_TYPE_AD_GROUP_QA`, and `FILE_TYPE_AD`.
   core.String? filterType;
 
-  $ParentEntityFilter({
-    this.fileType,
-    this.filterIds,
-    this.filterType,
-  });
+  $ParentEntityFilter({this.fileType, this.filterIds, this.filterType});
 
   $ParentEntityFilter.fromJson(core.Map json_)
-      : this(
-          fileType: (json_['fileType'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          filterIds: (json_['filterIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          filterType: json_['filterType'] as core.String?,
-        );
+    : this(
+        fileType:
+            (json_['fileType'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        filterIds:
+            (json_['filterIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        filterType: json_['filterType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileType != null) 'fileType': fileType!,
-        if (filterIds != null) 'filterIds': filterIds!,
-        if (filterType != null) 'filterType': filterType!,
-      };
+    if (fileType != null) 'fileType': fileType!,
+    if (filterIds != null) 'filterIds': filterIds!,
+    if (filterType != null) 'filterType': filterType!,
+  };
 }
 
 /// Used by:
@@ -17575,18 +16715,14 @@ class $ParentalStatusAssignedTargetingOptionDetails {
   /// unknown.
   core.String? parentalStatus;
 
-  $ParentalStatusAssignedTargetingOptionDetails({
-    this.parentalStatus,
-  });
+  $ParentalStatusAssignedTargetingOptionDetails({this.parentalStatus});
 
   $ParentalStatusAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          parentalStatus: json_['parentalStatus'] as core.String?,
-        );
+    : this(parentalStatus: json_['parentalStatus'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parentalStatus != null) 'parentalStatus': parentalStatus!,
-      };
+    if (parentalStatus != null) 'parentalStatus': parentalStatus!,
+  };
 }
 
 /// Used by:
@@ -17608,18 +16744,14 @@ class $ParentalStatusTargetingOptionDetails {
   /// unknown.
   core.String? parentalStatus;
 
-  $ParentalStatusTargetingOptionDetails({
-    this.parentalStatus,
-  });
+  $ParentalStatusTargetingOptionDetails({this.parentalStatus});
 
   $ParentalStatusTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          parentalStatus: json_['parentalStatus'] as core.String?,
-        );
+    : this(parentalStatus: json_['parentalStatus'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parentalStatus != null) 'parentalStatus': parentalStatus!,
-      };
+    if (parentalStatus != null) 'parentalStatus': parentalStatus!,
+  };
 }
 
 /// Used by:
@@ -17630,18 +16762,14 @@ class $PartnerBillingConfig {
   /// The ID of a partner default billing profile.
   core.String? billingProfileId;
 
-  $PartnerBillingConfig({
-    this.billingProfileId,
-  });
+  $PartnerBillingConfig({this.billingProfileId});
 
   $PartnerBillingConfig.fromJson(core.Map json_)
-      : this(
-          billingProfileId: json_['billingProfileId'] as core.String?,
-        );
+    : this(billingProfileId: json_['billingProfileId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (billingProfileId != null) 'billingProfileId': billingProfileId!,
-      };
+    if (billingProfileId != null) 'billingProfileId': billingProfileId!,
+  };
 }
 
 /// Used by:
@@ -17770,22 +16898,22 @@ class $PartnerCost {
   });
 
   $PartnerCost.fromJson(core.Map json_)
-      : this(
-          costType: json_['costType'] as core.String?,
-          feeAmount: json_['feeAmount'] as core.String?,
-          feePercentageMillis: json_['feePercentageMillis'] as core.String?,
-          feeType: json_['feeType'] as core.String?,
-          invoiceType: json_['invoiceType'] as core.String?,
-        );
+    : this(
+        costType: json_['costType'] as core.String?,
+        feeAmount: json_['feeAmount'] as core.String?,
+        feePercentageMillis: json_['feePercentageMillis'] as core.String?,
+        feeType: json_['feeType'] as core.String?,
+        invoiceType: json_['invoiceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (costType != null) 'costType': costType!,
-        if (feeAmount != null) 'feeAmount': feeAmount!,
-        if (feePercentageMillis != null)
-          'feePercentageMillis': feePercentageMillis!,
-        if (feeType != null) 'feeType': feeType!,
-        if (invoiceType != null) 'invoiceType': invoiceType!,
-      };
+    if (costType != null) 'costType': costType!,
+    if (feeAmount != null) 'feeAmount': feeAmount!,
+    if (feePercentageMillis != null)
+      'feePercentageMillis': feePercentageMillis!,
+    if (feeType != null) 'feeType': feeType!,
+    if (invoiceType != null) 'invoiceType': invoiceType!,
+  };
 }
 
 /// Used by:
@@ -17807,21 +16935,18 @@ class $PartnerGeneralConfig {
   /// Immutable.
   core.String? timeZone;
 
-  $PartnerGeneralConfig({
-    this.currencyCode,
-    this.timeZone,
-  });
+  $PartnerGeneralConfig({this.currencyCode, this.timeZone});
 
   $PartnerGeneralConfig.fromJson(core.Map json_)
-      : this(
-          currencyCode: json_['currencyCode'] as core.String?,
-          timeZone: json_['timeZone'] as core.String?,
-        );
+    : this(
+        currencyCode: json_['currencyCode'] as core.String?,
+        timeZone: json_['timeZone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (timeZone != null) 'timeZone': timeZone!,
-      };
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+    if (timeZone != null) 'timeZone': timeZone!,
+  };
 }
 
 /// Used by:
@@ -17861,21 +16986,18 @@ class $PartnerRevenueModel {
   /// cost, which includes all partner costs and data costs.
   core.String? markupType;
 
-  $PartnerRevenueModel({
-    this.markupAmount,
-    this.markupType,
-  });
+  $PartnerRevenueModel({this.markupAmount, this.markupType});
 
   $PartnerRevenueModel.fromJson(core.Map json_)
-      : this(
-          markupAmount: json_['markupAmount'] as core.String?,
-          markupType: json_['markupType'] as core.String?,
-        );
+    : this(
+        markupAmount: json_['markupAmount'] as core.String?,
+        markupType: json_['markupType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (markupAmount != null) 'markupAmount': markupAmount!,
-        if (markupType != null) 'markupType': markupType!,
-      };
+    if (markupAmount != null) 'markupAmount': markupAmount!,
+    if (markupType != null) 'markupType': markupType!,
+  };
 }
 
 /// Used by:
@@ -17886,18 +17008,14 @@ class $PathSegment {
   /// If specified, use the key to retrieve the value in a Struct.
   core.String? key;
 
-  $PathSegment({
-    this.key,
-  });
+  $PathSegment({this.key});
 
   $PathSegment.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-        );
+    : this(key: json_['key'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-      };
+    if (key != null) 'key': key!,
+  };
 }
 
 /// Used by:
@@ -17917,18 +17035,14 @@ class $PerformMaintenanceRequest {
   /// allowed for Standard ExR
   core.String? maintenanceScope;
 
-  $PerformMaintenanceRequest({
-    this.maintenanceScope,
-  });
+  $PerformMaintenanceRequest({this.maintenanceScope});
 
   $PerformMaintenanceRequest.fromJson(core.Map json_)
-      : this(
-          maintenanceScope: json_['maintenanceScope'] as core.String?,
-        );
+    : this(maintenanceScope: json_['maintenanceScope'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maintenanceScope != null) 'maintenanceScope': maintenanceScope!,
-      };
+    if (maintenanceScope != null) 'maintenanceScope': maintenanceScope!,
+  };
 }
 
 /// Used by:
@@ -18011,25 +17125,25 @@ class $PerformanceGoal {
   });
 
   $PerformanceGoal.fromJson(core.Map json_)
-      : this(
-          performanceGoalAmountMicros:
-              json_['performanceGoalAmountMicros'] as core.String?,
-          performanceGoalPercentageMicros:
-              json_['performanceGoalPercentageMicros'] as core.String?,
-          performanceGoalString: json_['performanceGoalString'] as core.String?,
-          performanceGoalType: json_['performanceGoalType'] as core.String?,
-        );
+    : this(
+        performanceGoalAmountMicros:
+            json_['performanceGoalAmountMicros'] as core.String?,
+        performanceGoalPercentageMicros:
+            json_['performanceGoalPercentageMicros'] as core.String?,
+        performanceGoalString: json_['performanceGoalString'] as core.String?,
+        performanceGoalType: json_['performanceGoalType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (performanceGoalAmountMicros != null)
-          'performanceGoalAmountMicros': performanceGoalAmountMicros!,
-        if (performanceGoalPercentageMicros != null)
-          'performanceGoalPercentageMicros': performanceGoalPercentageMicros!,
-        if (performanceGoalString != null)
-          'performanceGoalString': performanceGoalString!,
-        if (performanceGoalType != null)
-          'performanceGoalType': performanceGoalType!,
-      };
+    if (performanceGoalAmountMicros != null)
+      'performanceGoalAmountMicros': performanceGoalAmountMicros!,
+    if (performanceGoalPercentageMicros != null)
+      'performanceGoalPercentageMicros': performanceGoalPercentageMicros!,
+    if (performanceGoalString != null)
+      'performanceGoalString': performanceGoalString!,
+    if (performanceGoalType != null)
+      'performanceGoalType': performanceGoalType!,
+  };
 }
 
 /// Used by:
@@ -18114,26 +17228,26 @@ class $PerformanceGoalBidStrategy {
   });
 
   $PerformanceGoalBidStrategy.fromJson(core.Map json_)
-      : this(
-          customBiddingAlgorithmId:
-              json_['customBiddingAlgorithmId'] as core.String?,
-          maxAverageCpmBidAmountMicros:
-              json_['maxAverageCpmBidAmountMicros'] as core.String?,
-          performanceGoalAmountMicros:
-              json_['performanceGoalAmountMicros'] as core.String?,
-          performanceGoalType: json_['performanceGoalType'] as core.String?,
-        );
+    : this(
+        customBiddingAlgorithmId:
+            json_['customBiddingAlgorithmId'] as core.String?,
+        maxAverageCpmBidAmountMicros:
+            json_['maxAverageCpmBidAmountMicros'] as core.String?,
+        performanceGoalAmountMicros:
+            json_['performanceGoalAmountMicros'] as core.String?,
+        performanceGoalType: json_['performanceGoalType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customBiddingAlgorithmId != null)
-          'customBiddingAlgorithmId': customBiddingAlgorithmId!,
-        if (maxAverageCpmBidAmountMicros != null)
-          'maxAverageCpmBidAmountMicros': maxAverageCpmBidAmountMicros!,
-        if (performanceGoalAmountMicros != null)
-          'performanceGoalAmountMicros': performanceGoalAmountMicros!,
-        if (performanceGoalType != null)
-          'performanceGoalType': performanceGoalType!,
-      };
+    if (customBiddingAlgorithmId != null)
+      'customBiddingAlgorithmId': customBiddingAlgorithmId!,
+    if (maxAverageCpmBidAmountMicros != null)
+      'maxAverageCpmBidAmountMicros': maxAverageCpmBidAmountMicros!,
+    if (performanceGoalAmountMicros != null)
+      'performanceGoalAmountMicros': performanceGoalAmountMicros!,
+    if (performanceGoalType != null)
+      'performanceGoalType': performanceGoalType!,
+  };
 }
 
 /// Used by:
@@ -18149,23 +17263,19 @@ class $Permissions {
   /// project through any of our API methods
   core.bool? disabledUserSignup;
 
-  $Permissions({
-    this.disabledUserDeletion,
-    this.disabledUserSignup,
-  });
+  $Permissions({this.disabledUserDeletion, this.disabledUserSignup});
 
   $Permissions.fromJson(core.Map json_)
-      : this(
-          disabledUserDeletion: json_['disabledUserDeletion'] as core.bool?,
-          disabledUserSignup: json_['disabledUserSignup'] as core.bool?,
-        );
+    : this(
+        disabledUserDeletion: json_['disabledUserDeletion'] as core.bool?,
+        disabledUserSignup: json_['disabledUserSignup'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disabledUserDeletion != null)
-          'disabledUserDeletion': disabledUserDeletion!,
-        if (disabledUserSignup != null)
-          'disabledUserSignup': disabledUserSignup!,
-      };
+    if (disabledUserDeletion != null)
+      'disabledUserDeletion': disabledUserDeletion!,
+    if (disabledUserSignup != null) 'disabledUserSignup': disabledUserSignup!,
+  };
 }
 
 /// Used by:
@@ -18239,20 +17349,19 @@ class $PermissionsResponse {
   /// allowed.
   core.List<core.String>? permissions;
 
-  $PermissionsResponse({
-    this.permissions,
-  });
+  $PermissionsResponse({this.permissions});
 
   $PermissionsResponse.fromJson(core.Map json_)
-      : this(
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
+    if (permissions != null) 'permissions': permissions!,
+  };
 }
 
 /// Used by:
@@ -18272,21 +17381,18 @@ class $Pipe {
   /// will result in an error in environments other than Linux.
   core.String? path;
 
-  $Pipe({
-    this.mode,
-    this.path,
-  });
+  $Pipe({this.mode, this.path});
 
   $Pipe.fromJson(core.Map json_)
-      : this(
-          mode: json_['mode'] as core.int?,
-          path: json_['path'] as core.String?,
-        );
+    : this(
+        mode: json_['mode'] as core.int?,
+        path: json_['path'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-        if (path != null) 'path': path!,
-      };
+    if (mode != null) 'mode': mode!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// Used by:
@@ -18304,20 +17410,19 @@ class $PlanSummary {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? indexesUsed;
 
-  $PlanSummary({
-    this.indexesUsed,
-  });
+  $PlanSummary({this.indexesUsed});
 
   $PlanSummary.fromJson(core.Map json_)
-      : this(
-          indexesUsed: (json_['indexesUsed'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-        );
+    : this(
+        indexesUsed:
+            (json_['indexesUsed'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (indexesUsed != null) 'indexesUsed': indexesUsed!,
-      };
+    if (indexesUsed != null) 'indexesUsed': indexesUsed!,
+  };
 }
 
 /// Used by:
@@ -18334,21 +17439,18 @@ class $PlusCode {
   /// by 1/8000 degree area (~14 by 14 meters).
   core.String? globalCode;
 
-  $PlusCode({
-    this.compoundCode,
-    this.globalCode,
-  });
+  $PlusCode({this.compoundCode, this.globalCode});
 
   $PlusCode.fromJson(core.Map json_)
-      : this(
-          compoundCode: json_['compoundCode'] as core.String?,
-          globalCode: json_['globalCode'] as core.String?,
-        );
+    : this(
+        compoundCode: json_['compoundCode'] as core.String?,
+        globalCode: json_['globalCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (compoundCode != null) 'compoundCode': compoundCode!,
-        if (globalCode != null) 'globalCode': globalCode!,
-      };
+    if (compoundCode != null) 'compoundCode': compoundCode!,
+    if (globalCode != null) 'globalCode': globalCode!,
+  };
 }
 
 /// Used by:
@@ -18418,26 +17520,26 @@ class $PoiAssignedTargetingOptionDetails {
   });
 
   $PoiAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
-          proximityRadiusAmount:
-              (json_['proximityRadiusAmount'] as core.num?)?.toDouble(),
-          proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        latitude: (json_['latitude'] as core.num?)?.toDouble(),
+        longitude: (json_['longitude'] as core.num?)?.toDouble(),
+        proximityRadiusAmount:
+            (json_['proximityRadiusAmount'] as core.num?)?.toDouble(),
+        proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-        if (proximityRadiusAmount != null)
-          'proximityRadiusAmount': proximityRadiusAmount!,
-        if (proximityRadiusUnit != null)
-          'proximityRadiusUnit': proximityRadiusUnit!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (latitude != null) 'latitude': latitude!,
+    if (longitude != null) 'longitude': longitude!,
+    if (proximityRadiusAmount != null)
+      'proximityRadiusAmount': proximityRadiusAmount!,
+    if (proximityRadiusUnit != null)
+      'proximityRadiusUnit': proximityRadiusUnit!,
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -18453,18 +17555,14 @@ class $PoiSearchTerms {
   /// "315 W 44th St", etc.
   core.String? poiQuery;
 
-  $PoiSearchTerms({
-    this.poiQuery,
-  });
+  $PoiSearchTerms({this.poiQuery});
 
   $PoiSearchTerms.fromJson(core.Map json_)
-      : this(
-          poiQuery: json_['poiQuery'] as core.String?,
-        );
+    : this(poiQuery: json_['poiQuery'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (poiQuery != null) 'poiQuery': poiQuery!,
-      };
+    if (poiQuery != null) 'poiQuery': poiQuery!,
+  };
 }
 
 /// Used by:
@@ -18489,24 +17587,20 @@ class $PoiTargetingOptionDetails {
   /// Output only.
   core.double? longitude;
 
-  $PoiTargetingOptionDetails({
-    this.displayName,
-    this.latitude,
-    this.longitude,
-  });
+  $PoiTargetingOptionDetails({this.displayName, this.latitude, this.longitude});
 
   $PoiTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        latitude: (json_['latitude'] as core.num?)?.toDouble(),
+        longitude: (json_['longitude'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (latitude != null) 'latitude': latitude!,
+    if (longitude != null) 'longitude': longitude!,
+  };
 }
 
 /// Used by:
@@ -18520,21 +17614,18 @@ class $PolicyControllerResourceList {
   /// Memory requirement expressed in Kubernetes resource units.
   core.String? memory;
 
-  $PolicyControllerResourceList({
-    this.cpu,
-    this.memory,
-  });
+  $PolicyControllerResourceList({this.cpu, this.memory});
 
   $PolicyControllerResourceList.fromJson(core.Map json_)
-      : this(
-          cpu: json_['cpu'] as core.String?,
-          memory: json_['memory'] as core.String?,
-        );
+    : this(
+        cpu: json_['cpu'] as core.String?,
+        memory: json_['memory'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cpu != null) 'cpu': cpu!,
-        if (memory != null) 'memory': memory!,
-      };
+    if (cpu != null) 'cpu': cpu!,
+    if (memory != null) 'memory': memory!,
+  };
 }
 
 /// Used by:
@@ -18551,18 +17642,14 @@ class $PolicyControllerTemplateLibraryConfig {
   /// - "ALL" : Install the entire template library.
   core.String? installation;
 
-  $PolicyControllerTemplateLibraryConfig({
-    this.installation,
-  });
+  $PolicyControllerTemplateLibraryConfig({this.installation});
 
   $PolicyControllerTemplateLibraryConfig.fromJson(core.Map json_)
-      : this(
-          installation: json_['installation'] as core.String?,
-        );
+    : this(installation: json_['installation'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (installation != null) 'installation': installation!,
-      };
+    if (installation != null) 'installation': installation!,
+  };
 }
 
 /// Used by:
@@ -18590,19 +17677,19 @@ class $PolicyControllerToleration {
   });
 
   $PolicyControllerToleration.fromJson(core.Map json_)
-      : this(
-          effect: json_['effect'] as core.String?,
-          key: json_['key'] as core.String?,
-          operator: json_['operator'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        effect: json_['effect'] as core.String?,
+        key: json_['key'] as core.String?,
+        operator: json_['operator'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (effect != null) 'effect': effect!,
-        if (key != null) 'key': key!,
-        if (operator != null) 'operator': operator!,
-        if (value != null) 'value': value!,
-      };
+    if (effect != null) 'effect': effect!,
+    if (key != null) 'key': key!,
+    if (operator != null) 'operator': operator!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -18613,20 +17700,18 @@ class $PortConfig {
   /// The port that control plane hosted load balancers will listen on.
   core.int? controlPlaneLoadBalancerPort;
 
-  $PortConfig({
-    this.controlPlaneLoadBalancerPort,
-  });
+  $PortConfig({this.controlPlaneLoadBalancerPort});
 
   $PortConfig.fromJson(core.Map json_)
-      : this(
-          controlPlaneLoadBalancerPort:
-              json_['controlPlaneLoadBalancerPort'] as core.int?,
-        );
+    : this(
+        controlPlaneLoadBalancerPort:
+            json_['controlPlaneLoadBalancerPort'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (controlPlaneLoadBalancerPort != null)
-          'controlPlaneLoadBalancerPort': controlPlaneLoadBalancerPort!,
-      };
+    if (controlPlaneLoadBalancerPort != null)
+      'controlPlaneLoadBalancerPort': controlPlaneLoadBalancerPort!,
+  };
 }
 
 /// Used by:
@@ -18768,38 +17853,39 @@ class $PostalAddress00 {
   });
 
   $PostalAddress00.fromJson(core.Map json_)
-      : this(
-          addressLines: (json_['addressLines'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          administrativeArea: json_['administrativeArea'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          locality: json_['locality'] as core.String?,
-          organization: json_['organization'] as core.String?,
-          postalCode: json_['postalCode'] as core.String?,
-          recipients: (json_['recipients'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          regionCode: json_['regionCode'] as core.String?,
-          revision: json_['revision'] as core.int?,
-          sortingCode: json_['sortingCode'] as core.String?,
-          sublocality: json_['sublocality'] as core.String?,
-        );
+    : this(
+        addressLines:
+            (json_['addressLines'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        administrativeArea: json_['administrativeArea'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        locality: json_['locality'] as core.String?,
+        organization: json_['organization'] as core.String?,
+        postalCode: json_['postalCode'] as core.String?,
+        recipients:
+            (json_['recipients'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        regionCode: json_['regionCode'] as core.String?,
+        revision: json_['revision'] as core.int?,
+        sortingCode: json_['sortingCode'] as core.String?,
+        sublocality: json_['sublocality'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines!,
-        if (administrativeArea != null)
-          'administrativeArea': administrativeArea!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locality != null) 'locality': locality!,
-        if (organization != null) 'organization': organization!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (recipients != null) 'recipients': recipients!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (revision != null) 'revision': revision!,
-        if (sortingCode != null) 'sortingCode': sortingCode!,
-        if (sublocality != null) 'sublocality': sublocality!,
-      };
+    if (addressLines != null) 'addressLines': addressLines!,
+    if (administrativeArea != null) 'administrativeArea': administrativeArea!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (locality != null) 'locality': locality!,
+    if (organization != null) 'organization': organization!,
+    if (postalCode != null) 'postalCode': postalCode!,
+    if (recipients != null) 'recipients': recipients!,
+    if (regionCode != null) 'regionCode': regionCode!,
+    if (revision != null) 'revision': revision!,
+    if (sortingCode != null) 'sortingCode': sortingCode!,
+    if (sublocality != null) 'sublocality': sublocality!,
+  };
 }
 
 /// Used by:
@@ -18932,38 +18018,39 @@ class $PostalAddress01 {
   });
 
   $PostalAddress01.fromJson(core.Map json_)
-      : this(
-          addressLines: (json_['addressLines'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          administrativeArea: json_['administrativeArea'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          locality: json_['locality'] as core.String?,
-          organization: json_['organization'] as core.String?,
-          postalCode: json_['postalCode'] as core.String?,
-          recipients: (json_['recipients'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          regionCode: json_['regionCode'] as core.String?,
-          revision: json_['revision'] as core.int?,
-          sortingCode: json_['sortingCode'] as core.String?,
-          sublocality: json_['sublocality'] as core.String?,
-        );
+    : this(
+        addressLines:
+            (json_['addressLines'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        administrativeArea: json_['administrativeArea'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        locality: json_['locality'] as core.String?,
+        organization: json_['organization'] as core.String?,
+        postalCode: json_['postalCode'] as core.String?,
+        recipients:
+            (json_['recipients'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        regionCode: json_['regionCode'] as core.String?,
+        revision: json_['revision'] as core.int?,
+        sortingCode: json_['sortingCode'] as core.String?,
+        sublocality: json_['sublocality'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines!,
-        if (administrativeArea != null)
-          'administrativeArea': administrativeArea!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locality != null) 'locality': locality!,
-        if (organization != null) 'organization': organization!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (recipients != null) 'recipients': recipients!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (revision != null) 'revision': revision!,
-        if (sortingCode != null) 'sortingCode': sortingCode!,
-        if (sublocality != null) 'sublocality': sublocality!,
-      };
+    if (addressLines != null) 'addressLines': addressLines!,
+    if (administrativeArea != null) 'administrativeArea': administrativeArea!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (locality != null) 'locality': locality!,
+    if (organization != null) 'organization': organization!,
+    if (postalCode != null) 'postalCode': postalCode!,
+    if (recipients != null) 'recipients': recipients!,
+    if (regionCode != null) 'regionCode': regionCode!,
+    if (revision != null) 'revision': revision!,
+    if (sortingCode != null) 'sortingCode': sortingCode!,
+    if (sublocality != null) 'sublocality': sublocality!,
+  };
 }
 
 /// Used by:
@@ -18988,18 +18075,17 @@ class $PrismaCpeCode {
   });
 
   $PrismaCpeCode.fromJson(core.Map json_)
-      : this(
-          prismaClientCode: json_['prismaClientCode'] as core.String?,
-          prismaEstimateCode: json_['prismaEstimateCode'] as core.String?,
-          prismaProductCode: json_['prismaProductCode'] as core.String?,
-        );
+    : this(
+        prismaClientCode: json_['prismaClientCode'] as core.String?,
+        prismaEstimateCode: json_['prismaEstimateCode'] as core.String?,
+        prismaProductCode: json_['prismaProductCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (prismaClientCode != null) 'prismaClientCode': prismaClientCode!,
-        if (prismaEstimateCode != null)
-          'prismaEstimateCode': prismaEstimateCode!,
-        if (prismaProductCode != null) 'prismaProductCode': prismaProductCode!,
-      };
+    if (prismaClientCode != null) 'prismaClientCode': prismaClientCode!,
+    if (prismaEstimateCode != null) 'prismaEstimateCode': prismaEstimateCode!,
+    if (prismaProductCode != null) 'prismaProductCode': prismaProductCode!,
+  };
 }
 
 /// Used by:
@@ -19016,24 +18102,20 @@ class $ProductDetail {
   /// The section header used to group a set of product details.
   core.String? sectionName;
 
-  $ProductDetail({
-    this.attributeName,
-    this.attributeValue,
-    this.sectionName,
-  });
+  $ProductDetail({this.attributeName, this.attributeValue, this.sectionName});
 
   $ProductDetail.fromJson(core.Map json_)
-      : this(
-          attributeName: json_['attributeName'] as core.String?,
-          attributeValue: json_['attributeValue'] as core.String?,
-          sectionName: json_['sectionName'] as core.String?,
-        );
+    : this(
+        attributeName: json_['attributeName'] as core.String?,
+        attributeValue: json_['attributeValue'] as core.String?,
+        sectionName: json_['sectionName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeName != null) 'attributeName': attributeName!,
-        if (attributeValue != null) 'attributeValue': attributeValue!,
-        if (sectionName != null) 'sectionName': sectionName!,
-      };
+    if (attributeName != null) 'attributeName': attributeName!,
+    if (attributeValue != null) 'attributeValue': attributeValue!,
+    if (sectionName != null) 'sectionName': sectionName!,
+  };
 }
 
 /// Used by:
@@ -19045,18 +18127,14 @@ class $ProgramStatusReviewIneligibilityReasonDetails {
   /// reason `IN_COOLDOWN_PERIOD`.
   core.String? cooldownTime;
 
-  $ProgramStatusReviewIneligibilityReasonDetails({
-    this.cooldownTime,
-  });
+  $ProgramStatusReviewIneligibilityReasonDetails({this.cooldownTime});
 
   $ProgramStatusReviewIneligibilityReasonDetails.fromJson(core.Map json_)
-      : this(
-          cooldownTime: json_['cooldownTime'] as core.String?,
-        );
+    : this(cooldownTime: json_['cooldownTime'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cooldownTime != null) 'cooldownTime': cooldownTime!,
-      };
+    if (cooldownTime != null) 'cooldownTime': cooldownTime!,
+  };
 }
 
 /// Used by:
@@ -19072,21 +18150,18 @@ class $ProjectRepoId {
   /// Leave empty for the default repo.
   core.String? repoName;
 
-  $ProjectRepoId({
-    this.projectId,
-    this.repoName,
-  });
+  $ProjectRepoId({this.projectId, this.repoName});
 
   $ProjectRepoId.fromJson(core.Map json_)
-      : this(
-          projectId: json_['projectId'] as core.String?,
-          repoName: json_['repoName'] as core.String?,
-        );
+    : this(
+        projectId: json_['projectId'] as core.String?,
+        repoName: json_['repoName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'projectId': projectId!,
-        if (repoName != null) 'repoName': repoName!,
-      };
+    if (projectId != null) 'projectId': projectId!,
+    if (repoName != null) 'repoName': repoName!,
+  };
 }
 
 /// Used by:
@@ -19126,22 +18201,21 @@ class $Properties {
   });
 
   $Properties.fromJson(core.Map json_)
-      : this(
-          databaseInstalledVersion:
-              json_['databaseInstalledVersion'] as core.String?,
-          instanceCreateTime: json_['instanceCreateTime'] as core.String?,
-          instanceTier: json_['instanceTier'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        databaseInstalledVersion:
+            json_['databaseInstalledVersion'] as core.String?,
+        instanceCreateTime: json_['instanceCreateTime'] as core.String?,
+        instanceTier: json_['instanceTier'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (databaseInstalledVersion != null)
-          'databaseInstalledVersion': databaseInstalledVersion!,
-        if (instanceCreateTime != null)
-          'instanceCreateTime': instanceCreateTime!,
-        if (instanceTier != null) 'instanceTier': instanceTier!,
-        if (name != null) 'name': name!,
-      };
+    if (databaseInstalledVersion != null)
+      'databaseInstalledVersion': databaseInstalledVersion!,
+    if (instanceCreateTime != null) 'instanceCreateTime': instanceCreateTime!,
+    if (instanceTier != null) 'instanceTier': instanceTier!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -19157,18 +18231,14 @@ class $ProxiesSetProxyHeaderRequest {
   /// - "PROXY_V1"
   core.String? proxyHeader;
 
-  $ProxiesSetProxyHeaderRequest({
-    this.proxyHeader,
-  });
+  $ProxiesSetProxyHeaderRequest({this.proxyHeader});
 
   $ProxiesSetProxyHeaderRequest.fromJson(core.Map json_)
-      : this(
-          proxyHeader: json_['proxyHeader'] as core.String?,
-        );
+    : this(proxyHeader: json_['proxyHeader'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (proxyHeader != null) 'proxyHeader': proxyHeader!,
-      };
+    if (proxyHeader != null) 'proxyHeader': proxyHeader!,
+  };
 }
 
 /// Used by:
@@ -19211,20 +18281,20 @@ class $ProximityLocationListAssignedTargetingOptionDetails {
   });
 
   $ProximityLocationListAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          proximityLocationListId:
-              json_['proximityLocationListId'] as core.String?,
-          proximityRadius: (json_['proximityRadius'] as core.num?)?.toDouble(),
-          proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
-        );
+    : this(
+        proximityLocationListId:
+            json_['proximityLocationListId'] as core.String?,
+        proximityRadius: (json_['proximityRadius'] as core.num?)?.toDouble(),
+        proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (proximityLocationListId != null)
-          'proximityLocationListId': proximityLocationListId!,
-        if (proximityRadius != null) 'proximityRadius': proximityRadius!,
-        if (proximityRadiusUnit != null)
-          'proximityRadiusUnit': proximityRadiusUnit!,
-      };
+    if (proximityLocationListId != null)
+      'proximityLocationListId': proximityLocationListId!,
+    if (proximityRadius != null) 'proximityRadius': proximityRadius!,
+    if (proximityRadiusUnit != null)
+      'proximityRadiusUnit': proximityRadiusUnit!,
+  };
 }
 
 /// Used by:
@@ -19244,21 +18314,18 @@ class $PublisherReviewStatus {
   /// - "REVIEW_STATUS_PENDING" : The creative is pending review.
   core.String? status;
 
-  $PublisherReviewStatus({
-    this.publisherName,
-    this.status,
-  });
+  $PublisherReviewStatus({this.publisherName, this.status});
 
   $PublisherReviewStatus.fromJson(core.Map json_)
-      : this(
-          publisherName: json_['publisherName'] as core.String?,
-          status: json_['status'] as core.String?,
-        );
+    : this(
+        publisherName: json_['publisherName'] as core.String?,
+        status: json_['status'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (publisherName != null) 'publisherName': publisherName!,
-        if (status != null) 'status': status!,
-      };
+    if (publisherName != null) 'publisherName': publisherName!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// Used by:
@@ -19283,8 +18350,10 @@ class $PubsubMessage {
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> bytes_) {
-    data =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// ID of this message, assigned by the server when the message is published.
@@ -19322,28 +18391,23 @@ class $PubsubMessage {
   });
 
   $PubsubMessage.fromJson(core.Map json_)
-      : this(
-          attributes:
-              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          data: json_['data'] as core.String?,
-          messageId: json_['messageId'] as core.String?,
-          orderingKey: json_['orderingKey'] as core.String?,
-          publishTime: json_['publishTime'] as core.String?,
-        );
+    : this(
+        attributes: (json_['attributes']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        data: json_['data'] as core.String?,
+        messageId: json_['messageId'] as core.String?,
+        orderingKey: json_['orderingKey'] as core.String?,
+        publishTime: json_['publishTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (data != null) 'data': data!,
-        if (messageId != null) 'messageId': messageId!,
-        if (orderingKey != null) 'orderingKey': orderingKey!,
-        if (publishTime != null) 'publishTime': publishTime!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (data != null) 'data': data!,
+    if (messageId != null) 'messageId': messageId!,
+    if (orderingKey != null) 'orderingKey': orderingKey!,
+    if (publishTime != null) 'publishTime': publishTime!,
+  };
 }
 
 /// Used by:
@@ -19354,18 +18418,14 @@ class $PurchasesAcknowledgeRequest {
   /// Payload to attach to the purchase.
   core.String? developerPayload;
 
-  $PurchasesAcknowledgeRequest({
-    this.developerPayload,
-  });
+  $PurchasesAcknowledgeRequest({this.developerPayload});
 
   $PurchasesAcknowledgeRequest.fromJson(core.Map json_)
-      : this(
-          developerPayload: json_['developerPayload'] as core.String?,
-        );
+    : this(developerPayload: json_['developerPayload'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (developerPayload != null) 'developerPayload': developerPayload!,
-      };
+    if (developerPayload != null) 'developerPayload': developerPayload!,
+  };
 }
 
 /// Used by:
@@ -19387,24 +18447,20 @@ class $Query {
   /// used to refine the messages covered by the hold.
   core.String? terms;
 
-  $Query({
-    this.endTime,
-    this.startTime,
-    this.terms,
-  });
+  $Query({this.endTime, this.startTime, this.terms});
 
   $Query.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          terms: json_['terms'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        terms: json_['terms'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-        if (terms != null) 'terms': terms!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+    if (terms != null) 'terms': terms!,
+  };
 }
 
 /// Used by:
@@ -19422,21 +18478,18 @@ class $QuestionAnsweringQualitySpec {
   /// Optional.
   core.int? version;
 
-  $QuestionAnsweringQualitySpec({
-    this.useReference,
-    this.version,
-  });
+  $QuestionAnsweringQualitySpec({this.useReference, this.version});
 
   $QuestionAnsweringQualitySpec.fromJson(core.Map json_)
-      : this(
-          useReference: json_['useReference'] as core.bool?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        useReference: json_['useReference'] as core.bool?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (useReference != null) 'useReference': useReference!,
-        if (version != null) 'version': version!,
-      };
+    if (useReference != null) 'useReference': useReference!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Used by:
@@ -19537,37 +18590,33 @@ class $QuotaLimit {
   });
 
   $QuotaLimit.fromJson(core.Map json_)
-      : this(
-          defaultLimit: json_['defaultLimit'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          duration: json_['duration'] as core.String?,
-          freeTier: json_['freeTier'] as core.String?,
-          maxLimit: json_['maxLimit'] as core.String?,
-          metric: json_['metric'] as core.String?,
-          name: json_['name'] as core.String?,
-          unit: json_['unit'] as core.String?,
-          values:
-              (json_['values'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        defaultLimit: json_['defaultLimit'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        duration: json_['duration'] as core.String?,
+        freeTier: json_['freeTier'] as core.String?,
+        maxLimit: json_['maxLimit'] as core.String?,
+        metric: json_['metric'] as core.String?,
+        name: json_['name'] as core.String?,
+        unit: json_['unit'] as core.String?,
+        values: (json_['values'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultLimit != null) 'defaultLimit': defaultLimit!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (duration != null) 'duration': duration!,
-        if (freeTier != null) 'freeTier': freeTier!,
-        if (maxLimit != null) 'maxLimit': maxLimit!,
-        if (metric != null) 'metric': metric!,
-        if (name != null) 'name': name!,
-        if (unit != null) 'unit': unit!,
-        if (values != null) 'values': values!,
-      };
+    if (defaultLimit != null) 'defaultLimit': defaultLimit!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (duration != null) 'duration': duration!,
+    if (freeTier != null) 'freeTier': freeTier!,
+    if (maxLimit != null) 'maxLimit': maxLimit!,
+    if (metric != null) 'metric': metric!,
+    if (name != null) 'name': name!,
+    if (unit != null) 'unit': unit!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Used by:
@@ -19578,20 +18627,19 @@ class $RawIndices {
   /// The indices to remove from a lexicographically-sorted local list.
   core.List<core.int>? indices;
 
-  $RawIndices({
-    this.indices,
-  });
+  $RawIndices({this.indices});
 
   $RawIndices.fromJson(core.Map json_)
-      : this(
-          indices: (json_['indices'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-        );
+    : this(
+        indices:
+            (json_['indices'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (indices != null) 'indices': indices!,
-      };
+    if (indices != null) 'indices': indices!,
+  };
 }
 
 /// Used by:
@@ -19655,25 +18703,27 @@ class $Recipe {
   });
 
   $Recipe.fromJson(core.Map json_)
-      : this(
-          arguments: (json_['arguments'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-          definedInMaterial: json_['definedInMaterial'] as core.String?,
-          entryPoint: json_['entryPoint'] as core.String?,
-          environment: (json_['environment'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        arguments:
+            (json_['arguments'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+        definedInMaterial: json_['definedInMaterial'] as core.String?,
+        entryPoint: json_['entryPoint'] as core.String?,
+        environment:
+            (json_['environment'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arguments != null) 'arguments': arguments!,
-        if (definedInMaterial != null) 'definedInMaterial': definedInMaterial!,
-        if (entryPoint != null) 'entryPoint': entryPoint!,
-        if (environment != null) 'environment': environment!,
-        if (type != null) 'type': type!,
-      };
+    if (arguments != null) 'arguments': arguments!,
+    if (definedInMaterial != null) 'definedInMaterial': definedInMaterial!,
+    if (entryPoint != null) 'entryPoint': entryPoint!,
+    if (environment != null) 'environment': environment!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Used by:
@@ -19699,17 +18749,16 @@ class $RegionalLocationListAssignedTargetingOptionDetails {
   });
 
   $RegionalLocationListAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          negative: json_['negative'] as core.bool?,
-          regionalLocationListId:
-              json_['regionalLocationListId'] as core.String?,
-        );
+    : this(
+        negative: json_['negative'] as core.bool?,
+        regionalLocationListId: json_['regionalLocationListId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (negative != null) 'negative': negative!,
-        if (regionalLocationListId != null)
-          'regionalLocationListId': regionalLocationListId!,
-      };
+    if (negative != null) 'negative': negative!,
+    if (regionalLocationListId != null)
+      'regionalLocationListId': regionalLocationListId!,
+  };
 }
 
 /// Used by:
@@ -19723,21 +18772,18 @@ class $RelatedUrl {
   /// Specific URL associated with the resource.
   core.String? url;
 
-  $RelatedUrl({
-    this.label,
-    this.url,
-  });
+  $RelatedUrl({this.label, this.url});
 
   $RelatedUrl.fromJson(core.Map json_)
-      : this(
-          label: json_['label'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        label: json_['label'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (label != null) 'label': label!,
-        if (url != null) 'url': url!,
-      };
+    if (label != null) 'label': label!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Used by:
@@ -19757,22 +18803,18 @@ class $RemarketingConfig {
   /// Output only.
   core.bool? remarketingEnabled;
 
-  $RemarketingConfig({
-    this.advertiserId,
-    this.remarketingEnabled,
-  });
+  $RemarketingConfig({this.advertiserId, this.remarketingEnabled});
 
   $RemarketingConfig.fromJson(core.Map json_)
-      : this(
-          advertiserId: json_['advertiserId'] as core.String?,
-          remarketingEnabled: json_['remarketingEnabled'] as core.bool?,
-        );
+    : this(
+        advertiserId: json_['advertiserId'] as core.String?,
+        remarketingEnabled: json_['remarketingEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (remarketingEnabled != null)
-          'remarketingEnabled': remarketingEnabled!,
-      };
+    if (advertiserId != null) 'advertiserId': advertiserId!,
+    if (remarketingEnabled != null) 'remarketingEnabled': remarketingEnabled!,
+  };
 }
 
 /// Used by:
@@ -19783,19 +18825,14 @@ class $ReplaceAllTextResponse {
   /// The number of occurrences changed by replacing all text.
   core.int? occurrencesChanged;
 
-  $ReplaceAllTextResponse({
-    this.occurrencesChanged,
-  });
+  $ReplaceAllTextResponse({this.occurrencesChanged});
 
   $ReplaceAllTextResponse.fromJson(core.Map json_)
-      : this(
-          occurrencesChanged: json_['occurrencesChanged'] as core.int?,
-        );
+    : this(occurrencesChanged: json_['occurrencesChanged'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (occurrencesChanged != null)
-          'occurrencesChanged': occurrencesChanged!,
-      };
+    if (occurrencesChanged != null) 'occurrencesChanged': occurrencesChanged!,
+  };
 }
 
 /// Used by:
@@ -19807,20 +18844,19 @@ class $Req {
   /// configs on this managed instance group.
   core.List<core.String>? names;
 
-  $Req({
-    this.names,
-  });
+  $Req({this.names});
 
   $Req.fromJson(core.Map json_)
-      : this(
-          names: (json_['names'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        names:
+            (json_['names'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (names != null) 'names': names!,
-      };
+    if (names != null) 'names': names!,
+  };
 }
 
 /// Used by:
@@ -19849,18 +18885,14 @@ class $Request00 {
   /// Optional.
   core.String? requestId;
 
-  $Request00({
-    this.requestId,
-  });
+  $Request00({this.requestId});
 
   $Request00.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-        );
+    : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
+    if (requestId != null) 'requestId': requestId!,
+  };
 }
 
 /// Used by:
@@ -19882,18 +18914,14 @@ class $Request01 {
   /// Optional.
   core.String? customer;
 
-  $Request01({
-    this.customer,
-  });
+  $Request01({this.customer});
 
   $Request01.fromJson(core.Map json_)
-      : this(
-          customer: json_['customer'] as core.String?,
-        );
+    : this(customer: json_['customer'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-      };
+    if (customer != null) 'customer': customer!,
+  };
 }
 
 /// Used by:
@@ -19916,18 +18944,14 @@ class $Request02 {
   /// Optional.
   core.String? requestId;
 
-  $Request02({
-    this.requestId,
-  });
+  $Request02({this.requestId});
 
   $Request02.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-        );
+    : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
+    if (requestId != null) 'requestId': requestId!,
+  };
 }
 
 /// Used by:
@@ -19952,18 +18976,14 @@ class $Request03 {
   /// Optional.
   core.String? requestId;
 
-  $Request03({
-    this.requestId,
-  });
+  $Request03({this.requestId});
 
   $Request03.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-        );
+    : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
+    if (requestId != null) 'requestId': requestId!,
+  };
 }
 
 /// Used by:
@@ -19986,28 +19006,20 @@ class $Request04 {
   /// `/^[a-zA-Z0-9_./-]{0,255}$/`.
   core.Map<core.String, core.String>? stateMetadata;
 
-  $Request04({
-    this.etag,
-    this.stateMetadata,
-  });
+  $Request04({this.etag, this.stateMetadata});
 
   $Request04.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          stateMetadata:
-              (json_['stateMetadata'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        stateMetadata: (json_['stateMetadata']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (stateMetadata != null) 'stateMetadata': stateMetadata!,
+  };
 }
 
 /// Used by:
@@ -20038,21 +19050,18 @@ class $Request05 {
   /// Optional.
   core.bool? validateOnly;
 
-  $Request05({
-    this.requestId,
-    this.validateOnly,
-  });
+  $Request05({this.requestId, this.validateOnly});
 
   $Request05.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-          validateOnly: json_['validateOnly'] as core.bool?,
-        );
+    : this(
+        requestId: json_['requestId'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
+    if (requestId != null) 'requestId': requestId!,
+    if (validateOnly != null) 'validateOnly': validateOnly!,
+  };
 }
 
 /// Used by:
@@ -20068,21 +19077,20 @@ class $Request06 {
   /// Optional.
   core.List<core.String>? overrideDeployPolicy;
 
-  $Request06({
-    this.overrideDeployPolicy,
-  });
+  $Request06({this.overrideDeployPolicy});
 
   $Request06.fromJson(core.Map json_)
-      : this(
-          overrideDeployPolicy: (json_['overrideDeployPolicy'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        overrideDeployPolicy:
+            (json_['overrideDeployPolicy'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (overrideDeployPolicy != null)
-          'overrideDeployPolicy': overrideDeployPolicy!,
-      };
+    if (overrideDeployPolicy != null)
+      'overrideDeployPolicy': overrideDeployPolicy!,
+  };
 }
 
 /// Used by:
@@ -20102,21 +19110,18 @@ class $Request07 {
   /// point start using this field.
   core.String? pageToken;
 
-  $Request07({
-    this.pageSize,
-    this.pageToken,
-  });
+  $Request07({this.pageSize, this.pageToken});
 
   $Request07.fromJson(core.Map json_)
-      : this(
-          pageSize: json_['pageSize'] as core.int?,
-          pageToken: json_['pageToken'] as core.String?,
-        );
+    : this(
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-      };
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (pageToken != null) 'pageToken': pageToken!,
+  };
 }
 
 /// Used by:
@@ -20130,20 +19135,19 @@ class $Request08 {
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $Request08({
-    this.instances,
-  });
+  $Request08({this.instances});
 
   $Request08.fromJson(core.Map json_)
-      : this(
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        instances:
+            (json_['instances'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-      };
+    if (instances != null) 'instances': instances!,
+  };
 }
 
 /// Used by:
@@ -20156,18 +19160,14 @@ class $Request09 {
   /// for which review is to be requested.
   core.String? regionCode;
 
-  $Request09({
-    this.regionCode,
-  });
+  $Request09({this.regionCode});
 
   $Request09.fromJson(core.Map json_)
-      : this(
-          regionCode: json_['regionCode'] as core.String?,
-        );
+    : this(regionCode: json_['regionCode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (regionCode != null) 'regionCode': regionCode!,
-      };
+    if (regionCode != null) 'regionCode': regionCode!,
+  };
 }
 
 /// Used by:
@@ -20178,18 +19178,14 @@ class $Request10 {
   /// If not specified, the agent's default language is used.
   core.String? languageCode;
 
-  $Request10({
-    this.languageCode,
-  });
+  $Request10({this.languageCode});
 
   $Request10.fromJson(core.Map json_)
-      : this(
-          languageCode: json_['languageCode'] as core.String?,
-        );
+    : this(languageCode: json_['languageCode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
+    if (languageCode != null) 'languageCode': languageCode!,
+  };
 }
 
 /// Used by:
@@ -20213,23 +19209,21 @@ class $Request11 {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? variables;
 
-  $Request11({
-    this.operationName,
-    this.variables,
-  });
+  $Request11({this.operationName, this.variables});
 
   $Request11.fromJson(core.Map json_)
-      : this(
-          operationName: json_['operationName'] as core.String?,
-          variables: json_.containsKey('variables')
-              ? json_['variables'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        operationName: json_['operationName'] as core.String?,
+        variables:
+            json_.containsKey('variables')
+                ? json_['variables'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operationName != null) 'operationName': operationName!,
-        if (variables != null) 'variables': variables!,
-      };
+    if (operationName != null) 'operationName': operationName!,
+    if (variables != null) 'variables': variables!,
+  };
 }
 
 /// Used by:
@@ -20244,18 +19238,14 @@ class $Request12 {
   /// Required.
   core.String? vmId;
 
-  $Request12({
-    this.vmId,
-  });
+  $Request12({this.vmId});
 
   $Request12.fromJson(core.Map json_)
-      : this(
-          vmId: json_['vmId'] as core.String?,
-        );
+    : this(vmId: json_['vmId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (vmId != null) 'vmId': vmId!,
-      };
+    if (vmId != null) 'vmId': vmId!,
+  };
 }
 
 /// Used by:
@@ -20272,8 +19262,10 @@ class $ResourceDescriptor {
   core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> bytes_) {
-    content =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    content = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   core.Map<core.String, core.String>? digest;
@@ -20293,33 +19285,30 @@ class $ResourceDescriptor {
   });
 
   $ResourceDescriptor.fromJson(core.Map json_)
-      : this(
-          annotations: json_.containsKey('annotations')
-              ? json_['annotations'] as core.Map<core.String, core.dynamic>
-              : null,
-          content: json_['content'] as core.String?,
-          digest:
-              (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          downloadLocation: json_['downloadLocation'] as core.String?,
-          mediaType: json_['mediaType'] as core.String?,
-          name: json_['name'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        annotations:
+            json_.containsKey('annotations')
+                ? json_['annotations'] as core.Map<core.String, core.dynamic>
+                : null,
+        content: json_['content'] as core.String?,
+        digest: (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        downloadLocation: json_['downloadLocation'] as core.String?,
+        mediaType: json_['mediaType'] as core.String?,
+        name: json_['name'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (content != null) 'content': content!,
-        if (digest != null) 'digest': digest!,
-        if (downloadLocation != null) 'downloadLocation': downloadLocation!,
-        if (mediaType != null) 'mediaType': mediaType!,
-        if (name != null) 'name': name!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (content != null) 'content': content!,
+    if (digest != null) 'digest': digest!,
+    if (downloadLocation != null) 'downloadLocation': downloadLocation!,
+    if (mediaType != null) 'mediaType': mediaType!,
+    if (name != null) 'name': name!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Used by:
@@ -20337,21 +19326,18 @@ class $ResourceLimits {
   /// Output only.
   core.String? memory;
 
-  $ResourceLimits({
-    this.cpu,
-    this.memory,
-  });
+  $ResourceLimits({this.cpu, this.memory});
 
   $ResourceLimits.fromJson(core.Map json_)
-      : this(
-          cpu: json_['cpu'] as core.String?,
-          memory: json_['memory'] as core.String?,
-        );
+    : this(
+        cpu: json_['cpu'] as core.String?,
+        memory: json_['memory'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cpu != null) 'cpu': cpu!,
-        if (memory != null) 'memory': memory!,
-      };
+    if (cpu != null) 'cpu': cpu!,
+    if (memory != null) 'memory': memory!,
+  };
 }
 
 /// Used by:
@@ -20369,21 +19355,18 @@ class $ResourceRequests {
   /// Output only.
   core.String? memory;
 
-  $ResourceRequests({
-    this.cpu,
-    this.memory,
-  });
+  $ResourceRequests({this.cpu, this.memory});
 
   $ResourceRequests.fromJson(core.Map json_)
-      : this(
-          cpu: json_['cpu'] as core.String?,
-          memory: json_['memory'] as core.String?,
-        );
+    : this(
+        cpu: json_['cpu'] as core.String?,
+        memory: json_['memory'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cpu != null) 'cpu': cpu!,
-        if (memory != null) 'memory': memory!,
-      };
+    if (cpu != null) 'cpu': cpu!,
+    if (memory != null) 'memory': memory!,
+  };
 }
 
 /// Used by:
@@ -20417,19 +19400,19 @@ class $Response {
   });
 
   $Response.fromJson(core.Map json_)
-      : this(
-          upgradeImage: json_['upgradeImage'] as core.String?,
-          upgradeInfo: json_['upgradeInfo'] as core.String?,
-          upgradeVersion: json_['upgradeVersion'] as core.String?,
-          upgradeable: json_['upgradeable'] as core.bool?,
-        );
+    : this(
+        upgradeImage: json_['upgradeImage'] as core.String?,
+        upgradeInfo: json_['upgradeInfo'] as core.String?,
+        upgradeVersion: json_['upgradeVersion'] as core.String?,
+        upgradeable: json_['upgradeable'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (upgradeImage != null) 'upgradeImage': upgradeImage!,
-        if (upgradeInfo != null) 'upgradeInfo': upgradeInfo!,
-        if (upgradeVersion != null) 'upgradeVersion': upgradeVersion!,
-        if (upgradeable != null) 'upgradeable': upgradeable!,
-      };
+    if (upgradeImage != null) 'upgradeImage': upgradeImage!,
+    if (upgradeInfo != null) 'upgradeInfo': upgradeInfo!,
+    if (upgradeVersion != null) 'upgradeVersion': upgradeVersion!,
+    if (upgradeable != null) 'upgradeable': upgradeable!,
+  };
 }
 
 /// Used by:
@@ -20442,18 +19425,14 @@ class $ResponseMetadata {
   /// This id is logged for tracking purposes.
   core.String? requestId;
 
-  $ResponseMetadata({
-    this.requestId,
-  });
+  $ResponseMetadata({this.requestId});
 
   $ResponseMetadata.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-        );
+    : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
+    if (requestId != null) 'requestId': requestId!,
+  };
 }
 
 /// Used by:
@@ -20477,21 +19456,18 @@ class $ResultPostScanActionsResultBigQueryExportResult {
   /// export (usually caused by scan failed).
   core.String? state;
 
-  $ResultPostScanActionsResultBigQueryExportResult({
-    this.message,
-    this.state,
-  });
+  $ResultPostScanActionsResultBigQueryExportResult({this.message, this.state});
 
   $ResultPostScanActionsResultBigQueryExportResult.fromJson(core.Map json_)
-      : this(
-          message: json_['message'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        message: json_['message'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!,
-        if (state != null) 'state': state!,
-      };
+    if (message != null) 'message': message!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Used by:
@@ -20513,21 +19489,18 @@ class $RetryPolicy {
   /// Optional.
   core.String? minimumBackoff;
 
-  $RetryPolicy({
-    this.maximumBackoff,
-    this.minimumBackoff,
-  });
+  $RetryPolicy({this.maximumBackoff, this.minimumBackoff});
 
   $RetryPolicy.fromJson(core.Map json_)
-      : this(
-          maximumBackoff: json_['maximumBackoff'] as core.String?,
-          minimumBackoff: json_['minimumBackoff'] as core.String?,
-        );
+    : this(
+        maximumBackoff: json_['maximumBackoff'] as core.String?,
+        minimumBackoff: json_['minimumBackoff'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maximumBackoff != null) 'maximumBackoff': maximumBackoff!,
-        if (minimumBackoff != null) 'minimumBackoff': minimumBackoff!,
-      };
+    if (maximumBackoff != null) 'maximumBackoff': maximumBackoff!,
+    if (minimumBackoff != null) 'minimumBackoff': minimumBackoff!,
+  };
 }
 
 /// Used by:
@@ -20542,18 +19515,14 @@ class $RevisionRequest {
   /// Required.
   core.String? tag;
 
-  $RevisionRequest({
-    this.tag,
-  });
+  $RevisionRequest({this.tag});
 
   $RevisionRequest.fromJson(core.Map json_)
-      : this(
-          tag: json_['tag'] as core.String?,
-        );
+    : this(tag: json_['tag'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tag != null) 'tag': tag!,
-      };
+    if (tag != null) 'tag': tag!,
+  };
 }
 
 /// Used by:
@@ -20570,24 +19539,20 @@ class $RgbColor {
   /// The red component of the color, from 0.0 to 1.0.
   core.double? red;
 
-  $RgbColor({
-    this.blue,
-    this.green,
-    this.red,
-  });
+  $RgbColor({this.blue, this.green, this.red});
 
   $RgbColor.fromJson(core.Map json_)
-      : this(
-          blue: (json_['blue'] as core.num?)?.toDouble(),
-          green: (json_['green'] as core.num?)?.toDouble(),
-          red: (json_['red'] as core.num?)?.toDouble(),
-        );
+    : this(
+        blue: (json_['blue'] as core.num?)?.toDouble(),
+        green: (json_['green'] as core.num?)?.toDouble(),
+        red: (json_['red'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blue != null) 'blue': blue!,
-        if (green != null) 'green': green!,
-        if (red != null) 'red': red!,
-      };
+    if (blue != null) 'blue': blue!,
+    if (green != null) 'green': green!,
+    if (red != null) 'red': red!,
+  };
 }
 
 /// Used by:
@@ -20605,21 +19570,18 @@ class $RouteFaultInjectionPolicyAbort {
   /// The value must be between \[0, 100\]
   core.int? percentage;
 
-  $RouteFaultInjectionPolicyAbort({
-    this.httpStatus,
-    this.percentage,
-  });
+  $RouteFaultInjectionPolicyAbort({this.httpStatus, this.percentage});
 
   $RouteFaultInjectionPolicyAbort.fromJson(core.Map json_)
-      : this(
-          httpStatus: json_['httpStatus'] as core.int?,
-          percentage: json_['percentage'] as core.int?,
-        );
+    : this(
+        httpStatus: json_['httpStatus'] as core.int?,
+        percentage: json_['percentage'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (httpStatus != null) 'httpStatus': httpStatus!,
-        if (percentage != null) 'percentage': percentage!,
-      };
+    if (httpStatus != null) 'httpStatus': httpStatus!,
+    if (percentage != null) 'percentage': percentage!,
+  };
 }
 
 /// Used by:
@@ -20635,21 +19597,18 @@ class $RouteFaultInjectionPolicyDelay {
   /// The value must be between \[0, 100\]
   core.int? percentage;
 
-  $RouteFaultInjectionPolicyDelay({
-    this.fixedDelay,
-    this.percentage,
-  });
+  $RouteFaultInjectionPolicyDelay({this.fixedDelay, this.percentage});
 
   $RouteFaultInjectionPolicyDelay.fromJson(core.Map json_)
-      : this(
-          fixedDelay: json_['fixedDelay'] as core.String?,
-          percentage: json_['percentage'] as core.int?,
-        );
+    : this(
+        fixedDelay: json_['fixedDelay'] as core.String?,
+        percentage: json_['percentage'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fixedDelay != null) 'fixedDelay': fixedDelay!,
-        if (percentage != null) 'percentage': percentage!,
-      };
+    if (fixedDelay != null) 'fixedDelay': fixedDelay!,
+    if (percentage != null) 'percentage': percentage!,
+  };
 }
 
 /// Used by:
@@ -20667,18 +19626,14 @@ class $RouteStatefulSessionAffinityPolicy {
   /// Required.
   core.String? cookieTtl;
 
-  $RouteStatefulSessionAffinityPolicy({
-    this.cookieTtl,
-  });
+  $RouteStatefulSessionAffinityPolicy({this.cookieTtl});
 
   $RouteStatefulSessionAffinityPolicy.fromJson(core.Map json_)
-      : this(
-          cookieTtl: json_['cookieTtl'] as core.String?,
-        );
+    : this(cookieTtl: json_['cookieTtl'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cookieTtl != null) 'cookieTtl': cookieTtl!,
-      };
+    if (cookieTtl != null) 'cookieTtl': cookieTtl!,
+  };
 }
 
 /// Used by:
@@ -20691,18 +19646,14 @@ class $RuntimeRequest {
   /// Idempotent request UUID.
   core.String? requestId;
 
-  $RuntimeRequest({
-    this.requestId,
-  });
+  $RuntimeRequest({this.requestId});
 
   $RuntimeRequest.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-        );
+    : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
+    if (requestId != null) 'requestId': requestId!,
+  };
 }
 
 /// Used by:
@@ -20721,21 +19672,18 @@ class $SBOMStatus {
   /// - "COMPLETE" : SBOM scanning has completed.
   core.String? sbomState;
 
-  $SBOMStatus({
-    this.error,
-    this.sbomState,
-  });
+  $SBOMStatus({this.error, this.sbomState});
 
   $SBOMStatus.fromJson(core.Map json_)
-      : this(
-          error: json_['error'] as core.String?,
-          sbomState: json_['sbomState'] as core.String?,
-        );
+    : this(
+        error: json_['error'] as core.String?,
+        sbomState: json_['sbomState'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!,
-        if (sbomState != null) 'sbomState': sbomState!,
-      };
+    if (error != null) 'error': error!,
+    if (sbomState != null) 'sbomState': sbomState!,
+  };
 }
 
 /// Used by:
@@ -20763,25 +19711,21 @@ class $SbomReferenceIntotoPredicate {
   });
 
   $SbomReferenceIntotoPredicate.fromJson(core.Map json_)
-      : this(
-          digest:
-              (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          location: json_['location'] as core.String?,
-          mimeType: json_['mimeType'] as core.String?,
-          referrerId: json_['referrerId'] as core.String?,
-        );
+    : this(
+        digest: (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        location: json_['location'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+        referrerId: json_['referrerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!,
-        if (location != null) 'location': location!,
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (referrerId != null) 'referrerId': referrerId!,
-      };
+    if (digest != null) 'digest': digest!,
+    if (location != null) 'location': location!,
+    if (mimeType != null) 'mimeType': mimeType!,
+    if (referrerId != null) 'referrerId': referrerId!,
+  };
 }
 
 /// Used by:
@@ -20809,27 +19753,22 @@ class $ScriptError {
   /// The line number in the script where the error was thrown.
   core.String? line;
 
-  $ScriptError({
-    this.column,
-    this.errorCode,
-    this.errorMessage,
-    this.line,
-  });
+  $ScriptError({this.column, this.errorCode, this.errorMessage, this.line});
 
   $ScriptError.fromJson(core.Map json_)
-      : this(
-          column: json_['column'] as core.String?,
-          errorCode: json_['errorCode'] as core.String?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          line: json_['line'] as core.String?,
-        );
+    : this(
+        column: json_['column'] as core.String?,
+        errorCode: json_['errorCode'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        line: json_['line'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (column != null) 'column': column!,
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (line != null) 'line': line!,
-      };
+    if (column != null) 'column': column!,
+    if (errorCode != null) 'errorCode': errorCode!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (line != null) 'line': line!,
+  };
 }
 
 /// Used by:
@@ -20871,21 +19810,18 @@ class $SdfConfig {
   /// - "SDF_VERSION_8_1" : SDF version 8.1.
   core.String? version;
 
-  $SdfConfig({
-    this.adminEmail,
-    this.version,
-  });
+  $SdfConfig({this.adminEmail, this.version});
 
   $SdfConfig.fromJson(core.Map json_)
-      : this(
-          adminEmail: json_['adminEmail'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        adminEmail: json_['adminEmail'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adminEmail != null) 'adminEmail': adminEmail!,
-        if (version != null) 'version': version!,
-      };
+    if (adminEmail != null) 'adminEmail': adminEmail!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Used by:
@@ -20899,18 +19835,14 @@ class $Secret {
   /// Optional.
   core.String? secretVersion;
 
-  $Secret({
-    this.secretVersion,
-  });
+  $Secret({this.secretVersion});
 
   $Secret.fromJson(core.Map json_)
-      : this(
-          secretVersion: json_['secretVersion'] as core.String?,
-        );
+    : this(secretVersion: json_['secretVersion'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (secretVersion != null) 'secretVersion': secretVersion!,
-      };
+    if (secretVersion != null) 'secretVersion': secretVersion!,
+  };
 }
 
 /// Used by:
@@ -20938,24 +19870,20 @@ class $SecretStatus {
   /// Optional.
   core.String? updateTime;
 
-  $SecretStatus({
-    this.message,
-    this.status,
-    this.updateTime,
-  });
+  $SecretStatus({this.message, this.status, this.updateTime});
 
   $SecretStatus.fromJson(core.Map json_)
-      : this(
-          message: json_['message'] as core.String?,
-          status: json_['status'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        message: json_['message'] as core.String?,
+        status: json_['status'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!,
-        if (status != null) 'status': status!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (message != null) 'message': message!,
+    if (status != null) 'status': status!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Used by:
@@ -20972,18 +19900,14 @@ class $SecretVersionRequest {
   /// Optional.
   core.String? etag;
 
-  $SecretVersionRequest({
-    this.etag,
-  });
+  $SecretVersionRequest({this.etag});
 
   $SecretVersionRequest.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-        );
+    : this(etag: json_['etag'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-      };
+    if (etag != null) 'etag': etag!,
+  };
 }
 
 /// Used by:
@@ -21011,21 +19935,18 @@ class $SecurityPostureConfig {
   /// vulnerability on cluster Enterprise level features.
   core.String? vulnerabilityMode;
 
-  $SecurityPostureConfig({
-    this.mode,
-    this.vulnerabilityMode,
-  });
+  $SecurityPostureConfig({this.mode, this.vulnerabilityMode});
 
   $SecurityPostureConfig.fromJson(core.Map json_)
-      : this(
-          mode: json_['mode'] as core.String?,
-          vulnerabilityMode: json_['vulnerabilityMode'] as core.String?,
-        );
+    : this(
+        mode: json_['mode'] as core.String?,
+        vulnerabilityMode: json_['vulnerabilityMode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-        if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
-      };
+    if (mode != null) 'mode': mode!,
+    if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
+  };
 }
 
 /// Used by:
@@ -21037,24 +19958,20 @@ class $SemanticVersion {
   core.int? minorNumber;
   core.int? patch;
 
-  $SemanticVersion({
-    this.majorNumber,
-    this.minorNumber,
-    this.patch,
-  });
+  $SemanticVersion({this.majorNumber, this.minorNumber, this.patch});
 
   $SemanticVersion.fromJson(core.Map json_)
-      : this(
-          majorNumber: json_['majorNumber'] as core.int?,
-          minorNumber: json_['minorNumber'] as core.int?,
-          patch: json_['patch'] as core.int?,
-        );
+    : this(
+        majorNumber: json_['majorNumber'] as core.int?,
+        minorNumber: json_['minorNumber'] as core.int?,
+        patch: json_['patch'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (majorNumber != null) 'majorNumber': majorNumber!,
-        if (minorNumber != null) 'minorNumber': minorNumber!,
-        if (patch != null) 'patch': patch!,
-      };
+    if (majorNumber != null) 'majorNumber': majorNumber!,
+    if (minorNumber != null) 'minorNumber': minorNumber!,
+    if (patch != null) 'patch': patch!,
+  };
 }
 
 /// Used by:
@@ -21129,15 +20046,15 @@ class $SensitiveCategoryAssignedTargetingOptionDetails {
   });
 
   $SensitiveCategoryAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          excludedSensitiveCategory:
-              json_['excludedSensitiveCategory'] as core.String?,
-        );
+    : this(
+        excludedSensitiveCategory:
+            json_['excludedSensitiveCategory'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludedSensitiveCategory != null)
-          'excludedSensitiveCategory': excludedSensitiveCategory!,
-      };
+    if (excludedSensitiveCategory != null)
+      'excludedSensitiveCategory': excludedSensitiveCategory!,
+  };
 }
 
 /// Used by:
@@ -21206,18 +20123,14 @@ class $SensitiveCategoryTargetingOptionDetails {
   /// streamed over the internet.
   core.String? sensitiveCategory;
 
-  $SensitiveCategoryTargetingOptionDetails({
-    this.sensitiveCategory,
-  });
+  $SensitiveCategoryTargetingOptionDetails({this.sensitiveCategory});
 
   $SensitiveCategoryTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          sensitiveCategory: json_['sensitiveCategory'] as core.String?,
-        );
+    : this(sensitiveCategory: json_['sensitiveCategory'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sensitiveCategory != null) 'sensitiveCategory': sensitiveCategory!,
-      };
+    if (sensitiveCategory != null) 'sensitiveCategory': sensitiveCategory!,
+  };
 }
 
 /// Used by:
@@ -21233,18 +20146,14 @@ class $ServiceDirectoryConfig {
   /// Required.
   core.String? service;
 
-  $ServiceDirectoryConfig({
-    this.service,
-  });
+  $ServiceDirectoryConfig({this.service});
 
   $ServiceDirectoryConfig.fromJson(core.Map json_)
-      : this(
-          service: json_['service'] as core.String?,
-        );
+    : this(service: json_['service'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (service != null) 'service': service!,
-      };
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Used by:
@@ -21342,19 +20251,19 @@ class $ServiceMeshCondition {
   });
 
   $ServiceMeshCondition.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          details: json_['details'] as core.String?,
-          documentationLink: json_['documentationLink'] as core.String?,
-          severity: json_['severity'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        details: json_['details'] as core.String?,
+        documentationLink: json_['documentationLink'] as core.String?,
+        severity: json_['severity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (documentationLink != null) 'documentationLink': documentationLink!,
-        if (severity != null) 'severity': severity!,
-      };
+    if (code != null) 'code': code!,
+    if (details != null) 'details': details!,
+    if (documentationLink != null) 'documentationLink': documentationLink!,
+    if (severity != null) 'severity': severity!,
+  };
 }
 
 /// Used by:
@@ -21368,21 +20277,18 @@ class $ServiceMeshStatusDetails {
   /// Human-readable explanation of code.
   core.String? details;
 
-  $ServiceMeshStatusDetails({
-    this.code,
-    this.details,
-  });
+  $ServiceMeshStatusDetails({this.code, this.details});
 
   $ServiceMeshStatusDetails.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          details: json_['details'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        details: json_['details'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-      };
+    if (code != null) 'code': code!,
+    if (details != null) 'details': details!,
+  };
 }
 
 /// Used by:
@@ -21399,18 +20305,14 @@ class $SessionPositionAssignedTargetingOptionDetails {
   /// session.
   core.String? sessionPosition;
 
-  $SessionPositionAssignedTargetingOptionDetails({
-    this.sessionPosition,
-  });
+  $SessionPositionAssignedTargetingOptionDetails({this.sessionPosition});
 
   $SessionPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          sessionPosition: json_['sessionPosition'] as core.String?,
-        );
+    : this(sessionPosition: json_['sessionPosition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sessionPosition != null) 'sessionPosition': sessionPosition!,
-      };
+    if (sessionPosition != null) 'sessionPosition': sessionPosition!,
+  };
 }
 
 /// Used by:
@@ -21430,34 +20332,29 @@ class $SetLabelsRequest {
       convert.base64.decode(labelFingerprint!);
 
   set labelFingerprintAsBytes(core.List<core.int> bytes_) {
-    labelFingerprint =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    labelFingerprint = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The labels to set for this resource.
   core.Map<core.String, core.String>? labels;
 
-  $SetLabelsRequest({
-    this.labelFingerprint,
-    this.labels,
-  });
+  $SetLabelsRequest({this.labelFingerprint, this.labels});
 
   $SetLabelsRequest.fromJson(core.Map json_)
-      : this(
-          labelFingerprint: json_['labelFingerprint'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        labelFingerprint: json_['labelFingerprint'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labelFingerprint != null) 'labelFingerprint': labelFingerprint!,
-        if (labels != null) 'labels': labels!,
-      };
+    if (labelFingerprint != null) 'labelFingerprint': labelFingerprint!,
+    if (labels != null) 'labels': labels!,
+  };
 }
 
 /// Used by:
@@ -21474,22 +20371,18 @@ class $SetupTag {
   /// The name of the setup tag.
   core.String? tagName;
 
-  $SetupTag({
-    this.stopOnSetupFailure,
-    this.tagName,
-  });
+  $SetupTag({this.stopOnSetupFailure, this.tagName});
 
   $SetupTag.fromJson(core.Map json_)
-      : this(
-          stopOnSetupFailure: json_['stopOnSetupFailure'] as core.bool?,
-          tagName: json_['tagName'] as core.String?,
-        );
+    : this(
+        stopOnSetupFailure: json_['stopOnSetupFailure'] as core.bool?,
+        tagName: json_['tagName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (stopOnSetupFailure != null)
-          'stopOnSetupFailure': stopOnSetupFailure!,
-        if (tagName != null) 'tagName': tagName!,
-      };
+    if (stopOnSetupFailure != null) 'stopOnSetupFailure': stopOnSetupFailure!,
+    if (tagName != null) 'tagName': tagName!,
+  };
 }
 
 /// Used by:
@@ -21508,18 +20401,14 @@ class $Shared00 {
   /// Required.
   core.String? name;
 
-  $Shared00({
-    this.name,
-  });
+  $Shared00({this.name});
 
   $Shared00.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+    : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -21534,18 +20423,11 @@ class $Shared00 {
 class $Shared01 {
   core.String? id;
 
-  $Shared01({
-    this.id,
-  });
+  $Shared01({this.id});
 
-  $Shared01.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-        );
+  $Shared01.fromJson(core.Map json_) : this(id: json_['id'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-      };
+  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
 }
 
 /// Used by:
@@ -21560,8 +20442,9 @@ class $Shared02 {
   $Shared02();
 
   $Shared02.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map json_);
+    // ignore: avoid_unused_constructor_parameters
+    core.Map json_,
+  );
 
   core.Map<core.String, core.dynamic> toJson() => {};
 }
@@ -21578,20 +20461,19 @@ class $Shared03 {
   /// An empty list would effectively disable metrics export.
   core.List<core.String>? backends;
 
-  $Shared03({
-    this.backends,
-  });
+  $Shared03({this.backends});
 
   $Shared03.fromJson(core.Map json_)
-      : this(
-          backends: (json_['backends'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        backends:
+            (json_['backends'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backends != null) 'backends': backends!,
-      };
+    if (backends != null) 'backends': backends!,
+  };
 }
 
 /// Used by:
@@ -21614,21 +20496,18 @@ class $Shared04 {
   /// versions.
   core.String? osVersion;
 
-  $Shared04({
-    this.osShortName,
-    this.osVersion,
-  });
+  $Shared04({this.osShortName, this.osVersion});
 
   $Shared04.fromJson(core.Map json_)
-      : this(
-          osShortName: json_['osShortName'] as core.String?,
-          osVersion: json_['osVersion'] as core.String?,
-        );
+    : this(
+        osShortName: json_['osShortName'] as core.String?,
+        osVersion: json_['osVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (osShortName != null) 'osShortName': osShortName!,
-        if (osVersion != null) 'osVersion': osVersion!,
-      };
+    if (osShortName != null) 'osShortName': osShortName!,
+    if (osVersion != null) 'osVersion': osVersion!,
+  };
 }
 
 /// Used by:
@@ -21639,20 +20518,19 @@ class $Shared05 {
   /// List of text values.
   core.List<core.String>? values;
 
-  $Shared05({
-    this.values,
-  });
+  $Shared05({this.values});
 
   $Shared05.fromJson(core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Used by:
@@ -21663,21 +20541,18 @@ class $Shared06 {
   core.String? name;
   core.String? value;
 
-  $Shared06({
-    this.name,
-    this.value,
-  });
+  $Shared06({this.name, this.value});
 
   $Shared06.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
+    if (name != null) 'name': name!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -21687,20 +20562,19 @@ class $Shared06 {
 class $Shared07 {
   core.List<core.double>? values;
 
-  $Shared07({
-    this.values,
-  });
+  $Shared07({this.values});
 
   $Shared07.fromJson(core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-        );
+    : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Used by:
@@ -21710,20 +20584,19 @@ class $Shared07 {
 class $Shared08 {
   core.List<core.String>? values;
 
-  $Shared08({
-    this.values,
-  });
+  $Shared08({this.values});
 
   $Shared08.fromJson(core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Used by:
@@ -21737,23 +20610,21 @@ class $Shared09 {
   /// The list of scopes to be made available for this service account.
   core.List<core.String>? scopes;
 
-  $Shared09({
-    this.email,
-    this.scopes,
-  });
+  $Shared09({this.email, this.scopes});
 
   $Shared09.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-          scopes: (json_['scopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        email: json_['email'] as core.String?,
+        scopes:
+            (json_['scopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (scopes != null) 'scopes': scopes!,
-      };
+    if (email != null) 'email': email!,
+    if (scopes != null) 'scopes': scopes!,
+  };
 }
 
 /// Used by:
@@ -21766,18 +20637,14 @@ class $Shared10 {
   /// Required.
   core.String? objectUri;
 
-  $Shared10({
-    this.objectUri,
-  });
+  $Shared10({this.objectUri});
 
   $Shared10.fromJson(core.Map json_)
-      : this(
-          objectUri: json_['objectUri'] as core.String?,
-        );
+    : this(objectUri: json_['objectUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectUri != null) 'objectUri': objectUri!,
-      };
+    if (objectUri != null) 'objectUri': objectUri!,
+  };
 }
 
 /// Used by:
@@ -21791,21 +20658,18 @@ class $Shared11 {
   /// The price represented as a number.
   core.String? value;
 
-  $Shared11({
-    this.currency,
-    this.value,
-  });
+  $Shared11({this.currency, this.value});
 
   $Shared11.fromJson(core.Map json_)
-      : this(
-          currency: json_['currency'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        currency: json_['currency'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currency != null) 'currency': currency!,
-        if (value != null) 'value': value!,
-      };
+    if (currency != null) 'currency': currency!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -21822,21 +20686,18 @@ class $Shared12 {
   /// sentiment).
   core.double? score;
 
-  $Shared12({
-    this.magnitude,
-    this.score,
-  });
+  $Shared12({this.magnitude, this.score});
 
   $Shared12.fromJson(core.Map json_)
-      : this(
-          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
-        );
+    : this(
+        magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
+        score: (json_['score'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
-        if (score != null) 'score': score!,
-      };
+    if (magnitude != null) 'magnitude': magnitude!,
+    if (score != null) 'score': score!,
+  };
 }
 
 /// Used by:
@@ -21863,27 +20724,22 @@ class $Shared13 {
   /// Version of the appliance.
   core.String? version;
 
-  $Shared13({
-    this.fqdn,
-    this.internalIp,
-    this.state,
-    this.version,
-  });
+  $Shared13({this.fqdn, this.internalIp, this.state, this.version});
 
   $Shared13.fromJson(core.Map json_)
-      : this(
-          fqdn: json_['fqdn'] as core.String?,
-          internalIp: json_['internalIp'] as core.String?,
-          state: json_['state'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        fqdn: json_['fqdn'] as core.String?,
+        internalIp: json_['internalIp'] as core.String?,
+        state: json_['state'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fqdn != null) 'fqdn': fqdn!,
-        if (internalIp != null) 'internalIp': internalIp!,
-        if (state != null) 'state': state!,
-        if (version != null) 'version': version!,
-      };
+    if (fqdn != null) 'fqdn': fqdn!,
+    if (internalIp != null) 'internalIp': internalIp!,
+    if (state != null) 'state': state!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Used by:
@@ -21901,21 +20757,18 @@ class $Shared14 {
   /// Optional.
   core.String? version;
 
-  $Shared14({
-    this.name,
-    this.version,
-  });
+  $Shared14({this.name, this.version});
 
   $Shared14.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (version != null) 'version': version!,
-      };
+    if (name != null) 'name': name!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Used by:
@@ -21950,19 +20803,19 @@ class $ShieldedInstanceConfig {
   });
 
   $ShieldedInstanceConfig.fromJson(core.Map json_)
-      : this(
-          enableIntegrityMonitoring:
-              json_['enableIntegrityMonitoring'] as core.bool?,
-          enableSecureBoot: json_['enableSecureBoot'] as core.bool?,
-          enableVtpm: json_['enableVtpm'] as core.bool?,
-        );
+    : this(
+        enableIntegrityMonitoring:
+            json_['enableIntegrityMonitoring'] as core.bool?,
+        enableSecureBoot: json_['enableSecureBoot'] as core.bool?,
+        enableVtpm: json_['enableVtpm'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enableIntegrityMonitoring != null)
-          'enableIntegrityMonitoring': enableIntegrityMonitoring!,
-        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
-        if (enableVtpm != null) 'enableVtpm': enableVtpm!,
-      };
+    if (enableIntegrityMonitoring != null)
+      'enableIntegrityMonitoring': enableIntegrityMonitoring!,
+    if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
+    if (enableVtpm != null) 'enableVtpm': enableVtpm!,
+  };
 }
 
 /// Used by:
@@ -21993,45 +20846,45 @@ class $ShufflePushReadMetrics {
   });
 
   $ShufflePushReadMetrics.fromJson(core.Map json_)
-      : this(
-          corruptMergedBlockChunks:
-              json_['corruptMergedBlockChunks'] as core.String?,
-          localMergedBlocksFetched:
-              json_['localMergedBlocksFetched'] as core.String?,
-          localMergedBytesRead: json_['localMergedBytesRead'] as core.String?,
-          localMergedChunksFetched:
-              json_['localMergedChunksFetched'] as core.String?,
-          mergedFetchFallbackCount:
-              json_['mergedFetchFallbackCount'] as core.String?,
-          remoteMergedBlocksFetched:
-              json_['remoteMergedBlocksFetched'] as core.String?,
-          remoteMergedBytesRead: json_['remoteMergedBytesRead'] as core.String?,
-          remoteMergedChunksFetched:
-              json_['remoteMergedChunksFetched'] as core.String?,
-          remoteMergedReqsDuration:
-              json_['remoteMergedReqsDuration'] as core.String?,
-        );
+    : this(
+        corruptMergedBlockChunks:
+            json_['corruptMergedBlockChunks'] as core.String?,
+        localMergedBlocksFetched:
+            json_['localMergedBlocksFetched'] as core.String?,
+        localMergedBytesRead: json_['localMergedBytesRead'] as core.String?,
+        localMergedChunksFetched:
+            json_['localMergedChunksFetched'] as core.String?,
+        mergedFetchFallbackCount:
+            json_['mergedFetchFallbackCount'] as core.String?,
+        remoteMergedBlocksFetched:
+            json_['remoteMergedBlocksFetched'] as core.String?,
+        remoteMergedBytesRead: json_['remoteMergedBytesRead'] as core.String?,
+        remoteMergedChunksFetched:
+            json_['remoteMergedChunksFetched'] as core.String?,
+        remoteMergedReqsDuration:
+            json_['remoteMergedReqsDuration'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (corruptMergedBlockChunks != null)
-          'corruptMergedBlockChunks': corruptMergedBlockChunks!,
-        if (localMergedBlocksFetched != null)
-          'localMergedBlocksFetched': localMergedBlocksFetched!,
-        if (localMergedBytesRead != null)
-          'localMergedBytesRead': localMergedBytesRead!,
-        if (localMergedChunksFetched != null)
-          'localMergedChunksFetched': localMergedChunksFetched!,
-        if (mergedFetchFallbackCount != null)
-          'mergedFetchFallbackCount': mergedFetchFallbackCount!,
-        if (remoteMergedBlocksFetched != null)
-          'remoteMergedBlocksFetched': remoteMergedBlocksFetched!,
-        if (remoteMergedBytesRead != null)
-          'remoteMergedBytesRead': remoteMergedBytesRead!,
-        if (remoteMergedChunksFetched != null)
-          'remoteMergedChunksFetched': remoteMergedChunksFetched!,
-        if (remoteMergedReqsDuration != null)
-          'remoteMergedReqsDuration': remoteMergedReqsDuration!,
-      };
+    if (corruptMergedBlockChunks != null)
+      'corruptMergedBlockChunks': corruptMergedBlockChunks!,
+    if (localMergedBlocksFetched != null)
+      'localMergedBlocksFetched': localMergedBlocksFetched!,
+    if (localMergedBytesRead != null)
+      'localMergedBytesRead': localMergedBytesRead!,
+    if (localMergedChunksFetched != null)
+      'localMergedChunksFetched': localMergedChunksFetched!,
+    if (mergedFetchFallbackCount != null)
+      'mergedFetchFallbackCount': mergedFetchFallbackCount!,
+    if (remoteMergedBlocksFetched != null)
+      'remoteMergedBlocksFetched': remoteMergedBlocksFetched!,
+    if (remoteMergedBytesRead != null)
+      'remoteMergedBytesRead': remoteMergedBytesRead!,
+    if (remoteMergedChunksFetched != null)
+      'remoteMergedChunksFetched': remoteMergedChunksFetched!,
+    if (remoteMergedReqsDuration != null)
+      'remoteMergedReqsDuration': remoteMergedReqsDuration!,
+  };
 }
 
 /// Used by:
@@ -22050,17 +20903,17 @@ class $ShuffleWriteMetrics {
   });
 
   $ShuffleWriteMetrics.fromJson(core.Map json_)
-      : this(
-          bytesWritten: json_['bytesWritten'] as core.String?,
-          recordsWritten: json_['recordsWritten'] as core.String?,
-          writeTimeNanos: json_['writeTimeNanos'] as core.String?,
-        );
+    : this(
+        bytesWritten: json_['bytesWritten'] as core.String?,
+        recordsWritten: json_['recordsWritten'] as core.String?,
+        writeTimeNanos: json_['writeTimeNanos'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bytesWritten != null) 'bytesWritten': bytesWritten!,
-        if (recordsWritten != null) 'recordsWritten': recordsWritten!,
-        if (writeTimeNanos != null) 'writeTimeNanos': writeTimeNanos!,
-      };
+    if (bytesWritten != null) 'bytesWritten': bytesWritten!,
+    if (recordsWritten != null) 'recordsWritten': recordsWritten!,
+    if (writeTimeNanos != null) 'writeTimeNanos': writeTimeNanos!,
+  };
 }
 
 /// Used by:
@@ -22094,25 +20947,24 @@ class $Signature {
   core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
 
   set signatureAsBytes(core.List<core.int> bytes_) {
-    signature =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    signature = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  $Signature({
-    this.publicKeyId,
-    this.signature,
-  });
+  $Signature({this.publicKeyId, this.signature});
 
   $Signature.fromJson(core.Map json_)
-      : this(
-          publicKeyId: json_['publicKeyId'] as core.String?,
-          signature: json_['signature'] as core.String?,
-        );
+    : this(
+        publicKeyId: json_['publicKeyId'] as core.String?,
+        signature: json_['signature'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (publicKeyId != null) 'publicKeyId': publicKeyId!,
-        if (signature != null) 'signature': signature!,
-      };
+    if (publicKeyId != null) 'publicKeyId': publicKeyId!,
+    if (signature != null) 'signature': signature!,
+  };
 }
 
 /// Used by:
@@ -22133,21 +20985,18 @@ class $Site {
   /// Required.
   core.String? urlOrAppId;
 
-  $Site({
-    this.name,
-    this.urlOrAppId,
-  });
+  $Site({this.name, this.urlOrAppId});
 
   $Site.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          urlOrAppId: json_['urlOrAppId'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        urlOrAppId: json_['urlOrAppId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (urlOrAppId != null) 'urlOrAppId': urlOrAppId!,
-      };
+    if (name != null) 'name': name!,
+    if (urlOrAppId != null) 'urlOrAppId': urlOrAppId!,
+  };
 }
 
 /// Used by:
@@ -22180,30 +21029,24 @@ class $Size {
   /// Acceptable values are 0 to 32767, inclusive.
   core.int? width;
 
-  $Size({
-    this.height,
-    this.iab,
-    this.id,
-    this.kind,
-    this.width,
-  });
+  $Size({this.height, this.iab, this.id, this.kind, this.width});
 
   $Size.fromJson(core.Map json_)
-      : this(
-          height: json_['height'] as core.int?,
-          iab: json_['iab'] as core.bool?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        height: json_['height'] as core.int?,
+        iab: json_['iab'] as core.bool?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (iab != null) 'iab': iab!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (width != null) 'width': width!,
-      };
+    if (height != null) 'height': height!,
+    if (iab != null) 'iab': iab!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// Used by:
@@ -22265,25 +21108,27 @@ class $SlsaRecipe {
   });
 
   $SlsaRecipe.fromJson(core.Map json_)
-      : this(
-          arguments: json_.containsKey('arguments')
-              ? json_['arguments'] as core.Map<core.String, core.dynamic>
-              : null,
-          definedInMaterial: json_['definedInMaterial'] as core.String?,
-          entryPoint: json_['entryPoint'] as core.String?,
-          environment: json_.containsKey('environment')
-              ? json_['environment'] as core.Map<core.String, core.dynamic>
-              : null,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        arguments:
+            json_.containsKey('arguments')
+                ? json_['arguments'] as core.Map<core.String, core.dynamic>
+                : null,
+        definedInMaterial: json_['definedInMaterial'] as core.String?,
+        entryPoint: json_['entryPoint'] as core.String?,
+        environment:
+            json_.containsKey('environment')
+                ? json_['environment'] as core.Map<core.String, core.dynamic>
+                : null,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arguments != null) 'arguments': arguments!,
-        if (definedInMaterial != null) 'definedInMaterial': definedInMaterial!,
-        if (entryPoint != null) 'entryPoint': entryPoint!,
-        if (environment != null) 'environment': environment!,
-        if (type != null) 'type': type!,
-      };
+    if (arguments != null) 'arguments': arguments!,
+    if (definedInMaterial != null) 'definedInMaterial': definedInMaterial!,
+    if (entryPoint != null) 'entryPoint': entryPoint!,
+    if (environment != null) 'environment': environment!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Used by:
@@ -22298,18 +21143,14 @@ class $Source {
   /// Required.
   core.String? inputUri;
 
-  $Source({
-    this.inputUri,
-  });
+  $Source({this.inputUri});
 
   $Source.fromJson(core.Map json_)
-      : this(
-          inputUri: json_['inputUri'] as core.String?,
-        );
+    : this(inputUri: json_['inputUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inputUri != null) 'inputUri': inputUri!,
-      };
+    if (inputUri != null) 'inputUri': inputUri!,
+  };
 }
 
 /// Used by:
@@ -22323,18 +21164,14 @@ class $SourceContext {
   /// For example: `"google/protobuf/source_context.proto"`.
   core.String? fileName;
 
-  $SourceContext({
-    this.fileName,
-  });
+  $SourceContext({this.fileName});
 
   $SourceContext.fromJson(core.Map json_)
-      : this(
-          fileName: json_['fileName'] as core.String?,
-        );
+    : this(fileName: json_['fileName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileName != null) 'fileName': fileName!,
-      };
+    if (fileName != null) 'fileName': fileName!,
+  };
 }
 
 /// Used by:
@@ -22350,18 +21187,13 @@ class $Spec {
   /// Optional.
   core.int? version;
 
-  $Spec({
-    this.version,
-  });
+  $Spec({this.version});
 
-  $Spec.fromJson(core.Map json_)
-      : this(
-          version: json_['version'] as core.int?,
-        );
+  $Spec.fromJson(core.Map json_) : this(version: json_['version'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (version != null) 'version': version!,
-      };
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Used by:
@@ -22384,24 +21216,20 @@ class $SqlProperty {
   /// Required.
   core.String? property;
 
-  $SqlProperty({
-    this.enabled,
-    this.numericValue,
-    this.property,
-  });
+  $SqlProperty({this.enabled, this.numericValue, this.property});
 
   $SqlProperty.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-          numericValue: json_['numericValue'] as core.String?,
-          property: json_['property'] as core.String?,
-        );
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        numericValue: json_['numericValue'] as core.String?,
+        property: json_['property'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-        if (numericValue != null) 'numericValue': numericValue!,
-        if (property != null) 'property': property!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+    if (numericValue != null) 'numericValue': numericValue!,
+    if (property != null) 'property': property!,
+  };
 }
 
 /// Used by:
@@ -22418,21 +21246,18 @@ class $StateError {
   /// - "KMS_ERROR" : Caused by an issue with KMS.
   core.String? type;
 
-  $StateError({
-    this.details,
-    this.type,
-  });
+  $StateError({this.details, this.type});
 
   $StateError.fromJson(core.Map json_)
-      : this(
-          details: json_['details'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        details: json_['details'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (type != null) 'type': type!,
-      };
+    if (details != null) 'details': details!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Used by:
@@ -22449,23 +21274,21 @@ class $StaticCluster {
   /// The timestamp when the Cluster was last updated.
   core.String? lastUpdated;
 
-  $StaticCluster({
-    this.cluster,
-    this.lastUpdated,
-  });
+  $StaticCluster({this.cluster, this.lastUpdated});
 
   $StaticCluster.fromJson(core.Map json_)
-      : this(
-          cluster: json_.containsKey('cluster')
-              ? json_['cluster'] as core.Map<core.String, core.dynamic>
-              : null,
-          lastUpdated: json_['lastUpdated'] as core.String?,
-        );
+    : this(
+        cluster:
+            json_.containsKey('cluster')
+                ? json_['cluster'] as core.Map<core.String, core.dynamic>
+                : null,
+        lastUpdated: json_['lastUpdated'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cluster != null) 'cluster': cluster!,
-        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
-      };
+    if (cluster != null) 'cluster': cluster!,
+    if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+  };
 }
 
 /// Used by:
@@ -22482,23 +21305,21 @@ class $StaticListener {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? listener;
 
-  $StaticListener({
-    this.lastUpdated,
-    this.listener,
-  });
+  $StaticListener({this.lastUpdated, this.listener});
 
   $StaticListener.fromJson(core.Map json_)
-      : this(
-          lastUpdated: json_['lastUpdated'] as core.String?,
-          listener: json_.containsKey('listener')
-              ? json_['listener'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        lastUpdated: json_['lastUpdated'] as core.String?,
+        listener:
+            json_.containsKey('listener')
+                ? json_['listener'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
-        if (listener != null) 'listener': listener!,
-      };
+    if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+    if (listener != null) 'listener': listener!,
+  };
 }
 
 /// Used by:
@@ -22515,23 +21336,21 @@ class $StaticRouteConfig {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? routeConfig;
 
-  $StaticRouteConfig({
-    this.lastUpdated,
-    this.routeConfig,
-  });
+  $StaticRouteConfig({this.lastUpdated, this.routeConfig});
 
   $StaticRouteConfig.fromJson(core.Map json_)
-      : this(
-          lastUpdated: json_['lastUpdated'] as core.String?,
-          routeConfig: json_.containsKey('routeConfig')
-              ? json_['routeConfig'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        lastUpdated: json_['lastUpdated'] as core.String?,
+        routeConfig:
+            json_.containsKey('routeConfig')
+                ? json_['routeConfig'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
-        if (routeConfig != null) 'routeConfig': routeConfig!,
-      };
+    if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+    if (routeConfig != null) 'routeConfig': routeConfig!,
+  };
 }
 
 /// Used by:
@@ -22705,26 +21524,23 @@ class $Status00 {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  $Status00({
-    this.code,
-    this.details,
-    this.message,
-  });
+  $Status00({this.code, this.details, this.message});
 
   $Status00.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.int?,
-          details: (json_['details'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-          message: json_['message'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.int?,
+        details:
+            (json_['details'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+        message: json_['message'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
+    if (code != null) 'code': code!,
+    if (details != null) 'details': details!,
+    if (message != null) 'message': message!,
+  };
 }
 
 /// Used by:
@@ -22747,21 +21563,18 @@ class $Status01 {
   /// Description is populated if Code is Failed, explaining why it has failed.
   core.String? description;
 
-  $Status01({
-    this.code,
-    this.description,
-  });
+  $Status01({this.code, this.description});
 
   $Status01.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          description: json_['description'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        description: json_['description'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (description != null) 'description': description!,
-      };
+    if (code != null) 'code': code!,
+    if (description != null) 'description': description!,
+  };
 }
 
 /// Used by:
@@ -22777,25 +21590,24 @@ class $StringValues {
   /// List of values denied at this resource.
   core.List<core.String>? deniedValues;
 
-  $StringValues({
-    this.allowedValues,
-    this.deniedValues,
-  });
+  $StringValues({this.allowedValues, this.deniedValues});
 
   $StringValues.fromJson(core.Map json_)
-      : this(
-          allowedValues: (json_['allowedValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          deniedValues: (json_['deniedValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        allowedValues:
+            (json_['allowedValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        deniedValues:
+            (json_['deniedValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedValues != null) 'allowedValues': allowedValues!,
-        if (deniedValues != null) 'deniedValues': deniedValues!,
-      };
+    if (allowedValues != null) 'allowedValues': allowedValues!,
+    if (deniedValues != null) 'deniedValues': deniedValues!,
+  };
 }
 
 /// Used by:
@@ -22810,18 +21622,14 @@ class $SubExchangeAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  $SubExchangeAssignedTargetingOptionDetails({
-    this.targetingOptionId,
-  });
+  $SubExchangeAssignedTargetingOptionDetails({this.targetingOptionId});
 
   $SubExchangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-        );
+    : this(targetingOptionId: json_['targetingOptionId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+  };
 }
 
 /// Used by:
@@ -22835,18 +21643,14 @@ class $SubExchangeTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  $SubExchangeTargetingOptionDetails({
-    this.displayName,
-  });
+  $SubExchangeTargetingOptionDetails({this.displayName});
 
   $SubExchangeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+    : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+  };
 }
 
 /// Used by:
@@ -22859,27 +21663,20 @@ class $Subject {
   core.Map<core.String, core.String>? digest;
   core.String? name;
 
-  $Subject({
-    this.digest,
-    this.name,
-  });
+  $Subject({this.digest, this.name});
 
   $Subject.fromJson(core.Map json_)
-      : this(
-          digest:
-              (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        digest: (json_['digest'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!,
-        if (name != null) 'name': name!,
-      };
+    if (digest != null) 'digest': digest!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -22909,27 +21706,22 @@ class $Symptom {
   /// A string used to uniquely distinguish a worker within a TPU node.
   core.String? workerId;
 
-  $Symptom({
-    this.createTime,
-    this.details,
-    this.symptomType,
-    this.workerId,
-  });
+  $Symptom({this.createTime, this.details, this.symptomType, this.workerId});
 
   $Symptom.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          details: json_['details'] as core.String?,
-          symptomType: json_['symptomType'] as core.String?,
-          workerId: json_['workerId'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        details: json_['details'] as core.String?,
+        symptomType: json_['symptomType'] as core.String?,
+        workerId: json_['workerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (details != null) 'details': details!,
-        if (symptomType != null) 'symptomType': symptomType!,
-        if (workerId != null) 'workerId': workerId!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (details != null) 'details': details!,
+    if (symptomType != null) 'symptomType': symptomType!,
+    if (workerId != null) 'workerId': workerId!,
+  };
 }
 
 /// Used by:
@@ -22968,24 +21760,20 @@ class $TargetFrequency {
   /// `TIME_UNIT_WEEKS` - must be 1
   core.int? timeUnitCount;
 
-  $TargetFrequency({
-    this.targetCount,
-    this.timeUnit,
-    this.timeUnitCount,
-  });
+  $TargetFrequency({this.targetCount, this.timeUnit, this.timeUnitCount});
 
   $TargetFrequency.fromJson(core.Map json_)
-      : this(
-          targetCount: json_['targetCount'] as core.String?,
-          timeUnit: json_['timeUnit'] as core.String?,
-          timeUnitCount: json_['timeUnitCount'] as core.int?,
-        );
+    : this(
+        targetCount: json_['targetCount'] as core.String?,
+        timeUnit: json_['timeUnit'] as core.String?,
+        timeUnitCount: json_['timeUnitCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (targetCount != null) 'targetCount': targetCount!,
-        if (timeUnit != null) 'timeUnit': timeUnit!,
-        if (timeUnitCount != null) 'timeUnitCount': timeUnitCount!,
-      };
+    if (targetCount != null) 'targetCount': targetCount!,
+    if (timeUnit != null) 'timeUnit': timeUnit!,
+    if (timeUnitCount != null) 'timeUnitCount': timeUnitCount!,
+  };
 }
 
 /// Used by:
@@ -23039,24 +21827,22 @@ class $TargetingExpansionConfig {
   });
 
   $TargetingExpansionConfig.fromJson(core.Map json_)
-      : this(
-          audienceExpansionLevel:
-              json_['audienceExpansionLevel'] as core.String?,
-          audienceExpansionSeedListExcluded:
-              json_['audienceExpansionSeedListExcluded'] as core.bool?,
-          enableOptimizedTargeting:
-              json_['enableOptimizedTargeting'] as core.bool?,
-        );
+    : this(
+        audienceExpansionLevel: json_['audienceExpansionLevel'] as core.String?,
+        audienceExpansionSeedListExcluded:
+            json_['audienceExpansionSeedListExcluded'] as core.bool?,
+        enableOptimizedTargeting:
+            json_['enableOptimizedTargeting'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audienceExpansionLevel != null)
-          'audienceExpansionLevel': audienceExpansionLevel!,
-        if (audienceExpansionSeedListExcluded != null)
-          'audienceExpansionSeedListExcluded':
-              audienceExpansionSeedListExcluded!,
-        if (enableOptimizedTargeting != null)
-          'enableOptimizedTargeting': enableOptimizedTargeting!,
-      };
+    if (audienceExpansionLevel != null)
+      'audienceExpansionLevel': audienceExpansionLevel!,
+    if (audienceExpansionSeedListExcluded != null)
+      'audienceExpansionSeedListExcluded': audienceExpansionSeedListExcluded!,
+    if (enableOptimizedTargeting != null)
+      'enableOptimizedTargeting': enableOptimizedTargeting!,
+  };
 }
 
 /// Used by:
@@ -23073,22 +21859,19 @@ class $TeardownTag {
   /// The name of the teardown tag.
   core.String? tagName;
 
-  $TeardownTag({
-    this.stopTeardownOnFailure,
-    this.tagName,
-  });
+  $TeardownTag({this.stopTeardownOnFailure, this.tagName});
 
   $TeardownTag.fromJson(core.Map json_)
-      : this(
-          stopTeardownOnFailure: json_['stopTeardownOnFailure'] as core.bool?,
-          tagName: json_['tagName'] as core.String?,
-        );
+    : this(
+        stopTeardownOnFailure: json_['stopTeardownOnFailure'] as core.bool?,
+        tagName: json_['tagName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (stopTeardownOnFailure != null)
-          'stopTeardownOnFailure': stopTeardownOnFailure!,
-        if (tagName != null) 'tagName': tagName!,
-      };
+    if (stopTeardownOnFailure != null)
+      'stopTeardownOnFailure': stopTeardownOnFailure!,
+    if (tagName != null) 'tagName': tagName!,
+  };
 }
 
 /// Used by:
@@ -23102,18 +21885,14 @@ class $TenantProjectRequest {
   /// Required.
   core.String? tag;
 
-  $TenantProjectRequest({
-    this.tag,
-  });
+  $TenantProjectRequest({this.tag});
 
   $TenantProjectRequest.fromJson(core.Map json_)
-      : this(
-          tag: json_['tag'] as core.String?,
-        );
+    : this(tag: json_['tag'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tag != null) 'tag': tag!,
-      };
+    if (tag != null) 'tag': tag!,
+  };
 }
 
 /// Used by:
@@ -23186,20 +21965,19 @@ class $TestIamPermissionsRequest00 {
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  $TestIamPermissionsRequest00({
-    this.permissions,
-  });
+  $TestIamPermissionsRequest00({this.permissions});
 
   $TestIamPermissionsRequest00.fromJson(core.Map json_)
-      : this(
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
+    if (permissions != null) 'permissions': permissions!,
+  };
 }
 
 /// Used by:
@@ -23216,20 +21994,19 @@ class $TestIamPermissionsRequest01 {
   /// (https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  $TestIamPermissionsRequest01({
-    this.permissions,
-  });
+  $TestIamPermissionsRequest01({this.permissions});
 
   $TestIamPermissionsRequest01.fromJson(core.Map json_)
-      : this(
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
+    if (permissions != null) 'permissions': permissions!,
+  };
 }
 
 /// Used by:
@@ -23242,20 +22019,19 @@ class $TestIamPermissionsResponse {
   /// A subset of TestPermissionsRequest.permissions that the caller is allowed.
   core.List<core.String>? permissions;
 
-  $TestIamPermissionsResponse({
-    this.permissions,
-  });
+  $TestIamPermissionsResponse({this.permissions});
 
   $TestIamPermissionsResponse.fromJson(core.Map json_)
-      : this(
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
+    if (permissions != null) 'permissions': permissions!,
+  };
 }
 
 /// Used by:
@@ -23268,20 +22044,19 @@ class $TestPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   core.List<core.String>? permissions;
 
-  $TestPermissionsRequest({
-    this.permissions,
-  });
+  $TestPermissionsRequest({this.permissions});
 
   $TestPermissionsRequest.fromJson(core.Map json_)
-      : this(
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
+    if (permissions != null) 'permissions': permissions!,
+  };
 }
 
 /// Used by:
@@ -23296,21 +22071,18 @@ class $TextSpan {
   /// The content of the text span, which is a substring of the document.
   core.String? content;
 
-  $TextSpan({
-    this.beginOffset,
-    this.content,
-  });
+  $TextSpan({this.beginOffset, this.content});
 
   $TextSpan.fromJson(core.Map json_)
-      : this(
-          beginOffset: json_['beginOffset'] as core.int?,
-          content: json_['content'] as core.String?,
-        );
+    : this(
+        beginOffset: json_['beginOffset'] as core.int?,
+        content: json_['content'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (beginOffset != null) 'beginOffset': beginOffset!,
-        if (content != null) 'content': content!,
-      };
+    if (beginOffset != null) 'beginOffset': beginOffset!,
+    if (content != null) 'content': content!,
+  };
 }
 
 /// Used by:
@@ -23324,20 +22096,18 @@ class $ThirdPartyOnlyConfig {
   /// This value cannot be changed once set to `true`.
   core.bool? pixelOrderIdReportingEnabled;
 
-  $ThirdPartyOnlyConfig({
-    this.pixelOrderIdReportingEnabled,
-  });
+  $ThirdPartyOnlyConfig({this.pixelOrderIdReportingEnabled});
 
   $ThirdPartyOnlyConfig.fromJson(core.Map json_)
-      : this(
-          pixelOrderIdReportingEnabled:
-              json_['pixelOrderIdReportingEnabled'] as core.bool?,
-        );
+    : this(
+        pixelOrderIdReportingEnabled:
+            json_['pixelOrderIdReportingEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pixelOrderIdReportingEnabled != null)
-          'pixelOrderIdReportingEnabled': pixelOrderIdReportingEnabled!,
-      };
+    if (pixelOrderIdReportingEnabled != null)
+      'pixelOrderIdReportingEnabled': pixelOrderIdReportingEnabled!,
+  };
 }
 
 /// Used by:
@@ -23394,21 +22164,18 @@ class $ThirdPartyUrl {
   /// Optional.
   core.String? url;
 
-  $ThirdPartyUrl({
-    this.type,
-    this.url,
-  });
+  $ThirdPartyUrl({this.type, this.url});
 
   $ThirdPartyUrl.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        type: json_['type'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (url != null) 'url': url!,
-      };
+    if (type != null) 'type': type!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Used by:
@@ -23437,21 +22204,18 @@ class $ThirdPartyVendorConfig {
   /// - "THIRD_PARTY_VENDOR_TRANSUNION" : Transunion.
   core.String? vendor;
 
-  $ThirdPartyVendorConfig({
-    this.placementId,
-    this.vendor,
-  });
+  $ThirdPartyVendorConfig({this.placementId, this.vendor});
 
   $ThirdPartyVendorConfig.fromJson(core.Map json_)
-      : this(
-          placementId: json_['placementId'] as core.String?,
-          vendor: json_['vendor'] as core.String?,
-        );
+    : this(
+        placementId: json_['placementId'] as core.String?,
+        vendor: json_['vendor'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (placementId != null) 'placementId': placementId!,
-        if (vendor != null) 'vendor': vendor!,
-      };
+    if (placementId != null) 'placementId': placementId!,
+    if (vendor != null) 'vendor': vendor!,
+  };
 }
 
 /// Used by:
@@ -23500,27 +22264,22 @@ class $TimeOfDay {
   /// equal to 59. An API may allow the value 60 if it allows leap-seconds.
   core.int? seconds;
 
-  $TimeOfDay({
-    this.hours,
-    this.minutes,
-    this.nanos,
-    this.seconds,
-  });
+  $TimeOfDay({this.hours, this.minutes, this.nanos, this.seconds});
 
   $TimeOfDay.fromJson(core.Map json_)
-      : this(
-          hours: json_['hours'] as core.int?,
-          minutes: json_['minutes'] as core.int?,
-          nanos: json_['nanos'] as core.int?,
-          seconds: json_['seconds'] as core.int?,
-        );
+    : this(
+        hours: json_['hours'] as core.int?,
+        minutes: json_['minutes'] as core.int?,
+        nanos: json_['nanos'] as core.int?,
+        seconds: json_['seconds'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hours != null) 'hours': hours!,
-        if (minutes != null) 'minutes': minutes!,
-        if (nanos != null) 'nanos': nanos!,
-        if (seconds != null) 'seconds': seconds!,
-      };
+    if (hours != null) 'hours': hours!,
+    if (minutes != null) 'minutes': minutes!,
+    if (nanos != null) 'nanos': nanos!,
+    if (seconds != null) 'seconds': seconds!,
+  };
 }
 
 /// Used by:
@@ -23539,21 +22298,18 @@ class $TimeRange {
   /// Required.
   core.String? startTime;
 
-  $TimeRange({
-    this.endTime,
-    this.startTime,
-  });
+  $TimeRange({this.endTime, this.startTime});
 
   $TimeRange.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// Used by:
@@ -23582,21 +22338,18 @@ class $TimeZone {
   /// Optional.
   core.String? version;
 
-  $TimeZone({
-    this.id,
-    this.version,
-  });
+  $TimeZone({this.id, this.version});
 
   $TimeZone.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (version != null) 'version': version!,
-      };
+    if (id != null) 'id': id!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Used by:
@@ -23615,21 +22368,18 @@ class $TimerEvent {
   /// Required.
   core.String? reportingName;
 
-  $TimerEvent({
-    this.name,
-    this.reportingName,
-  });
+  $TimerEvent({this.name, this.reportingName});
 
   $TimerEvent.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          reportingName: json_['reportingName'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        reportingName: json_['reportingName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (reportingName != null) 'reportingName': reportingName!,
-      };
+    if (name != null) 'name': name!,
+    if (reportingName != null) 'reportingName': reportingName!,
+  };
 }
 
 /// Used by:
@@ -23643,21 +22393,18 @@ class $TokenPagination {
   core.String? nextPageToken;
   core.String? previousPageToken;
 
-  $TokenPagination({
-    this.nextPageToken,
-    this.previousPageToken,
-  });
+  $TokenPagination({this.nextPageToken, this.previousPageToken});
 
   $TokenPagination.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          previousPageToken: json_['previousPageToken'] as core.String?,
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        previousPageToken: json_['previousPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (previousPageToken != null) 'previousPageToken': previousPageToken!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (previousPageToken != null) 'previousPageToken': previousPageToken!,
+  };
 }
 
 /// Used by:
@@ -23673,21 +22420,18 @@ class $TokenResponse00 {
   /// The token content.
   core.String? token;
 
-  $TokenResponse00({
-    this.expirationTime,
-    this.token,
-  });
+  $TokenResponse00({this.expirationTime, this.token});
 
   $TokenResponse00.fromJson(core.Map json_)
-      : this(
-          expirationTime: json_['expirationTime'] as core.String?,
-          token: json_['token'] as core.String?,
-        );
+    : this(
+        expirationTime: json_['expirationTime'] as core.String?,
+        token: json_['token'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expirationTime != null) 'expirationTime': expirationTime!,
-        if (token != null) 'token': token!,
-      };
+    if (expirationTime != null) 'expirationTime': expirationTime!,
+    if (token != null) 'token': token!,
+  };
 }
 
 /// Used by:
@@ -23708,24 +22452,20 @@ class $TokenResponse01 {
   /// The token content.
   core.String? token;
 
-  $TokenResponse01({
-    this.expirationTime,
-    this.gitUsername,
-    this.token,
-  });
+  $TokenResponse01({this.expirationTime, this.gitUsername, this.token});
 
   $TokenResponse01.fromJson(core.Map json_)
-      : this(
-          expirationTime: json_['expirationTime'] as core.String?,
-          gitUsername: json_['gitUsername'] as core.String?,
-          token: json_['token'] as core.String?,
-        );
+    : this(
+        expirationTime: json_['expirationTime'] as core.String?,
+        gitUsername: json_['gitUsername'] as core.String?,
+        token: json_['token'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expirationTime != null) 'expirationTime': expirationTime!,
-        if (gitUsername != null) 'gitUsername': gitUsername!,
-        if (token != null) 'token': token!,
-      };
+    if (expirationTime != null) 'expirationTime': expirationTime!,
+    if (gitUsername != null) 'gitUsername': gitUsername!,
+    if (token != null) 'token': token!,
+  };
 }
 
 /// Used by:
@@ -23738,18 +22478,14 @@ class $ToolCallResultError {
   /// Optional.
   core.String? message;
 
-  $ToolCallResultError({
-    this.message,
-  });
+  $ToolCallResultError({this.message});
 
   $ToolCallResultError.fromJson(core.Map json_)
-      : this(
-          message: json_['message'] as core.String?,
-        );
+    : this(message: json_['message'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!,
-      };
+    if (message != null) 'message': message!,
+  };
 }
 
 /// Used by:
@@ -23775,21 +22511,18 @@ class $TraceSamplingConfig {
   /// supported values are \> 0 and \<= 0.5.
   core.double? samplingRate;
 
-  $TraceSamplingConfig({
-    this.sampler,
-    this.samplingRate,
-  });
+  $TraceSamplingConfig({this.sampler, this.samplingRate});
 
   $TraceSamplingConfig.fromJson(core.Map json_)
-      : this(
-          sampler: json_['sampler'] as core.String?,
-          samplingRate: (json_['samplingRate'] as core.num?)?.toDouble(),
-        );
+    : this(
+        sampler: json_['sampler'] as core.String?,
+        samplingRate: (json_['samplingRate'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sampler != null) 'sampler': sampler!,
-        if (samplingRate != null) 'samplingRate': samplingRate!,
-      };
+    if (sampler != null) 'sampler': sampler!,
+    if (samplingRate != null) 'samplingRate': samplingRate!,
+  };
 }
 
 /// Used by:
@@ -23826,22 +22559,22 @@ class $TrackingFloodlightActivityConfig {
   });
 
   $TrackingFloodlightActivityConfig.fromJson(core.Map json_)
-      : this(
-          floodlightActivityId: json_['floodlightActivityId'] as core.String?,
-          postClickLookbackWindowDays:
-              json_['postClickLookbackWindowDays'] as core.int?,
-          postViewLookbackWindowDays:
-              json_['postViewLookbackWindowDays'] as core.int?,
-        );
+    : this(
+        floodlightActivityId: json_['floodlightActivityId'] as core.String?,
+        postClickLookbackWindowDays:
+            json_['postClickLookbackWindowDays'] as core.int?,
+        postViewLookbackWindowDays:
+            json_['postViewLookbackWindowDays'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (floodlightActivityId != null)
-          'floodlightActivityId': floodlightActivityId!,
-        if (postClickLookbackWindowDays != null)
-          'postClickLookbackWindowDays': postClickLookbackWindowDays!,
-        if (postViewLookbackWindowDays != null)
-          'postViewLookbackWindowDays': postViewLookbackWindowDays!,
-      };
+    if (floodlightActivityId != null)
+      'floodlightActivityId': floodlightActivityId!,
+    if (postClickLookbackWindowDays != null)
+      'postClickLookbackWindowDays': postClickLookbackWindowDays!,
+    if (postViewLookbackWindowDays != null)
+      'postViewLookbackWindowDays': postViewLookbackWindowDays!,
+  };
 }
 
 /// Used by:
@@ -23869,21 +22602,18 @@ class $TrafficShapingConfig {
   /// Required.
   core.String? quotaLimit;
 
-  $TrafficShapingConfig({
-    this.duration,
-    this.quotaLimit,
-  });
+  $TrafficShapingConfig({this.duration, this.quotaLimit});
 
   $TrafficShapingConfig.fromJson(core.Map json_)
-      : this(
-          duration: json_['duration'] as core.String?,
-          quotaLimit: json_['quotaLimit'] as core.String?,
-        );
+    : this(
+        duration: json_['duration'] as core.String?,
+        quotaLimit: json_['quotaLimit'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (quotaLimit != null) 'quotaLimit': quotaLimit!,
-      };
+    if (duration != null) 'duration': duration!,
+    if (quotaLimit != null) 'quotaLimit': quotaLimit!,
+  };
 }
 
 /// Used by:
@@ -23896,20 +22626,19 @@ class $TriggerConfigVariables {
   /// Optional.
   core.List<core.String>? names;
 
-  $TriggerConfigVariables({
-    this.names,
-  });
+  $TriggerConfigVariables({this.names});
 
   $TriggerConfigVariables.fromJson(core.Map json_)
-      : this(
-          names: (json_['names'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        names:
+            (json_['names'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (names != null) 'names': names!,
-      };
+    if (names != null) 'names': names!,
+  };
 }
 
 /// Used by:
@@ -23931,22 +22660,18 @@ class $TruncatableString {
   /// shortened string might be less than the size limit.
   core.String? value;
 
-  $TruncatableString({
-    this.truncatedByteCount,
-    this.value,
-  });
+  $TruncatableString({this.truncatedByteCount, this.value});
 
   $TruncatableString.fromJson(core.Map json_)
-      : this(
-          truncatedByteCount: json_['truncatedByteCount'] as core.int?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        truncatedByteCount: json_['truncatedByteCount'] as core.int?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (truncatedByteCount != null)
-          'truncatedByteCount': truncatedByteCount!,
-        if (value != null) 'value': value!,
-      };
+    if (truncatedByteCount != null) 'truncatedByteCount': truncatedByteCount!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -23978,21 +22703,18 @@ class $UniversalAdId {
   /// Universal Ad ID.
   core.String? registry;
 
-  $UniversalAdId({
-    this.id,
-    this.registry,
-  });
+  $UniversalAdId({this.id, this.registry});
 
   $UniversalAdId.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          registry: json_['registry'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        registry: json_['registry'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (registry != null) 'registry': registry!,
-      };
+    if (id != null) 'id': id!,
+    if (registry != null) 'registry': registry!,
+  };
 }
 
 /// Used by:
@@ -24026,21 +22748,22 @@ class $UpgradeDistribution {
   });
 
   $UpgradeDistribution.fromJson(core.Map json_)
-      : this(
-          classification: json_['classification'] as core.String?,
-          cpeUri: json_['cpeUri'] as core.String?,
-          cve: (json_['cve'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          severity: json_['severity'] as core.String?,
-        );
+    : this(
+        classification: json_['classification'] as core.String?,
+        cpeUri: json_['cpeUri'] as core.String?,
+        cve:
+            (json_['cve'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        severity: json_['severity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (classification != null) 'classification': classification!,
-        if (cpeUri != null) 'cpeUri': cpeUri!,
-        if (cve != null) 'cve': cve!,
-        if (severity != null) 'severity': severity!,
-      };
+    if (classification != null) 'classification': classification!,
+    if (cpeUri != null) 'cpeUri': cpeUri!,
+    if (cve != null) 'cve': cve!,
+    if (severity != null) 'severity': severity!,
+  };
 }
 
 /// Used by:
@@ -24061,21 +22784,18 @@ class $UrlAssignedTargetingOptionDetails {
   /// Required.
   core.String? url;
 
-  $UrlAssignedTargetingOptionDetails({
-    this.negative,
-    this.url,
-  });
+  $UrlAssignedTargetingOptionDetails({this.negative, this.url});
 
   $UrlAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          negative: json_['negative'] as core.bool?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        negative: json_['negative'] as core.bool?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (negative != null) 'negative': negative!,
-        if (url != null) 'url': url!,
-      };
+    if (negative != null) 'negative': negative!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Used by:
@@ -24111,19 +22831,18 @@ class $UsageRule {
   });
 
   $UsageRule.fromJson(core.Map json_)
-      : this(
-          allowUnregisteredCalls: json_['allowUnregisteredCalls'] as core.bool?,
-          selector: json_['selector'] as core.String?,
-          skipServiceControl: json_['skipServiceControl'] as core.bool?,
-        );
+    : this(
+        allowUnregisteredCalls: json_['allowUnregisteredCalls'] as core.bool?,
+        selector: json_['selector'] as core.String?,
+        skipServiceControl: json_['skipServiceControl'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowUnregisteredCalls != null)
-          'allowUnregisteredCalls': allowUnregisteredCalls!,
-        if (selector != null) 'selector': selector!,
-        if (skipServiceControl != null)
-          'skipServiceControl': skipServiceControl!,
-      };
+    if (allowUnregisteredCalls != null)
+      'allowUnregisteredCalls': allowUnregisteredCalls!,
+    if (selector != null) 'selector': selector!,
+    if (skipServiceControl != null) 'skipServiceControl': skipServiceControl!,
+  };
 }
 
 /// Used by:
@@ -24156,16 +22875,16 @@ class $UserRewardedContentAssignedTargetingOptionDetails {
   });
 
   $UserRewardedContentAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          targetingOptionId: json_['targetingOptionId'] as core.String?,
-          userRewardedContent: json_['userRewardedContent'] as core.String?,
-        );
+    : this(
+        targetingOptionId: json_['targetingOptionId'] as core.String?,
+        userRewardedContent: json_['userRewardedContent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-        if (userRewardedContent != null)
-          'userRewardedContent': userRewardedContent!,
-      };
+    if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+    if (userRewardedContent != null)
+      'userRewardedContent': userRewardedContent!,
+  };
 }
 
 /// Used by:
@@ -24186,19 +22905,15 @@ class $UserRewardedContentTargetingOptionDetails {
   /// besides user-rewarded.
   core.String? userRewardedContent;
 
-  $UserRewardedContentTargetingOptionDetails({
-    this.userRewardedContent,
-  });
+  $UserRewardedContentTargetingOptionDetails({this.userRewardedContent});
 
   $UserRewardedContentTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          userRewardedContent: json_['userRewardedContent'] as core.String?,
-        );
+    : this(userRewardedContent: json_['userRewardedContent'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userRewardedContent != null)
-          'userRewardedContent': userRewardedContent!,
-      };
+    if (userRewardedContent != null)
+      'userRewardedContent': userRewardedContent!,
+  };
 }
 
 /// Used by:
@@ -24211,18 +22926,14 @@ class $Utterance {
   /// Required.
   core.String? text;
 
-  $Utterance({
-    this.text,
-  });
+  $Utterance({this.text});
 
   $Utterance.fromJson(core.Map json_)
-      : this(
-          text: json_['text'] as core.String?,
-        );
+    : this(text: json_['text'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (text != null) 'text': text!,
-      };
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Used by:
@@ -24261,24 +22972,20 @@ class $V1AccessTuple {
   /// Required.
   core.String? principal;
 
-  $V1AccessTuple({
-    this.fullResourceName,
-    this.permission,
-    this.principal,
-  });
+  $V1AccessTuple({this.fullResourceName, this.permission, this.principal});
 
   $V1AccessTuple.fromJson(core.Map json_)
-      : this(
-          fullResourceName: json_['fullResourceName'] as core.String?,
-          permission: json_['permission'] as core.String?,
-          principal: json_['principal'] as core.String?,
-        );
+    : this(
+        fullResourceName: json_['fullResourceName'] as core.String?,
+        permission: json_['permission'] as core.String?,
+        principal: json_['principal'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-        if (permission != null) 'permission': permission!,
-        if (principal != null) 'principal': principal!,
-      };
+    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+    if (permission != null) 'permission': permission!,
+    if (principal != null) 'principal': principal!,
+  };
 }
 
 /// Used by:
@@ -24318,31 +23025,31 @@ class $V2CustomStrengthOptions {
   });
 
   $V2CustomStrengthOptions.fromJson(core.Map json_)
-      : this(
-          containsLowercaseCharacter:
-              json_['containsLowercaseCharacter'] as core.bool?,
-          containsNonAlphanumericCharacter:
-              json_['containsNonAlphanumericCharacter'] as core.bool?,
-          containsNumericCharacter:
-              json_['containsNumericCharacter'] as core.bool?,
-          containsUppercaseCharacter:
-              json_['containsUppercaseCharacter'] as core.bool?,
-          maxPasswordLength: json_['maxPasswordLength'] as core.int?,
-          minPasswordLength: json_['minPasswordLength'] as core.int?,
-        );
+    : this(
+        containsLowercaseCharacter:
+            json_['containsLowercaseCharacter'] as core.bool?,
+        containsNonAlphanumericCharacter:
+            json_['containsNonAlphanumericCharacter'] as core.bool?,
+        containsNumericCharacter:
+            json_['containsNumericCharacter'] as core.bool?,
+        containsUppercaseCharacter:
+            json_['containsUppercaseCharacter'] as core.bool?,
+        maxPasswordLength: json_['maxPasswordLength'] as core.int?,
+        minPasswordLength: json_['minPasswordLength'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containsLowercaseCharacter != null)
-          'containsLowercaseCharacter': containsLowercaseCharacter!,
-        if (containsNonAlphanumericCharacter != null)
-          'containsNonAlphanumericCharacter': containsNonAlphanumericCharacter!,
-        if (containsNumericCharacter != null)
-          'containsNumericCharacter': containsNumericCharacter!,
-        if (containsUppercaseCharacter != null)
-          'containsUppercaseCharacter': containsUppercaseCharacter!,
-        if (maxPasswordLength != null) 'maxPasswordLength': maxPasswordLength!,
-        if (minPasswordLength != null) 'minPasswordLength': minPasswordLength!,
-      };
+    if (containsLowercaseCharacter != null)
+      'containsLowercaseCharacter': containsLowercaseCharacter!,
+    if (containsNonAlphanumericCharacter != null)
+      'containsNonAlphanumericCharacter': containsNonAlphanumericCharacter!,
+    if (containsNumericCharacter != null)
+      'containsNumericCharacter': containsNumericCharacter!,
+    if (containsUppercaseCharacter != null)
+      'containsUppercaseCharacter': containsUppercaseCharacter!,
+    if (maxPasswordLength != null) 'maxPasswordLength': maxPasswordLength!,
+    if (minPasswordLength != null) 'minPasswordLength': minPasswordLength!,
+  };
 }
 
 /// Used by:
@@ -24395,23 +23102,23 @@ class $Version {
   });
 
   $Version.fromJson(core.Map json_)
-      : this(
-          epoch: json_['epoch'] as core.int?,
-          fullName: json_['fullName'] as core.String?,
-          inclusive: json_['inclusive'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-          revision: json_['revision'] as core.String?,
-        );
+    : this(
+        epoch: json_['epoch'] as core.int?,
+        fullName: json_['fullName'] as core.String?,
+        inclusive: json_['inclusive'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        revision: json_['revision'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (epoch != null) 'epoch': epoch!,
-        if (fullName != null) 'fullName': fullName!,
-        if (inclusive != null) 'inclusive': inclusive!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (revision != null) 'revision': revision!,
-      };
+    if (epoch != null) 'epoch': epoch!,
+    if (fullName != null) 'fullName': fullName!,
+    if (inclusive != null) 'inclusive': inclusive!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (revision != null) 'revision': revision!,
+  };
 }
 
 /// Used by:
@@ -24428,24 +23135,20 @@ class $VersionedPackage {
   /// The version of the package.
   core.String? version;
 
-  $VersionedPackage({
-    this.architecture,
-    this.packageName,
-    this.version,
-  });
+  $VersionedPackage({this.architecture, this.packageName, this.version});
 
   $VersionedPackage.fromJson(core.Map json_)
-      : this(
-          architecture: json_['architecture'] as core.String?,
-          packageName: json_['packageName'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        architecture: json_['architecture'] as core.String?,
+        packageName: json_['packageName'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (architecture != null) 'architecture': architecture!,
-        if (packageName != null) 'packageName': packageName!,
-        if (version != null) 'version': version!,
-      };
+    if (architecture != null) 'architecture': architecture!,
+    if (packageName != null) 'packageName': packageName!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Used by:
@@ -24467,23 +23170,21 @@ class $VertexRagStoreRagResource {
   /// Optional.
   core.List<core.String>? ragFileIds;
 
-  $VertexRagStoreRagResource({
-    this.ragCorpus,
-    this.ragFileIds,
-  });
+  $VertexRagStoreRagResource({this.ragCorpus, this.ragFileIds});
 
   $VertexRagStoreRagResource.fromJson(core.Map json_)
-      : this(
-          ragCorpus: json_['ragCorpus'] as core.String?,
-          ragFileIds: (json_['ragFileIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        ragCorpus: json_['ragCorpus'] as core.String?,
+        ragFileIds:
+            (json_['ragFileIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ragCorpus != null) 'ragCorpus': ragCorpus!,
-        if (ragFileIds != null) 'ragFileIds': ragFileIds!,
-      };
+    if (ragCorpus != null) 'ragCorpus': ragCorpus!,
+    if (ragFileIds != null) 'ragFileIds': ragFileIds!,
+  };
 }
 
 /// Used by:
@@ -24514,17 +23215,17 @@ class $VideoAdInventoryControl {
   });
 
   $VideoAdInventoryControl.fromJson(core.Map json_)
-      : this(
-          allowInFeed: json_['allowInFeed'] as core.bool?,
-          allowInStream: json_['allowInStream'] as core.bool?,
-          allowShorts: json_['allowShorts'] as core.bool?,
-        );
+    : this(
+        allowInFeed: json_['allowInFeed'] as core.bool?,
+        allowInStream: json_['allowInStream'] as core.bool?,
+        allowShorts: json_['allowShorts'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowInFeed != null) 'allowInFeed': allowInFeed!,
-        if (allowInStream != null) 'allowInStream': allowInStream!,
-        if (allowShorts != null) 'allowShorts': allowShorts!,
-      };
+    if (allowInFeed != null) 'allowInFeed': allowInFeed!,
+    if (allowInStream != null) 'allowInStream': allowInStream!,
+    if (allowShorts != null) 'allowShorts': allowShorts!,
+  };
 }
 
 /// Used by:
@@ -24566,19 +23267,19 @@ class $VideoAdSequenceStep {
   });
 
   $VideoAdSequenceStep.fromJson(core.Map json_)
-      : this(
-          adGroupId: json_['adGroupId'] as core.String?,
-          interactionType: json_['interactionType'] as core.String?,
-          previousStepId: json_['previousStepId'] as core.String?,
-          stepId: json_['stepId'] as core.String?,
-        );
+    : this(
+        adGroupId: json_['adGroupId'] as core.String?,
+        interactionType: json_['interactionType'] as core.String?,
+        previousStepId: json_['previousStepId'] as core.String?,
+        stepId: json_['stepId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adGroupId != null) 'adGroupId': adGroupId!,
-        if (interactionType != null) 'interactionType': interactionType!,
-        if (previousStepId != null) 'previousStepId': previousStepId!,
-        if (stepId != null) 'stepId': stepId!,
-      };
+    if (adGroupId != null) 'adGroupId': adGroupId!,
+    if (interactionType != null) 'interactionType': interactionType!,
+    if (previousStepId != null) 'previousStepId': previousStepId!,
+    if (stepId != null) 'stepId': stepId!,
+  };
 }
 
 /// Used by:
@@ -24605,18 +23306,14 @@ class $VideoPlayerSizeAssignedTargetingOptionDetails {
   /// unknown.
   core.String? videoPlayerSize;
 
-  $VideoPlayerSizeAssignedTargetingOptionDetails({
-    this.videoPlayerSize,
-  });
+  $VideoPlayerSizeAssignedTargetingOptionDetails({this.videoPlayerSize});
 
   $VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          videoPlayerSize: json_['videoPlayerSize'] as core.String?,
-        );
+    : this(videoPlayerSize: json_['videoPlayerSize'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (videoPlayerSize != null) 'videoPlayerSize': videoPlayerSize!,
-      };
+    if (videoPlayerSize != null) 'videoPlayerSize': videoPlayerSize!,
+  };
 }
 
 /// Used by:
@@ -24643,18 +23340,14 @@ class $VideoPlayerSizeTargetingOptionDetails {
   /// unknown.
   core.String? videoPlayerSize;
 
-  $VideoPlayerSizeTargetingOptionDetails({
-    this.videoPlayerSize,
-  });
+  $VideoPlayerSizeTargetingOptionDetails({this.videoPlayerSize});
 
   $VideoPlayerSizeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          videoPlayerSize: json_['videoPlayerSize'] as core.String?,
-        );
+    : this(videoPlayerSize: json_['videoPlayerSize'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (videoPlayerSize != null) 'videoPlayerSize': videoPlayerSize!,
-      };
+    if (videoPlayerSize != null) 'videoPlayerSize': videoPlayerSize!,
+  };
 }
 
 /// Used by:
@@ -24690,18 +23383,14 @@ class $ViewabilityAssignedTargetingOptionDetails {
   /// least 90% likely to be viewable.
   core.String? viewability;
 
-  $ViewabilityAssignedTargetingOptionDetails({
-    this.viewability,
-  });
+  $ViewabilityAssignedTargetingOptionDetails({this.viewability});
 
   $ViewabilityAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          viewability: json_['viewability'] as core.String?,
-        );
+    : this(viewability: json_['viewability'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (viewability != null) 'viewability': viewability!,
-      };
+    if (viewability != null) 'viewability': viewability!,
+  };
 }
 
 /// Used by:
@@ -24737,18 +23426,14 @@ class $ViewabilityTargetingOptionDetails {
   /// least 90% likely to be viewable.
   core.String? viewability;
 
-  $ViewabilityTargetingOptionDetails({
-    this.viewability,
-  });
+  $ViewabilityTargetingOptionDetails({this.viewability});
 
   $ViewabilityTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          viewability: json_['viewability'] as core.String?,
-        );
+    : this(viewability: json_['viewability'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (viewability != null) 'viewability': viewability!,
-      };
+    if (viewability != null) 'viewability': viewability!,
+  };
 }
 
 /// Used by:
@@ -24768,23 +23453,21 @@ class $VpcAccessibleServices {
   /// APIs specified in 'allowed_services'.
   core.bool? enableRestriction;
 
-  $VpcAccessibleServices({
-    this.allowedServices,
-    this.enableRestriction,
-  });
+  $VpcAccessibleServices({this.allowedServices, this.enableRestriction});
 
   $VpcAccessibleServices.fromJson(core.Map json_)
-      : this(
-          allowedServices: (json_['allowedServices'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          enableRestriction: json_['enableRestriction'] as core.bool?,
-        );
+    : this(
+        allowedServices:
+            (json_['allowedServices'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        enableRestriction: json_['enableRestriction'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedServices != null) 'allowedServices': allowedServices!,
-        if (enableRestriction != null) 'enableRestriction': enableRestriction!,
-      };
+    if (allowedServices != null) 'allowedServices': allowedServices!,
+    if (enableRestriction != null) 'enableRestriction': enableRestriction!,
+  };
 }
 
 /// Used by:
@@ -24800,18 +23483,14 @@ class $VpcServiceControlsRequest {
   /// Required.
   core.String? consumerNetwork;
 
-  $VpcServiceControlsRequest({
-    this.consumerNetwork,
-  });
+  $VpcServiceControlsRequest({this.consumerNetwork});
 
   $VpcServiceControlsRequest.fromJson(core.Map json_)
-      : this(
-          consumerNetwork: json_['consumerNetwork'] as core.String?,
-        );
+    : this(consumerNetwork: json_['consumerNetwork'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-      };
+    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
+  };
 }
 
 /// Used by:
@@ -24840,23 +23519,21 @@ class $VpcSubNetwork {
   /// allowed.
   core.List<core.String>? vpcIpSubnetworks;
 
-  $VpcSubNetwork({
-    this.network,
-    this.vpcIpSubnetworks,
-  });
+  $VpcSubNetwork({this.network, this.vpcIpSubnetworks});
 
   $VpcSubNetwork.fromJson(core.Map json_)
-      : this(
-          network: json_['network'] as core.String?,
-          vpcIpSubnetworks: (json_['vpcIpSubnetworks'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        network: json_['network'] as core.String?,
+        vpcIpSubnetworks:
+            (json_['vpcIpSubnetworks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (network != null) 'network': network!,
-        if (vpcIpSubnetworks != null) 'vpcIpSubnetworks': vpcIpSubnetworks!,
-      };
+    if (network != null) 'network': network!,
+    if (vpcIpSubnetworks != null) 'vpcIpSubnetworks': vpcIpSubnetworks!,
+  };
 }
 
 /// Used by:
@@ -24873,18 +23550,14 @@ class $WaitOperationRequest {
   /// the shorter one will be used.
   core.String? timeout;
 
-  $WaitOperationRequest({
-    this.timeout,
-  });
+  $WaitOperationRequest({this.timeout});
 
   $WaitOperationRequest.fromJson(core.Map json_)
-      : this(
-          timeout: json_['timeout'] as core.String?,
-        );
+    : this(timeout: json_['timeout'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (timeout != null) 'timeout': timeout!,
-      };
+    if (timeout != null) 'timeout': timeout!,
+  };
 }
 
 /// Used by:
@@ -24899,18 +23572,14 @@ class $WebAppIcon {
   /// - The image should ideally have a size of 512x512.
   core.String? imageData;
 
-  $WebAppIcon({
-    this.imageData,
-  });
+  $WebAppIcon({this.imageData});
 
   $WebAppIcon.fromJson(core.Map json_)
-      : this(
-          imageData: json_['imageData'] as core.String?,
-        );
+    : this(imageData: json_['imageData'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (imageData != null) 'imageData': imageData!,
-      };
+    if (imageData != null) 'imageData': imageData!,
+  };
 }
 
 /// Used by:
@@ -24940,19 +23609,19 @@ class $WindowsQuickFixEngineeringPackage {
   });
 
   $WindowsQuickFixEngineeringPackage.fromJson(core.Map json_)
-      : this(
-          caption: json_['caption'] as core.String?,
-          description: json_['description'] as core.String?,
-          hotFixId: json_['hotFixId'] as core.String?,
-          installTime: json_['installTime'] as core.String?,
-        );
+    : this(
+        caption: json_['caption'] as core.String?,
+        description: json_['description'] as core.String?,
+        hotFixId: json_['hotFixId'] as core.String?,
+        installTime: json_['installTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caption != null) 'caption': caption!,
-        if (description != null) 'description': description!,
-        if (hotFixId != null) 'hotFixId': hotFixId!,
-        if (installTime != null) 'installTime': installTime!,
-      };
+    if (caption != null) 'caption': caption!,
+    if (description != null) 'description': description!,
+    if (hotFixId != null) 'hotFixId': hotFixId!,
+    if (installTime != null) 'installTime': installTime!,
+  };
 }
 
 /// Used by:
@@ -24966,21 +23635,18 @@ class $WindowsUpdateCategory {
   /// The name of the windows update category.
   core.String? name;
 
-  $WindowsUpdateCategory({
-    this.id,
-    this.name,
-  });
+  $WindowsUpdateCategory({this.id, this.name});
 
   $WindowsUpdateCategory.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-      };
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used by:
@@ -25060,23 +23726,23 @@ class $YoutubeAndPartnersBiddingStrategy {
   });
 
   $YoutubeAndPartnersBiddingStrategy.fromJson(core.Map json_)
-      : this(
-          adGroupEffectiveTargetCpaSource:
-              json_['adGroupEffectiveTargetCpaSource'] as core.String?,
-          adGroupEffectiveTargetCpaValue:
-              json_['adGroupEffectiveTargetCpaValue'] as core.String?,
-          type: json_['type'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        adGroupEffectiveTargetCpaSource:
+            json_['adGroupEffectiveTargetCpaSource'] as core.String?,
+        adGroupEffectiveTargetCpaValue:
+            json_['adGroupEffectiveTargetCpaValue'] as core.String?,
+        type: json_['type'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adGroupEffectiveTargetCpaSource != null)
-          'adGroupEffectiveTargetCpaSource': adGroupEffectiveTargetCpaSource!,
-        if (adGroupEffectiveTargetCpaValue != null)
-          'adGroupEffectiveTargetCpaValue': adGroupEffectiveTargetCpaValue!,
-        if (type != null) 'type': type!,
-        if (value != null) 'value': value!,
-      };
+    if (adGroupEffectiveTargetCpaSource != null)
+      'adGroupEffectiveTargetCpaSource': adGroupEffectiveTargetCpaSource!,
+    if (adGroupEffectiveTargetCpaValue != null)
+      'adGroupEffectiveTargetCpaValue': adGroupEffectiveTargetCpaValue!,
+    if (type != null) 'type': type!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Used by:
@@ -25107,19 +23773,19 @@ class $YoutubeAndPartnersInventorySourceConfig {
   });
 
   $YoutubeAndPartnersInventorySourceConfig.fromJson(core.Map json_)
-      : this(
-          includeGoogleTv: json_['includeGoogleTv'] as core.bool?,
-          includeYoutube: json_['includeYoutube'] as core.bool?,
-          includeYoutubeVideoPartners:
-              json_['includeYoutubeVideoPartners'] as core.bool?,
-        );
+    : this(
+        includeGoogleTv: json_['includeGoogleTv'] as core.bool?,
+        includeYoutube: json_['includeYoutube'] as core.bool?,
+        includeYoutubeVideoPartners:
+            json_['includeYoutubeVideoPartners'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includeGoogleTv != null) 'includeGoogleTv': includeGoogleTv!,
-        if (includeYoutube != null) 'includeYoutube': includeYoutube!,
-        if (includeYoutubeVideoPartners != null)
-          'includeYoutubeVideoPartners': includeYoutubeVideoPartners!,
-      };
+    if (includeGoogleTv != null) 'includeGoogleTv': includeGoogleTv!,
+    if (includeYoutube != null) 'includeYoutube': includeYoutube!,
+    if (includeYoutubeVideoPartners != null)
+      'includeYoutubeVideoPartners': includeYoutubeVideoPartners!,
+  };
 }
 
 /// Used by:
@@ -25140,15 +23806,15 @@ class $YoutubeChannelAssignedTargetingOptionDetails {
   });
 
   $YoutubeChannelAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          channelId: json_['channelId'] as core.String?,
-          negative: json_['negative'] as core.bool?,
-        );
+    : this(
+        channelId: json_['channelId'] as core.String?,
+        negative: json_['negative'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (channelId != null) 'channelId': channelId!,
-        if (negative != null) 'negative': negative!,
-      };
+    if (channelId != null) 'channelId': channelId!,
+    if (negative != null) 'negative': negative!,
+  };
 }
 
 /// Used by:
@@ -25163,21 +23829,18 @@ class $YoutubeVideoAssignedTargetingOptionDetails {
   /// YouTube video id as it appears on the YouTube watch page.
   core.String? videoId;
 
-  $YoutubeVideoAssignedTargetingOptionDetails({
-    this.negative,
-    this.videoId,
-  });
+  $YoutubeVideoAssignedTargetingOptionDetails({this.negative, this.videoId});
 
   $YoutubeVideoAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          negative: json_['negative'] as core.bool?,
-          videoId: json_['videoId'] as core.String?,
-        );
+    : this(
+        negative: json_['negative'] as core.bool?,
+        videoId: json_['videoId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (negative != null) 'negative': negative!,
-        if (videoId != null) 'videoId': videoId!,
-      };
+    if (negative != null) 'negative': negative!,
+    if (videoId != null) 'videoId': videoId!,
+  };
 }
 
 /// Used by:
@@ -25196,21 +23859,18 @@ class $YoutubeVideoDetails {
   /// - "VIDEO_UNAVAILABLE_REASON_DELETED" : The video is deleted.
   core.String? unavailableReason;
 
-  $YoutubeVideoDetails({
-    this.id,
-    this.unavailableReason,
-  });
+  $YoutubeVideoDetails({this.id, this.unavailableReason});
 
   $YoutubeVideoDetails.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          unavailableReason: json_['unavailableReason'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        unavailableReason: json_['unavailableReason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (unavailableReason != null) 'unavailableReason': unavailableReason!,
-      };
+    if (id != null) 'id': id!,
+    if (unavailableReason != null) 'unavailableReason': unavailableReason!,
+  };
 }
 
 /// Used by:
@@ -25230,25 +23890,20 @@ class $ZypperPatch {
   /// Any summary information provided about this patch.
   core.String? summary;
 
-  $ZypperPatch({
-    this.category,
-    this.patchName,
-    this.severity,
-    this.summary,
-  });
+  $ZypperPatch({this.category, this.patchName, this.severity, this.summary});
 
   $ZypperPatch.fromJson(core.Map json_)
-      : this(
-          category: json_['category'] as core.String?,
-          patchName: json_['patchName'] as core.String?,
-          severity: json_['severity'] as core.String?,
-          summary: json_['summary'] as core.String?,
-        );
+    : this(
+        category: json_['category'] as core.String?,
+        patchName: json_['patchName'] as core.String?,
+        severity: json_['severity'] as core.String?,
+        summary: json_['summary'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (category != null) 'category': category!,
-        if (patchName != null) 'patchName': patchName!,
-        if (severity != null) 'severity': severity!,
-        if (summary != null) 'summary': summary!,
-      };
+    if (category != null) 'category': category!,
+    if (patchName != null) 'patchName': patchName!,
+    if (severity != null) 'severity': severity!,
+    if (summary != null) 'summary': summary!,
+  };
 }

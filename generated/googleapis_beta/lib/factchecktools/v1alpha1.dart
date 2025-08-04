@@ -46,11 +46,16 @@ class FactCheckToolsApi {
   ClaimsResource get claims => ClaimsResource(_requester);
   PagesResource get pages => PagesResource(_requester);
 
-  FactCheckToolsApi(http.Client client,
-      {core.String rootUrl = 'https://factchecktools.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  FactCheckToolsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://factchecktools.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ClaimsResource {
@@ -100,8 +105,9 @@ class ClaimsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<
-          GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse>
-      imageSearch({
+    GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse
+  >
+  imageSearch({
     core.String? imageUri,
     core.String? languageCode,
     core.int? offset,
@@ -125,8 +131,9 @@ class ClaimsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Search through fact-checked claims.
@@ -172,8 +179,9 @@ class ClaimsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<
-          GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse>
-      search({
+    GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
+  >
+  search({
     core.String? languageCode,
     core.int? maxAgeDays,
     core.int? offset,
@@ -202,8 +210,9 @@ class ClaimsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -230,7 +239,7 @@ class PagesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
-      create(
+  create(
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage request, {
     core.String? $fields,
   }) async {
@@ -247,8 +256,9 @@ class PagesResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete all `ClaimReview` markup on a page.
@@ -285,7 +295,8 @@ class PagesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get all `ClaimReview` markup on a page.
@@ -308,10 +319,7 @@ class PagesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
-      get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -323,8 +331,9 @@ class PagesResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List the `ClaimReview` markup pages for a specific URL or for an
@@ -366,8 +375,9 @@ class PagesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<
-          GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse>
-      list({
+    GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
+  >
+  list({
     core.int? offset,
     core.String? organization,
     core.int? pageSize,
@@ -391,8 +401,9 @@ class PagesResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update for all `ClaimReview` markup on a page Note that this is a full
@@ -423,7 +434,7 @@ class PagesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
-      update(
+  update(
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage request,
     core.String name, {
     core.String? $fields,
@@ -441,8 +452,9 @@ class PagesResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -472,23 +484,27 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Claim {
   });
 
   GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(core.Map json_)
-      : this(
-          claimDate: json_['claimDate'] as core.String?,
-          claimReview: (json_['claimReview'] as core.List?)
-              ?.map((value) =>
-                  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          claimant: json_['claimant'] as core.String?,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        claimDate: json_['claimDate'] as core.String?,
+        claimReview:
+            (json_['claimReview'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        claimant: json_['claimant'] as core.String?,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (claimDate != null) 'claimDate': claimDate!,
-        if (claimReview != null) 'claimReview': claimReview!,
-        if (claimant != null) 'claimant': claimant!,
-        if (text != null) 'text': text!,
-      };
+    if (claimDate != null) 'claimDate': claimDate!,
+    if (claimReview != null) 'claimReview': claimReview!,
+    if (claimant != null) 'claimant': claimant!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Information about the claim author.
@@ -516,19 +532,19 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
   });
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(core.Map json_)
-      : this(
-          imageUrl: json_['imageUrl'] as core.String?,
-          jobTitle: json_['jobTitle'] as core.String?,
-          name: json_['name'] as core.String?,
-          sameAs: json_['sameAs'] as core.String?,
-        );
+    : this(
+        imageUrl: json_['imageUrl'] as core.String?,
+        jobTitle: json_['jobTitle'] as core.String?,
+        name: json_['name'] as core.String?,
+        sameAs: json_['sameAs'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (jobTitle != null) 'jobTitle': jobTitle!,
-        if (name != null) 'name': name!,
-        if (sameAs != null) 'sameAs': sameAs!,
-      };
+    if (imageUrl != null) 'imageUrl': imageUrl!,
+    if (jobTitle != null) 'jobTitle': jobTitle!,
+    if (name != null) 'name': name!,
+    if (sameAs != null) 'sameAs': sameAs!,
+  };
 }
 
 /// Information about the claim rating.
@@ -572,23 +588,23 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   });
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(core.Map json_)
-      : this(
-          bestRating: json_['bestRating'] as core.int?,
-          imageUrl: json_['imageUrl'] as core.String?,
-          ratingExplanation: json_['ratingExplanation'] as core.String?,
-          ratingValue: json_['ratingValue'] as core.int?,
-          textualRating: json_['textualRating'] as core.String?,
-          worstRating: json_['worstRating'] as core.int?,
-        );
+    : this(
+        bestRating: json_['bestRating'] as core.int?,
+        imageUrl: json_['imageUrl'] as core.String?,
+        ratingExplanation: json_['ratingExplanation'] as core.String?,
+        ratingValue: json_['ratingValue'] as core.int?,
+        textualRating: json_['textualRating'] as core.String?,
+        worstRating: json_['worstRating'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bestRating != null) 'bestRating': bestRating!,
-        if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (ratingExplanation != null) 'ratingExplanation': ratingExplanation!,
-        if (ratingValue != null) 'ratingValue': ratingValue!,
-        if (textualRating != null) 'textualRating': textualRating!,
-        if (worstRating != null) 'worstRating': worstRating!,
-      };
+    if (bestRating != null) 'bestRating': bestRating!,
+    if (imageUrl != null) 'imageUrl': imageUrl!,
+    if (ratingExplanation != null) 'ratingExplanation': ratingExplanation!,
+    if (ratingValue != null) 'ratingValue': ratingValue!,
+    if (textualRating != null) 'textualRating': textualRating!,
+    if (worstRating != null) 'worstRating': worstRating!,
+  };
 }
 
 /// Information about a claim review.
@@ -625,26 +641,28 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
   });
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(core.Map json_)
-      : this(
-          languageCode: json_['languageCode'] as core.String?,
-          publisher: json_.containsKey('publisher')
-              ? GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(
-                  json_['publisher'] as core.Map<core.String, core.dynamic>)
-              : null,
-          reviewDate: json_['reviewDate'] as core.String?,
-          textualRating: json_['textualRating'] as core.String?,
-          title: json_['title'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        languageCode: json_['languageCode'] as core.String?,
+        publisher:
+            json_.containsKey('publisher')
+                ? GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(
+                  json_['publisher'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reviewDate: json_['reviewDate'] as core.String?,
+        textualRating: json_['textualRating'] as core.String?,
+        title: json_['title'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (publisher != null) 'publisher': publisher!,
-        if (reviewDate != null) 'reviewDate': reviewDate!,
-        if (textualRating != null) 'textualRating': textualRating!,
-        if (title != null) 'title': title!,
-        if (url != null) 'url': url!,
-      };
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (publisher != null) 'publisher': publisher!,
+    if (reviewDate != null) 'reviewDate': reviewDate!,
+    if (textualRating != null) 'textualRating': textualRating!,
+    if (title != null) 'title': title!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Information about the claim review author.
@@ -663,16 +681,16 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   });
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor.fromJson(
-      core.Map json_)
-      : this(
-          imageUrl: json_['imageUrl'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        imageUrl: json_['imageUrl'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (name != null) 'name': name!,
-      };
+    if (imageUrl != null) 'imageUrl': imageUrl!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Fields for an individual `ClaimReview` element.
@@ -733,37 +751,42 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
   });
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup.fromJson(
-      core.Map json_)
-      : this(
-          claimAppearances: (json_['claimAppearances'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          claimAuthor: json_.containsKey('claimAuthor')
-              ? GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(
-                  json_['claimAuthor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          claimDate: json_['claimDate'] as core.String?,
-          claimFirstAppearance: json_['claimFirstAppearance'] as core.String?,
-          claimLocation: json_['claimLocation'] as core.String?,
-          claimReviewed: json_['claimReviewed'] as core.String?,
-          rating: json_.containsKey('rating')
-              ? GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(
-                  json_['rating'] as core.Map<core.String, core.dynamic>)
-              : null,
-          url: json_['url'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        claimAppearances:
+            (json_['claimAppearances'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        claimAuthor:
+            json_.containsKey('claimAuthor')
+                ? GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(
+                  json_['claimAuthor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        claimDate: json_['claimDate'] as core.String?,
+        claimFirstAppearance: json_['claimFirstAppearance'] as core.String?,
+        claimLocation: json_['claimLocation'] as core.String?,
+        claimReviewed: json_['claimReviewed'] as core.String?,
+        rating:
+            json_.containsKey('rating')
+                ? GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(
+                  json_['rating'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (claimAppearances != null) 'claimAppearances': claimAppearances!,
-        if (claimAuthor != null) 'claimAuthor': claimAuthor!,
-        if (claimDate != null) 'claimDate': claimDate!,
-        if (claimFirstAppearance != null)
-          'claimFirstAppearance': claimFirstAppearance!,
-        if (claimLocation != null) 'claimLocation': claimLocation!,
-        if (claimReviewed != null) 'claimReviewed': claimReviewed!,
-        if (rating != null) 'rating': rating!,
-        if (url != null) 'url': url!,
-      };
+    if (claimAppearances != null) 'claimAppearances': claimAppearances!,
+    if (claimAuthor != null) 'claimAuthor': claimAuthor!,
+    if (claimDate != null) 'claimDate': claimDate!,
+    if (claimFirstAppearance != null)
+      'claimFirstAppearance': claimFirstAppearance!,
+    if (claimLocation != null) 'claimLocation': claimLocation!,
+    if (claimReviewed != null) 'claimReviewed': claimReviewed!,
+    if (rating != null) 'rating': rating!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Holds one or more instances of `ClaimReview` markup for a webpage.
@@ -778,7 +801,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   ///
   /// Each item in the list corresponds to one `ClaimReview` element.
   core.List<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>?
-      claimReviewMarkups;
+  claimReviewMarkups;
 
   /// The name of this `ClaimReview` markup page resource, in the form of
   /// `pages/{page_id}`.
@@ -818,33 +841,38 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   });
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
-      core.Map json_)
-      : this(
-          claimReviewAuthor: json_.containsKey('claimReviewAuthor')
-              ? GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor
-                  .fromJson(json_['claimReviewAuthor']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          claimReviewMarkups: (json_['claimReviewMarkups'] as core.List?)
-              ?.map((value) =>
-                  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          pageUrl: json_['pageUrl'] as core.String?,
-          publishDate: json_['publishDate'] as core.String?,
-          versionId: json_['versionId'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        claimReviewAuthor:
+            json_.containsKey('claimReviewAuthor')
+                ? GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor.fromJson(
+                  json_['claimReviewAuthor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        claimReviewMarkups:
+            (json_['claimReviewMarkups'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        pageUrl: json_['pageUrl'] as core.String?,
+        publishDate: json_['publishDate'] as core.String?,
+        versionId: json_['versionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (claimReviewAuthor != null) 'claimReviewAuthor': claimReviewAuthor!,
-        if (claimReviewMarkups != null)
-          'claimReviewMarkups': claimReviewMarkups!,
-        if (name != null) 'name': name!,
-        if (pageUrl != null) 'pageUrl': pageUrl!,
-        if (publishDate != null) 'publishDate': publishDate!,
-        if (versionId != null) 'versionId': versionId!,
-      };
+    if (claimReviewAuthor != null) 'claimReviewAuthor': claimReviewAuthor!,
+    if (claimReviewMarkups != null) 'claimReviewMarkups': claimReviewMarkups!,
+    if (name != null) 'name': name!,
+    if (pageUrl != null) 'pageUrl': pageUrl!,
+    if (publishDate != null) 'publishDate': publishDate!,
+    if (versionId != null) 'versionId': versionId!,
+  };
 }
 
 /// Response from searching fact-checked claims by image.
@@ -857,8 +885,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchRespons
 
   /// The list of claims and all of their associated information.
   core.List<
-          GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>?
-      results;
+    GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult
+  >?
+  results;
 
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse({
     this.nextPageToken,
@@ -866,20 +895,24 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchRespons
   });
 
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse.fromJson(
-      core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          results: (json_['results'] as core.List?)
-              ?.map((value) =>
-                  GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        results:
+            (json_['results'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (results != null) 'results': results!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (results != null) 'results': results!,
+  };
 }
 
 /// A claim and its associated information.
@@ -892,17 +925,19 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchRespons
   });
 
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult.fromJson(
-      core.Map json_)
-      : this(
-          claim: json_.containsKey('claim')
-              ? GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(
-                  json_['claim'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        claim:
+            json_.containsKey('claim')
+                ? GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(
+                  json_['claim'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (claim != null) 'claim': claim!,
-      };
+    if (claim != null) 'claim': claim!,
+  };
 }
 
 /// Response from searching fact-checked claims.
@@ -922,27 +957,31 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
   });
 
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse.fromJson(
-      core.Map json_)
-      : this(
-          claims: (json_['claims'] as core.List?)
-              ?.map((value) =>
-                  GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        claims:
+            (json_['claims'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (claims != null) 'claims': claims!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (claims != null) 'claims': claims!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response from listing `ClaimReview` markup.
 class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse {
   /// The result list of pages of `ClaimReview` markup.
   core.List<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>?
-      claimReviewMarkupPages;
+  claimReviewMarkupPages;
 
   /// The next pagination token in the Search response.
   ///
@@ -956,22 +995,25 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
   });
 
   GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse.fromJson(
-      core.Map json_)
-      : this(
-          claimReviewMarkupPages: (json_['claimReviewMarkupPages']
-                  as core.List?)
-              ?.map((value) =>
-                  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        claimReviewMarkupPages:
+            (json_['claimReviewMarkupPages'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (claimReviewMarkupPages != null)
-          'claimReviewMarkupPages': claimReviewMarkupPages!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (claimReviewMarkupPages != null)
+      'claimReviewMarkupPages': claimReviewMarkupPages!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Information about the publisher.
@@ -987,21 +1029,18 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
   /// purely on the claim review URL.
   core.String? site;
 
-  GoogleFactcheckingFactchecktoolsV1alpha1Publisher({
-    this.name,
-    this.site,
-  });
+  GoogleFactcheckingFactchecktoolsV1alpha1Publisher({this.name, this.site});
 
   GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          site: json_['site'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        site: json_['site'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (site != null) 'site': site!,
-      };
+    if (name != null) 'name': name!,
+    if (site != null) 'site': site!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

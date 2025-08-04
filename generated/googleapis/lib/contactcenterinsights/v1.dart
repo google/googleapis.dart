@@ -81,11 +81,16 @@ class ContactcenterinsightsApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ContactcenterinsightsApi(http.Client client,
-      {core.String rootUrl = 'https://contactcenterinsights.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ContactcenterinsightsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://contactcenterinsights.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -168,7 +173,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Download feedback labels in bulk from an external source.
@@ -213,7 +219,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Upload feedback labels from an external source in bulk.
@@ -257,7 +264,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets location-level encryption key specification.
@@ -279,10 +287,7 @@ class ProjectsLocationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1EncryptionSpec>
-      getEncryptionSpec(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  getEncryptionSpec(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -295,7 +300,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1EncryptionSpec.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets project-level settings.
@@ -331,7 +337,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Settings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all feedback labels by project number.
@@ -371,7 +378,7 @@ class ProjectsLocationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse>
-      listAllFeedbackLabels(
+  listAllFeedbackLabels(
     core.String parent, {
     core.String? filter,
     core.int? pageSize,
@@ -393,8 +400,9 @@ class ProjectsLocationsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Query metrics.
@@ -436,7 +444,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Generates a summary of predefined performance metrics for a set of
@@ -485,7 +494,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates project-level settings.
@@ -531,7 +541,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Settings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -539,7 +550,7 @@ class ProjectsLocationsAnalysisRulesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAnalysisRulesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a analysis rule.
   ///
@@ -581,7 +592,8 @@ class ProjectsLocationsAnalysisRulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a analysis rule.
@@ -618,7 +630,8 @@ class ProjectsLocationsAnalysisRulesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get a analysis rule.
@@ -655,7 +668,8 @@ class ProjectsLocationsAnalysisRulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists analysis rules.
@@ -687,7 +701,7 @@ class ProjectsLocationsAnalysisRulesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse>
-      list(
+  list(
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
@@ -707,7 +721,8 @@ class ProjectsLocationsAnalysisRulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a analysis rule.
@@ -755,7 +770,8 @@ class ProjectsLocationsAnalysisRulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -763,7 +779,7 @@ class ProjectsLocationsAssessmentRulesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAssessmentRulesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an assessment rule.
   ///
@@ -813,7 +829,8 @@ class ProjectsLocationsAssessmentRulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AssessmentRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an assessment rule.
@@ -850,7 +867,8 @@ class ProjectsLocationsAssessmentRulesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get an assessment rule.
@@ -887,7 +905,8 @@ class ProjectsLocationsAssessmentRulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AssessmentRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists assessment rules.
@@ -919,7 +938,7 @@ class ProjectsLocationsAssessmentRulesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse>
-      list(
+  list(
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
@@ -938,8 +957,9 @@ class ProjectsLocationsAssessmentRulesResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an assessment rule.
@@ -987,7 +1007,8 @@ class ProjectsLocationsAssessmentRulesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AssessmentRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -995,12 +1016,11 @@ class ProjectsLocationsAuthorizedViewSetsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource
-      get authorizedViews =>
-          ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource(
-              _requester);
+  get authorizedViews =>
+      ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource(_requester);
 
   ProjectsLocationsAuthorizedViewSetsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create AuthorizedViewSet
   ///
@@ -1050,7 +1070,8 @@ class ProjectsLocationsAuthorizedViewSetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AuthorizedViewSet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an AuthorizedViewSet.
@@ -1093,7 +1114,8 @@ class ProjectsLocationsAuthorizedViewSetsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get AuthorizedViewSet
@@ -1130,7 +1152,8 @@ class ProjectsLocationsAuthorizedViewSetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AuthorizedViewSet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List AuthorizedViewSets
@@ -1168,7 +1191,7 @@ class ProjectsLocationsAuthorizedViewSetsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse>
-      list(
+  list(
     core.String parent, {
     core.String? filter,
     core.String? orderBy,
@@ -1191,8 +1214,9 @@ class ProjectsLocationsAuthorizedViewSetsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an AuthorizedViewSet.
@@ -1241,7 +1265,8 @@ class ProjectsLocationsAuthorizedViewSetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AuthorizedViewSet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1249,17 +1274,19 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource
-      get conversations =>
-          ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource(
-              _requester);
+  get conversations =>
+      ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource(
+        _requester,
+      );
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource
-      get operations =>
-          ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource(
-              _requester);
+  get operations =>
+      ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource(
+        _requester,
+      );
 
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Create AuthorizedView
   ///
@@ -1308,7 +1335,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an AuthorizedView.
@@ -1345,7 +1373,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get AuthorizedView
@@ -1382,7 +1411,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List AuthorizedViewSets
@@ -1423,7 +1453,7 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse>
-      list(
+  list(
     core.String parent, {
     core.String? filter,
     core.String? orderBy,
@@ -1446,8 +1476,9 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an AuthorizedView.
@@ -1497,7 +1528,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Query metrics.
@@ -1540,7 +1572,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Generates a summary of predefined performance metrics for a set of
@@ -1590,7 +1623,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// SearchAuthorizedViewSets
@@ -1630,7 +1664,7 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse>
-      search(
+  search(
     core.String parent, {
     core.String? orderBy,
     core.int? pageSize,
@@ -1654,8 +1688,9 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1663,21 +1698,24 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesResource
-      get analyses =>
-          ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesResource(
-              _requester);
+  get analyses =>
+      ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesResource(
+        _requester,
+      );
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsResource
-      get assessments =>
-          ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsResource(
-              _requester);
+  get assessments =>
+      ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsResource(
+        _requester,
+      );
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsResource
-      get feedbackLabels =>
-          ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsResource(
-              _requester);
+  get feedbackLabels =>
+      ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsResource(
+        _requester,
+      );
 
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Analyzes multiple conversations in a single request.
   ///
@@ -1719,7 +1757,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets conversation statistics.
@@ -1746,7 +1785,7 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1CalculateStatsResponse>
-      calculateStats(
+  calculateStats(
     core.String location, {
     core.String? filter,
     core.String? $fields,
@@ -1756,7 +1795,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$location') +
         '/conversations:calculateStats';
 
@@ -1766,7 +1806,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1CalculateStatsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a conversation.
@@ -1809,7 +1850,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a conversation.
@@ -1857,7 +1899,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Conversation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists conversations.
@@ -1911,7 +1954,7 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListConversationsResponse>
-      list(
+  list(
     core.String parent, {
     core.String? filter,
     core.String? orderBy,
@@ -1937,7 +1980,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListConversationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1945,8 +1989,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesRes
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates an analysis.
   ///
@@ -1989,7 +2033,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesRes
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an analysis.
@@ -2026,7 +2071,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesRes
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an analysis.
@@ -2063,7 +2109,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesRes
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Analysis.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists analyses.
@@ -2118,7 +2165,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesRes
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListAnalysesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2126,13 +2174,14 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesResource
-      get notes =>
-          ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesResource(
-              _requester);
+  get notes =>
+      ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesResource(
+        _requester,
+      );
 
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Appeal an Assessment.
   ///
@@ -2173,7 +2222,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Assessment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Create Assessment.
@@ -2215,7 +2265,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Assessment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete an Assessment.
@@ -2258,7 +2309,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Finalize an Assessment.
@@ -2300,7 +2352,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Assessment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get Assessment.
@@ -2337,7 +2390,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Assessment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List Assessments.
@@ -2397,7 +2451,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListAssessmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Publish an Assessment.
@@ -2439,7 +2494,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Assessment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2447,8 +2503,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Create Note.
   ///
@@ -2489,7 +2545,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Note.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a Note.
@@ -2526,7 +2583,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List Notes.
@@ -2577,7 +2635,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListNotesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update Note.
@@ -2626,7 +2685,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Note.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2634,8 +2694,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLab
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Create feedback label.
   ///
@@ -2681,7 +2741,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLab
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete feedback label.
@@ -2718,7 +2779,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLab
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get feedback label.
@@ -2755,7 +2817,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLab
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List feedback labels.
@@ -2797,7 +2860,7 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLab
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>
-      list(
+  list(
     core.String parent, {
     core.String? filter,
     core.int? pageSize,
@@ -2818,8 +2881,9 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLab
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update feedback label.
@@ -2866,7 +2930,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLab
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2874,8 +2939,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -2920,7 +2985,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -2960,7 +3026,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -3011,7 +3078,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3026,7 +3094,7 @@ class ProjectsLocationsConversationsResource {
       ProjectsLocationsConversationsFeedbackLabelsResource(_requester);
 
   ProjectsLocationsConversationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Analyzes multiple conversations in a single request.
   ///
@@ -3067,7 +3135,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes multiple conversations in a single request.
@@ -3110,7 +3179,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets conversation statistics.
@@ -3136,7 +3206,7 @@ class ProjectsLocationsConversationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1CalculateStatsResponse>
-      calculateStats(
+  calculateStats(
     core.String location, {
     core.String? filter,
     core.String? $fields,
@@ -3146,7 +3216,8 @@ class ProjectsLocationsConversationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$location') +
         '/conversations:calculateStats';
 
@@ -3156,7 +3227,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1CalculateStatsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a conversation.
@@ -3208,7 +3280,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Conversation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a conversation.
@@ -3251,7 +3324,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a conversation.
@@ -3299,7 +3373,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Conversation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Imports conversations and processes them according to the user's
@@ -3342,7 +3417,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists conversations.
@@ -3395,7 +3471,7 @@ class ProjectsLocationsConversationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListConversationsResponse>
-      list(
+  list(
     core.String parent, {
     core.String? filter,
     core.String? orderBy,
@@ -3421,7 +3497,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListConversationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a conversation.
@@ -3479,7 +3556,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Conversation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Create a long-running conversation upload operation.
@@ -3524,7 +3602,8 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3532,7 +3611,7 @@ class ProjectsLocationsConversationsAnalysesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConversationsAnalysesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an analysis.
   ///
@@ -3575,7 +3654,8 @@ class ProjectsLocationsConversationsAnalysesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an analysis.
@@ -3612,7 +3692,8 @@ class ProjectsLocationsConversationsAnalysesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an analysis.
@@ -3649,7 +3730,8 @@ class ProjectsLocationsConversationsAnalysesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Analysis.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists analyses.
@@ -3704,7 +3786,8 @@ class ProjectsLocationsConversationsAnalysesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListAnalysesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3715,7 +3798,7 @@ class ProjectsLocationsConversationsAssessmentsResource {
       ProjectsLocationsConversationsAssessmentsNotesResource(_requester);
 
   ProjectsLocationsConversationsAssessmentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Appeal an Assessment.
   ///
@@ -3756,7 +3839,8 @@ class ProjectsLocationsConversationsAssessmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Assessment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Create Assessment.
@@ -3798,7 +3882,8 @@ class ProjectsLocationsConversationsAssessmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Assessment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete an Assessment.
@@ -3841,7 +3926,8 @@ class ProjectsLocationsConversationsAssessmentsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Finalize an Assessment.
@@ -3883,7 +3969,8 @@ class ProjectsLocationsConversationsAssessmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Assessment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get Assessment.
@@ -3920,7 +4007,8 @@ class ProjectsLocationsConversationsAssessmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Assessment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List Assessments.
@@ -3980,7 +4068,8 @@ class ProjectsLocationsConversationsAssessmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListAssessmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Publish an Assessment.
@@ -4022,7 +4111,8 @@ class ProjectsLocationsConversationsAssessmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Assessment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4030,8 +4120,8 @@ class ProjectsLocationsConversationsAssessmentsNotesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConversationsAssessmentsNotesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Create Note.
   ///
@@ -4072,7 +4162,8 @@ class ProjectsLocationsConversationsAssessmentsNotesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Note.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a Note.
@@ -4109,7 +4200,8 @@ class ProjectsLocationsConversationsAssessmentsNotesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List Notes.
@@ -4160,7 +4252,8 @@ class ProjectsLocationsConversationsAssessmentsNotesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListNotesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update Note.
@@ -4209,7 +4302,8 @@ class ProjectsLocationsConversationsAssessmentsNotesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Note.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4217,8 +4311,8 @@ class ProjectsLocationsConversationsFeedbackLabelsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConversationsFeedbackLabelsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Create feedback label.
   ///
@@ -4264,7 +4358,8 @@ class ProjectsLocationsConversationsFeedbackLabelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete feedback label.
@@ -4301,7 +4396,8 @@ class ProjectsLocationsConversationsFeedbackLabelsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get feedback label.
@@ -4338,7 +4434,8 @@ class ProjectsLocationsConversationsFeedbackLabelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List feedback labels.
@@ -4380,7 +4477,7 @@ class ProjectsLocationsConversationsFeedbackLabelsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>
-      list(
+  list(
     core.String parent, {
     core.String? filter,
     core.int? pageSize,
@@ -4401,8 +4498,9 @@ class ProjectsLocationsConversationsFeedbackLabelsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update feedback label.
@@ -4449,7 +4547,8 @@ class ProjectsLocationsConversationsFeedbackLabelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4462,7 +4561,7 @@ class ProjectsLocationsDatasetsResource {
       ProjectsLocationsDatasetsInsightsdataResource(_requester);
 
   ProjectsLocationsDatasetsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Delete feedback labels in bulk using a filter.
   ///
@@ -4504,7 +4603,8 @@ class ProjectsLocationsDatasetsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Download feedback labels in bulk from an external source.
@@ -4550,7 +4650,8 @@ class ProjectsLocationsDatasetsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Upload feedback labels from an external source in bulk.
@@ -4595,7 +4696,8 @@ class ProjectsLocationsDatasetsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all feedback labels by project number.
@@ -4636,7 +4738,7 @@ class ProjectsLocationsDatasetsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse>
-      listAllFeedbackLabels(
+  listAllFeedbackLabels(
     core.String parent, {
     core.String? filter,
     core.int? pageSize,
@@ -4658,8 +4760,9 @@ class ProjectsLocationsDatasetsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4669,12 +4772,11 @@ class ProjectsLocationsDatasetsConversationsResource {
   ProjectsLocationsDatasetsConversationsAnalysesResource get analyses =>
       ProjectsLocationsDatasetsConversationsAnalysesResource(_requester);
   ProjectsLocationsDatasetsConversationsFeedbackLabelsResource
-      get feedbackLabels =>
-          ProjectsLocationsDatasetsConversationsFeedbackLabelsResource(
-              _requester);
+  get feedbackLabels =>
+      ProjectsLocationsDatasetsConversationsFeedbackLabelsResource(_requester);
 
   ProjectsLocationsDatasetsConversationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Analyzes multiple conversations in a single request.
   ///
@@ -4716,7 +4818,8 @@ class ProjectsLocationsDatasetsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes multiple conversations in a single request.
@@ -4760,7 +4863,8 @@ class ProjectsLocationsDatasetsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets conversation statistics.
@@ -4785,7 +4889,7 @@ class ProjectsLocationsDatasetsConversationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1CalculateStatsResponse>
-      calculateStats(
+  calculateStats(
     GoogleCloudContactcenterinsightsV1CalculateStatsRequest request,
     core.String location, {
     core.String? $fields,
@@ -4795,7 +4899,8 @@ class ProjectsLocationsDatasetsConversationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$location') +
         '/conversations:calculateStats';
 
@@ -4806,7 +4911,8 @@ class ProjectsLocationsDatasetsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1CalculateStatsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a conversation.
@@ -4849,7 +4955,8 @@ class ProjectsLocationsDatasetsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a conversation.
@@ -4897,7 +5004,8 @@ class ProjectsLocationsDatasetsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Conversation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Imports conversations and processes them according to the user's
@@ -4941,7 +5049,8 @@ class ProjectsLocationsDatasetsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists conversations.
@@ -4995,7 +5104,7 @@ class ProjectsLocationsDatasetsConversationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListConversationsResponse>
-      list(
+  list(
     core.String parent, {
     core.String? filter,
     core.String? orderBy,
@@ -5021,7 +5130,8 @@ class ProjectsLocationsDatasetsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListConversationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5029,8 +5139,8 @@ class ProjectsLocationsDatasetsConversationsAnalysesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDatasetsConversationsAnalysesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates an analysis.
   ///
@@ -5073,7 +5183,8 @@ class ProjectsLocationsDatasetsConversationsAnalysesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an analysis.
@@ -5110,7 +5221,8 @@ class ProjectsLocationsDatasetsConversationsAnalysesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an analysis.
@@ -5147,7 +5259,8 @@ class ProjectsLocationsDatasetsConversationsAnalysesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Analysis.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists analyses.
@@ -5202,7 +5315,8 @@ class ProjectsLocationsDatasetsConversationsAnalysesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListAnalysesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5210,8 +5324,8 @@ class ProjectsLocationsDatasetsConversationsFeedbackLabelsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDatasetsConversationsFeedbackLabelsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Create feedback label.
   ///
@@ -5257,7 +5371,8 @@ class ProjectsLocationsDatasetsConversationsFeedbackLabelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete feedback label.
@@ -5294,7 +5409,8 @@ class ProjectsLocationsDatasetsConversationsFeedbackLabelsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get feedback label.
@@ -5331,7 +5447,8 @@ class ProjectsLocationsDatasetsConversationsFeedbackLabelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List feedback labels.
@@ -5373,7 +5490,7 @@ class ProjectsLocationsDatasetsConversationsFeedbackLabelsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>
-      list(
+  list(
     core.String parent, {
     core.String? filter,
     core.int? pageSize,
@@ -5394,8 +5511,9 @@ class ProjectsLocationsDatasetsConversationsFeedbackLabelsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update feedback label.
@@ -5442,7 +5560,8 @@ class ProjectsLocationsDatasetsConversationsFeedbackLabelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5450,7 +5569,7 @@ class ProjectsLocationsDatasetsInsightsdataResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDatasetsInsightsdataResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Export insights data to a destination defined in the request body.
   ///
@@ -5492,7 +5611,8 @@ class ProjectsLocationsDatasetsInsightsdataResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5500,7 +5620,7 @@ class ProjectsLocationsEncryptionSpecResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsEncryptionSpecResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Initializes a location-level encryption key specification.
   ///
@@ -5547,7 +5667,8 @@ class ProjectsLocationsEncryptionSpecResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5555,7 +5676,7 @@ class ProjectsLocationsInsightsdataResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsInsightsdataResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Export insights data to a destination defined in the request body.
   ///
@@ -5596,7 +5717,8 @@ class ProjectsLocationsInsightsdataResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5607,7 +5729,7 @@ class ProjectsLocationsIssueModelsResource {
       ProjectsLocationsIssueModelsIssuesResource(_requester);
 
   ProjectsLocationsIssueModelsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets an issue model's statistics.
   ///
@@ -5630,8 +5752,9 @@ class ProjectsLocationsIssueModelsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<
-          GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse>
-      calculateIssueModelStats(
+    GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse
+  >
+  calculateIssueModelStats(
     core.String issueModel, {
     core.String? $fields,
   }) async {
@@ -5639,7 +5762,8 @@ class ProjectsLocationsIssueModelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$issueModel') +
         ':calculateIssueModelStats';
 
@@ -5648,8 +5772,9 @@ class ProjectsLocationsIssueModelsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates an issue model.
@@ -5690,7 +5815,8 @@ class ProjectsLocationsIssueModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an issue model.
@@ -5727,7 +5853,8 @@ class ProjectsLocationsIssueModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deploys an issue model.
@@ -5772,7 +5899,8 @@ class ProjectsLocationsIssueModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Exports an issue model to the provided destination.
@@ -5814,7 +5942,8 @@ class ProjectsLocationsIssueModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an issue model.
@@ -5851,7 +5980,8 @@ class ProjectsLocationsIssueModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1IssueModel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Imports an issue model from a Cloud Storage bucket.
@@ -5892,7 +6022,8 @@ class ProjectsLocationsIssueModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists issue models.
@@ -5929,7 +6060,8 @@ class ProjectsLocationsIssueModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListIssueModelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an issue model.
@@ -5976,7 +6108,8 @@ class ProjectsLocationsIssueModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1IssueModel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Undeploys an issue model.
@@ -6020,7 +6153,8 @@ class ProjectsLocationsIssueModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6028,7 +6162,7 @@ class ProjectsLocationsIssueModelsIssuesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsIssueModelsIssuesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an issue.
   ///
@@ -6069,7 +6203,8 @@ class ProjectsLocationsIssueModelsIssuesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an issue.
@@ -6106,7 +6241,8 @@ class ProjectsLocationsIssueModelsIssuesResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an issue.
@@ -6143,7 +6279,8 @@ class ProjectsLocationsIssueModelsIssuesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Issue.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists issues.
@@ -6180,7 +6317,8 @@ class ProjectsLocationsIssueModelsIssuesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListIssuesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an issue.
@@ -6227,7 +6365,8 @@ class ProjectsLocationsIssueModelsIssuesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Issue.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6235,7 +6374,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -6280,7 +6419,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -6320,7 +6460,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -6370,7 +6511,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6378,7 +6520,7 @@ class ProjectsLocationsPhraseMatchersResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPhraseMatchersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a phrase matcher.
   ///
@@ -6420,7 +6562,8 @@ class ProjectsLocationsPhraseMatchersResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a phrase matcher.
@@ -6457,7 +6600,8 @@ class ProjectsLocationsPhraseMatchersResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a phrase matcher.
@@ -6494,7 +6638,8 @@ class ProjectsLocationsPhraseMatchersResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists phrase matchers.
@@ -6529,7 +6674,7 @@ class ProjectsLocationsPhraseMatchersResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse>
-      list(
+  list(
     core.String parent, {
     core.String? filter,
     core.int? pageSize,
@@ -6550,8 +6695,9 @@ class ProjectsLocationsPhraseMatchersResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a phrase matcher.
@@ -6598,7 +6744,8 @@ class ProjectsLocationsPhraseMatchersResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6606,7 +6753,7 @@ class ProjectsLocationsQaQuestionTagsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsQaQuestionTagsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a QaQuestionTag.
   ///
@@ -6654,7 +6801,8 @@ class ProjectsLocationsQaQuestionTagsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1QaQuestionTag.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a QaQuestionTag.
@@ -6691,7 +6839,8 @@ class ProjectsLocationsQaQuestionTagsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a QaQuestionTag.
@@ -6728,7 +6877,8 @@ class ProjectsLocationsQaQuestionTagsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1QaQuestionTag.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the question tags.
@@ -6756,11 +6906,7 @@ class ProjectsLocationsQaQuestionTagsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse>
-      list(
-    core.String parent, {
-    core.String? filter,
-    core.String? $fields,
-  }) async {
+  list(core.String parent, {core.String? filter, core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if ($fields != null) 'fields': [$fields],
@@ -6773,8 +6919,9 @@ class ProjectsLocationsQaQuestionTagsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a QaQuestionTag.
@@ -6826,7 +6973,8 @@ class ProjectsLocationsQaQuestionTagsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6837,7 +6985,7 @@ class ProjectsLocationsQaScorecardsResource {
       ProjectsLocationsQaScorecardsRevisionsResource(_requester);
 
   ProjectsLocationsQaScorecardsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a QaScorecard.
   ///
@@ -6885,7 +7033,8 @@ class ProjectsLocationsQaScorecardsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a QaScorecard.
@@ -6928,7 +7077,8 @@ class ProjectsLocationsQaScorecardsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a QaScorecard.
@@ -6965,7 +7115,8 @@ class ProjectsLocationsQaScorecardsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists QaScorecards.
@@ -7016,7 +7167,8 @@ class ProjectsLocationsQaScorecardsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a QaScorecard.
@@ -7065,7 +7217,8 @@ class ProjectsLocationsQaScorecardsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7076,7 +7229,7 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
       ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource(_requester);
 
   ProjectsLocationsQaScorecardsRevisionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a QaScorecardRevision.
   ///
@@ -7127,7 +7280,8 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a QaScorecardRevision.
@@ -7170,7 +7324,8 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deploy a QaScorecardRevision.
@@ -7212,7 +7367,8 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a QaScorecardRevision.
@@ -7249,7 +7405,8 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all revisions under the parent QaScorecard.
@@ -7287,7 +7444,9 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<
-      GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse> list(
+    GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse
+  >
+  list(
     core.String parent, {
     core.String? filter,
     core.int? pageSize,
@@ -7308,8 +7467,9 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Fine tune one or more QaModels.
@@ -7352,7 +7512,8 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Undeploy a QaScorecardRevision.
@@ -7377,7 +7538,7 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudContactcenterinsightsV1QaScorecardRevision> undeploy(
     GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest
-        request,
+    request,
     core.String name, {
     core.String? $fields,
   }) async {
@@ -7395,7 +7556,8 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7403,8 +7565,8 @@ class ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Create a QaQuestion.
   ///
@@ -7453,7 +7615,8 @@ class ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a QaQuestion.
@@ -7490,7 +7653,8 @@ class ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a QaQuestion.
@@ -7527,7 +7691,8 @@ class ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists QaQuestions.
@@ -7579,7 +7744,8 @@ class ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a QaQuestion.
@@ -7629,7 +7795,8 @@ class ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7637,7 +7804,7 @@ class ProjectsLocationsViewsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsViewsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a view.
   ///
@@ -7679,7 +7846,8 @@ class ProjectsLocationsViewsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1View.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a view.
@@ -7716,7 +7884,8 @@ class ProjectsLocationsViewsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a view.
@@ -7753,7 +7922,8 @@ class ProjectsLocationsViewsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1View.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists views.
@@ -7802,7 +7972,8 @@ class ProjectsLocationsViewsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListViewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a view.
@@ -7849,7 +8020,8 @@ class ProjectsLocationsViewsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1View.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7893,36 +8065,40 @@ class GoogleCloudContactcenterinsightsV1Analysis {
   });
 
   GoogleCloudContactcenterinsightsV1Analysis.fromJson(core.Map json_)
-      : this(
-          analysisResult: json_.containsKey('analysisResult')
-              ? GoogleCloudContactcenterinsightsV1AnalysisResult.fromJson(
+    : this(
+        analysisResult:
+            json_.containsKey('analysisResult')
+                ? GoogleCloudContactcenterinsightsV1AnalysisResult.fromJson(
                   json_['analysisResult']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          annotatorSelector: json_.containsKey('annotatorSelector')
-              ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        annotatorSelector:
+            json_.containsKey('annotatorSelector')
+                ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
                   json_['annotatorSelector']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          requestTime: json_['requestTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        requestTime: json_['requestTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisResult != null) 'analysisResult': analysisResult!,
-        if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (requestTime != null) 'requestTime': requestTime!,
-      };
+    if (analysisResult != null) 'analysisResult': analysisResult!,
+    if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (requestTime != null) 'requestTime': requestTime!,
+  };
 }
 
 /// The result of an analysis.
 class GoogleCloudContactcenterinsightsV1AnalysisResult {
   /// Call-specific metadata created by the analysis.
   GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata?
-      callAnalysisMetadata;
+  callAnalysisMetadata;
 
   /// The time at which the analysis ended.
   core.String? endTime;
@@ -7933,20 +8109,22 @@ class GoogleCloudContactcenterinsightsV1AnalysisResult {
   });
 
   GoogleCloudContactcenterinsightsV1AnalysisResult.fromJson(core.Map json_)
-      : this(
-          callAnalysisMetadata: json_.containsKey('callAnalysisMetadata')
-              ? GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata
-                  .fromJson(json_['callAnalysisMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          endTime: json_['endTime'] as core.String?,
-        );
+    : this(
+        callAnalysisMetadata:
+            json_.containsKey('callAnalysisMetadata')
+                ? GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata.fromJson(
+                  json_['callAnalysisMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endTime: json_['endTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (callAnalysisMetadata != null)
-          'callAnalysisMetadata': callAnalysisMetadata!,
-        if (endTime != null) 'endTime': endTime!,
-      };
+    if (callAnalysisMetadata != null)
+      'callAnalysisMetadata': callAnalysisMetadata!,
+    if (endTime != null) 'endTime': endTime!,
+  };
 }
 
 /// Call-specific metadata created during analysis.
@@ -7965,15 +8143,15 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
 
   /// All the matched phrase matchers in the call.
   core.Map<core.String, GoogleCloudContactcenterinsightsV1PhraseMatchData>?
-      phraseMatchers;
+  phraseMatchers;
 
   /// Results of scoring QaScorecards.
   core.List<GoogleCloudContactcenterinsightsV1QaScorecardResult>?
-      qaScorecardResults;
+  qaScorecardResults;
 
   /// Overall conversation-level sentiment for each channel of the call.
   core.List<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>?
-      sentiments;
+  sentiments;
 
   /// Overall conversation-level silence during the call.
   GoogleCloudContactcenterinsightsV1ConversationLevelSilence? silence;
@@ -7990,71 +8168,88 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
   });
 
   GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata.fromJson(
-      core.Map json_)
-      : this(
-          annotations: (json_['annotations'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1CallAnnotation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          entities:
-              (json_['entities'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudContactcenterinsightsV1Entity.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    core.Map json_,
+  ) : this(
+        annotations:
+            (json_['annotations'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1CallAnnotation.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        entities: (json_['entities'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudContactcenterinsightsV1Entity.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          intents:
-              (json_['intents'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudContactcenterinsightsV1Intent.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        intents: (json_['intents'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudContactcenterinsightsV1Intent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          issueModelResult: json_.containsKey('issueModelResult')
-              ? GoogleCloudContactcenterinsightsV1IssueModelResult.fromJson(
+        issueModelResult:
+            json_.containsKey('issueModelResult')
+                ? GoogleCloudContactcenterinsightsV1IssueModelResult.fromJson(
                   json_['issueModelResult']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          phraseMatchers:
-              (json_['phraseMatchers'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudContactcenterinsightsV1PhraseMatchData.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        phraseMatchers: (json_['phraseMatchers']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudContactcenterinsightsV1PhraseMatchData.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          qaScorecardResults: (json_['qaScorecardResults'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1QaScorecardResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          sentiments: (json_['sentiments'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1ConversationLevelSentiment
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          silence: json_.containsKey('silence')
-              ? GoogleCloudContactcenterinsightsV1ConversationLevelSilence
-                  .fromJson(
-                      json_['silence'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        qaScorecardResults:
+            (json_['qaScorecardResults'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1QaScorecardResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        sentiments:
+            (json_['sentiments'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1ConversationLevelSentiment.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        silence:
+            json_.containsKey('silence')
+                ? GoogleCloudContactcenterinsightsV1ConversationLevelSilence.fromJson(
+                  json_['silence'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (entities != null) 'entities': entities!,
-        if (intents != null) 'intents': intents!,
-        if (issueModelResult != null) 'issueModelResult': issueModelResult!,
-        if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
-        if (qaScorecardResults != null)
-          'qaScorecardResults': qaScorecardResults!,
-        if (sentiments != null) 'sentiments': sentiments!,
-        if (silence != null) 'silence': silence!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (entities != null) 'entities': entities!,
+    if (intents != null) 'intents': intents!,
+    if (issueModelResult != null) 'issueModelResult': issueModelResult!,
+    if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
+    if (qaScorecardResults != null) 'qaScorecardResults': qaScorecardResults!,
+    if (sentiments != null) 'sentiments': sentiments!,
+    if (silence != null) 'silence': silence!,
+  };
 }
 
 /// The CCAI Insights project wide analysis rule.
@@ -8122,34 +8317,34 @@ class GoogleCloudContactcenterinsightsV1AnalysisRule {
   });
 
   GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(core.Map json_)
-      : this(
-          active: json_['active'] as core.bool?,
-          analysisPercentage:
-              (json_['analysisPercentage'] as core.num?)?.toDouble(),
-          annotatorSelector: json_.containsKey('annotatorSelector')
-              ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
+    : this(
+        active: json_['active'] as core.bool?,
+        analysisPercentage:
+            (json_['analysisPercentage'] as core.num?)?.toDouble(),
+        annotatorSelector:
+            json_.containsKey('annotatorSelector')
+                ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
                   json_['annotatorSelector']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          conversationFilter: json_['conversationFilter'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conversationFilter: json_['conversationFilter'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (active != null) 'active': active!,
-        if (analysisPercentage != null)
-          'analysisPercentage': analysisPercentage!,
-        if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
-        if (conversationFilter != null)
-          'conversationFilter': conversationFilter!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (active != null) 'active': active!,
+    if (analysisPercentage != null) 'analysisPercentage': analysisPercentage!,
+    if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
+    if (conversationFilter != null) 'conversationFilter': conversationFilter!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A point in a conversation that marks the start or the end of an annotation.
@@ -8172,15 +8367,15 @@ class GoogleCloudContactcenterinsightsV1AnnotationBoundary {
   });
 
   GoogleCloudContactcenterinsightsV1AnnotationBoundary.fromJson(core.Map json_)
-      : this(
-          transcriptIndex: json_['transcriptIndex'] as core.int?,
-          wordIndex: json_['wordIndex'] as core.int?,
-        );
+    : this(
+        transcriptIndex: json_['transcriptIndex'] as core.int?,
+        wordIndex: json_['wordIndex'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (transcriptIndex != null) 'transcriptIndex': transcriptIndex!,
-        if (wordIndex != null) 'wordIndex': wordIndex!,
-      };
+    if (transcriptIndex != null) 'transcriptIndex': transcriptIndex!,
+    if (wordIndex != null) 'wordIndex': wordIndex!,
+  };
 }
 
 /// Selector of all available annotators and phrase matchers to run.
@@ -8236,7 +8431,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
 
   /// Configuration for the summarization annotator.
   GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig?
-      summarizationConfig;
+  summarizationConfig;
 
   GoogleCloudContactcenterinsightsV1AnnotatorSelector({
     this.issueModels,
@@ -8255,86 +8450,90 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   });
 
   GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(core.Map json_)
-      : this(
-          issueModels: (json_['issueModels'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          phraseMatchers: (json_['phraseMatchers'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          qaConfig: json_.containsKey('qaConfig')
-              ? GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig
-                  .fromJson(
-                      json_['qaConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          runEntityAnnotator: json_['runEntityAnnotator'] as core.bool?,
-          runIntentAnnotator: json_['runIntentAnnotator'] as core.bool?,
-          runInterruptionAnnotator:
-              json_['runInterruptionAnnotator'] as core.bool?,
-          runIssueModelAnnotator: json_['runIssueModelAnnotator'] as core.bool?,
-          runPhraseMatcherAnnotator:
-              json_['runPhraseMatcherAnnotator'] as core.bool?,
-          runQaAnnotator: json_['runQaAnnotator'] as core.bool?,
-          runSentimentAnnotator: json_['runSentimentAnnotator'] as core.bool?,
-          runSilenceAnnotator: json_['runSilenceAnnotator'] as core.bool?,
-          runSummarizationAnnotator:
-              json_['runSummarizationAnnotator'] as core.bool?,
-          summarizationConfig: json_.containsKey('summarizationConfig')
-              ? GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig
-                  .fromJson(json_['summarizationConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        issueModels:
+            (json_['issueModels'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        phraseMatchers:
+            (json_['phraseMatchers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        qaConfig:
+            json_.containsKey('qaConfig')
+                ? GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig.fromJson(
+                  json_['qaConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        runEntityAnnotator: json_['runEntityAnnotator'] as core.bool?,
+        runIntentAnnotator: json_['runIntentAnnotator'] as core.bool?,
+        runInterruptionAnnotator:
+            json_['runInterruptionAnnotator'] as core.bool?,
+        runIssueModelAnnotator: json_['runIssueModelAnnotator'] as core.bool?,
+        runPhraseMatcherAnnotator:
+            json_['runPhraseMatcherAnnotator'] as core.bool?,
+        runQaAnnotator: json_['runQaAnnotator'] as core.bool?,
+        runSentimentAnnotator: json_['runSentimentAnnotator'] as core.bool?,
+        runSilenceAnnotator: json_['runSilenceAnnotator'] as core.bool?,
+        runSummarizationAnnotator:
+            json_['runSummarizationAnnotator'] as core.bool?,
+        summarizationConfig:
+            json_.containsKey('summarizationConfig')
+                ? GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig.fromJson(
+                  json_['summarizationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issueModels != null) 'issueModels': issueModels!,
-        if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
-        if (qaConfig != null) 'qaConfig': qaConfig!,
-        if (runEntityAnnotator != null)
-          'runEntityAnnotator': runEntityAnnotator!,
-        if (runIntentAnnotator != null)
-          'runIntentAnnotator': runIntentAnnotator!,
-        if (runInterruptionAnnotator != null)
-          'runInterruptionAnnotator': runInterruptionAnnotator!,
-        if (runIssueModelAnnotator != null)
-          'runIssueModelAnnotator': runIssueModelAnnotator!,
-        if (runPhraseMatcherAnnotator != null)
-          'runPhraseMatcherAnnotator': runPhraseMatcherAnnotator!,
-        if (runQaAnnotator != null) 'runQaAnnotator': runQaAnnotator!,
-        if (runSentimentAnnotator != null)
-          'runSentimentAnnotator': runSentimentAnnotator!,
-        if (runSilenceAnnotator != null)
-          'runSilenceAnnotator': runSilenceAnnotator!,
-        if (runSummarizationAnnotator != null)
-          'runSummarizationAnnotator': runSummarizationAnnotator!,
-        if (summarizationConfig != null)
-          'summarizationConfig': summarizationConfig!,
-      };
+    if (issueModels != null) 'issueModels': issueModels!,
+    if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
+    if (qaConfig != null) 'qaConfig': qaConfig!,
+    if (runEntityAnnotator != null) 'runEntityAnnotator': runEntityAnnotator!,
+    if (runIntentAnnotator != null) 'runIntentAnnotator': runIntentAnnotator!,
+    if (runInterruptionAnnotator != null)
+      'runInterruptionAnnotator': runInterruptionAnnotator!,
+    if (runIssueModelAnnotator != null)
+      'runIssueModelAnnotator': runIssueModelAnnotator!,
+    if (runPhraseMatcherAnnotator != null)
+      'runPhraseMatcherAnnotator': runPhraseMatcherAnnotator!,
+    if (runQaAnnotator != null) 'runQaAnnotator': runQaAnnotator!,
+    if (runSentimentAnnotator != null)
+      'runSentimentAnnotator': runSentimentAnnotator!,
+    if (runSilenceAnnotator != null)
+      'runSilenceAnnotator': runSilenceAnnotator!,
+    if (runSummarizationAnnotator != null)
+      'runSummarizationAnnotator': runSummarizationAnnotator!,
+    if (summarizationConfig != null)
+      'summarizationConfig': summarizationConfig!,
+  };
 }
 
 /// Configuration for the QA feature.
 class GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig {
   /// A manual list of scorecards to score.
   GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList?
-      scorecardList;
+  scorecardList;
 
   GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig({
     this.scorecardList,
   });
 
   GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig.fromJson(
-      core.Map json_)
-      : this(
-          scorecardList: json_.containsKey('scorecardList')
-              ? GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList
-                  .fromJson(json_['scorecardList']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        scorecardList:
+            json_.containsKey('scorecardList')
+                ? GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList.fromJson(
+                  json_['scorecardList'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (scorecardList != null) 'scorecardList': scorecardList!,
-      };
+    if (scorecardList != null) 'scorecardList': scorecardList!,
+  };
 }
 
 /// Container for a list of scorecards.
@@ -8347,17 +8546,18 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList {
   });
 
   GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList.fromJson(
-      core.Map json_)
-      : this(
-          qaScorecardRevisions: (json_['qaScorecardRevisions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        qaScorecardRevisions:
+            (json_['qaScorecardRevisions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (qaScorecardRevisions != null)
-          'qaScorecardRevisions': qaScorecardRevisions!,
-      };
+    if (qaScorecardRevisions != null)
+      'qaScorecardRevisions': qaScorecardRevisions!,
+  };
 }
 
 /// Configuration for summarization.
@@ -8390,20 +8590,19 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
   });
 
   GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig.fromJson(
-      core.Map json_)
-      : this(
-          conversationProfile: json_['conversationProfile'] as core.String?,
-          generator: json_['generator'] as core.String?,
-          summarizationModel: json_['summarizationModel'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        conversationProfile: json_['conversationProfile'] as core.String?,
+        generator: json_['generator'] as core.String?,
+        summarizationModel: json_['summarizationModel'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversationProfile != null)
-          'conversationProfile': conversationProfile!,
-        if (generator != null) 'generator': generator!,
-        if (summarizationModel != null)
-          'summarizationModel': summarizationModel!,
-      };
+    if (conversationProfile != null)
+      'conversationProfile': conversationProfile!,
+    if (generator != null) 'generator': generator!,
+    if (summarizationModel != null) 'summarizationModel': summarizationModel!,
+  };
 }
 
 /// The feedback that the customer has about a certain answer in the
@@ -8431,17 +8630,17 @@ class GoogleCloudContactcenterinsightsV1AnswerFeedback {
   });
 
   GoogleCloudContactcenterinsightsV1AnswerFeedback.fromJson(core.Map json_)
-      : this(
-          clicked: json_['clicked'] as core.bool?,
-          correctnessLevel: json_['correctnessLevel'] as core.String?,
-          displayed: json_['displayed'] as core.bool?,
-        );
+    : this(
+        clicked: json_['clicked'] as core.bool?,
+        correctnessLevel: json_['correctnessLevel'] as core.String?,
+        displayed: json_['displayed'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clicked != null) 'clicked': clicked!,
-        if (correctnessLevel != null) 'correctnessLevel': correctnessLevel!,
-        if (displayed != null) 'displayed': displayed!,
-      };
+    if (clicked != null) 'clicked': clicked!,
+    if (correctnessLevel != null) 'correctnessLevel': correctnessLevel!,
+    if (displayed != null) 'displayed': displayed!,
+  };
 }
 
 /// The message to appeal an assessment.
@@ -8486,37 +8685,32 @@ class GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
   });
 
   GoogleCloudContactcenterinsightsV1ArticleSuggestionData.fromJson(
-      core.Map json_)
-      : this(
-          confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          queryRecord: json_['queryRecord'] as core.String?,
-          source: json_['source'] as core.String?,
-          title: json_['title'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        queryRecord: json_['queryRecord'] as core.String?,
+        source: json_['source'] as core.String?,
+        title: json_['title'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidenceScore != null) 'confidenceScore': confidenceScore!,
-        if (metadata != null) 'metadata': metadata!,
-        if (queryRecord != null) 'queryRecord': queryRecord!,
-        if (source != null) 'source': source!,
-        if (title != null) 'title': title!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (confidenceScore != null) 'confidenceScore': confidenceScore!,
+    if (metadata != null) 'metadata': metadata!,
+    if (queryRecord != null) 'queryRecord': queryRecord!,
+    if (source != null) 'source': source!,
+    if (title != null) 'title': title!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// The assessment resource.
 class GoogleCloudContactcenterinsightsV1Assessment {
   /// Information about the agent the assessment is for.
   GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo?
-      agentInfo;
+  agentInfo;
 
   /// The time at which the assessment was created.
   ///
@@ -8555,25 +8749,26 @@ class GoogleCloudContactcenterinsightsV1Assessment {
   });
 
   GoogleCloudContactcenterinsightsV1Assessment.fromJson(core.Map json_)
-      : this(
-          agentInfo: json_.containsKey('agentInfo')
-              ? GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo
-                  .fromJson(
-                      json_['agentInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        agentInfo:
+            json_.containsKey('agentInfo')
+                ? GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo.fromJson(
+                  json_['agentInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (agentInfo != null) 'agentInfo': agentInfo!,
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (agentInfo != null) 'agentInfo': agentInfo!,
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The CCAI Insights project wide assessment rule.
@@ -8623,31 +8818,35 @@ class GoogleCloudContactcenterinsightsV1AssessmentRule {
   });
 
   GoogleCloudContactcenterinsightsV1AssessmentRule.fromJson(core.Map json_)
-      : this(
-          active: json_['active'] as core.bool?,
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          sampleRule: json_.containsKey('sampleRule')
-              ? GoogleCloudContactcenterinsightsV1SampleRule.fromJson(
-                  json_['sampleRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          scheduleInfo: json_.containsKey('scheduleInfo')
-              ? GoogleCloudContactcenterinsightsV1ScheduleInfo.fromJson(
-                  json_['scheduleInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        active: json_['active'] as core.bool?,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        sampleRule:
+            json_.containsKey('sampleRule')
+                ? GoogleCloudContactcenterinsightsV1SampleRule.fromJson(
+                  json_['sampleRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scheduleInfo:
+            json_.containsKey('scheduleInfo')
+                ? GoogleCloudContactcenterinsightsV1ScheduleInfo.fromJson(
+                  json_['scheduleInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (active != null) 'active': active!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (sampleRule != null) 'sampleRule': sampleRule!,
-        if (scheduleInfo != null) 'scheduleInfo': scheduleInfo!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (active != null) 'active': active!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (sampleRule != null) 'sampleRule': sampleRule!,
+    if (scheduleInfo != null) 'scheduleInfo': scheduleInfo!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// An AuthorizedView represents a view of accessible Insights resources (for
@@ -8697,22 +8896,21 @@ class GoogleCloudContactcenterinsightsV1AuthorizedView {
   });
 
   GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(core.Map json_)
-      : this(
-          conversationFilter: json_['conversationFilter'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        conversationFilter: json_['conversationFilter'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversationFilter != null)
-          'conversationFilter': conversationFilter!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (conversationFilter != null) 'conversationFilter': conversationFilter!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// An AuthorizedViewSet contains a set of AuthorizedView resources.
@@ -8746,19 +8944,19 @@ class GoogleCloudContactcenterinsightsV1AuthorizedViewSet {
   });
 
   GoogleCloudContactcenterinsightsV1AuthorizedViewSet.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The request to analyze conversations in bulk.
@@ -8791,26 +8989,27 @@ class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest {
   });
 
   GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.fromJson(
-      core.Map json_)
-      : this(
-          analysisPercentage:
-              (json_['analysisPercentage'] as core.num?)?.toDouble(),
-          annotatorSelector: json_.containsKey('annotatorSelector')
-              ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
+    core.Map json_,
+  ) : this(
+        analysisPercentage:
+            (json_['analysisPercentage'] as core.num?)?.toDouble(),
+        annotatorSelector:
+            json_.containsKey('annotatorSelector')
+                ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
                   json_['annotatorSelector']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          filter: json_['filter'] as core.String?,
-          parent: json_['parent'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filter: json_['filter'] as core.String?,
+        parent: json_['parent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisPercentage != null)
-          'analysisPercentage': analysisPercentage!,
-        if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
-        if (filter != null) 'filter': filter!,
-        if (parent != null) 'parent': parent!,
-      };
+    if (analysisPercentage != null) 'analysisPercentage': analysisPercentage!,
+    if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
+    if (filter != null) 'filter': filter!,
+    if (parent != null) 'parent': parent!,
+  };
 }
 
 /// The request to delete conversations in bulk.
@@ -8842,20 +9041,20 @@ class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest {
   });
 
   GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.fromJson(
-      core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          force: json_['force'] as core.bool?,
-          maxDeleteCount: json_['maxDeleteCount'] as core.int?,
-          parent: json_['parent'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        filter: json_['filter'] as core.String?,
+        force: json_['force'] as core.bool?,
+        maxDeleteCount: json_['maxDeleteCount'] as core.int?,
+        parent: json_['parent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (force != null) 'force': force!,
-        if (maxDeleteCount != null) 'maxDeleteCount': maxDeleteCount!,
-        if (parent != null) 'parent': parent!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (force != null) 'force': force!,
+    if (maxDeleteCount != null) 'maxDeleteCount': maxDeleteCount!,
+    if (parent != null) 'parent': parent!,
+  };
 }
 
 /// Request for the BulkDeleteFeedbackLabels endpoint.
@@ -8881,16 +9080,16 @@ class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest {
   });
 
   GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.fromJson(
-      core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          parent: json_['parent'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        filter: json_['filter'] as core.String?,
+        parent: json_['parent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (parent != null) 'parent': parent!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (parent != null) 'parent': parent!,
+  };
 }
 
 /// Request for the BulkDownloadFeedbackLabel endpoint.
@@ -8929,7 +9128,7 @@ class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest {
 
   /// A cloud storage bucket destination.
   GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination?
-      gcsDestination;
+  gcsDestination;
 
   /// Limits the maximum number of feedback labels that will be downloaded.
   ///
@@ -8945,7 +9144,7 @@ class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest {
 
   /// A sheets document destination.
   GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination?
-      sheetsDestination;
+  sheetsDestination;
 
   /// If set, a template for labeling conversations and scorecard questions will
   /// be created from the conversation_filter and the questions under the
@@ -8968,40 +9167,44 @@ class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest {
   });
 
   GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest.fromJson(
-      core.Map json_)
-      : this(
-          conversationFilter: json_['conversationFilter'] as core.String?,
-          feedbackLabelType: json_['feedbackLabelType'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          gcsDestination: json_.containsKey('gcsDestination')
-              ? GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination
-                  .fromJson(json_['gcsDestination']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          maxDownloadCount: json_['maxDownloadCount'] as core.int?,
-          parent: json_['parent'] as core.String?,
-          sheetsDestination: json_.containsKey('sheetsDestination')
-              ? GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination
-                  .fromJson(json_['sheetsDestination']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          templateQaScorecardId: (json_['templateQaScorecardId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        conversationFilter: json_['conversationFilter'] as core.String?,
+        feedbackLabelType: json_['feedbackLabelType'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        gcsDestination:
+            json_.containsKey('gcsDestination')
+                ? GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination.fromJson(
+                  json_['gcsDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxDownloadCount: json_['maxDownloadCount'] as core.int?,
+        parent: json_['parent'] as core.String?,
+        sheetsDestination:
+            json_.containsKey('sheetsDestination')
+                ? GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination.fromJson(
+                  json_['sheetsDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        templateQaScorecardId:
+            (json_['templateQaScorecardId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversationFilter != null)
-          'conversationFilter': conversationFilter!,
-        if (feedbackLabelType != null) 'feedbackLabelType': feedbackLabelType!,
-        if (filter != null) 'filter': filter!,
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
-        if (maxDownloadCount != null) 'maxDownloadCount': maxDownloadCount!,
-        if (parent != null) 'parent': parent!,
-        if (sheetsDestination != null) 'sheetsDestination': sheetsDestination!,
-        if (templateQaScorecardId != null)
-          'templateQaScorecardId': templateQaScorecardId!,
-      };
+    if (conversationFilter != null) 'conversationFilter': conversationFilter!,
+    if (feedbackLabelType != null) 'feedbackLabelType': feedbackLabelType!,
+    if (filter != null) 'filter': filter!,
+    if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+    if (maxDownloadCount != null) 'maxDownloadCount': maxDownloadCount!,
+    if (parent != null) 'parent': parent!,
+    if (sheetsDestination != null) 'sheetsDestination': sheetsDestination!,
+    if (templateQaScorecardId != null)
+      'templateQaScorecardId': templateQaScorecardId!,
+  };
 }
 
 /// Google Cloud Storage Object details to write the feedback labels to.
@@ -9057,24 +9260,24 @@ class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDest
   });
 
   GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination.fromJson(
-      core.Map json_)
-      : this(
-          addWhitespace: json_['addWhitespace'] as core.bool?,
-          alwaysPrintEmptyFields: json_['alwaysPrintEmptyFields'] as core.bool?,
-          format: json_['format'] as core.String?,
-          objectUri: json_['objectUri'] as core.String?,
-          recordsPerFileCount: json_['recordsPerFileCount'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        addWhitespace: json_['addWhitespace'] as core.bool?,
+        alwaysPrintEmptyFields: json_['alwaysPrintEmptyFields'] as core.bool?,
+        format: json_['format'] as core.String?,
+        objectUri: json_['objectUri'] as core.String?,
+        recordsPerFileCount: json_['recordsPerFileCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addWhitespace != null) 'addWhitespace': addWhitespace!,
-        if (alwaysPrintEmptyFields != null)
-          'alwaysPrintEmptyFields': alwaysPrintEmptyFields!,
-        if (format != null) 'format': format!,
-        if (objectUri != null) 'objectUri': objectUri!,
-        if (recordsPerFileCount != null)
-          'recordsPerFileCount': recordsPerFileCount!,
-      };
+    if (addWhitespace != null) 'addWhitespace': addWhitespace!,
+    if (alwaysPrintEmptyFields != null)
+      'alwaysPrintEmptyFields': alwaysPrintEmptyFields!,
+    if (format != null) 'format': format!,
+    if (objectUri != null) 'objectUri': objectUri!,
+    if (recordsPerFileCount != null)
+      'recordsPerFileCount': recordsPerFileCount!,
+  };
 }
 
 /// Google Sheets document details to write the feedback labels to.
@@ -9100,27 +9303,27 @@ class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsD
   });
 
   GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination.fromJson(
-      core.Map json_)
-      : this(
-          sheetTitle: json_['sheetTitle'] as core.String?,
-          spreadsheetUri: json_['spreadsheetUri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        sheetTitle: json_['sheetTitle'] as core.String?,
+        spreadsheetUri: json_['spreadsheetUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sheetTitle != null) 'sheetTitle': sheetTitle!,
-        if (spreadsheetUri != null) 'spreadsheetUri': spreadsheetUri!,
-      };
+    if (sheetTitle != null) 'sheetTitle': sheetTitle!,
+    if (spreadsheetUri != null) 'spreadsheetUri': spreadsheetUri!,
+  };
 }
 
 /// The request for bulk uploading feedback labels.
 class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest {
   /// A cloud storage bucket source.
   GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource?
-      gcsSource;
+  gcsSource;
 
   /// A sheets document source.
   GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource?
-      sheetsSource;
+  sheetsSource;
 
   /// If set, upload will not happen and the labels will be validated.
   ///
@@ -9137,26 +9340,28 @@ class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest {
   });
 
   GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest.fromJson(
-      core.Map json_)
-      : this(
-          gcsSource: json_.containsKey('gcsSource')
-              ? GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource
-                  .fromJson(
-                      json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sheetsSource: json_.containsKey('sheetsSource')
-              ? GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource
-                  .fromJson(json_['sheetsSource']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          validateOnly: json_['validateOnly'] as core.bool?,
-        );
+    core.Map json_,
+  ) : this(
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sheetsSource:
+            json_.containsKey('sheetsSource')
+                ? GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource.fromJson(
+                  json_['sheetsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-        if (sheetsSource != null) 'sheetsSource': sheetsSource!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+    if (sheetsSource != null) 'sheetsSource': sheetsSource!,
+    if (validateOnly != null) 'validateOnly': validateOnly!,
+  };
 }
 
 /// Google Cloud Storage Object details to get the feedback label file from.
@@ -9183,16 +9388,16 @@ class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource
   });
 
   GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource.fromJson(
-      core.Map json_)
-      : this(
-          format: json_['format'] as core.String?,
-          objectUri: json_['objectUri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        format: json_['format'] as core.String?,
+        objectUri: json_['objectUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (format != null) 'format': format!,
-        if (objectUri != null) 'objectUri': objectUri!,
-      };
+    if (format != null) 'format': format!,
+    if (objectUri != null) 'objectUri': objectUri!,
+  };
 }
 
 /// Google Sheets document details to get the feedback label file from.
@@ -9211,14 +9416,12 @@ class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSou
   });
 
   GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource.fromJson(
-      core.Map json_)
-      : this(
-          spreadsheetUri: json_['spreadsheetUri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(spreadsheetUri: json_['spreadsheetUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (spreadsheetUri != null) 'spreadsheetUri': spreadsheetUri!,
-      };
+    if (spreadsheetUri != null) 'spreadsheetUri': spreadsheetUri!,
+  };
 }
 
 /// Response of querying an issue model's statistics.
@@ -9233,17 +9436,19 @@ class GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse.fromJson(
-      core.Map json_)
-      : this(
-          currentStats: json_.containsKey('currentStats')
-              ? GoogleCloudContactcenterinsightsV1IssueModelLabelStats.fromJson(
-                  json_['currentStats'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        currentStats:
+            json_.containsKey('currentStats')
+                ? GoogleCloudContactcenterinsightsV1IssueModelLabelStats.fromJson(
+                  json_['currentStats'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentStats != null) 'currentStats': currentStats!,
-      };
+    if (currentStats != null) 'currentStats': currentStats!,
+  };
 }
 
 /// The request for calculating conversation statistics.
@@ -9254,19 +9459,15 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsRequest {
   /// specific properties.
   core.String? filter;
 
-  GoogleCloudContactcenterinsightsV1CalculateStatsRequest({
-    this.filter,
-  });
+  GoogleCloudContactcenterinsightsV1CalculateStatsRequest({this.filter});
 
   GoogleCloudContactcenterinsightsV1CalculateStatsRequest.fromJson(
-      core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(filter: json_['filter'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-      };
+    if (filter != null) 'filter': filter!,
+  };
 }
 
 /// The response for calculating conversation statistics.
@@ -9286,7 +9487,7 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
   /// A time series representing the count of conversations created over time
   /// that match that requested filter criteria.
   GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries?
-      conversationCountTimeSeries;
+  conversationCountTimeSeries;
 
   /// A map associating each custom highlighter resource name with its
   /// respective number of matches in the set of conversations.
@@ -9306,9 +9507,11 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
   /// matches in the set of conversations.
   ///
   /// Key has the format: `projects//locations//issueModels//issues/`
-  core.Map<core.String,
-          GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats>?
-      issueMatchesStats;
+  core.Map<
+    core.String,
+    GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
+  >?
+  issueMatchesStats;
 
   /// A map associating each smart highlighter display name with its respective
   /// number of matches in the set of conversations.
@@ -9326,65 +9529,52 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1CalculateStatsResponse.fromJson(
-      core.Map json_)
-      : this(
-          averageDuration: json_['averageDuration'] as core.String?,
-          averageTurnCount: json_['averageTurnCount'] as core.int?,
-          conversationCount: json_['conversationCount'] as core.int?,
-          conversationCountTimeSeries: json_
-                  .containsKey('conversationCountTimeSeries')
-              ? GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries
-                  .fromJson(json_['conversationCountTimeSeries']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          customHighlighterMatches: (json_['customHighlighterMatches']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.int,
+    core.Map json_,
+  ) : this(
+        averageDuration: json_['averageDuration'] as core.String?,
+        averageTurnCount: json_['averageTurnCount'] as core.int?,
+        conversationCount: json_['conversationCount'] as core.int?,
+        conversationCountTimeSeries:
+            json_.containsKey('conversationCountTimeSeries')
+                ? GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries.fromJson(
+                  json_['conversationCountTimeSeries']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        customHighlighterMatches: (json_['customHighlighterMatches']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.int)),
+        issueMatches: (json_['issueMatches']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.int)),
+        issueMatchesStats: (json_['issueMatchesStats']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          issueMatches:
-              (json_['issueMatches'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.int,
-            ),
-          ),
-          issueMatchesStats: (json_['issueMatchesStats']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
-                  .fromJson(value as core.Map<core.String, core.dynamic>),
-            ),
-          ),
-          smartHighlighterMatches: (json_['smartHighlighterMatches']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.int,
-            ),
-          ),
-        );
+        smartHighlighterMatches: (json_['smartHighlighterMatches']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.int)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (averageDuration != null) 'averageDuration': averageDuration!,
-        if (averageTurnCount != null) 'averageTurnCount': averageTurnCount!,
-        if (conversationCount != null) 'conversationCount': conversationCount!,
-        if (conversationCountTimeSeries != null)
-          'conversationCountTimeSeries': conversationCountTimeSeries!,
-        if (customHighlighterMatches != null)
-          'customHighlighterMatches': customHighlighterMatches!,
-        if (issueMatches != null) 'issueMatches': issueMatches!,
-        if (issueMatchesStats != null) 'issueMatchesStats': issueMatchesStats!,
-        if (smartHighlighterMatches != null)
-          'smartHighlighterMatches': smartHighlighterMatches!,
-      };
+    if (averageDuration != null) 'averageDuration': averageDuration!,
+    if (averageTurnCount != null) 'averageTurnCount': averageTurnCount!,
+    if (conversationCount != null) 'conversationCount': conversationCount!,
+    if (conversationCountTimeSeries != null)
+      'conversationCountTimeSeries': conversationCountTimeSeries!,
+    if (customHighlighterMatches != null)
+      'customHighlighterMatches': customHighlighterMatches!,
+    if (issueMatches != null) 'issueMatches': issueMatches!,
+    if (issueMatchesStats != null) 'issueMatchesStats': issueMatchesStats!,
+    if (smartHighlighterMatches != null)
+      'smartHighlighterMatches': smartHighlighterMatches!,
+  };
 }
 
 /// A time series representing conversations over time.
@@ -9396,8 +9586,9 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries {
   /// represents the number of conversations that transpired during the time
   /// window.
   core.List<
-          GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>?
-      points;
+    GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval
+  >?
+  points;
 
   GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries({
     this.intervalDuration,
@@ -9405,20 +9596,24 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries {
   });
 
   GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries.fromJson(
-      core.Map json_)
-      : this(
-          intervalDuration: json_['intervalDuration'] as core.String?,
-          points: (json_['points'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        intervalDuration: json_['intervalDuration'] as core.String?,
+        points:
+            (json_['points'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (intervalDuration != null) 'intervalDuration': intervalDuration!,
-        if (points != null) 'points': points!,
-      };
+    if (intervalDuration != null) 'intervalDuration': intervalDuration!,
+    if (points != null) 'points': points!,
+  };
 }
 
 /// A single interval in a time series.
@@ -9435,16 +9630,16 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval
   });
 
   GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval.fromJson(
-      core.Map json_)
-      : this(
-          conversationCount: json_['conversationCount'] as core.int?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        conversationCount: json_['conversationCount'] as core.int?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversationCount != null) 'conversationCount': conversationCount!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (conversationCount != null) 'conversationCount': conversationCount!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// A piece of metadata that applies to a window of a call.
@@ -9499,72 +9694,92 @@ class GoogleCloudContactcenterinsightsV1CallAnnotation {
   });
 
   GoogleCloudContactcenterinsightsV1CallAnnotation.fromJson(core.Map json_)
-      : this(
-          annotationEndBoundary: json_.containsKey('annotationEndBoundary')
-              ? GoogleCloudContactcenterinsightsV1AnnotationBoundary.fromJson(
+    : this(
+        annotationEndBoundary:
+            json_.containsKey('annotationEndBoundary')
+                ? GoogleCloudContactcenterinsightsV1AnnotationBoundary.fromJson(
                   json_['annotationEndBoundary']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          annotationStartBoundary: json_.containsKey('annotationStartBoundary')
-              ? GoogleCloudContactcenterinsightsV1AnnotationBoundary.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        annotationStartBoundary:
+            json_.containsKey('annotationStartBoundary')
+                ? GoogleCloudContactcenterinsightsV1AnnotationBoundary.fromJson(
                   json_['annotationStartBoundary']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          channelTag: json_['channelTag'] as core.int?,
-          entityMentionData: json_.containsKey('entityMentionData')
-              ? GoogleCloudContactcenterinsightsV1EntityMentionData.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        channelTag: json_['channelTag'] as core.int?,
+        entityMentionData:
+            json_.containsKey('entityMentionData')
+                ? GoogleCloudContactcenterinsightsV1EntityMentionData.fromJson(
                   json_['entityMentionData']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          holdData: json_.containsKey('holdData')
-              ? GoogleCloudContactcenterinsightsV1HoldData.fromJson(
-                  json_['holdData'] as core.Map<core.String, core.dynamic>)
-              : null,
-          intentMatchData: json_.containsKey('intentMatchData')
-              ? GoogleCloudContactcenterinsightsV1IntentMatchData.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        holdData:
+            json_.containsKey('holdData')
+                ? GoogleCloudContactcenterinsightsV1HoldData.fromJson(
+                  json_['holdData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        intentMatchData:
+            json_.containsKey('intentMatchData')
+                ? GoogleCloudContactcenterinsightsV1IntentMatchData.fromJson(
                   json_['intentMatchData']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          interruptionData: json_.containsKey('interruptionData')
-              ? GoogleCloudContactcenterinsightsV1InterruptionData.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        interruptionData:
+            json_.containsKey('interruptionData')
+                ? GoogleCloudContactcenterinsightsV1InterruptionData.fromJson(
                   json_['interruptionData']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          issueMatchData: json_.containsKey('issueMatchData')
-              ? GoogleCloudContactcenterinsightsV1IssueMatchData.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        issueMatchData:
+            json_.containsKey('issueMatchData')
+                ? GoogleCloudContactcenterinsightsV1IssueMatchData.fromJson(
                   json_['issueMatchData']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          phraseMatchData: json_.containsKey('phraseMatchData')
-              ? GoogleCloudContactcenterinsightsV1PhraseMatchData.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        phraseMatchData:
+            json_.containsKey('phraseMatchData')
+                ? GoogleCloudContactcenterinsightsV1PhraseMatchData.fromJson(
                   json_['phraseMatchData']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          sentimentData: json_.containsKey('sentimentData')
-              ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
-                  json_['sentimentData'] as core.Map<core.String, core.dynamic>)
-              : null,
-          silenceData: json_.containsKey('silenceData')
-              ? GoogleCloudContactcenterinsightsV1SilenceData.fromJson(
-                  json_['silenceData'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sentimentData:
+            json_.containsKey('sentimentData')
+                ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
+                  json_['sentimentData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        silenceData:
+            json_.containsKey('silenceData')
+                ? GoogleCloudContactcenterinsightsV1SilenceData.fromJson(
+                  json_['silenceData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationEndBoundary != null)
-          'annotationEndBoundary': annotationEndBoundary!,
-        if (annotationStartBoundary != null)
-          'annotationStartBoundary': annotationStartBoundary!,
-        if (channelTag != null) 'channelTag': channelTag!,
-        if (entityMentionData != null) 'entityMentionData': entityMentionData!,
-        if (holdData != null) 'holdData': holdData!,
-        if (intentMatchData != null) 'intentMatchData': intentMatchData!,
-        if (interruptionData != null) 'interruptionData': interruptionData!,
-        if (issueMatchData != null) 'issueMatchData': issueMatchData!,
-        if (phraseMatchData != null) 'phraseMatchData': phraseMatchData!,
-        if (sentimentData != null) 'sentimentData': sentimentData!,
-        if (silenceData != null) 'silenceData': silenceData!,
-      };
+    if (annotationEndBoundary != null)
+      'annotationEndBoundary': annotationEndBoundary!,
+    if (annotationStartBoundary != null)
+      'annotationStartBoundary': annotationStartBoundary!,
+    if (channelTag != null) 'channelTag': channelTag!,
+    if (entityMentionData != null) 'entityMentionData': entityMentionData!,
+    if (holdData != null) 'holdData': holdData!,
+    if (intentMatchData != null) 'intentMatchData': intentMatchData!,
+    if (interruptionData != null) 'interruptionData': interruptionData!,
+    if (issueMatchData != null) 'issueMatchData': issueMatchData!,
+    if (phraseMatchData != null) 'phraseMatchData': phraseMatchData!,
+    if (sentimentData != null) 'sentimentData': sentimentData!,
+    if (silenceData != null) 'silenceData': silenceData!,
+  };
 }
 
 /// The conversation resource.
@@ -9591,7 +9806,7 @@ class GoogleCloudContactcenterinsightsV1Conversation {
   ///
   /// Output only.
   core.Map<core.String, GoogleCloudContactcenterinsightsV1DialogflowIntent>?
-      dialogflowIntents;
+  dialogflowIntents;
 
   /// The duration of the conversation.
   ///
@@ -9622,7 +9837,7 @@ class GoogleCloudContactcenterinsightsV1Conversation {
   ///
   /// Output only.
   GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData?
-      latestSummary;
+  latestSummary;
 
   /// The conversation medium, if unspecified will default to PHONE_CALL.
   ///
@@ -9655,14 +9870,14 @@ class GoogleCloudContactcenterinsightsV1Conversation {
 
   /// Conversation metadata related to quality management.
   GoogleCloudContactcenterinsightsV1ConversationQualityMetadata?
-      qualityMetadata;
+  qualityMetadata;
 
   /// The annotations that were generated during the customer and agent
   /// interaction.
   ///
   /// Output only.
   core.List<GoogleCloudContactcenterinsightsV1RuntimeAnnotation>?
-      runtimeAnnotations;
+  runtimeAnnotations;
 
   /// The time at which the conversation started.
   core.String? startTime;
@@ -9714,98 +9929,106 @@ class GoogleCloudContactcenterinsightsV1Conversation {
   });
 
   GoogleCloudContactcenterinsightsV1Conversation.fromJson(core.Map json_)
-      : this(
-          agentId: json_['agentId'] as core.String?,
-          callMetadata: json_.containsKey('callMetadata')
-              ? GoogleCloudContactcenterinsightsV1ConversationCallMetadata
-                  .fromJson(json_['callMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          dataSource: json_.containsKey('dataSource')
-              ? GoogleCloudContactcenterinsightsV1ConversationDataSource
-                  .fromJson(json_['dataSource']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          dialogflowIntents: (json_['dialogflowIntents']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudContactcenterinsightsV1DialogflowIntent.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        agentId: json_['agentId'] as core.String?,
+        callMetadata:
+            json_.containsKey('callMetadata')
+                ? GoogleCloudContactcenterinsightsV1ConversationCallMetadata.fromJson(
+                  json_['callMetadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        dataSource:
+            json_.containsKey('dataSource')
+                ? GoogleCloudContactcenterinsightsV1ConversationDataSource.fromJson(
+                  json_['dataSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dialogflowIntents: (json_['dialogflowIntents']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudContactcenterinsightsV1DialogflowIntent.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          duration: json_['duration'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          languageCode: json_['languageCode'] as core.String?,
-          latestAnalysis: json_.containsKey('latestAnalysis')
-              ? GoogleCloudContactcenterinsightsV1Analysis.fromJson(
+        duration: json_['duration'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        languageCode: json_['languageCode'] as core.String?,
+        latestAnalysis:
+            json_.containsKey('latestAnalysis')
+                ? GoogleCloudContactcenterinsightsV1Analysis.fromJson(
                   json_['latestAnalysis']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          latestSummary: json_.containsKey('latestSummary')
-              ? GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData
-                  .fromJson(json_['latestSummary']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          medium: json_['medium'] as core.String?,
-          metadataJson: json_['metadataJson'] as core.String?,
-          name: json_['name'] as core.String?,
-          obfuscatedUserId: json_['obfuscatedUserId'] as core.String?,
-          qualityMetadata: json_.containsKey('qualityMetadata')
-              ? GoogleCloudContactcenterinsightsV1ConversationQualityMetadata
-                  .fromJson(json_['qualityMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          runtimeAnnotations: (json_['runtimeAnnotations'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1RuntimeAnnotation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          startTime: json_['startTime'] as core.String?,
-          transcript: json_.containsKey('transcript')
-              ? GoogleCloudContactcenterinsightsV1ConversationTranscript
-                  .fromJson(json_['transcript']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          ttl: json_['ttl'] as core.String?,
-          turnCount: json_['turnCount'] as core.int?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        latestSummary:
+            json_.containsKey('latestSummary')
+                ? GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData.fromJson(
+                  json_['latestSummary'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        medium: json_['medium'] as core.String?,
+        metadataJson: json_['metadataJson'] as core.String?,
+        name: json_['name'] as core.String?,
+        obfuscatedUserId: json_['obfuscatedUserId'] as core.String?,
+        qualityMetadata:
+            json_.containsKey('qualityMetadata')
+                ? GoogleCloudContactcenterinsightsV1ConversationQualityMetadata.fromJson(
+                  json_['qualityMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        runtimeAnnotations:
+            (json_['runtimeAnnotations'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1RuntimeAnnotation.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        startTime: json_['startTime'] as core.String?,
+        transcript:
+            json_.containsKey('transcript')
+                ? GoogleCloudContactcenterinsightsV1ConversationTranscript.fromJson(
+                  json_['transcript'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        ttl: json_['ttl'] as core.String?,
+        turnCount: json_['turnCount'] as core.int?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (agentId != null) 'agentId': agentId!,
-        if (callMetadata != null) 'callMetadata': callMetadata!,
-        if (createTime != null) 'createTime': createTime!,
-        if (dataSource != null) 'dataSource': dataSource!,
-        if (dialogflowIntents != null) 'dialogflowIntents': dialogflowIntents!,
-        if (duration != null) 'duration': duration!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (labels != null) 'labels': labels!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (latestAnalysis != null) 'latestAnalysis': latestAnalysis!,
-        if (latestSummary != null) 'latestSummary': latestSummary!,
-        if (medium != null) 'medium': medium!,
-        if (metadataJson != null) 'metadataJson': metadataJson!,
-        if (name != null) 'name': name!,
-        if (obfuscatedUserId != null) 'obfuscatedUserId': obfuscatedUserId!,
-        if (qualityMetadata != null) 'qualityMetadata': qualityMetadata!,
-        if (runtimeAnnotations != null)
-          'runtimeAnnotations': runtimeAnnotations!,
-        if (startTime != null) 'startTime': startTime!,
-        if (transcript != null) 'transcript': transcript!,
-        if (ttl != null) 'ttl': ttl!,
-        if (turnCount != null) 'turnCount': turnCount!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (agentId != null) 'agentId': agentId!,
+    if (callMetadata != null) 'callMetadata': callMetadata!,
+    if (createTime != null) 'createTime': createTime!,
+    if (dataSource != null) 'dataSource': dataSource!,
+    if (dialogflowIntents != null) 'dialogflowIntents': dialogflowIntents!,
+    if (duration != null) 'duration': duration!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (labels != null) 'labels': labels!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (latestAnalysis != null) 'latestAnalysis': latestAnalysis!,
+    if (latestSummary != null) 'latestSummary': latestSummary!,
+    if (medium != null) 'medium': medium!,
+    if (metadataJson != null) 'metadataJson': metadataJson!,
+    if (name != null) 'name': name!,
+    if (obfuscatedUserId != null) 'obfuscatedUserId': obfuscatedUserId!,
+    if (qualityMetadata != null) 'qualityMetadata': qualityMetadata!,
+    if (runtimeAnnotations != null) 'runtimeAnnotations': runtimeAnnotations!,
+    if (startTime != null) 'startTime': startTime!,
+    if (transcript != null) 'transcript': transcript!,
+    if (ttl != null) 'ttl': ttl!,
+    if (turnCount != null) 'turnCount': turnCount!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Call-specific metadata.
@@ -9822,16 +10045,16 @@ class GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
   });
 
   GoogleCloudContactcenterinsightsV1ConversationCallMetadata.fromJson(
-      core.Map json_)
-      : this(
-          agentChannel: json_['agentChannel'] as core.int?,
-          customerChannel: json_['customerChannel'] as core.int?,
-        );
+    core.Map json_,
+  ) : this(
+        agentChannel: json_['agentChannel'] as core.int?,
+        customerChannel: json_['customerChannel'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (agentChannel != null) 'agentChannel': agentChannel!,
-        if (customerChannel != null) 'customerChannel': customerChannel!,
-      };
+    if (agentChannel != null) 'agentChannel': agentChannel!,
+    if (customerChannel != null) 'customerChannel': customerChannel!,
+  };
 }
 
 /// The conversation source, which is a combination of transcript and audio.
@@ -9853,25 +10076,29 @@ class GoogleCloudContactcenterinsightsV1ConversationDataSource {
   });
 
   GoogleCloudContactcenterinsightsV1ConversationDataSource.fromJson(
-      core.Map json_)
-      : this(
-          dialogflowSource: json_.containsKey('dialogflowSource')
-              ? GoogleCloudContactcenterinsightsV1DialogflowSource.fromJson(
+    core.Map json_,
+  ) : this(
+        dialogflowSource:
+            json_.containsKey('dialogflowSource')
+                ? GoogleCloudContactcenterinsightsV1DialogflowSource.fromJson(
                   json_['dialogflowSource']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          gcsSource: json_.containsKey('gcsSource')
-              ? GoogleCloudContactcenterinsightsV1GcsSource.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadataUri: json_['metadataUri'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? GoogleCloudContactcenterinsightsV1GcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadataUri: json_['metadataUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dialogflowSource != null) 'dialogflowSource': dialogflowSource!,
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-        if (metadataUri != null) 'metadataUri': metadataUri!,
-      };
+    if (dialogflowSource != null) 'dialogflowSource': dialogflowSource!,
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+    if (metadataUri != null) 'metadataUri': metadataUri!,
+  };
 }
 
 /// One channel of conversation-level sentiment data.
@@ -9888,19 +10115,21 @@ class GoogleCloudContactcenterinsightsV1ConversationLevelSentiment {
   });
 
   GoogleCloudContactcenterinsightsV1ConversationLevelSentiment.fromJson(
-      core.Map json_)
-      : this(
-          channelTag: json_['channelTag'] as core.int?,
-          sentimentData: json_.containsKey('sentimentData')
-              ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
-                  json_['sentimentData'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        channelTag: json_['channelTag'] as core.int?,
+        sentimentData:
+            json_.containsKey('sentimentData')
+                ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
+                  json_['sentimentData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (channelTag != null) 'channelTag': channelTag!,
-        if (sentimentData != null) 'sentimentData': sentimentData!,
-      };
+    if (channelTag != null) 'channelTag': channelTag!,
+    if (sentimentData != null) 'sentimentData': sentimentData!,
+  };
 }
 
 /// Conversation-level silence data.
@@ -9917,17 +10146,17 @@ class GoogleCloudContactcenterinsightsV1ConversationLevelSilence {
   });
 
   GoogleCloudContactcenterinsightsV1ConversationLevelSilence.fromJson(
-      core.Map json_)
-      : this(
-          silenceDuration: json_['silenceDuration'] as core.String?,
-          silencePercentage:
-              (json_['silencePercentage'] as core.num?)?.toDouble(),
-        );
+    core.Map json_,
+  ) : this(
+        silenceDuration: json_['silenceDuration'] as core.String?,
+        silencePercentage:
+            (json_['silencePercentage'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (silenceDuration != null) 'silenceDuration': silenceDuration!,
-        if (silencePercentage != null) 'silencePercentage': silencePercentage!,
-      };
+    if (silenceDuration != null) 'silenceDuration': silenceDuration!,
+    if (silencePercentage != null) 'silencePercentage': silencePercentage!,
+  };
 }
 
 /// The call participant speaking for a given utterance.
@@ -9974,35 +10203,36 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipant {
   });
 
   GoogleCloudContactcenterinsightsV1ConversationParticipant.fromJson(
-      core.Map json_)
-      : this(
-          dialogflowParticipant: json_['dialogflowParticipant'] as core.String?,
-          dialogflowParticipantName:
-              json_['dialogflowParticipantName'] as core.String?,
-          obfuscatedExternalUserId:
-              json_['obfuscatedExternalUserId'] as core.String?,
-          role: json_['role'] as core.String?,
-          userId: json_['userId'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        dialogflowParticipant: json_['dialogflowParticipant'] as core.String?,
+        dialogflowParticipantName:
+            json_['dialogflowParticipantName'] as core.String?,
+        obfuscatedExternalUserId:
+            json_['obfuscatedExternalUserId'] as core.String?,
+        role: json_['role'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dialogflowParticipant != null)
-          'dialogflowParticipant': dialogflowParticipant!,
-        if (dialogflowParticipantName != null)
-          'dialogflowParticipantName': dialogflowParticipantName!,
-        if (obfuscatedExternalUserId != null)
-          'obfuscatedExternalUserId': obfuscatedExternalUserId!,
-        if (role != null) 'role': role!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (dialogflowParticipant != null)
+      'dialogflowParticipant': dialogflowParticipant!,
+    if (dialogflowParticipantName != null)
+      'dialogflowParticipantName': dialogflowParticipantName!,
+    if (obfuscatedExternalUserId != null)
+      'obfuscatedExternalUserId': obfuscatedExternalUserId!,
+    if (role != null) 'role': role!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// Conversation metadata related to quality management.
 class GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
   /// Information about agents involved in the call.
   core.List<
-          GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>?
-      agentInfo;
+    GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo
+  >?
+  agentInfo;
 
   /// An arbitrary integer value indicating the customer's satisfaction rating.
   core.int? customerSatisfactionRating;
@@ -10021,26 +10251,30 @@ class GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
   });
 
   GoogleCloudContactcenterinsightsV1ConversationQualityMetadata.fromJson(
-      core.Map json_)
-      : this(
-          agentInfo: (json_['agentInfo'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          customerSatisfactionRating:
-              json_['customerSatisfactionRating'] as core.int?,
-          menuPath: json_['menuPath'] as core.String?,
-          waitDuration: json_['waitDuration'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        agentInfo:
+            (json_['agentInfo'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        customerSatisfactionRating:
+            json_['customerSatisfactionRating'] as core.int?,
+        menuPath: json_['menuPath'] as core.String?,
+        waitDuration: json_['waitDuration'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (agentInfo != null) 'agentInfo': agentInfo!,
-        if (customerSatisfactionRating != null)
-          'customerSatisfactionRating': customerSatisfactionRating!,
-        if (menuPath != null) 'menuPath': menuPath!,
-        if (waitDuration != null) 'waitDuration': waitDuration!,
-      };
+    if (agentInfo != null) 'agentInfo': agentInfo!,
+    if (customerSatisfactionRating != null)
+      'customerSatisfactionRating': customerSatisfactionRating!,
+    if (menuPath != null) 'menuPath': menuPath!,
+    if (waitDuration != null) 'waitDuration': waitDuration!,
+  };
 }
 
 /// Information about an agent involved in the conversation.
@@ -10090,28 +10324,29 @@ class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
   });
 
   GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo.fromJson(
-      core.Map json_)
-      : this(
-          agentId: json_['agentId'] as core.String?,
-          agentType: json_['agentType'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          dispositionCode: json_['dispositionCode'] as core.String?,
-          location: json_['location'] as core.String?,
-          team: json_['team'] as core.String?,
-          teams: (json_['teams'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        agentId: json_['agentId'] as core.String?,
+        agentType: json_['agentType'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        dispositionCode: json_['dispositionCode'] as core.String?,
+        location: json_['location'] as core.String?,
+        team: json_['team'] as core.String?,
+        teams:
+            (json_['teams'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (agentId != null) 'agentId': agentId!,
-        if (agentType != null) 'agentType': agentType!,
-        if (displayName != null) 'displayName': displayName!,
-        if (dispositionCode != null) 'dispositionCode': dispositionCode!,
-        if (location != null) 'location': location!,
-        if (team != null) 'team': team!,
-        if (teams != null) 'teams': teams!,
-      };
+    if (agentId != null) 'agentId': agentId!,
+    if (agentType != null) 'agentType': agentType!,
+    if (displayName != null) 'displayName': displayName!,
+    if (dispositionCode != null) 'dispositionCode': dispositionCode!,
+    if (location != null) 'location': location!,
+    if (team != null) 'team': team!,
+    if (teams != null) 'teams': teams!,
+  };
 }
 
 /// Conversation summarization suggestion data.
@@ -10158,66 +10393,60 @@ class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData 
   });
 
   GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData.fromJson(
-      core.Map json_)
-      : this(
-          answerRecord: json_['answerRecord'] as core.String?,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          conversationModel: json_['conversationModel'] as core.String?,
-          generatorId: json_['generatorId'] as core.String?,
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          text: json_['text'] as core.String?,
-          textSections:
-              (json_['textSections'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    core.Map json_,
+  ) : this(
+        answerRecord: json_['answerRecord'] as core.String?,
+        confidence: (json_['confidence'] as core.num?)?.toDouble(),
+        conversationModel: json_['conversationModel'] as core.String?,
+        generatorId: json_['generatorId'] as core.String?,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        text: json_['text'] as core.String?,
+        textSections: (json_['textSections']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (answerRecord != null) 'answerRecord': answerRecord!,
-        if (confidence != null) 'confidence': confidence!,
-        if (conversationModel != null) 'conversationModel': conversationModel!,
-        if (generatorId != null) 'generatorId': generatorId!,
-        if (metadata != null) 'metadata': metadata!,
-        if (text != null) 'text': text!,
-        if (textSections != null) 'textSections': textSections!,
-      };
+    if (answerRecord != null) 'answerRecord': answerRecord!,
+    if (confidence != null) 'confidence': confidence!,
+    if (conversationModel != null) 'conversationModel': conversationModel!,
+    if (generatorId != null) 'generatorId': generatorId!,
+    if (metadata != null) 'metadata': metadata!,
+    if (text != null) 'text': text!,
+    if (textSections != null) 'textSections': textSections!,
+  };
 }
 
 /// A message representing the transcript of a conversation.
 class GoogleCloudContactcenterinsightsV1ConversationTranscript {
   /// A list of sequential transcript segments that comprise the conversation.
   core.List<
-          GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>?
-      transcriptSegments;
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment
+  >?
+  transcriptSegments;
 
   GoogleCloudContactcenterinsightsV1ConversationTranscript({
     this.transcriptSegments,
   });
 
   GoogleCloudContactcenterinsightsV1ConversationTranscript.fromJson(
-      core.Map json_)
-      : this(
-          transcriptSegments: (json_['transcriptSegments'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        transcriptSegments:
+            (json_['transcriptSegments'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (transcriptSegments != null)
-          'transcriptSegments': transcriptSegments!,
-      };
+    if (transcriptSegments != null) 'transcriptSegments': transcriptSegments!,
+  };
 }
 
 /// A segment of a full transcript.
@@ -10236,7 +10465,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
 
   /// CCAI metadata relating to the current transcript segment.
   GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata?
-      dialogflowSegmentMetadata;
+  dialogflowSegmentMetadata;
 
   /// The language code of this segment as a
   /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
@@ -10258,8 +10487,9 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
 
   /// A list of the word-specific information for each word in the segment.
   core.List<
-          GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>?
-      words;
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo
+  >?
+  words;
 
   GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment({
     this.channelTag,
@@ -10274,48 +10504,56 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
   });
 
   GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment.fromJson(
-      core.Map json_)
-      : this(
-          channelTag: json_['channelTag'] as core.int?,
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          dialogflowSegmentMetadata: json_
-                  .containsKey('dialogflowSegmentMetadata')
-              ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata
-                  .fromJson(json_['dialogflowSegmentMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          languageCode: json_['languageCode'] as core.String?,
-          messageTime: json_['messageTime'] as core.String?,
-          segmentParticipant: json_.containsKey('segmentParticipant')
-              ? GoogleCloudContactcenterinsightsV1ConversationParticipant
-                  .fromJson(json_['segmentParticipant']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          sentiment: json_.containsKey('sentiment')
-              ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
-                  json_['sentiment'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-          words: (json_['words'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        channelTag: json_['channelTag'] as core.int?,
+        confidence: (json_['confidence'] as core.num?)?.toDouble(),
+        dialogflowSegmentMetadata:
+            json_.containsKey('dialogflowSegmentMetadata')
+                ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata.fromJson(
+                  json_['dialogflowSegmentMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        languageCode: json_['languageCode'] as core.String?,
+        messageTime: json_['messageTime'] as core.String?,
+        segmentParticipant:
+            json_.containsKey('segmentParticipant')
+                ? GoogleCloudContactcenterinsightsV1ConversationParticipant.fromJson(
+                  json_['segmentParticipant']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sentiment:
+            json_.containsKey('sentiment')
+                ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
+                  json_['sentiment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+        words:
+            (json_['words'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (channelTag != null) 'channelTag': channelTag!,
-        if (confidence != null) 'confidence': confidence!,
-        if (dialogflowSegmentMetadata != null)
-          'dialogflowSegmentMetadata': dialogflowSegmentMetadata!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (messageTime != null) 'messageTime': messageTime!,
-        if (segmentParticipant != null)
-          'segmentParticipant': segmentParticipant!,
-        if (sentiment != null) 'sentiment': sentiment!,
-        if (text != null) 'text': text!,
-        if (words != null) 'words': words!,
-      };
+    if (channelTag != null) 'channelTag': channelTag!,
+    if (confidence != null) 'confidence': confidence!,
+    if (dialogflowSegmentMetadata != null)
+      'dialogflowSegmentMetadata': dialogflowSegmentMetadata!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (messageTime != null) 'messageTime': messageTime!,
+    if (segmentParticipant != null) 'segmentParticipant': segmentParticipant!,
+    if (sentiment != null) 'sentiment': sentiment!,
+    if (text != null) 'text': text!,
+    if (words != null) 'words': words!,
+  };
 }
 
 /// Metadata from Dialogflow relating to the current transcript segment.
@@ -10329,16 +10567,16 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentD
   });
 
   GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata.fromJson(
-      core.Map json_)
-      : this(
-          smartReplyAllowlistCovered:
-              json_['smartReplyAllowlistCovered'] as core.bool?,
-        );
+    core.Map json_,
+  ) : this(
+        smartReplyAllowlistCovered:
+            json_['smartReplyAllowlistCovered'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (smartReplyAllowlistCovered != null)
-          'smartReplyAllowlistCovered': smartReplyAllowlistCovered!,
-      };
+    if (smartReplyAllowlistCovered != null)
+      'smartReplyAllowlistCovered': smartReplyAllowlistCovered!,
+  };
 }
 
 /// Word-level info for words in a transcript.
@@ -10369,20 +10607,20 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentW
   });
 
   GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo.fromJson(
-      core.Map json_)
-      : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          endOffset: json_['endOffset'] as core.String?,
-          startOffset: json_['startOffset'] as core.String?,
-          word: json_['word'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        confidence: (json_['confidence'] as core.num?)?.toDouble(),
+        endOffset: json_['endOffset'] as core.String?,
+        startOffset: json_['startOffset'] as core.String?,
+        word: json_['word'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (endOffset != null) 'endOffset': endOffset!,
-        if (startOffset != null) 'startOffset': startOffset!,
-        if (word != null) 'word': word!,
-      };
+    if (confidence != null) 'confidence': confidence!,
+    if (endOffset != null) 'endOffset': endOffset!,
+    if (startOffset != null) 'startOffset': startOffset!,
+    if (word != null) 'word': word!,
+  };
 }
 
 /// The request to deploy an issue model.
@@ -10392,24 +10630,20 @@ class GoogleCloudContactcenterinsightsV1DeployIssueModelRequest {
   /// Required.
   core.String? name;
 
-  GoogleCloudContactcenterinsightsV1DeployIssueModelRequest({
-    this.name,
-  });
+  GoogleCloudContactcenterinsightsV1DeployIssueModelRequest({this.name});
 
   GoogleCloudContactcenterinsightsV1DeployIssueModelRequest.fromJson(
-      core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The request to deploy a QaScorecardRevision
-typedef GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest
-    = $Empty;
+typedef GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest =
+    $Empty;
 
 /// The data for a Dialogflow intent.
 ///
@@ -10418,18 +10652,14 @@ class GoogleCloudContactcenterinsightsV1DialogflowIntent {
   /// The human-readable name of the intent.
   core.String? displayName;
 
-  GoogleCloudContactcenterinsightsV1DialogflowIntent({
-    this.displayName,
-  });
+  GoogleCloudContactcenterinsightsV1DialogflowIntent({this.displayName});
 
   GoogleCloudContactcenterinsightsV1DialogflowIntent.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+    : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+  };
 }
 
 /// Dialogflow interaction data.
@@ -10449,17 +10679,16 @@ class GoogleCloudContactcenterinsightsV1DialogflowInteractionData {
   });
 
   GoogleCloudContactcenterinsightsV1DialogflowInteractionData.fromJson(
-      core.Map json_)
-      : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          dialogflowIntentId: json_['dialogflowIntentId'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        confidence: (json_['confidence'] as core.num?)?.toDouble(),
+        dialogflowIntentId: json_['dialogflowIntentId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (dialogflowIntentId != null)
-          'dialogflowIntentId': dialogflowIntentId!,
-      };
+    if (confidence != null) 'confidence': confidence!,
+    if (dialogflowIntentId != null) 'dialogflowIntentId': dialogflowIntentId!,
+  };
 }
 
 /// A Dialogflow source of conversation data.
@@ -10483,17 +10712,16 @@ class GoogleCloudContactcenterinsightsV1DialogflowSource {
   });
 
   GoogleCloudContactcenterinsightsV1DialogflowSource.fromJson(core.Map json_)
-      : this(
-          audioUri: json_['audioUri'] as core.String?,
-          dialogflowConversation:
-              json_['dialogflowConversation'] as core.String?,
-        );
+    : this(
+        audioUri: json_['audioUri'] as core.String?,
+        dialogflowConversation: json_['dialogflowConversation'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audioUri != null) 'audioUri': audioUri!,
-        if (dialogflowConversation != null)
-          'dialogflowConversation': dialogflowConversation!,
-      };
+    if (audioUri != null) 'audioUri': audioUri!,
+    if (dialogflowConversation != null)
+      'dialogflowConversation': dialogflowConversation!,
+  };
 }
 
 /// A dimension determines the grouping key for the query.
@@ -10505,7 +10733,7 @@ class GoogleCloudContactcenterinsightsV1Dimension {
   ///
   /// Output only.
   GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata?
-      agentDimensionMetadata;
+  agentDimensionMetadata;
 
   /// The key of the dimension.
   /// Possible string values are:
@@ -10532,19 +10760,19 @@ class GoogleCloudContactcenterinsightsV1Dimension {
   ///
   /// Output only.
   GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata?
-      issueDimensionMetadata;
+  issueDimensionMetadata;
 
   /// Metadata about the QA question-answer dimension.
   ///
   /// Output only.
   GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata?
-      qaQuestionAnswerDimensionMetadata;
+  qaQuestionAnswerDimensionMetadata;
 
   /// Metadata about the QA question dimension.
   ///
   /// Output only.
   GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata?
-      qaQuestionDimensionMetadata;
+  qaQuestionDimensionMetadata;
 
   GoogleCloudContactcenterinsightsV1Dimension({
     this.agentDimensionMetadata,
@@ -10555,44 +10783,49 @@ class GoogleCloudContactcenterinsightsV1Dimension {
   });
 
   GoogleCloudContactcenterinsightsV1Dimension.fromJson(core.Map json_)
-      : this(
-          agentDimensionMetadata: json_.containsKey('agentDimensionMetadata')
-              ? GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata
-                  .fromJson(json_['agentDimensionMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          dimensionKey: json_['dimensionKey'] as core.String?,
-          issueDimensionMetadata: json_.containsKey('issueDimensionMetadata')
-              ? GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata
-                  .fromJson(json_['issueDimensionMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          qaQuestionAnswerDimensionMetadata: json_
-                  .containsKey('qaQuestionAnswerDimensionMetadata')
-              ? GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata
-                  .fromJson(json_['qaQuestionAnswerDimensionMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          qaQuestionDimensionMetadata: json_
-                  .containsKey('qaQuestionDimensionMetadata')
-              ? GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata
-                  .fromJson(json_['qaQuestionDimensionMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        agentDimensionMetadata:
+            json_.containsKey('agentDimensionMetadata')
+                ? GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata.fromJson(
+                  json_['agentDimensionMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dimensionKey: json_['dimensionKey'] as core.String?,
+        issueDimensionMetadata:
+            json_.containsKey('issueDimensionMetadata')
+                ? GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata.fromJson(
+                  json_['issueDimensionMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        qaQuestionAnswerDimensionMetadata:
+            json_.containsKey('qaQuestionAnswerDimensionMetadata')
+                ? GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata.fromJson(
+                  json_['qaQuestionAnswerDimensionMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        qaQuestionDimensionMetadata:
+            json_.containsKey('qaQuestionDimensionMetadata')
+                ? GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata.fromJson(
+                  json_['qaQuestionDimensionMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (agentDimensionMetadata != null)
-          'agentDimensionMetadata': agentDimensionMetadata!,
-        if (dimensionKey != null) 'dimensionKey': dimensionKey!,
-        if (issueDimensionMetadata != null)
-          'issueDimensionMetadata': issueDimensionMetadata!,
-        if (qaQuestionAnswerDimensionMetadata != null)
-          'qaQuestionAnswerDimensionMetadata':
-              qaQuestionAnswerDimensionMetadata!,
-        if (qaQuestionDimensionMetadata != null)
-          'qaQuestionDimensionMetadata': qaQuestionDimensionMetadata!,
-      };
+    if (agentDimensionMetadata != null)
+      'agentDimensionMetadata': agentDimensionMetadata!,
+    if (dimensionKey != null) 'dimensionKey': dimensionKey!,
+    if (issueDimensionMetadata != null)
+      'issueDimensionMetadata': issueDimensionMetadata!,
+    if (qaQuestionAnswerDimensionMetadata != null)
+      'qaQuestionAnswerDimensionMetadata': qaQuestionAnswerDimensionMetadata!,
+    if (qaQuestionDimensionMetadata != null)
+      'qaQuestionDimensionMetadata': qaQuestionDimensionMetadata!,
+  };
 }
 
 /// Metadata about the agent dimension.
@@ -10619,18 +10852,18 @@ class GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata {
   });
 
   GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata.fromJson(
-      core.Map json_)
-      : this(
-          agentDisplayName: json_['agentDisplayName'] as core.String?,
-          agentId: json_['agentId'] as core.String?,
-          agentTeam: json_['agentTeam'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        agentDisplayName: json_['agentDisplayName'] as core.String?,
+        agentId: json_['agentId'] as core.String?,
+        agentTeam: json_['agentTeam'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (agentDisplayName != null) 'agentDisplayName': agentDisplayName!,
-        if (agentId != null) 'agentId': agentId!,
-        if (agentTeam != null) 'agentTeam': agentTeam!,
-      };
+    if (agentDisplayName != null) 'agentDisplayName': agentDisplayName!,
+    if (agentId != null) 'agentId': agentId!,
+    if (agentTeam != null) 'agentTeam': agentTeam!,
+  };
 }
 
 /// Metadata about the issue dimension.
@@ -10651,18 +10884,18 @@ class GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata {
   });
 
   GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata.fromJson(
-      core.Map json_)
-      : this(
-          issueDisplayName: json_['issueDisplayName'] as core.String?,
-          issueId: json_['issueId'] as core.String?,
-          issueModelId: json_['issueModelId'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        issueDisplayName: json_['issueDisplayName'] as core.String?,
+        issueId: json_['issueId'] as core.String?,
+        issueModelId: json_['issueModelId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issueDisplayName != null) 'issueDisplayName': issueDisplayName!,
-        if (issueId != null) 'issueId': issueId!,
-        if (issueModelId != null) 'issueModelId': issueModelId!,
-      };
+    if (issueDisplayName != null) 'issueDisplayName': issueDisplayName!,
+    if (issueId != null) 'issueId': issueId!,
+    if (issueModelId != null) 'issueModelId': issueModelId!,
+  };
 }
 
 /// Metadata about the QA question-answer dimension.
@@ -10698,20 +10931,20 @@ class GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetada
   });
 
   GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata.fromJson(
-      core.Map json_)
-      : this(
-          answerValue: json_['answerValue'] as core.String?,
-          qaQuestionId: json_['qaQuestionId'] as core.String?,
-          qaScorecardId: json_['qaScorecardId'] as core.String?,
-          questionBody: json_['questionBody'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        answerValue: json_['answerValue'] as core.String?,
+        qaQuestionId: json_['qaQuestionId'] as core.String?,
+        qaScorecardId: json_['qaScorecardId'] as core.String?,
+        questionBody: json_['questionBody'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (answerValue != null) 'answerValue': answerValue!,
-        if (qaQuestionId != null) 'qaQuestionId': qaQuestionId!,
-        if (qaScorecardId != null) 'qaScorecardId': qaScorecardId!,
-        if (questionBody != null) 'questionBody': questionBody!,
-      };
+    if (answerValue != null) 'answerValue': answerValue!,
+    if (qaQuestionId != null) 'qaQuestionId': qaQuestionId!,
+    if (qaScorecardId != null) 'qaScorecardId': qaScorecardId!,
+    if (questionBody != null) 'questionBody': questionBody!,
+  };
 }
 
 /// Metadata about the QA question dimension.
@@ -10738,18 +10971,18 @@ class GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata {
   });
 
   GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata.fromJson(
-      core.Map json_)
-      : this(
-          qaQuestionId: json_['qaQuestionId'] as core.String?,
-          qaScorecardId: json_['qaScorecardId'] as core.String?,
-          questionBody: json_['questionBody'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        qaQuestionId: json_['qaQuestionId'] as core.String?,
+        qaScorecardId: json_['qaScorecardId'] as core.String?,
+        questionBody: json_['questionBody'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (qaQuestionId != null) 'qaQuestionId': qaQuestionId!,
-        if (qaScorecardId != null) 'qaScorecardId': qaScorecardId!,
-        if (questionBody != null) 'questionBody': questionBody!,
-      };
+    if (qaQuestionId != null) 'qaQuestionId': qaQuestionId!,
+    if (qaScorecardId != null) 'qaScorecardId': qaScorecardId!,
+    if (questionBody != null) 'questionBody': questionBody!,
+  };
 }
 
 /// A customer-managed encryption key specification that can be applied to all
@@ -10773,21 +11006,18 @@ class GoogleCloudContactcenterinsightsV1EncryptionSpec {
   /// Immutable.
   core.String? name;
 
-  GoogleCloudContactcenterinsightsV1EncryptionSpec({
-    this.kmsKey,
-    this.name,
-  });
+  GoogleCloudContactcenterinsightsV1EncryptionSpec({this.kmsKey, this.name});
 
   GoogleCloudContactcenterinsightsV1EncryptionSpec.fromJson(core.Map json_)
-      : this(
-          kmsKey: json_['kmsKey'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        kmsKey: json_['kmsKey'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsKey != null) 'kmsKey': kmsKey!,
-        if (name != null) 'name': name!,
-      };
+    if (kmsKey != null) 'kmsKey': kmsKey!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The data for an entity annotation.
@@ -10856,30 +11086,27 @@ class GoogleCloudContactcenterinsightsV1Entity {
   });
 
   GoogleCloudContactcenterinsightsV1Entity.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          salience: (json_['salience'] as core.num?)?.toDouble(),
-          sentiment: json_.containsKey('sentiment')
-              ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
-                  json_['sentiment'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        salience: (json_['salience'] as core.num?)?.toDouble(),
+        sentiment:
+            json_.containsKey('sentiment')
+                ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
+                  json_['sentiment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (metadata != null) 'metadata': metadata!,
-        if (salience != null) 'salience': salience!,
-        if (sentiment != null) 'sentiment': sentiment!,
-        if (type != null) 'type': type!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (metadata != null) 'metadata': metadata!,
+    if (salience != null) 'salience': salience!,
+    if (sentiment != null) 'sentiment': sentiment!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// The data for an entity mention annotation.
@@ -10908,20 +11135,22 @@ class GoogleCloudContactcenterinsightsV1EntityMentionData {
   });
 
   GoogleCloudContactcenterinsightsV1EntityMentionData.fromJson(core.Map json_)
-      : this(
-          entityUniqueId: json_['entityUniqueId'] as core.String?,
-          sentiment: json_.containsKey('sentiment')
-              ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
-                  json_['sentiment'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        entityUniqueId: json_['entityUniqueId'] as core.String?,
+        sentiment:
+            json_.containsKey('sentiment')
+                ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
+                  json_['sentiment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entityUniqueId != null) 'entityUniqueId': entityUniqueId!,
-        if (sentiment != null) 'sentiment': sentiment!,
-        if (type != null) 'type': type!,
-      };
+    if (entityUniqueId != null) 'entityUniqueId': entityUniqueId!,
+    if (sentiment != null) 'sentiment': sentiment!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Exact match configuration.
@@ -10929,25 +11158,21 @@ class GoogleCloudContactcenterinsightsV1ExactMatchConfig {
   /// Whether to consider case sensitivity when performing an exact match.
   core.bool? caseSensitive;
 
-  GoogleCloudContactcenterinsightsV1ExactMatchConfig({
-    this.caseSensitive,
-  });
+  GoogleCloudContactcenterinsightsV1ExactMatchConfig({this.caseSensitive});
 
   GoogleCloudContactcenterinsightsV1ExactMatchConfig.fromJson(core.Map json_)
-      : this(
-          caseSensitive: json_['caseSensitive'] as core.bool?,
-        );
+    : this(caseSensitive: json_['caseSensitive'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
-      };
+    if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+  };
 }
 
 /// The request to export insights.
 class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
   /// Specified if sink is a BigQuery table.
   GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination?
-      bigQueryDestination;
+  bigQueryDestination;
 
   /// Version of the export schema.
   ///
@@ -11002,30 +11227,32 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
   });
 
   GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest.fromJson(
-      core.Map json_)
-      : this(
-          bigQueryDestination: json_.containsKey('bigQueryDestination')
-              ? GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination
-                  .fromJson(json_['bigQueryDestination']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          exportSchemaVersion: json_['exportSchemaVersion'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          kmsKey: json_['kmsKey'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          writeDisposition: json_['writeDisposition'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        bigQueryDestination:
+            json_.containsKey('bigQueryDestination')
+                ? GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination.fromJson(
+                  json_['bigQueryDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        exportSchemaVersion: json_['exportSchemaVersion'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        kmsKey: json_['kmsKey'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        writeDisposition: json_['writeDisposition'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigQueryDestination != null)
-          'bigQueryDestination': bigQueryDestination!,
-        if (exportSchemaVersion != null)
-          'exportSchemaVersion': exportSchemaVersion!,
-        if (filter != null) 'filter': filter!,
-        if (kmsKey != null) 'kmsKey': kmsKey!,
-        if (parent != null) 'parent': parent!,
-        if (writeDisposition != null) 'writeDisposition': writeDisposition!,
-      };
+    if (bigQueryDestination != null)
+      'bigQueryDestination': bigQueryDestination!,
+    if (exportSchemaVersion != null)
+      'exportSchemaVersion': exportSchemaVersion!,
+    if (filter != null) 'filter': filter!,
+    if (kmsKey != null) 'kmsKey': kmsKey!,
+    if (parent != null) 'parent': parent!,
+    if (writeDisposition != null) 'writeDisposition': writeDisposition!,
+  };
 }
 
 /// A BigQuery Table Reference.
@@ -11059,25 +11286,25 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestina
   });
 
   GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination.fromJson(
-      core.Map json_)
-      : this(
-          dataset: json_['dataset'] as core.String?,
-          projectId: json_['projectId'] as core.String?,
-          table: json_['table'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        dataset: json_['dataset'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+        table: json_['table'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataset != null) 'dataset': dataset!,
-        if (projectId != null) 'projectId': projectId!,
-        if (table != null) 'table': table!,
-      };
+    if (dataset != null) 'dataset': dataset!,
+    if (projectId != null) 'projectId': projectId!,
+    if (table != null) 'table': table!,
+  };
 }
 
 /// Request to export an issue model.
 class GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
   /// Google Cloud Storage URI to export the issue model to.
   GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination?
-      gcsDestination;
+  gcsDestination;
 
   /// The issue model to export.
   ///
@@ -11090,25 +11317,27 @@ class GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
   });
 
   GoogleCloudContactcenterinsightsV1ExportIssueModelRequest.fromJson(
-      core.Map json_)
-      : this(
-          gcsDestination: json_.containsKey('gcsDestination')
-              ? GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
-                  .fromJson(json_['gcsDestination']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        gcsDestination:
+            json_.containsKey('gcsDestination')
+                ? GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination.fromJson(
+                  json_['gcsDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
-        if (name != null) 'name': name!,
-      };
+    if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Google Cloud Storage Object URI to save the issue model to.
-typedef GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
-    = $Shared10;
+typedef GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination =
+    $Shared10;
 
 /// Agent Assist frequently-asked-question answer data.
 class GoogleCloudContactcenterinsightsV1FaqAnswerData {
@@ -11149,29 +11378,24 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerData {
   });
 
   GoogleCloudContactcenterinsightsV1FaqAnswerData.fromJson(core.Map json_)
-      : this(
-          answer: json_['answer'] as core.String?,
-          confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          queryRecord: json_['queryRecord'] as core.String?,
-          question: json_['question'] as core.String?,
-          source: json_['source'] as core.String?,
-        );
+    : this(
+        answer: json_['answer'] as core.String?,
+        confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        queryRecord: json_['queryRecord'] as core.String?,
+        question: json_['question'] as core.String?,
+        source: json_['source'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (answer != null) 'answer': answer!,
-        if (confidenceScore != null) 'confidenceScore': confidenceScore!,
-        if (metadata != null) 'metadata': metadata!,
-        if (queryRecord != null) 'queryRecord': queryRecord!,
-        if (question != null) 'question': question!,
-        if (source != null) 'source': source!,
-      };
+    if (answer != null) 'answer': answer!,
+    if (confidenceScore != null) 'confidenceScore': confidenceScore!,
+    if (metadata != null) 'metadata': metadata!,
+    if (queryRecord != null) 'queryRecord': queryRecord!,
+    if (question != null) 'question': question!,
+    if (source != null) 'source': source!,
+  };
 }
 
 /// Represents a conversation, resource, and label provided by the user.
@@ -11222,26 +11446,28 @@ class GoogleCloudContactcenterinsightsV1FeedbackLabel {
   });
 
   GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          label: json_['label'] as core.String?,
-          labeledResource: json_['labeledResource'] as core.String?,
-          name: json_['name'] as core.String?,
-          qaAnswerLabel: json_.containsKey('qaAnswerLabel')
-              ? GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(
-                  json_['qaAnswerLabel'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        label: json_['label'] as core.String?,
+        labeledResource: json_['labeledResource'] as core.String?,
+        name: json_['name'] as core.String?,
+        qaAnswerLabel:
+            json_.containsKey('qaAnswerLabel')
+                ? GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(
+                  json_['qaAnswerLabel'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (label != null) 'label': label!,
-        if (labeledResource != null) 'labeledResource': labeledResource!,
-        if (name != null) 'name': name!,
-        if (qaAnswerLabel != null) 'qaAnswerLabel': qaAnswerLabel!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (label != null) 'label': label!,
+    if (labeledResource != null) 'labeledResource': labeledResource!,
+    if (name != null) 'name': name!,
+    if (qaAnswerLabel != null) 'qaAnswerLabel': qaAnswerLabel!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The message to finalize an assessment.
@@ -11267,15 +11493,15 @@ class GoogleCloudContactcenterinsightsV1GcsSource {
   });
 
   GoogleCloudContactcenterinsightsV1GcsSource.fromJson(core.Map json_)
-      : this(
-          audioUri: json_['audioUri'] as core.String?,
-          transcriptUri: json_['transcriptUri'] as core.String?,
-        );
+    : this(
+        audioUri: json_['audioUri'] as core.String?,
+        transcriptUri: json_['transcriptUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audioUri != null) 'audioUri': audioUri!,
-        if (transcriptUri != null) 'transcriptUri': transcriptUri!,
-      };
+    if (audioUri != null) 'audioUri': audioUri!,
+    if (transcriptUri != null) 'transcriptUri': transcriptUri!,
+  };
 }
 
 /// The data for a hold annotation.
@@ -11306,40 +11532,41 @@ class GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
   });
 
   GoogleCloudContactcenterinsightsV1ImportIssueModelRequest.fromJson(
-      core.Map json_)
-      : this(
-          createNewModel: json_['createNewModel'] as core.bool?,
-          gcsSource: json_.containsKey('gcsSource')
-              ? GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
-                  .fromJson(
-                      json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          parent: json_['parent'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        createNewModel: json_['createNewModel'] as core.bool?,
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        parent: json_['parent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createNewModel != null) 'createNewModel': createNewModel!,
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-        if (parent != null) 'parent': parent!,
-      };
+    if (createNewModel != null) 'createNewModel': createNewModel!,
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+    if (parent != null) 'parent': parent!,
+  };
 }
 
 /// Google Cloud Storage Object URI to get the issue model file from.
-typedef GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
-    = $Shared10;
+typedef GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource =
+    $Shared10;
 
 /// The request to ingest conversations.
 class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
   /// Configuration that applies to all conversations.
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig?
-      conversationConfig;
+  conversationConfig;
 
   /// A cloud storage bucket source.
   ///
   /// Note that any previously ingested objects from the source will be skipped
   /// to avoid duplication.
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource?
-      gcsSource;
+  gcsSource;
 
   /// The parent resource for new conversations.
   ///
@@ -11372,7 +11599,7 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
 
   /// Configuration for when `source` contains conversation transcripts.
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig?
-      transcriptObjectConfig;
+  transcriptObjectConfig;
 
   GoogleCloudContactcenterinsightsV1IngestConversationsRequest({
     this.conversationConfig,
@@ -11385,47 +11612,55 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
   });
 
   GoogleCloudContactcenterinsightsV1IngestConversationsRequest.fromJson(
-      core.Map json_)
-      : this(
-          conversationConfig: json_.containsKey('conversationConfig')
-              ? GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig
-                  .fromJson(json_['conversationConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          gcsSource: json_.containsKey('gcsSource')
-              ? GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource
-                  .fromJson(
-                      json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          parent: json_['parent'] as core.String?,
-          redactionConfig: json_.containsKey('redactionConfig')
-              ? GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        conversationConfig:
+            json_.containsKey('conversationConfig')
+                ? GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig.fromJson(
+                  json_['conversationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        parent: json_['parent'] as core.String?,
+        redactionConfig:
+            json_.containsKey('redactionConfig')
+                ? GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
                   json_['redactionConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          sampleSize: json_['sampleSize'] as core.int?,
-          speechConfig: json_.containsKey('speechConfig')
-              ? GoogleCloudContactcenterinsightsV1SpeechConfig.fromJson(
-                  json_['speechConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          transcriptObjectConfig: json_.containsKey('transcriptObjectConfig')
-              ? GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig
-                  .fromJson(json_['transcriptObjectConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sampleSize: json_['sampleSize'] as core.int?,
+        speechConfig:
+            json_.containsKey('speechConfig')
+                ? GoogleCloudContactcenterinsightsV1SpeechConfig.fromJson(
+                  json_['speechConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        transcriptObjectConfig:
+            json_.containsKey('transcriptObjectConfig')
+                ? GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig.fromJson(
+                  json_['transcriptObjectConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversationConfig != null)
-          'conversationConfig': conversationConfig!,
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-        if (parent != null) 'parent': parent!,
-        if (redactionConfig != null) 'redactionConfig': redactionConfig!,
-        if (sampleSize != null) 'sampleSize': sampleSize!,
-        if (speechConfig != null) 'speechConfig': speechConfig!,
-        if (transcriptObjectConfig != null)
-          'transcriptObjectConfig': transcriptObjectConfig!,
-      };
+    if (conversationConfig != null) 'conversationConfig': conversationConfig!,
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+    if (parent != null) 'parent': parent!,
+    if (redactionConfig != null) 'redactionConfig': redactionConfig!,
+    if (sampleSize != null) 'sampleSize': sampleSize!,
+    if (speechConfig != null) 'speechConfig': speechConfig!,
+    if (transcriptObjectConfig != null)
+      'transcriptObjectConfig': transcriptObjectConfig!,
+  };
 }
 
 /// Configuration that applies to all conversations.
@@ -11462,18 +11697,18 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationCo
   });
 
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig.fromJson(
-      core.Map json_)
-      : this(
-          agentChannel: json_['agentChannel'] as core.int?,
-          agentId: json_['agentId'] as core.String?,
-          customerChannel: json_['customerChannel'] as core.int?,
-        );
+    core.Map json_,
+  ) : this(
+        agentChannel: json_['agentChannel'] as core.int?,
+        agentId: json_['agentId'] as core.String?,
+        customerChannel: json_['customerChannel'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (agentChannel != null) 'agentChannel': agentChannel!,
-        if (agentId != null) 'agentId': agentId!,
-        if (customerChannel != null) 'customerChannel': customerChannel!,
-      };
+    if (agentChannel != null) 'agentChannel': agentChannel!,
+    if (agentId != null) 'agentId': agentId!,
+    if (customerChannel != null) 'customerChannel': customerChannel!,
+  };
 }
 
 /// Configuration for Cloud Storage bucket sources.
@@ -11554,28 +11789,28 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource {
   });
 
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource.fromJson(
-      core.Map json_)
-      : this(
-          audioBucketUri: json_['audioBucketUri'] as core.String?,
-          bucketObjectType: json_['bucketObjectType'] as core.String?,
-          bucketUri: json_['bucketUri'] as core.String?,
-          customMetadataKeys: (json_['customMetadataKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          metadataBucketUri: json_['metadataBucketUri'] as core.String?,
-          transcriptBucketUri: json_['transcriptBucketUri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        audioBucketUri: json_['audioBucketUri'] as core.String?,
+        bucketObjectType: json_['bucketObjectType'] as core.String?,
+        bucketUri: json_['bucketUri'] as core.String?,
+        customMetadataKeys:
+            (json_['customMetadataKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        metadataBucketUri: json_['metadataBucketUri'] as core.String?,
+        transcriptBucketUri: json_['transcriptBucketUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audioBucketUri != null) 'audioBucketUri': audioBucketUri!,
-        if (bucketObjectType != null) 'bucketObjectType': bucketObjectType!,
-        if (bucketUri != null) 'bucketUri': bucketUri!,
-        if (customMetadataKeys != null)
-          'customMetadataKeys': customMetadataKeys!,
-        if (metadataBucketUri != null) 'metadataBucketUri': metadataBucketUri!,
-        if (transcriptBucketUri != null)
-          'transcriptBucketUri': transcriptBucketUri!,
-      };
+    if (audioBucketUri != null) 'audioBucketUri': audioBucketUri!,
+    if (bucketObjectType != null) 'bucketObjectType': bucketObjectType!,
+    if (bucketUri != null) 'bucketUri': bucketUri!,
+    if (customMetadataKeys != null) 'customMetadataKeys': customMetadataKeys!,
+    if (metadataBucketUri != null) 'metadataBucketUri': metadataBucketUri!,
+    if (transcriptBucketUri != null)
+      'transcriptBucketUri': transcriptBucketUri!,
+  };
 }
 
 /// Configuration for processing transcript objects.
@@ -11596,14 +11831,12 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObje
   });
 
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig.fromJson(
-      core.Map json_)
-      : this(
-          medium: json_['medium'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(medium: json_['medium'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (medium != null) 'medium': medium!,
-      };
+    if (medium != null) 'medium': medium!,
+  };
 }
 
 /// The request to initialize a location-level encryption specification.
@@ -11623,18 +11856,20 @@ class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest {
   });
 
   GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest.fromJson(
-      core.Map json_)
-      : this(
-          encryptionSpec: json_.containsKey('encryptionSpec')
-              ? GoogleCloudContactcenterinsightsV1EncryptionSpec.fromJson(
+    core.Map json_,
+  ) : this(
+        encryptionSpec:
+            json_.containsKey('encryptionSpec')
+                ? GoogleCloudContactcenterinsightsV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encryptionSpec != null) 'encryptionSpec': encryptionSpec!,
-      };
+    if (encryptionSpec != null) 'encryptionSpec': encryptionSpec!,
+  };
 }
 
 /// The data for an intent.
@@ -11647,21 +11882,18 @@ class GoogleCloudContactcenterinsightsV1Intent {
   /// The unique identifier of the intent.
   core.String? id;
 
-  GoogleCloudContactcenterinsightsV1Intent({
-    this.displayName,
-    this.id,
-  });
+  GoogleCloudContactcenterinsightsV1Intent({this.displayName, this.id});
 
   GoogleCloudContactcenterinsightsV1Intent.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          id: json_['id'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (id != null) 'id': id!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (id != null) 'id': id!,
+  };
 }
 
 /// The data for an intent match.
@@ -11675,18 +11907,14 @@ class GoogleCloudContactcenterinsightsV1IntentMatchData {
   /// Can be used to retrieve the corresponding intent information.
   core.String? intentUniqueId;
 
-  GoogleCloudContactcenterinsightsV1IntentMatchData({
-    this.intentUniqueId,
-  });
+  GoogleCloudContactcenterinsightsV1IntentMatchData({this.intentUniqueId});
 
   GoogleCloudContactcenterinsightsV1IntentMatchData.fromJson(core.Map json_)
-      : this(
-          intentUniqueId: json_['intentUniqueId'] as core.String?,
-        );
+    : this(intentUniqueId: json_['intentUniqueId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (intentUniqueId != null) 'intentUniqueId': intentUniqueId!,
-      };
+    if (intentUniqueId != null) 'intentUniqueId': intentUniqueId!,
+  };
 }
 
 /// The data for an interruption annotation.
@@ -11734,26 +11962,26 @@ class GoogleCloudContactcenterinsightsV1Issue {
   });
 
   GoogleCloudContactcenterinsightsV1Issue.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayDescription: json_['displayDescription'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          sampleUtterances: (json_['sampleUtterances'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayDescription: json_['displayDescription'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        sampleUtterances:
+            (json_['sampleUtterances'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayDescription != null)
-          'displayDescription': displayDescription!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (sampleUtterances != null) 'sampleUtterances': sampleUtterances!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayDescription != null) 'displayDescription': displayDescription!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (sampleUtterances != null) 'sampleUtterances': sampleUtterances!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Information about the issue.
@@ -11780,17 +12008,17 @@ class GoogleCloudContactcenterinsightsV1IssueAssignment {
   });
 
   GoogleCloudContactcenterinsightsV1IssueAssignment.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          issue: json_['issue'] as core.String?,
-          score: (json_['score'] as core.num?)?.toDouble(),
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        issue: json_['issue'] as core.String?,
+        score: (json_['score'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (issue != null) 'issue': issue!,
-        if (score != null) 'score': score!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (issue != null) 'issue': issue!,
+    if (score != null) 'score': score!,
+  };
 }
 
 /// The data for an issue match annotation.
@@ -11798,22 +12026,22 @@ class GoogleCloudContactcenterinsightsV1IssueMatchData {
   /// Information about the issue's assignment.
   GoogleCloudContactcenterinsightsV1IssueAssignment? issueAssignment;
 
-  GoogleCloudContactcenterinsightsV1IssueMatchData({
-    this.issueAssignment,
-  });
+  GoogleCloudContactcenterinsightsV1IssueMatchData({this.issueAssignment});
 
   GoogleCloudContactcenterinsightsV1IssueMatchData.fromJson(core.Map json_)
-      : this(
-          issueAssignment: json_.containsKey('issueAssignment')
-              ? GoogleCloudContactcenterinsightsV1IssueAssignment.fromJson(
+    : this(
+        issueAssignment:
+            json_.containsKey('issueAssignment')
+                ? GoogleCloudContactcenterinsightsV1IssueAssignment.fromJson(
                   json_['issueAssignment']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issueAssignment != null) 'issueAssignment': issueAssignment!,
-      };
+    if (issueAssignment != null) 'issueAssignment': issueAssignment!,
+  };
 }
 
 /// The issue model resource.
@@ -11888,38 +12116,42 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
   });
 
   GoogleCloudContactcenterinsightsV1IssueModel.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          inputDataConfig: json_.containsKey('inputDataConfig')
-              ? GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig
-                  .fromJson(json_['inputDataConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          issueCount: json_['issueCount'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          modelType: json_['modelType'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          trainingStats: json_.containsKey('trainingStats')
-              ? GoogleCloudContactcenterinsightsV1IssueModelLabelStats.fromJson(
-                  json_['trainingStats'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        inputDataConfig:
+            json_.containsKey('inputDataConfig')
+                ? GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromJson(
+                  json_['inputDataConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        issueCount: json_['issueCount'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        modelType: json_['modelType'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        trainingStats:
+            json_.containsKey('trainingStats')
+                ? GoogleCloudContactcenterinsightsV1IssueModelLabelStats.fromJson(
+                  json_['trainingStats'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (inputDataConfig != null) 'inputDataConfig': inputDataConfig!,
-        if (issueCount != null) 'issueCount': issueCount!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (modelType != null) 'modelType': modelType!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (trainingStats != null) 'trainingStats': trainingStats!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (inputDataConfig != null) 'inputDataConfig': inputDataConfig!,
+    if (issueCount != null) 'issueCount': issueCount!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (modelType != null) 'modelType': modelType!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (trainingStats != null) 'trainingStats': trainingStats!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Configs for the input data used to create the issue model.
@@ -11960,20 +12192,20 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   });
 
   GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromJson(
-      core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          medium: json_['medium'] as core.String?,
-          trainingConversationsCount:
-              json_['trainingConversationsCount'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        filter: json_['filter'] as core.String?,
+        medium: json_['medium'] as core.String?,
+        trainingConversationsCount:
+            json_['trainingConversationsCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (medium != null) 'medium': medium!,
-        if (trainingConversationsCount != null)
-          'trainingConversationsCount': trainingConversationsCount!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (medium != null) 'medium': medium!,
+    if (trainingConversationsCount != null)
+      'trainingConversationsCount': trainingConversationsCount!,
+  };
 }
 
 /// Aggregated statistics about an issue model.
@@ -11985,9 +12217,11 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
   /// Statistics on each issue.
   ///
   /// Key is the issue's resource name.
-  core.Map<core.String,
-          GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats>?
-      issueStats;
+  core.Map<
+    core.String,
+    GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
+  >?
+  issueStats;
 
   /// Number of analyzed conversations for which no issue was applicable at this
   /// point in time.
@@ -12000,30 +12234,30 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
   });
 
   GoogleCloudContactcenterinsightsV1IssueModelLabelStats.fromJson(
-      core.Map json_)
-      : this(
-          analyzedConversationsCount:
-              json_['analyzedConversationsCount'] as core.String?,
-          issueStats:
-              (json_['issueStats'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
-                  .fromJson(value as core.Map<core.String, core.dynamic>),
+    core.Map json_,
+  ) : this(
+        analyzedConversationsCount:
+            json_['analyzedConversationsCount'] as core.String?,
+        issueStats:
+            (json_['issueStats'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          unclassifiedConversationsCount:
-              json_['unclassifiedConversationsCount'] as core.String?,
-        );
+        unclassifiedConversationsCount:
+            json_['unclassifiedConversationsCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analyzedConversationsCount != null)
-          'analyzedConversationsCount': analyzedConversationsCount!,
-        if (issueStats != null) 'issueStats': issueStats!,
-        if (unclassifiedConversationsCount != null)
-          'unclassifiedConversationsCount': unclassifiedConversationsCount!,
-      };
+    if (analyzedConversationsCount != null)
+      'analyzedConversationsCount': analyzedConversationsCount!,
+    if (issueStats != null) 'issueStats': issueStats!,
+    if (unclassifiedConversationsCount != null)
+      'unclassifiedConversationsCount': unclassifiedConversationsCount!,
+  };
 }
 
 /// Aggregated statistics about an issue.
@@ -12047,20 +12281,20 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats {
   });
 
   GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats.fromJson(
-      core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          issue: json_['issue'] as core.String?,
-          labeledConversationsCount:
-              json_['labeledConversationsCount'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        displayName: json_['displayName'] as core.String?,
+        issue: json_['issue'] as core.String?,
+        labeledConversationsCount:
+            json_['labeledConversationsCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (issue != null) 'issue': issue!,
-        if (labeledConversationsCount != null)
-          'labeledConversationsCount': labeledConversationsCount!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (issue != null) 'issue': issue!,
+    if (labeledConversationsCount != null)
+      'labeledConversationsCount': labeledConversationsCount!,
+  };
 }
 
 /// Issue Modeling result on a conversation.
@@ -12079,19 +12313,23 @@ class GoogleCloudContactcenterinsightsV1IssueModelResult {
   });
 
   GoogleCloudContactcenterinsightsV1IssueModelResult.fromJson(core.Map json_)
-      : this(
-          issueModel: json_['issueModel'] as core.String?,
-          issues: (json_['issues'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1IssueAssignment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        issueModel: json_['issueModel'] as core.String?,
+        issues:
+            (json_['issues'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1IssueAssignment.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issueModel != null) 'issueModel': issueModel!,
-        if (issues != null) 'issues': issues!,
-      };
+    if (issueModel != null) 'issueModel': issueModel!,
+    if (issues != null) 'issues': issues!,
+  };
 }
 
 /// The response for listing all feedback labels.
@@ -12110,20 +12348,24 @@ class GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse.fromJson(
-      core.Map json_)
-      : this(
-          feedbackLabels: (json_['feedbackLabels'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        feedbackLabels:
+            (json_['feedbackLabels'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (feedbackLabels != null) 'feedbackLabels': feedbackLabels!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (feedbackLabels != null) 'feedbackLabels': feedbackLabels!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response to list analyses.
@@ -12142,20 +12384,24 @@ class GoogleCloudContactcenterinsightsV1ListAnalysesResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListAnalysesResponse.fromJson(
-      core.Map json_)
-      : this(
-          analyses: (json_['analyses'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1Analysis.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        analyses:
+            (json_['analyses'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1Analysis.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analyses != null) 'analyses': analyses!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (analyses != null) 'analyses': analyses!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response of listing views.
@@ -12174,20 +12420,24 @@ class GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse.fromJson(
-      core.Map json_)
-      : this(
-          analysisRules: (json_['analysisRules'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        analysisRules:
+            (json_['analysisRules'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisRules != null) 'analysisRules': analysisRules!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (analysisRules != null) 'analysisRules': analysisRules!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response of listing assessment rules.
@@ -12206,20 +12456,24 @@ class GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse.fromJson(
-      core.Map json_)
-      : this(
-          assessmentRules: (json_['assessmentRules'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1AssessmentRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        assessmentRules:
+            (json_['assessmentRules'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1AssessmentRule.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assessmentRules != null) 'assessmentRules': assessmentRules!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (assessmentRules != null) 'assessmentRules': assessmentRules!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response of listing assessments.
@@ -12238,27 +12492,31 @@ class GoogleCloudContactcenterinsightsV1ListAssessmentsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListAssessmentsResponse.fromJson(
-      core.Map json_)
-      : this(
-          assessments: (json_['assessments'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1Assessment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        assessments:
+            (json_['assessments'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1Assessment.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assessments != null) 'assessments': assessments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (assessments != null) 'assessments': assessments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response from a ListAuthorizedViewSet request.
 class GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse {
   /// The AuthorizedViewSets under the parent.
   core.List<GoogleCloudContactcenterinsightsV1AuthorizedViewSet>?
-      authorizedViewSets;
+  authorizedViewSets;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -12271,21 +12529,24 @@ class GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse.fromJson(
-      core.Map json_)
-      : this(
-          authorizedViewSets: (json_['authorizedViewSets'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1AuthorizedViewSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        authorizedViewSets:
+            (json_['authorizedViewSets'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1AuthorizedViewSet.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizedViewSets != null)
-          'authorizedViewSets': authorizedViewSets!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (authorizedViewSets != null) 'authorizedViewSets': authorizedViewSets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response from a ListAuthorizedViews request.
@@ -12304,20 +12565,24 @@ class GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse.fromJson(
-      core.Map json_)
-      : this(
-          authorizedViews: (json_['authorizedViews'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        authorizedViews:
+            (json_['authorizedViews'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizedViews != null) 'authorizedViews': authorizedViews!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (authorizedViews != null) 'authorizedViews': authorizedViews!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response of listing conversations.
@@ -12337,20 +12602,24 @@ class GoogleCloudContactcenterinsightsV1ListConversationsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListConversationsResponse.fromJson(
-      core.Map json_)
-      : this(
-          conversations: (json_['conversations'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1Conversation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        conversations:
+            (json_['conversations'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1Conversation.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversations != null) 'conversations': conversations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (conversations != null) 'conversations': conversations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for listing feedback labels.
@@ -12367,20 +12636,24 @@ class GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse.fromJson(
-      core.Map json_)
-      : this(
-          feedbackLabels: (json_['feedbackLabels'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        feedbackLabels:
+            (json_['feedbackLabels'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (feedbackLabels != null) 'feedbackLabels': feedbackLabels!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (feedbackLabels != null) 'feedbackLabels': feedbackLabels!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response of listing issue models.
@@ -12388,23 +12661,25 @@ class GoogleCloudContactcenterinsightsV1ListIssueModelsResponse {
   /// The issue models that match the request.
   core.List<GoogleCloudContactcenterinsightsV1IssueModel>? issueModels;
 
-  GoogleCloudContactcenterinsightsV1ListIssueModelsResponse({
-    this.issueModels,
-  });
+  GoogleCloudContactcenterinsightsV1ListIssueModelsResponse({this.issueModels});
 
   GoogleCloudContactcenterinsightsV1ListIssueModelsResponse.fromJson(
-      core.Map json_)
-      : this(
-          issueModels: (json_['issueModels'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1IssueModel.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        issueModels:
+            (json_['issueModels'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1IssueModel.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issueModels != null) 'issueModels': issueModels!,
-      };
+    if (issueModels != null) 'issueModels': issueModels!,
+  };
 }
 
 /// The response of listing issues.
@@ -12412,21 +12687,23 @@ class GoogleCloudContactcenterinsightsV1ListIssuesResponse {
   /// The issues that match the request.
   core.List<GoogleCloudContactcenterinsightsV1Issue>? issues;
 
-  GoogleCloudContactcenterinsightsV1ListIssuesResponse({
-    this.issues,
-  });
+  GoogleCloudContactcenterinsightsV1ListIssuesResponse({this.issues});
 
   GoogleCloudContactcenterinsightsV1ListIssuesResponse.fromJson(core.Map json_)
-      : this(
-          issues: (json_['issues'] as core.List?)
-              ?.map((value) => GoogleCloudContactcenterinsightsV1Issue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        issues:
+            (json_['issues'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudContactcenterinsightsV1Issue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issues != null) 'issues': issues!,
-      };
+    if (issues != null) 'issues': issues!,
+  };
 }
 
 /// The response of listing notes.
@@ -12445,18 +12722,22 @@ class GoogleCloudContactcenterinsightsV1ListNotesResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListNotesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          notes: (json_['notes'] as core.List?)
-              ?.map((value) => GoogleCloudContactcenterinsightsV1Note.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        notes:
+            (json_['notes'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudContactcenterinsightsV1Note.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (notes != null) 'notes': notes!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (notes != null) 'notes': notes!,
+  };
 }
 
 /// The response of listing phrase matchers.
@@ -12475,20 +12756,24 @@ class GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse.fromJson(
-      core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          phraseMatchers: (json_['phraseMatchers'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        phraseMatchers:
+            (json_['phraseMatchers'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
+  };
 }
 
 /// The response from a ListQaQuestionTags request.
@@ -12507,20 +12792,24 @@ class GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse.fromJson(
-      core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          qaQuestionTags: (json_['qaQuestionTags'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1QaQuestionTag.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        qaQuestionTags:
+            (json_['qaQuestionTags'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1QaQuestionTag.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (qaQuestionTags != null) 'qaQuestionTags': qaQuestionTags!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (qaQuestionTags != null) 'qaQuestionTags': qaQuestionTags!,
+  };
 }
 
 /// The response from a ListQaQuestions request.
@@ -12539,20 +12828,24 @@ class GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse.fromJson(
-      core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          qaQuestions: (json_['qaQuestions'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        qaQuestions:
+            (json_['qaQuestions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (qaQuestions != null) 'qaQuestions': qaQuestions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (qaQuestions != null) 'qaQuestions': qaQuestions!,
+  };
 }
 
 /// The response from a ListQaScorecardRevisions request.
@@ -12564,7 +12857,7 @@ class GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse {
 
   /// The QaScorecards under the parent.
   core.List<GoogleCloudContactcenterinsightsV1QaScorecardRevision>?
-      qaScorecardRevisions;
+  qaScorecardRevisions;
 
   GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse({
     this.nextPageToken,
@@ -12572,21 +12865,25 @@ class GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse.fromJson(
-      core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          qaScorecardRevisions: (json_['qaScorecardRevisions'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1QaScorecardRevision
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        qaScorecardRevisions:
+            (json_['qaScorecardRevisions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (qaScorecardRevisions != null)
-          'qaScorecardRevisions': qaScorecardRevisions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (qaScorecardRevisions != null)
+      'qaScorecardRevisions': qaScorecardRevisions!,
+  };
 }
 
 /// The response from a ListQaScorecards request.
@@ -12605,20 +12902,24 @@ class GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse.fromJson(
-      core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          qaScorecards: (json_['qaScorecards'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        qaScorecards:
+            (json_['qaScorecards'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (qaScorecards != null) 'qaScorecards': qaScorecards!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (qaScorecards != null) 'qaScorecards': qaScorecards!,
+  };
 }
 
 /// The response of listing views.
@@ -12637,18 +12938,22 @@ class GoogleCloudContactcenterinsightsV1ListViewsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1ListViewsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          views: (json_['views'] as core.List?)
-              ?.map((value) => GoogleCloudContactcenterinsightsV1View.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        views:
+            (json_['views'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudContactcenterinsightsV1View.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (views != null) 'views': views!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (views != null) 'views': views!,
+  };
 }
 
 /// The conversation assessment note resource.
@@ -12661,7 +12966,7 @@ class GoogleCloudContactcenterinsightsV1Note {
 
   /// The note is associated with a conversation turn.
   GoogleCloudContactcenterinsightsV1NoteConversationTurnNote?
-      conversationTurnNote;
+  conversationTurnNote;
 
   /// The time at which the note was created.
   ///
@@ -12700,43 +13005,51 @@ class GoogleCloudContactcenterinsightsV1Note {
   });
 
   GoogleCloudContactcenterinsightsV1Note.fromJson(core.Map json_)
-      : this(
-          assessmentNote: json_.containsKey('assessmentNote')
-              ? GoogleCloudContactcenterinsightsV1NoteAssessmentNote.fromJson(
+    : this(
+        assessmentNote:
+            json_.containsKey('assessmentNote')
+                ? GoogleCloudContactcenterinsightsV1NoteAssessmentNote.fromJson(
                   json_['assessmentNote']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          content: json_['content'] as core.String?,
-          conversationTurnNote: json_.containsKey('conversationTurnNote')
-              ? GoogleCloudContactcenterinsightsV1NoteConversationTurnNote
-                  .fromJson(json_['conversationTurnNote']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          noteCreator: json_.containsKey('noteCreator')
-              ? GoogleCloudContactcenterinsightsV1UserInfo.fromJson(
-                  json_['noteCreator'] as core.Map<core.String, core.dynamic>)
-              : null,
-          qaQuestionNote: json_.containsKey('qaQuestionNote')
-              ? GoogleCloudContactcenterinsightsV1NoteQaQuestionNote.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        content: json_['content'] as core.String?,
+        conversationTurnNote:
+            json_.containsKey('conversationTurnNote')
+                ? GoogleCloudContactcenterinsightsV1NoteConversationTurnNote.fromJson(
+                  json_['conversationTurnNote']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        noteCreator:
+            json_.containsKey('noteCreator')
+                ? GoogleCloudContactcenterinsightsV1UserInfo.fromJson(
+                  json_['noteCreator'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        qaQuestionNote:
+            json_.containsKey('qaQuestionNote')
+                ? GoogleCloudContactcenterinsightsV1NoteQaQuestionNote.fromJson(
                   json_['qaQuestionNote']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assessmentNote != null) 'assessmentNote': assessmentNote!,
-        if (content != null) 'content': content!,
-        if (conversationTurnNote != null)
-          'conversationTurnNote': conversationTurnNote!,
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (noteCreator != null) 'noteCreator': noteCreator!,
-        if (qaQuestionNote != null) 'qaQuestionNote': qaQuestionNote!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (assessmentNote != null) 'assessmentNote': assessmentNote!,
+    if (content != null) 'content': content!,
+    if (conversationTurnNote != null)
+      'conversationTurnNote': conversationTurnNote!,
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (noteCreator != null) 'noteCreator': noteCreator!,
+    if (qaQuestionNote != null) 'qaQuestionNote': qaQuestionNote!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A note about the entire parent assessment.
@@ -12747,19 +13060,15 @@ class GoogleCloudContactcenterinsightsV1NoteConversationTurnNote {
   /// The conversation turn index that the note is associated with.
   core.int? turnIndex;
 
-  GoogleCloudContactcenterinsightsV1NoteConversationTurnNote({
-    this.turnIndex,
-  });
+  GoogleCloudContactcenterinsightsV1NoteConversationTurnNote({this.turnIndex});
 
   GoogleCloudContactcenterinsightsV1NoteConversationTurnNote.fromJson(
-      core.Map json_)
-      : this(
-          turnIndex: json_['turnIndex'] as core.int?,
-        );
+    core.Map json_,
+  ) : this(turnIndex: json_['turnIndex'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (turnIndex != null) 'turnIndex': turnIndex!,
-      };
+    if (turnIndex != null) 'turnIndex': turnIndex!,
+  };
 }
 
 /// A note about a QA question.
@@ -12767,18 +13076,14 @@ class GoogleCloudContactcenterinsightsV1NoteQaQuestionNote {
   /// The question resource that the note is associated with.
   core.String? qaQuestion;
 
-  GoogleCloudContactcenterinsightsV1NoteQaQuestionNote({
-    this.qaQuestion,
-  });
+  GoogleCloudContactcenterinsightsV1NoteQaQuestionNote({this.qaQuestion});
 
   GoogleCloudContactcenterinsightsV1NoteQaQuestionNote.fromJson(core.Map json_)
-      : this(
-          qaQuestion: json_['qaQuestion'] as core.String?,
-        );
+    : this(qaQuestion: json_['qaQuestion'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (qaQuestion != null) 'qaQuestion': qaQuestion!,
-      };
+    if (qaQuestion != null) 'qaQuestion': qaQuestion!,
+  };
 }
 
 /// The data for a matched phrase matcher.
@@ -12797,15 +13102,15 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchData {
   });
 
   GoogleCloudContactcenterinsightsV1PhraseMatchData.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          phraseMatcher: json_['phraseMatcher'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        phraseMatcher: json_['phraseMatcher'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (phraseMatcher != null) 'phraseMatcher': phraseMatcher!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (phraseMatcher != null) 'phraseMatcher': phraseMatcher!,
+  };
 }
 
 /// The data for a phrase match rule.
@@ -12830,21 +13135,22 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRule {
   });
 
   GoogleCloudContactcenterinsightsV1PhraseMatchRule.fromJson(core.Map json_)
-      : this(
-          config: json_.containsKey('config')
-              ? GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig
-                  .fromJson(
-                      json_['config'] as core.Map<core.String, core.dynamic>)
-              : null,
-          negated: json_['negated'] as core.bool?,
-          query: json_['query'] as core.String?,
-        );
+    : this(
+        config:
+            json_.containsKey('config')
+                ? GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        negated: json_['negated'] as core.bool?,
+        query: json_['query'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!,
-        if (negated != null) 'negated': negated!,
-        if (query != null) 'query': query!,
-      };
+    if (config != null) 'config': config!,
+    if (negated != null) 'negated': negated!,
+    if (query != null) 'query': query!,
+  };
 }
 
 /// Configuration information of a phrase match rule.
@@ -12857,25 +13163,27 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
   });
 
   GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig.fromJson(
-      core.Map json_)
-      : this(
-          exactMatchConfig: json_.containsKey('exactMatchConfig')
-              ? GoogleCloudContactcenterinsightsV1ExactMatchConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        exactMatchConfig:
+            json_.containsKey('exactMatchConfig')
+                ? GoogleCloudContactcenterinsightsV1ExactMatchConfig.fromJson(
                   json_['exactMatchConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exactMatchConfig != null) 'exactMatchConfig': exactMatchConfig!,
-      };
+    if (exactMatchConfig != null) 'exactMatchConfig': exactMatchConfig!,
+  };
 }
 
 /// A message representing a rule in the phrase matcher.
 class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
   /// A list of phrase match rules that are included in this group.
   core.List<GoogleCloudContactcenterinsightsV1PhraseMatchRule>?
-      phraseMatchRules;
+  phraseMatchRules;
 
   /// The type of this phrase match rule group.
   ///
@@ -12892,20 +13200,24 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
   });
 
   GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup.fromJson(
-      core.Map json_)
-      : this(
-          phraseMatchRules: (json_['phraseMatchRules'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1PhraseMatchRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          type: json_['type'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        phraseMatchRules:
+            (json_['phraseMatchRules'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1PhraseMatchRule.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (phraseMatchRules != null) 'phraseMatchRules': phraseMatchRules!,
-        if (type != null) 'type': type!,
-      };
+    if (phraseMatchRules != null) 'phraseMatchRules': phraseMatchRules!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// The phrase matcher resource.
@@ -12929,7 +13241,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatcher {
 
   /// A list of phase match rule groups that are included in this matcher.
   core.List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>?
-      phraseMatchRuleGroups;
+  phraseMatchRuleGroups;
 
   /// The timestamp of when the revision was created.
   ///
@@ -12995,40 +13307,43 @@ class GoogleCloudContactcenterinsightsV1PhraseMatcher {
   });
 
   GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(core.Map json_)
-      : this(
-          activationUpdateTime: json_['activationUpdateTime'] as core.String?,
-          active: json_['active'] as core.bool?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          phraseMatchRuleGroups: (json_['phraseMatchRuleGroups'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          revisionCreateTime: json_['revisionCreateTime'] as core.String?,
-          revisionId: json_['revisionId'] as core.String?,
-          roleMatch: json_['roleMatch'] as core.String?,
-          type: json_['type'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          versionTag: json_['versionTag'] as core.String?,
-        );
+    : this(
+        activationUpdateTime: json_['activationUpdateTime'] as core.String?,
+        active: json_['active'] as core.bool?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        phraseMatchRuleGroups:
+            (json_['phraseMatchRuleGroups'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        revisionCreateTime: json_['revisionCreateTime'] as core.String?,
+        revisionId: json_['revisionId'] as core.String?,
+        roleMatch: json_['roleMatch'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        versionTag: json_['versionTag'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activationUpdateTime != null)
-          'activationUpdateTime': activationUpdateTime!,
-        if (active != null) 'active': active!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (phraseMatchRuleGroups != null)
-          'phraseMatchRuleGroups': phraseMatchRuleGroups!,
-        if (revisionCreateTime != null)
-          'revisionCreateTime': revisionCreateTime!,
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (roleMatch != null) 'roleMatch': roleMatch!,
-        if (type != null) 'type': type!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (versionTag != null) 'versionTag': versionTag!,
-      };
+    if (activationUpdateTime != null)
+      'activationUpdateTime': activationUpdateTime!,
+    if (active != null) 'active': active!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (phraseMatchRuleGroups != null)
+      'phraseMatchRuleGroups': phraseMatchRuleGroups!,
+    if (revisionCreateTime != null) 'revisionCreateTime': revisionCreateTime!,
+    if (revisionId != null) 'revisionId': revisionId!,
+    if (roleMatch != null) 'roleMatch': roleMatch!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (versionTag != null) 'versionTag': versionTag!,
+  };
 }
 
 /// The message to publish an assessment.
@@ -13042,7 +13357,7 @@ typedef GoogleCloudContactcenterinsightsV1PublishAssessmentRequest = $Empty;
 class GoogleCloudContactcenterinsightsV1QaAnswer {
   /// List of all individual answers given to the question.
   core.List<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>?
-      answerSources;
+  answerSources;
 
   /// The main answer value, incorporating any manual edits if they exist.
   GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue? answerValue;
@@ -13074,32 +13389,39 @@ class GoogleCloudContactcenterinsightsV1QaAnswer {
   });
 
   GoogleCloudContactcenterinsightsV1QaAnswer.fromJson(core.Map json_)
-      : this(
-          answerSources: (json_['answerSources'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          answerValue: json_.containsKey('answerValue')
-              ? GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(
-                  json_['answerValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          conversation: json_['conversation'] as core.String?,
-          qaQuestion: json_['qaQuestion'] as core.String?,
-          questionBody: json_['questionBody'] as core.String?,
-          tags: (json_['tags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        answerSources:
+            (json_['answerSources'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        answerValue:
+            json_.containsKey('answerValue')
+                ? GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(
+                  json_['answerValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conversation: json_['conversation'] as core.String?,
+        qaQuestion: json_['qaQuestion'] as core.String?,
+        questionBody: json_['questionBody'] as core.String?,
+        tags:
+            (json_['tags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (answerSources != null) 'answerSources': answerSources!,
-        if (answerValue != null) 'answerValue': answerValue!,
-        if (conversation != null) 'conversation': conversation!,
-        if (qaQuestion != null) 'qaQuestion': qaQuestion!,
-        if (questionBody != null) 'questionBody': questionBody!,
-        if (tags != null) 'tags': tags!,
-      };
+    if (answerSources != null) 'answerSources': answerSources!,
+    if (answerValue != null) 'answerValue': answerValue!,
+    if (conversation != null) 'conversation': conversation!,
+    if (qaQuestion != null) 'qaQuestion': qaQuestion!,
+    if (questionBody != null) 'questionBody': questionBody!,
+    if (tags != null) 'tags': tags!,
+  };
 }
 
 /// A question may have multiple answers from varying sources, one of which
@@ -13124,19 +13446,21 @@ class GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource {
   });
 
   GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource.fromJson(
-      core.Map json_)
-      : this(
-          answerValue: json_.containsKey('answerValue')
-              ? GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(
-                  json_['answerValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceType: json_['sourceType'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        answerValue:
+            json_.containsKey('answerValue')
+                ? GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(
+                  json_['answerValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceType: json_['sourceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (answerValue != null) 'answerValue': answerValue!,
-        if (sourceType != null) 'sourceType': sourceType!,
-      };
+    if (answerValue != null) 'answerValue': answerValue!,
+    if (sourceType != null) 'sourceType': sourceType!,
+  };
 }
 
 /// Message for holding the value of a QaAnswer.
@@ -13191,27 +13515,27 @@ class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
   });
 
   GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(core.Map json_)
-      : this(
-          boolValue: json_['boolValue'] as core.bool?,
-          key: json_['key'] as core.String?,
-          naValue: json_['naValue'] as core.bool?,
-          normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
-          numValue: (json_['numValue'] as core.num?)?.toDouble(),
-          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
-          strValue: json_['strValue'] as core.String?,
-        );
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        key: json_['key'] as core.String?,
+        naValue: json_['naValue'] as core.bool?,
+        normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
+        numValue: (json_['numValue'] as core.num?)?.toDouble(),
+        potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
+        score: (json_['score'] as core.num?)?.toDouble(),
+        strValue: json_['strValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (key != null) 'key': key!,
-        if (naValue != null) 'naValue': naValue!,
-        if (normalizedScore != null) 'normalizedScore': normalizedScore!,
-        if (numValue != null) 'numValue': numValue!,
-        if (potentialScore != null) 'potentialScore': potentialScore!,
-        if (score != null) 'score': score!,
-        if (strValue != null) 'strValue': strValue!,
-      };
+    if (boolValue != null) 'boolValue': boolValue!,
+    if (key != null) 'key': key!,
+    if (naValue != null) 'naValue': naValue!,
+    if (normalizedScore != null) 'normalizedScore': normalizedScore!,
+    if (numValue != null) 'numValue': numValue!,
+    if (potentialScore != null) 'potentialScore': potentialScore!,
+    if (score != null) 'score': score!,
+    if (strValue != null) 'strValue': strValue!,
+  };
 }
 
 /// A single question to be scored by the Insights QA feature.
@@ -13224,7 +13548,7 @@ class GoogleCloudContactcenterinsightsV1QaQuestion {
 
   /// A list of valid answers to the question, which the LLM must choose from.
   core.List<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>?
-      answerChoices;
+  answerChoices;
 
   /// Instructions describing how to determine the answer.
   core.String? answerInstructions;
@@ -13254,7 +13578,7 @@ class GoogleCloudContactcenterinsightsV1QaQuestion {
   ///
   /// This field will only be set if the Question Type is predefined.
   GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig?
-      predefinedQuestionConfig;
+  predefinedQuestionConfig;
 
   /// Question text.
   ///
@@ -13312,57 +13636,66 @@ class GoogleCloudContactcenterinsightsV1QaQuestion {
   });
 
   GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(core.Map json_)
-      : this(
-          abbreviation: json_['abbreviation'] as core.String?,
-          answerChoices: (json_['answerChoices'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          answerInstructions: json_['answerInstructions'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          metrics: json_.containsKey('metrics')
-              ? GoogleCloudContactcenterinsightsV1QaQuestionMetrics.fromJson(
-                  json_['metrics'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          order: json_['order'] as core.int?,
-          predefinedQuestionConfig: json_
-                  .containsKey('predefinedQuestionConfig')
-              ? GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig
-                  .fromJson(json_['predefinedQuestionConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          questionBody: json_['questionBody'] as core.String?,
-          questionType: json_['questionType'] as core.String?,
-          tags: (json_['tags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          tuningMetadata: json_.containsKey('tuningMetadata')
-              ? GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata
-                  .fromJson(json_['tuningMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        abbreviation: json_['abbreviation'] as core.String?,
+        answerChoices:
+            (json_['answerChoices'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        answerInstructions: json_['answerInstructions'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        metrics:
+            json_.containsKey('metrics')
+                ? GoogleCloudContactcenterinsightsV1QaQuestionMetrics.fromJson(
+                  json_['metrics'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        order: json_['order'] as core.int?,
+        predefinedQuestionConfig:
+            json_.containsKey('predefinedQuestionConfig')
+                ? GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig.fromJson(
+                  json_['predefinedQuestionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        questionBody: json_['questionBody'] as core.String?,
+        questionType: json_['questionType'] as core.String?,
+        tags:
+            (json_['tags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        tuningMetadata:
+            json_.containsKey('tuningMetadata')
+                ? GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata.fromJson(
+                  json_['tuningMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (abbreviation != null) 'abbreviation': abbreviation!,
-        if (answerChoices != null) 'answerChoices': answerChoices!,
-        if (answerInstructions != null)
-          'answerInstructions': answerInstructions!,
-        if (createTime != null) 'createTime': createTime!,
-        if (metrics != null) 'metrics': metrics!,
-        if (name != null) 'name': name!,
-        if (order != null) 'order': order!,
-        if (predefinedQuestionConfig != null)
-          'predefinedQuestionConfig': predefinedQuestionConfig!,
-        if (questionBody != null) 'questionBody': questionBody!,
-        if (questionType != null) 'questionType': questionType!,
-        if (tags != null) 'tags': tags!,
-        if (tuningMetadata != null) 'tuningMetadata': tuningMetadata!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (abbreviation != null) 'abbreviation': abbreviation!,
+    if (answerChoices != null) 'answerChoices': answerChoices!,
+    if (answerInstructions != null) 'answerInstructions': answerInstructions!,
+    if (createTime != null) 'createTime': createTime!,
+    if (metrics != null) 'metrics': metrics!,
+    if (name != null) 'name': name!,
+    if (order != null) 'order': order!,
+    if (predefinedQuestionConfig != null)
+      'predefinedQuestionConfig': predefinedQuestionConfig!,
+    if (questionBody != null) 'questionBody': questionBody!,
+    if (questionType != null) 'questionType': questionType!,
+    if (tags != null) 'tags': tags!,
+    if (tuningMetadata != null) 'tuningMetadata': tuningMetadata!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Message representing a possible answer to the question.
@@ -13401,24 +13734,24 @@ class GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice {
   });
 
   GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice.fromJson(
-      core.Map json_)
-      : this(
-          boolValue: json_['boolValue'] as core.bool?,
-          key: json_['key'] as core.String?,
-          naValue: json_['naValue'] as core.bool?,
-          numValue: (json_['numValue'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
-          strValue: json_['strValue'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        key: json_['key'] as core.String?,
+        naValue: json_['naValue'] as core.bool?,
+        numValue: (json_['numValue'] as core.num?)?.toDouble(),
+        score: (json_['score'] as core.num?)?.toDouble(),
+        strValue: json_['strValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (key != null) 'key': key!,
-        if (naValue != null) 'naValue': naValue!,
-        if (numValue != null) 'numValue': numValue!,
-        if (score != null) 'score': score!,
-        if (strValue != null) 'strValue': strValue!,
-      };
+    if (boolValue != null) 'boolValue': boolValue!,
+    if (key != null) 'key': key!,
+    if (naValue != null) 'naValue': naValue!,
+    if (numValue != null) 'numValue': numValue!,
+    if (score != null) 'score': score!,
+    if (strValue != null) 'strValue': strValue!,
+  };
 }
 
 /// A wrapper representing metrics calculated against a test-set on a LLM that
@@ -13431,18 +13764,14 @@ class GoogleCloudContactcenterinsightsV1QaQuestionMetrics {
   /// Output only.
   core.double? accuracy;
 
-  GoogleCloudContactcenterinsightsV1QaQuestionMetrics({
-    this.accuracy,
-  });
+  GoogleCloudContactcenterinsightsV1QaQuestionMetrics({this.accuracy});
 
   GoogleCloudContactcenterinsightsV1QaQuestionMetrics.fromJson(core.Map json_)
-      : this(
-          accuracy: (json_['accuracy'] as core.num?)?.toDouble(),
-        );
+    : this(accuracy: (json_['accuracy'] as core.num?)?.toDouble());
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accuracy != null) 'accuracy': accuracy!,
-      };
+    if (accuracy != null) 'accuracy': accuracy!,
+  };
 }
 
 /// Configuration for a predefined question.
@@ -13466,14 +13795,12 @@ class GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig {
   });
 
   GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig.fromJson(
-      core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(type: json_['type'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-      };
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A tag is a resource which aims to categorize a set of questions across
@@ -13520,23 +13847,24 @@ class GoogleCloudContactcenterinsightsV1QaQuestionTag {
   });
 
   GoogleCloudContactcenterinsightsV1QaQuestionTag.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          qaQuestionIds: (json_['qaQuestionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        qaQuestionIds:
+            (json_['qaQuestionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (qaQuestionIds != null) 'qaQuestionIds': qaQuestionIds!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (qaQuestionIds != null) 'qaQuestionIds': qaQuestionIds!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Metadata about the tuning operation for the question.
@@ -13563,23 +13891,23 @@ class GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata {
   });
 
   GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata.fromJson(
-      core.Map json_)
-      : this(
-          datasetValidationWarnings:
-              (json_['datasetValidationWarnings'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          totalValidLabelCount: json_['totalValidLabelCount'] as core.String?,
-          tuningError: json_['tuningError'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        datasetValidationWarnings:
+            (json_['datasetValidationWarnings'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        totalValidLabelCount: json_['totalValidLabelCount'] as core.String?,
+        tuningError: json_['tuningError'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (datasetValidationWarnings != null)
-          'datasetValidationWarnings': datasetValidationWarnings!,
-        if (totalValidLabelCount != null)
-          'totalValidLabelCount': totalValidLabelCount!,
-        if (tuningError != null) 'tuningError': tuningError!,
-      };
+    if (datasetValidationWarnings != null)
+      'datasetValidationWarnings': datasetValidationWarnings!,
+    if (totalValidLabelCount != null)
+      'totalValidLabelCount': totalValidLabelCount!,
+    if (tuningError != null) 'tuningError': tuningError!,
+  };
 }
 
 /// A QaScorecard represents a collection of questions to be scored during
@@ -13623,23 +13951,23 @@ class GoogleCloudContactcenterinsightsV1QaScorecard {
   });
 
   GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          isDefault: json_['isDefault'] as core.bool?,
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        isDefault: json_['isDefault'] as core.bool?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (isDefault != null) 'isDefault': isDefault!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (isDefault != null) 'isDefault': isDefault!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The results of scoring a single conversation against a QaScorecard.
@@ -13682,7 +14010,7 @@ class GoogleCloudContactcenterinsightsV1QaScorecardResult {
 
   /// Collection of tags and their scores.
   core.List<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>?
-      qaTagResults;
+  qaTagResults;
 
   /// The overall numerical score of the result, incorporating any manual edits
   /// if they exist.
@@ -13690,7 +14018,7 @@ class GoogleCloudContactcenterinsightsV1QaScorecardResult {
 
   /// List of all individual score sets.
   core.List<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>?
-      scoreSources;
+  scoreSources;
 
   GoogleCloudContactcenterinsightsV1QaScorecardResult({
     this.agentId,
@@ -13707,46 +14035,58 @@ class GoogleCloudContactcenterinsightsV1QaScorecardResult {
   });
 
   GoogleCloudContactcenterinsightsV1QaScorecardResult.fromJson(core.Map json_)
-      : this(
-          agentId: json_['agentId'] as core.String?,
-          conversation: json_['conversation'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
-          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
-          qaAnswers: (json_['qaAnswers'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1QaAnswer.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          qaScorecardRevision: json_['qaScorecardRevision'] as core.String?,
-          qaTagResults: (json_['qaTagResults'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          score: (json_['score'] as core.num?)?.toDouble(),
-          scoreSources: (json_['scoreSources'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        agentId: json_['agentId'] as core.String?,
+        conversation: json_['conversation'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
+        potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
+        qaAnswers:
+            (json_['qaAnswers'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1QaAnswer.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        qaScorecardRevision: json_['qaScorecardRevision'] as core.String?,
+        qaTagResults:
+            (json_['qaTagResults'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        score: (json_['score'] as core.num?)?.toDouble(),
+        scoreSources:
+            (json_['scoreSources'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (agentId != null) 'agentId': agentId!,
-        if (conversation != null) 'conversation': conversation!,
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (normalizedScore != null) 'normalizedScore': normalizedScore!,
-        if (potentialScore != null) 'potentialScore': potentialScore!,
-        if (qaAnswers != null) 'qaAnswers': qaAnswers!,
-        if (qaScorecardRevision != null)
-          'qaScorecardRevision': qaScorecardRevision!,
-        if (qaTagResults != null) 'qaTagResults': qaTagResults!,
-        if (score != null) 'score': score!,
-        if (scoreSources != null) 'scoreSources': scoreSources!,
-      };
+    if (agentId != null) 'agentId': agentId!,
+    if (conversation != null) 'conversation': conversation!,
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (normalizedScore != null) 'normalizedScore': normalizedScore!,
+    if (potentialScore != null) 'potentialScore': potentialScore!,
+    if (qaAnswers != null) 'qaAnswers': qaAnswers!,
+    if (qaScorecardRevision != null)
+      'qaScorecardRevision': qaScorecardRevision!,
+    if (qaTagResults != null) 'qaTagResults': qaTagResults!,
+    if (score != null) 'score': score!,
+    if (scoreSources != null) 'scoreSources': scoreSources!,
+  };
 }
 
 /// Tags and their corresponding results.
@@ -13771,20 +14111,20 @@ class GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult {
   });
 
   GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult.fromJson(
-      core.Map json_)
-      : this(
-          normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
-          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
-          tag: json_['tag'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
+        potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
+        score: (json_['score'] as core.num?)?.toDouble(),
+        tag: json_['tag'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (normalizedScore != null) 'normalizedScore': normalizedScore!,
-        if (potentialScore != null) 'potentialScore': potentialScore!,
-        if (score != null) 'score': score!,
-        if (tag != null) 'tag': tag!,
-      };
+    if (normalizedScore != null) 'normalizedScore': normalizedScore!,
+    if (potentialScore != null) 'potentialScore': potentialScore!,
+    if (score != null) 'score': score!,
+    if (tag != null) 'tag': tag!,
+  };
 }
 
 /// A scorecard result may have multiple sets of scores from varying sources,
@@ -13803,7 +14143,7 @@ class GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource {
 
   /// Collection of tags and their scores.
   core.List<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>?
-      qaTagResults;
+  qaTagResults;
 
   /// The overall numerical score of the result.
   core.double? score;
@@ -13826,26 +14166,30 @@ class GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource {
   });
 
   GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource.fromJson(
-      core.Map json_)
-      : this(
-          normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
-          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
-          qaTagResults: (json_['qaTagResults'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          score: (json_['score'] as core.num?)?.toDouble(),
-          sourceType: json_['sourceType'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
+        potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
+        qaTagResults:
+            (json_['qaTagResults'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        score: (json_['score'] as core.num?)?.toDouble(),
+        sourceType: json_['sourceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (normalizedScore != null) 'normalizedScore': normalizedScore!,
-        if (potentialScore != null) 'potentialScore': potentialScore!,
-        if (qaTagResults != null) 'qaTagResults': qaTagResults!,
-        if (score != null) 'score': score!,
-        if (sourceType != null) 'sourceType': sourceType!,
-      };
+    if (normalizedScore != null) 'normalizedScore': normalizedScore!,
+    if (potentialScore != null) 'potentialScore': potentialScore!,
+    if (qaTagResults != null) 'qaTagResults': qaTagResults!,
+    if (score != null) 'score': score!,
+    if (sourceType != null) 'sourceType': sourceType!,
+  };
 }
 
 /// A revision of a QaScorecard.
@@ -13898,26 +14242,29 @@ class GoogleCloudContactcenterinsightsV1QaScorecardRevision {
   });
 
   GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(core.Map json_)
-      : this(
-          alternateIds: (json_['alternateIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          snapshot: json_.containsKey('snapshot')
-              ? GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
-                  json_['snapshot'] as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        alternateIds:
+            (json_['alternateIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        snapshot:
+            json_.containsKey('snapshot')
+                ? GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
+                  json_['snapshot'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternateIds != null) 'alternateIds': alternateIds!,
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (snapshot != null) 'snapshot': snapshot!,
-        if (state != null) 'state': state!,
-      };
+    if (alternateIds != null) 'alternateIds': alternateIds!,
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (snapshot != null) 'snapshot': snapshot!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// A time window for querying conversations.
@@ -13938,15 +14285,15 @@ class GoogleCloudContactcenterinsightsV1QueryInterval {
   });
 
   GoogleCloudContactcenterinsightsV1QueryInterval.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// The request for querying metrics.
@@ -14005,23 +14352,27 @@ class GoogleCloudContactcenterinsightsV1QueryMetricsRequest {
   });
 
   GoogleCloudContactcenterinsightsV1QueryMetricsRequest.fromJson(core.Map json_)
-      : this(
-          dimensions: (json_['dimensions'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1Dimension.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          filter: json_['filter'] as core.String?,
-          measureMask: json_['measureMask'] as core.String?,
-          timeGranularity: json_['timeGranularity'] as core.String?,
-        );
+    : this(
+        dimensions:
+            (json_['dimensions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1Dimension.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        filter: json_['filter'] as core.String?,
+        measureMask: json_['measureMask'] as core.String?,
+        timeGranularity: json_['timeGranularity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensions != null) 'dimensions': dimensions!,
-        if (filter != null) 'filter': filter!,
-        if (measureMask != null) 'measureMask': measureMask!,
-        if (timeGranularity != null) 'timeGranularity': timeGranularity!,
-      };
+    if (dimensions != null) 'dimensions': dimensions!,
+    if (filter != null) 'filter': filter!,
+    if (measureMask != null) 'measureMask': measureMask!,
+    if (timeGranularity != null) 'timeGranularity': timeGranularity!,
+  };
 }
 
 /// The request for summarizing performance according to different metrics for
@@ -14029,7 +14380,7 @@ class GoogleCloudContactcenterinsightsV1QueryMetricsRequest {
 class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest {
   /// Conversations are from a single agent.
   GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource?
-      agentPerformanceSource;
+  agentPerformanceSource;
 
   /// The time window of the conversations to compare the performance to.
   GoogleCloudContactcenterinsightsV1QueryInterval? comparisonQueryInterval;
@@ -14057,33 +14408,39 @@ class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest {
   });
 
   GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest.fromJson(
-      core.Map json_)
-      : this(
-          agentPerformanceSource: json_.containsKey('agentPerformanceSource')
-              ? GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource
-                  .fromJson(json_['agentPerformanceSource']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          comparisonQueryInterval: json_.containsKey('comparisonQueryInterval')
-              ? GoogleCloudContactcenterinsightsV1QueryInterval.fromJson(
+    core.Map json_,
+  ) : this(
+        agentPerformanceSource:
+            json_.containsKey('agentPerformanceSource')
+                ? GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource.fromJson(
+                  json_['agentPerformanceSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        comparisonQueryInterval:
+            json_.containsKey('comparisonQueryInterval')
+                ? GoogleCloudContactcenterinsightsV1QueryInterval.fromJson(
                   json_['comparisonQueryInterval']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          filter: json_['filter'] as core.String?,
-          queryInterval: json_.containsKey('queryInterval')
-              ? GoogleCloudContactcenterinsightsV1QueryInterval.fromJson(
-                  json_['queryInterval'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filter: json_['filter'] as core.String?,
+        queryInterval:
+            json_.containsKey('queryInterval')
+                ? GoogleCloudContactcenterinsightsV1QueryInterval.fromJson(
+                  json_['queryInterval'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (agentPerformanceSource != null)
-          'agentPerformanceSource': agentPerformanceSource!,
-        if (comparisonQueryInterval != null)
-          'comparisonQueryInterval': comparisonQueryInterval!,
-        if (filter != null) 'filter': filter!,
-        if (queryInterval != null) 'queryInterval': queryInterval!,
-      };
+    if (agentPerformanceSource != null)
+      'agentPerformanceSource': agentPerformanceSource!,
+    if (comparisonQueryInterval != null)
+      'comparisonQueryInterval': comparisonQueryInterval!,
+    if (filter != null) 'filter': filter!,
+    if (queryInterval != null) 'queryInterval': queryInterval!,
+  };
 }
 
 /// The entity whose performance is being queried is a single agent.
@@ -14098,14 +14455,12 @@ class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSour
   });
 
   GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource.fromJson(
-      core.Map json_)
-      : this(
-          agentId: json_['agentId'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(agentId: json_['agentId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (agentId != null) 'agentId': agentId!,
-      };
+    if (agentId != null) 'agentId': agentId!,
+  };
 }
 
 /// DLP resources used for redaction while ingesting conversations.
@@ -14135,16 +14490,15 @@ class GoogleCloudContactcenterinsightsV1RedactionConfig {
   });
 
   GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(core.Map json_)
-      : this(
-          deidentifyTemplate: json_['deidentifyTemplate'] as core.String?,
-          inspectTemplate: json_['inspectTemplate'] as core.String?,
-        );
+    : this(
+        deidentifyTemplate: json_['deidentifyTemplate'] as core.String?,
+        inspectTemplate: json_['inspectTemplate'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deidentifyTemplate != null)
-          'deidentifyTemplate': deidentifyTemplate!,
-        if (inspectTemplate != null) 'inspectTemplate': inspectTemplate!,
-      };
+    if (deidentifyTemplate != null) 'deidentifyTemplate': deidentifyTemplate!,
+    if (inspectTemplate != null) 'inspectTemplate': inspectTemplate!,
+  };
 }
 
 /// An annotation that was generated during the customer and agent interaction.
@@ -14163,14 +14517,14 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
 
   /// Conversation summarization suggestion data.
   GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData?
-      conversationSummarizationSuggestion;
+  conversationSummarizationSuggestion;
 
   /// The time at which this annotation was created.
   core.String? createTime;
 
   /// Dialogflow interaction data.
   GoogleCloudContactcenterinsightsV1DialogflowInteractionData?
-      dialogflowInteraction;
+  dialogflowInteraction;
 
   /// The boundary in the conversation where the annotation ends, inclusive.
   GoogleCloudContactcenterinsightsV1AnnotationBoundary? endBoundary;
@@ -14180,7 +14534,7 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
 
   /// Agent Assist Smart Compose suggestion data.
   GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData?
-      smartComposeSuggestion;
+  smartComposeSuggestion;
 
   /// Agent Assist Smart Reply data.
   GoogleCloudContactcenterinsightsV1SmartReplyData? smartReply;
@@ -14207,76 +14561,94 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
   });
 
   GoogleCloudContactcenterinsightsV1RuntimeAnnotation.fromJson(core.Map json_)
-      : this(
-          annotationId: json_['annotationId'] as core.String?,
-          answerFeedback: json_.containsKey('answerFeedback')
-              ? GoogleCloudContactcenterinsightsV1AnswerFeedback.fromJson(
+    : this(
+        annotationId: json_['annotationId'] as core.String?,
+        answerFeedback:
+            json_.containsKey('answerFeedback')
+                ? GoogleCloudContactcenterinsightsV1AnswerFeedback.fromJson(
                   json_['answerFeedback']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          articleSuggestion: json_.containsKey('articleSuggestion')
-              ? GoogleCloudContactcenterinsightsV1ArticleSuggestionData
-                  .fromJson(json_['articleSuggestion']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          conversationSummarizationSuggestion: json_
-                  .containsKey('conversationSummarizationSuggestion')
-              ? GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData
-                  .fromJson(json_['conversationSummarizationSuggestion']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          dialogflowInteraction: json_.containsKey('dialogflowInteraction')
-              ? GoogleCloudContactcenterinsightsV1DialogflowInteractionData
-                  .fromJson(json_['dialogflowInteraction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          endBoundary: json_.containsKey('endBoundary')
-              ? GoogleCloudContactcenterinsightsV1AnnotationBoundary.fromJson(
-                  json_['endBoundary'] as core.Map<core.String, core.dynamic>)
-              : null,
-          faqAnswer: json_.containsKey('faqAnswer')
-              ? GoogleCloudContactcenterinsightsV1FaqAnswerData.fromJson(
-                  json_['faqAnswer'] as core.Map<core.String, core.dynamic>)
-              : null,
-          smartComposeSuggestion: json_.containsKey('smartComposeSuggestion')
-              ? GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData
-                  .fromJson(json_['smartComposeSuggestion']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          smartReply: json_.containsKey('smartReply')
-              ? GoogleCloudContactcenterinsightsV1SmartReplyData.fromJson(
-                  json_['smartReply'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startBoundary: json_.containsKey('startBoundary')
-              ? GoogleCloudContactcenterinsightsV1AnnotationBoundary.fromJson(
-                  json_['startBoundary'] as core.Map<core.String, core.dynamic>)
-              : null,
-          userInput: json_.containsKey('userInput')
-              ? GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput
-                  .fromJson(
-                      json_['userInput'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        articleSuggestion:
+            json_.containsKey('articleSuggestion')
+                ? GoogleCloudContactcenterinsightsV1ArticleSuggestionData.fromJson(
+                  json_['articleSuggestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conversationSummarizationSuggestion:
+            json_.containsKey('conversationSummarizationSuggestion')
+                ? GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData.fromJson(
+                  json_['conversationSummarizationSuggestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        dialogflowInteraction:
+            json_.containsKey('dialogflowInteraction')
+                ? GoogleCloudContactcenterinsightsV1DialogflowInteractionData.fromJson(
+                  json_['dialogflowInteraction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endBoundary:
+            json_.containsKey('endBoundary')
+                ? GoogleCloudContactcenterinsightsV1AnnotationBoundary.fromJson(
+                  json_['endBoundary'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        faqAnswer:
+            json_.containsKey('faqAnswer')
+                ? GoogleCloudContactcenterinsightsV1FaqAnswerData.fromJson(
+                  json_['faqAnswer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        smartComposeSuggestion:
+            json_.containsKey('smartComposeSuggestion')
+                ? GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData.fromJson(
+                  json_['smartComposeSuggestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        smartReply:
+            json_.containsKey('smartReply')
+                ? GoogleCloudContactcenterinsightsV1SmartReplyData.fromJson(
+                  json_['smartReply'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startBoundary:
+            json_.containsKey('startBoundary')
+                ? GoogleCloudContactcenterinsightsV1AnnotationBoundary.fromJson(
+                  json_['startBoundary'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userInput:
+            json_.containsKey('userInput')
+                ? GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput.fromJson(
+                  json_['userInput'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationId != null) 'annotationId': annotationId!,
-        if (answerFeedback != null) 'answerFeedback': answerFeedback!,
-        if (articleSuggestion != null) 'articleSuggestion': articleSuggestion!,
-        if (conversationSummarizationSuggestion != null)
-          'conversationSummarizationSuggestion':
-              conversationSummarizationSuggestion!,
-        if (createTime != null) 'createTime': createTime!,
-        if (dialogflowInteraction != null)
-          'dialogflowInteraction': dialogflowInteraction!,
-        if (endBoundary != null) 'endBoundary': endBoundary!,
-        if (faqAnswer != null) 'faqAnswer': faqAnswer!,
-        if (smartComposeSuggestion != null)
-          'smartComposeSuggestion': smartComposeSuggestion!,
-        if (smartReply != null) 'smartReply': smartReply!,
-        if (startBoundary != null) 'startBoundary': startBoundary!,
-        if (userInput != null) 'userInput': userInput!,
-      };
+    if (annotationId != null) 'annotationId': annotationId!,
+    if (answerFeedback != null) 'answerFeedback': answerFeedback!,
+    if (articleSuggestion != null) 'articleSuggestion': articleSuggestion!,
+    if (conversationSummarizationSuggestion != null)
+      'conversationSummarizationSuggestion':
+          conversationSummarizationSuggestion!,
+    if (createTime != null) 'createTime': createTime!,
+    if (dialogflowInteraction != null)
+      'dialogflowInteraction': dialogflowInteraction!,
+    if (endBoundary != null) 'endBoundary': endBoundary!,
+    if (faqAnswer != null) 'faqAnswer': faqAnswer!,
+    if (smartComposeSuggestion != null)
+      'smartComposeSuggestion': smartComposeSuggestion!,
+    if (smartReply != null) 'smartReply': smartReply!,
+    if (startBoundary != null) 'startBoundary': startBoundary!,
+    if (userInput != null) 'userInput': userInput!,
+  };
 }
 
 /// Explicit input used for generating the answer
@@ -14307,18 +14679,18 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
   });
 
   GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput.fromJson(
-      core.Map json_)
-      : this(
-          generatorName: json_['generatorName'] as core.String?,
-          query: json_['query'] as core.String?,
-          querySource: json_['querySource'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        generatorName: json_['generatorName'] as core.String?,
+        query: json_['query'] as core.String?,
+        querySource: json_['querySource'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (generatorName != null) 'generatorName': generatorName!,
-        if (query != null) 'query': query!,
-        if (querySource != null) 'querySource': querySource!,
-      };
+    if (generatorName != null) 'generatorName': generatorName!,
+    if (query != null) 'query': query!,
+    if (querySource != null) 'querySource': querySource!,
+  };
 }
 
 /// Message for sampling conversations.
@@ -14353,21 +14725,19 @@ class GoogleCloudContactcenterinsightsV1SampleRule {
   });
 
   GoogleCloudContactcenterinsightsV1SampleRule.fromJson(core.Map json_)
-      : this(
-          conversationFilter: json_['conversationFilter'] as core.String?,
-          dimension: json_['dimension'] as core.String?,
-          samplePercentage:
-              (json_['samplePercentage'] as core.num?)?.toDouble(),
-          sampleRow: json_['sampleRow'] as core.String?,
-        );
+    : this(
+        conversationFilter: json_['conversationFilter'] as core.String?,
+        dimension: json_['dimension'] as core.String?,
+        samplePercentage: (json_['samplePercentage'] as core.num?)?.toDouble(),
+        sampleRow: json_['sampleRow'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversationFilter != null)
-          'conversationFilter': conversationFilter!,
-        if (dimension != null) 'dimension': dimension!,
-        if (samplePercentage != null) 'samplePercentage': samplePercentage!,
-        if (sampleRow != null) 'sampleRow': sampleRow!,
-      };
+    if (conversationFilter != null) 'conversationFilter': conversationFilter!,
+    if (dimension != null) 'dimension': dimension!,
+    if (samplePercentage != null) 'samplePercentage': samplePercentage!,
+    if (sampleRow != null) 'sampleRow': sampleRow!,
+  };
 }
 
 /// Message for schedule info.
@@ -14405,19 +14775,19 @@ class GoogleCloudContactcenterinsightsV1ScheduleInfo {
   });
 
   GoogleCloudContactcenterinsightsV1ScheduleInfo.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          schedule: json_['schedule'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          timeZone: json_['timeZone'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        schedule: json_['schedule'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        timeZone: json_['timeZone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (schedule != null) 'schedule': schedule!,
-        if (startTime != null) 'startTime': startTime!,
-        if (timeZone != null) 'timeZone': timeZone!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (schedule != null) 'schedule': schedule!,
+    if (startTime != null) 'startTime': startTime!,
+    if (timeZone != null) 'timeZone': timeZone!,
+  };
 }
 
 /// The response from a ListAuthorizedViews request.
@@ -14436,20 +14806,24 @@ class GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse {
   });
 
   GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse.fromJson(
-      core.Map json_)
-      : this(
-          authorizedViews: (json_['authorizedViews'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        authorizedViews:
+            (json_['authorizedViews'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizedViews != null) 'authorizedViews': authorizedViews!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (authorizedViews != null) 'authorizedViews': authorizedViews!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The data for a sentiment annotation.
@@ -14461,21 +14835,18 @@ class GoogleCloudContactcenterinsightsV1SentimentData {
   /// The sentiment score between -1.0 (negative) and 1.0 (positive).
   core.double? score;
 
-  GoogleCloudContactcenterinsightsV1SentimentData({
-    this.magnitude,
-    this.score,
-  });
+  GoogleCloudContactcenterinsightsV1SentimentData({this.magnitude, this.score});
 
   GoogleCloudContactcenterinsightsV1SentimentData.fromJson(core.Map json_)
-      : this(
-          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
-        );
+    : this(
+        magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
+        score: (json_['score'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
-        if (score != null) 'score': score!,
-      };
+    if (magnitude != null) 'magnitude': magnitude!,
+    if (score != null) 'score': score!,
+  };
 }
 
 /// The CCAI Insights project wide settings.
@@ -14567,48 +14938,49 @@ class GoogleCloudContactcenterinsightsV1Settings {
   });
 
   GoogleCloudContactcenterinsightsV1Settings.fromJson(core.Map json_)
-      : this(
-          analysisConfig: json_.containsKey('analysisConfig')
-              ? GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig
-                  .fromJson(json_['analysisConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          conversationTtl: json_['conversationTtl'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          name: json_['name'] as core.String?,
-          pubsubNotificationSettings: (json_['pubsubNotificationSettings']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          redactionConfig: json_.containsKey('redactionConfig')
-              ? GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
+    : this(
+        analysisConfig:
+            json_.containsKey('analysisConfig')
+                ? GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig.fromJson(
+                  json_['analysisConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conversationTtl: json_['conversationTtl'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        name: json_['name'] as core.String?,
+        pubsubNotificationSettings: (json_['pubsubNotificationSettings']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        redactionConfig:
+            json_.containsKey('redactionConfig')
+                ? GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
                   json_['redactionConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          speechConfig: json_.containsKey('speechConfig')
-              ? GoogleCloudContactcenterinsightsV1SpeechConfig.fromJson(
-                  json_['speechConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        speechConfig:
+            json_.containsKey('speechConfig')
+                ? GoogleCloudContactcenterinsightsV1SpeechConfig.fromJson(
+                  json_['speechConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisConfig != null) 'analysisConfig': analysisConfig!,
-        if (conversationTtl != null) 'conversationTtl': conversationTtl!,
-        if (createTime != null) 'createTime': createTime!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (name != null) 'name': name!,
-        if (pubsubNotificationSettings != null)
-          'pubsubNotificationSettings': pubsubNotificationSettings!,
-        if (redactionConfig != null) 'redactionConfig': redactionConfig!,
-        if (speechConfig != null) 'speechConfig': speechConfig!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (analysisConfig != null) 'analysisConfig': analysisConfig!,
+    if (conversationTtl != null) 'conversationTtl': conversationTtl!,
+    if (createTime != null) 'createTime': createTime!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (name != null) 'name': name!,
+    if (pubsubNotificationSettings != null)
+      'pubsubNotificationSettings': pubsubNotificationSettings!,
+    if (redactionConfig != null) 'redactionConfig': redactionConfig!,
+    if (speechConfig != null) 'speechConfig': speechConfig!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Default configuration when creating Analyses in Insights.
@@ -14633,30 +15005,32 @@ class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
   });
 
   GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig.fromJson(
-      core.Map json_)
-      : this(
-          annotatorSelector: json_.containsKey('annotatorSelector')
-              ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
+    core.Map json_,
+  ) : this(
+        annotatorSelector:
+            json_.containsKey('annotatorSelector')
+                ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
                   json_['annotatorSelector']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          runtimeIntegrationAnalysisPercentage:
-              (json_['runtimeIntegrationAnalysisPercentage'] as core.num?)
-                  ?.toDouble(),
-          uploadConversationAnalysisPercentage:
-              (json_['uploadConversationAnalysisPercentage'] as core.num?)
-                  ?.toDouble(),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        runtimeIntegrationAnalysisPercentage:
+            (json_['runtimeIntegrationAnalysisPercentage'] as core.num?)
+                ?.toDouble(),
+        uploadConversationAnalysisPercentage:
+            (json_['uploadConversationAnalysisPercentage'] as core.num?)
+                ?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
-        if (runtimeIntegrationAnalysisPercentage != null)
-          'runtimeIntegrationAnalysisPercentage':
-              runtimeIntegrationAnalysisPercentage!,
-        if (uploadConversationAnalysisPercentage != null)
-          'uploadConversationAnalysisPercentage':
-              uploadConversationAnalysisPercentage!,
-      };
+    if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
+    if (runtimeIntegrationAnalysisPercentage != null)
+      'runtimeIntegrationAnalysisPercentage':
+          runtimeIntegrationAnalysisPercentage!,
+    if (uploadConversationAnalysisPercentage != null)
+      'uploadConversationAnalysisPercentage':
+          uploadConversationAnalysisPercentage!,
+  };
 }
 
 /// The data for a silence annotation.
@@ -14690,26 +15064,21 @@ class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
   });
 
   GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData.fromJson(
-      core.Map json_)
-      : this(
-          confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          queryRecord: json_['queryRecord'] as core.String?,
-          suggestion: json_['suggestion'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        queryRecord: json_['queryRecord'] as core.String?,
+        suggestion: json_['suggestion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidenceScore != null) 'confidenceScore': confidenceScore!,
-        if (metadata != null) 'metadata': metadata!,
-        if (queryRecord != null) 'queryRecord': queryRecord!,
-        if (suggestion != null) 'suggestion': suggestion!,
-      };
+    if (confidenceScore != null) 'confidenceScore': confidenceScore!,
+    if (metadata != null) 'metadata': metadata!,
+    if (queryRecord != null) 'queryRecord': queryRecord!,
+    if (suggestion != null) 'suggestion': suggestion!,
+  };
 }
 
 /// Agent Assist Smart Reply data.
@@ -14740,25 +15109,20 @@ class GoogleCloudContactcenterinsightsV1SmartReplyData {
   });
 
   GoogleCloudContactcenterinsightsV1SmartReplyData.fromJson(core.Map json_)
-      : this(
-          confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          queryRecord: json_['queryRecord'] as core.String?,
-          reply: json_['reply'] as core.String?,
-        );
+    : this(
+        confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        queryRecord: json_['queryRecord'] as core.String?,
+        reply: json_['reply'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidenceScore != null) 'confidenceScore': confidenceScore!,
-        if (metadata != null) 'metadata': metadata!,
-        if (queryRecord != null) 'queryRecord': queryRecord!,
-        if (reply != null) 'reply': reply!,
-      };
+    if (confidenceScore != null) 'confidenceScore': confidenceScore!,
+    if (metadata != null) 'metadata': metadata!,
+    if (queryRecord != null) 'queryRecord': queryRecord!,
+    if (reply != null) 'reply': reply!,
+  };
 }
 
 /// Speech-to-Text configuration.
@@ -14774,18 +15138,14 @@ class GoogleCloudContactcenterinsightsV1SpeechConfig {
   /// `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
   core.String? speechRecognizer;
 
-  GoogleCloudContactcenterinsightsV1SpeechConfig({
-    this.speechRecognizer,
-  });
+  GoogleCloudContactcenterinsightsV1SpeechConfig({this.speechRecognizer});
 
   GoogleCloudContactcenterinsightsV1SpeechConfig.fromJson(core.Map json_)
-      : this(
-          speechRecognizer: json_['speechRecognizer'] as core.String?,
-        );
+    : this(speechRecognizer: json_['speechRecognizer'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (speechRecognizer != null) 'speechRecognizer': speechRecognizer!,
-      };
+    if (speechRecognizer != null) 'speechRecognizer': speechRecognizer!,
+  };
 }
 
 /// Request for TuneQaScorecardRevision endpoint.
@@ -14815,16 +15175,16 @@ class GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest {
   });
 
   GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest.fromJson(
-      core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          validateOnly: json_['validateOnly'] as core.bool?,
-        );
+    core.Map json_,
+  ) : this(
+        filter: json_['filter'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (validateOnly != null) 'validateOnly': validateOnly!,
+  };
 }
 
 /// The request to undeploy an issue model.
@@ -14834,24 +15194,20 @@ class GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
   /// Required.
   core.String? name;
 
-  GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest({
-    this.name,
-  });
+  GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest({this.name});
 
   GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest.fromJson(
-      core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The request to undeploy a QaScorecardRevision
-typedef GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest
-    = $Empty;
+typedef GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest =
+    $Empty;
 
 /// Request to upload a conversation.
 class GoogleCloudContactcenterinsightsV1UploadConversationRequest {
@@ -14898,32 +15254,38 @@ class GoogleCloudContactcenterinsightsV1UploadConversationRequest {
   });
 
   GoogleCloudContactcenterinsightsV1UploadConversationRequest.fromJson(
-      core.Map json_)
-      : this(
-          conversation: json_.containsKey('conversation')
-              ? GoogleCloudContactcenterinsightsV1Conversation.fromJson(
-                  json_['conversation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          conversationId: json_['conversationId'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          redactionConfig: json_.containsKey('redactionConfig')
-              ? GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        conversation:
+            json_.containsKey('conversation')
+                ? GoogleCloudContactcenterinsightsV1Conversation.fromJson(
+                  json_['conversation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conversationId: json_['conversationId'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        redactionConfig:
+            json_.containsKey('redactionConfig')
+                ? GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
                   json_['redactionConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          speechConfig: json_.containsKey('speechConfig')
-              ? GoogleCloudContactcenterinsightsV1SpeechConfig.fromJson(
-                  json_['speechConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        speechConfig:
+            json_.containsKey('speechConfig')
+                ? GoogleCloudContactcenterinsightsV1SpeechConfig.fromJson(
+                  json_['speechConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversation != null) 'conversation': conversation!,
-        if (conversationId != null) 'conversationId': conversationId!,
-        if (parent != null) 'parent': parent!,
-        if (redactionConfig != null) 'redactionConfig': redactionConfig!,
-        if (speechConfig != null) 'speechConfig': speechConfig!,
-      };
+    if (conversation != null) 'conversation': conversation!,
+    if (conversationId != null) 'conversationId': conversationId!,
+    if (parent != null) 'parent': parent!,
+    if (redactionConfig != null) 'redactionConfig': redactionConfig!,
+    if (speechConfig != null) 'speechConfig': speechConfig!,
+  };
 }
 
 /// Information about a user.
@@ -14931,18 +15293,14 @@ class GoogleCloudContactcenterinsightsV1UserInfo {
   /// The user's username.
   core.String? username;
 
-  GoogleCloudContactcenterinsightsV1UserInfo({
-    this.username,
-  });
+  GoogleCloudContactcenterinsightsV1UserInfo({this.username});
 
   GoogleCloudContactcenterinsightsV1UserInfo.fromJson(core.Map json_)
-      : this(
-          username: json_['username'] as core.String?,
-        );
+    : this(username: json_['username'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (username != null) 'username': username!,
-      };
+    if (username != null) 'username': username!,
+  };
 }
 
 /// The View resource.
@@ -14982,21 +15340,21 @@ class GoogleCloudContactcenterinsightsV1View {
   });
 
   GoogleCloudContactcenterinsightsV1View.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (value != null) 'value': value!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -15013,18 +15371,22 @@ class GoogleLongrunningListOperationsResponse {
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => GoogleLongrunningOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -15079,28 +15441,32 @@ class GoogleLongrunningOperation {
   });
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

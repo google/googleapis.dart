@@ -30,28 +30,26 @@ abstract class AuthorizationCodeGrantAbstractFlow implements BaseFlow {
     String redirectUri, {
     required AuthEndpoints authEndpoints,
     required String codeVerifier,
-  }) =>
-      obtainAccessCredentialsViaCodeExchange(
-        _client,
-        clientId,
-        code,
-        redirectUrl: redirectUri,
-        codeVerifier: codeVerifier,
-        authEndpoints: authEndpoints,
-      );
+  }) => obtainAccessCredentialsViaCodeExchange(
+    _client,
+    clientId,
+    code,
+    redirectUrl: redirectUri,
+    codeVerifier: codeVerifier,
+    authEndpoints: authEndpoints,
+  );
 
   Uri authenticationUri(
     String redirectUri, {
     String? state,
     required String codeVerifier,
-  }) =>
-      createAuthenticationUri(
-        authEndpoints: authEndpoints,
-        redirectUri: redirectUri,
-        clientId: clientId.identifier,
-        scopes: scopes,
-        codeVerifier: codeVerifier,
-        hostedDomain: hostedDomain,
-        state: state,
-      );
+  }) => createAuthenticationUri(
+    authEndpoints: authEndpoints,
+    redirectUri: redirectUri,
+    clientId: clientId.identifier,
+    scopes: scopes,
+    codeVerifier: codeVerifier,
+    hostedDomain: hostedDomain,
+    state: state,
+  );
 }

@@ -77,11 +77,16 @@ class GoogleAnalyticsAdminApi {
   AccountsResource get accounts => AccountsResource(_requester);
   PropertiesResource get properties => PropertiesResource(_requester);
 
-  GoogleAnalyticsAdminApi(http.Client client,
-      {core.String rootUrl = 'https://analyticsadmin.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  GoogleAnalyticsAdminApi(
+    http.Client client, {
+    core.String rootUrl = 'https://analyticsadmin.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class AccountSummariesResource {
@@ -132,7 +137,8 @@ class AccountSummariesResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaListAccountSummariesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -182,7 +188,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lookup for a single Account.
@@ -219,7 +226,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get data sharing settings on an account.
@@ -244,10 +252,7 @@ class AccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1betaDataSharingSettings>
-      getDataSharingSettings(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  getDataSharingSettings(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -260,7 +265,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaDataSharingSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns all accounts accessible by the caller.
@@ -316,7 +322,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaListAccountsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an account.
@@ -365,7 +372,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Requests a ticket for creating an account.
@@ -386,7 +394,7 @@ class AccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse>
-      provisionAccountTicket(
+  provisionAccountTicket(
     GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest request, {
     core.String? $fields,
   }) async {
@@ -404,7 +412,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a customized report of data access records.
@@ -449,7 +458,7 @@ class AccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1betaRunAccessReportResponse>
-      runAccessReport(
+  runAccessReport(
     GoogleAnalyticsAdminV1betaRunAccessReportRequest request,
     core.String entity, {
     core.String? $fields,
@@ -469,7 +478,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaRunAccessReportResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Searches through all changes to an account or its children given the
@@ -498,7 +508,7 @@ class AccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse>
-      searchChangeHistoryEvents(
+  searchChangeHistoryEvents(
     GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest request,
     core.String account, {
     core.String? $fields,
@@ -508,7 +518,8 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1beta/' +
+    final url_ =
+        'v1beta/' +
         core.Uri.encodeFull('$account') +
         ':searchChangeHistoryEvents';
 
@@ -519,7 +530,8 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -569,7 +581,7 @@ class PropertiesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse>
-      acknowledgeUserDataCollection(
+  acknowledgeUserDataCollection(
     GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest request,
     core.String property, {
     core.String? $fields,
@@ -579,7 +591,8 @@ class PropertiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1beta/' +
+    final url_ =
+        'v1beta/' +
         core.Uri.encodeFull('$property') +
         ':acknowledgeUserDataCollection';
 
@@ -589,8 +602,9 @@ class PropertiesResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a Google Analytics property with the specified location and
@@ -628,7 +642,8 @@ class PropertiesResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaProperty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks target Property as soft-deleted (ie: "trashed") and returns it.
@@ -672,7 +687,8 @@ class PropertiesResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaProperty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lookup for a single GA Property.
@@ -709,7 +725,8 @@ class PropertiesResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaProperty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the singleton data retention settings for this property.
@@ -732,10 +749,7 @@ class PropertiesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1betaDataRetentionSettings>
-      getDataRetentionSettings(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  getDataRetentionSettings(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -748,7 +762,8 @@ class PropertiesResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaDataRetentionSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns child Properties under the specified parent Account.
@@ -818,7 +833,8 @@ class PropertiesResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaListPropertiesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a property.
@@ -867,7 +883,8 @@ class PropertiesResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaProperty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a customized report of data access records.
@@ -912,7 +929,7 @@ class PropertiesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1betaRunAccessReportResponse>
-      runAccessReport(
+  runAccessReport(
     GoogleAnalyticsAdminV1betaRunAccessReportRequest request,
     core.String entity, {
     core.String? $fields,
@@ -932,7 +949,8 @@ class PropertiesResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaRunAccessReportResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the singleton data retention settings for this property.
@@ -961,7 +979,7 @@ class PropertiesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1betaDataRetentionSettings>
-      updateDataRetentionSettings(
+  updateDataRetentionSettings(
     GoogleAnalyticsAdminV1betaDataRetentionSettings request,
     core.String name, {
     core.String? updateMask,
@@ -982,7 +1000,8 @@ class PropertiesResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaDataRetentionSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -993,7 +1012,7 @@ class PropertiesConversionEventsResource {
   final commons.ApiRequester _requester;
 
   PropertiesConversionEventsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deprecated: Use `CreateKeyEvent` instead.
   ///
@@ -1040,7 +1059,8 @@ class PropertiesConversionEventsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaConversionEvent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deprecated: Use `DeleteKeyEvent` instead.
@@ -1083,7 +1103,8 @@ class PropertiesConversionEventsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deprecated: Use `GetKeyEvent` instead.
@@ -1126,7 +1147,8 @@ class PropertiesConversionEventsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaConversionEvent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deprecated: Use `ListKeyEvents` instead.
@@ -1183,7 +1205,8 @@ class PropertiesConversionEventsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaListConversionEventsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deprecated: Use `UpdateKeyEvent` instead.
@@ -1237,7 +1260,8 @@ class PropertiesConversionEventsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaConversionEvent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1245,7 +1269,7 @@ class PropertiesCustomDimensionsResource {
   final commons.ApiRequester _requester;
 
   PropertiesCustomDimensionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Archives a CustomDimension on a property.
   ///
@@ -1286,7 +1310,8 @@ class PropertiesCustomDimensionsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a CustomDimension.
@@ -1328,7 +1353,8 @@ class PropertiesCustomDimensionsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaCustomDimension.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lookup for a single CustomDimension.
@@ -1365,7 +1391,8 @@ class PropertiesCustomDimensionsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaCustomDimension.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists CustomDimensions on a property.
@@ -1415,7 +1442,8 @@ class PropertiesCustomDimensionsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaListCustomDimensionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a CustomDimension on a property.
@@ -1463,7 +1491,8 @@ class PropertiesCustomDimensionsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaCustomDimension.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1471,7 +1500,7 @@ class PropertiesCustomMetricsResource {
   final commons.ApiRequester _requester;
 
   PropertiesCustomMetricsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Archives a CustomMetric on a property.
   ///
@@ -1512,7 +1541,8 @@ class PropertiesCustomMetricsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a CustomMetric.
@@ -1553,7 +1583,8 @@ class PropertiesCustomMetricsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaCustomMetric.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lookup for a single CustomMetric.
@@ -1590,7 +1621,8 @@ class PropertiesCustomMetricsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaCustomMetric.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists CustomMetrics on a property.
@@ -1639,7 +1671,8 @@ class PropertiesCustomMetricsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaListCustomMetricsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a CustomMetric on a property.
@@ -1687,7 +1720,8 @@ class PropertiesCustomMetricsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaCustomMetric.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1695,11 +1729,11 @@ class PropertiesDataStreamsResource {
   final commons.ApiRequester _requester;
 
   PropertiesDataStreamsMeasurementProtocolSecretsResource
-      get measurementProtocolSecrets =>
-          PropertiesDataStreamsMeasurementProtocolSecretsResource(_requester);
+  get measurementProtocolSecrets =>
+      PropertiesDataStreamsMeasurementProtocolSecretsResource(_requester);
 
   PropertiesDataStreamsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a DataStream.
   ///
@@ -1739,7 +1773,8 @@ class PropertiesDataStreamsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaDataStream.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a DataStream on a property.
@@ -1776,7 +1811,8 @@ class PropertiesDataStreamsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lookup for a single DataStream.
@@ -1813,7 +1849,8 @@ class PropertiesDataStreamsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaDataStream.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists DataStreams on a property.
@@ -1862,7 +1899,8 @@ class PropertiesDataStreamsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaListDataStreamsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a DataStream on a property.
@@ -1911,7 +1949,8 @@ class PropertiesDataStreamsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaDataStream.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1919,8 +1958,8 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
   final commons.ApiRequester _requester;
 
   PropertiesDataStreamsMeasurementProtocolSecretsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a measurement protocol secret.
   ///
@@ -1952,7 +1991,8 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1beta/' +
+    final url_ =
+        'v1beta/' +
         core.Uri.encodeFull('$parent') +
         '/measurementProtocolSecrets';
 
@@ -1963,7 +2003,8 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaMeasurementProtocolSecret.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes target MeasurementProtocolSecret.
@@ -2002,7 +2043,8 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lookup for a single MeasurementProtocolSecret.
@@ -2041,7 +2083,8 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaMeasurementProtocolSecret.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns child MeasurementProtocolSecrets under the specified parent
@@ -2075,7 +2118,7 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse>
-      list(
+  list(
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
@@ -2087,7 +2130,8 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1beta/' +
+    final url_ =
+        'v1beta/' +
         core.Uri.encodeFull('$parent') +
         '/measurementProtocolSecrets';
 
@@ -2096,8 +2140,9 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a measurement protocol secret.
@@ -2146,7 +2191,8 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaMeasurementProtocolSecret.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2154,7 +2200,7 @@ class PropertiesFirebaseLinksResource {
   final commons.ApiRequester _requester;
 
   PropertiesFirebaseLinksResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a FirebaseLink.
   ///
@@ -2197,7 +2243,8 @@ class PropertiesFirebaseLinksResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaFirebaseLink.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a FirebaseLink on a property
@@ -2235,7 +2282,8 @@ class PropertiesFirebaseLinksResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists FirebaseLinks on a property.
@@ -2288,7 +2336,8 @@ class PropertiesFirebaseLinksResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaListFirebaseLinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2296,7 +2345,7 @@ class PropertiesGoogleAdsLinksResource {
   final commons.ApiRequester _requester;
 
   PropertiesGoogleAdsLinksResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a GoogleAdsLink.
   ///
@@ -2336,7 +2385,8 @@ class PropertiesGoogleAdsLinksResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaGoogleAdsLink.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a GoogleAdsLink on a property
@@ -2372,7 +2422,8 @@ class PropertiesGoogleAdsLinksResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists GoogleAdsLinks on a property.
@@ -2421,7 +2472,8 @@ class PropertiesGoogleAdsLinksResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a GoogleAdsLink on a property
@@ -2471,7 +2523,8 @@ class PropertiesGoogleAdsLinksResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaGoogleAdsLink.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2479,7 +2532,7 @@ class PropertiesKeyEventsResource {
   final commons.ApiRequester _requester;
 
   PropertiesKeyEventsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Key Event.
   ///
@@ -2520,7 +2573,8 @@ class PropertiesKeyEventsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaKeyEvent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a Key Event.
@@ -2558,7 +2612,8 @@ class PropertiesKeyEventsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieve a single Key Event.
@@ -2596,7 +2651,8 @@ class PropertiesKeyEventsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaKeyEvent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of Key Events in the specified parent property.
@@ -2648,7 +2704,8 @@ class PropertiesKeyEventsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaListKeyEventsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a Key Event.
@@ -2697,7 +2754,8 @@ class PropertiesKeyEventsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaKeyEvent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2709,27 +2767,28 @@ class GoogleAnalyticsAdminV1betaAccessBetweenFilter {
   /// Ends with this number.
   GoogleAnalyticsAdminV1betaNumericValue? toValue;
 
-  GoogleAnalyticsAdminV1betaAccessBetweenFilter({
-    this.fromValue,
-    this.toValue,
-  });
+  GoogleAnalyticsAdminV1betaAccessBetweenFilter({this.fromValue, this.toValue});
 
   GoogleAnalyticsAdminV1betaAccessBetweenFilter.fromJson(core.Map json_)
-      : this(
-          fromValue: json_.containsKey('fromValue')
-              ? GoogleAnalyticsAdminV1betaNumericValue.fromJson(
-                  json_['fromValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          toValue: json_.containsKey('toValue')
-              ? GoogleAnalyticsAdminV1betaNumericValue.fromJson(
-                  json_['toValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fromValue:
+            json_.containsKey('fromValue')
+                ? GoogleAnalyticsAdminV1betaNumericValue.fromJson(
+                  json_['fromValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        toValue:
+            json_.containsKey('toValue')
+                ? GoogleAnalyticsAdminV1betaNumericValue.fromJson(
+                  json_['toValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fromValue != null) 'fromValue': fromValue!,
-        if (toValue != null) 'toValue': toValue!,
-      };
+    if (fromValue != null) 'fromValue': fromValue!,
+    if (toValue != null) 'toValue': toValue!,
+  };
 }
 
 /// A contiguous range of days: startDate, startDate + 1, ..., endDate.
@@ -2747,8 +2806,8 @@ typedef GoogleAnalyticsAdminV1betaAccessDimension = $AccessDimension;
 /// DimensionHeaders. However, dimensions used exclusively within filters or
 /// expressions do not produce columns in a report; correspondingly, those
 /// dimensions do not produce headers.
-typedef GoogleAnalyticsAdminV1betaAccessDimensionHeader
-    = $AccessDimensionHeader;
+typedef GoogleAnalyticsAdminV1betaAccessDimensionHeader =
+    $AccessDimensionHeader;
 
 /// The value of a dimension.
 typedef GoogleAnalyticsAdminV1betaAccessDimensionValue = $AccessDimensionValue;
@@ -2779,33 +2838,41 @@ class GoogleAnalyticsAdminV1betaAccessFilter {
   });
 
   GoogleAnalyticsAdminV1betaAccessFilter.fromJson(core.Map json_)
-      : this(
-          betweenFilter: json_.containsKey('betweenFilter')
-              ? GoogleAnalyticsAdminV1betaAccessBetweenFilter.fromJson(
-                  json_['betweenFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fieldName: json_['fieldName'] as core.String?,
-          inListFilter: json_.containsKey('inListFilter')
-              ? GoogleAnalyticsAdminV1betaAccessInListFilter.fromJson(
-                  json_['inListFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          numericFilter: json_.containsKey('numericFilter')
-              ? GoogleAnalyticsAdminV1betaAccessNumericFilter.fromJson(
-                  json_['numericFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          stringFilter: json_.containsKey('stringFilter')
-              ? GoogleAnalyticsAdminV1betaAccessStringFilter.fromJson(
-                  json_['stringFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        betweenFilter:
+            json_.containsKey('betweenFilter')
+                ? GoogleAnalyticsAdminV1betaAccessBetweenFilter.fromJson(
+                  json_['betweenFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fieldName: json_['fieldName'] as core.String?,
+        inListFilter:
+            json_.containsKey('inListFilter')
+                ? GoogleAnalyticsAdminV1betaAccessInListFilter.fromJson(
+                  json_['inListFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        numericFilter:
+            json_.containsKey('numericFilter')
+                ? GoogleAnalyticsAdminV1betaAccessNumericFilter.fromJson(
+                  json_['numericFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stringFilter:
+            json_.containsKey('stringFilter')
+                ? GoogleAnalyticsAdminV1betaAccessStringFilter.fromJson(
+                  json_['stringFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (betweenFilter != null) 'betweenFilter': betweenFilter!,
-        if (fieldName != null) 'fieldName': fieldName!,
-        if (inListFilter != null) 'inListFilter': inListFilter!,
-        if (numericFilter != null) 'numericFilter': numericFilter!,
-        if (stringFilter != null) 'stringFilter': stringFilter!,
-      };
+    if (betweenFilter != null) 'betweenFilter': betweenFilter!,
+    if (fieldName != null) 'fieldName': fieldName!,
+    if (inListFilter != null) 'inListFilter': inListFilter!,
+    if (numericFilter != null) 'numericFilter': numericFilter!,
+    if (stringFilter != null) 'stringFilter': stringFilter!,
+  };
 }
 
 /// Expresses dimension or metric filters.
@@ -2836,31 +2903,39 @@ class GoogleAnalyticsAdminV1betaAccessFilterExpression {
   });
 
   GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(core.Map json_)
-      : this(
-          accessFilter: json_.containsKey('accessFilter')
-              ? GoogleAnalyticsAdminV1betaAccessFilter.fromJson(
-                  json_['accessFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          andGroup: json_.containsKey('andGroup')
-              ? GoogleAnalyticsAdminV1betaAccessFilterExpressionList.fromJson(
-                  json_['andGroup'] as core.Map<core.String, core.dynamic>)
-              : null,
-          notExpression: json_.containsKey('notExpression')
-              ? GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(
-                  json_['notExpression'] as core.Map<core.String, core.dynamic>)
-              : null,
-          orGroup: json_.containsKey('orGroup')
-              ? GoogleAnalyticsAdminV1betaAccessFilterExpressionList.fromJson(
-                  json_['orGroup'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        accessFilter:
+            json_.containsKey('accessFilter')
+                ? GoogleAnalyticsAdminV1betaAccessFilter.fromJson(
+                  json_['accessFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        andGroup:
+            json_.containsKey('andGroup')
+                ? GoogleAnalyticsAdminV1betaAccessFilterExpressionList.fromJson(
+                  json_['andGroup'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        notExpression:
+            json_.containsKey('notExpression')
+                ? GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(
+                  json_['notExpression'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        orGroup:
+            json_.containsKey('orGroup')
+                ? GoogleAnalyticsAdminV1betaAccessFilterExpressionList.fromJson(
+                  json_['orGroup'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessFilter != null) 'accessFilter': accessFilter!,
-        if (andGroup != null) 'andGroup': andGroup!,
-        if (notExpression != null) 'notExpression': notExpression!,
-        if (orGroup != null) 'orGroup': orGroup!,
-      };
+    if (accessFilter != null) 'accessFilter': accessFilter!,
+    if (andGroup != null) 'andGroup': andGroup!,
+    if (notExpression != null) 'notExpression': notExpression!,
+    if (orGroup != null) 'orGroup': orGroup!,
+  };
 }
 
 /// A list of filter expressions.
@@ -2868,22 +2943,24 @@ class GoogleAnalyticsAdminV1betaAccessFilterExpressionList {
   /// A list of filter expressions.
   core.List<GoogleAnalyticsAdminV1betaAccessFilterExpression>? expressions;
 
-  GoogleAnalyticsAdminV1betaAccessFilterExpressionList({
-    this.expressions,
-  });
+  GoogleAnalyticsAdminV1betaAccessFilterExpressionList({this.expressions});
 
   GoogleAnalyticsAdminV1betaAccessFilterExpressionList.fromJson(core.Map json_)
-      : this(
-          expressions: (json_['expressions'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        expressions:
+            (json_['expressions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expressions != null) 'expressions': expressions!,
-      };
+    if (expressions != null) 'expressions': expressions!,
+  };
 }
 
 /// The result needs to be in a list of string values.
@@ -2921,24 +2998,23 @@ class GoogleAnalyticsAdminV1betaAccessNumericFilter {
   /// A numeric value or a date value.
   GoogleAnalyticsAdminV1betaNumericValue? value;
 
-  GoogleAnalyticsAdminV1betaAccessNumericFilter({
-    this.operation,
-    this.value,
-  });
+  GoogleAnalyticsAdminV1betaAccessNumericFilter({this.operation, this.value});
 
   GoogleAnalyticsAdminV1betaAccessNumericFilter.fromJson(core.Map json_)
-      : this(
-          operation: json_['operation'] as core.String?,
-          value: json_.containsKey('value')
-              ? GoogleAnalyticsAdminV1betaNumericValue.fromJson(
-                  json_['value'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        operation: json_['operation'] as core.String?,
+        value:
+            json_.containsKey('value')
+                ? GoogleAnalyticsAdminV1betaNumericValue.fromJson(
+                  json_['value'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!,
-        if (value != null) 'value': value!,
-      };
+    if (operation != null) 'operation': operation!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Order bys define how rows will be sorted in the response.
@@ -2964,29 +3040,32 @@ class GoogleAnalyticsAdminV1betaAccessOrderBy {
   });
 
   GoogleAnalyticsAdminV1betaAccessOrderBy.fromJson(core.Map json_)
-      : this(
-          desc: json_['desc'] as core.bool?,
-          dimension: json_.containsKey('dimension')
-              ? GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy
-                  .fromJson(
-                      json_['dimension'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metric: json_.containsKey('metric')
-              ? GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy.fromJson(
-                  json_['metric'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        desc: json_['desc'] as core.bool?,
+        dimension:
+            json_.containsKey('dimension')
+                ? GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy.fromJson(
+                  json_['dimension'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metric:
+            json_.containsKey('metric')
+                ? GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy.fromJson(
+                  json_['metric'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (desc != null) 'desc': desc!,
-        if (dimension != null) 'dimension': dimension!,
-        if (metric != null) 'metric': metric!,
-      };
+    if (desc != null) 'desc': desc!,
+    if (dimension != null) 'dimension': dimension!,
+    if (metric != null) 'metric': metric!,
+  };
 }
 
 /// Sorts by dimension values.
-typedef GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy
-    = $DimensionOrderBy;
+typedef GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy =
+    $DimensionOrderBy;
 
 /// Sorts by metric values.
 typedef GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy = $MetricOrderBy;
@@ -3031,43 +3110,51 @@ class GoogleAnalyticsAdminV1betaAccessQuota {
   });
 
   GoogleAnalyticsAdminV1betaAccessQuota.fromJson(core.Map json_)
-      : this(
-          concurrentRequests: json_.containsKey('concurrentRequests')
-              ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
+    : this(
+        concurrentRequests:
+            json_.containsKey('concurrentRequests')
+                ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
                   json_['concurrentRequests']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          serverErrorsPerProjectPerHour:
-              json_.containsKey('serverErrorsPerProjectPerHour')
-                  ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
-                      json_['serverErrorsPerProjectPerHour']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          tokensPerDay: json_.containsKey('tokensPerDay')
-              ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
-                  json_['tokensPerDay'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tokensPerHour: json_.containsKey('tokensPerHour')
-              ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
-                  json_['tokensPerHour'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tokensPerProjectPerHour: json_.containsKey('tokensPerProjectPerHour')
-              ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serverErrorsPerProjectPerHour:
+            json_.containsKey('serverErrorsPerProjectPerHour')
+                ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
+                  json_['serverErrorsPerProjectPerHour']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tokensPerDay:
+            json_.containsKey('tokensPerDay')
+                ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
+                  json_['tokensPerDay'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tokensPerHour:
+            json_.containsKey('tokensPerHour')
+                ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
+                  json_['tokensPerHour'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tokensPerProjectPerHour:
+            json_.containsKey('tokensPerProjectPerHour')
+                ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
                   json_['tokensPerProjectPerHour']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (concurrentRequests != null)
-          'concurrentRequests': concurrentRequests!,
-        if (serverErrorsPerProjectPerHour != null)
-          'serverErrorsPerProjectPerHour': serverErrorsPerProjectPerHour!,
-        if (tokensPerDay != null) 'tokensPerDay': tokensPerDay!,
-        if (tokensPerHour != null) 'tokensPerHour': tokensPerHour!,
-        if (tokensPerProjectPerHour != null)
-          'tokensPerProjectPerHour': tokensPerProjectPerHour!,
-      };
+    if (concurrentRequests != null) 'concurrentRequests': concurrentRequests!,
+    if (serverErrorsPerProjectPerHour != null)
+      'serverErrorsPerProjectPerHour': serverErrorsPerProjectPerHour!,
+    if (tokensPerDay != null) 'tokensPerDay': tokensPerDay!,
+    if (tokensPerHour != null) 'tokensPerHour': tokensPerHour!,
+    if (tokensPerProjectPerHour != null)
+      'tokensPerProjectPerHour': tokensPerProjectPerHour!,
+  };
 }
 
 /// Current state for a particular quota group.
@@ -3091,23 +3178,31 @@ class GoogleAnalyticsAdminV1betaAccessRow {
   });
 
   GoogleAnalyticsAdminV1betaAccessRow.fromJson(core.Map json_)
-      : this(
-          dimensionValues: (json_['dimensionValues'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaAccessDimensionValue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          metricValues: (json_['metricValues'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaAccessMetricValue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        dimensionValues:
+            (json_['dimensionValues'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleAnalyticsAdminV1betaAccessDimensionValue.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        metricValues:
+            (json_['metricValues'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleAnalyticsAdminV1betaAccessMetricValue.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionValues != null) 'dimensionValues': dimensionValues!,
-        if (metricValues != null) 'metricValues': metricValues!,
-      };
+    if (dimensionValues != null) 'dimensionValues': dimensionValues!,
+    if (metricValues != null) 'metricValues': metricValues!,
+  };
 }
 
 /// The filter for strings.
@@ -3142,32 +3237,35 @@ class GoogleAnalyticsAdminV1betaAccountSummary {
   });
 
   GoogleAnalyticsAdminV1betaAccountSummary.fromJson(core.Map json_)
-      : this(
-          account: json_['account'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          propertySummaries: (json_['propertySummaries'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaPropertySummary.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        account: json_['account'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        propertySummaries:
+            (json_['propertySummaries'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaPropertySummary.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (propertySummaries != null) 'propertySummaries': propertySummaries!,
-      };
+    if (account != null) 'account': account!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (propertySummaries != null) 'propertySummaries': propertySummaries!,
+  };
 }
 
 /// Request message for AcknowledgeUserDataCollection RPC.
-typedef GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest
-    = $AcknowledgeUserDataCollectionRequest;
+typedef GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest =
+    $AcknowledgeUserDataCollectionRequest;
 
 /// Response message for AcknowledgeUserDataCollection RPC.
-typedef GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse
-    = $Empty;
+typedef GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse =
+    $Empty;
 
 /// Request message for ArchiveCustomDimension RPC.
 typedef GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest = $Empty;
@@ -3192,13 +3290,13 @@ class GoogleAnalyticsAdminV1betaChangeHistoryChange {
   ///
   /// If this resource was deleted in this change, this field will be missing.
   GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource?
-      resourceAfterChange;
+  resourceAfterChange;
 
   /// Resource contents from before the change was made.
   ///
   /// If this resource was created in this change, this field will be missing.
   GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource?
-      resourceBeforeChange;
+  resourceBeforeChange;
 
   GoogleAnalyticsAdminV1betaChangeHistoryChange({
     this.action,
@@ -3208,29 +3306,33 @@ class GoogleAnalyticsAdminV1betaChangeHistoryChange {
   });
 
   GoogleAnalyticsAdminV1betaChangeHistoryChange.fromJson(core.Map json_)
-      : this(
-          action: json_['action'] as core.String?,
-          resource: json_['resource'] as core.String?,
-          resourceAfterChange: json_.containsKey('resourceAfterChange')
-              ? GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource
-                  .fromJson(json_['resourceAfterChange']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          resourceBeforeChange: json_.containsKey('resourceBeforeChange')
-              ? GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource
-                  .fromJson(json_['resourceBeforeChange']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        action: json_['action'] as core.String?,
+        resource: json_['resource'] as core.String?,
+        resourceAfterChange:
+            json_.containsKey('resourceAfterChange')
+                ? GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource.fromJson(
+                  json_['resourceAfterChange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resourceBeforeChange:
+            json_.containsKey('resourceBeforeChange')
+                ? GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource.fromJson(
+                  json_['resourceBeforeChange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (resource != null) 'resource': resource!,
-        if (resourceAfterChange != null)
-          'resourceAfterChange': resourceAfterChange!,
-        if (resourceBeforeChange != null)
-          'resourceBeforeChange': resourceBeforeChange!,
-      };
+    if (action != null) 'action': action!,
+    if (resource != null) 'resource': resource!,
+    if (resourceAfterChange != null)
+      'resourceAfterChange': resourceAfterChange!,
+    if (resourceBeforeChange != null)
+      'resourceBeforeChange': resourceBeforeChange!,
+  };
 }
 
 /// A snapshot of a resource as before or after the result of a change in change
@@ -3256,7 +3358,7 @@ class GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource {
 
   /// A snapshot of a MeasurementProtocolSecret resource in change history.
   GoogleAnalyticsAdminV1betaMeasurementProtocolSecret?
-      measurementProtocolSecret;
+  measurementProtocolSecret;
 
   /// A snapshot of a Property resource in change history.
   GoogleAnalyticsAdminV1betaProperty? property;
@@ -3273,58 +3375,73 @@ class GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource {
   });
 
   GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource.fromJson(
-      core.Map json_)
-      : this(
-          account: json_.containsKey('account')
-              ? GoogleAnalyticsAdminV1betaAccount.fromJson(
-                  json_['account'] as core.Map<core.String, core.dynamic>)
-              : null,
-          conversionEvent: json_.containsKey('conversionEvent')
-              ? GoogleAnalyticsAdminV1betaConversionEvent.fromJson(
+    core.Map json_,
+  ) : this(
+        account:
+            json_.containsKey('account')
+                ? GoogleAnalyticsAdminV1betaAccount.fromJson(
+                  json_['account'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conversionEvent:
+            json_.containsKey('conversionEvent')
+                ? GoogleAnalyticsAdminV1betaConversionEvent.fromJson(
                   json_['conversionEvent']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          dataRetentionSettings: json_.containsKey('dataRetentionSettings')
-              ? GoogleAnalyticsAdminV1betaDataRetentionSettings.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataRetentionSettings:
+            json_.containsKey('dataRetentionSettings')
+                ? GoogleAnalyticsAdminV1betaDataRetentionSettings.fromJson(
                   json_['dataRetentionSettings']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          dataStream: json_.containsKey('dataStream')
-              ? GoogleAnalyticsAdminV1betaDataStream.fromJson(
-                  json_['dataStream'] as core.Map<core.String, core.dynamic>)
-              : null,
-          firebaseLink: json_.containsKey('firebaseLink')
-              ? GoogleAnalyticsAdminV1betaFirebaseLink.fromJson(
-                  json_['firebaseLink'] as core.Map<core.String, core.dynamic>)
-              : null,
-          googleAdsLink: json_.containsKey('googleAdsLink')
-              ? GoogleAnalyticsAdminV1betaGoogleAdsLink.fromJson(
-                  json_['googleAdsLink'] as core.Map<core.String, core.dynamic>)
-              : null,
-          measurementProtocolSecret: json_
-                  .containsKey('measurementProtocolSecret')
-              ? GoogleAnalyticsAdminV1betaMeasurementProtocolSecret.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataStream:
+            json_.containsKey('dataStream')
+                ? GoogleAnalyticsAdminV1betaDataStream.fromJson(
+                  json_['dataStream'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        firebaseLink:
+            json_.containsKey('firebaseLink')
+                ? GoogleAnalyticsAdminV1betaFirebaseLink.fromJson(
+                  json_['firebaseLink'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        googleAdsLink:
+            json_.containsKey('googleAdsLink')
+                ? GoogleAnalyticsAdminV1betaGoogleAdsLink.fromJson(
+                  json_['googleAdsLink'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        measurementProtocolSecret:
+            json_.containsKey('measurementProtocolSecret')
+                ? GoogleAnalyticsAdminV1betaMeasurementProtocolSecret.fromJson(
                   json_['measurementProtocolSecret']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          property: json_.containsKey('property')
-              ? GoogleAnalyticsAdminV1betaProperty.fromJson(
-                  json_['property'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        property:
+            json_.containsKey('property')
+                ? GoogleAnalyticsAdminV1betaProperty.fromJson(
+                  json_['property'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!,
-        if (conversionEvent != null) 'conversionEvent': conversionEvent!,
-        if (dataRetentionSettings != null)
-          'dataRetentionSettings': dataRetentionSettings!,
-        if (dataStream != null) 'dataStream': dataStream!,
-        if (firebaseLink != null) 'firebaseLink': firebaseLink!,
-        if (googleAdsLink != null) 'googleAdsLink': googleAdsLink!,
-        if (measurementProtocolSecret != null)
-          'measurementProtocolSecret': measurementProtocolSecret!,
-        if (property != null) 'property': property!,
-      };
+    if (account != null) 'account': account!,
+    if (conversionEvent != null) 'conversionEvent': conversionEvent!,
+    if (dataRetentionSettings != null)
+      'dataRetentionSettings': dataRetentionSettings!,
+    if (dataStream != null) 'dataStream': dataStream!,
+    if (firebaseLink != null) 'firebaseLink': firebaseLink!,
+    if (googleAdsLink != null) 'googleAdsLink': googleAdsLink!,
+    if (measurementProtocolSecret != null)
+      'measurementProtocolSecret': measurementProtocolSecret!,
+    if (property != null) 'property': property!,
+  };
 }
 
 /// A set of changes within a Google Analytics account or its child properties
@@ -3374,27 +3491,31 @@ class GoogleAnalyticsAdminV1betaChangeHistoryEvent {
   });
 
   GoogleAnalyticsAdminV1betaChangeHistoryEvent.fromJson(core.Map json_)
-      : this(
-          actorType: json_['actorType'] as core.String?,
-          changeTime: json_['changeTime'] as core.String?,
-          changes: (json_['changes'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaChangeHistoryChange.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          changesFiltered: json_['changesFiltered'] as core.bool?,
-          id: json_['id'] as core.String?,
-          userActorEmail: json_['userActorEmail'] as core.String?,
-        );
+    : this(
+        actorType: json_['actorType'] as core.String?,
+        changeTime: json_['changeTime'] as core.String?,
+        changes:
+            (json_['changes'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleAnalyticsAdminV1betaChangeHistoryChange.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        changesFiltered: json_['changesFiltered'] as core.bool?,
+        id: json_['id'] as core.String?,
+        userActorEmail: json_['userActorEmail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actorType != null) 'actorType': actorType!,
-        if (changeTime != null) 'changeTime': changeTime!,
-        if (changes != null) 'changes': changes!,
-        if (changesFiltered != null) 'changesFiltered': changesFiltered!,
-        if (id != null) 'id': id!,
-        if (userActorEmail != null) 'userActorEmail': userActorEmail!,
-      };
+    if (actorType != null) 'actorType': actorType!,
+    if (changeTime != null) 'changeTime': changeTime!,
+    if (changes != null) 'changes': changes!,
+    if (changesFiltered != null) 'changesFiltered': changesFiltered!,
+    if (id != null) 'id': id!,
+    if (userActorEmail != null) 'userActorEmail': userActorEmail!,
+  };
 }
 
 /// A conversion event in a Google Analytics property.
@@ -3433,7 +3554,7 @@ class GoogleAnalyticsAdminV1betaConversionEvent {
   ///
   /// Optional.
   GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue?
-      defaultConversionValue;
+  defaultConversionValue;
 
   /// If set, this event can currently be deleted with DeleteConversionEvent.
   ///
@@ -3465,37 +3586,39 @@ class GoogleAnalyticsAdminV1betaConversionEvent {
   });
 
   GoogleAnalyticsAdminV1betaConversionEvent.fromJson(core.Map json_)
-      : this(
-          countingMethod: json_['countingMethod'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          custom: json_['custom'] as core.bool?,
-          defaultConversionValue: json_.containsKey('defaultConversionValue')
-              ? GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue
-                  .fromJson(json_['defaultConversionValue']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          deletable: json_['deletable'] as core.bool?,
-          eventName: json_['eventName'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        countingMethod: json_['countingMethod'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        custom: json_['custom'] as core.bool?,
+        defaultConversionValue:
+            json_.containsKey('defaultConversionValue')
+                ? GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue.fromJson(
+                  json_['defaultConversionValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deletable: json_['deletable'] as core.bool?,
+        eventName: json_['eventName'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (countingMethod != null) 'countingMethod': countingMethod!,
-        if (createTime != null) 'createTime': createTime!,
-        if (custom != null) 'custom': custom!,
-        if (defaultConversionValue != null)
-          'defaultConversionValue': defaultConversionValue!,
-        if (deletable != null) 'deletable': deletable!,
-        if (eventName != null) 'eventName': eventName!,
-        if (name != null) 'name': name!,
-      };
+    if (countingMethod != null) 'countingMethod': countingMethod!,
+    if (createTime != null) 'createTime': createTime!,
+    if (custom != null) 'custom': custom!,
+    if (defaultConversionValue != null)
+      'defaultConversionValue': defaultConversionValue!,
+    if (deletable != null) 'deletable': deletable!,
+    if (eventName != null) 'eventName': eventName!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Defines a default value/currency for a conversion event.
 ///
 /// Both value and currency must be provided.
-typedef GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue
-    = $ConversionEventDefaultConversionValue;
+typedef GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue =
+    $ConversionEventDefaultConversionValue;
 
 /// A definition for a CustomDimension.
 typedef GoogleAnalyticsAdminV1betaCustomDimension = $CustomDimension;
@@ -3506,8 +3629,8 @@ typedef GoogleAnalyticsAdminV1betaCustomMetric = $CustomMetric;
 /// Settings values for data retention.
 ///
 /// This is a singleton resource.
-typedef GoogleAnalyticsAdminV1betaDataRetentionSettings
-    = $DataRetentionSettings;
+typedef GoogleAnalyticsAdminV1betaDataRetentionSettings =
+    $DataRetentionSettings;
 
 /// A resource message representing data sharing settings of a Google Analytics
 /// account.
@@ -3519,7 +3642,7 @@ class GoogleAnalyticsAdminV1betaDataStream {
   ///
   /// Must be populated if type is ANDROID_APP_DATA_STREAM.
   GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData?
-      androidAppStreamData;
+  androidAppStreamData;
 
   /// Time when this stream was originally created.
   ///
@@ -3577,52 +3700,58 @@ class GoogleAnalyticsAdminV1betaDataStream {
   });
 
   GoogleAnalyticsAdminV1betaDataStream.fromJson(core.Map json_)
-      : this(
-          androidAppStreamData: json_.containsKey('androidAppStreamData')
-              ? GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData
-                  .fromJson(json_['androidAppStreamData']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          iosAppStreamData: json_.containsKey('iosAppStreamData')
-              ? GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData.fromJson(
+    : this(
+        androidAppStreamData:
+            json_.containsKey('androidAppStreamData')
+                ? GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData.fromJson(
+                  json_['androidAppStreamData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        iosAppStreamData:
+            json_.containsKey('iosAppStreamData')
+                ? GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData.fromJson(
                   json_['iosAppStreamData']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          webStreamData: json_.containsKey('webStreamData')
-              ? GoogleAnalyticsAdminV1betaDataStreamWebStreamData.fromJson(
-                  json_['webStreamData'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        webStreamData:
+            json_.containsKey('webStreamData')
+                ? GoogleAnalyticsAdminV1betaDataStreamWebStreamData.fromJson(
+                  json_['webStreamData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidAppStreamData != null)
-          'androidAppStreamData': androidAppStreamData!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (iosAppStreamData != null) 'iosAppStreamData': iosAppStreamData!,
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (webStreamData != null) 'webStreamData': webStreamData!,
-      };
+    if (androidAppStreamData != null)
+      'androidAppStreamData': androidAppStreamData!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (iosAppStreamData != null) 'iosAppStreamData': iosAppStreamData!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (webStreamData != null) 'webStreamData': webStreamData!,
+  };
 }
 
 /// Data specific to Android app streams.
-typedef GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData
-    = $DataStreamAndroidAppStreamData;
+typedef GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData =
+    $DataStreamAndroidAppStreamData;
 
 /// Data specific to iOS app streams.
-typedef GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData
-    = $DataStreamIosAppStreamData;
+typedef GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData =
+    $DataStreamIosAppStreamData;
 
 /// Data specific to web streams.
-typedef GoogleAnalyticsAdminV1betaDataStreamWebStreamData
-    = $DataStreamWebStreamData;
+typedef GoogleAnalyticsAdminV1betaDataStreamWebStreamData =
+    $DataStreamWebStreamData;
 
 /// A link between a Google Analytics property and a Firebase project.
 typedef GoogleAnalyticsAdminV1betaFirebaseLink = $FirebaseLink;
@@ -3694,28 +3823,30 @@ class GoogleAnalyticsAdminV1betaKeyEvent {
   });
 
   GoogleAnalyticsAdminV1betaKeyEvent.fromJson(core.Map json_)
-      : this(
-          countingMethod: json_['countingMethod'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          custom: json_['custom'] as core.bool?,
-          defaultValue: json_.containsKey('defaultValue')
-              ? GoogleAnalyticsAdminV1betaKeyEventDefaultValue.fromJson(
-                  json_['defaultValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deletable: json_['deletable'] as core.bool?,
-          eventName: json_['eventName'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        countingMethod: json_['countingMethod'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        custom: json_['custom'] as core.bool?,
+        defaultValue:
+            json_.containsKey('defaultValue')
+                ? GoogleAnalyticsAdminV1betaKeyEventDefaultValue.fromJson(
+                  json_['defaultValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deletable: json_['deletable'] as core.bool?,
+        eventName: json_['eventName'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (countingMethod != null) 'countingMethod': countingMethod!,
-        if (createTime != null) 'createTime': createTime!,
-        if (custom != null) 'custom': custom!,
-        if (defaultValue != null) 'defaultValue': defaultValue!,
-        if (deletable != null) 'deletable': deletable!,
-        if (eventName != null) 'eventName': eventName!,
-        if (name != null) 'name': name!,
-      };
+    if (countingMethod != null) 'countingMethod': countingMethod!,
+    if (createTime != null) 'createTime': createTime!,
+    if (custom != null) 'custom': custom!,
+    if (defaultValue != null) 'defaultValue': defaultValue!,
+    if (deletable != null) 'deletable': deletable!,
+    if (eventName != null) 'eventName': eventName!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Defines a default value/currency for a key event.
@@ -3737,20 +3868,23 @@ class GoogleAnalyticsAdminV1betaListAccountSummariesResponse {
   });
 
   GoogleAnalyticsAdminV1betaListAccountSummariesResponse.fromJson(
-      core.Map json_)
-      : this(
-          accountSummaries: (json_['accountSummaries'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaAccountSummary.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        accountSummaries:
+            (json_['accountSummaries'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaAccountSummary.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountSummaries != null) 'accountSummaries': accountSummaries!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (accountSummaries != null) 'accountSummaries': accountSummaries!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Request message for ListAccounts RPC.
@@ -3769,18 +3903,22 @@ class GoogleAnalyticsAdminV1betaListAccountsResponse {
   });
 
   GoogleAnalyticsAdminV1betaListAccountsResponse.fromJson(core.Map json_)
-      : this(
-          accounts: (json_['accounts'] as core.List?)
-              ?.map((value) => GoogleAnalyticsAdminV1betaAccount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        accounts:
+            (json_['accounts'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaAccount.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accounts != null) 'accounts': accounts!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (accounts != null) 'accounts': accounts!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListConversionEvents RPC.
@@ -3799,20 +3937,23 @@ class GoogleAnalyticsAdminV1betaListConversionEventsResponse {
   });
 
   GoogleAnalyticsAdminV1betaListConversionEventsResponse.fromJson(
-      core.Map json_)
-      : this(
-          conversionEvents: (json_['conversionEvents'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaConversionEvent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        conversionEvents:
+            (json_['conversionEvents'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaConversionEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversionEvents != null) 'conversionEvents': conversionEvents!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (conversionEvents != null) 'conversionEvents': conversionEvents!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListCustomDimensions RPC.
@@ -3831,20 +3972,23 @@ class GoogleAnalyticsAdminV1betaListCustomDimensionsResponse {
   });
 
   GoogleAnalyticsAdminV1betaListCustomDimensionsResponse.fromJson(
-      core.Map json_)
-      : this(
-          customDimensions: (json_['customDimensions'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaCustomDimension.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        customDimensions:
+            (json_['customDimensions'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaCustomDimension.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customDimensions != null) 'customDimensions': customDimensions!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (customDimensions != null) 'customDimensions': customDimensions!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListCustomMetrics RPC.
@@ -3863,18 +4007,22 @@ class GoogleAnalyticsAdminV1betaListCustomMetricsResponse {
   });
 
   GoogleAnalyticsAdminV1betaListCustomMetricsResponse.fromJson(core.Map json_)
-      : this(
-          customMetrics: (json_['customMetrics'] as core.List?)
-              ?.map((value) => GoogleAnalyticsAdminV1betaCustomMetric.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        customMetrics:
+            (json_['customMetrics'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaCustomMetric.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customMetrics != null) 'customMetrics': customMetrics!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (customMetrics != null) 'customMetrics': customMetrics!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListDataStreams RPC.
@@ -3893,18 +4041,22 @@ class GoogleAnalyticsAdminV1betaListDataStreamsResponse {
   });
 
   GoogleAnalyticsAdminV1betaListDataStreamsResponse.fromJson(core.Map json_)
-      : this(
-          dataStreams: (json_['dataStreams'] as core.List?)
-              ?.map((value) => GoogleAnalyticsAdminV1betaDataStream.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        dataStreams:
+            (json_['dataStreams'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaDataStream.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataStreams != null) 'dataStreams': dataStreams!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (dataStreams != null) 'dataStreams': dataStreams!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListFirebaseLinks RPC
@@ -3927,18 +4079,22 @@ class GoogleAnalyticsAdminV1betaListFirebaseLinksResponse {
   });
 
   GoogleAnalyticsAdminV1betaListFirebaseLinksResponse.fromJson(core.Map json_)
-      : this(
-          firebaseLinks: (json_['firebaseLinks'] as core.List?)
-              ?.map((value) => GoogleAnalyticsAdminV1betaFirebaseLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        firebaseLinks:
+            (json_['firebaseLinks'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaFirebaseLink.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (firebaseLinks != null) 'firebaseLinks': firebaseLinks!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (firebaseLinks != null) 'firebaseLinks': firebaseLinks!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListGoogleAdsLinks RPC.
@@ -3957,18 +4113,22 @@ class GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse {
   });
 
   GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse.fromJson(core.Map json_)
-      : this(
-          googleAdsLinks: (json_['googleAdsLinks'] as core.List?)
-              ?.map((value) => GoogleAnalyticsAdminV1betaGoogleAdsLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        googleAdsLinks:
+            (json_['googleAdsLinks'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaGoogleAdsLink.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (googleAdsLinks != null) 'googleAdsLinks': googleAdsLinks!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (googleAdsLinks != null) 'googleAdsLinks': googleAdsLinks!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListKeyEvents RPC.
@@ -3987,25 +4147,29 @@ class GoogleAnalyticsAdminV1betaListKeyEventsResponse {
   });
 
   GoogleAnalyticsAdminV1betaListKeyEventsResponse.fromJson(core.Map json_)
-      : this(
-          keyEvents: (json_['keyEvents'] as core.List?)
-              ?.map((value) => GoogleAnalyticsAdminV1betaKeyEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        keyEvents:
+            (json_['keyEvents'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaKeyEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keyEvents != null) 'keyEvents': keyEvents!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (keyEvents != null) 'keyEvents': keyEvents!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListMeasurementProtocolSecret RPC
 class GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse {
   /// A list of secrets for the parent stream specified in the request.
   core.List<GoogleAnalyticsAdminV1betaMeasurementProtocolSecret>?
-      measurementProtocolSecrets;
+  measurementProtocolSecrets;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -4018,22 +4182,25 @@ class GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse {
   });
 
   GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse.fromJson(
-      core.Map json_)
-      : this(
-          measurementProtocolSecrets: (json_['measurementProtocolSecrets']
-                  as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaMeasurementProtocolSecret.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        measurementProtocolSecrets:
+            (json_['measurementProtocolSecrets'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleAnalyticsAdminV1betaMeasurementProtocolSecret.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (measurementProtocolSecrets != null)
-          'measurementProtocolSecrets': measurementProtocolSecrets!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (measurementProtocolSecrets != null)
+      'measurementProtocolSecrets': measurementProtocolSecrets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListProperties RPC.
@@ -4053,23 +4220,27 @@ class GoogleAnalyticsAdminV1betaListPropertiesResponse {
   });
 
   GoogleAnalyticsAdminV1betaListPropertiesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          properties: (json_['properties'] as core.List?)
-              ?.map((value) => GoogleAnalyticsAdminV1betaProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        properties:
+            (json_['properties'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaProperty.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (properties != null) 'properties': properties!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (properties != null) 'properties': properties!,
+  };
 }
 
 /// A secret value used for sending hits to Measurement Protocol.
-typedef GoogleAnalyticsAdminV1betaMeasurementProtocolSecret
-    = $MeasurementProtocolSecret;
+typedef GoogleAnalyticsAdminV1betaMeasurementProtocolSecret =
+    $MeasurementProtocolSecret;
 
 /// To represent a number.
 typedef GoogleAnalyticsAdminV1betaNumericValue = $NumericValue;
@@ -4096,24 +4267,26 @@ class GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest {
   });
 
   GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest.fromJson(
-      core.Map json_)
-      : this(
-          account: json_.containsKey('account')
-              ? GoogleAnalyticsAdminV1betaAccount.fromJson(
-                  json_['account'] as core.Map<core.String, core.dynamic>)
-              : null,
-          redirectUri: json_['redirectUri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        account:
+            json_.containsKey('account')
+                ? GoogleAnalyticsAdminV1betaAccount.fromJson(
+                  json_['account'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        redirectUri: json_['redirectUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!,
-        if (redirectUri != null) 'redirectUri': redirectUri!,
-      };
+    if (account != null) 'account': account!,
+    if (redirectUri != null) 'redirectUri': redirectUri!,
+  };
 }
 
 /// Response message for ProvisionAccountTicket RPC.
-typedef GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse
-    = $ProvisionAccountTicketResponse;
+typedef GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse =
+    $ProvisionAccountTicketResponse;
 
 /// The request for a Data Access Record Report.
 class GoogleAnalyticsAdminV1betaRunAccessReportRequest {
@@ -4228,56 +4401,74 @@ class GoogleAnalyticsAdminV1betaRunAccessReportRequest {
   });
 
   GoogleAnalyticsAdminV1betaRunAccessReportRequest.fromJson(core.Map json_)
-      : this(
-          dateRanges: (json_['dateRanges'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaAccessDateRange.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dimensionFilter: json_.containsKey('dimensionFilter')
-              ? GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(
+    : this(
+        dateRanges:
+            (json_['dateRanges'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaAccessDateRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dimensionFilter:
+            json_.containsKey('dimensionFilter')
+                ? GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(
                   json_['dimensionFilter']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          dimensions: (json_['dimensions'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaAccessDimension.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          expandGroups: json_['expandGroups'] as core.bool?,
-          includeAllUsers: json_['includeAllUsers'] as core.bool?,
-          limit: json_['limit'] as core.String?,
-          metricFilter: json_.containsKey('metricFilter')
-              ? GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(
-                  json_['metricFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metrics: (json_['metrics'] as core.List?)
-              ?.map((value) => GoogleAnalyticsAdminV1betaAccessMetric.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          offset: json_['offset'] as core.String?,
-          orderBys: (json_['orderBys'] as core.List?)
-              ?.map((value) => GoogleAnalyticsAdminV1betaAccessOrderBy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          returnEntityQuota: json_['returnEntityQuota'] as core.bool?,
-          timeZone: json_['timeZone'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dimensions:
+            (json_['dimensions'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaAccessDimension.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        expandGroups: json_['expandGroups'] as core.bool?,
+        includeAllUsers: json_['includeAllUsers'] as core.bool?,
+        limit: json_['limit'] as core.String?,
+        metricFilter:
+            json_.containsKey('metricFilter')
+                ? GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(
+                  json_['metricFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metrics:
+            (json_['metrics'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaAccessMetric.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        offset: json_['offset'] as core.String?,
+        orderBys:
+            (json_['orderBys'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaAccessOrderBy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        returnEntityQuota: json_['returnEntityQuota'] as core.bool?,
+        timeZone: json_['timeZone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dateRanges != null) 'dateRanges': dateRanges!,
-        if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,
-        if (dimensions != null) 'dimensions': dimensions!,
-        if (expandGroups != null) 'expandGroups': expandGroups!,
-        if (includeAllUsers != null) 'includeAllUsers': includeAllUsers!,
-        if (limit != null) 'limit': limit!,
-        if (metricFilter != null) 'metricFilter': metricFilter!,
-        if (metrics != null) 'metrics': metrics!,
-        if (offset != null) 'offset': offset!,
-        if (orderBys != null) 'orderBys': orderBys!,
-        if (returnEntityQuota != null) 'returnEntityQuota': returnEntityQuota!,
-        if (timeZone != null) 'timeZone': timeZone!,
-      };
+    if (dateRanges != null) 'dateRanges': dateRanges!,
+    if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,
+    if (dimensions != null) 'dimensions': dimensions!,
+    if (expandGroups != null) 'expandGroups': expandGroups!,
+    if (includeAllUsers != null) 'includeAllUsers': includeAllUsers!,
+    if (limit != null) 'limit': limit!,
+    if (metricFilter != null) 'metricFilter': metricFilter!,
+    if (metrics != null) 'metrics': metrics!,
+    if (offset != null) 'offset': offset!,
+    if (orderBys != null) 'orderBys': orderBys!,
+    if (returnEntityQuota != null) 'returnEntityQuota': returnEntityQuota!,
+    if (timeZone != null) 'timeZone': timeZone!,
+  };
 }
 
 /// The customized Data Access Record Report response.
@@ -4323,35 +4514,49 @@ class GoogleAnalyticsAdminV1betaRunAccessReportResponse {
   });
 
   GoogleAnalyticsAdminV1betaRunAccessReportResponse.fromJson(core.Map json_)
-      : this(
-          dimensionHeaders: (json_['dimensionHeaders'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaAccessDimensionHeader.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          metricHeaders: (json_['metricHeaders'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaAccessMetricHeader.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          quota: json_.containsKey('quota')
-              ? GoogleAnalyticsAdminV1betaAccessQuota.fromJson(
-                  json_['quota'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rowCount: json_['rowCount'] as core.int?,
-          rows: (json_['rows'] as core.List?)
-              ?.map((value) => GoogleAnalyticsAdminV1betaAccessRow.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        dimensionHeaders:
+            (json_['dimensionHeaders'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleAnalyticsAdminV1betaAccessDimensionHeader.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        metricHeaders:
+            (json_['metricHeaders'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleAnalyticsAdminV1betaAccessMetricHeader.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        quota:
+            json_.containsKey('quota')
+                ? GoogleAnalyticsAdminV1betaAccessQuota.fromJson(
+                  json_['quota'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rowCount: json_['rowCount'] as core.int?,
+        rows:
+            (json_['rows'] as core.List?)
+                ?.map(
+                  (value) => GoogleAnalyticsAdminV1betaAccessRow.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionHeaders != null) 'dimensionHeaders': dimensionHeaders!,
-        if (metricHeaders != null) 'metricHeaders': metricHeaders!,
-        if (quota != null) 'quota': quota!,
-        if (rowCount != null) 'rowCount': rowCount!,
-        if (rows != null) 'rows': rows!,
-      };
+    if (dimensionHeaders != null) 'dimensionHeaders': dimensionHeaders!,
+    if (metricHeaders != null) 'metricHeaders': metricHeaders!,
+    if (quota != null) 'quota': quota!,
+    if (rowCount != null) 'rowCount': rowCount!,
+    if (rows != null) 'rows': rows!,
+  };
 }
 
 /// Request message for SearchChangeHistoryEvents RPC.
@@ -4424,35 +4629,37 @@ class GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest {
   });
 
   GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest.fromJson(
-      core.Map json_)
-      : this(
-          action: (json_['action'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          actorEmail: (json_['actorEmail'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          earliestChangeTime: json_['earliestChangeTime'] as core.String?,
-          latestChangeTime: json_['latestChangeTime'] as core.String?,
-          pageSize: json_['pageSize'] as core.int?,
-          pageToken: json_['pageToken'] as core.String?,
-          property: json_['property'] as core.String?,
-          resourceType: (json_['resourceType'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        action:
+            (json_['action'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        actorEmail:
+            (json_['actorEmail'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        earliestChangeTime: json_['earliestChangeTime'] as core.String?,
+        latestChangeTime: json_['latestChangeTime'] as core.String?,
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+        property: json_['property'] as core.String?,
+        resourceType:
+            (json_['resourceType'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (actorEmail != null) 'actorEmail': actorEmail!,
-        if (earliestChangeTime != null)
-          'earliestChangeTime': earliestChangeTime!,
-        if (latestChangeTime != null) 'latestChangeTime': latestChangeTime!,
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-        if (property != null) 'property': property!,
-        if (resourceType != null) 'resourceType': resourceType!,
-      };
+    if (action != null) 'action': action!,
+    if (actorEmail != null) 'actorEmail': actorEmail!,
+    if (earliestChangeTime != null) 'earliestChangeTime': earliestChangeTime!,
+    if (latestChangeTime != null) 'latestChangeTime': latestChangeTime!,
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (pageToken != null) 'pageToken': pageToken!,
+    if (property != null) 'property': property!,
+    if (resourceType != null) 'resourceType': resourceType!,
+  };
 }
 
 /// Response message for SearchAccounts RPC.
@@ -4471,21 +4678,25 @@ class GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse {
   });
 
   GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse.fromJson(
-      core.Map json_)
-      : this(
-          changeHistoryEvents: (json_['changeHistoryEvents'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1betaChangeHistoryEvent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        changeHistoryEvents:
+            (json_['changeHistoryEvents'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleAnalyticsAdminV1betaChangeHistoryEvent.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (changeHistoryEvents != null)
-          'changeHistoryEvents': changeHistoryEvents!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (changeHistoryEvents != null)
+      'changeHistoryEvents': changeHistoryEvents!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

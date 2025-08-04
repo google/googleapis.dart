@@ -64,18 +64,23 @@ class CloudSupportApi {
   CasesResource get cases => CasesResource(_requester);
   MediaResource get media => MediaResource(_requester);
 
-  CloudSupportApi(http.Client client,
-      {core.String rootUrl = 'https://cloudsupport.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudSupportApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudsupport.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class CaseClassificationsResource {
   final commons.ApiRequester _requester;
 
   CaseClassificationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Retrieve valid classifications to use when creating a support case.
   ///
@@ -137,7 +142,8 @@ class CaseClassificationsResource {
       queryParams: queryParams_,
     );
     return SearchCaseClassificationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -352,10 +358,7 @@ class CasesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Case> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Case> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -439,7 +442,8 @@ class CasesResource {
       queryParams: queryParams_,
     );
     return ListCasesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a case.
@@ -583,7 +587,8 @@ class CasesResource {
       queryParams: queryParams_,
     );
     return SearchCasesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -650,7 +655,8 @@ class CasesAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListAttachmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -767,7 +773,8 @@ class CasesCommentsResource {
       queryParams: queryParams_,
     );
     return ListCommentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -908,7 +915,8 @@ class MediaResource {
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return Attachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -951,27 +959,22 @@ class Actor {
   /// Output only.
   core.String? username;
 
-  Actor({
-    this.displayName,
-    this.email,
-    this.googleSupport,
-    this.username,
-  });
+  Actor({this.displayName, this.email, this.googleSupport, this.username});
 
   Actor.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          email: json_['email'] as core.String?,
-          googleSupport: json_['googleSupport'] as core.bool?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
+        googleSupport: json_['googleSupport'] as core.bool?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (email != null) 'email': email!,
-        if (googleSupport != null) 'googleSupport': googleSupport!,
-        if (username != null) 'username': username!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (email != null) 'email': email!,
+    if (googleSupport != null) 'googleSupport': googleSupport!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// An Attachment contains metadata about a file that was uploaded to a case -
@@ -1025,26 +1028,28 @@ class Attachment {
   });
 
   Attachment.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          creator: json_.containsKey('creator')
-              ? Actor.fromJson(
-                  json_['creator'] as core.Map<core.String, core.dynamic>)
-              : null,
-          filename: json_['filename'] as core.String?,
-          mimeType: json_['mimeType'] as core.String?,
-          name: json_['name'] as core.String?,
-          sizeBytes: json_['sizeBytes'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        creator:
+            json_.containsKey('creator')
+                ? Actor.fromJson(
+                  json_['creator'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filename: json_['filename'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+        name: json_['name'] as core.String?,
+        sizeBytes: json_['sizeBytes'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (creator != null) 'creator': creator!,
-        if (filename != null) 'filename': filename!,
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (name != null) 'name': name!,
-        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (creator != null) 'creator': creator!,
+    if (filename != null) 'filename': filename!,
+    if (mimeType != null) 'mimeType': mimeType!,
+    if (name != null) 'name': name!,
+    if (sizeBytes != null) 'sizeBytes': sizeBytes!,
+  };
 }
 
 /// # gdata.* are outside protos with mising documentation
@@ -1061,8 +1066,10 @@ class Blobstore2Info {
       convert.base64.decode(downloadReadHandle!);
 
   set downloadReadHandleAsBytes(core.List<core.int> bytes_) {
-    downloadReadHandle =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    downloadReadHandle = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -1074,8 +1081,10 @@ class Blobstore2Info {
       convert.base64.decode(uploadMetadataContainer!);
 
   set uploadMetadataContainerAsBytes(core.List<core.int> bytes_) {
-    uploadMetadataContainer =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    uploadMetadataContainer = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   Blobstore2Info({
@@ -1087,24 +1096,23 @@ class Blobstore2Info {
   });
 
   Blobstore2Info.fromJson(core.Map json_)
-      : this(
-          blobGeneration: json_['blobGeneration'] as core.String?,
-          blobId: json_['blobId'] as core.String?,
-          downloadReadHandle: json_['downloadReadHandle'] as core.String?,
-          readToken: json_['readToken'] as core.String?,
-          uploadMetadataContainer:
-              json_['uploadMetadataContainer'] as core.String?,
-        );
+    : this(
+        blobGeneration: json_['blobGeneration'] as core.String?,
+        blobId: json_['blobId'] as core.String?,
+        downloadReadHandle: json_['downloadReadHandle'] as core.String?,
+        readToken: json_['readToken'] as core.String?,
+        uploadMetadataContainer:
+            json_['uploadMetadataContainer'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blobGeneration != null) 'blobGeneration': blobGeneration!,
-        if (blobId != null) 'blobId': blobId!,
-        if (downloadReadHandle != null)
-          'downloadReadHandle': downloadReadHandle!,
-        if (readToken != null) 'readToken': readToken!,
-        if (uploadMetadataContainer != null)
-          'uploadMetadataContainer': uploadMetadataContainer!,
-      };
+    if (blobGeneration != null) 'blobGeneration': blobGeneration!,
+    if (blobId != null) 'blobId': blobId!,
+    if (downloadReadHandle != null) 'downloadReadHandle': downloadReadHandle!,
+    if (readToken != null) 'readToken': readToken!,
+    if (uploadMetadataContainer != null)
+      'uploadMetadataContainer': uploadMetadataContainer!,
+  };
 }
 
 /// A Case is an object that contains the details of a support case.
@@ -1230,51 +1238,56 @@ class Case {
   });
 
   Case.fromJson(core.Map json_)
-      : this(
-          classification: json_.containsKey('classification')
-              ? CaseClassification.fromJson(json_['classification']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          contactEmail: json_['contactEmail'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          creator: json_.containsKey('creator')
-              ? Actor.fromJson(
-                  json_['creator'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          escalated: json_['escalated'] as core.bool?,
-          languageCode: json_['languageCode'] as core.String?,
-          name: json_['name'] as core.String?,
-          priority: json_['priority'] as core.String?,
-          state: json_['state'] as core.String?,
-          subscriberEmailAddresses:
-              (json_['subscriberEmailAddresses'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          testCase: json_['testCase'] as core.bool?,
-          timeZone: json_['timeZone'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        classification:
+            json_.containsKey('classification')
+                ? CaseClassification.fromJson(
+                  json_['classification']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        contactEmail: json_['contactEmail'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        creator:
+            json_.containsKey('creator')
+                ? Actor.fromJson(
+                  json_['creator'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        escalated: json_['escalated'] as core.bool?,
+        languageCode: json_['languageCode'] as core.String?,
+        name: json_['name'] as core.String?,
+        priority: json_['priority'] as core.String?,
+        state: json_['state'] as core.String?,
+        subscriberEmailAddresses:
+            (json_['subscriberEmailAddresses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        testCase: json_['testCase'] as core.bool?,
+        timeZone: json_['timeZone'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (classification != null) 'classification': classification!,
-        if (contactEmail != null) 'contactEmail': contactEmail!,
-        if (createTime != null) 'createTime': createTime!,
-        if (creator != null) 'creator': creator!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (escalated != null) 'escalated': escalated!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (name != null) 'name': name!,
-        if (priority != null) 'priority': priority!,
-        if (state != null) 'state': state!,
-        if (subscriberEmailAddresses != null)
-          'subscriberEmailAddresses': subscriberEmailAddresses!,
-        if (testCase != null) 'testCase': testCase!,
-        if (timeZone != null) 'timeZone': timeZone!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (classification != null) 'classification': classification!,
+    if (contactEmail != null) 'contactEmail': contactEmail!,
+    if (createTime != null) 'createTime': createTime!,
+    if (creator != null) 'creator': creator!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (escalated != null) 'escalated': escalated!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (name != null) 'name': name!,
+    if (priority != null) 'priority': priority!,
+    if (state != null) 'state': state!,
+    if (subscriberEmailAddresses != null)
+      'subscriberEmailAddresses': subscriberEmailAddresses!,
+    if (testCase != null) 'testCase': testCase!,
+    if (timeZone != null) 'timeZone': timeZone!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A Case Classification represents the topic that a case is about.
@@ -1301,21 +1314,18 @@ class CaseClassification {
   /// using the classification ID will fail.
   core.String? id;
 
-  CaseClassification({
-    this.displayName,
-    this.id,
-  });
+  CaseClassification({this.displayName, this.id});
 
   CaseClassification.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          id: json_['id'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (id != null) 'id': id!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (id != null) 'id': id!,
+  };
 }
 
 /// The request message for the CloseCase endpoint.
@@ -1369,24 +1379,26 @@ class Comment {
   });
 
   Comment.fromJson(core.Map json_)
-      : this(
-          body: json_['body'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          creator: json_.containsKey('creator')
-              ? Actor.fromJson(
-                  json_['creator'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          plainTextBody: json_['plainTextBody'] as core.String?,
-        );
+    : this(
+        body: json_['body'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        creator:
+            json_.containsKey('creator')
+                ? Actor.fromJson(
+                  json_['creator'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        plainTextBody: json_['plainTextBody'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-        if (createTime != null) 'createTime': createTime!,
-        if (creator != null) 'creator': creator!,
-        if (name != null) 'name': name!,
-        if (plainTextBody != null) 'plainTextBody': plainTextBody!,
-      };
+    if (body != null) 'body': body!,
+    if (createTime != null) 'createTime': createTime!,
+    if (creator != null) 'creator': creator!,
+    if (name != null) 'name': name!,
+    if (plainTextBody != null) 'plainTextBody': plainTextBody!,
+  };
 }
 
 /// # gdata.* are outside protos with mising documentation
@@ -1399,8 +1411,10 @@ class CompositeMedia {
   core.List<core.int> get blobRefAsBytes => convert.base64.decode(blobRef!);
 
   set blobRefAsBytes(core.List<core.int> bytes_) {
-    blobRef =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    blobRef = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -1412,8 +1426,10 @@ class CompositeMedia {
       convert.base64.decode(cosmoBinaryReference!);
 
   set cosmoBinaryReferenceAsBytes(core.List<core.int> bytes_) {
-    cosmoBinaryReference =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    cosmoBinaryReference = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -1424,8 +1440,10 @@ class CompositeMedia {
   core.List<core.int> get inlineAsBytes => convert.base64.decode(inline!);
 
   set inlineAsBytes(core.List<core.int> bytes_) {
-    inline =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    inline = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -1436,8 +1454,10 @@ class CompositeMedia {
   core.List<core.int> get md5HashAsBytes => convert.base64.decode(md5Hash!);
 
   set md5HashAsBytes(core.List<core.int> bytes_) {
-    md5Hash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    md5Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -1461,8 +1481,10 @@ class CompositeMedia {
   core.List<core.int> get sha1HashAsBytes => convert.base64.decode(sha1Hash!);
 
   set sha1HashAsBytes(core.List<core.int> bytes_) {
-    sha1Hash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    sha1Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   CompositeMedia({
@@ -1480,40 +1502,45 @@ class CompositeMedia {
   });
 
   CompositeMedia.fromJson(core.Map json_)
-      : this(
-          blobRef: json_['blobRef'] as core.String?,
-          blobstore2Info: json_.containsKey('blobstore2Info')
-              ? Blobstore2Info.fromJson(json_['blobstore2Info']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
-          crc32cHash: json_['crc32cHash'] as core.int?,
-          inline: json_['inline'] as core.String?,
-          length: json_['length'] as core.String?,
-          md5Hash: json_['md5Hash'] as core.String?,
-          objectId: json_.containsKey('objectId')
-              ? ObjectId.fromJson(
-                  json_['objectId'] as core.Map<core.String, core.dynamic>)
-              : null,
-          path: json_['path'] as core.String?,
-          referenceType: json_['referenceType'] as core.String?,
-          sha1Hash: json_['sha1Hash'] as core.String?,
-        );
+    : this(
+        blobRef: json_['blobRef'] as core.String?,
+        blobstore2Info:
+            json_.containsKey('blobstore2Info')
+                ? Blobstore2Info.fromJson(
+                  json_['blobstore2Info']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
+        crc32cHash: json_['crc32cHash'] as core.int?,
+        inline: json_['inline'] as core.String?,
+        length: json_['length'] as core.String?,
+        md5Hash: json_['md5Hash'] as core.String?,
+        objectId:
+            json_.containsKey('objectId')
+                ? ObjectId.fromJson(
+                  json_['objectId'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        path: json_['path'] as core.String?,
+        referenceType: json_['referenceType'] as core.String?,
+        sha1Hash: json_['sha1Hash'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blobRef != null) 'blobRef': blobRef!,
-        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
-        if (cosmoBinaryReference != null)
-          'cosmoBinaryReference': cosmoBinaryReference!,
-        if (crc32cHash != null) 'crc32cHash': crc32cHash!,
-        if (inline != null) 'inline': inline!,
-        if (length != null) 'length': length!,
-        if (md5Hash != null) 'md5Hash': md5Hash!,
-        if (objectId != null) 'objectId': objectId!,
-        if (path != null) 'path': path!,
-        if (referenceType != null) 'referenceType': referenceType!,
-        if (sha1Hash != null) 'sha1Hash': sha1Hash!,
-      };
+    if (blobRef != null) 'blobRef': blobRef!,
+    if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
+    if (cosmoBinaryReference != null)
+      'cosmoBinaryReference': cosmoBinaryReference!,
+    if (crc32cHash != null) 'crc32cHash': crc32cHash!,
+    if (inline != null) 'inline': inline!,
+    if (length != null) 'length': length!,
+    if (md5Hash != null) 'md5Hash': md5Hash!,
+    if (objectId != null) 'objectId': objectId!,
+    if (path != null) 'path': path!,
+    if (referenceType != null) 'referenceType': referenceType!,
+    if (sha1Hash != null) 'sha1Hash': sha1Hash!,
+  };
 }
 
 /// # gdata.* are outside protos with mising documentation
@@ -1542,21 +1569,21 @@ class ContentTypeInfo {
   });
 
   ContentTypeInfo.fromJson(core.Map json_)
-      : this(
-          bestGuess: json_['bestGuess'] as core.String?,
-          fromBytes: json_['fromBytes'] as core.String?,
-          fromFileName: json_['fromFileName'] as core.String?,
-          fromHeader: json_['fromHeader'] as core.String?,
-          fromUrlPath: json_['fromUrlPath'] as core.String?,
-        );
+    : this(
+        bestGuess: json_['bestGuess'] as core.String?,
+        fromBytes: json_['fromBytes'] as core.String?,
+        fromFileName: json_['fromFileName'] as core.String?,
+        fromHeader: json_['fromHeader'] as core.String?,
+        fromUrlPath: json_['fromUrlPath'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bestGuess != null) 'bestGuess': bestGuess!,
-        if (fromBytes != null) 'fromBytes': fromBytes!,
-        if (fromFileName != null) 'fromFileName': fromFileName!,
-        if (fromHeader != null) 'fromHeader': fromHeader!,
-        if (fromUrlPath != null) 'fromUrlPath': fromUrlPath!,
-      };
+    if (bestGuess != null) 'bestGuess': bestGuess!,
+    if (fromBytes != null) 'fromBytes': fromBytes!,
+    if (fromFileName != null) 'fromFileName': fromFileName!,
+    if (fromHeader != null) 'fromHeader': fromHeader!,
+    if (fromUrlPath != null) 'fromUrlPath': fromUrlPath!,
+  };
 }
 
 /// The request message for the CreateAttachment endpoint.
@@ -1566,21 +1593,21 @@ class CreateAttachmentRequest {
   /// Required.
   Attachment? attachment;
 
-  CreateAttachmentRequest({
-    this.attachment,
-  });
+  CreateAttachmentRequest({this.attachment});
 
   CreateAttachmentRequest.fromJson(core.Map json_)
-      : this(
-          attachment: json_.containsKey('attachment')
-              ? Attachment.fromJson(
-                  json_['attachment'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        attachment:
+            json_.containsKey('attachment')
+                ? Attachment.fromJson(
+                  json_['attachment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachment != null) 'attachment': attachment!,
-      };
+    if (attachment != null) 'attachment': attachment!,
+  };
 }
 
 /// # gdata.* are outside protos with mising documentation
@@ -1609,27 +1636,33 @@ class DiffChecksumsResponse {
   });
 
   DiffChecksumsResponse.fromJson(core.Map json_)
-      : this(
-          checksumsLocation: json_.containsKey('checksumsLocation')
-              ? CompositeMedia.fromJson(json_['checksumsLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          chunkSizeBytes: json_['chunkSizeBytes'] as core.String?,
-          objectLocation: json_.containsKey('objectLocation')
-              ? CompositeMedia.fromJson(json_['objectLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          objectSizeBytes: json_['objectSizeBytes'] as core.String?,
-          objectVersion: json_['objectVersion'] as core.String?,
-        );
+    : this(
+        checksumsLocation:
+            json_.containsKey('checksumsLocation')
+                ? CompositeMedia.fromJson(
+                  json_['checksumsLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        chunkSizeBytes: json_['chunkSizeBytes'] as core.String?,
+        objectLocation:
+            json_.containsKey('objectLocation')
+                ? CompositeMedia.fromJson(
+                  json_['objectLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        objectSizeBytes: json_['objectSizeBytes'] as core.String?,
+        objectVersion: json_['objectVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (checksumsLocation != null) 'checksumsLocation': checksumsLocation!,
-        if (chunkSizeBytes != null) 'chunkSizeBytes': chunkSizeBytes!,
-        if (objectLocation != null) 'objectLocation': objectLocation!,
-        if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
-        if (objectVersion != null) 'objectVersion': objectVersion!,
-      };
+    if (checksumsLocation != null) 'checksumsLocation': checksumsLocation!,
+    if (chunkSizeBytes != null) 'chunkSizeBytes': chunkSizeBytes!,
+    if (objectLocation != null) 'objectLocation': objectLocation!,
+    if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
+    if (objectVersion != null) 'objectVersion': objectVersion!,
+  };
 }
 
 /// # gdata.* are outside protos with mising documentation
@@ -1637,21 +1670,22 @@ class DiffDownloadResponse {
   /// # gdata.* are outside protos with mising documentation
   CompositeMedia? objectLocation;
 
-  DiffDownloadResponse({
-    this.objectLocation,
-  });
+  DiffDownloadResponse({this.objectLocation});
 
   DiffDownloadResponse.fromJson(core.Map json_)
-      : this(
-          objectLocation: json_.containsKey('objectLocation')
-              ? CompositeMedia.fromJson(json_['objectLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        objectLocation:
+            json_.containsKey('objectLocation')
+                ? CompositeMedia.fromJson(
+                  json_['objectLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectLocation != null) 'objectLocation': objectLocation!,
-      };
+    if (objectLocation != null) 'objectLocation': objectLocation!,
+  };
 }
 
 /// # gdata.* are outside protos with mising documentation
@@ -1665,30 +1699,30 @@ class DiffUploadRequest {
   /// # gdata.* are outside protos with mising documentation
   core.String? objectVersion;
 
-  DiffUploadRequest({
-    this.checksumsInfo,
-    this.objectInfo,
-    this.objectVersion,
-  });
+  DiffUploadRequest({this.checksumsInfo, this.objectInfo, this.objectVersion});
 
   DiffUploadRequest.fromJson(core.Map json_)
-      : this(
-          checksumsInfo: json_.containsKey('checksumsInfo')
-              ? CompositeMedia.fromJson(
-                  json_['checksumsInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          objectInfo: json_.containsKey('objectInfo')
-              ? CompositeMedia.fromJson(
-                  json_['objectInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          objectVersion: json_['objectVersion'] as core.String?,
-        );
+    : this(
+        checksumsInfo:
+            json_.containsKey('checksumsInfo')
+                ? CompositeMedia.fromJson(
+                  json_['checksumsInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        objectInfo:
+            json_.containsKey('objectInfo')
+                ? CompositeMedia.fromJson(
+                  json_['objectInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        objectVersion: json_['objectVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (checksumsInfo != null) 'checksumsInfo': checksumsInfo!,
-        if (objectInfo != null) 'objectInfo': objectInfo!,
-        if (objectVersion != null) 'objectVersion': objectVersion!,
-      };
+    if (checksumsInfo != null) 'checksumsInfo': checksumsInfo!,
+    if (objectInfo != null) 'objectInfo': objectInfo!,
+    if (objectVersion != null) 'objectVersion': objectVersion!,
+  };
 }
 
 /// # gdata.* are outside protos with mising documentation
@@ -1699,24 +1733,24 @@ class DiffUploadResponse {
   /// # gdata.* are outside protos with mising documentation
   CompositeMedia? originalObject;
 
-  DiffUploadResponse({
-    this.objectVersion,
-    this.originalObject,
-  });
+  DiffUploadResponse({this.objectVersion, this.originalObject});
 
   DiffUploadResponse.fromJson(core.Map json_)
-      : this(
-          objectVersion: json_['objectVersion'] as core.String?,
-          originalObject: json_.containsKey('originalObject')
-              ? CompositeMedia.fromJson(json_['originalObject']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        objectVersion: json_['objectVersion'] as core.String?,
+        originalObject:
+            json_.containsKey('originalObject')
+                ? CompositeMedia.fromJson(
+                  json_['originalObject']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectVersion != null) 'objectVersion': objectVersion!,
-        if (originalObject != null) 'originalObject': originalObject!,
-      };
+    if (objectVersion != null) 'objectVersion': objectVersion!,
+    if (originalObject != null) 'originalObject': originalObject!,
+  };
 }
 
 /// # gdata.* are outside protos with mising documentation
@@ -1727,21 +1761,18 @@ class DiffVersionResponse {
   /// # gdata.* are outside protos with mising documentation
   core.String? objectVersion;
 
-  DiffVersionResponse({
-    this.objectSizeBytes,
-    this.objectVersion,
-  });
+  DiffVersionResponse({this.objectSizeBytes, this.objectVersion});
 
   DiffVersionResponse.fromJson(core.Map json_)
-      : this(
-          objectSizeBytes: json_['objectSizeBytes'] as core.String?,
-          objectVersion: json_['objectVersion'] as core.String?,
-        );
+    : this(
+        objectSizeBytes: json_['objectSizeBytes'] as core.String?,
+        objectVersion: json_['objectVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
-        if (objectVersion != null) 'objectVersion': objectVersion!,
-      };
+    if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
+    if (objectVersion != null) 'objectVersion': objectVersion!,
+  };
 }
 
 /// # gdata.* are outside protos with mising documentation
@@ -1752,22 +1783,19 @@ class DownloadParameters {
   /// # gdata.* are outside protos with mising documentation
   core.bool? ignoreRange;
 
-  DownloadParameters({
-    this.allowGzipCompression,
-    this.ignoreRange,
-  });
+  DownloadParameters({this.allowGzipCompression, this.ignoreRange});
 
   DownloadParameters.fromJson(core.Map json_)
-      : this(
-          allowGzipCompression: json_['allowGzipCompression'] as core.bool?,
-          ignoreRange: json_['ignoreRange'] as core.bool?,
-        );
+    : this(
+        allowGzipCompression: json_['allowGzipCompression'] as core.bool?,
+        ignoreRange: json_['ignoreRange'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowGzipCompression != null)
-          'allowGzipCompression': allowGzipCompression!,
-        if (ignoreRange != null) 'ignoreRange': ignoreRange!,
-      };
+    if (allowGzipCompression != null)
+      'allowGzipCompression': allowGzipCompression!,
+    if (ignoreRange != null) 'ignoreRange': ignoreRange!,
+  };
 }
 
 /// The request message for the EscalateCase endpoint.
@@ -1775,21 +1803,21 @@ class EscalateCaseRequest {
   /// The escalation information to be sent with the escalation request.
   Escalation? escalation;
 
-  EscalateCaseRequest({
-    this.escalation,
-  });
+  EscalateCaseRequest({this.escalation});
 
   EscalateCaseRequest.fromJson(core.Map json_)
-      : this(
-          escalation: json_.containsKey('escalation')
-              ? Escalation.fromJson(
-                  json_['escalation'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        escalation:
+            json_.containsKey('escalation')
+                ? Escalation.fromJson(
+                  json_['escalation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (escalation != null) 'escalation': escalation!,
-      };
+    if (escalation != null) 'escalation': escalation!,
+  };
 }
 
 /// An escalation of a support case.
@@ -1813,21 +1841,18 @@ class Escalation {
   /// - "BUSINESS_IMPACT" : The issue is having a significant business impact.
   core.String? reason;
 
-  Escalation({
-    this.justification,
-    this.reason,
-  });
+  Escalation({this.justification, this.reason});
 
   Escalation.fromJson(core.Map json_)
-      : this(
-          justification: json_['justification'] as core.String?,
-          reason: json_['reason'] as core.String?,
-        );
+    : this(
+        justification: json_['justification'] as core.String?,
+        reason: json_['reason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (justification != null) 'justification': justification!,
-        if (reason != null) 'reason': reason!,
-      };
+    if (justification != null) 'justification': justification!,
+    if (reason != null) 'reason': reason!,
+  };
 }
 
 /// The response message for the ListAttachments endpoint.
@@ -1841,24 +1866,25 @@ class ListAttachmentsResponse {
   /// requests. If unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
-  ListAttachmentsResponse({
-    this.attachments,
-    this.nextPageToken,
-  });
+  ListAttachmentsResponse({this.attachments, this.nextPageToken});
 
   ListAttachmentsResponse.fromJson(core.Map json_)
-      : this(
-          attachments: (json_['attachments'] as core.List?)
-              ?.map((value) => Attachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        attachments:
+            (json_['attachments'] as core.List?)
+                ?.map(
+                  (value) => Attachment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachments != null) 'attachments': attachments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (attachments != null) 'attachments': attachments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for the ListCases endpoint.
@@ -1873,24 +1899,25 @@ class ListCasesResponse {
   /// unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
-  ListCasesResponse({
-    this.cases,
-    this.nextPageToken,
-  });
+  ListCasesResponse({this.cases, this.nextPageToken});
 
   ListCasesResponse.fromJson(core.Map json_)
-      : this(
-          cases: (json_['cases'] as core.List?)
-              ?.map((value) =>
-                  Case.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        cases:
+            (json_['cases'] as core.List?)
+                ?.map(
+                  (value) => Case.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cases != null) 'cases': cases!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (cases != null) 'cases': cases!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for the ListComments endpoint.
@@ -1904,24 +1931,25 @@ class ListCommentsResponse {
   /// requests. If unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
-  ListCommentsResponse({
-    this.comments,
-    this.nextPageToken,
-  });
+  ListCommentsResponse({this.comments, this.nextPageToken});
 
   ListCommentsResponse.fromJson(core.Map json_)
-      : this(
-          comments: (json_['comments'] as core.List?)
-              ?.map((value) => Comment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        comments:
+            (json_['comments'] as core.List?)
+                ?.map(
+                  (value) => Comment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (comments != null) 'comments': comments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (comments != null) 'comments': comments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// # gdata.* are outside protos with mising documentation
@@ -1941,8 +1969,10 @@ class Media {
       convert.base64.decode(bigstoreObjectRef!);
 
   set bigstoreObjectRefAsBytes(core.List<core.int> bytes_) {
-    bigstoreObjectRef =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    bigstoreObjectRef = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -1953,8 +1983,10 @@ class Media {
   core.List<core.int> get blobRefAsBytes => convert.base64.decode(blobRef!);
 
   set blobRefAsBytes(core.List<core.int> bytes_) {
-    blobRef =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    blobRef = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -1975,8 +2007,10 @@ class Media {
       convert.base64.decode(cosmoBinaryReference!);
 
   set cosmoBinaryReferenceAsBytes(core.List<core.int> bytes_) {
-    cosmoBinaryReference =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    cosmoBinaryReference = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -2017,8 +2051,10 @@ class Media {
   core.List<core.int> get inlineAsBytes => convert.base64.decode(inline!);
 
   set inlineAsBytes(core.List<core.int> bytes_) {
-    inline =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    inline = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -2032,8 +2068,10 @@ class Media {
   core.List<core.int> get md5HashAsBytes => convert.base64.decode(md5Hash!);
 
   set md5HashAsBytes(core.List<core.int> bytes_) {
-    md5Hash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    md5Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -2041,8 +2079,10 @@ class Media {
   core.List<core.int> get mediaIdAsBytes => convert.base64.decode(mediaId!);
 
   set mediaIdAsBytes(core.List<core.int> bytes_) {
-    mediaId =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    mediaId = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -2081,8 +2121,10 @@ class Media {
   core.List<core.int> get sha1HashAsBytes => convert.base64.decode(sha1Hash!);
 
   set sha1HashAsBytes(core.List<core.int> bytes_) {
-    sha1Hash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    sha1Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -2091,8 +2133,10 @@ class Media {
       convert.base64.decode(sha256Hash!);
 
   set sha256HashAsBytes(core.List<core.int> bytes_) {
-    sha256Hash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    sha256Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// # gdata.* are outside protos with mising documentation
@@ -2135,107 +2179,135 @@ class Media {
   });
 
   Media.fromJson(core.Map json_)
-      : this(
-          algorithm: json_['algorithm'] as core.String?,
-          bigstoreObjectRef: json_['bigstoreObjectRef'] as core.String?,
-          blobRef: json_['blobRef'] as core.String?,
-          blobstore2Info: json_.containsKey('blobstore2Info')
-              ? Blobstore2Info.fromJson(json_['blobstore2Info']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          compositeMedia: (json_['compositeMedia'] as core.List?)
-              ?.map((value) => CompositeMedia.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          contentType: json_['contentType'] as core.String?,
-          contentTypeInfo: json_.containsKey('contentTypeInfo')
-              ? ContentTypeInfo.fromJson(json_['contentTypeInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
-          crc32cHash: json_['crc32cHash'] as core.int?,
-          diffChecksumsResponse: json_.containsKey('diffChecksumsResponse')
-              ? DiffChecksumsResponse.fromJson(json_['diffChecksumsResponse']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          diffDownloadResponse: json_.containsKey('diffDownloadResponse')
-              ? DiffDownloadResponse.fromJson(json_['diffDownloadResponse']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          diffUploadRequest: json_.containsKey('diffUploadRequest')
-              ? DiffUploadRequest.fromJson(json_['diffUploadRequest']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          diffUploadResponse: json_.containsKey('diffUploadResponse')
-              ? DiffUploadResponse.fromJson(json_['diffUploadResponse']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          diffVersionResponse: json_.containsKey('diffVersionResponse')
-              ? DiffVersionResponse.fromJson(json_['diffVersionResponse']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          downloadParameters: json_.containsKey('downloadParameters')
-              ? DownloadParameters.fromJson(json_['downloadParameters']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          filename: json_['filename'] as core.String?,
-          hash: json_['hash'] as core.String?,
-          hashVerified: json_['hashVerified'] as core.bool?,
-          inline: json_['inline'] as core.String?,
-          isPotentialRetry: json_['isPotentialRetry'] as core.bool?,
-          length: json_['length'] as core.String?,
-          md5Hash: json_['md5Hash'] as core.String?,
-          mediaId: json_['mediaId'] as core.String?,
-          objectId: json_.containsKey('objectId')
-              ? ObjectId.fromJson(
-                  json_['objectId'] as core.Map<core.String, core.dynamic>)
-              : null,
-          path: json_['path'] as core.String?,
-          referenceType: json_['referenceType'] as core.String?,
-          sha1Hash: json_['sha1Hash'] as core.String?,
-          sha256Hash: json_['sha256Hash'] as core.String?,
-          timestamp: json_['timestamp'] as core.String?,
-          token: json_['token'] as core.String?,
-        );
+    : this(
+        algorithm: json_['algorithm'] as core.String?,
+        bigstoreObjectRef: json_['bigstoreObjectRef'] as core.String?,
+        blobRef: json_['blobRef'] as core.String?,
+        blobstore2Info:
+            json_.containsKey('blobstore2Info')
+                ? Blobstore2Info.fromJson(
+                  json_['blobstore2Info']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        compositeMedia:
+            (json_['compositeMedia'] as core.List?)
+                ?.map(
+                  (value) => CompositeMedia.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        contentType: json_['contentType'] as core.String?,
+        contentTypeInfo:
+            json_.containsKey('contentTypeInfo')
+                ? ContentTypeInfo.fromJson(
+                  json_['contentTypeInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
+        crc32cHash: json_['crc32cHash'] as core.int?,
+        diffChecksumsResponse:
+            json_.containsKey('diffChecksumsResponse')
+                ? DiffChecksumsResponse.fromJson(
+                  json_['diffChecksumsResponse']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        diffDownloadResponse:
+            json_.containsKey('diffDownloadResponse')
+                ? DiffDownloadResponse.fromJson(
+                  json_['diffDownloadResponse']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        diffUploadRequest:
+            json_.containsKey('diffUploadRequest')
+                ? DiffUploadRequest.fromJson(
+                  json_['diffUploadRequest']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        diffUploadResponse:
+            json_.containsKey('diffUploadResponse')
+                ? DiffUploadResponse.fromJson(
+                  json_['diffUploadResponse']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        diffVersionResponse:
+            json_.containsKey('diffVersionResponse')
+                ? DiffVersionResponse.fromJson(
+                  json_['diffVersionResponse']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        downloadParameters:
+            json_.containsKey('downloadParameters')
+                ? DownloadParameters.fromJson(
+                  json_['downloadParameters']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filename: json_['filename'] as core.String?,
+        hash: json_['hash'] as core.String?,
+        hashVerified: json_['hashVerified'] as core.bool?,
+        inline: json_['inline'] as core.String?,
+        isPotentialRetry: json_['isPotentialRetry'] as core.bool?,
+        length: json_['length'] as core.String?,
+        md5Hash: json_['md5Hash'] as core.String?,
+        mediaId: json_['mediaId'] as core.String?,
+        objectId:
+            json_.containsKey('objectId')
+                ? ObjectId.fromJson(
+                  json_['objectId'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        path: json_['path'] as core.String?,
+        referenceType: json_['referenceType'] as core.String?,
+        sha1Hash: json_['sha1Hash'] as core.String?,
+        sha256Hash: json_['sha256Hash'] as core.String?,
+        timestamp: json_['timestamp'] as core.String?,
+        token: json_['token'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm!,
-        if (bigstoreObjectRef != null) 'bigstoreObjectRef': bigstoreObjectRef!,
-        if (blobRef != null) 'blobRef': blobRef!,
-        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
-        if (compositeMedia != null) 'compositeMedia': compositeMedia!,
-        if (contentType != null) 'contentType': contentType!,
-        if (contentTypeInfo != null) 'contentTypeInfo': contentTypeInfo!,
-        if (cosmoBinaryReference != null)
-          'cosmoBinaryReference': cosmoBinaryReference!,
-        if (crc32cHash != null) 'crc32cHash': crc32cHash!,
-        if (diffChecksumsResponse != null)
-          'diffChecksumsResponse': diffChecksumsResponse!,
-        if (diffDownloadResponse != null)
-          'diffDownloadResponse': diffDownloadResponse!,
-        if (diffUploadRequest != null) 'diffUploadRequest': diffUploadRequest!,
-        if (diffUploadResponse != null)
-          'diffUploadResponse': diffUploadResponse!,
-        if (diffVersionResponse != null)
-          'diffVersionResponse': diffVersionResponse!,
-        if (downloadParameters != null)
-          'downloadParameters': downloadParameters!,
-        if (filename != null) 'filename': filename!,
-        if (hash != null) 'hash': hash!,
-        if (hashVerified != null) 'hashVerified': hashVerified!,
-        if (inline != null) 'inline': inline!,
-        if (isPotentialRetry != null) 'isPotentialRetry': isPotentialRetry!,
-        if (length != null) 'length': length!,
-        if (md5Hash != null) 'md5Hash': md5Hash!,
-        if (mediaId != null) 'mediaId': mediaId!,
-        if (objectId != null) 'objectId': objectId!,
-        if (path != null) 'path': path!,
-        if (referenceType != null) 'referenceType': referenceType!,
-        if (sha1Hash != null) 'sha1Hash': sha1Hash!,
-        if (sha256Hash != null) 'sha256Hash': sha256Hash!,
-        if (timestamp != null) 'timestamp': timestamp!,
-        if (token != null) 'token': token!,
-      };
+    if (algorithm != null) 'algorithm': algorithm!,
+    if (bigstoreObjectRef != null) 'bigstoreObjectRef': bigstoreObjectRef!,
+    if (blobRef != null) 'blobRef': blobRef!,
+    if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
+    if (compositeMedia != null) 'compositeMedia': compositeMedia!,
+    if (contentType != null) 'contentType': contentType!,
+    if (contentTypeInfo != null) 'contentTypeInfo': contentTypeInfo!,
+    if (cosmoBinaryReference != null)
+      'cosmoBinaryReference': cosmoBinaryReference!,
+    if (crc32cHash != null) 'crc32cHash': crc32cHash!,
+    if (diffChecksumsResponse != null)
+      'diffChecksumsResponse': diffChecksumsResponse!,
+    if (diffDownloadResponse != null)
+      'diffDownloadResponse': diffDownloadResponse!,
+    if (diffUploadRequest != null) 'diffUploadRequest': diffUploadRequest!,
+    if (diffUploadResponse != null) 'diffUploadResponse': diffUploadResponse!,
+    if (diffVersionResponse != null)
+      'diffVersionResponse': diffVersionResponse!,
+    if (downloadParameters != null) 'downloadParameters': downloadParameters!,
+    if (filename != null) 'filename': filename!,
+    if (hash != null) 'hash': hash!,
+    if (hashVerified != null) 'hashVerified': hashVerified!,
+    if (inline != null) 'inline': inline!,
+    if (isPotentialRetry != null) 'isPotentialRetry': isPotentialRetry!,
+    if (length != null) 'length': length!,
+    if (md5Hash != null) 'md5Hash': md5Hash!,
+    if (mediaId != null) 'mediaId': mediaId!,
+    if (objectId != null) 'objectId': objectId!,
+    if (path != null) 'path': path!,
+    if (referenceType != null) 'referenceType': referenceType!,
+    if (sha1Hash != null) 'sha1Hash': sha1Hash!,
+    if (sha256Hash != null) 'sha256Hash': sha256Hash!,
+    if (timestamp != null) 'timestamp': timestamp!,
+    if (token != null) 'token': token!,
+  };
 }
 
 /// # gdata.* are outside protos with mising documentation
@@ -2249,24 +2321,20 @@ class ObjectId {
   /// # gdata.* are outside protos with mising documentation
   core.String? objectName;
 
-  ObjectId({
-    this.bucketName,
-    this.generation,
-    this.objectName,
-  });
+  ObjectId({this.bucketName, this.generation, this.objectName});
 
   ObjectId.fromJson(core.Map json_)
-      : this(
-          bucketName: json_['bucketName'] as core.String?,
-          generation: json_['generation'] as core.String?,
-          objectName: json_['objectName'] as core.String?,
-        );
+    : this(
+        bucketName: json_['bucketName'] as core.String?,
+        generation: json_['generation'] as core.String?,
+        objectName: json_['objectName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucketName != null) 'bucketName': bucketName!,
-        if (generation != null) 'generation': generation!,
-        if (objectName != null) 'objectName': objectName!,
-      };
+    if (bucketName != null) 'bucketName': bucketName!,
+    if (generation != null) 'generation': generation!,
+    if (objectName != null) 'objectName': objectName!,
+  };
 }
 
 /// The response message for SearchCaseClassifications endpoint.
@@ -2287,19 +2355,23 @@ class SearchCaseClassificationsResponse {
   });
 
   SearchCaseClassificationsResponse.fromJson(core.Map json_)
-      : this(
-          caseClassifications: (json_['caseClassifications'] as core.List?)
-              ?.map((value) => CaseClassification.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        caseClassifications:
+            (json_['caseClassifications'] as core.List?)
+                ?.map(
+                  (value) => CaseClassification.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caseClassifications != null)
-          'caseClassifications': caseClassifications!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (caseClassifications != null)
+      'caseClassifications': caseClassifications!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for the SearchCases endpoint.
@@ -2314,22 +2386,23 @@ class SearchCasesResponse {
   /// If unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
-  SearchCasesResponse({
-    this.cases,
-    this.nextPageToken,
-  });
+  SearchCasesResponse({this.cases, this.nextPageToken});
 
   SearchCasesResponse.fromJson(core.Map json_)
-      : this(
-          cases: (json_['cases'] as core.List?)
-              ?.map((value) =>
-                  Case.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        cases:
+            (json_['cases'] as core.List?)
+                ?.map(
+                  (value) => Case.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cases != null) 'cases': cases!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (cases != null) 'cases': cases!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }

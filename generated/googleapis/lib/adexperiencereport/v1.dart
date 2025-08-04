@@ -46,11 +46,16 @@ class AdExperienceReportApi {
   ViolatingSitesResource get violatingSites =>
       ViolatingSitesResource(_requester);
 
-  AdExperienceReportApi(http.Client client,
-      {core.String rootUrl = 'https://adexperiencereport.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AdExperienceReportApi(
+    http.Client client, {
+    core.String rootUrl = 'https://adexperiencereport.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class SitesResource {
@@ -92,7 +97,8 @@ class SitesResource {
       queryParams: queryParams_,
     );
     return SiteSummaryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -116,9 +122,7 @@ class ViolatingSitesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ViolatingSitesResponse> list({
-    core.String? $fields,
-  }) async {
+  async.Future<ViolatingSitesResponse> list({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -131,7 +135,8 @@ class ViolatingSitesResource {
       queryParams: queryParams_,
     );
     return ViolatingSitesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -196,27 +201,28 @@ class PlatformSummary {
   });
 
   PlatformSummary.fromJson(core.Map json_)
-      : this(
-          betterAdsStatus: json_['betterAdsStatus'] as core.String?,
-          enforcementTime: json_['enforcementTime'] as core.String?,
-          filterStatus: json_['filterStatus'] as core.String?,
-          lastChangeTime: json_['lastChangeTime'] as core.String?,
-          region: (json_['region'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          reportUrl: json_['reportUrl'] as core.String?,
-          underReview: json_['underReview'] as core.bool?,
-        );
+    : this(
+        betterAdsStatus: json_['betterAdsStatus'] as core.String?,
+        enforcementTime: json_['enforcementTime'] as core.String?,
+        filterStatus: json_['filterStatus'] as core.String?,
+        lastChangeTime: json_['lastChangeTime'] as core.String?,
+        region:
+            (json_['region'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        reportUrl: json_['reportUrl'] as core.String?,
+        underReview: json_['underReview'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (betterAdsStatus != null) 'betterAdsStatus': betterAdsStatus!,
-        if (enforcementTime != null) 'enforcementTime': enforcementTime!,
-        if (filterStatus != null) 'filterStatus': filterStatus!,
-        if (lastChangeTime != null) 'lastChangeTime': lastChangeTime!,
-        if (region != null) 'region': region!,
-        if (reportUrl != null) 'reportUrl': reportUrl!,
-        if (underReview != null) 'underReview': underReview!,
-      };
+    if (betterAdsStatus != null) 'betterAdsStatus': betterAdsStatus!,
+    if (enforcementTime != null) 'enforcementTime': enforcementTime!,
+    if (filterStatus != null) 'filterStatus': filterStatus!,
+    if (lastChangeTime != null) 'lastChangeTime': lastChangeTime!,
+    if (region != null) 'region': region!,
+    if (reportUrl != null) 'reportUrl': reportUrl!,
+    if (underReview != null) 'underReview': underReview!,
+  };
 }
 
 /// Response message for GetSiteSummary.
@@ -237,23 +243,28 @@ class SiteSummaryResponse {
   });
 
   SiteSummaryResponse.fromJson(core.Map json_)
-      : this(
-          desktopSummary: json_.containsKey('desktopSummary')
-              ? PlatformSummary.fromJson(json_['desktopSummary']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          mobileSummary: json_.containsKey('mobileSummary')
-              ? PlatformSummary.fromJson(
-                  json_['mobileSummary'] as core.Map<core.String, core.dynamic>)
-              : null,
-          reviewedSite: json_['reviewedSite'] as core.String?,
-        );
+    : this(
+        desktopSummary:
+            json_.containsKey('desktopSummary')
+                ? PlatformSummary.fromJson(
+                  json_['desktopSummary']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mobileSummary:
+            json_.containsKey('mobileSummary')
+                ? PlatformSummary.fromJson(
+                  json_['mobileSummary'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reviewedSite: json_['reviewedSite'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (desktopSummary != null) 'desktopSummary': desktopSummary!,
-        if (mobileSummary != null) 'mobileSummary': mobileSummary!,
-        if (reviewedSite != null) 'reviewedSite': reviewedSite!,
-      };
+    if (desktopSummary != null) 'desktopSummary': desktopSummary!,
+    if (mobileSummary != null) 'mobileSummary': mobileSummary!,
+    if (reviewedSite != null) 'reviewedSite': reviewedSite!,
+  };
 }
 
 /// Response message for ListViolatingSites.
@@ -261,19 +272,21 @@ class ViolatingSitesResponse {
   /// The list of violating sites.
   core.List<SiteSummaryResponse>? violatingSites;
 
-  ViolatingSitesResponse({
-    this.violatingSites,
-  });
+  ViolatingSitesResponse({this.violatingSites});
 
   ViolatingSitesResponse.fromJson(core.Map json_)
-      : this(
-          violatingSites: (json_['violatingSites'] as core.List?)
-              ?.map((value) => SiteSummaryResponse.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        violatingSites:
+            (json_['violatingSites'] as core.List?)
+                ?.map(
+                  (value) => SiteSummaryResponse.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (violatingSites != null) 'violatingSites': violatingSites!,
-      };
+    if (violatingSites != null) 'violatingSites': violatingSites!,
+  };
 }

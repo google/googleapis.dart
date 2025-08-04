@@ -9,8 +9,10 @@ import 'package:test/test.dart';
 
 void main() {
   void expectArgumentError(List<int> bytes) {
-    expect(() => ASN1Parser.parse(Uint8List.fromList(bytes)),
-        throwsA(isArgumentError));
+    expect(
+      () => ASN1Parser.parse(Uint8List.fromList(bytes)),
+      throwsA(isArgumentError),
+    );
   }
 
   void invalidLenTest(int tagBytes) {
@@ -37,7 +39,7 @@ void main() {
           ASN1Parser.sequenceTag,
           1,
           ASN1Parser.nullTag,
-          0
+          0,
         ];
         final sequence = ASN1Parser.parse(Uint8List.fromList(sequenceBytes));
         expect(sequence is ASN1Sequence, isTrue);
@@ -85,8 +87,9 @@ void main() {
     group('octet-string', () {
       test('small', () {
         final octetStringBytes = [ASN1Parser.octetStringTag, 3, 1, 2, 3];
-        final octetString =
-            ASN1Parser.parse(Uint8List.fromList(octetStringBytes));
+        final octetString = ASN1Parser.parse(
+          Uint8List.fromList(octetStringBytes),
+        );
         expect(octetString is ASN1OctetString, isTrue);
         expect((octetString as ASN1OctetString).bytes, equals([1, 2, 3]));
       });
@@ -97,8 +100,9 @@ void main() {
           octetStringBytes.add(i % 256);
         }
 
-        final octetString =
-            ASN1Parser.parse(Uint8List.fromList(octetStringBytes));
+        final octetString = ASN1Parser.parse(
+          Uint8List.fromList(octetStringBytes),
+        );
         expect(octetString is ASN1OctetString, isTrue);
         final castedOctetString = octetString as ASN1OctetString;
         for (var i = 0; i < 256; i++) {
@@ -138,8 +142,9 @@ void main() {
   });
 
   test('null', () {
-    final objId =
-        ASN1Parser.parse(Uint8List.fromList([ASN1Parser.nullTag, 0x00]));
+    final objId = ASN1Parser.parse(
+      Uint8List.fromList([ASN1Parser.nullTag, 0x00]),
+    );
     expect(objId is ASN1Null, isTrue);
 
     expectArgumentError([ASN1Parser.nullTag]);

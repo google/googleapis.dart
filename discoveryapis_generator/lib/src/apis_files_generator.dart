@@ -35,14 +35,19 @@ class ApisFilesGenerator {
   /// [descriptions] is a list of API descriptions we want to generate code for.
   /// [clientFolderPath] is the output directory for the generated client stub
   /// code.
-  ApisFilesGenerator(this.descriptions, this.clientFolderPath,
-      {this.updatePubspec = false, this.useCorePrefixes = true}) {
+  ApisFilesGenerator(
+    this.descriptions,
+    this.clientFolderPath, {
+    this.updatePubspec = false,
+    this.useCorePrefixes = true,
+  }) {
     // Create the output directory.
     final clientDirectory = Directory(clientFolderPath);
     final pkgRoot = findPackageRoot(path.absolute(clientDirectory.path));
     if (pkgRoot == null) {
       throw Exception(
-          'Client folder: \'$clientFolderPath\' must be in a package.');
+        'Client folder: \'$clientFolderPath\' must be in a package.',
+      );
     }
     packageRoot = pkgRoot;
     if (!clientDirectory.existsSync()) {
@@ -65,8 +70,9 @@ class ApisFilesGenerator {
     final results = <GenerateResult>[];
 
     for (var diPair in descriptions) {
-      final description =
-          RestDescription.fromJson(json.decode(diPair.apiDescription) as Map);
+      final description = RestDescription.fromJson(
+        json.decode(diPair.apiDescription) as Map,
+      );
       description.pruneUnused();
       final name = description.name!.toLowerCase();
       final version = description.version!.toLowerCase();
@@ -134,7 +140,8 @@ class ApisFilesGenerator {
         sink.writeln('$indent$key: null');
       } else {
         throw UnimplementedError(
-            'not sure how to party of ${value.runtimeType}');
+          'not sure how to party of ${value.runtimeType}',
+        );
       }
     }
 
@@ -151,7 +158,7 @@ class ApisFilesGenerator {
       'dev_dependencies',
       'dependency_overrides',
       'executables',
-      'transformers'
+      'transformers',
     };
 
     // Process pubspec and either print the dependencies that has to be added
@@ -165,9 +172,10 @@ class ApisFilesGenerator {
         if (key == 'dependencies') {
           // patch up dependencies.
           var localValue = pubspec![key] as Map?;
-          localValue = localValue != null
-              ? value = Map<dynamic, dynamic>.from(localValue)
-              : {};
+          localValue =
+              localValue != null
+                  ? value = Map<dynamic, dynamic>.from(localValue)
+                  : {};
           localValue.addAll(_computeNewDependencies(localValue));
           value = localValue;
         } else {
@@ -178,12 +186,15 @@ class ApisFilesGenerator {
       pubspecFile.writeAsStringSync(sink.toString());
       return 'Updated pubspec.yaml file with required dependencies.';
     } else {
-      final newDeps =
-          _computeNewDependencies(pubspec!['dependencies'] as YamlMap?);
+      final newDeps = _computeNewDependencies(
+        pubspec!['dependencies'] as YamlMap?,
+      );
       final sink = StringBuffer();
       if (newDeps.isNotEmpty) {
-        sink.writeln('Please update your pubspec.yaml file with the following '
-            'dependencies:');
+        sink.writeln(
+          'Please update your pubspec.yaml file with the following '
+          'dependencies:',
+        );
         newDeps.forEach((k, v) => sink.writeln('  $k: $v'));
       }
       return sink.toString();

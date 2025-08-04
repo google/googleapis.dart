@@ -138,11 +138,16 @@ class LoggingApi {
   SinksResource get sinks => SinksResource(_requester);
   V2Resource get v2 => V2Resource(_requester);
 
-  LoggingApi(http.Client client,
-      {core.String rootUrl = 'https://logging.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  LoggingApi(
+    http.Client client, {
+    core.String rootUrl = 'https://logging.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class BillingAccountsResource {
@@ -207,7 +212,8 @@ class BillingAccountsResource {
       queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the settings for the given resource.Note: Settings can be retrieved
@@ -260,7 +266,7 @@ class BillingAccountsExclusionsResource {
   final commons.ApiRequester _requester;
 
   BillingAccountsExclusionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new exclusion in the _Default sink in a specified parent
   /// resource.
@@ -307,7 +313,8 @@ class BillingAccountsExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an exclusion in the _Default sink.
@@ -332,10 +339,7 @@ class BillingAccountsExclusionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -388,7 +392,8 @@ class BillingAccountsExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the exclusions on the _Default sink in a parent resource.
@@ -439,7 +444,8 @@ class BillingAccountsExclusionsResource {
       queryParams: queryParams_,
     );
     return ListExclusionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Changes one or more properties of an existing exclusion in the _Default
@@ -495,7 +501,8 @@ class BillingAccountsExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -512,7 +519,7 @@ class BillingAccountsLocationsResource {
       BillingAccountsLocationsSavedQueriesResource(_requester);
 
   BillingAccountsLocationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -531,10 +538,7 @@ class BillingAccountsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -604,7 +608,8 @@ class BillingAccountsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -617,7 +622,7 @@ class BillingAccountsLocationsBucketsResource {
       BillingAccountsLocationsBucketsViewsResource(_requester);
 
   BillingAccountsLocationsBucketsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a log bucket that can be used to store log entries.
   ///
@@ -749,10 +754,7 @@ class BillingAccountsLocationsBucketsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -790,10 +792,7 @@ class BillingAccountsLocationsBucketsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogBucket> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogBucket> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -860,7 +859,8 @@ class BillingAccountsLocationsBucketsResource {
       queryParams: queryParams_,
     );
     return ListBucketsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a log bucket.If the bucket has a lifecycle_state of
@@ -1031,7 +1031,7 @@ class BillingAccountsLocationsBucketsLinksResource {
   final commons.ApiRequester _requester;
 
   BillingAccountsLocationsBucketsLinksResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Asynchronously creates a linked dataset in BigQuery which makes it
   /// possible to use BigQuery to read the logs stored in the log bucket.
@@ -1149,10 +1149,7 @@ class BillingAccountsLocationsBucketsLinksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Link> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Link> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1216,7 +1213,8 @@ class BillingAccountsLocationsBucketsLinksResource {
       queryParams: queryParams_,
     );
     return ListLinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1227,7 +1225,7 @@ class BillingAccountsLocationsBucketsViewsResource {
       BillingAccountsLocationsBucketsViewsLogsResource(_requester);
 
   BillingAccountsLocationsBucketsViewsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a view over log entries in a log bucket.
   ///
@@ -1305,10 +1303,7 @@ class BillingAccountsLocationsBucketsViewsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1344,10 +1339,7 @@ class BillingAccountsLocationsBucketsViewsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogView> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogView> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1410,7 +1402,8 @@ class BillingAccountsLocationsBucketsViewsResource {
       queryParams: queryParams_,
     );
     return ListViewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a view on a log bucket.
@@ -1476,7 +1469,7 @@ class BillingAccountsLocationsBucketsViewsLogsResource {
   final commons.ApiRequester _requester;
 
   BillingAccountsLocationsBucketsViewsLogsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
   ///
@@ -1541,7 +1534,8 @@ class BillingAccountsLocationsBucketsViewsLogsResource {
       queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1549,7 +1543,7 @@ class BillingAccountsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   BillingAccountsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -1622,10 +1616,7 @@ class BillingAccountsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1687,7 +1678,8 @@ class BillingAccountsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1695,7 +1687,7 @@ class BillingAccountsLocationsRecentQueriesResource {
   final commons.ApiRequester _requester;
 
   BillingAccountsLocationsRecentQueriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the RecentQueries that were created by the user making the request.
   ///
@@ -1757,7 +1749,8 @@ class BillingAccountsLocationsRecentQueriesResource {
       queryParams: queryParams_,
     );
     return ListRecentQueriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1765,7 +1758,7 @@ class BillingAccountsLocationsSavedQueriesResource {
   final commons.ApiRequester _requester;
 
   BillingAccountsLocationsSavedQueriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new SavedQuery for the user making the request.
   ///
@@ -1820,7 +1813,8 @@ class BillingAccountsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an existing SavedQuery that was created by the user making the
@@ -1848,10 +1842,7 @@ class BillingAccountsLocationsSavedQueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1890,10 +1881,7 @@ class BillingAccountsLocationsSavedQueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SavedQuery> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<SavedQuery> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1906,7 +1894,8 @@ class BillingAccountsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the SavedQueries that were created by the user making the request.
@@ -1976,7 +1965,8 @@ class BillingAccountsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return ListSavedQueriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing SavedQuery.
@@ -2034,7 +2024,8 @@ class BillingAccountsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2042,7 +2033,7 @@ class BillingAccountsLogsResource {
   final commons.ApiRequester _requester;
 
   BillingAccountsLogsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes all the log entries in a log for the global _Default Log Bucket.
   ///
@@ -2153,7 +2144,8 @@ class BillingAccountsLogsResource {
       queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2161,7 +2153,7 @@ class BillingAccountsSinksResource {
   final commons.ApiRequester _requester;
 
   BillingAccountsSinksResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a sink that exports specified log entries to a destination.
   ///
@@ -2378,7 +2370,8 @@ class BillingAccountsSinksResource {
       queryParams: queryParams_,
     );
     return ListSinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a sink.
@@ -2636,7 +2629,8 @@ class EntriesResource {
       queryParams: queryParams_,
     );
     return ListLogEntriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Writes log entries to Logging.
@@ -2680,7 +2674,8 @@ class EntriesResource {
       queryParams: queryParams_,
     );
     return WriteLogEntriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2734,7 +2729,8 @@ class ExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an exclusion in the _Default sink.
@@ -2759,10 +2755,7 @@ class ExclusionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2815,7 +2808,8 @@ class ExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the exclusions on the _Default sink in a parent resource.
@@ -2866,7 +2860,8 @@ class ExclusionsResource {
       queryParams: queryParams_,
     );
     return ListExclusionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Changes one or more properties of an existing exclusion in the _Default
@@ -2922,7 +2917,8 @@ class ExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2986,7 +2982,8 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the settings for the given resource.Note: Settings can be retrieved
@@ -3147,7 +3144,8 @@ class FoldersExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an exclusion in the _Default sink.
@@ -3172,10 +3170,7 @@ class FoldersExclusionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3228,7 +3223,8 @@ class FoldersExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the exclusions on the _Default sink in a parent resource.
@@ -3279,7 +3275,8 @@ class FoldersExclusionsResource {
       queryParams: queryParams_,
     );
     return ListExclusionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Changes one or more properties of an existing exclusion in the _Default
@@ -3335,7 +3332,8 @@ class FoldersExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3372,10 +3370,7 @@ class FoldersLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3445,7 +3440,8 @@ class FoldersLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3458,7 +3454,7 @@ class FoldersLocationsBucketsResource {
       FoldersLocationsBucketsViewsResource(_requester);
 
   FoldersLocationsBucketsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a log bucket that can be used to store log entries.
   ///
@@ -3590,10 +3586,7 @@ class FoldersLocationsBucketsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3631,10 +3624,7 @@ class FoldersLocationsBucketsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogBucket> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogBucket> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3701,7 +3691,8 @@ class FoldersLocationsBucketsResource {
       queryParams: queryParams_,
     );
     return ListBucketsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a log bucket.If the bucket has a lifecycle_state of
@@ -3872,7 +3863,7 @@ class FoldersLocationsBucketsLinksResource {
   final commons.ApiRequester _requester;
 
   FoldersLocationsBucketsLinksResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Asynchronously creates a linked dataset in BigQuery which makes it
   /// possible to use BigQuery to read the logs stored in the log bucket.
@@ -3990,10 +3981,7 @@ class FoldersLocationsBucketsLinksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Link> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Link> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4057,7 +4045,8 @@ class FoldersLocationsBucketsLinksResource {
       queryParams: queryParams_,
     );
     return ListLinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4068,7 +4057,7 @@ class FoldersLocationsBucketsViewsResource {
       FoldersLocationsBucketsViewsLogsResource(_requester);
 
   FoldersLocationsBucketsViewsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a view over log entries in a log bucket.
   ///
@@ -4146,10 +4135,7 @@ class FoldersLocationsBucketsViewsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4185,10 +4171,7 @@ class FoldersLocationsBucketsViewsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogView> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogView> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4298,7 +4281,8 @@ class FoldersLocationsBucketsViewsResource {
       queryParams: queryParams_,
     );
     return ListViewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a view on a log bucket.
@@ -4454,7 +4438,8 @@ class FoldersLocationsBucketsViewsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4462,7 +4447,7 @@ class FoldersLocationsBucketsViewsLogsResource {
   final commons.ApiRequester _requester;
 
   FoldersLocationsBucketsViewsLogsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
   ///
@@ -4527,7 +4512,8 @@ class FoldersLocationsBucketsViewsLogsResource {
       queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4535,7 +4521,7 @@ class FoldersLocationsLogScopesResource {
   final commons.ApiRequester _requester;
 
   FoldersLocationsLogScopesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a log scope.
   ///
@@ -4606,10 +4592,7 @@ class FoldersLocationsLogScopesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4644,10 +4627,7 @@ class FoldersLocationsLogScopesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogScope> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogScope> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4709,7 +4689,8 @@ class FoldersLocationsLogScopesResource {
       queryParams: queryParams_,
     );
     return ListLogScopesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a log scope.
@@ -4769,7 +4750,7 @@ class FoldersLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   FoldersLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -4842,10 +4823,7 @@ class FoldersLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4907,7 +4885,8 @@ class FoldersLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4915,7 +4894,7 @@ class FoldersLocationsRecentQueriesResource {
   final commons.ApiRequester _requester;
 
   FoldersLocationsRecentQueriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the RecentQueries that were created by the user making the request.
   ///
@@ -4977,7 +4956,8 @@ class FoldersLocationsRecentQueriesResource {
       queryParams: queryParams_,
     );
     return ListRecentQueriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4985,7 +4965,7 @@ class FoldersLocationsSavedQueriesResource {
   final commons.ApiRequester _requester;
 
   FoldersLocationsSavedQueriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new SavedQuery for the user making the request.
   ///
@@ -5040,7 +5020,8 @@ class FoldersLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an existing SavedQuery that was created by the user making the
@@ -5068,10 +5049,7 @@ class FoldersLocationsSavedQueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5110,10 +5088,7 @@ class FoldersLocationsSavedQueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SavedQuery> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<SavedQuery> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5126,7 +5101,8 @@ class FoldersLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the SavedQueries that were created by the user making the request.
@@ -5196,7 +5172,8 @@ class FoldersLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return ListSavedQueriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing SavedQuery.
@@ -5254,7 +5231,8 @@ class FoldersLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5372,7 +5350,8 @@ class FoldersLogsResource {
       queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5596,7 +5575,8 @@ class FoldersSinksResource {
       queryParams: queryParams_,
     );
     return ListSinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a sink.
@@ -5800,10 +5780,7 @@ class LocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5873,7 +5850,8 @@ class LocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6017,10 +5995,7 @@ class LocationsBucketsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6058,10 +6033,7 @@ class LocationsBucketsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogBucket> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogBucket> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6128,7 +6100,8 @@ class LocationsBucketsResource {
       queryParams: queryParams_,
     );
     return ListBucketsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a log bucket.If the bucket has a lifecycle_state of
@@ -6299,7 +6272,7 @@ class LocationsBucketsLinksResource {
   final commons.ApiRequester _requester;
 
   LocationsBucketsLinksResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Asynchronously creates a linked dataset in BigQuery which makes it
   /// possible to use BigQuery to read the logs stored in the log bucket.
@@ -6417,10 +6390,7 @@ class LocationsBucketsLinksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Link> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Link> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6484,7 +6454,8 @@ class LocationsBucketsLinksResource {
       queryParams: queryParams_,
     );
     return ListLinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6492,7 +6463,7 @@ class LocationsBucketsViewsResource {
   final commons.ApiRequester _requester;
 
   LocationsBucketsViewsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a view over log entries in a log bucket.
   ///
@@ -6570,10 +6541,7 @@ class LocationsBucketsViewsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6609,10 +6577,7 @@ class LocationsBucketsViewsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogView> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogView> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6722,7 +6687,8 @@ class LocationsBucketsViewsResource {
       queryParams: queryParams_,
     );
     return ListViewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a view on a log bucket.
@@ -6878,7 +6844,8 @@ class LocationsBucketsViewsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6886,7 +6853,7 @@ class LocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   LocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -6959,10 +6926,7 @@ class LocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7024,7 +6988,8 @@ class LocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7142,7 +7107,8 @@ class LogsResource {
       queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7150,7 +7116,7 @@ class MonitoredResourceDescriptorsResource {
   final commons.ApiRequester _requester;
 
   MonitoredResourceDescriptorsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the descriptors for monitored resource types used by Logging.
   ///
@@ -7194,7 +7160,8 @@ class MonitoredResourceDescriptorsResource {
       queryParams: queryParams_,
     );
     return ListMonitoredResourceDescriptorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7259,7 +7226,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the settings for the given resource.Note: Settings can be retrieved
@@ -7371,7 +7339,8 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the settings for the given resource.
@@ -7441,7 +7410,7 @@ class OrganizationsExclusionsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsExclusionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new exclusion in the _Default sink in a specified parent
   /// resource.
@@ -7488,7 +7457,8 @@ class OrganizationsExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an exclusion in the _Default sink.
@@ -7513,10 +7483,7 @@ class OrganizationsExclusionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7569,7 +7536,8 @@ class OrganizationsExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the exclusions on the _Default sink in a parent resource.
@@ -7620,7 +7588,8 @@ class OrganizationsExclusionsResource {
       queryParams: queryParams_,
     );
     return ListExclusionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Changes one or more properties of an existing exclusion in the _Default
@@ -7676,7 +7645,8 @@ class OrganizationsExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7695,7 +7665,7 @@ class OrganizationsLocationsResource {
       OrganizationsLocationsSavedQueriesResource(_requester);
 
   OrganizationsLocationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -7714,10 +7684,7 @@ class OrganizationsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7787,7 +7754,8 @@ class OrganizationsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -7800,7 +7768,7 @@ class OrganizationsLocationsBucketsResource {
       OrganizationsLocationsBucketsViewsResource(_requester);
 
   OrganizationsLocationsBucketsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a log bucket that can be used to store log entries.
   ///
@@ -7932,10 +7900,7 @@ class OrganizationsLocationsBucketsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7973,10 +7938,7 @@ class OrganizationsLocationsBucketsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogBucket> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogBucket> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8043,7 +8005,8 @@ class OrganizationsLocationsBucketsResource {
       queryParams: queryParams_,
     );
     return ListBucketsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a log bucket.If the bucket has a lifecycle_state of
@@ -8214,7 +8177,7 @@ class OrganizationsLocationsBucketsLinksResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsBucketsLinksResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Asynchronously creates a linked dataset in BigQuery which makes it
   /// possible to use BigQuery to read the logs stored in the log bucket.
@@ -8332,10 +8295,7 @@ class OrganizationsLocationsBucketsLinksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Link> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Link> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8399,7 +8359,8 @@ class OrganizationsLocationsBucketsLinksResource {
       queryParams: queryParams_,
     );
     return ListLinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -8410,7 +8371,7 @@ class OrganizationsLocationsBucketsViewsResource {
       OrganizationsLocationsBucketsViewsLogsResource(_requester);
 
   OrganizationsLocationsBucketsViewsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a view over log entries in a log bucket.
   ///
@@ -8488,10 +8449,7 @@ class OrganizationsLocationsBucketsViewsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8527,10 +8485,7 @@ class OrganizationsLocationsBucketsViewsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogView> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogView> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8640,7 +8595,8 @@ class OrganizationsLocationsBucketsViewsResource {
       queryParams: queryParams_,
     );
     return ListViewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a view on a log bucket.
@@ -8796,7 +8752,8 @@ class OrganizationsLocationsBucketsViewsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -8804,7 +8761,7 @@ class OrganizationsLocationsBucketsViewsLogsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsBucketsViewsLogsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
   ///
@@ -8869,7 +8826,8 @@ class OrganizationsLocationsBucketsViewsLogsResource {
       queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -8877,7 +8835,7 @@ class OrganizationsLocationsLogScopesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsLogScopesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a log scope.
   ///
@@ -8948,10 +8906,7 @@ class OrganizationsLocationsLogScopesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8986,10 +8941,7 @@ class OrganizationsLocationsLogScopesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogScope> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogScope> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9051,7 +9003,8 @@ class OrganizationsLocationsLogScopesResource {
       queryParams: queryParams_,
     );
     return ListLogScopesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a log scope.
@@ -9111,7 +9064,7 @@ class OrganizationsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -9184,10 +9137,7 @@ class OrganizationsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9249,7 +9199,8 @@ class OrganizationsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -9257,7 +9208,7 @@ class OrganizationsLocationsRecentQueriesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsRecentQueriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the RecentQueries that were created by the user making the request.
   ///
@@ -9319,7 +9270,8 @@ class OrganizationsLocationsRecentQueriesResource {
       queryParams: queryParams_,
     );
     return ListRecentQueriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -9327,7 +9279,7 @@ class OrganizationsLocationsSavedQueriesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsSavedQueriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new SavedQuery for the user making the request.
   ///
@@ -9382,7 +9334,8 @@ class OrganizationsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an existing SavedQuery that was created by the user making the
@@ -9410,10 +9363,7 @@ class OrganizationsLocationsSavedQueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9452,10 +9402,7 @@ class OrganizationsLocationsSavedQueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SavedQuery> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<SavedQuery> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9468,7 +9415,8 @@ class OrganizationsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the SavedQueries that were created by the user making the request.
@@ -9538,7 +9486,8 @@ class OrganizationsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return ListSavedQueriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing SavedQuery.
@@ -9596,7 +9545,8 @@ class OrganizationsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -9714,7 +9664,8 @@ class OrganizationsLogsResource {
       queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -9938,7 +9889,8 @@ class OrganizationsSinksResource {
       queryParams: queryParams_,
     );
     return ListSinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a sink.
@@ -10177,7 +10129,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the settings for the given resource.Note: Settings can be retrieved
@@ -10276,7 +10229,8 @@ class ProjectsExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an exclusion in the _Default sink.
@@ -10301,10 +10255,7 @@ class ProjectsExclusionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10357,7 +10308,8 @@ class ProjectsExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the exclusions on the _Default sink in a parent resource.
@@ -10408,7 +10360,8 @@ class ProjectsExclusionsResource {
       queryParams: queryParams_,
     );
     return ListExclusionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Changes one or more properties of an existing exclusion in the _Default
@@ -10464,7 +10417,8 @@ class ProjectsExclusionsResource {
       queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -10501,10 +10455,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10574,7 +10525,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -10587,7 +10539,7 @@ class ProjectsLocationsBucketsResource {
       ProjectsLocationsBucketsViewsResource(_requester);
 
   ProjectsLocationsBucketsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a log bucket that can be used to store log entries.
   ///
@@ -10719,10 +10671,7 @@ class ProjectsLocationsBucketsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10760,10 +10709,7 @@ class ProjectsLocationsBucketsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogBucket> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogBucket> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10830,7 +10776,8 @@ class ProjectsLocationsBucketsResource {
       queryParams: queryParams_,
     );
     return ListBucketsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a log bucket.If the bucket has a lifecycle_state of
@@ -11001,7 +10948,7 @@ class ProjectsLocationsBucketsLinksResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsBucketsLinksResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Asynchronously creates a linked dataset in BigQuery which makes it
   /// possible to use BigQuery to read the logs stored in the log bucket.
@@ -11119,10 +11066,7 @@ class ProjectsLocationsBucketsLinksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Link> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Link> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11186,7 +11130,8 @@ class ProjectsLocationsBucketsLinksResource {
       queryParams: queryParams_,
     );
     return ListLinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -11197,7 +11142,7 @@ class ProjectsLocationsBucketsViewsResource {
       ProjectsLocationsBucketsViewsLogsResource(_requester);
 
   ProjectsLocationsBucketsViewsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a view over log entries in a log bucket.
   ///
@@ -11275,10 +11220,7 @@ class ProjectsLocationsBucketsViewsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11314,10 +11256,7 @@ class ProjectsLocationsBucketsViewsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogView> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogView> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11427,7 +11366,8 @@ class ProjectsLocationsBucketsViewsResource {
       queryParams: queryParams_,
     );
     return ListViewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a view on a log bucket.
@@ -11583,7 +11523,8 @@ class ProjectsLocationsBucketsViewsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -11591,7 +11532,7 @@ class ProjectsLocationsBucketsViewsLogsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsBucketsViewsLogsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
   ///
@@ -11656,7 +11597,8 @@ class ProjectsLocationsBucketsViewsLogsResource {
       queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -11664,7 +11606,7 @@ class ProjectsLocationsLogScopesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsLogScopesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a log scope.
   ///
@@ -11735,10 +11677,7 @@ class ProjectsLocationsLogScopesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11773,10 +11712,7 @@ class ProjectsLocationsLogScopesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogScope> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<LogScope> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11838,7 +11774,8 @@ class ProjectsLocationsLogScopesResource {
       queryParams: queryParams_,
     );
     return ListLogScopesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a log scope.
@@ -11898,7 +11835,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -11971,10 +11908,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -12036,7 +11970,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -12044,7 +11979,7 @@ class ProjectsLocationsRecentQueriesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRecentQueriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the RecentQueries that were created by the user making the request.
   ///
@@ -12106,7 +12041,8 @@ class ProjectsLocationsRecentQueriesResource {
       queryParams: queryParams_,
     );
     return ListRecentQueriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -12114,7 +12050,7 @@ class ProjectsLocationsSavedQueriesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSavedQueriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new SavedQuery for the user making the request.
   ///
@@ -12169,7 +12105,8 @@ class ProjectsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an existing SavedQuery that was created by the user making the
@@ -12197,10 +12134,7 @@ class ProjectsLocationsSavedQueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -12239,10 +12173,7 @@ class ProjectsLocationsSavedQueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SavedQuery> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<SavedQuery> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -12255,7 +12186,8 @@ class ProjectsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the SavedQueries that were created by the user making the request.
@@ -12325,7 +12257,8 @@ class ProjectsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return ListSavedQueriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing SavedQuery.
@@ -12383,7 +12316,8 @@ class ProjectsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -12501,7 +12435,8 @@ class ProjectsLogsResource {
       queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -12671,7 +12606,8 @@ class ProjectsMetricsResource {
       queryParams: queryParams_,
     );
     return ListLogMetricsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates or updates a logs-based metric.
@@ -12939,7 +12875,8 @@ class ProjectsSinksResource {
       queryParams: queryParams_,
     );
     return ListSinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a sink.
@@ -13337,7 +13274,8 @@ class SinksResource {
       queryParams: queryParams_,
     );
     return ListSinksResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a sink.
@@ -13481,7 +13419,8 @@ class V2Resource {
       queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the settings for the given resource.Note: Settings can be retrieved
@@ -13593,7 +13532,8 @@ class V2Resource {
       queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the settings for the given resource.
@@ -13670,33 +13610,35 @@ class AppHub {
   /// Metadata associated with the workload.
   AppHubWorkload? workload;
 
-  AppHub({
-    this.application,
-    this.service,
-    this.workload,
-  });
+  AppHub({this.application, this.service, this.workload});
 
   AppHub.fromJson(core.Map json_)
-      : this(
-          application: json_.containsKey('application')
-              ? AppHubApplication.fromJson(
-                  json_['application'] as core.Map<core.String, core.dynamic>)
-              : null,
-          service: json_.containsKey('service')
-              ? AppHubService.fromJson(
-                  json_['service'] as core.Map<core.String, core.dynamic>)
-              : null,
-          workload: json_.containsKey('workload')
-              ? AppHubWorkload.fromJson(
-                  json_['workload'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        application:
+            json_.containsKey('application')
+                ? AppHubApplication.fromJson(
+                  json_['application'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        service:
+            json_.containsKey('service')
+                ? AppHubService.fromJson(
+                  json_['service'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        workload:
+            json_.containsKey('workload')
+                ? AppHubWorkload.fromJson(
+                  json_['workload'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (application != null) 'application': application!,
-        if (service != null) 'service': service!,
-        if (workload != null) 'workload': workload!,
-      };
+    if (application != null) 'application': application!,
+    if (service != null) 'service': service!,
+    if (workload != null) 'workload': workload!,
+  };
 }
 
 /// Resource identifiers associated with an AppHub application AppHub resources
@@ -13720,24 +13662,20 @@ class AppHubApplication {
   /// Example: "us-east1"
   core.String? location;
 
-  AppHubApplication({
-    this.container,
-    this.id,
-    this.location,
-  });
+  AppHubApplication({this.container, this.id, this.location});
 
   AppHubApplication.fromJson(core.Map json_)
-      : this(
-          container: json_['container'] as core.String?,
-          id: json_['id'] as core.String?,
-          location: json_['location'] as core.String?,
-        );
+    : this(
+        container: json_['container'] as core.String?,
+        id: json_['id'] as core.String?,
+        location: json_['location'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (container != null) 'container': container!,
-        if (id != null) 'id': id!,
-        if (location != null) 'location': location!,
-      };
+    if (container != null) 'container': container!,
+    if (id != null) 'id': id!,
+    if (location != null) 'location': location!,
+  };
 }
 
 /// Metadata associated with an App Hub service.
@@ -13753,24 +13691,20 @@ class AppHubService {
   /// Example: "my-service"
   core.String? id;
 
-  AppHubService({
-    this.criticalityType,
-    this.environmentType,
-    this.id,
-  });
+  AppHubService({this.criticalityType, this.environmentType, this.id});
 
   AppHubService.fromJson(core.Map json_)
-      : this(
-          criticalityType: json_['criticalityType'] as core.String?,
-          environmentType: json_['environmentType'] as core.String?,
-          id: json_['id'] as core.String?,
-        );
+    : this(
+        criticalityType: json_['criticalityType'] as core.String?,
+        environmentType: json_['environmentType'] as core.String?,
+        id: json_['id'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (criticalityType != null) 'criticalityType': criticalityType!,
-        if (environmentType != null) 'environmentType': environmentType!,
-        if (id != null) 'id': id!,
-      };
+    if (criticalityType != null) 'criticalityType': criticalityType!,
+    if (environmentType != null) 'environmentType': environmentType!,
+    if (id != null) 'id': id!,
+  };
 }
 
 /// Metadata associated with an App Hub workload.
@@ -13786,24 +13720,20 @@ class AppHubWorkload {
   /// Example: "my-workload"
   core.String? id;
 
-  AppHubWorkload({
-    this.criticalityType,
-    this.environmentType,
-    this.id,
-  });
+  AppHubWorkload({this.criticalityType, this.environmentType, this.id});
 
   AppHubWorkload.fromJson(core.Map json_)
-      : this(
-          criticalityType: json_['criticalityType'] as core.String?,
-          environmentType: json_['environmentType'] as core.String?,
-          id: json_['id'] as core.String?,
-        );
+    : this(
+        criticalityType: json_['criticalityType'] as core.String?,
+        environmentType: json_['environmentType'] as core.String?,
+        id: json_['id'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (criticalityType != null) 'criticalityType': criticalityType!,
-        if (environmentType != null) 'environmentType': environmentType!,
-        if (id != null) 'id': id!,
-      };
+    if (criticalityType != null) 'criticalityType': criticalityType!,
+    if (environmentType != null) 'environmentType': environmentType!,
+    if (id != null) 'id': id!,
+  };
 }
 
 /// Describes a BigQuery dataset that was created by a link.
@@ -13818,18 +13748,14 @@ class BigQueryDataset {
   /// Output only.
   core.String? datasetId;
 
-  BigQueryDataset({
-    this.datasetId,
-  });
+  BigQueryDataset({this.datasetId});
 
   BigQueryDataset.fromJson(core.Map json_)
-      : this(
-          datasetId: json_['datasetId'] as core.String?,
-        );
+    : this(datasetId: json_['datasetId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (datasetId != null) 'datasetId': datasetId!,
-      };
+    if (datasetId != null) 'datasetId': datasetId!,
+  };
 }
 
 /// Options that change functionality of a sink exporting data to BigQuery.
@@ -13864,18 +13790,18 @@ class BigQueryOptions {
   });
 
   BigQueryOptions.fromJson(core.Map json_)
-      : this(
-          usePartitionedTables: json_['usePartitionedTables'] as core.bool?,
-          usesTimestampColumnPartitioning:
-              json_['usesTimestampColumnPartitioning'] as core.bool?,
-        );
+    : this(
+        usePartitionedTables: json_['usePartitionedTables'] as core.bool?,
+        usesTimestampColumnPartitioning:
+            json_['usesTimestampColumnPartitioning'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (usePartitionedTables != null)
-          'usePartitionedTables': usePartitionedTables!,
-        if (usesTimestampColumnPartitioning != null)
-          'usesTimestampColumnPartitioning': usesTimestampColumnPartitioning!,
-      };
+    if (usePartitionedTables != null)
+      'usePartitionedTables': usePartitionedTables!,
+    if (usesTimestampColumnPartitioning != null)
+      'usesTimestampColumnPartitioning': usesTimestampColumnPartitioning!,
+  };
 }
 
 /// Associates members, or principals, with a role.
@@ -13957,29 +13883,28 @@ class Binding {
   /// (https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// BucketOptions describes the bucket boundaries used to create a histogram for
@@ -14014,27 +13939,34 @@ class BucketOptions {
   });
 
   BucketOptions.fromJson(core.Map json_)
-      : this(
-          explicitBuckets: json_.containsKey('explicitBuckets')
-              ? Explicit.fromJson(json_['explicitBuckets']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          exponentialBuckets: json_.containsKey('exponentialBuckets')
-              ? Exponential.fromJson(json_['exponentialBuckets']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          linearBuckets: json_.containsKey('linearBuckets')
-              ? Linear.fromJson(
-                  json_['linearBuckets'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        explicitBuckets:
+            json_.containsKey('explicitBuckets')
+                ? Explicit.fromJson(
+                  json_['explicitBuckets']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        exponentialBuckets:
+            json_.containsKey('exponentialBuckets')
+                ? Exponential.fromJson(
+                  json_['exponentialBuckets']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        linearBuckets:
+            json_.containsKey('linearBuckets')
+                ? Linear.fromJson(
+                  json_['linearBuckets'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (explicitBuckets != null) 'explicitBuckets': explicitBuckets!,
-        if (exponentialBuckets != null)
-          'exponentialBuckets': exponentialBuckets!,
-        if (linearBuckets != null) 'linearBuckets': linearBuckets!,
-      };
+    if (explicitBuckets != null) 'explicitBuckets': explicitBuckets!,
+    if (exponentialBuckets != null) 'exponentialBuckets': exponentialBuckets!,
+    if (linearBuckets != null) 'linearBuckets': linearBuckets!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -14113,19 +14045,19 @@ class CmekSettings {
   });
 
   CmekSettings.fromJson(core.Map json_)
-      : this(
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-          kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
-          name: json_['name'] as core.String?,
-          serviceAccountId: json_['serviceAccountId'] as core.String?,
-        );
+    : this(
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
+        name: json_['name'] as core.String?,
+        serviceAccountId: json_['serviceAccountId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
-        if (name != null) 'name': name!,
-        if (serviceAccountId != null) 'serviceAccountId': serviceAccountId!,
-      };
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+    if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
+    if (name != null) 'name': name!,
+    if (serviceAccountId != null) 'serviceAccountId': serviceAccountId!,
+  };
 }
 
 /// The parameters to CopyLogEntries.
@@ -14151,24 +14083,20 @@ class CopyLogEntriesRequest {
   /// Required.
   core.String? name;
 
-  CopyLogEntriesRequest({
-    this.destination,
-    this.filter,
-    this.name,
-  });
+  CopyLogEntriesRequest({this.destination, this.filter, this.name});
 
   CopyLogEntriesRequest.fromJson(core.Map json_)
-      : this(
-          destination: json_['destination'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        destination: json_['destination'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destination != null) 'destination': destination!,
-        if (filter != null) 'filter': filter!,
-        if (name != null) 'name': name!,
-      };
+    if (destination != null) 'destination': destination!,
+    if (filter != null) 'filter': filter!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Describes the custom _Default sink configuration that is used to override
@@ -14209,27 +14137,27 @@ class DefaultSinkConfig {
   /// _Default sink filter.
   core.String? mode;
 
-  DefaultSinkConfig({
-    this.exclusions,
-    this.filter,
-    this.mode,
-  });
+  DefaultSinkConfig({this.exclusions, this.filter, this.mode});
 
   DefaultSinkConfig.fromJson(core.Map json_)
-      : this(
-          exclusions: (json_['exclusions'] as core.List?)
-              ?.map((value) => LogExclusion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          filter: json_['filter'] as core.String?,
-          mode: json_['mode'] as core.String?,
-        );
+    : this(
+        exclusions:
+            (json_['exclusions'] as core.List?)
+                ?.map(
+                  (value) => LogExclusion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        filter: json_['filter'] as core.String?,
+        mode: json_['mode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exclusions != null) 'exclusions': exclusions!,
-        if (filter != null) 'filter': filter!,
-        if (mode != null) 'mode': mode!,
-      };
+    if (exclusions != null) 'exclusions': exclusions!,
+    if (filter != null) 'filter': filter!,
+    if (mode != null) 'mode': mode!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -14286,21 +14214,21 @@ class GetIamPolicyRequest {
   /// GetIamPolicy.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest({
-    this.options,
-  });
+  GetIamPolicyRequest({this.options});
 
   GetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          options: json_.containsKey('options')
-              ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        options:
+            json_.containsKey('options')
+                ? GetPolicyOptions.fromJson(
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!,
-      };
+    if (options != null) 'options': options!,
+  };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -14407,43 +14335,43 @@ class HttpRequest {
   });
 
   HttpRequest.fromJson(core.Map json_)
-      : this(
-          cacheFillBytes: json_['cacheFillBytes'] as core.String?,
-          cacheHit: json_['cacheHit'] as core.bool?,
-          cacheLookup: json_['cacheLookup'] as core.bool?,
-          cacheValidatedWithOriginServer:
-              json_['cacheValidatedWithOriginServer'] as core.bool?,
-          latency: json_['latency'] as core.String?,
-          protocol: json_['protocol'] as core.String?,
-          referer: json_['referer'] as core.String?,
-          remoteIp: json_['remoteIp'] as core.String?,
-          requestMethod: json_['requestMethod'] as core.String?,
-          requestSize: json_['requestSize'] as core.String?,
-          requestUrl: json_['requestUrl'] as core.String?,
-          responseSize: json_['responseSize'] as core.String?,
-          serverIp: json_['serverIp'] as core.String?,
-          status: json_['status'] as core.int?,
-          userAgent: json_['userAgent'] as core.String?,
-        );
+    : this(
+        cacheFillBytes: json_['cacheFillBytes'] as core.String?,
+        cacheHit: json_['cacheHit'] as core.bool?,
+        cacheLookup: json_['cacheLookup'] as core.bool?,
+        cacheValidatedWithOriginServer:
+            json_['cacheValidatedWithOriginServer'] as core.bool?,
+        latency: json_['latency'] as core.String?,
+        protocol: json_['protocol'] as core.String?,
+        referer: json_['referer'] as core.String?,
+        remoteIp: json_['remoteIp'] as core.String?,
+        requestMethod: json_['requestMethod'] as core.String?,
+        requestSize: json_['requestSize'] as core.String?,
+        requestUrl: json_['requestUrl'] as core.String?,
+        responseSize: json_['responseSize'] as core.String?,
+        serverIp: json_['serverIp'] as core.String?,
+        status: json_['status'] as core.int?,
+        userAgent: json_['userAgent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes!,
-        if (cacheHit != null) 'cacheHit': cacheHit!,
-        if (cacheLookup != null) 'cacheLookup': cacheLookup!,
-        if (cacheValidatedWithOriginServer != null)
-          'cacheValidatedWithOriginServer': cacheValidatedWithOriginServer!,
-        if (latency != null) 'latency': latency!,
-        if (protocol != null) 'protocol': protocol!,
-        if (referer != null) 'referer': referer!,
-        if (remoteIp != null) 'remoteIp': remoteIp!,
-        if (requestMethod != null) 'requestMethod': requestMethod!,
-        if (requestSize != null) 'requestSize': requestSize!,
-        if (requestUrl != null) 'requestUrl': requestUrl!,
-        if (responseSize != null) 'responseSize': responseSize!,
-        if (serverIp != null) 'serverIp': serverIp!,
-        if (status != null) 'status': status!,
-        if (userAgent != null) 'userAgent': userAgent!,
-      };
+    if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes!,
+    if (cacheHit != null) 'cacheHit': cacheHit!,
+    if (cacheLookup != null) 'cacheLookup': cacheLookup!,
+    if (cacheValidatedWithOriginServer != null)
+      'cacheValidatedWithOriginServer': cacheValidatedWithOriginServer!,
+    if (latency != null) 'latency': latency!,
+    if (protocol != null) 'protocol': protocol!,
+    if (referer != null) 'referer': referer!,
+    if (remoteIp != null) 'remoteIp': remoteIp!,
+    if (requestMethod != null) 'requestMethod': requestMethod!,
+    if (requestSize != null) 'requestSize': requestSize!,
+    if (requestUrl != null) 'requestUrl': requestUrl!,
+    if (responseSize != null) 'responseSize': responseSize!,
+    if (serverIp != null) 'serverIp': serverIp!,
+    if (status != null) 'status': status!,
+    if (userAgent != null) 'userAgent': userAgent!,
+  };
 }
 
 /// Configuration for an indexed field.
@@ -14473,24 +14401,20 @@ class IndexConfig {
   /// - "INDEX_TYPE_INTEGER" : The index is a integer-type index.
   core.String? type;
 
-  IndexConfig({
-    this.createTime,
-    this.fieldPath,
-    this.type,
-  });
+  IndexConfig({this.createTime, this.fieldPath, this.type});
 
   IndexConfig.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          fieldPath: json_['fieldPath'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        fieldPath: json_['fieldPath'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (fieldPath != null) 'fieldPath': fieldPath!,
-        if (type != null) 'type': type!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (fieldPath != null) 'fieldPath': fieldPath!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A description of a label.
@@ -14568,24 +14492,27 @@ class Link {
   });
 
   Link.fromJson(core.Map json_)
-      : this(
-          bigqueryDataset: json_.containsKey('bigqueryDataset')
-              ? BigQueryDataset.fromJson(json_['bigqueryDataset']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          lifecycleState: json_['lifecycleState'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        bigqueryDataset:
+            json_.containsKey('bigqueryDataset')
+                ? BigQueryDataset.fromJson(
+                  json_['bigqueryDataset']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        lifecycleState: json_['lifecycleState'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigqueryDataset != null) 'bigqueryDataset': bigqueryDataset!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (lifecycleState != null) 'lifecycleState': lifecycleState!,
-        if (name != null) 'name': name!,
-      };
+    if (bigqueryDataset != null) 'bigqueryDataset': bigqueryDataset!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The response from ListBuckets.
@@ -14600,24 +14527,25 @@ class ListBucketsResponse {
   /// of nextPageToken as pageToken.
   core.String? nextPageToken;
 
-  ListBucketsResponse({
-    this.buckets,
-    this.nextPageToken,
-  });
+  ListBucketsResponse({this.buckets, this.nextPageToken});
 
   ListBucketsResponse.fromJson(core.Map json_)
-      : this(
-          buckets: (json_['buckets'] as core.List?)
-              ?.map((value) => LogBucket.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        buckets:
+            (json_['buckets'] as core.List?)
+                ?.map(
+                  (value) => LogBucket.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buckets != null) 'buckets': buckets!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (buckets != null) 'buckets': buckets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Result returned from ListExclusions.
@@ -14632,24 +14560,25 @@ class ListExclusionsResponse {
   /// of nextPageToken as pageToken.
   core.String? nextPageToken;
 
-  ListExclusionsResponse({
-    this.exclusions,
-    this.nextPageToken,
-  });
+  ListExclusionsResponse({this.exclusions, this.nextPageToken});
 
   ListExclusionsResponse.fromJson(core.Map json_)
-      : this(
-          exclusions: (json_['exclusions'] as core.List?)
-              ?.map((value) => LogExclusion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        exclusions:
+            (json_['exclusions'] as core.List?)
+                ?.map(
+                  (value) => LogExclusion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exclusions != null) 'exclusions': exclusions!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (exclusions != null) 'exclusions': exclusions!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response from ListLinks.
@@ -14664,24 +14593,25 @@ class ListLinksResponse {
   /// of nextPageToken as pageToken.
   core.String? nextPageToken;
 
-  ListLinksResponse({
-    this.links,
-    this.nextPageToken,
-  });
+  ListLinksResponse({this.links, this.nextPageToken});
 
   ListLinksResponse.fromJson(core.Map json_)
-      : this(
-          links: (json_['links'] as core.List?)
-              ?.map((value) =>
-                  Link.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        links:
+            (json_['links'] as core.List?)
+                ?.map(
+                  (value) => Link.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (links != null) 'links': links!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (links != null) 'links': links!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -14692,24 +14622,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The parameters to ListLogEntries.
@@ -14806,27 +14737,29 @@ class ListLogEntriesRequest {
   });
 
   ListLogEntriesRequest.fromJson(core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          orderBy: json_['orderBy'] as core.String?,
-          pageSize: json_['pageSize'] as core.int?,
-          pageToken: json_['pageToken'] as core.String?,
-          projectIds: (json_['projectIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          resourceNames: (json_['resourceNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        filter: json_['filter'] as core.String?,
+        orderBy: json_['orderBy'] as core.String?,
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+        projectIds:
+            (json_['projectIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        resourceNames:
+            (json_['resourceNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (orderBy != null) 'orderBy': orderBy!,
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-        if (projectIds != null) 'projectIds': projectIds!,
-        if (resourceNames != null) 'resourceNames': resourceNames!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (orderBy != null) 'orderBy': orderBy!,
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (pageToken != null) 'pageToken': pageToken!,
+    if (projectIds != null) 'projectIds': projectIds!,
+    if (resourceNames != null) 'resourceNames': resourceNames!,
+  };
 }
 
 /// Result returned from ListLogEntries.
@@ -14850,24 +14783,25 @@ class ListLogEntriesResponse {
   /// the search.
   core.String? nextPageToken;
 
-  ListLogEntriesResponse({
-    this.entries,
-    this.nextPageToken,
-  });
+  ListLogEntriesResponse({this.entries, this.nextPageToken});
 
   ListLogEntriesResponse.fromJson(core.Map json_)
-      : this(
-          entries: (json_['entries'] as core.List?)
-              ?.map((value) => LogEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        entries:
+            (json_['entries'] as core.List?)
+                ?.map(
+                  (value) => LogEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null) 'entries': entries!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (entries != null) 'entries': entries!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Result returned from ListLogMetrics.
@@ -14882,24 +14816,25 @@ class ListLogMetricsResponse {
   /// nextPageToken as pageToken.
   core.String? nextPageToken;
 
-  ListLogMetricsResponse({
-    this.metrics,
-    this.nextPageToken,
-  });
+  ListLogMetricsResponse({this.metrics, this.nextPageToken});
 
   ListLogMetricsResponse.fromJson(core.Map json_)
-      : this(
-          metrics: (json_['metrics'] as core.List?)
-              ?.map((value) => LogMetric.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        metrics:
+            (json_['metrics'] as core.List?)
+                ?.map(
+                  (value) => LogMetric.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metrics != null) 'metrics': metrics!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (metrics != null) 'metrics': metrics!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response from ListLogScopes.
@@ -14916,24 +14851,25 @@ class ListLogScopesResponse {
   /// of nextPageToken as pageToken.
   core.String? nextPageToken;
 
-  ListLogScopesResponse({
-    this.logScopes,
-    this.nextPageToken,
-  });
+  ListLogScopesResponse({this.logScopes, this.nextPageToken});
 
   ListLogScopesResponse.fromJson(core.Map json_)
-      : this(
-          logScopes: (json_['logScopes'] as core.List?)
-              ?.map((value) => LogScope.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        logScopes:
+            (json_['logScopes'] as core.List?)
+                ?.map(
+                  (value) => LogScope.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (logScopes != null) 'logScopes': logScopes!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (logScopes != null) 'logScopes': logScopes!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Result returned from ListLogs.
@@ -14951,23 +14887,21 @@ class ListLogsResponse {
   /// nextPageToken as pageToken.
   core.String? nextPageToken;
 
-  ListLogsResponse({
-    this.logNames,
-    this.nextPageToken,
-  });
+  ListLogsResponse({this.logNames, this.nextPageToken});
 
   ListLogsResponse.fromJson(core.Map json_)
-      : this(
-          logNames: (json_['logNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        logNames:
+            (json_['logNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (logNames != null) 'logNames': logNames!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (logNames != null) 'logNames': logNames!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Result returned from ListMonitoredResourceDescriptors.
@@ -14988,19 +14922,23 @@ class ListMonitoredResourceDescriptorsResponse {
   });
 
   ListMonitoredResourceDescriptorsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          resourceDescriptors: (json_['resourceDescriptors'] as core.List?)
-              ?.map((value) => MonitoredResourceDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        resourceDescriptors:
+            (json_['resourceDescriptors'] as core.List?)
+                ?.map(
+                  (value) => MonitoredResourceDescriptor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resourceDescriptors != null)
-          'resourceDescriptors': resourceDescriptors!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (resourceDescriptors != null)
+      'resourceDescriptors': resourceDescriptors!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -15011,24 +14949,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// The response from ListRecentQueries.
@@ -15062,22 +15001,27 @@ class ListRecentQueriesResponse {
   });
 
   ListRecentQueriesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          recentQueries: (json_['recentQueries'] as core.List?)
-              ?.map((value) => RecentQuery.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        recentQueries:
+            (json_['recentQueries'] as core.List?)
+                ?.map(
+                  (value) => RecentQuery.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (recentQueries != null) 'recentQueries': recentQueries!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (recentQueries != null) 'recentQueries': recentQueries!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response from ListSavedQueries.
@@ -15111,22 +15055,27 @@ class ListSavedQueriesResponse {
   });
 
   ListSavedQueriesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          savedQueries: (json_['savedQueries'] as core.List?)
-              ?.map((value) => SavedQuery.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        savedQueries:
+            (json_['savedQueries'] as core.List?)
+                ?.map(
+                  (value) => SavedQuery.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (savedQueries != null) 'savedQueries': savedQueries!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (savedQueries != null) 'savedQueries': savedQueries!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Result returned from ListSinks.
@@ -15141,24 +15090,25 @@ class ListSinksResponse {
   /// A list of sinks.
   core.List<LogSink>? sinks;
 
-  ListSinksResponse({
-    this.nextPageToken,
-    this.sinks,
-  });
+  ListSinksResponse({this.nextPageToken, this.sinks});
 
   ListSinksResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          sinks: (json_['sinks'] as core.List?)
-              ?.map((value) => LogSink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        sinks:
+            (json_['sinks'] as core.List?)
+                ?.map(
+                  (value) => LogSink.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (sinks != null) 'sinks': sinks!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (sinks != null) 'sinks': sinks!,
+  };
 }
 
 /// The response from ListViews.
@@ -15173,24 +15123,25 @@ class ListViewsResponse {
   /// A list of views.
   core.List<LogView>? views;
 
-  ListViewsResponse({
-    this.nextPageToken,
-    this.views,
-  });
+  ListViewsResponse({this.nextPageToken, this.views});
 
   ListViewsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          views: (json_['views'] as core.List?)
-              ?.map((value) => LogView.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        views:
+            (json_['views'] as core.List?)
+                ?.map(
+                  (value) => LogView.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (views != null) 'views': views!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (views != null) 'views': views!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -15306,41 +15257,48 @@ class LogBucket {
   });
 
   LogBucket.fromJson(core.Map json_)
-      : this(
-          analyticsEnabled: json_['analyticsEnabled'] as core.bool?,
-          cmekSettings: json_.containsKey('cmekSettings')
-              ? CmekSettings.fromJson(
-                  json_['cmekSettings'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          indexConfigs: (json_['indexConfigs'] as core.List?)
-              ?.map((value) => IndexConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          lifecycleState: json_['lifecycleState'] as core.String?,
-          locked: json_['locked'] as core.bool?,
-          name: json_['name'] as core.String?,
-          restrictedFields: (json_['restrictedFields'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          retentionDays: json_['retentionDays'] as core.int?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        analyticsEnabled: json_['analyticsEnabled'] as core.bool?,
+        cmekSettings:
+            json_.containsKey('cmekSettings')
+                ? CmekSettings.fromJson(
+                  json_['cmekSettings'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        indexConfigs:
+            (json_['indexConfigs'] as core.List?)
+                ?.map(
+                  (value) => IndexConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        lifecycleState: json_['lifecycleState'] as core.String?,
+        locked: json_['locked'] as core.bool?,
+        name: json_['name'] as core.String?,
+        restrictedFields:
+            (json_['restrictedFields'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        retentionDays: json_['retentionDays'] as core.int?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analyticsEnabled != null) 'analyticsEnabled': analyticsEnabled!,
-        if (cmekSettings != null) 'cmekSettings': cmekSettings!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (indexConfigs != null) 'indexConfigs': indexConfigs!,
-        if (lifecycleState != null) 'lifecycleState': lifecycleState!,
-        if (locked != null) 'locked': locked!,
-        if (name != null) 'name': name!,
-        if (restrictedFields != null) 'restrictedFields': restrictedFields!,
-        if (retentionDays != null) 'retentionDays': retentionDays!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (analyticsEnabled != null) 'analyticsEnabled': analyticsEnabled!,
+    if (cmekSettings != null) 'cmekSettings': cmekSettings!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (indexConfigs != null) 'indexConfigs': indexConfigs!,
+    if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+    if (locked != null) 'locked': locked!,
+    if (name != null) 'name': name!,
+    if (restrictedFields != null) 'restrictedFields': restrictedFields!,
+    if (retentionDays != null) 'retentionDays': retentionDays!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// An individual entry in a log.
@@ -15598,90 +15556,110 @@ class LogEntry {
   });
 
   LogEntry.fromJson(core.Map json_)
-      : this(
-          apphub: json_.containsKey('apphub')
-              ? AppHub.fromJson(
-                  json_['apphub'] as core.Map<core.String, core.dynamic>)
-              : null,
-          apphubDestination: json_.containsKey('apphubDestination')
-              ? AppHub.fromJson(json_['apphubDestination']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          errorGroups: (json_['errorGroups'] as core.List?)
-              ?.map((value) => LogErrorGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          httpRequest: json_.containsKey('httpRequest')
-              ? HttpRequest.fromJson(
-                  json_['httpRequest'] as core.Map<core.String, core.dynamic>)
-              : null,
-          insertId: json_['insertId'] as core.String?,
-          jsonPayload: json_.containsKey('jsonPayload')
-              ? json_['jsonPayload'] as core.Map<core.String, core.dynamic>
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          logName: json_['logName'] as core.String?,
-          metadata: json_.containsKey('metadata')
-              ? MonitoredResourceMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>)
-              : null,
-          operation: json_.containsKey('operation')
-              ? LogEntryOperation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          protoPayload: json_.containsKey('protoPayload')
-              ? json_['protoPayload'] as core.Map<core.String, core.dynamic>
-              : null,
-          receiveTimestamp: json_['receiveTimestamp'] as core.String?,
-          resource: json_.containsKey('resource')
-              ? MonitoredResource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          severity: json_['severity'] as core.String?,
-          sourceLocation: json_.containsKey('sourceLocation')
-              ? LogEntrySourceLocation.fromJson(json_['sourceLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          spanId: json_['spanId'] as core.String?,
-          split: json_.containsKey('split')
-              ? LogSplit.fromJson(
-                  json_['split'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textPayload: json_['textPayload'] as core.String?,
-          timestamp: json_['timestamp'] as core.String?,
-          trace: json_['trace'] as core.String?,
-          traceSampled: json_['traceSampled'] as core.bool?,
-        );
+    : this(
+        apphub:
+            json_.containsKey('apphub')
+                ? AppHub.fromJson(
+                  json_['apphub'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        apphubDestination:
+            json_.containsKey('apphubDestination')
+                ? AppHub.fromJson(
+                  json_['apphubDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        errorGroups:
+            (json_['errorGroups'] as core.List?)
+                ?.map(
+                  (value) => LogErrorGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        httpRequest:
+            json_.containsKey('httpRequest')
+                ? HttpRequest.fromJson(
+                  json_['httpRequest'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertId: json_['insertId'] as core.String?,
+        jsonPayload:
+            json_.containsKey('jsonPayload')
+                ? json_['jsonPayload'] as core.Map<core.String, core.dynamic>
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        logName: json_['logName'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? MonitoredResourceMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        operation:
+            json_.containsKey('operation')
+                ? LogEntryOperation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        protoPayload:
+            json_.containsKey('protoPayload')
+                ? json_['protoPayload'] as core.Map<core.String, core.dynamic>
+                : null,
+        receiveTimestamp: json_['receiveTimestamp'] as core.String?,
+        resource:
+            json_.containsKey('resource')
+                ? MonitoredResource.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        severity: json_['severity'] as core.String?,
+        sourceLocation:
+            json_.containsKey('sourceLocation')
+                ? LogEntrySourceLocation.fromJson(
+                  json_['sourceLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spanId: json_['spanId'] as core.String?,
+        split:
+            json_.containsKey('split')
+                ? LogSplit.fromJson(
+                  json_['split'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textPayload: json_['textPayload'] as core.String?,
+        timestamp: json_['timestamp'] as core.String?,
+        trace: json_['trace'] as core.String?,
+        traceSampled: json_['traceSampled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apphub != null) 'apphub': apphub!,
-        if (apphubDestination != null) 'apphubDestination': apphubDestination!,
-        if (errorGroups != null) 'errorGroups': errorGroups!,
-        if (httpRequest != null) 'httpRequest': httpRequest!,
-        if (insertId != null) 'insertId': insertId!,
-        if (jsonPayload != null) 'jsonPayload': jsonPayload!,
-        if (labels != null) 'labels': labels!,
-        if (logName != null) 'logName': logName!,
-        if (metadata != null) 'metadata': metadata!,
-        if (operation != null) 'operation': operation!,
-        if (protoPayload != null) 'protoPayload': protoPayload!,
-        if (receiveTimestamp != null) 'receiveTimestamp': receiveTimestamp!,
-        if (resource != null) 'resource': resource!,
-        if (severity != null) 'severity': severity!,
-        if (sourceLocation != null) 'sourceLocation': sourceLocation!,
-        if (spanId != null) 'spanId': spanId!,
-        if (split != null) 'split': split!,
-        if (textPayload != null) 'textPayload': textPayload!,
-        if (timestamp != null) 'timestamp': timestamp!,
-        if (trace != null) 'trace': trace!,
-        if (traceSampled != null) 'traceSampled': traceSampled!,
-      };
+    if (apphub != null) 'apphub': apphub!,
+    if (apphubDestination != null) 'apphubDestination': apphubDestination!,
+    if (errorGroups != null) 'errorGroups': errorGroups!,
+    if (httpRequest != null) 'httpRequest': httpRequest!,
+    if (insertId != null) 'insertId': insertId!,
+    if (jsonPayload != null) 'jsonPayload': jsonPayload!,
+    if (labels != null) 'labels': labels!,
+    if (logName != null) 'logName': logName!,
+    if (metadata != null) 'metadata': metadata!,
+    if (operation != null) 'operation': operation!,
+    if (protoPayload != null) 'protoPayload': protoPayload!,
+    if (receiveTimestamp != null) 'receiveTimestamp': receiveTimestamp!,
+    if (resource != null) 'resource': resource!,
+    if (severity != null) 'severity': severity!,
+    if (sourceLocation != null) 'sourceLocation': sourceLocation!,
+    if (spanId != null) 'spanId': spanId!,
+    if (split != null) 'split': split!,
+    if (textPayload != null) 'textPayload': textPayload!,
+    if (timestamp != null) 'timestamp': timestamp!,
+    if (trace != null) 'trace': trace!,
+    if (traceSampled != null) 'traceSampled': traceSampled!,
+  };
 }
 
 /// Additional information about a potentially long-running operation with which
@@ -15714,27 +15692,22 @@ class LogEntryOperation {
   /// Optional.
   core.String? producer;
 
-  LogEntryOperation({
-    this.first,
-    this.id,
-    this.last,
-    this.producer,
-  });
+  LogEntryOperation({this.first, this.id, this.last, this.producer});
 
   LogEntryOperation.fromJson(core.Map json_)
-      : this(
-          first: json_['first'] as core.bool?,
-          id: json_['id'] as core.String?,
-          last: json_['last'] as core.bool?,
-          producer: json_['producer'] as core.String?,
-        );
+    : this(
+        first: json_['first'] as core.bool?,
+        id: json_['id'] as core.String?,
+        last: json_['last'] as core.bool?,
+        producer: json_['producer'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (first != null) 'first': first!,
-        if (id != null) 'id': id!,
-        if (last != null) 'last': last!,
-        if (producer != null) 'producer': producer!,
-      };
+    if (first != null) 'first': first!,
+    if (id != null) 'id': id!,
+    if (last != null) 'last': last!,
+    if (producer != null) 'producer': producer!,
+  };
 }
 
 /// Additional information about the source code location that produced the log
@@ -15766,24 +15739,20 @@ class LogEntrySourceLocation {
   /// Optional.
   core.String? line;
 
-  LogEntrySourceLocation({
-    this.file,
-    this.function,
-    this.line,
-  });
+  LogEntrySourceLocation({this.file, this.function, this.line});
 
   LogEntrySourceLocation.fromJson(core.Map json_)
-      : this(
-          file: json_['file'] as core.String?,
-          function: json_['function'] as core.String?,
-          line: json_['line'] as core.String?,
-        );
+    : this(
+        file: json_['file'] as core.String?,
+        function: json_['function'] as core.String?,
+        line: json_['line'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (file != null) 'file': file!,
-        if (function != null) 'function': function!,
-        if (line != null) 'line': line!,
-      };
+    if (file != null) 'file': file!,
+    if (function != null) 'function': function!,
+    if (line != null) 'line': line!,
+  };
 }
 
 /// Contains metadata that associates the LogEntry to Error Reporting error
@@ -15799,18 +15768,12 @@ class LogErrorGroup {
   /// (https://cloud.google.com/terms/cloud-privacy-notice).
   core.String? id;
 
-  LogErrorGroup({
-    this.id,
-  });
+  LogErrorGroup({this.id});
 
   LogErrorGroup.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-        );
+    : this(id: json_['id'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-      };
+  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
 }
 
 /// Specifies a set of log entries that are filtered out by a sink.
@@ -15878,23 +15841,23 @@ class LogExclusion {
   });
 
   LogExclusion.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          disabled: json_['disabled'] as core.bool?,
-          filter: json_['filter'] as core.String?,
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        filter: json_['filter'] as core.String?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (disabled != null) 'disabled': disabled!,
-        if (filter != null) 'filter': filter!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (disabled != null) 'disabled': disabled!,
+    if (filter != null) 'filter': filter!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Describes a logs-based metric.
@@ -16063,50 +16026,50 @@ class LogMetric {
   });
 
   LogMetric.fromJson(core.Map json_)
-      : this(
-          bucketName: json_['bucketName'] as core.String?,
-          bucketOptions: json_.containsKey('bucketOptions')
-              ? BucketOptions.fromJson(
-                  json_['bucketOptions'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          disabled: json_['disabled'] as core.bool?,
-          filter: json_['filter'] as core.String?,
-          labelExtractors:
-              (json_['labelExtractors'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          metricDescriptor: json_.containsKey('metricDescriptor')
-              ? MetricDescriptor.fromJson(json_['metricDescriptor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          resourceName: json_['resourceName'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          valueExtractor: json_['valueExtractor'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        bucketName: json_['bucketName'] as core.String?,
+        bucketOptions:
+            json_.containsKey('bucketOptions')
+                ? BucketOptions.fromJson(
+                  json_['bucketOptions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        filter: json_['filter'] as core.String?,
+        labelExtractors: (json_['labelExtractors']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        metricDescriptor:
+            json_.containsKey('metricDescriptor')
+                ? MetricDescriptor.fromJson(
+                  json_['metricDescriptor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        resourceName: json_['resourceName'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        valueExtractor: json_['valueExtractor'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucketName != null) 'bucketName': bucketName!,
-        if (bucketOptions != null) 'bucketOptions': bucketOptions!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (disabled != null) 'disabled': disabled!,
-        if (filter != null) 'filter': filter!,
-        if (labelExtractors != null) 'labelExtractors': labelExtractors!,
-        if (metricDescriptor != null) 'metricDescriptor': metricDescriptor!,
-        if (name != null) 'name': name!,
-        if (resourceName != null) 'resourceName': resourceName!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (valueExtractor != null) 'valueExtractor': valueExtractor!,
-        if (version != null) 'version': version!,
-      };
+    if (bucketName != null) 'bucketName': bucketName!,
+    if (bucketOptions != null) 'bucketOptions': bucketOptions!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (disabled != null) 'disabled': disabled!,
+    if (filter != null) 'filter': filter!,
+    if (labelExtractors != null) 'labelExtractors': labelExtractors!,
+    if (metricDescriptor != null) 'metricDescriptor': metricDescriptor!,
+    if (name != null) 'name': name!,
+    if (resourceName != null) 'resourceName': resourceName!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (valueExtractor != null) 'valueExtractor': valueExtractor!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Describes a group of resources to read log entries from.
@@ -16153,23 +16116,24 @@ class LogScope {
   });
 
   LogScope.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          name: json_['name'] as core.String?,
-          resourceNames: (json_['resourceNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        name: json_['name'] as core.String?,
+        resourceNames:
+            (json_['resourceNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (name != null) 'name': name!,
-        if (resourceNames != null) 'resourceNames': resourceNames!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (name != null) 'name': name!,
+    if (resourceNames != null) 'resourceNames': resourceNames!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Describes a sink used to export log entries to one of the following
@@ -16340,46 +16304,53 @@ class LogSink {
   });
 
   LogSink.fromJson(core.Map json_)
-      : this(
-          bigqueryOptions: json_.containsKey('bigqueryOptions')
-              ? BigQueryOptions.fromJson(json_['bigqueryOptions']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          destination: json_['destination'] as core.String?,
-          disabled: json_['disabled'] as core.bool?,
-          exclusions: (json_['exclusions'] as core.List?)
-              ?.map((value) => LogExclusion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          filter: json_['filter'] as core.String?,
-          includeChildren: json_['includeChildren'] as core.bool?,
-          interceptChildren: json_['interceptChildren'] as core.bool?,
-          name: json_['name'] as core.String?,
-          outputVersionFormat: json_['outputVersionFormat'] as core.String?,
-          resourceName: json_['resourceName'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          writerIdentity: json_['writerIdentity'] as core.String?,
-        );
+    : this(
+        bigqueryOptions:
+            json_.containsKey('bigqueryOptions')
+                ? BigQueryOptions.fromJson(
+                  json_['bigqueryOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        destination: json_['destination'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        exclusions:
+            (json_['exclusions'] as core.List?)
+                ?.map(
+                  (value) => LogExclusion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        filter: json_['filter'] as core.String?,
+        includeChildren: json_['includeChildren'] as core.bool?,
+        interceptChildren: json_['interceptChildren'] as core.bool?,
+        name: json_['name'] as core.String?,
+        outputVersionFormat: json_['outputVersionFormat'] as core.String?,
+        resourceName: json_['resourceName'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        writerIdentity: json_['writerIdentity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigqueryOptions != null) 'bigqueryOptions': bigqueryOptions!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (destination != null) 'destination': destination!,
-        if (disabled != null) 'disabled': disabled!,
-        if (exclusions != null) 'exclusions': exclusions!,
-        if (filter != null) 'filter': filter!,
-        if (includeChildren != null) 'includeChildren': includeChildren!,
-        if (interceptChildren != null) 'interceptChildren': interceptChildren!,
-        if (name != null) 'name': name!,
-        if (outputVersionFormat != null)
-          'outputVersionFormat': outputVersionFormat!,
-        if (resourceName != null) 'resourceName': resourceName!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (writerIdentity != null) 'writerIdentity': writerIdentity!,
-      };
+    if (bigqueryOptions != null) 'bigqueryOptions': bigqueryOptions!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (destination != null) 'destination': destination!,
+    if (disabled != null) 'disabled': disabled!,
+    if (exclusions != null) 'exclusions': exclusions!,
+    if (filter != null) 'filter': filter!,
+    if (includeChildren != null) 'includeChildren': includeChildren!,
+    if (interceptChildren != null) 'interceptChildren': interceptChildren!,
+    if (name != null) 'name': name!,
+    if (outputVersionFormat != null)
+      'outputVersionFormat': outputVersionFormat!,
+    if (resourceName != null) 'resourceName': resourceName!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (writerIdentity != null) 'writerIdentity': writerIdentity!,
+  };
 }
 
 /// Additional information used to correlate multiple log entries.
@@ -16403,24 +16374,20 @@ class LogSplit {
   /// same sequence of split log entries.
   core.String? uid;
 
-  LogSplit({
-    this.index,
-    this.totalSplits,
-    this.uid,
-  });
+  LogSplit({this.index, this.totalSplits, this.uid});
 
   LogSplit.fromJson(core.Map json_)
-      : this(
-          index: json_['index'] as core.int?,
-          totalSplits: json_['totalSplits'] as core.int?,
-          uid: json_['uid'] as core.String?,
-        );
+    : this(
+        index: json_['index'] as core.int?,
+        totalSplits: json_['totalSplits'] as core.int?,
+        uid: json_['uid'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (index != null) 'index': index!,
-        if (totalSplits != null) 'totalSplits': totalSplits!,
-        if (uid != null) 'uid': uid!,
-      };
+    if (index != null) 'index': index!,
+    if (totalSplits != null) 'totalSplits': totalSplits!,
+    if (uid != null) 'uid': uid!,
+  };
 }
 
 /// Describes a view over log entries in a bucket.
@@ -16468,21 +16435,21 @@ class LogView {
   });
 
   LogView.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (filter != null) 'filter': filter!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (filter != null) 'filter': filter!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Describes a Cloud Logging query that can be run in Logs Explorer UI or via
@@ -16517,22 +16484,26 @@ class LoggingQuery {
   });
 
   LoggingQuery.fromJson(core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          summaryFieldEnd: json_['summaryFieldEnd'] as core.int?,
-          summaryFieldStart: json_['summaryFieldStart'] as core.int?,
-          summaryFields: (json_['summaryFields'] as core.List?)
-              ?.map((value) => SummaryField.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        filter: json_['filter'] as core.String?,
+        summaryFieldEnd: json_['summaryFieldEnd'] as core.int?,
+        summaryFieldStart: json_['summaryFieldStart'] as core.int?,
+        summaryFields:
+            (json_['summaryFields'] as core.List?)
+                ?.map(
+                  (value) => SummaryField.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (summaryFieldEnd != null) 'summaryFieldEnd': summaryFieldEnd!,
-        if (summaryFieldStart != null) 'summaryFieldStart': summaryFieldStart!,
-        if (summaryFields != null) 'summaryFields': summaryFields!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (summaryFieldEnd != null) 'summaryFieldEnd': summaryFieldEnd!,
+    if (summaryFieldStart != null) 'summaryFieldStart': summaryFieldStart!,
+    if (summaryFields != null) 'summaryFields': summaryFields!,
+  };
 }
 
 /// Defines a metric type and its schema.
@@ -16715,43 +16686,49 @@ class MetricDescriptor {
   });
 
   MetricDescriptor.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          labels: (json_['labels'] as core.List?)
-              ?.map((value) => LabelDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          launchStage: json_['launchStage'] as core.String?,
-          metadata: json_.containsKey('metadata')
-              ? MetricDescriptorMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metricKind: json_['metricKind'] as core.String?,
-          monitoredResourceTypes:
-              (json_['monitoredResourceTypes'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-          unit: json_['unit'] as core.String?,
-          valueType: json_['valueType'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels:
+            (json_['labels'] as core.List?)
+                ?.map(
+                  (value) => LabelDescriptor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        launchStage: json_['launchStage'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? MetricDescriptorMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metricKind: json_['metricKind'] as core.String?,
+        monitoredResourceTypes:
+            (json_['monitoredResourceTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+        unit: json_['unit'] as core.String?,
+        valueType: json_['valueType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (launchStage != null) 'launchStage': launchStage!,
-        if (metadata != null) 'metadata': metadata!,
-        if (metricKind != null) 'metricKind': metricKind!,
-        if (monitoredResourceTypes != null)
-          'monitoredResourceTypes': monitoredResourceTypes!,
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-        if (unit != null) 'unit': unit!,
-        if (valueType != null) 'valueType': valueType!,
-      };
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (launchStage != null) 'launchStage': launchStage!,
+    if (metadata != null) 'metadata': metadata!,
+    if (metricKind != null) 'metricKind': metricKind!,
+    if (monitoredResourceTypes != null)
+      'monitoredResourceTypes': monitoredResourceTypes!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+    if (unit != null) 'unit': unit!,
+    if (valueType != null) 'valueType': valueType!,
+  };
 }
 
 /// Additional annotations that can be used to guide the usage of a metric.
@@ -16790,27 +16767,20 @@ class MonitoredResource {
   /// Required.
   core.String? type;
 
-  MonitoredResource({
-    this.labels,
-    this.type,
-  });
+  MonitoredResource({this.labels, this.type});
 
   MonitoredResource.fromJson(core.Map json_)
-      : this(
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-        if (type != null) 'type': type!,
-      };
+    if (labels != null) 'labels': labels!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// An object that describes the schema of a MonitoredResource object using a
@@ -16914,26 +16884,30 @@ class MonitoredResourceDescriptor {
   });
 
   MonitoredResourceDescriptor.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          labels: (json_['labels'] as core.List?)
-              ?.map((value) => LabelDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          launchStage: json_['launchStage'] as core.String?,
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels:
+            (json_['labels'] as core.List?)
+                ?.map(
+                  (value) => LabelDescriptor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        launchStage: json_['launchStage'] as core.String?,
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (launchStage != null) 'launchStage': launchStage!,
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (launchStage != null) 'launchStage': launchStage!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Auxiliary metadata for a MonitoredResource object.
@@ -16988,37 +16962,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Describes an analytics query that can be run in the Log Analytics page of
@@ -17031,18 +17003,14 @@ class OpsAnalyticsQuery {
   /// Required.
   core.String? sqlQueryText;
 
-  OpsAnalyticsQuery({
-    this.sqlQueryText,
-  });
+  OpsAnalyticsQuery({this.sqlQueryText});
 
   OpsAnalyticsQuery.fromJson(core.Map json_)
-      : this(
-          sqlQueryText: json_['sqlQueryText'] as core.String?,
-        );
+    : this(sqlQueryText: json_['sqlQueryText'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sqlQueryText != null) 'sqlQueryText': sqlQueryText!,
-      };
+    if (sqlQueryText != null) 'sqlQueryText': sqlQueryText!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -17104,8 +17072,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.Valid values are 0, 1, and 3.
@@ -17126,27 +17096,27 @@ class Policy {
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Describes a recent query executed on the Logs Explorer or Log Analytics page
@@ -17180,25 +17150,30 @@ class RecentQuery {
   });
 
   RecentQuery.fromJson(core.Map json_)
-      : this(
-          lastRunTime: json_['lastRunTime'] as core.String?,
-          loggingQuery: json_.containsKey('loggingQuery')
-              ? LoggingQuery.fromJson(
-                  json_['loggingQuery'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          opsAnalyticsQuery: json_.containsKey('opsAnalyticsQuery')
-              ? OpsAnalyticsQuery.fromJson(json_['opsAnalyticsQuery']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        lastRunTime: json_['lastRunTime'] as core.String?,
+        loggingQuery:
+            json_.containsKey('loggingQuery')
+                ? LoggingQuery.fromJson(
+                  json_['loggingQuery'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        opsAnalyticsQuery:
+            json_.containsKey('opsAnalyticsQuery')
+                ? OpsAnalyticsQuery.fromJson(
+                  json_['opsAnalyticsQuery']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastRunTime != null) 'lastRunTime': lastRunTime!,
-        if (loggingQuery != null) 'loggingQuery': loggingQuery!,
-        if (name != null) 'name': name!,
-        if (opsAnalyticsQuery != null) 'opsAnalyticsQuery': opsAnalyticsQuery!,
-      };
+    if (lastRunTime != null) 'lastRunTime': lastRunTime!,
+    if (loggingQuery != null) 'loggingQuery': loggingQuery!,
+    if (name != null) 'name': name!,
+    if (opsAnalyticsQuery != null) 'opsAnalyticsQuery': opsAnalyticsQuery!,
+  };
 }
 
 /// Describes a query that has been saved by a user.
@@ -17261,33 +17236,38 @@ class SavedQuery {
   });
 
   SavedQuery.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          loggingQuery: json_.containsKey('loggingQuery')
-              ? LoggingQuery.fromJson(
-                  json_['loggingQuery'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          opsAnalyticsQuery: json_.containsKey('opsAnalyticsQuery')
-              ? OpsAnalyticsQuery.fromJson(json_['opsAnalyticsQuery']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-          visibility: json_['visibility'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        loggingQuery:
+            json_.containsKey('loggingQuery')
+                ? LoggingQuery.fromJson(
+                  json_['loggingQuery'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        opsAnalyticsQuery:
+            json_.containsKey('opsAnalyticsQuery')
+                ? OpsAnalyticsQuery.fromJson(
+                  json_['opsAnalyticsQuery']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+        visibility: json_['visibility'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (loggingQuery != null) 'loggingQuery': loggingQuery!,
-        if (name != null) 'name': name!,
-        if (opsAnalyticsQuery != null) 'opsAnalyticsQuery': opsAnalyticsQuery!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (visibility != null) 'visibility': visibility!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (loggingQuery != null) 'loggingQuery': loggingQuery!,
+    if (name != null) 'name': name!,
+    if (opsAnalyticsQuery != null) 'opsAnalyticsQuery': opsAnalyticsQuery!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (visibility != null) 'visibility': visibility!,
+  };
 }
 
 /// Request message for SetIamPolicy method.
@@ -17305,24 +17285,23 @@ class SetIamPolicyRequest {
   /// following default mask is used:paths: "bindings, etag"
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Describes the settings associated with a project, folder, organization, or
@@ -17406,32 +17385,34 @@ class Settings {
   });
 
   Settings.fromJson(core.Map json_)
-      : this(
-          defaultSinkConfig: json_.containsKey('defaultSinkConfig')
-              ? DefaultSinkConfig.fromJson(json_['defaultSinkConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          disableDefaultSink: json_['disableDefaultSink'] as core.bool?,
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-          kmsServiceAccountId: json_['kmsServiceAccountId'] as core.String?,
-          loggingServiceAccountId:
-              json_['loggingServiceAccountId'] as core.String?,
-          name: json_['name'] as core.String?,
-          storageLocation: json_['storageLocation'] as core.String?,
-        );
+    : this(
+        defaultSinkConfig:
+            json_.containsKey('defaultSinkConfig')
+                ? DefaultSinkConfig.fromJson(
+                  json_['defaultSinkConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        disableDefaultSink: json_['disableDefaultSink'] as core.bool?,
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        kmsServiceAccountId: json_['kmsServiceAccountId'] as core.String?,
+        loggingServiceAccountId:
+            json_['loggingServiceAccountId'] as core.String?,
+        name: json_['name'] as core.String?,
+        storageLocation: json_['storageLocation'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultSinkConfig != null) 'defaultSinkConfig': defaultSinkConfig!,
-        if (disableDefaultSink != null)
-          'disableDefaultSink': disableDefaultSink!,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-        if (kmsServiceAccountId != null)
-          'kmsServiceAccountId': kmsServiceAccountId!,
-        if (loggingServiceAccountId != null)
-          'loggingServiceAccountId': loggingServiceAccountId!,
-        if (name != null) 'name': name!,
-        if (storageLocation != null) 'storageLocation': storageLocation!,
-      };
+    if (defaultSinkConfig != null) 'defaultSinkConfig': defaultSinkConfig!,
+    if (disableDefaultSink != null) 'disableDefaultSink': disableDefaultSink!,
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+    if (kmsServiceAccountId != null)
+      'kmsServiceAccountId': kmsServiceAccountId!,
+    if (loggingServiceAccountId != null)
+      'loggingServiceAccountId': loggingServiceAccountId!,
+    if (name != null) 'name': name!,
+    if (storageLocation != null) 'storageLocation': storageLocation!,
+  };
 }
 
 /// The Status type defines a logical error model that is suitable for different
@@ -17453,18 +17434,14 @@ class SummaryField {
   /// Optional.
   core.String? field;
 
-  SummaryField({
-    this.field,
-  });
+  SummaryField({this.field});
 
   SummaryField.fromJson(core.Map json_)
-      : this(
-          field: json_['field'] as core.String?,
-        );
+    : this(field: json_['field'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (field != null) 'field': field!,
-      };
+    if (field != null) 'field': field!,
+  };
 }
 
 /// Request message for TestIamPermissions method.
@@ -17569,35 +17546,37 @@ class WriteLogEntriesRequest {
   });
 
   WriteLogEntriesRequest.fromJson(core.Map json_)
-      : this(
-          dryRun: json_['dryRun'] as core.bool?,
-          entries: (json_['entries'] as core.List?)
-              ?.map((value) => LogEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          logName: json_['logName'] as core.String?,
-          partialSuccess: json_['partialSuccess'] as core.bool?,
-          resource: json_.containsKey('resource')
-              ? MonitoredResource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dryRun: json_['dryRun'] as core.bool?,
+        entries:
+            (json_['entries'] as core.List?)
+                ?.map(
+                  (value) => LogEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        logName: json_['logName'] as core.String?,
+        partialSuccess: json_['partialSuccess'] as core.bool?,
+        resource:
+            json_.containsKey('resource')
+                ? MonitoredResource.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dryRun != null) 'dryRun': dryRun!,
-        if (entries != null) 'entries': entries!,
-        if (labels != null) 'labels': labels!,
-        if (logName != null) 'logName': logName!,
-        if (partialSuccess != null) 'partialSuccess': partialSuccess!,
-        if (resource != null) 'resource': resource!,
-      };
+    if (dryRun != null) 'dryRun': dryRun!,
+    if (entries != null) 'entries': entries!,
+    if (labels != null) 'labels': labels!,
+    if (logName != null) 'logName': logName!,
+    if (partialSuccess != null) 'partialSuccess': partialSuccess!,
+    if (resource != null) 'resource': resource!,
+  };
 }
 
 /// Result returned from WriteLogEntries.

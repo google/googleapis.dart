@@ -54,11 +54,16 @@ class SafebrowsingApi {
   HashListsResource get hashLists => HashListsResource(_requester);
   HashesResource get hashes => HashesResource(_requester);
 
-  SafebrowsingApi(http.Client client,
-      {core.String rootUrl = 'https://safebrowsing.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  SafebrowsingApi(
+    http.Client client, {
+    core.String rootUrl = 'https://safebrowsing.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class HashListResource {
@@ -115,11 +120,11 @@ class HashListResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (sizeConstraints_maxDatabaseEntries != null)
         'sizeConstraints.maxDatabaseEntries': [
-          '${sizeConstraints_maxDatabaseEntries}'
+          '${sizeConstraints_maxDatabaseEntries}',
         ],
       if (sizeConstraints_maxUpdateEntries != null)
         'sizeConstraints.maxUpdateEntries': [
-          '${sizeConstraints_maxUpdateEntries}'
+          '${sizeConstraints_maxUpdateEntries}',
         ],
       if (version != null) 'version': [version],
       if ($fields != null) 'fields': [$fields],
@@ -133,7 +138,8 @@ class HashListResource {
       queryParams: queryParams_,
     );
     return GoogleSecuritySafebrowsingV5HashList.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -198,11 +204,11 @@ class HashListsResource {
       if (names != null) 'names': names,
       if (sizeConstraints_maxDatabaseEntries != null)
         'sizeConstraints.maxDatabaseEntries': [
-          '${sizeConstraints_maxDatabaseEntries}'
+          '${sizeConstraints_maxDatabaseEntries}',
         ],
       if (sizeConstraints_maxUpdateEntries != null)
         'sizeConstraints.maxUpdateEntries': [
-          '${sizeConstraints_maxUpdateEntries}'
+          '${sizeConstraints_maxUpdateEntries}',
         ],
       if (version != null) 'version': version,
       if ($fields != null) 'fields': [$fields],
@@ -216,7 +222,8 @@ class HashListsResource {
       queryParams: queryParams_,
     );
     return GoogleSecuritySafebrowsingV5BatchGetHashListsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List hash lists.
@@ -266,7 +273,8 @@ class HashListsResource {
       queryParams: queryParams_,
     );
     return GoogleSecuritySafebrowsingV5ListHashListsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -317,7 +325,8 @@ class HashesResource {
       queryParams: queryParams_,
     );
     return GoogleSecuritySafebrowsingV5SearchHashesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -326,21 +335,23 @@ class GoogleSecuritySafebrowsingV5BatchGetHashListsResponse {
   /// The hash lists in the same order given in the request.
   core.List<GoogleSecuritySafebrowsingV5HashList>? hashLists;
 
-  GoogleSecuritySafebrowsingV5BatchGetHashListsResponse({
-    this.hashLists,
-  });
+  GoogleSecuritySafebrowsingV5BatchGetHashListsResponse({this.hashLists});
 
   GoogleSecuritySafebrowsingV5BatchGetHashListsResponse.fromJson(core.Map json_)
-      : this(
-          hashLists: (json_['hashLists'] as core.List?)
-              ?.map((value) => GoogleSecuritySafebrowsingV5HashList.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        hashLists:
+            (json_['hashLists'] as core.List?)
+                ?.map(
+                  (value) => GoogleSecuritySafebrowsingV5HashList.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hashLists != null) 'hashLists': hashLists!,
-      };
+    if (hashLists != null) 'hashLists': hashLists!,
+  };
 }
 
 /// The full hash identified with one or more matches.
@@ -352,35 +363,38 @@ class GoogleSecuritySafebrowsingV5FullHash {
   core.List<core.int> get fullHashAsBytes => convert.base64.decode(fullHash!);
 
   set fullHashAsBytes(core.List<core.int> bytes_) {
-    fullHash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    fullHash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Unordered list.
   ///
   /// A repeated field identifying the details relevant to this full hash.
   core.List<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>?
-      fullHashDetails;
+  fullHashDetails;
 
-  GoogleSecuritySafebrowsingV5FullHash({
-    this.fullHash,
-    this.fullHashDetails,
-  });
+  GoogleSecuritySafebrowsingV5FullHash({this.fullHash, this.fullHashDetails});
 
   GoogleSecuritySafebrowsingV5FullHash.fromJson(core.Map json_)
-      : this(
-          fullHash: json_['fullHash'] as core.String?,
-          fullHashDetails: (json_['fullHashDetails'] as core.List?)
-              ?.map((value) =>
-                  GoogleSecuritySafebrowsingV5FullHashFullHashDetail.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        fullHash: json_['fullHash'] as core.String?,
+        fullHashDetails:
+            (json_['fullHashDetails'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleSecuritySafebrowsingV5FullHashFullHashDetail.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fullHash != null) 'fullHash': fullHash!,
-        if (fullHashDetails != null) 'fullHashDetails': fullHashDetails!,
-      };
+    if (fullHash != null) 'fullHash': fullHash!,
+    if (fullHashDetails != null) 'fullHashDetails': fullHashDetails!,
+  };
 }
 
 /// Details about a matching full hash.
@@ -438,17 +452,18 @@ class GoogleSecuritySafebrowsingV5FullHashFullHashDetail {
   });
 
   GoogleSecuritySafebrowsingV5FullHashFullHashDetail.fromJson(core.Map json_)
-      : this(
-          attributes: (json_['attributes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          threatType: json_['threatType'] as core.String?,
-        );
+    : this(
+        attributes:
+            (json_['attributes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        threatType: json_['threatType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (threatType != null) 'threatType': threatType!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (threatType != null) 'threatType': threatType!,
+  };
 }
 
 /// A list of hashes identified by its name.
@@ -512,8 +527,10 @@ class GoogleSecuritySafebrowsingV5HashList {
       convert.base64.decode(sha256Checksum!);
 
   set sha256ChecksumAsBytes(core.List<core.int> bytes_) {
-    sha256Checksum =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    sha256Checksum = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The version of the hash list.
@@ -523,8 +540,10 @@ class GoogleSecuritySafebrowsingV5HashList {
   core.List<core.int> get versionAsBytes => convert.base64.decode(version!);
 
   set versionAsBytes(core.List<core.int> bytes_) {
-    version =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    version = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   GoogleSecuritySafebrowsingV5HashList({
@@ -542,62 +561,72 @@ class GoogleSecuritySafebrowsingV5HashList {
   });
 
   GoogleSecuritySafebrowsingV5HashList.fromJson(core.Map json_)
-      : this(
-          additionsEightBytes: json_.containsKey('additionsEightBytes')
-              ? GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit.fromJson(
+    : this(
+        additionsEightBytes:
+            json_.containsKey('additionsEightBytes')
+                ? GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit.fromJson(
                   json_['additionsEightBytes']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          additionsFourBytes: json_.containsKey('additionsFourBytes')
-              ? GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        additionsFourBytes:
+            json_.containsKey('additionsFourBytes')
+                ? GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit.fromJson(
                   json_['additionsFourBytes']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          additionsSixteenBytes: json_.containsKey('additionsSixteenBytes')
-              ? GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        additionsSixteenBytes:
+            json_.containsKey('additionsSixteenBytes')
+                ? GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit.fromJson(
                   json_['additionsSixteenBytes']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          additionsThirtyTwoBytes: json_.containsKey('additionsThirtyTwoBytes')
-              ? GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        additionsThirtyTwoBytes:
+            json_.containsKey('additionsThirtyTwoBytes')
+                ? GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit.fromJson(
                   json_['additionsThirtyTwoBytes']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          compressedRemovals: json_.containsKey('compressedRemovals')
-              ? GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        compressedRemovals:
+            json_.containsKey('compressedRemovals')
+                ? GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit.fromJson(
                   json_['compressedRemovals']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? GoogleSecuritySafebrowsingV5HashListMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>)
-              : null,
-          minimumWaitDuration: json_['minimumWaitDuration'] as core.String?,
-          name: json_['name'] as core.String?,
-          partialUpdate: json_['partialUpdate'] as core.bool?,
-          sha256Checksum: json_['sha256Checksum'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? GoogleSecuritySafebrowsingV5HashListMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        minimumWaitDuration: json_['minimumWaitDuration'] as core.String?,
+        name: json_['name'] as core.String?,
+        partialUpdate: json_['partialUpdate'] as core.bool?,
+        sha256Checksum: json_['sha256Checksum'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionsEightBytes != null)
-          'additionsEightBytes': additionsEightBytes!,
-        if (additionsFourBytes != null)
-          'additionsFourBytes': additionsFourBytes!,
-        if (additionsSixteenBytes != null)
-          'additionsSixteenBytes': additionsSixteenBytes!,
-        if (additionsThirtyTwoBytes != null)
-          'additionsThirtyTwoBytes': additionsThirtyTwoBytes!,
-        if (compressedRemovals != null)
-          'compressedRemovals': compressedRemovals!,
-        if (metadata != null) 'metadata': metadata!,
-        if (minimumWaitDuration != null)
-          'minimumWaitDuration': minimumWaitDuration!,
-        if (name != null) 'name': name!,
-        if (partialUpdate != null) 'partialUpdate': partialUpdate!,
-        if (sha256Checksum != null) 'sha256Checksum': sha256Checksum!,
-        if (version != null) 'version': version!,
-      };
+    if (additionsEightBytes != null)
+      'additionsEightBytes': additionsEightBytes!,
+    if (additionsFourBytes != null) 'additionsFourBytes': additionsFourBytes!,
+    if (additionsSixteenBytes != null)
+      'additionsSixteenBytes': additionsSixteenBytes!,
+    if (additionsThirtyTwoBytes != null)
+      'additionsThirtyTwoBytes': additionsThirtyTwoBytes!,
+    if (compressedRemovals != null) 'compressedRemovals': compressedRemovals!,
+    if (metadata != null) 'metadata': metadata!,
+    if (minimumWaitDuration != null)
+      'minimumWaitDuration': minimumWaitDuration!,
+    if (name != null) 'name': name!,
+    if (partialUpdate != null) 'partialUpdate': partialUpdate!,
+    if (sha256Checksum != null) 'sha256Checksum': sha256Checksum!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Metadata about a particular hash list.
@@ -644,23 +673,25 @@ class GoogleSecuritySafebrowsingV5HashListMetadata {
   });
 
   GoogleSecuritySafebrowsingV5HashListMetadata.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          hashLength: json_['hashLength'] as core.String?,
-          likelySafeTypes: (json_['likelySafeTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          threatTypes: (json_['threatTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        hashLength: json_['hashLength'] as core.String?,
+        likelySafeTypes:
+            (json_['likelySafeTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        threatTypes:
+            (json_['threatTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (hashLength != null) 'hashLength': hashLength!,
-        if (likelySafeTypes != null) 'likelySafeTypes': likelySafeTypes!,
-        if (threatTypes != null) 'threatTypes': threatTypes!,
-      };
+    if (description != null) 'description': description!,
+    if (hashLength != null) 'hashLength': hashLength!,
+    if (likelySafeTypes != null) 'likelySafeTypes': likelySafeTypes!,
+    if (threatTypes != null) 'threatTypes': threatTypes!,
+  };
 }
 
 /// The response containing metadata about hash lists.
@@ -681,18 +712,22 @@ class GoogleSecuritySafebrowsingV5ListHashListsResponse {
   });
 
   GoogleSecuritySafebrowsingV5ListHashListsResponse.fromJson(core.Map json_)
-      : this(
-          hashLists: (json_['hashLists'] as core.List?)
-              ?.map((value) => GoogleSecuritySafebrowsingV5HashList.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        hashLists:
+            (json_['hashLists'] as core.List?)
+                ?.map(
+                  (value) => GoogleSecuritySafebrowsingV5HashList.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hashLists != null) 'hashLists': hashLists!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (hashLists != null) 'hashLists': hashLists!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Same as `RiceDeltaEncoded32Bit` except this encodes 128-bit numbers.
@@ -703,8 +738,10 @@ class GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit {
       convert.base64.decode(encodedData!);
 
   set encodedDataAsBytes(core.List<core.int> bytes_) {
-    encodedData =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    encodedData = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The number of entries that are delta encoded in the encoded data.
@@ -737,21 +774,21 @@ class GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit {
   });
 
   GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit.fromJson(core.Map json_)
-      : this(
-          encodedData: json_['encodedData'] as core.String?,
-          entriesCount: json_['entriesCount'] as core.int?,
-          firstValueHi: json_['firstValueHi'] as core.String?,
-          firstValueLo: json_['firstValueLo'] as core.String?,
-          riceParameter: json_['riceParameter'] as core.int?,
-        );
+    : this(
+        encodedData: json_['encodedData'] as core.String?,
+        entriesCount: json_['entriesCount'] as core.int?,
+        firstValueHi: json_['firstValueHi'] as core.String?,
+        firstValueLo: json_['firstValueLo'] as core.String?,
+        riceParameter: json_['riceParameter'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedData != null) 'encodedData': encodedData!,
-        if (entriesCount != null) 'entriesCount': entriesCount!,
-        if (firstValueHi != null) 'firstValueHi': firstValueHi!,
-        if (firstValueLo != null) 'firstValueLo': firstValueLo!,
-        if (riceParameter != null) 'riceParameter': riceParameter!,
-      };
+    if (encodedData != null) 'encodedData': encodedData!,
+    if (entriesCount != null) 'entriesCount': entriesCount!,
+    if (firstValueHi != null) 'firstValueHi': firstValueHi!,
+    if (firstValueLo != null) 'firstValueLo': firstValueLo!,
+    if (riceParameter != null) 'riceParameter': riceParameter!,
+  };
 }
 
 /// Same as `RiceDeltaEncoded32Bit` except this encodes 256-bit numbers.
@@ -762,8 +799,10 @@ class GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit {
       convert.base64.decode(encodedData!);
 
   set encodedDataAsBytes(core.List<core.int> bytes_) {
-    encodedData =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    encodedData = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The number of entries that are delta encoded in the encoded data.
@@ -809,29 +848,29 @@ class GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit {
   });
 
   GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit.fromJson(core.Map json_)
-      : this(
-          encodedData: json_['encodedData'] as core.String?,
-          entriesCount: json_['entriesCount'] as core.int?,
-          firstValueFirstPart: json_['firstValueFirstPart'] as core.String?,
-          firstValueFourthPart: json_['firstValueFourthPart'] as core.String?,
-          firstValueSecondPart: json_['firstValueSecondPart'] as core.String?,
-          firstValueThirdPart: json_['firstValueThirdPart'] as core.String?,
-          riceParameter: json_['riceParameter'] as core.int?,
-        );
+    : this(
+        encodedData: json_['encodedData'] as core.String?,
+        entriesCount: json_['entriesCount'] as core.int?,
+        firstValueFirstPart: json_['firstValueFirstPart'] as core.String?,
+        firstValueFourthPart: json_['firstValueFourthPart'] as core.String?,
+        firstValueSecondPart: json_['firstValueSecondPart'] as core.String?,
+        firstValueThirdPart: json_['firstValueThirdPart'] as core.String?,
+        riceParameter: json_['riceParameter'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedData != null) 'encodedData': encodedData!,
-        if (entriesCount != null) 'entriesCount': entriesCount!,
-        if (firstValueFirstPart != null)
-          'firstValueFirstPart': firstValueFirstPart!,
-        if (firstValueFourthPart != null)
-          'firstValueFourthPart': firstValueFourthPart!,
-        if (firstValueSecondPart != null)
-          'firstValueSecondPart': firstValueSecondPart!,
-        if (firstValueThirdPart != null)
-          'firstValueThirdPart': firstValueThirdPart!,
-        if (riceParameter != null) 'riceParameter': riceParameter!,
-      };
+    if (encodedData != null) 'encodedData': encodedData!,
+    if (entriesCount != null) 'entriesCount': entriesCount!,
+    if (firstValueFirstPart != null)
+      'firstValueFirstPart': firstValueFirstPart!,
+    if (firstValueFourthPart != null)
+      'firstValueFourthPart': firstValueFourthPart!,
+    if (firstValueSecondPart != null)
+      'firstValueSecondPart': firstValueSecondPart!,
+    if (firstValueThirdPart != null)
+      'firstValueThirdPart': firstValueThirdPart!,
+    if (riceParameter != null) 'riceParameter': riceParameter!,
+  };
 }
 
 /// The Rice-Golomb encoded data.
@@ -856,8 +895,10 @@ class GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit {
       convert.base64.decode(encodedData!);
 
   set encodedDataAsBytes(core.List<core.int> bytes_) {
-    encodedData =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    encodedData = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The number of entries that are delta encoded in the encoded data.
@@ -885,19 +926,19 @@ class GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit {
   });
 
   GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit.fromJson(core.Map json_)
-      : this(
-          encodedData: json_['encodedData'] as core.String?,
-          entriesCount: json_['entriesCount'] as core.int?,
-          firstValue: json_['firstValue'] as core.int?,
-          riceParameter: json_['riceParameter'] as core.int?,
-        );
+    : this(
+        encodedData: json_['encodedData'] as core.String?,
+        entriesCount: json_['entriesCount'] as core.int?,
+        firstValue: json_['firstValue'] as core.int?,
+        riceParameter: json_['riceParameter'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedData != null) 'encodedData': encodedData!,
-        if (entriesCount != null) 'entriesCount': entriesCount!,
-        if (firstValue != null) 'firstValue': firstValue!,
-        if (riceParameter != null) 'riceParameter': riceParameter!,
-      };
+    if (encodedData != null) 'encodedData': encodedData!,
+    if (entriesCount != null) 'entriesCount': entriesCount!,
+    if (firstValue != null) 'firstValue': firstValue!,
+    if (riceParameter != null) 'riceParameter': riceParameter!,
+  };
 }
 
 /// Same as `RiceDeltaEncoded32Bit` except this encodes 64-bit numbers.
@@ -908,8 +949,10 @@ class GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit {
       convert.base64.decode(encodedData!);
 
   set encodedDataAsBytes(core.List<core.int> bytes_) {
-    encodedData =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    encodedData = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The number of entries that are delta encoded in the encoded data.
@@ -937,19 +980,19 @@ class GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit {
   });
 
   GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit.fromJson(core.Map json_)
-      : this(
-          encodedData: json_['encodedData'] as core.String?,
-          entriesCount: json_['entriesCount'] as core.int?,
-          firstValue: json_['firstValue'] as core.String?,
-          riceParameter: json_['riceParameter'] as core.int?,
-        );
+    : this(
+        encodedData: json_['encodedData'] as core.String?,
+        entriesCount: json_['entriesCount'] as core.int?,
+        firstValue: json_['firstValue'] as core.String?,
+        riceParameter: json_['riceParameter'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedData != null) 'encodedData': encodedData!,
-        if (entriesCount != null) 'entriesCount': entriesCount!,
-        if (firstValue != null) 'firstValue': firstValue!,
-        if (riceParameter != null) 'riceParameter': riceParameter!,
-      };
+    if (encodedData != null) 'encodedData': encodedData!,
+    if (entriesCount != null) 'entriesCount': entriesCount!,
+    if (firstValue != null) 'firstValue': firstValue!,
+    if (riceParameter != null) 'riceParameter': riceParameter!,
+  };
 }
 
 /// The response returned after searching threat hashes.
@@ -989,16 +1032,20 @@ class GoogleSecuritySafebrowsingV5SearchHashesResponse {
   });
 
   GoogleSecuritySafebrowsingV5SearchHashesResponse.fromJson(core.Map json_)
-      : this(
-          cacheDuration: json_['cacheDuration'] as core.String?,
-          fullHashes: (json_['fullHashes'] as core.List?)
-              ?.map((value) => GoogleSecuritySafebrowsingV5FullHash.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        cacheDuration: json_['cacheDuration'] as core.String?,
+        fullHashes:
+            (json_['fullHashes'] as core.List?)
+                ?.map(
+                  (value) => GoogleSecuritySafebrowsingV5FullHash.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cacheDuration != null) 'cacheDuration': cacheDuration!,
-        if (fullHashes != null) 'fullHashes': fullHashes!,
-      };
+    if (cacheDuration != null) 'cacheDuration': cacheDuration!,
+    if (fullHashes != null) 'fullHashes': fullHashes!,
+  };
 }

@@ -64,7 +64,8 @@ String randomState() {
 }
 
 // https://datatracker.ietf.org/doc/html/rfc3986#section-2.3
-const _safe = '0123456789-._~'
+const _safe =
+    '0123456789-._~'
     'abcdefghijklmnopqrstuvwxyz'
     'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -114,17 +115,14 @@ Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
   String? codeVerifier,
   AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
 }) async {
-  final jsonMap = await client.oauthTokenRequest(
-    {
-      'client_id': clientId.identifier,
-      'client_secret': clientId.secret ?? '',
-      'code': code,
-      if (codeVerifier != null) 'code_verifier': codeVerifier,
-      'grant_type': 'authorization_code',
-      'redirect_uri': redirectUrl,
-    },
-    authEndpoints: authEndpoints,
-  );
+  final jsonMap = await client.oauthTokenRequest({
+    'client_id': clientId.identifier,
+    'client_secret': clientId.secret ?? '',
+    'code': code,
+    if (codeVerifier != null) 'code_verifier': codeVerifier,
+    'grant_type': 'authorization_code',
+    'redirect_uri': redirectUrl,
+  }, authEndpoints: authEndpoints);
   final accessToken = parseAccessToken(jsonMap);
 
   final idToken = jsonMap['id_token'] as String?;
@@ -139,12 +137,7 @@ Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
   }
   final scopes = scope.split(' ').toList();
 
-  return AccessCredentials(
-    accessToken,
-    refreshToken,
-    scopes,
-    idToken: idToken,
-  );
+  return AccessCredentials(accessToken, refreshToken, scopes, idToken: idToken);
 }
 
 List<String> parseScopes(Map<String, dynamic> json) {

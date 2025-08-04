@@ -330,11 +330,16 @@ class DataPortabilityApi {
   PortabilityArchiveResource get portabilityArchive =>
       PortabilityArchiveResource(_requester);
 
-  DataPortabilityApi(http.Client client,
-      {core.String rootUrl = 'https://dataportability.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DataPortabilityApi(
+    http.Client client, {
+    core.String rootUrl = 'https://dataportability.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class AccessTypeResource {
@@ -376,7 +381,8 @@ class AccessTypeResource {
       queryParams: queryParams_,
     );
     return CheckAccessTypeResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -426,7 +432,8 @@ class ArchiveJobsResource {
       queryParams: queryParams_,
     );
     return CancelPortabilityArchiveResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves the state of an Archive job for the Portability API.
@@ -465,7 +472,8 @@ class ArchiveJobsResource {
       queryParams: queryParams_,
     );
     return PortabilityArchiveState.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retries a failed Portability Archive job.
@@ -508,7 +516,8 @@ class ArchiveJobsResource {
       queryParams: queryParams_,
     );
     return RetryPortabilityArchiveResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -598,7 +607,8 @@ class PortabilityArchiveResource {
       queryParams: queryParams_,
     );
     return InitiatePortabilityArchiveResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -623,26 +633,24 @@ class CheckAccessTypeResponse {
   /// resources have time-based access.
   core.List<core.String>? timeBasedResources;
 
-  CheckAccessTypeResponse({
-    this.oneTimeResources,
-    this.timeBasedResources,
-  });
+  CheckAccessTypeResponse({this.oneTimeResources, this.timeBasedResources});
 
   CheckAccessTypeResponse.fromJson(core.Map json_)
-      : this(
-          oneTimeResources: (json_['oneTimeResources'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          timeBasedResources: (json_['timeBasedResources'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        oneTimeResources:
+            (json_['oneTimeResources'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        timeBasedResources:
+            (json_['timeBasedResources'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (oneTimeResources != null) 'oneTimeResources': oneTimeResources!,
-        if (timeBasedResources != null)
-          'timeBasedResources': timeBasedResources!,
-      };
+    if (oneTimeResources != null) 'oneTimeResources': oneTimeResources!,
+    if (timeBasedResources != null) 'timeBasedResources': timeBasedResources!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -686,19 +694,20 @@ class InitiatePortabilityArchiveRequest {
   });
 
   InitiatePortabilityArchiveRequest.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        resources:
+            (json_['resources'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (resources != null) 'resources': resources!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (resources != null) 'resources': resources!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// Response from initiating an Archive job.
@@ -716,21 +725,18 @@ class InitiatePortabilityArchiveResponse {
   /// This can be used to get the state of the job.
   core.String? archiveJobId;
 
-  InitiatePortabilityArchiveResponse({
-    this.accessType,
-    this.archiveJobId,
-  });
+  InitiatePortabilityArchiveResponse({this.accessType, this.archiveJobId});
 
   InitiatePortabilityArchiveResponse.fromJson(core.Map json_)
-      : this(
-          accessType: json_['accessType'] as core.String?,
-          archiveJobId: json_['archiveJobId'] as core.String?,
-        );
+    : this(
+        accessType: json_['accessType'] as core.String?,
+        archiveJobId: json_['archiveJobId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessType != null) 'accessType': accessType!,
-        if (archiveJobId != null) 'archiveJobId': archiveJobId!,
-      };
+    if (accessType != null) 'accessType': accessType!,
+    if (archiveJobId != null) 'archiveJobId': archiveJobId!,
+  };
 }
 
 /// Resource that contains the state of an Archive job.
@@ -778,23 +784,24 @@ class PortabilityArchiveState {
   });
 
   PortabilityArchiveState.fromJson(core.Map json_)
-      : this(
-          exportTime: json_['exportTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          urls: (json_['urls'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        exportTime: json_['exportTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        urls:
+            (json_['urls'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exportTime != null) 'exportTime': exportTime!,
-        if (name != null) 'name': name!,
-        if (startTime != null) 'startTime': startTime!,
-        if (state != null) 'state': state!,
-        if (urls != null) 'urls': urls!,
-      };
+    if (exportTime != null) 'exportTime': exportTime!,
+    if (name != null) 'name': name!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+    if (urls != null) 'urls': urls!,
+  };
 }
 
 /// Request to reset exhausted OAuth scopes.
@@ -810,16 +817,12 @@ class RetryPortabilityArchiveResponse {
   /// This can be used to get the state of the new job.
   core.String? archiveJobId;
 
-  RetryPortabilityArchiveResponse({
-    this.archiveJobId,
-  });
+  RetryPortabilityArchiveResponse({this.archiveJobId});
 
   RetryPortabilityArchiveResponse.fromJson(core.Map json_)
-      : this(
-          archiveJobId: json_['archiveJobId'] as core.String?,
-        );
+    : this(archiveJobId: json_['archiveJobId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (archiveJobId != null) 'archiveJobId': archiveJobId!,
-      };
+    if (archiveJobId != null) 'archiveJobId': archiveJobId!,
+  };
 }
